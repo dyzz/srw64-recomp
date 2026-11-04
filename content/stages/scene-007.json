@@ -5,7 +5,8 @@
   "zh-Hans": "流星坠落之日",
   "zh-Hant": "流星墜落之日",
   "ja": "流星が落ちた日",
-  "en": "The Day the Shooting Star Fell"
+  "en": "The Day the Shooting Star Fell",
+  "ko": "유성이 떨어진 날"
  },
  "title_ja": "流星が落ちた日",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "超级系",
     "zh-Hant": "超級系",
     "ja": "スーパー系",
-    "en": "Super"
+    "en": "Super",
+    "ko": "슈퍼계"
    },
    "secrets": [],
    "enemies": [
@@ -26,13 +28,15 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "盖亚",
       "zh-Hant": "海亞",
       "ja": "ガイヤー",
-      "en": "Gaia"
+      "en": "Gaia",
+      "ko": "가이아"
      },
      "retreat": false
     }

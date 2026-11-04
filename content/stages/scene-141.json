@@ -5,7 +5,8 @@
   "zh-Hans": "决战宙域（下）",
   "zh-Hant": "決戰宙域（下）",
   "ja": "決戦宙域 （後）",
-  "en": "Decisive Battle Zone (Part 2)"
+  "en": "Decisive Battle Zone (Part 2)",
+  "ko": "결전 공역 후편"
  },
  "title_ja": "決戦宙域 （後）",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线／独自作战",
     "zh-Hant": "獨立軍路線／獨自作戰",
     "ja": "独立軍ルート／単独行動",
-    "en": "Independence Army route / fight alone"
+    "en": "Independence Army route / fight alone",
+    "ko": "독립군 루트 / 단독 항전"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "普露兹",
       "zh-Hant": "普露茲",
       "ja": "プルツー",
-      "en": "Ple-Two"
+      "en": "Ple-Two",
+      "ko": "플 투"
      },
      "text": {
       "zh-Hans": "用捷度说服普露兹（需普露已入队）",
       "zh-Hant": "用傑特說服普露茲（需普露已入隊）",
       "ja": "ジュドーでプルツーを説得（プル加入済みが条件）",
-      "en": "Persuade Ple-Two with Judau (needs Ple on the team)"
+      "en": "Persuade Ple-Two with Judau (needs Ple on the team)",
+      "ko": "쥬도로 플 투 설득(플이 아군에 있어야 함)"
      }
     }
    ],
@@ -42,19 +46,22 @@
       "zh-Hans": "精神感应框架",
       "zh-Hant": "精神感應框體",
       "ja": "サイコフレーム",
-      "en": "Psycoframe"
+      "en": "Psycoframe",
+      "ko": "사이코 프레임"
      },
      "from": {
       "zh-Hans": "哈曼",
       "zh-Hant": "哈曼",
       "ja": "ハマーン",
-      "en": "Haman"
+      "en": "Haman",
+      "ko": "하만"
      },
      "note": {
       "zh-Hans": "HP 30% 以下时撤退，部下一起离场",
       "zh-Hant": "HP 30% 以下時撤退，部下一起離場",
       "ja": "HP30%以下で撤退し、部下も一緒に離脱",
-      "en": "Retreats at 30% HP or below, and the subordinates leave too"
+      "en": "Retreats at 30% HP or below, and the subordinates leave too",
+      "ko": "HP 30% 이하에서 퇴각하며 부하도 함께 떠남"
      },
      "retreat": true
     },
@@ -63,19 +70,22 @@
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
       "ja": "アポジモーター",
-      "en": "Apogee Motor"
+      "en": "Apogee Motor",
+      "ko": "아포지 모터"
      },
      "from": {
       "zh-Hans": "卡多",
       "zh-Hant": "卡多",
       "ja": "ガトー",
-      "en": "Gato"
+      "en": "Gato",
+      "ko": "가토"
      },
      "note": {
       "zh-Hans": "哈曼 HP 30% 以下或被击坠时一起撤退",
       "zh-Hant": "哈曼 HP 30% 以下或被擊墜時一起撤退",
       "ja": "ハマーンがHP30%以下になるか撃墜されると一緒に撤退",
-      "en": "Retreats together with Haman when she is at 30% HP or below or is shot down"
+      "en": "Retreats together with Haman when she is at 30% HP or below or is shot down",
+      "ko": "하만이 HP 30% 이하가 되거나 격추되면 함께 퇴각"
      },
      "retreat": true
     },
@@ -84,19 +94,22 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "拉坎",
       "zh-Hant": "拉坎",
       "ja": "ラカン",
-      "en": "Rakan"
+      "en": "Rakan",
+      "ko": "라칸"
      },
      "note": {
       "zh-Hans": "哈曼 HP 30% 以下或被击坠时一起撤退",
       "zh-Hant": "哈曼 HP 30% 以下或被擊墜時一起撤退",
       "ja": "ハマーンがHP30%以下になるか撃墜されると一緒に撤退",
-      "en": "Retreats together with Haman when she is at 30% HP or below or is shot down"
+      "en": "Retreats together with Haman when she is at 30% HP or below or is shot down",
+      "ko": "하만이 HP 30% 이하가 되거나 격추되면 함께 퇴각"
      },
      "retreat": true
     },
@@ -105,19 +118,22 @@
       "zh-Hans": "生物传感器",
       "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
-      "en": "Bio-Sensor"
+      "en": "Bio-Sensor",
+      "ko": "바이오 센서"
      },
      "from": {
       "zh-Hans": "普露兹",
       "zh-Hant": "普露茲",
       "ja": "プルツー",
-      "en": "Ple-Two"
+      "en": "Ple-Two",
+      "ko": "플 투"
      },
      "note": {
       "zh-Hans": "哈曼 HP 30% 以下或被击坠时一起撤退",
       "zh-Hant": "哈曼 HP 30% 以下或被擊墜時一起撤退",
       "ja": "ハマーンがHP30%以下になるか撃墜されると一緒に撤退",
-      "en": "Retreats together with Haman when she is at 30% HP or below or is shot down"
+      "en": "Retreats together with Haman when she is at 30% HP or below or is shot down",
+      "ko": "하만이 HP 30% 이하가 되거나 격추되면 함께 퇴각"
      },
      "retreat": true
     },
@@ -126,13 +142,15 @@
       "zh-Hans": "I力场屏障",
       "zh-Hant": "I力場屏障",
       "ja": "Iフィールドバリア",
-      "en": "I-Field Barrier"
+      "en": "I-Field Barrier",
+      "ko": "I필드 배리어"
      },
      "from": {
       "zh-Hans": "杰伊＝伦",
       "zh-Hant": "傑伊＝倫",
       "ja": "ジェイ＝レン",
-      "en": "J-Ren"
+      "en": "J-Ren",
+      "ko": "제이=렌"
      },
      "retreat": false
     }

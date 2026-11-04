@@ -5,7 +5,8 @@
   "zh-Hans": "正因为纯粹",
   "zh-Hant": "正因為純粹",
   "ja": "純粋であるがゆえに",
-  "en": "Because of That Purity"
+  "en": "Because of That Purity",
+  "ko": "순수하기에"
  },
  "title_ja": "純粋であるがゆえに",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "OZ路线",
     "zh-Hant": "OZ路線",
     "ja": "OZルート",
-    "en": "OZ route"
+    "en": "OZ route",
+    "ko": "OZ 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "月球是地狱！：守住基地",
       "zh-Hant": "月球是地獄！：守住基地",
       "ja": "月は地獄だ!：基地を守る",
-      "en": "The Moon Is Hell!: holding the base"
+      "en": "The Moon Is Hell!: holding the base",
+      "ko": "달은 지옥이다!: 기지 방어"
      },
      "text": {
       "zh-Hans": "无需操作：卡多是否加入会改变捷度等人的加入方式",
       "zh-Hant": "無需操作：卡多是否加入會改變傑特等人的加入方式",
       "ja": "操作不要：ガトーの加入有無でジュドーたちの加入のしかたが変わる",
-      "en": "No action needed: recruiting Gato changes how Judau and the others join"
+      "en": "No action needed: recruiting Gato changes how Judau and the others join",
+      "ko": "할 일 없음: 가토 가입 여부에 따라 쥬도 일행의 가입 방식이 달라짐"
      }
     }
    ],
@@ -42,13 +46,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "布拉奇",
       "zh-Hant": "布拉奇",
       "ja": "ブラッキー",
-      "en": "Blacky"
+      "en": "Blacky",
+      "ko": "블래키"
      },
      "retreat": false
     },
@@ -58,13 +64,15 @@
       "zh-Hans": "玛古",
       "zh-Hant": "馬可",
       "ja": "マーグ",
-      "en": "Marg"
+      "en": "Marg",
+      "ko": "마그"
      },
      "note": {
       "zh-Hans": "布拉奇被击坠时离场（关卡结束）",
       "zh-Hant": "布拉奇被擊墜時離場（關卡結束）",
       "ja": "ブラッキーが撃墜されると離脱（ステージ終了）",
-      "en": "Leaves when Blacky is shot down (the stage ends)"
+      "en": "Leaves when Blacky is shot down (the stage ends)",
+      "ko": "블래키가 격추되면 이탈(스테이지 종료)"
      },
      "retreat": true
     }

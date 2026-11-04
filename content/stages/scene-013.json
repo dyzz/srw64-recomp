@@ -5,7 +5,8 @@
   "zh-Hans": "黑色高达",
   "zh-Hant": "黑色鋼彈",
   "ja": "黒いガンダム",
-  "en": "The Black Gundam"
+  "en": "The Black Gundam",
+  "ko": "검은 건담"
  },
  "title_ja": "黒いガンダム",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "真实系",
     "zh-Hant": "真實系",
     "ja": "リアル系",
-    "en": "Real"
+    "en": "Real",
+    "ko": "리얼계"
    },
    "secrets": [],
    "enemies": [
@@ -26,13 +28,15 @@
       "zh-Hans": "混合式装甲",
       "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
-      "en": "Hybrid Armor"
+      "en": "Hybrid Armor",
+      "ko": "하이브리드 아머"
      },
      "from": {
       "zh-Hans": "基乌拉",
       "zh-Hant": "基烏拉",
       "ja": "ギウラ",
-      "en": "Giura"
+      "en": "Giura",
+      "ko": "기우라"
      },
      "retreat": false
     },
@@ -41,13 +45,15 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "朱莉娅",
       "zh-Hant": "朱莉婭",
       "ja": "ジュリア",
-      "en": "Julia"
+      "en": "Julia",
+      "ko": "줄리아"
      },
      "retreat": false
     },
@@ -56,13 +62,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "戈斯特罗",
       "zh-Hant": "戈斯特羅",
       "ja": "ゴステロ",
-      "en": "Gosterro"
+      "en": "Gosterro",
+      "ko": "고스테로"
      },
      "retreat": false
     }

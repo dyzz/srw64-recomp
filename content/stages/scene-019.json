@@ -5,7 +5,8 @@
   "zh-Hans": "粉碎卑劣的陷阱！",
   "zh-Hant": "粉碎卑劣的陷阱！",
   "ja": "卑劣な罠を破れ!",
-  "en": "Break the Vile Trap!"
+  "en": "Break the Vile Trap!",
+  "ko": "비열한 함정을 깨라!"
  },
  "title_ja": "卑劣な罠を破れ!",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "超级系",
     "zh-Hant": "超級系",
     "ja": "スーパー系",
-    "en": "Super"
+    "en": "Super",
+    "ko": "슈퍼계"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "阿莲比＋诺贝尔高达",
       "zh-Hant": "阿蓮比＋諾貝爾鋼彈",
       "ja": "アレンビー＋ノーベルガンダム",
-      "en": "Allenby + Noble Gundam"
+      "en": "Allenby + Noble Gundam",
+      "ko": "아렌비 + 노벨 건담"
      },
      "text": {
       "zh-Hans": "第 9 回合我方阶段结束前用多蒙说服阿莲比",
       "zh-Hant": "第 9 回合我方階段結束前用多門說服阿蓮比",
       "ja": "第9ターン味方フェイズ終了までにドモンでアレンビーを説得",
-      "en": "Persuade Allenby with Domon by the turn 9 player phase"
+      "en": "Persuade Allenby with Domon by the turn 9 player phase",
+      "ko": "9턴 아군 페이즈까지 도몬으로 아렌비를 설득"
      }
     }
    ],
@@ -42,13 +46,15 @@
       "zh-Hans": "高性能雷达",
       "zh-Hant": "高性能雷達",
       "ja": "高性能レーダー",
-      "en": "High-Fidelity Radar"
+      "en": "High-Fidelity Radar",
+      "ko": "고성능 레이더"
      },
      "from": {
       "zh-Hans": "凤",
       "zh-Hant": "鳳",
       "ja": "フォウ",
-      "en": "Four"
+      "en": "Four",
+      "ko": "포우"
      },
      "retreat": false
     },
@@ -57,13 +63,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "阿莲比",
       "zh-Hant": "阿蓮比",
       "ja": "アレンビー",
-      "en": "Allenby"
+      "en": "Allenby",
+      "ko": "아렌비"
      },
      "retreat": false
     }

@@ -5,7 +5,8 @@
   "zh-Hans": "其名为草间大作",
   "zh-Hant": "其名為草間大作",
   "ja": "その名は草間大作",
-  "en": "His Name Is Daisaku Kusama"
+  "en": "His Name Is Daisaku Kusama",
+  "ko": "그 이름은 쿠사마 다이사쿠"
  },
  "title_ja": "その名は草間大作",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "超级系",
     "zh-Hant": "超級系",
     "ja": "スーパー系",
-    "en": "Super"
+    "en": "Super",
+    "ko": "슈퍼계"
    },
    "secrets": [],
    "enemies": [
@@ -26,13 +28,15 @@
       "zh-Hans": "混合式装甲",
       "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
-      "en": "Hybrid Armor"
+      "en": "Hybrid Armor",
+      "ko": "하이브리드 아머"
      },
      "from": {
       "zh-Hans": "暴龙鬼",
       "zh-Hant": "暴龍鬼",
       "ja": "暴竜鬼",
-      "en": "Boryuki"
+      "en": "Boryuki",
+      "ko": "폭룡귀"
      },
      "retreat": false
     }

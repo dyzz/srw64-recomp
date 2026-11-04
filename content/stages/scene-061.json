@@ -5,7 +5,8 @@
   "zh-Hans": "共同战线",
   "zh-Hant": "共同戰線",
   "ja": "共同戦線",
-  "en": "United Front"
+  "en": "United Front",
+  "ko": "공동전선"
  },
  "title_ja": "共同戦線",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "OZ路线",
     "zh-Hant": "OZ路線",
     "ja": "OZルート",
-    "en": "OZ route"
+    "en": "OZ route",
+    "ko": "OZ 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "罗塞＋泽隆",
       "zh-Hant": "蘿潔＋澤隆",
       "ja": "ロゼ＋ゼーロン",
-      "en": "Roze + Zeron"
+      "en": "Roze + Zeron",
+      "ko": "로제 + 제론"
      },
      "text": {
       "zh-Hans": "罗塞在场时用武击坠玛古，再用武说服罗塞",
       "zh-Hant": "蘿潔在場時用武擊墜馬可，再用武說服蘿潔",
       "ja": "ロゼがいる間にタケルでマーグを撃墜し、ロゼを説得",
-      "en": "With Roze on the map, down Marg with Takeru, then persuade Roze"
+      "en": "With Roze on the map, down Marg with Takeru, then persuade Roze",
+      "ko": "로제가 맵에 있을 때 타케루로 마그를 격추한 뒤 로제 설득"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "娜伊达＋双重斯派扎",
       "zh-Hant": "娜伊達＋飛天翼號",
       "ja": "ナイーダ＋ダブルスペイザー",
-      "en": "Naida + Double Spazer"
+      "en": "Naida + Double Spazer",
+      "ko": "나이다 + 더블 스페이저"
      },
      "text": {
       "zh-Hans": "用杜克说服娜伊达，下一关开场选第 1 项",
       "zh-Hant": "用狄克說服娜伊達，下一關開場選第 1 項",
       "ja": "デュークでナイーダを説得、次ステージ開始時に1番目を選ぶ",
-      "en": "Persuade Naida with Duke; pick option 1 at next stage's start"
+      "en": "Persuade Naida with Duke; pick option 1 at next stage's start",
+      "ko": "듀크로 나이다 설득; 다음 스테이지 시작 시 1번 선택지"
      },
      "protagonists": [
       "brad",
@@ -61,13 +67,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "布拉奇",
       "zh-Hant": "布拉奇",
       "ja": "ブラッキー",
-      "en": "Blacky"
+      "en": "Blacky",
+      "ko": "블래키"
      },
      "retreat": false
     },
@@ -76,13 +84,15 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "玛古",
       "zh-Hant": "馬可",
       "ja": "マーグ",
-      "en": "Marg"
+      "en": "Marg",
+      "ko": "마그"
      },
      "retreat": false
     },
@@ -91,19 +101,22 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "娜伊达",
       "zh-Hant": "娜伊達",
       "ja": "ナイーダ",
-      "en": "Naida"
+      "en": "Naida",
+      "ko": "나이다"
      },
      "note": {
       "zh-Hans": "可被杜克说服（说服后不掉落）",
       "zh-Hant": "可被狄克說服（說服後不掉落）",
       "ja": "デュークで説得可能（説得時はドロップなし）",
-      "en": "Can be persuaded by Duke (no drop if persuaded)"
+      "en": "Can be persuaded by Duke (no drop if persuaded)",
+      "ko": "듀크로 설득 가능(설득하면 드롭 없음)"
      },
      "protagonists": [
       "brad",
@@ -116,13 +129,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "丹格尔",
       "zh-Hant": "丹格爾",
       "ja": "ダンゲル",
-      "en": "Dungele"
+      "en": "Dungele",
+      "ko": "단겔"
      },
      "retreat": false
     },
@@ -131,13 +146,15 @@
       "zh-Hans": "推进器",
       "zh-Hant": "推進器",
       "ja": "ブースター",
-      "en": "Booster"
+      "en": "Booster",
+      "ko": "부스터"
      },
      "from": {
       "zh-Hans": "卡达尔",
       "zh-Hant": "卡達爾",
       "ja": "ガンダル",
-      "en": "Gandal"
+      "en": "Gandal",
+      "ko": "간달"
      },
      "retreat": false
     }

@@ -31,7 +31,7 @@
 | 剧情 MOD（`story.py`） | 台词可以写 `ko`，没写的照现在的规则退回 |
 | 调试接口、`srw64ctl`、排版审计、界面探针 | 语言表加 `ko` |
 | 文本更新包、关于页的一句话说明 | 韩文退回英文 |
-| 官网、图鉴名称、关卡情报 | 官网不做韩文版，链接去英文版；图鉴、情报按退回链取 |
+| 官网、图鉴名称、关卡情报 | 官网有韩文版（§5 11-04）；图鉴、情报按退回链取 |
 
 ## 4. 译文到了以后
 
@@ -62,6 +62,8 @@ logo 随游戏发布：`content/art/language-images.json` 列出可按语言换�
 **11-03 Windows 实机（`cafe1017`，GTX 1080 Ti）**：存了 ko 的设置重启直接是韩文；没有设置、系统语言 `ko-KR` 的首次启动选了韩文；装着 0.5.3 演示包时 `SRW64_MOD_LANGUAGES - layers=1 problems=0`，语言菜单里只有一个「한국어」。台词报告 ko 413 个文件（英文 393＋韩文 20）、0 个问题。看过开场序章、标题菜单、主角选择两页、第一关第一句对白、设置页；F7 按 ja → zh-Hans → zh-Hant → en → ko 循环。测试机的 HD 包是旧的、没有韩文名牌，名牌没看。
 
 **已知不足**：英文的文本更新包只更新英文；韩文没译、显示英文的界面词条和名称记录还是随包的英文（台词文件不受影响，英文的更新台词会垫在韩文下面）。
+
+**官网韩文版（11-04）**：`web/` 加 `ko`（`i18n.ts` 的 `LANGS`/`TextLang`，`pick()` 没有韩文时退回英文，`listSep()`/`colon()`），全站文字、FAQ、文档、19 篇博客与攻略数据（`guide/data/ko/`）都译成韩文，用游戏里 테오 的界面词条与名称当术语表；剧情页韩文与英文并列，图鉴、ID 表、剧情检索（`web/api/server.mjs`、`search.json` 加 `who_ko`/`ko` 两列）用游戏的韩文；韩文不开放意见功能（`canReview`）。导出：`export_story.py`（韩文台词、标题、触发条件）、`export_library.py`、`export_data_tables.py`（ID 表韩文名）、`export_stage_info.py`（游戏内本关情报的韩文，界面固定说法见其 `NOTE_QUALIFIERS`）。标题 logo 暂用英文字标（`title-ko*.webp` 是 `title-en` 的副本）。未译：MOD 下载页各 MOD 包自己的名称与说明（在包的 mod.json 里，改了要重新打包）；`script-commands` 韩文页由临时脚本生成，`build_script_reference.py` 只管 zh/en/ja；官网 MOD 文档里拿韩文当语言包例子的段落仍是原样。
 
 **合并前要做**：
 

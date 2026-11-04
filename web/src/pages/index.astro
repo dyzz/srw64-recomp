@@ -10,7 +10,7 @@ import { LANGS } from '../i18n';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>MARCHWIND 64 · Super Robot Wars 64 native recompilation</title>
-    <meta name="description" content="Marchwind 64: an unofficial native recompilation of Super Robot Wars 64 (N64) for Windows, macOS, Linux, Steam Deck, Android and Nintendo Switch, in English, Chinese and Japanese. 《超级机器人大战64》非官方原生重编译版。『スーパーロボット大戦64』非公式ネイティブ再コンパイル版。" />
+    <meta name="description" content="Marchwind 64: an unofficial native recompilation of Super Robot Wars 64 (N64) for Windows, macOS, Linux, Steam Deck, Android and Nintendo Switch, in English, Chinese, Japanese and Korean. 《超级机器人大战64》非官方原生重编译版。『スーパーロボット大戦64』非公式ネイティブ再コンパイル版。『슈퍼로봇대전64』 비공식 네이티브 리컴파일판." />
     <link rel="canonical" href={new URL('/', Astro.site)} />
     <link rel="icon" href="/brand/icon-32.png" sizes="32x32" type="image/png" />
     {LANGS.map((l) => <link rel="alternate" hreflang={l.tag} href={new URL(`/${l.code}/`, Astro.site)} />)}
@@ -18,13 +18,13 @@ import { LANGS } from '../i18n';
     <!-- Processed, not is:inline, so Astro hashes it for the Content-Security-Policy. -->
     <script>
       (function () {
-        var ok = ['zh', 'tw', 'en', 'ja'];
+        var ok = ['zh', 'tw', 'en', 'ja', 'ko'];
         // Traditional Chinese for a Traditional script or Taiwan, Hong Kong and Macau, as the
         // game's first launch picks it.
         var norm = function (v) {
           v = String(v || '').toLowerCase();
           if (v === 'tw' || /^zh-(hant|tw|hk|mo)/.test(v)) return 'tw';
-          return v.indexOf('zh') === 0 ? 'zh' : v.indexOf('ja') === 0 ? 'ja' : v.indexOf('en') === 0 ? 'en' : null;
+          return v.indexOf('zh') === 0 ? 'zh' : v.indexOf('ja') === 0 ? 'ja' : v.indexOf('ko') === 0 ? 'ko' : v.indexOf('en') === 0 ? 'en' : null;
         };
         var pick = norm(new URLSearchParams(location.search).get('lang'));
         if (!pick) { try { pick = norm(localStorage.getItem('srw64-lang')); } catch (e) {} }

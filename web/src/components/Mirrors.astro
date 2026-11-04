@@ -7,11 +7,11 @@ import { tl, type Lang } from '../i18n';
 interface Props { lang: Lang; compact?: boolean; }
 const { lang, compact = false } = Astro.props;
 const t = {
-  lead: { zh: '国内下载：', en: 'Mirrors for mainland China: ', ja: '中国本土向けミラー：' },
-  quark: { zh: '夸克网盘', en: 'Quark Drive', ja: 'Quark ドライブ' },
-  baidu: { zh: '百度网盘', en: 'Baidu Netdisk', ja: 'Baidu ネットディスク' },
-  passcode: { zh: '（提取码 {p}）', en: ' (passcode {p})', ja: '（パスコード {p}）' },
-  note: { zh: '四个平台的程序和 HD 包都在里面。', en: 'every package and the HD pack.', ja: '全プラットフォームのアプリと HD パックがあります。' },
+  lead: { zh: '国内下载：', en: 'Mirrors for mainland China: ', ja: '中国本土向けミラー：', ko: '중국 본토용 미러: ' },
+  quark: { zh: '夸克网盘', en: 'Quark Drive', ja: 'Quark ドライブ', ko: 'Quark 드라이브' },
+  baidu: { zh: '百度网盘', en: 'Baidu Netdisk', ja: 'Baidu ネットディスク', ko: 'Baidu 넷디스크' },
+  passcode: { zh: '（提取码 {p}）', en: ' (passcode {p})', ja: '（パスコード {p}）', ko: ' (추출 코드 {p})' },
+  note: { zh: '四个平台的程序和 HD 包都在里面。', en: 'every package and the HD pack.', ja: '全プラットフォームのアプリと HD パックがあります。', ko: '모든 패키지와 HD 팩이 들어 있습니다.' },
 };
 ---
 {mirrors.length > 0 && (
@@ -20,7 +20,7 @@ const t = {
     {mirrors.map((m, i) => (
       <>{i > 0 && <span class="sep"> · </span>}<a href={m.url} data-umami-event="download-mirror" data-umami-event-mirror={m.id} data-umami-event-language={lang}>{t[m.id][tl(lang)]}{m.passcode && t.passcode[tl(lang)].replace('{p}', m.passcode)}</a></>
     ))}
-    {!compact && <span class="note">{lang === 'en' ? ' — ' : ' '}{t.note[tl(lang)]}</span>}
+    {!compact && <span class="note">{lang === 'en' || lang === 'ko' ? ' — ' : ' '}{t.note[tl(lang)]}</span>}
   </p>
 )}
 

@@ -5,7 +5,8 @@
   "zh-Hans": "迈锡尼与百鬼",
   "zh-Hant": "邁錫尼與百鬼",
   "ja": "ミケーネと百鬼",
-  "en": "Mycenae and Hyakki"
+  "en": "Mycenae and Hyakki",
+  "ko": "미케네와 백귀"
  },
  "title_ja": "ミケーネと百鬼",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "超级系",
     "zh-Hant": "超級系",
     "ja": "スーパー系",
-    "en": "Super"
+    "en": "Super",
+    "ko": "슈퍼계"
    },
    "secrets": [],
    "enemies": [
@@ -26,19 +28,22 @@
       "zh-Hans": "推进器",
       "zh-Hant": "推進器",
       "ja": "ブースター",
-      "en": "Booster"
+      "en": "Booster",
+      "ko": "부스터"
      },
      "from": {
       "zh-Hans": "暗黑大将军",
       "zh-Hant": "暗黑大將軍",
       "ja": "暗黒大将軍",
-      "en": "Great General of Darkness"
+      "en": "Great General of Darkness",
+      "ko": "암흑대장군"
      },
      "note": {
       "zh-Hans": "HP 40% 以下时撤退",
       "zh-Hant": "HP 40% 以下時撤退",
       "ja": "HP40%以下で撤退",
-      "en": "Retreats at 40% HP or below"
+      "en": "Retreats at 40% HP or below",
+      "ko": "HP 40% 이하에서 퇴각"
      },
      "retreat": true
     },
@@ -47,19 +52,22 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "古拉博士",
       "zh-Hant": "古拉博士",
       "ja": "グラー博士",
-      "en": "Dr. Gura"
+      "en": "Dr. Gura",
+      "ko": "구라 박사"
      },
      "note": {
       "zh-Hans": "HP 40% 以下时撤退",
       "zh-Hant": "HP 40% 以下時撤退",
       "ja": "HP40%以下で撤退",
-      "en": "Retreats at 40% HP or below"
+      "en": "Retreats at 40% HP or below",
+      "ko": "HP 40% 이하에서 퇴각"
      },
      "retreat": true
     }

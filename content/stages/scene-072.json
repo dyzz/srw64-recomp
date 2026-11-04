@@ -5,7 +5,8 @@
   "zh-Hans": "白色獠牙",
   "zh-Hant": "白色獠牙",
   "ja": "ホワイトファング",
-  "en": "White Fang"
+  "en": "White Fang",
+  "ko": "화이트 팽"
  },
  "title_ja": "ホワイトファング",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "完全和平路线（独自作战）",
     "zh-Hant": "完全和平路線（獨自作戰）",
     "ja": "完全平和ルート（単独で戦う）",
-    "en": "Complete Pacifism route (fighting alone)"
+    "en": "Complete Pacifism route (fighting alone)",
+    "ko": "완전평화 루트(단독 항전)"
    },
    "secrets": [],
    "enemies": [
@@ -26,19 +28,22 @@
       "zh-Hans": "超合金Z",
       "zh-Hant": "超合金Z",
       "ja": "超合金Z",
-      "en": "Super Alloy Z"
+      "en": "Super Alloy Z",
+      "ko": "초합금 Z"
      },
      "from": {
       "zh-Hans": "祖鲁皇帝",
       "zh-Hant": "祖魯皇帝",
       "ja": "ズール皇帝",
-      "en": "Emperor Zuul"
+      "en": "Emperor Zuul",
+      "ko": "즈루 황제"
      },
      "note": {
       "zh-Hans": "第一形态被击坠后以第二形态登场",
       "zh-Hant": "第一形態被擊墜後以第二形態登場",
       "ja": "第1形態が撃墜されると第2形態で登場",
-      "en": "Appears in its second form after the first form is shot down"
+      "en": "Appears in its second form after the first form is shot down",
+      "ko": "제1형태를 격추하면 제2형태로 등장"
      },
      "retreat": false
     },
@@ -47,13 +52,15 @@
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
       "ja": "アポジモーター",
-      "en": "Apogee Motor"
+      "en": "Apogee Motor",
+      "ko": "아포지 모터"
      },
      "from": {
       "zh-Hans": "丹格尔",
       "zh-Hant": "丹格爾",
       "ja": "ダンゲル",
-      "en": "Dungele"
+      "en": "Dungele",
+      "ko": "단겔"
      },
      "retreat": false
     },
@@ -63,13 +70,15 @@
       "zh-Hans": "坎斯",
       "zh-Hant": "坎斯",
       "ja": "カーンズ",
-      "en": "Quinze"
+      "en": "Quinze",
+      "ko": "캉즈"
      },
      "note": {
       "zh-Hans": "祖鲁皇帝被击坠时撤退",
       "zh-Hant": "祖魯皇帝被擊墜時撤退",
       "ja": "ズール皇帝が撃墜されると撤退",
-      "en": "Retreats when Emperor Zuul is shot down"
+      "en": "Retreats when Emperor Zuul is shot down",
+      "ko": "즈루 황제를 격추하면 퇴각"
      },
      "third_party": true,
      "retreat": true

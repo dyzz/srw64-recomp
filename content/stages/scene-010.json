@@ -5,7 +5,8 @@
   "zh-Hans": "蜂拥而至的杀人机器",
   "zh-Hant": "蜂擁而至的殺人機器",
   "ja": "群がる殺人機",
-  "en": "Swarm of Killing Machines"
+  "en": "Swarm of Killing Machines",
+  "ko": "몰려드는 살인 기계"
  },
  "title_ja": "群がる殺人機",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "真实系",
     "zh-Hant": "真實系",
     "ja": "リアル系",
-    "en": "Real"
+    "en": "Real",
+    "ko": "리얼계"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "隐藏的出击限制",
       "zh-Hant": "隱藏的出擊限制",
       "ja": "隠れた出撃制限",
-      "en": "Hidden deployment restrictions"
+      "en": "Hidden deployment restrictions",
+      "ko": "숨겨진 출격 제한"
      },
      "text": {
       "zh-Hans": "开场选第 2 项则阿克开局不能出击、稍后赶到",
       "zh-Hant": "開場選第 2 項則阿克開局不能出擊、稍後趕到",
       "ja": "開始時に第2項を選ぶとアークは出撃不可、後から駆けつける",
-      "en": "Pick option 2 at the start and Ark only arrives later"
+      "en": "Pick option 2 at the start and Ark only arrives later",
+      "ko": "시작 시 2번째를 고르면 아크는 나중에 등장"
      }
     }
    ],
@@ -42,13 +46,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "盖尔",
       "zh-Hant": "蓋爾",
       "ja": "ゲイル",
-      "en": "Gale"
+      "en": "Gale",
+      "ko": "게일"
      },
      "retreat": false
     },
@@ -58,13 +64,15 @@
       "zh-Hans": "卡尔拉",
       "zh-Hant": "卡爾拉",
       "ja": "カルラ",
-      "en": "Karla"
+      "en": "Karla",
+      "ko": "카를라"
      },
      "note": {
       "zh-Hans": "盖尔被击坠时撤退",
       "zh-Hant": "蓋爾被擊墜時撤退",
       "ja": "ゲイルが撃墜されると撤退",
-      "en": "Retreats when Gale is shot down"
+      "en": "Retreats when Gale is shot down",
+      "ko": "게일이 격추되면 퇴각"
      },
      "retreat": true
     }

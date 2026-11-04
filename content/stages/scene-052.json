@@ -5,7 +5,8 @@
   "zh-Hans": "再度来临的噩梦",
   "zh-Hant": "再度來臨的噩夢",
   "ja": "再び訪れた悪夢",
-  "en": "The Nightmare Returns"
+  "en": "The Nightmare Returns",
+  "ko": "다시 찾아온 악몽"
  },
  "title_ja": "再び訪れた悪夢",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "OZ路线（守住基地）",
     "zh-Hant": "OZ路線（守住基地）",
     "ja": "OZルート（基地を守った場合）",
-    "en": "OZ route (base held)"
+    "en": "OZ route (base held)",
+    "ko": "OZ 루트(기지 방어 성공)"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "盖尔＋格莱姆凯撒",
       "zh-Hant": "蓋爾＋格萊姆凱撒",
       "ja": "ゲイル＋グライムカイザル",
-      "en": "Gale + Greimkaiser"
+      "en": "Gale + Greimkaiser",
+      "ko": "게일 + 그라임 카이잘"
      },
      "text": {
       "zh-Hans": "已在「少女所见的流星」用英二说服盖尔，开场加入",
       "zh-Hant": "已在「少女所見的流星」用英二說服蓋爾，開場加入",
       "ja": "「少女が見た流星」でエイジが説得済みなら開始時に加入",
-      "en": "Joins at start if Eiji persuaded Gale in “The Shooting Star the Girl Saw”"
+      "en": "Joins at start if Eiji persuaded Gale in “The Shooting Star the Girl Saw”",
+      "ko": "“소녀가 본 유성”에서 에이지로 게일을 설득했다면 시작 시 가입"
      },
      "protagonists": [
       "ark",
@@ -46,13 +50,15 @@
       "zh-Hans": "推进器",
       "zh-Hant": "推進器",
       "ja": "ブースター",
-      "en": "Booster"
+      "en": "Booster",
+      "ko": "부스터"
      },
      "from": {
       "zh-Hans": "布拉奇",
       "zh-Hant": "布拉奇",
       "ja": "ブラッキー",
-      "en": "Blacky"
+      "en": "Blacky",
+      "ko": "블래키"
      },
      "retreat": false
     },
@@ -61,13 +67,15 @@
       "zh-Hans": "混合式装甲",
       "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
-      "en": "Hybrid Armor"
+      "en": "Hybrid Armor",
+      "ko": "하이브리드 아머"
      },
      "from": {
       "zh-Hans": "西罗克",
       "zh-Hant": "西羅克",
       "ja": "シロッコ",
-      "en": "Scirocco"
+      "en": "Scirocco",
+      "ko": "시로코"
      },
      "third_party": true,
      "retreat": false
@@ -77,13 +85,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "杰利德",
       "zh-Hant": "傑利特",
       "ja": "ジェリド",
-      "en": "Jerid"
+      "en": "Jerid",
+      "ko": "제리드"
      },
      "third_party": true,
      "retreat": false
@@ -93,13 +103,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "玛雅",
       "zh-Hant": "瑪雅",
       "ja": "マウアー",
-      "en": "Mouar"
+      "en": "Mouar",
+      "ko": "마우아"
      },
      "third_party": true,
      "retreat": false
@@ -110,13 +122,15 @@
       "zh-Hans": "巴伦",
       "zh-Hant": "巴倫",
       "ja": "バレン",
-      "en": "Baren"
+      "en": "Baren",
+      "ko": "바렌"
      },
      "note": {
       "zh-Hans": "布拉奇被击坠时撤退",
       "zh-Hant": "布拉奇被擊墜時撤退",
       "ja": "ブラッキーが撃墜されると撤退",
-      "en": "Retreats when Blacky is shot down"
+      "en": "Retreats when Blacky is shot down",
+      "ko": "블래키가 격추되면 퇴각"
      },
      "retreat": true
     }

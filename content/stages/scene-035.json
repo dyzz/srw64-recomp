@@ -5,7 +5,8 @@
   "zh-Hans": "激斗！玫瑰人生号",
   "zh-Hant": "激鬥！玫瑰人生號",
   "ja": "激闘!ラビアンローズ",
-  "en": "Fierce Battle! La Vie en Rose"
+  "en": "Fierce Battle! La Vie en Rose",
+  "ko": "격전! 라비앙 로즈"
  },
  "title_ja": "激闘!ラビアンローズ",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线",
     "zh-Hant": "獨立軍路線",
     "ja": "独立軍ルート",
-    "en": "Independence Army route"
+    "en": "Independence Army route",
+    "ko": "독립군 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "利修＋西格露恩",
       "zh-Hant": "利修＋西格露恩",
       "ja": "リッシュ＋シグルーン",
-      "en": "Rish + Sigroon"
+      "en": "Rish + Sigroon",
+      "ko": "릿슈 + 시그룬"
      },
      "text": {
       "zh-Hans": "塞蕾茵与利修战前三选选第 2 或第 3 项",
       "zh-Hant": "塞蕾茵與利修戰前三選選第 2 或第 3 項",
       "ja": "セレインとリッシュの交戦前の3択で2番目か3番目を選ぶ",
-      "en": "Before Selain fights Rish, pick option 2 or 3 in the three-way choice"
+      "en": "Before Selain fights Rish, pick option 2 or 3 in the three-way choice",
+      "ko": "세레인이 릿슈와 싸우기 전 3지선다에서 2번째나 3번째를 선택"
      },
      "protagonists": [
       "serein"
@@ -45,13 +49,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "盖亚",
       "zh-Hant": "海亞",
       "ja": "ガイヤー",
-      "en": "Gaia"
+      "en": "Gaia",
+      "ko": "가이아"
      },
      "retreat": false
     },
@@ -60,13 +66,15 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "埃尔利希",
       "zh-Hant": "埃爾利希",
       "ja": "エルリッヒ",
-      "en": "Ehrlich"
+      "en": "Ehrlich",
+      "ko": "엘리히"
      },
      "protagonists": [
       "ark"
@@ -78,13 +86,15 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "利修",
       "zh-Hant": "利修",
       "ja": "リッシュ",
-      "en": "Rish"
+      "en": "Rish",
+      "ko": "릿슈"
      },
      "protagonists": [
       "serein"
@@ -96,13 +106,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "杰利德",
       "zh-Hant": "傑利特",
       "ja": "ジェリド",
-      "en": "Jerid"
+      "en": "Jerid",
+      "ko": "제리드"
      },
      "retreat": false
     }

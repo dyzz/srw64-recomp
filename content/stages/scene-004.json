@@ -5,7 +5,8 @@
   "zh-Hans": "愤怒的甲儿 魔神崛起！",
   "zh-Hant": "憤怒的甲兒 魔神崛起！",
   "ja": "怒りの甲児 魔神立つ!",
-  "en": "Koji's Fury: Mazinger Rises!"
+  "en": "Koji's Fury: Mazinger Rises!",
+  "ko": "분노한 코우지, 마신 일어서다!"
  },
  "title_ja": "怒りの甲児 魔神立つ!",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "超级系",
     "zh-Hant": "超級系",
     "ja": "スーパー系",
-    "en": "Super"
+    "en": "Super",
+    "ko": "슈퍼계"
    },
    "secrets": [],
    "enemies": [
@@ -26,19 +28,22 @@
       "zh-Hans": "混合式装甲",
       "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
-      "en": "Hybrid Armor"
+      "en": "Hybrid Armor",
+      "ko": "하이브리드 아머"
      },
      "from": {
       "zh-Hans": "地狱大元帅",
       "zh-Hant": "地獄大元帥",
       "ja": "地獄大元帥",
-      "en": "Great Marshal of Hell"
+      "en": "Great Marshal of Hell",
+      "ko": "지옥대원수"
      },
      "note": {
       "zh-Hans": "HP 30% 以下时撤退",
       "zh-Hant": "HP 30% 以下時撤退",
       "ja": "HP30%以下で撤退",
-      "en": "Retreats at 30% HP or below"
+      "en": "Retreats at 30% HP or below",
+      "ko": "HP 30% 이하에서 퇴각"
      },
      "retreat": true
     }

@@ -8,7 +8,9 @@ import NewsBar from '../components/NewsBar.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
 import ZhHantTexts from '../components/ZhHantTexts.astro';
-import { LANGS, UI, langInfo, switchLang, tl, type Lang } from '../i18n';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { LANGS, UI, langInfo, pick, switchLang, type Lang } from '../i18n';
 
 interface Props {
   lang: Lang;
@@ -19,11 +21,13 @@ interface Props {
 }
 const { lang, title, description, review = false } = Astro.props;
 const info = langInfo(lang);
-const siteTitle = `${UI.brand} · ${UI.title[tl(lang)]}`;
+const siteTitle = `${UI.brand} · ${pick(lang, UI.title as any)}`;
 const fullTitle = title ? `${title} · ${UI.brand}` : siteTitle;
-const desc = description ?? UI.description[tl(lang)];
+const desc = description ?? pick(lang, UI.description as any);
 const path = Astro.url.pathname;
-const OG_LOCALE: Record<Lang, string> = { zh: 'zh_CN', tw: 'zh_TW', en: 'en_US', ja: 'ja_JP' };
+const OG_LOCALE: Record<Lang, string> = { zh: 'zh_CN', tw: 'zh_TW', en: 'en_US', ja: 'ja_JP', ko: 'ko_KR' };
+// The home page picture; a language without its own (Korean, so far) shares the English one.
+const hero = existsSync(join(process.cwd(), 'public', `media/hero-${lang}.webp`)) ? lang : 'en';
 ---
 <!doctype html>
 <html lang={info.tag}>
@@ -41,7 +45,7 @@ const OG_LOCALE: Record<Lang, string> = { zh: 'zh_CN', tw: 'zh_TW', en: 'en_US',
     <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={desc} />
-    <meta property="og:image" content={new URL(`/media/hero-${lang}.webp`, Astro.site)} />
+    <meta property="og:image" content={new URL(`/media/hero-${hero}.webp`, Astro.site)} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={new URL(path, Astro.site)} />
     <meta property="og:site_name" content={UI.brand} />

@@ -74,7 +74,7 @@ export function initReviews() {
     // Only a path on this site (the server keeps no other); never javascript: or another host.
     // A suggestion sent from a zh page opens as the tw page for a tw reader, and the other way round.
     const href = String(x.context.href ?? '').replace(/^\/(zh|tw)\//, (m) => (lang === 'zh' || lang === 'tw' ? `/${lang}/` : m));
-    a.href = /^\/(zh|tw|en|ja)\//.test(href) && !href.startsWith('//') ? href : `/${lang}/library/`;
+    a.href = /^\/(zh|tw|en|ja|ko)\//.test(href) && !href.startsWith('//') ? href : `/${lang}/library/`;
     return a;
   }
 

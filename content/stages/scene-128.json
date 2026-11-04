@@ -5,7 +5,8 @@
   "zh-Hans": "OZ分裂（下）",
   "zh-Hant": "OZ分裂（下）",
   "ja": "OZ分裂 （後）",
-  "en": "OZ Divided (Part 2)"
+  "en": "OZ Divided (Part 2)",
+  "ko": "OZ 분열 후편"
  },
  "title_ja": "OZ分裂 （後）",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线",
     "zh-Hant": "獨立軍路線",
     "ja": "独立軍ルート",
-    "en": "Independence Army route"
+    "en": "Independence Army route",
+    "ko": "독립군 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "凤",
       "zh-Hant": "鳳",
       "ja": "フォウ",
-      "en": "Four"
+      "en": "Four",
+      "ko": "포우"
      },
      "text": {
       "zh-Hans": "用卡缪说服凤（卡缪等级须 ≥ 杰利德等级）",
       "zh-Hant": "用卡密兒說服鳳（卡密兒等級須 ≥ 傑利特等級）",
       "ja": "カミーユでフォウを説得（カミーユのレベル ≥ ジェリドのレベル）",
-      "en": "Persuade Four with Kamille; Kamille's level must be ≥ Jerid's"
+      "en": "Persuade Four with Kamille; Kamille's level must be ≥ Jerid's",
+      "ko": "카미유로 포우를 설득. 카미유의 레벨이 제리드 이상이어야 함"
      },
      "protagonists": [
       "ark",
@@ -45,13 +49,15 @@
       "zh-Hans": "隐藏的出击限制",
       "zh-Hant": "隱藏的出擊限制",
       "ja": "隠れた出撃制限",
-      "en": "Hidden deployment restrictions"
+      "en": "Hidden deployment restrictions",
+      "ko": "숨겨진 출격 제한"
      },
      "text": {
       "zh-Hans": "凤线时卡缪开场不能出击，第 3 回合或敌剩 8 台以下时赶到",
       "zh-Hant": "鳳線時卡密兒開場不能出擊，第 3 回合或敵剩 8 臺以下時趕到",
       "ja": "フォウの分岐ではカミーユは第3ターンか敵残り8機以下で駆けつける",
-      "en": "On Four's line, Kamille arrives on turn 3 or at 8 or fewer enemies"
+      "en": "On Four's line, Kamille arrives on turn 3 or at 8 or fewer enemies",
+      "ko": "포우 루트에서는 카미유가 3턴 또는 적 8기 이하에서 등장"
      }
     },
     {
@@ -60,13 +66,15 @@
       "zh-Hans": "阿莲比＋诺贝尔高达",
       "zh-Hant": "阿蓮比＋諾貝爾鋼彈",
       "ja": "アレンビー＋ノーベルガンダム",
-      "en": "Allenby + Noble Gundam"
+      "en": "Allenby + Noble Gundam",
+      "ko": "아렌비 + 노벨 건담"
      },
      "text": {
       "zh-Hans": "用多蒙说服阿莲比（要求第 1 步已完成）",
       "zh-Hant": "用多門說服阿蓮比（要求第 1 步已完成）",
       "ja": "ドモンでアレンビーを説得（第1段階済みが条件）",
-      "en": "Persuade Allenby with Domon (requires step 1)"
+      "en": "Persuade Allenby with Domon (requires step 1)",
+      "ko": "도몬으로 아렌비를 설득(1단계 필요)"
      }
     }
    ],
@@ -76,13 +84,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "杰利德",
       "zh-Hant": "傑利特",
       "ja": "ジェリド",
-      "en": "Jerid"
+      "en": "Jerid",
+      "ko": "제리드"
      },
      "retreat": false
     },
@@ -91,19 +101,22 @@
       "zh-Hans": "推进器",
       "zh-Hant": "推進器",
       "ja": "ブースター",
-      "en": "Booster"
+      "en": "Booster",
+      "ko": "부스터"
      },
      "from": {
       "zh-Hans": "阿莲比",
       "zh-Hant": "阿蓮比",
       "ja": "アレンビー",
-      "en": "Allenby"
+      "en": "Allenby",
+      "ko": "아렌비"
      },
      "note": {
       "zh-Hans": "可被多蒙说服（说服后不掉落）",
       "zh-Hant": "可被多門說服（說服後不掉落）",
       "ja": "ドモンで説得可能（説得時はドロップなし）",
-      "en": "Can be persuaded by Domon (no drop if persuaded)"
+      "en": "Can be persuaded by Domon (no drop if persuaded)",
+      "ko": "도몬으로 설득 가능(설득하면 파츠 드롭 없음)"
      },
      "retreat": false
     },
@@ -112,13 +125,15 @@
       "zh-Hans": "混合式装甲",
       "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
-      "en": "Hybrid Armor"
+      "en": "Hybrid Armor",
+      "ko": "하이브리드 아머"
      },
      "from": {
       "zh-Hans": "凤",
       "zh-Hant": "鳳",
       "ja": "フォウ",
-      "en": "Four"
+      "en": "Four",
+      "ko": "포우"
      },
      "retreat": false
     }

@@ -5,7 +5,8 @@
   "zh-Hans": "绝望与悲伤之拳（下）",
   "zh-Hant": "絕望與悲傷之拳（下）",
   "ja": "絶望と悲しみの拳 （後）",
-  "en": "Fist of Despair and Sorrow (Part 2)"
+  "en": "Fist of Despair and Sorrow (Part 2)",
+  "ko": "절망과 슬픔의 주먹 후편"
  },
  "title_ja": "絶望と悲しみの拳 （後）",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "OZ路线／随特列斯",
     "zh-Hant": "OZ路線／隨特列斯",
     "ja": "OZルート／トレーズにつく",
-    "en": "OZ route / with Treize"
+    "en": "OZ route / with Treize",
+    "ko": "OZ 루트 / 트레즈와 함께"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "阿莲比＋诺贝尔高达",
       "zh-Hant": "阿蓮比＋諾貝爾鋼彈",
       "ja": "アレンビー＋ノーベルガンダム",
-      "en": "Allenby + Noble Gundam"
+      "en": "Allenby + Noble Gundam",
+      "ko": "아렌비 + 노벨 건담"
      },
      "text": {
       "zh-Hans": "已入队的阿莲比别出击，或先用多蒙、再用玲说服她",
       "zh-Hant": "已入隊的阿蓮比別出擊，或先用多門、再用玲說服她",
       "ja": "加入済みアレンビーは出撃させない、またはドモン→レインで説得",
-      "en": "Don't deploy recruited Allenby, or persuade her with Domon, then Rain"
+      "en": "Don't deploy recruited Allenby, or persuade her with Domon, then Rain",
+      "ko": "영입한 아렌비를 출격시키지 않거나, 도몬, 레인 순으로 설득"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "修巴鲁兹存活",
       "zh-Hant": "舒瓦茲存活",
       "ja": "シュバルツ生存",
-      "en": "Schwarz survives"
+      "en": "Schwarz survives",
+      "ko": "슈발츠 생존"
      },
      "text": {
       "zh-Hans": "开场让龙马出击（机体不限），修巴鲁兹即可存活",
       "zh-Hant": "開場讓龍馬出擊（機體不限），舒瓦茲即可存活",
       "ja": "開始時にリョウを出撃させる（機体不問）とシュバルツが残る",
-      "en": "Deploy Ryoma at the start (any unit) to keep Schwarz"
+      "en": "Deploy Ryoma at the start (any unit) to keep Schwarz",
+      "ko": "시작 시 료를 출격(기체 무관)시켜 슈발츠 유지"
      }
     },
     {
@@ -56,13 +62,15 @@
       "zh-Hans": "量产型ν高达",
       "zh-Hant": "量產型ν鋼彈",
       "ja": "量産型νガンダム",
-      "en": "Mass-production Nu Gundam"
+      "en": "Mass-production Nu Gundam",
+      "ko": "양산형 뉴 건담"
      },
      "text": {
       "zh-Hans": "关末二选一：「浮游炮装备型」或「有线感应炮装备型」",
       "zh-Hant": "關末二選一：「感應砲裝備型」或「有線感應砲裝備型」",
       "ja": "クリア時に「ファンネル装備型」か「インコム装備型」を選ぶ",
-      "en": "End choice: “Funnel type” → MP Nu Gundam F, “Incom type” → I"
+      "en": "End choice: “Funnel type” → MP Nu Gundam F, “Incom type” → I",
+      "ko": "종료 시 선택: “판넬 장비형” → 양산형 뉴 건담 F, “인컴 장비형” → I"
      }
     },
     {
@@ -71,13 +79,15 @@
       "zh-Hans": "剧情解锁的必杀技与合体技",
       "zh-Hant": "劇情解鎖的必殺技與合體技",
       "ja": "ストーリーで解禁される必殺技と合体技",
-      "en": "Story-unlocked finishers and combination attacks"
+      "en": "Story-unlocked finishers and combination attacks",
+      "ko": "스토리로 해금되는 필살기와 합체 공격"
      },
      "text": {
       "zh-Hans": "无需操作：石破Love Love天惊拳满足合体条件即可用",
       "zh-Hant": "無需操作：石破Love Love天驚拳滿足合體條件即可用",
       "ja": "操作不要：石破ラブラブ天驚拳は合体条件を満たせば使える",
-      "en": "No action: Sekiha Love Love Tenkyoken needs only combo conditions"
+      "en": "No action: Sekiha Love Love Tenkyoken needs only combo conditions",
+      "ko": "할 일 없음: 석파 러브러브 천경권은 합체 조건만 충족하면 사용 가능"
      }
     },
     {
@@ -86,13 +96,15 @@
       "zh-Hans": "只影响对白的分支",
       "zh-Hant": "只影響對白的分支",
       "ja": "台詞のみの分岐",
-      "en": "Dialogue-only branches"
+      "en": "Dialogue-only branches",
+      "ko": "대사만 바뀌는 분기"
      },
      "text": {
       "zh-Hans": "无需操作：多蒙击败东方不败的台词随是否交战过而变",
       "zh-Hant": "無需操作：多蒙擊敗東方不敗的臺詞隨是否交戰過而變",
       "ja": "操作不要：マスターアジア撃破時の台詞は過去の交戦で変わる",
-      "en": "No action: Domon's win lines vs Master Asia depend on past fights"
+      "en": "No action: Domon's win lines vs Master Asia depend on past fights",
+      "ko": "할 일 없음: 도몬이 마스터 아시아를 쓰러뜨렸을 때의 대사는 이전 전투 여부에 따라 다름"
      }
     }
    ],
@@ -102,13 +114,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "马基特",
       "zh-Hant": "馬基特",
       "ja": "マーキロット",
-      "en": "Markiroot"
+      "en": "Markiroot",
+      "ko": "마키로트"
      },
      "retreat": false
     },
@@ -117,13 +131,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "施哲马",
       "zh-Hant": "西吉馬",
       "ja": "シジーマ",
-      "en": "Sijima"
+      "en": "Sijima",
+      "ko": "시지마"
      },
      "retreat": false
     },
@@ -132,19 +148,22 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "阿莲比",
       "zh-Hant": "阿蓮比",
       "ja": "アレンビー",
-      "en": "Allenby"
+      "en": "Allenby",
+      "ko": "아렌비"
      },
      "note": {
       "zh-Hans": "敌方再减到 10 台以下时撤退；说服后不掉落",
       "zh-Hant": "敵方再減到 10 臺以下時撤退；說服後不掉落",
       "ja": "敵が再び10機以下で撤退、説得時はドロップなし",
-      "en": "Retreats at ≤10 enemies again; no drop if persuaded"
+      "en": "Retreats at ≤10 enemies again; no drop if persuaded",
+      "ko": "적이 다시 10기 이하가 되면 퇴각; 설득하면 드롭 없음"
      },
      "retreat": true
     },
@@ -153,19 +172,22 @@
       "zh-Hans": "高性能雷达",
       "zh-Hant": "高性能雷達",
       "ja": "高性能レーダー",
-      "en": "High-Fidelity Radar"
+      "en": "High-Fidelity Radar",
+      "ko": "고성능 레이더"
      },
      "from": {
       "zh-Hans": "京二",
       "zh-Hant": "恭志",
       "ja": "キョウジ",
-      "en": "Kyoji"
+      "en": "Kyoji",
+      "ko": "쿄우지"
      },
      "note": {
       "zh-Hans": "多蒙与他交战前由别人击坠",
       "zh-Hant": "多門與他交戰前由別人擊墜",
       "ja": "ドモンと交戦する前に他のユニットで撃墜",
-      "en": "Have someone else down him before Domon fights him"
+      "en": "Have someone else down him before Domon fights him",
+      "ko": "도몬과 싸우기 전에 다른 유닛으로 격추"
      },
      "retreat": false
     },
@@ -174,19 +196,22 @@
       "zh-Hans": "超合金Z",
       "zh-Hant": "超合金Z",
       "ja": "超合金Z",
-      "en": "Super Alloy Z"
+      "en": "Super Alloy Z",
+      "ko": "초합금 Z"
      },
      "from": {
       "zh-Hans": "阿莲比",
       "zh-Hant": "阿蓮比",
       "ja": "アレンビー",
-      "en": "Allenby"
+      "en": "Allenby",
+      "ko": "아렌비"
      },
      "note": {
       "zh-Hans": "东方不败被击坠后登场（未救下阿莲比时）",
       "zh-Hant": "東方不敗被擊墜後登場（未救下阿蓮比時）",
       "ja": "マスターアジア撃墜後に登場（アレンビー未救出時）",
-      "en": "Appears after Master Asia falls if Allenby wasn't saved"
+      "en": "Appears after Master Asia falls if Allenby wasn't saved",
+      "ko": "아렌비를 구해 내지 못했다면 마스터 아시아 격추 후 등장"
      },
      "retreat": false
     },
@@ -195,19 +220,22 @@
       "zh-Hans": "超合金Z",
       "zh-Hant": "超合金Z",
       "ja": "超合金Z",
-      "en": "Super Alloy Z"
+      "en": "Super Alloy Z",
+      "ko": "초합금 Z"
      },
      "from": {
       "zh-Hans": "黄润发",
       "zh-Hant": "黃潤發",
       "ja": "ウォン",
-      "en": "Wong"
+      "en": "Wong",
+      "ko": "웡"
      },
      "note": {
       "zh-Hans": "东方不败被击坠后登场（已救下阿莲比时）",
       "zh-Hant": "東方不敗被擊墜後登場（已救下阿蓮比時）",
       "ja": "マスターアジア撃墜後に登場（アレンビー救出時）",
-      "en": "Appears after Master Asia falls, if Allenby was saved"
+      "en": "Appears after Master Asia falls, if Allenby was saved",
+      "ko": "아렌비를 구해 냈다면 마스터 아시아 격추 후 등장"
      },
      "retreat": false
     },
@@ -216,13 +244,15 @@
       "zh-Hans": "洗牌同盟纹章",
       "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
-      "en": "Shuffle Crest"
+      "en": "Shuffle Crest",
+      "ko": "셔플의 문장"
      },
      "from": {
       "zh-Hans": "东方不败",
       "zh-Hant": "東方不敗",
       "ja": "マスターアジア",
-      "en": "Master Asia"
+      "en": "Master Asia",
+      "ko": "마스터 아시아"
      },
      "retreat": false
     }

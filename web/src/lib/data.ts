@@ -18,7 +18,10 @@ function read<T>(path: string): T {
   return cache.get(path) as T;
 }
 
-export type L3 = { ja: string; zh: string; en: string };
+// ko: the Korean translation, where the export has it (pages fall back to the English).
+export type L3 = { ja: string; zh: string; en: string; ko?: string };
+/** An exported text in the page's language: English where the export has no Korean yet. */
+export const loc = <T>(x: { ja: T; zh: T; en: T; ko?: T }, lang: Lang): T => x[tl(lang)] ?? x.en;
 export type Episode = { stage: string; section: L3; lanes: L3[]; routes: string[] } | null;
 // changed: lines whose zh / en text differs from the latest game release (StorySource.baseline).
 export type SceneMeta = { scene: number; title: L3; episode: Episode; count: number; changed?: { zh: number; en: number }; next: number[]; previous: number[] };
@@ -30,8 +33,8 @@ type Was = { was?: { zh?: string[]; en?: string[] } };
 export type Cand = { route: string; who: L3; face: number | null };
 export type Line =
   | { t: 'route'; marker: string; label: L3; routes: string[] | null }
-  | ({ t: 'say'; id: number; ja: string[]; zh: string[]; en: string[]; side: number; who: L3; face?: number | null; route?: string; cands?: Cand[] } & Was)
-  | ({ t: 'choice'; id: number; ja: string[]; zh: string[]; en: string[] } & Was);
+  | ({ t: 'say'; id: number; ja: string[]; zh: string[]; en: string[]; ko?: string[]; side: number; who: L3; face?: number | null; route?: string; cands?: Cand[] } & Was)
+  | ({ t: 'choice'; id: number; ja: string[]; zh: string[]; en: string[]; ko?: string[] } & Was);
 export type Event = { phase: string; label: L3; trigger?: L3; lines: Line[] };
 export type Scene = SceneMeta & { events: Event[] };
 
@@ -52,9 +55,9 @@ export const scene = (n: number) => read<Scene>(`story/scenes/${String(n).padSta
 /** Scenes grouped the way the guide groups episodes; scenes outside the campaign last. */
 export function storyGroups(lang: Lang) {
   const groups: { key: string; title: string; scenes: SceneMeta[] }[] = [];
-  const outside = { zh: '正篇之外：废案、预留与特殊场景', en: 'Outside the campaign: cut, reserved and special scenes', ja: '本編以外：没シナリオ・予備・特殊な場面' };
+  const outside = { zh: '正篇之外：废案、预留与特殊场景', en: 'Outside the campaign: cut, reserved and special scenes', ja: '本編以外：没シナリオ・予備・特殊な場面', ko: '본편 외: 미사용, 예비, 특수 장면' };
   for (const s of storyIndex()) {
-    const title = s.episode ? s.episode.section[tl(lang)] : outside[tl(lang)];
+    const title = s.episode ? s.episode.section[tl(lang)] ?? s.episode.section.en : outside[tl(lang)];
     const key = s.episode ? s.episode.section.zh : 'outside';
     let g = groups.find((x) => x.key === key);
     if (!g) groups.push((g = { key, title, scenes: [] }));

@@ -5,7 +5,8 @@
   "zh-Hans": "在纷争不止的世界里（上）",
   "zh-Hant": "在紛爭不止的世界裡（上）",
   "ja": "争い絶えない世界で （前）",
-  "en": "In a World of Endless Strife (Part 1)"
+  "en": "In a World of Endless Strife (Part 1)",
+  "ko": "다툼이 끊이지 않는 세계에서 전편"
  },
  "title_ja": "争い絶えない世界で （前）",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "完全和平路线（独自作战）",
     "zh-Hant": "完全和平路線（獨自作戰）",
     "ja": "完全平和ルート（単独で戦う）",
-    "en": "Complete Pacifism route (fighting alone)"
+    "en": "Complete Pacifism route (fighting alone)",
+    "ko": "완전평화 루트(단독 항전)"
    },
    "secrets": [],
    "enemies": [
@@ -26,13 +28,15 @@
       "zh-Hans": "洗牌同盟纹章",
       "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
-      "en": "Shuffle Crest"
+      "en": "Shuffle Crest",
+      "ko": "셔플의 문장"
      },
      "from": {
       "zh-Hans": "多萝西",
       "zh-Hant": "桃樂斯",
       "ja": "ドロシー",
-      "en": "Dorothy"
+      "en": "Dorothy",
+      "ko": "도로시"
      },
      "retreat": false
     },
@@ -41,13 +45,15 @@
       "zh-Hans": "精神感应框架",
       "zh-Hant": "精神感應框體",
       "ja": "サイコフレーム",
-      "en": "Psycoframe"
+      "en": "Psycoframe",
+      "ko": "사이코 프레임"
      },
      "from": {
       "zh-Hans": "米利亚尔特",
       "zh-Hant": "米利亞爾特",
       "ja": "ミリアルド",
-      "en": "Milliardo"
+      "en": "Milliardo",
+      "ko": "밀리아르도"
      },
      "retreat": false
     }

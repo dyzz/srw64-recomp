@@ -6,7 +6,7 @@ order: 7
 updated: 2026-11-03
 ---
 
-The game comes with four reading languages: Japanese, Simplified Chinese, Traditional Chinese and English. A language package adds another: install it, turn it on and **restart the game**, and it shows up in the language menu in the settings and on the language key (F7). UI text, names and dialogue the package does not translate show the fallback language you choose; where that has nothing either, the Japanese original shows.
+The game comes with five reading languages: Japanese, Simplified Chinese, Traditional Chinese, English and Korean. A language package adds another: install it, turn it on and **restart the game**, and it shows up in the language menu in the settings and on the language key (F7). UI text, names and dialogue the package does not translate show the fallback language you choose; where that has nothing either, the Japanese original shows.
 
 A package can also change an existing language only, for example with a different English translation.
 

@@ -4,7 +4,7 @@ import { tl, type Lang } from '../i18n';
 import { library, portraitUrl } from './data';
 import data from '../data/data-mods.json';
 
-type Names = { ja: string; zh: string; en: string };
+type Names = { ja: string; zh: string; en: string; ko?: string };
 export type Pickable = { id: number; name: Names; series: number | null; img: string | null };
 
 export function pickables(lang: Lang, unitIds: number[], pilotIds: number[]) {
@@ -26,6 +26,6 @@ export function pickables(lang: Lang, unitIds: number[], pilotIds: number[]) {
     const name = p?.name ?? pilotNames.get(id);
     return name ? { id, name, series: p?.series ?? null, img: portraitUrl(p?.portrait) } : null;
   });
-  const series = [...lib.series.map((s) => ({ id: s.id, name: s.name[tl(lang)] ?? s.name.ja })), { id: null, name: ({ zh: '其他', en: 'Other', ja: 'その他' })[tl(lang)] }];
+  const series = [...lib.series.map((s) => ({ id: s.id, name: s.name[tl(lang)] ?? (lang === 'ko' ? s.name.en : undefined) ?? s.name.ja })), { id: null, name: ({ zh: '其他', en: 'Other', ja: 'その他', ko: '기타' })[tl(lang)] }];
   return { units, pilots, series };
 }

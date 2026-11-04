@@ -5,7 +5,8 @@
   "zh-Hans": "噩梦，再临",
   "zh-Hant": "噩夢，再臨",
   "ja": "悪夢、再来",
-  "en": "Nightmare, Once More"
+  "en": "Nightmare, Once More",
+  "ko": "악몽, 다시"
  },
  "title_ja": "悪夢、再来",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线／独自作战",
     "zh-Hant": "獨立軍路線／獨自作戰",
     "ja": "独立軍ルート／単独行動",
-    "en": "Independence Army route / fight alone"
+    "en": "Independence Army route / fight alone",
+    "ko": "독립군 루트 / 단독 항전"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "穆格宇宙或地球圈",
       "zh-Hant": "穆格宇宙或地球圈",
       "ja": "ムゲ宇宙か地球圏か",
-      "en": "Muge space or Earth"
+      "en": "Muge space or Earth",
+      "ko": "무게 우주 또는 지구"
      },
      "text": {
       "zh-Hans": "选「前往穆格的宇宙」→「最后的咆哮」／「留在地球圈」→「夏亚的叛乱」",
       "zh-Hant": "選「前往穆格的宇宙」→「最後的咆哮」／「留在地球圈」→「夏亞的叛亂」",
       "ja": "「ムゲの宇宙へ行く」→「最後の咆哮」／「地球圏に残留する」→「シャアの反乱」",
-      "en": "“Go to the Muge universe” → The Last Roar; stay → Char's Rebellion"
+      "en": "“Go to the Muge universe” → The Last Roar; stay → Char's Rebellion",
+      "ko": "“무게의 우주로 간다” → 최후의 포효; 잔류 → 샤아의 반란"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "马修玛＋扎古Ⅲ改／姬拉＋盖马克",
       "zh-Hant": "馬修曼＋薩克Ⅲ改／凱拉＋蓋馬克",
       "ja": "マシュマー＋ザクⅢ改／キャラ＋ゲーマルク",
-      "en": "Mashymre + Zaku III Custom / Chara + Geymalk"
+      "en": "Mashymre + Zaku III Custom / Chara + Geymalk",
+      "ko": "마슈마 + 자쿠 III 개 / 캐라 + 게마르크"
      },
      "text": {
       "zh-Hans": "要拿马修玛或姬拉，选「留在地球圈」",
       "zh-Hant": "要拿馬修曼或凱拉，選「留在地球圈」",
       "ja": "マシュマーかキャラが欲しいなら「地球圏に残留する」を選ぶ",
-      "en": "To get Mashymre or Chara, pick “Stay on Earth”"
+      "en": "To get Mashymre or Chara, pick “Stay on Earth”",
+      "ko": "마슈마나 캐라를 얻으려면 “지구권에 잔류한다”를 고름"
      }
     },
     {
@@ -56,13 +62,15 @@
       "zh-Hans": "诺耶·吉尔",
       "zh-Hant": "諾耶·吉爾",
       "ja": "ノイエ・ジール",
-      "en": "Neue Ziel"
+      "en": "Neue Ziel",
+      "ko": "노이에 질"
      },
      "text": {
       "zh-Hans": "选「留在地球圈」，「夏亚的叛乱」关末获得诺耶·吉尔",
       "zh-Hant": "選「留在地球圈」，「夏亞的叛亂」關末獲得諾耶·吉爾",
       "ja": "「地球圏に残留する」→「シャアの反乱」クリア時ノイエ・ジール入手",
-      "en": "Pick “Stay on Earth”; get the Neue Ziel after “Char's Rebellion”"
+      "en": "Pick “Stay on Earth”; get the Neue Ziel after “Char's Rebellion”",
+      "ko": "“지구권에 잔류한다”를 고름; “샤아의 반란” 후 노이에 질 입수"
      }
     },
     {
@@ -71,13 +79,15 @@
       "zh-Hans": "卡碧尼Mk-Ⅱ 改色",
       "zh-Hant": "丘貝雷Mk-Ⅱ 改色",
       "ja": "キュベレイmkⅡ カラー変更",
-      "en": "Qubeley Mk-II recolor"
+      "en": "Qubeley Mk-II recolor",
+      "ko": "큐베레이 Mk-II 색상 변경"
      },
      "text": {
       "zh-Hans": "普露与普露兹都在队时，选「改成普露兹用的红色」",
       "zh-Hant": "普露與普露茲都在隊時，選「改成普露茲用的紅色」",
       "ja": "プルとプルツーが在籍なら「プルツー用に赤くする」を選ぶ",
-      "en": "With Ple and Ple-Two on the team, pick “Make it Ple-Two's red”"
+      "en": "With Ple and Ple-Two on the team, pick “Make it Ple-Two's red”",
+      "ko": "플과 플 투가 아군에 있으면 “플 투 전용으로 빨갛게 바꾼다”를 고름"
      }
     }
    ],
@@ -87,13 +97,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "吉尔德罗姆",
       "zh-Hant": "吉爾德羅姆",
       "ja": "ギルドローム",
-      "en": "Gildrome"
+      "en": "Gildrome",
+      "ko": "길드롬"
      },
      "retreat": false
     }

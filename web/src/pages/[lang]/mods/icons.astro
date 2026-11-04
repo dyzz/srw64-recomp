@@ -13,42 +13,43 @@ import data from '../../../data/data-mods.json';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
-const L = <T,>(v: { zh: T; en: T; ja: T }) => v[tl(lang)];
-const title = { zh: '地图图标 MOD 制作', en: 'Map icon mod maker', ja: 'マップアイコン MOD メーカー' };
+const L = <T,>(v: { zh: T; en: T; ja: T; ko: T }) => v[tl(lang)];
+const title = { zh: '地图图标 MOD 制作', en: 'Map icon mod maker', ja: 'マップアイコン MOD メーカー', ko: '맵 아이콘 MOD 제작' };
 const lead = {
   zh: '换掉战术地图上的机体图标：选一台机体，选一张像素画，导出 .srw64mod 拖进游戏窗口即可安装。我方朝左、敌方朝右、行动后变灰都由游戏自动处理，不论图片设为原版还是 HD 都显示。',
   en: 'Replace the units’ icons on the battle map: pick a unit, choose a pixel-art picture and drag the exported .srw64mod into the game window to install it. The game turns it to face left for your side and right for the enemy and greys it once acted, and shows it with the images set to original or HD.',
   ja: '戦闘マップのユニットアイコンを差し替えます。ユニットとドット絵を選び、書き出した .srw64mod をゲームのウィンドウにドラッグしてインストールします。味方は左向き・敵は右向きにする向きの反転と行動済みのグレーはゲームが行い、画像が原作でも HD でも表示されます。',
+  ko: '전투 맵의 기체 아이콘을 교체합니다. 기체를 고르고 도트 그림을 선택한 뒤, 내보낸 .srw64mod를 게임 창에 끌어다 놓으면 설치됩니다. 아군은 왼쪽, 적은 오른쪽을 보도록 뒤집는 것과 행동을 마친 뒤 회색으로 바뀌는 것은 게임이 알아서 처리하며, 이미지 설정이 원본이든 HD든 표시됩니다.',
 };
 const text = {
   ...packageText(lang),
-  icons: L({ zh: '图标', en: 'Icons', ja: 'アイコン' }),
-  iconsNote: L({ zh: '每台机体左边是原版图标，右边是 HD 包图标。选一台机体，再选一张像素画：16、32、64 或 128 像素的正方形 PNG 原样放进包里，别的尺寸先框选，再缩放到 128。只画一张、用机体自己的颜色。', en: 'Each unit shows its original icon and the HD pack’s. Pick a unit, then a pixel-art picture: a square PNG of 16, 32, 64 or 128 pixels goes in as it is; other sizes are framed and scaled to 128. Draw it once, in the unit’s own colours.', ja: '各ユニットの左は原作、右は HD パックのアイコンです。ユニットとドット絵を選びます。16・32・64・128 ピクセルの正方形 PNG はそのまま入り、ほかの大きさは枠を決めて 128 に拡大縮小します。ユニット本来の色で 1 枚だけ描いてください。' }),
-  iconFacing: L({ zh: '原版图标{facing}。', en: 'The original icon {facing}.', ja: '原作のアイコンは{facing}です。' }),
-  facingLeft: L({ zh: '朝左', en: 'looks left', ja: '左向き' }),
-  facingRight: L({ zh: '朝右', en: 'looks right', ja: '右向き' }),
-  facingFront: L({ zh: '朝正面', en: 'faces front', ja: '正面向き' }),
-  myFacing: L({ zh: '你的图', en: 'Your picture', ja: 'あなたの画像' }),
-  wayLeft: L({ zh: '朝左', en: 'looks left', ja: '左向き' }),
-  wayRight: L({ zh: '朝右', en: 'looks right', ja: '右向き' }),
-  wayFront: L({ zh: '朝正面', en: 'faces front', ja: '正面向き' }),
-  facingNote: L({ zh: '游戏按这个朝向翻转：我方朝左、敌方朝右，朝正面的不翻转。下面的预览已经翻好。', en: 'The game turns it by this: the player’s units look left, enemies right, and a front-facing picture is never turned. The previews below are turned already.', ja: 'ゲームはこの向きをもとに反転します。味方は左、敵は右を向き、正面向きは反転しません。下のプレビューは反転済みです。' }),
-  iconShared: L({ zh: '这个图标也用于：{units}，会一起换。', en: 'This icon is also used by {units}; they change together.', ja: 'このアイコンは {units} も使っており、一緒に変わります。' }),
-  iconFrameHint: L({ zh: '拖动图片调整位置，滚轮或滑块缩放，方框里的部分就是图标，会缩放到 128 像素。调好后点「确定」。', en: 'Drag the picture to move it and use the wheel or the slider to zoom; what the square shows becomes the icon, scaled to 128 pixels. Press OK when it looks right.', ja: '画像をドラッグして位置を、ホイールかスライダーで大きさを調整します。枠内がアイコンになり、128 ピクセルに拡大縮小します。決まったら「決定」を押してください。' }),
-  rowOriginal: L({ zh: '原版', en: 'Original', ja: '原作' }),
-  rowHd: L({ zh: 'HD', en: 'HD', ja: 'HD' }),
-  rowYours: L({ zh: '你的图', en: 'Yours', ja: 'あなたの画像' }),
-  sides: L({ zh: '我方|敌方|已行动', en: 'Player|Enemy|Acted', ja: '味方|敵|行動済み' }),
-  iconAsIs: L({ zh: '{size}×{size} PNG，原样放进包里', en: '{size}×{size} PNG, packed as it is', ja: '{size}×{size} PNG、そのまま入ります' }),
-  errIconFraming: L({ zh: '{who} 的图标还没点「确定」', en: 'The icon of {who} is not confirmed (OK) yet', ja: '{who} のアイコンがまだ「決定」されていません' }),
-  errEmpty: L({ zh: '还没有换任何图标', en: 'No icon is replaced yet', ja: 'まだアイコンを差し替えていません' }),
-  choosePicture: L({ zh: '选择图片', en: 'Choose picture', ja: '画像を選択' }),
-  otherPicture: L({ zh: '换一张图', en: 'Another picture', ja: '別の画像' }),
-  reframe: L({ zh: '调整', en: 'Reframe', ja: '調整' }),
-  zoom: L({ zh: '缩放', en: 'Zoom', ja: 'ズーム' }),
-  resetFrame: L({ zh: '复位', en: 'Reset', ja: 'リセット' }),
-  confirmFrame: L({ zh: '确定', en: 'OK', ja: '決定' }),
-  allSeries: L({ zh: '全部作品', en: 'All series', ja: 'すべての作品' }),
+  icons: L({ zh: '图标', en: 'Icons', ja: 'アイコン', ko: '아이콘' }),
+  iconsNote: L({ zh: '每台机体左边是原版图标，右边是 HD 包图标。选一台机体，再选一张像素画：16、32、64 或 128 像素的正方形 PNG 原样放进包里，别的尺寸先框选，再缩放到 128。只画一张、用机体自己的颜色。', en: 'Each unit shows its original icon and the HD pack’s. Pick a unit, then a pixel-art picture: a square PNG of 16, 32, 64 or 128 pixels goes in as it is; other sizes are framed and scaled to 128. Draw it once, in the unit’s own colours.', ja: '各ユニットの左は原作、右は HD パックのアイコンです。ユニットとドット絵を選びます。16・32・64・128 ピクセルの正方形 PNG はそのまま入り、ほかの大きさは枠を決めて 128 に拡大縮小します。ユニット本来の色で 1 枚だけ描いてください。', ko: '각 기체의 왼쪽은 원본 아이콘, 오른쪽은 HD 팩 아이콘입니다. 기체를 고른 다음 도트 그림을 선택하세요. 16, 32, 64, 128픽셀 정사각형 PNG는 그대로 들어가고, 다른 크기는 영역을 정한 뒤 128로 확대·축소합니다. 기체 본래의 색으로 한 장만 그리세요.' }),
+  iconFacing: L({ zh: '原版图标{facing}。', en: 'The original icon {facing}.', ja: '原作のアイコンは{facing}です。', ko: '원본 아이콘은 {facing}' }),
+  facingLeft: L({ zh: '朝左', en: 'looks left', ja: '左向き', ko: '왼쪽을 봅니다.' }),
+  facingRight: L({ zh: '朝右', en: 'looks right', ja: '右向き', ko: '오른쪽을 봅니다.' }),
+  facingFront: L({ zh: '朝正面', en: 'faces front', ja: '正面向き', ko: '정면을 봅니다.' }),
+  myFacing: L({ zh: '你的图', en: 'Your picture', ja: 'あなたの画像', ko: '내 그림' }),
+  wayLeft: L({ zh: '朝左', en: 'looks left', ja: '左向き', ko: '왼쪽을 봄' }),
+  wayRight: L({ zh: '朝右', en: 'looks right', ja: '右向き', ko: '오른쪽을 봄' }),
+  wayFront: L({ zh: '朝正面', en: 'faces front', ja: '正面向き', ko: '정면을 봄' }),
+  facingNote: L({ zh: '游戏按这个朝向翻转：我方朝左、敌方朝右，朝正面的不翻转。下面的预览已经翻好。', en: 'The game turns it by this: the player’s units look left, enemies right, and a front-facing picture is never turned. The previews below are turned already.', ja: 'ゲームはこの向きをもとに反転します。味方は左、敵は右を向き、正面向きは反転しません。下のプレビューは反転済みです。', ko: '게임은 이 방향을 기준으로 뒤집습니다. 아군 기체는 왼쪽, 적은 오른쪽을 보며, 정면을 보는 그림은 뒤집지 않습니다. 아래 미리 보기는 이미 뒤집혀 있습니다.' }),
+  iconShared: L({ zh: '这个图标也用于：{units}，会一起换。', en: 'This icon is also used by {units}; they change together.', ja: 'このアイコンは {units} も使っており、一緒に変わります。', ko: '이 아이콘은 {units}도 쓰고 있어 함께 바뀝니다.' }),
+  iconFrameHint: L({ zh: '拖动图片调整位置，滚轮或滑块缩放，方框里的部分就是图标，会缩放到 128 像素。调好后点「确定」。', en: 'Drag the picture to move it and use the wheel or the slider to zoom; what the square shows becomes the icon, scaled to 128 pixels. Press OK when it looks right.', ja: '画像をドラッグして位置を、ホイールかスライダーで大きさを調整します。枠内がアイコンになり、128 ピクセルに拡大縮小します。決まったら「決定」を押してください。', ko: '그림을 드래그해 위치를 옮기고, 휠이나 슬라이더로 확대·축소합니다. 사각형 안에 보이는 부분이 아이콘이 되며 128픽셀로 맞춰집니다. 다 맞췄으면 “확인”을 누르세요.' }),
+  rowOriginal: L({ zh: '原版', en: 'Original', ja: '原作', ko: '원본' }),
+  rowHd: L({ zh: 'HD', en: 'HD', ja: 'HD', ko: 'HD' }),
+  rowYours: L({ zh: '你的图', en: 'Yours', ja: 'あなたの画像', ko: '내 그림' }),
+  sides: L({ zh: '我方|敌方|已行动', en: 'Player|Enemy|Acted', ja: '味方|敵|行動済み', ko: '아군|적|행동 완료' }),
+  iconAsIs: L({ zh: '{size}×{size} PNG，原样放进包里', en: '{size}×{size} PNG, packed as it is', ja: '{size}×{size} PNG、そのまま入ります', ko: '{size}×{size} PNG, 그대로 패키지에 들어감' }),
+  errIconFraming: L({ zh: '{who} 的图标还没点「确定」', en: 'The icon of {who} is not confirmed (OK) yet', ja: '{who} のアイコンがまだ「決定」されていません', ko: '{who}의 아이콘을 아직 “확인”하지 않았습니다' }),
+  errEmpty: L({ zh: '还没有换任何图标', en: 'No icon is replaced yet', ja: 'まだアイコンを差し替えていません', ko: '아직 교체한 아이콘이 없습니다' }),
+  choosePicture: L({ zh: '选择图片', en: 'Choose picture', ja: '画像を選択', ko: '그림 선택' }),
+  otherPicture: L({ zh: '换一张图', en: 'Another picture', ja: '別の画像', ko: '다른 그림' }),
+  reframe: L({ zh: '调整', en: 'Reframe', ja: '調整', ko: '조정' }),
+  zoom: L({ zh: '缩放', en: 'Zoom', ja: 'ズーム', ko: '확대/축소' }),
+  resetFrame: L({ zh: '复位', en: 'Reset', ja: 'リセット', ko: '초기화' }),
+  confirmFrame: L({ zh: '确定', en: 'OK', ja: '決定', ko: '확인' }),
+  allSeries: L({ zh: '全部作品', en: 'All series', ja: 'すべての作品', ko: '모든 작품' }),
   game: '0.5.2',
 };
 const pick = pickables(lang, data.units.map((u) => u.id), []);
@@ -67,7 +68,7 @@ const notice = versionNotice(lang, text.game);
       <h1>{title[tl(lang)]}</h1>
       {notice && <p class="version-notice">{notice}</p>}
       <p>{lead[tl(lang)]}</p>
-      <p class="note"><a href={`/${lang}/docs/mod-names/#${L({ zh: '地图图标articons', en: 'map-icons-articons', ja: 'マップアイコンarticons' })}`}>{L({ zh: '地图图标说明', en: 'Map icons guide', ja: 'マップアイコンの説明' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成，图片不会上传。', en: 'Needs 0.5.2 or later. Everything happens in your browser; no picture is uploaded.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われ、画像はアップロードされません。' })}</p>
+      <p class="note"><a href={`/${lang}/docs/mod-names/#${L({ zh: '地图图标articons', en: 'map-icons-articons', ja: 'マップアイコンarticons', ko: '맵-아이콘articons' })}`}>{L({ zh: '地图图标说明', en: 'Map icons guide', ja: 'マップアイコンの説明', ko: '맵 아이콘 설명' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成，图片不会上传。', en: 'Needs 0.5.2 or later. Everything happens in your browser; no picture is uploaded.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われ、画像はアップロードされません。', ko: '0.5.2 이상 버전이 필요합니다. 모든 처리는 브라우저 안에서 이루어지며, 그림은 업로드되지 않습니다.' })}</p>
     </header>
     <AiGuide lang={lang} kind="icons" />
 

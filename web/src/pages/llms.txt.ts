@@ -19,12 +19,12 @@ export async function GET() {
   const files = allFiles.map((f) => `- ${PLATFORM_LABEL[f.platform as Platform] ?? f.platform}: ${f.url}`);
   const text = `# MARCHWIND 64 (Marchwind64)
 
-> Marchwind 64 is an unofficial, free, open-source native recompilation of Super Robot Wars 64 (スーパーロボット大戦64, Nintendo 64, 1999). It runs the game natively on Windows, macOS, Linux, Steam Deck, Android and Nintendo Switch, with full English, Simplified Chinese and Traditional Chinese translations besides the original Japanese, widescreen, and an optional HD art pack. Players must supply their own Japanese ROM; the site does not provide ROMs. It is a fan project, not affiliated with Bandai Namco or BANPRESTO.
+> Marchwind 64 is an unofficial, free, open-source native recompilation of Super Robot Wars 64 (スーパーロボット大戦64, Nintendo 64, 1999). It runs the game natively on Windows, macOS, Linux, Steam Deck, Android and Nintendo Switch, with full English, Simplified Chinese, Traditional Chinese and Korean translations besides the original Japanese, widescreen, and an optional HD art pack. Players must supply their own Japanese ROM; the site does not provide ROMs. It is a fan project, not affiliated with Bandai Namco or BANPRESTO.
 
 ${published ? `- Current version: ${release.version} (${release.date}), release notes ${SITE}/en/blog/v${release.version.replaceAll('.', '-')}/` : '- A release is being prepared.'}
 - HD art pack: version ${hd.version}, optional, a separate download (the Switch has its own pack)
 - Source code (GPL-3.0-or-later): https://github.com/dyzz/srw64-recomp
-- Every page exists in four languages: ${SITE}/en/… (English), /zh/… (Simplified Chinese), /tw/… (Traditional Chinese), /ja/… (Japanese)
+- Every page exists in five languages: ${SITE}/en/… (English), /zh/… (Simplified Chinese), /tw/… (Traditional Chinese), /ja/… (Japanese), /ko/… (Korean)
 
 ## Download and install
 

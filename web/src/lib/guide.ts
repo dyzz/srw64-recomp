@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { tl, type Lang, type TextLang } from '../i18n';
 
 const DIR = join(process.cwd(), '..', 'guide', 'data');
-const FOLDER: Record<TextLang, string> = { zh: 'zh-Hans', en: 'en', ja: 'ja' };
+const FOLDER: Record<TextLang, string> = { zh: 'zh-Hans', en: 'en', ja: 'ja', ko: 'ko' };
 const cache = new Map<string, any>();
 function load(lang: Lang, name: string) {
   const key = `${lang}/${name}`;

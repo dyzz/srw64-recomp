@@ -5,7 +5,8 @@
   "zh-Hans": "笼罩地球圈的乌云",
   "zh-Hant": "籠罩地球圈的烏雲",
   "ja": "地球圏を覆う暗雲",
-  "en": "Dark Clouds over the Earth Sphere"
+  "en": "Dark Clouds over the Earth Sphere",
+  "ko": "지구권을 뒤덮는 암운"
  },
  "title_ja": "地球圏を覆う暗雲",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "完全和平路线",
     "zh-Hant": "完全和平路線",
     "ja": "完全平和ルート",
-    "en": "Complete Pacifism route"
+    "en": "Complete Pacifism route",
+    "ko": "완전평화 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "艾夏＋凤翼",
       "zh-Hant": "艾夏＋鳳翼",
       "ja": "アイシャ＋エルブルス",
-      "en": "Aisha + Elbulls"
+      "en": "Aisha + Elbulls",
+      "ko": "아이샤 + 엘브루스"
      },
      "text": {
       "zh-Hans": "第 3 回合我方阶段或敌剩 7 台以下时玛娜米须在场",
       "zh-Hant": "第 3 回合我方階段或敵剩 7 臺以下時瑪娜米須在場",
       "ja": "第3ターン味方フェイズか敵残り7機以下でマナミが戦場にいること",
-      "en": "Have Manami on the map on turn 3 player phase or at 7 or fewer enemies"
+      "en": "Have Manami on the map on turn 3 player phase or at 7 or fewer enemies",
+      "ko": "3턴 아군 페이즈 또는 적 7기 이하일 때 마나미를 맵에 두기"
      },
      "protagonists": [
       "manami"
@@ -44,13 +48,15 @@
       "zh-Hans": "利修＋西格露恩",
       "zh-Hant": "利修＋西格露恩",
       "ja": "リッシュ＋シグルーン",
-      "en": "Rish + Sigroon"
+      "en": "Rish + Sigroon",
+      "ko": "릿슈 + 시그룬"
      },
      "text": {
       "zh-Hans": "用塞蕾茵说服利修（「不会燃尽的流星」选第 2／3 项）",
       "zh-Hant": "用塞蕾茵說服利修（「不會燃盡的流星」選第 2／3 項）",
       "ja": "セレインでリッシュを説得（「燃え尽きない流星」で2番目か3番目）",
-      "en": "Persuade Rish with Selain (requires option 2 or 3 in step 1)"
+      "en": "Persuade Rish with Selain (requires option 2 or 3 in step 1)",
+      "ko": "세레인으로 릿슈를 설득(1단계에서 2번째나 3번째 선택지가 필요)"
      },
      "protagonists": [
       "serein"
@@ -63,13 +69,15 @@
       "zh-Hans": "混合式装甲",
       "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
-      "en": "Hybrid Armor"
+      "en": "Hybrid Armor",
+      "ko": "하이브리드 아머"
      },
      "from": {
       "zh-Hans": "巴伦",
       "zh-Hant": "巴倫",
       "ja": "バレン",
-      "en": "Baren"
+      "en": "Baren",
+      "ko": "바렌"
      },
      "retreat": false
     },
@@ -78,19 +86,22 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "亚赞",
       "zh-Hant": "亞贊",
       "ja": "ヤザン",
-      "en": "Yazan"
+      "en": "Yazan",
+      "ko": "야잔"
      },
      "note": {
       "zh-Hans": "巴伦被击坠后登场",
       "zh-Hant": "巴倫被擊墜後登場",
       "ja": "バレン撃墜後に登場",
-      "en": "Appears after Baren is shot down"
+      "en": "Appears after Baren is shot down",
+      "ko": "바렌이 격추된 뒤 등장"
      },
      "retreat": false
     }

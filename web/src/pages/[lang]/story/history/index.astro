@@ -9,21 +9,22 @@ export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const h = historyIndex();
 // The Japanese pages show both translations' changes.
-const shown = (lang === 'ja' ? ['zh', 'en'] : [tl(lang)]) as ('zh' | 'en')[];
+const shown = (lang === 'ja' || lang === 'ko' ? ['zh', 'en'] : [tl(lang)]) as ('zh' | 'en')[];
 const commits = (h?.commits ?? []).filter((c) => shown.some((l) => c.counts[l] > 0));
 const t = {
-  title: { zh: '更新历史', en: 'Translation history', ja: '翻訳の更新履歴' },
+  title: { zh: '更新历史', en: 'Translation history', ja: '翻訳の更新履歴', ko: '번역 변경 기록' },
   lead: {
     zh: (n: number, v: string) => `自 ${v} 发布以来，共有 ${n} 次提交改动了中文译文，最新的在前。点开可以看到每次改了哪些台词和词条，新旧对照。`,
     en: (n: number, v: string) => `Since ${v}, ${n} commits have changed the English translation, newest first. Open one to see which lines and terms it changed, old and new compared.`,
     ja: (n: number, v: string) => `${v} の公開以降に翻訳を変更した ${n} 件のコミットを新しい順に掲載しています。各コミットで変わったセリフと用語を新旧対照で確認できます。`,
+    ko: (n: number, v: string) => `${v} 공개 이후 번역을 변경한 커밋 ${n}건을 최신순으로 실었습니다. 각 커밋에서 바뀐 대사와 용어를 이전 번역과 대조해 볼 수 있습니다.`,
   },
-  none: { zh: '还没有导出更新历史。', en: 'No history has been exported yet.', ja: '更新履歴はまだ書き出されていません。' },
-  lines: { zh: '句', en: 'lines', ja: '行' },
-  langName: { zh: { zh: '中文', en: '英文' }, en: { zh: 'Chinese', en: 'English' }, ja: { zh: '中国語', en: '英語' } },
-  scenes: { zh: (n: number) => `${n} 关`, en: (n: number) => `${n} stages`, ja: (n: number) => `${n} 話` },
-  terms: { zh: (n: number) => `词条 ${n}`, en: (n: number) => `${n} terms`, ja: (n: number) => `用語 ${n}` },
-  back: { zh: '剧情', en: 'Story', ja: 'シナリオ' },
+  none: { zh: '还没有导出更新历史。', en: 'No history has been exported yet.', ja: '更新履歴はまだ書き出されていません。', ko: '아직 내보낸 변경 기록이 없습니다.' },
+  lines: { zh: '句', en: 'lines', ja: '行', ko: '줄' },
+  langName: { zh: { zh: '中文', en: '英文' }, en: { zh: 'Chinese', en: 'English' }, ja: { zh: '中国語', en: '英語' }, ko: { zh: '중국어', en: '영어' } },
+  scenes: { zh: (n: number) => `${n} 关`, en: (n: number) => `${n} stages`, ja: (n: number) => `${n} 話`, ko: (n: number) => `${n}개 화` },
+  terms: { zh: (n: number) => `词条 ${n}`, en: (n: number) => `${n} terms`, ja: (n: number) => `用語 ${n}`, ko: (n: number) => `용어 ${n}개` },
+  back: { zh: '剧情', en: 'Story', ja: 'シナリオ', ko: '시나리오' },
 };
 const when = (iso: string) => iso.slice(0, 16).replace('T', ' ');
 ---

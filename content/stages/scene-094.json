@@ -5,7 +5,8 @@
   "zh-Hans": "库斯科绝对防卫线（下）",
   "zh-Hant": "庫斯科絕對防衛線（下）",
   "ja": "クスコ絶対防衛線 （後）",
-  "en": "Cusco Absolute Defense Line (Part 2)"
+  "en": "Cusco Absolute Defense Line (Part 2)",
+  "ko": "쿠스코 절대 방위선 후편"
  },
  "title_ja": "クスコ絶対防衛線 （後）",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "OZ路线／随特列斯",
     "zh-Hant": "OZ路線／隨特列斯",
     "ja": "OZルート／トレーズにつく",
-    "en": "OZ route / with Treize"
+    "en": "OZ route / with Treize",
+    "ko": "OZ 루트 / 트레즈와 함께"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "盖尔护送朱莉娅",
       "zh-Hant": "蓋爾護送朱莉婭",
       "ja": "ゲイルがジュリアを護衛",
-      "en": "Gale escorts Julia"
+      "en": "Gale escorts Julia",
+      "ko": "게일이 줄리아를 호위"
      },
      "text": {
       "zh-Hans": "无需操作：已招到盖尔时格莱姆凯撒也强制出击",
       "zh-Hant": "無需操作：已招到蓋爾時格萊姆凱撒也強制出擊",
       "ja": "操作不要：ゲイル加入済みならグライムカイザルも強制出撃",
-      "en": "No action: the Greimkaiser is also forced out if Gale was recruited"
+      "en": "No action: the Greimkaiser is also forced out if Gale was recruited",
+      "ko": "할 일 없음: 게일을 영입했다면 그라임 카이잘도 강제 출격"
      }
     }
    ],
@@ -42,13 +46,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "伊万",
       "zh-Hant": "伊旺",
       "ja": "イワン",
-      "en": "Ivan"
+      "en": "Ivan",
+      "ko": "이완"
      },
      "retreat": false
     },
@@ -57,13 +63,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "Q老大",
       "zh-Hant": "Q老大",
       "ja": "Qボス",
-      "en": "Q Boss"
+      "en": "Q Boss",
+      "ko": "Q보스"
      },
      "retreat": false
     },
@@ -72,13 +80,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "瓦基米德",
       "zh-Hant": "華爾奇梅狄斯",
       "ja": "ワルキメデス",
-      "en": "Warchimedes"
+      "en": "Warchimedes",
+      "ko": "왈키메데스"
      },
      "retreat": false
     },
@@ -87,13 +97,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "丹格尔",
       "zh-Hant": "丹格爾",
       "ja": "ダンゲル",
-      "en": "Dungele"
+      "en": "Dungele",
+      "ko": "단겔"
      },
      "retreat": false
     }

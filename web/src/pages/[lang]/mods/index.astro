@@ -3,11 +3,11 @@
 // into public/mods and writes src/data/mods/<id>.json). Other people's packages will be
 // listed from their GitHub Releases (docs/design/mod-packages.md §13) once submissions open.
 import Base from '../../../layouts/Base.astro';
-import { langPaths, tl, type Lang } from '../../../i18n';
+import { langPaths, listSep, tl, type Lang } from '../../../i18n';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
-type Text = { ja?: string; 'zh-Hans'?: string; en?: string };
+type Text = { ja?: string; 'zh-Hans'?: string; en?: string; ko?: string };
 type Mod = {
   id: string; version: string; name: Text; description?: Text; authors: string[]; license: string; game: string;
   contents: string[]; languages?: string[]; file: string; bytes: number; sha256: string; url: string; source: string; published: string | null;
@@ -15,60 +15,62 @@ type Mod = {
 };
 const mods = Object.values(import.meta.glob<Mod>('../../../data/mods/*.json', { eager: true, import: 'default' }))
   .sort((a, b) => a.id.localeCompare(b.id));
-const loc = { zh: 'zh-Hans', en: 'en', ja: 'ja' }[tl(lang)] as keyof Text;
+const loc = { zh: 'zh-Hans', en: 'en', ja: 'ja', ko: 'ko' }[tl(lang)] as keyof Text;
 const pick = (t: Text | undefined) => (t ? t[loc] ?? t.en ?? t.ja ?? '' : '');
 const t = {
-  title: { zh: 'MOD 下载', en: 'Mod downloads', ja: 'MOD ダウンロード' },
+  title: { zh: 'MOD 下载', en: 'Mod downloads', ja: 'MOD ダウンロード', ko: 'MOD 다운로드' },
   lead: {
     zh: '我们自己做的 MOD 包，可以直接从这里下载。把下载的 .srw64mod 文件拖进游戏窗口就会安装，在 MOD 管理里可以停用或删除。安卓版放进「文件」里 Marchwind64 文件夹的 mods/，或在 MOD 页点「从文件安装」。',
     en: 'Mod packages we made ourselves, to download here. Drop the .srw64mod file on the game window to install it; the MOD manager disables or removes it. On Android, put it in mods/ inside the Marchwind64 folder under Documents, or press Install from file on the MOD page.',
     ja: '私たちが作った MOD パッケージを、ここからダウンロードできます。.srw64mod ファイルをゲームのウィンドウにドラッグするとインストールされ、MOD 管理で無効化や削除ができます。Android 版では「ファイル」アプリの Marchwind64 フォルダー内 mods/ に置くか、MOD ページの「ファイルからインストール」を使います。',
+    ko: '제가 직접 만든 MOD 패키지를 여기서 다운로드할 수 있습니다. .srw64mod 파일을 게임 창에 끌어다 놓으면 설치되고, MOD 관리에서 비활성화하거나 삭제할 수 있습니다. Android에서는 Documents 아래 Marchwind64 폴더 안의 mods/에 넣거나, MOD 화면에서 “파일에서 설치”를 누르세요.',
   },
-  android: { zh: '安卓版怎么安装（图解）', en: 'Installing on Android (illustrated)', ja: 'Android 版でのインストール（図解）' },
+  android: { zh: '安卓版怎么安装（图解）', en: 'Installing on Android (illustrated)', ja: 'Android 版でのインストール（図解）', ko: 'Android에서 설치하는 방법 (그림 설명)' },
   androidAlt: {
     zh: '安卓版安装 MOD：设置 › 通用 › MOD，再点「从文件安装」选文件，或把文件放进 Documents/Marchwind64/mods',
     en: 'Installing a MOD on Android: Settings › General › MOD, then Install from file, or put the file in Documents/Marchwind64/mods',
     ja: 'Android 版で MOD をインストール：設定 › 一般 › MOD を開き、「ファイルからインストール」で選ぶか、Documents/Marchwind64/mods に置く',
+    ko: 'Android에서 MOD 설치: 설정 › 일반 › MOD를 연 뒤 “파일에서 설치”로 파일을 선택하거나, 파일을 Documents/Marchwind64/mods에 넣습니다',
   },
   make: {
-    zh: '自己做包：', en: 'Making your own: ', ja: '自分で作るには：',
+    zh: '自己做包：', en: 'Making your own: ', ja: '自分で作るには：', ko: '직접 만들려면: ',
   },
   guides: [
-    { href: 'docs/mods/', zh: 'MOD 包', en: 'Mod packages', ja: 'MOD パッケージ' },
-    { href: 'docs/mod-data/', zh: '数值 MOD', en: 'Number mods', ja: '数値 MOD' },
-    { href: 'docs/mod-music/', zh: '音乐 MOD', en: 'Music mods', ja: '音楽 MOD' },
-    { href: 'docs/mod-story/', zh: '剧情 MOD', en: 'Story mods', ja: 'シナリオ MOD' },
-    { href: 'docs/mod-language/', zh: '语言包 MOD', en: 'Language packages', ja: '言語パッケージ MOD' },
+    { href: 'docs/mods/', zh: 'MOD 包', en: 'Mod packages', ja: 'MOD パッケージ', ko: 'MOD 패키지' },
+    { href: 'docs/mod-data/', zh: '数值 MOD', en: 'Number mods', ja: '数値 MOD', ko: '수치 MOD' },
+    { href: 'docs/mod-music/', zh: '音乐 MOD', en: 'Music mods', ja: '音楽 MOD', ko: '음악 MOD' },
+    { href: 'docs/mod-story/', zh: '剧情 MOD', en: 'Story mods', ja: 'シナリオ MOD', ko: '스토리 MOD' },
+    { href: 'docs/mod-language/', zh: '语言包 MOD', en: 'Language packages', ja: '言語パッケージ MOD', ko: '언어 패키지 MOD' },
   ],
-  download: { zh: '下载', en: 'Download', ja: 'ダウンロード' },
-  version: { zh: '版本', en: 'Version', ja: 'バージョン' },
-  game: { zh: '需要游戏', en: 'Needs the game', ja: '対応ゲーム' },
-  authors: { zh: '作者', en: 'Authors', ja: '作者' },
-  license: { zh: '许可', en: 'License', ja: 'ライセンス' },
-  updated: { zh: '更新', en: 'Updated', ja: '更新' },
-  contents: { zh: '内容', en: 'Contents', ja: '内容' },
-  languages: { zh: '增加语言', en: 'Adds languages', ja: '追加する言語' },
-  source: { zh: '源文件（GitHub）', en: 'Source (GitHub)', ja: 'ソース（GitHub）' },
-  release: { zh: '发布页（GitHub）', en: 'Release page (GitHub)', ja: 'リリースページ（GitHub）' },
-  mirrors: { zh: '网盘（在 MOD 文件夹里）：', en: 'Net disks (in the MOD folder): ', ja: 'ネットディスク（MOD フォルダー内）：' },
-  quark: { zh: '夸克', en: 'Quark', ja: 'Quark' },
-  baidu: { zh: '百度', en: 'Baidu', ja: 'Baidu' },
-  checksum: { zh: '校验', en: 'Checksum', ja: 'チェックサム' },
-  none: { zh: '还没有可以下载的包。', en: 'No packages yet.', ja: 'まだパッケージはありません。' },
+  download: { zh: '下载', en: 'Download', ja: 'ダウンロード', ko: '다운로드' },
+  version: { zh: '版本', en: 'Version', ja: 'バージョン', ko: '버전' },
+  game: { zh: '需要游戏', en: 'Needs the game', ja: '対応ゲーム', ko: '필요한 게임' },
+  authors: { zh: '作者', en: 'Authors', ja: '作者', ko: '작성자' },
+  license: { zh: '许可', en: 'License', ja: 'ライセンス', ko: '라이선스' },
+  updated: { zh: '更新', en: 'Updated', ja: '更新', ko: '업데이트' },
+  contents: { zh: '内容', en: 'Contents', ja: '内容', ko: '내용' },
+  languages: { zh: '增加语言', en: 'Adds languages', ja: '追加する言語', ko: '추가 언어' },
+  source: { zh: '源文件（GitHub）', en: 'Source (GitHub)', ja: 'ソース（GitHub）', ko: '소스 (GitHub)' },
+  release: { zh: '发布页（GitHub）', en: 'Release page (GitHub)', ja: 'リリースページ（GitHub）', ko: '릴리스 페이지 (GitHub)' },
+  mirrors: { zh: '网盘（在 MOD 文件夹里）：', en: 'Net disks (in the MOD folder): ', ja: 'ネットディスク（MOD フォルダー内）：', ko: '클라우드 드라이브 (MOD 폴더 안): ' },
+  quark: { zh: '夸克', en: 'Quark', ja: 'Quark', ko: 'Quark' },
+  baidu: { zh: '百度', en: 'Baidu', ja: 'Baidu', ko: 'Baidu' },
+  checksum: { zh: '校验', en: 'Checksum', ja: 'チェックサム', ko: '체크섬' },
+  none: { zh: '还没有可以下载的包。', en: 'No packages yet.', ja: 'まだパッケージはありません。', ko: '아직 다운로드할 수 있는 패키지가 없습니다.' },
 };
-const kinds: Record<string, { zh: string; en: string; ja: string }> = {
-  data: { zh: '数值', en: 'Numbers', ja: '数値' },
-  audio: { zh: '声音', en: 'Sound', ja: 'サウンド' },
-  campaign: { zh: '战役', en: 'Campaign', ja: 'キャンペーン' },
-  art: { zh: '图片', en: 'Art', ja: '画像' },
-  dialogue: { zh: '台词与文字', en: 'Dialogue and text', ja: 'セリフと文字' },
-  story: { zh: '剧情', en: 'Story', ja: 'ストーリー' },
+const kinds: Record<string, { zh: string; en: string; ja: string; ko: string }> = {
+  data: { zh: '数值', en: 'Numbers', ja: '数値', ko: '수치' },
+  audio: { zh: '声音', en: 'Sound', ja: 'サウンド', ko: '사운드' },
+  campaign: { zh: '战役', en: 'Campaign', ja: 'キャンペーン', ko: '캠페인' },
+  art: { zh: '图片', en: 'Art', ja: '画像', ko: '그래픽' },
+  dialogue: { zh: '台词与文字', en: 'Dialogue and text', ja: 'セリフと文字', ko: '대사와 텍스트' },
+  story: { zh: '剧情', en: 'Story', ja: 'ストーリー', ko: '스토리' },
 };
 // ">=0.5.1" as words; anything else as written.
 const needs = (req: string) => {
   const m = /^>=\s*([\d.]+)$/.exec(req.trim());
-  if (!m) return req === '*' ? { zh: '任意版本', en: 'Any version', ja: '全バージョン' }[tl(lang)] : req;
-  return { zh: `${m[1]} 或更新`, en: `${m[1]} or later`, ja: `${m[1]} 以降` }[tl(lang)];
+  if (!m) return req === '*' ? { zh: '任意版本', en: 'Any version', ja: '全バージョン', ko: '모든 버전' }[tl(lang)] : req;
+  return { zh: `${m[1]} 或更新`, en: `${m[1]} or later`, ja: `${m[1]} 以降`, ko: `${m[1]} 이상` }[tl(lang)];
 };
 const size = (n: number) =>
   n < 1024 ? `${n} B` : n < 1024 * 1024 ? `${(n / 1024).toFixed(1)} KB` : `${(n / 1024 / 1024).toFixed(1)} MB`;
@@ -81,9 +83,9 @@ const size = (n: number) =>
       <p>{t.lead[tl(lang)]}</p>
       <details class="android">
         <summary>{t.android[tl(lang)]}</summary>
-        <img src={`/media/android-mod-install-${tl(lang)}.webp`} alt={t.androidAlt[tl(lang)]} width="1600" height={{ zh: 1678, en: 1698, ja: 1720 }[tl(lang)]} loading="lazy" />
+        <img src={`/media/android-mod-install-${lang === 'ko' ? 'en' : tl(lang)}.webp`} alt={t.androidAlt[tl(lang)]} width="1600" height={{ zh: 1678, en: 1698, ja: 1720, ko: 1698 }[tl(lang)]} loading="lazy" />
       </details>
-      <p class="note">{t.make[tl(lang)]}{t.guides.map((g, i) => <>{i > 0 && (lang === 'en' ? ', ' : '、')}<a href={`/${lang}/${g.href}`}>{g[tl(lang)]}</a></>)}</p>
+      <p class="note">{t.make[tl(lang)]}{t.guides.map((g, i) => <>{i > 0 && listSep(lang)}<a href={`/${lang}/${g.href}`}>{g[tl(lang)]}</a></>)}</p>
     </header>
     {mods.length === 0 && <p class="note">{t.none[tl(lang)]}</p>}
     <ul class="list">
@@ -100,7 +102,7 @@ const size = (n: number) =>
           <dl>
             <div><dt>{t.version[tl(lang)]}</dt><dd class="latin">{m.version}</dd></div>
             <div><dt>{t.game[tl(lang)]}</dt><dd>{needs(m.game)}</dd></div>
-            <div><dt>{t.contents[tl(lang)]}</dt><dd>{m.contents.map((c) => kinds[c]?.[tl(lang)] ?? c).join(lang === 'en' ? ', ' : '、')}</dd></div>
+            <div><dt>{t.contents[tl(lang)]}</dt><dd>{m.contents.map((c) => kinds[c]?.[tl(lang)] ?? c).join(listSep(lang))}</dd></div>
             {m.languages?.length ? <div><dt>{t.languages[tl(lang)]}</dt><dd>{m.languages.join(', ')}</dd></div> : null}
             <div><dt>{t.authors[tl(lang)]}</dt><dd>{m.authors.join(', ')}</dd></div>
             <div><dt>{t.license[tl(lang)]}</dt><dd class="latin">{m.license}</dd></div>

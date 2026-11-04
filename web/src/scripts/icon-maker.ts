@@ -6,7 +6,7 @@ import { dataUrl, frame, framer, type Picture } from './framer';
 import { el, fill, jsonBytes, openPackage, packageForm, readJson, say, writePackage, type Text } from './mod-package';
 import { picker, type Pickable } from './picker';
 
-type Names3 = { ja: string; zh: string; en: string };
+type Names3 = { ja: string; zh: string; en: string; ko?: string };
 type Way = 'left' | 'right' | 'front';
 type Unit = { id: number; name: Names3; icon: number; facing: Way; pose: string | null };
 // One replaced icon: the unit it was picked for, its picture and the way that picture looks.
@@ -22,10 +22,10 @@ export function initIconMaker() {
   const payload = document.getElementById('icons-data');
   if (!root || !payload) return;
   const { text, units, pick, locale, lang } = JSON.parse(payload.textContent!) as {
-    text: Text; units: Unit[]; pick: { units: Pickable[]; series: { id: number | null; name: string }[] }; locale: string; lang: 'zh' | 'en' | 'ja';
+    text: Text; units: Unit[]; pick: { units: Pickable[]; series: { id: number | null; name: string }[] }; locale: string; lang: 'zh' | 'en' | 'ja' | 'ko';
   };
   const form = packageForm(root, text, locale, text.game);
-  const nameOf = (n: Names3) => n[lang] || n.ja;
+  const nameOf = (n: Names3) => n[lang] || (lang === 'ko' ? n.en : '') || n.ja;
   const unitById = new Map(units.map((u) => [u.id, u]));
   const byIcon = new Map<number, Unit[]>();
   for (const u of units) byIcon.set(u.icon, [...(byIcon.get(u.icon) ?? []), u]);
@@ -114,7 +114,7 @@ export function initIconMaker() {
       const original = { left: text.facingLeft, right: text.facingRight, front: text.facingFront }[u.facing];
       const head = el('h3', {}, u.pose ? el('img', { class: 'pose', src: u.pose, alt: '' }) : null, el('span', { class: 'num' }, String(u.id)), nameOf(u.name));
       const notes = [el('p', { class: 'hint' }, fill(text.iconFacing, { facing: original })),
-        others.length ? el('p', { class: 'hint' }, fill(text.iconShared, { units: others.map((o) => `${o.id} ${nameOf(o.name)}`).join(lang === 'en' ? ', ' : '、') })) : null];
+        others.length ? el('p', { class: 'hint' }, fill(text.iconShared, { units: others.map((o) => `${o.id} ${nameOf(o.name)}`).join(lang === 'en' || lang === 'ko' ? ', ' : '、') })) : null];
       const remove = el('button', { type: 'button', class: 'mini', onclick: () => { entries.delete(icon); done(); } }, text.remove);
       const choose = el('label', { class: 'mini' }, pic ? text.otherPicture : text.choosePicture, file);
       if (pic?.framing) return el('div', { class: 'card' }, head, ...notes, framer(pic, done, text, encodeIcon, false, text.iconFrameHint), el('div', {}, choose, ' ', remove));
@@ -140,7 +140,7 @@ export function initIconMaker() {
     if (typeof m === 'string') return say(exportStatus, m, true);
     const ready = [...entries.values()].filter((e) => e.pic);
     const problems = ready.filter((e) => e.pic!.framing).map((e) => fill(text.errIconFraming, { who: `${e.unit} ${nameOf(unitById.get(e.unit)!.name)}` }));
-    if (problems.length) return say(exportStatus, problems.join('；'), true);
+    if (problems.length) return say(exportStatus, problems.join(lang === 'en' || lang === 'ko' ? '; ' : '；'), true);
     if (!ready.length && !Object.keys(kept).length) return say(exportStatus, text.errEmpty, true);
     const out: Record<string, Uint8Array> = { ...kept };
     // Only the pictures that look another way than the original icon need saying.

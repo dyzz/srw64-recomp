@@ -5,7 +5,8 @@
   "zh-Hans": "那双眼中映不出未来",
   "zh-Hant": "那雙眼中映不出未來",
   "ja": "その瞳に未来は映ることなく",
-  "en": "Those Eyes Reflect No Future"
+  "en": "Those Eyes Reflect No Future",
+  "ko": "그 눈동자에 미래는 비치지 않고"
  },
  "title_ja": "その瞳に未来は映ることなく",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线（蕾拉支线）",
     "zh-Hant": "獨立軍路線（蕾拉支線）",
     "ja": "独立軍ルート（レラの分岐）",
-    "en": "Independence Army route (Lera branch)"
+    "en": "Independence Army route (Lera branch)",
+    "ko": "독립군 루트(레라 분기)"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "蕾拉支线：那双眼中映不出未来",
       "zh-Hant": "蕾拉支線：那雙眼中映不出未來",
       "ja": "レラ分岐：その瞳に未来は映ることなく",
-      "en": "Lera branch: Those Eyes Reflect No Future"
+      "en": "Lera branch: Those Eyes Reflect No Future",
+      "ko": "레라 분기: 그 눈동자에 미래는 비치지 않고"
      },
      "text": {
       "zh-Hans": "无需操作：蕾拉支线成立时进入，蕾拉在本关战死",
       "zh-Hant": "無需操作：蕾拉支線成立時進入，蕾拉在本關戰死",
       "ja": "操作不要：レラの分岐成立時に進入、レラは本ステージで戦死",
-      "en": "No action needed: entered on the Lera branch; Lera dies here"
+      "en": "No action needed: entered on the Lera branch; Lera dies here",
+      "ko": "할 일 없음: 레라 분기에서 진입; 여기서 레라 사망"
      }
     }
    ],
@@ -42,13 +46,15 @@
       "zh-Hans": "奖励+10000",
       "zh-Hant": "獎勵+10000",
       "ja": "ボーナス+10000",
-      "en": "Bonus +10000"
+      "en": "Bonus +10000",
+      "ko": "보너스 +10000"
      },
      "from": {
       "zh-Hans": "雅努斯侯爵",
       "zh-Hant": "雅努斯侯爵",
       "ja": "ヤヌス侯爵",
-      "en": "Marquis Janus"
+      "en": "Marquis Janus",
+      "ko": "야누스 후작"
      },
      "retreat": false
     },
@@ -57,13 +63,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "杰利德",
       "zh-Hant": "傑利特",
       "ja": "ジェリド",
-      "en": "Jerid"
+      "en": "Jerid",
+      "ko": "제리드"
      },
      "retreat": false
     }

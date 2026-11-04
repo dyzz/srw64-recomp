@@ -3,7 +3,7 @@
 // terms it changed, grouped by stage, battle speaker and file, old and new compared.
 import Base from '../../../../layouts/Base.astro';
 import { LANGS, tagOf, tl, type Lang } from '../../../../i18n';
-import { historyCommit, historyIndex } from '../../../../lib/data';
+import { historyCommit, historyIndex, loc } from '../../../../lib/data';
 
 export async function getStaticPaths() {
   const h = historyIndex();
@@ -11,21 +11,21 @@ export async function getStaticPaths() {
 }
 const lang = Astro.params.lang as Lang;
 const c = historyCommit(Astro.params.commit!);
-const shown = (lang === 'ja' ? ['zh', 'en'] : [tl(lang)]) as ('zh' | 'en')[];
+const shown = (lang === 'ja' || lang === 'ko' ? ['zh', 'en'] : [tl(lang)]) as ('zh' | 'en')[];
 const groups = c.groups
   .map((g) => ({ ...g, lines: g.lines.filter((x) => shown.some((l) => x.now[l] !== undefined)) }))
   .filter((g) => g.lines.length);
 const t = {
-  back: { zh: '更新历史', en: 'Translation history', ja: '翻訳の更新履歴' },
-  lines: { zh: (n: number) => `${n} 句`, en: (n: number) => `${n} lines`, ja: (n: number) => `${n} 行` },
-  battle: { zh: '战斗台词', en: 'Battle quotes', ja: '戦闘セリフ' },
-  terms: { zh: '词条（人名、机体名、武器名等）', en: 'Terms (names of characters, units, weapons…)', ja: '用語（人名・機体名・武器名など）' },
-  other: { zh: '其他文本', en: 'Other text', ja: 'その他のテキスト' },
-  langName: { zh: { zh: '中文', en: '英文' }, en: { zh: 'Chinese', en: 'English' }, ja: { zh: '中国語', en: '英語' } },
-  source: { zh: '源代码中的这次提交', en: 'This commit in the source code', ja: 'ソースコードのこのコミット' },
+  back: { zh: '更新历史', en: 'Translation history', ja: '翻訳の更新履歴', ko: '번역 변경 기록' },
+  lines: { zh: (n: number) => `${n} 句`, en: (n: number) => `${n} lines`, ja: (n: number) => `${n} 行`, ko: (n: number) => `${n}줄` },
+  battle: { zh: '战斗台词', en: 'Battle quotes', ja: '戦闘セリフ', ko: '전투 대사' },
+  terms: { zh: '词条（人名、机体名、武器名等）', en: 'Terms (names of characters, units, weapons…)', ja: '用語（人名・機体名・武器名など）', ko: '용어(인물, 기체, 무기 이름 등)' },
+  other: { zh: '其他文本', en: 'Other text', ja: 'その他のテキスト', ko: '기타 텍스트' },
+  langName: { zh: { zh: '中文', en: '英文' }, en: { zh: 'Chinese', en: 'English' }, ja: { zh: '中国語', en: '英語' }, ko: { zh: '중국어', en: '영어' } },
+  source: { zh: '源代码中的这次提交', en: 'This commit in the source code', ja: 'ソースコードのこのコミット', ko: '소스 코드의 이 커밋' },
 };
 const title = (g: (typeof groups)[number]) =>
-  g.kind === 'story' ? (g.title?.[tl(lang)] ?? `#${g.group}`)
+  g.kind === 'story' ? (g.title ? loc(g.title, lang) : `#${g.group}`)
   : g.kind === 'battle' ? `${t.battle[tl(lang)]} · ${(g.lines[0].who ?? g.group).split(' · ')[0]}`
   : g.kind === 'terms' ? t.terms[tl(lang)] : `${t.other[tl(lang)]} · ${g.group}`;
 ---

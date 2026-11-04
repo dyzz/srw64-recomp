@@ -11,20 +11,20 @@ import { UI, tl, type Lang } from '../i18n';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const t = {
-  other: { zh: '其他平台', en: 'Other platforms', ja: 'ほかのプラットフォーム' },
-  steps: { zh: '查看安装方法', en: 'Installation instructions', ja: 'インストール方法を見る' },
-  hd: { zh: '下载 HD 美术包', en: 'Download the HD art pack', ja: 'HD アートパックをダウンロード' },
-  hdNote: { zh: '可选，电脑与 Android 通用', en: 'optional, computers and Android', ja: '任意・パソコンと Android 共通' },
-  hdHow: { zh: 'HD 包怎么装', en: 'Installing the HD pack', ja: 'HD パックの入れ方' },
-  switchHd: { zh: '下载 Switch HD 美术包', en: 'Download the Switch HD art pack', ja: 'Switch 用 HD アートパックをダウンロード' },
-  switchHdNote: { zh: '可选，Switch 专用', en: 'optional, Switch only', ja: '任意・Switch 専用' },
+  other: { zh: '其他平台', en: 'Other platforms', ja: 'ほかのプラットフォーム', ko: '다른 플랫폼' },
+  steps: { zh: '查看安装方法', en: 'Installation instructions', ja: 'インストール方法を見る', ko: '설치 방법 보기' },
+  hd: { zh: '下载 HD 美术包', en: 'Download the HD art pack', ja: 'HD アートパックをダウンロード', ko: 'HD 아트 팩 다운로드' },
+  hdNote: { zh: '可选，电脑与 Android 通用', en: 'optional, computers and Android', ja: '任意・パソコンと Android 共通', ko: '선택 사항, PC와 Android 공용' },
+  hdHow: { zh: 'HD 包怎么装', en: 'Installing the HD pack', ja: 'HD パックの入れ方', ko: 'HD 팩 설치 방법' },
+  switchHd: { zh: '下载 Switch HD 美术包', en: 'Download the Switch HD art pack', ja: 'Switch 用 HD アートパックをダウンロード', ko: 'Switch용 HD 아트 팩 다운로드' },
+  switchHdNote: { zh: '可选，Switch 专用', en: 'optional, Switch only', ja: '任意・Switch 専用', ko: '선택 사항, Switch 전용' },
 };
 const hdFile = fileFor('hd');
 const switchFile = fileFor('switch');
 const switchHdFile = fileFor('switch-hd');
 const platforms: Platform[] = ['windows', 'macos', 'linux', 'android'];
 const label = (p: Platform) =>
-  lang === 'en' ? `Download for ${PLATFORM_LABEL[p]}` : lang === 'ja' ? `${PLATFORM_LABEL[p]} 版をダウンロード` : `下载 ${PLATFORM_LABEL[p]} 版`;
+  lang === 'en' ? `Download for ${PLATFORM_LABEL[p]}` : lang === 'ja' ? `${PLATFORM_LABEL[p]} 版をダウンロード` : lang === 'ko' ? `${PLATFORM_LABEL[p]}용 다운로드` : `下载 ${PLATFORM_LABEL[p]} 版`;
 const items = platforms.map((p) => {
   const f = fileFor(p);
   return f

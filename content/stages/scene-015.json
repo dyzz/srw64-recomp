@@ -5,7 +5,8 @@
   "zh-Hans": "苦痛之刃",
   "zh-Hant": "苦痛之刃",
   "ja": "苦しみの刃",
-  "en": "Blade of Anguish"
+  "en": "Blade of Anguish",
+  "ko": "고통의 칼날"
  },
  "title_ja": "苦しみの刃",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "共通",
     "zh-Hant": "共通",
     "ja": "共通",
-    "en": "Common"
+    "en": "Common",
+    "ko": "공통"
    },
    "secrets": [],
    "enemies": [
@@ -26,13 +28,15 @@
       "zh-Hans": "强化推进器",
       "zh-Hant": "強化推進器",
       "ja": "メガブースター",
-      "en": "Mega Booster"
+      "en": "Mega Booster",
+      "ko": "메가 부스터"
      },
      "from": {
       "zh-Hans": "巴斯克",
       "zh-Hant": "巴斯克",
       "ja": "バスク",
-      "en": "Bask"
+      "en": "Bask",
+      "ko": "바스크"
      },
      "retreat": false
     },
@@ -41,13 +45,15 @@
       "zh-Hans": "洗牌同盟纹章",
       "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
-      "en": "Shuffle Crest"
+      "en": "Shuffle Crest",
+      "ko": "셔플의 문장"
      },
      "from": {
       "zh-Hans": "杰克斯",
       "zh-Hant": "傑克斯",
       "ja": "ゼクス",
-      "en": "Zechs"
+      "en": "Zechs",
+      "ko": "젝스"
      },
      "retreat": false
     },
@@ -56,13 +62,15 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "戈斯特罗",
       "zh-Hant": "戈斯特羅",
       "ja": "ゴステロ",
-      "en": "Gosterro"
+      "en": "Gosterro",
+      "ko": "고스테로"
      },
      "retreat": false
     }

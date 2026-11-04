@@ -8,6 +8,8 @@ import { UI, langPaths, tl, type Lang, TITLE_LOGO } from '../../i18n';
 import { published, release } from '../../data/release';
 import { newestFirst } from '../../lib/blog';
 import { asset } from '../../lib/asset';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
@@ -17,6 +19,11 @@ const c = HOME[tl(lang)];
 // mods and game speed after the rules, filters last (user, 2026-10-29).
 const ORDER = ['history', 'prebattle', 'mods', 'speed', 'link', 'settings', 'library', 'viewer', 'filters'];
 const shows = ORDER.map((k) => c.shows.find((x) => x.key === k)!).filter(Boolean);
+// A page language without its own screenshot (Korean, so far) shows the English one.
+const shot = (path: string) => {
+  const own = path.replace('{lang}', lang);
+  return existsSync(join(process.cwd(), 'public', own)) ? own : path.replace('{lang}', 'en');
+};
 const posts = (await getCollection('blog', (p) => p.id.startsWith(`${tl(lang)}/`) && !p.data.draft))
   .sort(newestFirst)
   .slice(0, 3);
@@ -31,11 +38,11 @@ const ld = {
   name: 'MARCHWIND 64',
   alternateName: ['Marchwind64', TITLE_LOGO.zh.alt, TITLE_LOGO.tw.alt, TITLE_LOGO.ja.alt],
   url: `${site}/${lang}/`,
-  image: `${site}/media/hero-${lang}.webp`,
+  image: `${site}${shot('/media/hero-{lang}.webp')}`,
   applicationCategory: 'GameApplication',
   operatingSystem: 'Windows, macOS, Linux, SteamOS, Android, Nintendo Switch (Atmosphère)',
   gamePlatform: ['PC', 'Mac', 'Linux', 'Steam Deck', 'Android', 'Nintendo Switch'],
-  inLanguage: ['ja', 'en', 'zh-Hans', 'zh-Hant'],
+  inLanguage: ['ja', 'en', 'zh-Hans', 'zh-Hant', 'ko'],
   genre: 'Strategy RPG',
   isAccessibleForFree: true,
   offers: { '@type': 'Offer', price: 0, priceCurrency: 'USD' },
@@ -48,7 +55,7 @@ const ld = {
 ---
 <Base lang={lang}>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(ld)} />
-  <section class="hero" style={`--hero: url('/media/hero-${lang}.webp')`}>
+  <section class="hero" style={`--hero: url('${shot('/media/hero-{lang}.webp')}')`}>
     <div class="wrap hero-in">
       <div class="hero-art" aria-hidden="true"></div>
       <span class="tag">{c.kicker}{published && ` · v${release.version}`}</span>
@@ -74,7 +81,7 @@ const ld = {
         <h2>{c.compareTitle}</h2>
         <p>{c.compareBody}</p>
       </div>
-      <Pair left={`/media/compare-original-${lang}.webp`} right={`/media/compare-hd-${lang}.webp`} leftLabel={c.original} rightLabel={c.ours} alt={c.compareTitle} />
+      <Pair left={shot('/media/compare-original-{lang}.webp')} right={shot('/media/compare-hd-{lang}.webp')} leftLabel={c.original} rightLabel={c.ours} alt={c.compareTitle} />
     </div>
   </section>
 
@@ -106,8 +113,8 @@ const ld = {
         ) : (
           <article class={`show ${i % 2 ? 'flip' : ''}`}>
             <figure class={`shot ${item.sh!.img2 ? 'pair' : ''} ${item.sh!.wide ? 'wide' : ''}`}>
-              <img src={asset(item.sh!.img.replace('{lang}', lang))} alt={item.sh!.title} width="1280" height="720" loading="lazy" />
-              {item.sh!.img2 && <img src={asset(item.sh!.img2.replace('{lang}', lang))} alt="" width="1280" height="720" loading="lazy" />}
+              <img src={asset(shot(item.sh!.img))} alt={item.sh!.title} width="1280" height="720" loading="lazy" />
+              {item.sh!.img2 && <img src={asset(shot(item.sh!.img2))} alt="" width="1280" height="720" loading="lazy" />}
               {item.sh!.credit && <figcaption>{item.sh!.credit}</figcaption>}
             </figure>
             <div class="show-text">
@@ -130,10 +137,10 @@ const ld = {
         <p>{c.galleryBody}</p>
       </div>
       <div class="gallery">
-        <img src={asset(`/media/cutin-${lang}.webp`)} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
-        <img src={asset(`/media/spin-${lang}.webp`)} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
-        <img src={asset(`/media/beam-${lang}.webp`)} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
-        <img src={asset(`/media/sekiha-${lang}.webp`)} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+        <img src={asset(shot('/media/cutin-{lang}.webp'))} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+        <img src={asset(shot('/media/spin-{lang}.webp'))} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+        <img src={asset(shot('/media/beam-{lang}.webp'))} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+        <img src={asset(shot('/media/sekiha-{lang}.webp'))} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
       </div>
     </div>
   </section>

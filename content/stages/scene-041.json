@@ -5,7 +5,8 @@
   "zh-Hans": "混沌的地球圈",
   "zh-Hant": "混沌的地球圈",
   "ja": "混沌の地球圏",
-  "en": "Earth Sphere in Chaos"
+  "en": "Earth Sphere in Chaos",
+  "ko": "혼돈의 지구권"
  },
  "title_ja": "混沌の地球圏",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线",
     "zh-Hant": "獨立軍路線",
     "ja": "独立軍ルート",
-    "en": "Independence Army route"
+    "en": "Independence Army route",
+    "ko": "독립군 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "阿克／布拉德专属支线",
       "zh-Hant": "阿克／布拉德專屬支線",
       "ja": "アーク／ブラッド専用の分岐",
-      "en": "Ark / Brad exclusive side branch"
+      "en": "Ark / Brad exclusive side branch",
+      "ko": "아크 / 브래드 전용 분기"
      },
      "text": {
       "zh-Hans": "阿克：满足埃尔利希条件选第 2 项→「从此并肩」；布拉德：满足卡茨条件→「了断之时」",
       "zh-Hant": "阿克：滿足埃爾利希條件選第 2 項→「從此並肩」；布拉德：滿足卡茨條件→「了斷之時」",
       "ja": "アーク：エルリッヒの条件＋第2項→「ここより共に」；ブラッド：カーツの条件→「決着の時」",
-      "en": "Ark: Ehrlich + option 2 → “Together from Here On”; Brad: Kurtz → “Time to Settle It”"
+      "en": "Ark: Ehrlich + option 2 → “Together from Here On”; Brad: Kurtz → “Time to Settle It”",
+      "ko": "아크: 엘리히 + 2번 선택지 → “여기서부터 함께”; 브래드: 카츠 → “결착의 때”"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "卡茨＋瓦伊罗斯（含超级夺地者）",
       "zh-Hant": "卡茨＋瓦伊羅斯（含超級奪地者）",
       "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
-      "en": "Kurtz + Virose (including Super Earthgain)"
+      "en": "Kurtz + Virose (including Super Earthgain)",
+      "ko": "카츠 + 바이로즈(슈퍼 어스게인 포함)"
      },
      "text": {
       "zh-Hans": "用布拉德亲手击坠卡茨（第 4 回合开始或敌军全灭时登场）",
       "zh-Hant": "用布拉德親手擊墜卡茨（第 4 回合開始或敵軍全滅時登場）",
       "ja": "ブラッド自身でカーツを撃墜（第4ターン開始時か敵全滅時に登場）",
-      "en": "Shoot down Kurtz with Brad (turn 4 or enemy wiped out)"
+      "en": "Shoot down Kurtz with Brad (turn 4 or enemy wiped out)",
+      "ko": "브래드로 카츠 격추(4턴째 또는 적 전멸 시 등장)"
      },
      "protagonists": [
       "brad"
@@ -59,13 +65,15 @@
       "zh-Hans": "埃尔利希＋诺鲁孜",
       "zh-Hant": "埃爾利希＋諾魯孜",
       "ja": "エルリッヒ＋ノウルーズ",
-      "en": "Ehrlich + Norouz"
+      "en": "Ehrlich + Norouz",
+      "ko": "엘리히 + 노우루즈"
      },
      "text": {
       "zh-Hans": "蕾拉支线成立时用阿克说服埃尔利希，关末选第 2 项",
       "zh-Hant": "蕾拉支線成立時用阿克說服埃爾利希，關末選第 2 項",
       "ja": "レラの分岐成立時、アークでエルリッヒを説得しクリア時に第2項",
-      "en": "With the Lera branch, persuade Ehrlich with Ark, then option 2"
+      "en": "With the Lera branch, persuade Ehrlich with Ark, then option 2",
+      "ko": "레라 분기 성립 시 아크로 엘리히를 설득하고 2번 선택지"
      },
      "protagonists": [
       "ark"
@@ -77,13 +85,15 @@
       "zh-Hans": "罗莎米娅",
       "zh-Hant": "羅莎米亞",
       "ja": "ロザミア",
-      "en": "Rosamia"
+      "en": "Rosamia",
+      "ko": "로자미아"
      },
      "text": {
       "zh-Hans": "先击坠盖茨，再用卡缪说服罗莎米娅",
       "zh-Hant": "先擊墜蓋茲，再用卡密兒說服羅莎米亞",
       "ja": "先にゲーツを撃墜し、カミーユでロザミアを説得",
-      "en": "Shoot down Gates first, then persuade Rosamia with Kamille"
+      "en": "Shoot down Gates first, then persuade Rosamia with Kamille",
+      "ko": "먼저 게이츠를 격추하고 카미유로 로자미아 설득"
      }
     },
     {
@@ -92,13 +102,15 @@
       "zh-Hans": "基拉尔＋曼陀罗高达",
       "zh-Hant": "基拉爾＋曼陀羅鋼彈",
       "ja": "キラル＋マンダラガンダム",
-      "en": "Kyral + Mandala Gundam"
+      "en": "Kyral + Mandala Gundam",
+      "ko": "키랄 + 만다라 건담"
      },
      "text": {
       "zh-Hans": "用多蒙击坠基拉尔（巴伦被击破后第 4 个回合登场）",
       "zh-Hant": "用多門擊墜基拉爾（巴倫被擊破後第 4 個回合登場）",
       "ja": "ドモンでキラルを撃墜（バレン撃破から4ターン目に登場）",
-      "en": "Shoot down Kyral with Domon (appears 4 turns after Baren falls)"
+      "en": "Shoot down Kyral with Domon (appears 4 turns after Baren falls)",
+      "ko": "도몬으로 키랄 격추(바렌 격파 4턴 후 등장)"
      }
     },
     {
@@ -107,13 +119,15 @@
       "zh-Hans": "剧情解锁的必杀技与合体技",
       "zh-Hant": "劇情解鎖的必殺技與合體技",
       "ja": "ストーリーで解禁される必殺技と合体技",
-      "en": "Story-unlocked finishers and combination attacks"
+      "en": "Story-unlocked finishers and combination attacks",
+      "ko": "스토리로 해금되는 필살기와 합체 공격"
      },
      "text": {
       "zh-Hans": "无需操作：招到阿莲比后即可使用双重神之指",
       "zh-Hant": "無需操作：招到阿蓮比後即可使用雙重神威掌",
       "ja": "操作不要：アレンビー加入後にダブルゴッドフィンガーが使える",
-      "en": "No action needed: Double Burning Finger works once Allenby joins"
+      "en": "No action needed: Double Burning Finger works once Allenby joins",
+      "ko": "할 일 없음: 아렌비가 합류하면 더블 갓 핑거 사용 가능"
      }
     }
    ],
@@ -123,13 +137,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "盖茨",
       "zh-Hant": "蓋茲",
       "ja": "ゲーツ",
-      "en": "Gates"
+      "en": "Gates",
+      "ko": "게이츠"
      },
      "retreat": false
     },
@@ -138,19 +154,22 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "罗莎米娅",
       "zh-Hant": "羅莎米亞",
       "ja": "ロザミア",
-      "en": "Rosamia"
+      "en": "Rosamia",
+      "ko": "로자미아"
      },
      "note": {
       "zh-Hans": "可被卡缪说服（说服后不掉落）",
       "zh-Hant": "可被卡密兒說服（說服後不掉落）",
       "ja": "カミーユで説得可能（説得時はドロップなし）",
-      "en": "Can be persuaded by Kamille (no drop if persuaded)"
+      "en": "Can be persuaded by Kamille (no drop if persuaded)",
+      "ko": "카미유로 설득 가능(설득하면 드롭 없음)"
      },
      "retreat": false
     },
@@ -159,13 +178,15 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "巴斯克",
       "zh-Hant": "巴斯克",
       "ja": "バスク",
-      "en": "Bask"
+      "en": "Bask",
+      "ko": "바스크"
      },
      "retreat": false
     },
@@ -174,13 +195,15 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "卡茨",
       "zh-Hant": "卡茨",
       "ja": "カーツ",
-      "en": "Kurtz"
+      "en": "Kurtz",
+      "ko": "카츠"
      },
      "protagonists": [
       "brad"
@@ -192,13 +215,15 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "埃尔利希",
       "zh-Hant": "埃爾利希",
       "ja": "エルリッヒ",
-      "en": "Ehrlich"
+      "en": "Ehrlich",
+      "ko": "엘리히"
      },
      "protagonists": [
       "ark"

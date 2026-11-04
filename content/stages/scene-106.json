@@ -5,7 +5,8 @@
   "zh-Hans": "将未来握在手中",
   "zh-Hant": "將未來握在手中",
   "ja": "未来をこの手に",
-  "en": "The Future in Our Hands"
+  "en": "The Future in Our Hands",
+  "ko": "미래를 이 손에"
  },
  "title_ja": "未来をこの手に",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "共通",
     "zh-Hant": "共通",
     "ja": "共通",
-    "en": "Common"
+    "en": "Common",
+    "ko": "공통"
    },
    "secrets": [],
    "enemies": []

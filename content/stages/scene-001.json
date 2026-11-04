@@ -5,7 +5,8 @@
   "zh-Hans": "出击！灵鸟",
   "zh-Hant": "出擊！靈鳥",
   "ja": "出撃!スイームルグ",
-  "en": "Launch! Sweemurg"
+  "en": "Launch! Sweemurg",
+  "ko": "출격! 스이무르그"
  },
  "title_ja": "出撃!スイームルグ",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "玛娜米（超级系）",
     "zh-Hant": "瑪娜米（超級系）",
     "ja": "マナミ（スーパー系）",
-    "en": "Manami (Super)"
+    "en": "Manami (Super)",
+    "ko": "마나미(슈퍼계)"
    },
    "secrets": [],
    "enemies": []

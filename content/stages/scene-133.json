@@ -5,7 +5,8 @@
   "zh-Hans": "阿克西斯攻防战（下）",
   "zh-Hant": "阿克西斯攻防戰（下）",
   "ja": "アクシズの攻防 （後）",
-  "en": "The Battle for Axis (Part 3)"
+  "en": "The Battle for Axis (Part 3)",
+  "ko": "액시즈 공방전 후편"
  },
  "title_ja": "アクシズの攻防 （後）",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线／独自作战",
     "zh-Hant": "獨立軍路線／獨自作戰",
     "ja": "独立軍ルート／単独行動",
-    "en": "Independence Army route / fight alone"
+    "en": "Independence Army route / fight alone",
+    "ko": "독립군 루트 / 단독 항전"
    },
    "secrets": [],
    "enemies": [
@@ -26,13 +28,15 @@
       "zh-Hans": "哈啰",
       "zh-Hant": "哈囉",
       "ja": "ハロ",
-      "en": "Haro"
+      "en": "Haro",
+      "ko": "하로"
      },
      "from": {
       "zh-Hans": "哈曼",
       "zh-Hant": "哈曼",
       "ja": "ハマーン",
-      "en": "Haman"
+      "en": "Haman",
+      "ko": "하만"
      },
      "retreat": false
     },
@@ -41,19 +45,22 @@
       "zh-Hans": "超合金Z",
       "zh-Hant": "超合金Z",
       "ja": "超合金Z",
-      "en": "Super Alloy Z"
+      "en": "Super Alloy Z",
+      "ko": "초합금 Z"
      },
      "from": {
       "zh-Hans": "卡多",
       "zh-Hant": "卡多",
       "ja": "ガトー",
-      "en": "Gato"
+      "en": "Gato",
+      "ko": "가토"
      },
      "note": {
       "zh-Hans": "哈曼被击坠时离场（关卡结束）",
       "zh-Hant": "哈曼被擊墜時離場（關卡結束）",
       "ja": "ハマーンが撃墜されると離脱（ステージ終了）",
-      "en": "Leaves when Haman is shot down (the stage ends)"
+      "en": "Leaves when Haman is shot down (the stage ends)",
+      "ko": "하만을 격추하면 이탈(스테이지 종료)"
      },
      "retreat": true
     }

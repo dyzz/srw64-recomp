@@ -5,7 +5,8 @@
   "zh-Hans": "遥远的和平",
   "zh-Hant": "遙遠的和平",
   "ja": "遠き平和",
-  "en": "Distant Peace"
+  "en": "Distant Peace",
+  "ko": "머나먼 평화"
  },
  "title_ja": "遠き平和",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "完全和平路线",
     "zh-Hant": "完全和平路線",
     "ja": "完全平和ルート",
-    "en": "Complete Pacifism route"
+    "en": "Complete Pacifism route",
+    "ko": "완전평화 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "卡茨＋瓦伊罗斯（含超级夺地者）",
       "zh-Hant": "卡茨＋瓦伊羅斯（含超級奪地者）",
       "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
-      "en": "Kurtz + Virose (including Super Earthgain)"
+      "en": "Kurtz + Virose (including Super Earthgain)",
+      "ko": "카츠 + 바이로즈(슈퍼 어스게인 포함)"
      },
      "text": {
       "zh-Hans": "用布拉德击坠卡茨（敌方剩 6 台以下登场）",
       "zh-Hant": "用布拉德擊墜卡茨（敵方剩 6 臺以下登場）",
       "ja": "ブラッドでカーツを撃墜（敵残り6機以下で登場）",
-      "en": "Shoot down Kurtz with Brad (appears at 6 or fewer enemies)"
+      "en": "Shoot down Kurtz with Brad (appears at 6 or fewer enemies)",
+      "ko": "브래드로 카츠 격추(적 6기 이하에서 등장)"
      },
      "protagonists": [
       "brad"
@@ -45,13 +49,15 @@
       "zh-Hans": "奖励+10000",
       "zh-Hant": "獎勵+10000",
       "ja": "ボーナス+10000",
-      "en": "Bonus +10000"
+      "en": "Bonus +10000",
+      "ko": "보너스 +10000"
      },
      "from": {
       "zh-Hans": "雅努斯侯爵",
       "zh-Hant": "雅努斯侯爵",
       "ja": "ヤヌス侯爵",
-      "en": "Marquis Janus"
+      "en": "Marquis Janus",
+      "ko": "야누스 후작"
      },
      "retreat": false
     },
@@ -60,19 +66,22 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "卡茨",
       "zh-Hant": "卡茨",
       "ja": "カーツ",
-      "en": "Kurtz"
+      "en": "Kurtz",
+      "ko": "카츠"
      },
      "note": {
       "zh-Hans": "敌方剩 6 台以下登场，布拉德不在场即离开",
       "zh-Hant": "敵方剩 6 臺以下登場，布拉德不在場即離開",
       "ja": "敵残り6機以下で登場、ブラッド不在ならすぐ離脱",
-      "en": "Appears at ≤6 enemies; leaves at once without Brad"
+      "en": "Appears at ≤6 enemies; leaves at once without Brad",
+      "ko": "적 6기 이하에서 등장, 브래드가 없으면 바로 이탈"
      },
      "protagonists": [
       "brad"

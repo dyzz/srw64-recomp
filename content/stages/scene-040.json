@@ -5,7 +5,8 @@
   "zh-Hans": "其名为次代",
   "zh-Hant": "其名為次代",
   "ja": "その名はエピオン",
-  "en": "Its Name Is Epyon"
+  "en": "Its Name Is Epyon",
+  "ko": "그 이름은 에피온"
  },
  "title_ja": "その名はエピオン",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线",
     "zh-Hant": "獨立軍路線",
     "ja": "独立軍ルート",
-    "en": "Independence Army route"
+    "en": "Independence Army route",
+    "ko": "독립군 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "艾夏＋凤翼",
       "zh-Hant": "艾夏＋鳳翼",
       "ja": "アイシャ＋エルブルス",
-      "en": "Aisha + Elbulls"
+      "en": "Aisha + Elbulls",
+      "ko": "아이샤 + 엘브루스"
      },
      "text": {
       "zh-Hans": "敌剩 9 台以下时玛娜米须在场",
       "zh-Hant": "敵剩 9 臺以下時瑪娜米須在場",
       "ja": "敵が残り9機以下になった時点でマナミが戦場にいること",
-      "en": "Have Manami on the map when 9 or fewer enemies remain"
+      "en": "Have Manami on the map when 9 or fewer enemies remain",
+      "ko": "적이 9기 이하로 남았을 때 마나미를 맵에 두기"
      },
      "protagonists": [
       "manami"
@@ -44,13 +48,15 @@
       "zh-Hans": "利修＋西格露恩",
       "zh-Hant": "利修＋西格露恩",
       "ja": "リッシュ＋シグルーン",
-      "en": "Rish + Sigroon"
+      "en": "Rish + Sigroon",
+      "ko": "릿슈 + 시그룬"
      },
      "text": {
       "zh-Hans": "无需操作：前两步完成则利修＋西格露恩开场加入",
       "zh-Hant": "無需操作：前兩步完成則利修＋西格露恩開場加入",
       "ja": "操作不要：前2段階済みならリッシュ＋シグルーンが開始時に加入",
-      "en": "No action needed: Rish + Sigroon join at start if steps 1–2 done"
+      "en": "No action needed: Rish + Sigroon join at start if steps 1–2 done",
+      "ko": "할 일 없음: 1~2단계를 마쳤다면 시작 시 릿슈 + 시그룬 가입"
      },
      "protagonists": [
       "serein"

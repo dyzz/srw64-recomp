@@ -5,7 +5,8 @@
   "zh-Hans": "未能成神的男人",
   "zh-Hant": "未能成神的男人",
   "ja": "神になれなかった男",
-  "en": "The Man Who Could Not Become God"
+  "en": "The Man Who Could Not Become God",
+  "ko": "신이 되지 못한 남자"
  },
  "title_ja": "神になれなかった男",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "OZ路线（未守住基地）",
     "zh-Hant": "OZ路線（未守住基地）",
     "ja": "OZルート（基地を守れなかった場合）",
-    "en": "OZ route (base lost)"
+    "en": "OZ route (base lost)",
+    "ko": "OZ 루트(기지 방어 실패)"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "月球是地狱！：守住基地",
       "zh-Hant": "月球是地獄！：守住基地",
       "ja": "月は地獄だ!：基地を守る",
-      "en": "The Moon Is Hell!: holding the base"
+      "en": "The Moon Is Hell!: holding the base",
+      "ko": "달은 지옥이다!: 기지 방어"
      },
      "text": {
       "zh-Hans": "无需操作：未守住基地或走「进攻月球」到此",
       "zh-Hant": "無需操作：未守住基地或走「進攻月球」到此",
       "ja": "操作不要：基地を守れなかったか「ムーンアタック」経由でここへ",
-      "en": "No action needed: reached by losing the base or via “Moon Attack”"
+      "en": "No action needed: reached by losing the base or via “Moon Attack”",
+      "ko": "할 일 없음: 기지를 잃었거나 “문 어택”을 거쳐 진입"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "利修＋西格露恩",
       "zh-Hant": "利修＋西格露恩",
       "ja": "リッシュ＋シグルーン",
-      "en": "Rish + Sigroon"
+      "en": "Rish + Sigroon",
+      "ko": "릿슈 + 시그룬"
      },
      "text": {
       "zh-Hans": "无需操作：上一关选对选项则开场加入",
       "zh-Hant": "無需操作：上一關選對選項則開場加入",
       "ja": "操作不要：前ステージで正しい選択肢なら開始時に加入",
-      "en": "No action needed: joins at the start if you picked right last stage"
+      "en": "No action needed: joins at the start if you picked right last stage",
+      "ko": "할 일 없음: 이전 스테이지에서 올바르게 골랐다면 시작 시 가입"
      },
      "protagonists": [
       "serein"
@@ -60,19 +66,22 @@
       "zh-Hans": "生物传感器",
       "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
-      "en": "Bio-Sensor"
+      "en": "Bio-Sensor",
+      "ko": "바이오 센서"
      },
      "from": {
       "zh-Hans": "夏比罗",
       "zh-Hant": "夏比羅",
       "ja": "シャピロ",
-      "en": "Shapiro"
+      "en": "Shapiro",
+      "ko": "샤피로"
      },
      "note": {
       "zh-Hans": "击坠夏比罗时忍在场才会携带",
       "zh-Hant": "擊墜夏比羅時忍在場才會攜帶",
       "ja": "シャピロ撃墜時に忍がいる場合のみ所持",
-      "en": "Only if Shinobu is on the map when Shapiro is shot down"
+      "en": "Only if Shinobu is on the map when Shapiro is shot down",
+      "ko": "샤피로 격추 시 시노부가 맵에 있는 경우에만"
      },
      "retreat": false
     },
@@ -82,13 +91,15 @@
       "zh-Hans": "吉尔德罗姆",
       "zh-Hant": "吉爾德羅姆",
       "ja": "ギルドローム",
-      "en": "Gildrome"
+      "en": "Gildrome",
+      "ko": "길드롬"
      },
      "note": {
       "zh-Hans": "敌方剩 8 台以下时撤退",
       "zh-Hant": "敵方剩 8 臺以下時撤退",
       "ja": "敵残り8機以下で撤退",
-      "en": "Retreats when 8 or fewer enemies remain"
+      "en": "Retreats when 8 or fewer enemies remain",
+      "ko": "적이 8기 이하로 남으면 퇴각"
      },
      "retreat": true
     }

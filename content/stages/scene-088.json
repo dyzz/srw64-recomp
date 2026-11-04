@@ -5,7 +5,8 @@
   "zh-Hans": "阿克西斯攻防战（上）",
   "zh-Hant": "阿克西斯攻防戰（上）",
   "ja": "アクシズの攻防 （前）",
-  "en": "The Battle for Axis (Part 1)"
+  "en": "The Battle for Axis (Part 1)",
+  "ko": "액시즈 공방전 전편"
  },
  "title_ja": "アクシズの攻防 （前）",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线／独自作战",
     "zh-Hant": "獨立軍路線／獨自作戰",
     "ja": "独立軍ルート／単独行動",
-    "en": "Independence Army route / fight alone"
+    "en": "Independence Army route / fight alone",
+    "ko": "독립군 루트 / 단독 항전"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "马修玛＋扎古Ⅲ改／姬拉＋盖马克",
       "zh-Hant": "馬修曼＋薩克Ⅲ改／凱拉＋蓋馬克",
       "ja": "マシュマー＋ザクⅢ改／キャラ＋ゲーマルク",
-      "en": "Mashymre + Zaku III Custom / Chara + Geymalk"
+      "en": "Mashymre + Zaku III Custom / Chara + Geymalk",
+      "ko": "마슈마 + 자쿠 III 개 / 캐라 + 게마르크"
      },
      "text": {
       "zh-Hans": "用捷度说服马修玛或姬拉之一，之后选「留在地球圈」",
       "zh-Hant": "用傑特說服馬修曼或凱拉之一，之後選「留在地球圈」",
       "ja": "ジュドーでマシュマーかキャラを説得（後に「地球圏に残留する」）",
-      "en": "Persuade Mashymre or Chara with Judau; later pick “Stay on Earth”"
+      "en": "Persuade Mashymre or Chara with Judau; later pick “Stay on Earth”",
+      "ko": "쥬도로 마슈마 또는 캐라 설득; 이후 “지구권에 잔류한다”를 고름"
      }
     }
    ],
@@ -42,13 +46,15 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "拉坎",
       "zh-Hant": "拉坎",
       "ja": "ラカン",
-      "en": "Rakan"
+      "en": "Rakan",
+      "ko": "라칸"
      },
      "retreat": false
     },
@@ -57,13 +63,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "阿里亚斯",
       "zh-Hant": "阿里亞斯",
       "ja": "アリアス",
-      "en": "Arius"
+      "en": "Arius",
+      "ko": "아리아스"
      },
      "retreat": false
     },
@@ -72,13 +80,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "德尔",
       "zh-Hant": "德爾",
       "ja": "デル",
-      "en": "Dale"
+      "en": "Dale",
+      "ko": "델"
      },
      "retreat": false
     }

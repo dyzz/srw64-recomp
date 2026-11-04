@@ -4,7 +4,7 @@
 // music.json's battle songs, with the original values and the keys a file writes them with.
 // The data is tools/content/export_data_tables.py's, the same as docs/guide/data-mods/*.csv.
 import Base from '../../../../layouts/Base.astro';
-import { LANGS, tl, type Lang } from '../../../../i18n';
+import { LANGS, listSep, tl, type Lang } from '../../../../i18n';
 import { library } from '../../../../lib/data';
 import data from '../../../../data/data-mods.json';
 
@@ -17,53 +17,58 @@ const inUnits = new Set(lib.units.map((u) => u.id));
 const inPeople = new Set(lib.people.map((p) => p.id));
 const t = {
   title: {
-    units: { zh: '机体 ID 表', en: 'Unit IDs', ja: 'ユニット ID 表' },
-    pilots: { zh: '人物 ID 表', en: 'Pilot IDs', ja: 'キャラクター ID 表' },
-    weapons: { zh: '武器 ID 表', en: 'Weapon IDs', ja: '武器 ID 表' },
+    units: { zh: '机体 ID 表', en: 'Unit IDs', ja: 'ユニット ID 表', ko: '기체 ID 표' },
+    pilots: { zh: '人物 ID 表', en: 'Pilot IDs', ja: 'キャラクター ID 表', ko: '파일럿 ID 표' },
+    weapons: { zh: '武器 ID 表', en: 'Weapon IDs', ja: '武器 ID 表', ko: '무기 ID 표' },
   },
-  maker: { zh: '用「数值 MOD 制作」直接改', en: 'Change them with the Number mod maker', ja: '「数値 MOD メーカー」で変更' },
+  maker: { zh: '用「数值 MOD 制作」直接改', en: 'Change them with the Number mod maker', ja: '「数値 MOD メーカー」で変更', ko: '“수치 MOD 제작”에서 바로 바꾸기' },
   lead: {
     zh: '数值 MOD 的 data/units.json 按机体号、data/pilots.json 按人物号、data/weapons.json 按武器号写；改名 MOD 和音乐 MOD 用的也是这些编号。表里的数值是原版的，特殊能力、技能、精神显示的是文件里写的键。',
     en: 'A number mod’s data/units.json is keyed by unit number, data/pilots.json by pilot number and data/weapons.json by weapon number; name and music mods use the same numbers. The values shown are the original’s; abilities, skills and spirits show the keys a file writes.',
     ja: '数値 MOD の data/units.json はユニット番号、data/pilots.json はキャラクター番号、data/weapons.json は武器番号で書きます。名前 MOD・音楽 MOD も同じ番号です。数値は原作の値で、特殊能力・技能・精神はファイルに書くキーで表示しています。',
+    ko: '수치 MOD의 data/units.json은 기체 번호, data/pilots.json은 파일럿 번호, data/weapons.json은 무기 번호로 씁니다. 이름 MOD와 음악 MOD도 같은 번호를 씁니다. 표의 수치는 원본 값이며, 특수 능력, 특수 기능, 정신기는 파일에 쓰는 키로 표시합니다.',
   },
-  guide: { zh: '写法见「数值 MOD」', en: 'How to write them: Number mods', ja: '書き方は「数値 MOD」へ' },
-  units: { zh: '机体', en: 'Units', ja: 'ユニット' },
-  pilots: { zh: '人物', en: 'Pilots', ja: 'キャラクター' },
-  weapons: { zh: '武器', en: 'Weapons', ja: '武器' },
-  abilities: { zh: '特殊能力', en: 'Abilities', ja: '特殊能力' },
-  skills: { zh: '技能', en: 'Skills', ja: '技能' },
-  spirits: { zh: '精神', en: 'Spirits', ja: '精神' },
-  carriers: { zh: '带它的机体', en: 'Carried by', ja: '装備ユニット' },
+  guide: { zh: '写法见「数值 MOD」', en: 'How to write them: Number mods', ja: '書き方は「数値 MOD」へ', ko: '작성법: 수치 MOD' },
+  units: { zh: '机体', en: 'Units', ja: 'ユニット', ko: '기체' },
+  pilots: { zh: '人物', en: 'Pilots', ja: 'キャラクター', ko: '파일럿' },
+  weapons: { zh: '武器', en: 'Weapons', ja: '武器', ko: '무기' },
+  abilities: { zh: '特殊能力', en: 'Abilities', ja: '特殊能力', ko: '특수 능력' },
+  skills: { zh: '技能', en: 'Skills', ja: '技能', ko: '특수 기능' },
+  spirits: { zh: '精神', en: 'Spirits', ja: '精神', ko: '정신기' },
+  carriers: { zh: '带它的机体', en: 'Carried by', ja: '装備ユニット', ko: '장착 기체' },
   weaponNote: {
     zh: '同一件武器挂在好几台机体上时，改它会让这些机体一起变。威力按 100 为单位；弹数 -1 表示不用弹数。',
     en: 'A weapon carried by several units changes on all of them. Power goes in hundreds; ammo -1 means it uses none.',
     ja: '複数のユニットが持つ武器は、変えると全員分変わります。威力は 100 単位、弾数 -1 は弾数なしです。',
+    ko: '여러 기체가 가진 무기는 바꾸면 그 기체들 모두 함께 바뀝니다. 공격력은 100 단위이며, 탄수 -1은 탄수를 쓰지 않는다는 뜻입니다.',
   },
-  search: { zh: '按名字或编号筛选', en: 'Filter by name or number', ja: '名前か番号で絞り込み' },
-  name: { zh: '名字', en: 'Name', ja: '名前' },
-  icon: { zh: '图标', en: 'Icon', ja: 'アイコン' },
-  shared: { zh: '共用能力记录', en: 'Shares its record with', ja: '能力記録を共有' },
+  search: { zh: '按名字或编号筛选', en: 'Filter by name or number', ja: '名前か番号で絞り込み', ko: '이름이나 번호로 필터' },
+  name: { zh: '名字', en: 'Name', ja: '名前', ko: '이름' },
+  icon: { zh: '图标', en: 'Icon', ja: 'アイコン', ko: '아이콘' },
+  shared: { zh: '共用能力记录', en: 'Shares its record with', ja: '能力記録を共有', ko: '능력 기록 공유' },
   sharedNote: {
     zh: '同一行「共用能力记录」里的人物用的是同一条能力记录，改其中一个，其他人一起变。同名的条目是不同的编号（形态、敌我版本、剧情专用），改之前对一下等级。',
     en: 'Pilots listed under “Shares its record with” use the same ability record: changing one changes the others too. Entries with the same name are different numbers (forms, enemy copies, story-only); check the ranks before you change one.',
     ja: '「能力記録を共有」に並ぶキャラクターは同じ能力記録を使うため、一人を変えると他も変わります。同名の項目は別の番号（形態・敵版・シナリオ専用）なので、変える前に適応を確かめてください。',
+    ko: '“능력 기록 공유”에 나열된 파일럿들은 같은 능력 기록을 쓰므로, 한 명을 바꾸면 나머지도 함께 바뀝니다. 이름이 같은 항목은 번호가 다른 별개의 항목(형태, 적 버전, 스토리 전용)이니 바꾸기 전에 지형 적응을 확인하세요.',
   },
-  library: { zh: '图鉴', en: 'Library', ja: '図鑑' },
-  csv: { zh: '同样的表也有 CSV 版：', en: 'The same tables as CSV: ', ja: '同じ表の CSV 版：' },
-  none: { zh: '没有符合的条目', en: 'Nothing matches', ja: '該当なし' },
+  library: { zh: '图鉴', en: 'Library', ja: '図鑑', ko: '도감' },
+  csv: { zh: '同样的表也有 CSV 版：', en: 'The same tables as CSV: ', ja: '同じ表の CSV 版：', ko: '같은 표의 CSV 버전: ' },
+  none: { zh: '没有符合的条目', en: 'Nothing matches', ja: '該当なし', ko: '일치하는 항목이 없습니다' },
 };
-const channels = { zh: ['空', '陆', '海', '宇'], en: ['Air', 'Land', 'Sea', 'Space'], ja: ['空', '陸', '海', '宇'] }[tl(lang)];
-const unitCols = { zh: ['HP', 'EN', '移动', '运动性', '装甲', '限界', '尺寸'], en: ['HP', 'EN', 'Move', 'Mobility', 'Armor', 'Limit', 'Size'], ja: ['HP', 'EN', '移動', '運動性', '装甲', '限界', 'サイズ'] }[tl(lang)];
-const pilotCols = { zh: ['格斗', '射击', '回避', '命中', '反应', '技量', 'SP'], en: ['Melee', 'Ranged', 'Evade', 'Hit', 'React', 'Skill', 'SP'], ja: ['格闘', '射撃', '回避', '命中', '反応', '技量', 'SP'] }[tl(lang)];
-const weaponCols = { zh: ['标记', '威力', '射程', '命中', '弹数', 'EN', '气力', '暴击', '必要技能', '改造'], en: ['Marks', 'Power', 'Range', 'Hit', 'Ammo', 'EN', 'Morale', 'Crit', 'Requires', 'Upgr.'], ja: ['記号', '攻撃力', '射程', '命中', '弾数', 'EN', '気力', 'CT', '必要技能', '改造'] }[tl(lang)];
+const channels = { zh: ['空', '陆', '海', '宇'], en: ['Air', 'Land', 'Sea', 'Space'], ja: ['空', '陸', '海', '宇'], ko: ['공', '육', '해', '우'] }[tl(lang)];
+const unitCols = { zh: ['HP', 'EN', '移动', '运动性', '装甲', '限界', '尺寸'], en: ['HP', 'EN', 'Move', 'Mobility', 'Armor', 'Limit', 'Size'], ja: ['HP', 'EN', '移動', '運動性', '装甲', '限界', 'サイズ'], ko: ['HP', 'EN', '이동력', '운동성', '장갑', '한계', '사이즈'] }[tl(lang)];
+const pilotCols = { zh: ['格斗', '射击', '回避', '命中', '反应', '技量', 'SP'], en: ['Melee', 'Ranged', 'Evade', 'Hit', 'React', 'Skill', 'SP'], ja: ['格闘', '射撃', '回避', '命中', '反応', '技量', 'SP'], ko: ['격투', '사격', '회피', '명중', '반응', '기량', 'SP'] }[tl(lang)];
+const weaponCols = { zh: ['标记', '威力', '射程', '命中', '弹数', 'EN', '气力', '暴击', '必要技能', '改造'], en: ['Marks', 'Power', 'Range', 'Hit', 'Ammo', 'EN', 'Morale', 'Crit', 'Requires', 'Upgr.'], ja: ['記号', '攻撃力', '射程', '命中', '弾数', 'EN', '気力', 'CT', '必要技能', '改造'], ko: ['표시', '공격력', '사거리', '명중', '탄수', 'EN', '기력', 'CT', '필요 조건', '개조'] }[tl(lang)];
 // The printed markers (格／射, P, B), then the requirement by its data/weapons.json key, and the upgrade type.
 const marks = (w: any) => [w.attack === 'melee' ? '格' : '射', w.post_move ? 'P' : '', w.beam ? 'B' : '', w.locked ? '🔒' : ''].join('');
-const unitName = (id: number) => data.units.find((u) => u.id === id)?.name[tl(lang)] ?? String(id);
-const key = (n: { ja: string; zh: string; en: string }, id: number) => `${id} ${n.ja} ${n.zh} ${n.en}`.toLowerCase();
+// Korean names may be missing from the data: those show the English.
+const nameIn = (n: { ja: string; zh: string; en: string; ko?: string }) => n[tl(lang)] ?? n.en;
+const unitName = (id: number) => { const u = data.units.find((u) => u.id === id); return u ? nameIn(u.name) : String(id); };
+const key = (n: { ja: string; zh: string; en: string; ko?: string }, id: number) => `${id} ${n.ja} ${n.zh} ${n.en} ${n.ko ?? ''}`.toLowerCase();
 const repo = 'https://github.com/dyzz/srw64-recomp/blob/main/docs/guide/data-mods';
-const sep = lang === 'en' ? ', ' : '、';
-const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(lang)] ?? String(id);
+const sep = listSep(lang);
+const pilotName = (id: number) => { const p = data.pilots.find((p) => p.id === id); return p ? nameIn(p.name) : String(id); };
 ---
 <Base lang={lang} title={t.title[kind][tl(lang)]} description={t.lead[tl(lang)]}>
   <div class="wrap ids" data-ids>
@@ -85,7 +90,7 @@ const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(
           <tr data-key={key(u.name, u.id)}>
             <td class="num latin">{u.id}</td>
             <td class="icon"><img src={`/gen/icons/${u.icon}.png`} alt="" width="24" height="24" loading="lazy" /></td>
-            <td>{u.name[tl(lang)]}{lang !== 'ja' && u.name.ja !== u.name[tl(lang)] && <span class="ja">{u.name.ja}</span>}</td>
+            <td>{nameIn(u.name)}{lang !== 'ja' && u.name.ja !== nameIn(u.name) && <span class="ja">{u.name.ja}</span>}</td>
             {[...u.terrain].map((r) => <td class={`rank r-${r === '-' ? 'x' : r}`}>{r}</td>)}
             {[u.hp, u.en, u.move, u.mobility, u.armor, u.limit, u.size].map((v) => <td class="stat latin">{v}</td>)}
             <td class="keys">{u.abilities.join(' ')}</td>
@@ -103,7 +108,7 @@ const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(
         <tbody>{data.pilots.map((p) => (
           <tr data-key={key(p.name, p.id)}>
             <td class="num latin">{p.id}</td>
-            <td>{p.name[tl(lang)]}{lang !== 'ja' && p.name.ja !== p.name[tl(lang)] && <span class="ja">{p.name.ja}</span>}</td>
+            <td>{nameIn(p.name)}{lang !== 'ja' && p.name.ja !== nameIn(p.name) && <span class="ja">{p.name.ja}</span>}</td>
             {[...p.terrain].map((r) => <td class={`rank r-${r === '-' ? 'x' : r}`}>{r}</td>)}
             {[p.melee, p.ranged, p.evade, p.hit, p.reaction, p.skill, p.sp].map((v) => <td class="stat latin">{v}</td>)}
             <td class="keys">{Object.keys(p.skills).join(' ')}</td>
@@ -123,7 +128,7 @@ const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(
         <tbody>{data.weapons.map((w) => (
           <tr data-key={key(w.name, w.id)}>
             <td class="num latin">{w.id}</td>
-            <td>{w.name[tl(lang)]}{lang !== 'ja' && w.name.ja !== w.name[tl(lang)] && <span class="ja">{w.name.ja}</span>}</td>
+            <td>{nameIn(w.name)}{lang !== 'ja' && w.name.ja !== nameIn(w.name) && <span class="ja">{w.name.ja}</span>}</td>
             {[marks(w), w.power, `${w.range_min}–${w.range_max}`, w.hit, w.ammo, w.en, w.morale, w.critical, w.requires ?? '', w.upgrade_type].map((v) => <td class="stat latin">{v}</td>)}
             {[...w.terrain].map((r) => <td class={`rank r-${r === '-' ? 'x' : r}`}>{r}</td>)}
             <td class="shared">{w.units.map((u) => `${u} ${unitName(u)}`).join(sep)}</td>

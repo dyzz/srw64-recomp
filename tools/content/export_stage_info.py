@@ -50,39 +50,39 @@ from srw64_native.zh_hant import Converter  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 GUIDE = ROOT / "guide" / "data"
 OUTPUT = ROOT / "content" / "stages"
-LANGS = ("zh-Hans", "ja", "en")
+LANGS = ("zh-Hans", "ja", "en", "ko")
 SCHEMA = "srw64.stage-info.v1"     # one language's view, the step before the metadata
 META_SCHEMA = "srw64.stage-meta.v1"
 STATUS_SCHEMA = "srw64.stage-status.v1"
 PROTAGONISTS = ("ark", "serein", "brad", "manami")
 BADGE = re.compile(r"\s*\{[≠+?]\}")
 # How each language ends a note's segment (the guide writes 「A；B」 / "A; B" / 「A。B」 or 「A；B」).
-SEGMENT = {"zh-Hans": "；", "en": "; ", "ja": "[。；]"}
-PREFIX = {"zh-Hans": "：", "en": ": ", "ja": "："}
+SEGMENT = {"zh-Hans": "；", "en": "; ", "ja": "[。；]", "ko": "; "}
+PREFIX = {"zh-Hans": "：", "en": ": ", "ja": "：", "ko": ": "}
 
-# Leading note segments → (field, values), with each translation's wording.
+# Leading note segments → (field, values), with each translation's wording (en, ja, ko).
 NOTE_QUALIFIERS = {
-    "仅阿克篇": ("protagonists", ["ark"], "Ark's scenario only", "アーク編のみ"),
-    "仅塞蕾茵篇": ("protagonists", ["serein"], "Selain's scenario only", "セレイン編のみ"),
-    "仅布拉德篇": ("protagonists", ["brad"], "Brad's scenario only", "ブラッド編のみ"),
-    "仅玛娜米篇": ("protagonists", ["manami"], "Manami's scenario only", "マナミ編のみ"),
-    "仅阿克篇、塞蕾茵篇": ("protagonists", ["ark", "serein"], "Ark's and Selain's scenarios only", "アーク編、セレイン編のみ"),
-    "仅布拉德篇、玛娜米篇": ("protagonists", ["brad", "manami"], "Brad's and Manami's scenarios only", "ブラッド編、マナミ編のみ"),
+    "仅阿克篇": ("protagonists", ["ark"], "Ark's scenario only", "アーク編のみ", "아크 편 한정"),
+    "仅塞蕾茵篇": ("protagonists", ["serein"], "Selain's scenario only", "セレイン編のみ", "세레인 편 한정"),
+    "仅布拉德篇": ("protagonists", ["brad"], "Brad's scenario only", "ブラッド編のみ", "브래드 편 한정"),
+    "仅玛娜米篇": ("protagonists", ["manami"], "Manami's scenario only", "マナミ編のみ", "마나미 편 한정"),
+    "仅阿克篇、塞蕾茵篇": ("protagonists", ["ark", "serein"], "Ark's and Selain's scenarios only", "アーク編、セレイン編のみ", "아크 편, 세레인 편 한정"),
+    "仅布拉德篇、玛娜米篇": ("protagonists", ["brad", "manami"], "Brad's and Manami's scenarios only", "ブラッド編、マナミ編のみ", "브래드 편, 마나미 편 한정"),
     "仅阿克篇、塞蕾茵篇、布拉德篇": ("protagonists", ["ark", "serein", "brad"],
-                         "Ark's, Selain's and Brad's scenarios only", "アーク編、セレイン編、ブラッド編のみ"),
-    "仅独立军路线": ("routes", ["ia"], "Independence Army route only", "独立軍ルートのみ"),
-    "仅 OZ 路线": ("routes", ["oz"], "OZ route only", "OZルートのみ"),
-    "完全和平路线或 OZ 路线": ("routes", ["cp", "oz"], "Complete Pacifism route or OZ route", "完全平和ルートまたはOZルート"),
-    "第三方": ("third_party", True, "Third party", "第三勢力"),
+                         "Ark's, Selain's and Brad's scenarios only", "アーク編、セレイン編、ブラッド編のみ", "아크 편, 세레인 편, 브래드 편 한정"),
+    "仅独立军路线": ("routes", ["ia"], "Independence Army route only", "独立軍ルートのみ", "독립군 루트 한정"),
+    "仅 OZ 路线": ("routes", ["oz"], "OZ route only", "OZルートのみ", "OZ 루트 한정"),
+    "完全和平路线或 OZ 路线": ("routes", ["cp", "oz"], "Complete Pacifism route or OZ route", "完全平和ルートまたはOZルート", "완전평화 루트 또는 OZ 루트"),
+    "第三方": ("third_party", True, "Third party", "第三勢力", "제3세력"),
 }
 # Leading 「X：」 of a card's secret text → protagonists, with each translation's prefix.
 SECRET_QUALIFIERS = {
-    "阿克篇": (["ark"], "Ark's scenario", "アーク編"),
-    "塞蕾茵篇": (["serein"], "Selain's scenario", "セレイン編"),
-    "布拉德篇": (["brad"], "Brad's scenario", "ブラッド編"),
-    "玛娜米篇": (["manami"], "Manami's scenario", "マナミ編"),
-    "真实系": (["ark", "serein"], "Real", "リアル系"),
-    "超级系": (["brad", "manami"], "Super", "スーパー系"),
+    "阿克篇": (["ark"], "Ark's scenario", "アーク編", "아크 편"),
+    "塞蕾茵篇": (["serein"], "Selain's scenario", "セレイン編", "세레인 편"),
+    "布拉德篇": (["brad"], "Brad's scenario", "ブラッド編", "브래드 편"),
+    "玛娜米篇": (["manami"], "Manami's scenario", "マナミ編", "마나미 편"),
+    "真实系": (["ark", "serein"], "Real", "リアル系", "리얼계"),
+    "超级系": (["brad", "manami"], "Super", "スーパー系", "슈퍼계"),
 }
 # A hidden element whose kicker names one protagonist belongs to that scenario.
 KICKER = {"阿克专属": "ark", "塞蕾茵专属": "serein", "布拉德专属": "brad", "玛娜米专属": "manami"}
@@ -98,7 +98,7 @@ def clean(text: str) -> str:
 
 
 def wording(phrases: tuple, lang: str) -> str:
-    return {"en": phrases[0], "ja": phrases[1]}[lang]
+    return {"en": phrases[0], "ja": phrases[1], "ko": phrases[2]}[lang]
 
 
 def split_note(zh: str, note: str, lang: str, row: dict, where: str) -> str:

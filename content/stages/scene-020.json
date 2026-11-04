@@ -5,7 +5,8 @@
   "zh-Hans": "来自海与大地之间",
   "zh-Hant": "來自海與大地之間",
   "ja": "海と大地の狭間より",
-  "en": "From Between Sea and Land"
+  "en": "From Between Sea and Land",
+  "ko": "바다와 대지 사이에서"
  },
  "title_ja": "海と大地の狭間より",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "共通",
     "zh-Hant": "共通",
     "ja": "共通",
-    "en": "Common"
+    "en": "Common",
+    "ko": "공통"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "卡拉利亚＋巴斯托尔",
       "zh-Hant": "卡拉利亞＋巴斯托爾",
       "ja": "ガラリア＋バストール",
-      "en": "Garalia + Bastole"
+      "en": "Garalia + Bastole",
+      "ko": "가라리아 + 바스톨"
      },
      "text": {
       "zh-Hans": "翔别攻击卡拉利亚，被她攻击时防御或回避",
       "zh-Hant": "翔別攻擊卡拉利亞，被她攻擊時防禦或迴避",
       "ja": "ショウはガラリアを攻撃せず、攻撃されたら防御か回避",
-      "en": "Show must not attack Garalia; defend or evade her attacks"
+      "en": "Show must not attack Garalia; defend or evade her attacks",
+      "ko": "쇼우로 가라리아를 공격하지 말 것, 가라리아의 공격은 방어나 회피"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "陶德（＋希露奇）",
       "zh-Hant": "陶德（＋希露奇）",
       "ja": "トッド（＋シルキー）",
-      "en": "Tod (+ Silky)"
+      "en": "Tod (+ Silky)",
+      "ko": "토드(+ 실키)"
      },
      "text": {
       "zh-Hans": "卡拉利亚只关系希露奇同乘，与陶德加入无关",
       "zh-Hant": "卡拉利亞只關係希露奇同乘，與陶德加入無關",
       "ja": "ガラリアはシルキー同乗の条件のみ、トッド加入とは無関係",
-      "en": "Garalia only decides whether Silky rides along, not Tod"
+      "en": "Garalia only decides whether Silky rides along, not Tod",
+      "ko": "가라리아는 실키 동승만 결정, 토드와는 무관"
      }
     },
     {
@@ -56,13 +62,15 @@
       "zh-Hans": "凤",
       "zh-Hant": "鳳",
       "ja": "フォウ",
-      "en": "Four"
+      "en": "Four",
+      "ko": "포우"
      },
      "text": {
       "zh-Hans": "用卡缪说服凤（第 2 步，说服后本关结束）",
       "zh-Hant": "用卡密兒說服鳳（第 2 步，說服後本關結束）",
       "ja": "カミーユでフォウを説得（第2段階、説得でステージ終了）",
-      "en": "Persuade Four with Kamille (step 2; ends the stage)"
+      "en": "Persuade Four with Kamille (step 2; ends the stage)",
+      "ko": "카미유로 포우를 설득(2단계, 스테이지 종료)"
      }
     }
    ],
@@ -72,19 +80,22 @@
       "zh-Hans": "米诺夫斯基飞行器",
       "zh-Hant": "米諾夫斯基飛行器",
       "ja": "ミノフスキークラフト",
-      "en": "Minovsky Craft"
+      "en": "Minovsky Craft",
+      "ko": "미노프스키 크래프트"
      },
      "from": {
       "zh-Hans": "卡拉利亚",
       "zh-Hant": "卡拉利亞",
       "ja": "ガラリア",
-      "en": "Garalia"
+      "en": "Garalia",
+      "ko": "가라리아"
      },
      "note": {
       "zh-Hans": "第 4 回合敌方阶段前击坠才掉落（无法招募）",
       "zh-Hant": "第 4 回合敵方階段前擊墜才掉落（無法招募）",
       "ja": "第4ターン敵フェイズ前に撃墜時のみ（加入不可に）",
-      "en": "Drops only if shot down before turn 4 enemy phase"
+      "en": "Drops only if shot down before turn 4 enemy phase",
+      "ko": "4턴 적 페이즈 전에 격추해야만 드롭"
      },
      "retreat": false
     },
@@ -93,19 +104,22 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "巴恩",
       "zh-Hant": "巴恩",
       "ja": "バーン",
-      "en": "Bern"
+      "en": "Bern",
+      "ko": "번"
      },
      "note": {
       "zh-Hans": "卡拉利亚入队或被翔击坠时才登场",
       "zh-Hant": "卡拉利亞入隊或被翔擊墜時才登場",
       "ja": "ガラリア加入かショウが撃墜した場合のみ登場",
-      "en": "Appears only if Garalia joined or Show shot her down"
+      "en": "Appears only if Garalia joined or Show shot her down",
+      "ko": "가라리아 가입 또는 쇼우가 격추한 경우에만 등장"
      },
      "retreat": false
     },
@@ -114,19 +128,22 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "凤",
       "zh-Hant": "鳳",
       "ja": "フォウ",
-      "en": "Four"
+      "en": "Four",
+      "ko": "포우"
      },
      "note": {
       "zh-Hans": "可被卡缪说服（说服后不掉落）",
       "zh-Hant": "可被卡密兒說服（說服後不掉落）",
       "ja": "カミーユで説得可能（説得時はドロップなし）",
-      "en": "Can be persuaded by Kamille (no drop if persuaded)"
+      "en": "Can be persuaded by Kamille (no drop if persuaded)",
+      "ko": "카미유로 설득 가능(설득하면 파츠 드롭 없음)"
      },
      "retreat": false
     }

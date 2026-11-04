@@ -6,7 +6,7 @@ import { vorbisEncoder, vorbisInfo } from './audio-tools';
 import { el, fill, openPackage, packageForm, say, writePackage, type Text } from './mod-package';
 import { picker, type Pickable } from './picker';
 
-type Lang = 'zh' | 'en' | 'ja';
+type Lang = 'zh' | 'en' | 'ja' | 'ko';
 type Line = [number, number, number, string, number];   // record, speaker, label, text, never shown
 // One voiced line: the file that goes into the package once it is ready.
 type Voice = { fileName: string; ogg?: Uint8Array; seconds: number; state: 'waiting' | 'decoding' | 'encoding' | 'ready' | 'error'; progress?: number };
@@ -39,7 +39,7 @@ export function initVoiceMaker() {
   };
   const form = packageForm(root, text, locale, text.game);
   const byRecord = new Map(lines.map((l, i) => [l[0], i]));
-  const nameOf = new Map(pick.map((p) => [p.id, p.name[lang] || p.name.ja]));
+  const nameOf = new Map(pick.map((p) => [p.id, p.name[lang] || (lang === 'ko' ? p.name.en : '') || p.name.ja]));
   const voices = new Map<number, Voice>();
   // What an opened package held besides the voices, kept so exporting it again loses nothing.
   let keptFiles: Record<string, Uint8Array> = {};
@@ -118,7 +118,7 @@ export function initVoiceMaker() {
       add(r, f); added++;
     }
     const parts = [fill(text.bulkDone, { n: added })];
-    if (skipped.length) parts.push(fill(text.bulkSkipped, { n: skipped.length, names: skipped.slice(0, 5).join('、') + (skipped.length > 5 ? '…' : '') }));
+    if (skipped.length) parts.push(fill(text.bulkSkipped, { n: skipped.length, names: skipped.slice(0, 5).join(lang === 'en' || lang === 'ko' ? ', ' : '、') + (skipped.length > 5 ? '…' : '') }));
     say(bulkStatus, parts.join(' '), skipped.length > 0 && added === 0);
   }
   root.querySelector<HTMLInputElement>('[data-bulk-input]')!.addEventListener('change', (e) => {

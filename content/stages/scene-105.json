@@ -5,7 +5,8 @@
   "zh-Hans": "嘶吼的宇宙",
   "zh-Hant": "嘶吼的宇宙",
   "ja": "絶叫の宇宙",
-  "en": "Screaming Space"
+  "en": "Screaming Space",
+  "ko": "절규의 우주"
  },
  "title_ja": "絶叫の宇宙",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "共通",
     "zh-Hant": "共通",
     "ja": "共通",
-    "en": "Common"
+    "en": "Common",
+    "ko": "공통"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "葵丝＋亚克托·德卡",
       "zh-Hant": "葵絲＋亞克托·德卡",
       "ja": "クェス＋ヤクト・ドーガ",
-      "en": "Quess + Jagd Doga"
+      "en": "Quess + Jagd Doga",
+      "ko": "퀘스 + 야크트 도가"
      },
      "text": {
       "zh-Hans": "保住葵丝，用阿姆罗击坠夏亚（拉·凯拉姆入区后第 2 个我方阶段前）",
       "zh-Hant": "保住葵絲，用阿姆羅擊墜夏亞（拉·凱拉姆入區後第 2 個我方階段前）",
       "ja": "クェスを残しアムロでシャア撃墜（アクシズ進入後2回目の味方フェイズ前）",
-      "en": "Spare Quess; Amuro downs Char before Ra Cailum's 2nd phase at Axis"
+      "en": "Spare Quess; Amuro downs Char before Ra Cailum's 2nd phase at Axis",
+      "ko": "퀘스는 남겨 두고, 라 카이람이 액시즈에서 두 번째 페이즈를 맞기 전에 아무로로 샤아 격추"
      }
     }
    ],
@@ -42,13 +46,15 @@
       "zh-Hans": "哈啰",
       "zh-Hant": "哈囉",
       "ja": "ハロ",
-      "en": "Haro"
+      "en": "Haro",
+      "ko": "하로"
      },
      "from": {
       "zh-Hans": "夏亚",
       "zh-Hant": "夏亞",
       "ja": "シャア",
-      "en": "Char"
+      "en": "Char",
+      "ko": "샤아"
      },
      "retreat": false
     },
@@ -57,19 +63,22 @@
       "zh-Hans": "推进器",
       "zh-Hant": "推進器",
       "ja": "ブースター",
-      "en": "Booster"
+      "en": "Booster",
+      "ko": "부스터"
      },
      "from": {
       "zh-Hans": "葵丝",
       "zh-Hant": "葵絲",
       "ja": "クェス",
-      "en": "Quess"
+      "en": "Quess",
+      "ko": "퀘스"
      },
      "note": {
       "zh-Hans": "要在夏亚之前击坠（会失去葵丝）",
       "zh-Hant": "要在夏亞之前擊墜（會失去葵絲）",
       "ja": "シャアより先に撃墜（クェスは入手不可に）",
-      "en": "Shoot her down before Char (you lose Quess)"
+      "en": "Shoot her down before Char (you lose Quess)",
+      "ko": "샤아보다 먼저 격추(퀘스를 잃음)"
      },
      "retreat": false
     },
@@ -78,13 +87,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "邱尼",
       "zh-Hant": "裘尼",
       "ja": "ギュネイ",
-      "en": "Gyunei"
+      "en": "Gyunei",
+      "ko": "규네이"
      },
      "retreat": false
     },
@@ -93,13 +104,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "蕾森",
       "zh-Hant": "蕾森",
       "ja": "レズン",
-      "en": "Rezin"
+      "en": "Rezin",
+      "ko": "레즌"
      },
      "retreat": false
     },
@@ -108,13 +121,15 @@
       "zh-Hans": "洗牌同盟纹章",
       "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
-      "en": "Shuffle Crest"
+      "en": "Shuffle Crest",
+      "ko": "셔플의 문장"
      },
      "from": {
       "zh-Hans": "米利亚尔特",
       "zh-Hant": "米利亞爾特",
       "ja": "ミリアルド",
-      "en": "Milliardo"
+      "en": "Milliardo",
+      "ko": "밀리아르도"
      },
      "routes": [
       "ia"
@@ -126,13 +141,15 @@
       "zh-Hans": "洗牌同盟纹章",
       "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
-      "en": "Shuffle Crest"
+      "en": "Shuffle Crest",
+      "ko": "셔플의 문장"
      },
      "from": {
       "zh-Hans": "卡多",
       "zh-Hant": "卡多",
       "ja": "ガトー",
-      "en": "Gato"
+      "en": "Gato",
+      "ko": "가토"
      },
      "routes": [
       "oz"

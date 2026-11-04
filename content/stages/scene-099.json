@@ -5,7 +5,8 @@
   "zh-Hans": "哈曼的阴影",
   "zh-Hant": "哈曼的陰影",
   "ja": "ハマーンの影",
-  "en": "Haman's Shadow"
+  "en": "Haman's Shadow",
+  "ko": "하만의 그림자"
  },
  "title_ja": "ハマーンの影",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "OZ路线／随特列斯",
     "zh-Hant": "OZ路線／隨特列斯",
     "ja": "OZルート／トレーズにつく",
-    "en": "OZ route / with Treize"
+    "en": "OZ route / with Treize",
+    "ko": "OZ 루트 / 트레즈와 함께"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "普露兹",
       "zh-Hant": "普露茲",
       "ja": "プルツー",
-      "en": "Ple-Two"
+      "en": "Ple-Two",
+      "ko": "플 투"
      },
      "text": {
       "zh-Hans": "用捷度说服普露兹（需普露已入队）",
       "zh-Hant": "用傑特說服普露茲（需普露已入隊）",
       "ja": "ジュドーでプルツーを説得（プルの加入が条件）",
-      "en": "Persuade Ple-Two with Judau (needs Ple in the party)"
+      "en": "Persuade Ple-Two with Judau (needs Ple in the party)",
+      "ko": "쥬도로 플 투 설득(플이 아군에 있어야 함)"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "多鲁基斯Ⅲ",
       "zh-Hant": "托爾吉斯Ⅲ",
       "ja": "トールギスⅢ",
-      "en": "Tallgeese III"
+      "en": "Tallgeese III",
+      "ko": "톨기스 III"
      },
      "text": {
       "zh-Hans": "关末选「改成多鲁基斯Ⅲ」→换乘多鲁基斯Ⅲ",
       "zh-Hant": "關末選「改成托爾吉斯Ⅲ」→換乘托爾吉斯Ⅲ",
       "ja": "クリア時「トールギスⅢにする」を選ぶとトールギスⅢに乗り換え",
-      "en": "At stage end pick “Change to the Tallgeese III” to swap"
+      "en": "At stage end pick “Change to the Tallgeese III” to swap",
+      "ko": "스테이지 종료 시 “톨기스 III로 바꾼다”를 골라 교체"
      }
     },
     {
@@ -56,13 +62,15 @@
       "zh-Hans": "千鹤手术支线（孔巴特拉V 能否出击）",
       "zh-Hant": "千鶴手術支線（孔巴德拉V 能否出擊）",
       "ja": "ちずる手術分岐（コン・バトラーV の出撃可否）",
-      "en": "Chizuru surgery branch (whether Combattler V can deploy)"
+      "en": "Chizuru surgery branch (whether Combattler V can deploy)",
+      "ko": "치즈루 수술 분기(컴배틀러 V 출격 가능 여부)"
      },
      "text": {
       "zh-Hans": "无需操作：触发千鹤手术剧情时本关豹马不能出击",
       "zh-Hant": "無需操作：觸發千鶴手術劇情時本關豹馬不能出擊",
       "ja": "操作不要：ちずるの手術イベントに入っていれば豹馬は出撃不可",
-      "en": "No action: Hyoma can't deploy if the Chizuru surgery story triggered"
+      "en": "No action: Hyoma can't deploy if the Chizuru surgery story triggered",
+      "ko": "할 일 없음: 치즈루 수술 이야기가 발생했다면 효마 출격 불가"
      }
     }
    ],
@@ -72,13 +80,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "马修玛",
       "zh-Hant": "馬修曼",
       "ja": "マシュマー",
-      "en": "Mashymre"
+      "en": "Mashymre",
+      "ko": "마슈마"
      },
      "retreat": false
     },
@@ -87,13 +97,15 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "卡多",
       "zh-Hant": "卡多",
       "ja": "ガトー",
-      "en": "Gato"
+      "en": "Gato",
+      "ko": "가토"
      },
      "retreat": false
     },
@@ -102,13 +114,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "姬拉",
       "zh-Hant": "凱拉",
       "ja": "キャラ",
-      "en": "Chara"
+      "en": "Chara",
+      "ko": "캐라"
      },
      "retreat": false
     },
@@ -117,13 +131,15 @@
       "zh-Hans": "高性能雷达",
       "zh-Hant": "高性能雷達",
       "ja": "高性能レーダー",
-      "en": "High-Fidelity Radar"
+      "en": "High-Fidelity Radar",
+      "ko": "고성능 레이더"
      },
      "from": {
       "zh-Hans": "格雷米",
       "zh-Hant": "克雷米",
       "ja": "グレミー",
-      "en": "Glemy"
+      "en": "Glemy",
+      "ko": "글레미"
      },
      "retreat": false
     },
@@ -132,13 +148,15 @@
       "zh-Hans": "混合式装甲",
       "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
-      "en": "Hybrid Armor"
+      "en": "Hybrid Armor",
+      "ko": "하이브리드 아머"
      },
      "from": {
       "zh-Hans": "普露兹",
       "zh-Hant": "普露茲",
       "ja": "プルツー",
-      "en": "Ple-Two"
+      "en": "Ple-Two",
+      "ko": "플 투"
      },
      "retreat": false
     }

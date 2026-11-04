@@ -5,7 +5,8 @@
   "zh-Hans": "虚假的和平",
   "zh-Hant": "虛假的和平",
   "ja": "偽りの平和",
-  "en": "False Peace"
+  "en": "False Peace",
+  "ko": "거짓된 평화"
  },
  "title_ja": "偽りの平和",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线",
     "zh-Hant": "獨立軍路線",
     "ja": "独立軍ルート",
-    "en": "Independence Army route"
+    "en": "Independence Army route",
+    "ko": "독립군 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "艾夏＋凤翼",
       "zh-Hant": "艾夏＋鳳翼",
       "ja": "アイシャ＋エルブルス",
-      "en": "Aisha + Elbulls"
+      "en": "Aisha + Elbulls",
+      "ko": "아이샤 + 엘브루스"
      },
      "text": {
       "zh-Hans": "用玛娜米说服艾夏（第 1 步，无门槛）",
       "zh-Hant": "用瑪娜米說服艾夏（第 1 步，無門檻）",
       "ja": "マナミでアイシャを説得（第1段階、条件なし）",
-      "en": "Persuade Aisha with Manami (step 1, no prerequisite)"
+      "en": "Persuade Aisha with Manami (step 1, no prerequisite)",
+      "ko": "마나미로 아이샤를 설득(1단계, 사전 조건 없음)"
      },
      "protagonists": [
       "manami"
@@ -44,13 +48,15 @@
       "zh-Hans": "卡茨＋瓦伊罗斯（含超级夺地者）",
       "zh-Hant": "卡茨＋瓦伊羅斯（含超級奪地者）",
       "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
-      "en": "Kurtz + Virose (including Super Earthgain)"
+      "en": "Kurtz + Virose (including Super Earthgain)",
+      "ko": "카츠 + 바이로즈(슈퍼 어스게인 포함)"
      },
      "text": {
       "zh-Hans": "用布拉德击坠卡茨（计入招回所需次数）",
       "zh-Hant": "用布拉德擊墜卡茨（計入招回所需次數）",
       "ja": "ブラッドでカーツを撃墜（呼び戻しに必要な回数に数える）",
-      "en": "Shoot down Kurtz with Brad (counts toward getting him back)"
+      "en": "Shoot down Kurtz with Brad (counts toward getting him back)",
+      "ko": "브래드로 카츠 격추(되찾는 조건으로 집계)"
      },
      "protagonists": [
       "brad"
@@ -63,13 +69,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "赫尔马特",
       "zh-Hant": "赫爾馬特",
       "ja": "ヘルマット",
-      "en": "Helmut"
+      "en": "Helmut",
+      "ko": "헬무트"
      },
      "retreat": false
     },
@@ -78,13 +86,15 @@
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
       "ja": "アポジモーター",
-      "en": "Apogee Motor"
+      "en": "Apogee Motor",
+      "ko": "아포지 모터"
      },
      "from": {
       "zh-Hans": "巴斯克",
       "zh-Hant": "巴斯克",
       "ja": "バスク",
-      "en": "Bask"
+      "en": "Bask",
+      "ko": "바스크"
      },
      "third_party": true,
      "retreat": false
@@ -94,13 +104,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "莱拉",
       "zh-Hant": "萊拉",
       "ja": "ライラ",
-      "en": "Lila"
+      "en": "Lila",
+      "ko": "라일라"
      },
      "third_party": true,
      "retreat": false
@@ -110,13 +122,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "亚赞",
       "zh-Hant": "亞贊",
       "ja": "ヤザン",
-      "en": "Yazan"
+      "en": "Yazan",
+      "ko": "야잔"
      },
      "third_party": true,
      "retreat": false
@@ -126,13 +140,15 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "卡茨",
       "zh-Hant": "卡茨",
       "ja": "カーツ",
-      "en": "Kurtz"
+      "en": "Kurtz",
+      "ko": "카츠"
      },
      "protagonists": [
       "brad"
@@ -145,13 +161,15 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "艾夏",
       "zh-Hant": "艾夏",
       "ja": "アイシャ",
-      "en": "Aisha"
+      "en": "Aisha",
+      "ko": "아이샤"
      },
      "protagonists": [
       "manami"

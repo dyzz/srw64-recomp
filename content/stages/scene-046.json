@@ -5,7 +5,8 @@
   "zh-Hans": "新的道路",
   "zh-Hant": "新的道路",
   "ja": "新しき道",
-  "en": "A New Path"
+  "en": "A New Path",
+  "ko": "새로운 길"
  },
  "title_ja": "新しき道",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "OZ路线",
     "zh-Hant": "OZ路線",
     "ja": "OZルート",
-    "en": "OZ route"
+    "en": "OZ route",
+    "ko": "OZ 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "破晓作战：OZ 或独立军",
       "zh-Hant": "破曉作戰：OZ 或獨立軍",
       "ja": "オペレーション・デイブレイク：OZか独立軍",
-      "en": "Operation Daybreak: OZ or Independence Army"
+      "en": "Operation Daybreak: OZ or Independence Army",
+      "ko": "오퍼레이션 데이브레이크: OZ 또는 독립군"
      },
      "text": {
       "zh-Hans": "「破晓作战」关末选「加入OZ，为恢复秩序而努力」",
       "zh-Hant": "「破曉作戰」關末選「加入OZ，為恢復秩序而努力」",
       "ja": "「オペレーション・デイブレイク」で「OZに入り、秩序回復に努める」",
-      "en": "Choose “Join OZ and work to restore order” in Operation Daybreak"
+      "en": "Choose “Join OZ and work to restore order” in Operation Daybreak",
+      "ko": "오퍼레이션 데이브레이크에서 “OZ에 들어가 질서 회복에 힘쓴다”를 선택"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "卡茨＋瓦伊罗斯（含超级夺地者）",
       "zh-Hant": "卡茨＋瓦伊羅斯（含超級奪地者）",
       "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
-      "en": "Kurtz + Virose (including Super Earthgain)"
+      "en": "Kurtz + Virose (including Super Earthgain)",
+      "ko": "카츠 + 바이로즈(슈퍼 어스게인 포함)"
      },
      "text": {
       "zh-Hans": "用布拉德击坠卡茨（第 3 回合我方阶段登场）",
       "zh-Hant": "用布拉德擊墜卡茨（第 3 回合我方階段登場）",
       "ja": "ブラッドでカーツを撃墜（第3ターン味方フェイズ登場）",
-      "en": "Shoot down Kurtz with Brad (appears turn 3 player phase)"
+      "en": "Shoot down Kurtz with Brad (appears turn 3 player phase)",
+      "ko": "브래드로 카츠 격추(3턴 아군 페이즈에 등장)"
      },
      "protagonists": [
       "brad"
@@ -59,13 +65,15 @@
       "zh-Hans": "只影响对白的分支",
       "zh-Hant": "只影響對白的分支",
       "ja": "台詞のみの分岐",
-      "en": "Dialogue-only branches"
+      "en": "Dialogue-only branches",
+      "ko": "대사만 바뀌는 분기"
      },
      "text": {
       "zh-Hans": "开场给战舰命名与对利修的选项只改变台词",
       "zh-Hant": "開場給戰艦命名與對利修的選項只改變臺詞",
       "ja": "艦名の二択とリッシュへの三択はセリフが変わるだけ",
-      "en": "The ship-naming and Rish choices only change dialogue"
+      "en": "The ship-naming and Rish choices only change dialogue",
+      "ko": "함 이름 선택과 릿슈에 대한 선택은 대사만 바뀜"
      }
     }
    ],
@@ -75,13 +83,15 @@
       "zh-Hans": "抗光束涂层",
       "zh-Hant": "抗光束塗層",
       "ja": "対ビームコーティング",
-      "en": "Anti-Beam Coating"
+      "en": "Anti-Beam Coating",
+      "ko": "대빔 코팅"
      },
      "from": {
       "zh-Hans": "赫尔马特",
       "zh-Hant": "赫爾馬特",
       "ja": "ヘルマット",
-      "en": "Helmut"
+      "en": "Helmut",
+      "ko": "헬무트"
      },
      "retreat": false
     },
@@ -90,13 +100,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "秀特",
       "zh-Hant": "秀特",
       "ja": "ショット",
-      "en": "Shot"
+      "en": "Shot",
+      "ko": "쇼트"
      },
      "retreat": false
     },
@@ -105,13 +117,15 @@
       "zh-Hans": "强化推进器",
       "zh-Hant": "強化推進器",
       "ja": "メガブースター",
-      "en": "Mega Booster"
+      "en": "Mega Booster",
+      "ko": "메가 부스터"
      },
      "from": {
       "zh-Hans": "古拉博士",
       "zh-Hant": "古拉博士",
       "ja": "グラー博士",
-      "en": "Dr. Gura"
+      "en": "Dr. Gura",
+      "ko": "구라 박사"
      },
      "retreat": false
     },
@@ -120,13 +134,15 @@
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
       "ja": "アポジモーター",
-      "en": "Apogee Motor"
+      "en": "Apogee Motor",
+      "ko": "아포지 모터"
      },
      "from": {
       "zh-Hans": "暗黑大将军",
       "zh-Hant": "暗黑大將軍",
       "ja": "暗黒大将軍",
-      "en": "Great General of Darkness"
+      "en": "Great General of Darkness",
+      "ko": "암흑대장군"
      },
      "retreat": false
     },
@@ -135,19 +151,22 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "卡茨",
       "zh-Hant": "卡茨",
       "ja": "カーツ",
-      "en": "Kurtz"
+      "en": "Kurtz",
+      "ko": "카츠"
      },
      "note": {
       "zh-Hans": "布拉德不在场时登场即离开",
       "zh-Hant": "布拉德不在場時登場即離開",
       "ja": "ブラッドがマップ上にいないと登場してすぐ離脱",
-      "en": "Leaves as soon as it appears if Brad isn't on the map"
+      "en": "Leaves as soon as it appears if Brad isn't on the map",
+      "ko": "브래드가 맵에 없으면 등장하자마자 이탈"
      },
      "protagonists": [
       "brad"

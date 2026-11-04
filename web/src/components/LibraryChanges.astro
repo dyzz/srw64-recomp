@@ -7,10 +7,10 @@ import type { TextChange } from '../lib/data';
 
 interface Props { changes?: TextChange[]; lang: Lang; tag?: string; }
 const { changes = [], lang, tag = '' } = Astro.props;
-const l = lang === 'ja' ? null : tl(lang);
+const l = lang === 'ja' || lang === 'ko' ? null : tl(lang);
 const rows = l ? changes.filter((c) => l in c.was) : [];
 const t = {
-  title: { zh: (v: string) => `${v} 后的译名改动`, en: (v: string) => `Changed since ${v}`, ja: (v: string) => v },
+  title: { zh: (v: string) => `${v} 后的译名改动`, en: (v: string) => `Changed since ${v}`, ja: (v: string) => v, ko: (v: string) => `${v} 이후 바뀐 이름` },
   kinds: {
     name: { zh: '名称', en: 'Name' }, full_name: { zh: '全名', en: 'Full name' }, weapon: { zh: '武器', en: 'Weapon' },
     ability: { zh: '能力', en: 'Ability' }, movement: { zh: '移动类型', en: 'Movement' }, skill: { zh: '技能', en: 'Skill' },

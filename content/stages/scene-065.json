@@ -5,7 +5,8 @@
   "zh-Hans": "不会燃尽的流星",
   "zh-Hant": "不會燃盡的流星",
   "ja": "燃え尽きない流星",
-  "en": "The Shooting Star That Never Burns Out"
+  "en": "The Shooting Star That Never Burns Out",
+  "ko": "꺼지지 않는 유성"
  },
  "title_ja": "燃え尽きない流星",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "完全和平路线",
     "zh-Hant": "完全和平路線",
     "ja": "完全平和ルート",
-    "en": "Complete Pacifism route"
+    "en": "Complete Pacifism route",
+    "ko": "완전평화 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "艾夏＋凤翼",
       "zh-Hant": "艾夏＋鳳翼",
       "ja": "アイシャ＋エルブルス",
-      "en": "Aisha + Elbulls"
+      "en": "Aisha + Elbulls",
+      "ko": "아이샤 + 엘브루스"
      },
      "text": {
       "zh-Hans": "用玛娜米说服艾夏（第 1 步，无门槛）",
       "zh-Hant": "用瑪娜米說服艾夏（第 1 步，無門檻）",
       "ja": "マナミでアイシャを説得（第1段階、条件なし）",
-      "en": "Persuade Aisha with Manami (step 1, no prerequisite)"
+      "en": "Persuade Aisha with Manami (step 1, no prerequisite)",
+      "ko": "마나미로 아이샤를 설득(1단계, 사전 조건 없음)"
      },
      "protagonists": [
       "manami"
@@ -44,13 +48,15 @@
       "zh-Hans": "利修＋西格露恩",
       "zh-Hant": "利修＋西格露恩",
       "ja": "リッシュ＋シグルーン",
-      "en": "Rish + Sigroon"
+      "en": "Rish + Sigroon",
+      "ko": "릿슈 + 시그룬"
      },
      "text": {
       "zh-Hans": "塞蕾茵与利修战前三选选第 2 或第 3 项",
       "zh-Hant": "塞蕾茵與利修戰前三選選第 2 或第 3 項",
       "ja": "セレインとリッシュの交戦前の3択で2番目か3番目を選ぶ",
-      "en": "Before Selain fights Rish, pick option 2 or 3 in the three-way choice"
+      "en": "Before Selain fights Rish, pick option 2 or 3 in the three-way choice",
+      "ko": "세레인이 릿슈와 싸우기 전 3지선다에서 2번째나 3번째를 선택"
      },
      "protagonists": [
       "serein"
@@ -63,13 +69,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "莱拉",
       "zh-Hant": "萊拉",
       "ja": "ライラ",
-      "en": "Lila"
+      "en": "Lila",
+      "ko": "라일라"
      },
      "retreat": false
     },
@@ -78,13 +86,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "杰利德",
       "zh-Hant": "傑利特",
       "ja": "ジェリド",
-      "en": "Jerid"
+      "en": "Jerid",
+      "ko": "제리드"
      },
      "retreat": false
     },
@@ -93,13 +103,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "卡克利康",
       "zh-Hant": "卡古里康",
       "ja": "カクリコン",
-      "en": "Kacricon"
+      "en": "Kacricon",
+      "ko": "카크리콘"
      },
      "retreat": false
     },
@@ -108,13 +120,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "玛雅",
       "zh-Hant": "瑪雅",
       "ja": "マウアー",
-      "en": "Mouar"
+      "en": "Mouar",
+      "ko": "마우아"
      },
      "retreat": false
     },
@@ -123,13 +137,15 @@
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
       "ja": "アポジモーター",
-      "en": "Apogee Motor"
+      "en": "Apogee Motor",
+      "ko": "아포지 모터"
      },
      "from": {
       "zh-Hans": "埃尔利希",
       "zh-Hant": "埃爾利希",
       "ja": "エルリッヒ",
-      "en": "Ehrlich"
+      "en": "Ehrlich",
+      "ko": "엘리히"
      },
      "protagonists": [
       "ark"
@@ -141,13 +157,15 @@
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
       "ja": "アポジモーター",
-      "en": "Apogee Motor"
+      "en": "Apogee Motor",
+      "ko": "아포지 모터"
      },
      "from": {
       "zh-Hans": "利修",
       "zh-Hant": "利修",
       "ja": "リッシュ",
-      "en": "Rish"
+      "en": "Rish",
+      "ko": "릿슈"
      },
      "protagonists": [
       "serein"
@@ -159,13 +177,15 @@
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
       "ja": "アポジモーター",
-      "en": "Apogee Motor"
+      "en": "Apogee Motor",
+      "ko": "아포지 모터"
      },
      "from": {
       "zh-Hans": "艾夏",
       "zh-Hant": "艾夏",
       "ja": "アイシャ",
-      "en": "Aisha"
+      "en": "Aisha",
+      "ko": "아이샤"
      },
      "protagonists": [
       "manami"

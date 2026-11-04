@@ -15,7 +15,7 @@ type Labels = {
   sizes: string[];
   choices: Record<string, { value: string | null; label: string }[]>;   // a weapon's attack, terrain_at, requires
 };
-type Entry = Record<string, any> & { id: number; name: { ja: string; zh: string; en: string } };
+type Entry = Record<string, any> & { id: number; name: { ja: string; zh: string; en: string; ko?: string } };
 
 const FILES: Record<Kind, string> = { units: 'data/units.json', pilots: 'data/pilots.json', weapons: 'data/weapons.json' };
 const CHANNELS = ['air', 'land', 'sea', 'space'];
@@ -29,12 +29,12 @@ export function initDataMaker() {
   const payload = document.getElementById('maker-data');
   if (!root || !payload) return;
   const { text, labels, pick, locale, lang } = JSON.parse(payload.textContent!) as {
-    text: Text & { terrainNames: string[] }; labels: Labels; locale: string; lang: 'zh' | 'en' | 'ja';
+    text: Text & { terrainNames: string[] }; labels: Labels; locale: string; lang: 'zh' | 'en' | 'ja' | 'ko';
     pick: { units: Pickable[]; pilots: Pickable[]; series: { id: number | null; name: string }[] };
   };
   const lists = data as unknown as Record<Kind, Entry[]>;
   const byId = Object.fromEntries((['units', 'pilots', 'weapons'] as Kind[]).map((k) => [k, new Map(lists[k].map((e) => [e.id, e]))])) as Record<Kind, Map<number, Entry>>;
-  const nameOf = (e: Entry) => e.name[lang] || e.name.ja;
+  const nameOf = (e: Entry) => e.name[lang] || (lang === 'ko' ? e.name.en : '') || e.name.ja;
   const form = packageForm(root, text, locale, text.game);
 
   // Changes by kind and number: field -> value, as the file writes it (terrain by channel,
@@ -156,9 +156,9 @@ export function initDataMaker() {
     const id = current, e = byId[kind].get(id)!;
     const parts: (Node | null)[] = [];
     if (kind === 'pilots' && e.shared?.length)
-      parts.push(el('p', { class: 'hint' }, text.shared + e.shared.map((s: number) => `${s} ${byId.pilots.get(s) ? nameOf(byId.pilots.get(s)!) : ''}`).join(lang === 'en' ? ', ' : '、')));
+      parts.push(el('p', { class: 'hint' }, text.shared + e.shared.map((s: number) => `${s} ${byId.pilots.get(s) ? nameOf(byId.pilots.get(s)!) : ''}`).join(lang === 'en' || lang === 'ko' ? ', ' : '、')));
     if (kind === 'weapons' && e.units?.length > 1)
-      parts.push(el('p', { class: 'hint' }, text.carriers + e.units.map((u: number) => `${u} ${byId.units.get(u) ? nameOf(byId.units.get(u)!) : ''}`).join(lang === 'en' ? ', ' : '、')));
+      parts.push(el('p', { class: 'hint' }, text.carriers + e.units.map((u: number) => `${u} ${byId.units.get(u) ? nameOf(byId.units.get(u)!) : ''}`).join(lang === 'en' || lang === 'ko' ? ', ' : '、')));
     if (kind === 'pilots') parts.push(el('p', { class: 'hint' }, text.stats1));
     parts.push(el('div', { class: 'grid' }, ...labels.fields[kind].map((f) => numberField(f, id)),
       kind === 'units' ? selectField(text.size, 'size', labels.sizes, id) : null));
@@ -224,7 +224,7 @@ export function initDataMaker() {
         }));
       };
       draw();
-      const was = e.spirits.map(([k, l]: [string, number]) => `${labels.spirits.find((s) => s.key === k)?.label ?? k} ${l}`).join(lang === 'en' ? ', ' : '、');
+      const was = e.spirits.map(([k, l]: [string, number]) => `${labels.spirits.find((s) => s.key === k)?.label ?? k} ${l}`).join(lang === 'en' || lang === 'ko' ? ', ' : '、');
       parts.push(el('div', { class: 'sub' }, text.spirits), rows, el('p', { class: 'hint' }, `${text.original}：${was || '—'}`));
     }
     parts.push(el('div', {}, el('button', { type: 'button', class: 'mini', onclick: () => { edits[kind].delete(id); renderEdited(); renderEditor(); } }, text.reset)));
@@ -305,7 +305,7 @@ export function initDataMaker() {
       if ((v[0] - 0 || v[1] - 5 || v[2] - 3) < 0) m.manifest.game = '>=0.5.3';
     }
     const { files: docs, problems } = files();
-    if (problems.length) return say(exportStatus, text.fixFirst + problems.join('；'), true);
+    if (problems.length) return say(exportStatus, text.fixFirst + problems.join(lang === 'en' || lang === 'ko' ? '; ' : '；'), true);
     if (!Object.keys(docs).length && !Object.keys(kept).length) return say(exportStatus, text.errEmpty, true);
     const out: Record<string, Uint8Array> = { ...kept };
     for (const [path, doc] of Object.entries(docs)) out[path] = jsonBytes(doc);

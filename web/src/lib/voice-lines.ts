@@ -60,12 +60,22 @@ const W: Record<TextLang, {
     combo: '合体技{w}', flagship: '旗艦撃墜（艦長、二つから一つ）', exchange: '掛け合い {i}/{n}', never: '原作では出ない',
     open: '（', close: '）', sep: '、', or: '／', name: (n) => `「${n}」`,
   },
+  // The Korean pages show the English text and names (the table has no Korean column).
+  ko: {
+    situations: ['공격', '격추', '대미지 큼, HP 30% 미만', '대미지 중간, HP 30–90%', '대미지 작음, HP 90% 이상', '회피', '대미지 없음, 배리어 또는 장갑', '반격 불가, 탄약 또는 EN 부족', '반격 불가, 사정거리 밖'],
+    afterimage: '분신으로 회피', general: '범용, {i}/{n}', weapon: '{w} 사용', low: '범용 대사가 우선될 수 있음', unit: '{u} 탑승', vsUnit: '상대 기체 {u}',
+    vsPilot: '상대 {p}', copilot: '서브 파일럿 {p}', flag: '시나리오 플래그 {f}', flagIs: '시나리오 플래그 {f} = {v}', condition: '조건 {c}', female: '상대가 여성',
+    combo: '합체 공격 {w}', flagship: '기함 격추(함장, 둘 중 하나)', exchange: '주고받는 대사 {i}/{n}', never: '원작에서는 나오지 않음',
+    open: ' (', close: ')', sep: ', ', or: ' / ', name: (n) => n,
+  },
 };
 const put = (s: string, v: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k) => String(v[k] ?? ''));
 
 export function voiceLines(lang: Lang) {
   const t = tl(lang), w = W[t];
-  const local = (n: Names | undefined, fallback: string) => (n ? n[t] || n.ja : fallback);
+  // The columns read: Korean uses the English text and names.
+  const c = t === 'ko' ? 'en' : t;
+  const local = (n: Names | undefined, fallback: string) => (n ? n[c] || n.ja : fallback);
   const actors = new Map<number, Names>(bgm.pilots.map((p) => [p.id, p.name]));
   const units = new Map<number, Names>(data.units.map((u) => [u.id, u.name]));
   const weapons = new Map<number, Names>(data.weapons.map((x) => [x.id, x.name]));
@@ -96,7 +106,7 @@ export function voiceLines(lang: Lang) {
       if (x.x) more.push(w.never);
       return more.length ? `${head}${w.open}${more.join(w.sep)}${w.close}` : head;
     };
-    return { text: [...new Set(scenes.map(one))].join(t === 'en' ? '; ' : '；'), never: scenes.every((x) => x.x) };
+    return { text: [...new Set(scenes.map(one))].join(t === 'en' || t === 'ko' ? '; ' : '；'), never: scenes.every((x) => x.x) };
   }
 
   const scenes = new Map<number, Scene[]>((voices.scenes as [number, Scene[]][]).map(([r, s]) => [r, s]));
@@ -113,7 +123,7 @@ export function voiceLines(lang: Lang) {
     const record = Number(r[cRecord]), speaker = Number(r[cSpeaker]);
     const l = label(scenes.get(record) ?? []);
     if (!labelIndex.has(l.text)) { labelIndex.set(l.text, labels.length); labels.push(l.text); }
-    const text = t === 'ja' ? r[cJa] : (t === 'zh' ? r[cZh] : r[cEn]) || r[cJa];
+    const text = c === 'ja' ? r[cJa] : (c === 'zh' ? r[cZh] : r[cEn]) || r[cJa];
     lines.push([record, speaker, labelIndex.get(l.text)!, text, l.never ? 1 : 0]);
     ja.push(t === 'ja' ? '' : r[cJa]);
     const s = speakers.get(speaker) ?? { id: speaker, name: actors.get(speaker) ?? { ja: r[nJa], zh: r[nZh] || r[nJa], en: r[nEn] || r[nJa] }, lines: 0 };

@@ -5,7 +5,8 @@
   "zh-Hans": "激战的宇宙",
   "zh-Hant": "激戰的宇宙",
   "ja": "激戦の宇宙",
-  "en": "Fierce Fighting in Space"
+  "en": "Fierce Fighting in Space",
+  "ko": "격전의 우주"
  },
  "title_ja": "激戦の宇宙",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "完全和平路线（随特列斯）",
     "zh-Hant": "完全和平路線（隨特列斯）",
     "ja": "完全平和ルート（トレーズにつく）",
-    "en": "Complete Pacifism route (with Treize)"
+    "en": "Complete Pacifism route (with Treize)",
+    "ko": "완전평화 루트(트레즈와 함께)"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "重返战场：随特列斯或独自作战",
       "zh-Hant": "重返戰場：隨特列斯或獨自作戰",
       "ja": "戦場に帰る：トレーズにつくか、自分たちだけで戦うか",
-      "en": "Return to the Battlefield: with Treize or going it alone"
+      "en": "Return to the Battlefield: with Treize or going it alone",
+      "ko": "전장으로 돌아가다: 트레즈 편 또는 단독 항전"
      },
      "text": {
       "zh-Hans": "在「重返战场」选「投靠特列斯」进入，之后并入 OZ 后半",
       "zh-Hant": "在「重返戰場」選「投靠特列斯」進入，之後併入 OZ 後半",
       "ja": "「戦場に帰る」で「トレーズにつく」を選んで進入、後にOZ後半に合流",
-      "en": "Reached via “Side with Treize”; later joins OZ's second half"
+      "en": "Reached via “Side with Treize”; later joins OZ's second half",
+      "ko": "“트레즈 편에 선다”로 진입; 이후 OZ 루트 후반에 합류"
      }
     }
    ],
@@ -42,13 +46,15 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "布拉奇",
       "zh-Hant": "布拉奇",
       "ja": "ブラッキー",
-      "en": "Blacky"
+      "en": "Blacky",
+      "ko": "블래키"
      },
      "retreat": false
     },
@@ -57,13 +63,15 @@
       "zh-Hans": "超合金Z",
       "zh-Hant": "超合金Z",
       "ja": "超合金Z",
-      "en": "Super Alloy Z"
+      "en": "Super Alloy Z",
+      "ko": "초합금 Z"
      },
      "from": {
       "zh-Hans": "西罗克",
       "zh-Hant": "西羅克",
       "ja": "シロッコ",
-      "en": "Scirocco"
+      "en": "Scirocco",
+      "ko": "시로코"
      },
      "retreat": false
     },
@@ -72,13 +80,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "玛雅",
       "zh-Hant": "瑪雅",
       "ja": "マウアー",
-      "en": "Mouar"
+      "en": "Mouar",
+      "ko": "마우아"
      },
      "retreat": false
     },
@@ -87,13 +97,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "亚赞",
       "zh-Hant": "亞贊",
       "ja": "ヤザン",
-      "en": "Yazan"
+      "en": "Yazan",
+      "ko": "야잔"
      },
      "retreat": false
     },
@@ -103,13 +115,15 @@
       "zh-Hans": "玛古",
       "zh-Hant": "馬可",
       "ja": "マーグ",
-      "en": "Marg"
+      "en": "Marg",
+      "ko": "마그"
      },
      "note": {
       "zh-Hans": "布拉奇被击坠时撤退",
       "zh-Hant": "布拉奇被擊墜時撤退",
       "ja": "ブラッキーが撃墜されると撤退",
-      "en": "Retreats when Blacky is shot down"
+      "en": "Retreats when Blacky is shot down",
+      "ko": "블래키를 격추하면 퇴각"
      },
      "retreat": true
     }

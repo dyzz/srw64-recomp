@@ -4,7 +4,7 @@
 // (opening, each map event with its trigger, ending), and the lines as cards.
 import Base from '../../../layouts/Base.astro';
 import { LANGS, UI, canReview, tagOf, tl, type Lang, type TextLang } from '../../../i18n';
-import { library, scene as loadScene, storyIndex, storySource, type Line } from '../../../lib/data';
+import { library, loc, scene as loadScene, storyIndex, storySource, type Line } from '../../../lib/data';
 
 export async function getStaticPaths() {
   return LANGS.flatMap((l) => storyIndex().map((s) => ({ params: { lang: l.code, scene: String(s.scene) } })));
@@ -16,59 +16,60 @@ const all = storyIndex();
 // Lines that read differently from the latest game release (export_story.py).
 const tag = storySource()?.baseline ?? '';
 const changedAny = !!tag && !!s.changed && (s.changed.zh > 0 || s.changed.en > 0);
-const titleOf = (n: number) => all.find((x) => x.scene === n)?.title[tl(lang)] ?? `#${n}`;
+const titleOf = (n: number) => { const x = all.find((y) => y.scene === n); return x ? loc(x.title, lang) : `#${n}`; };
 const t = {
-  stage: { zh: (n: string) => `第 ${n} 话`, en: (n: string) => `Stage ${n}`, ja: (n: string) => `第${n}話` },
-  back: { zh: '全部关卡', en: 'All stages', ja: '全ステージ' },
-  prev: { zh: '上一话', en: 'Previous', ja: '前の話' },
-  next: { zh: '下一话', en: 'Next', ja: '次の話' },
-  lines: { zh: '句台词', en: 'lines', ja: '行のセリフ' },
-  nodes: { zh: '个节点', en: 'nodes', ja: 'ノード' },
-  choices: { zh: '个选择肢', en: 'choices', ja: '選択肢' },
-  suggestions: { zh: '条意见', en: 'suggestions', ja: '件の意見' },
-  count: { zh: (n: number) => `${n} 句`, en: (n: number) => `${n} lines`, ja: (n: number) => `${n} 行` },
-  toc: { zh: '本关目录', en: 'In this stage', ja: 'このステージ' },
-  jump: { zh: '跳转到节点…', en: 'Jump to a node…', ja: 'ノードへ移動…' },
-  search: { zh: '搜索本关', en: 'Search this stage', ja: 'このステージを検索' },
-  searchPh: { zh: '输入日文、译文或人物名', en: 'Enter original text, a translation or a character name', ja: '原文・訳文・キャラクター名を入力' },
-  prevHit: { zh: '上一处', en: 'Prev', ja: '前へ' },
-  nextHit: { zh: '下一处', en: 'Next', ja: '次へ' },
-  onlyReviewed: { zh: '只看有意见的台词', en: 'Only lines with suggestions', ja: '意見のある行のみ' },
-  onlyChanged: { zh: '只看更新', en: 'Only changed lines', ja: '更新された行のみ' },
-  changedStat: { zh: (v: string) => `句 ${v} 后更新`, en: (v: string) => `lines changed since ${v}`, ja: (v: string) => `行が ${v} 以降に更新` },
-  changed: { zh: (v: string) => `${v} 后有改动`, en: (v: string) => `Changed since ${v}`, ja: (v: string) => `${v} 以降に変更` },
-  newLine: { zh: (v: string) => `${v} 中没有这句译文`, en: (v: string) => `Not translated in ${v}`, ja: (v: string) => `${v} には訳文なし` },
-  translation: { zh: '译文', en: 'Translation', ja: '翻訳' },
-  original: { zh: '日文', en: 'Japanese', ja: '原文' },
-  show: { zh: '显示', en: 'Show', ja: '表示' },
-  hide: { zh: '隐藏', en: 'Hide', ja: '非表示' },
-  none: { zh: '不显示', en: 'None', ja: 'なし' },
-  jaLabel: { zh: '日文', en: 'JA', ja: '原文' },
-  suggest: { zh: '提建议', en: 'Suggest', ja: '意見' },
-  choice: { zh: '选择肢', en: 'Choice', ja: '選択肢' },
-  node: { zh: (n: number) => `节点 ${n}`, en: (n: number) => `Node ${n}`, ja: (n: number) => `ノード ${n}` },
-  heroDep: { zh: '随所选主角变化', en: 'Varies by protagonist', ja: '主人公によって変化' },
+  stage: { zh: (n: string) => `第 ${n} 话`, en: (n: string) => `Stage ${n}`, ja: (n: string) => `第${n}話`, ko: (n: string) => `제${n}화` },
+  back: { zh: '全部关卡', en: 'All stages', ja: '全ステージ', ko: '전체 스테이지' },
+  prev: { zh: '上一话', en: 'Previous', ja: '前の話', ko: '이전 화' },
+  next: { zh: '下一话', en: 'Next', ja: '次の話', ko: '다음 화' },
+  lines: { zh: '句台词', en: 'lines', ja: '行のセリフ', ko: '대사' },
+  nodes: { zh: '个节点', en: 'nodes', ja: 'ノード', ko: '노드' },
+  choices: { zh: '个选择肢', en: 'choices', ja: '選択肢', ko: '선택지' },
+  suggestions: { zh: '条意见', en: 'suggestions', ja: '件の意見', ko: '의견' },
+  count: { zh: (n: number) => `${n} 句`, en: (n: number) => `${n} lines`, ja: (n: number) => `${n} 行`, ko: (n: number) => `${n}줄` },
+  toc: { zh: '本关目录', en: 'In this stage', ja: 'このステージ', ko: '이 스테이지' },
+  jump: { zh: '跳转到节点…', en: 'Jump to a node…', ja: 'ノードへ移動…', ko: '노드로 이동…' },
+  search: { zh: '搜索本关', en: 'Search this stage', ja: 'このステージを検索', ko: '이 스테이지 검색' },
+  searchPh: { zh: '输入日文、译文或人物名', en: 'Enter original text, a translation or a character name', ja: '原文・訳文・キャラクター名を入力', ko: '원문, 번역문 또는 캐릭터 이름 입력' },
+  prevHit: { zh: '上一处', en: 'Prev', ja: '前へ', ko: '이전' },
+  nextHit: { zh: '下一处', en: 'Next', ja: '次へ', ko: '다음' },
+  onlyReviewed: { zh: '只看有意见的台词', en: 'Only lines with suggestions', ja: '意見のある行のみ', ko: '의견이 있는 대사만' },
+  onlyChanged: { zh: '只看更新', en: 'Only changed lines', ja: '更新された行のみ', ko: '변경된 대사만' },
+  changedStat: { zh: (v: string) => `句 ${v} 后更新`, en: (v: string) => `lines changed since ${v}`, ja: (v: string) => `行が ${v} 以降に更新`, ko: (v: string) => `${v} 이후 변경된 대사` },
+  changed: { zh: (v: string) => `${v} 后有改动`, en: (v: string) => `Changed since ${v}`, ja: (v: string) => `${v} 以降に変更`, ko: (v: string) => `${v} 이후 변경됨` },
+  newLine: { zh: (v: string) => `${v} 中没有这句译文`, en: (v: string) => `Not translated in ${v}`, ja: (v: string) => `${v} には訳文なし`, ko: (v: string) => `${v}에는 이 번역이 없음` },
+  translation: { zh: '译文', en: 'Translation', ja: '翻訳', ko: '번역' },
+  original: { zh: '日文', en: 'Japanese', ja: '原文', ko: '일본어 원문' },
+  show: { zh: '显示', en: 'Show', ja: '表示', ko: '표시' },
+  hide: { zh: '隐藏', en: 'Hide', ja: '非表示', ko: '숨김' },
+  none: { zh: '不显示', en: 'None', ja: 'なし', ko: '없음' },
+  jaLabel: { zh: '日文', en: 'JA', ja: '原文', ko: '원문' },
+  suggest: { zh: '提建议', en: 'Suggest', ja: '意見', ko: '의견' },
+  choice: { zh: '选择肢', en: 'Choice', ja: '選択肢', ko: '선택지' },
+  node: { zh: (n: number) => `节点 ${n}`, en: (n: number) => `Node ${n}`, ja: (n: number) => `ノード ${n}`, ko: (n: number) => `노드 ${n}` },
+  heroDep: { zh: '随所选主角变化', en: 'Varies by protagonist', ja: '主人公によって変化', ko: '주인공에 따라 달라짐' },
   note: {
     zh: '头像取自 HD 美术包。台词编号与游戏的台词文件一致，每句都可直接链接。原版脚本将各主角的路线写在同一关内，这里按段落标注路线。能确定主角的关卡或段落会显示对应主角和搭档；其余位置使用〈主角〉〈搭档〉，超级系和真实系关卡另会标出两位候选主角。',
     en: 'Portraits use the HD art pack. Line numbers match the game’s dialogue files, and each line has a direct link. The original script combines the protagonists’ routes within each stage, so passages are labelled by route. Where the stage or passage identifies the protagonist, that protagonist and partner are shown. Elsewhere, ⟨Hero⟩ and ⟨Partner⟩ are used; Super and Real stages also list the two possible protagonists.',
     ja: '顔グラフィックは HD アートパックのものです。行番号はゲームのセリフファイルと一致し、各行に直接リンクできます。原作のスクリプトでは各主人公のルートが同じステージに含まれるため、段落ごとにルートを示しています。主人公が特定できるステージや段落では、その主人公とパートナーを表示します。それ以外は〈主人公〉〈パートナー〉とし、スーパー系・リアル系のステージでは候補の 2 人も示します。',
+    ko: '얼굴 그래픽은 HD 아트 팩의 것입니다. 대사 번호는 게임의 대사 파일과 같으며, 각 대사에 바로 링크할 수 있습니다. 원작 스크립트는 각 주인공의 루트를 한 스테이지 안에 함께 담고 있어, 단락마다 루트를 표시했습니다. 스테이지나 단락에서 주인공이 정해지는 경우에는 그 주인공과 동료를 표시합니다. 그 밖에는 〈주인공〉〈동료〉로 표기하며, 슈퍼로봇 타입과 리얼로봇 타입 스테이지에는 주인공 후보 두 명도 함께 표시합니다.',
   },
 };
 const SECTIONS = {
-  opening: { kicker: 'OPENING', title: { zh: '开场', en: 'Opening', ja: 'オープニング' }, desc: { zh: '关卡开始时的剧情。', en: 'Story at the start of the stage.', ja: 'ステージ開始時のシナリオ。' } },
-  map: { kicker: 'ON THE MAP', title: { zh: '战场', en: 'On the map', ja: 'マップ' }, desc: { zh: '战斗中满足条件时触发的事件，按脚本顺序排列，并标明各节点的触发条件。', en: 'Events triggered during battle, listed in script order. Each node shows its trigger conditions.', ja: '戦闘中に条件を満たすと発生するイベントを、スクリプト順に表示します。各ノードに発生条件を示しています。' } },
-  ending: { kicker: 'ENDING', title: { zh: '过关后', en: 'After the stage', ja: 'クリア後' }, desc: { zh: '过关后的剧情。', en: 'The story after the stage is cleared.', ja: 'ステージクリア後のシナリオ。' } },
+  opening: { kicker: 'OPENING', title: { zh: '开场', en: 'Opening', ja: 'オープニング', ko: '오프닝' }, desc: { zh: '关卡开始时的剧情。', en: 'Story at the start of the stage.', ja: 'ステージ開始時のシナリオ。', ko: '스테이지 시작 때의 시나리오입니다.' } },
+  map: { kicker: 'ON THE MAP', title: { zh: '战场', en: 'On the map', ja: 'マップ', ko: '맵' }, desc: { zh: '战斗中满足条件时触发的事件，按脚本顺序排列，并标明各节点的触发条件。', en: 'Events triggered during battle, listed in script order. Each node shows its trigger conditions.', ja: '戦闘中に条件を満たすと発生するイベントを、スクリプト順に表示します。各ノードに発生条件を示しています。', ko: '전투 중 조건을 만족하면 발생하는 이벤트를 스크립트 순서대로 실었습니다. 각 노드에 발생 조건을 표시합니다.' } },
+  ending: { kicker: 'ENDING', title: { zh: '过关后', en: 'After the stage', ja: 'クリア後', ko: '클리어 후' }, desc: { zh: '过关后的剧情。', en: 'The story after the stage is cleared.', ja: 'ステージクリア後のシナリオ。', ko: '스테이지 클리어 후의 시나리오입니다.' } },
 } as const;
 // What kind of condition a map event has, from its Chinese trigger text.
 const CATS = {
-  turn: { zh: '回合', en: 'Turn', ja: 'ターン' },
-  defeat: { zh: '击破', en: 'Defeat', ja: '撃破' },
-  wipe: { zh: '全灭', en: 'Wiped out', ja: '全滅' },
-  count: { zh: '剩余', en: 'Remaining', ja: '残り' },
-  hp: { zh: 'HP', en: 'HP', ja: 'HP' },
-  delay: { zh: '延时', en: 'Delayed', ja: '遅延' },
-  place: { zh: '到达', en: 'Reach', ja: '到達' },
-  other: { zh: '条件', en: 'Condition', ja: '条件' },
+  turn: { zh: '回合', en: 'Turn', ja: 'ターン', ko: '턴' },
+  defeat: { zh: '击破', en: 'Defeat', ja: '撃破', ko: '격파' },
+  wipe: { zh: '全灭', en: 'Wiped out', ja: '全滅', ko: '전멸' },
+  count: { zh: '剩余', en: 'Remaining', ja: '残り', ko: '잔여' },
+  hp: { zh: 'HP', en: 'HP', ja: 'HP', ko: 'HP' },
+  delay: { zh: '延时', en: 'Delayed', ja: '遅延', ko: '지연' },
+  place: { zh: '到达', en: 'Reach', ja: '到達', ko: '도달' },
+  other: { zh: '条件', en: 'Condition', ja: '条件', ko: '조건' },
 } as const;
 function category(zh = ''): keyof typeof CATS {
   if (/剩余 0 台/.test(zh)) return 'wipe';
@@ -81,9 +82,9 @@ function category(zh = ''): keyof typeof CATS {
   return 'other';
 }
 const PH: Record<string, Record<TextLang, string>> = {
-  Hero: { zh: '〈主角〉', en: '⟨Hero⟩', ja: '〈主人公〉' },
-  Partner: { zh: '〈搭档〉', en: '⟨Partner⟩', ja: '〈パートナー〉' },
-  HeroMech: { zh: '〈主角机〉', en: '⟨Hero’s mech⟩', ja: '〈主人公機〉' },
+  Hero: { zh: '〈主角〉', en: '⟨Hero⟩', ja: '〈主人公〉', ko: '〈주인공〉' },
+  Partner: { zh: '〈搭档〉', en: '⟨Partner⟩', ja: '〈パートナー〉', ko: '〈동료〉' },
+  HeroMech: { zh: '〈主角机〉', en: '⟨Hero’s mech⟩', ja: '〈主人公機〉', ko: '〈주인공 기체〉' },
 };
 // Who the hero is, where the script settles it: a stage on one hero's lane (stages 1–6,
 // the Ark and Brad side stories), or a passage behind one hero's route marker. The
@@ -92,7 +93,7 @@ const HEROES = ['ark', 'selain', 'brad', 'manami'] as const;
 type Hero = (typeof HEROES)[number];
 const HERO_IDS: Record<Hero, [number, number]> = { ark: [25, 29], selain: [26, 30], brad: [27, 31], manami: [28, 32] };
 const people = new Map(library().people.map((p) => [p.id, p]));
-const heroName = (h: Hero, l: Lang) => people.get(HERO_IDS[h][0])!.name[l];
+const heroName = (h: Hero, l: Lang) => loc(people.get(HERO_IDS[h][0])!.name, l);
 const laneHeroes = new Set(HEROES.filter((h) => s.episode?.lanes.length && s.episode.lanes.every((x) => x.zh.includes(heroName(h, 'zh')))));
 const stageHeroes: Hero[] = laneHeroes.size ? [...laneHeroes]
   : s.episode?.routes.length === 1 && s.episode.routes[0] === 'super' ? ['brad', 'manami']
@@ -103,16 +104,16 @@ function fill(ph: string, h: Hero, l: Lang) {
   if (ph === 'HeroMech') return null;
   const p = ph.startsWith('Partner') ? partner : ph.startsWith('Hero') ? hero : null;
   if (!p) return null;
-  if (ph.endsWith('Full')) return p.full_name[l];
-  if (ph.endsWith('Surname')) return l === 'ja' ? p.full_name.ja.split('・').pop()! : l === 'zh' ? p.full_name.zh.split('·').pop()! : p.full_name.en.split(' ').pop()!;
-  return p.name[l];
+  if (ph.endsWith('Full')) return loc(p.full_name, l);
+  if (ph.endsWith('Surname')) return l === 'ja' ? p.full_name.ja.split('・').pop()! : l === 'zh' ? p.full_name.zh.split('·').pop()! : loc(p.full_name, l).split(' ').pop()!;
+  return loc(p.name, l);
 }
 const esc = (x: string) => x.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 // {HeroName}-style placeholders as marked spans (the suggestion form turns them back),
 // showing the hero's names when the line's hero is settled.
 function rich(text: string, l: Lang, hero: Hero | null = null) {
   return esc(text).replace(/\{([A-Za-z]+)\}/g, (_, ph: string) => {
-    const label = (hero && fill(ph, hero, l)) || (ph === 'HeroMech' ? PH.HeroMech[l] : ph.startsWith('Partner') ? PH.Partner[l] : ph.startsWith('Hero') ? PH.Hero[l] : `{${ph}}`);
+    const label = (hero && fill(ph, hero, l)) || (ph === 'HeroMech' ? PH.HeroMech[tl(l)] : ph.startsWith('Partner') ? PH.Partner[tl(l)] : ph.startsWith('Hero') ? PH.Hero[tl(l)] : `{${ph}}`);
     return `<span class="ph" data-ph="${ph}">${esc(label)}</span>`;
   });
 }
@@ -128,7 +129,7 @@ const events = s.events.map((e) => {
     if (line.t === 'route') {
       const change = line.marker !== lastMarker && !(line.marker === '3DD0' && lastMarker === '');
       lastMarker = line.marker;
-      route = line.routes ? line.label[tl(lang)] : null;
+      route = line.routes ? loc(line.label, lang) : null;
       const marked = HEROES.filter((h) => line.routes?.includes(h));
       heroes = marked.length ? stageHeroes.filter((h) => marked.includes(h)) : stageHeroes;
       if (!heroes.length) heroes = marked;
@@ -146,10 +147,13 @@ const sections = (['opening', 'map', 'ending'] as const)
   .filter((x) => x.events.length > 0)
   .map((x, i) => ({ ...x, no: String(i + 1).padStart(2, '0'), count: x.events.reduce((n, e) => n + e.count, 0) }));
 const choiceCount = s.events.reduce((n, e) => n + e.lines.filter((l) => l.t === 'choice').length, 0);
-const trLangs = (lang === 'ja' ? ['en', 'zh'] : [tl(lang), tl(lang) === 'zh' ? 'en' : 'zh']) as TextLang[];
+// Korean, the translator's, beside the English it stands on.
+const trLangs = (lang === 'ja' ? ['en', 'zh'] : lang === 'ko' ? ['ko', 'en'] : [tl(lang), tl(lang) === 'zh' ? 'en' : 'zh']) as TextLang[];
 const face = (id: number | null | undefined) => (id == null ? null : `/gen/portraits/${id}.webp`);
-const pageTitle = `${s.episode ? t.stage[tl(lang)](s.episode.stage) + ' · ' : ''}${s.title[tl(lang)]}`;
-const nodeTitle = (x: (typeof events)[number]) => x.e.trigger?.[tl(lang)] ?? x.e.label[tl(lang)];
+const pageTitle = `${s.episode ? t.stage[tl(lang)](s.episode.stage) + ' · ' : ''}${loc(s.title, lang)}`;
+const nodeTitle = (x: (typeof events)[number]) => (x.e.trigger ? loc(x.e.trigger, lang) : loc(x.e.label, lang));
+// A line's text in a translation; English where the export has no Korean yet.
+const textOf = (line: { ja: string[]; zh: string[]; en: string[]; ko?: string[] }, l: TextLang) => line[l] ?? line.en;
 ---
 <Base lang={lang} title={pageTitle} description={`${s.title.ja} · ${s.count}`} review={review}>
   <div data-story data-lang={lang} data-scene={s.scene}>
@@ -157,10 +161,10 @@ const nodeTitle = (x: (typeof events)[number]) => x.e.trigger?.[tl(lang)] ?? x.e
       <div class="wrap">
         <a class="back" href={`/${lang}/story/`}>← {t.back[tl(lang)]}</a>
         <p class="kicker latin">{s.episode ? `STAGE ${s.episode.stage}` : `SCENE ${s.scene}`}</p>
-        <h1>{s.episode && <span class="stno">{t.stage[tl(lang)](s.episode.stage)} · </span>}{s.title[tl(lang)]}</h1>
+        <h1>{s.episode && <span class="stno">{t.stage[tl(lang)](s.episode.stage)} · </span>}{loc(s.title, lang)}</h1>
         {lang !== 'ja' && <p class="jt" lang="ja">{s.title.ja}</p>}
         <p class="sub">
-          {s.episode?.lanes.map((l) => <span class="lane">{l[tl(lang)]}</span>)}
+          {s.episode?.lanes.map((l) => <span class="lane">{loc(l, lang)}</span>)}
           {s.previous.length > 0 && <span class="pn">{t.prev[tl(lang)]} {s.previous.map((n) => <a href={`/${lang}/story/${n}/`}>{titleOf(n)}</a>)}</span>}
           {s.next.length > 0 && <span class="pn">{t.next[tl(lang)]} {s.next.map((n) => <a href={`/${lang}/story/${n}/`}>{titleOf(n)}</a>)}</span>}
         </p>
@@ -171,7 +175,7 @@ const nodeTitle = (x: (typeof events)[number]) => x.e.trigger?.[tl(lang)] ?? x.e
           <div><b class="latin">{events.length}</b><span>{t.nodes[tl(lang)]}</span></div>
           <div><b class="latin">{choiceCount}</b><span>{t.choices[tl(lang)]}</span></div>
           {review && <div><b class="latin" data-stat-suggestions>–</b><span>{t.suggestions[tl(lang)]}</span></div>}
-          {lang !== 'ja' && tag && s.changed && <div><b class="latin">{s.changed[tl(lang)]}</b><span>{t.changedStat[tl(lang)](tag)}</span></div>}
+          {lang !== 'ja' && lang !== 'ko' && tag && s.changed && <div><b class="latin">{s.changed[tl(lang)]}</b><span>{t.changedStat[tl(lang)](tag)}</span></div>}
         </div>
       </div>
     </section>
@@ -249,7 +253,7 @@ const nodeTitle = (x: (typeof events)[number]) => x.e.trigger?.[tl(lang)] ?? x.e
                 )}
                 {x.shown.map(({ line, route, markerChange, heroes }) => {
                   const hero = heroes.length === 1 ? heroes[0] : null;
-                  if (line.t === 'route') return markerChange ? <div class="route-mark"><span>{line.label[tl(lang)]}</span></div> : null;
+                  if (line.t === 'route') return markerChange ? <div class="route-mark"><span>{loc(line.label, lang)}</span></div> : null;
                   const anchor = `l${line.id}`;
                   if (line.t === 'choice') {
                     return (
@@ -257,7 +261,7 @@ const nodeTitle = (x: (typeof events)[number]) => x.e.trigger?.[tl(lang)] ?? x.e
                         <div class="face-col"><div class="face none" aria-hidden="true">?</div><a class="lid latin" href={`#${anchor}`}>@{line.id}</a></div>
                         <div class="body">
                           <div class="who"><strong class="name">{t.choice[tl(lang)]}</strong>{route && <span class="route">{route}</span>}{review && <button type="button" class="act" data-suggest={line.id}>{t.suggest[tl(lang)]}</button>}</div>
-                          {trLangs.map((l) => <div class={`tr tr-${l}`} lang={tagOf(lang, l)}><ol data-now>{(line[l][0] ?? '').split('\n').map((o) => <li set:html={rich(o, l, hero)} />)}</ol>{(line.was as Record<string, string[]> | undefined)?.[l] && (
+                          {trLangs.map((l) => <div class={`tr tr-${l}`} lang={tagOf(lang, l)}><ol data-now>{(textOf(line, l)[0] ?? '').split('\n').map((o) => <li set:html={rich(o, l, hero)} />)}</ol>{(line.was as Record<string, string[]> | undefined)?.[l] && (
                             <details class="upd" data-upd={l}>
                               <summary>{(line.was as Record<string, string[]>)[l].length ? t.changed[tl(lang)](tag) : t.newLine[tl(lang)](tag)}</summary>
                               <div class="diff" data-diff></div>
@@ -283,12 +287,12 @@ const nodeTitle = (x: (typeof events)[number]) => x.e.trigger?.[tl(lang)] ?? x.e
                       </div>
                       <div class="body">
                         <div class="who">
-                          <strong class="name">{who[tl(lang)]}</strong>
-                          {lang !== 'ja' && who.ja && who.ja !== who[tl(lang)] && <span class="wja" lang="ja">{who.ja}</span>}
+                          <strong class="name">{loc(who, lang)}</strong>
+                          {lang !== 'ja' && who.ja && who.ja !== loc(who, lang) && <span class="wja" lang="ja">{who.ja}</span>}
                           {open ? <span class="route">{maybe ?? t.heroDep[tl(lang)]}</span> : route && <span class="route">{route}</span>}
                           {review && <button type="button" class="act" data-suggest={line.id}>{t.suggest[tl(lang)]}</button>}
                         </div>
-                        {trLangs.map((l) => <div class={`tr tr-${l}`} lang={tagOf(lang, l)}><div data-now>{line[l].map((p) => <p set:html={rich(p, l, hero)} />)}</div>{(line.was as Record<string, string[]> | undefined)?.[l] && (
+                        {trLangs.map((l) => <div class={`tr tr-${l}`} lang={tagOf(lang, l)}><div data-now>{textOf(line, l).map((p) => <p set:html={rich(p, l, hero)} />)}</div>{(line.was as Record<string, string[]> | undefined)?.[l] && (
                             <details class="upd" data-upd={l}>
                               <summary>{(line.was as Record<string, string[]>)[l].length ? t.changed[tl(lang)](tag) : t.newLine[tl(lang)](tag)}</summary>
                               <div class="diff" data-diff></div>
@@ -440,7 +444,7 @@ const nodeTitle = (x: (typeof events)[number]) => x.e.trigger?.[tl(lang)] ?? x.e
 
   /* View controls, set on the root by scripts/story.ts. */
   [data-story] .tr { display: none; }
-  [data-story][data-tr='zh'] .tr-zh, [data-story][data-tr='en'] .tr-en { display: block; }
+  [data-story][data-tr='zh'] .tr-zh, [data-story][data-tr='en'] .tr-en, [data-story][data-tr='ko'] .tr-ko { display: block; }
   [data-story][data-ja='hide'] .ja { display: none; }
 
   @media (max-width: 960px) {

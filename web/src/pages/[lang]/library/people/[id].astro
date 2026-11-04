@@ -1,7 +1,7 @@
 ---
 import Base from '../../../../layouts/Base.astro';
 import { LANGS, UI, canReview, tl, type Lang } from '../../../../i18n';
-import { library, portraitUrl, type Person } from '../../../../lib/data';
+import { library, loc, portraitUrl, type Person } from '../../../../lib/data';
 import Term from '../../../../components/Term.astro';
 import LibraryChanges from '../../../../components/LibraryChanges.astro';
 
@@ -11,35 +11,36 @@ export async function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const lib = library();
 const p = lib.people.find((x) => x.id === Number(Astro.params.id)) as Person;
-const L = (k: string) => lib.labels[k]?.[tl(lang)] ?? k;
-const series = lib.series.find((s) => s.id === p.series)?.name[tl(lang)] ?? '';
+const L = (k: string) => (lib.labels[k] ? loc(lib.labels[k], lang) : k);
+const seriesL3 = lib.series.find((s) => s.id === p.series)?.name;
+const series = seriesL3 ? loc(seriesL3, lang) : '';
 const siblings = lib.people.filter((x) => x.series === p.series);
 const i = siblings.indexOf(p);
 const face = portraitUrl(p.portrait);
 const order = ['melee', 'shooting', 'skill', 'reaction', 'hit', 'evade', 'sp'] as const;
 const t = {
-  suggest: { zh: '对译名提建议', en: 'Suggest a name correction', ja: '訳名への意見を送る' },
-  growth: { zh: 'Lv1 → Lv99', en: 'Lv1 → Lv99', ja: 'Lv1 → Lv99' },
+  suggest: { zh: '对译名提建议', en: 'Suggest a name correction', ja: '訳名への意見を送る', ko: '번역 이름에 의견 보내기' },
+  growth: { zh: 'Lv1 → Lv99', en: 'Lv1 → Lv99', ja: 'Lv1 → Lv99', ko: 'Lv1 → Lv99' },
 };
 const partner = (id: number) => lib.people.find((x) => x.id === id);
 ---
-<Base lang={lang} title={`${p.name[tl(lang)]} · ${UI.nav.library[tl(lang)]}`} review={canReview(lang)}>
+<Base lang={lang} title={`${loc(p.name, lang)} · ${UI.nav.library[tl(lang)]}`} review={canReview(lang)}>
   <div class="wrap layout" data-library data-lang={lang} data-target-type="term" data-target-prefix="">
     <aside class="side">
       <a href={`/${lang}/library/#people`}>← {UI.nav.library[tl(lang)]}</a>
       <p class="series">{series}</p>
       <ul>
-        {siblings.map((x) => <li><a href={`/${lang}/library/people/${x.id}/`} aria-current={x === p ? 'page' : undefined}>{x.name[tl(lang)]}</a></li>)}
+        {siblings.map((x) => <li><a href={`/${lang}/library/people/${x.id}/`} aria-current={x === p ? 'page' : undefined}>{loc(x.name, lang)}</a></li>)}
       </ul>
     </aside>
 
     <main class="main">
       <div class="top">
-        <div class="art">{face ? <img src={face} alt={p.name[tl(lang)]} width="160" height="160" /> : <span class="none"></span>}</div>
+        <div class="art">{face ? <img src={face} alt={loc(p.name, lang)} width="160" height="160" /> : <span class="none"></span>}</div>
         <div class="info">
           <p class="crumb">{p.series != null ? <Term id={`series:${p.series}`} name={lib.series.find((x) => x.id === p.series)!.name} lang={lang} /> : series}</p>
           <div class="namerow" data-term={`person:${p.id}`}>
-            <h1>{p.name[tl(lang)]}</h1>
+            <h1>{loc(p.name, lang)}</h1>
             {p.full_name.ja !== p.name.ja && <Term id={`person-full:${p.id}`} name={p.full_name} lang={lang} class="full" />}
             {lang !== 'ja' && <span class="jn" lang="ja">{p.full_name.ja}</span>}
             <span class="tr-zh" hidden>{p.name.zh}</span><span class="tr-en" hidden>{p.name.en}</span>
@@ -55,7 +56,7 @@ const partner = (id: number) => lib.people.find((x) => x.id === id);
           </p>
           {p.no_battle || !p.stats ? <p class="dim">{L('library_no_stats')}</p> : <>
             {p.love.length > 0 && <p class="love"><span class="k">{L('library_love')}</span>
-              {p.love.map((x) => { const q = partner(x.partner_id); return <a class="pill" href={`/${lang}/library/people/${x.partner_id}/`}>{q?.name[tl(lang)]} <em>{x.mutual ? L('library_love_mutual') : L('library_love_one_way')}</em></a>; })}
+              {p.love.map((x) => { const q = partner(x.partner_id); return <a class="pill" href={`/${lang}/library/people/${x.partner_id}/`}>{q && loc(q.name, lang)} <em>{x.mutual ? L('library_love_mutual') : L('library_love_one_way')}</em></a>; })}
             </p>}
             <div class="stats">
               {order.map((k) => {
@@ -86,7 +87,7 @@ const partner = (id: number) => lib.people.find((x) => x.id === id);
             <div class="skill">
               <span class="sn"><Term id={`skill:${s.name.ja}`} name={s.name} lang={lang} /></span>
               <div class="axis">
-                {s.levels.map((l) => <span class="tick" style={`left:${((l.level - 1) / 98) * 100}%`} title={l.label[tl(lang)]}><i></i><b class="latin">{l.level}</b></span>)}
+                {s.levels.map((l) => <span class="tick" style={`left:${((l.level - 1) / 98) * 100}%`} title={loc(l.label, lang)}><i></i><b class="latin">{l.level}</b></span>)}
               </div>
             </div>
           ))}
@@ -94,8 +95,8 @@ const partner = (id: number) => lib.people.find((x) => x.id === id);
       </>}
 
       <nav class="pn">
-        {i > 0 && <a href={`/${lang}/library/people/${siblings[i - 1].id}/`}>← {siblings[i - 1].name[tl(lang)]}</a>}
-        {i < siblings.length - 1 && <a class="r" href={`/${lang}/library/people/${siblings[i + 1].id}/`}>{siblings[i + 1].name[tl(lang)]} →</a>}
+        {i > 0 && <a href={`/${lang}/library/people/${siblings[i - 1].id}/`}>← {loc(siblings[i - 1].name, lang)}</a>}
+        {i < siblings.length - 1 && <a class="r" href={`/${lang}/library/people/${siblings[i + 1].id}/`}>{loc(siblings[i + 1].name, lang)} →</a>}
       </nav>
     </main>
   </div>

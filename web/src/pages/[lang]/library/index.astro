@@ -1,12 +1,12 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import { langPaths, UI, tl, type Lang } from '../../../i18n';
-import { library, portraitUrl } from '../../../lib/data';
+import { library, loc, portraitUrl } from '../../../lib/data';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const lib = library();
-const seriesName = (id: number | null) => lib.series.find((s) => s.id === id)?.name[tl(lang)] ?? '';
+const seriesName = (id: number | null) => { const n = lib.series.find((s) => s.id === id)?.name; return n ? loc(n, lang) : ''; };
 function grouped<T extends { series: number | null }>(xs: T[]) {
   const out: { series: number | null; items: T[] }[] = [];
   for (const x of xs) {
@@ -18,7 +18,7 @@ function grouped<T extends { series: number | null }>(xs: T[]) {
 }
 const units = grouped(lib.units);
 // Entries whose texts changed since the latest game release, in this page's translation.
-const cl = lang === 'ja' ? null : tl(lang);
+const cl = lang === 'ja' || lang === 'ko' ? null : tl(lang);
 const changedEntries = cl ? [...lib.units, ...lib.people].filter((e) => (e.changed?.[cl] ?? 0) > 0).length : 0;
 const people = grouped(lib.people);
 const t = {
@@ -26,15 +26,17 @@ const t = {
     zh: `游戏内图鉴的网页版，按作品收录 ${lib.units.length} 台机体和 ${lib.people.length} 名人物。数值均为直接取自游戏的基础值。`,
     en: `The in-game Library on the web, with ${lib.units.length} units and ${lib.people.length} characters grouped by series. All stats are base values taken directly from the game.`,
     ja: `ゲーム内図鑑のウェブ版です。ユニット ${lib.units.length} 体、キャラクター ${lib.people.length} 人を作品別に掲載しています。数値はすべてゲームから直接取得した基本値です。`,
+    ko: `게임 속 도감의 웹판입니다. 기체 ${lib.units.length}기와 인물 ${lib.people.length}명을 작품별로 실었습니다. 모든 수치는 게임에서 직접 가져온 기본값입니다.`,
   },
-  units: { zh: '机体', en: 'Units', ja: 'ユニット' },
+  units: { zh: '机体', en: 'Units', ja: 'ユニット', ko: '기체' },
   changed: {
     zh: (n: number, v: string) => `自 ${v} 发布以来，有 ${n} 个条目的译名有改动（卡片上带「更新」标记）。`,
     en: (n: number, v: string) => `Since ${v}, the names in ${n} entries have changed (marked “changed” on their cards).`,
     ja: (_n: number, _v: string) => '',
+    ko: (_n: number, _v: string) => '',
   },
-  mark: { zh: '更新', en: 'changed', ja: '' },
-  people: { zh: '人物', en: 'Characters', ja: 'キャラクター' },
+  mark: { zh: '更新', en: 'changed', ja: '', ko: '' },
+  people: { zh: '人物', en: 'Characters', ja: 'キャラクター', ko: '인물' },
 };
 ---
 <Base lang={lang} title={UI.nav.library[tl(lang)]}>
@@ -59,7 +61,7 @@ const t = {
             {g.items.map((u) => (
               <li><a href={`/${lang}/library/unit/${u.id}/`}>
                 <img src={`/gen/units/${u.id}.webp`} alt="" width="96" height="96" loading="lazy" />
-                <span class="nm">{u.name[tl(lang)]}</span>
+                <span class="nm">{loc(u.name, lang)}</span>
                 {cl && (u.changed?.[cl] ?? 0) > 0 && <span class="chg">{t.mark[tl(lang)]}</span>}
                 {u.model && <span class="sub latin">{u.model}</span>}
               </a></li>
@@ -80,7 +82,7 @@ const t = {
               return (
                 <li><a href={`/${lang}/library/people/${p.id}/`} class={p.enemy ? 'enemy' : ''}>
                   {src ? <img class="face" src={src} alt="" width="96" height="96" loading="lazy" /> : <span class="face none" aria-hidden="true"></span>}
-                  <span class="nm">{p.name[tl(lang)]}</span>
+                  <span class="nm">{loc(p.name, lang)}</span>
                   {cl && (p.changed?.[cl] ?? 0) > 0 && <span class="chg">{t.mark[tl(lang)]}</span>}
                 </a></li>
               );

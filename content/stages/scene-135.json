@@ -5,7 +5,8 @@
   "zh-Hans": "突入！摧毁移动要塞！（下）",
   "zh-Hant": "突入！摧毀移動要塞！（下）",
   "ja": "突入!移動要塞を破壊せよ! （後）",
-  "en": "Charge! Destroy the Mobile Fortress! (Part 2)"
+  "en": "Charge! Destroy the Mobile Fortress! (Part 2)",
+  "ko": "돌입! 이동 요새를 파괴하라! 후편"
  },
  "title_ja": "突入!移動要塞を破壊せよ! （後）",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "完全和平路线",
     "zh-Hant": "完全和平路線",
     "ja": "完全平和ルート",
-    "en": "Complete Pacifism route"
+    "en": "Complete Pacifism route",
+    "ko": "완전평화 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "量产型大魔神",
       "zh-Hant": "量產型大魔神",
       "ja": "量産型グレート",
-      "en": "MP Great Mazinger"
+      "en": "MP Great Mazinger",
+      "ko": "양산형 그레이트"
      },
      "text": {
       "zh-Hans": "无需操作：通关得到量产型大魔神（无机师）",
       "zh-Hant": "無需操作：通關得到量產型大魔神（無機師）",
       "ja": "操作不要：クリアで量産型グレートを入手（パイロットなし）",
-      "en": "No action needed: clear to get the MP Great Mazinger (no pilot)"
+      "en": "No action needed: clear to get the MP Great Mazinger (no pilot)",
+      "ko": "할 일 없음: 클리어하면 양산형 그레이트(파일럿 없음) 획득"
      }
     }
    ],
@@ -42,13 +46,15 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "布莱大帝",
       "zh-Hant": "布萊大帝",
       "ja": "ブライ大帝",
-      "en": "Emperor Burai"
+      "en": "Emperor Burai",
+      "ko": "브라이 대제"
      },
      "retreat": false
     },
@@ -57,13 +63,15 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "古拉博士",
       "zh-Hant": "古拉博士",
       "ja": "グラー博士",
-      "en": "Dr. Gura"
+      "en": "Dr. Gura",
+      "ko": "구라 박사"
      },
      "retreat": false
     },
@@ -72,13 +80,15 @@
       "zh-Hans": "生物传感器",
       "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
-      "en": "Bio-Sensor"
+      "en": "Bio-Sensor",
+      "ko": "바이오 센서"
      },
      "from": {
       "zh-Hans": "地狱大元帅",
       "zh-Hant": "地獄大元帥",
       "ja": "地獄大元帥",
-      "en": "Great Marshal of Hell"
+      "en": "Great Marshal of Hell",
+      "ko": "지옥대원수"
      },
      "retreat": false
     }

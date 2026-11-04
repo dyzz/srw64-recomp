@@ -5,7 +5,8 @@
   "zh-Hans": "大胆无畏！鲁·凯恩的挑战",
   "zh-Hant": "大膽無畏！魯·凱恩的挑戰",
   "ja": "大胆不敵!ル・カインの挑戦",
-  "en": "Fearless! Le Cain's Challenge"
+  "en": "Fearless! Le Cain's Challenge",
+  "ko": "대담무쌍! 루 카인의 도전"
  },
  "title_ja": "大胆不敵!ル・カインの挑戦",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "超级系",
     "zh-Hant": "超級系",
     "ja": "スーパー系",
-    "en": "Super"
+    "en": "Super",
+    "ko": "슈퍼계"
    },
    "secrets": [],
    "enemies": [
@@ -26,19 +28,22 @@
       "zh-Hans": "生物传感器",
       "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
-      "en": "Bio-Sensor"
+      "en": "Bio-Sensor",
+      "ko": "바이오 센서"
      },
      "from": {
       "zh-Hans": "鲁·凯恩",
       "zh-Hant": "魯·凱恩",
       "ja": "ル・カイン",
-      "en": "Le Cain"
+      "en": "Le Cain",
+      "ko": "루 카인"
      },
      "note": {
       "zh-Hans": "再次登场后 HP 50% 以下即胜利，须一击击坠",
       "zh-Hant": "再次登場後 HP 50% 以下即勝利，須一擊擊墜",
       "ja": "再登場後はHP50%以下で勝利、一撃で撃墜",
-      "en": "Reappears; then one-shot it from above 50% HP"
+      "en": "Reappears; then one-shot it from above 50% HP",
+      "ko": "재등장 후 HP 50% 초과에서 일격에 격추"
      },
      "retreat": false
     },
@@ -47,19 +52,22 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "戈斯特罗",
       "zh-Hant": "戈斯特羅",
       "ja": "ゴステロ",
-      "en": "Gosterro"
+      "en": "Gosterro",
+      "ko": "고스테로"
      },
      "note": {
       "zh-Hans": "鲁·凯恩第一次被击坠后登场",
       "zh-Hant": "魯·凱恩第一次被擊墜後登場",
       "ja": "ル・カインの1回目の撃墜後に登場",
-      "en": "Appears after Le Cain is first shot down"
+      "en": "Appears after Le Cain is first shot down",
+      "ko": "루 카인을 처음 격추한 뒤 등장"
      },
      "retreat": false
     }

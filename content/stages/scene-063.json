@@ -5,7 +5,8 @@
   "zh-Hans": "净化",
   "zh-Hant": "淨化",
   "ja": "浄化",
-  "en": "Purification"
+  "en": "Purification",
+  "ko": "정화"
  },
  "title_ja": "浄化",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "完全和平路线",
     "zh-Hant": "完全和平路線",
     "ja": "完全平和ルート",
-    "en": "Complete Pacifism route"
+    "en": "Complete Pacifism route",
+    "ko": "완전평화 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "卡拉利亚＋巴斯托尔",
       "zh-Hant": "卡拉利亞＋巴斯托爾",
       "ja": "ガラリア＋バストール",
-      "en": "Garalia + Bastole"
+      "en": "Garalia + Bastole",
+      "ko": "가라리아 + 바스톨"
      },
      "text": {
       "zh-Hans": "无需操作：卡拉利亚随拜斯顿·威尔组出击",
       "zh-Hant": "無需操作：卡拉利亞隨拜斯頓·威爾組出擊",
       "ja": "操作不要：ガラリアはバイストンウェル組と出撃",
-      "en": "No action needed: Garalia deploys with the Byston Well group"
+      "en": "No action needed: Garalia deploys with the Byston Well group",
+      "ko": "할 일 없음: 가라리아는 바이스톤 웰 그룹과 함께 출격"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "蕾拉支线：那双眼中映不出未来",
       "zh-Hant": "蕾拉支線：那雙眼中映不出未來",
       "ja": "レラ分岐：その瞳に未来は映ることなく",
-      "en": "Lera branch: Those Eyes Reflect No Future"
+      "en": "Lera branch: Those Eyes Reflect No Future",
+      "ko": "레라 분기: 그 눈동자에 미래는 비치지 않고"
      },
      "text": {
       "zh-Hans": "无需操作：蕾拉支线成立时蕾拉在开场离队",
       "zh-Hant": "無需操作：蕾拉支線成立時蕾拉在開場離隊",
       "ja": "操作不要：レラルート成立時はレラが開始時に離脱",
-      "en": "No action needed: with the Lera branch active, Lera leaves at the start"
+      "en": "No action needed: with the Lera branch active, Lera leaves at the start",
+      "ko": "할 일 없음: 레라 분기에서는 시작 시 레라 이탈"
      },
      "protagonists": [
       "ark",
@@ -61,13 +67,15 @@
       "zh-Hans": "抗光束涂层",
       "zh-Hant": "抗光束塗層",
       "ja": "対ビームコーティング",
-      "en": "Anti-Beam Coating"
+      "en": "Anti-Beam Coating",
+      "ko": "대빔 코팅"
      },
      "from": {
       "zh-Hans": "德雷克",
       "zh-Hant": "德雷克",
       "ja": "ドレイク",
-      "en": "Drake"
+      "en": "Drake",
+      "ko": "드레이크"
      },
      "retreat": false
     },
@@ -76,13 +84,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "秀特",
       "zh-Hant": "秀特",
       "ja": "ショット",
-      "en": "Shot"
+      "en": "Shot",
+      "ko": "쇼트"
      },
      "retreat": false
     },
@@ -91,19 +101,22 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "缪吉",
       "zh-Hant": "繆吉",
       "ja": "ミュージィ",
-      "en": "Musy"
+      "en": "Musy",
+      "ko": "뮤지"
      },
      "note": {
       "zh-Hans": "敌方剩 6 台以下时登场",
       "zh-Hant": "敵方剩 6 臺以下時登場",
       "ja": "敵残り6機以下で登場",
-      "en": "Appears when 6 or fewer enemies remain"
+      "en": "Appears when 6 or fewer enemies remain",
+      "ko": "적이 6기 이하로 남으면 등장"
      },
      "retreat": false
     },
@@ -112,13 +125,15 @@
       "zh-Hans": "高性能雷达",
       "zh-Hant": "高性能雷達",
       "ja": "高性能レーダー",
-      "en": "High-Fidelity Radar"
+      "en": "High-Fidelity Radar",
+      "ko": "고성능 레이더"
      },
      "from": {
       "zh-Hans": "陶德",
       "zh-Hant": "陶德",
       "ja": "トッド",
-      "en": "Tod"
+      "en": "Tod",
+      "ko": "토드"
      },
      "retreat": false
     },
@@ -127,19 +142,22 @@
       "zh-Hans": "强化推进器",
       "zh-Hant": "強化推進器",
       "ja": "メガブースター",
-      "en": "Mega Booster"
+      "en": "Mega Booster",
+      "ko": "메가 부스터"
      },
      "from": {
       "zh-Hans": "巴恩",
       "zh-Hant": "巴恩",
       "ja": "バーン",
-      "en": "Bern"
+      "en": "Bern",
+      "ko": "번"
      },
      "note": {
       "zh-Hans": "与黑骑士二选一：一般由巴恩的超级加拉巴携带",
       "zh-Hant": "與黑騎士二選一：一般由巴恩的超級卡拉巴攜帶",
       "ja": "黒騎士とどちらか一方：通常はバーンのハイパーガラバが所持",
-      "en": "Either/or with Black Knight: normally carried by Bern's Hyper Gallaba"
+      "en": "Either/or with Black Knight: normally carried by Bern's Hyper Gallaba",
+      "ko": "흑기사와 둘 중 하나: 보통은 번의 하이퍼 갈라바가 가지고 있음"
      },
      "retreat": false
     },
@@ -148,19 +166,22 @@
       "zh-Hans": "强化推进器",
       "zh-Hant": "強化推進器",
       "ja": "メガブースター",
-      "en": "Mega Booster"
+      "en": "Mega Booster",
+      "ko": "메가 부스터"
      },
      "from": {
       "zh-Hans": "黑骑士",
       "zh-Hant": "黑騎士",
       "ja": "黒騎士",
-      "en": "Black Knight"
+      "en": "Black Knight",
+      "ko": "흑기사"
      },
      "note": {
       "zh-Hans": "艾蕾在场时由翔击坠才携带（与巴恩二选一）",
       "zh-Hant": "艾蕾在場時由翔擊墜才攜帶（與巴恩二選一）",
       "ja": "エレがいる時にショウで撃墜した場合のみ（バーンと択一）",
-      "en": "Only if Show downs him with Elle on the map (else Bern)"
+      "en": "Only if Show downs him with Elle on the map (else Bern)",
+      "ko": "엘레가 맵에 있을 때 쇼우가 격추한 경우에만(아니면 번)"
      },
      "retreat": false
     }

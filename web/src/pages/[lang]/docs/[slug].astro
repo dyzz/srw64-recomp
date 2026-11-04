@@ -14,8 +14,8 @@ const { doc } = Astro.props;
 const lang = Astro.params.lang as Lang;
 const { Content, headings } = await render(doc);
 const toc = headings.filter((h) => h.depth === 2);
-const updated = { zh: '更新于', en: 'Updated', ja: '更新' };
-const copy = { zh: ['复制', '已复制'], en: ['Copy', 'Copied'], ja: ['コピー', 'コピーしました'] };
+const updated = { zh: '更新于', en: 'Updated', ja: '更新', ko: '업데이트' };
+const copy = { zh: ['复制', '已复制'], en: ['Copy', 'Copied'], ja: ['コピー', 'コピーしました'], ko: ['복사', '복사했습니다'] };
 ---
 <Base lang={lang} title={doc.data.title} description={doc.data.summary}>
   <div class="wrap">

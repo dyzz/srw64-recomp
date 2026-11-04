@@ -5,7 +5,8 @@
   "zh-Hans": "理想，破灭",
   "zh-Hant": "理想，破滅",
   "ja": "理想、潰えて",
-  "en": "Ideals, Shattered"
+  "en": "Ideals, Shattered",
+  "ko": "이상, 무너지다"
  },
  "title_ja": "理想、潰えて",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "共通",
     "zh-Hant": "共通",
     "ja": "共通",
-    "en": "Common"
+    "en": "Common",
+    "ko": "공통"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "蕾拉支线：那双眼中映不出未来",
       "zh-Hant": "蕾拉支線：那雙眼中映不出未來",
       "ja": "レラ分岐：その瞳に未来は映ることなく",
-      "en": "Lera branch: Those Eyes Reflect No Future"
+      "en": "Lera branch: Those Eyes Reflect No Future",
+      "ko": "레라 분기: 그 눈동자에 미래는 비치지 않고"
      },
      "text": {
       "zh-Hans": "开场选「和蕾拉聊聊」或「设法让蕾拉下舰」→蕾拉支线",
       "zh-Hant": "開場選「和蕾拉聊聊」或「設法讓蕾拉下艦」→蕾拉支線",
       "ja": "開始時「レラと話をする」か「レラを艦から降ろそうとする」→レラルート",
-      "en": "Pick “Talk with Lera” or “Try to get Lera off the ship”"
+      "en": "Pick “Talk with Lera” or “Try to get Lera off the ship”",
+      "ko": "“레라와 이야기한다” 또는 “레라를 함에서 내리게 한다”를 선택"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "埃尔利希＋诺鲁孜",
       "zh-Hant": "埃爾利希＋諾魯孜",
       "ja": "エルリッヒ＋ノウルーズ",
-      "en": "Ehrlich + Norouz"
+      "en": "Ehrlich + Norouz",
+      "ko": "엘리히 + 노우루즈"
      },
      "text": {
       "zh-Hans": "开场别选「不理她」（埃尔利希需要蕾拉支线）",
       "zh-Hant": "開場別選「不理她」（埃爾利希需要蕾拉支線）",
       "ja": "開始時に「無視する」を選ばない（エルリッヒにはレラルートが必要）",
-      "en": "Don't pick “Ignore her” (Ehrlich needs the Lera branch)"
+      "en": "Don't pick “Ignore her” (Ehrlich needs the Lera branch)",
+      "ko": "“무시한다”는 고르지 말 것(엘리히에게 레라 분기가 필요)"
      },
      "protagonists": [
       "ark"
@@ -60,13 +66,15 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "古拉博士",
       "zh-Hant": "古拉博士",
       "ja": "グラー博士",
-      "en": "Dr. Gura"
+      "en": "Dr. Gura",
+      "ko": "구라 박사"
      },
      "retreat": false
     },
@@ -75,13 +83,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "基乌拉",
       "zh-Hant": "基烏拉",
       "ja": "ギウラ",
-      "en": "Giura"
+      "en": "Giura",
+      "ko": "기우라"
      },
      "retreat": false
     },
@@ -90,13 +100,15 @@
       "zh-Hans": "生物传感器",
       "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
-      "en": "Bio-Sensor"
+      "en": "Bio-Sensor",
+      "ko": "바이오 센서"
      },
      "from": {
       "zh-Hans": "杰克斯",
       "zh-Hant": "傑克斯",
       "ja": "ゼクス",
-      "en": "Zechs"
+      "en": "Zechs",
+      "ko": "젝스"
      },
      "retreat": false
     },
@@ -105,13 +117,15 @@
       "zh-Hans": "混合式装甲",
       "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
-      "en": "Hybrid Armor"
+      "en": "Hybrid Armor",
+      "ko": "하이브리드 아머"
      },
      "from": {
       "zh-Hans": "暗黑大将军",
       "zh-Hant": "暗黑大將軍",
       "ja": "暗黒大将軍",
-      "en": "Great General of Darkness"
+      "en": "Great General of Darkness",
+      "ko": "암흑대장군"
      },
      "retreat": false
     }

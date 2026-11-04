@@ -5,7 +5,8 @@
   "zh-Hans": "兄与弟",
   "zh-Hant": "兄與弟",
   "ja": "兄と弟と",
-  "en": "Brothers"
+  "en": "Brothers",
+  "ko": "형과 동생"
  },
  "title_ja": "兄と弟と",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "完全和平路线（随特列斯）",
     "zh-Hant": "完全和平路線（隨特列斯）",
     "ja": "完全平和ルート（トレーズにつく）",
-    "en": "Complete Pacifism route (with Treize)"
+    "en": "Complete Pacifism route (with Treize)",
+    "ko": "완전평화 루트(트레즈와 함께)"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "杰克斯＋艾比安高达",
       "zh-Hant": "傑克斯＋次代鋼彈",
       "ja": "ゼクス＋ガンダムエピオン",
-      "en": "Zechs + Gundam Epyon"
+      "en": "Zechs + Gundam Epyon",
+      "ko": "젝스 + 건담 에피온"
      },
      "text": {
       "zh-Hans": "无需操作：杰克斯＋艾比安高达开场加入",
       "zh-Hant": "無需操作：傑克斯＋次代鋼彈開場加入",
       "ja": "操作不要：ゼクス＋ガンダムエピオンが開始時に加入",
-      "en": "No action: Zechs + Gundam Epyon join at the start of this stage"
+      "en": "No action: Zechs + Gundam Epyon join at the start of this stage",
+      "ko": "할 일 없음: 이 스테이지 시작 시 젝스 + 건담 에피온 합류"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "罗塞＋泽隆",
       "zh-Hant": "蘿潔＋澤隆",
       "ja": "ロゼ＋ゼーロン",
-      "en": "Roze + Zeron"
+      "en": "Roze + Zeron",
+      "ko": "로제 + 제론"
      },
      "text": {
       "zh-Hans": "罗塞在场时用武击坠玛古，再用武说服罗塞",
       "zh-Hant": "蘿潔在場時用武擊墜馬可，再用武說服蘿潔",
       "ja": "ロゼがいる間にタケルでマーグを撃墜し、ロゼを説得",
-      "en": "With Roze on the map, down Marg with Takeru, then persuade Roze"
+      "en": "With Roze on the map, down Marg with Takeru, then persuade Roze",
+      "ko": "로제가 맵에 있을 때 타케루로 마그를 격추한 뒤 로제 설득"
      }
     },
     {
@@ -56,13 +62,15 @@
       "zh-Hans": "娜伊达＋双重斯派扎",
       "zh-Hant": "娜伊達＋飛天翼號",
       "ja": "ナイーダ＋ダブルスペイザー",
-      "en": "Naida + Double Spazer"
+      "en": "Naida + Double Spazer",
+      "ko": "나이다 + 더블 스페이저"
      },
      "text": {
       "zh-Hans": "用杜克说服娜伊达，下一关开场选第 1 项",
       "zh-Hant": "用狄克說服娜伊達，下一關開場選第 1 項",
       "ja": "デュークでナイーダを説得、次ステージ開始時に1番目を選ぶ",
-      "en": "Persuade Naida with Duke; pick option 1 at next stage's start"
+      "en": "Persuade Naida with Duke; pick option 1 at next stage's start",
+      "ko": "듀크로 나이다 설득; 다음 스테이지 시작 시 1번 선택지"
      },
      "protagonists": [
       "brad",
@@ -76,13 +84,15 @@
       "zh-Hans": "混合式装甲",
       "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
-      "en": "Hybrid Armor"
+      "en": "Hybrid Armor",
+      "ko": "하이브리드 아머"
      },
      "from": {
       "zh-Hans": "布拉奇",
       "zh-Hant": "布拉奇",
       "ja": "ブラッキー",
-      "en": "Blacky"
+      "en": "Blacky",
+      "ko": "블래키"
      },
      "retreat": false
     },
@@ -91,13 +101,15 @@
       "zh-Hans": "精神感应框架",
       "zh-Hant": "精神感應框體",
       "ja": "サイコフレーム",
-      "en": "Psycoframe"
+      "en": "Psycoframe",
+      "ko": "사이코 프레임"
      },
      "from": {
       "zh-Hans": "玛古",
       "zh-Hant": "馬可",
       "ja": "マーグ",
-      "en": "Marg"
+      "en": "Marg",
+      "ko": "마그"
      },
      "retreat": false
     },
@@ -106,13 +118,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "罗塞",
       "zh-Hant": "蘿潔",
       "ja": "ロゼ",
-      "en": "Roze"
+      "en": "Roze",
+      "ko": "로제"
      },
      "retreat": false
     },
@@ -121,13 +135,15 @@
       "zh-Hans": "推进器",
       "zh-Hant": "推進器",
       "ja": "ブースター",
-      "en": "Booster"
+      "en": "Booster",
+      "ko": "부스터"
      },
      "from": {
       "zh-Hans": "卡达尔",
       "zh-Hant": "卡達爾",
       "ja": "ガンダル",
-      "en": "Gandal"
+      "en": "Gandal",
+      "ko": "간달"
      },
      "retreat": false
     },
@@ -136,13 +152,15 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "丹格尔",
       "zh-Hant": "丹格爾",
       "ja": "ダンゲル",
-      "en": "Dungele"
+      "en": "Dungele",
+      "ko": "단겔"
      },
      "retreat": false
     }

@@ -5,7 +5,8 @@
   "zh-Hans": "甘泉防卫战",
   "zh-Hant": "甘泉防衛戰",
   "ja": "スウィートウォーター防衛戦",
-  "en": "Defense of Sweetwater"
+  "en": "Defense of Sweetwater",
+  "ko": "스위트워터 방위전"
  },
  "title_ja": "スウィートウォーター防衛戦",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线",
     "zh-Hant": "獨立軍路線",
     "ja": "独立軍ルート",
-    "en": "Independence Army route"
+    "en": "Independence Army route",
+    "ko": "독립군 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "罗莎米娅",
       "zh-Hant": "羅莎米亞",
       "ja": "ロザミア",
-      "en": "Rosamia"
+      "en": "Rosamia",
+      "ko": "로자미아"
      },
      "text": {
       "zh-Hans": "第 5 回合卡缪在场，击坠盖茨而非罗莎米娅",
       "zh-Hant": "第 5 回合卡密兒在場，擊墜蓋茲而非羅莎米亞",
       "ja": "第5ターンにカミーユを出撃させ、ロザミアでなくゲーツを撃墜",
-      "en": "Have Kamille on map at turn 5; shoot down Gates, not Rosamia"
+      "en": "Have Kamille on map at turn 5; shoot down Gates, not Rosamia",
+      "ko": "5턴에 카미유를 맵에 두고, 로자미아가 아닌 게이츠를 격추"
      }
     }
    ],
@@ -42,13 +46,15 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "巴斯克",
       "zh-Hant": "巴斯克",
       "ja": "バスク",
-      "en": "Bask"
+      "en": "Bask",
+      "ko": "바스크"
      },
      "retreat": false
     },
@@ -57,13 +63,15 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "亚赞",
       "zh-Hant": "亞贊",
       "ja": "ヤザン",
-      "en": "Yazan"
+      "en": "Yazan",
+      "ko": "야잔"
      },
      "retreat": false
     },
@@ -72,13 +80,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "戈斯特罗",
       "zh-Hant": "戈斯特羅",
       "ja": "ゴステロ",
-      "en": "Gosterro"
+      "en": "Gosterro",
+      "ko": "고스테로"
      },
      "retreat": false
     },
@@ -87,19 +97,22 @@
       "zh-Hans": "洗牌同盟纹章",
       "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
-      "en": "Shuffle Crest"
+      "en": "Shuffle Crest",
+      "ko": "셔플의 문장"
      },
      "from": {
       "zh-Hans": "盖茨",
       "zh-Hant": "蓋茲",
       "ja": "ゲーツ",
-      "en": "Gates"
+      "en": "Gates",
+      "ko": "게이츠"
      },
      "note": {
       "zh-Hans": "第 5 回合我方阶段登场，卡缪不在场即离开",
       "zh-Hant": "第 5 回合我方階段登場，卡密兒不在場即離開",
       "ja": "第5ターン味方フェイズに登場、カミーユ不在ですぐ去る",
-      "en": "Appears turn 5 player phase; leaves at once without Kamille"
+      "en": "Appears turn 5 player phase; leaves at once without Kamille",
+      "ko": "5턴 아군 페이즈에 등장, 카미유가 없으면 바로 이탈"
      },
      "retreat": true
     }

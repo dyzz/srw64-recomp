@@ -14,41 +14,42 @@ import '../../../styles/mod-maker.css';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
-const L = <T,>(v: { zh: T; en: T; ja: T }) => v[tl(lang)];
-const title = { zh: '战斗语音 MOD 制作', en: 'Battle voice mod maker', ja: '戦闘ボイス MOD メーカー' };
+const L = <T,>(v: { zh: T; en: T; ja: T; ko: T }) => v[tl(lang)];
+const title = { zh: '战斗语音 MOD 制作', en: 'Battle voice mod maker', ja: '戦闘ボイス MOD メーカー', ko: '전투 음성 MOD 제작' };
 const lead = {
   zh: '给战斗台词配上语音：选一个人物，把录好的音频拖到他的台词上，导出 .srw64mod 拖进游戏窗口即可安装。战斗动画里台词框一打开，就放这句的语音。',
   en: 'Give the battle lines a voice: pick a character, drop your recordings on their lines, and drag the exported .srw64mod into the game window to install it. As a line’s box opens in a battle animation, its voice plays.',
   ja: '戦闘台詞にボイスを付けます。キャラクターを選んで録音をその台詞にドロップし、書き出した .srw64mod をゲームのウィンドウにドラッグしてインストールします。戦闘アニメで台詞の枠が開くと、その台詞のボイスが流れます。',
+  ko: '전투 대사에 음성을 붙입니다. 인물을 고르고 녹음한 오디오를 그 인물의 대사에 끌어다 놓은 뒤, 내보낸 .srw64mod를 게임 창에 끌어다 놓으면 설치됩니다. 전투 애니메이션에서 대사 창이 열리면 그 대사의 음성이 재생됩니다.',
 };
 const text = {
   ...packageText(lang),
-  bulk: L({ zh: '批量加入', en: 'Add many at once', ja: 'まとめて追加' }),
-  bulkNote: L({ zh: '文件名以台词编号开头的音频可以一次加入很多，例如 7018.ogg、7018_攻击.wav。编号见下面每句台词左边，或台词对照表。', en: 'Audio files whose names start with the line number go in many at once, such as 7018.ogg or 7018_attack.wav. Each line’s number is at its left below, and in the battle line table.', ja: 'ファイル名が台詞番号で始まる音声は、まとめて追加できます（例：7018.ogg、7018_attack.wav）。番号は下の各台詞の左と、台詞対照表にあります。' }),
-  bulkChoose: L({ zh: '选择多个文件', en: 'Choose files', ja: 'ファイルを選択' }),
-  bulkDrop: L({ zh: '或把文件拖到这里', en: 'or drop them here', ja: 'またはここにドロップ' }),
-  bulkDone: L({ zh: '加入 {n} 个。', en: 'Added {n}.', ja: '{n} 件を追加しました。' }),
-  bulkSkipped: L({ zh: '{n} 个文件名开头不是 5799–17346 的台词编号：{names}', en: '{n} not named by a line number (5799–17346): {names}', ja: '{n} 件はファイル名が台詞番号（5799〜17346）で始まっていません：{names}' }),
-  lines: L({ zh: '台词', en: 'Lines', ja: '台詞' }),
-  linesNote: L({ zh: '选一个人物，列出他说的全部战斗台词。把音频拖到一行上，或点「选择文件」。徽标是已配音句数／总句数。', en: 'Pick a character to list all their battle lines. Drop an audio file on a line or press “Choose file”. The badge counts voiced lines out of all.', ja: 'キャラクターを選ぶと、その戦闘台詞がすべて並びます。音声を行にドロップするか「ファイルを選択」を押します。バッジはボイス付きの数／全体の数です。' }),
-  showNever: L({ zh: '也列出原版不会出现的台词', en: 'Also list lines the original never shows', ja: '原作では出ない台詞も表示' }),
-  pickFirst: L({ zh: '先在上面选一个人物。', en: 'Pick a character above first.', ja: '先に上でキャラクターを選んでください。' }),
-  linesOf: L({ zh: '{who} 的台词：{n} 句', en: '{who}: {n} lines', ja: '{who} の台詞：{n} 件' }),
-  hidden: L({ zh: '另有 {n} 句原版不会出现，已隐藏', en: '{n} more the original never shows are hidden', ja: 'ほかに原作では出ない {n} 件を隠しています' }),
-  choose: L({ zh: '选择文件', en: 'Choose file', ja: 'ファイルを選択' }),
-  play: L({ zh: '试听', en: 'Play', ja: '試聴' }),
-  stop: L({ zh: '停止', en: 'Stop', ja: '停止' }),
-  decoding: L({ zh: '解码中…', en: 'Decoding…', ja: 'デコード中…' }),
-  encoding: L({ zh: '转成 Ogg Vorbis…', en: 'Encoding to Ogg Vorbis…', ja: 'Ogg Vorbis に変換中…' }),
-  waiting: L({ zh: '排队中…', en: 'Waiting…', ja: '待機中…' }),
-  failed: L({ zh: '无法解码这个文件，请换成 mp3、wav、flac、m4a 或 ogg', en: 'This file could not be decoded; try mp3, wav, flac, m4a or ogg', ja: 'このファイルはデコードできません。mp3・wav・flac・m4a・ogg を試してください' }),
-  long: L({ zh: '超过 4 秒，下一句出来时会被打断', en: 'over 4 s: the next line will cut it off', ja: '4 秒超：次の台詞で途切れます' }),
-  voiced: L({ zh: '已配音', en: 'Voiced', ja: 'ボイス付き' }),
-  voicedNone: L({ zh: '还没有给任何台词配音。', en: 'No line has a voice yet.', ja: 'まだボイス付きの台詞はありません。' }),
-  voicedSum: L({ zh: '共 {n} 句、{who} 个人物，{size}', en: '{n} lines from {who} characters, {size}', ja: '{n} 件・{who} 人、{size}' }),
-  errEmpty: L({ zh: '还没有给任何台词配音', en: 'No line has a voice yet', ja: 'まだボイス付きの台詞がありません' }),
-  errBusy: L({ zh: '还有 {n} 个文件在转换，等它们完成再导出', en: '{n} files are still being converted; export once they are done', ja: 'まだ {n} 件を変換中です。終わってから書き出してください' }),
-  allSeries: L({ zh: '全部作品', en: 'All series', ja: 'すべての作品' }),
+  bulk: L({ zh: '批量加入', en: 'Add many at once', ja: 'まとめて追加', ko: '한꺼번에 추가' }),
+  bulkNote: L({ zh: '文件名以台词编号开头的音频可以一次加入很多，例如 7018.ogg、7018_攻击.wav。编号见下面每句台词左边，或台词对照表。', en: 'Audio files whose names start with the line number go in many at once, such as 7018.ogg or 7018_attack.wav. Each line’s number is at its left below, and in the battle line table.', ja: 'ファイル名が台詞番号で始まる音声は、まとめて追加できます（例：7018.ogg、7018_attack.wav）。番号は下の各台詞の左と、台詞対照表にあります。', ko: '파일 이름이 대사 번호로 시작하는 오디오 파일은 한꺼번에 추가할 수 있습니다 (예: 7018.ogg, 7018_attack.wav). 각 대사의 번호는 아래 대사 왼쪽과 전투 대사 대조표에 있습니다.' }),
+  bulkChoose: L({ zh: '选择多个文件', en: 'Choose files', ja: 'ファイルを選択', ko: '여러 파일 선택' }),
+  bulkDrop: L({ zh: '或把文件拖到这里', en: 'or drop them here', ja: 'またはここにドロップ', ko: '또는 여기에 끌어다 놓기' }),
+  bulkDone: L({ zh: '加入 {n} 个。', en: 'Added {n}.', ja: '{n} 件を追加しました。', ko: '{n}개를 추가했습니다.' }),
+  bulkSkipped: L({ zh: '{n} 个文件名开头不是 5799–17346 的台词编号：{names}', en: '{n} not named by a line number (5799–17346): {names}', ja: '{n} 件はファイル名が台詞番号（5799〜17346）で始まっていません：{names}', ko: '{n}개는 파일 이름이 대사 번호(5799~17346)로 시작하지 않습니다: {names}' }),
+  lines: L({ zh: '台词', en: 'Lines', ja: '台詞', ko: '대사' }),
+  linesNote: L({ zh: '选一个人物，列出他说的全部战斗台词。把音频拖到一行上，或点「选择文件」。徽标是已配音句数／总句数。', en: 'Pick a character to list all their battle lines. Drop an audio file on a line or press “Choose file”. The badge counts voiced lines out of all.', ja: 'キャラクターを選ぶと、その戦闘台詞がすべて並びます。音声を行にドロップするか「ファイルを選択」を押します。バッジはボイス付きの数／全体の数です。', ko: '인물을 고르면 그 인물의 전투 대사가 모두 표시됩니다. 오디오 파일을 대사 줄에 끌어다 놓거나 “파일 선택”을 누르세요. 배지는 음성이 붙은 대사 수 / 전체 대사 수입니다.' }),
+  showNever: L({ zh: '也列出原版不会出现的台词', en: 'Also list lines the original never shows', ja: '原作では出ない台詞も表示', ko: '원작에서는 나오지 않는 대사도 표시' }),
+  pickFirst: L({ zh: '先在上面选一个人物。', en: 'Pick a character above first.', ja: '先に上でキャラクターを選んでください。', ko: '먼저 위에서 인물을 고르세요.' }),
+  linesOf: L({ zh: '{who} 的台词：{n} 句', en: '{who}: {n} lines', ja: '{who} の台詞：{n} 件', ko: '{who}의 대사: {n}개' }),
+  hidden: L({ zh: '另有 {n} 句原版不会出现，已隐藏', en: '{n} more the original never shows are hidden', ja: 'ほかに原作では出ない {n} 件を隠しています', ko: '원작에서는 나오지 않는 대사 {n}개를 숨겼습니다' }),
+  choose: L({ zh: '选择文件', en: 'Choose file', ja: 'ファイルを選択', ko: '파일 선택' }),
+  play: L({ zh: '试听', en: 'Play', ja: '試聴', ko: '미리 듣기' }),
+  stop: L({ zh: '停止', en: 'Stop', ja: '停止', ko: '정지' }),
+  decoding: L({ zh: '解码中…', en: 'Decoding…', ja: 'デコード中…', ko: '디코딩 중…' }),
+  encoding: L({ zh: '转成 Ogg Vorbis…', en: 'Encoding to Ogg Vorbis…', ja: 'Ogg Vorbis に変換中…', ko: 'Ogg Vorbis로 변환 중…' }),
+  waiting: L({ zh: '排队中…', en: 'Waiting…', ja: '待機中…', ko: '대기 중…' }),
+  failed: L({ zh: '无法解码这个文件，请换成 mp3、wav、flac、m4a 或 ogg', en: 'This file could not be decoded; try mp3, wav, flac, m4a or ogg', ja: 'このファイルはデコードできません。mp3・wav・flac・m4a・ogg を試してください', ko: '이 파일은 디코딩할 수 없습니다. mp3, wav, flac, m4a, ogg 중 하나로 바꿔 보세요' }),
+  long: L({ zh: '超过 4 秒，下一句出来时会被打断', en: 'over 4 s: the next line will cut it off', ja: '4 秒超：次の台詞で途切れます', ko: '4초 초과: 다음 대사가 나오면 끊깁니다' }),
+  voiced: L({ zh: '已配音', en: 'Voiced', ja: 'ボイス付き', ko: '음성 있음' }),
+  voicedNone: L({ zh: '还没有给任何台词配音。', en: 'No line has a voice yet.', ja: 'まだボイス付きの台詞はありません。', ko: '아직 음성을 붙인 대사가 없습니다.' }),
+  voicedSum: L({ zh: '共 {n} 句、{who} 个人物，{size}', en: '{n} lines from {who} characters, {size}', ja: '{n} 件・{who} 人、{size}', ko: '대사 {n}개, 인물 {who}명, {size}' }),
+  errEmpty: L({ zh: '还没有给任何台词配音', en: 'No line has a voice yet', ja: 'まだボイス付きの台詞がありません', ko: '아직 음성을 붙인 대사가 없습니다' }),
+  errBusy: L({ zh: '还有 {n} 个文件在转换，等它们完成再导出', en: '{n} files are still being converted; export once they are done', ja: 'まだ {n} 件を変換中です。終わってから書き出してください', ko: '아직 {n}개 파일을 변환 중입니다. 끝난 뒤에 내보내세요' }),
+  allSeries: L({ zh: '全部作品', en: 'All series', ja: 'すべての作品', ko: '모든 작품' }),
   game: '0.5.2',
 };
 const data = voiceLines(lang);
@@ -66,7 +67,7 @@ const notice = versionNotice(lang, text.game);
       <h1>{title[tl(lang)]}</h1>
       {notice && <p class="version-notice">{notice}</p>}
       <p>{lead[tl(lang)]}</p>
-      <p class="note"><a href={`/${lang}/docs/mod-music/#${L({ zh: '战斗语音', en: 'battle-voices', ja: '戦闘ボイス' })}`}>{L({ zh: '战斗语音说明', en: 'Battle voices guide', ja: '戦闘ボイスの説明' })}</a> · <a href="https://github.com/dyzz/srw64-recomp/blob/main/docs/guide/audio-mods/battle-voices.csv">{L({ zh: '台词对照表', en: 'Battle line table', ja: '台詞対照表' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成，音频不会上传。只使用你有权使用、并且允许再分发的录音。', en: 'Needs 0.5.2 or later. Everything happens in your browser; no audio is uploaded. Use only recordings you have the right to use and to pass on.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われ、音声はアップロードされません。使用と再配布の権利がある録音だけを使ってください。' })}</p>
+      <p class="note"><a href={`/${lang}/docs/mod-music/#${L({ zh: '战斗语音', en: 'battle-voices', ja: '戦闘ボイス', ko: '전투음성' })}`}>{L({ zh: '战斗语音说明', en: 'Battle voices guide', ja: '戦闘ボイスの説明', ko: '전투 음성 설명' })}</a> · <a href="https://github.com/dyzz/srw64-recomp/blob/main/docs/guide/audio-mods/battle-voices.csv">{L({ zh: '台词对照表', en: 'Battle line table', ja: '台詞対照表', ko: '전투 대사 대조표' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成，音频不会上传。只使用你有权使用、并且允许再分发的录音。', en: 'Needs 0.5.2 or later. Everything happens in your browser; no audio is uploaded. Use only recordings you have the right to use and to pass on.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われ、音声はアップロードされません。使用と再配布の権利がある録音だけを使ってください。', ko: '0.5.2 이상 버전이 필요합니다. 모든 처리는 브라우저 안에서 이루어지며, 오디오는 업로드되지 않습니다. 사용하고 재배포할 권리가 있는 녹음만 사용하세요.' })}</p>
     </header>
     <AiGuide lang={lang} kind="voices" />
 

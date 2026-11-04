@@ -5,7 +5,8 @@
   "zh-Hans": "野心",
   "zh-Hant": "野心",
   "ja": "野心",
-  "en": "Ambition"
+  "en": "Ambition",
+  "ko": "야심"
  },
  "title_ja": "野心",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线／独自作战",
     "zh-Hant": "獨立軍路線／獨自作戰",
     "ja": "独立軍ルート／単独行動",
-    "en": "Independence Army route / fight alone"
+    "en": "Independence Army route / fight alone",
+    "ko": "독립군 루트 / 단독 항전"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "普露兹",
       "zh-Hant": "普露茲",
       "ja": "プルツー",
-      "en": "Ple-Two"
+      "en": "Ple-Two",
+      "ko": "플 투"
      },
      "text": {
       "zh-Hans": "用捷度说服普露兹（需第 1 步），之后她撤退",
       "zh-Hant": "用傑特說服普露茲（需第 1 步），之後她撤退",
       "ja": "ジュドーでプルツーを説得（第1段階済み）、その後撤退",
-      "en": "Persuade Ple-Two with Judau (needs step 1); she then retreats"
+      "en": "Persuade Ple-Two with Judau (needs step 1); she then retreats",
+      "ko": "쥬도로 플 투 설득(1단계 필요); 이후 퇴각"
      }
     }
    ],
@@ -42,13 +46,15 @@
       "zh-Hans": "混合式装甲",
       "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
-      "en": "Hybrid Armor"
+      "en": "Hybrid Armor",
+      "ko": "하이브리드 아머"
      },
      "from": {
       "zh-Hans": "卡多",
       "zh-Hant": "卡多",
       "ja": "ガトー",
-      "en": "Gato"
+      "en": "Gato",
+      "ko": "가토"
      },
      "retreat": false
     },
@@ -57,13 +63,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "马修玛",
       "zh-Hant": "馬修曼",
       "ja": "マシュマー",
-      "en": "Mashymre"
+      "en": "Mashymre",
+      "ko": "마슈마"
      },
      "retreat": false
     },
@@ -72,13 +80,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "姬拉",
       "zh-Hant": "凱拉",
       "ja": "キャラ",
-      "en": "Chara"
+      "en": "Chara",
+      "ko": "캐라"
      },
      "retreat": false
     },
@@ -87,19 +97,22 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "普露兹",
       "zh-Hant": "普露茲",
       "ja": "プルツー",
-      "en": "Ple-Two"
+      "en": "Ple-Two",
+      "ko": "플 투"
      },
      "note": {
       "zh-Hans": "可被捷度说服（说服后不掉落）",
       "zh-Hant": "可被傑特說服（說服後不掉落）",
       "ja": "ジュドーで説得可能（説得時はドロップなし）",
-      "en": "Can be persuaded by Judau (no drop if persuaded)"
+      "en": "Can be persuaded by Judau (no drop if persuaded)",
+      "ko": "쥬도로 설득 가능(설득하면 드롭 없음)"
      },
      "third_party": true,
      "retreat": false

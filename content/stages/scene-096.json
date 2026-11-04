@@ -5,7 +5,8 @@
   "zh-Hans": "决战！对决祖鲁皇帝！（上）",
   "zh-Hant": "決戰！對決祖魯皇帝！（上）",
   "ja": "決戦!皇帝ズールとの対決! （前）",
-  "en": "Showdown! Face-Off with Emperor Zuul! (Part 1)"
+  "en": "Showdown! Face-Off with Emperor Zuul! (Part 1)",
+  "ko": "결전! 황제 즈루와의 대결! 전편"
  },
  "title_ja": "決戦!皇帝ズールとの対決! （前）",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "OZ路线／随特列斯",
     "zh-Hant": "OZ路線／隨特列斯",
     "ja": "OZルート／トレーズにつく",
-    "en": "OZ route / with Treize"
+    "en": "OZ route / with Treize",
+    "ko": "OZ 루트 / 트레즈와 함께"
    },
    "secrets": [],
    "enemies": [
@@ -26,13 +28,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "布拉奇",
       "zh-Hant": "布拉奇",
       "ja": "ブラッキー",
-      "en": "Blacky"
+      "en": "Blacky",
+      "ko": "블래키"
      },
      "retreat": false
     },
@@ -41,13 +45,15 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "卡达尔",
       "zh-Hant": "卡達爾",
       "ja": "ガンダル",
-      "en": "Gandal"
+      "en": "Gandal",
+      "ko": "간달"
      },
      "retreat": false
     },
@@ -56,13 +62,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "丹格尔",
       "zh-Hant": "丹格爾",
       "ja": "ダンゲル",
-      "en": "Dungele"
+      "en": "Dungele",
+      "ko": "단겔"
      },
      "retreat": false
     },
@@ -71,13 +79,15 @@
       "zh-Hans": "强化推进器",
       "zh-Hant": "強化推進器",
       "ja": "メガブースター",
-      "en": "Mega Booster"
+      "en": "Mega Booster",
+      "ko": "메가 부스터"
      },
      "from": {
       "zh-Hans": "祖鲁皇帝",
       "zh-Hant": "祖魯皇帝",
       "ja": "ズール皇帝",
-      "en": "Emperor Zuul"
+      "en": "Emperor Zuul",
+      "ko": "즈루 황제"
      },
      "retreat": false
     }

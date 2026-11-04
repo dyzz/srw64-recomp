@@ -5,7 +5,8 @@
   "zh-Hans": "硝烟之中",
   "zh-Hant": "硝煙之中",
   "ja": "硝煙の中で",
-  "en": "Amid the Gunsmoke"
+  "en": "Amid the Gunsmoke",
+  "ko": "초연 속에서"
  },
  "title_ja": "硝煙の中で",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "塞蕾茵（真实系）",
     "zh-Hant": "塞蕾茵（真實系）",
     "ja": "セレイン（リアル系）",
-    "en": "Selain (Real)"
+    "en": "Selain (Real)",
+    "ko": "세레인(리얼계)"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "阿波利、罗伯托＋疾风迪亚斯",
       "zh-Hant": "阿波里、羅伯特＋疾風迪亞斯",
       "ja": "アポリー、ロベルト＋シュツルム・ディアス",
-      "en": "Apolly, Roberto + Schuzrum-Dias"
+      "en": "Apolly, Roberto + Schuzrum-Dias",
+      "ko": "아폴리, 로베르토 + 슈투름 디아스"
      },
      "text": {
       "zh-Hans": "无需操作：阿波利、罗伯托在敌方剩 10 台以下时增援",
       "zh-Hant": "無需操作：阿波里、羅伯特在敵方剩 10 臺以下時增援",
       "ja": "操作不要：アポリー・ロベルトが敵残り10機以下で増援",
-      "en": "Nothing to do: Apolly and Roberto arrive at 10 or fewer enemies"
+      "en": "Nothing to do: Apolly and Roberto arrive at 10 or fewer enemies",
+      "ko": "할 일 없음: 적이 10기 이하가 되면 아폴리와 로베르토가 등장"
      }
     }
    ],
@@ -42,19 +46,22 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "利修",
       "zh-Hant": "利修",
       "ja": "リッシュ",
-      "en": "Rish"
+      "en": "Rish",
+      "ko": "릿슈"
      },
      "note": {
       "zh-Hans": "HP 50% 以下时撤退",
       "zh-Hant": "HP 50% 以下時撤退",
       "ja": "HP50%以下で撤退",
-      "en": "Retreats at 50% HP or below"
+      "en": "Retreats at 50% HP or below",
+      "ko": "HP 50% 이하에서 퇴각"
      },
      "retreat": true
     }

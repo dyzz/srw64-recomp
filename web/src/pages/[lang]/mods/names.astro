@@ -15,70 +15,71 @@ import data from '../../../data/data-mods.json';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
-const L = <T,>(v: { zh: T; en: T; ja: T }) => v[tl(lang)];
-const title = { zh: '名字与头像 MOD 制作', en: 'Name and portrait mod maker', ja: '名前・顔グラフィック MOD メーカー' };
+const L = <T,>(v: { zh: T; en: T; ja: T; ko: T }) => v[tl(lang)];
+const title = { zh: '名字与头像 MOD 制作', en: 'Name and portrait mod maker', ja: '名前・顔グラフィック MOD メーカー', ko: '이름과 초상화 MOD 제작' };
 const lead = {
   zh: '给原创主角、搭档和部队另起名字，改任何人物、机体、武器的名字，换人物头像，导出 .srw64mod 拖进游戏窗口即可安装。只改显示，不写进存档，停用包就回到原来的样子。',
   en: 'Rename the original protagonists, partners and unit, rename any pilot, unit or weapon and replace pilot portraits; drag the exported .srw64mod into the game window to install it. Only what is shown changes; saves keep the original names, and disabling the package brings them back.',
   ja: 'オリジナル主人公・パートナー・部隊の名前、ほかのキャラクター・ユニット・武器の名前、キャラクターの顔グラフィックを変え、書き出した .srw64mod をゲームのウィンドウにドラッグしてインストールします。表示だけが変わり、セーブには書かれません。パッケージを無効にすれば元に戻ります。',
+  ko: '오리지널 주인공, 동료, 부대의 이름을 바꾸고, 어떤 파일럿, 기체, 무기의 이름이든 바꾸며, 파일럿 초상화를 교체합니다. 내보낸 .srw64mod를 게임 창에 끌어다 놓으면 설치됩니다. 화면에 표시되는 것만 바뀌고 세이브에는 원래 이름이 남으며, 패키지를 비활성화하면 원래대로 돌아갑니다.',
 };
 const text = {
   ...packageText(lang),
-  heroes: L({ zh: '原创主角、搭档与部队名', en: 'Original protagonists, partners and the unit', ja: 'オリジナル主人公・パートナー・部隊名' }),
-  heroesNote: L({ zh: '空着的保持原来的名字。昵称没写就用名字。中文、英文、日文分开写；繁体中文没写时用简体那份。', en: 'Leave a field empty to keep the usual name. Without a nickname the name is used. Each language is written apart; Traditional Chinese uses the Simplified one when missing.', ja: '空欄はいつもの名前のままです。愛称が無ければ名前を使います。言語ごとに書きます。繁体字中国語が無ければ簡体字のものを使います。' }),
-  unitName: L({ zh: '部队名', en: 'Unit name', ja: '部隊名' }),
-  unitNote: L({ zh: '改了部队名，起名那一场剧情会改走「我不喜欢」那条分支，由主角提出这个名字。', en: 'With a unit name, the naming scene takes the “I don’t like it” branch and the protagonist proposes it.', ja: '部隊名を変えると、命名の場面は「気に入らない」の分岐に進み、主人公がこの名前を提案します。' }),
-  hero: L({ zh: '主角', en: 'Protagonist', ja: '主人公' }),
-  partner: L({ zh: '搭档', en: 'Partner', ja: 'パートナー' }),
-  given: L({ zh: '名字', en: 'Name', ja: '名前' }),
-  surname: L({ zh: '姓氏', en: 'Surname', ja: '姓' }),
-  nickname: L({ zh: '昵称', en: 'Nickname', ja: '愛称' }),
-  others: L({ zh: '其他人物、机体、武器的名字', en: 'Other pilots, units and weapons', ja: 'ほかのキャラクター・ユニット・武器の名前' }),
-  othersNote: L({ zh: '改的是名字本身，说话人、状态页、地图都会变；台词正文里提到这个名字的地方不会变。武器菜单里的「格」「射」和 P、B、MAP 标记会自动加上。', en: 'The name itself changes, so speakers, status screens and the map follow; dialogue text that mentions it does not. The weapon menu’s marks are added for you.', ja: '名前そのものが変わるので、話者名・ステータス画面・マップは追従しますが、会話本文の名前は変わりません。武器メニューの印は自動で付きます。' }),
-  shortName: L({ zh: '简称', en: 'Short name', ja: '略称' }),
-  fullName: L({ zh: '全名（可选）', en: 'Full name (optional)', ja: 'フルネーム（任意）' }),
-  portraits: L({ zh: '头像', en: 'Portraits', ja: '顔グラフィック' }),
-  portraitsNote: L({ zh: '选一个人物，再选一张图，拖动、缩放选好要用的方块。导出时缩放到 96 的倍数（最大 768），透明的地方会保留。原版图和 HD 图模式下都显示这张。几个人物共用同一张原版头像时会一起换。', en: 'Pick a pilot, then a picture, and drag and zoom to frame the square you want. It is scaled to a multiple of 96 (768 at most); transparency is kept. It shows with the images set to original or HD. Pilots sharing one original portrait change together.', ja: 'キャラクターと画像を選び、ドラッグとズームで使う正方形を決めます。96 の倍数（最大 768）に縮小します。透明部分は残ります。画像が原作でも HD でも表示されます。同じ原作の顔グラフィックを使うキャラクターは一緒に変わります。' }),
-  choosePicture: L({ zh: '选择图片', en: 'Choose picture', ja: '画像を選択' }),
-  zoom: L({ zh: '缩放', en: 'Zoom', ja: 'ズーム' }),
-  resetFrame: L({ zh: '复位', en: 'Reset', ja: 'リセット' }),
-  confirmFrame: L({ zh: '确定', en: 'OK', ja: '決定' }),
-  reframe: L({ zh: '调整', en: 'Reframe', ja: '調整' }),
-  otherPicture: L({ zh: '换一张图', en: 'Another picture', ja: '別の画像' }),
-  errFraming: L({ zh: '{who} 的头像还没点「确定」', en: 'The portrait of {who} is not confirmed (OK) yet', ja: '{who} の顔グラフィックがまだ「決定」されていません' }),
-  frameHint: L({ zh: '拖动图片调整位置，滚轮或滑块缩放，方框里的部分就是头像。调好后点「确定」。', en: 'Drag the picture to move it and use the wheel or the slider to zoom; what the square shows is the portrait. Press OK when it looks right.', ja: '画像をドラッグして位置を、ホイールかスライダーで大きさを調整します。枠内が顔グラフィックになります。決まったら「決定」を押してください。' }),
-  noPortrait: L({ zh: '这个人物没有头像', en: 'This pilot has no portrait', ja: 'このキャラクターには顔グラフィックがありません' }),
-  errEmpty: L({ zh: '还没有改任何名字或头像', en: 'No name or portrait is changed yet', ja: 'まだ名前・顔グラフィックを変えていません' }),
-  errLong: L({ zh: '{what} 太长（最多 {n} 个字符）', en: '{what} is too long (at most {n} characters)', ja: '{what} が長すぎます（最大 {n} 文字）' }),
-  errChars: L({ zh: '{what} 不能有换行、全角空格或 < > { }，首尾不能有空格', en: '{what} may not have line breaks, ideographic spaces or < > { }, nor spaces at either end', ja: '{what} に改行・全角スペース・< > { }、前後の空白は使えません' }),
-  errNeedName: L({ zh: '{what} 写了姓氏或昵称就要写名字', en: '{what}: a surname or nickname needs a name', ja: '{what}：姓や愛称を書くときは名前も必要です' }),
-  warnWide: L({ zh: '可能放不下：比原版格数或现有最长的名字还宽', en: 'May not fit: wider than the original’s cells or the widest usual name', ja: '収まらないかもしれません：原作のマス数か今の最長の名前より広いです' }),
-  fixFirst: L({ zh: '先改正这些：', en: 'Fix these first: ', ja: '先に直してください：' }),
-  allSeries: L({ zh: '全部作品', en: 'All series', ja: 'すべての作品' }),
-  pickUnitFirst: L({ zh: '先选机体，再选它的武器。', en: 'Pick a unit, then one of its weapons.', ja: 'ユニットを選んでから、その武器を選んでください。' }),
-  weaponsOf: L({ zh: '{unit} 的武器', en: 'Weapons of {unit}', ja: '{unit} の武器' }),
+  heroes: L({ zh: '原创主角、搭档与部队名', en: 'Original protagonists, partners and the unit', ja: 'オリジナル主人公・パートナー・部隊名', ko: '오리지널 주인공, 동료와 부대명' }),
+  heroesNote: L({ zh: '空着的保持原来的名字。昵称没写就用名字。中文、英文、日文分开写；繁体中文没写时用简体那份。', en: 'Leave a field empty to keep the usual name. Without a nickname the name is used. Each language is written apart; Traditional Chinese uses the Simplified one when missing.', ja: '空欄はいつもの名前のままです。愛称が無ければ名前を使います。言語ごとに書きます。繁体字中国語が無ければ簡体字のものを使います。', ko: '비워 둔 칸은 원래 이름 그대로입니다. 애칭이 없으면 이름을 씁니다. 언어마다 따로 적습니다. 번체 중국어가 비어 있으면 간체 중국어 이름을 씁니다.' }),
+  unitName: L({ zh: '部队名', en: 'Unit name', ja: '部隊名', ko: '부대명' }),
+  unitNote: L({ zh: '改了部队名，起名那一场剧情会改走「我不喜欢」那条分支，由主角提出这个名字。', en: 'With a unit name, the naming scene takes the “I don’t like it” branch and the protagonist proposes it.', ja: '部隊名を変えると、命名の場面は「気に入らない」の分岐に進み、主人公がこの名前を提案します。', ko: '부대명을 바꾸면 부대 이름을 정하는 장면이 “마음에 들지 않는다” 분기로 진행되고, 주인공이 이 이름을 제안합니다.' }),
+  hero: L({ zh: '主角', en: 'Protagonist', ja: '主人公', ko: '주인공' }),
+  partner: L({ zh: '搭档', en: 'Partner', ja: 'パートナー', ko: '동료' }),
+  given: L({ zh: '名字', en: 'Name', ja: '名前', ko: '이름' }),
+  surname: L({ zh: '姓氏', en: 'Surname', ja: '姓', ko: '성' }),
+  nickname: L({ zh: '昵称', en: 'Nickname', ja: '愛称', ko: '애칭' }),
+  others: L({ zh: '其他人物、机体、武器的名字', en: 'Other pilots, units and weapons', ja: 'ほかのキャラクター・ユニット・武器の名前', ko: '다른 파일럿, 기체, 무기의 이름' }),
+  othersNote: L({ zh: '改的是名字本身，说话人、状态页、地图都会变；台词正文里提到这个名字的地方不会变。武器菜单里的「格」「射」和 P、B、MAP 标记会自动加上。', en: 'The name itself changes, so speakers, status screens and the map follow; dialogue text that mentions it does not. The weapon menu’s marks are added for you.', ja: '名前そのものが変わるので、話者名・ステータス画面・マップは追従しますが、会話本文の名前は変わりません。武器メニューの印は自動で付きます。', ko: '이름 자체가 바뀌므로 화자 이름, 상태 화면, 맵에는 반영되지만, 대사 본문에 나오는 이름은 바뀌지 않습니다. 무기 메뉴의 “格”, “射”와 P, B, MAP 표시는 자동으로 붙습니다.' }),
+  shortName: L({ zh: '简称', en: 'Short name', ja: '略称', ko: '약칭' }),
+  fullName: L({ zh: '全名（可选）', en: 'Full name (optional)', ja: 'フルネーム（任意）', ko: '풀네임 (선택)' }),
+  portraits: L({ zh: '头像', en: 'Portraits', ja: '顔グラフィック', ko: '초상화' }),
+  portraitsNote: L({ zh: '选一个人物，再选一张图，拖动、缩放选好要用的方块。导出时缩放到 96 的倍数（最大 768），透明的地方会保留。原版图和 HD 图模式下都显示这张。几个人物共用同一张原版头像时会一起换。', en: 'Pick a pilot, then a picture, and drag and zoom to frame the square you want. It is scaled to a multiple of 96 (768 at most); transparency is kept. It shows with the images set to original or HD. Pilots sharing one original portrait change together.', ja: 'キャラクターと画像を選び、ドラッグとズームで使う正方形を決めます。96 の倍数（最大 768）に縮小します。透明部分は残ります。画像が原作でも HD でも表示されます。同じ原作の顔グラフィックを使うキャラクターは一緒に変わります。', ko: '파일럿과 그림을 고르고, 드래그와 확대·축소로 사용할 정사각형 영역을 정하세요. 96의 배수(최대 768)로 크기가 맞춰지며, 투명한 부분은 유지됩니다. 이미지 설정이 원본이든 HD든 표시됩니다. 같은 원본 초상화를 쓰는 파일럿들은 함께 바뀝니다.' }),
+  choosePicture: L({ zh: '选择图片', en: 'Choose picture', ja: '画像を選択', ko: '그림 선택' }),
+  zoom: L({ zh: '缩放', en: 'Zoom', ja: 'ズーム', ko: '확대/축소' }),
+  resetFrame: L({ zh: '复位', en: 'Reset', ja: 'リセット', ko: '초기화' }),
+  confirmFrame: L({ zh: '确定', en: 'OK', ja: '決定', ko: '확인' }),
+  reframe: L({ zh: '调整', en: 'Reframe', ja: '調整', ko: '조정' }),
+  otherPicture: L({ zh: '换一张图', en: 'Another picture', ja: '別の画像', ko: '다른 그림' }),
+  errFraming: L({ zh: '{who} 的头像还没点「确定」', en: 'The portrait of {who} is not confirmed (OK) yet', ja: '{who} の顔グラフィックがまだ「決定」されていません', ko: '{who}의 초상화를 아직 “확인”하지 않았습니다' }),
+  frameHint: L({ zh: '拖动图片调整位置，滚轮或滑块缩放，方框里的部分就是头像。调好后点「确定」。', en: 'Drag the picture to move it and use the wheel or the slider to zoom; what the square shows is the portrait. Press OK when it looks right.', ja: '画像をドラッグして位置を、ホイールかスライダーで大きさを調整します。枠内が顔グラフィックになります。決まったら「決定」を押してください。', ko: '그림을 드래그해 위치를 옮기고, 휠이나 슬라이더로 확대·축소합니다. 사각형 안에 보이는 부분이 초상화가 됩니다. 다 맞췄으면 “확인”을 누르세요.' }),
+  noPortrait: L({ zh: '这个人物没有头像', en: 'This pilot has no portrait', ja: 'このキャラクターには顔グラフィックがありません', ko: '이 파일럿에게는 초상화가 없습니다' }),
+  errEmpty: L({ zh: '还没有改任何名字或头像', en: 'No name or portrait is changed yet', ja: 'まだ名前・顔グラフィックを変えていません', ko: '아직 바꾼 이름이나 초상화가 없습니다' }),
+  errLong: L({ zh: '{what} 太长（最多 {n} 个字符）', en: '{what} is too long (at most {n} characters)', ja: '{what} が長すぎます（最大 {n} 文字）', ko: '{what}이(가) 너무 깁니다 (최대 {n}자)' }),
+  errChars: L({ zh: '{what} 不能有换行、全角空格或 < > { }，首尾不能有空格', en: '{what} may not have line breaks, ideographic spaces or < > { }, nor spaces at either end', ja: '{what} に改行・全角スペース・< > { }、前後の空白は使えません', ko: '{what}에는 줄바꿈, 전각 공백, < > { }를 쓸 수 없고, 앞뒤에 공백이 있으면 안 됩니다' }),
+  errNeedName: L({ zh: '{what} 写了姓氏或昵称就要写名字', en: '{what}: a surname or nickname needs a name', ja: '{what}：姓や愛称を書くときは名前も必要です', ko: '{what}: 성이나 애칭을 쓰려면 이름도 적어야 합니다' }),
+  warnWide: L({ zh: '可能放不下：比原版格数或现有最长的名字还宽', en: 'May not fit: wider than the original’s cells or the widest usual name', ja: '収まらないかもしれません：原作のマス数か今の最長の名前より広いです', ko: '칸에 다 들어가지 않을 수 있습니다: 원작의 칸 수나 기존의 가장 긴 이름보다 깁니다' }),
+  fixFirst: L({ zh: '先改正这些：', en: 'Fix these first: ', ja: '先に直してください：', ko: '먼저 이것들을 고치세요: ' }),
+  allSeries: L({ zh: '全部作品', en: 'All series', ja: 'すべての作品', ko: '모든 작품' }),
+  pickUnitFirst: L({ zh: '先选机体，再选它的武器。', en: 'Pick a unit, then one of its weapons.', ja: 'ユニットを選んでから、その武器を選んでください。', ko: '기체를 고른 다음 그 기체의 무기를 고르세요.' }),
+  weaponsOf: L({ zh: '{unit} 的武器', en: 'Weapons of {unit}', ja: '{unit} の武器', ko: '{unit}의 무기' }),
   game: '0.5.2',
 };
 // The eight in the defaults' person order (default_names.hpp), with their usual names.
 const heroes = [
-  { route: 'real-male', role: 'hero', ja: ['アークライト', 'ブルー', 'アーク'], zh: ['阿克莱特', '布鲁', '阿克'], en: ['Arklight', 'Blue', 'Ark'] },
-  { route: 'real-female', role: 'hero', ja: ['セレイン', 'メネス', 'セレイン'], zh: ['塞蕾茵', '梅涅斯', '塞蕾茵'], en: ['Selain', 'Meneth', 'Selain'] },
-  { route: 'super-male', role: 'hero', ja: ['ブラッド', 'スカイウィンド', 'ブラッド'], zh: ['布拉德', '斯凯温德', '布拉德'], en: ['Brad', 'Skywind', 'Brad'] },
-  { route: 'super-female', role: 'hero', ja: ['マナミ', 'ハミル', 'マナミ'], zh: ['玛娜米', '哈米尔', '玛娜米'], en: ['Manami', 'Hamill', 'Manami'] },
-  { route: 'real-male', role: 'partner', ja: ['エルリッヒ', 'シュターゼン', 'エルリッヒ'], zh: ['埃尔利希', '施塔森', '埃尔利希'], en: ['Ehrlich', 'Stasen', 'Ehrlich'] },
-  { route: 'real-female', role: 'partner', ja: ['リッシュ', 'グリスウェル', 'リッシュ'], zh: ['利修', '格里斯韦尔', '利修'], en: ['Rish', 'Griswell', 'Rish'] },
-  { route: 'super-male', role: 'partner', ja: ['カーツ', 'フォルネウス', 'カーツ'], zh: ['卡茨', '弗尔纽斯', '卡茨'], en: ['Kurtz', 'Forneus', 'Kurtz'] },
-  { route: 'super-female', role: 'partner', ja: ['アイシャ', 'リッジモンド', 'アイシャ'], zh: ['艾夏', '里奇蒙德', '艾夏'], en: ['Aisha', 'Ridgemond', 'Aisha'] },
+  { route: 'real-male', role: 'hero', ja: ['アークライト', 'ブルー', 'アーク'], zh: ['阿克莱特', '布鲁', '阿克'], en: ['Arklight', 'Blue', 'Ark'], ko: ['아크라이트', '블루', '아크'] },
+  { route: 'real-female', role: 'hero', ja: ['セレイン', 'メネス', 'セレイン'], zh: ['塞蕾茵', '梅涅斯', '塞蕾茵'], en: ['Selain', 'Meneth', 'Selain'], ko: ['세레인', '메네스', '세레인'] },
+  { route: 'super-male', role: 'hero', ja: ['ブラッド', 'スカイウィンド', 'ブラッド'], zh: ['布拉德', '斯凯温德', '布拉德'], en: ['Brad', 'Skywind', 'Brad'], ko: ['브래드', '스카이윈드', '브래드'] },
+  { route: 'super-female', role: 'hero', ja: ['マナミ', 'ハミル', 'マナミ'], zh: ['玛娜米', '哈米尔', '玛娜米'], en: ['Manami', 'Hamill', 'Manami'], ko: ['마나미', '하밀', '마나미'] },
+  { route: 'real-male', role: 'partner', ja: ['エルリッヒ', 'シュターゼン', 'エルリッヒ'], zh: ['埃尔利希', '施塔森', '埃尔利希'], en: ['Ehrlich', 'Stasen', 'Ehrlich'], ko: ['엘리히', '슈타젠', '엘리히'] },
+  { route: 'real-female', role: 'partner', ja: ['リッシュ', 'グリスウェル', 'リッシュ'], zh: ['利修', '格里斯韦尔', '利修'], en: ['Rish', 'Griswell', 'Rish'], ko: ['릿슈', '그리즈웰', '릿슈'] },
+  { route: 'super-male', role: 'partner', ja: ['カーツ', 'フォルネウス', 'カーツ'], zh: ['卡茨', '弗尔纽斯', '卡茨'], en: ['Kurtz', 'Forneus', 'Kurtz'], ko: ['카츠', '포르네우스', '카츠'] },
+  { route: 'super-female', role: 'partner', ja: ['アイシャ', 'リッジモンド', 'アイシャ'], zh: ['艾夏', '里奇蒙德', '艾夏'], en: ['Aisha', 'Ridgemond', 'Aisha'], ko: ['아이샤', '릿지몬드', '아이샤'] },
 ];
 // Their portraits: the eight are pilots 25-32 in the same order.
 const faces = new Map(library().people.map((p) => [p.id, portraitUrl(p.portrait)]));
 const heroCards = heroes.map((h, n) => ({ ...h, face: faces.get(25 + n) ?? null }));
-const routeNames: Record<string, { zh: string; en: string; ja: string }> = {
-  'super-male': { zh: '超级系男', en: 'Super Robot, male', ja: 'スーパー系男性' }, 'super-female': { zh: '超级系女', en: 'Super Robot, female', ja: 'スーパー系女性' },
-  'real-male': { zh: '真实系男', en: 'Real Robot, male', ja: 'リアル系男性' }, 'real-female': { zh: '真实系女', en: 'Real Robot, female', ja: 'リアル系女性' },
+const routeNames: Record<string, { zh: string; en: string; ja: string; ko: string }> = {
+  'super-male': { zh: '超级系男', en: 'Super Robot, male', ja: 'スーパー系男性', ko: '슈퍼계 남성' }, 'super-female': { zh: '超级系女', en: 'Super Robot, female', ja: 'スーパー系女性', ko: '슈퍼계 여성' },
+  'real-male': { zh: '真实系男', en: 'Real Robot, male', ja: 'リアル系男性', ko: '리얼계 남성' }, 'real-female': { zh: '真实系女', en: 'Real Robot, female', ja: 'リアル系女性', ko: '리얼계 여성' },
 };
 const routes = Object.fromEntries(Object.entries(routeNames).map(([k, v]) => [k, L(v)]));
-const unitDefault = { ja: 'マーチウィンド', zh: '三月风', en: 'March Wind' };
+const unitDefault = { ja: 'マーチウィンド', zh: '三月风', en: 'March Wind', ko: '마치 윈드' };
 // Pilots by number with their portrait: library people (export_library.py) are the pilots the
 // game names; the original eight are left to the first section.
 const people = library().people.filter((p) => p.id < 25 || p.id >= 33)
@@ -98,7 +99,7 @@ const notice = versionNotice(lang, text.game);
       <h1>{title[tl(lang)]}</h1>
       {notice && <p class="version-notice">{notice}</p>}
       <p>{lead[tl(lang)]}</p>
-      <p class="note"><a href={`/${lang}/docs/mod-names/`}>{L({ zh: '名字、头像与地图图标 MOD 说明', en: 'Name, portrait and map icon mods guide', ja: '名前・顔グラフィック・マップアイコン MOD の説明' })}</a> · <a href={`/${lang}/mods/icons/`}>{L({ zh: '地图图标 MOD 制作', en: 'Map icon mod maker', ja: 'マップアイコン MOD メーカー' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成，图片不会上传。', en: 'Needs 0.5.2 or later. Everything happens in your browser; no picture is uploaded.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われ、画像はアップロードされません。' })}</p>
+      <p class="note"><a href={`/${lang}/docs/mod-names/`}>{L({ zh: '名字、头像与地图图标 MOD 说明', en: 'Name, portrait and map icon mods guide', ja: '名前・顔グラフィック・マップアイコン MOD の説明', ko: '이름, 초상화, 맵 아이콘 MOD 설명' })}</a> · <a href={`/${lang}/mods/icons/`}>{L({ zh: '地图图标 MOD 制作', en: 'Map icon mod maker', ja: 'マップアイコン MOD メーカー', ko: '맵 아이콘 MOD 제작' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成，图片不会上传。', en: 'Needs 0.5.2 or later. Everything happens in your browser; no picture is uploaded.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われ、画像はアップロードされません。', ko: '0.5.2 이상 버전이 필요합니다. 모든 처리는 브라우저 안에서 이루어지며, 그림은 업로드되지 않습니다.' })}</p>
     </header>
     <AiGuide lang={lang} kind="names" />
 

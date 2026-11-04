@@ -5,7 +5,8 @@
   "zh-Hans": "重逢，我的师父",
   "zh-Hant": "重逢，我的師父",
   "ja": "再会、我が師よ",
-  "en": "Reunion with My Master"
+  "en": "Reunion with My Master",
+  "ko": "재회, 나의 스승이여"
  },
  "title_ja": "再会、我が師よ",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "共通",
     "zh-Hant": "共通",
     "ja": "共通",
-    "en": "Common"
+    "en": "Common",
+    "ko": "공통"
    },
    "secrets": [],
    "enemies": [
@@ -26,13 +28,15 @@
       "zh-Hans": "米诺夫斯基飞行器",
       "zh-Hant": "米諾夫斯基飛行器",
       "ja": "ミノフスキークラフト",
-      "en": "Minovsky Craft"
+      "en": "Minovsky Craft",
+      "ko": "미노프스키 크래프트"
      },
      "from": {
       "zh-Hans": "鲁·凯恩",
       "zh-Hant": "魯·凱恩",
       "ja": "ル・カイン",
-      "en": "Le Cain"
+      "en": "Le Cain",
+      "ko": "루 카인"
      },
      "retreat": false
     },
@@ -41,13 +45,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "戈斯特罗",
       "zh-Hant": "戈斯特羅",
       "ja": "ゴステロ",
-      "en": "Gosterro"
+      "en": "Gosterro",
+      "ko": "고스테로"
      },
      "retreat": false
     }

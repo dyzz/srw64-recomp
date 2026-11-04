@@ -164,15 +164,18 @@ def main() -> None:
     write('weapons.csv', ['weapon', 'name_ja', 'name_zh', 'name_en', *CHANNELS, *weapon_stats, 'units'],
           [[n, *nm, *t, *(cell(d[k]) for k in weapon_stats), ' '.join(map(str, c))] for n, nm, t, d, c in weapons])
 
-    def names3(n: list[str]) -> dict[str, str]:
+    # Korean, built into the game (docs/design/korean.md): its records, else the English.
+    korean = {int(e['key'][-5:]): plain(e['target']) for e in
+              json.loads((ROOT / 'content/locales/ko.json').read_text(encoding='utf-8'))['entries']}
+    def names3(n: list[str], record: int) -> dict[str, str]:
         ja, zh, en = n
-        return {'ja': ja, 'zh': zh or ja, 'en': en or ja}
+        return {'ja': ja, 'zh': zh or ja, 'en': en or ja, 'ko': korean.get(record) or en or ja}
     web = {
         'schema': 'srw64.web-data-mods.v2',
-        'units': [{'id': u, 'name': names3(n), 'terrain': ''.join(t), **d, **icons[u]} for u, n, t, d in units if n[0]],
-        'pilots': [{'id': a, 'name': names3(n), 'terrain': ''.join(t), 'shared': shared, **d}
+        'units': [{'id': u, 'name': names3(n, UNIT_NAMES + u), 'terrain': ''.join(t), **d, **icons[u]} for u, n, t, d in units if n[0]],
+        'pilots': [{'id': a, 'name': names3(n, ACTOR_NAMES + a), 'terrain': ''.join(t), 'shared': shared, **d}
                    for a, n, r, shared, t, d in pilots if n[0]],
-        'weapons': [{'id': w, 'name': names3(n), 'terrain': ''.join(t), 'units': c, **d}
+        'weapons': [{'id': w, 'name': names3(n, WEAPON_NAMES + w), 'terrain': ''.join(t), 'units': c, **d}
                     for w, n, t, d, c in weapons if n[0]],
     }
     WEB.write_text(json.dumps(web, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')

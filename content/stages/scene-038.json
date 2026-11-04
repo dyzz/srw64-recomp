@@ -5,7 +5,8 @@
   "zh-Hans": "OZ分裂（上）",
   "zh-Hant": "OZ分裂（上）",
   "ja": "OZ分裂 （前）",
-  "en": "OZ Divided (Part 1)"
+  "en": "OZ Divided (Part 1)",
+  "ko": "OZ 분열 전편"
  },
  "title_ja": "OZ分裂 （前）",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线",
     "zh-Hant": "獨立軍路線",
     "ja": "独立軍ルート",
-    "en": "Independence Army route"
+    "en": "Independence Army route",
+    "ko": "독립군 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "希尔妲＋陶拉斯",
       "zh-Hant": "希爾妲＋陶拉斯",
       "ja": "ヒルデ＋トーラス",
-      "en": "Hilde + Taurus"
+      "en": "Hilde + Taurus",
+      "ko": "힐데 + 토라스"
      },
      "text": {
       "zh-Hans": "用迪奥说服希尔妲（无门槛），关末前别让她被击坠",
       "zh-Hant": "用迪歐說服希爾妲（無門檻），關末前別讓她被擊墜",
       "ja": "デュオでヒルデを説得、クリアまで撃墜させない",
-      "en": "Persuade Hilde with Duo; keep her alive until the stage ends"
+      "en": "Persuade Hilde with Duo; keep her alive until the stage ends",
+      "ko": "듀오로 힐데를 설득하고 스테이지 종료까지 살려 두기"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "艾夏＋凤翼",
       "zh-Hant": "艾夏＋鳳翼",
       "ja": "アイシャ＋エルブルス",
-      "en": "Aisha + Elbulls"
+      "en": "Aisha + Elbulls",
+      "ko": "아이샤 + 엘브루스"
      },
      "text": {
       "zh-Hans": "用玛娜米说服艾夏（需「虚假的和平」已说服）",
       "zh-Hant": "用瑪娜米說服艾夏（需「虛假的和平」已說服）",
       "ja": "マナミでアイシャを説得（「偽りの平和」で説得済み）",
-      "en": "Persuade Aisha with Manami (needs the persuade in “False Peace”)"
+      "en": "Persuade Aisha with Manami (needs the persuade in “False Peace”)",
+      "ko": "마나미로 아이샤를 설득(“거짓된 평화”의 설득이 필요)"
      },
      "protagonists": [
       "manami"
@@ -59,13 +65,15 @@
       "zh-Hans": "利修＋西格露恩",
       "zh-Hant": "利修＋西格露恩",
       "ja": "リッシュ＋シグルーン",
-      "en": "Rish + Sigroon"
+      "en": "Rish + Sigroon",
+      "ko": "릿슈 + 시그룬"
      },
      "text": {
       "zh-Hans": "用塞蕾茵说服利修（需「激斗！玫瑰人生号」选第 2/3 项）",
       "zh-Hant": "用塞蕾茵說服利修（需「激鬥！玫瑰人生號」選第 2/3 項）",
       "ja": "セレインでリッシュを説得（「激闘!ラビアンローズ」で2番目か3番目）",
-      "en": "Persuade Rish with Selain (needs option 2/3 in “Fierce Battle! La Vie en Rose”)"
+      "en": "Persuade Rish with Selain (needs option 2/3 in “Fierce Battle! La Vie en Rose”)",
+      "ko": "세레인으로 릿슈를 설득(“격전! 라비앙 로즈”의 2번째/3번째 선택지가 필요)"
      },
      "protagonists": [
       "serein"
@@ -78,13 +86,15 @@
       "zh-Hans": "生物传感器",
       "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
-      "en": "Bio-Sensor"
+      "en": "Bio-Sensor",
+      "ko": "바이오 센서"
      },
      "from": {
       "zh-Hans": "亚赞",
       "zh-Hant": "亞贊",
       "ja": "ヤザン",
-      "en": "Yazan"
+      "en": "Yazan",
+      "ko": "야잔"
      },
      "retreat": false
     },
@@ -93,19 +103,22 @@
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
       "ja": "アポジモーター",
-      "en": "Apogee Motor"
+      "en": "Apogee Motor",
+      "ko": "아포지 모터"
      },
      "from": {
       "zh-Hans": "希尔妲",
       "zh-Hant": "希爾妲",
       "ja": "ヒルデ",
-      "en": "Hilde"
+      "en": "Hilde",
+      "ko": "힐데"
      },
      "note": {
       "zh-Hans": "可被迪奥说服（说服后不掉落）",
       "zh-Hant": "可被迪歐說服（說服後不掉落）",
       "ja": "デュオで説得可能（説得時はドロップなし）",
-      "en": "Can be persuaded by Duo (no drop if persuaded)"
+      "en": "Can be persuaded by Duo (no drop if persuaded)",
+      "ko": "듀오로 설득 가능(설득하면 파츠 드롭 없음)"
      },
      "retreat": false
     },
@@ -114,13 +127,15 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "利修",
       "zh-Hant": "利修",
       "ja": "リッシュ",
-      "en": "Rish"
+      "en": "Rish",
+      "ko": "릿슈"
      },
      "protagonists": [
       "serein"
@@ -132,13 +147,15 @@
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
-      "en": "Chobham Armor"
+      "en": "Chobham Armor",
+      "ko": "초밤 아머"
      },
      "from": {
       "zh-Hans": "艾夏",
       "zh-Hant": "艾夏",
       "ja": "アイシャ",
-      "en": "Aisha"
+      "en": "Aisha",
+      "ko": "아이샤"
      },
      "protagonists": [
       "manami"

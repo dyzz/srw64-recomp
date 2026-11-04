@@ -71,7 +71,7 @@ sys.path[:0] = [str(ROOT / "src")]
 from srw64_native.catalog import compile_locale, source_catalog  # noqa: E402
 from srw64_native.battle_graphics import read_triplets  # noqa: E402
 
-LANGS = {"ja": "ja", "zh": "zh-Hans", "en": "en"}
+LANGS = {"ja": "ja", "zh": "zh-Hans", "en": "en", "ko": "ko"}
 HANT = "zh-Hant"     # names only, always from the working tree (see export)
 
 # --- ROM layout (library.cpp) ---------------------------------------------------
@@ -359,9 +359,12 @@ def locale_docs(rev: str | None = None) -> dict[str, dict]:
     docs = {}
     for short, locale in LANGS.items():
         path = f"content/locales/{locale}.json"
-        text = (ROOT / path).read_text() if rev is None else subprocess.run(
-            ["git", "-C", str(ROOT), "show", f"{rev}:{path}"], check=True, capture_output=True, text=True).stdout
-        docs[short] = json.loads(text)
+        if rev is None:
+            docs[short] = json.loads((ROOT / path).read_text())
+            continue
+        shown = subprocess.run(["git", "-C", str(ROOT), "show", f"{rev}:{path}"], capture_output=True, text=True)
+        # A release from before Korean was built in: its Korean reads as its English.
+        docs[short] = json.loads(shown.stdout) if shown.returncode == 0 else docs["en"]
     return docs
 
 

@@ -6,8 +6,8 @@ import { dataUrl, frame, framer, type Picture } from './framer';
 import { el, fill, jsonBytes, openPackage, packageForm, readJson, say, writePackage, type Text } from './mod-package';
 import { picker, type Pickable } from './picker';
 
-type Names3 = { ja: string; zh: string; en: string };
-type Hero = { route: string; role: 'hero' | 'partner'; ja: string[]; zh: string[]; en: string[]; face: string | null };
+type Names3 = { ja: string; zh: string; en: string; ko?: string };
+type Hero = { route: string; role: 'hero' | 'partner'; ja: string[]; zh: string[]; en: string[]; ko?: string[]; face: string | null };
 type Person = { id: number; name: Names3; full: Names3; portrait: string | null; image: number | null };
 type Face = { id: number; name: Names3; portrait: string | null };
 type Named = { id: number; name: Names3 };
@@ -30,12 +30,12 @@ export function initNamesMaker() {
   const { text, heroes, routes, unitDefault, people, portraitPeople, pickFaces, units, weapons, pick, locale, lang } = JSON.parse(payload.textContent!) as {
     text: Text; heroes: Hero[]; routes: Record<string, string>; unitDefault: Names3; people: Person[]; portraitPeople: Face[]; pickFaces: Pickable[]; units: Named[];
     weapons: (Named & { units: number[] })[]; pick: { units: Pickable[]; pilots: Pickable[]; series: { id: number | null; name: string }[] };
-    locale: string; lang: 'zh' | 'en' | 'ja';
+    locale: string; lang: 'zh' | 'en' | 'ja' | 'ko';
   };
   const form = packageForm(root, text, locale, text.game);
   const lists: Record<Kind, Named[]> = { pilots: people, units, weapons };
   const byId = Object.fromEntries((Object.keys(lists) as Kind[]).map((k) => [k, new Map(lists[k].map((e) => [e.id, e]))])) as Record<Kind, Map<number, Named>>;
-  const nameOf = (n: Names3) => n[lang] || n.ja;
+  const nameOf = (n: Names3) => n[lang] || (lang === 'ko' ? n.en : '') || n.ja;
 
   // The widest usual name of each field over the eight and the three languages (half cells).
   const widest: Record<string, number> = {};
@@ -82,7 +82,7 @@ export function initNamesMaker() {
         check();
       }
       return el('div', { class: 'card' },
-        el('h3', {}, h.face ? el('img', { class: 'icon', src: h.face, alt: '', loading: 'lazy' }) : null, `${routes[h.route]} · ${text[h.role]}`, el('span', { class: 'dim' }, h[lang][0] + ({ zh: '·', en: ' ', ja: '・' })[lang] + h[lang][1])),
+        el('h3', {}, h.face ? el('img', { class: 'icon', src: h.face, alt: '', loading: 'lazy' }) : null, `${routes[h.route]} · ${text[h.role]}`, el('span', { class: 'dim' }, (h[lang] ?? h.en)[0] + ({ zh: '·', en: ' ', ja: '・', ko: ' ' })[lang] + (h[lang] ?? h.en)[1])),
         el('div', { class: 'langs' }, ...rows));
     }));
   }
@@ -250,7 +250,7 @@ export function initNamesMaker() {
     if (typeof m === 'string') return say(exportStatus, m, true);
     const { doc, problems } = namesJson();
     for (const [id, pic] of pictures) if (pic.framing) problems.push(fill(text.errFraming, { who: `${id} ${nameOf(portraitPeople.find((x) => x.id === id)!.name)}` }));
-    if (problems.length) return say(exportStatus, text.fixFirst + problems.join('；'), true);
+    if (problems.length) return say(exportStatus, text.fixFirst + problems.join(lang === 'en' || lang === 'ko' ? '; ' : '；'), true);
     if (!doc && !pictures.size && !Object.keys(kept).length) return say(exportStatus, text.errEmpty, true);
     const out: Record<string, Uint8Array> = { ...kept };
     if (doc) out['dialogue/names.json'] = jsonBytes(doc);

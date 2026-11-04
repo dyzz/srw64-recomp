@@ -5,7 +5,8 @@
   "zh-Hans": "破晓作战",
   "zh-Hant": "破曉作戰",
   "ja": "オペレーション・デイブレイク",
-  "en": "Operation Daybreak"
+  "en": "Operation Daybreak",
+  "ko": "오퍼레이션 데이브레이크"
  },
  "title_ja": "オペレーション・デイブレイク",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "共通",
     "zh-Hant": "共通",
     "ja": "共通",
-    "en": "Common"
+    "en": "Common",
+    "ko": "공통"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "破晓作战：OZ 或独立军",
       "zh-Hant": "破曉作戰：OZ 或獨立軍",
       "ja": "オペレーション・デイブレイク：OZか独立軍",
-      "en": "Operation Daybreak: OZ or Independence Army"
+      "en": "Operation Daybreak: OZ or Independence Army",
+      "ko": "오퍼레이션 데이브레이크: OZ 또는 독립군"
      },
      "text": {
       "zh-Hans": "关末二选：加入OZ→OZ 路线，不认同OZ→独立军路线",
       "zh-Hant": "關末二選：加入OZ→OZ 路線，不認同OZ→獨立軍路線",
       "ja": "クリア時の二択：OZに入る→OZルート、認めない→独立軍ルート",
-      "en": "End choice: join OZ → OZ route; reject OZ → Independence Army"
+      "en": "End choice: join OZ → OZ route; reject OZ → Independence Army",
+      "ko": "종료 시 선택: OZ 가입 → OZ 루트, OZ 거부 → 독립군 루트"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "蕾拉支线：那双眼中映不出未来",
       "zh-Hant": "蕾拉支線：那雙眼中映不出未來",
       "ja": "レラ分岐：その瞳に未来は映ることなく",
-      "en": "Lera branch: Those Eyes Reflect No Future"
+      "en": "Lera branch: Those Eyes Reflect No Future",
+      "ko": "레라 분기: 그 눈동자에 미래는 비치지 않고"
      },
      "text": {
       "zh-Hans": "开场选「跟蕾拉打个招呼」→蕾拉支线",
       "zh-Hant": "開場選「跟蕾拉打個招呼」→蕾拉支線",
       "ja": "開始時に「レラに声をかける」→レラルート",
-      "en": "At the start pick “Say hello to Lera” → Lera branch"
+      "en": "At the start pick “Say hello to Lera” → Lera branch",
+      "ko": "시작 시 “레라에게 말을 건다” → 레라 분기"
      }
     }
    ],
@@ -57,13 +63,15 @@
       "zh-Hans": "抗光束涂层",
       "zh-Hant": "抗光束塗層",
       "ja": "対ビームコーティング",
-      "en": "Anti-Beam Coating"
+      "en": "Anti-Beam Coating",
+      "ko": "대빔 코팅"
      },
      "from": {
       "zh-Hans": "迪斯盖亚",
       "zh-Hant": "迪斯海亞",
       "ja": "デスガイヤー",
-      "en": "Death Gaia"
+      "en": "Death Gaia",
+      "ko": "데스가이어"
      },
      "retreat": false
     },
@@ -72,13 +80,15 @@
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
       "ja": "アポジモーター",
-      "en": "Apogee Motor"
+      "en": "Apogee Motor",
+      "ko": "아포지 모터"
      },
      "from": {
       "zh-Hans": "吉尔德罗姆",
       "zh-Hant": "吉爾德羅姆",
       "ja": "ギルドローム",
-      "en": "Gildrome"
+      "en": "Gildrome",
+      "ko": "길드롬"
      },
      "retreat": false
     },
@@ -87,13 +97,15 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "秀特",
       "zh-Hant": "秀特",
       "ja": "ショット",
-      "en": "Shot"
+      "en": "Shot",
+      "ko": "쇼트"
      },
      "retreat": false
     },
@@ -102,13 +114,15 @@
       "zh-Hans": "生物传感器",
       "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
-      "en": "Bio-Sensor"
+      "en": "Bio-Sensor",
+      "ko": "바이오 센서"
      },
      "from": {
       "zh-Hans": "古拉博士",
       "zh-Hant": "古拉博士",
       "ja": "グラー博士",
-      "en": "Dr. Gura"
+      "en": "Dr. Gura",
+      "ko": "구라 박사"
      },
      "retreat": false
     },
@@ -117,13 +131,15 @@
       "zh-Hans": "超合金Z",
       "zh-Hant": "超合金Z",
       "ja": "超合金Z",
-      "en": "Super Alloy Z"
+      "en": "Super Alloy Z",
+      "ko": "초합금 Z"
      },
      "from": {
       "zh-Hans": "暗黑大将军",
       "zh-Hant": "暗黑大將軍",
       "ja": "暗黒大将軍",
-      "en": "Great General of Darkness"
+      "en": "Great General of Darkness",
+      "ko": "암흑대장군"
      },
      "retreat": false
     }

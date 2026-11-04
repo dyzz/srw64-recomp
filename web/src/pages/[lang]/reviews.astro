@@ -9,13 +9,14 @@ const t = {
     zh: '在剧情和图鉴页提交的意见，提交后所有人都能在这里看到。维护者逐条查看：采纳的修改会加入网站和下一个版本，没有采纳的会写明原因。需要补充信息时，维护者会在「我的意见」里向你提问。为防止滥用，系统会保存提交来源地址的加密摘要 30 天。',
     en: 'Suggestions you send from the story and Library pages are public here as soon as they are sent. The maintainers review each one: accepted changes go into the site and the next release, and declined ones say why. If they need more information, they ask in My suggestions. To prevent abuse, an encrypted digest of the address a suggestion came from is kept for 30 days.',
     ja: 'シナリオと図鑑から送った意見は、送信するとすぐにここで公開されます。管理者が一件ずつ確認し、採用した修正はサイトと次のバージョンに反映し、見送った場合は理由を記します。確認が必要なときは「自分の意見」で質問します。不正利用防止のため、送信元アドレスの暗号化ダイジェストを 30 日間保存します。',
+    ko: '시나리오와 도감 페이지에서 보낸 의견은 보내는 즉시 여기에 공개됩니다. 관리자가 하나씩 검토하며, 채택한 수정은 사이트와 다음 버전에 반영하고, 채택하지 않은 의견에는 이유를 적습니다. 정보가 더 필요하면 “내 의견”에서 질문합니다. 악용을 막기 위해 의견을 보낸 주소의 암호화된 다이제스트를 30일 동안 보관합니다.',
   },
   tabs: {
-    pending: { zh: '待处理', en: 'Pending', ja: '未対応' },
-    questioned: { zh: '待确认', en: 'Needs clarification', ja: '確認待ち' },
-    processed: { zh: '已处理', en: 'Done', ja: '対応済み' },
-    dismissed: { zh: '未采纳', en: 'Declined', ja: '見送り' },
-    mine: { zh: '我的意见', en: 'Mine', ja: '自分の意見' },
+    pending: { zh: '待处理', en: 'Pending', ja: '未対応', ko: '대기 중' },
+    questioned: { zh: '待确认', en: 'Needs clarification', ja: '確認待ち', ko: '확인 필요' },
+    processed: { zh: '已处理', en: 'Done', ja: '対応済み', ko: '처리됨' },
+    dismissed: { zh: '未采纳', en: 'Declined', ja: '見送り', ko: '채택 안 됨' },
+    mine: { zh: '我的意见', en: 'Mine', ja: '自分の意見', ko: '내 의견' },
   },
 };
 ---
@@ -25,7 +26,9 @@ const t = {
       <header class="page-head">
         <span class="tag">REVIEW</span>
         <h1>{UI.nav.reviews[tl(lang)]}</h1>
-        <p>翻訳への意見は、中国語版と英語版のページで受け付けています。日本語版のページはゲームの原文をそのまま載せているため、意見の受付はありません。</p>
+        {lang === 'ko'
+          ? <p>번역에 대한 의견은 중국어판과 영어판 페이지에서 받고 있습니다. 한국어판 페이지는 번역가 테오 님의 번역을 그대로 싣고 있으므로 의견을 받지 않습니다.</p>
+          : <p>翻訳への意見は、中国語版と英語版のページで受け付けています。日本語版のページはゲームの原文をそのまま載せているため、意見の受付はありません。</p>}
         <p class="alt"><a href="/en/reviews/" hreflang="en">English</a><a href="/zh/reviews/" hreflang="zh-Hans">简体中文</a><a href="/tw/reviews/" hreflang="zh-Hant">繁體中文</a></p>
       </header>
     </div>

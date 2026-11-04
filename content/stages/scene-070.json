@@ -5,7 +5,8 @@
   "zh-Hans": "重返战场",
   "zh-Hant": "重返戰場",
   "ja": "戦場に帰る",
-  "en": "Return to the Battlefield"
+  "en": "Return to the Battlefield",
+  "ko": "전장으로 돌아가다"
  },
  "title_ja": "戦場に帰る",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "完全和平路线",
     "zh-Hant": "完全和平路線",
     "ja": "完全平和ルート",
-    "en": "Complete Pacifism route"
+    "en": "Complete Pacifism route",
+    "ko": "완전평화 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "重返战场：随特列斯或独自作战",
       "zh-Hant": "重返戰場：隨特列斯或獨自作戰",
       "ja": "戦場に帰る：トレーズにつくか、自分たちだけで戦うか",
-      "en": "Return to the Battlefield: with Treize or going it alone"
+      "en": "Return to the Battlefield: with Treize or going it alone",
+      "ko": "전장으로 돌아가다: 트레즈 편 또는 단독 항전"
      },
      "text": {
       "zh-Hans": "关末选「投靠特列斯」→「激战的宇宙」；「我们独自战斗」→「银河帝国的威胁」",
       "zh-Hant": "關末選「投靠特列斯」→「激戰的宇宙」；「我們獨自戰鬥」→「銀河帝國的威脅」",
       "ja": "クリア時「トレーズにつく」→「激戦の宇宙」、「自分たちだけで戦う」→「銀河帝国の脅威」",
-      "en": "End choice: “Side with Treize” → “Fierce Fighting in Space”; “Fight on our own” → “The Galactic Empire's Threat”"
+      "en": "End choice: “Side with Treize” → “Fierce Fighting in Space”; “Fight on our own” → “The Galactic Empire's Threat”",
+      "ko": "종료 시 선택: “트레즈 편에 선다” → “격전의 우주”, “우리끼리 싸운다” → “은하제국의 위협”"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "杰克斯＋艾比安高达",
       "zh-Hant": "傑克斯＋次代鋼彈",
       "ja": "ゼクス＋ガンダムエピオン",
-      "en": "Zechs + Gundam Epyon"
+      "en": "Zechs + Gundam Epyon",
+      "ko": "젝스 + 건담 에피온"
      },
      "text": {
       "zh-Hans": "关末选「投靠特列斯」→杰克斯＋艾比安高达加入",
       "zh-Hant": "關末選「投靠特列斯」→傑克斯＋次代鋼彈加入",
       "ja": "「トレーズにつく」を選ぶ→ゼクス＋ガンダムエピオンが加入",
-      "en": "Pick “Side with Treize” → Zechs + Gundam Epyon join"
+      "en": "Pick “Side with Treize” → Zechs + Gundam Epyon join",
+      "ko": "“트레즈 편에 선다” 선택 → 젝스 + 건담 에피온 가입"
      }
     },
     {
@@ -56,13 +62,15 @@
       "zh-Hans": "利修＋西格露恩",
       "zh-Hant": "利修＋西格露恩",
       "ja": "リッシュ＋シグルーン",
-      "en": "Rish + Sigroon"
+      "en": "Rish + Sigroon",
+      "ko": "릿슈 + 시그룬"
      },
      "text": {
       "zh-Hans": "无需操作：前两步完成则关末利修＋西格露恩加入",
       "zh-Hant": "無需操作：前兩步完成則關末利修＋西格露恩加入",
       "ja": "操作不要：前2段階済みならクリア時にリッシュ＋シグルーンが加入",
-      "en": "No action needed: Rish + Sigroon join at the end if steps 1–2 done"
+      "en": "No action needed: Rish + Sigroon join at the end if steps 1–2 done",
+      "ko": "할 일 없음: 1~2단계를 마쳤다면 종료 시 릿슈 + 시그룬 가입"
      },
      "protagonists": [
       "serein"
@@ -74,13 +82,15 @@
       "zh-Hans": "剧情解锁的必杀技与合体技",
       "zh-Hant": "劇情解鎖的必殺技與合體技",
       "ja": "ストーリーで解禁される必殺技と合体技",
-      "en": "Story-unlocked finishers and combination attacks"
+      "en": "Story-unlocked finishers and combination attacks",
+      "ko": "스토리로 해금되는 필살기와 합체 공격"
      },
      "text": {
       "zh-Hans": "无需操作：洗牌同盟四人的必杀技本关解锁",
       "zh-Hant": "無需操作：洗牌同盟四人的必殺技本關解鎖",
       "ja": "操作不要：シャッフル4人の必殺技がこのステージで解禁",
-      "en": "No action needed: Shuffle Alliance finishers unlock here"
+      "en": "No action needed: Shuffle Alliance finishers unlock here",
+      "ko": "할 일 없음: 여기서 셔플 동맹 필살기 해금"
      }
     }
    ],
@@ -90,13 +100,15 @@
       "zh-Hans": "混合式装甲",
       "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
-      "en": "Hybrid Armor"
+      "en": "Hybrid Armor",
+      "ko": "하이브리드 아머"
      },
      "from": {
       "zh-Hans": "丹格尔",
       "zh-Hant": "丹格爾",
       "ja": "ダンゲル",
-      "en": "Dungele"
+      "en": "Dungele",
+      "ko": "단겔"
      },
      "retreat": false
     },
@@ -105,13 +117,15 @@
       "zh-Hans": "推进器",
       "zh-Hant": "推進器",
       "ja": "ブースター",
-      "en": "Booster"
+      "en": "Booster",
+      "ko": "부스터"
      },
      "from": {
       "zh-Hans": "巴伦",
       "zh-Hant": "巴倫",
       "ja": "バレン",
-      "en": "Baren"
+      "en": "Baren",
+      "ko": "바렌"
      },
      "retreat": false
     }

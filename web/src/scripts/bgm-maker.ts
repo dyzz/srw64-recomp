@@ -5,8 +5,8 @@
 import { strFromU8, strToU8, unzipSync, zipSync, type Zippable } from 'fflate';
 import { vorbisEncoder, vorbisInfo } from './audio-tools';
 
-type Lang = 'zh' | 'en' | 'ja';
-type Names = { ja: string; zh: string; en: string };
+type Lang = 'zh' | 'en' | 'ja' | 'ko';
+type Names = { ja: string; zh: string; en: string; ko?: string };
 type SongInfo = { song: number; row: number; title: string; karaoke: boolean; fixed: string | null; stageMaps: number; pilots: number[]; units: number[] };
 type Named = { id: number; name: Names; song: number };
 type Data = { songs: SongInfo[]; pilots: Named[]; units: Named[] };
@@ -48,7 +48,7 @@ export function initBgmMaker() {
   // description is written in (zh-Hant there).
   const { data, text, lang, locale } = JSON.parse(payload.textContent!) as { data: Data; text: Text; lang: Lang; locale: string };
   const fill = (s: string, v: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k) => String(v[k] ?? ''));
-  const nameOf = (n: Names) => n[lang] || n.ja;
+  const nameOf = (n: Names) => n[lang] || (lang === 'ko' ? n.en : '') || n.ja;
   const songInfo = new Map(data.songs.map((s) => [s.song, s]));
   const pilotName = new Map(data.pilots.map((p) => [p.id, nameOf(p.name)]));
   const tracks = new Map<number, Track>();
@@ -188,7 +188,7 @@ export function initBgmMaker() {
     if (s.stageMaps) out.push(fill(text.usesStage, { n: s.stageMaps }));
     if (s.pilots.length) {
       const names = [...new Set(s.pilots.map((p) => pilotName.get(p)).filter(Boolean))];
-      out.push(fill(text.usesPilots, { names: names.slice(0, 4).join('、') + (names.length > 4 ? fill(text.usesMore, { n: names.length - 4 }) : '') }));
+      out.push(fill(text.usesPilots, { names: names.slice(0, 4).join(lang === 'en' || lang === 'ko' ? ', ' : '、') + (names.length > 4 ? fill(text.usesMore, { n: names.length - 4 }) : '') }));
     }
     if (s.units.length) out.push(fill(text.usesUnits, { n: s.units.length }));
     return out.length ? out.join(' · ') : text.usesNone;

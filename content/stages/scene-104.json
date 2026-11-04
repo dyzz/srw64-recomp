@@ -5,7 +5,8 @@
   "zh-Hans": "恐怖！恶魔阿克西斯启动！（上）",
   "zh-Hant": "恐怖！惡魔阿克西斯啟動！（上）",
   "ja": "恐怖!デビルアクシズ始動! （前）",
-  "en": "Terror! Dark Axis Activates! (Part 1)"
+  "en": "Terror! Dark Axis Activates! (Part 1)",
+  "ko": "공포! 데빌 액시즈 시동! 전편"
  },
  "title_ja": "恐怖!デビルアクシズ始動! （前）",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "共通",
     "zh-Hant": "共通",
     "ja": "共通",
-    "en": "Common"
+    "en": "Common",
+    "ko": "공통"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "基拉尔＋曼陀罗高达",
       "zh-Hant": "基拉爾＋曼陀羅鋼彈",
       "ja": "キラル＋マンダラガンダム",
-      "en": "Kyral + Mandala Gundam"
+      "en": "Kyral + Mandala Gundam",
+      "ko": "키랄 + 만다라 건담"
      },
      "text": {
       "zh-Hans": "曾用多蒙击坠基拉尔时，保他活到最后一波敌军全灭",
       "zh-Hant": "曾用多門擊墜基拉爾時，保他活到最後一波敵軍全滅",
       "ja": "以前ドモンでキラルを撃墜済みなら、最終波全滅まで彼を生存させる",
-      "en": "If Domon shot Kyral down before, keep him alive until the last wave"
+      "en": "If Domon shot Kyral down before, keep him alive until the last wave",
+      "ko": "앞서 도몬이 키랄을 격추했다면 마지막 적 부대까지 키랄이 격추되지 않게 지킴"
      }
     }
    ],
@@ -42,19 +46,22 @@
       "zh-Hans": "I力场屏障",
       "zh-Hant": "I力場屏障",
       "ja": "Iフィールドバリア",
-      "en": "I-Field Barrier"
+      "en": "I-Field Barrier",
+      "ko": "I필드 배리어"
      },
      "from": {
       "zh-Hans": "夏亚",
       "zh-Hant": "夏亞",
       "ja": "シャア",
-      "en": "Char"
+      "en": "Char",
+      "ko": "샤아"
      },
      "note": {
       "zh-Hans": "HP 30% 以下时撤退",
       "zh-Hant": "HP 30% 以下時撤退",
       "ja": "HP30%以下で撤退",
-      "en": "Withdraws at 30% HP or below"
+      "en": "Withdraws at 30% HP or below",
+      "ko": "HP 30% 이하에서 철수"
      },
      "routes": [
       "ia"
@@ -66,13 +73,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "葵丝",
       "zh-Hant": "葵絲",
       "ja": "クェス",
-      "en": "Quess"
+      "en": "Quess",
+      "ko": "퀘스"
      },
      "retreat": false
     },
@@ -81,13 +90,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "邱尼",
       "zh-Hant": "裘尼",
       "ja": "ギュネイ",
-      "en": "Gyunei"
+      "en": "Gyunei",
+      "ko": "규네이"
      },
      "retreat": false
     },
@@ -96,13 +107,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "蕾森",
       "zh-Hant": "蕾森",
       "ja": "レズン",
-      "en": "Rezin"
+      "en": "Rezin",
+      "ko": "레즌"
      },
      "retreat": false
     },
@@ -111,13 +124,15 @@
       "zh-Hans": "强化推进器",
       "zh-Hant": "強化推進器",
       "ja": "メガブースター",
-      "en": "Mega Booster"
+      "en": "Mega Booster",
+      "ko": "메가 부스터"
      },
      "from": {
       "zh-Hans": "米利亚尔特",
       "zh-Hant": "米利亞爾特",
       "ja": "ミリアルド",
-      "en": "Milliardo"
+      "en": "Milliardo",
+      "ko": "밀리아르도"
      },
      "routes": [
       "ia"
@@ -129,19 +144,22 @@
       "zh-Hans": "精神感应框架",
       "zh-Hant": "精神感應框體",
       "ja": "サイコフレーム",
-      "en": "Psycoframe"
+      "en": "Psycoframe",
+      "ko": "사이코 프레임"
      },
      "from": {
       "zh-Hans": "夏亚",
       "zh-Hant": "夏亞",
       "ja": "シャア",
-      "en": "Char"
+      "en": "Char",
+      "ko": "샤아"
      },
      "note": {
       "zh-Hans": "HP 30% 以下时撤退",
       "zh-Hant": "HP 30% 以下時撤退",
       "ja": "HP30%以下で撤退",
-      "en": "Withdraws at 30% HP or below"
+      "en": "Withdraws at 30% HP or below",
+      "ko": "HP 30% 이하에서 철수"
      },
      "routes": [
       "cp",
@@ -154,13 +172,15 @@
       "zh-Hans": "强化推进器",
       "zh-Hant": "強化推進器",
       "ja": "メガブースター",
-      "en": "Mega Booster"
+      "en": "Mega Booster",
+      "ko": "메가 부스터"
      },
      "from": {
       "zh-Hans": "卡多",
       "zh-Hant": "卡多",
       "ja": "ガトー",
-      "en": "Gato"
+      "en": "Gato",
+      "ko": "가토"
      },
      "routes": [
       "oz"

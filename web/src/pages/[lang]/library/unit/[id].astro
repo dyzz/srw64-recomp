@@ -3,7 +3,7 @@ import Base from '../../../../layouts/Base.astro';
 import Term from '../../../../components/Term.astro';
 import LibraryChanges from '../../../../components/LibraryChanges.astro';
 import { LANGS, UI, canReview, tl, type Lang } from '../../../../i18n';
-import { library, type Unit } from '../../../../lib/data';
+import { library, loc, type Unit } from '../../../../lib/data';
 
 export async function getStaticPaths() {
   return LANGS.flatMap((l) => library().units.map((u) => ({ params: { lang: l.code, id: String(u.id) } })));
@@ -11,8 +11,9 @@ export async function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const lib = library();
 const u = lib.units.find((x) => x.id === Number(Astro.params.id)) as Unit;
-const L = (k: string) => lib.labels[k]?.[tl(lang)] ?? k;
-const series = lib.series.find((s) => s.id === u.series)?.name[tl(lang)] ?? '';
+const L = (k: string) => (lib.labels[k] ? loc(lib.labels[k], lang) : k);
+const seriesL3 = lib.series.find((s) => s.id === u.series)?.name;
+const series = seriesL3 ? loc(seriesL3, lang) : '';
 const siblings = lib.units.filter((x) => x.series === u.series);
 const i = siblings.indexOf(u);
 const roman = ['', 'Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ'];
@@ -28,35 +29,35 @@ const stats = (['hp', 'en', 'move', 'mobility', 'armor', 'limit'] as const).map(
 const rng = (r: [number, number]) => (r[0] === r[1] ? `${r[0]}` : `${r[0]}–${r[1]}`);
 const sign = (n: number) => (n > 0 ? `+${n}` : `${n}`);
 const t = {
-  suggest: { zh: '对译名提建议', en: 'Suggest a name correction', ja: '訳名への意見を送る' },
-  shield: { zh: '有盾牌', en: 'Shield', ja: 'シールド装備' },
-  weapons: { zh: '武器', en: 'Weapons', ja: '武器' },
-  editHint: { zh: '点击武器名左侧的「提建议」，可提交译名修改意见', en: 'Click Suggest to the left of a weapon’s name to propose a name correction', ja: '武器名の左にある「意見」から、訳名の修正案を送れます' },
-  abilities: { zh: '特殊能力', en: 'Abilities', ja: '特殊能力' },
-  prev: { zh: '上一台', en: 'Previous', ja: '前へ' },
-  next: { zh: '下一台', en: 'Next', ja: '次へ' },
+  suggest: { zh: '对译名提建议', en: 'Suggest a name correction', ja: '訳名への意見を送る', ko: '번역 이름에 의견 보내기' },
+  shield: { zh: '有盾牌', en: 'Shield', ja: 'シールド装備', ko: '실드 장비' },
+  weapons: { zh: '武器', en: 'Weapons', ja: '武器', ko: '무기' },
+  editHint: { zh: '点击武器名左侧的「提建议」，可提交译名修改意见', en: 'Click Suggest to the left of a weapon’s name to propose a name correction', ja: '武器名の左にある「意見」から、訳名の修正案を送れます', ko: '무기 이름 왼쪽의 “의견”을 눌러 번역 이름의 수정안을 보낼 수 있습니다' },
+  abilities: { zh: '特殊能力', en: 'Abilities', ja: '特殊能力', ko: '특수 능력' },
+  prev: { zh: '上一台', en: 'Previous', ja: '前へ', ko: '이전' },
+  next: { zh: '下一台', en: 'Next', ja: '次へ', ko: '다음' },
 };
 const termAttrs = (id: string, name: { zh: string; en: string }) => ({ 'data-term': id });
 ---
-<Base lang={lang} title={`${u.name[tl(lang)]} · ${UI.nav.library[tl(lang)]}`} review={canReview(lang)}>
+<Base lang={lang} title={`${loc(u.name, lang)} · ${UI.nav.library[tl(lang)]}`} review={canReview(lang)}>
   <div class="wrap layout" data-library data-lang={lang} data-target-type="term" data-target-prefix="">
     <aside class="side">
       <a href={`/${lang}/library/#units`}>← {UI.nav.library[tl(lang)]}</a>
       <p class="series">{series}</p>
       <ul>
-        {siblings.map((x) => <li><a href={`/${lang}/library/unit/${x.id}/`} aria-current={x === u ? 'page' : undefined}>{x.name[tl(lang)]}{x.model && <span class="latin">{x.model}</span>}</a></li>)}
+        {siblings.map((x) => <li><a href={`/${lang}/library/unit/${x.id}/`} aria-current={x === u ? 'page' : undefined}>{loc(x.name, lang)}{x.model && <span class="latin">{x.model}</span>}</a></li>)}
       </ul>
     </aside>
 
     <main class="main">
       <div class="top">
-        <div class="art"><img src={`/gen/units/${u.id}.webp`} alt={u.name[tl(lang)]} width="320" height="320" /></div>
+        <div class="art"><img src={`/gen/units/${u.id}.webp`} alt={loc(u.name, lang)} width="320" height="320" /></div>
         <div class="info">
           <p class="crumb">{u.series != null ? <Term id={`series:${u.series}`} name={lib.series.find((x) => x.id === u.series)!.name} lang={lang} /> : series}{u.model && <> · <span class="latin">{u.model}</span></>}</p>
           <div class="namerow" {...termAttrs(`unit:${u.id}`, u.name)}>
-            <h1>{u.name[tl(lang)]}</h1>
+            <h1>{loc(u.name, lang)}</h1>
             {lang !== 'ja' && <span class="jn" lang="ja">{u.name.ja}</span>}
-            {lang !== 'en' && <span class="en">{u.name.en}</span>}
+            {lang !== 'en' && loc(u.name, lang) !== u.name.en && <span class="en">{u.name.en}</span>}
             <span class="tr-zh" hidden>{u.name.zh}</span><span class="tr-en" hidden>{u.name.en}</span>
             {canReview(lang) && <button type="button" class="act" data-suggest data-target-type="term" data-target-id={`unit:${u.id}`}>{t.suggest[tl(lang)]}</button>}
             <div data-term-body class="tb"></div>
@@ -64,7 +65,7 @@ const termAttrs = (id: string, name: { zh: string; en: string }) => ({ 'data-ter
           <LibraryChanges changes={u.changes} lang={lang} tag={lib.baseline} />
           <p class="badges">
             <span class="cap">{L('library_cap')} {L('library_cap_value').replace('{n}', String(u.upgrade_cap))}</span>
-            {u.movement_types.map((m) => <span class="pill">{m[tl(lang)]}</span>)}
+            {u.movement_types.map((m) => <span class="pill">{loc(m, lang)}</span>)}
             <span class="pill">{L('size')} {u.size}</span>
             {u.shield && <span class="pill">{t.shield[tl(lang)]}</span>}
             <span class="pill">{L('library_slots')} {u.part_slots}</span>
@@ -113,8 +114,8 @@ const termAttrs = (id: string, name: { zh: string; en: string }) => ({ 'data-ter
       )}
 
       <nav class="pn">
-        {i > 0 && <a href={`/${lang}/library/unit/${siblings[i - 1].id}/`}>← {siblings[i - 1].name[tl(lang)]}</a>}
-        {i < siblings.length - 1 && <a class="r" href={`/${lang}/library/unit/${siblings[i + 1].id}/`}>{siblings[i + 1].name[tl(lang)]} →</a>}
+        {i > 0 && <a href={`/${lang}/library/unit/${siblings[i - 1].id}/`}>← {loc(siblings[i - 1].name, lang)}</a>}
+        {i < siblings.length - 1 && <a class="r" href={`/${lang}/library/unit/${siblings[i + 1].id}/`}>{loc(siblings[i + 1].name, lang)} →</a>}
       </nav>
     </main>
   </div>

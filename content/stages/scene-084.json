@@ -5,7 +5,8 @@
   "zh-Hans": "没有胜利者的战斗",
   "zh-Hant": "沒有勝利者的戰鬥",
   "ja": "勝利者のいない戦い",
-  "en": "A Battle Without Victors"
+  "en": "A Battle Without Victors",
+  "ko": "승리자가 없는 싸움"
  },
  "title_ja": "勝利者のいない戦い",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线／独自作战",
     "zh-Hant": "獨立軍路線／獨自作戰",
     "ja": "独立軍ルート／単独行動",
-    "en": "Independence Army route / fight alone"
+    "en": "Independence Army route / fight alone",
+    "ko": "독립군 루트 / 단독 항전"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "普露＋卡碧尼Mk-Ⅱ",
       "zh-Hant": "普露＋丘貝雷Mk-Ⅱ",
       "ja": "プル＋キュベレイmkⅡ",
-      "en": "Ple + Qubeley Mk-II"
+      "en": "Ple + Qubeley Mk-II",
+      "ko": "플 + 큐베레이 Mk-II"
      },
      "text": {
       "zh-Hans": "用捷度说服普露（第 1 步，无门槛）",
       "zh-Hant": "用傑特說服普露（第 1 步，無門檻）",
       "ja": "ジュドーでプルを説得（第1段階、条件なし）",
-      "en": "Step 1: persuade Ple with Judau (no prerequisite)"
+      "en": "Step 1: persuade Ple with Judau (no prerequisite)",
+      "ko": "1단계: 쥬도로 플 설득(사전 조건 없음)"
      }
     }
    ],
@@ -42,13 +46,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "墨丘利",
       "zh-Hant": "麥丘留士",
       "ja": "メリクリウス",
-      "en": "Mercurius"
+      "en": "Mercurius",
+      "ko": "메리크리우스"
      },
      "retreat": false
     },
@@ -57,13 +63,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "维耶特",
       "zh-Hant": "拜葉特",
       "ja": "ヴァイエイト",
-      "en": "Vayeate"
+      "en": "Vayeate",
+      "ko": "바이에이트"
      },
      "retreat": false
     },
@@ -72,19 +80,22 @@
       "zh-Hans": "抗光束涂层",
       "zh-Hant": "抗光束塗層",
       "ja": "対ビームコーティング",
-      "en": "Anti-Beam Coating"
+      "en": "Anti-Beam Coating",
+      "ko": "대빔 코팅"
      },
      "from": {
       "zh-Hans": "杰利德",
       "zh-Hant": "傑利特",
       "ja": "ジェリド",
-      "en": "Jerid"
+      "en": "Jerid",
+      "ko": "제리드"
      },
      "note": {
       "zh-Hans": "敌方全灭时离场",
       "zh-Hant": "敵方全滅時離場",
       "ja": "敵全滅時に離脱",
-      "en": "Leaves when the enemy is wiped out"
+      "en": "Leaves when the enemy is wiped out",
+      "ko": "적을 전멸시키면 이탈"
      },
      "third_party": true,
      "retreat": true
@@ -94,13 +105,15 @@
       "zh-Hans": "精神感应框架",
       "zh-Hant": "精神感應框體",
       "ja": "サイコフレーム",
-      "en": "Psycoframe"
+      "en": "Psycoframe",
+      "ko": "사이코 프레임"
      },
      "from": {
       "zh-Hans": "米利亚尔特",
       "zh-Hant": "米利亞爾特",
       "ja": "ミリアルド",
-      "en": "Milliardo"
+      "en": "Milliardo",
+      "ko": "밀리아르도"
      },
      "retreat": false
     },
@@ -109,19 +122,22 @@
       "zh-Hans": "洗牌同盟纹章",
       "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
-      "en": "Shuffle Crest"
+      "en": "Shuffle Crest",
+      "ko": "셔플의 문장"
      },
      "from": {
       "zh-Hans": "多萝西",
       "zh-Hant": "桃樂斯",
       "ja": "ドロシー",
-      "en": "Dorothy"
+      "en": "Dorothy",
+      "ko": "도로시"
      },
      "note": {
       "zh-Hans": "仅走过完全和平路线时登场",
       "zh-Hant": "僅走過完全和平路線時登場",
       "ja": "完全平和ルートを通った場合のみ登場",
-      "en": "Appears only if you went through the Complete Pacifism route"
+      "en": "Appears only if you went through the Complete Pacifism route",
+      "ko": "완전평화 루트를 거친 경우에만 등장"
      },
      "retreat": false
     },
@@ -131,13 +147,15 @@
       "zh-Hans": "哈曼",
       "zh-Hant": "哈曼",
       "ja": "ハマーン",
-      "en": "Haman"
+      "en": "Haman",
+      "ko": "하만"
      },
      "note": {
       "zh-Hans": "HP 50% 以下或敌方剩 6 台以下撤退（关卡结束）",
       "zh-Hant": "HP 50% 以下或敵方剩 6 臺以下撤退（關卡結束）",
       "ja": "HP50%以下か敵残り6機以下で撤退（ステージ終了）",
-      "en": "Retreats at 50% HP or 6 enemies left (stage ends)"
+      "en": "Retreats at 50% HP or 6 enemies left (stage ends)",
+      "ko": "HP 50% 또는 적 6기 이하에서 퇴각(스테이지 종료)"
      },
      "retreat": true
     },
@@ -147,13 +165,15 @@
       "zh-Hans": "特列斯、蕾蒂",
       "zh-Hant": "特列斯、蕾蒂",
       "ja": "トレーズ、レディ",
-      "en": "Treize, Lady"
+      "en": "Treize, Lady",
+      "ko": "트레즈, 레이디"
      },
      "note": {
       "zh-Hans": "敌方全灭时离场",
       "zh-Hant": "敵方全滅時離場",
       "ja": "敵全滅時に離脱",
-      "en": "Leave when the enemy is wiped out"
+      "en": "Leave when the enemy is wiped out",
+      "ko": "적을 전멸시키면 이탈"
      },
      "third_party": true,
      "retreat": true

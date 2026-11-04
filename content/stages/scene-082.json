@@ -5,7 +5,8 @@
   "zh-Hans": "扭曲的宇宙",
   "zh-Hant": "扭曲的宇宙",
   "ja": "ゆがむ宇宙",
-  "en": "Warped Space"
+  "en": "Warped Space",
+  "ko": "뒤틀리는 우주"
  },
  "title_ja": "ゆがむ宇宙",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线／独自作战（10 回合内突破）",
     "zh-Hant": "獨立軍路線／獨自作戰（10 回合內突破）",
     "ja": "独立軍ルート／単独行動（10ターン以内に突破）",
-    "en": "Independence Army route / fight alone (broke through within 10 turns)"
+    "en": "Independence Army route / fight alone (broke through within 10 turns)",
+    "ko": "독립군 루트 / 단독 항전(10턴 이내에 돌파)"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "决死突破作战：10 回合限时",
       "zh-Hant": "決死突破作戰：10 回合限時",
       "ja": "決死の突破作戦：10ターン制限",
-      "en": "Desperate Breakthrough: 10-turn limit"
+      "en": "Desperate Breakthrough: 10-turn limit",
+      "ko": "결사의 돌파 작전: 10턴 제한"
      },
      "text": {
       "zh-Hans": "「决死突破作战」两篇都在第 10 回合内过关才会进入",
       "zh-Hant": "「決死突破作戰」兩篇都在第 10 回合內過關才會進入",
       "ja": "「決死の突破作戦」前後編とも第10ターン以内クリアで進入",
-      "en": "Reached only if both “Desperate Breakthrough” parts end by turn 10"
+      "en": "Reached only if both “Desperate Breakthrough” parts end by turn 10",
+      "ko": "“결사의 돌파 작전” 전편·후편을 모두 10턴째까지 끝낸 경우에만 진입"
      }
     }
    ],
@@ -42,13 +46,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "卡达尔",
       "zh-Hant": "卡達爾",
       "ja": "ガンダル",
-      "en": "Gandal"
+      "en": "Gandal",
+      "ko": "간달"
      },
      "retreat": false
     },
@@ -57,13 +63,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "加涅拉",
       "zh-Hant": "傑涅拉",
       "ja": "ジャネラ",
-      "en": "Janera"
+      "en": "Janera",
+      "ko": "자네라"
      },
      "retreat": false
     },
@@ -72,13 +80,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "瓦尔",
       "zh-Hant": "瓦爾",
       "ja": "ワール",
-      "en": "Wahl"
+      "en": "Wahl",
+      "ko": "와르"
      },
      "retreat": false
     },
@@ -87,13 +97,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "戈曼",
       "zh-Hant": "戈曼",
       "ja": "ゴーマン",
-      "en": "Gorman"
+      "en": "Gorman",
+      "ko": "고먼"
      },
      "retreat": false
     }

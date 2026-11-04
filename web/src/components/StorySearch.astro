@@ -5,10 +5,10 @@ import { tl, type Lang } from '../i18n';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const t = {
-  placeholder: { zh: '搜索全部台词：日文原文、中文或英文', en: 'Search all dialogue: Japanese, Chinese or English', ja: '全セリフを検索：日本語・中国語・英語' },
-  none: { zh: '没有找到', en: 'No matches', ja: '見つかりませんでした' },
-  more: { zh: '显示前 {n} 条结果，请用更具体的关键词搜索', en: 'Showing the first {n} results. Try a more specific search term.', ja: '先頭 {n} 件を表示しています。より具体的な語で検索してください' },
-  offline: { zh: '搜索暂时不可用，请稍后再试', en: 'Search is temporarily unavailable. Please try again later', ja: '現在、検索を利用できません。時間をおいてお試しください' },
+  placeholder: { zh: '搜索全部台词：日文原文、中文或英文', en: 'Search all dialogue: Japanese, Chinese or English', ja: '全セリフを検索：日本語・中国語・英語', ko: '전체 대사 검색: 일본어, 중국어 또는 영어' },
+  none: { zh: '没有找到', en: 'No matches', ja: '見つかりませんでした', ko: '검색 결과가 없습니다' },
+  more: { zh: '显示前 {n} 条结果，请用更具体的关键词搜索', en: 'Showing the first {n} results. Try a more specific search term.', ja: '先頭 {n} 件を表示しています。より具体的な語で検索してください', ko: '처음 {n}개 결과를 표시합니다. 더 구체적인 검색어로 검색해 보세요.' },
+  offline: { zh: '搜索暂时不可用，请稍后再试', en: 'Search is temporarily unavailable. Please try again later', ja: '現在、検索を利用できません。時間をおいてお試しください', ko: '현재 검색을 사용할 수 없습니다. 잠시 후 다시 시도해 주세요.' },
 };
 ---
 <div class="search" data-search data-lang={lang} data-none={t.none[tl(lang)]} data-more={t.more[tl(lang)]} data-offline={t.offline[tl(lang)]}>
@@ -39,7 +39,8 @@ const t = {
       const mine = ++seq;
       if (q.length < 1) { list.innerHTML = ''; status.textContent = ''; return; }
       try {
-        const r = await fetch(`/api/story/search?lang=${lang}&q=${encodeURIComponent(q)}`);
+        // The search has no Korean text: Korean pages get the English results.
+        const r = await fetch(`/api/story/search?lang=${lang === 'ko' ? 'en' : lang}&q=${encodeURIComponent(q)}`);
         if (!r.ok) throw new Error(String(r.status));
         const data = await r.json();
         if (mine !== seq) return;

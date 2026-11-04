@@ -5,7 +5,8 @@
   "zh-Hans": "突入！摧毁移动要塞！（上）",
   "zh-Hant": "突入！摧毀移動要塞！（上）",
   "ja": "突入!移動要塞を破壊せよ! （前）",
-  "en": "Charge! Destroy the Mobile Fortress! (Part 1)"
+  "en": "Charge! Destroy the Mobile Fortress! (Part 1)",
+  "ko": "돌입! 이동 요새를 파괴하라! 전편"
  },
  "title_ja": "突入!移動要塞を破壊せよ! （前）",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "完全和平路线",
     "zh-Hant": "完全和平路線",
     "ja": "完全平和ルート",
-    "en": "Complete Pacifism route"
+    "en": "Complete Pacifism route",
+    "ko": "완전평화 루트"
    },
    "secrets": [],
    "enemies": [
@@ -26,13 +28,15 @@
       "zh-Hans": "强化推进器",
       "zh-Hant": "強化推進器",
       "ja": "メガブースター",
-      "en": "Mega Booster"
+      "en": "Mega Booster",
+      "ko": "메가 부스터"
      },
      "from": {
       "zh-Hans": "暗黑大将军",
       "zh-Hant": "暗黑大將軍",
       "ja": "暗黒大将軍",
-      "en": "Great General of Darkness"
+      "en": "Great General of Darkness",
+      "ko": "암흑대장군"
      },
      "retreat": false
     }

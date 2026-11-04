@@ -51,33 +51,36 @@ LOCALES = {"zh": "zh-Hans", "en": "en"}
 # The Traditional Chinese pages show zh converted (web/scripts/zh_hant_pages.py); their search
 # reads the game's zh-Hant files, made from zh the same way.
 HANT = {"tw": "zh-Hant"}
+# Korean, the translator's (테오, jung5441), shown beside the English on the Korean pages; it
+# has no release to compare with yet, so it is not in LOCALES' change counts.
+KO = {"ko": "ko"}
 TITLE_TEXT = 281          # scene title = text 281 + scene index
 PILOT_TEXT = 4382         # pilot short name = text 4382 + actor id
 PORTRAIT_SIZE = 160
 
 # Route markers 3DD0–3DDB (src/srw64_native/original_story.py).
 SECTIONS = {
-    "3DD0": {"ja": "共通", "zh": "共通", "en": "Common"},
-    "3DD1": {"ja": "アーク", "zh": "阿克", "en": "Ark", "route": "ark"},
-    "3DD2": {"ja": "セレイン", "zh": "塞蕾茵", "en": "Selain", "route": "selain"},
-    "3DD3": {"ja": "ブラッド", "zh": "布拉德", "en": "Brad", "route": "brad"},
-    "3DD4": {"ja": "マナミ", "zh": "玛娜米", "en": "Manami", "route": "manami"},
-    "3DD5": {"ja": "リアル系", "zh": "真实系", "en": "Real type", "routes": ["ark", "selain"]},
-    "3DD6": {"ja": "スーパー系", "zh": "超级系", "en": "Super type", "routes": ["brad", "manami"]},
-    "3DD7": {"ja": "男性主人公", "zh": "男性主角", "en": "Male hero", "routes": ["ark", "brad"]},
-    "3DD8": {"ja": "女性主人公", "zh": "女性主角", "en": "Female hero", "routes": ["selain", "manami"]},
-    "3DD9": {"ja": "選択肢 1", "zh": "选择肢 1", "en": "Choice 1"},
-    "3DDA": {"ja": "選択肢 2", "zh": "选择肢 2", "en": "Choice 2"},
-    "3DDB": {"ja": "選択肢 3", "zh": "选择肢 3", "en": "Choice 3"},
+    "3DD0": {"ja": "共通", "zh": "共通", "en": "Common", "ko": "공통"},
+    "3DD1": {"ja": "アーク", "zh": "阿克", "en": "Ark", "ko": "아크", "route": "ark"},
+    "3DD2": {"ja": "セレイン", "zh": "塞蕾茵", "en": "Selain", "ko": "세레인", "route": "selain"},
+    "3DD3": {"ja": "ブラッド", "zh": "布拉德", "en": "Brad", "ko": "브래드", "route": "brad"},
+    "3DD4": {"ja": "マナミ", "zh": "玛娜米", "en": "Manami", "ko": "마나미", "route": "manami"},
+    "3DD5": {"ja": "リアル系", "zh": "真实系", "en": "Real type", "ko": "리얼계", "routes": ["ark", "selain"]},
+    "3DD6": {"ja": "スーパー系", "zh": "超级系", "en": "Super type", "ko": "슈퍼계", "routes": ["brad", "manami"]},
+    "3DD7": {"ja": "男性主人公", "zh": "男性主角", "en": "Male hero", "ko": "남성 주인공", "routes": ["ark", "brad"]},
+    "3DD8": {"ja": "女性主人公", "zh": "女性主角", "en": "Female hero", "ko": "여성 주인공", "routes": ["selain", "manami"]},
+    "3DD9": {"ja": "選択肢 1", "zh": "选择肢 1", "en": "Choice 1", "ko": "선택지 1"},
+    "3DDA": {"ja": "選択肢 2", "zh": "选择肢 2", "en": "Choice 2", "ko": "선택지 2"},
+    "3DDB": {"ja": "選択肢 3", "zh": "选择肢 3", "en": "Choice 3", "ko": "선택지 3"},
 }
 # Actors 25–28 are the four heroes in route order.
 HERO_ROUTE = {25: "ark", 26: "selain", 27: "brad", 28: "manami"}
-ROLES = {"主角": {"ja": "主人公", "zh": "主角", "en": "Hero"},
-         "对手": {"ja": "パートナー", "zh": "搭档", "en": "Partner"}}
-PHASES = {"opening": {"ja": "オープニング", "zh": "开场", "en": "Opening"},
-          "deployment": {"ja": "初期配置", "zh": "初期配置", "en": "Deployment"},
-          "map": {"ja": "戦闘マップ", "zh": "战场", "en": "Battle map"},
-          "ending": {"ja": "エンディング", "zh": "结束", "en": "Ending"}}
+ROLES = {"主角": {"ja": "主人公", "zh": "主角", "en": "Hero", "ko": "주인공"},
+         "对手": {"ja": "パートナー", "zh": "搭档", "en": "Partner", "ko": "파트너"}}
+PHASES = {"opening": {"ja": "オープニング", "zh": "开场", "en": "Opening", "ko": "오프닝"},
+          "deployment": {"ja": "初期配置", "zh": "初期配置", "en": "Deployment", "ko": "초기 배치"},
+          "map": {"ja": "戦闘マップ", "zh": "战场", "en": "Battle map", "ko": "전투 맵"},
+          "ending": {"ja": "エンディング", "zh": "结束", "en": "Ending", "ko": "엔딩"}}
 
 
 def strip_codes(text: str) -> str:
@@ -181,36 +184,38 @@ def trigger_text(event: dict, names: dict[str, dict[str, str]]) -> dict[str, str
     t = re.sub(r"（变量.*?）", "", t)
 
     def name(ja: str) -> dict[str, str]:
-        return names.get(ja, {"ja": ja, "zh": ja, "en": ja})
+        return names.get(ja, {"ja": ja, "zh": ja, "en": ja, "ko": ja})
 
     rules = [
-        (r"^敌方残存 ≤ (\d+)", lambda m: {"zh": f"敌方剩余 {m[1]} 台以下", "en": f"{m[1]} or fewer enemies left", "ja": f"敵残り {m[1]} 機以下"}),
-        (r"^第三方残存 ≤ (\d+)", lambda m: {"zh": f"第三方剩余 {m[1]} 台以下", "en": f"{m[1]} or fewer third-party units left", "ja": f"第三勢力残り {m[1]} 機以下"}),
-        (r"^敌方全灭", lambda m: {"zh": "敌方全灭", "en": "All enemies defeated", "ja": "敵全滅"}),
-        (r"^第 (\d+) 回合起 · 我方阶段", lambda m: {"zh": f"第 {m[1]} 回合我方阶段起", "en": f"From turn {m[1]}, player phase", "ja": f"{m[1]} ターン目 味方フェイズ以降"}),
-        (r"^第 (\d+) 回合起 · 敌方阶段", lambda m: {"zh": f"第 {m[1]} 回合敌方阶段起", "en": f"From turn {m[1]}, enemy phase", "ja": f"{m[1]} ターン目 敵フェイズ以降"}),
-        (r"^说服", lambda m: {"zh": "说服", "en": "Persuasion", "ja": "説得"}),
-        (r"^由 .*? 启动的延迟计数", lambda m: {"zh": "延时事件", "en": "Delayed event", "ja": "時間差イベント"}),
-        (r"^(.+?) 击破／退场", lambda m: {k: v for k, v in zip(("zh", "en", "ja"), (f"{name(m[1])['zh']}被击破或撤退", f"{name(m[1])['en']} defeated or withdrawn", f"{name(m[1])['ja']} 撃墜・撤退"))}),
-        (r"^(.+?) 与 (.+?) 交战（战斗前", lambda m: {"zh": f"{name(m[1])['zh']}与{name(m[2])['zh']}交战前", "en": f"Before {name(m[1])['en']} fights {name(m[2])['en']}", "ja": f"{name(m[1])['ja']} と {name(m[2])['ja']} の戦闘前"}),
-        (r"^(.+?) 与 (.+?) 交战（战斗后", lambda m: {"zh": f"{name(m[1])['zh']}与{name(m[2])['zh']}交战后", "en": f"After {name(m[1])['en']} fights {name(m[2])['en']}", "ja": f"{name(m[1])['ja']} と {name(m[2])['ja']} の戦闘後"}),
-        (r"^(.+?) HP ≤ (\d+)%", lambda m: {"zh": f"{name(m[1])['zh']} HP 降到 {m[2]}% 以下", "en": f"{name(m[1])['en']} at {m[2]}% HP or less", "ja": f"{name(m[1])['ja']} HP {m[2]}% 以下"}),
-        (r"^阵营 \d+ 的任意单位 到达区域", lambda m: {"zh": "有单位到达指定区域", "en": "A unit reaches an area", "ja": "ユニットが指定地点に到達"}),
-        (r"^(.+?) 到达区域", lambda m: {"zh": f"{name(m[1])['zh']}到达指定区域", "en": f"{name(m[1])['en']} reaches an area", "ja": f"{name(m[1])['ja']} が指定地点に到達"}),
+        (r"^敌方残存 ≤ (\d+)", lambda m: {"zh": f"敌方剩余 {m[1]} 台以下", "en": f"{m[1]} or fewer enemies left", "ja": f"敵残り {m[1]} 機以下", "ko": f"적 잔존 {m[1]}기 이하"}),
+        (r"^第三方残存 ≤ (\d+)", lambda m: {"zh": f"第三方剩余 {m[1]} 台以下", "en": f"{m[1]} or fewer third-party units left", "ja": f"第三勢力残り {m[1]} 機以下", "ko": f"제3세력 잔존 {m[1]}기 이하"}),
+        (r"^敌方全灭", lambda m: {"zh": "敌方全灭", "en": "All enemies defeated", "ja": "敵全滅", "ko": "적 전멸"}),
+        (r"^第 (\d+) 回合起 · 我方阶段", lambda m: {"zh": f"第 {m[1]} 回合我方阶段起", "en": f"From turn {m[1]}, player phase", "ja": f"{m[1]} ターン目 味方フェイズ以降", "ko": f"{m[1]}턴 아군 페이즈부터"}),
+        (r"^第 (\d+) 回合起 · 敌方阶段", lambda m: {"zh": f"第 {m[1]} 回合敌方阶段起", "en": f"From turn {m[1]}, enemy phase", "ja": f"{m[1]} ターン目 敵フェイズ以降", "ko": f"{m[1]}턴 적 페이즈부터"}),
+        (r"^说服", lambda m: {"zh": "说服", "en": "Persuasion", "ja": "説得", "ko": "설득"}),
+        (r"^由 .*? 启动的延迟计数", lambda m: {"zh": "延时事件", "en": "Delayed event", "ja": "時間差イベント", "ko": "시간차 이벤트"}),
+        (r"^(.+?) 击破／退场", lambda m: {k: v for k, v in zip(("zh", "en", "ja", "ko"), (f"{name(m[1])['zh']}被击破或撤退", f"{name(m[1])['en']} defeated or withdrawn", f"{name(m[1])['ja']} 撃墜・撤退", f"{name(m[1])['ko']} 격추 또는 철수"))}),
+        (r"^(.+?) 与 (.+?) 交战（战斗前", lambda m: {"zh": f"{name(m[1])['zh']}与{name(m[2])['zh']}交战前", "en": f"Before {name(m[1])['en']} fights {name(m[2])['en']}", "ja": f"{name(m[1])['ja']} と {name(m[2])['ja']} の戦闘前", "ko": f"{name(m[1])['ko']}와(과) {name(m[2])['ko']}의 전투 전"}),
+        (r"^(.+?) 与 (.+?) 交战（战斗后", lambda m: {"zh": f"{name(m[1])['zh']}与{name(m[2])['zh']}交战后", "en": f"After {name(m[1])['en']} fights {name(m[2])['en']}", "ja": f"{name(m[1])['ja']} と {name(m[2])['ja']} の戦闘後", "ko": f"{name(m[1])['ko']}와(과) {name(m[2])['ko']}의 전투 후"}),
+        (r"^(.+?) HP ≤ (\d+)%", lambda m: {"zh": f"{name(m[1])['zh']} HP 降到 {m[2]}% 以下", "en": f"{name(m[1])['en']} at {m[2]}% HP or less", "ja": f"{name(m[1])['ja']} HP {m[2]}% 以下", "ko": f"{name(m[1])['ko']} HP {m[2]}% 이하"}),
+        (r"^阵营 \d+ 的任意单位 到达区域", lambda m: {"zh": "有单位到达指定区域", "en": "A unit reaches an area", "ja": "ユニットが指定地点に到達", "ko": "유닛이 지정 지점에 도달"}),
+        (r"^(.+?) 到达区域", lambda m: {"zh": f"{name(m[1])['zh']}到达指定区域", "en": f"{name(m[1])['en']} reaches an area", "ja": f"{name(m[1])['ja']} が指定地点に到達", "ko": f"{name(m[1])['ko']}이(가) 지정 지점에 도달"}),
     ]
     for pattern, build in rules:
         m = re.match(pattern, t)
         if m:
             return build(m)
-    return {"zh": "战场事件", "en": "Battle-map event", "ja": "戦闘マップのイベント"}
+    return {"zh": "战场事件", "en": "Battle-map event", "ja": "戦闘マップのイベント", "ko": "전투 맵 이벤트"}
 
 
 def episode_cards() -> dict[str, list[dict]]:
     """title_ja -> cards, each with stage number, lane and section in three languages."""
     by_title: dict[str, list[dict]] = defaultdict(list)
     per_lang = {}
-    for code, folder in (("zh", "zh-Hans"), ("en", "en"), ("ja", "ja")):
-        per_lang[code] = {c["id"]: c for c in json.loads((ROOT / f"guide/data/{folder}/progression.json").read_text())["cards"]}
+    for code, folder in (("zh", "zh-Hans"), ("en", "en"), ("ja", "ja"), ("ko", "ko")):
+        path = ROOT / f"guide/data/{folder}/progression.json"
+        if path.exists():
+            per_lang[code] = {c["id"]: c for c in json.loads(path.read_text())["cards"]}
     for cid, zh in per_lang["zh"].items():
         card = {"id": cid, "stage": zh.get("stage"), "route": zh.get("route"),
                 "lane": {code: per_lang[code].get(cid, zh).get("lane") for code in per_lang},
@@ -230,6 +235,8 @@ def main() -> int:
     dialogue = load_dialogue()
     hant_terms = load_terms(HANT)["tw"]
     hant = load_dialogue(locales=HANT)
+    terms["ko"] = load_terms(KO)["ko"]
+    korean = load_dialogue(locales=KO)
     from srw64_native.zh_hant import Converter  # opencc, in requirements.lock
     hant_converter = Converter(ROOT)
     before = baseline_dialogue(tag)
@@ -257,7 +264,8 @@ def main() -> int:
         ja = ja_names[aid].most_common(1)[0][0] if ja_names[aid] else ""
         return {"ja": ja,
                 "zh": terms["zh"].get(text_key(PILOT_TEXT + aid)) or ja,
-                "en": terms["en"].get(text_key(PILOT_TEXT + aid)) or ja}
+                "en": terms["en"].get(text_key(PILOT_TEXT + aid)) or ja,
+                "ko": terms["ko"].get(text_key(PILOT_TEXT + aid)) or terms["en"].get(text_key(PILOT_TEXT + aid)) or ja}
 
     by_ja_name = {}
     for aid in ja_names:
@@ -274,7 +282,8 @@ def main() -> int:
         data = scenes_raw[n]
         title = {"ja": strip_codes(data["title"]),
                  "zh": terms["zh"].get(text_key(TITLE_TEXT + n)) or data["title"],
-                 "en": terms["en"].get(text_key(TITLE_TEXT + n)) or data["title"]}
+                 "en": terms["en"].get(text_key(TITLE_TEXT + n)) or data["title"],
+                 "ko": terms["ko"].get(text_key(TITLE_TEXT + n)) or terms["en"].get(text_key(TITLE_TEXT + n)) or data["title"]}
         title["tw"] = hant_terms.get(text_key(TITLE_TEXT + n)) or hant_converter.convert(title["zh"], title["ja"])
         events = []
         for event in data["events"]:
@@ -282,8 +291,8 @@ def main() -> int:
             for line in event["lines"]:
                 kind = line["kind"]
                 if kind == "section":
-                    meta = SECTIONS.get(line["marker"], {"ja": line["label"], "zh": line["label"], "en": line["label"]})
-                    lines.append({"t": "route", "marker": line["marker"], "label": {k: meta[k] for k in ("ja", "zh", "en")},
+                    meta = SECTIONS.get(line["marker"], {"ja": line["label"], "zh": line["label"], "en": line["label"], "ko": line["label"]})
+                    lines.append({"t": "route", "marker": line["marker"], "label": {k: meta[k] for k in ("ja", "zh", "en", "ko")},
                                   "routes": meta.get("routes") or ([meta["route"]] if "route" in meta else None)})
                 elif kind in ("dialogue", "choice"):
                     key = line["text_key"]
@@ -292,7 +301,8 @@ def main() -> int:
                     item = {"t": "say" if kind == "dialogue" else "choice", "id": line["text_id"],
                             "ja": pages(src, "source") if src else [line.get("display", "")],
                             "zh": pages(entry["zh"], "target") if "zh" in entry else [],
-                            "en": pages(entry["en"], "target") if "en" in entry else []}
+                            "en": pages(entry["en"], "target") if "en" in entry else [],
+                            "ko": pages(korean[key]["ko"], "target") if "ko" in korean.get(key, {}) else []}
                     # What the release said, for each language that reads differently now.
                     old = before.get(key, {})
                     for code in LOCALES:
@@ -313,7 +323,7 @@ def main() -> int:
                                 item["route"] = HERO_ROUTE[aid]
                         else:
                             role = (entry.get("zh").note.split(" · ")[0] if entry.get("zh") else "").strip()
-                            item["who"] = dict(ROLES.get(role, {"ja": japanese_name(sp.get("label", "")), "zh": role or "?", "en": role or "?"}))
+                            item["who"] = dict(ROLES.get(role, {"ja": japanese_name(sp.get("label", "")), "zh": role or "?", "en": role or "?", "ko": role or "?"}))
                             item["cands"] = []
                             for c in sp.get("candidates", []):
                                 aid = actor_id(c["key"])
@@ -327,7 +337,8 @@ def main() -> int:
                         or hant_converter.convert(who["zh"], who["ja"])
                     tw = pages(hant[key]["tw"], "target") if "tw" in hant.get(key, {}) else []
                     search_rows.append([line["text_id"], n, who["zh"], who["en"], who["ja"],
-                                        "\n".join(item["ja"]), "\n".join(item["zh"]), "\n".join(item["en"]), who_tw, "\n".join(tw)])
+                                        "\n".join(item["ja"]), "\n".join(item["zh"]), "\n".join(item["en"]), who_tw, "\n".join(tw),
+                                        who.get("ko", ""), "\n".join(item["ko"])])
             if not any(l["t"] in ("say", "choice") for l in lines):
                 continue
             ev = {"phase": event["phase"], "label": PHASES.get(event["phase"], PHASES["map"]), "lines": lines}
@@ -357,7 +368,7 @@ def main() -> int:
     (OUT / "story/index.json").write_text(json.dumps({"schema": "srw64.web-story-index.v2", "source": source, "scenes": out_scenes},
                                                        ensure_ascii=False, indent=1))
     (OUT / "story/search.json").write_text(json.dumps({"schema": "srw64.web-story-search.v1",
-                                                         "columns": ["id", "scene", "who_zh", "who_en", "who_ja", "ja", "zh", "en", "who_tw", "tw"],
+                                                         "columns": ["id", "scene", "who_zh", "who_en", "who_ja", "ja", "zh", "en", "who_tw", "tw", "who_ko", "ko"],
                                                          "rows": search_rows}, ensure_ascii=False, separators=(",", ":")))
 
     # HD portraits, small.

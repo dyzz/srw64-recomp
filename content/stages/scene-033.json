@@ -5,7 +5,8 @@
   "zh-Hans": "宇宙的呼唤",
   "zh-Hant": "宇宙的呼喚",
   "ja": "宇宙の呼ぶ声",
-  "en": "The Call of Space"
+  "en": "The Call of Space",
+  "ko": "우주가 부르는 소리"
  },
  "title_ja": "宇宙の呼ぶ声",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线",
     "zh-Hant": "獨立軍路線",
     "ja": "独立軍ルート",
-    "en": "Independence Army route"
+    "en": "Independence Army route",
+    "ko": "독립군 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "陶德（＋希露奇）",
       "zh-Hant": "陶德（＋希露奇）",
       "ja": "トッド（＋シルキー）",
-      "en": "Tod (+ Silky)"
+      "en": "Tod (+ Silky)",
+      "ko": "토드(+ 실키)"
      },
      "text": {
       "zh-Hans": "用翔说服陶德（需「夏比罗，转生！」已说服）",
       "zh-Hant": "用翔說服陶德（需「夏比羅，轉生！」已說服）",
       "ja": "ショウでトッドを説得（「シャピロ、転生!」で説得済み）",
-      "en": "Persuade Tod with Show (needs the persuade in “Shapiro, Reborn!”)"
+      "en": "Persuade Tod with Show (needs the persuade in “Shapiro, Reborn!”)",
+      "ko": "쇼우로 토드를 설득(“샤피로, 전생!”의 설득이 필요)"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "卡拉利亚＋巴斯托尔",
       "zh-Hant": "卡拉利亞＋巴斯托爾",
       "ja": "ガラリア＋バストール",
-      "en": "Garalia + Bastole"
+      "en": "Garalia + Bastole",
+      "ko": "가라리아 + 바스톨"
      },
      "text": {
       "zh-Hans": "无需操作：卡拉利亚随拜斯顿·威尔组出击",
       "zh-Hant": "無需操作：卡拉利亞隨拜斯頓·威爾組出擊",
       "ja": "操作不要：ガラリアはバイストンウェル組と出撃",
-      "en": "No action needed: Garalia deploys with the Byston Well group"
+      "en": "No action needed: Garalia deploys with the Byston Well group",
+      "ko": "할 일 없음: 가라리아는 바이스톤 웰 그룹과 함께 출격"
      }
     },
     {
@@ -56,13 +62,15 @@
       "zh-Hans": "只影响对白的分支",
       "zh-Hant": "只影響對白的分支",
       "ja": "台詞のみの分岐",
-      "en": "Dialogue-only branches"
+      "en": "Dialogue-only branches",
+      "ko": "대사만 바뀌는 분기"
      },
      "text": {
       "zh-Hans": "无需操作：战舰命名二选只改变台词",
       "zh-Hant": "無需操作：戰艦命名二選只改變臺詞",
       "ja": "操作不要：艦名の二択はセリフが変わるだけ",
-      "en": "No action needed: the ship-naming choice only changes dialogue"
+      "en": "No action needed: the ship-naming choice only changes dialogue",
+      "ko": "할 일 없음: 함 이름 선택은 대사만 바뀜"
      }
     }
    ],
@@ -72,19 +80,22 @@
       "zh-Hans": "推进器",
       "zh-Hant": "推進器",
       "ja": "ブースター",
-      "en": "Booster"
+      "en": "Booster",
+      "ko": "부스터"
      },
      "from": {
       "zh-Hans": "迪斯盖亚",
       "zh-Hant": "迪斯海亞",
       "ja": "デスガイヤー",
-      "en": "Death Gaia"
+      "en": "Death Gaia",
+      "ko": "데스가이어"
      },
      "note": {
       "zh-Hans": "德雷克被击坠时撤退",
       "zh-Hant": "德雷克被擊墜時撤退",
       "ja": "ドレイクが撃墜されると撤退",
-      "en": "Retreats when Drake is shot down"
+      "en": "Retreats when Drake is shot down",
+      "ko": "드레이크가 격추되면 퇴각"
      },
      "retreat": true
     },
@@ -93,13 +104,15 @@
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
       "ja": "アポジモーター",
-      "en": "Apogee Motor"
+      "en": "Apogee Motor",
+      "ko": "아포지 모터"
      },
      "from": {
       "zh-Hans": "夏比罗",
       "zh-Hant": "夏比羅",
       "ja": "シャピロ",
-      "en": "Shapiro"
+      "en": "Shapiro",
+      "ko": "샤피로"
      },
      "retreat": false
     },
@@ -108,13 +121,15 @@
       "zh-Hans": "磁力覆膜",
       "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
-      "en": "Magnetic Coating"
+      "en": "Magnetic Coating",
+      "ko": "마그넷 코팅"
      },
      "from": {
       "zh-Hans": "德雷克",
       "zh-Hant": "德雷克",
       "ja": "ドレイク",
-      "en": "Drake"
+      "en": "Drake",
+      "ko": "드레이크"
      },
      "third_party": true,
      "retreat": false
@@ -124,19 +139,22 @@
       "zh-Hans": "生物传感器",
       "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
-      "en": "Bio-Sensor"
+      "en": "Bio-Sensor",
+      "ko": "바이오 센서"
      },
      "from": {
       "zh-Hans": "陶德",
       "zh-Hant": "陶德",
       "ja": "トッド",
-      "en": "Tod"
+      "en": "Tod",
+      "ko": "토드"
      },
      "note": {
       "zh-Hans": "德雷克被击坠时撤退",
       "zh-Hant": "德雷克被擊墜時撤退",
       "ja": "ドレイクが撃墜されると撤退",
-      "en": "Retreats when Drake is shot down"
+      "en": "Retreats when Drake is shot down",
+      "ko": "드레이크가 격추되면 퇴각"
      },
      "third_party": true,
      "retreat": true
@@ -146,19 +164,22 @@
       "zh-Hans": "高性能雷达",
       "zh-Hant": "高性能雷達",
       "ja": "高性能レーダー",
-      "en": "High-Fidelity Radar"
+      "en": "High-Fidelity Radar",
+      "ko": "고성능 레이더"
      },
      "from": {
       "zh-Hans": "巴恩",
       "zh-Hant": "巴恩",
       "ja": "バーン",
-      "en": "Bern"
+      "en": "Bern",
+      "ko": "번"
      },
      "note": {
       "zh-Hans": "德雷克被击坠时撤退",
       "zh-Hant": "德雷克被擊墜時撤退",
       "ja": "ドレイクが撃墜されると撤退",
-      "en": "Retreats when Drake is shot down"
+      "en": "Retreats when Drake is shot down",
+      "ko": "드레이크가 격추되면 퇴각"
      },
      "third_party": true,
      "retreat": true
@@ -169,13 +190,15 @@
       "zh-Hans": "秀特、缪吉、艾伦、菲、黑骑士",
       "zh-Hant": "秀特、繆吉、亞連、菲、黑騎士",
       "ja": "ショット、ミュージィ、アレン、フェイ、黒騎士",
-      "en": "Shot, Musy, Allen, Fei, Black Knight"
+      "en": "Shot, Musy, Allen, Fei, Black Knight",
+      "ko": "쇼트, 뮤지, 아렌, 페이, 흑기사"
      },
      "note": {
       "zh-Hans": "德雷克被击坠时撤退",
       "zh-Hant": "德雷克被擊墜時撤退",
       "ja": "ドレイクが撃墜されると撤退",
-      "en": "Retreat when Drake is shot down"
+      "en": "Retreat when Drake is shot down",
+      "ko": "드레이크가 격추되면 퇴각"
      },
      "retreat": true
     }

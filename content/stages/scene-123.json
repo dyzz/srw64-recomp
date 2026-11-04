@@ -5,7 +5,8 @@
   "zh-Hans": "从此并肩",
   "zh-Hant": "從此並肩",
   "ja": "ここより共に",
-  "en": "Together from Here On"
+  "en": "Together from Here On",
+  "ko": "여기서부터 함께"
  },
  "title_ja": "ここより共に",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "OZ路线（阿克支线）",
     "zh-Hant": "OZ路線（阿克支線）",
     "ja": "OZルート（アーク分岐）",
-    "en": "OZ route (Ark branch)"
+    "en": "OZ route (Ark branch)",
+    "ko": "OZ 루트(아크 곁가지)"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "阿克／布拉德专属支线",
       "zh-Hant": "阿克／布拉德專屬支線",
       "ja": "アーク／ブラッド専用の分岐",
-      "en": "Ark / Brad exclusive side branch"
+      "en": "Ark / Brad exclusive side branch",
+      "ko": "아크 / 브래드 전용 분기"
      },
      "text": {
       "zh-Hans": "从「特列斯抹杀指令」进入，打完回到「乞力马扎罗的风暴」",
       "zh-Hant": "從「特列斯抹殺指令」進入，打完回到「乞力馬紮羅的風暴」",
       "ja": "「トレーズ抹殺指令」から進入、クリア後「キリマンジャロの嵐」へ",
-      "en": "Entered from “Order to Eliminate Treize”; returns to “Storm of Kilimanjaro”"
+      "en": "Entered from “Order to Eliminate Treize”; returns to “Storm of Kilimanjaro”",
+      "ko": "“트레즈 암살 지령”에서 진입, “킬리만자로의 폭풍”으로 복귀"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "埃尔利希＋诺鲁孜",
       "zh-Hant": "埃爾利希＋諾魯孜",
       "ja": "エルリッヒ＋ノウルーズ",
-      "en": "Ehrlich + Norouz"
+      "en": "Ehrlich + Norouz",
+      "ko": "엘리히 + 노우루즈"
      },
      "text": {
       "zh-Hans": "无需操作：通关即得埃尔利希＋诺鲁孜（改造 4 段）",
       "zh-Hant": "無需操作：通關即得埃爾利希＋諾魯孜（改造 4 段）",
       "ja": "操作不要：クリアでエルリッヒ＋ノウルーズが加入（4段階改造済み）",
-      "en": "No action needed: clear to recruit Ehrlich + Norouz (4 upgrades)"
+      "en": "No action needed: clear to recruit Ehrlich + Norouz (4 upgrades)",
+      "ko": "할 일 없음: 클리어하면 엘리히 + 노우루즈(4단계 개조) 가입"
      },
      "protagonists": [
       "ark"
@@ -64,7 +70,8 @@
     "zh-Hans": "独立军路线（阿克支线）",
     "zh-Hant": "獨立軍路線（阿克支線）",
     "ja": "独立軍ルート（アークの分岐）",
-    "en": "Independence Army route (Ark branch)"
+    "en": "Independence Army route (Ark branch)",
+    "ko": "독립군 루트(아크 분기)"
    },
    "secrets": [
     {
@@ -73,13 +80,15 @@
       "zh-Hans": "阿克／布拉德专属支线",
       "zh-Hant": "阿克／布拉德專屬支線",
       "ja": "アーク／ブラッド専用の分岐",
-      "en": "Ark / Brad exclusive side branch"
+      "en": "Ark / Brad exclusive side branch",
+      "ko": "아크 / 브래드 전용 분기"
      },
      "text": {
       "zh-Hans": "从「混沌的地球圈」进入，打完回到「玛尔斯与玛古」",
       "zh-Hant": "從「混沌的地球圈」進入，打完回到「瑪爾斯與馬可」",
       "ja": "「混沌の地球圏」から進入、クリア後「マーズとマーグ」へ",
-      "en": "Entered from “Earth Sphere in Chaos”; returns to “Mars and Marg”"
+      "en": "Entered from “Earth Sphere in Chaos”; returns to “Mars and Marg”",
+      "ko": "“혼돈의 지구권”에서 진입; “마즈와 마그”로 복귀"
      }
     },
     {
@@ -88,13 +97,15 @@
       "zh-Hans": "埃尔利希＋诺鲁孜",
       "zh-Hant": "埃爾利希＋諾魯孜",
       "ja": "エルリッヒ＋ノウルーズ",
-      "en": "Ehrlich + Norouz"
+      "en": "Ehrlich + Norouz",
+      "ko": "엘리히 + 노우루즈"
      },
      "text": {
       "zh-Hans": "无需操作：通关即得埃尔利希＋诺鲁孜（改造 4 段）",
       "zh-Hant": "無需操作：通關即得埃爾利希＋諾魯孜（改造 4 段）",
       "ja": "操作不要：クリアでエルリッヒ＋ノウルーズが加入（4段階改造済み）",
-      "en": "No action needed: clear to recruit Ehrlich + Norouz (4 upgrades)"
+      "en": "No action needed: clear to recruit Ehrlich + Norouz (4 upgrades)",
+      "ko": "할 일 없음: 클리어하면 엘리히 + 노우루즈(4단계 개조) 합류"
      },
      "protagonists": [
       "ark"

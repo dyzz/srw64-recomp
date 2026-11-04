@@ -5,7 +5,8 @@
   "zh-Hans": "玛尔斯与玛古",
   "zh-Hant": "瑪爾斯與馬可",
   "ja": "マーズとマーグ",
-  "en": "Mars and Marg"
+  "en": "Mars and Marg",
+  "ko": "마즈와 마그"
  },
  "title_ja": "マーズとマーグ",
  "cards": [
@@ -17,7 +18,8 @@
     "zh-Hans": "独立军路线",
     "zh-Hant": "獨立軍路線",
     "ja": "独立軍ルート",
-    "en": "Independence Army route"
+    "en": "Independence Army route",
+    "ko": "독립군 루트"
    },
    "secrets": [
     {
@@ -26,13 +28,15 @@
       "zh-Hans": "蕾拉支线：那双眼中映不出未来",
       "zh-Hant": "蕾拉支線：那雙眼中映不出未來",
       "ja": "レラ分岐：その瞳に未来は映ることなく",
-      "en": "Lera branch: Those Eyes Reflect No Future"
+      "en": "Lera branch: Those Eyes Reflect No Future",
+      "ko": "레라 분기: 그 눈동자에 미래는 비치지 않고"
      },
      "text": {
       "zh-Hans": "真实系且蕾拉支线成立→「那双眼中映不出未来」，否则→「登场！超电磁机器人」",
       "zh-Hant": "真實系且蕾拉支線成立→「那雙眼中映不出未來」，否則→「登場！超電磁機器人」",
       "ja": "リアル系でレラルート成立→「その瞳に未来は映ることなく」、それ以外→「登場!超電磁ロボ」",
-      "en": "Real with Lera branch → “Those Eyes Reflect No Future”; else “Enter! Super Electromagnetic Robo”"
+      "en": "Real with Lera branch → “Those Eyes Reflect No Future”; else “Enter! Super Electromagnetic Robo”",
+      "ko": "리얼계에서 레라 분기 성립 → “그 눈동자에 미래는 비치지 않고”; 그 외 “등장! 초전자 로보”"
      }
     },
     {
@@ -41,13 +45,15 @@
       "zh-Hans": "阿克／布拉德专属支线",
       "zh-Hant": "阿克／布拉德專屬支線",
       "ja": "アーク／ブラッド専用の分岐",
-      "en": "Ark / Brad exclusive side branch"
+      "en": "Ark / Brad exclusive side branch",
+      "ko": "아크 / 브래드 전용 분기"
      },
      "text": {
       "zh-Hans": "无需操作：两条支线打完都回到本关",
       "zh-Hant": "無需操作：兩條支線打完都回到本關",
       "ja": "操作不要：どちらの分岐もクリア後は本ステージに戻る",
-      "en": "No action needed: both side branches return here"
+      "en": "No action needed: both side branches return here",
+      "ko": "할 일 없음: 두 분기 모두 이곳으로 복귀"
      }
     },
     {
@@ -56,13 +62,15 @@
       "zh-Hans": "高达Mk-Ⅲ＋梅塔斯改",
       "zh-Hant": "鋼彈Mk-Ⅲ＋梅塔斯改",
       "ja": "ガンダムmkⅢ＋メタス改",
-      "en": "Gundam Mk-III + Methuss Kai"
+      "en": "Gundam Mk-III + Methuss Kai",
+      "ko": "건담 Mk-III + 메타스 개"
      },
      "text": {
       "zh-Hans": "无需操作：通关得到高达Mk-Ⅲ，梅塔斯换为梅塔斯改",
       "zh-Hant": "無需操作：通關得到鋼彈Mk-Ⅲ，梅塔斯換為梅塔斯改",
       "ja": "操作不要：クリアでガンダムmkⅢを入手、メタスがメタス改に",
-      "en": "No action needed: clear for the Gundam Mk-III; Methuss → Methuss Kai"
+      "en": "No action needed: clear for the Gundam Mk-III; Methuss → Methuss Kai",
+      "ko": "할 일 없음: 클리어하면 건담 Mk-III 입수; 메타스 → 메타스 개"
      }
     }
    ],
@@ -72,13 +80,15 @@
       "zh-Hans": "增装燃料槽",
       "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
-      "en": "Propellant Tank"
+      "en": "Propellant Tank",
+      "ko": "프로펠런트 탱크"
      },
      "from": {
       "zh-Hans": "布兰",
       "zh-Hant": "布朗",
       "ja": "ブラン",
-      "en": "Buran"
+      "en": "Buran",
+      "ko": "브란"
      },
      "retreat": false
     },
@@ -87,13 +97,15 @@
       "zh-Hans": "补修套件",
       "zh-Hant": "補修套件",
       "ja": "リペアキット",
-      "en": "Repair Kit"
+      "en": "Repair Kit",
+      "ko": "리페어 키트"
      },
      "from": {
       "zh-Hans": "布拉奇",
       "zh-Hant": "布拉奇",
       "ja": "ブラッキー",
-      "en": "Blacky"
+      "en": "Blacky",
+      "ko": "블래키"
      },
      "retreat": false
     },
@@ -103,13 +115,15 @@
       "zh-Hans": "玛古",
       "zh-Hant": "馬可",
       "ja": "マーグ",
-      "en": "Marg"
+      "en": "Marg",
+      "ko": "마그"
      },
      "note": {
       "zh-Hans": "布拉奇被击坠时撤退",
       "zh-Hant": "布拉奇被擊墜時撤退",
       "ja": "ブラッキーが撃墜されると撤退",
-      "en": "Retreats when Blacky is shot down"
+      "en": "Retreats when Blacky is shot down",
+      "ko": "블래키를 격추하면 퇴각"
      },
      "retreat": true
     }
