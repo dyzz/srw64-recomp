@@ -4,7 +4,7 @@
   "source_locale": "ja",
   "fallback": "en",
   "font": "DroidSansFallback",
-  "scope": "Korean labels and records over English (docs/design/korean.md): what this leaves out reads as content/locales/en.json. Dialogue text lives in content/dialogue/ko, over content/dialogue/en. For now the stage 1 demo's text (config/recomp/mods/lang.ko), until the translators' text comes in.",
+  "scope": "Korean labels and records over English (docs/design/korean.md): what this leaves out reads as content/locales/en.json. Dialogue text lives in content/dialogue/ko, over content/dialogue/en. Translation and title logo by 테오 (jung5441), CC BY 4.0 (content/dialogue/ko/README.md).",
   "ui": {
     "manual": "수동",
     "auto": "자동",
