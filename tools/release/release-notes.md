@@ -14,7 +14,7 @@ An unofficial native port of **Super Robot Wars 64** with full English and Chine
 
 ### Korean
 
-- **Korean is the fifth language**, translated by 테오 ([jung5441](https://github.com/jung5441)), who contributed the whole translation under CC BY 4.0: the story and the battle lines, the interface and the names, with a Korean title logo and Korean faces for the chapter title cards and the battle banners. The first launch picks it on a Korean system, and it is in the language menu; what is not translated yet shows in English.
+- **Korean is the fifth language**, translated by 테오 ([jung5441](https://github.com/jung5441)), the author of the Korean patch for the N64 game, who contributed the whole translation under CC BY 4.0: the story and the battle lines, the interface and the names, with a Korean title logo and Korean faces for the chapter title cards and the battle banners. The first launch picks it on a Korean system, and it is in the language menu; what is not translated yet shows in English.
 - **Language packages**: a MOD package can add a reading language over English or another built-in one, with its own fonts and pictures. The website has a template tool and a guide.
 
 ### MOD packages
@@ -49,6 +49,7 @@ An unofficial native port of **Super Robot Wars 64** with full English and Chine
 - **Banjo and Daitarn 3 join on the real-robot OZ route** as in the original: they were missing from the join event of the stage where they arrive. An old save that should have them is repaired when it is loaded.
 - **Battle viewer**: each Getter form has its own pilot (Hayato in the 2-forms, Musashi or Benkei in the 3-forms), and a viewer battle shows every protagonist's own face and name instead of an empty label.
 - **Text**: the 13 original characters' lines were reviewed against their profiles for tone and forms of address, in Chinese and English; in Chinese Aisha calls Manami {HeroName}小姐 throughout, Dancouga's ground units are 豹战车, 狮战车 and 象战车, ダイガン is 断空步枪 and ムゲ is 穆格 in every line; Traditional Chinese writes 週目 and 龍捲風 throughout.
+- **The map's figures sit on their unit in the widened view**: a spirit's +10, the damage and MISS were drawn offset at 16:9.
 - The title's press and a quick load wait for every button to be released, so a held key no longer repeats; the intermission pages close when the game leaves the intermission; labels the original centres are centred in translation too.
 
 ### HD 1.3
@@ -94,7 +95,7 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 
 #### 韩文
 
-- **新增韩文**，由 테오（[jung5441](https://github.com/jung5441)）翻译并以 CC BY 4.0 授权收录：剧情与战斗台词、界面和各类名字，配韩文 logo，章节标题卡和战斗横幅用韩文字体。韩文系统首次启动会选它，语言菜单里也能切；还没译到的部分显示英文。
+- **新增韩文**，由 N64 版韩文补丁作者 테오（[jung5441](https://github.com/jung5441)）翻译并以 CC BY 4.0 授权收录：剧情与战斗台词、界面和各类名字，配韩文 logo，章节标题卡和战斗横幅用韩文字体。韩文系统首次启动会选它，语言菜单里也能切；还没译到的部分显示英文。
 - **语言包**：MOD 包可以在英文或其他内置语言之上加一种阅读语言，自带字体和图片；官网有模板工具和制作说明。
 
 #### MOD 包
@@ -129,6 +130,7 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 - **万丈和泰坦3 在真实系 OZ 路线正常加入**，和原版一样：原来登场那一关的加入事件里漏了这两人。本该有他们的旧存档读取时会补上。
 - **战斗查看器**：盖塔各形态用各自的驾驶员（2 形态是隼人，3 形态是武藏或弁庆）；从标题进的战斗显示每位主角自己的头像和名字，不再是空标签。
 - **文本**：13 位原创人物的台词按人物设定逐句核对了口吻和称呼（中英文）；中文里艾夏对玛娜米一律称「{HeroName}小姐」，断空我的地面机体是豹战车、狮战车、象战车，ダイガン 是断空步枪，ムゲ 每一句都是穆格；繁体中文的「週目」「龍捲風」全文统一。
+- **宽屏下地图上的数字回到机体上**：気合的 +10、伤害和 MISS 在 16:9 时画偏了。
 - 标题的按键和快速读档会等所有按键松开再接着响应，按住的键不再连按；离开场间时场间页面会一起关掉；原版居中画的文字翻译后也居中。
 
 #### HD 1.3
