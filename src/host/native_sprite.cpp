@@ -5,6 +5,7 @@
 #include "native_quads.hpp"
 #include "hd_texture.hpp"
 #include "battle_hud.hpp"
+#include "wide_map.hpp"
 #include "presentation/image_mode.hpp"
 #include "presentation/rgba_file.hpp"
 #ifndef SRW64_GL_ONLY
@@ -94,6 +95,8 @@ struct Draw {
     int asset = -1;
     bool quad = false, wrap = false, text = false;
     bool wide = false;   // drawn past the original's 320 (a repeating picture), the scissor too
+    float view_left = -1;   // >= 0: the widened map view's x = 0 in the picture (wide_map.hpp): a draw
+                            // placed while the map is drawn wide (the map figures) goes with the units
     TextJob::Anchor anchor = TextJob::Anchor::center;
     float rect[4]{};      // union of the parts: screen x0,y0,x1,y1 (N64 px), or model x0,top,x1,bottom (y up)
     float at[2]{};        // Anchor::origin: where the image origin goes (screen N64 px)
@@ -555,6 +558,7 @@ bool render_items(plume::RenderCommandList* list, plume::RenderFramebuffer* fram
         u.uv[2] = u.uv[3] = 1;
         u.color[0] = item->tint[0]; u.color[1] = item->tint[1]; u.color[2] = item->tint[2]; u.color[3] = 1;
         gpu::frame_resolution(call, u.resolution);
+        if (draw.view_left >= 0) u.resolution[3] = draw.view_left;   // in the widened map view (wide_map.hpp)
         if (!draw_sprite(list, framebuffer, call, image.set, u, false, false)) { ++skipped; return true; }
     }
     rendered += drawable.size();
@@ -600,6 +604,7 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     std::memcpy(u.color, draw.color, sizeof(u.color));
     u.z[0] = draw.z;
     gpu::frame_resolution(call, u.resolution);
+    if (draw.view_left >= 0) u.resolution[3] = draw.view_left;   // in the widened map view (wide_map.hpp)
     u.screen[0] = call.screenScale[0]; u.screen[1] = call.screenScale[1];
     u.screen[2] = call.screenOffset[0]; u.screen[3] = call.screenOffset[1];
     if (draw.quad) {
@@ -652,6 +657,7 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
             q.rect[0] = item.at[0] - asset.origin[0]; q.rect[1] = item.at[1] - asset.origin[1];
             q.rect[2] = q.rect[0] + asset.units[0]; q.rect[3] = q.rect[1] + asset.units[1];
             q.color[0] = item.tint[0]; q.color[1] = item.tint[1]; q.color[2] = item.tint[2];
+            q.left = draw.view_left;
             q.label = asset.key;
             out.push_back(std::move(q));
         }
@@ -679,6 +685,7 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
     q.z = draw.z;
     q.wrap = draw.wrap;
     q.whole = draw.wide;
+    q.left = draw.view_left;
     q.label = asset.key;
     out.push_back(std::move(q));
     return true;
@@ -1129,6 +1136,7 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
         record.uv[0] -= side * per_pixel; record.uv[2] += side * per_pixel;
         record.wide = true;
     }
+    record.view_left = wide_map::view_offset();
     {
         std::lock_guard lock(ring_mutex);
         record.id = next_id;
@@ -1206,6 +1214,7 @@ void rewrite_grid(uint8_t* rdram, const SceneDraw& draw) {
         record.rect[0] += dx; record.rect[2] += dx; record.rect[1] += dy; record.rect[3] += dy;
     }
     if (!ready(record.asset)) ++pending;
+    record.view_left = wide_map::view_offset();
     uint32_t id_number;
     {
         std::lock_guard lock(ring_mutex);
@@ -1246,6 +1255,7 @@ bool place_texts(uint8_t* rdram, uint32_t marker, const float bounds[4], const s
         record.items.push_back(entry);
     }
     record.asset = record.items.front().asset;
+    record.view_left = wide_map::view_offset();
     uint32_t id;
     {
         std::lock_guard lock(ring_mutex);

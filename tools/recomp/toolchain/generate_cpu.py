@@ -256,6 +256,12 @@ MAP_WIDTH_CONSTANTS = {
     # it on the centred 320): the anchor never goes below 0, which 801E3BEC's unsigned compare
     # (x < 257) took for past the right edge, moving the window to 240 (wide_map.cpp).
     ("load_000AB160_func_801E3AE4", 0x801E3B1C): ("MEM_W(ctx->r1, -0XA2C)", "srw64_map_anchor_scroll(MEM_W(ctx->r1, -0XA2C), ctx->f2.fl)"),
+    # The figure the window's place sets (80101DAC = anchor + 17; the map battle's damage, map_miss)
+    # is drawn by 80209900 in the widened view, like a spirit's +10 (801D92E4: unit x + the raw
+    # scroll), so it takes the half back that the anchor gave up: the three mode paths.
+    ("load_000AB160_func_801E3AE4", 0x801E3C30): ("0X11", 1),
+    ("load_000AB160_func_801E3AE4", 0x801E3C40): ("0X11", 1),
+    ("load_000AB160_func_801E3AE4", 0x801E3CFC): ("0X11", 1),
 }
 
 # The cheats ride on the same rewrite. Morale stops at 150 in eight places, all reading
