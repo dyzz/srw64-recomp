@@ -5,7 +5,9 @@
 import { allFiles, hd, published, release } from '../data/release';
 import textUpdate from '../data/text-update.json';
 
+const LANGS = ['zh', 'tw', 'en', 'ja', 'ko'] as const;
 const install = (lang: string) => `https://srw64.dreamquest.club/${lang}/install/`;
+const byLang = (url: (lang: string) => string) => Object.fromEntries(LANGS.map((l) => [l, url(l)]));
 
 export const GET = () =>
   new Response(
@@ -16,13 +18,8 @@ export const GET = () =>
         tag: release.tag,
         commit: release.commit,
         date: release.date,
-        notes: {
-          zh: `https://srw64.dreamquest.club/zh/blog/v${release.version.replaceAll('.', '-')}/`,
-          tw: `https://srw64.dreamquest.club/tw/blog/v${release.version.replaceAll('.', '-')}/`,
-          en: `https://srw64.dreamquest.club/en/blog/v${release.version.replaceAll('.', '-')}/`,
-          ja: `https://srw64.dreamquest.club/ja/blog/v${release.version.replaceAll('.', '-')}/`,
-        },
-        download: { zh: install('zh'), tw: install('tw'), en: install('en'), ja: install('ja') },
+        notes: byLang((l) => `https://srw64.dreamquest.club/${l}/blog/v${release.version.replaceAll('.', '-')}/`),
+        download: byLang(install),
         github: release.github,
         quark: release.quark,
         baidu: release.baidu,
@@ -32,7 +29,7 @@ export const GET = () =>
         ...(published && hd.version && {
           hd: {
             version: hd.version,
-            download: { zh: `${install('zh')}#hd`, tw: `${install('tw')}#hd`, en: `${install('en')}#hd`, ja: `${install('ja')}#hd` },
+            download: byLang((l) => `${install(l)}#hd`),
             github: hd.github,
             name: hd.name,
             bytes: hd.bytes,
