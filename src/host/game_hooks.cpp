@@ -9,6 +9,7 @@
 #include "script_inject.hpp"
 #include "forced_game_over.hpp"
 #include "mini_stage.hpp"
+#include "mod_saves.hpp"
 #include "story_mod.hpp"
 #include "script_move_probe.hpp"
 #include "state_probe.hpp"
@@ -265,11 +266,13 @@ void resident_func_800822D8(uint8_t* ram,recomp_context* ctx) {
 void resident_func_800924D8(uint8_t* ram,recomp_context* ctx) {
     srw64_original_intermission_serialize(ram,ctx);srw64::state_probe::save_payload(ram,false,0);
     story::serialized(ram,true,story::Record::slot);
+    srw64::mod_saves::serialized(ram,true,story::Record::slot);
 }
 void resident_func_80093278(uint8_t* ram,recomp_context* ctx) {
     const unsigned write_sram=uint8_t(ctx->r4);
     srw64_original_tactical_serialize(ram,ctx);srw64::state_probe::save_payload(ram,true,write_sram);
     story::serialized(ram,write_sram!=0);
+    srw64::mod_saves::serialized(ram,write_sram!=0,story::Record::suspend);
 }
 void load_000AB160_func_801E6C5C(uint8_t* ram,recomp_context* ctx) {
     // The pilot page (crew, side, roster slot): an enemy's spirits and SP instead of ?????.
@@ -347,12 +350,14 @@ void resident_func_800A4BE0(uint8_t* ram,recomp_context* ctx) {
 void resident_func_800927A4(uint8_t* ram,recomp_context* ctx) {
     srw64_original_intermission_restore(ram,ctx);srw64::state_probe::capture(ram,"intermission-restored");
     story::restored(ram,true,story::Record::slot);
+    srw64::mod_saves::restored(ram,story::Record::slot);
     if(srw64_game_hooks.cheats_restored)srw64_game_hooks.cheats_restored(ram,ctx);
 }
 void resident_func_800936A0(uint8_t* ram,recomp_context* ctx) {
     const bool from_sram=uint8_t(ctx->r4)!=0;
     srw64_original_tactical_restore(ram,ctx);srw64::state_probe::capture(ram,"tactical-restored");
     story::restored(ram,from_sram);
+    srw64::mod_saves::restored(ram,story::Record::suspend);
     if(srw64_game_hooks.cheats_restored)srw64_game_hooks.cheats_restored(ram,ctx);
     if(srw64_game_hooks.tactical_restored)srw64_game_hooks.tactical_restored(ram,from_sram);
 }
@@ -808,7 +813,7 @@ void resident_func_8009EFDC(uint8_t* rdram, recomp_context* ctx) {
         if(now!=completed){completed=now;srw64::state_probe::capture(rdram,"script-inject-complete",uint32_t(sequence));}
     }
     srw64::mini_stage::poll_hook(rdram,owner);
-    story::stepped(uint16_t(ctx->r2));
+    story::stepped(uint16_t(ctx->r2),rdram);
     srw64::rule_probe::poll(rdram,ctx,owner);
     srw64::battle_ui_probe::poll(rdram,ctx,owner);
     move_probe.after(rdram,owner);

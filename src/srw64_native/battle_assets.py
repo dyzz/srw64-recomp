@@ -42,10 +42,8 @@ def prepare_battle_assets(root: Path, rom: bytes, output: Path, hd_portrait=None
                             'width': pixels.width, 'height': pixels.height, 'resources': list(ids)}
         return written[key]
 
-    units = {}
-    for uid, (scene_id, atlas_id, palette_id) in enumerate(poses):
-        if not scene_id:
-            continue
+    @lru_cache(None)
+    def pose(scene_id, atlas_id, palette_id):
         scene = parse_scene(resource(scene_id))
         atlas, _ = decode_atlas(resource(atlas_id), resource(palette_id))
         frames, clipped = render_scene(scene, atlas)
@@ -53,7 +51,15 @@ def prepare_battle_assets(root: Path, rom: bytes, output: Path, hd_portrait=None
         entry = {**save(f'unit-{scene_id}-{atlas_id}-{palette_id}', frames[frame], (scene_id, atlas_id, palette_id)),
                  'facing': 'left', 'frame': frame, 'clipped_parts': clipped}
         hd = hd_unit(scene_id, atlas_id, palette_id) if hd_unit else None
-        units[str(uid)] = {**entry, 'hd': hd} if hd else entry
+        return {**entry, 'hd': hd} if hd else entry
+
+    units = {}
+    for uid, triple in enumerate(poses):
+        if triple[0]:
+            units[str(uid)] = pose(*triple)
+    # By pose too: the host looks a unit up by the pose the game reads, so a MOD unit that
+    # takes a free number (data/new_units.json) and a pose of its own shows that pose.
+    by_pose = {f'{s}-{a}-{p}': pose(s, a, p) for s, a, p in sorted({t for t in poses if t[0]} | set(getattr(hd_unit, 'poses', ())))}
     portraits = {}
     for actor in range(spec['count']):
         image_id, palette_id = struct.unpack_from('>2H', bindings, actor * spec['stride'])
@@ -61,7 +67,7 @@ def prepare_battle_assets(root: Path, rom: bytes, output: Path, hd_portrait=None
                      (image_id, palette_id))
         hd = hd_portrait(image_id, palette_id) if hd_portrait else None
         portraits[str(actor)] = {**entry, 'hd': hd} if hd else entry
-    result = {'schema': 'srw64.battle-assets.v1', 'units': units, 'portraits': portraits,
+    result = {'schema': 'srw64.battle-assets.v1', 'units': units, 'poses': by_pose, 'portraits': portraits,
               'weapon_markers': {**weapon_markers(resource(FONT_RESOURCE), resource(TEXT_PALETTE), output),
                                  'double_move': double_move_marker(resource(WIDE_FONT_RESOURCE), resource(CROWN_PALETTE), output)}}
     (output / 'manifest.json').write_text(json.dumps(result, indent=2) + '\n')

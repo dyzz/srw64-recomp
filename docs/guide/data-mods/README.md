@@ -73,3 +73,10 @@
 ## 7. 示例
 
 仓库里的 [`config/recomp/mods/space-a`](../../../config/recomp/mods/space-a/)：把我方主力里宇宙不到 A 的 20 名驾驶员与 21 台机体的宇宙改成 A。
+
+## 新机体与新武器（`data/new_units.json`）
+
+原版的表都是定长的，新机体只能借没人用的号：机体 314、325，武器 881、882、1209，战斗场景总表 1051、1052 和几个没用到的 cut-in 号，地图图标资源 978、991。包里写照抄谁、站姿、武器表、改造从谁继承、战斗动画记录，宿主分配空位、算出字节，和上面的数值文件走同一条补丁链（数值文件改的是抄过来之后的记录）。完整写法和每个键写进哪张表见 [`docs/design/mod-names-art-data.md`](../../design/mod-names-art-data.md) §2.3.1，示例包 [`config/recomp/mods/final-dancouga`](../../../config/recomp/mods/final-dancouga/)。
+
+要靠 HD 图的包在 `mod.json` 写 `"requires": {"srw64.hd": ">=1.3"}`：没装 HD 包或图像设成原版时整包不加载，MOD 页显示「需要 HD 画面」；游戏里切换图像要重启才算。
+

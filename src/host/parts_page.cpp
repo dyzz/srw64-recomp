@@ -1,4 +1,5 @@
 #include "parts_page.hpp"
+#include "intermission_mode.hpp"
 #include "run_files.hpp"
 #include "presentation_settings.hpp"
 #include "intermission_menu.hpp"
@@ -395,6 +396,7 @@ void frame(uint8_t* ram) {
     // Any other screen taking over closes the page; a re-entry of the same screen
     // rebuilds it through build().
     if(active && !idle(ram) && read(ram,next_screen,4)!=read(ram,current_screen,4))hide("left");
+    else if(active && !intermission_mode::running(ram))hide("left");   // back to the title (intermission_mode.hpp)
 }
 }
 

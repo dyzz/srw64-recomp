@@ -158,6 +158,24 @@ class PackageTests(unittest.TestCase):
         files["data/parts.json"] = b"{}"
         self.assertEqual(sorted(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0]), ["data", "portrait"])
 
+    def test_new_units(self):
+        files = self.good_files()
+        files["data/new_units.json"] = json.dumps({
+            "schema": "srw64.new-units.v1",
+            "units": {"314": {"copy": 224, "pose": [2324, 1724, 2016], "icon": 978, "weapons": [870, 881], "inherits_from": 224}},
+            "weapons": {"881": {"copy": 874, "inherits_from": 874, "animation": {"copy": 874}},
+                        "882": {"copy": 875, "animation": {"camera": 1, "hit": 59, "action": 84, "defender": 125, "sounds": [219],
+                                                           "actors": [{"scene": 1003, "h4": 1, "h5": 255, "behavior": 359}]}}},
+            "scenes": {"1003": [2560, 1716, 2118]}}).encode()
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], [])
+        base = {"schema": "srw64.new-units.v1"}
+        for bad, why in [({"units": {"50": {"copy": 1, "weapons": [1]}}}, "314、325"), ({"weapons": {"700": {"copy": 1}}}, "881"),
+                         ({"scenes": {"5": [1, 2, 3]}}, "1051"), ({"units": {"314": {"copy": 360, "weapons": [1]}}}, "0–353"),
+                         ({"weapons": {"881": {"copy": 1, "animation": {"camera": 1, "hit": 1, "action": 1, "defender": 1, "actors": [{"scene": 1, "behavior": 2}]}}}}, "behavior"),
+                         ({"units": {"314": {"copy": 1, "weapons": []}}}, "weapons"), ({"extra": {}}, "未知分区")]:
+            self.assertIn(why, validate.new_units_problem({**base, **bad}))
+        self.assertIn("schema", validate.new_units_problem({"units": {}}))
+
     def test_battle_voices(self):
         files = self.good_files()
         files["audio/voice/battle/5813.ogg"] = b"OggS"

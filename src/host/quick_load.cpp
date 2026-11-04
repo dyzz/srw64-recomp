@@ -31,7 +31,7 @@ constexpr uint32_t button_z=0x2000,button_start=0x1000;
 constexpr uint32_t intermission_exit=0x801DD540;
 constexpr uint64_t limit=1200;   // VIs: a fade and a restore take well under one second
 
-enum class Stage : uint8_t {idle,press_z,press_both,hold_start,loading,release};
+enum class Stage : uint8_t {idle,press_z,press_both,hold_start,loading,release,let_go};
 enum class Kind : uint8_t {load,title};
 std::mutex mutex;
 std::atomic<Stage> stage{Stage::idle};
@@ -127,6 +127,9 @@ void frame(uint8_t* ram) {
     case Stage::idle: return;
     // Z alone for a frame, then START with it: 80085EF8 wants START's press edge with Z held.
     case Stage::press_z: if(frames>=2*sched_rate::factor())set(Stage::press_both); break;
+    // Before another try everything is let go a moment, so Z comes down anew: a map just
+    // restored from a suspend record let a pair whose Z was already down go by for 20 s.
+    case Stage::let_go: if(frames>=4*sched_rate::factor())set(Stage::press_z); break;
     // Taken: the map asks for mode 1 and fades (801DFE0C); the battle animation sets its
     // abort flag and fades (801C9A18), and only while no fade runs.
     case Stage::press_both:
@@ -143,7 +146,7 @@ void frame(uint8_t* ram) {
         }
         else if(frames>=8*sched_rate::factor()) {   // not taken (a fade, a busy frame): again
             record("retry",{{"mode",m},{"held",read(ram,0x8015D9FA,2)},{"pressed",read(ram,0x8015CAF0,2)},{"battle_state",int8_t(read(ram,battle_state,1))}});
-            set(Stage::press_z);
+            set(Stage::let_go);
         }
         break;
     // START held until the fade ends: then 0x11 when the card has the record, else the title (7).
@@ -175,12 +178,13 @@ uint32_t filter_input(uint32_t buttons) {
     case Stage::hold_start: return button_start;
     case Stage::loading: return 0;
     case Stage::release: return 0;
+    case Stage::let_go: return 0;
     default: return buttons;
     }
 }
 json state() {
     std::lock_guard lock(mutex);
-    static constexpr const char* names[]={"idle","press_z","press_both","hold_start","loading","release"};
+    static constexpr const char* names[]={"idle","press_z","press_both","hold_start","loading","release","let_go"};
     const auto s=saved();
     return {{"stage",names[size_t(stage.load())]},{"usable",can.load()},{"usable_title",can_title.load()},
             {"kind",kind.load()==Kind::title?"title":"load"},{"last",last},

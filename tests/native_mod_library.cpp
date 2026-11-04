@@ -100,6 +100,20 @@ int main(int argc,char** argv) {
         std::vector<mods::Package> list3{package(manifest("y.top","1.0",{{"requires",{{"y.gone","*"}}}}))};
         check(mods::resolve(list3,{},game)[0].problem.code=="missing","a missing requirement");
     }
+    // The built-in HD requirement: off until the host registers it, then by its version.
+    {
+        std::vector<mods::Package> list{package(manifest("h.art","1.0",{{"requires",{{"srw64.hd",">=1.3"}}}}))};
+        mods::set_builtin(mods::builtin_hd,std::nullopt);
+        check(mods::resolve(list,{},game)[0].problem.code=="needs_hd","no HD, no package");
+        mods::set_builtin(mods::builtin_hd,mods::Version{1,2,0});
+        check(mods::resolve(list,{},game)[0].problem.code=="dependency_version","too old an HD pack");
+        mods::set_builtin(mods::builtin_hd,mods::Version{});
+        check(mods::resolve(list,{},game)[0].active,"an HD pack without a version satisfies");
+        const unsigned before=mods::revision();
+        mods::set_builtin(mods::builtin_hd,mods::Version{1,3,0});
+        check(mods::resolve(list,{},game)[0].active && mods::revision()!=before,"registering moves the revision");
+        mods::set_builtin(mods::builtin_hd,std::nullopt);
+    }
     // Conflicts, the game version, and an optional package only ordering.
     {
         std::vector<mods::Package> list{package(manifest("z.one","1.0",{{"conflicts",{{"z.two","*"}}}})),package(manifest("z.two")),

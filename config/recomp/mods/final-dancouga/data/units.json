@@ -1,0 +1,7 @@
+{
+  "314": {
+    "hp": 8000, "en": 240, "move": 6, "mobility": 85, "armor": 1700, "limit": 300,
+    "repair_cost": 14000, "upgrade_cap": 9, "size": "M",
+    "terrain": { "air": "A", "land": "A", "sea": "C", "space": "A" }
+  }
+}

@@ -487,6 +487,113 @@ def _levels(value, where: str, ascending_pairs: bool = False) -> str:
     return ""
 
 
+# data/new_units.json (src/host/mod_units.hpp, docs/design/mod-names-art-data.md §2.3.1): the
+# shape and the free numbers; the layout (weapon lists, animation records, inheritance rows)
+# is checked by the host against the ROM.
+NEW_UNITS_SCHEMA = "srw64.new-units.v1"
+FREE_UNITS, FREE_WEAPONS = (314, 325), (881, 882, 1209)
+FREE_SCENES = (1051, 1052, 1003, 1006, 1025, 1026, 1029, 1030, 1032, 1033)
+
+
+def _int_in(value, low: int, high: int) -> bool:
+    return isinstance(value, int) and not isinstance(value, bool) and low <= value <= high
+
+
+def _triple(value) -> bool:
+    return isinstance(value, list) and len(value) == 3 and all(_int_in(v, 1, 0xFFFF) for v in value)
+
+
+def new_units_problem(document) -> str:
+    if not isinstance(document, dict) or document.get("schema") != NEW_UNITS_SCHEMA:
+        return f"schema 要是 {NEW_UNITS_SCHEMA}"
+    for key in document:
+        if key not in ("schema", "units", "weapons", "scenes"):
+            return f"未知分区 {key}（units、weapons、scenes）"
+    scenes = document.get("scenes", {})
+    if not isinstance(scenes, dict):
+        return "scenes 要是对象"
+    for key, triple in scenes.items():
+        if not _plain_number(key) or int(key) not in FREE_SCENES:
+            return f"scenes.{key}：可用的号是 " + "、".join(map(str, FREE_SCENES))
+        if not _triple(triple):
+            return f"scenes.{key}：要是 [场景, 图集, 调色板] 三个资源号"
+    weapons = document.get("weapons", {})
+    if not isinstance(weapons, dict):
+        return "weapons 要是对象"
+    for key, entry in weapons.items():
+        where = f"weapons.{key}"
+        if not _plain_number(key) or int(key) not in FREE_WEAPONS:
+            return f"{where}：可用的号是 881、882、1209"
+        if not isinstance(entry, dict):
+            return f"{where}：要是对象"
+        unknown = set(entry) - {"copy", "animation", "inherits_from"}
+        if unknown:
+            return f"{where}：未知字段 {sorted(unknown)[0]}（copy、animation、inherits_from）"
+        if not _int_in(entry.get("copy"), 0, 1328):
+            return f"{where}.copy：要写照抄的武器号（0–1328）"
+        if "inherits_from" in entry and not _int_in(entry["inherits_from"], 0, 1328):
+            return f"{where}.inherits_from：要是武器号"
+        animation = entry.get("animation", {"copy": entry["copy"]})
+        if not isinstance(animation, dict):
+            return f"{where}.animation：要是 {{\"copy\": 武器号}} 或整条记录"
+        if "copy" in animation:
+            if len(animation) != 1 or not _int_in(animation["copy"], 0, 1328):
+                return f"{where}.animation.copy：要是武器号，且不和别的字段同写"
+            continue
+        unknown = set(animation) - {"camera", "hit", "action", "defender", "sounds", "actors"}
+        if unknown:
+            return f"{where}.animation：未知字段 {sorted(unknown)[0]}"
+        for name in ("camera", "hit", "action", "defender"):
+            if not _int_in(animation.get(name), 0, 0x7FFF):
+                return f"{where}.animation.{name}：要是整数"
+        sounds = animation.get("sounds", [])
+        if not isinstance(sounds, list) or len(sounds) > 8 or not all(_int_in(s, -2, 0x7FFF) for s in sounds):
+            return f"{where}.animation.sounds：最多 8 个音效号（-2 静音）"
+        actors = animation.get("actors", [])
+        if not isinstance(actors, list) or not 1 <= len(actors) <= 24:
+            return f"{where}.animation.actors：要 1–24 个"
+        for k, a in enumerate(actors):
+            here = f"{where}.animation.actors[{k}]"
+            if not isinstance(a, dict) or not _int_in(a.get("scene"), 0, 1052):
+                return f"{here}.scene：要是战斗场景总表的号（0–1052）"
+            if not all(_int_in(a.get(n, 0), -32768, 32767) for n in ("x", "y", "z")):
+                return f"{here}：x、y、z 要是整数"
+            if not all(_int_in(a.get(n, 0), 0, 0xFFFF) for n in ("h4", "h5", "h6")):
+                return f"{here}：h4、h5、h6 要是 0–65535"
+            if not _int_in(a.get("behavior"), 3, 382):
+                return f"{here}.behavior：要是行为例程号（3–382）"
+        if 8 + 2 * len(sounds) + 2 + 16 * len(actors) + 2 > 0x3C0:
+            return f"{where}.animation：记录太长"
+    units = document.get("units", {})
+    if not isinstance(units, dict):
+        return "units 要是对象"
+    rows = 0
+    for key, entry in units.items():
+        where = f"units.{key}"
+        if not _plain_number(key) or int(key) not in FREE_UNITS:
+            return f"{where}：可用的号是 314、325"
+        if not isinstance(entry, dict):
+            return f"{where}：要是对象"
+        unknown = set(entry) - {"copy", "pose", "icon", "weapons", "inherits_from"}
+        if unknown:
+            return f"{where}：未知字段 {sorted(unknown)[0]}（copy、pose、icon、weapons、inherits_from）"
+        if not _int_in(entry.get("copy"), 0, 353):
+            return f"{where}.copy：要写照抄的机体号（0–353，要有战斗记录）"
+        if "pose" in entry and not _triple(entry["pose"]):
+            return f"{where}.pose：要是 [场景, 图集, 调色板] 三个资源号"
+        if "icon" in entry and not _int_in(entry["icon"], 688, 1009):
+            return f"{where}.icon：要是地图图标资源号（688–1009；没人用的是 978、991）"
+        weapons_of = entry.get("weapons")
+        if not isinstance(weapons_of, list) or not weapons_of or not all(_int_in(w, 0, 1328) for w in weapons_of):
+            return f"{where}.weapons：要是武器号的数组"
+        rows += len(weapons_of) + 1
+        if "inherits_from" in entry and not _int_in(entry["inherits_from"], 0, 362):
+            return f"{where}.inherits_from：要是机体号"
+    if rows * 12 > 0x83110 - 0x82E40:
+        return "units：武器表的空隙用完了"
+    return ""
+
+
 def data_problem(name: str, document) -> str:
     """data/<name> by the host's rules (src/host/mod_data.hpp parse), "" when it is good. Whether a
     pilot has an ability or spirit record, and the ROM's own min/max range, only the game knows."""
@@ -650,6 +757,13 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
                 why = f"JSON 无效：{error}"
             if why:
                 problems.append(Problem("data", f"{e.name}: {why}"))
+        elif top == "data" and rest == "new_units.json":
+            try:
+                why = new_units_problem(json.loads(e.read().decode("utf-8")))
+            except (ValueError, UnicodeDecodeError) as error:
+                why = f"JSON 无效：{error}"
+            if why:
+                problems.append(Problem("data", f"{e.name}: {why}"))
         elif top == "data" and rest.endswith(".json"):
             problems.append(Problem("data", f"{e.name}: 暂不支持这个文件"))
         elif e.name.startswith("art/portraits/") and e.name.count("/") == 2:
@@ -699,6 +813,8 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
             if m["version"] <= old:
                 problems.append(Problem("not_newer", f"{version_text(m['version'])} <= {version_text(old)}"))
         for other in list(m["requires"]) + list(m["optional"]):
+            if other == "srw64.hd":   # built in (mod_library.hpp builtin_hd), not a package
+                continue
             if other not in listed and other not in also_listed:
                 problems.append(Problem("missing", other))
     if owners is not None:

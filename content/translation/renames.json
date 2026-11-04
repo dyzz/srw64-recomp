@@ -9836,6 +9836,19 @@
    "sections": [
     "weapons"
    ]
+  },
+  {
+   "ja": [
+    "ムゲ"
+   ],
+   "zh-Hans": {
+    "old": "姆盖",
+    "new": "穆格"
+   },
+   "gate": false,
+   "sections": [
+    "story"
+   ]
   }
  ]
 }

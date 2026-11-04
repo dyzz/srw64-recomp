@@ -18,6 +18,7 @@
 #include "wide_map.hpp"
 #include "native_marker.hpp"
 #include "hd_replace.hpp"
+#include "mod_library.hpp"
 #include "native_map.hpp"
 #ifndef SRW64_GL_ONLY
 #include "native_gpu.hpp"
@@ -199,10 +200,27 @@ std::string capture_clock = "native_vi_at_draw";
 // present goes to screenshots/ in the user folder (srw64_take_screenshot_request).
 std::atomic<bool> player_shot_requested{};
 std::atomic<bool> player_shot_armed{};
+// The HD images as a package requirement (mod_library.hpp builtin_hd), registered once the
+// image mode is set up: usable when the HD pack is there and the setting asks for HD; the
+// version from the bundle's hd.json beside the art (update_check.cpp reads the same file),
+// 0.0.0 for a pack without one. Switching with F6 later leaves it as it is (the packages' data
+// cannot change under the units on the map); the new setting counts at the next start.
+static void register_hd_requirement(const char* art, bool hd) {
+    std::optional<srw64::mods::Version> version;
+    if (hd && art && *art) {
+        version = srw64::mods::Version{};
+        std::ifstream file(std::filesystem::path(art).parent_path() / "hd.json");
+        const auto bundle = nlohmann::json::parse(file, nullptr, false);
+        if (bundle.is_object() && bundle.contains("version") && bundle["version"].is_string())
+            if (const auto v = srw64::mods::parse_version(bundle["version"].get<std::string>())) version = *v;
+    }
+    srw64::mods::set_builtin(srw64::mods::builtin_hd, version);
+}
+
 // Work the GL render thread hands off, in order on one thread of its own: a debug screenshot's
 // PNG took a second on the Switch, a second the game stood still.
 void run_in_background(std::function<void()> job) {
-    static std::mutex mutex;
+static std::mutex mutex;
     static std::condition_variable wake;
     static std::deque<std::function<void()>> jobs;
     static std::thread* worker = new std::thread([] {   // never joined: it lives as long as the program
@@ -762,6 +780,7 @@ public:
                         map_icon_hashes.push_back(std::stoull(row.at("hashes").at("rt64").get<std::string>(),nullptr,16));
                     const char* mode=std::getenv("SRW64_IMAGE_MODE");
                     srw64::presentation::image_mode.configure(mode && std::string(mode)=="hd");
+                    register_hd_requirement(art, mode && std::string(mode)=="hd");
                     apply_images();
                     // Whole-image portraits ship beside the RT64 pack; they chain their
                     // native draw hooks after marker/hdmap.
@@ -1329,6 +1348,7 @@ public:
                 fprintf(stderr, "SRW64_HD_ART %s\n", hd_art.string().c_str());
             }
             srw64::presentation::image_mode.configure(hd);
+            register_hd_requirement(hd ? hd_art.string().c_str() : nullptr, srw64::presentation::image_mode.requested());
         }
         // The host's tagged draws (window frames, story and title text) from the modules that
         // tag them, as SRW64Renderer configures them; the sprite layer's HD frames (title, units,

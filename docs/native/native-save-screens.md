@@ -40,6 +40,8 @@
 
 **快照**：`status.save_page`：`screen`（`choice`／`slots`）、`serial`、`labels`（rom、pak、save_to、checking、slot、level、episode、clear、turns、funds、overwrite、ask、yes、no）；介质选择有 `cursor`、`waiting`；存档栏有 `medium`、`cursor`、`mode`（0 列表、1 覆盖确认、2 提示）、`window_cursor`、`status`、`slots[]`（`index`、`used`、`name`、`protagonist`、`level`、`episode`、`title`、`turns`、`funds`、`art`）、提示模式另有 `message[]`（`text`、`x`、`y`）。事件日志 `save-page-events.jsonl`（`open`、`choose`、`window-open`／`window-close`、`write`、`recheck`、`pak-removed`、`back`、`close`／`left`）。
 
+**离开场间时关页**（2026-11-03）：原来只在场间换画面时关（下一个画面号≠当前），返回标题画面（F10、Z+START 替按）不换画面号，存档页就一直盖在标题上。现在游戏一离开场间（模式不再是 4、0x12–0x15，`intermission_mode.hpp`）就关；改造、强化零件、能力、换乘四页同样处理。实机：场间存档页里按 F10，`left` 在离开当帧记下，BANPRESTO 画面干净。
+
 **调试**：稳定 ID `save:N`（介质或存档栏）、`save-yes`／`save-no`；键盘 ↑↓、Enter／Z、Esc／X；等待条件 `save_page`。
 
 ## 3. 实机验证

@@ -722,6 +722,26 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
             if (column != a.x) sign_x[a.label] = float(column) + kNarrow / 2.f;
         }
     }
+    // Lines the original centres in their window (マップをみる over 出撃決定, half-width kana
+    // over kanji): nearby one-part labels whose originals share a centre but not a start. Their
+    // translations are centred there too, or two of a length start apart.
+    std::vector<std::optional<float>> centre(found.size());
+    for (size_t i = 0; i < found.size(); ++i) {
+        if (found[i].id == 0 || found[i].consumed || !composed[i].empty()) continue;
+        const auto pa = parts_of(found[i]);
+        if (pa.size() != 1) continue;
+        const float ca = pa.front().x + pa.front().width / 2.f;
+        for (size_t j = 0; j < found.size(); ++j) {
+            if (j == i || found[j].id == 0 || found[j].consumed || !composed[j].empty()) continue;
+            const auto pb = parts_of(found[j]);
+            if (pb.size() != 1 || pb.front().y == pa.front().y || std::abs(pb.front().y - pa.front().y) > 24) continue;
+            if (std::abs(pb.front().x - pa.front().x) < 2 || std::abs(pb.front().x + pb.front().width / 2.f - ca) > 1) continue;
+            const auto fa = frame_of(pa.front().x, pa.front().y), fb = frame_of(pb.front().x, pb.front().y);
+            if (!fa || !fb || fa->x0 != fb->x0 || fa->x1 != fb->x1) continue;
+            centre[i] = ca;
+            break;
+        }
+    }
     // 3. Draw.
     for (size_t i = 0; i < found.size(); ++i) {
         Label& l = found[i];
@@ -862,8 +882,12 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
                     if (natural > width + 1 || shift > 0)
                         note("squeeze:" + locale + ":" + text, {{"kind", "squeeze"}, {"text", text}, {"natural", natural}, {"room", width}, {"shift", shift}, {"x", x}, {"y", y}});
                 }
-                const Style style = label_style(locale, width, false);
-                items.push_back(placed(style, locale, catalog_form(text), "label", lx, ly, tint));
+                if (centre[i] && one_line && l.translated) {
+                    items.push_back(placed(label_style(locale, width, true), locale, catalog_form(text), "label", *centre[i], ly, tint));
+                } else {
+                    const Style style = label_style(locale, width, false);
+                    items.push_back(placed(style, locale, catalog_form(text), "label", lx, ly, tint));
+                }
             }
             counts.translated += l.translated;
             for (size_t k = 0; k < l.cells.size(); ++k) if (!l.cells[k].icon) take(k);

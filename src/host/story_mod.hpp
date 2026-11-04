@@ -102,6 +102,9 @@ struct Event {
     bool repeat{};
     std::vector<uint16_t> words;                   // instructions and FFFF, text ids final
     std::vector<std::pair<size_t,unsigned>> levels;   // a join's level operand -> as this pilot's
+    // When the event has run to its end: these pilots become the crew of our unit of that
+    // number, the first as its pilot (crew()).
+    std::vector<std::pair<unsigned,std::vector<unsigned>>> crew;
     std::string key() const {return package+"/"+id;}
 };
 struct Text {
@@ -199,6 +202,13 @@ inline void add_image(Library& library,const std::string& package,const json& im
             if(at<2 || at>=event.words.size() || event.words[at-2]!=0x3D5A || pilot>360)throw std::runtime_error(event.id+"：等级引用不是 3D5A 的第二个操作数");
             event.levels.emplace_back(at,pilot);
         }
+        for(const auto& c:e.value("crew",json::array())) {
+            const unsigned unit=c.at("unit").get<unsigned>();
+            const auto pilots=c.at("pilots").get<std::vector<unsigned>>();
+            if(unit>362 || pilots.empty() || pilots.size()>5)throw std::runtime_error(event.id+"：crew 要写机体号和 1–5 名人物");
+            for(const auto pilot:pilots)if(pilot>360)throw std::runtime_error(event.id+"：crew 的人物号越界");
+            event.crew.emplace_back(unit,pilots);
+        }
         new_events.push_back(std::move(event));
     }
     for(const auto& e:new_events)for(const auto& names:{e.fired,e.not_fired})
@@ -285,6 +295,44 @@ inline bool has_unit(const uint8_t* ram,unsigned unit) {
         if(read(ram,u,1) && read(ram,u+2,2)==unit)return true;
     }
     return false;
+}
+// A unit's crew lives on its instance: +0x34 how many, then a pointer per pilot record from
+// +0x38; each pilot's record says it has a unit (+0x37) and which (+0x38). The original sets
+// them only when it makes an instance, from the crew table D_800CA418, which has no room for a
+// new unit (docs/design/final-dancouga-mod.md §4.10.1), so an event's crew is written here once
+// the event has run. The first pilot is on the unit already (its 3D5A put them there); the
+// others take that pilot's link, leaving any unit they were on.
+inline constexpr uint32_t unit_crew=0x34, unit_crew_pilots=0x38, pilot_has_unit=0x37, pilot_unit=0x38, crew_most=5;
+inline bool set_crew(uint8_t* ram,unsigned unit,const std::vector<unsigned>& pilots) {
+    std::optional<uint32_t> instance;
+    for(uint32_t i=0;i<unit_instance_count && !instance;++i) {
+        const uint32_t u=unit_instances+i*unit_instance_size;
+        if(read(ram,u,1) && read(ram,u+2,2)==unit)instance=u;
+    }
+    if(!instance || pilots.empty() || pilots.size()>crew_most)return false;
+    std::vector<uint32_t> records;
+    for(const auto pilot:pilots) {
+        const auto r=pilot_record(ram,pilot);
+        if(!r)return false;
+        records.push_back(*r);
+    }
+    const uint32_t has=read(ram,records[0]+pilot_has_unit,1),link=read(ram,records[0]+pilot_unit,4);
+    for(const uint32_t r:records) {
+        const uint32_t old=read(ram,r+pilot_unit,4);
+        if(old!=*instance && old>=unit_instances && old<unit_instances+unit_instance_count*unit_instance_size &&
+           (old-unit_instances)%unit_instance_size==0) {
+            std::vector<uint32_t> keep;
+            const unsigned n=std::min<unsigned>(read(ram,old+unit_crew,1),crew_most);
+            for(unsigned k=0;k<n;++k)if(const uint32_t q=read(ram,old+unit_crew_pilots+k*4,4);q!=r)keep.push_back(q);
+            for(unsigned k=0;k<crew_most;++k)guest::write32(ram,old+unit_crew_pilots+k*4,k<keep.size()?keep[k]:0);
+            guest::write8(ram,old+unit_crew,uint8_t(keep.size()));
+        }
+        guest::write8(ram,r+pilot_has_unit,uint8_t(has));
+        guest::write32(ram,r+pilot_unit,link);
+    }
+    for(unsigned k=0;k<crew_most;++k)guest::write32(ram,*instance+unit_crew_pilots+k*4,k<records.size()?records[k]:0);
+    guest::write8(ram,*instance+unit_crew,uint8_t(records.size()));
+    return true;
 }
 // A join "like" a pilot: 3D5A registers at the stage's base level (8010F5F3) plus its
 // second operand (800AAD28), so the operand is that pilot's level (record +5) less the base.
@@ -565,10 +613,14 @@ inline bool special(uint8_t* ram,const View& v) {
 }
 // 8009EFDC wrapper, after each step, with the status it returns (8009E180 stores it in
 // +0x97C afterwards): an event of ours that ran to its end.
-inline void stepped(uint16_t status) {
+inline void stepped(uint16_t status,uint8_t* ram=nullptr) {
     auto& s=state();
     if(!s.running || status!=0x80)return;
     const auto& e=s.library.events[*s.running];
+    for(const auto& [unit,pilots]:e.crew) {
+        const bool done=ram && set_crew(ram,unit,pilots);
+        log({{"action","crew"},{"event",e.key()},{"unit",unit},{"pilots",pilots},{"done",done}});
+    }
     for(const auto& f:e.set_flags)s.flags.insert(e.package+"/"+f);
     log({{"action","finished"},{"event",e.key()},{"flags",s.flags}});
     s.running.reset();
