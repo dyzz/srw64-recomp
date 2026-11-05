@@ -316,13 +316,13 @@ it to Steam, and it is played from Game Mode.
 | --- | --- |
 | Console | A Switch that runs Atmosphère custom firmware (tested on the original model) |
 | System | Atmosphère and hbmenu, in application mode (hold R while starting any game) |
-| Space | About 150 MB on the SD card, plus about 1.3 GB for the Switch HD pack |
+| Space | About 110 MB on the SD card, plus about 1.6 GB for the Switch HD pack |
 
 Extract it to the SD card's root and put the ROM in `/switch/Marchwind64/` as `rom.z64`. The
 first launch imports it on the console in about half a minute. It is an NRO homebrew program,
 with no NSP; the computers' HD pack does not work on the Switch.
 
-The game takes about 150 MB, and the optional HD art pack about 550 MB more. If the game
+The game takes about 165 MB, and the optional HD art pack about 700 MB more. If the game
 crashes at start or freezes, update your graphics drivers first. Step-by-step
 instructions for each platform are on the
 [install page](https://srw64.dreamquest.club/en/install/).

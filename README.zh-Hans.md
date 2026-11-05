@@ -252,12 +252,12 @@ LCD 版与 OLED 版，SteamOS 保持最新即可。使用 Linux 安装包，运�
 | --- | --- |
 | 主机 | 能运行 Atmosphère 自制系统的 Switch（初代机型上测试） |
 | 系统 | Atmosphère 与 hbmenu，应用模式（按住 R 启动任意游戏进 hbmenu） |
-| 空间 | SD 卡约 150 MB，Switch 版 HD 包另需约 1.3 GB |
+| 空间 | SD 卡约 110 MB，Switch 版 HD 包另需约 1.6 GB |
 
 解压到 SD 卡根目录，把 ROM 命名为 `rom.z64` 放进 `/switch/Marchwind64/`。首次启动在主机上从 ROM 导入，约半分钟。
 只提供 NRO 自制程序，不提供 NSP；电脑版的 HD 包在 Switch 上不能用。
 
-游戏本体约 150 MB，可选的 HD 美术包另需约 550 MB。启动闪退或卡住时，请先更新显卡驱动。各平台的安装步骤见官网的[安装页](https://srw64.dreamquest.club/zh/install/)。
+游戏本体约 165 MB，可选的 HD 美术包另需约 700 MB。启动闪退或卡住时，请先更新显卡驱动。各平台的安装步骤见官网的[安装页](https://srw64.dreamquest.club/zh/install/)。
 
 ## 一起改进译文
 

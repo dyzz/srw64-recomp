@@ -4,31 +4,31 @@ import { INSTALL } from '../../copy/install';
 import { langPaths, tl, type Lang } from '../../i18n';
 import { allFiles, fileFor, hd, mb, published, release, mirrors, type Platform } from '../../data/release';
 import Mirrors from '../../components/Mirrors.astro';
+import PlatformIcon from '../../components/PlatformIcon.astro';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const c = INSTALL[tl(lang)];
-const fill = (s: string) =>
-  s.replace(/\{(windows|macos|linux|switch|hd|switch-hd)\}/g, (_, p: Platform) => fileFor(p)?.name ?? `Marchwind64-…-${p}.zip`);
-const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', linux: 'linux', 'steam-deck': 'linux', android: 'android', switch: 'switch', hd: 'hd' };
+// The small line of a download button: the HD packs have versions of their own.
+const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version ? `HD ${hd.version} · ` : '';
 ---
 <Base lang={lang} title={c.title}>
   <div class="wrap">
     <header class="page-head">
       <span class="tag">INSTALL{published && ` · v${release.version}`}</span>
       <h1>{c.title}</h1>
-      <p>{c.lead}</p>
-      <p class="rom" set:html={c.rom} />
-      <p class="rom head-links"><a href="#requirements">{c.requirements.link}</a><a href={`/${lang}/faq/#saves`}>{c.savesLink}</a></p>
+      <p class="lead" set:html={c.lead} />
       <Mirrors lang={lang} />
+      <p class="head-links"><a href={`/${lang}/faq/#saves`}>{c.savesLink}</a></p>
     </header>
 
-    <ul class="quick">
+    {/* #requirements: each platform's section has its own; the FAQ's links land on this choice. */}
+    <ul class="quick" id="requirements">
       {c.sections.map((s) => (
-        <li>
+        <li class:list={{ hd: s.id === 'hd' }}>
           <a href={`#${s.id}`}>
-            <strong>{s.name}</strong>
-            {s.experimental && <span class="exp">{c.experimental}</span>}
+            <PlatformIcon id={s.id} />
+            <strong>{s.name}{s.experimental && <span class="exp">{c.experimental}</span>}</strong>
             <span class="muted">{s.summary}</span>
             <span class="go">{c.viewSteps} ↓</span>
           </a>
@@ -36,58 +36,67 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
       ))}
     </ul>
 
-    {c.sections.map((s) => {
-      const f = fileFor(fileOf[s.id]);
-      return (
-        <section class="plat" id={s.id}>
-          <div class="plat-head">
-            <h2>{s.name}{s.experimental && <span class="exp">{c.experimental}</span>}</h2>
-            <p class="dim">{c.requires}{s.requires}</p>
-            {f ? (
-              <a class="btn" href={f.url} data-umami-event="download" data-umami-event-platform={fileOf[s.id]} data-umami-event-language={lang} data-umami-event-source={s.id}>
-                <span>{f.name}<small>{s.id === 'hd' && hd.version ? `HD ${hd.version} · ` : ''}{mb(f.bytes)}</small></span>
-              </a>
-            ) : <p class="nofile">{published ? c.noFile : c.notReleased}</p>}
-            {f && s.id === 'switch' && fileFor('switch-hd') && (
-              <a class="btn ghost" href={fileFor('switch-hd')!.url} data-umami-event="download" data-umami-event-platform="switch-hd" data-umami-event-language={lang} data-umami-event-source={s.id}>
-                <span>{fileFor('switch-hd')!.name}<small>HD {hd.version} · {mb(fileFor('switch-hd')!.bytes)}</small></span>
-              </a>
-            )}
-            {f && <Mirrors lang={lang} compact />}
-            {f && s.id !== 'hd' && s.id !== 'switch' && fileFor('hd') && <p class="hd-hint"><a href="#hd">{c.hdHint}</a></p>}
-          </div>
+    {c.sections.map((s) => (
+      <section class="plat" id={s.id}>
+        <div class="plat-title">
+          <PlatformIcon id={s.id} />
+          <h2>{s.name}</h2>
+          {s.experimental && <span class="exp">{c.experimental}</span>}
+        </div>
+        {s.need && <p class="need">{s.need}</p>}
+        <div class:list={['cols', { noreq: !s.req }]}>
+          {s.req && (
+            <div class="reqbox">
+              <h3>{c.reqTitle}</h3>
+              <dl>{s.req.rows.map(([k, v]) => <><dt>{k}</dt><dd>{v}</dd></>)}</dl>
+              {s.req.notes?.map((n) => <p set:html={n} />)}
+            </div>
+          )}
           <ol class="steps">
-            {s.steps.map((step, i) => (
-              <li><span class="n latin">{i + 1}</span><p set:html={fill(step)} /></li>
-            ))}
+            {s.steps.map((step, i) => {
+              const f = step.file && fileFor(step.file);
+              return (
+                <li>
+                  <span class="n latin">{i + 1}</span>
+                  <div>
+                    <h3>{step.title}</h3>
+                    {f ? (
+                      <div class="dl">
+                        <a class:list={['btn', { ghost: step.secondary }]} href={f.url} data-umami-event="download" data-umami-event-platform={step.file} data-umami-event-language={lang} data-umami-event-source={s.id}>
+                          <span>{f.name}<small>{hdLabel(step.file!)}{mb(f.bytes)}</small></span>
+                        </a>
+                        {!step.secondary && <Mirrors lang={lang} compact />}
+                      </div>
+                    ) : step.file && !step.secondary && <p class="nofile">{published ? c.noFile : c.notReleased}</p>}
+                    {[step.body ?? []].flat().map((b) => <p set:html={b} />)}
+                  </div>
+                </li>
+              );
+            })}
           </ol>
-          {s.notes?.map((n) => <p class="note" set:html={n} />)}
-        </section>
-      );
-    })}
+          {s.tips && (
+            <aside class="side">
+              {s.tips.map((t) => (
+                <div class:list={['tip', { warn: t.warn }]}>
+                  <h3>{t.title}</h3>
+                  <p set:html={t.body} />
+                </div>
+              ))}
+            </aside>
+          )}
+        </div>
+      </section>
+    ))}
 
-    <section class="plat" id="requirements">
-      <div class="plat-head">
-        <h2>{c.requirements.title}</h2>
-        <p class="dim">{c.requirements.lead}</p>
-      </div>
-      <div class="req">
-        {c.requirements.platforms.map((p) => (
-          <div class="req-card">
-            <h3>{p.name}</h3>
-            <dl>{p.rows.map(([k, v]) => <><dt>{k}</dt><dd>{v}</dd></>)}</dl>
-          </div>
-        ))}
-      </div>
-      {c.requirements.notes.map((n) => <p class="req-note" set:html={n} />)}
+    <section class="plat" id="rom">
+      <div class="plat-title"><h2>{c.rom.title}</h2></div>
+      <dl class="facts">{c.rom.rows.map(([k, v]) => <><dt>{k}</dt><dd set:html={v} /></>)}</dl>
     </section>
 
     <section class="plat" id="downloads">
-      <div class="plat-head">
-        <h2>{c.downloadsTitle}</h2>
-        <p class="dim">{c.downloadsLead}</p>
-        <Mirrors lang={lang} />
-      </div>
+      <div class="plat-title"><h2>{c.downloadsTitle}</h2></div>
+      <p class="need">{c.downloadsLead}</p>
+      <Mirrors lang={lang} />
       {published ? <>
       <div class="table">
         <table>
@@ -114,34 +123,63 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
 </Base>
 
 <style>
-  .rom { font-size: 15px; }
+  .page-head { padding: clamp(32px, 5vw, 48px) 0 14px; gap: 10px; }
+  .lead { max-width: 720px; font-size: 18px; color: var(--muted); }
+  .lead :global(a) { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+  .head-links { margin-top: 2px; font-size: 14px; }
   :global(code.hash) { font-size: 12px; word-break: break-all; }
-  .quick { list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-  .quick a { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; height: 100%; padding: 16px 18px; color: var(--text); text-decoration: none; background: var(--cyan-soft); border-top: 3px solid var(--cyan); }
-  .quick a:hover { background: rgba(63, 208, 255, 0.2); }
-  .quick strong { font-size: 18px; }
-  .quick .muted { font-size: 14px; line-height: 1.55; }
-  .quick .go { margin-top: auto; font-size: 13px; color: var(--cyan); }
-  .exp { justify-self: start; display: inline-block; margin-left: 10px; padding: 0 8px; font-size: 12px; font-weight: 500; color: var(--orange); border: 1px solid rgba(255, 181, 71, 0.6); border-radius: 3px; vertical-align: middle; }
-  .quick .exp { margin-left: 0; }
 
-  .plat { padding: 56px 0 8px; border-bottom: 1px solid var(--line-soft); }
+  /* The platforms, four to a row; the HD pack takes the last two cells. */
+  .quick { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .quick .hd { grid-column: span 2; }
+  .quick a { display: flex; flex-direction: column; align-items: flex-start; height: 100%; min-height: 170px; padding: 16px; color: var(--text); text-decoration: none; background: linear-gradient(180deg, var(--panel-2), var(--panel)); border: 1px solid var(--line-soft); border-top: 3px solid var(--cyan); transition: background-color 0.15s, border-color 0.15s; }
+  .quick .hd a { border-top-color: var(--gold); }
+  .quick a:hover { background: var(--panel-2); border-color: var(--gold); }
+  .quick :global(svg) { flex: none; width: 30px; height: 30px; color: var(--gold); }
+  .quick strong { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin-top: 12px; font-size: 17px; line-height: 1.3; }
+  .quick .muted { margin-top: 6px; font-size: 14px; line-height: 1.6; }
+  .quick .go { margin-top: auto; padding-top: 10px; font-size: 13px; color: var(--cyan); }
+  .exp { display: inline-block; padding: 0 6px; font-size: 12px; font-weight: 500; line-height: 1.6; color: var(--orange); border: 1px solid rgba(255, 181, 71, 0.6); border-radius: 3px; }
+
+  /* One platform: the steps, and beside them what it needs and what to watch for. */
+  .plat { padding: 48px 0; border-bottom: 1px solid var(--line-soft); }
   .plat:last-of-type { border-bottom: 0; }
-  .plat-head { display: grid; gap: 8px; justify-items: start; margin-bottom: 24px; }
-  .plat-head h2 { font-size: clamp(24px, 3vw, 32px); padding-left: 14px; border-left: 4px solid var(--gold); }
-  .plat-head .btn { margin-top: 8px; }
-  .hd-hint { margin: 0; font-size: 14px; }
-  .hd-hint a { font-weight: 700; }
-  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; max-width: 860px; }
-  .steps li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; align-items: start; padding: 14px 18px; background: var(--panel); border: 1px solid var(--line-soft); }
-  .n { display: grid; place-items: center; width: 34px; height: 34px; font-weight: 700; color: var(--ink); background: var(--cyan); clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%); }
-  .steps p { padding-top: 3px; overflow-wrap: anywhere; }
+  .plat-title { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .plat-title :global(svg) { flex: none; width: 34px; height: 34px; color: var(--gold); }
+  .plat-title h2 { font-size: clamp(24px, 3vw, 30px); }
+  .need { margin-top: 6px; font-size: 14px; color: var(--dim); }
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr) 360px; grid-template-areas: 'steps req' 'steps side'; grid-template-rows: auto 1fr; gap: 16px 48px; margin-top: 24px; }
+  .cols.noreq { grid-template-areas: 'steps side'; grid-template-rows: auto; }
+
+  .reqbox { grid-area: req; padding: 14px 16px; background: var(--panel); border: 1px solid var(--line-soft); border-top: 3px solid var(--cyan); }
+  .reqbox h3 { font-size: 15px; line-height: 1.5; }
+  .reqbox dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 5px 14px; margin: 8px 0 0; font-size: 13.5px; line-height: 1.55; }
+  .reqbox dt { color: var(--muted); font-weight: 600; }
+  .reqbox dd { margin: 0; overflow-wrap: anywhere; }
+  .reqbox p { margin-top: 10px; padding-top: 8px; font-size: 13px; line-height: 1.6; color: var(--muted); border-top: 1px solid var(--line-soft); }
+
+  .steps { grid-area: steps; list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; align-content: start; }
+  .steps > li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 14px; align-items: start; }
+  .n { display: grid; place-items: center; width: 34px; height: 30px; font-weight: 700; color: var(--ink); background: var(--cyan); clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%); }
+  .steps h3 { padding-top: 3px; font-size: 17px; line-height: 1.4; }
+  .steps p { margin-top: 2px; color: var(--muted); font-size: 15px; line-height: 1.7; overflow-wrap: anywhere; }
   /* The one thing to get right in a step (where the ROM goes), from the copy's <strong>. */
   .steps :global(strong) { color: var(--gold); }
+  .dl { display: grid; justify-items: start; margin: 10px 0 8px; }
+  .dl .btn { overflow-wrap: anywhere; }
   .nofile { margin-top: 8px; padding: 6px 14px; font-size: 14px; color: var(--orange); border: 1px dashed rgba(255, 181, 71, 0.5); }
-  .note { max-width: 860px; margin-top: 14px; padding: 10px 16px; color: var(--muted); font-size: 15px; border-left: 3px solid var(--orange); background: rgba(255, 181, 71, 0.07); }
 
-  .table { overflow-x: auto; border: 1px solid var(--line-soft); }
+  .side { grid-area: side; display: grid; gap: 14px; align-content: start; }
+  .tip { padding-left: 14px; border-left: 2px solid var(--line); }
+  .tip.warn { border-left-color: var(--orange); }
+  .tip h3 { font-size: 14px; line-height: 1.5; }
+  .tip p { margin-top: 2px; font-size: 13.5px; line-height: 1.65; color: var(--muted); overflow-wrap: anywhere; }
+
+  .facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 20px; max-width: 860px; margin: 20px 0 0; font-size: 15px; }
+  .facts dt { color: var(--muted); font-weight: 600; }
+  .facts dd { margin: 0; overflow-wrap: anywhere; }
+
+  .table { overflow-x: auto; margin-top: 20px; border: 1px solid var(--line-soft); }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
   th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
   th { color: var(--muted); font-weight: 600; background: var(--panel); }
@@ -149,18 +187,33 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
   .nowrap { white-space: nowrap; }
   td:first-child { min-width: 240px; }
   td:last-child { min-width: 280px; }
-  .head-links { display: flex; flex-wrap: wrap; gap: 4px 24px; }
-  .req { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .req-card { padding: 16px 18px; background: var(--panel); border: 1px solid var(--line-soft); border-top: 3px solid var(--cyan); }
-  .req-card h3 { font-size: 18px; margin-bottom: 10px; }
-  .req-card dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 16px; margin: 0; font-size: 14px; }
-  .req-card dt { color: var(--muted); font-weight: 600; }
-  .req-card dd { margin: 0; overflow-wrap: anywhere; }
-  .req-note { max-width: 860px; margin-top: 12px; font-size: 14px; color: var(--muted); }
-  .req-note:first-of-type { margin-top: 18px; }
   .links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 16px; font-size: 15px; }
 
-  @media (max-width: 1000px) { .quick { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 760px) { .req { grid-template-columns: 1fr; } }
-  @media (max-width: 560px) { .quick { grid-template-columns: 1fr; } .steps li { grid-template-columns: 34px minmax(0, 1fr); padding: 12px; } }
+  /* Narrow: what the platform needs comes before the steps, not after them. */
+  @media (max-width: 1000px) {
+    .quick { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cols { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'req' 'steps' 'side'; grid-template-rows: auto; gap: 24px; }
+    .cols.noreq { grid-template-areas: 'steps' 'side'; }
+  }
+  @media (max-width: 560px) {
+    .lead { font-size: 16px; }
+    /* A mirror's name and passcode are longer than a small phone in Japanese. */
+    .page-head { grid-template-columns: minmax(0, 1fr); }
+    .wrap :global(.mirrors a) { white-space: normal; }
+    .quick { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    .quick .hd { grid-column: auto; }
+    .quick a { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; column-gap: 12px; align-items: center; min-height: 0; padding: 12px 14px; border-top-width: 1px; border-left: 3px solid var(--cyan); }
+    .quick .hd a { border-top-color: var(--line-soft); border-left-color: var(--gold); }
+    .quick :global(svg) { grid-row: 1 / span 2; }
+    .quick strong { grid-column: 2; margin-top: 0; font-size: 16px; }
+    .quick .muted { grid-column: 2; margin-top: 2px; font-size: 13px; }
+    .quick .go { grid-column: 3; grid-row: 1 / span 2; margin: 0; padding: 0; font-size: 0; }
+    .quick .go::after { content: '↓'; font-size: 16px; }
+    .plat { padding: 36px 0; }
+    .dl { grid-template-columns: minmax(0, 1fr); }
+    .dl .btn { width: 100%; }
+    .dl .btn { padding-inline: 26px; }
+    .facts { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .facts dd { margin-bottom: 10px; }
+  }
 </style>
