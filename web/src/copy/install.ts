@@ -188,6 +188,7 @@ export const INSTALL: Record<TextLang, Install> = {
           { title: '按住 R 启动', body: '<strong>按住 R 键启动任意一个游戏</strong>（插一张实体卡带最省事），进入 hbmenu 后选 Marchwind64。第一次启动会先在主机上从 ROM 导入游戏数据，约半分钟，屏幕上有进度；之后每次启动只要几秒。' },
         ],
         tips: [
+          { title: '性能还在优化', warn: true, body: 'Switch 版目前性能还有待优化，运行时会有一定卡顿。' },
           { title: '只支持应用模式', warn: true, body: '从相簿打开的 hbmenu 内存不够，游戏会提示改用按住 R 的方式。' },
           { title: '更新到新版', body: '删掉旧的 <code>fonts</code>、<code>dialogue</code>、<code>stages</code>、<code>splash</code> 四个文件夹，再解压新版；存档、设置和 <code>game</code> 文件夹保留，新版第一次启动会自动重新导入一次。HD 包出新版时整体替换 <code>hd</code> 文件夹。' },
           { title: '没有更新提示', body: 'Switch 版没有游戏内的更新提示，新版本请留意本页或 GitHub。' },
@@ -371,6 +372,7 @@ export const INSTALL: Record<TextLang, Install> = {
           { title: 'Hold R to start', body: '<strong>Hold R while starting any game</strong> (a game card is easiest) to open hbmenu, and pick Marchwind64. The first launch imports the game data from the ROM on the console in about half a minute, with its progress on screen; later launches take a few seconds.' },
         ],
         tips: [
+          { title: 'Performance is still being tuned', warn: true, body: 'The Switch version still needs optimizing, and you will see some stutter while playing.' },
           { title: 'Application mode only', warn: true, body: 'hbmenu opened from the Album has too little memory, and the game tells you to hold R instead.' },
           { title: 'Updating', body: 'Delete the old <code>fonts</code>, <code>dialogue</code>, <code>stages</code> and <code>splash</code> folders and extract the new version; saves, settings and the <code>game</code> folder stay, and the new version imports once more on its first launch. A new HD pack replaces the whole <code>hd</code> folder.' },
           { title: 'No update notice', body: 'The Switch version has no in-game update notice: watch this page or GitHub for new versions.' },
@@ -554,6 +556,7 @@ export const INSTALL: Record<TextLang, Install> = {
           { title: 'R を押しながら起動', body: '<strong>R ボタンを押しながら任意のゲームを起動</strong>し（ゲームカードを挿すのがいちばん簡単です）、開いた hbmenu で Marchwind64 を選びます。初回は本体で ROM からゲームデータを読み込むため 30 秒ほどかかり、画面に進み具合が出ます。2 回目以降は数秒で起動します。' },
         ],
         tips: [
+          { title: 'パフォーマンスは改善中', warn: true, body: 'Switch 版のパフォーマンスはまだ最適化の途中で、プレイ中に多少カクつくことがあります。' },
           { title: 'アプリケーションモードのみ対応', warn: true, body: 'アルバムから開いた hbmenu ではメモリが足りず、R を押しながら起動するよう案内が出ます。' },
           { title: '更新するとき', body: '古い <code>fonts</code>・<code>dialogue</code>・<code>stages</code>・<code>splash</code> フォルダーを削除してから新しい版を展開します。セーブ・設定・<code>game</code> フォルダーはそのまま残り、新しい版の初回起動時に自動でもう一度読み込みます。HD パックの新版は <code>hd</code> フォルダーごと入れ替えます。' },
           { title: '更新通知はありません', body: 'Switch 版にはゲーム内の更新通知がありません。新しい版はこのページか GitHub でご確認ください。' },
@@ -737,6 +740,7 @@ export const INSTALL: Record<TextLang, Install> = {
           { title: 'R을 누른 채 실행', body: '<strong>R을 누른 채 아무 게임이나 실행해</strong>(게임 카드가 가장 간단합니다) hbmenu를 열고 Marchwind64를 고릅니다. 처음 실행할 때는 본체에서 ROM의 게임 데이터를 가져오느라 30초 정도 걸리며, 진행 상황이 화면에 표시됩니다. 그다음부터는 몇 초 만에 실행됩니다.' },
         ],
         tips: [
+          { title: '성능 개선 중', warn: true, body: 'Switch 버전은 아직 성능 최적화가 더 필요하며, 플레이 중에 다소 끊김이 있을 수 있습니다.' },
           { title: '애플리케이션 모드 전용', warn: true, body: '앨범에서 연 hbmenu는 메모리가 부족해서, 게임이 R을 누른 채 실행하라고 안내합니다.' },
           { title: '업데이트', body: '기존 <code>fonts</code>, <code>dialogue</code>, <code>stages</code>, <code>splash</code> 폴더를 지우고 새 버전의 압축을 풉니다. 세이브, 설정, <code>game</code> 폴더는 그대로 남으며, 새 버전을 처음 실행할 때 데이터를 한 번 더 가져옵니다. 새 HD 팩은 <code>hd</code> 폴더 전체를 바꿉니다.' },
           { title: '업데이트 알림 없음', body: 'Switch 버전에는 게임 내 업데이트 알림이 없습니다. 새 버전은 이 페이지나 GitHub에서 확인하세요.' },
