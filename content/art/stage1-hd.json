@@ -14986,8 +14986,8 @@
     "manifest_sha256": "c3cae3c013e2d7a0ebd60849db1b9a723b95777c071be9a0afdee99100e44213"
   },
   "backgrounds": {
-    "path": "assets/hd-ai/backgrounds/whole-v7",
-    "manifest_sha256": "04bac94f2c4ca5078aee764c074db3ff16c0b7b6ff900285a169a3497895bad1"
+    "path": "assets/hd-ai/backgrounds/whole-v8",
+    "manifest_sha256": "d59954feb6d256a1bc7fab2465c4e8caafca38451f083eff86729439a95156a6"
   },
   "units": {
     "path": "assets/hd-ai/unit-poses/whole-v2",
@@ -15002,7 +15002,7 @@
     "manifest_sha256": "6d94e8e4ddb693ce9d79c6eafa2b8b2b308b135116cfc08d2448604827607c55"
   },
   "battle_sprites": {
-    "path": "assets/hd-ai/cutins/pack-v20",
-    "manifest_sha256": "affeb3e54686d0f8176e15d5647ea84cde17995199a7da8d61bc7436ebb42179"
+    "path": "assets/hd-ai/cutins/pack-v21",
+    "manifest_sha256": "363bbc44f452d184d06d670e4783e1617155eefa3dcdfafae332fc2badcb8462"
   }
 }

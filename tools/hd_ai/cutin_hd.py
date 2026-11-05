@@ -83,7 +83,8 @@ K = 8
 VIEWER_SCENES = (('plains', 0, 0), ('wasteland', 0, 7), ('rocks', 0, 21), ('village', 0, 22), ('mountains', 0, 24),
                  ('forest', 0, 25), ('sea', 0, 31), ('city', 0, 37), ('sky', 0, 39), ('ruins', 0, 41), ('base', 0, 51),
                  ('bridge', 0, 54), ('harbor', 0, 58), ('snow', 6, 32), ('desert', 10, 7), ('cave', 15, 15), ('moon', 17, 21),
-                 ('space', 17, 100), ('fortress', 20, 15), ('other', 20, 83), ('otherworld', 22, 61))
+                 ('space', 17, 100), ('fortress', 20, 15), ('other', 20, 83), ('otherworld', 22, 61),
+                 ('earth', 22, 81))
 SCENE_GROUPS = 0x800C5940 - 0x80075610
 DEFENCE_TABLE = 0x2166A0     # func_801C31AC: the defence effects by reaction code
 # Defence effects whose actor steps on to the next scenes of the same atlas (seen at run

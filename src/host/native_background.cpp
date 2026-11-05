@@ -140,7 +140,9 @@ bool pitch_layer(const uint8_t* rdram, uint32_t slot) {
 // (game_hooks.cpp), in the original's art. In HD only its own draw was replaced, so the
 // sides kept the original and a seam showed at the 4:3 edges (a player's recording,
 // 2026-10-19). With an HD picture it is drawn whole like a pitch-placed sky, repeating
-// every 320 by 240 as the game wraps it.
+// every 320 by 240 as the game wraps it. A still one is drawn whole without one too, from
+// the ROM: a period to each side would break the Earth 6068's curved horizon at the 4:3
+// edges (a player's picture, 2026-11-05).
 bool drift_layer(const uint8_t* rdram, uint32_t slot) {
     if (slot > 4) return false;
     const uint8_t kind = layer_kind(rdram, slot);
@@ -378,9 +380,10 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
 }
 
 bool battle_sky(const uint8_t* rdram, uint32_t slot, uint32_t sub) {
-    if (drift_layer(rdram, slot)) return hd_enabled() && asset_of(rdram, slot, sub) >= 0;
-    if (!pitch_layer(rdram, slot)) return false;
+    const bool drift = drift_layer(rdram, slot);
+    if (!drift && !pitch_layer(rdram, slot)) return false;
     if (hd_enabled() && asset_of(rdram, slot, sub) >= 0) return true;
+    if (drift && layer_kind(rdram, slot) != 8) return false;
     if (slot >= 300 || sub >= 4) return false;
     const uint32_t record = kSlots + slot * kSlotSize + kSubBase + sub * kSubSize;
     uint16_t image = 0, palette = 0;
@@ -455,18 +458,18 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
         dump << json({{"slot", draw.slot}, {"sub", draw.sub}, {"image", image}, {"palette", palette}, {"words", words}}).dump() << '\n';
         dump.flush();
     }
-    // A sky the pitch places is drawn whole in either image mode: its HD picture, or the
-    // original decoded from the ROM; other pictures only in HD.
+    // A sky the pitch places or a still one is drawn whole in either image mode: its HD
+    // picture, or the original decoded from the ROM; other pictures only in HD.
     const bool sky = pitch_layer(rdram, draw.slot), first = first_layer(draw.slot);
     int chosen = found != by_ids.end() && hd_enabled() ? found->second : -1;
-    // A drifting sky is drawn whole only with its HD picture (battle_sky).
-    const bool drift = !sky && chosen >= 0 && drift_layer(rdram, draw.slot);
     // The HD pictures keep entry 0 transparent: a first layer's original goes under them.
     const bool still = draw.slot <= 4 && layer_kind(rdram, draw.slot) == 8;
     const bool plain = chosen >= 0 && assets[size_t(chosen)].extent[0] == 0 && assets[size_t(chosen)].extent[2] == float(source_width);
     const int under = chosen >= 0 && first && (plain || still) ? rom_asset(image, palette, true) : -1;
-    if (chosen < 0 && sky) chosen = rom_asset(image, palette, first);
+    if (chosen < 0 && (sky || (still && drift_layer(rdram, draw.slot)))) chosen = rom_asset(image, palette, first);
     if (chosen < 0) return false;
+    // A drifting sky is drawn whole only with its HD picture, a still one with either (battle_sky).
+    const bool drift = !sky && drift_layer(rdram, draw.slot);
     // The drawer sets PRIM once, then per 32x32 tile: SETTIMG (the picture), LOADTILE of
     // the tile's region (image coordinates), SETTILESIZE to (0,0)-(31,31) and TEXRECT
     // (E4, E1, F1) at the tile's screen position with S/T from the tile's origin.

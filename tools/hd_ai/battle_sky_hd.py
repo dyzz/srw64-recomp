@@ -1,5 +1,5 @@
 """HD battle skies: every 320x240 CI4 sky picture of the battle backgrounds (the 2D layers
-of ROM 0x5BC30's records, 42 pictures in 91 palettes), 4x, for native_background.cpp.
+of ROM 0x5BC30's records, 44 pictures in 106 palettes), 4x, for native_background.cpp.
 
 The recipe (2026-10-09, chosen by the user from four): the calm parts are de-dithered a
 little (blurred where the local contrast is low, the edges kept), PixelPerfectV4 upscales
@@ -13,6 +13,8 @@ the exact source RGBA in the centre (docs/design/battle-vortex-wide.md).
 
     build/esrgan-venv/bin/python -m tools.hd_ai.battle_sky_hd build --output assets/hd-ai/battle-skies/v1
     build/esrgan-venv/bin/python -m tools.hd_ai.battle_sky_hd build --scroll --output assets/hd-ai/battle-skies/scroll-v1
+    build/esrgan-venv/bin/python -m tools.hd_ai.battle_sky_hd build --missing assets/hd-ai/backgrounds/whole-v7 \\
+        --output assets/hd-ai/battle-skies/missing-v1
     .venv/bin/python -m tools.hd_ai.battle_sky_hd merge --skies assets/hd-ai/battle-skies/v1 \\
         --base assets/hd-ai/backgrounds/whole-v3 --output assets/hd-ai/backgrounds/whole-v4
     .venv/bin/python -m tools.hd_ai.battle_sky_hd sheet --skies assets/hd-ai/battle-skies/v1
@@ -38,6 +40,9 @@ CATALOG = ROOT / 'assets/hd-ai/battle-backgrounds/catalog/catalog.json'
 MODELS = ROOT / 'build/esrgan-models'
 SCALE = 4
 SOURCE = (320, 240)
+RECORD_TABLE, RECORD_SIZE, RECORDS = 0x5BC30, 0x26, 2366
+SKY_IMAGES = range(6067, 6116)
+LIMBS = {6068, 6073}         # the Earth and the Moon: a curved edge against the stars
 GRAIN = 0.25                 # the original's nearest enlargement over the model's
 
 
@@ -45,9 +50,25 @@ def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def skies() -> dict[tuple[int, int], set[str]]:
-    """(image, palette) of every sky layer in the battle scene catalogue, with its terrains."""
-    found: dict[tuple[int, int], set[str]] = {}
+def rom_skies(rom: bytes) -> set[tuple[int, int]]:
+    """(image, palette) of both sky layers of every record of ROM 0x5BC30."""
+    found = set()
+    for index in range(RECORDS):
+        record = rom[RECORD_TABLE + index * RECORD_SIZE:RECORD_TABLE + (index + 1) * RECORD_SIZE]
+        if record[0] > 1:
+            continue
+        for offset in (0x1A, 0x20):
+            image, palette = struct.unpack_from('>2H', record, offset + 2)
+            if record[offset] and image in SKY_IMAGES:
+                found.add((image, palette))
+    return found
+
+
+def skies(rom: bytes) -> dict[tuple[int, int], set[str]]:
+    """(image, palette) of every sky layer, with its terrains where the battle scene catalogue
+    has them: the catalogue keeps one record per set of models and first sky, so it does not
+    see every palette or second layer (the Earth 6068 and the Moon 6073); the ROM's table does."""
+    found: dict[tuple[int, int], set[str]] = {sky: set() for sky in rom_skies(rom)}
     for scene in json.loads(CATALOG.read_text())['sets']:
         for key in ('sky', 'sky2'):
             _, image, palette = scene[key]
@@ -103,7 +124,18 @@ def build(args: argparse.Namespace) -> None:
     table = ResourceTable(rom)
     args.output.mkdir(parents=True, exist_ok=True)
 
-    def enlarge(source: Image.Image, path: Path) -> None:
+    def limb(source: Image.Image) -> np.ndarray:
+        """The alpha of a planet: its stepped edge as one smooth curve, a pixel or two soft."""
+        width, height = source.size
+        top = (np.asarray(source.getchannel('A')) > 0).argmax(0).astype(np.float64)
+        columns = np.arange(width) + 0.5
+        fit = np.polyfit(columns, top, 6)
+        print(f'limb: worst step off the curve {np.abs(np.polyval(fit, columns) - top).max():.2f} px', flush=True)
+        edge = np.polyval(fit, (np.arange(width * SCALE) + 0.5) / SCALE) * SCALE
+        rows = np.arange(height * SCALE)[:, None] + 0.5
+        return (np.clip((rows - edge[None, :]) / 2 + 0.5, 0, 1) * 255).round().astype(np.uint8)
+
+    def enlarge(source: Image.Image, path: Path, smooth_edge: bool = False) -> None:
         width, height = source.size
         rgb = fill_transparent(source)
         strip = Image.new('RGB', (3 * width, height))
@@ -112,18 +144,21 @@ def build(args: argparse.Namespace) -> None:
         hd = np.asarray(upscale(model, strip, device)).astype(np.float32)[:, width * SCALE:2 * width * SCALE]
         grain = np.asarray(rgb.resize((width * SCALE, height * SCALE), Image.NEAREST)).astype(np.float32)
         colour = np.clip(hd * (1 - GRAIN) + grain * GRAIN, 0, 255).round().astype(np.uint8)
-        alpha = np.asarray(source.getchannel('A').resize((width * SCALE, height * SCALE), Image.NEAREST))
+        alpha = limb(source) if smooth_edge else np.asarray(source.getchannel('A').resize((width * SCALE, height * SCALE), Image.NEAREST))
         Image.fromarray(np.concatenate([colour, alpha[..., None]], -1), 'RGBA').save(path)
 
     rows = []
     if args.scroll:
         pictures = [((image, palette), None) for image, palette in scroll_layers(rom)]
     else:
-        pictures = sorted(skies().items())
+        pictures = sorted(skies(rom).items())
+        if args.missing:
+            have = {(r['image'], r['palette']) for r in json.loads((args.missing / 'backgrounds.json').read_text())['images']}
+            pictures = [row for row in pictures if row[0] not in have]
     for (image, palette), terrains in pictures:
         name = f"{'scroll' if args.scroll else 'sky'}-{image}-{palette}.png"
         source = decode(table, image, palette, any_size=args.scroll)
-        enlarge(source, args.output / name)
+        enlarge(source, args.output / name, not args.scroll and image in LIMBS)
         row = {'image': image, 'palette': palette, 'file': name, 'sha256': sha(args.output / name),
                'model': '4x-PixelPerfectV4', 'size': [source.width * SCALE, source.height * SCALE]}
         if args.scroll:
@@ -187,6 +222,7 @@ def main() -> None:
     command = commands.add_parser('build')
     command.add_argument('--output', type=Path, required=True)
     command.add_argument('--scroll', action='store_true', help='the scrolling effect layer pictures instead of the skies')
+    command.add_argument('--missing', type=Path, help='only the skies this background set does not have')
     command = commands.add_parser('merge')
     command.add_argument('--skies', type=Path, required=True)
     command.add_argument('--base', type=Path, required=True)

@@ -41,7 +41,8 @@ for b in range(23):
         r = rom[BASE + (b * 101 + t) * 38:BASE + (b * 101 + t) * 38 + 38]
         if not any(r) or not valid(r): continue
         s = ents(r)[3]
-        key = ("sky", s[0], int.from_bytes(s[2:4], "big")) if s[0] else ("plain", r[:8].hex())
+        # The second layer is a class of its own: the Earth and the Moon lie over a plain starfield.
+        key = ("sky", s[0], int.from_bytes(s[2:4], "big"), int.from_bytes(r[0x22:0x24], "big")) if s[0] else ("plain", r[:8].hex())
         if r[0] == 1: key = key + ("flag", r[1:5].hex())
         if key in seen or b not in block_env: continue
         seen.add(key); chosen.append({"block": b, "terrain": t, "env": block_env[b], "key": list(map(str, key))})
@@ -52,11 +53,12 @@ if "--only" in sys.argv:
     if not chosen: raise ValueError(f"unknown background class: {only}")
     todo = [c for c in todo if c in chosen]
 aspect = sys.argv[sys.argv.index("--aspect") + 1] if "--aspect" in sys.argv else "auto"
+images = sys.argv[sys.argv.index("--images") + 1] if "--images" in sys.argv else "hd"
 print(len(chosen), "classes,", len(todo), "to go", flush=True)
 (OUT / "chosen.json").write_text(json.dumps(chosen, indent=1))
 
 def session_run(batch):
-    s = Session.launch(language="zh-Hans", images="hd", binary=str(ROOT / "build/recomp/gfx-build/srw64-gfx-host"),
+    s = Session.launch(language="zh-Hans", images=images, binary=str(ROOT / "build/recomp/gfx-build/srw64-gfx-host"),
                        mini_stage=str(ROOT / "config/recomp/mini-stages/battle-ui.json"), env={"SRW64_ASPECT": aspect})
     st = lambda: s.client.call("status")
     try:

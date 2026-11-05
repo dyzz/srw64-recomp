@@ -184,7 +184,7 @@ json request(const json&){return json::object();}
 json songs(){return fixture::get("battle_viewer").value("songs",json::array());}
 json scenes() {
     return {"plains","wasteland","rocks","village","mountains","forest","sea","city","sky","ruins","base",
-            "bridge","harbor","snow","desert","cave","moon","space","fortress","other","otherworld"};
+            "bridge","harbor","snow","desert","cave","moon","space","fortress","other","otherworld","earth"};
 }
 int default_song(unsigned,unsigned){return fixture::get("battle_viewer").value("default_song",-1);}
 int pilot_song(unsigned){return -1;}

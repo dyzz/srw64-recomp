@@ -62,7 +62,8 @@ constexpr Scene scenes_table[]={
     {"plains",0,0,0},{"wasteland",0,7,0},{"rocks",0,21,0},{"village",0,22,0},{"mountains",0,24,0},
     {"forest",0,25,0},{"sea",0,31,0},{"city",0,37,0},{"sky",0,39,1},{"ruins",0,41,0},{"base",0,51,0},
     {"bridge",0,54,0},{"harbor",0,58,0},{"snow",6,32,0},{"desert",10,7,0},{"cave",15,15,0},{"moon",17,21,0},
-    {"space",17,100,1},{"fortress",20,15,0},{"other",20,83,0},{"otherworld",22,61,1}};
+    {"space",17,100,1},{"fortress",20,15,0},{"other",20,83,0},{"otherworld",22,61,1},
+    {"earth",22,81,1}};
 
 struct Write{unsigned side;uint32_t offset;std::vector<uint8_t> bytes;};
 std::mutex mutex;

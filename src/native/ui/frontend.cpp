@@ -3044,7 +3044,7 @@ std::string viewer_scene_name(unsigned i){return label("viewer_scene_"+viewer_sc
 // Ground, air or space: the scene box's tabs 1-3.
 unsigned viewer_scene_cat(unsigned i) {
     const auto key=viewer_scene_key(i);
-    return key=="space" || key=="moon"?2:key=="sky" || key=="otherworld"?1:0;
+    return key=="space" || key=="moon" || key=="earth"?2:key=="sky" || key=="otherworld"?1:0;
 }
 const char* viewer_cat_keys[]={"viewer_cat_all","viewer_cat_ground","viewer_cat_air","viewer_cat_space"};
 // A scene's thumbnail from the HD pack, w dp wide (16:9), empty without one. The
