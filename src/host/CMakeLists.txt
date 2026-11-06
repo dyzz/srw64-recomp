@@ -203,6 +203,8 @@ if(SRW64_ENABLE_RT64)
     if(WIN32)
         # Double-clicking Marchwind64.exe: the ROM dialog and message box (host.cpp main()).
         target_sources(srw64-gfx-host PRIVATE windows/desktop_windows.cpp)
+        # No console window, not even for a moment, when Explorer or RecompLauncher starts it.
+        target_link_options(srw64-gfx-host PRIVATE /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup)
         # The menu bar (src/native/ui/app_menu.hpp), the executable's icon, and the manifest
         # that makes UTF-8 its code page (CMake embeds a listed .manifest).
         target_sources(srw64-gfx-host PRIVATE windows/app_menu_windows.cpp windows/marchwind64.rc windows/marchwind64.manifest)

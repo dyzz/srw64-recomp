@@ -1,11 +1,12 @@
 // Starting Marchwind64.exe by double-click, as Marchwind64.cmd does (host.cpp main()).
 #include "app/desktop.hpp"
+#include <cstdio>
 #include <cstdlib>
 #include <cwchar>
-#include <fcntl.h>
 #include <io.h>
 #include <stdexcept>
 #include <string>
+#include <utility>
 #include <windows.h>
 #include <commdlg.h>
 #include <objbase.h>
@@ -25,27 +26,27 @@ fs::path windows_named_rom() {
     const auto* value = _wgetenv(L"SRW64_ROM");
     return value && *value ? fs::path(value) : fs::path{};
 }
-void windows_release_console() {
-    // A console the program shares (cmd, PowerShell, Marchwind64.cmd) keeps its output;
-    // one opened just for this process by Explorer closes. Called first thing in main,
-    // before anything opens a handle: FreeConsole closes the console's handles by the
-    // numbers they had at start, and after console_log's redirection had freed those
-    // numbers it closed whatever had taken them since (0.4.5: crash_dump's events, the
-    // writer then woke with no crash and crashed reading it).
-    DWORD ids[2];
-    if (GetConsoleProcessList(ids, 2) != 1) return;
-    FreeConsole();
-    // stdin, stdout and stderr still name the closed handles: NUL instead, so console_log
-    // redirects real ones. Closing a dead handle fails harmlessly, and nothing has been
-    // opened since to take its number; each _open takes the descriptor just freed. A
-    // descriptor that was never open would be an invalid parameter, which ends the
-    // process before crash_dump is there: this thread ignores it meanwhile.
+void windows_connect_streams() {
+    // A windows-subsystem program: no console window of its own, from Explorer or a
+    // launcher alike. What started it decides the rest. Handles it was given (a pipe, a
+    // file) are already in place. A shell's console is joined, so Marchwind64.cmd and
+    // --help still print there. Anything left is NUL: console_log redirects descriptors 1
+    // and 2, so the streams have to be real and on those numbers. The CRT holds 0 to 2
+    // open with no handle behind them, and a reopened stream would land on a new number
+    // and print past console_log, so each is closed first; closing one that has no handle
+    // is an invalid parameter, which would end the process, so this thread ignores it.
+    const bool console = AttachConsole(ATTACH_PARENT_PROCESS);
     const auto previous = _set_thread_local_invalid_parameter_handler(
         [](const wchar_t*, const wchar_t*, const wchar_t*, unsigned, uintptr_t) {});
-    for (int fd = 0; fd <= 2; ++fd) {
-        _close(fd);
-        const int nul = _open("NUL", fd == 0 ? _O_RDONLY : _O_WRONLY);
-        if (nul >= 0 && nul != fd) { _dup2(nul, fd); _close(nul); }
+    FILE* reopened = nullptr;
+    if (_fileno(stdin) < 0) {
+        _close(0);
+        freopen_s(&reopened, "NUL", "r", stdin);
+    }
+    for (const auto& [stream, descriptor] : {std::pair{stdout, 1}, std::pair{stderr, 2}}) {
+        if (_fileno(stream) >= 0) continue;
+        _close(descriptor);
+        if (!console || freopen_s(&reopened, "CONOUT$", "w", stream) != 0) freopen_s(&reopened, "NUL", "w", stream);
     }
     _set_thread_local_invalid_parameter_handler(previous);
 }

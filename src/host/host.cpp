@@ -849,10 +849,8 @@ int main(int argc, char** argv) {
     import_java_environment();
 #endif
 #if defined(_WIN32)
-    // A double-click's own console goes first, before any handle exists for FreeConsole
-    // to close by mistake (desktop_windows.cpp).
-    const bool desktop_start = argc == 1 || (argc == 2 && std::string_view(argv[1]) == "--choose-rom");
-    if (desktop_start) srw64::app::windows_release_console();
+    // Streams first: console_log needs them, and they take descriptors 0 to 2 (desktop_windows.cpp).
+    srw64::app::windows_connect_streams();
 #endif
     // stdout and stderr also into the run's console.log (Android: to logcat, which would
     // otherwise drop them), for a bug report (console_log.hpp).
