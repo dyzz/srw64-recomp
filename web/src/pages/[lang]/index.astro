@@ -122,6 +122,12 @@ const ld = {
               <h3>{item.sh!.title}</h3>
               <p>{item.sh!.body}</p>
               <ul>{item.sh!.points.map((pt) => <li>{pt}</li>)}</ul>
+              {item.sh!.key === 'mods' && (
+                <div class="show-actions">
+                  <a class="btn" href={`/${lang}/mods/`}>{UI.nav.modAll[tl(lang)]}</a>
+                  <a class="btn ghost" href={`/${lang}/mods/submit/`}>{UI.nav.modSubmit[tl(lang)]}</a>
+                </div>
+              )}
             </div>
           </article>
         ))}
@@ -326,4 +332,5 @@ const ld = {
     .rules, .more, .gallery, .platforms { grid-template-columns: 1fr; }
     .community { padding: 24px 20px; }
   }
+  .show-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
 </style>
