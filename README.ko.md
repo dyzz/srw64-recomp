@@ -17,6 +17,15 @@
   <a href="https://srw64.dreamquest.club/ko/guide/">공략</a>
 </p>
 
+<p align="center">
+  <a href="https://recomplauncher.com/game/srw64-recomp">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://recomplauncher.com/assets/press/launcher/badge-light.svg">
+      <img src="https://recomplauncher.com/assets/press/launcher/badge-dark.svg" alt="Get it on RecompLauncher" height="56">
+    </picture>
+  </a>
+</p>
+
 Marchwind 64는 『슈퍼로봇대전64』의 비공식 네이티브 리컴파일 프로젝트입니다.
 Windows, macOS, Linux, Steam Deck, Android, Nintendo Switch에서 네이티브로 실행되며,
 한국어, 영어, 중국어 전문 번역과 와이드 화면을 지원합니다. 별도의 HD 팩도 선택해서 쓸 수 있습니다.

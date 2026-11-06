@@ -17,6 +17,15 @@
   <a href="https://srw64.dreamquest.club/zh/guide/">攻略</a>
 </p>
 
+<p align="center">
+  <a href="https://recomplauncher.com/game/srw64-recomp">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://recomplauncher.com/assets/press/launcher/badge-light.svg">
+      <img src="https://recomplauncher.com/assets/press/launcher/badge-dark.svg" alt="Get it on RecompLauncher" height="56">
+    </picture>
+  </a>
+</p>
+
 Marchwind 64（“三月风”）是《超级机器人大战64》的非官方原生重编译项目。支持电脑、Steam Deck、
 安卓手机和 Nintendo Switch，提供简繁中文、英文和韩文全文翻译与宽屏显示，另有可选的 HD 美术包。
 

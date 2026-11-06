@@ -17,6 +17,15 @@
   <a href="https://srw64.dreamquest.club/ja/guide/">攻略</a>
 </p>
 
+<p align="center">
+  <a href="https://recomplauncher.com/game/srw64-recomp">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://recomplauncher.com/assets/press/launcher/badge-light.svg">
+      <img src="https://recomplauncher.com/assets/press/launcher/badge-dark.svg" alt="Get it on RecompLauncher" height="56">
+    </picture>
+  </a>
+</p>
+
 マーチウィンド64 は『スーパーロボット大戦64』の非公式ネイティブ再コンパイルプロジェクトです。
 Windows・macOS・Linux・Steam Deck・Android・Nintendo Switch でネイティブに動作し、英語・中国語（簡体字・繁体字）・韓国語の
 全文翻訳とワイド画面に対応し、別配布の HD アートパックも利用できます。

@@ -17,6 +17,15 @@
   <a href="https://srw64.dreamquest.club/en/guide/">Guide</a>
 </p>
 
+<p align="center">
+  <a href="https://recomplauncher.com/game/srw64-recomp">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://recomplauncher.com/assets/press/launcher/badge-light.svg">
+      <img src="https://recomplauncher.com/assets/press/launcher/badge-dark.svg" alt="Get it on RecompLauncher" height="56">
+    </picture>
+  </a>
+</p>
+
 Marchwind 64 is an unofficial native recompilation project for Super Robot Wars 64.
 It runs natively on Windows, macOS, Linux, Steam Deck, Android and Nintendo Switch, with full English,
 Chinese (Simplified and Traditional) and Korean translations and widescreen support, plus an
