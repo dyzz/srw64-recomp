@@ -1,0 +1,36 @@
+name: "投稿 MOD / Submit a mod"
+description: "把你发在 GitHub Release 的 MOD 包列到官网下载页。List a mod you released on GitHub on the website's download page."
+title: "[MOD] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        先把 `.srw64mod` 发在你自己仓库的 GitHub Release 里。新包和更新都用这张表。文件名要写成 `<id>-<版本>.srw64mod`，`mod.json` 要有 `license`。怎么做包见 [MOD 文档](https://srw64.dreamquest.club/zh/docs/mods/)。
+
+        First publish the `.srw64mod` on a GitHub Release of your own repository. New packages and updates both use this form. The file must be named `<id>-<version>.srw64mod`, and `mod.json` needs a `license`. See the [mod guide](https://srw64.dreamquest.club/en/docs/mods/).
+  - type: input
+    id: url
+    attributes:
+      label: "Release 文件链接 / Release file link"
+      description: "Release 页面里 .srw64mod 文件的下载链接。The download link of the .srw64mod file on the Release page."
+      placeholder: "https://github.com/<you>/<repo>/releases/download/<tag>/<id>-<version>.srw64mod"
+    validations:
+      required: true
+  - type: textarea
+    id: about
+    attributes:
+      label: "内容与素材来源 / What it does and where its material comes from"
+      description: "这个包改了什么；图片、音乐、语音是谁做的。What the package changes, and who made its art, music and voices."
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: "确认 / Confirm"
+      options:
+        - label: "我在游戏里试过这个包。I have tried this package in the game."
+          required: true
+        - label: "我有权以 mod.json 里的许可证再分发包内全部内容。I have the right to pass on everything in the package under the license in mod.json."
+          required: true
+        - label: "包里没有原版 ROM 的数据，也没有市售音乐或原声。The package has no data from the original ROM, and no commercial music or soundtrack audio."
+          required: true

@@ -3,7 +3,7 @@
 // into public/mods and writes src/data/mods/<id>.json). Other people's packages will be
 // listed from their GitHub Releases (docs/design/mod-packages.md §13) once submissions open.
 import Base from '../../../layouts/Base.astro';
-import { langPaths, listSep, tl, type Lang } from '../../../i18n';
+import { UI, langPaths, listSep, tl, type Lang } from '../../../i18n';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
@@ -11,7 +11,7 @@ type Text = { ja?: string; 'zh-Hans'?: string; en?: string; ko?: string };
 type Mod = {
   id: string; version: string; name: Text; description?: Text; authors: string[]; license: string; game: string;
   contents: string[]; languages?: string[]; file: string; bytes: number; sha256: string; url: string; source: string; published: string | null;
-  netdisk?: { quark?: string; baidu?: string };
+  netdisk?: { quark?: string; baidu?: string }; community?: boolean;
 };
 const mods = Object.values(import.meta.glob<Mod>('../../../data/mods/*.json', { eager: true, import: 'default' }))
   .sort((a, b) => a.id.localeCompare(b.id));
@@ -32,16 +32,29 @@ const t = {
     ja: 'Android 版で MOD をインストール：設定 › 一般 › MOD を開き、「ファイルからインストール」で選ぶか、Documents/Marchwind64/mods に置く',
     ko: 'Android에서 MOD 설치: 설정 › 일반 › MOD를 연 뒤 “파일에서 설치”로 파일을 선택하거나, 파일을 Documents/Marchwind64/mods에 넣습니다',
   },
-  make: {
-    zh: '自己做包：', en: 'Making your own: ', ja: '自分で作るには：', ko: '직접 만들려면: ',
+  makeTitle: { zh: '自己做 MOD', en: 'Make your own', ja: '自分で作る', ko: '직접 만들기' },
+  toolsLead: {
+    zh: '在浏览器里选好内容，导出 .srw64mod，拖进游戏窗口就能安装。',
+    en: 'Choose what to change in your browser, export a .srw64mod and drop it on the game window.',
+    ja: 'ブラウザーで内容を選び、.srw64mod を書き出してゲームのウィンドウにドラッグします。',
+    ko: '브라우저에서 내용을 고르고 .srw64mod로 내보낸 뒤 게임 창에 끌어다 놓으세요.',
   },
-  guides: [
-    { href: 'docs/mods/', zh: 'MOD 包', en: 'Mod packages', ja: 'MOD パッケージ', ko: 'MOD 패키지' },
-    { href: 'docs/mod-data/', zh: '数值 MOD', en: 'Number mods', ja: '数値 MOD', ko: '수치 MOD' },
-    { href: 'docs/mod-music/', zh: '音乐 MOD', en: 'Music mods', ja: '音楽 MOD', ko: '음악 MOD' },
-    { href: 'docs/mod-story/', zh: '剧情 MOD', en: 'Story mods', ja: 'シナリオ MOD', ko: '스토리 MOD' },
-    { href: 'docs/mod-language/', zh: '语言包 MOD', en: 'Language packages', ja: '言語パッケージ MOD', ko: '언어 패키지 MOD' },
-  ],
+  docsLead: {
+    zh: '想手工写包，或做剧情、战役和语言包，先看「安装与制作」。',
+    en: 'To write a package by hand, or make story, campaign or language mods, start with Installing and making.',
+    ja: 'パッケージを手で書く場合や、シナリオ・キャンペーン・言語の MOD を作る場合は、まず「インストールと制作」をご覧ください。',
+    ko: '패키지를 직접 작성하거나 스토리, 캠페인, 언어 MOD를 만들려면 먼저 “설치와 제작”을 읽어 보세요.',
+  },
+  story: { zh: '剧情', en: 'Story', ja: 'シナリオ', ko: '스토리' },
+  campaign: { zh: '追加剧本', en: 'Campaigns', ja: '追加シナリオ', ko: '캠페인' },
+  language: { zh: '语言包', en: 'Language packages', ja: '言語パッケージ', ko: '언어 패키지' },
+  community: { zh: '社区投稿', en: 'Community', ja: 'コミュニティ投稿', ko: '커뮤니티 투고' },
+  communityNote: {
+    zh: '只做过校验，没有逐项实测。',
+    en: 'Checked automatically, not tested item by item.',
+    ja: '自動チェックのみで、項目ごとの実機確認はしていません。',
+    ko: '자동 검사만 거쳤으며, 항목별 실제 테스트는 하지 않았습니다.',
+  },
   download: { zh: '下载', en: 'Download', ja: 'ダウンロード', ko: '다운로드' },
   version: { zh: '版本', en: 'Version', ja: 'バージョン', ko: '버전' },
   game: { zh: '需要游戏', en: 'Needs the game', ja: '対応ゲーム', ko: '필요한 게임' },
@@ -58,6 +71,24 @@ const t = {
   checksum: { zh: '校验', en: 'Checksum', ja: 'チェックサム', ko: '체크섬' },
   none: { zh: '还没有可以下载的包。', en: 'No packages yet.', ja: 'まだパッケージはありません。', ko: '아직 다운로드할 수 있는 패키지가 없습니다.' },
 };
+const l = tl(lang);
+const tools = [
+  { href: 'mods/bgm/', label: UI.nav.modBgm[l] },
+  { href: 'mods/voices/', label: UI.nav.modVoicesMaker[l] },
+  { href: 'mods/data/', label: UI.nav.modDataMaker[l] },
+  { href: 'mods/names/', label: UI.nav.modNamesMaker[l] },
+  { href: 'mods/icons/', label: UI.nav.modIconsMaker[l] },
+];
+const guides = [
+  { href: 'docs/mods/', label: UI.nav.modPackages[l] },
+  { href: 'docs/mod-music/', label: UI.nav.modMusic[l] },
+  { href: 'docs/mod-data/', label: UI.nav.modData[l] },
+  { href: 'docs/mod-names/', label: UI.nav.modNames[l] },
+  { href: 'docs/mod-story/', label: t.story[l] },
+  { href: 'docs/mod-campaign/', label: t.campaign[l] },
+  { href: 'docs/mod-language/', label: t.language[l] },
+  { href: 'mods/ids/', label: UI.nav.modIds[l] },
+];
 const kinds: Record<string, { zh: string; en: string; ja: string; ko: string }> = {
   data: { zh: '数值', en: 'Numbers', ja: '数値', ko: '수치' },
   audio: { zh: '声音', en: 'Sound', ja: 'サウンド', ko: '사운드' },
@@ -85,8 +116,22 @@ const size = (n: number) =>
         <summary>{t.android[tl(lang)]}</summary>
         <img src={`/media/android-mod-install-${lang === 'ko' ? 'en' : tl(lang)}.webp`} alt={t.androidAlt[tl(lang)]} width="1600" height={{ zh: 1678, en: 1698, ja: 1720, ko: 1698 }[tl(lang)]} loading="lazy" />
       </details>
-      <p class="note">{t.make[tl(lang)]}{t.guides.map((g, i) => <>{i > 0 && listSep(lang)}<a href={`/${lang}/${g.href}`}>{g[tl(lang)]}</a></>)}</p>
     </header>
+    <section class="make" aria-labelledby="make-title">
+      <h2 id="make-title">{t.makeTitle[tl(lang)]}</h2>
+      <div class="routes">
+        <div class="route">
+          <h3>{UI.nav.modGroupTools[tl(lang)]}</h3>
+          <p>{t.toolsLead[tl(lang)]}</p>
+          <ul>{tools.map((m) => <li><a href={`/${lang}/${m.href}`}><img src="/brand/maker.svg" width="16" height="16" alt="" />{m.label}</a></li>)}</ul>
+        </div>
+        <div class="route">
+          <h3>{UI.nav.modGroupDocs[tl(lang)]}</h3>
+          <p>{t.docsLead[tl(lang)]}</p>
+          <ul>{guides.map((m) => <li><a href={`/${lang}/${m.href}`}>{m.label}</a></li>)}</ul>
+        </div>
+      </div>
+    </section>
     {mods.length === 0 && <p class="note">{t.none[tl(lang)]}</p>}
     <ul class="list">
       {mods.map((m) => (
@@ -95,6 +140,7 @@ const size = (n: number) =>
             <div>
               <h2>{pick(m.name)}</h2>
               <code class="id">{m.id}</code>
+              {m.community && <p class="community"><span class="tag cyan">{t.community[tl(lang)]}</span> {t.communityNote[tl(lang)]}</p>}
             </div>
             <a class="btn" href={m.url} download={m.file}>{t.download[tl(lang)]}<small>{m.file} · {size(m.bytes)}</small></a>
           </div>
@@ -124,12 +170,22 @@ const size = (n: number) =>
   .android { margin: 0 0 12px; }
   .android summary { cursor: pointer; color: var(--gold); font-size: 14px; }
   .android img { display: block; width: 100%; max-width: 720px; height: auto; margin-top: 12px; }
+  .make { margin: 0 0 28px; }
+  .make h2 { margin: 0 0 12px; font-size: 20px; }
+  .routes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .route { padding: 16px 18px; background: var(--panel); border: 1px solid var(--line-soft); }
+  .route h3 { margin: 0 0 6px; font-size: 16px; }
+  .route p { margin: 0 0 12px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+  .route ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  .route a { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; }
+  @media (max-width: 760px) { .routes { grid-template-columns: minmax(0, 1fr); } }
   .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
   .card { padding: 20px 22px; background: var(--panel); border: 1px solid var(--line-soft); display: grid; gap: 14px; scroll-margin-top: 80px; }
   .card:target { border-color: var(--gold); }
   .head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
   .head h2 { margin: 0 0 4px; font-size: 22px; }
   .id { color: var(--muted); font-size: 13px; }
+  .community { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
   .head .btn { text-align: center; }
   .desc { margin: 0; line-height: 1.7; }
   dl { margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px 20px; }

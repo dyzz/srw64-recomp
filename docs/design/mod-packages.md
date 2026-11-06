@@ -364,43 +364,45 @@ audio/      音乐与语音
 }
 ```
 
-- `name`、`description`、`authors`、`license`、`game`、`requires`、`optional`、`conflicts` 从包内 `mod.json` 抄出来（CI 校验时抄，写回 `<id>.json`），索引不另写一份；`contents` 是包里实际有的目录。
+- `name`、`description`、`authors`、`license`、`game`、`requires`、`optional`、`conflicts` 从包内 `mod.json` 抄出来（`intake` 校验时抄，写回 `<id>.json`），索引不另写一份；`contents` 是包里实际有的目录。
 - `url` 是正本直链；`netdisk` 可缺省。
 - 每个 `id` 只列最新版；历史版本在 git 历史与作者的 Release 里。
 - `generated` 让客户端知道索引多旧；和 `mod.json` 一样，v1 定下后只加字段、不改已有字段的含义。
 - `mod.json` 新增必填字段 `license`（§13.4）。
 
-### 13.3 投稿：提 PR
+### 13.3 投稿：GitHub Issue 表单
 
-作者在本仓库提 PR，新增或修改 `web/src/data/mods/<id>.json`，手写的部分只有：
-
-```json
-{ "url": "https://github.com/<作者>/<仓库>/releases/download/v1.2.0/example.gaiden-1.2.0.srw64mod",
-  "sha256": "…", "source": "https://github.com/<作者>/<仓库>" }
-```
+2026-11-06 改（原来是提 PR、CI 校验）。投稿只走 GitHub，入口是本仓库的 Issue 表单 `.github/ISSUE_TEMPLATE/mod.yml`。作者不用 fork，不用写 JSON，只要有 GitHub 账号和一个放 Release 的仓库。官网不做投稿表单，不接收文件。
 
 1. 作者把 `.srw64mod` 发在自己仓库的 Release 里。
-2. PR 加或改 `<id>.json`；第一次投稿同时在 `web/src/data/mods/owners.json` 登记作者前缀（`id` 里点号前的部分）对应自己的 GitHub 用户名。
-3. CI 下载文件、跑 §13.4 的校验，把 `mod.json` 里的字段抄进 `<id>.json`，结果以评论贴回 PR，和宿主报错同一文案。
-4. 维护者按 §13.5 人工审，合并。下次 `deploy.sh` 发布时索引更新，想镜像的再手动传网盘、补 `netdisk`。
+2. 作者开「投稿 MOD」Issue，填 Release 资产直链和一句话说明，勾选「我有权以此许可证再分发包内全部内容」。更新已有包也开同样的 Issue。
+3. 维护者本地跑 `tools/mods/intake.py <issue 号>`：读 Issue，下载文件，跑 §13.4 的校验，把 `url`、`sha256`、`source` 和 `mod.json` 的字段写进 `web/src/data/mods/<id>.json`，首次投稿把 `id` 的作者前缀和 Issue 作者的 GitHub 用户名记进 `mod-owners.json`。
+4. 维护者按 §13.5 人工审，通过后提交并 `deploy.sh`，到 Issue 回复并关闭；不通过写明原因。想镜像的再手动传网盘、补 `netdisk`。
 
-没有 GitHub 的作者：把文件和来源发给维护者，维护者代为发 Release（放在主仓库或一个专门的 `srw64-mods-mirror` 仓库）并提交条目，`owners.json` 记 `maintainer-verified:<作者名>`。预计很少，不单独做工具。
+文件留在作者的 Release，不转存。`intake` 在维护者本机跑，所以不用让 CI 下载外部文件，也不需要 PR 模板和校验工作流；投稿量大了再考虑。
 
-**为什么不做网页上传**：要承担审核与版权责任、防滥用；而且源站连不上 GitHub。投稿量大了再考虑。
+**为什么不做网页上传**：要承担审核与版权责任、防滥用；而且源站连不上 GitHub。
+
+**收录规则（2026-11-06 定）**：
+
+- 没有 GitHub 的作者不收，没有维护者代发。
+- 含市售音乐或原声的包不进官网列表，作者可以自己分享。
+- 不标注 AI 生成内容，表单不问，列表不显示。
+- 社区投稿的条目带 `"community": true`，下载页显示「社区投稿」，说明只做过校验、没有逐项实测。
 
 ### 13.4 自动校验
 
-CI 和宿主启动前校验（§3）共用 `tools/mods/validate.py`，错误文案三语共用。任何一条不过就不合并：
+`intake` 和宿主启动前校验（§3）共用 `tools/mods/validate.py`，错误文案三语共用。任何一条不过就不合并：
 
 - 下载 `url` 成功，SHA-256 与条目一致；`url` 是 GitHub Release 资产直链（其他托管以后再放开）。
 - zip 可解；根目录有 `mod.json`；`schema` 是 `srw64.mod.v1`；未知字段报错（§2）。
 - 文件名 `<id>-<版本>.srw64mod`，`id` 与 `<id>.json` 一致，版本严格大于已发布的版本。
-- `id` 的作者前缀在 `owners.json` 里属于 PR 作者的 GitHub 用户名，或维护者代登记的记录。
-- `game` 可解析；`requires`、`optional` 里的 `id` 在索引里存在（或在同一 PR 里）；`conflicts` 不含自己。
+- `id` 的作者前缀在 `mod-owners.json` 里属于 Issue 作者的 GitHub 用户名。
+- `game` 可解析；`requires`、`optional` 里的 `id` 在索引里存在；`conflicts` 不含自己。
 - 只允许 §2 列出的目录；文件扩展名白名单（`json`、`txt`、`png`、`webp`、`ogg` 等按内容类型定）；不允许可执行文件、脚本、动态库。
 - 大小上限 100 MB；更大的先联系维护者。
 - **不含原版数据**：原版资产只能用 `copy_from: base:` 引用（§7）。仓库里放一份我们导出工具产出的原版图像与数据的 SHA-256 清单（`tools/mods/original-hashes.txt`，由导出脚本生成），包内任何文件命中即拒绝。这是机器能查的部分，人工审再看改得不像的。
-- `mod.json` 的 `license` 必填，限允许再分发的许可证：`CC-BY-4.0`、`CC-BY-SA-4.0`、`CC-BY-NC-4.0`、`CC-BY-NC-SA-4.0`、`MIT`、`GPL-3.0-or-later`、`CC0-1.0`。PR 模板里作者勾选「我对包内全部内容有以此许可证再分发的权利」。
+- `mod.json` 的 `license` 必填，限允许再分发的许可证：`CC-BY-4.0`、`CC-BY-SA-4.0`、`CC-BY-NC-4.0`、`CC-BY-NC-SA-4.0`、`MIT`、`GPL-3.0-or-later`、`CC0-1.0`。Issue 表单里作者勾选「我对包内全部内容有以此许可证再分发的权利」。
 
 ### 13.5 人工审核
 
@@ -413,7 +415,7 @@ CI 和宿主启动前校验（§3）共用 `tools/mods/validate.py`，错误文�
 - **已发布的 `id` 加版本永不改**。修就发新版本。
 - **链接失效**：CI 每周重验一遍索引里的 `url` 与 `sha256`（Hollow Knight 也这么做），失效的条目自动标 `yanked: "link"`，有网盘镜像的保留镜像。
 - **下架**：条目加 `"yanked": "<原因>"`。索引保留条目并带原因，已装的玩家在 MOD 管理里看到提示；侵权的连网盘镜像一起删。
-- **所有权转移**：原所有者提 PR 改 `owners.json`；联系不上的由维护者裁定。
+- **所有权转移**：原所有者开 Issue 说明，维护者改 `mod-owners.json`；联系不上的由维护者裁定。
 - **改 `id`** 当新包处理：旧条目下架，`superseded_by` 指向新 `id`，游戏提示「作者已改用 X」。
 
 ### 13.7 游戏内
@@ -424,7 +426,7 @@ CI 和宿主启动前校验（§3）共用 `tools/mods/validate.py`，错误文�
 
 ### 13.8 顺序
 
-1. `tools/mods/validate.py` 与 `original-hashes.txt` 的生成；`web/src/data/mods/`、`owners.json`、`index.json.ts`、PR 模板与校验工作流。先把我们自己的包（示例战役等）当第一条跑通。
+1. `tools/mods/validate.py` 与 `original-hashes.txt` 的生成；`web/src/data/mods/`、`mod-owners.json`、`index.json.ts`、Issue 表单与 `tools/mods/intake.py`。先把我们自己的包（示例战役等）当第一条跑通。
 2. 官网 MOD 页（列表与每包一页，三语，GitHub 与网盘链接）。
 3. 游戏内检查更新（第一阶段）。
 4. 投稿说明（英文为主，中文一份）放 `web/src/data/mods/README.md` 与官网 MOD 页。
