@@ -84,14 +84,16 @@ Linux 包也仍可在本机构建（`tools/release/linux/build.sh` 或干净检�
 Mac 包由 `build_release.py` 放在 `Marchwind64.app` 旁边（所以 Mac zip 的顶层是应用加这个文件，不是只有应用）。`tests/test_recomplauncher.py`
 核对它写的程序路径、设置键值和存档目录与打包脚本、`presentation.json` 的实际写法一致。
 
-- 它没有 N64 ROM 这种单文件的 `game.kind`（只有 iso/folder），所以文件里不写 `game`：ROM 仍由程序自己的选择框要，点 Play 第一次会弹。
+- `game` 写的是 ROM：`kind` 虽叫 `iso`，其实就是「一个文件」（只有 `iso`、`folder`、`iso_or_folder` 三种）。启动器的配置画面要玩家选 ROM，用 `dumps` 的 CRC 显示校验结果，
+  点 Play 前把它放到程序旁，名字是 `name` 的 `rom.z64`（`into: "."`），`launcher_rom` 从那里找到，不再弹选择框。**`prepare` 只在这个配置画面里运行，不写 `game` 它就永远不跑**
+  （2026-11-06 Win 实测：没写时 HD 没有装上）。这个画面的文案是启动器按光盘写的（「光盘镜像」），我们只能改 `label`。
 - 设置文件按平台列出 `presentation.json` 的几个位置（程序旁 `user-data/` 的便携模式优先），存档目录同样。启动器可能在第一次启动前就写入一两个键，
   这种只有部分键、没有 schema 的文件 `launch.cpp` 当作部分设置接受，语言仍按系统（`tests/native_launch.cpp` 的 `launcher_partial_settings`）。
 - 它每个系统只装 Release 里的一个文件（按文件名里的 `windows-x64`、`linux-x64` 挑），HD 包这种第二个下载它不装，也不会误认（`Marchwind64-HD-<版本>.zip` 不带系统名）。
   从启动器装的玩家要默认有 HD（2026-10-28 用户定，只限这条渠道；官网、网盘照旧自己下载），所以文件里写了 `prepare`：安装画面的「Getting the extras」一步
   无窗口跑 `Marchwind64 --prepare`（Linux 经 `marchwind64.sh` 变成 `srw64 --play --prepare`，入口两种写法都认），程序读官网 `/latest.json` 的 `hd`，
   把包下载到用户目录 `downloads/`、核对 SHA-256、解压到暂存文件夹再改名成 `hd/`，所以失败不会留下半个包；用户目录（或游戏旁、应用内）已有同版本就直接结束。
-  进度按启动器的格式打印 `progress <0..1> <文字>`；失败退出码 3（`exit_codes` 里有说明），玩家重跑安装即可，游戏照常以原版画面运行。
+  进度按启动器的格式打印 `progress <0..1> <文字>`；下载失败也退出 0，末行说明没装上：退出码非 0 时启动器不保存 ROM、主按钮一直是「配置」，玩家进不了本来能跑的游戏（11-06 Win 实测）。玩家再配置一次就会重试，游戏先以原版画面运行。
   实现在 `src/host/hd_prepare.{hpp,cpp}`，下载走 `update_http.cpp`（Windows WinHTTP、Linux 运行时 libcurl）和 `macos/update_http_macos.mm`（NSURLSession）的
   `http_download`，空闲 60 秒无数据才算超时。`make recomp-hd-prepare-test` 测解压与替换（含符号链接的 `hd/`、不完整的包、越界路径）；联网部分手动验证：
   `SRW64_UPDATE_URL=file:///…/latest.json srw64-gfx-host --prepare --user-dir DIR`，`latest.json` 的 `hd.url` 可指向本地 `file://` 的 zip。

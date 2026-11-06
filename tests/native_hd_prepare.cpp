@@ -2,7 +2,8 @@
 // user directory's hd/ through a staging folder, with the top folder or without, replacing
 // the pack there (a folder or a link); an archive that is not a complete pack, or has an
 // unsafe path, changes nothing. The network part (prepare) is tried by hand with
-// SRW64_UPDATE_URL (docs/guide/release.md).
+// SRW64_UPDATE_URL (docs/guide/release.md); here only that a failed one still lets the
+// launcher finish its setup.
 #include "hd_prepare.hpp"
 #include "update_check.hpp"
 #include "json/json.hpp"
@@ -12,6 +13,7 @@
 #include <filesystem>
 #include <fstream>
 #include <map>
+#include <sstream>
 #include <string>
 
 namespace fs = std::filesystem;
@@ -19,7 +21,7 @@ using json = nlohmann::json;
 static int failures = 0;
 static void check(bool ok, const std::string& what) { if (!ok) { std::fprintf(stderr, "FAIL %s\n", what.c_str()); ++failures; } }
 
-// The HTTP layer is not linked here: prepare() is not exercised.
+// The HTTP layer is not linked here: every request fails, as with no network.
 namespace srw64::update {
 std::string http_get(const std::string&, const std::string&, int) { throw std::runtime_error("no network in the test"); }
 void http_download(const std::string&, const std::string&, const fs::path&, const std::function<void(uint64_t)>&, int) { throw std::runtime_error("no network in the test"); }
@@ -105,6 +107,12 @@ int main(int argc, char** argv) {
     check(install_pack(root / "h.zip", user, {}) == "1.5", "install over a link");
     check(!fs::is_symlink(user / "hd") && read(user / "hd/art/portraits/one.jpg") == "picture 1.5", "a real folder now");
     check(read(elsewhere / "art/portraits/one.jpg") == "picture 1.3", "the linked folder untouched");
+
+    // No network: the setup step still succeeds, says so, and the pack there stays.
+    std::ostringstream lines;
+    check(srw64::hd::prepare(user, lines) == 0, "a failed download does not fail the setup");
+    check(lines.str().find("progress 1.000 The HD pack was not installed") != std::string::npos, "the last line says so");
+    check(read(user / "hd/art/portraits/one.jpg") == "picture 1.5", "the pack stays");
 
     fs::remove_all(root);
     std::printf("%s\n", failures ? "FAILED" : "ok");

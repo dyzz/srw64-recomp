@@ -236,9 +236,12 @@ int prepare(const fs::path& user_dir, std::ostream& out) {
         report(1.0, "HD " + installed + " installed");
         return 0;
     } catch (const std::exception& failure) {
+        // Not a failed setup: RecompLauncher keeps Play from a player whose setup step failed,
+        // and the game runs without the pack. Setting the game up again tries once more.
         std::fprintf(stderr, "SRW64_PREPARE_FAILURE %s\n", failure.what());
         std::fflush(stderr);
-        return 3;
+        report(1.0, "The HD pack was not installed; the game uses the original graphics");
+        return 0;
     }
 }
 }
