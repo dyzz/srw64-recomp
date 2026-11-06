@@ -1,4 +1,4 @@
-An unofficial native port of **Super Robot Wars 64** with full English and Chinese translations. No ROM included: you need your own original Japanese ROM. 中文说明见下方。
+An unofficial native port of **Super Robot Wars 64** with full English, Chinese and Korean translations. No ROM included: you need your own original Japanese ROM. 中文说明见下方。
 
 > **HD pack {hd_version}** (optional; the Switch has a pack of its own, in the same release): **[Download {hd_name} ({hd_size})]({hd_download})**. {hd_status_en} How to install it and where its images come from: [the HD {hd_version} release]({hd_url}).
 
@@ -79,7 +79,7 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 
 ## 中文
 
-非官方的《超级机器人大战64》原生移植，附全游戏中文与英文翻译。不含 ROM：需要自备日版原版 ROM。
+非官方的《超级机器人大战64》原生移植，附全游戏中文、英文与韩文翻译。不含 ROM：需要自备日版原版 ROM。
 
 > **HD 包 {hd_version}**（可选；Switch 用单独的一份，在同一个发布页）：**[下载 {hd_name}（{hd_size}）]({hd_download})**。{hd_status}安装方法和图片来源见 [HD {hd_version} 发布页]({hd_url})。以后 HD 包出新版本时，游戏的更新检查会提示。
 
