@@ -44,6 +44,14 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
           {s.experimental && <span class="exp">{c.experimental}</span>}
         </div>
         {s.need && <p class="need">{s.need}</p>}
+        {s.id === 'windows' && (
+          <p class="launcher">
+            <a href="https://recomplauncher.com/game/srw64-recomp" data-umami-event="recomplauncher">
+              <img src="/brand/recomplauncher-badge.svg" alt="Get it on RecompLauncher" width="313" height="56" loading="lazy" />
+            </a>
+            <span>{c.launcherNote}</span>
+          </p>
+        )}
         <div class:list={['cols', { noreq: !s.req }]}>
           {s.req && (
             <div class="reqbox">
@@ -148,6 +156,10 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
   .plat-title :global(svg) { flex: none; width: 34px; height: 34px; color: var(--gold); }
   .plat-title h2 { font-size: clamp(24px, 3vw, 30px); }
   .need { margin-top: 6px; font-size: 14px; color: var(--dim); }
+  .launcher { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 14px; font-size: 14px; color: var(--dim); }
+  .launcher a { display: block; line-height: 0; }
+  .launcher img { display: block; max-width: 100%; height: auto; }
+  .launcher span { flex: 1 1 240px; }
   .cols { display: grid; grid-template-columns: minmax(0, 1fr) 360px; grid-template-areas: 'steps req' 'steps side'; grid-template-rows: auto 1fr; gap: 16px 48px; margin-top: 24px; }
   .cols.noreq { grid-template-areas: 'steps side'; grid-template-rows: auto; }
 
