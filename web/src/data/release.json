@@ -11,22 +11,22 @@
     {
       "platform": "macos",
       "name": "Marchwind64-0.5.3-macos14-arm64.zip",
-      "bytes": 62998573,
-      "sha256": "8022bd2d10c29bbc9f83abd917be567c366ebd89d6b69396e11f25a922f03454",
+      "bytes": 62999848,
+      "sha256": "522c9b9a11c171c5a8248e50edf8c5bf4c82fa9ee6946b7b2bc9058c30e20dcf",
       "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.5.3/Marchwind64-0.5.3-macos14-arm64.zip"
     },
     {
       "platform": "linux",
       "name": "Marchwind64-0.5.3-linux-x64.tar.gz",
-      "bytes": 67761858,
-      "sha256": "044ffecc24019a9c199c51238e30927905525d36fbacf8dfaf1c4ee524bd2f5b",
+      "bytes": 67762172,
+      "sha256": "bf25265948731bff39a35268b32202fb03c0bffb8a6a5ff0db2685d906d3648e",
       "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.5.3/Marchwind64-0.5.3-linux-x64.tar.gz"
     },
     {
       "platform": "windows",
       "name": "Marchwind64-0.5.3-windows-x64.zip",
-      "bytes": 72835571,
-      "sha256": "21bec9bde641b1baf909619e513d47941d942a43a4bb8483efdac08304125f8a",
+      "bytes": 72835958,
+      "sha256": "4d17fa883b13c35073a79da1bd2fd1f0872d7e2dad49648d1f67290d894d95a3",
       "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.5.3/Marchwind64-0.5.3-windows-x64.zip"
     },
     {
