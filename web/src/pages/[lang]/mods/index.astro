@@ -32,6 +32,13 @@ const t = {
     ja: 'Android 版で MOD をインストール：設定 › 一般 › MOD を開き、「ファイルからインストール」で選ぶか、Documents/Marchwind64/mods に置く',
     ko: 'Android에서 MOD 설치: 설정 › 일반 › MOD를 연 뒤 “파일에서 설치”로 파일을 선택하거나, 파일을 Documents/Marchwind64/mods에 넣습니다',
   },
+  shareTitle: { zh: '投稿到官网', en: 'Submit to the site', ja: '公式サイトに投稿', ko: '공식 사이트에 제출' },
+  shareLead: {
+    zh: '做好的包可以列到这个页面，让大家下载。投稿走 GitHub。',
+    en: 'A finished package can be listed on this page for everyone to download. Submitting happens on GitHub.',
+    ja: '完成したパッケージをこのページに掲載して、みんなにダウンロードしてもらえます。投稿は GitHub で行います。',
+    ko: '완성한 패키지를 이 페이지에 올려 누구나 다운로드하게 할 수 있습니다. 제출은 GitHub에서 합니다.',
+  },
   makeTitle: { zh: '自己做 MOD', en: 'Make your own', ja: '自分で作る', ko: '직접 만들기' },
   toolsLead: {
     zh: '在浏览器里选好内容，导出 .srw64mod，拖进游戏窗口就能安装。',
@@ -48,7 +55,7 @@ const t = {
   story: { zh: '剧情', en: 'Story', ja: 'シナリオ', ko: '스토리' },
   campaign: { zh: '追加剧本', en: 'Campaigns', ja: '追加シナリオ', ko: '캠페인' },
   language: { zh: '语言包', en: 'Language packages', ja: '言語パッケージ', ko: '언어 패키지' },
-  community: { zh: '社区投稿', en: 'Community', ja: 'コミュニティ投稿', ko: '커뮤니티 투고' },
+  community: { zh: '社区投稿', en: 'Community', ja: 'コミュニティ投稿', ko: '커뮤니티 제출' },
   communityNote: {
     zh: '只做过校验，没有逐项实测。',
     en: 'Checked automatically, not tested item by item.',
@@ -130,6 +137,11 @@ const size = (n: number) =>
           <p>{t.docsLead[tl(lang)]}</p>
           <ul>{guides.map((m) => <li><a href={`/${lang}/${m.href}`}>{m.label}</a></li>)}</ul>
         </div>
+        <div class="route share">
+          <h3>{t.shareTitle[l]}</h3>
+          <p>{t.shareLead[l]}</p>
+          <a class="btn" href={`/${lang}/mods/submit/`}>{UI.nav.modSubmit[l]}</a>
+        </div>
       </div>
     </section>
     {mods.length === 0 && <p class="note">{t.none[tl(lang)]}</p>}
@@ -172,12 +184,14 @@ const size = (n: number) =>
   .android img { display: block; width: 100%; max-width: 720px; height: auto; margin-top: 12px; }
   .make { margin: 0 0 28px; }
   .make h2 { margin: 0 0 12px; font-size: 20px; }
-  .routes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .routes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .route { padding: 16px 18px; background: var(--panel); border: 1px solid var(--line-soft); }
   .route h3 { margin: 0 0 6px; font-size: 16px; }
   .route p { margin: 0 0 12px; color: var(--muted); font-size: 14px; line-height: 1.6; }
   .route ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
-  .route a { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; }
+  .route ul a { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; }
+  .share { border-color: var(--gold); }
+  @media (max-width: 1000px) { .routes { grid-template-columns: repeat(2, minmax(0, 1fr)); } .share { grid-column: 1 / -1; } }
   @media (max-width: 760px) { .routes { grid-template-columns: minmax(0, 1fr); } }
   .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
   .card { padding: 20px 22px; background: var(--panel); border: 1px solid var(--line-soft); display: grid; gap: 14px; scroll-margin-top: 80px; }

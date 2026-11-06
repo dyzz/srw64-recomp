@@ -1,0 +1,151 @@
+---
+// How to get a package listed on the download page: the author's side of
+// docs/design/mod-packages.md §13.3. The form is a GitHub Issue (.github/ISSUE_TEMPLATE/mod.yml).
+import Base from '../../../layouts/Base.astro';
+import { langPaths, tl, type Lang } from '../../../i18n';
+import { LICENSES } from '../../../lib/mod-maker-text';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const l = tl(lang);
+const form = 'https://github.com/dyzz/srw64-recomp/issues/new?template=mod.yml';
+const guide = `/${lang}/docs/mods/`;
+const downloads = `/${lang}/mods/`;
+const t = {
+  zh: {
+    title: '投稿 MOD',
+    lead: `做好的 MOD 可以列到官网的 <a href="${downloads}">MOD 下载页</a>。投稿全程在 GitHub 上进行，需要一个 GitHub 账号，我不代发。`,
+    open: '打开投稿表',
+    steps: [
+      ['准备好包', `先在游戏里试过。网页工具导出的包格式已经对了；手工做的包按<a href="${guide}">安装与制作</a>写好，文件名是 <code>&lt;id&gt;-&lt;版本&gt;.srw64mod</code>，<code>mod.json</code> 里要有 <code>license</code>。<code>id</code> 点号前的部分是你的作者前缀，第一次投稿后归你的 GitHub 账号。`],
+      ['发到 GitHub Release', '在你自己账号下的仓库新建一个 Release，把 <code>.srw64mod</code> 作为文件传上去，再复制这个文件的下载链接。'],
+      ['填投稿表', '填下载链接，写清这个包改了什么、素材是谁做的，再勾选三项确认。'],
+      ['等审核', '审核结果写在 Issue 里。通过后，包会出现在 MOD 下载页，带「社区投稿」标记。'],
+    ],
+    rulesTitle: '收录规则',
+    rules: ['包里的内容你都有权再分发，许可证是下面几种之一：', '不含原版 ROM 的数据。', '不含市售音乐或原声，比如原作动画的歌曲。这类包只适合自己使用。', '文件不超过 100 MB。'],
+    afterTitle: '上架以后',
+    after: [
+      ['文件', '文件留在你的 Release 里，官网只放链接。删掉 Release 或文件，下载就失效了。'],
+      ['更新', '发一个新版本的 Release，版本号要比已列出的大，再用同一个账号填一次投稿表。已发布的文件不要替换。'],
+      ['下架', '到原来的投稿 Issue 留言。'],
+      ['国内网盘', '网盘镜像由我挑着放，不保证每个包都有。'],
+    ],
+  },
+  en: {
+    title: 'Submit a mod',
+    lead: `A finished mod can be listed on the site’s <a href="${downloads}">download page</a>. Submitting happens entirely on GitHub, so you need a GitHub account; I don’t post packages for other people.`,
+    open: 'Open the submission form',
+    steps: [
+      ['Get the package ready', `Try it in the game first. Packages exported from the web makers already have the right format; for one made by hand, follow <a href="${guide}">Installing and making</a>: the file is named <code>&lt;id&gt;-&lt;version&gt;.srw64mod</code> and <code>mod.json</code> has a <code>license</code>. The part of the <code>id</code> before the dot is your author prefix, and your first submission ties it to your GitHub account.`],
+      ['Publish it on a GitHub Release', 'Create a Release on a repository under your own account, upload the <code>.srw64mod</code> to it, and copy the file’s download link.'],
+      ['Fill in the form', 'Give the download link, say what the package changes and who made its material, and tick the three confirmations.'],
+      ['Wait for the review', 'The result goes on the Issue. An accepted package appears on the download page, marked Community.'],
+    ],
+    rulesTitle: 'What gets listed',
+    rules: ['Everything in the package is yours to pass on, under one of these licenses:', 'No data from the original ROM.', 'No commercial music or soundtrack audio, such as the original anime’s songs. Packages like that are for your own use only.', 'The file is 100 MB or smaller.'],
+    afterTitle: 'Once it’s listed',
+    after: [
+      ['The file', 'It stays on your Release, and the site only links to it. If you delete the Release or the file, the download stops working.'],
+      ['Updates', 'Publish a new Release with a higher version number and fill in the form again from the same account. Don’t replace a file already published.'],
+      ['Taking it down', 'Leave a comment on your original submission Issue.'],
+      ['Net disks', 'I choose which packages get a mirror on the Chinese net disks, so not every package will have one.'],
+    ],
+  },
+  ja: {
+    title: 'MOD を投稿',
+    lead: `完成した MOD は、公式サイトの <a href="${downloads}">MOD ダウンロードページ</a>に掲載できます。投稿はすべて GitHub 上で行うため、GitHub アカウントが必要です。代理での投稿は行いません。`,
+    open: '投稿フォームを開く',
+    steps: [
+      ['パッケージを用意する', `まずゲームで動作を確認してください。Web ツールで書き出したパッケージは形式が整っています。手作りのパッケージは<a href="${guide}">インストールと制作</a>に沿って用意し、ファイル名を <code>&lt;id&gt;-&lt;バージョン&gt;.srw64mod</code> に、<code>mod.json</code> には <code>license</code> を入れてください。<code>id</code> のドットより前が作者プレフィックスで、初回の投稿であなたの GitHub アカウントのものになります。`],
+      ['GitHub Release で公開する', '自分のアカウントのリポジトリで Release を作成して <code>.srw64mod</code> をアップロードし、そのファイルのダウンロードリンクをコピーします。'],
+      ['投稿フォームに記入する', 'ダウンロードリンク、パッケージの変更内容、素材の作者を書き、3 つの確認項目にチェックを入れます。'],
+      ['審査を待つ', '審査の結果は Issue に記載されます。掲載が決まると、ダウンロードページに「コミュニティ投稿」の印付きで表示されます。'],
+    ],
+    rulesTitle: '掲載の条件',
+    rules: ['パッケージの内容すべてに再配布の権利があり、ライセンスが次のいずれかであること：', '元の ROM のデータを含まないこと。', '市販の音楽やサウンドトラック（原作アニメの楽曲など）を含まないこと。そうしたパッケージは個人利用に限ります。', 'ファイルが 100 MB 以下であること。'],
+    afterTitle: '掲載後',
+    after: [
+      ['ファイル', 'ファイルはあなたの Release に置いたままで、公式サイトはリンクだけを掲載します。Release やファイルを削除するとダウンロードできなくなります。'],
+      ['更新', 'より大きいバージョン番号で新しい Release を公開し、同じアカウントで投稿フォームをもう一度記入します。公開済みのファイルは差し替えないでください。'],
+      ['掲載の取り下げ', '元の投稿 Issue にコメントしてください。'],
+      ['中国のネットディスク', 'ミラーを置くパッケージは私が選ぶため、すべてのパッケージにあるとは限りません。'],
+    ],
+  },
+  ko: {
+    title: 'MOD 제출',
+    lead: `완성한 MOD는 공식 사이트의 <a href="${downloads}">MOD 다운로드 페이지</a>에 올릴 수 있습니다. 제출은 모두 GitHub에서 진행되므로 GitHub 계정이 필요하며, 대신 올려 드리지는 않습니다.`,
+    open: '제출 양식 열기',
+    steps: [
+      ['패키지 준비', `먼저 게임에서 직접 확인해 보세요. 웹 도구로 내보낸 패키지는 형식이 이미 맞습니다. 직접 만든 패키지는 <a href="${guide}">설치와 제작</a>을 따라 파일 이름을 <code>&lt;id&gt;-&lt;버전&gt;.srw64mod</code>로 하고 <code>mod.json</code>에 <code>license</code>를 넣으세요. <code>id</code>에서 점 앞부분은 작성자 접두어이며, 처음 제출하면 본인의 GitHub 계정에 연결됩니다.`],
+      ['GitHub Release에 올리기', '본인 계정의 저장소에서 Release를 만들어 <code>.srw64mod</code>를 올리고, 그 파일의 다운로드 링크를 복사하세요.'],
+      ['제출 양식 작성', '다운로드 링크, 패키지가 바꾸는 내용, 자료를 만든 사람을 적고 확인 항목 세 개를 선택하세요.'],
+      ['검토 기다리기', '검토 결과는 Issue에 적힙니다. 통과하면 다운로드 페이지에 “커뮤니티 제출” 표시와 함께 올라갑니다.'],
+    ],
+    rulesTitle: '등록 기준',
+    rules: ['패키지의 모든 내용을 재배포할 권리가 있고, 라이선스가 다음 중 하나일 것:', '원본 ROM의 데이터가 없을 것.', '시판 음악이나 사운드트랙(원작 애니메이션 곡 등)이 없을 것. 그런 패키지는 개인적으로만 사용하세요.', '파일 크기가 100 MB 이하일 것.'],
+    afterTitle: '등록 후',
+    after: [
+      ['파일', '파일은 본인의 Release에 그대로 있고, 공식 사이트에는 링크만 올라갑니다. Release나 파일을 지우면 다운로드할 수 없게 됩니다.'],
+      ['업데이트', '더 높은 버전 번호로 새 Release를 올리고, 같은 계정으로 제출 양식을 다시 작성하세요. 이미 공개한 파일은 바꾸지 마세요.'],
+      ['내리기', '처음 제출한 Issue에 댓글을 남겨 주세요.'],
+      ['중국 클라우드 드라이브', '미러를 둘 패키지는 제가 고르므로, 모든 패키지에 있는 것은 아닙니다.'],
+    ],
+  },
+}[l];
+const plain = t.lead.replace(/<[^>]+>/g, '');
+---
+<Base lang={lang} title={t.title} description={plain}>
+  <div class="wrap submit">
+    <header class="page-head">
+      <span class="tag">MOD</span>
+      <h1>{t.title}</h1>
+      <p set:html={t.lead} />
+      <a class="btn" href={form}>{t.open}</a>
+    </header>
+    <ol class="steps">
+      {t.steps.map(([title, body], i) => (
+        <li>
+          <span class="n">{i + 1}</span>
+          <div>
+            <h2>{title}</h2>
+            <p set:html={body} />
+            {i === 2 && <a class="btn ghost" href={form}>{t.open}</a>}
+          </div>
+        </li>
+      ))}
+    </ol>
+    <div class="cols">
+      <section>
+        <h2>{t.rulesTitle}</h2>
+        <ul>
+          {t.rules.map((rule, i) => (
+            <li>{rule}{i === 0 && <span class="licenses">{LICENSES.map((x) => <code>{x}</code>)}</span>}</li>
+          ))}
+        </ul>
+      </section>
+      <section>
+        <h2>{t.afterTitle}</h2>
+        <dl>{t.after.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+      </section>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .submit { padding-bottom: 64px; }
+  .steps { list-style: none; margin: 0 0 32px; padding: 0; display: grid; gap: 12px; }
+  .steps li { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 14px; padding: 16px 18px; background: var(--panel); border: 1px solid var(--line-soft); }
+  .n { width: 32px; height: 32px; display: grid; place-items: center; color: var(--ink); background: var(--gold); font-weight: 700; }
+  .steps h2 { margin: 3px 0 6px; font-size: 18px; }
+  .steps p { margin: 0; line-height: 1.7; }
+  .steps .btn { margin-top: 12px; }
+  .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+  .cols h2 { margin: 0 0 12px; font-size: 20px; }
+  .cols ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; line-height: 1.7; }
+  .licenses { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; font-size: 13px; }
+  dl { margin: 0; display: grid; gap: 12px; }
+  dt { font-weight: 700; }
+  dd { margin: 2px 0 0; color: var(--muted); line-height: 1.7; }
+  @media (max-width: 760px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+</style>

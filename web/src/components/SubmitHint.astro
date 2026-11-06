@@ -1,0 +1,17 @@
+---
+// Under each MOD maker's export button: where a finished package can go next.
+import { tl, type Lang } from '../i18n';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const text = {
+  zh: ['想让别人也能下载？', '投稿到官网'],
+  en: ['Want others to download it? ', 'Submit it to the site'],
+  ja: ['ほかの人にも使ってもらうには：', '公式サイトに投稿'],
+  ko: ['다른 사람도 받을 수 있게 하려면: ', '공식 사이트에 제출'],
+}[tl(lang)];
+---
+<p class="submit-hint">{text[0]}<a href={`/${lang}/mods/submit/`}>{text[1]}</a></p>
+
+<style>
+  .submit-hint { margin: 10px 0 0; color: var(--muted); font-size: 14px; }
+</style>

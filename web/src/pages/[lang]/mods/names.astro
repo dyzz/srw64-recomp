@@ -4,6 +4,7 @@
 // portraits, written as dialogue/names.json and art/portraits/<pilot>.png in a package, all in
 // the browser (scripts/names-maker.ts). Map icons have their own maker (icons.astro).
 import Base from '../../../layouts/Base.astro';
+import SubmitHint from '../../../components/SubmitHint.astro';
 import AiGuide from '../../../components/AiGuide.astro';
 import ModPackageForm from '../../../components/ModPackageForm.astro';
 import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
@@ -138,6 +139,7 @@ const notice = versionNotice(lang, text.game);
       <h2>{text.export}</h2>
       <button type="button" class="btn big" data-export>{text.exportButton}</button>
       <p class="status" data-export-status></p>
+      <SubmitHint lang={lang} />
     </section>
   </div>
   <script type="application/json" id="names-data" is:inline set:html={JSON.stringify({ text, heroes: heroCards, routes, unitDefault, people, portraitPeople, pickFaces, units, weapons: data.weapons.map((w) => ({ id: w.id, name: w.name, units: w.units })), pick, locale: langInfo(lang).tag, lang: tl(lang) })}></script>

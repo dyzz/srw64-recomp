@@ -19,7 +19,10 @@ const after = [
 // The MOD menu in three groups: downloads, the tools (the web BGM maker) and the guides (in
 // the docs, with the ID table).
 const modGroups = [
-  { label: UI.nav.modGroupDownloads[tl(lang)], items: [{ href: `/${lang}/mods/`, label: UI.nav.modAll[tl(lang)], exact: true }] },
+  { label: UI.nav.modGroupDownloads[tl(lang)], items: [
+    { href: `/${lang}/mods/`, label: UI.nav.modAll[tl(lang)], exact: true },
+    { href: `/${lang}/mods/submit/`, label: UI.nav.modSubmit[tl(lang)] },
+  ] },
   { label: UI.nav.modGroupTools[tl(lang)], items: [
     { href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[tl(lang)], maker: true },
     { href: `/${lang}/mods/voices/`, label: UI.nav.modVoicesMaker[tl(lang)], maker: true },

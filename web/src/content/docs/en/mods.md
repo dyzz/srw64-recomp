@@ -3,7 +3,7 @@ title: "Mod packages: installing and making them"
 summary: What a mod package is, how to install and manage one, and how to write mod.json when you make your own. Music and battle voices, numbers, names, portraits, map icons, campaigns, story events and language packages take effect.
 section: mods
 order: 1
-updated: 2026-11-04
+updated: 2026-11-06
 ---
 
 A mod package is a folder, or that folder zipped into one `.srw64mod` file. It holds data only, never code. When a package is enabled, the game uses its contents in place of the matching parts of the original; wherever no package says otherwise, everything is the original.
@@ -92,3 +92,7 @@ python3 tools/mods/validate.py yourname.bgm-1.0.0.srw64mod
 ## Copyright
 
 Everything in a package must be yours to pass on. A package made from material such as the original anime songs is for your own use only; don’t publish it, and we won’t list such packages.
+
+## Submitting to the site
+
+To get a package on the [download page](../../mods/), see [Submit a mod](../../mods/submit/): publish it on a GitHub Release and fill in a form.

@@ -3,6 +3,7 @@
 // weapons field by field against the original values and export data/*.json in a package,
 // all in the browser (scripts/data-maker.ts). The values are export_data_tables.py's.
 import Base from '../../../layouts/Base.astro';
+import SubmitHint from '../../../components/SubmitHint.astro';
 import AiGuide from '../../../components/AiGuide.astro';
 import ModPackageForm from '../../../components/ModPackageForm.astro';
 import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
@@ -182,6 +183,7 @@ const notice = versionNotice(lang, text.game);
       <h2>{text.export}</h2>
       <button type="button" class="btn big" data-export>{text.exportButton}</button>
       <p class="status" data-export-status></p>
+      <SubmitHint lang={lang} />
     </section>
   </div>
   <script type="application/json" id="maker-data" is:inline set:html={JSON.stringify({ text, labels, pick, locale: langInfo(lang).tag, lang: tl(lang) })}></script>

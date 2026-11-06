@@ -3,6 +3,7 @@
 // art of 16-128 and, for pictures that do not look the way the original icon does,
 // art/icons.json (src/host/native_icon.cpp), made in the browser (scripts/icon-maker.ts).
 import Base from '../../../layouts/Base.astro';
+import SubmitHint from '../../../components/SubmitHint.astro';
 import AiGuide from '../../../components/AiGuide.astro';
 import ModPackageForm from '../../../components/ModPackageForm.astro';
 import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
@@ -85,6 +86,7 @@ const notice = versionNotice(lang, text.game);
       <h2>{text.export}</h2>
       <button type="button" class="btn big" data-export>{text.exportButton}</button>
       <p class="status" data-export-status></p>
+      <SubmitHint lang={lang} />
     </section>
   </div>
   <script type="application/json" id="icons-data" is:inline set:html={JSON.stringify({ text, units, pick: { units: cards, series: pick.series }, locale: langInfo(lang).tag, lang: tl(lang) })}></script>

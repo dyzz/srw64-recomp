@@ -4,6 +4,7 @@
 // (scripts/voice-maker.ts). Files are decoded, encoded to Ogg Vorbis in a worker unless they
 // already are Vorbis, and zipped on the player's own machine.
 import Base from '../../../layouts/Base.astro';
+import SubmitHint from '../../../components/SubmitHint.astro';
 import AiGuide from '../../../components/AiGuide.astro';
 import ModPackageForm from '../../../components/ModPackageForm.astro';
 import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
@@ -100,6 +101,7 @@ const notice = versionNotice(lang, text.game);
       <h2>{text.export}</h2>
       <button type="button" class="btn big" data-export>{text.exportButton}</button>
       <p class="status" data-export-status></p>
+      <SubmitHint lang={lang} />
     </section>
   </div>
   <script type="application/json" id="voices-data" data-zh-hant="text,labels,lines" is:inline set:html={JSON.stringify({ text, labels: data.labels, lines: data.lines, ja: data.ja, counts, pick, series, locale: langInfo(lang).tag, lang: tl(lang) })}></script>

@@ -3,6 +3,7 @@
 // browser. Nothing is uploaded: files are decoded, encoded to Ogg Vorbis in a worker and
 // zipped into a .srw64mod on the player's own machine (scripts/bgm-maker.ts).
 import Base from '../../../layouts/Base.astro';
+import SubmitHint from '../../../components/SubmitHint.astro';
 import AiGuide from '../../../components/AiGuide.astro';
 import { langInfo, langPaths, tl, type Lang, type TextLang } from '../../../i18n';
 import data from '../../../data/bgm.json';
@@ -138,6 +139,7 @@ const licenses = ['CC-BY-4.0', 'CC-BY-SA-4.0', 'CC-BY-NC-4.0', 'CC-BY-NC-SA-4.0'
       <h2>{t.export[tl(lang)]}</h2>
       <button type="button" class="btn big" data-export>{text.exportButton}</button>
       <p class="status" data-export-status></p>
+      <SubmitHint lang={lang} />
     </section>
   </div>
   <script type="application/json" id="bgm-data" data-zh-hant="text,zh" is:inline set:html={JSON.stringify({ data, text, lang: tl(lang), locale: langInfo(lang).tag })}></script>

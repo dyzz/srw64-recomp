@@ -57,6 +57,7 @@ export const UI = {
     modGroupDocs: { zh: 'MOD 文档', en: 'Guides', ja: 'ドキュメント', ko: '가이드' },
     modGroupTools: { zh: 'MOD 制作工具', en: 'Mod makers', ja: 'MOD 制作ツール', ko: '모드 제작 도구' },
     modAll: { zh: '全部 MOD', en: 'All mods', ja: 'すべての MOD', ko: '모든 모드' },
+    modSubmit: { zh: '投稿 MOD', en: 'Submit a mod', ja: 'MOD を投稿', ko: 'MOD 제출' },
     modPackages: { zh: '安装与制作', en: 'Installing and making', ja: 'インストールと制作', ko: '설치와 제작' },
     modMusic: { zh: '音乐与语音', en: 'Music and voices', ja: '音楽とボイス', ko: '음악과 음성' },
     modData: { zh: '数值', en: 'Numbers', ja: '数値', ko: '수치' },
