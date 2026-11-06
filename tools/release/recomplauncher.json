@@ -1,6 +1,13 @@
 {
   "$schema": "https://recomplauncher.com/schema/recomplauncher.json",
   "format": 1,
+  "game": {
+    "kind": "iso",
+    "label": "Your ROM of Super Robot Taisen 64 (Japan, Rev 0): .z64, .n64 or .v64.",
+    "into": ".",
+    "name": "rom.z64",
+    "dumps": [{ "name": "Japan Rev 0", "size": 33554432, "crc32": "85df2771" }]
+  },
   "start": {
     "program": [
       "Marchwind64.exe",
@@ -35,7 +42,8 @@
         { "label": "简体中文", "set": { "locale": "zh-Hans" } },
         { "label": "繁體中文", "set": { "locale": "zh-Hant" } },
         { "label": "English", "set": { "locale": "en" } },
-        { "label": "日本語", "set": { "locale": "ja" } }
+        { "label": "日本語", "set": { "locale": "ja" } },
+        { "label": "한국어", "set": { "locale": "ko" } }
       ]
     },
     {
@@ -84,6 +92,14 @@
     "timeout": 7200
   },
   "looks": { "graphics": "d3d12", "lines": 240 },
+  "saves": [
+    "{install}/user-data/saves",
+    "{install}/Marchwind64-windows-x64/user-data/saves",
+    "{install}/Marchwind64-linux-x64/user-data/saves",
+    "{local}/SRW64Recomp/saves",
+    "{local}/srw64-recomp/saves",
+    "{home}/Library/Application Support/SRW64Recomp/saves"
+  ],
   "folders": {
     "data": [
       { "path": "{install}/user-data", "if": "{install}/user-data" },
@@ -106,13 +122,12 @@
   },
   "actions": [
     { "id": "open-data", "label": "Open the data folder",
-      "help": "The HD art pack the setup installed is here as hd/ (remove it to play with the original graphics). Filters, bezels and mods live here too.",
+      "help": "The HD art pack the setup installed is here as hd/ (remove it to play with the original graphics; no hd/ means its download failed, so set the game up again). Filters, bezels and mods live here too.",
       "open": "data" },
     { "id": "open-saves", "label": "Open the saves folder", "help": "Where your save slots are kept.", "open": "saves" }
   ],
   "exit_codes": {
     "1": "No file dialog is available to pick your ROM. Put it as rom.z64 next to the game and press Play again.",
-    "2": "Marchwind64 could not start and has shown why. If it asked for your ROM, pick it again on the next Play.",
-    "3": "The HD art pack could not be installed (no connection, or the download was cut short). Run the setup again; the game plays with the original graphics until then."
+    "2": "Marchwind64 could not start and has shown why. If it asked for your ROM, pick it again on the next Play."
   }
 }

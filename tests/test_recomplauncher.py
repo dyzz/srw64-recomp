@@ -22,8 +22,16 @@ class RecompLauncherFileTest(unittest.TestCase):
 
     def test_format(self):
         self.assertEqual(self.data["format"], 1)
-        self.assertNotIn("game", self.data, "an N64 ROM has no game.kind yet; the program asks for it itself")
         self.assertEqual(self.data["start"]["args"], [], "the desktop start takes no arguments")
+
+    def test_game_is_the_rom(self):
+        """The setup screen asks for the ROM, which is what runs `prepare`, and puts it where the
+        program looks for it (desktop.cpp launcher_rom). Any byte order passes: the game checks it."""
+        game = self.data["game"]
+        self.assertEqual((game["kind"], game["into"], game["name"]), ("iso", ".", "rom.z64"), "`iso` is any single file")
+        self.assertIn('"rom.z64"', source("src/native/app/desktop.cpp"))
+        self.assertIn("ROM", game["label"], "the launcher's file picker offers ROMs on this word")
+        self.assertRegex(game["dumps"][0]["crc32"], r"^[0-9a-f]{8}$")
 
     def test_program_paths_match_the_packages(self):
         programs = self.data["start"]["program"]
@@ -68,10 +76,11 @@ class RecompLauncherFileTest(unittest.TestCase):
         self.assertEqual([a["open"] for a in self.data["actions"]], ["data", "saves"])
         self.assertIn("hd/", self.data["actions"][0]["help"])
         self.assertNotIn("new", config, "a file with schema but no locale is refused by launch.cpp")
+        self.assertEqual(self.data["saves"], list(dict.fromkeys(saves)), "backups and cloud saves")
 
     def test_setting_values_are_the_games(self):
         settings = source("src/native/ui/presentation_settings.cpp")
-        catalogs = {"zh-Hans", "zh-Hant", "ja", "en"}
+        catalogs = {"zh-Hans", "zh-Hant", "ja", "en", "ko"}
         by_id = {setting["id"]: setting for setting in self.data["settings"]}
         self.assertEqual(set(by_id), {"language", "ui_size", "refresh_rate", "map_unit_icons"})
         locales = {choice["set"]["locale"] for choice in by_id["language"]["choices"]}
@@ -108,7 +117,7 @@ class RecompLauncherFileTest(unittest.TestCase):
         self.assertIn('if (!args.empty() && args[0] == "--play") args.erase(args.begin());', host)
         self.assertIn('exec "$here/srw64" --play "$@"', source("tools/release/linux/marchwind64.sh"))
         self.assertIn("--prepare", source("src/native/app/runtime.cpp"), "usage names it")
-        self.assertIn("3", self.data["exit_codes"])
+        self.assertNotIn("3", self.data["exit_codes"], "a failed download is not a failed setup, or Play stays locked")
         self.assertIn("recomp-hd-prepare-test", source("Makefile"))
 
 

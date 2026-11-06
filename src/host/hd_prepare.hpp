@@ -25,7 +25,7 @@ std::optional<std::string> pack_version(const std::filesystem::path& folder);
 // stays in that case.
 std::string install_pack(const std::filesystem::path& zip, const std::filesystem::path& user_dir, const Progress& progress);
 // The whole step for the user directory the game would use. Prints the progress lines to
-// `out`; returns 0 when the pack is installed or there is none to install, else 3 with
-// the reason on stderr (recomplauncher.json names that code).
+// `out` and returns 0, also when the pack could not be installed (the reason on stderr):
+// the launcher would otherwise not let the player start a game that runs fine without it.
 int prepare(const std::filesystem::path& user_dir, std::ostream& out);
 }
