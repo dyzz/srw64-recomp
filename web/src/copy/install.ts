@@ -14,7 +14,6 @@ type Install = {
   rom: { title: string; rows: [string, string][] };
   viewSteps: string;
   experimental: string;
-  launcherNote: string;
   reqTitle: string;
   sections: Section[];
   downloadsTitle: string;
@@ -60,7 +59,6 @@ export const INSTALL: Record<TextLang, Install> = {
     },
     viewSteps: '查看步骤',
     experimental: '实验性',
-    launcherNote: '也可以用 RecompLauncher 安装：配置时选 ROM，HD 包会自动装好。',
     reqTitle: '系统要求',
     sections: [
       {
@@ -245,7 +243,6 @@ export const INSTALL: Record<TextLang, Install> = {
     },
     viewSteps: 'View steps',
     experimental: 'Experimental',
-    launcherNote: 'Or install it with RecompLauncher: pick your ROM during setup and the HD pack installs itself.',
     reqTitle: 'System requirements',
     sections: [
       {
@@ -430,7 +427,6 @@ export const INSTALL: Record<TextLang, Install> = {
     },
     viewSteps: '手順を見る',
     experimental: '試験的',
-    launcherNote: 'RecompLauncher でもインストールできます。セットアップで ROM を選ぶと、HD パックも自動で入ります。',
     reqTitle: '動作環境',
     sections: [
       {
@@ -615,7 +611,6 @@ export const INSTALL: Record<TextLang, Install> = {
     },
     viewSteps: '설치 단계 보기',
     experimental: '실험적',
-    launcherNote: 'RecompLauncher로도 설치할 수 있습니다. 설정할 때 ROM을 고르면 HD 팩도 자동으로 설치됩니다.',
     reqTitle: '시스템 요구 사항',
     sections: [
       {

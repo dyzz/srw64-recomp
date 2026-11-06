@@ -10,6 +10,7 @@ export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const c = INSTALL[tl(lang)];
 // The small line of a download button: the HD packs have versions of their own.
+const LAUNCHER = ['windows', 'macos', 'linux'];  // the cards with RecompLauncher's badge
 const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version ? `HD ${hd.version} · ` : '';
 ---
 <Base lang={lang} title={c.title}>
@@ -25,13 +26,18 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
     {/* #requirements: each platform's section has its own; the FAQ's links land on this choice. */}
     <ul class="quick" id="requirements">
       {c.sections.map((s) => (
-        <li class:list={{ hd: s.id === 'hd' }}>
+        <li class:list={{ hd: s.id === 'hd', launcher: LAUNCHER.includes(s.id) }}>
           <a href={`#${s.id}`}>
             <PlatformIcon id={s.id} />
             <strong>{s.name}{s.experimental && <span class="exp">{c.experimental}</span>}</strong>
             <span class="muted">{s.summary}</span>
             <span class="go">{c.viewSteps} ↓</span>
           </a>
+          {LAUNCHER.includes(s.id) && (
+            <a class="rl" href="https://recomplauncher.com/game/srw64-recomp" data-umami-event="recomplauncher">
+              <img src="/brand/recomplauncher-badge.svg" alt="Get it on RecompLauncher" width="140" height="25" loading="lazy" />
+            </a>
+          )}
         </li>
       ))}
     </ul>
@@ -44,14 +50,6 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
           {s.experimental && <span class="exp">{c.experimental}</span>}
         </div>
         {s.need && <p class="need">{s.need}</p>}
-        {s.id === 'windows' && (
-          <p class="launcher">
-            <a href="https://recomplauncher.com/game/srw64-recomp" data-umami-event="recomplauncher">
-              <img src="/brand/recomplauncher-badge.svg" alt="Get it on RecompLauncher" width="313" height="56" loading="lazy" />
-            </a>
-            <span>{c.launcherNote}</span>
-          </p>
-        )}
         <div class:list={['cols', { noreq: !s.req }]}>
           {s.req && (
             <div class="reqbox">
@@ -147,6 +145,11 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
   .quick strong { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin-top: 12px; font-size: 17px; line-height: 1.3; }
   .quick .muted { margin-top: 6px; font-size: 14px; line-height: 1.6; }
   .quick .go { margin-top: auto; padding-top: 10px; font-size: 13px; color: var(--cyan); }
+  .quick .launcher { position: relative; }
+  .quick .launcher a:not(.rl) { padding-bottom: 50px; }
+  .quick a.rl { position: absolute; left: 16px; bottom: 14px; display: block; height: auto; min-height: 0; padding: 0; border: 0; background: none; line-height: 0; }
+  .quick a.rl:hover { background: none; opacity: .85; }
+  .quick a.rl img { display: block; width: 140px; height: auto; }
   .exp { display: inline-block; padding: 0 6px; font-size: 12px; font-weight: 500; line-height: 1.6; color: var(--orange); border: 1px solid rgba(255, 181, 71, 0.6); border-radius: 3px; }
 
   /* One platform: the steps, and beside them what it needs and what to watch for. */
@@ -156,10 +159,6 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
   .plat-title :global(svg) { flex: none; width: 34px; height: 34px; color: var(--gold); }
   .plat-title h2 { font-size: clamp(24px, 3vw, 30px); }
   .need { margin-top: 6px; font-size: 14px; color: var(--dim); }
-  .launcher { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 14px; font-size: 14px; color: var(--dim); }
-  .launcher a { display: block; line-height: 0; }
-  .launcher img { display: block; max-width: 100%; height: auto; }
-  .launcher span { flex: 1 1 240px; }
   .cols { display: grid; grid-template-columns: minmax(0, 1fr) 360px; grid-template-areas: 'steps req' 'steps side'; grid-template-rows: auto 1fr; gap: 16px 48px; margin-top: 24px; }
   .cols.noreq { grid-template-areas: 'steps side'; grid-template-rows: auto; }
 
@@ -221,6 +220,8 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
     .quick .muted { grid-column: 2; margin-top: 2px; font-size: 13px; }
     .quick .go { grid-column: 3; grid-row: 1 / span 2; margin: 0; padding: 0; font-size: 0; }
     .quick .go::after { content: '↓'; font-size: 16px; }
+    .quick .launcher a:not(.rl) { padding-bottom: 46px; }
+    .quick a.rl { left: 56px; bottom: 12px; }
     .plat { padding: 36px 0; }
     .dl { grid-template-columns: minmax(0, 1fr); }
     .dl .btn { width: 100%; }
