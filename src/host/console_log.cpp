@@ -1,4 +1,5 @@
 #include "console_log.hpp"
+#include "launcher_env.hpp"
 
 #include <atomic>
 #include <chrono>
@@ -39,6 +40,7 @@ void attach(const std::filesystem::path& run) {
 }
 void flush_now() { std::fflush(stdout); std::fflush(stderr); }
 int crash_fd() { return -1; }
+int crash_copy_fd() { return -1; }
 int original_stderr() { return 2; }
 }  // namespace srw64::console_log
 #else
@@ -56,6 +58,7 @@ constexpr size_t kHeld = 1 << 20;
 std::mutex mutex;
 std::string held;              // before attach
 std::atomic<int> file{-1};     // console.log
+std::atomic<int> latest{-1};   // <user>/logs/latest.log, under RecompLauncher (attach)
 // stdout and stderr: the pipe's read end, the original descriptor, the pump's end of file.
 struct Stream {
     int target = -1, reader = -1, original = -1, priority = 0;
@@ -65,7 +68,11 @@ Stream streams[2];
 
 void keep(const char* data, size_t size) {
     std::lock_guard lock(mutex);
-    if (const int fd = file.load(); fd >= 0) { (void)sys_write(fd, data, size); return; }
+    if (const int fd = file.load(); fd >= 0) {
+        (void)sys_write(fd, data, size);
+        if (const int copy = latest.load(); copy >= 0) (void)sys_write(copy, data, size);
+        return;
+    }
     if (held.size() + size <= kHeld) held.append(data, size);
 }
 
@@ -232,14 +239,34 @@ void attach(const std::filesystem::path& run) {
     const int fd = ::open(path.c_str(), O_WRONLY | O_CREAT | O_APPEND | O_CLOEXEC, 0644);
 #endif
     if (fd < 0) return;
+    // RecompLauncher sends the newest .log of the folder named logs with a crash report, and
+    // console.log sits a level deeper, in a folder of its own each run: a copy where it looks.
+    int copy = -1;
+    // A run is <user>/sessions/<id>/run.
+    if (const auto sessions = run.parent_path().parent_path(); launcher_env::active() && sessions.filename() == "sessions") {
+        const auto folder = sessions.parent_path() / "logs";
+        std::error_code error;
+        std::filesystem::create_directories(folder, error);
+        const auto path = folder / "latest.log";
+#ifdef _WIN32
+        copy = _wopen(path.c_str(), _O_WRONLY | _O_CREAT | _O_TRUNC | _O_BINARY, _S_IREAD | _S_IWRITE);
+#else
+        copy = ::open(path.c_str(), O_WRONLY | O_CREAT | O_TRUNC | O_CLOEXEC, 0644);
+#endif
+    }
     std::lock_guard lock(mutex);
     if (file.load() >= 0) return;
-    if (!held.empty()) (void)sys_write(fd, held.data(), held.size());
+    if (!held.empty()) {
+        (void)sys_write(fd, held.data(), held.size());
+        if (copy >= 0) (void)sys_write(copy, held.data(), held.size());
+    }
     held.clear();
     held.shrink_to_fit();
+    latest = copy;
     file = fd;
 }
 
 int crash_fd() { return file.load(); }
+int crash_copy_fd() { return latest.load(); }
 }
 #endif  // __SWITCH__

@@ -118,6 +118,15 @@
       { "path": "{local}/srw64-recomp/saves", "if": "{local}/srw64-recomp" },
       { "path": "{home}/Library/Application Support/SRW64Recomp/saves", "if": "{home}/Library/Application Support/SRW64Recomp" },
       { "path": "{local}/SRW64Recomp/saves" }
+    ],
+    "logs": [
+      { "path": "{install}/user-data/logs", "if": "{install}/user-data" },
+      { "path": "{install}/Marchwind64-windows-x64/user-data/logs", "if": "{install}/Marchwind64-windows-x64/user-data" },
+      { "path": "{install}/Marchwind64-linux-x64/user-data/logs", "if": "{install}/Marchwind64-linux-x64/user-data" },
+      { "path": "{local}/SRW64Recomp/logs", "if": "{local}/SRW64Recomp" },
+      { "path": "{local}/srw64-recomp/logs", "if": "{local}/srw64-recomp" },
+      { "path": "{home}/Library/Application Support/SRW64Recomp/logs", "if": "{home}/Library/Application Support/SRW64Recomp" },
+      { "path": "{local}/SRW64Recomp/logs" }
     ]
   },
   "actions": [

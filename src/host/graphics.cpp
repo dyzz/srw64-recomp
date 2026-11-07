@@ -1,5 +1,6 @@
 #define HLSL_CPU
 #ifndef SRW64_GL_ONLY
+#include "launcher_env.hpp"
 #include "hle/rt64_application.h"
 #endif
 #include "graphics.hpp"
@@ -1694,7 +1695,8 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
 #ifdef __SWITCH__
     const bool fills_screen = true;   // the screen's 1280 x 720, or the TV's when docked
 #else
-    const bool fills_screen = deck;
+    // Big Picture is RecompLauncher's view for a controller and the couch (launcher_env.hpp).
+    const bool fills_screen = deck || srw64::launcher_env::big_picture();
 #endif
     Uint32 surface_flags = surface;
 #ifdef SRW64_GL_RENDERER

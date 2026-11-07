@@ -73,6 +73,11 @@ class RecompLauncherFileTest(unittest.TestCase):
         # The HD pack, filters, bezels and mods go into the user folder itself (launch.cpp looks
         # for hd/ there first); the setup step installs the pack there (test_prepare).
         self.assertEqual([entry["path"] for entry in self.data["folders"]["data"]], folders)
+        # A crash report takes the newest .log there (console_log.cpp writes logs/latest.log).
+        logs = [entry["path"] for entry in self.data["folders"]["logs"]]
+        self.assertEqual([p.rsplit("/", 1)[0] for p in logs], folders)
+        self.assertTrue(all(path.endswith("/logs") for path in logs))
+        self.assertIn('"latest.log"', source("src/host/console_log.cpp"))
         self.assertEqual([a["open"] for a in self.data["actions"]], ["data", "saves"])
         self.assertIn("hd/", self.data["actions"][0]["help"])
         self.assertNotIn("new", config, "a file with schema but no locale is refused by launch.cpp")

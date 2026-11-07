@@ -1,4 +1,5 @@
 #include "update_check.hpp"
+#include "launcher_env.hpp"
 #include "app/runtime.hpp"
 #include "steam_deck.hpp"
 #include "text_update.hpp"
@@ -204,7 +205,7 @@ void set_automatic(bool on) {
 }
 
 bool should_ask() {
-    if (!supported() || std::getenv("SRW64_DEBUG") || std::getenv("SRW64_BACKGROUND")) return false;
+    if (!supported() || std::getenv("SRW64_DEBUG") || std::getenv("SRW64_BACKGROUND") || launcher_env::active()) return false;
     auto& s = shared();
     std::lock_guard lock(s.mutex);
     return !s.file.empty() && !s.automatic;

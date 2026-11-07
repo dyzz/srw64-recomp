@@ -16,5 +16,6 @@ void attach(const std::filesystem::path& run);
 // the handler that was there; a handler installed later calls flush_now itself.
 void flush_now();
 int crash_fd();
+int crash_copy_fd();  // logs/latest.log under RecompLauncher, else -1
 int original_stderr();
 }

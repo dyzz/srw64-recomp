@@ -50,6 +50,7 @@
 #include "post_filter.hpp"
 #include "notices.hpp"
 #include "update_check.hpp"
+#include "launcher_env.hpp"
 #include "text_update.hpp"
 #include "bug_report.hpp"
 #include "debug_ui.hpp"
@@ -219,6 +220,7 @@ bool update_ask_open{},update_asked{};
 bool quick_load_ask_open{};
 // The question before a return to the title screen (quick_load.hpp): the same entries ask it.
 bool title_return_ask_open{};
+bool quit_ask_open{};
 // The intermission menu's own last row, 返回标题画面 (not one of the original's items):
 // selected below the original's cursor, confirmed as the title question.
 unsigned library_tab{};
@@ -524,6 +526,8 @@ button.ctl-row:focus,button.ctl-row:hover {background-color:#3fd0ff26;}
 .set-hint {flex:1 1 0; min-width:0; font-size:12dp; color:#a4b0d2;}
 .set-foot button {margin:0; padding:6dp 18dp; font-size:14dp; font-weight:bold; color:#0b1230; background-color:#3fd0ff; border:2dp #3fd0ff; border-radius:0;}
 .set-foot button:focus {background-color:#ffd75e; border-color:#ffd75e;}
+.set-foot button.foot-quit {color:#a4b0d2; background-color:transparent; border-color:#3fd0ff40;}
+.set-foot button.foot-quit:focus {color:#0b1230; background-color:#ffd75e; border-color:#ffd75e;}
 body.pointer .set-tabs button:focus {color:#a4b0d2; border-color:#3fd0ff;}
 body.pointer .set-tabs button:hover {color:#e8eefc;}
 body.pointer .set-tabs button.on {color:#0b1230; background-color:#3fd0ff; border-color:#3fd0ff;}
@@ -536,6 +540,8 @@ body.pointer button.set-toggle:focus {background-color:transparent;} body.pointe
 body.pointer button.set-toggle:hover {background-color:#3fd0ff1a;}
 body.pointer .set-foot button:focus {background-color:#3fd0ff; border-color:#3fd0ff;}
 body.pointer .set-foot button:hover {background-color:#8fe4ff;}
+body.pointer .set-foot button.foot-quit:focus {color:#a4b0d2; background-color:transparent; border-color:#3fd0ff40;}
+body.pointer .set-foot button.foot-quit:hover {color:#0b1230; background-color:#8fe4ff;}
 /* The title's own pages (the Library, the battle viewer) hide the title under them. */
 .set-shade.solid {background-color:#040712;}
 .set-panel.lib-panel {width:96%; height:94%; max-width:1180dp; max-height:760dp; padding:10dp 18dp 8dp; background-color:#0c122c;}
@@ -1846,7 +1852,7 @@ void settings_focus_row(Rml::Element* row,int direction) {
 void settings_focus_first() {
     const auto rows=settings_rows();
     // Row 0 is the tab bar, except in the DLC view, which has none.
-    if(!rows.empty())settings_focus_row(rows[rows.size()>1?1:0],0);
+    if(!rows.empty())settings_focus_row(rows[rows.size()>1 && rows[1]->GetId()!="quit-ask"?1:0],0);
 }
 // Installed campaigns, read once: they do not change while the game runs.
 const std::vector<srw64::mods::Package>& installed_mods();
@@ -2289,6 +2295,14 @@ std::string quick_load_ask_panel() {
     return "<div class='set-shade'><div class='set-panel set-ask'><h1>"+label("quick_load_title")+"</h1><div id='set-body' class='set-body'>"
         "<div class='set-row nav'><div class='set-name'>"+escape(text)+"</div><p>"+label("quick_load_note")+"</p><div class='set-seg'>"+
         button("quick-load:yes",label("quick_load_yes"),true)+button("quick-load:no",label("quick_load_no"))+"</div></div></div>"
+        "<div class='set-foot'><div class='set-hint'></div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
+}
+// Whether to close the game: the way out with only a controller in hand. Cancel comes selected,
+// as in Zelda64Recomp and DuckStation: a press too many must not end the session.
+std::string quit_ask_panel() {
+    return "<div class='set-shade'><div class='set-panel set-ask'><h1>"+label("quit_title")+"</h1><div id='set-body' class='set-body'>"
+        "<div class='set-row nav'><div class='set-name'>"+label("quit_text")+"</div><p>"+label("title_return_note")+"</p><div class='set-seg'>"+
+        button("quit:yes",label("quit_yes"))+button("quit:no",label("title_return_no"),true)+"</div></div></div>"
         "<div class='set-foot'><div class='set-hint'></div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
 }
 // Whether to go back to the title screen: what is not saved is lost.
@@ -3528,11 +3542,20 @@ void settings_sync() {
 #ifdef __ANDROID__
     if(!settings_open)hd_import_confirm=false;
 #endif
-    if(!settings_open){update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;mod_open=false;library_open=false;stage_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
+    if(!settings_open){update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;quit_ask_open=false;mod_open=false;library_open=false;stage_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
 #ifdef __ANDROID__
     mod_pick_poll();   // before the MOD page's early return below, which keeps an unchanged page as it is
 #endif
     if(viewer_open){viewer_sync();return;}
+    if(quit_ask_open) {
+        const auto stamp="quit"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
+        if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
+        document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
+        settings_doc=document(quit_ask_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+        settings_doc->UpdateDocument();
+        if(!pointer_mode)settings_focus_first();
+        return;
+    }
     if(title_return_ask_open) {
         const auto stamp="title-return"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
         if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
@@ -3669,8 +3692,13 @@ void settings_sync() {
     for(const std::string id:settings_pages)body+=button("settings-page:"+id,label("settings_page_"+id),id==page,false,"set-tab");
     body+="</div><div id='set-body' class='set-body'>";
     if(page=="general") {
+        // Each language writes its own name, in its own letters: their faces come first, or a
+        // language whose face is not the current one's (한국어) shows as boxes until it is chosen.
         std::string locales;
-        for(const auto& [locale,catalog]:localization::registered())locales+=button("locale:"+locale,escape(localization::display_name(locale)),locale==localization::catalog().locale,settings::owns_input());
+        for(const auto& [locale,catalog]:localization::registered()) {
+            load_locale_fonts(locale);
+            locales+=button("locale:"+locale,escape(localization::display_name(locale)),locale==localization::catalog().locale,settings::owns_input());
+        }
         body+=settings_row("settings_language",locales);
         // The MOD manager, for a controller, which cannot reach the title's button.
         if(mod_entry_shown())body+=settings_row("mod_row",button("mod-open",label("mod_open")));
@@ -3766,7 +3794,13 @@ void settings_sync() {
     }
     body+="</div>";
     if(settings::failed())body+="<div class='set-error'>"+label("settings_error")+"</div>";
-    body+="<div class='set-foot'><div class='set-hint'>"+label("settings_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div>"+capture_prompt()+"</div>";
+    // A controller has no window to close (Big Picture, the Deck, the couch): on every page, as
+    // the button in Zelda64Recomp's menu bar is. A row of its own for the keys (settings_move).
+    std::string quit;
+#if !defined(__ANDROID__) && !defined(__SWITCH__) && !defined(__vita__)
+    quit=button("quit-ask",label("quit_open"),false,false,"nav foot-quit");
+#endif
+    body+="<div class='set-foot'><div class='set-hint'>"+label("settings_hint")+"</div>"+quit+button("settings-close",label("settings_close"))+"</div></div>"+capture_prompt()+"</div>";
     settings_doc=document(body,true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
     settings_doc->UpdateDocument();
     if(scroll>0)if(auto* page_body=settings_doc->GetElementById("set-body"))page_body->SetScrollTop(scroll);
@@ -3784,13 +3818,13 @@ void settings_show(unsigned page,const std::string& focus) {
 // The settings window on its About page (the application menu, the title's update hint).
 void open_about(const std::string& focus) {
     const unsigned about=unsigned(std::size(settings_pages)-1);
-    if(settings_open && !library_open && !mod_open && !viewer_open && !update_ask_open && !quick_load_ask_open && !title_return_ask_open) {
+    if(settings_open && !library_open && !mod_open && !viewer_open && !update_ask_open && !quick_load_ask_open && !title_return_ask_open && !quit_ask_open) {
         if(settings_page!=about)settings_show(about,focus);
         else settings_focus=focus;
         return;
     }
     settings::set_settings_page(settings_pages[about]);
-    update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;library_open=false;mod_open=false;viewer_open=false;
+    update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;quit_ask_open=false;library_open=false;mod_open=false;viewer_open=false;
     settings_open=true;settings_built=-1;settings_focus=focus;settings_release.hold();input.clear();
 }
 // L1/R1, Q/E and the page keys: the next or previous page, wrapping round. The focus
@@ -3833,7 +3867,8 @@ void settings_move(int dy,int dx) {
     for(int i=0;i<int(rows.size()) && at<0;++i)for(auto* e=focus;e;e=e->GetParentNode())if(e==rows[i]){at=i;break;}
     if(at<0){settings_focus_first();return;}
     if(dx) {
-        if(at==0){settings_turn(dx);return;}
+        // Row 0 is the tab bar, but a question's only row holds its answers.
+        if(at==0 && !quit_ask_open && !title_return_ask_open && !quick_load_ask_open && !update_ask_open){settings_turn(dx);return;}
         Rml::ElementList buttons;rows[at]->QuerySelectorAll(buttons,"button");
         std::erase_if(buttons,[](Rml::Element* b){return b->HasAttribute("disabled");});
         const auto current=std::find(buttons.begin(),buttons.end(),focus);
@@ -3843,10 +3878,15 @@ void settings_move(int dy,int dx) {
         return;
     }
     auto* page_body=settings_doc->GetElementById("set-body");
-    if(rows.size()==1) {
+    // The foot's Quit is the last row, and up from the tab bar goes straight to it: a long page
+    // does not stand in the way.
+    auto* quit=settings_doc->GetElementById("quit-ask");
+    if(at==0 && rows.size()==(quit?2u:1u)) {
+        if(quit && dy<0 && (!page_body || page_body->GetScrollTop()<=0)){settings_focus_row(quit,dy);return;}
         if(page_body)page_body->SetScrollTop(page_body->GetScrollTop()+dy*48*context->GetDensityIndependentPixelRatio());
         return;
     }
+    if(at==0 && dy<0 && quit){settings_focus_row(quit,dy);return;}
     const int next=std::clamp(at+dy,0,int(rows.size())-1);
     if(next==at)return;
     if(next==0 && page_body)page_body->SetScrollTop(0);
@@ -5207,7 +5247,7 @@ void home_sync() {
     const bool touch=touch_active();
     // The catalog's revision too: a text update or F5 changes labels within a language.
     const auto stamp=localization::catalog().locale+localization::catalog().revision+(pad_mode && !touch?"+pad":"")+(settings_entry && !touch?"s":"")+(touch?"t":"")+frame_stamp()+
-        (update::status("en").state==update::State::Available?"u"+update::status("en").latest.version:std::string())+
+        (update::status("en").state==update::State::Available && !launcher_env::active()?"u"+update::status("en").latest.version:std::string())+
         (update::status("en").hd.available?"h"+update::status("en").hd.latest:std::string());
     if((home_doc || home_chrome_doc) && stamp==home_stamp)return;
     document_close(home_doc);document_close(home_chrome_doc);home_stamp=stamp;
@@ -5216,7 +5256,7 @@ void home_sync() {
     if(touch) {
         static std::string told;
         const auto s=update::status(update::site_language(localization::catalog().locale));
-        const auto news=s.state==update::State::Available?"u"+s.latest.version:s.hd.available?"h"+s.hd.latest:std::string();
+        const auto news=s.state==update::State::Available && !launcher_env::active()?"u"+s.latest.version:s.hd.available?"h"+s.hd.latest:std::string();
         if(!news.empty() && news!=told) {
             told=news;
             auto text=localization::catalog().ui(news[0]=='u'?"update_notice":"update_notice_hd");
@@ -5241,8 +5281,9 @@ void home_sync() {
     std::string chrome="<div class='home-version'>v"+escape(SRW64_VERSION)+"</div>";
     if(settings_entry && !touch)chrome+="<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>";
     // A newer release, found by the update check: a word in the corner that opens the About page.
-    // A newer HD pack says so in the same place when the program itself is current.
-    if(const auto s=update::status("en");s.state==update::State::Available && !touch)
+    // A newer HD pack says so in the same place when the program itself is current. RecompLauncher
+    // updates the program, not the pack, so under it only the pack is told.
+    if(const auto s=update::status("en");s.state==update::State::Available && !touch && !launcher_env::active())
         chrome+="<button id='update-open' class='home-update'>"+update_words("update_title_hint",s)+"</button>";
     else if(s.hd.available && !touch)
         chrome+="<button id='update-open' class='home-update'>"+update_hd_words("update_title_hint_hd",s)+"</button>";
@@ -5494,18 +5535,27 @@ void choose(const std::string& id) {
         if(!quick_load::usable()){notices::post("quick-load",localization::catalog().ui("quick_load_unavailable"));return;}
         if(!saved.exists){notices::post("quick-load",localization::catalog().ui("quick_load_none"));return;}
         if(!saved.this_stage){notices::post("quick-load",localization::catalog().ui("quick_load_other_stage"));return;}
-        viewer_open=false;library_open=false;mod_open=false;stage_open=false;update_ask_open=false;title_return_ask_open=false;quick_load_ask_open=true;
+        viewer_open=false;library_open=false;mod_open=false;stage_open=false;update_ask_open=false;title_return_ask_open=false;quit_ask_open=false;quick_load_ask_open=true;
         settings_open=true;settings_stamp.clear();settings_release.hold();input.clear();return;
     }
     // Back to the title screen: asked first, refused at once where the game would not take it.
     if(id=="title-return-ask") {
         if(!quick_load::usable_title()){notices::post("quick-load",localization::catalog().ui("title_return_unavailable"));return;}
-        viewer_open=false;library_open=false;mod_open=false;stage_open=false;update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=true;
+        viewer_open=false;library_open=false;mod_open=false;stage_open=false;update_ask_open=false;quick_load_ask_open=false;quit_ask_open=false;title_return_ask_open=true;
         settings_open=true;settings_stamp.clear();settings_release.hold();input.clear();return;
+    }
+    if(id=="quit-ask") {
+        viewer_open=false;library_open=false;mod_open=false;stage_open=false;update_ask_open=false;title_return_ask_open=false;quick_load_ask_open=false;quit_ask_open=true;
+        settings_open=true;settings_stamp.clear();settings_release.hold();input.clear();return;
+    }
+    if(id.starts_with("quit:") || (quit_ask_open && id=="settings-close")) {
+        quit_ask_open=false;
+        if(id=="quit:yes"){debug_ui::close_game_window();physical_held=held();settings_open=false;return;}
+        settings_stamp.clear();settings_built=-1;settings_focus="quit-ask";settings_release.hold();input.clear();return;
     }
     if(id.starts_with("title-return:") || (title_return_ask_open && id=="settings-close")) {
         if(id=="title-return:yes")quick_load::request_title();
-        title_return_ask_open=false;physical_held=held();settings_open=false;return;
+        title_return_ask_open=false;quit_ask_open=false;physical_held=held();settings_open=false;return;
     }
     if(id.starts_with("quick-load:") || (quick_load_ask_open && id=="settings-close")) {
         if(id=="quick-load:yes")quick_load::request();
@@ -6349,14 +6399,16 @@ void send_key(SDL_Keycode key,bool repeat,Uint16 mod=KMOD_NONE) {
 // A controller drives them with the same keys, so a Steam Deck needs no keyboard.
 // Funds entry and the name page take A as Enter and B as Esc.
 // The title's corner (Library, the battle viewer, MOD) for a controller, which the ring
-// menu's directions never reach: Down from the ring takes the cursor there, Left and Right
+// menu's directions never reach: Down from PRESS START or the ring takes the cursor there, Left and Right
 // move along it, A or START opens, B or Up gives the ring back. The game sees none of it
 // meanwhile (settings_window::filter_input).
 int home_focus=-1;
 bool home_pad(uint32_t pressed) {
     const uint32_t up=0x0800|(1u<<16),down=0x0400|(1u<<17),left=0x0200|(1u<<18),right=0x0100|(1u<<19);
     std::vector<Rml::Element*> buttons;
-    if(home_doc && home_doc->IsVisible() && intro::title_major()==3)
+    // Wherever the corner shows (home_sync): PRESS START as well as the ring, or a controller on
+    // the first screen had only the touch screen or the mouse for it (the Switch, 2026-11-07).
+    if(home_doc && home_doc->IsVisible() && intro::title_waiting())
         for(const char* id:{"library-open","viewer-open","mod-open"})if(auto* e=home_doc->GetElementById(id))buttons.push_back(e);
     if(buttons.empty()){home_focus=-1;return false;}
     if(home_focus<0) {
@@ -6616,7 +6668,7 @@ void sync() {
     battle_viewer::set_page_open(settings_open && viewer_open);
     // Any page in the settings window's frame (the Library, MOD, the settings themselves)
     // holds the title still under it: no attract demo, no opening story.
-    battle_viewer::hold_title(settings_open);
+    battle_viewer::hold_title(settings_open || home_focus>=0);
     parts.mark("menus");
     settings_sync();parts.mark("settings");notices_sync();shot_sync();fps_sync();speed_sync();touch_sync();parts.mark("hud");
     context->Update();parts.mark("layout");input.update_rectangle();
