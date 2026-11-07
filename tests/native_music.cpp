@@ -158,7 +158,26 @@ int main(int argc,char** argv) {
         touch(root/"high"/"audio"/"voice.json",R"({"schema":"srw64.voice.v1","gain":-6,"delay":100})");
         touch(root/"high"/"audio"/"voice"/"story"/"100.ogg");
         battle("off","5799.ogg");
-        const auto lines=music::collect_voices({package(root/"low"),package(root/"high"),package(root/"off",false)},read_json);
+        // A package's lines in its package file: under the same rules, its folder's on top.
+        battle("packed","9001.ogg");
+        const auto packed=[&](const fs::path& file)->std::vector<std::string> {
+            if(file==root/"packed"/mods::voice_archive)return {"p/audio/voice/battle/9000.ogg","p/audio/voice/battle/9001.ogg","p/audio/voice/battle/9002.ogg","p/audio/voice/battle/05813.ogg","p/audio/voice/story/9003.ogg"};
+            if(file==root/"low"/mods::voice_archive)return {"audio/voice/battle/9002.ogg"};
+            return {};
+        };
+        {
+            const auto mixed=music::collect_voices({package(root/"low"),package(root/"packed")},read_json,packed);
+            check(mixed.at(9000).package=="packed" && mixed.at(9000).entry=="p/audio/voice/battle/9000.ogg" && mixed.at(9000).file==root/"packed"/mods::voice_archive,"a package file on top wins over a folder below");
+            check(mixed.at(9001).entry.empty() && mixed.at(9001).file==root/"packed"/"audio"/"voice"/"battle"/"9001.ogg","a package's own folder comes before its file");
+            check(!mixed.contains(5813) && !mixed.contains(9003),"the same names as a folder, battle lines only");
+            const auto flipped=music::collect_voices({package(root/"packed"),package(root/"low")},read_json,packed);
+            check(flipped.at(9000).package=="low" && flipped.at(9000).entry.empty(),"a folder on top wins over a package file below");
+            check(flipped.at(9002).package=="low" && flipped.at(9002).entry=="audio/voice/battle/9002.ogg","two package files: the higher");
+            const auto off=music::collect_voices({package(root/"low"),package(root/"packed",false)},read_json,packed);
+            check(off.at(9000).package=="low" && !off.contains(9001),"a package turned off falls back");
+        }
+        const auto no_file=[](const fs::path&){return std::vector<std::string>{};};
+        const auto lines=music::collect_voices({package(root/"low"),package(root/"high"),package(root/"off",false)},read_json,no_file);
         check(lines.size()==3 && lines.contains(5799) && lines.contains(17346) && lines.contains(9000),"quote records 5799-17346 only, Ogg, no leading zero");
         check(lines.at(9000).package=="high" && lines.at(9000).gain_db==-6 && lines.at(9000).delay_ms==100,"the higher package wins, with its voice.json");
         check(lines.at(5799).package=="low" && lines.at(5799).delay_ms==0,"the turned-off package is left out");

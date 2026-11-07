@@ -149,7 +149,8 @@ inline std::optional<int> battle_song(const BattleSongs& songs,uint32_t rom) {
 // the conditional ones (docs/guide/audio-mods/battle-voices.csv).
 inline constexpr int first_quote=5799,last_quote=17346;
 struct Line {
-    fs::path file;
+    fs::path file;          // the Ogg file, or the package file it is in
+    std::string entry;      // its name in there (mods::voice_archive); empty for a file of its own
     std::string package;
     double gain_db{};
     unsigned delay_ms{};    // after the box opens
@@ -164,27 +165,41 @@ inline VoiceSettings voice_settings(const json& data) {
     if(data.contains("delay") && data["delay"].is_number_unsigned() && data["delay"].get<unsigned>()<=2000)out.delay_ms=data["delay"].get<unsigned>();
     return out;
 }
+// The quote record a file's name says, if it is one: <record>.ogg, no leading zero.
+inline std::optional<int> quote_record(const fs::path& file) {
+    auto ext=file.extension().string();
+    std::transform(ext.begin(),ext.end(),ext.begin(),[](unsigned char c){return char(std::tolower(c));});
+    if(ext!=".ogg")return std::nullopt;
+    const auto stem=file.stem().string();
+    if(stem.empty() || stem.size()>5 || stem[0]=='0' || !std::all_of(stem.begin(),stem.end(),[](unsigned char c){return std::isdigit(c);}))return std::nullopt;
+    const int record=std::stoi(stem);
+    if(record<first_quote || record>last_quote)return std::nullopt;
+    return record;
+}
 // The line for each quote record from the active packages, bottom first, so the package
-// higher in the list wins.
+// higher in the list wins, whether its lines are in its package file (`archive_voices`
+// lists it) or in its folder. A package with both: the folder's.
 inline std::map<int,Line> collect_voices(const std::vector<mods::Package>& packages,
-                                         const std::function<json(const fs::path&)>& read_json) {
+                                         const std::function<json(const fs::path&)>& read_json,
+                                         const std::function<std::vector<std::string>(const fs::path&)>& archive_voices) {
     std::map<int,Line> out;
     for(const auto& p:packages) {
         if(!p.active)continue;
+        const auto extra=voice_settings(read_json(p.folder/"audio"/"voice.json"));
+        const auto archive=p.folder/mods::voice_archive;
+        for(const auto& entry:archive_voices(archive)) {
+            auto path=entry;   // the file's own spelling; some archivers write backslashes
+            std::replace(path.begin(),path.end(),'\\','/');
+            const fs::path name(path);
+            const auto record=quote_record(name);
+            if(record && name.parent_path().string().ends_with("audio/voice/battle"))out[*record]={archive,entry,p.id(),extra.gain_db,extra.delay_ms};
+        }
         const auto dir=p.folder/"audio"/"voice"/"battle";
         std::error_code error;
         if(!fs::is_directory(dir,error))continue;
-        const auto extra=voice_settings(read_json(p.folder/"audio"/"voice.json"));
         for(const auto& item:fs::directory_iterator(dir,error)) {
             if(!item.is_regular_file(error))continue;
-            auto ext=item.path().extension().string();
-            std::transform(ext.begin(),ext.end(),ext.begin(),[](unsigned char c){return char(std::tolower(c));});
-            if(ext!=".ogg")continue;
-            const auto stem=item.path().stem().string();
-            if(stem.empty() || stem.size()>5 || stem[0]=='0' || !std::all_of(stem.begin(),stem.end(),[](unsigned char c){return std::isdigit(c);}))continue;
-            const int record=std::stoi(stem);
-            if(record<first_quote || record>last_quote)continue;
-            out[record]={item.path(),p.id(),extra.gain_db,extra.delay_ms};
+            if(const auto record=quote_record(item.path()))out[*record]={item.path(),{},p.id(),extra.gain_db,extra.delay_ms};
         }
     }
     return out;

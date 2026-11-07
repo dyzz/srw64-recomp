@@ -2,8 +2,10 @@
 #include "miniz.h"
 #include <atomic>
 #include <chrono>
+#include <cstdio>
 #include <cstdlib>
 #include <fstream>
+#include <memory>
 #include <mutex>
 #include <random>
 
@@ -41,9 +43,90 @@ bool write_state(const State& state) {
     fs::rename(temporary,path,error);
     return !error;
 }
+// A zip file read in place: only its directory comes into memory.
+struct Archive {
+    FILE* file{};
+    mz_zip_archive zip{};
+    std::mutex mutex;   // miniz seeks and reads the one FILE
+    std::optional<std::vector<std::string>> voices;   // archive_voices: every listing asks, and a package has thousands
+    // miniz opens by narrow name; open it ourselves so any path works on Windows.
+    bool open_file(const fs::path& path) {
+#ifdef _WIN32
+        file=_wfopen(path.c_str(),L"rb");
+#else
+        file=std::fopen(path.c_str(),"rb");
+#endif
+        return file;
+    }
+    bool read_directory(){return mz_zip_reader_init_cfile(&zip,file,0,0);}
+    void close() {
+        if(zip.m_pState)mz_zip_reader_end(&zip);
+        if(file)std::fclose(file);
+        file=nullptr;zip={};
+    }
+    ~Archive(){close();}
+};
+// A package file's entries: the name as it stands in the file, and made safe.
+struct Entry{unsigned index;std::string stored,name;bool folder;uint64_t size,packed;};
+// Every entry but the ones a Mac's archiver adds; false, and the bad name, for one that
+// could go outside the package.
+bool read_entries(mz_zip_archive& zip,std::vector<Entry>& entries,Problem& problem) {
+    const unsigned count=mz_zip_reader_get_num_files(&zip);
+    for(unsigned i=0;i<count;++i) {
+        mz_zip_archive_file_stat stat;
+        if(!mz_zip_reader_file_stat(&zip,i,&stat)){problem={"archive",""};return false;}
+        std::string name=stat.m_filename;
+        if(name.starts_with("__MACOSX/") || name.ends_with(".DS_Store"))continue;
+        const auto safe=safe_entry(name);
+        if(!safe){problem={"archive_path",name};return false;}
+        entries.push_back({i,name,*safe,bool(stat.m_is_directory),stat.m_uncomp_size,stat.m_comp_size});
+    }
+    return true;
+}
+// Where the package sits in the file: mod.json at the top, or inside the one folder
+// everything is in. nullopt without one.
+std::optional<std::string> package_prefix(const std::vector<Entry>& entries) {
+    const auto has=[&](const std::string& name){return std::any_of(entries.begin(),entries.end(),[&](const Entry& e){return !e.folder && e.name==name;});};
+    if(has("mod.json"))return "";
+    std::set<std::string> tops;
+    for(const auto& e:entries)tops.insert(e.name.substr(0,e.name.find('/')));
+    if(tops.size()==1 && has(*tops.begin()+"/mod.json"))return *tops.begin()+"/";
+    return std::nullopt;
+}
+// The package files the voices are being read from, open from the first line to the package's
+// move. Windows does not rename a folder with a file open in it.
+std::mutex archives_mutex;
+std::map<fs::path,std::shared_ptr<Archive>> archives;
+std::shared_ptr<Archive> archive_at(const fs::path& path) {
+    std::lock_guard lock(archives_mutex);
+    if(const auto found=archives.find(path);found!=archives.end())return found->second;
+    auto opened=std::make_shared<Archive>();
+    if(!opened->open_file(path) || !opened->read_directory())return nullptr;
+    archives[path]=opened;
+    return opened;
+}
+void close_archive(const fs::path& path) {
+    std::shared_ptr<Archive> open;
+    {
+        std::lock_guard lock(archives_mutex);
+        const auto found=archives.find(path);
+        if(found==archives.end())return;
+        open=std::move(found->second);
+        archives.erase(found);
+    }
+    std::lock_guard lock(open->mutex);   // a line being read finishes first
+    open->close();
+}
+// The last listing's packages, before the player's choices: reading each manifest and counting
+// each package's files took 300-800 ms on a Switch's SD card, once per reader (the music, the
+// Library, the names and the rest) every time anything moved. folder_stamp says when to look again.
+std::optional<std::vector<Package>> listed;
+std::string listed_stamp;
 // Keeps a folder out of the way rather than deleting it: removed and replaced packages go
 // to <mods>/.trash, where the player can take them back.
 bool to_trash(const fs::path& folder,const std::string& name) {
+    close_archive(folder/voice_archive);
+    listed.reset();
     std::error_code error;
     const auto trash=directory()/".trash";
     fs::create_directories(trash,error);
@@ -69,44 +152,23 @@ fs::path staging_folder() {
     return directory()/(".installing-"+stamp()+"-"+std::to_string(random()%100000));
 }
 
-// Reads the manifest of an archive and unpacks the package into `target`.
-InstallResult unpack(const fs::path& archive,const fs::path& target) {
+// Reads the manifest of an archive and unpacks the package into `target`; `told`: the
+// loading screen follows it (unpack_loose).
+InstallResult unpack(const fs::path& archive,const fs::path& target,bool told) {
     InstallResult result;
-    mz_zip_archive zip{};
-    // miniz opens by narrow name; read the file ourselves so any path works on Windows.
-    std::ifstream in(archive,std::ios::binary);
-    if(!in){result.problem={"open",archive.filename().string()};return result;}
-    // In one read: a character at a time took half a minute for a voice package on the Switch.
-    std::error_code size_error;
-    std::vector<char> bytes(size_t(fs::file_size(archive,size_error)));
-    if(size_error || !in.read(bytes.data(),std::streamsize(bytes.size()))){result.problem={"open",archive.filename().string()};return result;}
-    if(!mz_zip_reader_init_mem(&zip,bytes.data(),bytes.size(),0)){result.problem={"archive",archive.filename().string()};return result;}
-    struct Closer{mz_zip_archive* z;~Closer(){mz_zip_reader_end(z);}} closer{&zip};
-    const unsigned count=mz_zip_reader_get_num_files(&zip);
-    if(count>max_entries){result.problem={"archive_size",""};return result;}
-    struct Entry{unsigned index;std::string name;bool folder;uint64_t size,packed;};
+    Archive package;
+    if(!package.open_file(archive)){result.problem={"open",archive.filename().string()};return result;}
+    if(!package.read_directory()){result.problem={"archive",archive.filename().string()};return result;}
+    auto& zip=package.zip;
+    if(mz_zip_reader_get_num_files(&zip)>max_entries){result.problem={"archive_size",""};return result;}
     std::vector<Entry> entries;
+    if(!read_entries(zip,entries,result.problem))return result;
     uint64_t total=0;
-    for(unsigned i=0;i<count;++i) {
-        mz_zip_archive_file_stat stat;
-        if(!mz_zip_reader_file_stat(&zip,i,&stat)){result.problem={"archive",""};return result;}
-        std::string name=stat.m_filename;
-        if(name.starts_with("__MACOSX/") || name.ends_with(".DS_Store"))continue;
-        const auto safe=safe_entry(name);
-        if(!safe){result.problem={"archive_path",name};return result;}
-        total+=stat.m_uncomp_size;
-        entries.push_back({i,*safe,bool(stat.m_is_directory),stat.m_uncomp_size,stat.m_comp_size});
-    }
+    for(const auto& e:entries)total+=e.size;
     if(total>max_total){result.problem={"archive_size",""};return result;}
-    // mod.json at the top, or inside the one folder everything sits in.
-    std::string prefix;
-    const auto has=[&](const std::string& name){return std::any_of(entries.begin(),entries.end(),[&](const Entry& e){return !e.folder && e.name==name;});};
-    if(!has("mod.json")) {
-        std::set<std::string> tops;
-        for(const auto& e:entries)tops.insert(e.name.substr(0,e.name.find('/')));
-        if(tops.size()==1 && has(*tops.begin()+"/mod.json"))prefix=*tops.begin()+"/";
-        else{result.problem={"no_manifest",""};return result;}
-    }
+    const auto found_prefix=package_prefix(entries);
+    if(!found_prefix){result.problem={"no_manifest",""};return result;}
+    const std::string& prefix=*found_prefix;
     // The manifest first, before anything is written.
     for(const auto& e:entries) {
         if(e.folder || e.name!=prefix+"mod.json")continue;
@@ -126,6 +188,7 @@ InstallResult unpack(const fs::path& archive,const fs::path& target) {
         if(!e.name.starts_with(prefix))continue;
         const auto relative=e.name.substr(prefix.size());
         if(relative.empty())continue;
+        if(relative.starts_with("audio/voice/")){result.voices|=!e.folder;continue;}   // read from the file
         const auto out=target/fs::path(relative);
         if(e.folder){fs::create_directories(out,error);continue;}
         fs::create_directories(out.parent_path(),error);
@@ -136,7 +199,7 @@ InstallResult unpack(const fs::path& archive,const fs::path& target) {
             return n;
         };
         if(!mz_zip_reader_extract_to_callback(&zip,e.index,write,&file,0) || !file){result.problem={"write",relative};return result;}
-        unpack_advance(e.packed);
+        if(told)unpack_advance(e.packed);
     }
     result.ok=true;
     return result;
@@ -158,6 +221,35 @@ bool is_package_file(const fs::path& path) {
     std::transform(ext.begin(),ext.end(),ext.begin(),[](unsigned char c){return char(std::tolower(c));});
     return ext==package_extension || ext==".zip";
 }
+// What a listing depends on, cheaply: the folder's package files and folders, and when each
+// manifest was written. A file added inside a package by hand shows at the next start.
+std::string folder_stamp() {
+    std::vector<std::string> names;
+    std::error_code error;
+    for(const auto& item:fs::directory_iterator(directory(),error)) {
+        auto name=item.path().filename().string();
+        if(name.starts_with("."))continue;
+        if(item.is_directory(error))names.push_back(name+"/"+std::to_string((long long)fs::last_write_time(item.path()/"mod.json",error).time_since_epoch().count()));
+        else if(is_package_file(item.path()))names.push_back(std::move(name));
+    }
+    std::sort(names.begin(),names.end());
+    std::string stamp;
+    for(const auto& name:names)stamp+=name+"\n";
+    return stamp;
+}
+// A package file copied in, a MiB at a time: fs::copy_file's 8 KiB writes took minutes for
+// 34 MB on a Switch's SD card.
+bool copy_package(const fs::path& from,const fs::path& to) {
+    std::ifstream in(from,std::ios::binary);
+    std::ofstream out(to,std::ios::binary|std::ios::trunc);
+    std::vector<char> buffer(1u<<20);
+    while(in && out) {
+        in.read(buffer.data(),std::streamsize(buffer.size()));
+        out.write(buffer.data(),in.gcount());
+    }
+    out.flush();
+    return in.eof() && out.good();
+}
 // Packages placed in the folder as files are unpacked; the file is then kept in .trash.
 // A file that does not install stays, and the next listing tries it again; what each
 // listing found is kept for the MOD page (loose_results).
@@ -176,7 +268,7 @@ void unpack_loose() {
         const uint64_t size=fs::file_size(file,error);
         LooseResult r{file,install(file)};
         unpack_reach(passed+=size);   // the archive's own headers too, or one that failed
-        if(r.result.ok) {
+        if(r.result.ok && !r.result.voices) {
             const auto trash=directory()/".trash";
             fs::create_directories(trash,error);
             fs::rename(file,trash/(file.filename().string()+"-"+stamp()),error);
@@ -219,6 +311,34 @@ void adopt_folders() {
 }
 }
 
+std::vector<std::string> archive_voices(const fs::path& archive) {
+    const auto open=archive_at(archive);
+    if(!open)return {};
+    std::lock_guard lock(open->mutex);
+    if(!open->file)return {};
+    if(!open->voices) {
+        auto& out=open->voices.emplace();
+        std::vector<Entry> entries;
+        Problem problem;
+        const auto prefix=read_entries(open->zip,entries,problem)?package_prefix(entries):std::nullopt;
+        if(prefix)for(const auto& e:entries)if(!e.folder && e.name.starts_with(*prefix+"audio/voice/"))out.push_back(e.stored);
+    }
+    return *open->voices;
+}
+
+std::optional<std::vector<unsigned char>> read_archive(const fs::path& archive,const std::string& entry) {
+    const auto open=archive_at(archive);
+    if(!open)return std::nullopt;
+    std::lock_guard lock(open->mutex);
+    if(!open->file)return std::nullopt;   // closed while this waited: the package moved
+    size_t size=0;
+    void* data=mz_zip_reader_extract_file_to_heap(&open->zip,entry.c_str(),&size,0);
+    if(!data)return std::nullopt;
+    std::vector<unsigned char> bytes(static_cast<unsigned char*>(data),static_cast<unsigned char*>(data)+size);
+    mz_free(data);
+    return bytes;
+}
+
 std::vector<LooseResult> loose_results() {
     std::lock_guard lock(mutex);
     return loose;
@@ -234,6 +354,11 @@ std::vector<Package> installed(const Version& game) {
     if(directory().empty())return {};
     std::error_code error;
     if(!fs::is_directory(directory(),error))return {};
+    if(listed && folder_stamp()==listed_stamp) {
+        // Nothing placed since: a file that did not install stays reported, and is not tried again.
+        std::erase_if(loose,[](const LooseResult& r){return r.result.ok;});
+        return resolve(*listed,read_state(),game);
+    }
     unpack_loose();
     adopt_folders();
     std::vector<fs::path> folders;
@@ -259,11 +384,18 @@ std::vector<Package> installed(const Version& game) {
         p.contents=summarize(folder);
         packages.push_back(std::move(p));
     }
+    listed=packages;listed_stamp=folder_stamp();
     return resolve(std::move(packages),read_state(),game);
 }
 
 InstallResult install(const fs::path& source) {
-    std::lock_guard lock(mutex);
+    // Unpacking and copying take seconds on an SD card, and the window thread lists the packages
+    // meanwhile: holding the lock through them stopped its frames for the stall watchdog. They
+    // work in a folder of their own; the lock is for the swap, and for a file placed in the
+    // folder, which a listing would pick up too.
+    const bool placed=directory()/source.filename()==source;
+    std::unique_lock lock(mutex,std::defer_lock);
+    if(placed)lock.lock();
     InstallResult result;
     if(directory().empty()){result.problem={"no_folder",""};return result;}
     std::error_code error;
@@ -273,17 +405,32 @@ InstallResult install(const fs::path& source) {
         if(fs::equivalent(source.parent_path(),directory(),error)){result.problem={"already",source.filename().string()};return result;}
         result=copy_folder(source,staging);
     }
-    else if(is_package_file(source))result=unpack(source,staging);
+    else if(is_package_file(source))result=unpack(source,staging,placed);
     else{result.problem={"not_package",source.filename().string()};return result;}
     if(!result.ok){fs::remove_all(staging,error);return result;}
+    // The file itself goes in with its voices: moved when it was placed in the folder, as
+    // the bytes are large, copied when it is the player's file from elsewhere.
+    const auto kept=staging/voice_archive;
+    if(result.voices) {
+        if(placed)fs::rename(source,kept,error);
+        if(error || (!placed && !copy_package(source,kept))){fs::remove_all(staging,error);result.ok=false;result.problem={"write",kept.filename().string()};return result;}
+    }
+    const auto abandon=[&](std::string problem) {
+        std::error_code ignored;
+        if(result.voices && placed)fs::rename(kept,source,ignored);
+        fs::remove_all(staging,ignored);
+        result.ok=false;result.problem={"write",std::move(problem)};
+        return result;
+    };
+    if(!placed)lock.lock();
     const auto target=directory()/result.id;
     if(fs::exists(target,error)) {
         const auto old=parse_manifest(read_json(target/"mod.json"));
         if(const auto* m=std::get_if<Manifest>(&old))result.replaced=m->version;
-        if(!to_trash(target,result.id)){fs::remove_all(staging,error);result.ok=false;result.problem={"write",target.filename().string()};return result;}
+        if(!to_trash(target,result.id))return abandon(target.filename().string());
     }
     fs::rename(staging,target,error);
-    if(error){fs::remove_all(staging,error);result.ok=false;result.problem={"write",error.message()};return result;}
+    if(error)return abandon(error.message());
     // A freshly installed package is on, and goes on top unless it was already placed.
     auto state=read_state();
     state.disabled.erase(result.id);

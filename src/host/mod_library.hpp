@@ -297,24 +297,38 @@ inline std::vector<Package> resolve(std::vector<Package> packages,const State& s
     return out;
 }
 
+// A package's audio/voice stays in its package file: a voice package is thousands of small
+// files, which a Switch's SD card creates at 37 ms each and then walks entry by entry to open.
+// install keeps a file with entries under audio/voice/ as <package>/voice.srw64mod and unpacks
+// the rest; a package folder put in by hand holds them as files. Both work, side by side.
+inline constexpr const char* voice_archive="voice.srw64mod";
+// The entries under audio/voice/ of that file, as the file names them; none when it is not there.
+std::vector<std::string> archive_voices(const fs::path& archive);
+// One entry alone, into memory; nullopt when it cannot be read. The file stays open between
+// calls, its directory in memory, until the package moves (to_trash closes it).
+std::optional<std::vector<unsigned char>> read_archive(const fs::path& archive,const std::string& entry);
+
 // What a package folder holds, by its known folders.
 inline Contents summarize(const fs::path& folder) {
     Contents c;
     std::error_code error;
+    const auto known=[](const fs::path& file,std::initializer_list<const char*> extensions) {
+        auto ext=file.extension().string();
+        std::transform(ext.begin(),ext.end(),ext.begin(),[](unsigned char ch){return char(std::tolower(ch));});
+        return extensions.size()==0 || std::find(extensions.begin(),extensions.end(),ext)!=extensions.end();
+    };
     const auto count=[&](const fs::path& dir,std::initializer_list<const char*> extensions) {
         unsigned n=0;
         if(!fs::is_directory(dir,error))return n;
         for(auto it=fs::recursive_directory_iterator(dir,error);it!=fs::recursive_directory_iterator();it.increment(error)) {
             if(error)break;
-            if(!it->is_regular_file(error))continue;
-            auto ext=it->path().extension().string();
-            std::transform(ext.begin(),ext.end(),ext.begin(),[](unsigned char ch){return char(std::tolower(ch));});
-            if(extensions.size()==0 || std::find(extensions.begin(),extensions.end(),ext)!=extensions.end())++n;
+            if(it->is_regular_file(error) && known(it->path(),extensions))++n;
         }
         return n;
     };
     c.music=count(folder/"audio"/"music",{".ogg"});
     c.voices=count(folder/"audio"/"voice",{".ogg",".mp3",".flac",".wav"});
+    for(const auto& entry:archive_voices(folder/voice_archive))if(known(entry,{".ogg",".mp3",".flac",".wav"}))++c.voices;
     c.art=count(folder/"art",{".png",".webp",".dds",".json"});
     c.dialogue=count(folder/"dialogue",{".txt"});
     c.names=fs::is_regular_file(folder/"dialogue"/"names.json",error);
@@ -354,6 +368,7 @@ struct InstallResult {
     Version version;
     std::optional<Version> replaced;    // the version an update took the place of
     Problem problem;
+    bool voices{};                      // the package file has audio/voice: it is kept (voice_archive)
 };
 fs::path directory();
 // Every installed package, resolved against the game version (bottom first). Packages
@@ -364,8 +379,9 @@ std::vector<Package> installed(const Version& game);
 // Told 0 to 100 as the files placed in the folder unpack, by their bytes: a voice package
 // of thousands of files takes minutes on a Switch's SD card (the loading screen shows it).
 void set_unpack_progress(void (*report)(unsigned percent));
-// What the last listing found placed in the folder as files: the ones installed (moved
-// to .trash) and the ones that did not (still there, tried again next time).
+// What the last listing found placed in the folder as files: the ones installed (moved to
+// .trash, or into the package for its voices) and the ones that did not (still there, tried
+// again next time).
 struct LooseResult {
     fs::path file;
     InstallResult result;

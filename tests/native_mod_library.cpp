@@ -188,6 +188,58 @@ int main(int argc,char** argv) {
         told.clear();
         mods::installed(game);
         check(told.empty(),"nothing told with nothing to unpack");
+        // A package file with voices stays whole inside the package and they are read from
+        // it; everything else unpacks, and the file goes when the package goes.
+        {
+            const auto voice_file=library/"test.loose2"/mods::voice_archive;
+            check(fs::is_regular_file(voice_file) && !fs::exists(library/"test.loose2"/"audio"/"voice"),"a placed package file moves in with its voices");
+            check(find(list,"test.loose2").contents.voices==1,"its lines are counted");
+            check(mods::archive_voices(voice_file)==std::vector<std::string>{"audio/voice/battle/1.ogg"},"listed from the file");
+            const auto line=mods::read_archive(voice_file,"audio/voice/battle/1.ogg");
+            check(line && *line==std::vector<unsigned char>(4096,'v'),"one line read out of it");
+            check(!mods::read_archive(voice_file,"audio/voice/battle/2.ogg"),"a line it does not have");
+            check(fs::is_regular_file(library/"test.loose"/"mod.json") && !fs::exists(library/"test.loose"/mods::voice_archive),"a package without voices keeps no file");
+            // From elsewhere, in one top folder: copied, the player's file left alone. The
+            // rest unpacks, voice.json beside the folder among it.
+            zip_file(root/"voices.srw64mod",{{"pack/mod.json",manifest("test.packed","1.0.0").dump()},{"pack/audio/voice.json","{}"},{"pack/audio/music/7.ogg","ogg"},
+                                             {"pack/audio/voice/battle/5799.ogg","first"},{"pack/audio/voice/battle/5800.OGG","second"},{"__MACOSX/pack/audio/voice/battle/._5799.ogg","junk"}});
+            auto r=mods::install(root/"voices.srw64mod");
+            const auto packed=library/"test.packed"/mods::voice_archive;
+            check(r.ok && r.voices && fs::exists(root/"voices.srw64mod") && fs::is_regular_file(packed),"a file from elsewhere is copied");
+            check(fs::is_regular_file(library/"test.packed"/"audio"/"voice.json") && fs::is_regular_file(library/"test.packed"/"audio"/"music"/"7.ogg") && !fs::exists(library/"test.packed"/"audio"/"voice"),"only audio/voice stays packed");
+            check(mods::archive_voices(packed)==std::vector<std::string>{"pack/audio/voice/battle/5799.ogg","pack/audio/voice/battle/5800.OGG"},"named as the file names them, no junk");
+            check(find(mods::installed(game),"test.packed").contents.voices==2 && find(mods::installed(game),"test.packed").contents.music==1,"the count sees both");
+            // An update under the same name: the open file is let go, the new one read.
+            zip_file(root/"voices2.srw64mod",{{"mod.json",manifest("test.packed","1.1.0").dump()},{"audio/voice/battle/5799.ogg","updated"}});
+            const auto before=mods::revision();
+            r=mods::install(root/"voices2.srw64mod");
+            const auto again=mods::read_archive(packed,"audio/voice/battle/5799.ogg");
+            check(r.ok && r.replaced && mods::revision()!=before && again && std::string(again->begin(),again->end())=="updated","an update reads the new file");
+            check(!mods::read_archive(packed,"pack/audio/voice/battle/5799.ogg"),"the old file is gone from the table");
+            // An update without voices leaves none behind.
+            zip_file(root/"voices3.srw64mod",{{"mod.json",manifest("test.packed","1.2.0").dump()}});
+            check(mods::install(root/"voices3.srw64mod").ok && !fs::exists(packed) && mods::archive_voices(packed).empty(),"an update without voices has no file");
+            r=mods::install(root/"voices2.srw64mod");
+            check(r.ok && mods::read_archive(packed,"audio/voice/battle/5799.ogg") && mods::remove("test.packed") && !fs::exists(library/"test.packed") && !mods::read_archive(packed,"audio/voice/battle/5799.ogg"),"removed, it reads nothing");
+            check(!mods::remove("test.loose2") || !fs::exists(voice_file),"the file goes to .trash with its package");
+            list=mods::installed(game);
+        }
+        // The listing is kept until the folder changes.
+        {
+            write(library/"test.kept"/"mod.json",manifest("test.kept").dump());
+            check(find(mods::installed(game),"test.kept").contents.empty(),"a new folder is seen");
+            write(library/"test.kept"/"audio"/"music"/"7.ogg","ogg");
+            check(find(mods::installed(game),"test.kept").contents.empty(),"a file added by hand waits for a new look");
+            mods::set_enabled("test.kept",false);
+            check(!find(mods::installed(game),"test.kept").active,"the player's choices are read each time");
+            mods::set_enabled("test.kept",true);
+            const auto when=fs::last_write_time(library/"test.kept"/"mod.json");
+            fs::last_write_time(library/"test.kept"/"mod.json",when+std::chrono::seconds(5));
+            check(find(mods::installed(game),"test.kept").contents.music==1,"a rewritten manifest is read again");
+            check(mods::remove("test.kept"),"removed");
+            for(const auto& p:mods::installed(game))check(p.id()!="test.kept","gone from the listing");
+            list=mods::installed(game);
+        }
         // A package extracted by hand takes its id's name: as the extractor names the folder,
         // or one level deeper (with the macOS junk beside it).
         write(library/"test.right-1.0.0"/"mod.json",manifest("test.right").dump());
