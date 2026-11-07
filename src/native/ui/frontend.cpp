@@ -3530,12 +3530,44 @@ void viewer_move(int dy,int dx) {
     best->Focus();best->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));
     if(const auto id=best->GetId();id.starts_with("vw-pick:") && !viewer_picker.empty())viewer_pick(std::stoi(id.substr(8)),false);
 }
+// On the Switch a step in the unit list made the page again: 55 ms. There it takes only what
+// changed (refresh). A picture that arrives goes in as the <img> the page will ask for next,
+// in the element and in the source refresh compares with, so the two stay the same page.
+void fill_pending_source(Rml::ElementDocument* doc) {
+    const auto source=document_sources.find(doc);
+    if(source==document_sources.end())return;
+    Rml::ElementList pending;doc->QuerySelectorAll(pending,".lib-pending");
+    for(auto* place:pending) {
+        const auto key=place->GetAttribute<Rml::String>("data-key","");
+        const auto found=images.find(key);
+        if(found==images.end())continue;
+        const auto style=place->GetAttribute<Rml::String>("style","");
+        const auto was="<div class='lib-pending' data-key='"+escape(key)+"' style='"+style+"'></div>";
+        const auto at=source->second.find(was);
+        if(at==std::string::npos)continue;   // the next refresh brings it
+        const auto now="<img src='"+escape(found->second)+"' style='"+style+"'/>";
+        auto* parent=place->GetParentNode();
+        auto* holder=parent->InsertBefore(doc->CreateElement("div"),place);
+        holder->SetInnerRML(now);
+        if(holder->GetNumChildren()==1)parent->InsertBefore(holder->RemoveChild(holder->GetChild(0)),place);
+        parent->RemoveChild(holder);parent->RemoveChild(place);
+        source->second.replace(at,was.size(),now);
+    }
+}
+#ifdef __SWITCH__
+constexpr bool viewer_in_place=true;
+#else
+constexpr bool viewer_in_place=false;
+#endif
 void viewer_sync() {
     viewer_defaults();
     const auto stamp="viewer"+viewer_stamp()+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
     static uint64_t viewer_pictures=0;   // pictures::serial when the page was made
     if(settings_doc && stamp==settings_stamp) {
-        if(viewer_pictures!=pictures::serial){viewer_pictures=pictures::serial;fill_pending(settings_doc);}
+        if(viewer_pictures!=pictures::serial) {
+            viewer_pictures=pictures::serial;
+            if(viewer_in_place)fill_pending_source(settings_doc);else fill_pending(settings_doc);
+        }
         settings_doc->PullToFront();
         return;
     }
@@ -3547,8 +3579,13 @@ void viewer_sync() {
     float scroll=-1;
     if(auto* list=settings_doc?settings_doc->GetElementById("vw-list"):nullptr;list && list_picker==viewer_picker)scroll=list->GetScrollTop();
     list_picker=viewer_picker;
-    document_close(settings_doc);settings_stamp=stamp;settings_built=-1;viewer_focus.clear();
-    settings_doc=document(viewer_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+    const bool in_place=viewer_in_place && settings_doc && settings_stamp.starts_with("viewer");
+    if(!in_place)document_close(settings_doc);
+    settings_stamp=stamp;settings_built=-1;viewer_focus.clear();
+    auto* const before=settings_doc;
+    if(in_place)refresh(settings_doc,viewer_panel(),true,true);else settings_doc=document(viewer_panel(),true,true);
+    if(settings_doc!=before){settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();}
+    else settings_doc->PullToFront();
     settings_doc->UpdateDocument();
     if(auto* list=settings_doc->GetElementById("vw-list");list && scroll>=0)list->SetScrollTop(scroll);
     auto* focus=focus_id.empty()?nullptr:settings_doc->GetElementById(focus_id);
