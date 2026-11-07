@@ -20,7 +20,7 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
       <h1>{c.title}</h1>
       <p class="lead" set:html={c.lead} />
       <Mirrors lang={lang} />
-      <p class="head-links"><a href={`/${lang}/faq/#saves`}>{c.savesLink}</a></p>
+      <p class="head-links"><a href={`/${lang}/faq/#install`}>{c.faqLink}</a><a href={`/${lang}/faq/#saves`}>{c.savesLink}</a></p>
     </header>
 
     {/* #requirements: each platform's section has its own; the FAQ's links land on this choice. */}
@@ -49,7 +49,7 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
           <h2>{s.name}</h2>
           {s.experimental && <span class="exp">{c.experimental}</span>}
         </div>
-        {s.need && <p class="need">{s.need}</p>}
+        {s.need && <p class="need" set:html={s.need} />}
         <div class:list={['cols', { noreq: !s.req }]}>
           {s.req && (
             <div class="reqbox">
@@ -80,16 +80,6 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
               );
             })}
           </ol>
-          {s.tips && (
-            <aside class="side">
-              {s.tips.map((t) => (
-                <div class:list={['tip', { warn: t.warn }]}>
-                  <h3>{t.title}</h3>
-                  <p set:html={t.body} />
-                </div>
-              ))}
-            </aside>
-          )}
         </div>
       </section>
     ))}
@@ -132,7 +122,7 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
   .page-head { padding: clamp(32px, 5vw, 48px) 0 14px; gap: 10px; }
   .lead { max-width: 720px; font-size: 18px; color: var(--muted); }
   .lead :global(a) { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
-  .head-links { margin-top: 2px; font-size: 14px; }
+  .head-links { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 2px; font-size: 14px; }
   :global(code.hash) { font-size: 12px; word-break: break-all; }
 
   /* The platforms, four to a row; the HD pack takes the last two cells. */
@@ -152,15 +142,15 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
   .quick a.rl img { display: block; width: 140px; height: auto; }
   .exp { display: inline-block; padding: 0 6px; font-size: 12px; font-weight: 500; line-height: 1.6; color: var(--orange); border: 1px solid rgba(255, 181, 71, 0.6); border-radius: 3px; }
 
-  /* One platform: the steps, and beside them what it needs and what to watch for. */
+  /* One platform: the steps, and beside them what it needs. What to watch for is in the FAQ. */
   .plat { padding: 48px 0; border-bottom: 1px solid var(--line-soft); }
   .plat:last-of-type { border-bottom: 0; }
   .plat-title { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
   .plat-title :global(svg) { flex: none; width: 34px; height: 34px; color: var(--gold); }
   .plat-title h2 { font-size: clamp(24px, 3vw, 30px); }
   .need { margin-top: 6px; font-size: 14px; color: var(--dim); }
-  .cols { display: grid; grid-template-columns: minmax(0, 1fr) 360px; grid-template-areas: 'steps req' 'steps side'; grid-template-rows: auto 1fr; gap: 16px 48px; margin-top: 24px; }
-  .cols.noreq { grid-template-areas: 'steps side'; grid-template-rows: auto; }
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr) 360px; grid-template-areas: 'steps req'; gap: 16px 48px; margin-top: 24px; }
+  .cols.noreq { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'steps'; }
 
   .reqbox { grid-area: req; padding: 14px 16px; background: var(--panel); border: 1px solid var(--line-soft); border-top: 3px solid var(--cyan); }
   .reqbox h3 { font-size: 15px; line-height: 1.5; }
@@ -180,12 +170,6 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
   .dl .btn { overflow-wrap: anywhere; }
   .nofile { margin-top: 8px; padding: 6px 14px; font-size: 14px; color: var(--orange); border: 1px dashed rgba(255, 181, 71, 0.5); }
 
-  .side { grid-area: side; display: grid; gap: 14px; align-content: start; }
-  .tip { padding-left: 14px; border-left: 2px solid var(--line); }
-  .tip.warn { border-left-color: var(--orange); }
-  .tip h3 { font-size: 14px; line-height: 1.5; }
-  .tip p { margin-top: 2px; font-size: 13.5px; line-height: 1.65; color: var(--muted); overflow-wrap: anywhere; }
-
   .facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 20px; max-width: 860px; margin: 20px 0 0; font-size: 15px; }
   .facts dt { color: var(--muted); font-weight: 600; }
   .facts dd { margin: 0; overflow-wrap: anywhere; }
@@ -203,8 +187,8 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
   /* Narrow: what the platform needs comes before the steps, not after them. */
   @media (max-width: 1000px) {
     .quick { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .cols { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'req' 'steps' 'side'; grid-template-rows: auto; gap: 24px; }
-    .cols.noreq { grid-template-areas: 'steps' 'side'; }
+    .cols { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'req' 'steps'; gap: 24px; }
+    .cols.noreq { grid-template-areas: 'steps'; }
   }
   @media (max-width: 560px) {
     .lead { font-size: 16px; }

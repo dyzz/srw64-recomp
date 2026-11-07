@@ -17,7 +17,7 @@ const { Content, headings } = await render(entry);
     </header>
     <div class="faq">
       <nav class="toc" aria-label={entry.data.title}>
-        <ul>{headings.filter((h) => h.depth === 2).map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ul>
+        <ul>{headings.filter((h) => h.depth <= 3).map((h) => <li class={`d${h.depth}`}><a href={`#${h.slug}`}>{h.text}</a></li>)}</ul>
       </nav>
       <article class="prose"><Content /></article>
     </div>
@@ -26,10 +26,14 @@ const { Content, headings } = await render(entry);
 
 <style>
   .faq { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 48px; align-items: start; }
-  .toc { position: sticky; top: 88px; font-size: 14px; }
+  .toc { position: sticky; top: 88px; max-height: calc(100vh - 110px); overflow-y: auto; font-size: 14px; }
   .toc ul { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 1px solid var(--line); display: grid; gap: 8px; }
   .toc a { color: var(--muted); }
+  .toc .d2 { margin-top: 10px; font-weight: 700; }
+  .toc .d2:first-child { margin-top: 0; }
+  .toc .d2 a { color: var(--text); }
+  .toc .d3 { font-size: 13px; line-height: 1.4; }
   .toc a:hover { color: var(--text); }
   .prose :global(h2:first-child) { margin-top: 0; }
-  @media (max-width: 860px) { .faq { grid-template-columns: 1fr; } .toc { position: static; } }
+  @media (max-width: 860px) { .faq { grid-template-columns: 1fr; } .toc { position: static; max-height: none; } .toc .d3 { display: none; } }
 </style>
