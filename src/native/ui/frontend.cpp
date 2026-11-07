@@ -3067,7 +3067,11 @@ const char* viewer_cat_keys[]={"viewer_cat_all","viewer_cat_ground","viewer_cat_
 std::string viewer_scene_img(unsigned i,float w,const std::string& style=std::string()) {
     const auto path=srw64::sprites::viewer_scene_image(viewer_scene_key(i));
     if(path.empty())return {};
-    return "<img src='"+escape(image(path,std::min(dp_pixels(w),479)))+"' style='width:"+std::to_string(w)+"dp; height:"+std::to_string(w*9/16)+"dp;"+style+"'/>";
+    // On the picture thread (the page's stamp brings it in): read here, the two on the page held
+    // the first opening up for a second on the Switch.
+    const auto src=image_async(path,std::min(dp_pixels(w),479),true);
+    if(src.empty())return {};
+    return "<img src='"+escape(src)+"' style='width:"+std::to_string(w)+"dp; height:"+std::to_string(w*9/16)+"dp;"+style+"'/>";
 }
 // The unit box's pages: the works with a unit someone may fly, in the Library's order, and
 // their units (one per id).
