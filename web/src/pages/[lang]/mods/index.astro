@@ -166,7 +166,7 @@ const size = (n: number) =>
             <div><dt>{t.license[tl(lang)]}</dt><dd class="latin">{m.license}</dd></div>
             {m.published && <div><dt>{t.updated[tl(lang)]}</dt><dd class="latin">{m.published}</dd></div>}
           </dl>
-          {m.netdisk && (m.netdisk.quark || m.netdisk.baidu) && (
+          {l === 'zh' && m.netdisk && (m.netdisk.quark || m.netdisk.baidu) && (
             <p class="foot">{t.mirrors[tl(lang)]}{(['quark', 'baidu'] as const).filter((k) => m.netdisk?.[k]).map((k, i) => <>{i > 0 && ' · '}<a href={m.netdisk?.[k]}>{t[k][tl(lang)]}</a></>)}</p>
           )}
           <p class="foot"><span class="k">{t.checksum[tl(lang)]}</span> <code class="sha">SHA-256 {m.sha256}</code> · <a href={m.source}>{m.source.includes('/releases/') ? t.release[tl(lang)] : t.source[tl(lang)]}</a></p>

@@ -121,7 +121,7 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
       <p class="links">
         <a href={release.github}>GitHub Release {release.tag} →</a>
         {hd.tag !== release.tag && <a href={hd.github}>GitHub Release {hd.tag} →</a>}
-        {mirrors.map((m) => <a href={m.url} data-umami-event="download-mirror" data-umami-event-mirror={m.id} data-umami-event-language={lang}>{c[m.id]}{m.passcode && c.passcode.replace('{p}', m.passcode)} →</a>)}
+        {tl(lang) === 'zh' && mirrors.map((m) => <a href={m.url} data-umami-event="download-mirror" data-umami-event-mirror={m.id} data-umami-event-language={lang}>{c[m.id]}{m.passcode && c.passcode.replace('{p}', m.passcode)} →</a>)}
       </p>
       </> : <p class="nofile">{c.notReleased}</p>}
     </section>
@@ -208,7 +208,7 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
   }
   @media (max-width: 560px) {
     .lead { font-size: 16px; }
-    /* A mirror's name and passcode are longer than a small phone in Japanese. */
+    /* A mirror's name and passcode can be longer than a small phone. */
     .page-head { grid-template-columns: minmax(0, 1fr); }
     .wrap :global(.mirrors a) { white-space: normal; }
     .quick { grid-template-columns: minmax(0, 1fr); gap: 8px; }
