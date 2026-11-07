@@ -9,12 +9,20 @@
 #include "localization/catalog.hpp"
 #include "librecomp/game.hpp"
 #include <algorithm>
+#include <atomic>
 #include <cstdlib>
 #include <fstream>
 #include <map>
+#include <mutex>
+#include <optional>
 #include <span>
+#include <thread>
 
 extern uint8_t* srw64_rdram;  // host.cpp
+uint64_t srw64_current_vi();   // host.cpp
+#ifdef __SWITCH__
+extern "C" void srw64_switch_background_thread();   // host/switch/switch_platform.cpp
+#endif
 
 namespace srw64::library {
 namespace {
@@ -408,13 +416,53 @@ json build() {
 }
 }
 
+namespace {
+// What the pages read (window thread), and what prepare() made for them. `building` is held
+// through a build: a page that opens during one waits for it instead of making its own.
+json cached;
+std::string cached_locale;
+unsigned cached_revision{};
+struct Prepared {json data;std::string locale;unsigned revision;};
+std::mutex building;
+std::optional<Prepared> prepared;
+std::atomic_bool preparing{};
+// Two seconds of the game: the ROM is read and the packages have settled by then.
+constexpr uint64_t prepare_after_vi=120;
+}
+
 const json& contents() {
-    static json cached;
-    static std::string locale;
-    static unsigned revision;
-    if(locale!=localization::catalog().locale || revision!=mods::revision() || cached.is_null()) {
-        revision=mods::revision();cached=build();locale=localization::catalog().locale;
+    const auto& locale=localization::catalog().locale;
+    if(cached_locale!=locale || cached_revision!=mods::revision() || cached.is_null()) {
+        std::lock_guard lock(building);
+        const unsigned revision=mods::revision();
+        if(prepared && prepared->locale==locale && prepared->revision==revision)cached=std::move(prepared->data);
+        else cached=build();
+        prepared.reset();
+        cached_revision=revision;cached_locale=locale;
     }
     return cached;
+}
+
+void prepare() {
+    static std::string asked_locale;
+    static unsigned asked_revision{};
+    if(preparing || srw64_current_vi()<prepare_after_vi)return;
+    const auto language=localization::snapshot();
+    const unsigned revision=mods::revision();
+    if(language->locale==asked_locale && revision==asked_revision)return;
+    asked_locale=language->locale;asked_revision=revision;
+    if(language->locale==cached_locale && revision==cached_revision && !cached.is_null())return;
+    preparing=true;
+    std::thread([language,revision]{
+#ifdef __SWITCH__
+        srw64_switch_background_thread();
+#endif
+        localization::Scope scope(language);
+        {
+            std::lock_guard lock(building);
+            prepared=Prepared{build(),language->locale,revision};
+        }
+        preparing=false;
+    }).detach();
 }
 }

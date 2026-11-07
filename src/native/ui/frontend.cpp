@@ -2591,6 +2591,18 @@ std::string library_panel() {
         "<div class='set-foot'><div class='set-hint'>"+label("library_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
     return body;
 }
+// Pictures that arrived since a page was made: only their places are filled. Making the page
+// again for each one cost the Battle Viewer's unit list five rebuilds a step on the Switch.
+void fill_pending(Rml::ElementDocument* doc) {
+    Rml::ElementList pending;if(doc)doc->QuerySelectorAll(pending,".lib-pending");
+    for(auto* place:pending) {
+        const auto key=place->GetAttribute<Rml::String>("data-key","");
+        const auto found=images.find(key);
+        if(found==images.end())continue;
+        place->SetClass("lib-pending",false);
+        place->SetInnerRML("<img src='"+escape(found->second)+"' style='width:100%; height:100%;'/>");
+    }
+}
 // Chooses entry `index` of the tab: the list marks and shows it, the details are redrawn.
 uint64_t library_pictures=0;   // pictures::serial when the Library's details were last made
 // The details float over #lib-detail in a document of their own: RmlUi lays a document out
@@ -3069,9 +3081,11 @@ std::string viewer_scene_img(unsigned i,float w,const std::string& style=std::st
     if(path.empty())return {};
     // On the picture thread (the page's stamp brings it in): read here, the two on the page held
     // the first opening up for a second on the Switch.
-    const auto src=image_async(path,std::min(dp_pixels(w),479),true);
-    if(src.empty())return {};
-    return "<img src='"+escape(src)+"' style='width:"+std::to_string(w)+"dp; height:"+std::to_string(w*9/16)+"dp;"+style+"'/>";
+    const int px=std::min(dp_pixels(w),479);
+    const auto src=image_async(path,px,true);
+    const auto size="width:"+std::to_string(w)+"dp; height:"+std::to_string(w*9/16)+"dp;"+style;
+    if(src.empty())return "<div class='lib-pending' data-key='"+escape(path+"@"+std::to_string(px))+"' style='"+size+"'></div>";
+    return "<img src='"+escape(src)+"' style='"+size+"'/>";
 }
 // The unit box's pages: the works with a unit someone may fly, in the Library's order, and
 // their units (one per id).
@@ -3518,8 +3532,14 @@ void viewer_move(int dy,int dx) {
 }
 void viewer_sync() {
     viewer_defaults();
-    const auto stamp="viewer"+viewer_stamp()+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density)+"#"+std::to_string(pictures::serial);
-    if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
+    const auto stamp="viewer"+viewer_stamp()+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
+    static uint64_t viewer_pictures=0;   // pictures::serial when the page was made
+    if(settings_doc && stamp==settings_stamp) {
+        if(viewer_pictures!=pictures::serial){viewer_pictures=pictures::serial;fill_pending(settings_doc);}
+        settings_doc->PullToFront();
+        return;
+    }
+    viewer_pictures=pictures::serial;
     auto* focused=context->GetFocusElement();
     const std::string focus_id=!viewer_focus.empty()?viewer_focus:settings_doc && focused && focused->GetOwnerDocument()==settings_doc?focused->GetId():std::string();
     // The open list keeps its scroll through the rebuild a choice makes.
@@ -3590,20 +3610,7 @@ void settings_sync() {
     if(library_open) {
         const auto stamp="library"+std::to_string(library_tab)+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
         if(settings_doc && stamp==settings_stamp) {
-            // Pictures that arrived since the details were made (library_art): the details again,
-            // where they were scrolled to.
-            // Pictures that arrived since (library_art): only their places are filled.
-            if(library_pictures!=pictures::serial) {
-                library_pictures=pictures::serial;
-                Rml::ElementList pending;if(library_detail_doc)library_detail_doc->QuerySelectorAll(pending,".lib-pending");
-                for(auto* place:pending) {
-                    const auto key=place->GetAttribute<Rml::String>("data-key","");
-                    const auto found=images.find(key);
-                    if(found==images.end())continue;
-                    place->SetClass("lib-pending",false);
-                    place->SetInnerRML("<img src='"+escape(found->second)+"' style='width:100%; height:100%;'/>");
-                }
-            }
+            if(library_pictures!=pictures::serial){library_pictures=pictures::serial;fill_pending(library_detail_doc);}
             settings_doc->PullToFront();
             if(library_detail_doc)library_detail_doc->PullToFront();
             return;

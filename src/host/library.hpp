@@ -16,4 +16,8 @@ namespace srw64::library {
 // "model") in the order of the original's unreachable character / robot lists, and a
 // name that still repeats within a work is numbered "(2)", "(3)" in that order.
 const nlohmann::json& contents();
+// Window thread, every frame: once the game is up, builds what contents() will want on a
+// thread of its own, so the first opening of the Library or the Battle Viewer does not
+// (half a second on the Switch, 2026-11-07), and again when the language or the packages change.
+void prepare();
 }

@@ -34,6 +34,7 @@
 #include "startup_failure.hpp"
 #ifdef SRW64_NATIVE_DIALOGUE
 #include "presentation_settings.hpp"
+#include "library.hpp"
 #include "settings_window.hpp"
 #include "debug_server.hpp"
 #include "debug_ui.hpp"
@@ -1812,6 +1813,7 @@ void srw64_update_window(void*) {
     srw64::settings::update();
     srw64::settings::control(window,capture_directory);
     srw64::ui::update();
+    srw64::library::prepare();
     srw64::settings_window::control(capture_directory);
     srw64::debug::service_main();
     // A native page owns the keyboard: no F6/F8 and no Esc-to-quit meanwhile.
