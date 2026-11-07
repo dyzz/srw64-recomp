@@ -3,7 +3,7 @@
 // each picture of the HD pack, <stem>.mwtex holds it premultiplied, with its mip chain, in a
 // GPU-compressed format (BC7; the Switch's driver decodes ASTC on the CPU), zstd-packed. The GL
 // renderer uploads the levels as they are (native_gl.cpp); a quarter of RGBA8's memory, and no
-// JPEG to decode.
+// JPEG to decode. A released pack holds them all in hd/art.pack (tools/release/switch/pack_hd.py).
 #include <cstdint>
 #include <filesystem>
 #include <memory>

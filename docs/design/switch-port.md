@@ -342,6 +342,7 @@ HOME 与截图键归系统，不可用。
 **S3 实际做法（2026-10-24）：** 没换 GL 4.3 和 SPIRV-Cross，也没给 `srw64::gpu` 写 GL 实现。各图层都在现有的 GLES 2 子集上直接接，HLSL 手工改写成 GLSL ES 1.00（片段很短）：
 
 - **准备数据：** Rust 工具 `tools/release/switch/prepare-hd` 把发布 HD 包转成 `.mwtex`（每级用 Intel ISPC 编成 BC7，再整体 zstd）。地图索引用 R8；RT64 包里的地图机体图标和对白框是像素画，存 RGBA8。宿主自绘层是预乘 alpha；RT64 包照 RT64 的读法保持直通 alpha，mip 按 alpha 加权。精灵层另带原图，因为游戏改调色板（受击闪白、金色形态）时要从原图重新着色。头像也带原图，给页面用。
+- **单文件 `hd/art.pack`（2026-11-07）：** `tools/release/switch/pack_hd.py` 把全部 `.mwtex` 合进一个文件，开头是按路径哈希排序的索引，`hd_texture::load` 启动时读一次索引，之后按偏移读取；索引里没有的路径（MOD 文件、没有 `art.pack` 的旧 HD 包）走原来的单个文件。原因是 FAT32 打开文件要逐项查目录：`art/battle-sprites` 有 17337 个文件时，68 字节的图也要 559 ms。实机同一场首次战斗（神高达对魔神 Z）：慢读取 14 次降到 0 次，单次绘制最长 660 ms 降到 104 ms。新 HD 包只有新程序能读，旧程序读不到贴图；新程序能读旧 HD 包。
 - **不用 ASTC：** Switch 上的 Mesa 20.1（nouveau）把 ASTC 列为支持格式，但上传时在 CPU 上解码。实测一张 512×576 带 mip 的图要 70 ms，标题 logo 要 225 ms，战斗开始与结束各卡约 0.75 秒。BC7 由 GPU 直接读取，512² 上传 1.7 ms（2026-10-24 实机测）。BC7 每像素 8 bit，ASTC 6×6 只有 3.6 bit，所以 HD 目录约 1.2 GB，其中地图 578 MB。地图底图不透明，可再改 BC1 省一半。
 - **宿主自绘层：** 头像、场间背景、战术地图（GPU 调色板偏移）、精灵层（标题、剧情图片、机体、额外图、战斗精灵），都经 `native_quads` 交给 `native_gl.cpp`，压缩纹理直接上传。
 - **RT64 贴图替换（`hd_replace.cpp`）：**

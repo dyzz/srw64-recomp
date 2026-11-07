@@ -13,6 +13,7 @@ Marchwind64, Nintendo Switch edition (experimental). English below.
   2. 把 ROM（日版 Rev 0，任意字节序）命名为 rom.z64，放进 /switch/Marchwind64/。
   3. 可选：把 Switch 版 HD 包（Marchwind64-HD-<版本>-switch.zip）也解压到 SD 卡根目录，
      得到 /switch/Marchwind64/hd/。HD 包是单独下载的，桌面版的 HD 包在 Switch 上不能用。
+     更新 HD 包时先删掉旧的 hd 文件夹。
   4. 按住 R 启动任意游戏进入 hbmenu，选 Marchwind64。
 
 第一次启动
@@ -42,7 +43,7 @@ Installing
   2. Name the ROM (Japan, Rev 0, any byte order) rom.z64 and put it in /switch/Marchwind64/.
   3. Optional: extract the Switch HD pack (Marchwind64-HD-<version>-switch.zip) to the SD
      card's root too, giving /switch/Marchwind64/hd/. It is a download of its own: the desktop
-     HD pack does not work on the Switch.
+     HD pack does not work on the Switch. When updating it, delete the old hd folder first.
   4. Hold R while starting any game to open hbmenu, and pick Marchwind64.
 
 The first launch

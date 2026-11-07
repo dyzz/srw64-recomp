@@ -291,12 +291,13 @@ def main() -> int:
         prepared = source / "build/recomp/switch-romfs/hd"
         if json.loads((prepared / "hd.json").read_text()).get("content_sha256") != hd_about["content_sha256"]:
             raise SystemExit(f"{prepared} is not this release's HD pack")
+        steps.run("switch-hd-pack", [sys.executable, "tools/release/switch/pack_hd.py", str(prepared)], source)
         switch_hd = output / f"Marchwind64-HD-{hd['version']}-switch.zip"
         with zipfile.ZipFile(switch_hd, "w") as archive:
             for path in sorted(prepared.rglob("*")):
                 if path.is_file():   # the pictures are zstd frames already: stored, the manifests deflated
                     archive.write(path, "switch/Marchwind64/hd/" + path.relative_to(prepared).as_posix(),
-                                  zipfile.ZIP_STORED if path.suffix == ".mwtex" else zipfile.ZIP_DEFLATED)
+                                  zipfile.ZIP_STORED if path.suffix == ".pack" else zipfile.ZIP_DEFLATED)
     if switch_hd:
         hd["switch"] = {"name": switch_hd.name, "bytes": switch_hd.stat().st_size, "sha256": sha256(switch_hd),
                         "url": f"https://github.com/{REPO}/releases/download/{hd.get('tag', 'hd-' + hd['version'])}/{switch_hd.name}"}
