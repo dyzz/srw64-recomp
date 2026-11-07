@@ -10,7 +10,7 @@ export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const c = INSTALL[tl(lang)];
 // The small line of a download button: the HD packs have versions of their own.
-const LAUNCHER = ['windows', 'macos', 'linux'];  // the cards with RecompLauncher's badge
+const LAUNCHER = ['windows', 'macos', 'linux'];  // the cards and sections with RecompLauncher's badge
 const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version ? `HD ${hd.version} · ` : '';
 ---
 <Base lang={lang} title={c.title}>
@@ -68,9 +68,16 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
                     <h3>{step.title}</h3>
                     {f ? (
                       <div class="dl">
+                        <div class="dl-row">
                         <a class:list={['btn', { ghost: step.secondary }]} href={f.url} data-umami-event="download" data-umami-event-platform={step.file} data-umami-event-language={lang} data-umami-event-source={s.id}>
                           <span>{f.name}<small>{hdLabel(step.file!)}{mb(f.bytes)}</small></span>
                         </a>
+                        {i === 0 && LAUNCHER.includes(s.id) && (
+                          <a class="rl-step" href="https://recomplauncher.com/game/srw64-recomp" data-umami-event="recomplauncher" data-umami-event-platform={s.id} data-umami-event-source="steps">
+                            <img src="/brand/recomplauncher-badge.svg" alt="Get it on RecompLauncher" width="190" height="34" loading="lazy" />
+                          </a>
+                        )}
+                        </div>
                         {!step.secondary && <Mirrors lang={lang} compact />}
                       </div>
                     ) : step.file && !step.secondary && <p class="nofile">{published ? c.noFile : c.notReleased}</p>}
@@ -168,6 +175,10 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
   .steps :global(strong) { color: var(--gold); }
   .dl { display: grid; justify-items: start; margin: 10px 0 8px; }
   .dl .btn { overflow-wrap: anywhere; }
+  .dl-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+  .rl-step { display: block; line-height: 0; }
+  .rl-step:hover { opacity: .85; }
+  .rl-step img { display: block; width: 190px; height: auto; }
   .nofile { margin-top: 8px; padding: 6px 14px; font-size: 14px; color: var(--orange); border: 1px dashed rgba(255, 181, 71, 0.5); }
 
   .facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 20px; max-width: 860px; margin: 20px 0 0; font-size: 15px; }
