@@ -22,6 +22,6 @@
     { "label": "Website", "url": "https://srw64.dreamquest.club/en/" },
     { "label": "Source", "url": "https://github.com/dyzz/srw64-recomp" }
   ],
-  "tags": ["translation", "widescreen", "hd-pack"],
-  "notes": "Full English and Chinese translations alongside the original Japanese, switchable in game. Widescreen 4:3 to 16:9 without stretching. Modern dialogue reader (history, auto-play, fast-forward, skip), redesigned pre-battle screen, stoppable battle animations, 2x speed, extra save slots and autosaves, remappable controls, RetroArch filters and bezels, a Library and a Battle Viewer. Original bug fixes with individual toggles. Optional HD art pack for portraits, battles, backgrounds, maps and icons."
+  "tags": ["translation", "widescreen", "hd-pack", "mods"],
+  "notes": "Full Simplified Chinese, Traditional Chinese, English and Korean translations alongside the original Japanese, switchable in game. Widescreen 4:3 to 16:9 without stretching. Modern dialogue reader (history, auto-play, fast-forward, skip), redesigned pre-battle screen, stoppable battle animations, 2x to 4x speed, extra save slots and autosaves, remappable controls, RetroArch filters and bezels, a Library and a Battle Viewer. Mod packages for music, numbers, names, icons, story events, campaigns and languages, with web-based makers. Original bug fixes with individual toggles. Optional HD art pack for portraits, battles, backgrounds, maps and icons."
 }
