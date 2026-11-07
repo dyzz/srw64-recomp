@@ -1337,12 +1337,17 @@ void run() {
 #ifdef __SWITCH__
     srw64_switch_background_thread();
 #endif
+    // The last file read: a scene's picture is asked for in two sizes at once, and decoding it
+    // takes half a second on the Switch.
+    std::string read_path;
+    std::optional<decltype(presentation::load_rgba(std::string{}))> read;
     for(;;) {
         Job job;
         {std::unique_lock lock(mutex);wake.wait(lock,[]{return stopping || !jobs.empty();});if(stopping)return;job=std::move(jobs.front());jobs.pop_front();}
         Done d{job.key,job.path};
         try {
-            const auto file=presentation::load_rgba(job.path);
+            if(!read || job.path!=read_path){read.reset();read=presentation::load_rgba(job.path);read_path=job.path;}
+            const auto& file=*read;
             if(job.width>0 && job.width<file.width){int oh=0;d.rgba=resample(file,job.width,oh);d.width=uint32_t(job.width);d.height=uint32_t(oh);}
             else {d.rgba.assign(file.pixels.begin(),file.pixels.end());d.width=uint32_t(file.width);d.height=uint32_t(file.height);d.full=job.width<=0;if(d.full)d.bounds=opaque_bounds(file);}
             d.ok=true;
@@ -1352,11 +1357,20 @@ void run() {
         std::lock_guard lock(mutex);done.push_back(std::move(d));
     }
 }
-void ask(const std::string& key,const std::string& path,int width) {
-    if(!asked.insert(key).second)return;
+// `first`: what the page is showing now, ahead of what a list asked for, even if it was
+// asked for already. A scene's picture waited ten seconds behind the scene list's on the Switch.
+void ask(const std::string& key,const std::string& path,int width,bool first=false) {
+    const bool fresh=asked.insert(key).second;
+    if(!fresh && !first)return;
     std::lock_guard lock(mutex);
     if(!worker.joinable()){stopping=false;worker=std::thread(run);}
-    jobs.push_back({key,path,width});wake.notify_one();
+    if(!fresh) {
+        const auto queued=std::find_if(jobs.begin(),jobs.end(),[&](const Job& j){return j.key==key;});
+        if(queued==jobs.end())return;   // read already, or being read
+        jobs.erase(queued);
+    }
+    if(first)jobs.push_front({key,path,width});else jobs.push_back({key,path,width});
+    wake.notify_one();
 }
 void stop() {
     {std::lock_guard lock(mutex);stopping=true;jobs.clear();done.clear();}
@@ -1367,14 +1381,14 @@ void stop() {
 }
 // "" until the picture has arrived (above). A full file when width is 0. A page asking for
 // one that was not read ahead says so once in the log (SRW64_UI_PICTURE_LATE).
-std::string image_async(const std::string& path,int width=0,bool ahead=false) {
+std::string image_async(const std::string& path,int width=0,bool ahead=false,bool first=false) {
     if(path.empty())return {};
     if(pictures::at_once)return width>0?image(path,width):image(path);
     const auto key=width>0?path+"@"+std::to_string(width):path;
     if(auto found=images.find(key);found!=images.end())return found->second;
     static std::set<std::string> late;
     if(!ahead && late.insert(key).second)fprintf(stderr,"SRW64_UI_PICTURE_LATE %s\n",key.c_str());
-    pictures::ask(key,path,width);
+    pictures::ask(key,path,width,first);
     return {};
 }
 // An <img> of a picture image_async() gave, or while it is still being read an empty box
@@ -3098,13 +3112,13 @@ const char* viewer_cat_keys[]={"viewer_cat_all","viewer_cat_ground","viewer_cat_
 // A scene's thumbnail from the HD pack, w dp wide (16:9), empty without one. The
 // thumbnails are 480-pixel JPEGs: always through the resampler, which decodes them (RmlUi's
 // own loader does not).
-std::string viewer_scene_img(unsigned i,float w,const std::string& style=std::string()) {
+std::string viewer_scene_img(unsigned i,float w,const std::string& style=std::string(),bool first=true) {
     const auto path=srw64::sprites::viewer_scene_image(viewer_scene_key(i));
     if(path.empty())return {};
     // On the picture thread (the page's stamp brings it in): read here, the two on the page held
     // the first opening up for a second on the Switch.
     const int px=std::min(dp_pixels(w),479);
-    const auto src=image_async(path,px,true);
+    const auto src=image_async(path,px,true,first);
     const auto size="width:"+std::to_string(w)+"dp; height:"+std::to_string(w*9/16)+"dp;"+style;
     if(src.empty())return "<div class='lib-pending' data-key='"+escape(path+"@"+std::to_string(px))+"' style='"+size+"'></div>";
     return "<img src='"+escape(src)+"' style='"+size+"'/>";
@@ -3328,7 +3342,7 @@ std::string viewer_popup() {
         const unsigned count=unsigned(battle_viewer::scenes().size());
         for(unsigned i=0;i<count;++i) {
             if(viewer_cat && viewer_scene_cat(i)!=viewer_cat-1)continue;
-            const auto thumb=viewer_scene_img(i,62);
+            const auto thumb=viewer_scene_img(i,62,{},false);
             list+=viewer_li(int(i)," scene",thumb.empty()?"<span class='ph'>"+viewer_initial(viewer_scene_name(i))+"</span>":thumb,viewer_scene_name(i),label(viewer_cat_keys[1+viewer_scene_cat(i)]),
                 i==viewer_saved.scene[s]?label("viewer_badge_now"):std::string(),i==viewer_scene[s]);
         }
