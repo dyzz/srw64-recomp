@@ -127,6 +127,10 @@ UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_pr
             "settings_about_korean_title", "settings_about_korean"}
 # The Controls page's remapping (frontend.cpp controls_page).
 UI_KEYS |= {"controls_cancel", "controls_capture", "controls_capture_note", "controls_controller", "controls_detected", "controls_fixed", "controls_fixed_list", "controls_keyboard", "controls_keyboard_note", "controls_list_note", "controls_no_pad", "controls_reserved", "controls_reset"}
+# The touch layout screen (frontend.cpp touch_edit_bar).
+UI_KEYS |= {"settings_touch_layout", "settings_touch_layout_note", "settings_touch_layout_open", "touch_edit_hint", "touch_edit_save", "touch_edit_cancel", "touch_edit_reset",
+            "touch_edit_ask_save", "touch_edit_ask_cancel", "touch_edit_ask_reset", "touch_edit_yes", "touch_edit_no", "touch_edit_all", "touch_edit_dpad",
+            "touch_edit_grid", "touch_edit_fold", "touch_edit_unfold"}
 UI_KEYS |= {"settings_touch_opacity", "settings_touch_opacity_note", "settings_touch_opacity_hidden", "settings_save_export_note_android", "settings_save_export_choose",
             "settings_save_export_saved", "settings_save_export_cancelled", "settings_save_export_failed"}
 # The MOD page on Android and the Switch (frontend.cpp mod_installed_page): the inbox folder, the file picker, the SD card folder.

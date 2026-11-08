@@ -80,6 +80,7 @@ std::mutex look_mutex;   // bezel and filter, read by the render thread
 std::string bezel_path,filter_path;
 std::atomic<unsigned> filter_lines{1};
 std::atomic<unsigned> touch_alpha{100};
+touch_pad::Customs touch_placed;   // under look_mutex
 std::atomic<unsigned> dialogue_size{13};
 std::atomic_bool dialogue_size_changed{};
 void persist(const std::filesystem::path& path,const std::string& locale) {
@@ -97,6 +98,16 @@ void persist(const std::filesystem::path& path,const std::string& locale) {
     if(!cheat_ids.empty())saved["cheats"]=cheat_ids;
     {
         std::lock_guard lock(look_mutex);
+        auto placed=nlohmann::json::object();
+        for(size_t i=0;i<touch_pad::control_count;++i) {
+            const auto& control=touch_placed[i];
+            if(control==touch_pad::Custom{})continue;
+            auto entry=nlohmann::json::object();
+            if(control.moved){entry["x"]=control.x;entry["y"]=control.y;}
+            if(control.scale!=100)entry["scale"]=control.scale;
+            placed[std::string(touch_pad::control_ids[i])]=entry;
+        }
+        if(!placed.empty())saved["touch_layout"]=placed;
         if(!bezel_path.empty())saved["bezel"]=bezel_path;
         if(!filter_path.empty())saved["filter"]=filter_path;
     }
@@ -234,6 +245,8 @@ void save_now() {
 }
 unsigned touch_opacity(){return touch_alpha.load();}
 void set_touch_opacity(unsigned percent){touch_alpha=std::clamp(percent,0u,100u);save_now();}
+touch_pad::Customs touch_customs(){std::lock_guard lock(look_mutex);return touch_placed;}
+void set_touch_customs(const touch_pad::Customs& customs){{std::lock_guard lock(look_mutex);touch_placed=customs;}save_now();}
 unsigned dialogue_font_size(){return dialogue_size.load();}
 void set_dialogue_font_size(unsigned size,bool remember) {
     if(dialogue_size.exchange(std::clamp(size,10u,18u))!=std::clamp(size,10u,18u) && remember)
@@ -410,6 +423,19 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
             touch_alpha=std::clamp(saved["touch_opacity"].get<unsigned>(),0u,100u);
         if(saved.is_object()) {
             std::lock_guard lock(look_mutex);
+            // By control, so a control a later version adds keeps its default place.
+            if(saved.contains("touch_layout") && saved["touch_layout"].is_object())
+                for(size_t i=0;i<touch_pad::control_count;++i) {
+                    const auto entry=saved["touch_layout"].find(std::string(touch_pad::control_ids[i]));
+                    if(entry==saved["touch_layout"].end() || !entry->is_object())continue;
+                    auto& control=touch_placed[i];
+                    if(entry->contains("x") && entry->contains("y") && (*entry)["x"].is_number() && (*entry)["y"].is_number()) {
+                        control.moved=true;
+                        control.x=std::clamp((*entry)["x"].get<float>(),0.f,1.f);control.y=std::clamp((*entry)["y"].get<float>(),0.f,1.f);
+                    }
+                    if(entry->contains("scale") && (*entry)["scale"].is_number_unsigned())
+                        control.scale=std::clamp((*entry)["scale"].get<unsigned>(),touch_pad::min_scale,touch_pad::max_scale);
+                }
             if(saved.contains("bezel") && saved["bezel"].is_string())bezel_path=saved["bezel"].get<std::string>();
             if(saved.contains("filter") && saved["filter"].is_string())filter_path=saved["filter"].get<std::string>();
             if(saved.contains("filter_scale") && saved["filter_scale"].is_number_unsigned())filter_lines=std::min(saved["filter_scale"].get<unsigned>(),4u);

@@ -492,6 +492,23 @@ button.lk-go {background-color: #ffd75e; color: #0b1421; border-color: #ffd75e;}
 #touch-opacity sliderbar:hover, #touch-opacity sliderbar:active {background-color:#ffd75e;}
 #touch-opacity sliderarrowdec, #touch-opacity sliderarrowinc {display:none;}
 #touch-opacity-value {width:48dp; margin-right:8dp; line-height:36dp; text-align:right;}
+/* The touch layout screen (touch_edit_sync): sized in em from millimetres, as the controls are. */
+.tl-bar {position:absolute; box-sizing:border-box; padding:.55em .7em; text-align:center; color:#e8eefc; background-color:#0b1230f0; border:.12em #3fd0ff; pointer-events:auto;}
+.tl-bar p {margin:0 0 .5em; height:1.3em; line-height:1.3em; font-size:.9em; white-space:nowrap; color:#c5cde6;}
+.tl-bar .tl-ask {height:2.4em; line-height:2.4em; font-size:1.15em; font-weight:bold; color:#ffffff;}
+.tl-main {display:flex;} .tl-tools {display:flex; align-items:center; margin-top:.55em; height:2.8em;}
+.tl-main button {flex:1 1 0; min-width:0; box-sizing:border-box; margin:0 .25em; padding:0; height:3.1em; line-height:3.1em; font-size:1.2em; font-weight:bold; text-align:center; white-space:nowrap; color:#0b1230; background-color:#ffffff; border:0; border-radius:.3em;}
+.tl-main button:hover,.tl-main button:focus {background-color:#ffffff;} .tl-main button:active {background-color:#ffd75e;}
+.tl-tools button {flex-shrink:0; box-sizing:border-box; margin:0 0 0 .4em; padding:0 .6em; height:2.8em; line-height:2.6em; font-size:1em; white-space:nowrap; color:#e8eefc; background-color:#152436; border:.1em #3fd0ff80; border-radius:.25em;}
+.tl-tools button.on {color:#0b1230; background-color:#3fd0ff;}
+.tl-tools button.tl-unfold {flex:1 1 0; margin:0; padding:0; text-align:center;}
+.tl-name {flex-shrink:0; width:8em; line-height:2.8em; font-weight:bold; white-space:nowrap; overflow:hidden; text-align:left; color:#ffd75e;}
+#touch-edit-size {flex:1 1 0; min-width:0; height:2.8em; margin:0 .3em;}
+#touch-edit-size slidertrack {height:.4em; margin-top:1.2em; background-color:#506d81; border-radius:.2em;}
+#touch-edit-size sliderbar {width:1.9em; height:2.8em; background-color:#3fd0ff; border-radius:.6em;}
+#touch-edit-size sliderbar:hover, #touch-edit-size sliderbar:active {background-color:#ffd75e;}
+#touch-edit-size sliderarrowdec, #touch-edit-size sliderarrowinc {display:none;}
+#touch-edit-size-value {flex-shrink:0; width:3em; line-height:2.8em; text-align:right;}
 .set-seg button.on {color:#0b1230; background-color:#3fd0ff;}
 .set-seg button:focus {color:#0b1230; background-color:#ffd75e;}
 .set-actions {display:flex; flex-wrap:wrap; gap:8dp; margin-top:8dp;}
@@ -959,6 +976,8 @@ void document_close(Rml::ElementDocument*& doc) {
 }
 bool held();
 void choose(const std::string& id);
+void touch_edit_size(unsigned percent,Rml::Element* slider);
+bool touch_edit_on();
 // The next game speed (game_speed.hpp): the Speed button, the phone's speed button step
 // 1x, 2x (3x, 4x with the 120 Hz scheduler) and back to 1x. A small tag in the top left
 // says which for a moment (speed_sync; user: the banner was too big).
@@ -980,6 +999,8 @@ struct Actions : Rml::EventListener {
                     if(auto* warn=doc->GetElementById("touch-opacity-hidden"))warn->SetProperty("display",value==0?"block":"none");
                 }
             }
+            if(event.GetTargetElement()->GetId()=="touch-edit-size")
+                touch_edit_size(unsigned(std::lround(event.GetParameter<float>("value",100))),event.GetTargetElement());
             return;
         }
         for(auto* el=event.GetTargetElement();el;el=el->GetParentNode())
@@ -1487,6 +1508,7 @@ std::string controls_page() {
             // At 0% the controls still work but nothing shows where they are.
             "<p id='touch-opacity-hidden' class='set-warn' style='display:"+std::string(settings::touch_opacity()==0?"block":"none")+";'>"+
                 label("settings_touch_opacity_hidden")+"</p>","settings_touch_opacity_note");
+        body+=settings_row("settings_touch_layout",button("touch-layout-open",label("settings_touch_layout_open")));
     }
     const auto pad_name=srw64_pad_name();
     auto found=pad_name.empty()?label("controls_no_pad"):label("controls_detected");
@@ -3604,6 +3626,8 @@ void settings_sync() {
     if(!settings_open)hd_import_confirm=false;
 #endif
     if(!settings_open){update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;quit_ask_open=false;mod_open=false;library_open=false;stage_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
+    // The touch layout screen takes the settings' place, and they come back behind it.
+    if(touch_edit_on()){document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
 #ifdef __ANDROID__
     mod_pick_poll();   // before the MOD page's early return below, which keeps an unchanged page as it is
 #endif
@@ -5569,7 +5593,9 @@ void battle_sync() {
 
 }
 
+void touch_edit_choose(const std::string& id);
 void choose(const std::string& id) {
+    if(id=="touch-layout-open" || id.starts_with("touch-edit-")){touch_edit_choose(id);return;}
     if(id=="mini-enter"){mini_stage::hotkey();return;}
     if(id=="speed-toggle"){toggle_speed();return;}
     if(id=="screenshot"){srw64_request_screenshot();return;}
@@ -6144,10 +6170,13 @@ void touch_hints(bool touching) {
         set_pad_mode(true);
     } else if(touch_family){input::pad_family=touch_saved_family;touch_family=false;}
 }
+// The layout screen (docs/design/touch-controls.md §8): its working copy while it is open.
+std::optional<touch_pad::Editor> touch_editor;
+bool touch_edit_on(){return touch_editor.has_value();}
 touch_pad::Layout touch_layout() {
     float ddpi=0;
     const float mm=SDL_GetDisplayDPI(0,&ddpi,nullptr,nullptr)==0 && ddpi>0?ddpi/25.4f:pixel_ratio*96/25.4f;
-    return touch_pad::layout(float(pixels_w),float(pixels_h),mm);
+    return touch_pad::layout(float(pixels_w),float(pixels_h),mm,touch_editor?touch_editor->customs():settings::touch_customs());
 }
 // The scene: our all-touch windows, our pages, or the game's own; with fixed buttons
 // (touch_pad::by_scene off) its fixed counterpart.
@@ -6174,9 +6203,50 @@ bool touch_owns_point(float x,float y) {
     const auto layout=touch_layout();const auto& scene=touch_controls;
     return touch_pad::hit(layout,scene,x,y) || touch_pad::in_stick_area(layout,scene,x,y) || scene.tap_primary;
 }
+// Through sdl2-compat the back key has no scancode and SDL3's keycode (0x4000011A, SDL2's
+// SDLK_AC_BACK is 0x4000010E).
+bool touch_back_key(const SDL_Event& event) {
+    return event.key.keysym.scancode==SDL_SCANCODE_AC_BACK || event.key.keysym.sym==SDLK_AC_BACK || event.key.keysym.sym==SDL_Keycode(0x4000011A);
+}
+Rml::ElementDocument* touch_bar_doc{};
+std::string touch_bar_stamp,touch_edit_ask;   // the question up: "save", "cancel", "reset" or none
+bool touch_edit_folded=false,touch_edit_pressed=false;
+unsigned touch_bar_serial=0;
+void touch_edit_back(){touch_edit_ask=touch_edit_ask.empty()?"cancel":"";++touch_bar_serial;}
+// The pointer SDL makes from the first finger moves the controls, as a mouse does on a
+// desktop with SRW64_TOUCH_PAD=1. What lands on the bar is the bar's.
+bool touch_edit_event(const SDL_Event& event) {
+    switch(event.type) {
+    case SDL_FINGERDOWN: case SDL_FINGERMOTION: case SDL_FINGERUP:
+        return true;
+    case SDL_MOUSEBUTTONDOWN: {
+        const int x=int(event.button.x*pixel_ratio),y=int(event.button.y*pixel_ratio);
+        const auto* over=context->GetElementAtPoint({float(x),float(y)});
+        if(touch_bar_doc && over && over!=touch_bar_doc && over->GetOwnerDocument()==touch_bar_doc)return false;
+        if(event.button.button==SDL_BUTTON_LEFT && touch_edit_ask.empty()){touch_editor->press(touch_layout(),float(x),float(y));touch_edit_pressed=true;}
+        return true;
+    }
+    case SDL_MOUSEMOTION:
+        if(!touch_edit_pressed)return false;
+        touch_editor->move(touch_layout(),event.motion.x*pixel_ratio,event.motion.y*pixel_ratio);
+        return true;
+    case SDL_MOUSEBUTTONUP:
+        if(!touch_edit_pressed)return false;
+        touch_edit_pressed=false;touch_editor->release();
+        return true;
+    case SDL_KEYDOWN:
+        if(!event.key.repeat && (touch_back_key(event) || event.key.keysym.sym==SDLK_ESCAPE))touch_edit_back();
+        return true;
+    case SDL_KEYUP:
+        return true;
+    default:
+        return false;
+    }
+}
 // The controls' events; true when they took them.
 bool touch_event(const SDL_Event& event) {
     if(!touch_supported())return false;
+    if(touch_editor)return touch_edit_event(event);
     switch(event.type) {
     case SDL_FINGERDOWN: {
         touch_shown=true;touch_hints(true);
@@ -6215,9 +6285,7 @@ bool touch_event(const SDL_Event& event) {
         if(event.button.which!=SDL_TOUCH_MOUSEID || !touch_mouse_eaten)return false;
         touch_mouse_eaten=false;return true;
     case SDL_KEYDOWN: case SDL_KEYUP:
-        // Through sdl2-compat the back key has no scancode and SDL3's keycode (0x4000011A,
-        // SDL2's SDLK_AC_BACK is 0x4000010E).
-        if(event.key.keysym.scancode==SDL_SCANCODE_AC_BACK || event.key.keysym.sym==SDLK_AC_BACK || event.key.keysym.sym==SDL_Keycode(0x4000011A)) {
+        if(touch_back_key(event)) {
             if(event.type==SDL_KEYDOWN && !event.key.repeat)touch_back_at=SDL_GetTicks64();
             if(event.type==SDL_KEYUP && touch_back)touch_keep(touch_pad::bits::B,touch_back_at);
             touch_back=event.type==SDL_KEYDOWN;touch_publish();return true;
@@ -6242,7 +6310,155 @@ float touch_label_size(const std::string& text,float room,float largest) {
     widest=std::max(widest,ems);
     return std::min(largest,widest>0?room/widest:largest);
 }
+std::string touch_px(float v){return std::to_string(int(std::lround(v)))+"px";}
+// Physical sizes: pixels, whatever the interface size.
+std::string touch_face(bool down,float mm) {
+    char fill[16];std::snprintf(fill,sizeof fill,"#ffffff%02x",int((down?.44f:.18f)*255));
+    return std::string("background-color:")+fill+";box-sizing:border-box;border-width:"+touch_px(.35f*mm)+";border-color:#ffffff99;color:#ffffffe0;text-align:center;font-weight:bold;";
+}
+// The fixed D-pad (user, 2026-10-09); `more` is style for the layout screen.
+std::string touch_dpad_rml(const touch_pad::Layout& layout,uint32_t held,const std::string& more={}) {
+    const float cell=layout.dpad_cell,mm=layout.mm;
+    const struct {uint32_t bit;float dx,dy;int turn;} arrows[]={{touch_pad::bits::Up,0,-1,0},{touch_pad::bits::Down,0,1,180},
+        {touch_pad::bits::Left,-1,0,270},{touch_pad::bits::Right,1,0,90},{0,0,0,0}};
+    std::string body;
+    for(const auto& a:arrows) {
+        const float x=layout.rest_x+(a.dx-.5f)*cell,y=layout.rest_y+(a.dy-.5f)*cell;
+        body+="<div style='position:absolute;left:"+touch_px(x)+";top:"+touch_px(y)+";width:"+touch_px(cell)+";height:"+touch_px(cell)+";border-radius:"+touch_px(mm)+";"+
+            touch_face(a.bit && (held&a.bit),mm)+"font-size:"+touch_px(cell*.4f)+";line-height:"+touch_px(cell-.7f*mm)+";"+more+"'>";
+        if(a.bit)body+="<div style='transform:rotate("+std::to_string(a.turn)+"deg);'>&#x25B2;</div>";
+        body+="</div>";
+    }
+    return body;
+}
+std::string touch_slot_text(const touch_pad::Action& action) {
+    // The speed button names the speed now (1×, 2×, ...).
+    std::string text=action.command=="speed-toggle"?std::to_string(settings::game_speed_level())+"×":label(std::string(action.label));
+    if(action.command=="battle-animation")text+=" "+label(battle_request.value("animation",true)?"battle_on":"battle_off");
+    return text;
+}
+std::string touch_slot_rml(const touch_pad::Layout& layout,const touch_pad::Scene& scene,size_t i,bool down,const std::string& more={},const std::string& also={}) {
+    const auto& action=scene.slots[i];
+    const auto& place=layout.slots[i];
+    const float mm=layout.mm,w=place.round?2*place.r:place.w,h=place.round?2*place.r:place.h;
+    const auto text=touch_slot_text(action)+(also.empty()?"":"\n"+also);
+    const float size=touch_label_size(text,w*(place.round?.76f:.86f),(place.round?(i==size_t(touch_pad::Slot::Primary)?3.8f:2.8f)*mm*place.scale:std::min(2.4f*mm*place.scale,h*.5f)));
+    const auto lines=1+std::count(text.begin(),text.end(),'\n');
+    std::string caption=escape(text);
+    if(lines>1) {
+        for(size_t at=0;(at=caption.find('\n',at))!=std::string::npos;at+=5)caption.replace(at,1,"<br/>");
+        caption="<div style='padding-top:"+touch_px((h-lines*size*1.15f)/2)+";line-height:"+touch_px(size*1.15f)+";'>"+caption+"</div>";
+    }
+    return "<div style='position:absolute;left:"+touch_px(place.x-w/2)+";top:"+touch_px(place.y-h/2)+";width:"+touch_px(w)+";height:"+touch_px(h)+";border-radius:"+touch_px(h/2)+";"+
+           touch_face(down,mm)+(action.command=="battle-confirm"?"background-color:#1fb85ac0;":"")+
+           // The speed button is amber while above 1x.
+           (action.command=="speed-toggle" && settings::game_speed_double()?"background-color:#d89a1ec0;":"")+"font-size:"+touch_px(size)+";line-height:"+touch_px(h-.7f*mm)+";white-space:nowrap;"+more+"'>"+caption+"</div>";
+}
+void touch_edit_size(unsigned percent,Rml::Element* slider) {
+    // The slider also says its value when it is built: that changes nothing.
+    if(!touch_editor || touch_editor->scale()==percent)return;
+    touch_editor->set_scale(percent);
+    if(auto* value=slider->GetOwnerDocument()->GetElementById("touch-edit-size-value"))value->SetInnerRML(std::to_string(touch_editor->scale())+"%");
+}
+void touch_edit_close(bool keep) {
+    if(keep)settings::set_touch_customs(touch_editor->customs());
+    touch_editor.reset();touch_edit_ask.clear();touch_edit_folded=touch_edit_pressed=false;
+    settings_focus="touch-layout-open";settings_release.hold();input.clear();
+}
+void touch_edit_choose(const std::string& id) {
+    if(id=="touch-layout-open"){touch_editor.emplace(settings::touch_customs());touch_edit_ask.clear();touch_edit_folded=touch_edit_pressed=false;input.clear();return;}
+    if(!touch_editor)return;
+    ++touch_bar_serial;
+    if(id=="touch-edit-save")touch_edit_ask="save";
+    else if(id=="touch-edit-cancel")touch_edit_ask="cancel";
+    else if(id=="touch-edit-reset")touch_edit_ask="reset";
+    else if(id=="touch-edit-no")touch_edit_ask.clear();
+    else if(id=="touch-edit-yes") {
+        if(touch_edit_ask=="reset"){touch_editor->reset();touch_edit_ask.clear();}
+        else touch_edit_close(touch_edit_ask=="save");
+    }
+    else if(id=="touch-edit-grid")touch_editor->grid=!touch_editor->grid;
+    else if(id=="touch-edit-fold")touch_edit_folded=!touch_edit_folded;
+}
+// The name of what the size slider changes.
+std::string touch_edit_name() {
+    const auto chosen=touch_editor->selected();
+    if(!chosen)return label("touch_edit_all");
+    if(*chosen==touch_pad::dpad_control)return label("touch_edit_dpad");
+    const auto also=touch_pad::dialogue_label(*chosen);
+    return touch_slot_text(touch_pad::edit_scene().slots[*chosen])+(also.empty()?"":" / "+label(std::string(also)));
+}
+// The bar in the middle of the screen: save, cancel and defaults, white so they cannot be
+// missed, each asked again first (a player, 2026-11-07), and the chosen control's size. It
+// gets out of the way while a control is dragged, or folded up, for a control left under it.
+void touch_edit_bar(const touch_pad::Layout& layout) {
+    const auto& edit=*touch_editor;
+    const auto chosen=edit.selected();
+    const float mm=layout.mm;
+    const std::string stamp=frame_stamp()+"/"+std::to_string(touch_bar_serial)+"/"+touch_edit_ask+"/"+std::to_string(edit.dragging())+"/"+std::to_string(touch_edit_folded)+"/"+
+        std::to_string(chosen?int(*chosen):-1)+"/"+std::to_string(edit.grid)+"/"+localization::catalog().locale+"/"+std::to_string(mm);
+    if(stamp==touch_bar_stamp){if(touch_bar_doc)touch_bar_doc->PullToFront();return;}
+    touch_bar_stamp=stamp;document_close(touch_bar_doc);
+    if(edit.dragging())return;
+    const float em=2.7f*mm;
+    const auto box=[&](float w,float h){
+        return "style='font-size:"+touch_px(em)+";left:"+touch_px((layout.width-w)/2)+";top:"+touch_px((layout.height-h)/2)+";width:"+touch_px(w)+";height:"+touch_px(h)+";'";
+    };
+    const float wide=std::min(layout.width-4*mm,31*em);
+    std::string body;
+    if(!touch_edit_ask.empty()) {
+        body="<div class='tl-bar' "+box(std::min(wide,24*em),8.5f*em)+"><p class='tl-ask'>"+label("touch_edit_ask_"+touch_edit_ask)+"</p><div class='tl-main'>"+
+            button("touch-edit-yes",label("touch_edit_yes"))+button("touch-edit-no",label("touch_edit_no"))+"</div></div>";
+    } else if(touch_edit_folded) {
+        body="<div class='tl-bar' style='font-size:"+touch_px(em)+";left:"+touch_px((layout.width-9*em)/2)+";top:0;width:"+touch_px(9*em)+";height:"+touch_px(4*em)+";'><div class='tl-tools' style='margin-top:0;'>"+
+            button("touch-edit-fold",label("touch_edit_unfold"),false,false,"tl-unfold")+"</div></div>";
+    } else {
+        const std::string percent=std::to_string(edit.scale());
+        body="<div class='tl-bar' "+box(wide,9.8f*em)+"><p>"+label("touch_edit_hint")+"</p><div class='tl-main'>"+
+            button("touch-edit-save",label("touch_edit_save"))+button("touch-edit-cancel",label("touch_edit_cancel"))+button("touch-edit-reset",label("touch_edit_reset"))+
+            "</div><div class='tl-tools'><div class='tl-name fit'>"+escape(touch_edit_name())+"</div>"
+            "<input id='touch-edit-size' type='range' min='"+std::to_string(touch_pad::min_scale)+"' max='"+std::to_string(touch_pad::max_scale)+"' step='"+std::to_string(touch_pad::scale_step)+"' value='"+percent+"'/>"
+            "<span id='touch-edit-size-value'>"+percent+"%</span>"+
+            button("touch-edit-grid",label("touch_edit_grid"),edit.grid)+button("touch-edit-fold",label("touch_edit_fold"))+"</div></div>";
+    }
+    touch_bar_doc=document(body,false,true);
+    touch_bar_doc->PullToFront();
+}
+// Every control at once, on a dim screen, whatever the scene.
+void touch_edit_sync() {
+    const auto& edit=*touch_editor;
+    const auto layout=touch_layout();
+    const auto scene=touch_pad::edit_scene();
+    const auto chosen=edit.selected();
+    const float mm=layout.mm;
+    std::string stamp=frame_stamp()+"/"+std::to_string(mm)+"/"+localization::catalog().locale+"/"+std::to_string(chosen?int(*chosen):-1)+"/"+std::to_string(edit.grid)+"/"+std::to_string(settings::game_speed_level());
+    for(const auto& c:edit.customs())stamp+="/"+std::to_string(c.moved)+","+std::to_string(int(c.x*layout.width))+","+std::to_string(int(c.y*layout.height))+","+std::to_string(c.scale);
+    if(stamp!=touch_stamp) {
+        touch_stamp=stamp;document_close(touch_doc);
+        std::string body="<div style='position:absolute;left:0;top:0;width:100%;height:100%;background-color:#070a16a0;'>";
+        if(edit.grid) {
+            const float step=touch_pad::grid_mm*mm;
+            for(float x=step;x<layout.width;x+=step)body+="<div style='position:absolute;left:"+touch_px(x)+";top:0;width:1px;height:100%;background-color:#ffffff24;'></div>";
+            for(float y=step;y<layout.height;y+=step)body+="<div style='position:absolute;left:0;top:"+touch_px(y)+";width:100%;height:1px;background-color:#ffffff24;'></div>";
+        }
+        const auto look=[&](size_t control) {
+            return chosen==control?"border-color:#ffd75e;border-width:"+touch_px(.7f*mm)+";":std::string();
+        };
+        body+=touch_dpad_rml(layout,0,look(touch_pad::dpad_control));
+        for(size_t i=0;i<touch_pad::slot_count;++i) {
+            const auto also=touch_pad::dialogue_label(i);
+            body+=touch_slot_rml(layout,scene,i,false,look(i),also.empty()?std::string():label(std::string(also)));
+        }
+        touch_doc=document(body+"</div>",false,true);
+    }
+    if(touch_doc)touch_doc->PullToFront();
+    touch_edit_bar(layout);
+}
 void touch_sync() {
+    // Something closed the settings under the layout screen: nothing kept.
+    if(touch_editor && !settings_open)touch_editor.reset();
+    if(touch_editor){touch_edit_sync();return;}
+    if(touch_bar_doc || !touch_bar_stamp.empty()){document_close(touch_bar_doc);touch_bar_stamp.clear();touch_stamp.clear();}
     touch_scene_id=touch_scene_now();
     // Off the screen for a screenshot; the fingers keep their state.
     if(touch_active() && shot_clearing()){document_close(touch_doc);touch_stamp.clear();return;}
@@ -6281,7 +6497,6 @@ void touch_sync() {
     const auto& scene=touch_controls;
     const auto* stick=touch_fingers.stick();
     const float mm=layout.mm;
-    const auto px=[](float v){return std::to_string(int(std::lround(v)))+"px";};
     std::string stamp=frame_stamp()+"/"+std::to_string(mm)+"/"+std::to_string(int(touch_scene_id))+"/"+localization::catalog().locale+"/"+
         std::to_string(touch_fingers.buttons())+"/"+std::to_string(settings::touch_opacity())+"/"+std::to_string(touch_controls_revision)+"/"+
         std::to_string(settings::game_speed_level());
@@ -6289,45 +6504,10 @@ void touch_sync() {
     if(stick)stamp+="/"+std::to_string(int(stick->cx))+","+std::to_string(int(stick->cy))+","+std::to_string(int(stick->x/mm))+","+std::to_string(int(stick->y/mm));
     if(stamp==touch_stamp){if(touch_doc)touch_doc->PullToFront();return;}
     touch_stamp=stamp;document_close(touch_doc);
-    // Physical sizes: pixels, whatever the interface size.
-    const auto face=[&](bool down,float alpha){
-        char fill[16];std::snprintf(fill,sizeof fill,"#ffffff%02x",int((down?.44f:.18f)*alpha*255));
-        return std::string("background-color:")+fill+";border-width:"+px(.35f*mm)+";border-color:#ffffff99;color:#ffffffe0;text-align:center;font-weight:bold;";
-    };
     std::string body="<div style='position:absolute;left:0;top:0;width:100%;height:100%;opacity:"+std::to_string(settings::touch_opacity()/100.f)+";'>";
-    // Fixed D-pad only (user, 2026-10-09).
-    if(scene.stick!=touch_pad::Stick::None) {
-        const float cell=layout.dpad_cell;
-        const struct {uint32_t bit;float dx,dy;int turn;} arrows[]={{touch_pad::bits::Up,0,-1,0},{touch_pad::bits::Down,0,1,180},
-            {touch_pad::bits::Left,-1,0,270},{touch_pad::bits::Right,1,0,90},{0,0,0,0}};
-        for(const auto& a:arrows) {
-            const float x=layout.rest_x+(a.dx-.5f)*cell,y=layout.rest_y+(a.dy-.5f)*cell;
-            body+="<div style='position:absolute;left:"+px(x)+";top:"+px(y)+";width:"+px(cell)+";height:"+px(cell)+";border-radius:"+px(mm)+";"+
-                face(a.bit && (touch_fingers.buttons()&a.bit),1)+"font-size:"+px(cell*.4f)+";line-height:"+px(cell)+";'>";
-            if(a.bit)body+="<div style='transform:rotate("+std::to_string(a.turn)+"deg);'>&#x25B2;</div>";
-            body+="</div>";
-        }
-    }
-    for(size_t i=0;i<touch_pad::slot_count;++i) {
-        const auto& action=scene.slots[i];
-        if(!action.filled())continue;
-        const auto& place=layout.slots[i];
-        const float w=place.round?2*place.r:place.w,h=place.round?2*place.r:place.h;
-        // The speed button names the speed now (1×, 2×, ...).
-        std::string text=action.command=="speed-toggle"?std::to_string(settings::game_speed_level())+"×":label(std::string(action.label));
-        if(action.command=="battle-animation")text+=" "+label(battle_request.value("animation",true)?"battle_on":"battle_off");
-        const float size=touch_label_size(text,w*(place.round?.76f:.86f),place.round?(i==size_t(touch_pad::Slot::Primary)?3.8f:2.8f)*mm:std::min(2.4f*mm,h*.5f));
-        const auto lines=1+std::count(text.begin(),text.end(),'\n');
-        std::string caption=escape(text);
-        if(lines>1) {
-            for(size_t at=0;(at=caption.find('\n',at))!=std::string::npos;at+=5)caption.replace(at,1,"<br/>");
-            caption="<div style='padding-top:"+px((h-lines*size*1.15f)/2)+";line-height:"+px(size*1.15f)+";'>"+caption+"</div>";
-        }
-        body+="<div style='position:absolute;left:"+px(place.x-w/2)+";top:"+px(place.y-h/2)+";width:"+px(w)+";height:"+px(h)+";border-radius:"+px(h/2)+";"+
-              face(touch_fingers.pressed(touch_pad::Slot(i)),1)+(action.command=="battle-confirm"?"background-color:#1fb85ac0;":"")+
-              // The speed button is amber while above 1x.
-              (action.command=="speed-toggle" && settings::game_speed_double()?"background-color:#d89a1ec0;":"")+"font-size:"+px(size)+";line-height:"+px(h)+";white-space:nowrap;'>"+caption+"</div>";
-    }
+    if(scene.stick!=touch_pad::Stick::None)body+=touch_dpad_rml(layout,touch_fingers.buttons());
+    for(size_t i=0;i<touch_pad::slot_count;++i)
+        if(scene.slots[i].filled())body+=touch_slot_rml(layout,scene,i,touch_fingers.pressed(touch_pad::Slot(i)));
     body+="</div>";
     touch_doc=document(body,false,true);
     touch_doc->PullToFront();
@@ -6654,7 +6834,8 @@ void sync() {
         // The quick load's key (F9): the same question as its touch key and the stage info page's button.
         if(!capturing && !settings_open && (host_pressed&input::pad_quick_load))choose("quick-load-ask");
         if(!capturing && !settings_open && (host_pressed&input::pad_title_return))choose("title-return-ask");
-        if(capturing && settings_open){}
+        if(touch_edit_on()){if(view_pressed || (pad_pressed&0x4000))touch_edit_back();}
+        else if(capturing && settings_open){}
         else if(view_pressed){home_focus=-1;choose(settings_open?"settings-close":"settings-open");}
         else if(!settings_open && home_pad(pad_pressed)){}
         else if(info_pressed && (!settings_open || stage_open))choose(stage_open?"settings-close":"stage-info-open");
@@ -7316,7 +7497,7 @@ nlohmann::json summary(){
     if(ui::context)if(auto* focused=ui::context->GetFocusElement())result["focus"]={{"id",focused->GetId()},{"class",focused->GetTagName()}};
     // The touch controls (docs/design/touch-controls.md): the scene, whether they show, what they hold.
     result["touch"]={{"supported",ui::touch_supported()},{"shown",ui::touch_shown},{"active",ui::touch_active()},{"scene",int(ui::touch_scene_id)},
-                     {"buttons",ui::touch_buttons()},{"stick",ui::touch_fingers.stick()!=nullptr}};
+                     {"buttons",ui::touch_buttons()},{"stick",ui::touch_fingers.stick()!=nullptr},{"editing",ui::touch_edit_on()}};
     return result;
 }
 nlohmann::json click(const nlohmann::json& p){return ui::click(p);}

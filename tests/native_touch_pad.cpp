@@ -286,7 +286,92 @@ void long_press() {
     fingers.reconcile(full, scene(SceneId::FixedPage));
     check(fingers.buttons() == 0 && fingers.find(4)->on_release == 0, "a scene change drops the waiting B");
 }
+// The player's layout (docs/design/touch-controls.md §8).
+void custom_layout() {
+    const auto plain = layout(width, height, mm);
+    Customs customs{};
+    check(layout(width, height, mm, customs).slots[0].x == plain.slots[0].x, "no custom is the default place");
+    // A moved button follows the screen's size; its size stays physical.
+    auto& ok = customs[size_t(Slot::Primary)];
+    ok = {true, .25f, .5f, 150};
+    auto l = layout(width, height, mm, customs);
+    check(std::abs(l[Slot::Primary].x - width * .25f) < 1 && std::abs(l[Slot::Primary].y - height * .5f) < 1, "a moved button is not where it was put");
+    check(std::abs(l[Slot::Primary].r - plain[Slot::Primary].r * 1.5f) < .01f, "a scaled button keeps the wrong size");
+    const auto small = layout(width / 2, height / 2, mm, customs);
+    check(std::abs(small[Slot::Primary].x - width / 8) < 1 && small[Slot::Primary].r == l[Slot::Primary].r, "a smaller screen rescales the place only");
+    // Whatever was saved, every control stays on the screen.
+    ok = {true, 1.f, 1.f, 200};
+    customs[dpad_control] = {true, 0.f, 0.f, 200};
+    l = layout(width, height, mm, customs);
+    check(l[Slot::Primary].x + l[Slot::Primary].r <= width + 1 && l[Slot::Primary].y + l[Slot::Primary].r <= height + 1, "a button left the screen");
+    check(l.rest_x >= 1.5f * l.dpad_cell - 1 && l.rest_y >= 1.5f * l.dpad_cell - 1, "the D-pad left the screen");
+    // Moved D-pad: pressed where it is now, no longer where it was.
+    customs = {};
+    customs[dpad_control] = {true, .5f, .5f, 100};
+    l = layout(width, height, mm, customs);
+    const auto whole = scene(SceneId::Other);
+    check(in_stick_area(l, whole, width / 2, height / 2) && !in_stick_area(l, whole, plain.rest_x, plain.rest_y), "the D-pad's area did not move");
+    check(direction(l, l.rest_x, l.rest_y, l.rest_x, l.rest_y - l.dpad_cell) == bits::Up, "the moved D-pad lost its directions");
+    // Two buttons on one spot: the nearer centre wins.
+    customs = {};
+    customs[size_t(Slot::Primary)] = {true, .5f, .5f, 100};
+    customs[size_t(Slot::Back)] = {true, .52f, .5f, 100};
+    l = layout(width, height, mm, customs);
+    check(hit(l, whole, l[Slot::Back].x + mm, l[Slot::Back].y) == Slot::Back && hit(l, whole, l[Slot::Primary].x - mm, l[Slot::Primary].y) == Slot::Primary, "overlapping buttons go by slot order");
+    for (const auto id : control_ids) check(!id.empty(), "a control without an id");
+    const auto all = edit_scene();
+    for (size_t i = 0; i < slot_count; ++i) check(all.slots[i].filled(), "the layout screen leaves out a control");
+    // Every button the dialogue puts in another's place is named there too.
+    const auto dialogue = scene(SceneId::FixedDialogue, Reading::Active);
+    for (size_t i = 0; i < slot_count; ++i)
+        if (whole.slots[i].filled() && dialogue.slots[i].filled() && dialogue.slots[i].label != whole.slots[i].label)
+            check(!dialogue_label(i).empty(), "a dialogue button has no name on the layout screen");
+}
+
+void editor() {
+    Editor edit{Customs{}};
+    auto view = [&] { return layout(width, height, mm, edit.customs()); };
+    auto l = view();
+    const float x = l[Slot::Back].x, y = l[Slot::Back].y;
+    // A tap chooses and moves nothing, not even with a thumb's roll.
+    edit.press(l, x, y); edit.move(l, x + .5f * mm, y); edit.release();
+    check(edit.selected() == size_t(Slot::Back) && !edit.customs()[size_t(Slot::Back)].moved, "a tap moved the button");
+    // A drag moves it by the pointer's way, wherever on it the finger took it.
+    edit.press(l, x + 2 * mm, y); edit.move(l, x + 2 * mm - 400, y - 300);
+    check(edit.dragging(), "no drag");
+    l = view();
+    check(std::abs(l[Slot::Back].x - (x - 400)) < 1 && std::abs(l[Slot::Back].y - (y - 300)) < 1, "the button jumped under the finger");
+    edit.release();
+    check(!edit.dragging(), "still dragging");
+    // Dragged off the edge it stops there, and comes back with the finger.
+    edit.press(l, l[Slot::Back].x, l[Slot::Back].y); edit.move(l, -500, -500); edit.release();
+    l = view();
+    check(std::abs(l[Slot::Back].x - l[Slot::Back].r) < 1 && std::abs(l[Slot::Back].y - l[Slot::Back].r) < 1, "the edge did not stop the button");
+    // The grid.
+    edit.grid = true;
+    edit.press(l, l[Slot::Back].x, l[Slot::Back].y); edit.move(l, 1003, 601); edit.release();
+    l = view();
+    const float step = grid_mm * mm;
+    check(std::abs(std::remainder(l[Slot::Back].x, step)) < 1 && std::abs(std::remainder(l[Slot::Back].y, step)) < 1, "the grid did not catch the button");
+    edit.grid = false;
+    // The D-pad moves as one.
+    edit.press(l, l.rest_x, l.rest_y); check(edit.selected() == dpad_control, "the D-pad was not chosen");
+    edit.move(l, l.rest_x + 300, l.rest_y - 100); edit.release();
+    const auto moved = view();
+    check(std::abs(moved.rest_x - (l.rest_x + 300)) < 1 && std::abs(moved.rest_y - (l.rest_y - 100)) < 1, "the D-pad did not follow");
+    // Size: the chosen control's, or with none chosen all of them.
+    edit.set_scale(1000);
+    check(edit.customs()[dpad_control].scale == max_scale && edit.customs()[0].scale == 100, "size went to the wrong control");
+    edit.press(moved, width / 2, height / 2); edit.release();
+    check(!edit.selected(), "empty screen chose something");
+    check(edit.scale() == 100, "each control has its own size: the slider for all starts at 100");
+    edit.set_scale(10);
+    for (const auto& c : edit.customs()) check(c.scale == min_scale, "size did not reach all the controls");
+    check(edit.scale() == min_scale, "the size they share");
+    edit.reset();
+    check(edit.customs() == Customs{} && !edit.selected(), "reset left something");
+}
 int main() {
-    try { places(); scenes(); buttons(); dpad(); recognition(); fixed_buttons(); reading_history(); long_press(); std::cout << checks << " checks passed\n"; return 0; }
+    try { places(); scenes(); buttons(); dpad(); recognition(); fixed_buttons(); reading_history(); long_press(); custom_layout(); editor(); std::cout << checks << " checks passed\n"; return 0; }
     catch (const std::exception& error) { std::cerr << "FAIL: " << error.what() << "\n"; return 1; }
 }

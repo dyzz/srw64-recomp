@@ -2,10 +2,12 @@
 // Touch controls for phones by scene (docs/design/touch-controls.md): a fixed D-pad
 // in the bottom left, and buttons named for what they do in the
 // scene at hand, always in the same places. Each button sends N64 and host bits, so the
-// game, our pages and the hints take them as a controller. The layout is in millimetres;
+// game, our pages and the hints take them as a controller. The layout is in millimetres,
+// and the player can move and resize each control (Custom, Editor);
 // the shared UI (frontend.cpp) draws it, feeds it SDL's finger events and names the
 // buttons in the reading language. No SDL here, for the tests.
 #include "input_mode.hpp"
+#include <algorithm>
 #include <array>
 #include <cmath>
 #include <cstdint>
@@ -242,6 +244,7 @@ inline Scene scene(SceneId id, Reading reading = Reading::Active) {
 struct Place {
     bool round{};
     float x{}, y{}, r{}, w{}, h{};
+    float scale = 1;    // the player's size, for its label
 };
 
 struct Layout {
@@ -256,8 +259,29 @@ struct Layout {
     const Place& operator[](Slot s) const { return slots[size_t(s)]; }
 };
 
+// What the player can change on the layout screen (docs/design/touch-controls.md §8), for
+// each slot and the D-pad: a scene's buttons take a slot's place, so one layout serves them all.
+inline constexpr size_t control_count = slot_count + 1;
+inline constexpr size_t dpad_control = slot_count;
+// presentation.json's touch_layout, in Slot order and then the D-pad.
+inline constexpr std::array<std::string_view, control_count> control_ids = {
+    "ok", "back", "l1", "r1", "settings", "start", "l2", "r2", "skip", "speed", "info", "load", "shot", "dpad"};
+inline constexpr unsigned min_scale = 60, max_scale = 200, scale_step = 5;
+inline constexpr float grid_mm = 4;
+
+struct Custom {
+    bool moved = false;
+    float x = 0, y = 0;     // moved: its centre, a share of the screen's width and height
+    unsigned scale = 100;   // percent of its size
+    bool operator==(const Custom&) const = default;
+};
+using Customs = std::array<Custom, control_count>;
+
+// How far a control's centre stays from the screen's edges, so all of it shows.
+inline float kept(float at, float half, float size) { return half * 2 >= size ? size / 2 : std::clamp(at, half, size - half); }
+
 // About 60 mm tall held sideways (the Seeker 61): everything fits that.
-inline Layout layout(float width, float height, float px_per_mm) {
+inline Layout layout(float width, float height, float px_per_mm, const Customs& customs = {}) {
     Layout out;
     const float m = px_per_mm, w = width / m, h = height / m;
     out.mm = m; out.width = width; out.height = height;
@@ -288,20 +312,38 @@ inline Layout layout(float width, float height, float px_per_mm) {
     out.wide_right = width * .42f; out.wide_top = 10 * m;
     out.corner_size = 30 * m;
     out.dpad_cell = 8 * m;
+    for (size_t i = 0; i < slot_count; ++i) {
+        const auto& c = customs[i];
+        auto& p = out.slots[i];
+        p.scale = c.scale / 100.f; p.r *= p.scale; p.w *= p.scale; p.h *= p.scale;
+        if (c.moved) { p.x = c.x * width; p.y = c.y * height; }
+        p.x = kept(p.x, p.w / 2, width); p.y = kept(p.y, p.h / 2, height);
+    }
+    const auto& dpad = customs[dpad_control];
+    out.dpad_cell *= dpad.scale / 100.f;
+    if (dpad.moved) { out.rest_x = dpad.x * width; out.rest_y = dpad.y * height; }
+    out.rest_x = kept(out.rest_x, 1.5f * out.dpad_cell, width); out.rest_y = kept(out.rest_y, 1.5f * out.dpad_cell, height);
     return out;
 }
 
-// The slot under a point, among those the scene fills, with a little room for a thumb.
+inline bool inside(const Place& p, float x, float y, float slack) {
+    return p.round ? (x - p.x) * (x - p.x) + (y - p.y) * (y - p.y) <= (p.r + slack) * (p.r + slack)
+                   : std::abs(x - p.x) <= p.w / 2 + slack && std::abs(y - p.y) <= p.h / 2 + slack;
+}
+
+// The slot under a point, among those the scene fills, with a little room for a thumb. The
+// player may set buttons over each other: the one whose centre is nearest takes the touch.
 inline std::optional<Slot> hit(const Layout& layout, const Scene& scene, float x, float y) {
     const float slack = 1.5f * layout.mm;
+    std::optional<Slot> found;
+    float nearest = 0;
     for (size_t i = 0; i < slot_count; ++i) {
-        if (!scene.slots[i].filled()) continue;
         const auto& p = layout.slots[i];
-        const bool inside = p.round ? (x - p.x) * (x - p.x) + (y - p.y) * (y - p.y) <= (p.r + slack) * (p.r + slack)
-                                    : std::abs(x - p.x) <= p.w / 2 + slack && std::abs(y - p.y) <= p.h / 2 + slack;
-        if (inside) return Slot(i);
+        if (!scene.slots[i].filled() || !inside(p, x, y, slack)) continue;
+        const float d = std::hypot(x - p.x, y - p.y);
+        if (!found || d < nearest) { found = Slot(i); nearest = d; }
     }
-    return std::nullopt;
+    return found;
 }
 
 // The cross's whole square and a thumb's room: a touch in a gap between the arms is the
@@ -416,6 +458,98 @@ public:
         for (const auto& [id, f] : held) if (f.kind == Kind::Stick) return &f;
         return nullptr;
     }
+};
+
+// The layout screen shows every control at once: the whole set, and the skip only dialogue has.
+inline Scene edit_scene() {
+    auto s = scene(SceneId::FixedDialogue, Reading::Inactive);
+    s.slots[size_t(Slot::Arc2)] = scene(SceneId::Other)[Slot::Arc2];
+    s.slots[size_t(Slot::Arc3)] = scene(SceneId::Other)[Slot::Arc3];
+    s.stick = Stick::Wide; s.tap_primary = false;
+    return s;
+}
+
+// What a slot is in dialogue where its usual button is another: the layout screen names
+// both, so all the buttons there are show (a player, 2026-11-07). A short name: it shares the button.
+inline std::string_view dialogue_label(size_t slot) {
+    switch (Slot(slot)) {
+    case Slot::Back: return "touch_history";
+    case Slot::Arc2: return "touch_auto";
+    case Slot::Arc3: return "touch_fast";
+    default: return {};
+    }
+}
+
+// The control under a point on the layout screen, the nearest if several.
+inline std::optional<size_t> control_at(const Layout& layout, float x, float y) {
+    const float slack = 1.5f * layout.mm;
+    std::optional<size_t> found;
+    float nearest = 0;
+    const auto consider = [&](size_t control, float cx, float cy) {
+        const float d = std::hypot(x - cx, y - cy);
+        if (!found || d < nearest) { found = control; nearest = d; }
+    };
+    for (size_t i = 0; i < slot_count; ++i)
+        if (inside(layout.slots[i], x, y, slack)) consider(i, layout.slots[i].x, layout.slots[i].y);
+    const float reach = 1.5f * layout.dpad_cell + slack;
+    if (std::abs(x - layout.rest_x) <= reach && std::abs(y - layout.rest_y) <= reach) consider(dpad_control, layout.rest_x, layout.rest_y);
+    return found;
+}
+
+// The layout screen's working copy, kept apart until the player keeps it. One pointer at a
+// time; the Layout it is given is the one made from customs().
+class Editor {
+    Customs now;
+    std::optional<size_t> chosen;
+    bool pressed = false, moving = false;
+    float start_x{}, start_y{}, grab_x{}, grab_y{};
+public:
+    bool grid = false;
+    explicit Editor(const Customs& start) : now(start) {}
+    const Customs& customs() const { return now; }
+    std::optional<size_t> selected() const { return chosen; }
+    bool dragging() const { return moving; }
+    // Down on a control chooses it, and it follows the pointer once that has moved a little,
+    // so a tap to choose it does not nudge it. Down on nothing chooses nothing: the size
+    // slider is then all the controls'.
+    void press(const Layout& layout, float x, float y) {
+        chosen = control_at(layout, x, y);
+        pressed = chosen.has_value(); moving = false;
+        if (!chosen) return;
+        const bool dpad = *chosen == dpad_control;
+        start_x = x; start_y = y;
+        grab_x = (dpad ? layout.rest_x : layout.slots[*chosen].x) - x;
+        grab_y = (dpad ? layout.rest_y : layout.slots[*chosen].y) - y;
+    }
+    void move(const Layout& layout, float x, float y) {
+        if (!pressed) return;
+        if (!moving && std::hypot(x - start_x, y - start_y) < layout.mm) return;
+        moving = true;
+        float cx = x + grab_x, cy = y + grab_y;
+        if (grid) {
+            const float step = grid_mm * layout.mm;
+            cx = std::round(cx / step) * step; cy = std::round(cy / step) * step;
+        }
+        const bool dpad = *chosen == dpad_control;
+        const auto& p = layout.slots[dpad ? 0 : *chosen];
+        const float half_w = dpad ? 1.5f * layout.dpad_cell : p.w / 2, half_h = dpad ? 1.5f * layout.dpad_cell : p.h / 2;
+        auto& c = now[*chosen];
+        c.moved = true;
+        c.x = kept(cx, half_w, layout.width) / layout.width; c.y = kept(cy, half_h, layout.height) / layout.height;
+    }
+    void release() { pressed = moving = false; }
+    // With none chosen: the size they all share, or 100 % when each has its own.
+    unsigned scale() const {
+        if (chosen) return now[*chosen].scale;
+        for (const auto& c : now) if (c.scale != now[0].scale) return 100;
+        return now[0].scale;
+    }
+    void set_scale(unsigned percent) {
+        percent = std::clamp(percent, min_scale, max_scale);
+        if (chosen) now[*chosen].scale = percent;
+        else for (auto& c : now) c.scale = percent;
+    }
+    void reset() { now = {}; chosen.reset(); }
 };
 
 }
