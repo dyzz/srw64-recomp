@@ -7,6 +7,7 @@
 // the shared UI (frontend.cpp) draws it, feeds it SDL's finger events and names the
 // buttons in the reading language. No SDL here, for the tests.
 #include "input_mode.hpp"
+#include "touch_layout.hpp"
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -259,23 +260,8 @@ struct Layout {
     const Place& operator[](Slot s) const { return slots[size_t(s)]; }
 };
 
-// What the player can change on the layout screen (docs/design/touch-controls.md §8), for
-// each slot and the D-pad: a scene's buttons take a slot's place, so one layout serves them all.
-inline constexpr size_t control_count = slot_count + 1;
-inline constexpr size_t dpad_control = slot_count;
-// presentation.json's touch_layout, in Slot order and then the D-pad.
-inline constexpr std::array<std::string_view, control_count> control_ids = {
-    "ok", "back", "l1", "r1", "settings", "start", "l2", "r2", "skip", "speed", "info", "load", "shot", "dpad"};
-inline constexpr unsigned min_scale = 60, max_scale = 200, scale_step = 5;
-inline constexpr float grid_mm = 4;
-
-struct Custom {
-    bool moved = false;
-    float x = 0, y = 0;     // moved: its centre, a share of the screen's width and height
-    unsigned scale = 100;   // percent of its size
-    bool operator==(const Custom&) const = default;
-};
-using Customs = std::array<Custom, control_count>;
+// The player's layout (touch_layout.hpp), one entry per slot and then the D-pad.
+static_assert(control_count == slot_count + 1 && dpad_control == slot_count, "touch_layout.hpp counts the slots");
 
 // How far a control's centre stays from the screen's edges, so all of it shows.
 inline float kept(float at, float half, float size) { return half * 2 >= size ? size / 2 : std::clamp(at, half, size - half); }

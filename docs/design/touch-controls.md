@@ -180,6 +180,6 @@ Seeker（Android 16）实拍同一条对白的中、日、英按钮。快进说�
 
 **存储：** `presentation.json` 的 `touch_layout`，键是 `touch_pad::control_ids`，只写和默认不同的控件：`{"ok":{"x":0.25,"y":0.5,"scale":150}}`。`user_sync` 已同步这个文件，换语言启动时 `launch.cpp` 的 `kept` 会保留它。
 
-**代码：** 数据和编辑逻辑在 `touch_pad.hpp`（`Custom`、`Editor`，`tests/native_touch_pad.cpp`），界面在 `frontend.cpp` 的 `touch_edit_*`。编辑时 `settings_open` 保持为真，设置窗口关着，游戏的输入过滤和暂停都照设置窗口走；退出后回到操作页。按键事件走 SDL 由第一根手指合成的鼠标，所以桌面上 `SRW64_TOUCH_PAD=1` 时鼠标也能拖。调试接口 `status` 的 `ui.touch.editing` 表示画面开着。
+**代码：** 存的数据在 `touch_layout.hpp`（`Custom`，单独成文件：`touch_pad.hpp` 的 `AnyKey`、`None` 在 Linux 上是 X11 的宏，`presentation_settings.hpp` 只能带这个小头文件），编辑逻辑在 `touch_pad.hpp`（`Editor`，`tests/native_touch_pad.cpp`），界面在 `frontend.cpp` 的 `touch_edit_*`。编辑时 `settings_open` 保持为真，设置窗口关着，游戏的输入过滤和暂停都照设置窗口走；退出后回到操作页。按键事件走 SDL 由第一根手指合成的鼠标，所以桌面上 `SRW64_TOUCH_PAD=1` 时鼠标也能拖。调试接口 `status` 的 `ui.touch.editing` 表示画面开着。
 
 **实机（2026-11-07）：** Win 台式机 `InjectTouchInput` 和 Seeker（Android 16，`adb input`）都过：拖动、点选、单独调大小（含十字键）、网格、收起、三个二次确认、返回键、重启保留、移动后的按键和十字键四向实按。Seeker 的返回手势用 adb 模拟边缘滑动没有触发退出，真手势没试。放到标题角落「MOD」等字样上的按键会挡住那几个字的点击，移开即可。

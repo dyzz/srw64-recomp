@@ -6,7 +6,7 @@
 #include <string_view>
 #include <vector>
 #include "input_bindings.hpp"
-#include "touch_pad.hpp"
+#include "touch_layout.hpp"
 struct SDL_Window;
 namespace srw64::settings {
 void window_init(SDL_Window* window,const std::filesystem::path& output);
@@ -114,7 +114,7 @@ void set_dialogue_font_size(unsigned size,bool remember=true);
 // Phone controls use a fixed D-pad. Opacity (25..100) scales controls, text and outlines.
 unsigned touch_opacity();
 void set_touch_opacity(unsigned percent);
-// Where the player put the phone controls and how big they are (touch_pad.hpp). Saved as
+// Where the player put the phone controls and how big they are (touch_layout.hpp). Saved as
 // touch_layout, a control's entry only when it differs from the default.
 touch_pad::Customs touch_customs();
 void set_touch_customs(const touch_pad::Customs& customs);
