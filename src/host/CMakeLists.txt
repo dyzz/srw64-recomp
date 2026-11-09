@@ -185,6 +185,8 @@ if(SRW64_ENABLE_RT64)
     target_sources(srw64-gfx-host PRIVATE battle_viewer.cpp)
     # Holding R while choosing a move destination: the farthest squares (docs/native/move-jump.md).
     target_sources(srw64-gfx-host PRIVATE move_jump.cpp)
+    # A move range wider than the original's 31x31 tables (move_range.hpp).
+    target_sources(srw64-gfx-host PRIVATE move_range.cpp)
     # L2 / R2 on the idle tactical map: the cursor steps through the enemy units (docs/native/enemy-cycle.md).
     target_sources(srw64-gfx-host PRIVATE enemy_cycle.cpp)
     # The 部隊名 stays マーチウィンド: the naming choice answers itself, 3D5E does nothing
@@ -353,7 +355,7 @@ if(SRW64_GL_ONLY)
     add_subdirectory("${SRW64_ROOT}/src/native/ui" ui-probe)
     add_executable(srw64-gl-host host.cpp graphics.cpp audio.cpp "${SRW64_BUILD}/audio-probe/audio.cpp"
         native_dialogue.cpp native_intro.cpp dialogue_data.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp"
-        sprite_text.cpp ui_text.cpp title_page.cpp battle_viewer.cpp move_jump.cpp enemy_cycle.cpp unit_name.cpp
+        sprite_text.cpp ui_text.cpp title_page.cpp battle_viewer.cpp move_jump.cpp move_range.cpp enemy_cycle.cpp unit_name.cpp
         native_name_entry.cpp "${SRW64_ROOT}/src/native/ui/frontend.cpp" "${SRW64_ROOT}/src/native/ui/presentation_settings.cpp"
         update_check.cpp update_http.cpp hd_prepare.cpp text_update.cpp console_log.cpp bug_report.cpp stall_watchdog.cpp
         debug_server.cpp debug_transport.cpp gbi_stats.cpp

@@ -1,4 +1,5 @@
 #include "move_jump.hpp"
+#include "move_range.hpp"
 #include "run_files.hpp"
 #include "game_hooks.hpp"
 #include "graphics.hpp"
@@ -33,7 +34,7 @@ constexpr uint32_t kReach = 0x80227BD0, kCost = 0x80227328;               // 31x
 constexpr uint32_t kHeld = 0x800F97D0, kPressed = 0x80178A08, kRepeat = 0x801612E0;
 constexpr uint16_t kA = 0x8000, kB = 0x4000, kR = 0x0010, kUp = 0x0800, kDown = 0x0400, kLeft = 0x0200, kRight = 0x0100;
 constexpr uint8_t kStop = 2, kPass = 3;   // 801C3E50: a square the unit can stop on / only pass (a friend on it)
-constexpr int kSize = 31, kCentre = 15, kCells = kSize * kSize;
+constexpr int kOriginalSize = 31, kOriginalCentre = 15;
 constexpr unsigned kCursorSound = 0xB9;
 
 std::ofstream log;
@@ -41,8 +42,9 @@ std::mutex mutex;                       // the snapshot below, for the debug thr
 json snapshot = {{"select_vi", nullptr}, {"highlight_vi", nullptr}, {"active", false}, {"jumps", 0}};
 bool active = false;
 int32_t anchor[2]{};
-std::vector<int> farthest;              // cells, gy * 31 + gx
-std::array<bool, kCells> is_farthest{};
+int size = kOriginalSize, centre = kOriginalCentre;   // the grid the range is on (move_range.hpp beyond 15)
+std::vector<int> farthest;              // cells, gy * size + gx
+std::vector<uint8_t> is_farthest;
 
 void record(json row) {
     if (!log.is_open()) return;
@@ -64,9 +66,9 @@ void put_f32(uint8_t* ram, uint32_t p, float value) {
     write32(ram, p, bits);
 }
 int cell_of(const uint8_t* ram) {
-    const int gx = (int(f32(ram, kCursorX)) >> 4) - (anchor[0] >> 4) + kCentre;
-    const int gy = (int(f32(ram, kCursorY)) >> 4) - (anchor[1] >> 4) + kCentre;
-    return gx < 0 || gy < 0 || gx >= kSize || gy >= kSize ? -1 : gy * kSize + gx;
+    const int gx = (int(f32(ram, kCursorX)) >> 4) - (anchor[0] >> 4) + centre;
+    const int gy = (int(f32(ram, kCursorY)) >> 4) - (anchor[1] >> 4) + centre;
+    return gx < 0 || gy < 0 || gx >= size || gy >= size ? -1 : gy * size + gx;
 }
 
 // The farthest squares: those the unit can stop on that no shortest path runs on through
@@ -74,26 +76,29 @@ int cell_of(const uint8_t* ram) {
 // meets the map edge only its two ends; not squares that a lake or a friend merely
 // blocks on one side. Shortest paths use the grid's entry costs, as 801C3B0C does.
 void find_farthest(const uint8_t* ram) {
-    std::array<uint8_t, kCells> reach, cost;
-    for (int i = 0; i < kCells; ++i) {
-        reach[i] = uint8_t(read(ram, kReach + i, 1));
-        cost[i] = uint8_t(read(ram, kCost + i, 1));
+    const auto* wide = move_range::active();
+    size = wide ? wide->size() : kOriginalSize;
+    centre = wide ? wide->radius() : kOriginalCentre;
+    const int cells = size * size;
+    std::vector<uint8_t> reach(cells), cost(cells);
+    for (int i = 0; i < cells; ++i) {
+        reach[i] = wide ? wide->reach_at(i) : uint8_t(read(ram, kReach + i, 1));
+        cost[i] = wide ? wide->cost_at(i) : uint8_t(read(ram, kCost + i, 1));
     }
     const auto open = [&](int i) { return reach[i] == kStop || reach[i] == kPass; };
     const auto neighbours = [](int i, auto&& visit) {
-        const int x = i % kSize, y = i / kSize;
+        const int x = i % size, y = i / size;
         if (x > 0) visit(i - 1);
-        if (x + 1 < kSize) visit(i + 1);
-        if (y > 0) visit(i - kSize);
-        if (y + 1 < kSize) visit(i + kSize);
+        if (x + 1 < size) visit(i + 1);
+        if (y > 0) visit(i - size);
+        if (y + 1 < size) visit(i + size);
     };
     constexpr int kFar = 1 << 20;
-    std::array<int, kCells> distance;
-    distance.fill(kFar);
-    const int centre = kCentre * kSize + kCentre;
-    distance[centre] = 0;
+    std::vector<int> distance(cells, kFar);
+    const int start = centre * size + centre;
+    distance[start] = 0;
     std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, std::greater<>> queue;
-    queue.push({0, centre});
+    queue.push({0, start});
     while (!queue.empty()) {
         // Not a structured binding: the lambda below uses d, which clang 14 (the Linux
         // build's) cannot capture from one.
@@ -107,17 +112,17 @@ void find_farthest(const uint8_t* ram) {
         });
     }
     std::vector<int> order;
-    for (int i = 0; i < kCells; ++i) if (distance[i] < kFar) order.push_back(i);
+    for (int i = 0; i < cells; ++i) if (distance[i] < kFar) order.push_back(i);
     std::sort(order.begin(), order.end(), [&](int a, int b) { return distance[a] > distance[b]; });
-    std::array<bool, kCells> beyond{};   // a stoppable square lies further along a shortest path
+    std::vector<uint8_t> beyond(cells);   // a stoppable square lies further along a shortest path
     for (const int i : order)
         neighbours(i, [&](int n) {
             if (open(n) && cost[n] > 0 && distance[n] == distance[i] + cost[n] && (reach[n] == kStop || beyond[n])) beyond[i] = true;
         });
     farthest.clear();
-    is_farthest.fill(false);
-    for (int i = 0; i < kCells; ++i)
-        if (reach[i] == kStop && distance[i] < kFar && !beyond[i]) { farthest.push_back(i); is_farthest[i] = true; }
+    is_farthest.assign(cells, 0);
+    for (int i = 0; i < cells; ++i)
+        if (reach[i] == kStop && distance[i] < kFar && !beyond[i]) { farthest.push_back(i); is_farthest[i] = 1; }
 }
 
 // From a farthest square: the nearest one within 45 degrees of that way, so holding a
@@ -125,15 +130,15 @@ void find_farthest(const uint8_t* ram) {
 // least off the line ahead. From anywhere else: the one furthest that way from the
 // unit, then nearest the cursor's line.
 int next(int from, int dx, int dy) {
-    const int fx = from % kSize, fy = from / kSize;
+    const int fx = from % size, fy = from / size;
     int best = -1;
     double best_score = 1e18;
     for (const int f : farthest) {
         if (f == from) continue;
-        const int vx = f % kSize - fx, vy = f / kSize - fy;
+        const int vx = f % size - fx, vy = f / size - fy;
         const int along = vx * dx + vy * dy, across = std::abs(vx * dy - vy * dx);
         if (along <= 0) continue;
-        const int reach = (f % kSize - kCentre) * dx + (f / kSize - kCentre) * dy;
+        const int reach = (f % size - centre) * dx + (f / size - centre) * dy;
         const double score = !is_farthest[from] ? -1000.0 * reach + across
                            : across <= along ? (vx * vx + vy * vy) * 10.0 + across
                            : 1e6 + along + 2.0 * across;
@@ -143,11 +148,11 @@ int next(int from, int dx, int dy) {
 }
 // Holding R after moving the cursor off the unit: the farthest square in that direction.
 int along_ray(int from) {
-    const double rx = from % kSize - kCentre, ry = from / kSize - kCentre;
+    const double rx = from % size - centre, ry = from / size - centre;
     int best = -1;
     double best_angle = 1e9, best_length = 0;
     for (const int f : farthest) {
-        const double vx = f % kSize - kCentre, vy = f / kSize - kCentre;
+        const double vx = f % size - centre, vy = f / size - centre;
         const double angle = std::abs(std::remainder(std::atan2(vy, vx) - std::atan2(ry, rx), 2 * M_PI));
         const double length = std::hypot(vx, vy);
         if (angle < best_angle - 1e-6 || (angle < best_angle + 1e-6 && length > best_length)) {
@@ -160,7 +165,7 @@ int along_ray(int from) {
 // What the original does when it puts the cursor somewhere (801C8E20 cycling units):
 // cursor and target together, the camera re-centred (801FFCB0) only if it left the screen.
 void warp(uint8_t* ram, recomp_context* ctx, int cell) {
-    const int32_t px = anchor[0] + (cell % kSize - kCentre) * 16, py = anchor[1] + (cell / kSize - kCentre) * 16;
+    const int32_t px = anchor[0] + (cell % size - centre) * 16, py = anchor[1] + (cell / size - centre) * 16;
     put_f32(ram, kCursorX, float(px)); put_f32(ram, kTargetX, float(px));
     put_f32(ram, kCursorY, float(py)); put_f32(ram, kTargetY, float(py));
     write32(ram, kVelocityX, 0); write32(ram, kVelocityY, 0);
@@ -188,7 +193,7 @@ bool choose(uint8_t* ram, recomp_context* ctx) {
         active = true;
         const int at = cell_of(ram);
         int to = -1;
-        if (at >= 0 && at != kCentre * kSize + kCentre && !is_farthest[at]) to = along_ray(at);
+        if (at >= 0 && at != centre * size + centre && !is_farthest[at]) to = along_ray(at);
         if (to >= 0) warp(ram, ctx, to);
         record({{"kind", "on"}, {"anchor", {anchor[0], anchor[1]}}, {"farthest", farthest.size()}, {"cursor", at}, {"jump", to}});
     }
@@ -216,6 +221,7 @@ bool select(uint8_t* ram, recomp_context* ctx) {
     snapshot["anchor"] = {anchor[0], anchor[1]};
     snapshot["cursor"] = cell_of(ram);
     snapshot["farthest"] = farthest;
+    snapshot["size"] = size;
     return handled;
 }
 
@@ -233,7 +239,7 @@ void range_drawn(uint8_t* ram, uint32_t list) {
     const auto put = [&](uint32_t w0, uint32_t w1) { write32(ram, dl, w0); write32(ram, dl + 4, w1); dl += 8; };
     put(0xFA000000, 0xFFE05000 | alpha);
     for (const int cell : farthest) {
-        int x0 = anchor[0] + sx + (cell % kSize - kCentre) * 16, y0 = anchor[1] + sy + (cell / kSize - kCentre) * 16;
+        int x0 = anchor[0] + sx + (cell % size - centre) * 16, y0 = anchor[1] + sy + (cell / size - centre) * 16;
         int x1 = std::min(x0 + 16, 320), y1 = std::min(y0 + 16, 240);
         x0 = std::max(x0, 0); y0 = std::max(y0, 0);
         if (x1 <= x0 || y1 <= y0) continue;

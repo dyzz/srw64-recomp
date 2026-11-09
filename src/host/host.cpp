@@ -99,6 +99,7 @@
 #include "title_page.hpp"
 #include "battle_viewer.hpp"
 #include "move_jump.hpp"
+#include "move_range.hpp"
 #include "enemy_cycle.hpp"
 #include "settings_window.hpp"
 #include "debug_server.hpp"
@@ -732,6 +733,7 @@ static int run_host(int argc, char** argv) {
     srw64::title_page::configure(output_dir);
     srw64::battle_viewer::install(output_dir);
     srw64::move_jump::configure(output_dir);
+    srw64::move_range::configure();
     srw64::enemy_cycle::configure(output_dir);
     srw64::intro::configure(output_dir);
     srw64_configure_audio(std::getenv("SRW64_AUDIO_OUTPUT") && std::string(std::getenv("SRW64_AUDIO_OUTPUT")) == "1", output_dir);

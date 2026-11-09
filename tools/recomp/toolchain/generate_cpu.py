@@ -98,6 +98,15 @@ NATIVE_HOOKS = {
     "resident_func_8009D684": "srw64_original_window_labels",
     "load_000AB160_func_801D17AC": "srw64_original_map_menu_choose",
     "load_000AB160_func_801E4760": "srw64_original_move_range_draw",
+    # A move range wider than the original's 31x31 tables (move_range.hpp, BUG10).
+    "load_000AB160_func_801C3E50": "srw64_original_move_fill",
+    "load_000AB160_func_801C3D34": "srw64_original_move_clear",
+    "load_000AB160_func_801E0B94": "srw64_original_move_query",
+    "load_000AB160_func_801E0C68": "srw64_original_move_path",
+    "load_000AB160_func_801C5810": "srw64_original_move_step",
+    "load_000AB160_func_80202848": "srw64_original_ai_near_unit",
+    "load_000AB160_func_80202A84": "srw64_original_ai_near_target",
+    "load_000AB160_func_801F3268": "srw64_original_unit_on_range",
     "resident_func_800945D4": "srw64_original_map_draw",
     # Sprite mode 10: an ability banner and the number beside it (ui_text.cpp).
     "resident_func_8009504C": "srw64_original_banner_number_draw",

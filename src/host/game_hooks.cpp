@@ -470,8 +470,35 @@ void load_000AB160_func_801C8B04(uint8_t* rdram, recomp_context* ctx) {
 }
 void load_000AB160_func_801E4760(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t list = uint32_t(ctx->r4);
+    const bool wide = srw64_game_hooks.move_draw_begin && srw64_game_hooks.move_draw_begin(rdram);
     srw64_original_move_range_draw(rdram, ctx);
+    if (wide) srw64_game_hooks.move_draw_end(rdram);
     if (srw64_game_hooks.move_range_drawn) srw64_game_hooks.move_range_drawn(rdram, list);
+}
+void load_000AB160_func_801C3D34(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.move_cleared) srw64_game_hooks.move_cleared();
+    srw64_original_move_clear(rdram, ctx);
+}
+void load_000AB160_func_801C3E50(uint8_t* rdram, recomp_context* ctx) {
+    if (!srw64_game_hooks.move_fill || !srw64_game_hooks.move_fill(rdram, ctx)) srw64_original_move_fill(rdram, ctx);
+}
+void load_000AB160_func_801E0B94(uint8_t* rdram, recomp_context* ctx) {
+    if (!srw64_game_hooks.move_query || !srw64_game_hooks.move_query(rdram, ctx)) srw64_original_move_query(rdram, ctx);
+}
+void load_000AB160_func_801E0C68(uint8_t* rdram, recomp_context* ctx) {
+    if (!srw64_game_hooks.move_path || !srw64_game_hooks.move_path(rdram, ctx)) srw64_original_move_path(rdram, ctx);
+}
+void load_000AB160_func_801C5810(uint8_t* rdram, recomp_context* ctx) {
+    if (!srw64_game_hooks.move_step || !srw64_game_hooks.move_step(rdram, ctx)) srw64_original_move_step(rdram, ctx);
+}
+void load_000AB160_func_80202848(uint8_t* rdram, recomp_context* ctx) {
+    if (!srw64_game_hooks.ai_near_unit || !srw64_game_hooks.ai_near_unit(rdram, ctx)) srw64_original_ai_near_unit(rdram, ctx);
+}
+void load_000AB160_func_80202A84(uint8_t* rdram, recomp_context* ctx) {
+    if (!srw64_game_hooks.ai_near_target || !srw64_game_hooks.ai_near_target(rdram, ctx)) srw64_original_ai_near_target(rdram, ctx);
+}
+void load_000AB160_func_801F3268(uint8_t* rdram, recomp_context* ctx) {
+    if (!srw64_game_hooks.unit_on_range || !srw64_game_hooks.unit_on_range(rdram, ctx)) srw64_original_unit_on_range(rdram, ctx);
 }
 void load_000AB160_func_80209900(uint8_t* rdram, recomp_context* ctx) {
     const int32_t pointer = ctx->r4;

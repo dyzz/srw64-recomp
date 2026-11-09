@@ -94,7 +94,7 @@ recomp-content-test:
 # Native components require the pinned toolchain/generated headers. Keep this
 # separate from the ROM-independent Python `check` target.
 .PHONY: recomp-native-check recomp-timer-test recomp-replay-test
-recomp-native-check: recomp-input-bindings-test recomp-button-prompts-test recomp-game-speed-test recomp-battle-preview-test recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-script-skip-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-parts-carry-test recomp-cheats-test recomp-bezel-test recomp-rom-art-test recomp-link-battler-test recomp-debug-protocol-test recomp-intermission-test recomp-unit-name-test recomp-stage-info-test
+recomp-native-check: recomp-move-range-test recomp-input-bindings-test recomp-button-prompts-test recomp-game-speed-test recomp-battle-preview-test recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-script-skip-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-parts-carry-test recomp-cheats-test recomp-bezel-test recomp-rom-art-test recomp-link-battler-test recomp-debug-protocol-test recomp-intermission-test recomp-unit-name-test recomp-stage-info-test
 
 .PHONY: recomp-state-probe-test
 recomp-state-probe-test:
@@ -285,6 +285,12 @@ recomp-base-fixes-test:
 	mkdir -p build/recomp/base-fixes-test
 	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host -Ibuild/recomp/upstream/N64Recomp/include tests/native_base_fixes.cpp -o build/recomp/base-fixes-test/test
 	build/recomp/base-fixes-test/test
+
+.PHONY: recomp-move-range-test
+recomp-move-range-test:
+	mkdir -p build/recomp/move-range-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -O1 -Isrc/host tests/native_move_range.cpp -o build/recomp/move-range-test/test
+	build/recomp/move-range-test/test
 
 .PHONY: recomp-mini-stage-test
 recomp-mini-stage-test:

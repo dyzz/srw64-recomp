@@ -161,6 +161,19 @@ struct SRW64GameHooks {
     // run. 801E4760 drew the move range into the display list whose Gfx* is at `list`.
     bool (*move_select)(uint8_t*, recomp_context*){};
     void (*move_range_drawn)(uint8_t*, uint32_t list){};
+    // A move range wider than the original's tables (move_range.hpp): each returns true
+    // if the host did the function's work, false to run the original. move_cleared is
+    // after 801C3D34; move_draw_begin true is followed by move_draw_end after 801E4760.
+    bool (*move_fill)(uint8_t*, recomp_context*){};
+    void (*move_cleared)(){};
+    bool (*move_draw_begin)(uint8_t*){};
+    void (*move_draw_end)(uint8_t*){};
+    bool (*move_query)(uint8_t*, recomp_context*){};
+    bool (*move_path)(uint8_t*, recomp_context*){};
+    bool (*move_step)(uint8_t*, recomp_context*){};
+    bool (*ai_near_unit)(uint8_t*, recomp_context*){};
+    bool (*ai_near_target)(uint8_t*, recomp_context*){};
+    bool (*unit_on_range)(uint8_t*, recomp_context*){};
     // Tactical map idle (state 5, docs/native/enemy-cycle.md): 801C8B04 runs; true: the
     // host moved the cursor this frame and the original does not run.
     bool (*map_idle)(uint8_t*, recomp_context*){};
