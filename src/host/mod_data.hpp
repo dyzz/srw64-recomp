@@ -310,6 +310,8 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
                 return record+offset<rom.size()?rom[record+offset]:uint8_t(0);
             };
             if(at(0x02)>at(0x03))return key+"：range_min 不能大于 range_max";
+            // A map weapon's flow has its own 31x31 tables; only ordinary weapons go past 15 (move_range.cpp).
+            if((at(0x00)&weapon_map) && at(0x03)>15)return key+"：地图武器的 range_max 不能超过 15";
         }
     for(const auto& [a,v]:bytes)out[a]=v;
     return {};

@@ -475,6 +475,15 @@ void load_000AB160_func_801E4760(uint8_t* rdram, recomp_context* ctx) {
     if (wide) srw64_game_hooks.move_draw_end(rdram);
     if (srw64_game_hooks.move_range_drawn) srw64_game_hooks.move_range_drawn(rdram, list);
 }
+void load_000AB160_func_801E49A4(uint8_t* rdram, recomp_context* ctx) {
+    // a3 0 is the weapon's range in the table 801C4560 fills; 1 and 2 a map weapon's.
+    const bool wide = (uint32_t(ctx->r7) & 0xFF) == 0 && srw64_game_hooks.move_draw_begin && srw64_game_hooks.move_draw_begin(rdram);
+    srw64_original_range_draw(rdram, ctx);
+    if (wide) srw64_game_hooks.move_draw_end(rdram);
+}
+void load_000AB160_func_801C4560(uint8_t* rdram, recomp_context* ctx) {
+    if (!srw64_game_hooks.range_paint || !srw64_game_hooks.range_paint(rdram, ctx)) srw64_original_range_paint(rdram, ctx);
+}
 void load_000AB160_func_801C3D34(uint8_t* rdram, recomp_context* ctx) {
     if (srw64_game_hooks.move_cleared) srw64_game_hooks.move_cleared();
     srw64_original_move_clear(rdram, ctx);

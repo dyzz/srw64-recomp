@@ -6,8 +6,8 @@
 #include <array>
 #include <cstring>
 
-// The move-range code of the tactical overlay (load_000AB160), static reading; the
-// flow is laid out in docs/gameplay/base-fixes.md (BUG10). Game thread only.
+// The move and weapon range code of the tactical overlay (load_000AB160), static reading;
+// the flow is laid out in docs/gameplay/base-fixes.md (BUG10). Game thread only.
 namespace srw64::move_range {
 namespace {
 using namespace guest;
@@ -22,9 +22,12 @@ constexpr uint32_t kScrollX = 0x8010F5D4, kScrollY = 0x8010F5D8;
 constexpr uint32_t kState = 0x80172EB0;
 constexpr uint32_t kWalk = 0x80172F04;                           // now x, y; before x, y (int8, the unit at 15)
 constexpr uint32_t kBoarding = 0x8021F83B;                       // 801EA498: the ships this unit may board
+constexpr uint32_t kFirstUnit = 0x42, kUnitEnd = 0x9C;           // the map's unit objects (801EB4C0 scans these)
 
 Grid grid;
-bool wide = false;
+// Which range the grid holds. 801C3D34 begins every new one and ends the last.
+enum class Mode { None, Move, Attack };
+Mode mode = Mode::None;
 uint32_t generation = 0;          // of the fill; the AI's nearest square is cached by it
 struct Nearest {
     bool valid = false, found = false;
@@ -132,20 +135,72 @@ bool fill(uint8_t* ram, recomp_context* ctx) {
         write8(ram, kCostTable + cell, cost);
         write8(ram, kTerrainTable + cell, terrain);
     });
-    wide = true;
+    mode = Mode::Move;
     ++generation;
     return true;
 }
 
-// 801C3D34 clears the tables for any new range, a weapon's too: the grid is out of date.
-void cleared() { wide = false; }
+// 801C4560 for a weapon whose range the tables cannot hold. Only the diamond of an
+// ordinary weapon: a map weapon's shape comes from a table of 51 ROM weapons, and its
+// flow (801D35B0 onwards) has tables of its own, so a MOD may not take one past 15.
+bool paint(uint8_t* ram, recomp_context* ctx) {
+    const uint32_t weapon = uint32_t(ctx->r4);
+    const int32_t handle = int32_t(ctx->r5);
+    const int radius = int32_t(ctx->r6);
+    const uint8_t value = uint8_t(ctx->r7);
+    const bool ordinary = (byte(ram, weapon + 4) & 1) == 0 && byte(ram, uint32_t(ctx->r29) + 0x13) == 1;
+    if (!ordinary) {
+        mode = Mode::None;
+        if (radius > kWindow) ctx->r6 = kWindow;
+        return false;
+    }
+    if (mode != Mode::Attack) {
+        if (radius <= kWindow) return false;
+        grid.begin_range(radius);
+        for (int gy = 0; gy < kWindowSize; ++gy)
+            for (int gx = 0; gx < kWindowSize; ++gx)
+                grid.set_reach(gx - kWindow, gy - kWindow, byte(ram, kReachTable + uint32_t(gy * kWindowSize + gx)));
+        mode = Mode::Attack;
+    }
+    const int32_t x = int32_t(f32(ram, object(uint32_t(handle)) + 4)), y = int32_t(f32(ram, object(uint32_t(handle)) + 8));
+    Guest g(ram, ctx);
+    grid.stamp(radius, value, x, y, s32(ram, kMapWidth), s32(ram, kMapHeight),
+        [&](auto&& visit) {
+            // 801EB4C0 and 801EB65C only ever answer for a square a unit stands on.
+            for (uint32_t unit = kFirstUnit; unit < kUnitEnd; ++unit) {
+                if (byte(ram, object(unit) + 1) == 0) continue;
+                const int32_t ox = int32_t(f32(ram, object(unit) + 4)) - x, oy = int32_t(f32(ram, object(unit) + 8)) - y;
+                if (ox % 16 == 0 && oy % 16 == 0) visit(ox / 16, oy / 16);
+            }
+        },
+        [&](int dx, int dy) {
+            const int32_t px = x + dx * 16, py = y + dy * 16;
+            uint32_t who;
+            if (g.occupied(handle, px, py, 0, who)) return true;
+            g.call.r4 = int32_t(weapon); g.call.r5 = handle; g.call.r6 = px; g.call.r7 = py;
+            load_000AB160_func_801EB65C(ram, &g.call);
+            return (uint32_t(g.call.r2) & 0xFF) != 0;
+        },
+        [&](int dx, int dy) {
+            g.call.r4 = (x + dx * 16) >> 4; g.call.r5 = (y + dy * 16) >> 4; g.call.r6 = 0x3B; g.call.r7 = 0;
+            load_000AB160_func_801E213C(ram, &g.call);
+            return uint8_t(g.call.r2);
+        });
+    grid.store_window([&](int gx, int gy, uint8_t reach, uint8_t, uint8_t) {
+        write8(ram, kReachTable + uint32_t(gy * kWindowSize + gx), reach);
+    });
+    return true;
+}
 
-// 801E4760 draws from the tables around the anchor. The window slides to the part of the
+// 801C3D34 clears the tables for any new range, a weapon's too: the grid is out of date.
+void cleared() { mode = Mode::None; }
+
+// 801E4760 and 801E49A4 (a weapon's range) draw from the tables around the anchor. The window slides to the part of the
 // grid on screen for the call: ±240 pixels covers the widest picture the game allows.
 std::array<uint8_t, kWindowSize * kWindowSize> saved_reach;
 int32_t saved_anchor[2];
 bool draw_begin(uint8_t* ram) {
-    if (!wide) return false;
+    if (mode == Mode::None) return false;
     saved_anchor[0] = s32(ram, kAnchorX);
     saved_anchor[1] = s32(ram, kAnchorY);
     const int32_t view = srw64::frame::wide ? int32_t(srw64::frame::picture_width) : int32_t(srw64::frame::kWidth);
@@ -167,13 +222,14 @@ void draw_end(uint8_t* ram) {
     write32(ram, kAnchorY, uint32_t(saved_anchor[1]));
 }
 
-// 801E0B94 for the destination the player confirms (the attack screens ask it too, of a
-// weapon's range, by which time 801C3D34 has ended the wide grid).
+// 801E0B94: is the cursor's square in the range, for the destination the player confirms
+// and for the target of an attack. The two are told apart by the grid's own range.
 bool query(uint8_t* ram, recomp_context* ctx) {
-    if (!wide || (uint32_t(ctx->r4) & 0xFF) != kStop || int8_t(byte(ram, kState)) != 0xC) return false;
+    const uint32_t wanted = uint32_t(ctx->r4) & 0xFF;
+    if (mode == Mode::None || (mode == Mode::Move && (wanted != kStop || int8_t(byte(ram, kState)) != 0xC))) return false;
     const int dx = (int32_t(ctx->r5) >> 4) - (s32(ram, kAnchorX) >> 4);
     const int dy = (int32_t(ctx->r6) >> 4) - (s32(ram, kAnchorY) >> 4);
-    ctx->r2 = grid.reach(dx, dy) == kStop;
+    ctx->r2 = grid.reach(dx, dy) == wanted;
     return true;
 }
 
@@ -181,7 +237,7 @@ bool query(uint8_t* ram, recomp_context* ctx) {
 // 15 layers. A move over 15 got here with the range already cut to the EN left, so the
 // cheapest way to any square in range is within 15 and the result does not change.
 bool path(uint8_t* ram, recomp_context* ctx) {
-    if (!wide) {
+    if (mode != Mode::Move) {
         if (int32_t(ctx->r4) > kWindow) ctx->r4 = kWindow;
         return false;
     }
@@ -194,7 +250,7 @@ bool path(uint8_t* ram, recomp_context* ctx) {
 
 // 801C5810.
 bool step(uint8_t* ram, recomp_context* ctx) {
-    if (!wide) return false;
+    if (mode != Mode::Move) return false;
     int dx = int8_t(byte(ram, kWalk)) - kWindow, dy = int8_t(byte(ram, kWalk + 1)) - kWindow;
     write8(ram, kWalk + 2, byte(ram, kWalk));
     write8(ram, kWalk + 3, byte(ram, kWalk + 1));
@@ -207,7 +263,7 @@ bool step(uint8_t* ram, recomp_context* ctx) {
 
 // 80202848: the enemy AI's square nearest the unit it goes for.
 bool near_unit(uint8_t* ram, recomp_context* ctx) {
-    if (!wide) return false;
+    if (mode != Mode::Move) return false;
     const int32_t self = int32_t(ctx->r4);
     const uint32_t to = uint32_t(ctx->r5), out_x = uint32_t(ctx->r6), out_y = uint32_t(ctx->r7);
     const int32_t x = int32_t(f32(ram, object(self) + 4)), y = int32_t(f32(ram, object(self) + 8));
@@ -230,7 +286,7 @@ bool near_unit(uint8_t* ram, recomp_context* ctx) {
 // 80202A84: the square nearest a unit given by side and index. 802024FC calls this once
 // for each square 80202848 tries, always with the same answer: the scan is made once.
 bool near_target(uint8_t* ram, recomp_context* ctx) {
-    if (!wide) return false;
+    if (mode != Mode::Move) return false;
     const uint32_t self = uint32_t(ctx->r4), side = uint32_t(ctx->r5), index = uint32_t(ctx->r6);
     const uint32_t out_x = uint32_t(ctx->r7), out_y = word(ram, uint32_t(ctx->r29) + 0x10);
     const uint32_t record = roster({side, index});
@@ -259,26 +315,32 @@ bool near_target(uint8_t* ram, recomp_context* ctx) {
     return true;
 }
 
-// 801F3268 with no radius: whether unit a1 stands on a square of value a2 of unit a0's
-// range (801F9590 lights the ships a unit can board, right after the fill).
+// 801F3268: whether unit a1 stands on a square of value a2 of unit a0's range, within a3
+// squares (0: anywhere). 801F9590 lights the ships a unit can board and the targets a
+// weapon reaches; the weapon checks (801F8B38, 801F8DB0, the AI) pass the weapon's range,
+// which above 15 the original's window cannot take: it answers no.
 bool unit_on_range(uint8_t* ram, recomp_context* ctx) {
-    if (!wide || (uint32_t(ctx->r7) & 0xFF) != 0) return false;
+    const int within = int(uint32_t(ctx->r7) & 0xFF);
+    if (mode == Mode::None || (mode == Mode::Move && within != 0)) return false;
     const uint32_t self = uint32_t(ctx->r4), other = uint32_t(ctx->r5);
     const int32_t x = int32_t(f32(ram, object(self) + 4)), y = int32_t(f32(ram, object(self) + 8));
     const int32_t ox = int32_t(f32(ram, object(other) + 4)), oy = int32_t(f32(ram, object(other) + 8));
     ctx->r2 = 0;
     if ((ox - x) % 16 || (oy - y) % 16) return true;
-    if (grid.reach((ox - x) / 16, (oy - y) / 16) != (uint32_t(ctx->r6) & 0xFF)) return true;
+    const int dx = (ox - x) / 16, dy = (oy - y) / 16;
+    if (within && (std::abs(dx) > within || std::abs(dy) > within)) return true;
+    if (grid.reach(dx, dy) != (uint32_t(ctx->r6) & 0xFF)) return true;
     ctx->r2 = byte(ram, object(other) + 1) != 3;
     return true;
 }
 }  // namespace
 
-const Grid* active() { return wide ? &grid : nullptr; }
+const Grid* active() { return mode == Mode::Move ? &grid : nullptr; }
 
 void configure() {
     srw64_game_hooks.move_fill = fill;
     srw64_game_hooks.move_cleared = cleared;
+    srw64_game_hooks.range_paint = paint;
     srw64_game_hooks.move_draw_begin = draw_begin;
     srw64_game_hooks.move_draw_end = draw_end;
     srw64_game_hooks.move_query = query;

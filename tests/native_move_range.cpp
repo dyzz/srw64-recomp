@@ -283,6 +283,89 @@ void check_wide(std::mt19937& rng, int trials) {
     }
 }
 
+// A weapon's world: which squares units stand on, which of those it cannot aim at
+// (801EB4C0 mode 0 or 801EB65C), and which terrain is 0x3F.
+struct Field {
+    int width = 0, height = 0;
+    std::vector<uint8_t> unit, refused, hole;
+    int at(int x, int y) const { return y * width + x; }
+    bool in_bounds(int px, int py) const { return px >= 0x20 && px <= width * 16 - 0x30 && py >= 0x20 && py <= height * 16 - 0x30; }
+};
+Field make_field(std::mt19937& rng, int width, int height) {
+    Field f;
+    f.width = width; f.height = height;
+    const size_t n = size_t(width * height);
+    f.unit.resize(n); f.refused.resize(n); f.hole.resize(n);
+    for (size_t i = 0; i < n; ++i) { f.unit[i] = rng() % 6 == 0; f.refused[i] = f.unit[i] && rng() % 2 == 0; f.hole[i] = rng() % 15 == 0; }
+    return f;
+}
+void host_stamp(Grid& g, const Field& f, int ux, int uy, int radius, uint8_t value) {
+    g.stamp(radius, value, ux * 16, uy * 16, f.width * 16, f.height * 16,
+        [&](auto&& visit) {
+            for (int y = 0; y < f.height; ++y)
+                for (int x = 0; x < f.width; ++x) if (f.unit[f.at(x, y)]) visit(x - ux, y - uy);
+        },
+        [&](int dx, int dy) { return f.refused[f.at(ux + dx, uy + dy)] != 0; },
+        [&](int dx, int dy) { return f.hole[f.at(ux + dx, uy + dy)] ? 0x3F : 1; });
+}
+// 801C4560 for an ordinary weapon (shape 1, no filter), as read.
+void original_stamp(uint8_t* reach, const Field& f, int ux, int uy, int r, uint8_t value) {
+    int width = 1;
+    for (int line = -r; line < 2 * r; ++line) {
+        const int w = int8_t(width);
+        for (int k = 0; k < w; ++k) {
+            const int col = 15 + line, row = 15 + k - (w >> 1);
+            if (f.in_bounds((ux + col - 15) * 16, (uy + row - 15) * 16)) reach[row * 31 + col] = value;
+        }
+        width += line < 0 ? 2 : -2;
+    }
+    reach[15 * 31 + 15] = 0;
+    for (int row = 15 - r; row <= 15 + r; ++row)
+        for (int col = 15 - r; col <= 15 + r; ++col) {
+            const int x = ux + col - 15, y = uy + row - 15;
+            if (x < 0 || y < 0 || x >= f.width || y >= f.height) continue;
+            if (f.refused[f.at(x, y)]) reach[row * 31 + col] = 0;
+        }
+    for (int row = 0; row < 31; ++row)
+        for (int col = 0; col < 31; ++col) {
+            if (reach[row * 31 + col] != 1) continue;
+            if (f.hole[f.at(ux + col - 15, uy + row - 15)]) reach[row * 31 + col] = 0;
+        }
+}
+void check_weapon_ranges(std::mt19937& rng) {
+    for (int t = 0; t < 2000; ++t) {
+        const Field f = make_field(rng, 40 + rng() % 60, 40 + rng() % 60);
+        int ux = rng() % 3 == 0 ? 2 + rng() % 2 : rng() % f.width, uy = rng() % 3 == 0 ? f.height - 3 - int(rng() % 2) : rng() % f.height;
+        if (!f.in_bounds(ux * 16, uy * 16)) continue;
+        const int max_range = 1 + rng() % 15, min_range = 1 + rng() % max_range;
+        uint8_t table[kCells] = {};
+        original_stamp(table, f, ux, uy, max_range, 1);
+        if (min_range > 1) original_stamp(table, f, ux, uy, min_range - 1, 0);
+        Grid g;
+        g.begin_range(15);
+        host_stamp(g, f, ux, uy, max_range, 1);
+        if (min_range > 1) host_stamp(g, f, ux, uy, min_range - 1, 0);
+        for (int row = 0; row < 31; ++row)
+            for (int col = 0; col < 31; ++col) assert(table[row * 31 + col] == g.reach(col - 15, row - 15));
+    }
+    for (int t = 0; t < 300; ++t) {
+        const Field f = make_field(rng, 80 + rng() % 180, 80 + rng() % 120);
+        const int ux = 40 + rng() % (f.width - 60), uy = 40 + rng() % (f.height - 60);
+        const int max_range = 16 + rng() % 30, min_range = 1 + rng() % max_range;
+        Grid g;
+        g.begin_range(max_range);
+        host_stamp(g, f, ux, uy, max_range, 1);
+        if (min_range > 1) host_stamp(g, f, ux, uy, min_range - 1, 0);
+        for (int y = 0; y < f.height; ++y)
+            for (int x = 0; x < f.width; ++x) {
+                const int dx = x - ux, dy = y - uy, far = std::abs(dx) + std::abs(dy);
+                const bool in = far >= min_range && far <= max_range && f.in_bounds(x * 16, y * 16) &&
+                                !f.refused[f.at(x, y)] && !f.hole[f.at(x, y)];
+                assert(g.reach(dx, dy) == (in ? kInside : kNone));
+            }
+    }
+}
+
 void check_details() {
     // The diamond, an impassable square inside it, and the map's playable rim.
     World w;
@@ -339,6 +422,7 @@ int main() {
     compare_with_original(rng, false, 1500);
     compare_with_original(rng, true, 300);
     check_wide(rng, 120);
+    check_weapon_ranges(rng);
     std::puts("move range: ok");
     return 0;
 }

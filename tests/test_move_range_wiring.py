@@ -14,6 +14,7 @@ HOOKED = {
     "80202848": ("srw64_original_ai_near_unit", "ai_near_unit"),
     "80202A84": ("srw64_original_ai_near_target", "ai_near_target"),
     "801F3268": ("srw64_original_unit_on_range", "unit_on_range"),
+    "801C4560": ("srw64_original_range_paint", "range_paint"),
 }
 
 
@@ -41,19 +42,21 @@ class MoveRangeWiringTests(unittest.TestCase):
         self.assertIn('"load_000AB160_func_801C3D34": "srw64_original_move_clear"', self.generate)
         body = self.wrapper("801C3D34")
         self.assertLess(body.index("move_cleared"), body.index("srw64_original_move_clear"))
-        self.assertIn("wide = false", self.glue[self.glue.index("void cleared()"):][:60])
+        self.assertIn("mode = Mode::None", self.glue[self.glue.index("void cleared()"):][:60])
 
     def test_up_to_fifteen_is_left_to_the_original(self):
         fill = self.function("fill")
         self.assertRegex(fill, r"int move = int32_t\(ctx->r5\);\s*if \(move <= kWindow\) return false;")
         # After the EN limit too: the original applies the same limit itself.
         self.assertEqual(fill.count("if (move <= kWindow) return false;"), 2)
-        for name in ("query", "step", "near_unit", "near_target", "unit_on_range"):
-            self.assertIn("if (!wide", self.function(name), name)
+        for name in ("step", "near_unit", "near_target"):
+            self.assertIn("if (mode != Mode::Move) return false;", self.function(name), name)
+        for name in ("query", "unit_on_range"):
+            self.assertRegex(self.function(name), r"if \(mode == Mode::None \|\|", name)
 
     def test_the_original_search_never_gets_more_than_its_layers(self):
         path = self.function("path")
-        self.assertRegex(path, r"if \(!wide\) \{\s*if \(int32_t\(ctx->r4\) > kWindow\) ctx->r4 = kWindow;\s*return false;")
+        self.assertRegex(path, r"if \(mode != Mode::Move\) \{\s*if \(int32_t\(ctx->r4\) > kWindow\) ctx->r4 = kWindow;\s*return false;")
 
     def test_the_draw_restores_what_it_borrows(self):
         body = self.wrapper("801E4760")
@@ -63,6 +66,17 @@ class MoveRangeWiringTests(unittest.TestCase):
         restore = self.glue[self.glue.index("void draw_end"):][:300]
         for table in ("saved_reach", "kAnchorX", "kAnchorY"):
             self.assertIn(table, restore)
+
+    def test_a_weapon_range_up_to_fifteen_is_left_to_the_original(self):
+        paint = self.function("paint")
+        self.assertRegex(paint, r"if \(mode != Mode::Attack\) \{\s*if \(radius <= kWindow\) return false;")
+        # A map weapon's flow is not taken over: it must never reach the tables past 15.
+        self.assertRegex(paint, r"if \(!ordinary\) \{\s*mode = Mode::None;\s*if \(radius > kWindow\) ctx->r6 = kWindow;\s*return false;")
+
+    def test_only_the_weapon_table_draw_slides_the_window(self):
+        body = self.wrapper("801E49A4")
+        self.assertIn("(uint32_t(ctx->r7) & 0xFF) == 0 && srw64_game_hooks.move_draw_begin", body)
+        self.assertLess(body.index("srw64_original_range_draw"), body.index("move_draw_end"))
 
     def test_the_answer_to_the_confirm_query_stays_with_this_screen(self):
         query = self.function("query")

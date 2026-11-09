@@ -109,7 +109,7 @@ Spirit keys: `self_destruct` Self-Destruct, `scout` Scan, `accel` Accel, `mercy`
 | Field | Meaning | Range |
 | --- | --- | --- |
 | `power` | power before upgrades | 0–25500, a multiple of 100 |
-| `range_min`, `range_max` | minimum and maximum range | min 0–30, max 1–30, min not above max |
+| `range_min`, `range_max` | minimum and maximum range | min 0–30, max 1–30 (map weapons up to 15), min not above max |
 | `hit` | hit modifier | -128–127 |
 | `critical` | critical modifier | -128–127 |
 | `ammo` | ammo, `-1` for none | -1–99 |

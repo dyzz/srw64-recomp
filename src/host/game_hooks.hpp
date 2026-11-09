@@ -174,6 +174,7 @@ struct SRW64GameHooks {
     bool (*ai_near_unit)(uint8_t*, recomp_context*){};
     bool (*ai_near_target)(uint8_t*, recomp_context*){};
     bool (*unit_on_range)(uint8_t*, recomp_context*){};
+    bool (*range_paint)(uint8_t*, recomp_context*){};
     // Tactical map idle (state 5, docs/native/enemy-cycle.md): 801C8B04 runs; true: the
     // host moved the cursor this frame and the original does not run.
     bool (*map_idle)(uint8_t*, recomp_context*){};

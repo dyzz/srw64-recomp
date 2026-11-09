@@ -59,6 +59,9 @@ int main(int argc,char** argv) {
     check(weapon(R"({"731":{"power":25600}})").find("超出范围")!=std::string::npos,"power at most 25500");
     check(weapon(R"({"731":{"range_min":5,"range_max":3}})").find("range_min")!=std::string::npos,"min range past max range");
     check(weapon(R"({"731":{"range_min":30}})").find("range_min")!=std::string::npos,"min range past the ROM's max range");
+    check(weapon(R"({"731":{"range_max":30}})").empty(),"an ordinary weapon's range goes to 30");
+    check(weapon(R"({"16":{"range_max":15}})").empty(),"a map weapon's range goes to 15");
+    check(weapon(R"({"16":{"range_max":16}})").find("地图武器")!=std::string::npos,"a map weapon's range stops at 15");
     check(weapon(R"({"731":{"hit":"5"}})").find("整数")!=std::string::npos && weapon(R"({"731":{"hit":1.5}})").find("整数")!=std::string::npos,"integers only");
     check(weapon(R"({"1329":{"power":100}})").find("超出范围")!=std::string::npos,"weapon numbers in range");
     // The kind byte's bits, the requirement code, the upgrade type and the lock (mod_data.hpp's

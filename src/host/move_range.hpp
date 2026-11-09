@@ -98,6 +98,35 @@ public:
                 if (reach_[index(dx, dy)] == kStop && pass_only(dx, dy)) reach_[index(dx, dy)] = kPass;
     }
 
+    // 801C4560 for a weapon: an ordinary one's range is a diamond of radius `radius` set to
+    // `value` (a minimum range is the same diamond again, set to 0). The unit's square is
+    // cleared; so is any square `clears` says, of those a unit stands on; and last, squares
+    // still set whose terrain is 0x3F. `each_unit` visits the squares units stand on.
+    void begin_range(int radius) { reset(std::min(radius, kMaxRadius)); }
+    void set_reach(int dx, int dy, uint8_t value) { if (contains(dx, dy)) reach_[index(dx, dy)] = value; }
+    template <class EachUnit, class Clears, class Terrain>
+    void stamp(int radius, uint8_t value, int x, int y, int map_width, int map_height,
+               EachUnit&& each_unit, Clears&& clears, Terrain&& terrain) {
+        radius = std::min(radius, kMaxRadius);
+        for (int dy = -radius; dy <= radius; ++dy) {
+            const int py = y + dy * 16;
+            if (py < 0x20 || py > map_height - 0x30) continue;
+            const int span = radius - std::abs(dy);
+            for (int dx = -span; dx <= span; ++dx) {
+                const int px = x + dx * 16;
+                if (px >= 0x20 && px <= map_width - 0x30) set_reach(dx, dy, value);
+            }
+        }
+        set_reach(0, 0, kNone);
+        each_unit([&](int dx, int dy) {
+            if (std::abs(dx) <= radius && std::abs(dy) <= radius && contains(dx, dy) && clears(dx, dy))
+                set_reach(dx, dy, kNone);
+        });
+        for (int dy = -radius_; dy <= radius_; ++dy)
+            for (int dx = -radius_; dx <= radius_; ++dx)
+                if (reach_[index(dx, dy)] == kInside && terrain(dx, dy) == 0x3F) reach_[index(dx, dy)] = kNone;
+    }
+
     // What the original's tables would hold in their 31x31 around the unit.
     template <class Store>
     void store_window(Store&& store) const {
@@ -239,8 +268,8 @@ private:
     std::vector<uint32_t> heap_;
 };
 
-// The grid of the last fill wider than the original's, or null if the original's tables
-// hold the range (the debug interface and the farthest squares read it).
+// The grid of the last move fill wider than the original's, or null if the original's
+// tables hold the range (the farthest squares read it).
 const Grid* active();
 void configure();
 }  // namespace srw64::move_range
