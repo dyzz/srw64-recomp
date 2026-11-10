@@ -92,6 +92,18 @@ inline bool frame_box(const uint8_t* ram, uint32_t sub, float box[4]) {
     return any;
 }
 
+// The ground's tiles (8008422C) are slots of mode 0xF too, drawing a model rather than a
+// scene: no sub-record has a scene handle. They meet edge to edge, so they stay where the
+// original puts them.
+inline bool is_ground(const uint8_t* ram, uint32_t record, uint32_t mode) {
+    if (mode != 0xF) return false;
+    for (uint32_t s = 0; s < 3; ++s) {
+        const uint32_t sub = record + kSubs + s * kSubSize;
+        if (guest::read(ram, sub, 1) && int16_t(guest::read(ram, sub + 0x12, 2)) >= 0) return false;
+    }
+    return true;
+}
+
 // Moves the battle's sprites for the matrices about to be computed; `saved` takes what
 // restore() puts back.
 inline void apply(uint8_t* ram, std::vector<Saved>& saved) {
@@ -112,6 +124,7 @@ inline void apply(uint8_t* ram, std::vector<Saved>& saved) {
         const uint32_t record = kSlots + slot * kSlotSize;
         const uint32_t mode = guest::read(ram, record, 1);
         if (mode < 0xE || mode > 0x10 || !guest::read(ram, record + 1, 1)) continue;
+        if (is_ground(ram, record, mode)) continue;
         float p[3], scale[2];
         for (uint32_t i = 0; i < 3; ++i) p[i] = real(ram, record + 4 + 4 * i);
         for (uint32_t i = 0; i < 2; ++i) scale[i] = real(ram, record + 0x10 + 4 * i);
