@@ -117,6 +117,9 @@ NATIVE_HOOKS = {
     "resident_func_80095974": "srw64_original_background_draw",
     "resident_func_80096CD8": "srw64_original_scene_rect_draw",
     "resident_func_8009761C": "srw64_original_scene_quad_draw",
+    # The sprites' matrices, once per frame: the battle's are spread across a picture wider
+    # than 4:3 for the length of the call (battle_spread.hpp).
+    "resident_func_8008261C": "srw64_original_sprite_matrices",
     # The title demo battle's participant records (8009C2DC); the battle viewer rewrites
     # them after the original fills its defaults (battle_viewer.hpp).
     "resident_func_8009C2DC": "srw64_original_demo_battle_fill",

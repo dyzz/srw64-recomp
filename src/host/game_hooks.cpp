@@ -3,6 +3,7 @@
 #include "battle_viewer.hpp"
 #include "music.hpp"
 #include "battle_hud.hpp"
+#include "battle_spread.hpp"
 #include "guest_memory.hpp"
 #include "funcs.h"
 #include "script_trace.hpp"
@@ -103,7 +104,18 @@ void load_00121560_func_801C9710(uint8_t* ram,recomp_context* ctx) {
     srw64::battle_animation_probe::step(ram,ctx);
     srw64::wide_map::mark_battle();   // the sky is drawn to each side (background_sides)
     srw64::battle_viewer::animation_frame();   // a viewer recording starts with the animation's first frame
+    srw64::battle_spread::in_step = true;
     srw64_original_battle_animation_step(ram,ctx);
+    srw64::battle_spread::in_step = false;
+}
+// 8008261C: every sprite's matrix from its slot. In the battle's step the slots are spread
+// across a picture wider than 4:3 while it runs (battle_spread.hpp).
+void resident_func_8008261C(uint8_t* ram,recomp_context* ctx) {
+    static std::vector<srw64::battle_spread::Saved> saved;
+    saved.clear();
+    if(srw64::wide_map::battle_shown())srw64::battle_spread::apply(ram,saved);
+    srw64_original_sprite_matrices(ram,ctx);
+    srw64::battle_spread::restore(ram,saved);
 }
 void load_000AB160_func_801DFBD0(uint8_t* ram,recomp_context* ctx) {
     // After an aborted battle, takes over the resume frame (state 24 sub-state
