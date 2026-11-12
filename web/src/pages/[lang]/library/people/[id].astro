@@ -2,6 +2,7 @@
 import Base from '../../../../layouts/Base.astro';
 import { LANGS, UI, canReview, tl, type Lang } from '../../../../i18n';
 import { library, loc, portraitUrl, type Person } from '../../../../lib/data';
+import { personDescription } from '../../../../lib/seo';
 import Term from '../../../../components/Term.astro';
 import LibraryChanges from '../../../../components/LibraryChanges.astro';
 
@@ -24,7 +25,7 @@ const t = {
 };
 const partner = (id: number) => lib.people.find((x) => x.id === id);
 ---
-<Base lang={lang} title={`${loc(p.name, lang)} · ${UI.nav.library[tl(lang)]}`} review={canReview(lang)}>
+<Base lang={lang} title={`${loc(p.name, lang)} · ${UI.nav.library[tl(lang)]}`} description={personDescription(lang, p, series)} review={canReview(lang)}>
   <div class="wrap layout" data-library data-lang={lang} data-target-type="term" data-target-prefix="">
     <aside class="side">
       <a href={`/${lang}/library/#people`}>← {UI.nav.library[tl(lang)]}</a>

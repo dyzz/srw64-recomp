@@ -1,6 +1,6 @@
 // @ts-check
 import { execFileSync } from 'node:child_process';
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 
@@ -17,18 +17,19 @@ const zhHant = {
 };
 
 // sitemap.xml from the pages the build wrote: every HTML page (not the 404, not the JSON and
-// text endpoints), each with its other-language versions as hreflang alternates, the
+// text endpoints, not a page that only redirects), each with its other-language versions as hreflang alternates, the
 // language picker at the root as x-default. robots.txt (public/) points search engines at it.
 const SITE = 'https://srw64.dreamquest.club';
-const LANG_TAGS = { zh: 'zh-Hans', tw: 'zh-Hant', en: 'en', ja: 'ja' };
+const LANG_TAGS = { zh: 'zh-Hans', tw: 'zh-Hant', en: 'en', ja: 'ja', ko: 'ko' };  // as LANGS in src/i18n.ts
 const sitemap = {
   name: 'srw64-sitemap',
   hooks: {
     'astro:build:done': ({ pages, dir }) => {
-      const paths = new Set(pages.map((p) => `/${p.pathname}`).filter((p) => p.endsWith('/') && p !== '/404/'));
+      const redirects = (p) => readFileSync(new URL(`.${p}index.html`, dir), 'utf8').slice(0, 300).includes('http-equiv="refresh"');
+      const paths = new Set(pages.map((p) => `/${p.pathname}`).filter((p) => p.endsWith('/') && p !== '/404/' && !redirects(p)));
       const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
       const urls = [...paths].sort().map((path) => {
-        const m = path.match(/^\/(zh|tw|en|ja)(\/.*)$/);
+        const m = path.match(/^\/(zh|tw|en|ja|ko)(\/.*)$/);
         const alts = m
           ? Object.entries(LANG_TAGS).filter(([l]) => paths.has(`/${l}${m[2]}`))
               .map(([l, tag]) => `<xhtml:link rel="alternate" hreflang="${tag}" href="${esc(SITE + `/${l}${m[2]}`)}"/>`)

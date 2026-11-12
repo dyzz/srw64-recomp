@@ -9,7 +9,7 @@ const lang = Astro.params.lang as Lang;
 const posts = (await getCollection('blog', (p) => p.id.startsWith(`${tl(lang)}/`) && !p.data.draft)).sort(newestFirst);
 const lead = { zh: '版本说明与制作记录。', en: 'Release notes and development notes.', ja: 'リリースノートと制作記録。', ko: '릴리스 노트와 개발 기록.' };
 ---
-<Base lang={lang} title={UI.nav.blog[tl(lang)]}>
+<Base lang={lang} title={UI.nav.blog[tl(lang)]} description={lead[tl(lang)]}>
   <div class="wrap">
     <header class="page-head">
       <span class="tag">BLOG</span>

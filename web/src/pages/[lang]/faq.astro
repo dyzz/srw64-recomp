@@ -8,7 +8,7 @@ const lang = Astro.params.lang as Lang;
 const entry = (await getEntry('pages', `faq/${tl(lang)}`))!;
 const { Content, headings } = await render(entry);
 ---
-<Base lang={lang} title={entry.data.title}>
+<Base lang={lang} title={entry.data.title} description={entry.data.lead}>
   <div class="wrap">
     <header class="page-head">
       <span class="tag">FAQ</span>

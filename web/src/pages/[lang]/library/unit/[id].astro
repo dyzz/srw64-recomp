@@ -4,6 +4,7 @@ import Term from '../../../../components/Term.astro';
 import LibraryChanges from '../../../../components/LibraryChanges.astro';
 import { LANGS, UI, canReview, tl, type Lang } from '../../../../i18n';
 import { library, loc, type Unit } from '../../../../lib/data';
+import { unitDescription } from '../../../../lib/seo';
 
 export async function getStaticPaths() {
   return LANGS.flatMap((l) => library().units.map((u) => ({ params: { lang: l.code, id: String(u.id) } })));
@@ -39,7 +40,7 @@ const t = {
 };
 const termAttrs = (id: string, name: { zh: string; en: string }) => ({ 'data-term': id });
 ---
-<Base lang={lang} title={`${loc(u.name, lang)} · ${UI.nav.library[tl(lang)]}`} review={canReview(lang)}>
+<Base lang={lang} title={`${loc(u.name, lang)} · ${UI.nav.library[tl(lang)]}`} description={unitDescription(lang, u, series)} review={canReview(lang)}>
   <div class="wrap layout" data-library data-lang={lang} data-target-type="term" data-target-prefix="">
     <aside class="side">
       <a href={`/${lang}/library/#units`}>← {UI.nav.library[tl(lang)]}</a>

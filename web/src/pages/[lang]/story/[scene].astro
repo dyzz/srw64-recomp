@@ -4,6 +4,7 @@
 // (opening, each map event with its trigger, ending), and the lines as cards.
 import Base from '../../../layouts/Base.astro';
 import { LANGS, UI, canReview, tagOf, tl, type Lang, type TextLang } from '../../../i18n';
+import { sceneDescription } from '../../../lib/seo';
 import { library, loc, scene as loadScene, storyIndex, storySource, type Line } from '../../../lib/data';
 
 export async function getStaticPaths() {
@@ -155,7 +156,7 @@ const nodeTitle = (x: (typeof events)[number]) => (x.e.trigger ? loc(x.e.trigger
 // A line's text in a translation; English where the export has no Korean yet.
 const textOf = (line: { ja: string[]; zh: string[]; en: string[]; ko?: string[] }, l: TextLang) => line[l] ?? line.en;
 ---
-<Base lang={lang} title={pageTitle} description={`${s.title.ja} · ${s.count}`} review={review}>
+<Base lang={lang} title={pageTitle} description={sceneDescription(lang, s.episode ? t.stage[tl(lang)](s.episode.stage) : '', loc(s.title, lang), s.count)} review={review}>
   <div data-story data-lang={lang} data-scene={s.scene}>
     <section class="hero">
       <div class="wrap">
