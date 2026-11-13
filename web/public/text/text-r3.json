@@ -1,15 +1,15 @@
 {
  "schema": "srw64.text-update.v1",
- "revision": 1,
+ "revision": 3,
  "oldest": "0.5.3",
- "release": "0.5.3",
- "date": "2026-11-04",
- "commit": "3f9fce3498991051b388968a4d5340251f3728dd",
+ "release": "0.5.3.1",
+ "date": "2026-11-13",
+ "commit": "31b2568fade5a0ba58ea38f1f7b3faf510ccc03b",
  "notes": {
-  "zh": "0.5.3 随包文本的基线，没有改动。",
-  "tw": "0.5.3 隨包文字的基準，沒有改動。",
-  "en": "The baseline of 0.5.3's bundled text; nothing changed yet.",
-  "ja": "0.5.3 同梱テキストの基準。まだ変更はありません。"
+  "zh": "按官网意见修正英文译名：Simurgh、Schuzrum-Dias；图鉴里四台同名机体改用区分名（量产型巴乌、猎犬（杰利德）、ν高达（无浮游炮）等）。",
+  "tw": "依官網意見修正英文譯名：Simurgh、Schuzrum-Dias；圖鑑裡四台同名機體改用區分名（量產型巴烏、獵犬（傑利特）、ν鋼彈（無感應砲）等）。",
+  "en": "English names from site suggestions: Simurgh and Schuzrum-Dias; four same-named Library units get names of their own (MP Bawoo, Baund Doc (Jerid), Nu Gundam (No Funnels)).",
+  "ja": "サイトへのご意見による英語名の修正：Simurgh、Schuzrum-Dias。図鑑の同名機体4機に区別できる名前（英語・中国語）を付けました。"
  },
  "files": {
   "dialogue/en/battle/other.txt": {
@@ -89,8 +89,8 @@
    "bytes": 28918
   },
   "dialogue/en/battle/speaker-028.txt": {
-   "hash": "6aa09351a5bc",
-   "bytes": 36523
+   "hash": "d5c8b7f8da02",
+   "bytes": 36510
   },
   "dialogue/en/battle/speaker-029.txt": {
    "hash": "4b41744a7c36",
@@ -1065,8 +1065,8 @@
    "bytes": 18145
   },
   "dialogue/en/story/scene-0001.txt": {
-   "hash": "5067674b5587",
-   "bytes": 24360
+   "hash": "7dbf931f3cd1",
+   "bytes": 24350
   },
   "dialogue/en/story/scene-0002.txt": {
    "hash": "7c3d1a138e6b",
@@ -1085,8 +1085,8 @@
    "bytes": 24114
   },
   "dialogue/en/story/scene-0006.txt": {
-   "hash": "788aa041e5b7",
-   "bytes": 20594
+   "hash": "ea853335f1e9",
+   "bytes": 20587
   },
   "dialogue/en/story/scene-0007.txt": {
    "hash": "a6d5702b7c2c",
@@ -1105,8 +1105,8 @@
    "bytes": 47578
   },
   "dialogue/en/story/scene-0011.txt": {
-   "hash": "d5288805d3aa",
-   "bytes": 43283
+   "hash": "3ae27a58b8e0",
+   "bytes": 43286
   },
   "dialogue/en/story/scene-0012.txt": {
    "hash": "87f123eecd42",
@@ -1217,16 +1217,16 @@
    "bytes": 62517
   },
   "dialogue/en/story/scene-0039.txt": {
-   "hash": "96a505722d18",
-   "bytes": 64945
+   "hash": "1a9b2916ece2",
+   "bytes": 64941
   },
   "dialogue/en/story/scene-0040.txt": {
-   "hash": "91e2015f6d3e",
-   "bytes": 81607
+   "hash": "78c0cb36a64b",
+   "bytes": 81586
   },
   "dialogue/en/story/scene-0041.txt": {
-   "hash": "5efbba777f55",
-   "bytes": 66744
+   "hash": "b782d893aa76",
+   "bytes": 66731
   },
   "dialogue/en/story/scene-0042.txt": {
    "hash": "83bb2214faa8",
@@ -1285,12 +1285,12 @@
    "bytes": 102654
   },
   "dialogue/en/story/scene-0056.txt": {
-   "hash": "410bd55e0302",
-   "bytes": 131782
+   "hash": "f067d581c6b3",
+   "bytes": 131773
   },
   "dialogue/en/story/scene-0057.txt": {
-   "hash": "16dfeef628ea",
-   "bytes": 95649
+   "hash": "ee7ac3c867f2",
+   "bytes": 95623
   },
   "dialogue/en/story/scene-0059.txt": {
    "hash": "300137b9c9aa",
@@ -1333,8 +1333,8 @@
    "bytes": 29711
   },
   "dialogue/en/story/scene-0069.txt": {
-   "hash": "662516def70a",
-   "bytes": 92217
+   "hash": "9c1a336c59ba",
+   "bytes": 92197
   },
   "dialogue/en/story/scene-0070.txt": {
    "hash": "e156081f993f",
@@ -5925,20 +5925,20 @@
    "bytes": 54705
   },
   "dialogue/zh-Hant/story/scene-0038.txt": {
-   "hash": "d0ff9a992864",
-   "bytes": 53548
+   "hash": "0f137d2cced4",
+   "bytes": 53547
   },
   "dialogue/zh-Hant/story/scene-0039.txt": {
-   "hash": "7447e9ee2f3b",
-   "bytes": 60657
+   "hash": "473aeae59827",
+   "bytes": 60666
   },
   "dialogue/zh-Hant/story/scene-0040.txt": {
    "hash": "74b6a353393d",
    "bytes": 75163
   },
   "dialogue/zh-Hant/story/scene-0041.txt": {
-   "hash": "b12bbf2a06e4",
-   "bytes": 62449
+   "hash": "c7c7350f278b",
+   "bytes": 62452
   },
   "dialogue/zh-Hant/story/scene-0042.txt": {
    "hash": "9ac0ee3f89f1",
@@ -5993,8 +5993,8 @@
    "bytes": 123297
   },
   "dialogue/zh-Hant/story/scene-0055.txt": {
-   "hash": "68725397c1f1",
-   "bytes": 91733
+   "hash": "44fb24dea67e",
+   "bytes": 91751
   },
   "dialogue/zh-Hant/story/scene-0056.txt": {
    "hash": "31906160d727",
@@ -6005,8 +6005,8 @@
    "bytes": 91812
   },
   "dialogue/zh-Hant/story/scene-0059.txt": {
-   "hash": "93b36413433c",
-   "bytes": 84981
+   "hash": "e88cf6fe8cef",
+   "bytes": 84984
   },
   "dialogue/zh-Hant/story/scene-0060.txt": {
    "hash": "59284facc3f8",
@@ -6049,8 +6049,8 @@
    "bytes": 84598
   },
   "dialogue/zh-Hant/story/scene-0070.txt": {
-   "hash": "92d6a3f1ba44",
-   "bytes": 62831
+   "hash": "1885586345a7",
+   "bytes": 62840
   },
   "dialogue/zh-Hant/story/scene-0071.txt": {
    "hash": "93196b951abf",
@@ -6085,8 +6085,8 @@
    "bytes": 81932
   },
   "dialogue/zh-Hant/story/scene-0079.txt": {
-   "hash": "12fe5c7c4ea2",
-   "bytes": 28427
+   "hash": "c7cf11dc3ff4",
+   "bytes": 28433
   },
   "dialogue/zh-Hant/story/scene-0080.txt": {
    "hash": "fcd564879c16",
@@ -6297,28 +6297,28 @@
    "bytes": 34148
   },
   "library-names.json": {
-   "hash": "57f1add8b025",
-   "bytes": 1389
+   "hash": "e66129d8825e",
+   "bytes": 1811
   },
   "locales/en.json": {
-   "hash": "00d4c8485c16",
-   "bytes": 259683
+   "hash": "c0e7e81008bc",
+   "bytes": 260738
   },
   "locales/ja.json": {
-   "hash": "3cef50b7274e",
-   "bytes": 69762
+   "hash": "e4ebc5274642",
+   "bytes": 71103
   },
   "locales/ko.json": {
-   "hash": "8ce1446fb1e3",
-   "bytes": 279434
+   "hash": "61a59c908215",
+   "bytes": 280649
   },
   "locales/zh-Hans.json": {
-   "hash": "b01fe07fb6ee",
-   "bytes": 262288
+   "hash": "b4914dde98bc",
+   "bytes": 263382
   },
   "locales/zh-Hant.json": {
-   "hash": "543f85b6e378",
-   "bytes": 262800
+   "hash": "e8d748dd30b3",
+   "bytes": 263907
   }
  }
 }
