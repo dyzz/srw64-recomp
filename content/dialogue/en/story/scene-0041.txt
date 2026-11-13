@@ -101,28 +101,28 @@ Should I go get Dr. Hasan or Rain?”
 
 @26349 Shirley · シャリー
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「来たわね。どう? これが、新しい
 >  スイームルグよ」
-“You’re here. Well? This is the new Sweemurg.”
+“You’re here. Well? This is the new Simurgh.”
 
 @26350 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「あたしの……新しいスイームルグ……。
 >  すごいわ。{PartnerNick}のエルブルスが
-“My... my new Sweemurg... Amazing. So {PartnerNick}’s Elbulls
+“My... my new Simurgh... Amazing. So {PartnerNick}’s Elbulls
 ---
 >  あたしのスイームルグに新しい力をくれ
 >  たのね……」
-gave my Sweemurg new power...”
+gave my Simurgh new power...”
 
 @26351 Shirley · シャリー
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「そう、言葉通りにね。これでスイーム
 >  ルグは単体で飛行が可能になり
-“That’s right, quite literally. Now the Sweemurg can fly on its own,
+“That’s right, quite literally. Now the Simurgh can fly on its own,
 ---
 >  すべての装備がパワーアップしたわよ」
 and every piece of equipment has been upgraded.”
@@ -138,26 +138,26 @@ and every piece of equipment has been upgraded.”
 
 @26354 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「この新しいスイームルグの名前よ。
 >  華麗とか、輝かしいとか
-“The name for this new Sweemurg. It means gorgeous, or radiant,
+“The name for this new Simurgh. It means gorgeous, or radiant,
 ---
 >  すてきなって意味よ」
 or wonderful.”
 
 @26355 Shirley · シャリー
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグS→Sweemurg S
+# 检查提示：未用必用译名：スイームルグS→Simurgh S
 > 「スイームルグSっていうわけね」
-“So it’s the Sweemurg S, then.”
+“So it’s the Simurgh S, then.”
 
 @26356 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「ええ。これが、スイームルグの本当の
 >  姿……。ありがとう、シャリー
-“Yes. This is the Sweemurg’s true form... Thank you, Shirley.
+“Yes. This is the Simurgh’s true form... Thank you, Shirley.
 ---
 >  アストナージさんたちにも、お礼をいわな
 >  くてはね」

@@ -1811,7 +1811,7 @@
     {
       "key": "base:t00_00282",
       "source_sha256": "7a4ec845e8d3419f16b055fd52019a53ccc0c6dc6aa31f897eb43677d35c01bc",
-      "target": "Launch! Sweemurg<END>",
+      "target": "Launch! Simurgh<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3771,7 +3771,7 @@
     {
       "key": "base:t00_00563",
       "source_sha256": "6540e7e52671d83e7bc1698619e6e227db25996034b3a03187f71e0a61ff1cf6",
-      "target": "Sweemurg<END>",
+      "target": "Simurgh<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5661,7 +5661,7 @@
     {
       "key": "base:t00_00834",
       "source_sha256": "f0f8e57c1ceba6bc5fe332c8b5e4d17b4c94cdbfcb144a501ed0e265c5ecddab",
-      "target": "Sweemurg S<END>",
+      "target": "Simurgh S<END>",
       "review_status": "draft",
       "origin": "terms"
     },

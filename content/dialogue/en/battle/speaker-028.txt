@@ -137,7 +137,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，6/10）
 > 「ああぁっ! そ、そんな……
 >  スイームルグが……!?」
-“Aah! N-no... not the Sweemurg...?!”
+“Aah! N-no... not the Simurgh...?!”
 
 @11651 Manami · マナミ
 # 触发：重伤（剩余 HP 不足 30%）（通用，7/10）
@@ -214,10 +214,10 @@
 @11663 Manami · マナミ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/9）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「そんな攻撃ではスイームルグに
 >  傷をつけることもできないわよ」
-“An attack like that can’t even scratch the Sweemurg.”
+“An attack like that can’t even scratch the Simurgh.”
 
 @11664 Manami · マナミ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/9）
@@ -238,10 +238,10 @@
 @11667 Manami · マナミ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，6/9）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「このスイームルグをあなどってもらっては
 >  困るわ!」
-“You’d better not underestimate the Sweemurg!”
+“You’d better not underestimate the Simurgh!”
 
 @11668 Manami · マナミ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，7/9）
@@ -259,12 +259,12 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，9/9）
 > 「ふふっ
 >  このスイームルグを甘くみたわね!」
-“Hehe, you took the Sweemurg too lightly!”
+“Hehe, you took the Simurgh too lightly!”
 
 @11671 Manami · マナミ
 # 触发：回避（通用，1/9）
 > 「スイームルグは伊達ではないのよ!」
-“The Sweemurg isn’t just for show!”
+“The Simurgh isn’t just for show!”
 
 @11672 Manami · マナミ
 # 触发：回避（通用，2/9）
@@ -306,9 +306,9 @@
 @11679 Manami · マナミ
 # 触发：回避（通用，9/9）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「どう、スイームルグのスピードは?」
-“How do you like the Sweemurg’s speed?”
+“How do you like the Simurgh’s speed?”
 
 @11680 Manami · マナミ
 # 触发：攻击无效（护罩／装甲）（通用，1/6）
@@ -335,17 +335,17 @@
 @11684 Manami · マナミ
 # 触发：攻击无效（护罩／装甲）（通用，5/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「スイームルグを甘くみないで!」
-“Don’t take the Sweemurg lightly!”
+“Don’t take the Simurgh lightly!”
 
 @11685 Manami · マナミ
 # 触发：攻击无效（护罩／装甲）（通用，6/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「フフフッ、効かないのよ、
 >  このスイームルグには!」
-“Hehehe, it won’t work on the Sweemurg!”
+“Hehehe, it won’t work on the Simurgh!”
 
 @11686 Manami · マナミ
 # 触发：弹药／EN 不足，无法反击（通用，1/1）

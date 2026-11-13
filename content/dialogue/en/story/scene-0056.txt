@@ -2835,10 +2835,10 @@ wanted to check with you.”
 
 @37095 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「エルブルスの件でね。
 >  ほら、前にスイームルグとエルブルスが
-“It’s about the Elbulls. Remember I told you before that the Sweemurg and
+“It’s about the Elbulls. Remember I told you before that the Simurgh and
 ---
 >  ドッキングできるように設計されて
 >  いたっていう話をしただろう?
@@ -2863,9 +2863,9 @@ we can still merge them into one.”
 
 @37097 Manami · マナミ（按段落 3DD4）
 # 审校：词条：エルブルス=Elbulls
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「スイームルグとエルブルスを!?」
-“The Sweemurg and the Elbulls?!”
+“The Simurgh and the Elbulls?!”
 
 @37098 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
@@ -2883,13 +2883,13 @@ weapons too. Of course, its base performance will improve as well.”
 
 @37099 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「{PartnerName}のエルブルスで、あたしの
 >  スイームルグが生まれ変わるのね……
-“With {PartnerName}’s Elbulls, my Sweemurg will be reborn...
+“With {PartnerName}’s Elbulls, my Simurgh will be reborn...
 ---
 >  新しい、スイームルグに」
-A new Sweemurg.”
+A new Simurgh.”
 
 @37100 Shirley · シャリー
 # 审校：全局：弯撇号／弯引号
@@ -2903,13 +2903,13 @@ So, how about it, {HeroNick}? If you’d rather not, we won’t...”
 
 @37101 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「いいわ、シャリー。作業を進めて。
 >  新しいスイームルグの完成を
 “It’s fine, Shirley. Go ahead with the work. I look forward to seeing the
 ---
 >  楽しみにしているわ」
-new Sweemurg finished.”
+new Simurgh finished.”
 
 @37102 Maria · マリア
 # 审校：全局：弯撇号／弯引号

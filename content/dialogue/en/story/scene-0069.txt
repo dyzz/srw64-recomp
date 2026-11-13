@@ -2023,10 +2023,10 @@ No matter what happens, I won’t let this Earth be sacrificed...)
 
 @30026 Astonaige · アストナージ
 # 审校：词条：エルブルス=Elbulls
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「ああ、見てみたんだがね、スイームルグも
 >  エルブルスも、設計段階に
-“Yeah, I had a look. The Sweemurg and the Elbulls both originally had
+“Yeah, I had a look. The Simurgh and the Elbulls both originally had
 ---
 >  あったドッキング機構を
 >  廃して再設計してあるんだな」
@@ -2056,7 +2056,7 @@ they’d have redone the stress calculations too, and above all, it would take w
 @30029 Manami · マナミ（按段落 3DD4）
 > 「そう……せっかくスイームルグが
 >  パワーアップできると思ったのだけど
-“I see... And here I thought the Sweemurg could finally be powered up.
+“I see... And here I thought the Simurgh could finally be powered up.
 ---
 >  残念だわ」
 What a shame.”
@@ -2081,14 +2081,14 @@ permanently combined is doable.”
 
 @30033 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「お待ちなさい。それは
 >  わたくしのエルブルスが、スイームルグの
 “Wait a moment. Are you saying that my Elbulls would remain
 ---
 >  背面に取りついたままになると、
 >  そうおっしゃっているのですか?」
-attached to the Sweemurg’s back?”
+attached to the Simurgh’s back?”
 
 @30034 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
@@ -2107,10 +2107,10 @@ supposed to do then?”
 
 @30036 Astonaige · アストナージ
 # 审校：Elbulls's 所有格拼写
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「うーん、その場合はエルブルスの
 >  火器管制もスイームルグに
-“Hmm, in that case, the Elbulls’ fire control would be merged into the Sweemurg’s,
+“Hmm, in that case, the Elbulls’ fire control would be merged into the Simurgh’s,
 ---
 >  一本化することになるから、
 >  エルブルスのパイロットはいらなくなるんだ」
@@ -2151,14 +2151,14 @@ is utterly unthinkable!”
 
 @30042 Shirley · シャリー
 # 审校：所有格拼写；“通过……来使用”直译
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「でも残念ね。合体させれば
 >  飛行能力が
 “Too bad, though. Combining them wouldn’t just add flight capability,
 ---
 >  付加されるだけでなくて、エルブルスの
 >  ジェネレーターからの余剰出力を
-the Sweemurg could also tap the surplus output
+the Simurgh could also tap the surplus output
 ---
 >  スイームルグで使えるようになるのに」
 from the Elbulls’ generator.”
@@ -2201,7 +2201,7 @@ my back pain has grown severe. At this rate,
 ---
 >  近いうちにスイームルグに搭乗する
 >  ことができなくなってしまいそうなのです」
-I fear I shall soon be unable to ride in the Sweemurg.”
+I fear I shall soon be unable to ride in the Simurgh.”
 
 @30048 Aisha · アイシャ（按段落 3DD4）
 > 「…………それで?」
@@ -2393,10 +2393,10 @@ however you please.’ That is all.”
 
 @30074 Lawrence · ローレンス
 # 审校：词条：エルブルス=Elbulls
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「スイームルグとエルブルスを、
 >  本来の姿に戻すのです
-“We are going to restore the Sweemurg and Elbulls to their original form.
+“We are going to restore the Simurgh and Elbulls to their original form.
 ---
 >  再設計されておりますので
 >  合体分離機構は
@@ -2408,14 +2408,14 @@ but I am told they can be fused into a single unit.”
 
 @30075 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「スイームルグとエルブルスを……
 >  {PartnerName}のエルブルスで
-“Sweemurg and Elbulls... With {PartnerName}’s Elbulls,
+“Simurgh and Elbulls... With {PartnerName}’s Elbulls,
 ---
 >  スイームルグが生まれ変わるのね。
 >  新しいスイームルグに」
-Sweemurg will be reborn. A new Sweemurg.”
+Simurgh will be reborn. A new Simurgh.”
 
 @30076 Lawrence · ローレンス
 > 「さようでございます。
@@ -2432,13 +2432,13 @@ and also add flight capability and a new weapon.”
 
 @30078 Lawrence · ローレンス
 # 审校：句子结构不通
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「はい。エルブルスの
 >  ジェネレーター出力を利用した
 “Yes. It draws on the Elbulls’ generator output.
 ---
 >  新スイームルグ最大の武器です」
-The new Sweemurg’s greatest weapon.”
+The new Simurgh’s greatest weapon.”
 
 @30079 Shirley · シャリー
 # 审校：全局：弯撇号／弯引号
@@ -2448,14 +2448,14 @@ The new Sweemurg’s greatest weapon.”
 
 @30080 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「……いいわ、シャリー。
 >  作業を進めて
 “...Go ahead, Shirley. Continue the work.
 ---
 >  新しいスイームルグの完成を、
 >  楽しみにしているわ」
-I look forward to seeing the new Sweemurg completed.”
+I look forward to seeing the new Simurgh completed.”
 
 @30081 Wahl · ワール
 > 「皇帝、各戦線の

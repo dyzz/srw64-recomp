@@ -434,10 +434,10 @@ picked up some strange readings, but I can’t make sense of them.”
 
 @25781 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「ええ、わかりましたわ。ローレンス、お茶
 >  は中止よ。スイームルグを出すわ」
-“Very well. Lawrence, cancel the tea. I’m taking out the Sweemurg.”
+“Very well. Lawrence, cancel the tea. I’m taking out the Simurgh.”
 
 @25782 Lawrence · ローレンス
 > 「はい。用意してまいりますので
@@ -795,9 +795,9 @@ Got me worried about you guys, so I came to check on you, but...”
 
 @25840 Bunny · バニー
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「あら、スイームルグじゃない」
-“Oh my, isn’t that Sweemurg?”
+“Oh my, isn’t that Simurgh?”
 
 @25841 George · ジョルジュ
 > 「どうかしたのですか、マドモアゼル?」

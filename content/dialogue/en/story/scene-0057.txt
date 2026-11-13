@@ -278,10 +278,10 @@ something I wanted to check with you.”
 
 @37293 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「エルブルスの件でね。
 >  ほら、前にスイームルグとエルブルスが
-“It’s about the Elbulls. Remember how I told you the Sweemurg and the Elbulls
+“It’s about the Elbulls. Remember how I told you the Simurgh and the Elbulls
 ---
 >  ドッキングできるように設計されて
 >  いたっていう話をしただろう?
@@ -310,9 +310,9 @@ We’re repairing them anyway, so why not?”
 
 @37295 Manami · マナミ（按段落 3DD4）
 # 审校：词条：エルブルス=Elbulls
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「スイームルグとエルブルスを!?」
-“The Sweemurg and the Elbulls?!”
+“The Simurgh and the Elbulls?!”
 
 @37296 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
@@ -368,7 +368,7 @@ I can’t just decide that on my own.”
 
 @37301 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「だけどな、お前のいとこを部隊に
 >  加えるっての、お前がいってるだけで
 “But listen, from what I hear, putting your cousin in the unit is all your idea,
@@ -379,7 +379,7 @@ not something she asked for. And I hear a lot of people are against it.
 ---
 >  多いって聞くぜ? なら、
 >  スイームルグにくっつけて、単独で
-So wouldn’t it be tidier to bolt it onto the Sweemurg so it can’t
+So wouldn’t it be tidier to bolt it onto the Simurgh so it can’t
 ---
 >  出撃できないようにしちまうのが、
 >  おさまりがいいんじゃないか?」
@@ -460,11 +460,11 @@ That is quite unnecessary. I, too, have my pride.”
 
 @37313 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 # 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「スイームルグの強化が
 >  したいのでしょう?」
-“You want to upgrade the Sweemurg, do you not?”
+“You want to upgrade the Simurgh, do you not?”
 
 @37314 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
@@ -491,28 +491,28 @@ you have it.”
 
 @37318 Shirley · シャリー
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「来たわね。どう? これが、新しい
 >  スイームルグよ」
-“You’re here. Well? This is the new Sweemurg.”
+“You’re here. Well? This is the new Simurgh.”
 
 @37319 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「あたしの……新しいスイームルグ……。
 >  すごいわ。{PartnerNick}のエルブルスが
-“My... new Sweemurg... Amazing. {PartnerNick}’s Elbulls
+“My... new Simurgh... Amazing. {PartnerNick}’s Elbulls
 ---
 >  あたしのスイームルグに新しい力をくれ
 >  たのね……」
-gave my Sweemurg new power...”
+gave my Simurgh new power...”
 
 @37320 Shirley · シャリー
 # 审校：“正如字面所说”不通
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「そう、言葉通りにね。これでスイーム
 >  ルグは単体で飛行が可能になり
-“Yes, quite literally. Now the Sweemurg can fly on its own,
+“Yes, quite literally. Now the Simurgh can fly on its own,
 ---
 >  すべての装備がパワーアップしたわよ」
 and all its equipment has been powered up.”
@@ -528,26 +528,26 @@ and all its equipment has been powered up.”
 
 @37323 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「この新しいスイームルグの名前よ。
 >  華麗とか、輝かしいとか
-“The name for the new Sweemurg. It means gorgeous, radiant,
+“The name for the new Simurgh. It means gorgeous, radiant,
 ---
 >  すてきなって意味よ」
 wonderful.”
 
 @37324 Shirley · シャリー
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグS→Sweemurg S
+# 检查提示：未用必用译名：スイームルグS→Simurgh S
 > 「スイームルグSっていうわけね」
-“So it’s the Sweemurg S, then.”
+“So it’s the Simurgh S, then.”
 
 @37325 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「ええ。これが、スイームルグの本当の
 >  姿……。ありがとう、シャリー
-“Yes. This is the Sweemurg’s true form... Thank you, Shirley.
+“Yes. This is the Simurgh’s true form... Thank you, Shirley.
 ---
 >  アストナージさんたちにも、お礼をいわな
 >  くてはね」
@@ -2698,10 +2698,10 @@ won’t come around all that often, I imagine.”
 
 @37693 Manami · マナミ（按段落 3DD4）
 # 审校：词条：エルブルス=Elbulls
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「ほら見て、{PartnerNick}! あたしの
 >  スイームルグと、貴女のエルブルスが
-“Look, {PartnerNick}! My Sweemurg and your Elbulls
+“Look, {PartnerNick}! My Simurgh and your Elbulls
 ---
 >  一つになったのよ」
 have become one.”
@@ -2787,14 +2787,14 @@ given my Elbulls to you.”
 
 @37706 Lawrence · ローレンス
 # 审校：称呼统一为Lady X
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「これまで{HeroName}お嬢様とともに
 >  スイームルグに搭乗してまいりましたが
-“Until now I have flown the Sweemurg alongside you, Lady {HeroName}, but
+“Until now I have flown the Simurgh alongside you, Lady {HeroName}, but
 ---
 >  さすがにこのところ、少々きつうなって
 >  まいりました。新しいスイームルグの
-I confess it has grown rather taxing for me of late. I am told the new Sweemurg’s
+I confess it has grown rather taxing for me of late. I am told the new Simurgh’s
 ---
 >  パワーはさらに増大するとうかがってお
 >  りますし、このあたりでお役目を

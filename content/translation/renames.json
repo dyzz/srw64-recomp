@@ -693,32 +693,6 @@
   },
   {
    "ja": [
-    "スイームルグ"
-   ],
-   "en": {
-    "old": "Simurgh",
-    "new": "Sweemurg"
-   },
-   "gate": false,
-   "sections": [
-    "units"
-   ]
-  },
-  {
-   "ja": [
-    "スイームルグS"
-   ],
-   "en": {
-    "old": "Simurgh S",
-    "new": "Sweemurg S"
-   },
-   "gate": false,
-   "sections": [
-    "units"
-   ]
-  },
-  {
-   "ja": [
     "スヴァンヒルド"
    ],
    "en": {
@@ -3627,6 +3601,10 @@
    "zh-Hans": {
     "old": "突击迪亚斯",
     "new": "疾风迪亚斯"
+   },
+   "en": {
+    "old": "Sturm Dias",
+    "new": "Schuzrum-Dias"
    },
    "gate": false,
    "sections": [

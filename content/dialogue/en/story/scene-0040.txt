@@ -1832,10 +1832,10 @@ You’ll pilot it, won’t you?”
 
 @26275 Astonaige · アストナージ
 # 审校：词条：エルブルス=Elbulls
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「ああ、見てみたんだがね、スイームルグも
 >  エルブルスも、設計段階に
-“Yeah, I had a look. The Sweemurg and the Elbulls both originally had
+“Yeah, I had a look. The Simurgh and the Elbulls both originally had
 ---
 >  あったドッキング機構を
 >  廃して再設計してあるんだな」
@@ -1864,7 +1864,7 @@ when they redesigned them, and besides, it’d take way too long.”
 @26278 Manami · マナミ（按段落 3DD4）
 > 「そう……せっかくスイームルグが
 >  パワーアップできると思ったのだけど
-“I see... And here I thought the Sweemurg could finally power up.
+“I see... And here I thought the Simurgh could finally power up.
 ---
 >  残念だわ」
 How disappointing.”
@@ -1889,14 +1889,14 @@ combined permanently is doable.”
 
 @26282 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「お待ちなさい。それは
 >  わたくしのエルブルスが、スイームルグの
 “Wait a moment. Are you saying my Elbulls would stay
 ---
 >  背面に取りついたままになると、
 >  そうおっしゃっているのですか?」
-attached to the Sweemurg’s back the entire time?”
+attached to the Simurgh’s back the entire time?”
 
 @26283 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
@@ -1914,10 +1914,10 @@ to do in that case?”
 
 @26285 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「うーん、その場合はエルブルスの
 >  火器管制もスイームルグに
-“Well, in that case the Elbulls’s fire control would be folded into the Sweemurg’s,
+“Well, in that case the Elbulls’s fire control would be folded into the Simurgh’s,
 ---
 >  一本化することになるから、
 >  エルブルスのパイロットはいらなくなるんだ」
@@ -1958,7 +1958,7 @@ I am not the one who pilots it!”
 
 @26291 Shirley · シャリー
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「でも残念ね。合体させれば
 >  飛行能力が
 “What a shame, though. Combining them wouldn’t just add flight capability;
@@ -1968,7 +1968,7 @@ I am not the one who pilots it!”
 the surplus output from the Elbulls’s generator
 ---
 >  スイームルグで使えるようになるのに」
-could go to the Sweemurg, too.”
+could go to the Simurgh, too.”
 
 @26292 Lawrence · ローレンス
 # 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
@@ -1999,7 +1999,7 @@ Would you hear me out?”
 
 @26296 Lawrence · ローレンス
 # 审校：合并：冲突人工取舍
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「実はこれまで老骨にムチ打って
 >  {HeroName}お嬢様のサポートを
 “The truth is, perhaps from driving these old bones to support Lady {HeroName},
@@ -2010,7 +2010,7 @@ my back pain has grown severe. At this rate,
 ---
 >  近いうちにスイームルグに搭乗する
 >  ことができなくなってしまいそうなのです」
-I fear I shall soon be unable to ride in the Sweemurg.”
+I fear I shall soon be unable to ride in the Simurgh.”
 
 @26297 Aisha · アイシャ（按段落 3DD4）
 > 「…………それで?」
@@ -2197,10 +2197,10 @@ Elbulls is yours to use as you see fit.’ That is all.”
 
 @26323 Lawrence · ローレンス
 # 审校：词条：エルブルス=Elbulls
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「スイームルグとエルブルスを、
 >  本来の姿に戻すのです
-“To restore the Sweemurg and the Elbulls to their original form.
+“To restore the Simurgh and the Elbulls to their original form.
 ---
 >  再設計されておりますので
 >  合体分離機構は
@@ -2212,14 +2212,14 @@ be fitted, but I am told they can be merged permanently.”
 
 @26324 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「スイームルグとエルブルスを……
 >  {PartnerName}のエルブルスで
-“The Sweemurg and the Elbulls... With {PartnerName}’s Elbulls,
+“The Simurgh and the Elbulls... With {PartnerName}’s Elbulls,
 ---
 >  スイームルグが生まれ変わるのね。
 >  新しいスイームルグに」
-the Sweemurg will be reborn. Into a new Sweemurg.”
+the Simurgh will be reborn. Into a new Simurgh.”
 
 @26325 Lawrence · ローレンス
 > 「さようでございます。
@@ -2236,13 +2236,13 @@ and also add flight capability and new weapons.”
 
 @26327 Lawrence · ローレンス
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「はい。エルブルスの
 >  ジェネレーター出力を利用した
 “Yes. Drawing on the Elbulls’s generator output,
 ---
 >  新スイームルグ最大の武器です」
-it is the new Sweemurg’s most powerful weapon.”
+it is the new Simurgh’s most powerful weapon.”
 
 @26328 Shirley · シャリー
 # 审校：全局：弯撇号／弯引号
@@ -2252,14 +2252,14 @@ it is the new Sweemurg’s most powerful weapon.”
 
 @26329 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「……いいわ、シャリー。
 >  作業を進めて
 “...It’s fine, Shirley. Go ahead with the work.
 ---
 >  新しいスイームルグの完成を、
 >  楽しみにしているわ」
-I look forward to seeing the new Sweemurg finished.”
+I look forward to seeing the new Simurgh finished.”
 
 @26330 ???
 # 审校：精读：トレーズ様

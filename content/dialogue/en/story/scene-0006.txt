@@ -2,14 +2,14 @@
 
 @17887 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「そういえば ローレンス、
 >  前に言っていたスイームルグの
 “By the way, Lawrence, you mentioned blueprints before,
 ---
 >  背面に取りつけるはずだった
 >  ものの設計図っていうのは
-for something that was supposed to attach to the Sweemurg’s
+for something that was supposed to attach to the Simurgh’s
 ---
 >  どうなったんだい?
 back. What became of them?
@@ -39,14 +39,14 @@ capable of operating on its own.”
 
 @17891 Lawrence · ローレンス
 # 审校：“先先代”不是中文说法
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「はい。先々代は、そのような機構
 >  に、大変興味をお持ちでしたので
 “Indeed. The old master, your grandfather, took great interest in such mechanisms.
 ---
 >  しかし、わたくしがお預かりしたのは
 >  スイームルグの設計図のみでしたので
-However, all that was entrusted to me were the Sweemurg’s design documents,
+However, all that was entrusted to me were the Simurgh’s design documents,
 ---
 >  それがどうなったかについては
 >  存じ上げません」
@@ -55,7 +55,7 @@ so I do not know what became of it.”
 @17892 主角
 > 「残念ね。それがあればスイームルグも
 >  飛べたのでしょうに」
-“What a shame. With that, the Sweemurg could have flown.”
+“What a shame. With that, the Simurgh could have flown.”
 
 @17893 Koji · 甲児
 > 「おっいたいた。みんな、
@@ -199,10 +199,10 @@ I’ll go do it myself.”
 
 @17913 Lawrence · ローレンス
 # 审校：词条：エルブルス=Elbulls
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「あれはエルブルス。スイームルグとともに
 >  設計された機体です」
-“That is the Elbulls. It was designed alongside the Sweemurg.”
+“That is the Elbulls. It was designed alongside the Simurgh.”
 
 @17914 主角
 > 「本当なの、ローレンス!?」

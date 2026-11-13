@@ -42,7 +42,7 @@ precisely because you are a member of Romefeller.”
 
 @17413 Manami · マナミ（本话主角）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「それはうんざりするくらい何度も聞き
 >  ました。では聞き方を変えます
 “I have heard that so many times I am sick of it. Then let me put it another way.
@@ -56,7 +56,7 @@ the Empire’s atrocities?!
 ---
 >  おじい様の残してくださった
 >  “スイームルグ”さえ完成すれば…
-If only the ‘Sweemurg’ Grandfather left me were finished...
+If only the ‘Simurgh’ Grandfather left me were finished...
 ---
 >  ローレンス、あなたまさか」
 Lawrence, you haven’t...”
@@ -154,14 +154,14 @@ And I’m sorry for having you do such unpleasant work for so long.”
 
 @17429 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「うん、こっちのほうもようやく
 >  用意が整ってきた
 “Yeah, things are finally ready on our end too.
 ---
 >  スイームルグも調整まで
 >  終わったそうだ」
-I hear the Sweemurg has even been fine-tuned.”
+I hear the Simurgh has even been fine-tuned.”
 
 @17430 Manami · マナミ（本话主角）
 # 审校：のですね 是确认，不是问句
@@ -242,7 +242,7 @@ so why not take a look at the unit? This way.”
 
 @17440 Manami · マナミ（本话主角）
 > 「これが……あたしのスイームルグ!?」
-“This is... my Sweemurg?!”
+“This is... my Simurgh?!”
 
 @17441 Lawrence · ローレンス
 > 「ふむ、さすがでございますな」
@@ -281,14 +281,14 @@ I am just putting on the finishing touches, so please wait a moment longer.”
 
 @17445 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「はははっ、
 >  ギャリソンの趣味みたいなものでね
 “Hahaha, it’s a bit of a hobby of Garrison’s.
 ---
 >  スイームルグにワックスがけを
 >  しているんだ」
-He’s waxing the Sweemurg.”
+He’s waxing the Simurgh.”
 
 @17446 Manami · マナミ（本话主角）
 # 审校：“What, this?!”不通
@@ -367,7 +367,7 @@ Unforgivable... Absolutely unforgivable!”
 @17457 Manami · マナミ（本话主角）
 > 「なにをしているの、ローレンス!
 >  スイームルグを出すのよ!!」
-“What are you doing, Lawrence?! Launch the Sweemurg!!”
+“What are you doing, Lawrence?! Launch the Simurgh!!”
 
 @17458 Lawrence · ローレンス
 > 「お嬢様! いきなり実戦を
@@ -380,10 +380,10 @@ Unforgivable... Absolutely unforgivable!”
 
 @17460 Manami · マナミ（本话主角）
 # 审校：全局：弯撇号／弯引号
-# 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 检查提示：未用必用译名：スイームルグ→Simurgh
 > 「すごいわ……これが、おじい様の
 >  スイームルグなのね……」
-“Amazing... So this is Grandfather’s Sweemurg...”
+“Amazing... So this is Grandfather’s Simurgh...”
 
 @17461 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号

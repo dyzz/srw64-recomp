@@ -748,7 +748,7 @@ they’ve come to get us!”
 # 审校：全局：弯撇号／弯引号
 > 「あれは……確か新型のシュツルム
 >  ディアスだ。ブライト中佐の部隊に
-“That’s... the new Sturm Dias, if I’m not mistaken. They were only supposed to be
+“That’s... the new Schuzrum-Dias, if I’m not mistaken. They were only supposed to be
 ---
 >  しか、まわされていないはずだ……」
 issued to Lieutenant Colonel Bright’s unit...”

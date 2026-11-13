@@ -163,7 +163,7 @@ PYTHONPATH=src .venv/bin/python tools/content/apply_terms.py --missing  # 列出
 - 写进词条表的：中文 403 个值、英文 174 个值。
 - 例子：
   - 中文：花·园丽、座间翔、明神武、深村玲、赞波3、雷霆王、大铁人（作品名与机体）、胸部火焰、光子力射线；
-  - 英文：G 高达用北美名 Burning Gundam／Dark Gundam；原创机体用官方卡牌拼法 Sweemurg、Virose、Razgreez。
+  - 英文：G 高达用北美名 Burning Gundam／Dark Gundam；原创机体用官方卡牌拼法 Virose、Razgreez；スイームルグ 例外，按神鸟原词写 Simurgh（官网意见 #51，2026-11-13）。
 - 原创对手的英文保留现译 Kurtz Forneus、Rish Griswell、Ehrlich Stasen：社区拼法是误读，Forneus 是魔神名。
 - 台词正文里的名字由对方按同一张表替换，所以对白框的说话人和正文一致。
 

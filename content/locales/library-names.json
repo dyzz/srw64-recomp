@@ -1,12 +1,16 @@
 {
  "schema": "srw64.library-names.v1",
- "about": "Library (図鑑) names for single records in one language, in place of the name the game's numbering gives (\"(2)\"). Units by unit record, pilots by actor. Written into src/host/library_names_table.hpp by tools/content/library_names.py; web/scripts/export_library.py reads this file. Site suggestions #5 #6 #7 #10 #18 #21 #22 #23 (2026-10-26), #42 (2026-10-27); Chinese to match, 2026-10-28.",
+ "about": "Library (図鑑) names for single records in one language, in place of the name the game's numbering gives (\"(2)\"). Units by unit record, pilots by actor. Written into src/host/library_names_table.hpp by tools/content/library_names.py; web/scripts/export_library.py reads this file. Site suggestions #5 #6 #7 #10 #18 #21 #22 #23 (2026-10-26), #42 (2026-10-27); Chinese to match, 2026-10-28. #52 #53 #54 #55 (2026-11-13).",
  "units": {
   "80": {"en": "Jagd Doga (Quess)", "zh-Hans": "亚克托·德卡（葵丝）", "zh-Hant": "亞克托·德卡（葵絲）"},
   "88": {"en": "Gundam Mk-II (Titans)", "zh-Hans": "高达Mk-Ⅱ（泰坦斯）", "zh-Hant": "鋼彈Mk-Ⅱ（泰坦斯）"},
+  "104": {"en": "Bawoo", "zh-Hans": "巴乌", "zh-Hant": "巴烏"},
   "111": {"en": "Jagd Doga (Gyunei)", "zh-Hans": "亚克托·德卡（邱尼）", "zh-Hant": "亞克托·德卡（裘尼）"},
   "224": {"en": "Dancouga (Late Model)", "zh-Hans": "断空我（后期型）", "zh-Hant": "斷空我（後期型）"},
+  "314": {"en": "Nu Gundam (No Funnels)", "zh-Hans": "ν高达（无浮游炮）", "zh-Hant": "ν鋼彈（無感應砲）"},
   "315": {"en": "Geara Doga (Rezin)", "zh-Hans": "吉拉·德卡（蕾森）", "zh-Hant": "基拉·德卡（蕾森）"},
+  "316": {"en": "MP Bawoo", "zh-Hans": "量产型巴乌", "zh-Hant": "量產型巴烏"},
+  "317": {"en": "Baund Doc (Jerid)", "zh-Hans": "猎犬（杰利德）", "zh-Hant": "獵犬（傑利特）"},
   "318": {"en": "Baund Doc (Gates)", "zh-Hans": "猎犬（盖茨）", "zh-Hant": "獵犬（蓋茲）"},
   "320": {"en": "Zwarth (Musy)", "zh-Hans": "兹瓦斯（缪吉）", "zh-Hant": "茲瓦斯（繆吉）"}
  },

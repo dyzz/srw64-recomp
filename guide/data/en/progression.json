@@ -150,12 +150,12 @@
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Manami (Super)",
    "route": "super",
-   "title": "Launch! Sweemurg",
+   "title": "Launch! Simurgh",
    "title_ja": "出撃!スイームルグ",
    "victory": "Defeat all enemies",
    "defeat": "Protagonist's unit destroyed",
    "joins": [
-    "Sweemurg (Manami, Lawrence)",
+    "Simurgh (Manami, Lawrence)",
     "Daitarn 3 (Banjo)",
     "Doll (Simone) — appears when the enemy is down to 8 or fewer"
    ]
@@ -3187,7 +3187,7 @@
    "upgrades": [
     "Takeru leaves the Cosmo Crusher and switches to the Gaia",
     "Layzner → New Layzner (Eiji, start of stage)",
-    "Sweemurg → Sweemurg S (Manami's scenario, end of stage, whether or not Aisha joined; if she did, Aisha becomes the sub-pilot)"
+    "Simurgh → Simurgh S (Manami's scenario, end of stage, whether or not Aisha joined; if she did, Aisha becomes the sub-pilot)"
    ],
    "parts": [
     {
@@ -3237,7 +3237,7 @@
    ],
    "upgrades": [
     "Selain's scenario: Svanheld → Razgreez (end of stage) {≠}",
-    "Manami's scenario: Sweemurg → Sweemurg S — at the end of this stage if Aisha joins; otherwise at the start of the next stage {≠}"
+    "Manami's scenario: Simurgh → Simurgh S — at the end of this stage if Aisha joins; otherwise at the start of the next stage {≠}"
    ],
    "secrets": [
     {
@@ -3366,7 +3366,7 @@
    ],
    "upgrades": [
     "Takeru leaves the Cosmo Crusher and switches to the Gaia",
-    "Manami's scenario: if Aisha hasn't joined, the switch to the Sweemurg S comes at the start {+}",
+    "Manami's scenario: if Aisha hasn't joined, the switch to the Simurgh S comes at the start {+}",
     "Brad's scenario: Earthgain → Super Earthgain (end of stage, if “Time to Settle It” wasn't reached)"
    ],
    "parts": [
@@ -3491,7 +3491,7 @@
    ],
    "upgrades": [
     "Brad's scenario: when you come back from failing “Time to Settle It”, he switches to the Super Earthgain at the start {+}",
-    "Manami's scenario: if Aisha hasn't joined, the switch to the Sweemurg S comes at the start; if she has, at the end of the stage, with Aisha as sub-pilot {≠}"
+    "Manami's scenario: if Aisha hasn't joined, the switch to the Simurgh S comes at the start; if she has, at the end of the stage, with Aisha as sub-pilot {≠}"
    ],
    "parts": [
     {
@@ -3542,7 +3542,7 @@
     },
     {
      "ref": "secret-aisha",
-     "text": "Manami's scenario: if the first two steps are done, Manami can't deploy in this stage, and Aisha + Elbulls join at the end, with Aisha becoming the Sweemurg S's sub-pilot {≠}",
+     "text": "Manami's scenario: if the first two steps are done, Manami can't deploy in this stage, and Aisha + Elbulls join at the end, with Aisha becoming the Simurgh S's sub-pilot {≠}",
      "short": "No action needed: Aisha + Elbulls join at the end if steps 1–2 done"
     },
     {

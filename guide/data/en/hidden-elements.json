@@ -199,17 +199,17 @@
    ],
    "result": "Aisha joins as the sub-pilot of Manami's unit, replacing Lawrence",
    "notes": [
-    "When Manami switches to the Sweemurg S: if Aisha is recruited, at the end of the stage where she joins; if not, at the start of “Earth Sphere in Chaos” on the Independence Army route, at the start of “Storm of Kilimanjaro” on the OZ route, and at the end of “Dark Clouds over the Earth Sphere” on the Complete Pacifism route {+}",
+    "When Manami switches to the Simurgh S: if Aisha is recruited, at the end of the stage where she joins; if not, at the start of “Earth Sphere in Chaos” on the Independence Army route, at the start of “Storm of Kilimanjaro” on the OZ route, and at the end of “Dark Clouds over the Earth Sphere” on the Complete Pacifism route {+}",
     "On the Independence Army and Complete Pacifism routes you can control Aisha directly in the stage she joins; on the OZ route she is only registered at the end of the stage",
     "Whether the Elbulls stays in the hangar as a pilotless unit after joining is unconfirmed {?}",
-    "If Aisha was not recruited, in the story she survives and goes home, handing the Elbulls to Manami to rebuild the Sweemurg {+}",
+    "If Aisha was not recruited, in the story she survives and goes home, handing the Elbulls to Manami to rebuild the Simurgh {+}",
     "In “The Gundam That Leads to Ruin”, Manami's two-way choice toward Aisha only changes dialogue"
    ],
    "akurasu_notes": [
     "Akurasu says “fewer than 9 / fewer than 7 units” and its flowchart says “8 or fewer / 6 or fewer”; the script already triggers at 9 and 7 remaining",
     "Akurasu says turn 2 on the Complete Pacifism route; the script's timing falls on the turn 3 player phase",
     "Akurasu says the OZ route gets the join at the start of “Storm of Kilimanjaro”; the script registers it at the end of that stage, and Manami can't deploy in it",
-    "Akurasu says the swap to the Sweemurg S happens in the same stage whether or not she was recruited; if she wasn't, it comes one stage later on the Independence Army route and moves up to the start of that same stage on the OZ route"
+    "Akurasu says the swap to the Simurgh S happens in the same stage whether or not she was recruited; if she wasn't, it comes one stage later on the Independence Army route and moves up to the start of that same stage on the OZ route"
    ]
   },
   {
