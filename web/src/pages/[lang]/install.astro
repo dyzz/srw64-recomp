@@ -89,6 +89,7 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
             })}
           </ol>
         </div>
+        {s.hd && <p class="hdtip" set:html={s.hd} />}
       </section>
     ))}
 
@@ -172,6 +173,9 @@ const hdLabel = (p: Platform) => (p === 'hd' || p === 'switch-hd') && hd.version
   .n { display: grid; place-items: center; width: 34px; height: 30px; font-weight: 700; color: var(--ink); background: var(--cyan); clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%); }
   .steps h3 { padding-top: 3px; font-size: 17px; line-height: 1.4; }
   .steps p { margin-top: 2px; color: var(--muted); font-size: 15px; line-height: 1.7; overflow-wrap: anywhere; }
+  /* The optional HD pack, under a platform's steps and in line with their text. */
+  .hdtip { max-width: 720px; margin: 24px 0 0 48px; padding: 10px 14px; font-size: 14.5px; line-height: 1.7; color: var(--muted); background: var(--panel); border-left: 3px solid var(--gold); }
+  .hdtip :global(a) { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
   /* The one thing to get right in a step (where the ROM goes), from the copy's <strong>. */
   .steps :global(strong) { color: var(--gold); }
   .dl { display: grid; justify-items: start; margin: 10px 0 8px; }

@@ -6,7 +6,7 @@ import type { TextLang } from '../i18n';
 export type Step = { title: string; body?: string | string[]; file?: Platform; secondary?: boolean };
 // What the platform needs, shown beside its steps: rows of [label, value], notes may hold links.
 export type Requirements = { rows: [string, string][]; notes?: string[] };
-export type Section = { id: string; name: string; summary: string; need?: string; experimental?: boolean; req?: Requirements; steps: Step[] };
+export type Section = { id: string; name: string; summary: string; need?: string; experimental?: boolean; hd?: string; req?: Requirements; steps: Step[] };
 type Install = {
   title: string;
   lead: string;
@@ -44,6 +44,21 @@ const DRIVERS = {
   ko: '꺼지거나 멈추거나 화면이 이상하면 먼저 그래픽 드라이버를 업데이트하세요(<a href="/ko/faq/#gpu">자주 묻는 질문</a>).',
 };
 
+// Under each platform's steps: the HD pack is optional and has a section of its own (#hd).
+// Android imports the same pack inside the app, in the FAQ's words.
+const HD_PC = {
+  zh: '可选：安装 <a href="#hd">HD 美术包</a>，换上高清的头像、地图和机体画面，游戏中可以随时切回原版。',
+  en: 'Optional: install the <a href="#hd">HD art pack</a> for high-resolution portraits, maps and unit art. You can switch back to the original art at any time in the game.',
+  ja: '任意：<a href="#hd">HD アートパック</a>を導入すると、顔グラフィック、マップ、ユニットの絵が高解像度になります。ゲーム中いつでも原作の絵に戻せます。',
+  ko: '선택: <a href="#hd">HD 아트 팩</a>을 설치하면 초상화, 맵, 기체 그림이 고해상도로 바뀝니다. 게임 중 언제든 원작 그림으로 되돌릴 수 있습니다.',
+};
+const HD_ANDROID = {
+  zh: '可选：下载 <a href="#hd">HD 美术包</a>，然后长按应用图标选「导入 HD 包」，或用 Marchwind64 打开下载的 zip。游戏中可以随时切回原版。',
+  en: 'Optional: download the <a href="#hd">HD art pack</a>, then long-press the app icon and choose “Import HD pack”, or open the downloaded zip with Marchwind64. You can switch back to the original art at any time in the game.',
+  ja: '任意：<a href="#hd">HD アートパック</a>をダウンロードし、アプリアイコンを長押しして「HD パックを導入」を選ぶか、ダウンロードした zip を Marchwind64 で開きます。ゲーム中いつでも原作の絵に戻せます。',
+  ko: '선택: <a href="#hd">HD 아트 팩</a>을 다운로드한 뒤 앱 아이콘을 길게 눌러 “HD 팩 가져오기”를 선택하거나, 다운로드한 zip을 Marchwind64로 여세요. 게임 중 언제든 원작 그림으로 되돌릴 수 있습니다.',
+};
+
 export const INSTALL: Record<TextLang, Install> = {
   zh: {
     title: '安装',
@@ -63,6 +78,7 @@ export const INSTALL: Record<TextLang, Install> = {
     sections: [
       {
         id: 'windows', name: 'Windows', experimental: true,
+        hd: HD_PC.zh,
         summary: '解压，放好 ROM，双击启动。',
         req: {
           rows: [
@@ -82,6 +98,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'macos', name: 'macOS',
+        hd: HD_PC.zh,
         summary: '拖入「应用程序」，首次启动时选择 ROM。',
         req: {
           rows: [
@@ -99,6 +116,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'linux', name: 'Linux',
+        hd: HD_PC.zh,
         summary: '解压，放好 ROM，运行脚本。',
         req: {
           rows: [
@@ -118,6 +136,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'steam-deck', name: 'Steam Deck', experimental: true,
+        hd: HD_PC.zh,
         summary: '用 Linux 安装包，添加到 Steam 库。',
         req: {
           rows: [
@@ -136,6 +155,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'android', name: 'Android', experimental: true,
+        hd: HD_ANDROID.zh,
         summary: '安装 APK，首次启动时选择 ROM。',
         req: {
           rows: [
@@ -216,6 +236,7 @@ export const INSTALL: Record<TextLang, Install> = {
     sections: [
       {
         id: 'windows', name: 'Windows', experimental: true,
+        hd: HD_PC.en,
         summary: 'Unzip, add your ROM, then double-click to start.',
         req: {
           rows: [
@@ -235,6 +256,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'macos', name: 'macOS',
+        hd: HD_PC.en,
         summary: 'Drag the app to Applications and select your ROM on first launch.',
         req: {
           rows: [
@@ -252,6 +274,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'linux', name: 'Linux',
+        hd: HD_PC.en,
         summary: 'Extract, add your ROM, then run the script.',
         req: {
           rows: [
@@ -271,6 +294,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'steam-deck', name: 'Steam Deck', experimental: true,
+        hd: HD_PC.en,
         summary: 'Use the Linux package and add it to Steam.',
         req: {
           rows: [
@@ -289,6 +313,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'android', name: 'Android', experimental: true,
+        hd: HD_ANDROID.en,
         summary: 'Install the APK and select your ROM on first launch.',
         req: {
           rows: [
@@ -369,6 +394,7 @@ export const INSTALL: Record<TextLang, Install> = {
     sections: [
       {
         id: 'windows', name: 'Windows', experimental: true,
+        hd: HD_PC.ja,
         summary: '展開して ROM を置き、ダブルクリックで起動します。',
         req: {
           rows: [
@@ -388,6 +414,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'macos', name: 'macOS',
+        hd: HD_PC.ja,
         summary: '「アプリケーション」に入れ、初回起動時に ROM を選択します。',
         req: {
           rows: [
@@ -405,6 +432,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'linux', name: 'Linux',
+        hd: HD_PC.ja,
         summary: '展開して ROM を置き、スクリプトを実行します。',
         req: {
           rows: [
@@ -424,6 +452,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'steam-deck', name: 'Steam Deck', experimental: true,
+        hd: HD_PC.ja,
         summary: 'Linux 版のパッケージを使い、Steam に追加します。',
         req: {
           rows: [
@@ -442,6 +471,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'android', name: 'Android', experimental: true,
+        hd: HD_ANDROID.ja,
         summary: 'APK をインストールし、初回起動時に ROM を選択します。',
         req: {
           rows: [
@@ -522,6 +552,7 @@ export const INSTALL: Record<TextLang, Install> = {
     sections: [
       {
         id: 'windows', name: 'Windows', experimental: true,
+        hd: HD_PC.ko,
         summary: '압축을 풀고 ROM을 넣은 뒤 더블클릭합니다.',
         req: {
           rows: [
@@ -541,6 +572,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'macos', name: 'macOS',
+        hd: HD_PC.ko,
         summary: '앱을 응용 프로그램 폴더로 옮기고 처음 실행할 때 ROM을 고릅니다.',
         req: {
           rows: [
@@ -558,6 +590,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'linux', name: 'Linux',
+        hd: HD_PC.ko,
         summary: '압축을 풀고 ROM을 넣은 뒤 스크립트를 실행합니다.',
         req: {
           rows: [
@@ -577,6 +610,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'steam-deck', name: 'Steam Deck', experimental: true,
+        hd: HD_PC.ko,
         summary: 'Linux 패키지를 사용해 Steam에 추가합니다.',
         req: {
           rows: [
@@ -595,6 +629,7 @@ export const INSTALL: Record<TextLang, Install> = {
       },
       {
         id: 'android', name: 'Android', experimental: true,
+        hd: HD_ANDROID.ko,
         summary: 'APK를 설치하고 처음 실행할 때 ROM을 고릅니다.',
         req: {
           rows: [
