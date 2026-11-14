@@ -92,6 +92,19 @@ inline bool frame_box(const uint8_t* ram, uint32_t sub, float box[4]) {
     return any;
 }
 
+// A sub-record's node (0x6C bytes, pointer at +4): flags at +1 (4 hidden, 0x10 a shadow on
+// the ground), the drawing routine at +0xC. Modes 0xE-0x10 register 8009761C for a scene;
+// a unit's shadow (801C28E0) is a sub-record of the unit's own slot with another routine
+// and no scene of its own, so its scene handle and step say nothing of what is drawn.
+inline constexpr uint32_t kSceneDrawer = 0x8009761C;
+inline uint32_t node_flags(const uint8_t* ram, uint32_t sub, bool& scene) {
+    const uint32_t node = guest::read(ram, sub + 4, 4);
+    scene = false;
+    if (!guest::valid(node, 0x6C)) return 0;
+    scene = guest::read(ram, node + 0xC, 4) == kSceneDrawer;
+    return guest::read(ram, node + 1, 1);
+}
+
 // The ground's tiles (8008422C) are slots of mode 0xF too, drawing a model rather than a
 // scene: no sub-record has a scene handle. They meet edge to edge, so they stay where the
 // original puts them.
@@ -135,11 +148,16 @@ inline void apply(uint8_t* ram, std::vector<Saved>& saved) {
         const float d = (p[0] - at[0]) * right[0] + (p[1] - at[1]) * right[1] + (p[2] - at[2]) * right[2];
         // What the slot draws, across and up, from its place.
         float box[4]{};
-        bool drawn = false;
+        bool drawn = false, body = false;
         for (uint32_t s = 0; s < 3; ++s) {
             const uint32_t sub = record + kSubs + s * kSubSize;
             float one[4];
-            if (!guest::read(ram, sub, 1) || !frame_box(ram, sub, one)) continue;
+            if (!guest::read(ram, sub, 1)) continue;
+            bool scene;
+            const uint32_t flags = node_flags(ram, sub, scene);
+            if (flags & 0x10) body = true;
+            // Only a scene that is drawn counts.
+            if (!scene || (flags & 0x14) || !frame_box(ram, sub, one)) continue;
             if (!drawn) std::copy(one, one + 4, box);
             box[0] = std::min(box[0], one[0]); box[1] = std::min(box[1], one[1]);
             box[2] = std::max(box[2], one[2]); box[3] = std::max(box[3], one[3]);
@@ -148,7 +166,13 @@ inline void apply(uint8_t* ram, std::vector<Saved>& saved) {
         float left = std::min(box[0] * scale[0], box[2] * scale[0]), across = std::abs((box[2] - box[0]) * scale[0]);
         const float tall = std::abs((box[3] - box[1]) * scale[1]) / (2 * depth * kHalfHeight);
         const auto ramp = [](float v) { v = std::clamp(v, 0.f, 1.f); return v * v * (3 - 2 * v); };
-        if (mode == 0xE || !drawn) { left = 0; across = 0; }   // a rotated quad only moves
+        // A rotated quad only moves. So does a slot with a shadow, a unit's body (801C5328
+        // builds the two together), by where it stands and not by its frames' extents:
+        // 801C4160 keeps an effect in the same slot's third sub-record (scene 3880, six
+        // frames of one tick, the sixth 32 wider), which made a standing unit wide and near
+        // the edge one frame in six, and it jumped aside and widened for that frame. One
+        // standing within kInner is where the original has it in every frame.
+        if (mode == 0xE || !drawn || body) { left = 0; across = 0; }
         const float ul = (d + left) / half, ur = (d + left + across) / half;
         const float l = place(ul, edge) * half, r = place(ur, edge) * half;
         // How much of the stretch between its ends a sprite takes: none while it is small
