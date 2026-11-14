@@ -1,6 +1,7 @@
 #pragma once
 #include "guest_memory.hpp"
 #include "unit_icon_facing_table.hpp"
+#include <atomic>
 #include <cstdint>
 
 // Map unit icons face the side they fight for: the player's units and friendly third
@@ -8,9 +9,18 @@
 // The original draws each icon as one 16x16 G_TEXRECT (801E2C5C -> 801E2734), which no
 // sprite mirror bit reaches, so the rectangle is mirrored after it is written: its S starts
 // at the far edge and DsDx runs backwards. The HD icons replace the texture by hash and
-// take the same coordinates, so original and HD images both turn; the shadow (sub 1) and
+// take the same rectangle, so original and HD images both turn; the shadow (sub 1) and
 // the acted grey (a TLUT swap in the same draw) are untouched.
+//
+// Where the far edge is depends on the picture. The drawer filters (bilinear), and a filtered
+// sample weighs the texel its coordinate lies in and the next one by the fraction: the
+// original 16x16 image must start on the last texel exactly (15.0), or the first pixel
+// takes the texel past the edge, the wrapped first column, and the whole icon sits one
+// texel over with that column on the wrong side (issue 26). RT64 stretches an HD
+// replacement over the rectangle from its first coordinate to its last instead, so that
+// one starts a 32nd short of the edge (16) and ends at 0.
 namespace srw64::unit_icon_facing {
+inline std::atomic<bool> replaced{false};   // RT64 draws the HD icons (graphics.cpp, apply_images)
 constexpr uint32_t kIconDrawer = 0x801E2C5C;
 constexpr uint32_t kSubRecords = 0x800FFAA4, kSlotSize = 0xC4, kSubSize = 0x30;   // +0x14 atlas, +0x16 palette handle
 constexpr uint32_t kHandles = 0x80160340, kHandleSize = 20;                     // +2 the ROM resource
@@ -63,10 +73,10 @@ inline void after_draw(uint8_t* ram, uint32_t function, int32_t slot, int32_t su
         const int32_t width = int32_t((w0 >> 12) & 0xFFF) - int32_t((w1 >> 12) & 0xFFF);   // 10.2 screen px
         const int32_t dsdx = int16_t(steps >> 16);                                           // s5.10
         if(width <= 0 || dsdx <= 0)return;   // already mirrored, or not the shape expected
-        // S (s10.5) to the far edge: the span in texels less a 32nd, so the first pixel
-        // samples the last texel and the wrap never reaches the first one.
+        // S (s10.5) to the far edge (above).
         const int32_t span = width * dsdx / (4 * 1024);
-        const uint32_t s = ((st >> 16) + uint32_t(span * 32 - 1)) & 0xFFFF;
+        if(span < 1)return;
+        const uint32_t s = ((st >> 16) + uint32_t(replaced ? span * 32 - 1 : (span - 1) * 32)) & 0xFFFF;
         guest::write32(ram, p + 12, (s << 16) | (st & 0xFFFF));
         guest::write32(ram, p + 20, (uint32_t(uint16_t(int16_t(-dsdx))) << 16) | (steps & 0xFFFF));
         return;

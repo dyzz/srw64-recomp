@@ -26,6 +26,7 @@
 #endif
 #include "native_portrait.hpp"
 #include "native_icon.hpp"
+#include "unit_icon_facing.hpp"
 #include "native_background.hpp"
 #include "native_sprite.hpp"
 #include "presentation/image_mode.hpp"
@@ -1019,6 +1020,7 @@ private:
             }
         }
         applied_map_icons=hd_icons;
+        srw64::unit_icon_facing::replaced=hd && hd_icons && !map_icon_hashes.empty();   // where a mirrored icon starts
         worldmap_verified=0;
         mode.acknowledge(hd);
         nlohmann::json status={{"schema","srw64.image-mode.v1"},{"mode",hd?"hd":"original"},

@@ -15,13 +15,14 @@
 ## 实现
 
 - 图标是模式 5 的精灵：绘制器 `801E2C5C` 对单位槽 0x42–0x9B 调 `801E2734`，输出一个 16×16 的 G_TEXRECT（E4＋E1＋F1）。精灵的镜像位（子记录 `+0x1C`、槽 `+0x50`）只有 `8009761C` 的顶点组读，对它无效。
-- 所以翻转放在宿主的 `srw64_render_node`（`src/host/game_hooks.cpp`）里：`801E2C5C` 画完子 0 以后，[`unit_icon_facing.hpp`](../../src/host/unit_icon_facing.hpp) 在刚写出的这段显示列表里找到 texrect，把 S 起点移到远端（跨度减 1/32 texel），并把 DsDx 取负。
+- 所以翻转放在宿主的 `srw64_render_node`（`src/host/game_hooks.cpp`）里：`801E2C5C` 画完子 0 以后，[`unit_icon_facing.hpp`](../../src/host/unit_icon_facing.hpp) 在刚写出的这段显示列表里找到 texrect，把 S 起点移到远端，并把 DsDx 取负。远端取哪里看画的是哪张图：图标是带双线性过滤画的，过滤取样按坐标的小数部分混合「所在纹素」和「下一个纹素」，所以原版 16×16 图的起点必须正好落在最后一个纹素上（15.0）；RT64 画 HD 替换图时是把整张图按首尾坐标铺满矩形，起点取跨度减 1/32（约 16，终点 0）。宿主按 RT64 当前是否在用 HD 图标（`unit_icon_facing::replaced`，`graphics.cpp` 的 `apply_images` 维护）二选一。
 - HD 图标按哈希替换贴图，坐标沿用 texrect 的，所以跟着一起翻。阴影是子 1，不受影响。行动完换灰色调色板是在同一次绘制里换 TLUT，也不受影响。
 - 阵营判断：
   - 单位槽按 `801E514C` 的区间分：0x42 起是我方，0x60 起是敌方，0x7E 起是第三方，第三方再读名册 `0x8015E100 + 2×0x258 + 号×0x14 + 0xB`；
   - 复制图标的槽 0x3D、0x9C 不属于这些区间，看子 0 的调色板：1010 朝左，其余朝右。
 - 表在程序里是 [`unit_icon_facing_table.hpp`](../../src/host/unit_icon_facing_table.hpp)，由 [`tools/content/unit_icon_facing.py`](../../tools/content/unit_icon_facing.py) 生成；`tests/test_unit_icon_facing.py` 检查两者一致。改 JSON 后要重跑这个脚本。
-- GL 宿主（Switch）走同一个 `srw64_render_node`，它的 texrect 解释器按有符号数读 DsDx。Switch 上还没实机看过。
+- GL 宿主（Switch）走同一个 `srw64_render_node`，它的 texrect 解释器按有符号数读 DsDx；DsDx 为负且带过滤时取起点所在的纹素（`src/gl/display_list.cpp`），两种起点画出来一样。Switch 上还没实机看过，Mac 上用 `SRW64_RENDERER=gl` 看过原版图标。
+- 2026-11-14（issue 26）：0.5.1–0.5.3 原版图标的起点也用跨度减 1/32，第一个像素 97% 取到回绕过来的第 0 列，整张图错位一列，原图第 0 列有像素的机体（ムゲ小型空戦メカ、ヴァイローズ 等）在另一侧多出一两个孤立像素；RT64 与 GL 都如此，HD 图标不受影响。改后在 Mac 上 RT64 原版逐像素等于镜像原图（7 台 ムゲ小型空戦メカ，误差 0.14/255）。
 
 ## 验证（2026-10-26，Mac）
 

@@ -777,7 +777,13 @@ struct Interpreter::State {
         // with texel centres on whole numbers when it filters.
         const float half = bound.linear ? 0.5f : 0.f;
         const float w = right - ulx, h = bottom - uly;
-        float u0 = s - bound.uls - 0.5f * dsdx + half, v0 = t - bound.ult - 0.5f * dtdy + half;
+        // A rectangle stepping backwards is a mirrored one (the host turns the map icons so,
+        // unit_icon_facing.hpp). Filtered, a start within the far texel rather than on it would
+        // weigh the texel past the edge, the wrapped first column, and move the picture a
+        // texel over: take the texel the start lies in.
+        const float first_s = dsdx < 0 && bound.linear ? std::floor(s) : s;
+        const float first_t = dtdy < 0 && bound.linear ? std::floor(t) : t;
+        float u0 = first_s - bound.uls - 0.5f * dsdx + half, v0 = first_t - bound.ult - 0.5f * dtdy + half;
         float u1 = u0 + (flip ? h : w) * dsdx, v1 = v0 + (flip ? w : h) * dtdy;
         if (flip) { std::swap(u0, v0); std::swap(u1, v1); }   // not used by the game
         ++frame->rectangles;
