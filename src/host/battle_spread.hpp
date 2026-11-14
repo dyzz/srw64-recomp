@@ -11,7 +11,7 @@
 // numbers are the original's. Game thread.
 //
 // Only what a weapon's, a hit's or a reaction's script shows is moved: the actors of the two
-// sides' records. The ground, the units, their shadows and whatever else stands in the
+// sides' records and of the hit's block. The ground, the units, their shadows and whatever else stands in the
 // world are never touched, so nothing has to be told apart from them by its shape. Of an
 // actor:
 // - where it stands across the screen, u (0 the centre, +/-1 the original's edges, in the
@@ -39,12 +39,14 @@ inline constexpr uint32_t kSlots = 0x800FFA70, kSlotSize = 0xC4, kSlotCount = 30
 inline constexpr uint32_t kHandles = 0x80160340, kHandleSize = 20, kHandleCount = 200;
 inline constexpr uint32_t kEye = 0x8015DDFC, kAt = 0x8015DDF0, kUp = 0x8015DE14;
 // The two sides' records, two script blocks in each (801C77D8: record + 0x2C and + 0x848),
-// 24 actors of 0x50 bytes from a block's + 0x9C (801C5BAC; the weapon's first, + 0x26 of
-// them, then the hit's and the reaction's): + 0 the slot, + 0x36 in use,
+// and the hit's block of the same layout (801C7554 and 801C8058 give 801C84C0 D_80250400;
+// its backdrops and what lands on the defender are there, not in the sides' records). Up to
+// 24 actors of 0x50 bytes from a block's + 0x9C, + 0x26 of them (801C5BAC): + 0 the slot, + 0x36 in use,
 // + 0x38 how it is placed (1 and 3 by itself, otherwise from its unit's slot). A block's
 // + 0x23 names the unit: slot 168, or 169 when set.
 inline constexpr uint32_t kSides = 0x800F97E0, kSideSize = 0x1074, kBlocks[] = {0x2C, 0x848}, kActors = 0x9C, kActorSize = 0x50, kActorCount = 24;
 inline constexpr uint32_t kUnitSlot = 168;
+inline constexpr uint32_t kHitBlock = 0x80250400;
 inline constexpr float kInner = 0.3f;         // |u| kept as it is
 inline constexpr float kHalfHeight = 0.46630766f;   // tan(25 degrees): the projection's fovy is 50
 #include "battle_spread_scenes.inc"
@@ -141,11 +143,11 @@ inline void apply(uint8_t* ram, std::vector<Saved>& saved) {
     for (float& c : right) c /= length;
     const auto across = [&](const float p[3]) { return (p[0] - at[0]) * right[0] + (p[1] - at[1]) * right[1] + (p[2] - at[2]) * right[2]; };
     bool done[kSlotCount]{};   // a slot named by two actors is moved once
-    for (uint32_t side = 0; side < 2; ++side) for (const uint32_t offset : kBlocks) {
-        const uint32_t block = kSides + side * kSideSize + offset;
+    const uint32_t blocks[] = {kSides + kBlocks[0], kSides + kBlocks[1], kSides + kSideSize + kBlocks[0], kSides + kSideSize + kBlocks[1], kHitBlock};
+    for (const uint32_t block : blocks) {
         const uint32_t unit = kSlots + (kUnitSlot + (guest::read(ram, block + 0x23, 1) ? 1 : 0)) * kSlotSize;
-        // All 24: a hit's and a reaction's actors follow the weapon's, past the count at + 0x26.
-        for (uint32_t index = 0; index < kActorCount; ++index) {
+        const uint32_t count = uint32_t(std::clamp<int>(int8_t(guest::read(ram, block + 0x26, 1)), 0, kActorCount));
+        for (uint32_t index = 0; index < count; ++index) {
             const uint32_t actor = block + kActors + index * kActorSize;
             const int16_t slot = int16_t(guest::read(ram, actor, 2));
             if (!guest::read(ram, actor + 0x36, 1) || slot < 0 || uint32_t(slot) >= kSlotCount || done[slot]) continue;
