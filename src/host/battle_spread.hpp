@@ -39,7 +39,8 @@ inline constexpr uint32_t kSlots = 0x800FFA70, kSlotSize = 0xC4, kSlotCount = 30
 inline constexpr uint32_t kHandles = 0x80160340, kHandleSize = 20, kHandleCount = 200;
 inline constexpr uint32_t kEye = 0x8015DDFC, kAt = 0x8015DDF0, kUp = 0x8015DE14;
 // The two sides' records, two script blocks in each (801C77D8: record + 0x2C and + 0x848),
-// 24 actors of 0x50 bytes from a block's + 0x9C (801C5BAC): + 0 the slot, + 0x36 in use,
+// 24 actors of 0x50 bytes from a block's + 0x9C (801C5BAC; the weapon's first, + 0x26 of
+// them, then the hit's and the reaction's): + 0 the slot, + 0x36 in use,
 // + 0x38 how it is placed (1 and 3 by itself, otherwise from its unit's slot). A block's
 // + 0x23 names the unit: slot 168, or 169 when set.
 inline constexpr uint32_t kSides = 0x800F97E0, kSideSize = 0x1074, kBlocks[] = {0x2C, 0x848}, kActors = 0x9C, kActorSize = 0x50, kActorCount = 24;
@@ -143,9 +144,9 @@ inline void apply(uint8_t* ram, std::vector<Saved>& saved) {
     for (uint32_t side = 0; side < 2; ++side) for (const uint32_t offset : kBlocks) {
         const uint32_t block = kSides + side * kSideSize + offset;
         const uint32_t unit = kSlots + (kUnitSlot + (guest::read(ram, block + 0x23, 1) ? 1 : 0)) * kSlotSize;
-        const int count = std::clamp<int>(int8_t(guest::read(ram, block + 0x26, 1)), 0, kActorCount);
-        for (int index = 0; index < count; ++index) {
-            const uint32_t actor = block + kActors + uint32_t(index) * kActorSize;
+        // All 24: a hit's and a reaction's actors follow the weapon's, past the count at + 0x26.
+        for (uint32_t index = 0; index < kActorCount; ++index) {
+            const uint32_t actor = block + kActors + index * kActorSize;
             const int16_t slot = int16_t(guest::read(ram, actor, 2));
             if (!guest::read(ram, actor + 0x36, 1) || slot < 0 || uint32_t(slot) >= kSlotCount || done[slot]) continue;
             if (uint32_t(slot) == kUnitSlot || uint32_t(slot) == kUnitSlot + 1) continue;
