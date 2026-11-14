@@ -5604,6 +5604,9 @@ void battle_sync() {
     if(auto* first=kept.empty()?nullptr:battle_doc->GetElementById(kept))first->Focus();
     else if(auto* first=battle_doc->GetElementById(selecting_spirit?"battle-spirit-back":touch?(responding?"battle-counter":""):"battle-confirm"))first->Focus();
     battle_doc->UpdateDocument();battle_fit_units(battle_doc);
+    // A rebuilt spirit list starts at its top; show the command the focus was kept on.
+    if(selecting_spirit)if(auto* focus=context->GetFocusElement();focus && focus->GetId().rfind("battle-cast:",0)==0)
+        focus->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));
 
 }
 
@@ -6044,7 +6047,15 @@ void battle_buttons(uint32_t pressed,bool tab) {
             auto it=std::find(items.begin(),items.end(),focus);
             const int index=it==items.end()?0:int(it-items.begin());
             const bool reverse=pressed&(0x0800|0x0200|(1u<<16)|(1u<<18));
-            items[(index+(reverse?int(items.size())-1:1))%items.size()]->Focus();return;
+            auto* next=items[(index+(reverse?int(items.size())-1:1))%items.size()];
+            next->Focus();
+            // A crew's list can be longer than its box: the box follows the focus, and on
+            // 戻る (below the box) it shows its end, where commands that cannot be cast may be.
+            if(spirits) {
+                if(next!=items.back())next->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));
+                else if(auto* list=next->GetParentNode()->GetPreviousSibling())list->SetScrollTop(list->GetScrollHeight());
+            }
+            return;
         }
         // The page's rows: 開始, then 反撃｜回避｜防御 when an enemy attacks, then the other
         // commands. Up and down change row (up from any response reaches 開始), left and
