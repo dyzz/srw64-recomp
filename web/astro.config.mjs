@@ -62,7 +62,7 @@ export default defineConfig({
       scriptDirective: { resources: ["'self'", 'https://bzrcdn.openai.com'] },
       styleDirective: { resources: ["'self'", { resource: "'unsafe-inline'", kind: 'attribute' }] },
       directives: ["default-src 'self'", "img-src 'self' data:", "font-src 'self'", "connect-src 'self' https://bzr.openai.com https://bzrcdn.openai.com",
-        "media-src 'self'", "object-src 'none'", "base-uri 'self'", "form-action 'self'"],
+        "media-src 'self'", "frame-src https://www.youtube-nocookie.com", "object-src 'none'", "base-uri 'self'", "form-action 'self'"],
     },
   },
   // In development the site API (web/api/server.mjs) runs beside the dev server.

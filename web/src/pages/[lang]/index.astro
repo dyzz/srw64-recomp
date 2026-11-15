@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Download from '../../components/Download.astro';
+import FeatureVideo from '../../components/FeatureVideo.astro';
 import Pair from '../../components/Pair.astro';
 import { HOME } from '../../copy/home';
 import { UI, langPaths, tl, type Lang, TITLE_LOGO } from '../../i18n';
@@ -59,7 +60,10 @@ const ld = {
     <div class="wrap hero-in">
       <div class="hero-art" aria-hidden="true"></div>
       <span class="tag">{c.kicker}{published && ` · v${release.version}`}</span>
-      <h1 class="logo-h1"><img src={`/brand/title-${lang}.webp`} alt={TITLE_LOGO[lang].alt} width="1400" height={TITLE_LOGO[lang].h} fetchpriority="high" /></h1>
+      <div class="hero-title">
+        <h1 class="logo-h1"><img src={`/brand/title-${lang}.webp`} alt={TITLE_LOGO[lang].alt} width="1400" height={TITLE_LOGO[lang].h} fetchpriority="high" /></h1>
+        <FeatureVideo lang={lang} />
+      </div>
       <p class="tagline">{c.tagline}</p>
       <p class="lead"><strong>{c.intro}</strong> {c.lead}</p>
       <Download lang={lang} />
@@ -234,7 +238,8 @@ const ld = {
   .hero-in > :not(.hero-art) { position: relative; z-index: 1; }
   .hero-in { position: relative; }
   .hero-in { width: 100%; padding-top: 72px; padding-bottom: 64px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
-  .logo-h1 { margin: 0 0 6px -6px; width: min(620px, 92vw); }
+  .hero-title { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; width: 100%; }
+  .logo-h1 { margin: 0 0 6px -6px; width: min(620px, 100%); }
   .logo-h1 img { width: 100%; height: auto; filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.6)); }
   .tagline { font-size: clamp(19px, 2.2vw, 26px); font-weight: 700; color: var(--gold); text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6); }
   .lead strong { color: #fff; font-weight: 700; }
