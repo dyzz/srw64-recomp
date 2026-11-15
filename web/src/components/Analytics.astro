@@ -28,4 +28,24 @@ if (websiteId && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
       if (link && umami) void umami.track('download', { platform: 'guide', language: link.dataset.guideDownload!, source: 'guide' });
     });
   }
+  // OpenAI ads pixel. Its script comes from bzrcdn.openai.com and it reports to
+  // bzr.openai.com; both are allowed in astro.config.mjs's Content-Security-Policy.
+  // The calls queue at once; the script itself is added only after the page's load event,
+  // so where openai.com cannot be reached (mainland China) the tab does not keep loading.
+  if (location.hostname === 'srw64.dreamquest.club') {
+    const w = window as Window & { oaiq?: ((...args: unknown[]) => void) & { q: unknown[][] } };
+    if (!w.oaiq) {
+      const q = Object.assign((...args: unknown[]) => { q.q.push(args); }, { q: [] as unknown[][] });
+      w.oaiq = q;
+      q('init', { pixelId: 'VQG6VczK9U6mg5komRdZQc', debug: true });
+      const add = () => {
+        const sdk = document.createElement('script');
+        sdk.async = true;
+        sdk.src = 'https://bzrcdn.openai.com/sdk/oaiq.min.js';
+        document.head.append(sdk);
+      };
+      if (document.readyState === 'complete') add();
+      else addEventListener('load', add, { once: true });
+    }
+  }
 </script>

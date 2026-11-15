@@ -58,9 +58,10 @@ export default defineConfig({
   // Framing and the rest are headers (deploy/nginx-srw64-headers.conf).
   security: {
     csp: {
-      scriptDirective: { resources: ["'self'"] },
+      // bzrcdn/bzr.openai.com: the OpenAI ads pixel (src/components/Analytics.astro).
+      scriptDirective: { resources: ["'self'", 'https://bzrcdn.openai.com'] },
       styleDirective: { resources: ["'self'", { resource: "'unsafe-inline'", kind: 'attribute' }] },
-      directives: ["default-src 'self'", "img-src 'self' data:", "font-src 'self'", "connect-src 'self'",
+      directives: ["default-src 'self'", "img-src 'self' data:", "font-src 'self'", "connect-src 'self' https://bzr.openai.com https://bzrcdn.openai.com",
         "media-src 'self'", "object-src 'none'", "base-uri 'self'", "form-action 'self'"],
     },
   },
