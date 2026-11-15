@@ -9,6 +9,27 @@ if (websiteId && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
 <script>
   const websiteId = document.querySelector<HTMLMetaElement>('meta[name="umami-website-id"]')?.content;
   if (websiteId && location.hostname === 'srw64.dreamquest.club') {
+    // Query strings stay out of the statistics, except the utm_ parameters an ad's link
+    // carries (ChatGPT ads and the like), which Umami's UTM report reads from the page
+    // address. Referrers lose their query entirely. Umami calls this by name before each send.
+    const onlyUtm = (address: unknown, keepUtm: boolean) => {
+      if (typeof address !== 'string' || !address.includes('?')) return address;
+      try {
+        const u = new URL(address, location.origin);
+        const kept = new URLSearchParams();
+        if (keepUtm) u.searchParams.forEach((v, k) => { if (/^utm_[a-z]+$/.test(k)) kept.append(k, v); });
+        u.search = kept.toString();
+        // Umami sends a same-site referrer as a path; keep it that way.
+        return address.startsWith('/') ? u.pathname + u.search : u.toString();
+      } catch {
+        return address.split('?')[0];
+      }
+    };
+    (window as Window & { srw64UmamiBeforeSend?: unknown }).srw64UmamiBeforeSend = (_type: string, payload: Record<string, unknown>) => {
+      payload.url = onlyUtm(payload.url, true);
+      payload.referrer = onlyUtm(payload.referrer, false);
+      return payload;
+    };
     // Same-origin script and collection: works with the site's existing CSP.
     const tracker = document.createElement('script');
     tracker.src = '/analytics/script.js';
@@ -16,7 +37,7 @@ if (websiteId && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
     tracker.dataset.websiteId = websiteId;
     tracker.dataset.hostUrl = `${location.origin}/analytics`;
     tracker.dataset.domains = 'srw64.dreamquest.club';
-    tracker.dataset.excludeSearch = 'true';
+    tracker.dataset.beforeSend = 'srw64UmamiBeforeSend';
     tracker.dataset.excludeHash = 'true';
     tracker.dataset.doNotTrack = 'true';
     document.head.append(tracker);
@@ -47,5 +68,13 @@ if (websiteId && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
       if (document.readyState === 'complete') add();
       else addEventListener('load', add, { once: true });
     }
+    document.addEventListener('click', (event) => {
+      const link = event.target instanceof Element
+        ? event.target.closest('a[data-umami-event="download"], a[data-umami-event="download-mirror"]')
+        : null;
+      if (link) {
+        w.oaiq?.('measure', 'custom', { type: 'custom' }, { custom_event_name: 'download_click' });
+      }
+    }, { capture: true });
   }
 </script>
