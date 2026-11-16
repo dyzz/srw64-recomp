@@ -250,6 +250,9 @@ uint64_t battle_request_serial{};   // the encounter the battle page shows
 std::string battle_focus;           // the page's control the cursor was last on
 Rml::ElementDocument* battle_doc{},*original_doc{};
 std::string battle_stamp,original_stamp;
+// The pre-battle spirit list shows one pilot at a time: which of the crew that have commands,
+// and the row the cursor was on, kept when the pilot changes.
+int battle_spirit_crew=0,battle_spirit_row=-1;
 json intermission_request,upgrade_request,parts_request,ability_request,swap_request,save_request,title_request;
 Rml::ElementDocument* title_doc{};
 std::string title_stamp;
@@ -929,18 +932,43 @@ button.home-mod:hover, button.home-mod:focus, .pad button.home-mod:focus {color:
 .narrow .bp-hints {font-size:16dp; height:22dp;}
 .bp-hints span {margin:0 10dp;} .bp-hints b {color:#ffd75e; font-weight:normal;}
 .spirit-shade {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#04071299;}
-.spirit-overlay {position:absolute; left:22%; top:12%; width:56%; max-height:78%; box-sizing:border-box; padding:12dp 22dp 13dp; color:#e8eefc; background-color:#0c122cfa; border-top:3dp #3fd0ff; border-bottom:3dp #3fd0ff;}
-.spirit-overlay h2 {margin:0; font-size:16dp;} .spirit-overlay p {margin:2dp 0 8dp; font-size:10dp; color:#a4b0d2;}
-.spirit-options {max-height:340dp; overflow-y:auto;}
-.spirit-options button {display:block; width:98%; box-sizing:border-box; margin:3dp 0; padding:6dp 8dp; font-size:14dp; text-align:left; border-radius:0; border:0; border-left:4dp #3fd0ff40; background-color:transparent; color:#e8eefc;}
+.spirit-overlay {position:absolute; left:18%; top:5%; width:64%; /* the width and left are set per window, battle_sync */ max-height:92%; box-sizing:border-box; padding:10dp 22dp 11dp; color:#e8eefc; background-color:#0c122cfa; border-top:3dp #3fd0ff; border-bottom:3dp #3fd0ff;}
+.spirit-head {display:flex; width:100%; align-items:flex-end;} .spirit-head h2 {flex:1 1 0; margin:0; font-size:16dp;} .spirit-head .count {font-size:12dp; color:#a4b0d2;}
+.spirit-overlay p {margin:2dp 0 6dp; font-size:10dp; color:#a4b0d2;}
+.spirit-tabs {display:flex; width:100%; gap:4dp; margin-bottom:6dp;}
+.spirit-tabs button {display:block; margin:0; padding:3dp 4dp; height:48dp; box-sizing:border-box; border-radius:0; border:0; border-bottom:3dp #3fd0ff33; background-color:#152436; color:#a4b0d2; text-align:left;}
+.spirit-tabs button.tab {flex:1 1 0; min-width:0;} .spirit-tabs button.pager {width:30dp; text-align:center; font-size:13dp; line-height:39dp; color:#ffd75e;}
+.spirit-tabs button:hover {background-color:#3fd0ff29;}
+.spirit-tabs button.on {border-bottom:3dp #3fd0ff; background-color:#3fd0ff33; color:#e8eefc;}
+.spirit-tab {display:flex; width:100%; height:26dp; align-items:center; gap:5dp;} .spirit-tab img {width:26dp; height:26dp; opacity:0.6;} .on .spirit-tab img {opacity:1;}
+.spirit-tab .sp {flex:1 1 0; font-size:10dp; white-space:nowrap; color:#ffd75e; text-align:right;} .spirit-tabs .n {width:100%; font-size:11dp; line-height:15dp; font-weight:bold; white-space:nowrap; overflow:hidden;}
+.spirit-tab .who {flex:1 1 0; min-width:0;} .spirit-tab .n {font-size:12dp; line-height:16dp; font-weight:bold; white-space:nowrap; overflow:hidden;} .spirit-tab .sp {font-size:9dp; line-height:12dp; white-space:nowrap;}
+.spirit-card {display:flex; width:100%; align-items:center; gap:12dp; margin-bottom:6dp;}
+.spirit-card img {width:64dp; height:64dp; border:2dp #3fd0ff;} .spirit-card .info {flex:1 1 0; min-width:0;}
+.spirit-card .who {display:flex; width:100%; align-items:flex-end;} .spirit-card .n {flex:1 1 0; font-size:18dp; font-weight:bold; white-space:nowrap; overflow:hidden;}
+.spirit-card .level {font-size:12dp; color:#a4b0d2; margin-right:14dp;} .spirit-card .sp {font-size:14dp; color:#ffd75e; font-weight:bold;}
+.spirit-card .bar {margin-top:5dp; height:5dp; background-color:#1d2a4a;} .spirit-card .bar div {height:5dp; background-color:#3fd0ff;}
+.spirit-options {max-height:204dp; overflow-y:auto;}
+.spirit-options button {display:block; width:98%; box-sizing:border-box; margin:2dp 0; padding:6dp 8dp; font-size:14dp; text-align:left; border-radius:0; border:0; border-left:4dp #3fd0ff40; background-color:transparent; color:#e8eefc;}
 .spirit-options button:hover,.spirit-options button:focus {background-color:#3fd0ff29; border-left:4dp #3fd0ff;}
-.spirit-options button.on {border-left:4dp #ffd75e; background-color:#ffd75e1f; color:#ffd75e; opacity:1;}
-.spirit-options .spirit-row {display:flex; align-items:center; gap:8dp;}
-.spirit-options .name {width:96dp;} .spirit-options .cost {width:48dp; font-size:11dp; color:#ffd75e;}
-.spirit-options .detail {flex:1; font-size:10dp; color:#d6ddf2;} .spirit-options .status {font-size:10dp; text-align:right;}
-.spirit-footer {text-align:right; margin-top:8dp;}
+.spirit-options button.off {color:#6f7a9c;} .spirit-options button.off .cost {color:#8a7a45;}
+.spirit-options button.on {border-left:4dp #ffd75e; background-color:#ffd75e1f; color:#ffd75e;}
+.spirit-options .spirit-row {display:flex; width:100%; align-items:center; gap:8dp;}
+.spirit-options .name {width:110dp; white-space:nowrap;} .spirit-options .cost {width:48dp; font-size:11dp; color:#ffd75e; text-align:right;}
+.spirit-options .status {flex:1 1 0; font-size:10dp;}
+.spirit-detail {box-sizing:border-box; width:100%; height:64dp; margin-top:6dp; padding:4dp 8dp; background-color:#152436; overflow:hidden;}
+.spirit-detail .top {display:flex; width:100%; align-items:flex-end;} .spirit-detail .name {flex:1 1 0; font-size:14dp; font-weight:bold; color:#3fd0ff; white-space:nowrap; overflow:hidden;}
+.spirit-detail .text {width:100%; font-size:10dp; line-height:12.5dp; color:#d6ddf2;} .spirit-detail .sp {font-size:11dp; color:#ffd75e; white-space:nowrap;}
+.spirit-footer {display:flex; width:100%; align-items:center; margin-top:7dp;} .spirit-footer .hint {flex:1 1 0; font-size:11dp; color:#a4b0d2;} .spirit-footer .hint b {color:#ffd75e; font-weight:normal;}
 .spirit-footer button {margin:0; padding:4dp 12dp; font-size:11dp; font-weight:bold; border-radius:0; color:#0b1230; background-color:#3fd0ff; border:2dp #3fd0ff;}
 .spirit-footer button:hover,.spirit-footer button:focus {background-color:#8fe4ff; border-color:#ffd75e;}
+/* A page 640 dp high or more (not the Deck at its largest size): larger type in a narrower panel. */
+.spirit-overlay.big h2 {font-size:19dp;} .spirit-overlay.big p {font-size:11dp;} .big .spirit-head .count {font-size:14dp;}
+.big .spirit-tabs button {height:52dp;} .big .spirit-tabs button.pager {width:28dp; line-height:43dp;} .slim .spirit-tab {gap:2dp;} .slim .spirit-tab img {width:20dp; height:20dp;} .big .spirit-tab .sp {font-size:11dp;} .big .spirit-tabs .n {font-size:13dp; line-height:17dp;}
+.big .spirit-card .n {font-size:22dp;} .big .spirit-card .level {font-size:14dp;} .big .spirit-card .sp {font-size:17dp;}
+.big .spirit-options {max-height:240dp;} .big .spirit-options button {font-size:18dp;} .big .spirit-options .name {width:130dp;} .big .spirit-options .cost {width:62dp; font-size:14dp;} .big .spirit-options .status {font-size:12dp;}
+.big .spirit-detail {height:82dp;} .big .spirit-detail .name {font-size:17dp;} .big .spirit-detail .text {font-size:12.5dp; line-height:16dp;} .big .spirit-detail .sp {font-size:14dp;}
+.big .spirit-footer .hint {font-size:13dp;} .big .spirit-footer button {font-size:14dp;}
 
 .im-root {position:absolute; color:#ffffff; font-weight:bold;}
 .im-panel {position:absolute; box-sizing:border-box; overflow:hidden; background-color:#0a0e3cc8; border-color:#3a78e0; white-space:nowrap;}
@@ -5474,6 +5502,53 @@ void battle_hd_buttons(uint32_t pressed) {
 }
 bool touch_battle_layout();
 touch_pad::Layout touch_layout();
+// The spirit list's pilots: the crew seats that have commands, in seat order.
+std::vector<unsigned> battle_spirit_crews(const json& options) {
+    std::vector<unsigned> crews;
+    for(const auto& o:options)if(const unsigned crew=o.at("crew");crews.empty() || crews.back()!=crew)crews.push_back(crew);
+    return crews;
+}
+// The commands of the pilot shown, as their buttons' ids.
+std::vector<std::string> battle_spirit_rows() {
+    std::vector<std::string> rows;
+    const auto& options=battle_request.at("spirit_options");
+    const auto crews=battle_spirit_crews(options);
+    if(crews.empty())return rows;
+    const unsigned crew=crews[std::clamp(battle_spirit_crew,0,int(crews.size())-1)];
+    for(const auto& o:options)if(o.at("crew")==crew)rows.push_back("battle-cast:"+std::to_string(crew)+":"+std::to_string(o.at("slot").get<unsigned>()));
+    return rows;
+}
+// Another pilot's commands (battle_sync draws them: the stamp carries the pilot). The cursor
+// keeps its row.
+void battle_spirit_switch(int to,bool relative) {
+    const int count=int(battle_spirit_crews(battle_request.at("spirit_options")).size());
+    if(count<2)return;
+    const auto rows=battle_spirit_rows();
+    if(auto* focus=context->GetFocusElement())
+        if(auto it=std::find(rows.begin(),rows.end(),focus->GetId());it!=rows.end())battle_spirit_row=int(it-rows.begin());
+    battle_spirit_crew=relative?(battle_spirit_crew+to+count)%count:std::clamp(to,0,count-1);
+}
+// Under the list: what the command the cursor is on does (the map menu's own description)
+// and what casting it leaves of the pilot's SP. `again` after the page was drawn anew.
+void battle_spirit_detail(bool again=false) {
+    static std::string shown;
+    auto* box=battle_doc?battle_doc->GetElementById("spirit-detail"):nullptr;
+    if(!box){shown.clear();return;}
+    auto* focus=context->GetFocusElement();
+    const std::string id=focus && focus->GetOwnerDocument()==battle_doc?focus->GetId():std::string();
+    if(!again && id==shown)return;
+    shown=id;
+    std::string body;
+    for(const auto& o:battle_request.at("spirit_options")) {
+        if(id!="battle-cast:"+std::to_string(o.at("crew").get<unsigned>())+":"+std::to_string(o.at("slot").get<unsigned>()))continue;
+        auto text=escape(o.value("description",std::string()));
+        for(const char* br:{"&lt;BR&gt;","\n"})for(size_t at;(at=text.find(br))!=std::string::npos;)text.replace(at,std::strlen(br),"<br/>");
+        const int sp=o.at("sp"),cost=o.at("cost");
+        body="<div class='top'><div class='name'>"+escape(o.at("name").get<std::string>())+"</div>"
+            "<div class='sp'>SP "+std::to_string(sp)+(o.at("enabled").get<bool>()?" → "+std::to_string(sp-cost):std::string())+"</div></div><div class='text'>"+text+"</div>";
+    }
+    box->SetInnerRML(body);
+}
 // The pre-battle page's pictures of every unit on the map, read ahead (image_async above):
 // each pilot's face at the page's size and each unit's whole pose with its bounds.
 void prefetch_map_art() {
@@ -5522,8 +5597,8 @@ void battle_sync() {
     const bool touch=touch_battle_layout();
     const bool hd_original=next.value("style",std::string())=="hd" && !touch;
     // The window and the interface size set the unit pictures' room (ui_density).
-    const auto stamp=state_seen+localization::catalog().locale+std::to_string(hd_portraits())+frame_stamp()+"@"+std::to_string(ui_density)+(hd_original && pad_mode?"+pad":"")+(touch?"+touch":"")+"#"+std::to_string(pictures::serial);
-    if(battle_doc && battle_stamp==stamp)return;
+    const auto stamp=state_seen+localization::catalog().locale+std::to_string(hd_portraits())+frame_stamp()+"@"+std::to_string(ui_density)+(hd_original && pad_mode?"+pad":"")+(touch?"+touch":"")+"#"+std::to_string(pictures::serial)+"c"+std::to_string(battle_spirit_crew);
+    if(battle_doc && battle_stamp==stamp){battle_spirit_detail();return;}
     if(hd_original) {
         // The menu cursor stays where it was when the same encounter redraws.
         auto* focus=battle_doc && context->GetFocusElement() && context->GetFocusElement()->GetOwnerDocument()==battle_doc?context->GetFocusElement():nullptr;
@@ -5540,6 +5615,10 @@ void battle_sync() {
     auto* focus=battle_doc && context->GetFocusElement() && context->GetFocusElement()->GetOwnerDocument()==battle_doc?context->GetFocusElement():nullptr;
     const bool same=battle_request_serial==next.value("serial",uint64_t{}) && spirit_menu_before==next.value("spirit_menu",false);
     const auto kept=focus && same?focus->GetId():std::string();
+    // The list opens on the first pilot; coming back from a cast (the page again, the list still
+    // open) it stays on the pilot who cast and the row. (The stamp was made with the pilot
+    // shown before: the next frame draws once more, the same page.)
+    if(!spirit_menu_before){battle_spirit_crew=0;battle_spirit_row=-1;}
     battle_request_serial=next.value("serial",uint64_t{});spirit_menu_before=next.value("spirit_menu",false);
     battle_stamp=stamp;
     // Keep our unit on the right, matching the original battle HUD. Direction
@@ -5592,22 +5671,73 @@ void battle_sync() {
     }
     body+="</div></div>";
     if(selecting_spirit) {
-        body+="<div class='spirit-shade'></div><div class='spirit-overlay'><h2>"+label("battle_spirits")+" · "+escape(player.at("unit_name").get<std::string>())+"</h2><p>"+label("battle_spirit_hint")+"</p><div class='spirit-options'>";
-        for(const auto& o:next.at("spirit_options")) {
-            const bool used=(player.at("spirits").get<uint32_t>()>>o.at("id").get<unsigned>())&1;
-            auto content="<div class='spirit-row'><span class='name'>"+escape(o.at("name").get<std::string>())+"</span><span class='cost'>SP "+battle_number(o.at("cost"))+"</span><span class='detail'>"+escape(o.at("pilot_name").get<std::string>())+" · SP "+battle_number(o.at("sp"))+" / "+battle_number(o.at("max_sp"))+"</span><span class='status'>"+label(used?"battle_effect_active":"battle_spirit_"+o.at("reason").get<std::string>())+"</span></div>";
-            body+=button("battle-cast:"+battle_number(o.at("crew"))+":"+battle_number(o.at("slot")),content,used,!o.at("enabled").get<bool>());
+        // One pilot at a time, whatever the crew's size: a tab each (five at most, around the one
+        // shown), the pilot's card, the six commands at most, and the focused command's description.
+        const auto& options=next.at("spirit_options");
+        const auto crews=battle_spirit_crews(options);
+        const int count=int(crews.size());
+        battle_spirit_crew=count?std::clamp(battle_spirit_crew,0,count-1):0;
+        const auto of=[&](unsigned crew)->const json& {for(const auto& o:options)if(o.at("crew")==crew)return o;return options.at(0);};
+        const auto face=[&](const json& o,int dp) {
+            const auto art=o.value("portrait",json::object());
+            return art.contains("path")?"<img src='"+escape(image_async(portrait_path(art),dp_pixels(dp)))+"'/>":std::string();
+        };
+        const auto prompt=[&](const char* token){return escape(text::expand_prompts(token,prompt_context(pad_mode)));};
+        // Centred. 64% of the page on a screen up to 800 pixels high (720p, the Deck), where
+        // the page is small; above that 460 dp at most (user, 2026-11-16: narrower, larger type).
+        // The larger type wherever the page has the height for it.
+        const float page_dp=page_area().w/ui_density,panel_dp=page_area().h<=800?page_dp*.64f:std::min(460.f,page_dp*.64f);
+        const bool big=page_area().h/ui_density>=640;
+        body+="<div class='spirit-shade'></div><div class='spirit-overlay"+std::string(big?" big":"")+(panel_dp<500?" slim":"")+"' style='left:"+std::to_string(int((page_dp-panel_dp)/2))+"dp; width:"+std::to_string(int(panel_dp))+"dp;'><div class='spirit-head'><h2>"+label("battle_spirits")+" · "+escape(player.at("unit_name").get<std::string>())+"</h2>";
+        if(count>1)body+="<div class='count'>"+std::to_string(battle_spirit_crew+1)+" / "+std::to_string(count)+"</div>";
+        body+="</div><p>"+label("battle_spirit_hint")+"</p>";
+        if(count>1) {
+            const int shown=std::min(count,5),first=std::clamp(battle_spirit_crew-shown/2,0,count-shown);
+            body+="<div class='spirit-tabs'>"+button("battle-crew:prev","<span>"+prompt("{L}")+"</span>",false,false,"pager");
+            for(int n=first;n<first+shown;++n) {
+                const auto& o=of(crews[n]);
+                body+=button("battle-crew:"+std::to_string(n),"<div class='spirit-tab'>"+face(o,26)+"<div class='sp'>"+battle_number(o.at("sp"))+"</div></div>"
+                    "<div class='n fit' data-fit-min='0.4'>"+escape(o.at("pilot_name").get<std::string>())+"</div>",n==battle_spirit_crew,false,"tab");
+            }
+            body+=button("battle-crew:next","<span>"+prompt("{R}")+"</span>",false,false,"pager")+"</div>";
         }
-        body+="</div><div class='spirit-footer'>"+button("battle-spirit-back",label("battle_spirit_back"))+"</div></div>";
+        if(count) {
+            const auto& o=of(crews[battle_spirit_crew]);
+            const int sp=o.at("sp"),max_sp=std::max(1,o.at("max_sp").get<int>());
+            body+="<div class='spirit-card'>"+face(o,64)+"<div class='info'><div class='who'><div class='n fit'>"+escape(o.at("pilot_name").get<std::string>())+"</div>"
+                "<div class='level'>Lv "+battle_number(o.value("level",0))+"</div><div class='sp'>SP "+std::to_string(sp)+" / "+battle_number(o.at("max_sp"))+"</div></div>"
+                "<div class='bar'><div style='width:"+std::to_string(std::clamp(sp*100/max_sp,0,100))+"%;'></div></div></div></div>";
+        }
+        body+="<div id='spirit-list' class='spirit-options'>";
+        for(const auto& o:options) {
+            if(!count || o.at("crew")!=crews[battle_spirit_crew])continue;
+            const bool used=(player.at("spirits").get<uint32_t>()>>o.at("id").get<unsigned>())&1,ready=o.at("enabled").get<bool>();
+            // Not `disabled`: the cursor goes on a command that cannot be cast too, for its
+            // description and the reason; casting it is refused (battle_page.cpp).
+            auto content="<div class='spirit-row'><span class='name'>"+escape(o.at("name").get<std::string>())+"</span><span class='status'>"+
+                (used?label("battle_effect_active"):ready?std::string():label("battle_spirit_"+o.at("reason").get<std::string>()))+"</span><span class='cost'>SP "+battle_number(o.at("cost"))+"</span></div>";
+            body+=button("battle-cast:"+battle_number(o.at("crew"))+":"+battle_number(o.at("slot")),content,used,false,ready?"":"off");
+        }
+        body+="</div><div id='spirit-detail' class='spirit-detail'></div><div class='spirit-footer'><div class='hint'>"+
+            (count>1?"<b>"+prompt("{L}")+" "+prompt("{R}")+"</b> "+label("battle_spirit_switch"):std::string())+"</div>"+button("battle-spirit-back",label("battle_spirit_back"))+"</div></div>";
     }
     refresh(battle_doc,body,true);battle_doc->SetClass("modal",false);
-    if(auto* first=kept.empty()?nullptr:battle_doc->GetElementById(kept))first->Focus();
+    Rml::Element* first=kept.empty()?nullptr:battle_doc->GetElementById(kept);
+    if(selecting_spirit && (!first || first->GetId().starts_with("battle-crew:"))) {
+        // Opened: the first command that can be cast. Another pilot: the row the cursor was on.
+        const auto rows=battle_spirit_rows();
+        first=nullptr;
+        if(battle_spirit_row>=0 && !rows.empty())first=battle_doc->GetElementById(rows[std::min(size_t(battle_spirit_row),rows.size()-1)]);
+        else for(const auto& id:rows)if(auto* e=battle_doc->GetElementById(id);e && !e->IsClassSet("off") && !e->IsClassSet("on")){first=e;break;}
+        if(!first && !rows.empty())first=battle_doc->GetElementById(rows.front());
+    }
+    if(first)first->Focus();
     else if(auto* first=battle_doc->GetElementById(selecting_spirit?"battle-spirit-back":touch?(responding?"battle-counter":""):"battle-confirm"))first->Focus();
     battle_doc->UpdateDocument();battle_fit_units(battle_doc);
-    // A rebuilt spirit list starts at its top; show the command the focus was kept on.
+    // A rebuilt spirit list starts at its top; show the command the focus is on.
     if(selecting_spirit)if(auto* focus=context->GetFocusElement();focus && focus->GetId().rfind("battle-cast:",0)==0)
         focus->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));
-
+    battle_spirit_detail(true);
 }
 
 void touch_edit_choose(const std::string& id);
@@ -5681,6 +5811,12 @@ void choose(const std::string& id) {
         settings_focus=id;return;
     }
     if(id=="update-open"){open_about(update::status("en").state==update::State::Available?"update-download":"update-hd-download");return;}
+    // The spirit list's pilot tabs are the page's own.
+    if(id.starts_with("battle-crew:")) {
+        const auto which=id.substr(12);
+        if(which=="prev" || which=="next")battle_spirit_switch(which=="prev"?-1:1,true);else battle_spirit_switch(std::atoi(which.c_str()),false);
+        return;
+    }
     if(id.starts_with("battle-") && !id.starts_with("battle-ui:") && battle_request.value("visible",false) && !settings_open){battle_page::answer(battle_request.at("serial"),id.substr(7));return;}
     // From the Library, the battle viewer or MOD (the menu bar's Settings…, Ctrl/Cmd+,), which
     // share the settings window's frame: its own pages, as closing would leave the viewer.
@@ -6033,14 +6169,18 @@ void battle_buttons(uint32_t pressed,bool tab) {
             choose(battle_request.value("response",0)==1?"battle-defend":"battle-evade");return;
         }
     }
+    // The spirit list: left and right, or L and R, show another pilot of the crew; up and
+    // down go through that pilot's commands and 戻る.
+    if(spirits && !tab && (pressed&(0x0030|0x0300|(0xCu<<16)))) {
+        battle_spirit_switch(pressed&(0x0020|0x0200|(1u<<18))?-1:1,true);return;
+    }
     if(pressed&(0x0F00|(0xFu<<16))) {
         auto* focus=context->GetFocusElement();
         if(spirits || tab) {
             // The spirit list, and Tab anywhere, go through the controls in order.
             std::vector<Rml::Element*> items;
             if(spirits) {
-                for(const auto& o:battle_request.at("spirit_options"))if(o.at("enabled").get<bool>())
-                    if(auto* e=battle_doc->GetElementById("battle-cast:"+battle_number(o.at("crew"))+":"+battle_number(o.at("slot"))))items.push_back(e);
+                for(const auto& id:battle_spirit_rows())if(auto* e=battle_doc->GetElementById(id))items.push_back(e);
                 items.push_back(battle_doc->GetElementById("battle-spirit-back"));
             } else for(const char* id:{"battle-confirm","battle-counter","battle-evade","battle-defend","battle-weapon","battle-spirits","battle-animation","battle-back"})
                 if(auto* e=battle_doc->GetElementById(id))items.push_back(e);
@@ -6049,11 +6189,12 @@ void battle_buttons(uint32_t pressed,bool tab) {
             const bool reverse=pressed&(0x0800|0x0200|(1u<<16)|(1u<<18));
             auto* next=items[(index+(reverse?int(items.size())-1:1))%items.size()];
             next->Focus();
+            if(spirits && next!=items.back())battle_spirit_row=(index+(reverse?int(items.size())-1:1))%int(items.size());
             // A crew's list can be longer than its box: the box follows the focus, and on
             // 戻る (below the box) it shows its end, where commands that cannot be cast may be.
             if(spirits) {
                 if(next!=items.back())next->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));
-                else if(auto* list=next->GetParentNode()->GetPreviousSibling())list->SetScrollTop(list->GetScrollHeight());
+                else if(auto* list=battle_doc->GetElementById("spirit-list"))list->SetScrollTop(list->GetScrollHeight());
             }
             return;
         }

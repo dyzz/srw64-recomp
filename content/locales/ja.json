@@ -258,6 +258,7 @@
     "battle_spirit_unavailable": "発動中・使用条件未達",
     "battle_spirit_map": "マップ上で使用",
     "battle_spirit_back": "戦闘確認へ戻る",
+    "battle_spirit_switch": "パイロット切替",
     "battle_damage_if_hit": "命中時ダメージ",
     "battle_first": "先攻 · 攻撃",
     "battle_second": "後攻",

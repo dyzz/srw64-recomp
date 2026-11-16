@@ -163,6 +163,7 @@ UI_KEYS |= {
     "battle_spirit_unavailable",
     "battle_spirit_map",
     "battle_spirit_back",
+    "battle_spirit_switch",
     "battle_spirit_hint", "battle_damage_if_hit", "battle_first", "battle_second",
     "battle_first_player", "battle_first_enemy", "battle_phase_enemy", "battle_phase_player", "battle_barrier",
     "battle_ammo", "battle_animation", "battle_attacker", "battle_back",

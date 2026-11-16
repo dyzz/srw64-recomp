@@ -126,6 +126,11 @@ def main():
             if not p.get("spirit_menu"):
                 call("ui.click", id="battle-spirits")
                 time.sleep(.4)
+            # The list shows one pilot at a time: that pilot's tab first (its place among the crew with commands).
+            crews = sorted({o["crew"] for o in p["spirit_options"]})
+            if len(crews) > 1:
+                call("ui.click", id=f"battle-crew:{crews.index(option['crew'])}")
+                time.sleep(.4)
             call("ui.click", id=f"battle-cast:{option['crew']}:{option['slot']}")
             back = wait_page(p["serial"])
             alive = s.alive()

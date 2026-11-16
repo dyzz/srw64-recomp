@@ -148,7 +148,11 @@ namespace srw64::mods {
 std::vector<Package> installed(const Version&){return {};} std::vector<LooseResult> loose_results(){return {};}
 InstallResult install(const fs::path&){return {};} bool set_enabled(const std::string&,bool){return true;} bool remove(const std::string&){return true;}
 void set_game_version(const Version&){} fs::path directory(){return {};}
+std::vector<std::string> archive_voices(const fs::path&){return {};}
 }
+// No language package brings faces of its own, and no game runs (mini_stage.hpp).
+namespace srw64::text { std::vector<std::filesystem::path> locale_fonts(const std::string&){return {};} }
+uint8_t* srw64_rdram=nullptr;
 namespace srw64::portraits { std::string mod_picture(const std::string& original){return original;} }
 // The OpenGL renderer (the Vita path) is never made here: the Metal probe surface draws.
 namespace recompui {

@@ -29,6 +29,8 @@ LOCALES = ('zh-Hans', 'zh-Hant', 'en', 'ja', 'ko')
 # name: window points and interface size (Steam Deck: 1280 x 800 at Largest).
 SIZES = {'deck': (1280, 800, 'largest'), 'deck-standard': (1280, 800, 'standard'),
          'wide': (1920, 1080, 'standard'), 'smallest': (960, 720, 'standard'),
+         # 720p and 4K screens, at the default interface size and at the largest.
+         '720p': (1280, 720, 'standard'), '720p-largest': (1280, 720, 'largest'), '4k': (3840, 2160, 'standard'), '4k-largest': (3840, 2160, 'largest'),
          # The picture kept 4:3 (a bezel frames it): the pages lay out in the 1067 x 800 picture.
          'deck-4:3': (1280, 800, 'largest', '4:3')}
 LIBS = ['ui-probe/libsrw64_ui_pages.a', 'ui-probe/libsrw64_ui_renderer.a', 'rt64/rt64.a', 'rt64/src/contrib/re-spirv/libre-spirv.a',
@@ -279,6 +281,21 @@ def fixtures(text):
             # with faces, so the info columns are as narrow as in a game
             buffs[side]['portrait'] = {'path': 'assets/hd-ai/portrait-batch/whole-v1/portrait-169.png', 'width': 96, 'height': 96}
         add('battle-spirits-native', {'battle_page': at(buffs)})
+        # The spirit list (frontend.cpp battle_sync): one pilot at a time. Seven pilots (five tabs
+        # shown) with six commands each and the widest names, the cursor's command described;
+        # the fourth pilot after two clicks; a single pilot, with no tabs.
+        def spirit_list(crew):
+            page = at(states['battle'][2])
+            page['spirit_menu'] = True
+            page['spirit_options'] = [{
+                'crew': c, 'slot': n, 'id': i, 'name': r(969 + i), 'description': r(5150 + i), 'cost': 120, 'sp': 999, 'max_sp': 999, 'level': 99,
+                'pilot_name': pilots[c % len(pilots)], 'enabled': n % 3 != 1, 'reason': ('ready', 'map', 'ready', 'ready', 'sp', 'ready')[n],
+                'portrait': {'path': f'assets/hd-ai/portrait-batch/whole-v1/portrait-{149 + c % 5}.png', 'width': 96, 'height': 96},
+            } for c in range(crew) for n, i in enumerate(((7, 10, 17, 3, 23, 0), (5, 1, 13, 21, 25, 12))[c % 2])]
+            return page
+        add('battle-spirit-list-native', {'battle_page': spirit_list(7)})
+        add('battle-spirit-list-fourth-native', {'battle_page': spirit_list(7)}, clicks=['battle-crew:next', 'battle-crew:3'])
+        add('battle-spirit-list-single-native', {'battle_page': spirit_list(1)})
         imports = {'save_store': {'visible': True, 'import': [
             {'file': 'Super Robot Wars 64 (Japan).sra', 'format': '32-bit swapped', 'slots': [{'used': True, 'intact': True}, {'used': True, 'intact': False}]},
             {'file': 'SRW64.srm', 'format': '32-bit swapped .srm', 'slots': [{'used': True, 'intact': True}, {'used': False, 'intact': False}]},
@@ -326,7 +343,7 @@ def add_viewer(add, text, loc, units, pilots, menus):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('--sizes', default=','.join(SIZES), help='comma-separated: ' + ', '.join(SIZES))
+    parser.add_argument('--sizes', default='deck,deck-standard,wide,smallest,deck-4:3', help='comma-separated: ' + ', '.join(SIZES))
     parser.add_argument('--only', help='regular expression on fixture names (e.g. "zh-Hans$" or "^battle")')
     parser.add_argument('--hd', action='store_true', help='lay the pages out as the HD images mode draws them (embedded pictures)')
     parser.add_argument('--shrunk', type=float, default=0.85, metavar='SCALE',

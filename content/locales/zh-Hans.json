@@ -258,6 +258,7 @@
     "battle_spirit_unavailable": "已生效或当前无需使用",
     "battle_spirit_map": "需在战术地图使用",
     "battle_spirit_back": "返回战前确认",
+    "battle_spirit_switch": "切换驾驶员",
     "battle_damage_if_hit": "命中时伤害",
     "battle_first": "先手 · 攻击",
     "battle_second": "后手",

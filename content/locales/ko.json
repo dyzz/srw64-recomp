@@ -259,6 +259,7 @@
     "battle_spirit_unavailable": "이미 발동했거나 사용 조건 미달",
     "battle_spirit_map": "전술맵에서 사용",
     "battle_spirit_back": "전투 준비로 돌아가기",
+    "battle_spirit_switch": "파일럿 전환",
     "battle_damage_if_hit": "명중 시 피해",
     "battle_first": "선공 · 공격",
     "battle_second": "후공",

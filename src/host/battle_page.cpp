@@ -119,6 +119,10 @@ json spirit_options(uint8_t* copy,recomp_context* ctx,const rule_probe::Combatan
             const bool usable=battle_usable && invoke(copy,ctx,0x801F18A0,c.handle,id)!=0;
             result.push_back({{"crew",crew},{"slot",slot},{"id",id},{"name",dialogue::ui_text(copy,969+id)},
                 {"pilot_name",dialogue::ui_text(copy,4382+read(copy,pilot+2,2))},{"sp",sp},{"max_sp",read(copy,pilot+0x18,2)},
+                // The spirit list shows one pilot at a time: the face and level for its card, and
+                // the command's own description (text 5150 + id, the map menu's).
+                {"level",read(copy,pilot+5,1)},{"portrait",art["portraits"].value(std::to_string(read(copy,pilot+2,2)),json::object())},
+                {"description",dialogue::ui_text(copy,5150+id)},
                 {"cost",cost},{"enabled",battle_usable && usable && sp>=cost},
                 {"reason",!battle_usable?"map":sp<cost?"sp":!usable?"unavailable":"ready"}});
         }
