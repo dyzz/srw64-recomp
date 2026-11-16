@@ -1,6 +1,6 @@
 {
   "id": "srw64.battle-voices-originals-ai",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "name": {
     "ja": "オリジナルキャラ戦闘ボイス（AI）",
     "zh-Hans": "原创人物战斗语音（AI）",
@@ -9,11 +9,11 @@
     "ko": "오리지널 캐릭터 전투 음성(AI)"
   },
   "description": {
-    "ja": "アーク、セレイン、ブラッド、マナミ、エルリッヒ、カーツ、アイシャたちオリジナルキャラ 12 人の戦闘台詞 843 本を、音声合成 Irodori-TTS で作ったボイス。実在の声優の声ではありません。",
-    "zh-Hans": "阿克、塞蕾茵、布拉德、玛娜米、埃尔利希、卡茨、艾夏等 12 位原创人物的 843 句战斗台词，用语音合成 Irodori-TTS 生成，不是真人声优的声音。",
-    "zh-Hant": "阿克、塞蕾茵、布拉德、瑪娜米、埃爾利希、卡茨、艾夏等 12 位原創人物的 843 句戰鬥台詞，用語音合成 Irodori-TTS 生成，不是真人聲優的聲音。",
-    "en": "843 battle lines of the 12 original characters (Ark, Selain, Brad, Manami, Ehrlich, Kurtz, Aisha and more), synthesized with Irodori-TTS. Not a real voice actor's voice.",
-    "ko": "아크, 세레인, 브래드, 마나미, 엘리히, 카츠, 아이샤 등 오리지널 캐릭터 12명의 전투 대사 843개를 음성 합성 Irodori-TTS로 만든 음성입니다. 실제 성우의 목소리가 아닙니다."
+    "ja": "アーク、セレイン、ブラッド、マナミ、エルリッヒ、カーツ、アイシャたちオリジナルキャラ 12 人の戦闘台詞 843 本を、音声合成 Irodori-TTS で作ったボイス。実在の声優の声ではありません。 カーツの技の台詞 25 本は 1.0.4 で作り直しました。そのうち「ぬぅぅぅっ!」の叫び 1 つだけは、原作ディスク音声の叫び 1 つを素材に、声質変換（Seed-VC）で AI の声に置き換えたものです。",
+    "zh-Hans": "阿克、塞蕾茵、布拉德、玛娜米、埃尔利希、卡茨、艾夏等 12 位原创人物的 843 句战斗台词，用语音合成 Irodori-TTS 生成，不是真人声优的声音。 1.0.4 重做了卡茨的 25 句招式台词；其中「ぬぅぅぅっ!」这一声吼叫，是拿原版光盘语音里的一声吼叫作素材，用声音转换（Seed-VC）换成 AI 音色做成的。",
+    "zh-Hant": "阿克、塞蕾茵、布拉德、瑪娜米、埃爾利希、卡茨、艾夏等 12 位原創人物的 843 句戰鬥台詞，用語音合成 Irodori-TTS 生成，不是真人聲優的聲音。 1.0.4 重做了卡茨的 25 句招式台詞；其中「ぬぅぅぅっ!」這一聲吼叫，是拿原版光碟語音裡的一聲吼叫作素材，用聲音轉換（Seed-VC）換成 AI 音色做成的。",
+    "en": "843 battle lines of the 12 original characters (Ark, Selain, Brad, Manami, Ehrlich, Kurtz, Aisha and more), synthesized with Irodori-TTS. Not a real voice actor's voice. 1.0.4 redoes Kurtz's 25 attack lines; one roar among them (\"ぬぅぅぅっ!\") takes a single roar from the original disc voices as its source, converted to the AI voice with Seed-VC.",
+    "ko": "아크, 세레인, 브래드, 마나미, 엘리히, 카츠, 아이샤 등 오리지널 캐릭터 12명의 전투 대사 843개를 음성 합성 Irodori-TTS로 만든 음성입니다. 실제 성우의 목소리가 아닙니다. 1.0.4에서 카츠의 기술 대사 25개를 다시 만들었습니다. 그중 「ぬぅぅぅっ!」의 포효 하나만은 원작 디스크 음성의 포효 하나를 소재로, 음성 변환(Seed-VC)으로 AI 음색으로 바꾼 것입니다."
   },
   "authors": [
     "SRW64"
@@ -26,16 +26,16 @@
   "contents": [
     "audio"
   ],
-  "file": "srw64.battle-voices-originals-ai-1.0.3.srw64mod",
-  "bytes": 22203314,
-  "sha256": "a7cc1c8b0e7989a7e239d24e2f59e3bf30dac2cd17b51d605f36516d27e2a114",
-  "url": "https://github.com/dyzz/srw64-recomp/releases/download/mod-battle-voices-originals-ai-1.0.3/srw64.battle-voices-originals-ai-1.0.3.srw64mod",
+  "file": "srw64.battle-voices-originals-ai-1.0.4.srw64mod",
+  "bytes": 22003081,
+  "sha256": "87b13a4c028f7b06101b65dfa8bc119e8a3980b239f7acfb15b69bbefd870f2e",
+  "url": "https://github.com/dyzz/srw64-recomp/releases/download/mod-battle-voices-originals-ai-1.0.4/srw64.battle-voices-originals-ai-1.0.4.srw64mod",
   "netdisk": {
     "quark": "https://pan.quark.cn/s/f6cc81fbe688?pwd=mQx4",
     "baidu": "https://pan.baidu.com/s/1-8lTqekfXPAaDKN3cNYTdw?pwd=tt3b"
   },
   "page": "/mods/#srw64.battle-voices-originals-ai",
-  "source": "https://github.com/dyzz/srw64-recomp/releases/tag/mod-battle-voices-originals-ai-1.0.3",
-  "published": "2026-11-04",
+  "source": "https://github.com/dyzz/srw64-recomp/releases/tag/mod-battle-voices-originals-ai-1.0.4",
+  "published": "2026-11-16",
   "yanked": null
 }
