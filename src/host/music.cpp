@@ -297,6 +297,11 @@ void battle_quote(unsigned record) {
     std::fprintf(stderr,"SRW64_VOICE line=%u file=%s entry=%s package=%s speed=%.2f\n",record,line->file.string().c_str(),line->entry.c_str(),line->package.c_str(),speed);
 }
 
+int speaking_line() {
+    std::lock_guard lock(engine_mutex);
+    return speech && !speech->finished ? speech_line : -1;
+}
+
 bool speaking(unsigned record) {
     std::lock_guard lock(engine_mutex);
     return speech && speech_line==int(record) && !speech->finished;

@@ -246,6 +246,26 @@ int main(int argc,char** argv) {
         check(vw::hold(pressed,last,true,false,false) && !vw::hold(pressed,last,true,false,true) && !vw::hold(pressed,last,true,false,false),"A lets the line go, for good");
         check(vw::hold(pressed,{1,2,0,0,0,7028},true,false,false),"the next line waits again");
     }
+    {   // The next quote waits for the previous line (voice_wait.hpp Pending).
+        namespace vw=srw64::voice_wait;
+        check(vw::defer(9250,12305,true,false),"a quote opening while another line is spoken waits");
+        check(!vw::defer(-1,12305,true,false),"nothing spoken: it starts at once");
+        check(!vw::defer(12305,12305,true,false),"its own line: not a wait");
+        check(!vw::defer(9250,12305,false,false) && !vw::defer(9250,12305,true,true),"not when switched off or hurried");
+        check(!vw::defer(16992,16993,true,false,16992),"not for a line A let go");
+        check(vw::defer(16992,16993,true,false,9250),"another line let go earlier does not count");
+        vw::Pending p{12305,0};
+        check(vw::keep(p,9250,true,false,false),"waits while the previous line goes on");
+        check(!vw::keep(p,-1,true,false,false),"goes once it has ended");
+        check(!vw::keep(p,9250,true,false,true),"A lets it go");
+        check(!vw::keep(p,9250,true,true,false),"so does hurrying");
+        check(!vw::keep(p,12305,true,false,false),"its own line already spoken: nothing to wait for");
+        vw::Pending capped{12305,0};unsigned waited=0;
+        while(vw::keep(capped,9250,true,false,false) && waited<1000)++waited;
+        check(waited==vw::limit,"at most the limit");
+        vw::Pending none;
+        check(!vw::keep(none,9250,true,false,false),"nothing waiting: the animation goes on");
+    }
     if(failures)std::fprintf(stderr,"%d failed\n",failures);
     else std::puts("music: ok");
     return failures?1:0;
