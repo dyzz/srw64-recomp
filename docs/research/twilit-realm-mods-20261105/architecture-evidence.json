@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-05",
+  "source_commit": "77705f8bb95ef7b7dca4675b149c4bcb6a48da34",
+  "detail_url": "https://twilitrealm.dev/api/v1/games/dusklight/mods/dev.albt.albw",
+  "observed": {
+    "id": "dev.albt.albw",
+    "version": "0.3.0",
+    "supported_platforms": [
+      "android-aarch64",
+      "ios-arm64",
+      "linux-aarch64",
+      "linux-x86_64",
+      "macos-arm64",
+      "macos-x86_64",
+      "windows-amd64",
+      "windows-arm64"
+    ],
+    "contains_native_code": true,
+    "package_size": 5450009,
+    "package_sha256": "91cffa72a066569e481a284a549c90700adfd9d1dc8c52ca936188261aba8d98",
+    "download": {
+      "url": "https://twilitrealm.dev/download/dusklight/dev.albt.albw/0.3.0",
+      "sha256": "91cffa72a066569e481a284a549c90700adfd9d1dc8c52ca936188261aba8d98",
+      "size": 5450009
+    },
+    "mod_abi": 1,
+    "service_imports": [
+      {
+        "id": "dev.twilitrealm.dusklight.actor",
+        "major": 1,
+        "min_minor": 0,
+        "optional": false
+      },
+      {
+        "id": "dev.twilitrealm.dusklight.camera",
+        "major": 1,
+        "min_minor": 1,
+        "optional": false
+      },
+      {
+        "id": "dev.twilitrealm.dusklight.config",
+        "major": 1,
+        "min_minor": 0,
+        "optional": false
+      },
+      {
+        "id": "dev.twilitrealm.dusklight.game",
+        "major": 2,
+        "min_minor": 0,
+        "optional": false
+      },
+      {
+        "id": "dev.twilitrealm.dusklight.gfx",
+        "major": 1,
+        "min_minor": 3,
+        "optional": false
+      },
+      {
+        "id": "dev.twilitrealm.dusklight.hook",
+        "major": 1,
+        "min_minor": 1,
+        "optional": false
+      },
+      {
+        "id": "dev.twilitrealm.dusklight.host",
+        "major": 2,
+        "min_minor": 2,
+        "optional": false
+      },
+      {
+        "id": "dev.twilitrealm.dusklight.log",
+        "major": 1,
+        "min_minor": 0,
+        "optional": false
+      },
+      {
+        "id": "dev.twilitrealm.dusklight.resource",
+        "major": 1,
+        "min_minor": 1,
+        "optional": false
+      },
+      {
+        "id": "dev.twilitrealm.dusklight.ui",
+        "major": 2,
+        "min_minor": 3,
+        "optional": false
+      }
+    ]
+  },
+  "submission_limit": "Author dashboard not accessed; upload mechanics and moderation workflow unverified."
+}
