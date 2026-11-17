@@ -1,6 +1,6 @@
 {
   "id": "srw64.battle-voices-originals-ai",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "name": {
     "ja": "オリジナルキャラ戦闘ボイス（AI）",
     "zh-Hans": "原创人物战斗语音（AI）",
@@ -26,16 +26,16 @@
   "contents": [
     "audio"
   ],
-  "file": "srw64.battle-voices-originals-ai-1.0.4.srw64mod",
-  "bytes": 22003081,
-  "sha256": "87b13a4c028f7b06101b65dfa8bc119e8a3980b239f7acfb15b69bbefd870f2e",
-  "url": "https://github.com/dyzz/srw64-recomp/releases/download/mod-battle-voices-originals-ai-1.0.4/srw64.battle-voices-originals-ai-1.0.4.srw64mod",
+  "file": "srw64.battle-voices-originals-ai-1.0.5.srw64mod",
+  "bytes": 21978498,
+  "sha256": "bd318101a65fc7eb16ca3db26dac4c840fdaf354db183b6ccbe45a7549ff6f4d",
+  "url": "https://github.com/dyzz/srw64-recomp/releases/download/mod-battle-voices-originals-ai-1.0.5/srw64.battle-voices-originals-ai-1.0.5.srw64mod",
   "netdisk": {
     "quark": "https://pan.quark.cn/s/f6cc81fbe688?pwd=mQx4",
     "baidu": "https://pan.baidu.com/s/1-8lTqekfXPAaDKN3cNYTdw?pwd=tt3b"
   },
   "page": "/mods/#srw64.battle-voices-originals-ai",
-  "source": "https://github.com/dyzz/srw64-recomp/releases/tag/mod-battle-voices-originals-ai-1.0.4",
-  "published": "2026-11-16",
+  "source": "https://github.com/dyzz/srw64-recomp/releases/tag/mod-battle-voices-originals-ai-1.0.5",
+  "published": "2026-11-17",
   "yanked": null
 }
