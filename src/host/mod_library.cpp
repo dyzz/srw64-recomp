@@ -130,7 +130,10 @@ bool to_trash(const fs::path& folder,const std::string& name) {
     std::error_code error;
     const auto trash=directory()/".trash";
     fs::create_directories(trash,error);
-    fs::rename(folder,trash/(name+"-"+stamp()),error);
+    // A replace and a removal in the same millisecond would name the same folder.
+    auto kept=trash/(name+"-"+stamp());
+    for(unsigned n=2;fs::exists(kept,error);++n)kept=trash/(name+"-"+stamp()+"-"+std::to_string(n));
+    fs::rename(folder,kept,error);
     return !error;
 }
 // The unpacking of the files placed in the folder (unpack_loose): bytes of the package
@@ -203,6 +206,20 @@ InstallResult unpack(const fs::path& archive,const fs::path& target,bool told) {
     }
     result.ok=true;
     return result;
+}
+// The package files inside a zip that is not a package itself, as a Thunderstore package is
+// (its manifest.json, icon.png and README.md beside the .srw64mod, which is left as made so its
+// SHA-256 holds): their entries, in the file's order. Empty for a package, or a zip without any.
+std::vector<Entry> bundled_packages(mz_zip_archive& zip) {
+    std::vector<Entry> entries,inner;
+    Problem ignored;
+    if(mz_zip_reader_get_num_files(&zip)>max_entries || !read_entries(zip,entries,ignored) || package_prefix(entries))return {};
+    for(const auto& e:entries) {
+        auto name=e.name;
+        std::transform(name.begin(),name.end(),name.begin(),[](unsigned char c){return char(std::tolower(c));});
+        if(!e.folder && name.ends_with(package_extension) && e.size<=max_total)inner.push_back(e);
+    }
+    return inner;
 }
 // Copies a package folder into `target`.
 InstallResult copy_folder(const fs::path& source,const fs::path& target) {
@@ -401,6 +418,43 @@ InstallResult install(const fs::path& source) {
     std::error_code error;
     fs::create_directories(directory(),error);
     const auto staging=staging_folder();
+    // A zip of package files: each is taken out on its own and installs as a file chosen from
+    // elsewhere would (its voices copied in, so the zip can go to .trash when placed). The
+    // result is the first that failed, or the last that installed.
+    if(!fs::is_directory(source,error) && is_package_file(source)) {
+        Archive outer;
+        std::vector<Entry> inner;
+        if(outer.open_file(source) && outer.read_directory())inner=bundled_packages(outer.zip);
+        if(!inner.empty()) {
+            fs::create_directories(staging,error);
+            std::optional<InstallResult> failed;
+            for(const auto& e:inner) {
+                const auto out=staging/fs::path(e.name).filename();
+                bool written=false;
+                {
+                    std::ofstream file(out,std::ios::binary|std::ios::trunc);
+                    const auto write=[](void* user,mz_uint64,const void* buffer,size_t n)->size_t{
+                        static_cast<std::ofstream*>(user)->write(static_cast<const char*>(buffer),std::streamsize(n));
+                        return n;
+                    };
+                    written=file && mz_zip_reader_extract_to_callback(&outer.zip,e.index,write,&file,0) && file.flush();
+                }
+                if(!written) {
+                    if(!failed){failed=InstallResult{};failed->problem={"archive",e.name};}
+                    continue;
+                }
+                auto one=install(out);
+                fs::remove(out,error);
+                if(!one.ok && !failed)failed=one;
+                if(one.ok)result=std::move(one);
+            }
+            outer.close();
+            fs::remove_all(staging,error);
+            if(failed)return *failed;
+            result.voices=false;
+            return result;
+        }
+    }
     if(fs::is_directory(source,error)) {
         if(fs::equivalent(source.parent_path(),directory(),error)){result.problem={"already",source.filename().string()};return result;}
         result=copy_folder(source,staging);

@@ -319,6 +319,20 @@ audio/      音乐与语音
 
 ## 13. 分发与投稿
 
+### 13.0 2026-11-11 改：Thunderstore 为主
+
+用户定：选平台不考虑国内玩家，MOD 以 Thunderstore 为主。下面 13.1–13.8 是 10-22 的方案，出发点是国内网络，凡与本节冲突的以本节为准。调研见本地 `reports/其他 recomp 项目的 MOD 平台.md`（不进仓库）。两个 MOD 站的要求、开通与上传步骤、RecompLauncher 的支持范围见 `mod-platforms.md`（11-16）。
+
+- **为什么**：N64Recomp 系的 MOD 事实上都在 Thunderstore（11-11 实测 Zelda 218 包、约 81 万下载，Banjo 72 包）；RecompLauncher 的 MOD 页只从 Thunderstore 和 GameBanana 拉；作者网页上传、免托管。原来唯一的硬伤是国内慢（约 60 KB/s），现在不算。
+- **包的形状**：Thunderstore 要 zip 根目录有 `manifest.json`、256×256 的 `icon.png`、`README.md`。`.srw64mod` 原样放在旁边，不改字节，SHA-256 照旧成立。`tools/mods/thunderstore.py` 从 `.srw64mod` 生成这个 zip（manifest 由 `mod.json` 来：名字取 id 去掉作者前缀、描述取英文截到 250 字、`requires` 每项要用 `--dep` 给出 `Team-Name-1.2.3`，`srw64.hd` 留给游戏；`optional`/`conflicts` 只写进 README）。
+- **游戏安装**：没有自己 `mod.json` 的 zip 里有 `.srw64mod` 时，逐个装里面的包（`mod_library.cpp` `bundled_packages`）。拖进窗口、在 MOD 页选文件、放进 `mods/`、安卓收件箱都走这条路。玩家在 Thunderstore 点 Manual Download 再拖进游戏即可；r2modman/Gale 不支持 recomp 社区（schema 里 `r2modman: null`），不指望它们。
+- **还要做的**：
+  1. 申请社区：Thunderstore Discord #game-requests，要求已有 MOD，拿我们官网的 4 个包（space-a、master-asia、final-dancouga、funnels-p）当证明；问能否让我们当社区管理员（能审包、能下架）。由用户去发。
+  2. 请 RecompLauncher 维护者：目录条目 `srw64-recomp` 加 `mods.thunderstore`；加一种加载器把 `.srw64mod` 原样放进 mods 目录（现有 nrm/otr/hmm 都会把它丢掉）；数据目录按我们的规则算（它的 Linux 是 `~/.config/<data>/mods`、便携看 `portable.txt`，我们是 `~/.local/share/srw64-recomp/mods`、`<exe 旁>/user-data/mods`；Windows `%LOCALAPPDATA%\SRW64Recomp` 对得上）。源码依据：`elripalda/RecompLauncher` 4d429c66 的 `mods.rs`、`gamebanana.rs`、`lib.rs` `mod_source`——`mods` 只读服务端 `pc-catalog.json`，不读包里的 `recomplauncher.json`。
+  3. 游戏内读 Thunderstore v1 API（`/c/<社区>/api/v1/package/`，免登录，要带 User-Agent）提示新版、以后直接下载；替代 13.7 读官网索引的设想。
+- **和旧规则冲突、待用户定**：Issue 表单与 `intake.py` 是否保留（作为没有 Thunderstore 账号的作者的入口，或停用）；13.3「不标注 AI 生成内容」与 Thunderstore 的 AI Generated 分类规则冲突；13.4 的投稿前校验变成事后检查（包传上去我们拦不住，只能扫社区、当管理员下架或在游戏里屏蔽）；官网 MOD 页改为列 Thunderstore 还是照旧。
+- **不变**：包格式 v1、只放数据不放代码、`original-hashes.txt` 仍要生成（事后检查也用它）。
+
 2026-10-22 定。接替 §1 原来的「不做在线仓库与自动下载」：官网发布一份只读索引，游戏只拿它比版本、提示新版，下载由玩家自己点。**不为国内做直链**：国内靠我们手动放网盘的镜像，和安装包一样；流程只为海外社区方便。
 
 依据是当天从官网源站（阿里云深圳）的实测：Thunderstore 的网站、API、文件 CDN 都能通，但一个 583 KB 的包只有约 60 KB/s；github.com 卡住超时、raw.githubusercontent.com 直接断；jsDelivr 能通但慢。国内没有合适的第三方 MOD 托管站（3DM、游侠面向热门大作且要它们的账号与下载器，Gitee 附件要登录）。真正免费又快的国内渠道只有网盘，自建直链每月几元到几十元但要多维护一套 OSS、下载域名与凭据，用户决定不做，以后投稿量大了再议。
@@ -329,7 +343,7 @@ audio/      音乐与语音
 - **索引像 latest.json 一样处理**：仓库里每个包一个文件 `web/src/data/mods/<id>.json`，官网构建时生成 `/mods/index.json`（`web/src/pages/mods/index.json.ts`），`deploy.sh` 随站点发布并刷新 CDN。官网域名是全球加速，海外读索引不慢；索引只有几十 KB，国内读也没问题。
 - **国内镜像是网盘**：我们挑着镜像，不承诺全部。镜像过的包在它的 `<id>.json` 里加 `netdisk`（`quark`、`baidu` 链接，和 `release.json` 同样的字段），由用户手动上传后填链接。HD 包继续走 GitHub 加网盘。
 - **费用**：零。GitHub Release 带宽不计费、单个资产上限 2 GB；官网 CDN 只多一个 JSON。
-- **不做的**：OSS、下载域名、RAM 用户、Thunderstore 社区（海外玩家从 GitHub 和官网 MOD 页就能拿到；真有需求再申请，成本只是多传一份）。
+- **不做的**：OSS、下载域名、RAM 用户、Thunderstore 社区（海外玩家从 GitHub 和官网 MOD 页就能拿到；真有需求再申请，成本只是多传一份）。**11-11 起 Thunderstore 改为主平台，见 §13.0。**
 
 ### 13.2 索引格式 v1
 
