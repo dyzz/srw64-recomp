@@ -33,6 +33,8 @@
 #include "map_miss.hpp"
 #include "ui_text.hpp"
 #include "game_speed.hpp"
+#include "voice_wait.hpp"
+#include "presentation_settings.hpp"
 #include "sched_rate.hpp"
 #include "enemy_pilot_page.hpp"
 #include "map_combo.hpp"
@@ -98,10 +100,24 @@ void resident_func_800A158C(uint8_t* ram,recomp_context* ctx) {
     repair_daitarn(ram,ctx,{srw64::base_fixes::daitarn_join_event(ram,uint32_t(ctx->r4)),false});
     srw64_original_party_pair_flag(ram,ctx);
 }
+// A battle quote's box stays open while its MOD voice is still speaking (voice_wait.hpp).
+static void hold_quote_for_voice(uint8_t* ram) {
+    static srw64::voice_wait::Wait wait;
+    if(!srw64::settings::mod_voice() || !srw64::settings::mod_voice_wait())return;
+    const bool hurried=srw64::game_speed::running.load();
+    const bool a=srw64::guest::read(ram,srw64::voice_wait::pressed,2)&srw64::voice_wait::a_button;
+    for(unsigned slot=0;slot<2;++slot) {
+        const auto box=srw64::voice_wait::read_box(ram,slot);
+        if(!srw64::voice_wait::closing(box))continue;
+        if(srw64::voice_wait::hold(wait,box,srw64::music::speaking(box.record),hurried,a))
+            srw64::guest::write16(ram,srw64::voice_wait::slots+slot*srw64::voice_wait::stride+0x210,1);
+    }
+}
 void load_00121560_func_801C9710(uint8_t* ram,recomp_context* ctx) {
     // X ends the presentation early; the settled result lives in the map
     // overlay's participant table and is applied when the map is back.
     srw64::battle_animation_probe::step(ram,ctx);
+    hold_quote_for_voice(ram);
     srw64::wide_map::mark_battle();   // the sky is drawn to each side (background_sides)
     srw64::battle_viewer::animation_frame();   // a viewer recording starts with the animation's first frame
     srw64::battle_spread::in_step = true;

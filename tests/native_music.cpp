@@ -2,6 +2,7 @@
 // voice.json, which package's file wins for a song or a quote, and how a decoded track is
 // mixed into the game's audio.
 #include "music.hpp"
+#include "voice_wait.hpp"
 #include <cstdio>
 #include <fstream>
 
@@ -224,6 +225,26 @@ int main(int argc,char** argv) {
         check(music::stretch(*in,1.0)->samples==in->samples,"1x comes back as is");
         const auto tiny=tone(22050,0.05,220);
         check(music::stretch(*tiny,2.0)->samples==tiny->samples,"too short to stretch comes back as is");
+    }
+    {   // A quote's box waits for its voice (voice_wait.hpp).
+        namespace vw=srw64::voice_wait;
+        const vw::Box last{1,2,0,0,0,7018};
+        check(vw::closing(last),"a timed box at its end closes this frame");
+        check(vw::closing({1,3,0,2,2,7018}),"a chained one at its last segment loads the next record this frame");
+        check(!vw::closing({1,2,0,2,1,7018}),"a segment before the last turns the page: not held");
+        check(!vw::closing({1,2,5,0,0,7018}),"a box with time left is left alone");
+        check(!vw::closing({1,0,0,0,0,7018}) && !vw::closing({2,2,0,0,0,7018}),"a story box and a box not shown are left alone");
+        vw::Wait w;
+        check(vw::hold(w,last,true,false,false),"held while its line is spoken");
+        check(!vw::hold(w,last,false,false,false),"let go once the line has ended");
+        check(!vw::hold(w,last,true,true,false),"not while hurried");
+        vw::Wait capped;unsigned held=0;
+        while(vw::hold(capped,last,true,false,false) && held<1000)++held;
+        check(held==vw::limit,"at most the limit for one line");
+        check(vw::hold(capped,{1,2,0,0,0,7028},true,false,false),"the next line has its own limit");
+        vw::Wait pressed;
+        check(vw::hold(pressed,last,true,false,false) && !vw::hold(pressed,last,true,false,true) && !vw::hold(pressed,last,true,false,false),"A lets the line go, for good");
+        check(vw::hold(pressed,{1,2,0,0,0,7028},true,false,false),"the next line waits again");
     }
     if(failures)std::fprintf(stderr,"%d failed\n",failures);
     else std::puts("music: ok");

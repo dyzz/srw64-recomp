@@ -87,6 +87,7 @@ namespace srw64::settings {
 bool mod_music(){return false;} void set_mod_music(bool){} unsigned mod_music_volume(){return 100;} void set_mod_music_volume(unsigned){}
 bool mod_voice(){return false;} void set_mod_voice(bool){} unsigned mod_voice_volume(){return 100;} void set_mod_voice_volume(unsigned){}
 const char* mod_voice_speed(){return "original";} void set_mod_voice_speed(const std::string&){}
+bool mod_voice_wait(){return true;} void set_mod_voice_wait(bool){}
 BattleUi battle_value=BattleUi::Native;UiSize size_value=UiSize::Largest;std::string page="general";
 bool intermission=true,name_entry=true,title=true,wide=true;
 BattleUi battle_ui(){return battle_value;}
