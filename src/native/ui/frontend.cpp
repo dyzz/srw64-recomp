@@ -1574,7 +1574,7 @@ std::string controls_page() {
 // differs needs a second press, which imports it with the sum redone.
 nlohmann::json save_candidates;
 bool save_candidates_read{};
-std::string save_message,save_force;
+std::string save_message,save_message_seen,save_force;
 #ifdef __ANDROID__
 bool android_export_saves(const std::string& folder);
 int android_export_status(const char* method);
@@ -1643,7 +1643,7 @@ std::string saves_page() {
         }
         body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(name)+" <span class='set-note'>"+escape(file.value("format",std::string()))+"</span></div><div class='set-seg'>"+slots+"</div></div></div>";
     }
-    if(!save_message.empty())body+="<p class='set-message'>"+escape(save_message)+"</p>";
+    if(!save_message.empty())body+="<p id='save-message' class='set-message'>"+escape(save_message)+"</p>";
     return body;
 }
 // The Cheats page (docs/gameplay/cheats.md): the switches, three rows of choices, then
@@ -3315,6 +3315,18 @@ std::string viewer_icon(const json& e,float box) {
     const auto art=library_art(e,box);
     return art.empty()?"<span class='ph'>"+escape(viewer_initial(e.value("name",std::string())))+"</span>":art;
 }
+// The scene box: each scene's three sizes queued together, one read of the file, so moving
+// through the list finds the card's background there instead of a black card on the Switch.
+void viewer_read_scenes() {
+    static float read_for=0;
+    if(read_for==viewer_col_width)return;
+    read_for=viewer_col_width;
+    for(unsigned i=0,count=unsigned(battle_viewer::scenes().size());i<count;++i) {
+        const auto path=srw64::sprites::viewer_scene_image(viewer_scene_key(i));
+        if(path.empty())continue;
+        for(const float w:{62.f,viewer_col_width*1.1f,40.f})image_async(path,std::min(dp_pixels(w),479),true);
+    }
+}
 // The box a row opens, over the other side (the song's over the defender's).
 std::string viewer_popup() {
     const auto kind=viewer_kind();
@@ -3366,6 +3378,7 @@ std::string viewer_popup() {
                 i==viewer_saved.side[s].weapon?label("viewer_badge_now"):std::string(),i==viewer_side[s].weapon);
         }
     } else if(kind=="scene") {
+        viewer_read_scenes();
         title=label("viewer_choose_scene");
         const unsigned count=unsigned(battle_viewer::scenes().size());
         for(unsigned i=0;i<count;++i) {
@@ -3927,6 +3940,12 @@ void settings_sync() {
     auto* focus=focus_id.empty() || focus_id=="first"?nullptr:settings_doc->GetElementById(focus_id);
     if(focus){focus->Focus();focus->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));}
     else if(focus_id=="first" || !pointer_mode)settings_focus_first();
+    // The Saves page's result sits under the list of imports, past the bottom of a full page:
+    // a new one is brought into view, or the player cannot tell the button did anything.
+    if(save_message!=save_message_seen) {
+        save_message_seen=save_message;
+        if(auto* note=settings_doc->GetElementById("save-message"))note->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));
+    }
 }
 // Turns the settings window to a page and remembers it for the next time it opens.
 void settings_show(unsigned page,const std::string& focus) {
