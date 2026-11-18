@@ -309,7 +309,12 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
         int song=-2;   // battle_viewer::no_music
         const bool battle=srw64_game_hooks.viewer_start(ram,&song);
         if(song!=-2)call(resident_func_8007E810,uint32_t(song));
-        if(battle){call(resident_func_80080188,0x1C);call(resident_func_80099814,5,1,2);}
+        if(battle) {
+            // The viewer skips the title's Start Game exit, which clears framebuffer feedback.
+            call(resident_func_800836CC,0);
+            call(resident_func_80080188,0x1C);
+            call(resident_func_80099814,5,1,2);
+        }
     }
     srw64::mini_stage::service(ram);
     srw64::script_inject::service(ram);
