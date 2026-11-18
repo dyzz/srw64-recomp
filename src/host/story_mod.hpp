@@ -1,5 +1,6 @@
 #pragma once
 #include "guest_memory.hpp"
+#include "mod_ids.hpp"
 #include "mod_library.hpp"
 #include "json/json.hpp"
 #include "localization/locale_fallbacks.hpp"
@@ -105,14 +106,27 @@ struct Event {
     // When the event has run to its end: these pilots become the crew of our unit of that
     // number, the first as its pilot (crew()).
     std::vector<std::pair<unsigned,std::vector<unsigned>>> crew;
+    // When the event starts, before its commands: a package's combined unit gets our
+    // instance (mod_combine.hpp build), so the event's own steps (unlock) reach it.
+    std::vector<unsigned> builds;
     std::string key() const {return package+"/"+id;}
 };
 struct Text {
     unsigned speaker{};
     std::map<std::string,std::string> lines;       // locale -> text
 };
+// A hidden element a package adds to a scene's stage information page (stage_info.cpp):
+// its title and text by locale, and when it shows as done (our roster has these).
+struct Info {
+    std::string package;
+    unsigned scene{};
+    json title,text;
+    bool checks{};
+    std::vector<unsigned> pilots,units;
+};
 struct Library {
     std::vector<Event> events;
+    std::vector<Info> infos;
     std::vector<Text> texts;                       // id text_first + index
     std::vector<std::string> problems;
 };
@@ -125,11 +139,18 @@ inline void add_image(Library& library,const std::string& package,const json& im
     const auto& events=image.at("events");
     if(!texts.is_array() || !events.is_array())throw std::runtime_error("texts 与 events 必须是数组");
     const size_t base=library.texts.size();
-    if(base+texts.size()>size_t(0x10000-text_first))throw std::runtime_error("台词太多");
+    // 0xE800 up are the names of new characters, units and weapons (table_window.hpp).
+    if(base+texts.size()>size_t(table_window::private_first-text_first))throw std::runtime_error("台词太多");
     std::vector<Text> new_texts;
     for(const auto& t:texts) {
-        Text text;text.speaker=t.at("speaker").get<unsigned>();
-        if(text.speaker>360)throw std::runtime_error("说话人超出 0–360");
+        Text text;
+        // A package's new character speaks by name (mod_ids.hpp): its number in the header.
+        if(const auto& who=t.at("speaker");who.is_string()) {
+            const auto found=mod_ids::pilot(who,package);
+            if(!found)throw std::runtime_error("说话人 "+who.dump()+" 不是已启用的新人物");
+            text.speaker=*found;
+        } else text.speaker=who.get<unsigned>();
+        if(text.speaker>360 && !table_window::new_pilot(text.speaker))throw std::runtime_error("说话人超出 0–360");
         for(const auto& [locale,line]:t.at("lines").items()) {
             const auto s=line.get<std::string>();
             if(s.empty() || s.size()>longest_text*4)throw std::runtime_error("台词为空或太长");
@@ -167,10 +188,17 @@ inline void add_image(Library& library,const std::string& package,const json& im
                 (*into)[p]=n;
             }
         }
+        // A unit is the ROM's number or a package's new one by name (mod_ids.hpp).
+        const auto unit_of=[&](const json& n,const std::string& where) {
+            const auto found=mod_ids::unit(n,package);
+            if(!found)throw std::runtime_error(event.id+"："+where+" 不是机体号，也不是已启用的新机体 "+n.dump());
+            return *found;
+        };
         auto numbers=[&](const char* name,const char* kind,unsigned top) {
             std::vector<unsigned> out;
             const auto roster=e.value(name,json::object());
             for(const auto& n:roster.value(kind,json::array())) {
+                if(std::string(kind)=="units"){out.push_back(unit_of(n,std::string(name)+".units"));continue;}
                 if(n.get<unsigned>()>top)throw std::runtime_error(event.id+"："+name+"."+kind+" 超出范围");
                 out.push_back(n.get<unsigned>());
             }
@@ -197,15 +225,24 @@ inline void add_image(Library& library,const std::string& package,const json& im
             if(at>=event.words.size() || index>=new_texts.size())throw std::runtime_error(event.id+"：台词引用越界");
             event.words[at]=uint16_t(text_first+base+index);
         }
+        for(const auto& ref:e.value("numbers",json::array())) {
+            const size_t at=ref.at(0).get<size_t>();
+            const auto kind=ref.at(2).get<std::string>();
+            if(at>=event.words.size() || event.words[at]!=0xFFFD)throw std::runtime_error(event.id+"：新机体／新武器／新人物的引用越界");
+            const auto found=kind=="weapon"?mod_ids::weapon(ref.at(1),package):kind=="pilot"?mod_ids::pilot(ref.at(1),package):mod_ids::unit(ref.at(1),package);
+            if(!found)throw std::runtime_error(event.id+"：没有启用的新"+(kind=="weapon"?"武器 ":kind=="pilot"?"人物 ":"机体 ")+ref.at(1).dump());
+            event.words[at]=uint16_t(*found);
+        }
         for(const auto& ref:e.value("levels",json::array())) {
             const size_t at=ref.at(0).get<size_t>();const unsigned pilot=ref.at(1).get<unsigned>();
             if(at<2 || at>=event.words.size() || event.words[at-2]!=0x3D5A || pilot>360)throw std::runtime_error(event.id+"：等级引用不是 3D5A 的第二个操作数");
             event.levels.emplace_back(at,pilot);
         }
+        for(const auto& b:e.value("builds",json::array()))event.builds.push_back(unit_of(b,"build"));
         for(const auto& c:e.value("crew",json::array())) {
-            const unsigned unit=c.at("unit").get<unsigned>();
+            const unsigned unit=unit_of(c.at("unit"),"crew.unit");
             const auto pilots=c.at("pilots").get<std::vector<unsigned>>();
-            if(unit>362 || pilots.empty() || pilots.size()>5)throw std::runtime_error(event.id+"：crew 要写机体号和 1–5 名人物");
+            if(pilots.empty() || pilots.size()>5)throw std::runtime_error(event.id+"：crew 要写机体号和 1–5 名人物");
             for(const auto pilot:pilots)if(pilot>360)throw std::runtime_error(event.id+"：crew 的人物号越界");
             event.crew.emplace_back(unit,pilots);
         }
@@ -213,8 +250,38 @@ inline void add_image(Library& library,const std::string& package,const json& im
     }
     for(const auto& e:new_events)for(const auto& names:{e.fired,e.not_fired})
         for(const auto& id:names)if(!ids.count(id))throw std::runtime_error(e.id+"：fired/not_fired 引用了不存在的事件 "+id);
+    // The stage information entries: a line by locale (ja required), shown on the scene's page.
+    std::vector<Info> new_infos;
+    for(const auto& s:image.value("stage_info",json::array())) {
+        Info info;info.package=package;
+        info.scene=s.at("scene").get<unsigned>();
+        if(info.scene>255)throw std::runtime_error("stage_info：场景号超出 0–255");
+        for(const auto& [field,into]:{std::pair{"title",&info.title},{"text",&info.text}}) {
+            const auto& by_locale=s.at(field);
+            if(!by_locale.is_object() || !by_locale.contains("ja"))throw std::runtime_error(std::string("stage_info.")+field+"：要写各语言的文字，至少有 ja");
+            for(const auto& [locale,line]:by_locale.items())
+                if(!line.is_string() || line.get<std::string>().empty() || line.get<std::string>().size()>longest_text*4)
+                    throw std::runtime_error(std::string("stage_info.")+field+"."+locale+"：为空或太长");
+            *into=by_locale;
+        }
+        if(s.contains("done")) {
+            info.checks=true;
+            const auto& done=s["done"];
+            for(const auto& p:done.value("pilots",json::array())) {
+                if(!p.is_number_unsigned() || p.get<unsigned>()>360)throw std::runtime_error("stage_info.done.pilots：人物 0–360");
+                info.pilots.push_back(p.get<unsigned>());
+            }
+            for(const auto& u:done.value("units",json::array())) {
+                const auto found=mod_ids::unit(u,package);
+                if(!found)throw std::runtime_error("stage_info.done.units："+u.dump()+" 不是机体号，也不是已启用的新机体");
+                info.units.push_back(*found);
+            }
+        }
+        new_infos.push_back(std::move(info));
+    }
     for(auto& t:new_texts)library.texts.push_back(std::move(t));
     for(auto& e:new_events)library.events.push_back(std::move(e));
+    for(auto& i:new_infos)library.infos.push_back(std::move(i));
 }
 // Every story file of the active packages, bottom first (a package above fires first
 // when two fit the same moment).
@@ -389,6 +456,7 @@ struct State {
     int scene=-1;
     std::set<std::string> fired;
     std::optional<size_t> running;                      // event index while its words run
+    std::vector<unsigned> builds_due;                   // combined units to build (take_builds)
     std::set<std::string> flags;                        // long-term: package/flag, kept with every save
     struct Saved {std::set<std::string> fired,flags;};
     std::map<uint64_t,Saved> snapshots;                 // save record hash -> what went with it
@@ -399,6 +467,9 @@ struct State {
     // The lines, also read by the dialogue reader off the game thread.
     std::mutex texts_mutex;
     std::shared_ptr<const std::vector<Text>> texts=std::make_shared<std::vector<Text>>();
+    // The stage information entries, read by the page off the game thread.
+    std::mutex infos_mutex;
+    std::shared_ptr<const std::vector<Info>> infos=std::make_shared<std::vector<Info>>();
 };
 inline State& state(){static State value;return value;}
 inline bool& disabled(){static bool value{};return value;}   // a custom campaign runs
@@ -437,9 +508,19 @@ inline void refresh() {
     s.revision=now;s.game=game;s.loaded=true;
     s.library=collect(mods::installed(game));
     {std::lock_guard lock(s.texts_mutex);s.texts=std::make_shared<std::vector<Text>>(s.library.texts);}
+    {std::lock_guard lock(s.infos_mutex);s.infos=std::make_shared<std::vector<Info>>(s.library.infos);}
     for(const auto& problem:s.library.problems)std::fprintf(stderr,"SRW64_STORY_MOD_PROBLEM %s\n",problem.c_str());
     log({{"action","loaded"},{"events",s.library.events.size()},{"texts",s.library.texts.size()},{"problems",s.library.problems}});
 }
+// Any thread: the packages' stage information entries (empty while a custom campaign runs,
+// which has its own pages).
+inline std::shared_ptr<const std::vector<Info>> infos() {
+    auto& s=state();
+    if(disabled())return std::make_shared<std::vector<Info>>();
+    std::lock_guard lock(s.infos_mutex);return s.infos;
+}
+// The page's status key of entry n of infos().
+inline std::string info_ref(const Info& info,size_t n){return "mod:"+info.package+":"+std::to_string(n);}
 // Any thread.
 inline std::optional<Text> text(uint16_t id) {
     auto& s=state();
@@ -522,11 +603,19 @@ inline void place(uint8_t* ram,const Event& e) {
 }
 // The event engine counts finished events off +0x98E (8009F020); one of ours was never
 // registered, so it is counted in before it runs.
+// The combined units the events just started want built (Event::builds); the caller, which
+// has a context to call the game with, builds them (game_hooks.cpp).
+inline std::vector<unsigned> take_builds() {
+    auto& s=state();
+    std::vector<unsigned> out;out.swap(s.builds_due);
+    return out;
+}
 inline void began(uint8_t* ram,size_t index) {
     auto& s=state();
     const auto& e=s.library.events[index];
     write16(ram,engine+f_count,uint16_t(read(ram,engine+f_count,2)+1));
     s.fired.insert(e.key());s.running=index;
+    for(const auto unit:e.builds)s.builds_due.push_back(unit);
     log({{"action","started"},{"event",e.key()},{"scene",s.scene},{"trigger",event_type(e.trigger)}});
     publish();
 }

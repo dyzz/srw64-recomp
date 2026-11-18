@@ -2,6 +2,7 @@
 #include "campaign.hpp"
 #include "legacy.hpp"
 #include "guest_memory.hpp"
+#include "story_mod.hpp"
 #include <filesystem>
 #include <atomic>
 #include <cstdio>
@@ -117,7 +118,17 @@ json meta(int scene) {
         if(!data.is_object() || data.value("schema","")!="srw64.stage-meta.v1")data=nullptr;
         found=cache.emplace(scene,std::move(data)).first;
     }
-    return found->second;
+    // The story packages' entries for this scene join every card's hidden elements.
+    const auto infos=story_mod::infos();
+    json out=found->second;
+    for(size_t n=0;n<infos->size();++n) {
+        const auto& info=(*infos)[n];
+        if(int(info.scene)!=scene)continue;
+        if(!out.is_object())out={{"schema","srw64.stage-meta.v1"},{"scene",scene},{"cards",json::array()}};
+        if(out["cards"].empty())out["cards"].push_back({{"secrets",json::array()},{"enemies",json::array()}});
+        for(auto& card:out["cards"])card["secrets"].push_back({{"ref",story_mod::info_ref(info,n)},{"title",info.title},{"text",info.text}});
+    }
+    return out;
 }
 
 void sample(const uint8_t* ram) {
@@ -148,6 +159,16 @@ void sample(const uint8_t* ram) {
                 status[rule.at("id").get<std::string>()]=std::move(result);
             }
             for(const auto& g:r->grants)if(record.contains(g.at("id").get<std::string>())){ever.push_back(g.at("id"));++ever_granted;}
+            // The story packages' own entries: done when our roster has what they name.
+            const auto infos=story_mod::infos();
+            for(size_t n=0;n<infos->size();++n) {
+                const auto& info=(*infos)[n];
+                if(!info.checks)continue;
+                bool done=true;
+                for(const auto u:info.units)done&=state.units.contains(int(u));
+                for(const auto p:info.pilots)done&=state.pilots.contains(int(p));
+                status[story_mod::info_ref(info,n)]={{"state",done?"done":"not_started"}};
+            }
         }
         next={{"available",true},{"scene",state.scene},{"protagonist",state.protagonist},{"route",route(state)},
               {"map",!in_intermission(read(ram,mode,1))},{"status",std::move(status)},

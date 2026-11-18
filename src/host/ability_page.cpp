@@ -1,4 +1,6 @@
 #include "ability_page.hpp"
+#include "table_window.hpp"
+#include "mod_portraits.hpp"
 #include "intermission_mode.hpp"
 #include "unit_pose_art.hpp"
 #include "spirit_learning.hpp"
@@ -104,7 +106,7 @@ void refresh_display(uint8_t* ram,recomp_context* ctx,uint32_t unit) {
 }
 json pilot_brief(const uint8_t* ram,uint32_t pilot) {
     if(!pilot || !valid(pilot,pilot_size))return {{"name",std::string()}};
-    return {{"number",read(ram,pilot+pilot_number,2)},{"name",text(ram,uint16_t(text_pilot_names+read(ram,pilot+pilot_number,2)))},{"level",read(ram,pilot+pilot_level,1)}};
+    return {{"number",read(ram,pilot+pilot_number,2)},{"name",text(ram,table_window::pilot_name(read(ram,pilot+pilot_number,2)))},{"level",read(ram,pilot+pilot_level,1)}};
 }
 // The second crew member the list details print: crew of two or more and the
 // second pilot's +4 bit 0x40.
@@ -128,7 +130,7 @@ std::string unit_art(unsigned number) {
 }
 json unit_brief(const uint8_t* ram,uint32_t unit) {
     const uint16_t number=uint16_t(read(ram,unit+up::unit_number,2));
-    json u={{"number",number},{"name",text(ram,text_unit_names+number)}};
+    json u={{"number",number},{"name",text(ram,table_window::unit_name(number))}};
     if(auto a=unit_pose_art::of(art,number);!a.empty())u["art"]=std::move(a);
     return u;
 }
@@ -197,14 +199,14 @@ json list_json(uint8_t* ram,recomp_context* ctx,bool pilots_list) {
             // off it. 801C924C's unit is already the pilot's own form, and the offset on top of
             // it named ハヤト's ゲッター3 and ムサシ's ポセイドン (issue #13).
             const uint32_t unit=read(ram,pilot+pilot_has_unit,1)?read(ram,pilot+pilot_unit_field,4):0;
-            row["unit"]=unit && valid(unit,0x54)?text(ram,uint16_t(text_unit_names+read(ram,unit+up::unit_number,2)+call(ram,ctx,getter_form,pilot))):std::string();
+            row["unit"]=unit && valid(unit,0x54)?text(ram,uint16_t(table_window::unit_name(read(ram,unit+up::unit_number,2)+call(ram,ctx,getter_form,pilot)))):std::string();
             rows.push_back(row);
         } else {
             const uint32_t unit=up::unit_at(entry);
             refresh_display(ram,ctx,unit);
             json row=unit_brief(ram,unit);row["slot"]=entry;row["hp"]=read(ram,display_hp,2);
             const uint32_t pilot=read(ram,unit+unit_pilot,4);
-            row["pilot"]=read(ram,unit+unit_crew,1) && pilot && valid(pilot,pilot_size)?text(ram,uint16_t(text_pilot_names+read(ram,pilot+pilot_number,2))):std::string();
+            row["pilot"]=read(ram,unit+unit_crew,1) && pilot && valid(pilot,pilot_size)?text(ram,table_window::pilot_name(read(ram,pilot+pilot_number,2))):std::string();
             rows.push_back(row);
         }
     }
@@ -377,7 +379,7 @@ json combo_json(uint8_t* ram,recomp_context* ctx,uint32_t unit,uint32_t w) {
         json forms=json::array();std::vector<int> seen;
         for(const auto& r:attack->rows) {
             const int form=r.by_pilot?r.unit:r.id;
-            if(form>=0 && std::find(seen.begin(),seen.end(),form)==seen.end()){seen.push_back(form);forms.push_back(text(ram,uint16_t(text_unit_names+form)));}
+            if(form>=0 && std::find(seen.begin(),seen.end(),form)==seen.end()){seen.push_back(form);forms.push_back(text(ram,uint16_t(table_window::unit_name(form))));}
         }
         c["forms"]=forms;
         return c;
@@ -385,8 +387,8 @@ json combo_json(uint8_t* ram,recomp_context* ctx,uint32_t unit,uint32_t w) {
     bool all=true;json partners=json::array();std::vector<int> leads={lead};std::vector<std::pair<int,uint32_t>> members={{number,unit}};
     for(const int16_t id:row->partners) {
         json p;uint32_t found=0;
-        if(row->by_pilot){p["name"]=text(ram,uint16_t(text_pilot_names+id));p["pilot"]=true;found=party_pilot_unit(ram,ctx,id,row->unit);}
-        else{p["name"]=text(ram,uint16_t(text_unit_names+id));found=party_unit(ram,id);}
+        if(row->by_pilot){p["name"]=text(ram,table_window::pilot_name(id));p["pilot"]=true;found=party_pilot_unit(ram,ctx,id,row->unit);}
+        else{p["name"]=text(ram,uint16_t(table_window::unit_name(id)));found=party_unit(ram,id);}
         p["present"]=found!=0;all&=found!=0;
         if(found){leads.push_back(lead_pilot_number(ram,found));members.push_back({int(read(ram,found+up::unit_number,2)),found});}
         else members.push_back({row->by_pilot?int(row->unit):int(id),0u});
@@ -401,7 +403,7 @@ json combo_json(uint8_t* ram,recomp_context* ctx,uint32_t unit,uint32_t w) {
         if(!component){known=false;break;}
         unsigned power=0;
         if(instance){const uint32_t cw=combo_attacks::unit_weapon(ram,instance,*component);if(!cw){known=false;break;}power=read(ram,cw+6,2);}
-        else power=upgrades::game_byte({rom.data(),rom.size()},rom_weapons+*component*rom_weapon_size+1)*100;
+        else power=upgrades::game_byte({rom.data(),rom.size()},table_window::row(table_window::weapons,*component)+1)*100;
         sum+=float(power);++n;
     }
     if(known && n)c["power"]=unsigned(sum/float(n)*attack->multiplier);
@@ -472,8 +474,9 @@ json pilot_json(uint8_t* ram,recomp_context* ctx) {
     const uint32_t pilot=pilot_at(index);
     const unsigned number=read(ram,pilot+pilot_number,2),level=read(ram,pilot+pilot_level,1);
     const bool hidden=(read(ram,pilot+pilot_flags,1)&0xC0)!=0;   // stats printed as ---
-    json p={{"index",index},{"number",number},{"name",text(ram,uint16_t(text_pilot_names+number))},{"full_name",text(ram,uint16_t(text_pilot_full_names+number))},{"level",level},{"hidden",hidden}};
-    if(art.contains("portraits") && art["portraits"].contains(std::to_string(number)))p["art"]=art["portraits"][std::to_string(number)];
+    json p={{"index",index},{"number",number},{"name",text(ram,table_window::pilot_name(number))},{"full_name",text(ram,table_window::pilot_full_name(number))},{"level",level},{"hidden",hidden}};
+    // A new character's own portrait, or the one of the character it copies (mod_portraits.hpp).
+    if(art.contains("portraits"))if(auto a=mod_portraits::art(art["portraits"],number);!a.empty())p["art"]=std::move(a);
     // 二回行動: +0x34 is the pilot's actions a phase, 2 from the level its record names
     // (800A6238). The original marks it only on the map's unit window (801CB4D0, the crown
     // glyph 1460 while two actions are left); this page marks the pilot who has two (user, 2026-10-30).

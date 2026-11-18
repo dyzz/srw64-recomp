@@ -53,6 +53,9 @@ yourname.balance/
 | `size` | 尺寸 | `SS`、`S`、`M`、`L`、`LL` |
 | `shield`、`sword` | 有没有盾、剑（盾防、切落用） | `true` 或 `false` |
 | `parts_slots` | 强化部件槽数 | 0–4 |
+| `move_types` | 移动类型，**写全** | 数组：`land` 陆、`air` 空、`sea` 海、`space` 宇、`underground` 地中 |
+| `swap_class` | 换乘类别：驾驶员与机体同类才能换乘，0 不能换乘 | 0–7 |
+| `funds`、`exp` | 被击坠时给的资金、经验（敌方机体用得到） | 资金 0–65535，经验 0–255 |
 | `abilities` | 特殊能力，**写全**：数组里没有的就去掉 | 见下表 |
 
 特殊能力的键：

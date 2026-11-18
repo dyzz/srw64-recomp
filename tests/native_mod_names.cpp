@@ -60,6 +60,8 @@ int main(int argc,char** argv) {
     check(parsed.records.at(527+184).at("zh-Hans")=="豪将军改" && parsed.records.at(1370+731).at("ja")=="ビッグバズーカ","a unit's and a weapon's");
     check(why(R"({"pilots":{"27":{"en":{"name":"Brad"}}}})").find("heroes")!=std::string::npos,"the eight go in heroes");
     check(why(R"({"weapons":{"1329":{"en":"X"}}})").find("超出范围")!=std::string::npos,"weapon numbers in range");
+    check(why(R"({"models":{"224":{"ja":"X"}}})").find("新机体")!=std::string::npos,"a model line only for a new unit");
+    check(why(R"({"models":{"@nobody":{"ja":"X"}}})").find("新机体")!=std::string::npos,"a model line for a known new unit");
     check(why(R"({"units":{"184":{"en":"ABCDEFGHIJKLMNOPQRSTUVWXY"}}})").find("最多 24")!=std::string::npos,"names past 24");
     check(why(R"({"pilots":{"133":{"en":"Shingo"}}})").find("name")!=std::string::npos,"a pilot's entry is an object");
 

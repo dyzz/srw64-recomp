@@ -710,6 +710,7 @@
     "library_no_stats": "능력치가 없습니다",
     "library_no_weapons": "무기가 없습니다",
     "library_work_other": "기타",
+    "library_work_mod": "MOD",
     "library_double_move": "2회 행동",
     "library_spirit_note": "정신기 소비 SP는 모두 동일합니다.",
     "library_skill_note": "표시 숫자는 단계별 습득 레벨입니다(1~99).",

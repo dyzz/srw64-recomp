@@ -75,7 +75,7 @@
 | `tracks.<歌号>.gain` | 音量修正，单位 dB，负数表示调小。 |
 | `tracks.<歌号>.title` | 音乐鉴赏里显示的曲名，按语言写。 |
 | `battle.pilot.<人物号>` | 这个人物在我方时，战斗放哪首歌（值是歌号）。人物号见 [`pilots.csv`](pilots.csv)。 |
-| `battle.unit.<机体号>` | 交战双方都不是我方时，按攻方机体选曲。机体号见 [`units.csv`](units.csv)。 |
+| `battle.unit.<机体号>` | 交战双方都不是我方时，按攻方机体选曲。机体号见 [`units.csv`](units.csv)；MOD 包的新机体写 `@名字`（本包）或 `包id@名字`。 |
 
 原版怎么选歌：
 

@@ -367,9 +367,10 @@ def names_problem(document, languages: tuple[str, ...] = ()) -> str:
             count = {"pilots": 361, "units": 363, "weapons": 1329}[key]
             for number, by_locale in value.items():
                 where = f"{key}.{number}"
-                if not _plain_number(number) or int(number) >= count:
-                    return f"{where}：编号要是 0–{count - 1} 的十进制整数"
-                if key == "pilots" and 25 <= int(number) < 33:
+                new = _reference(number)   # a package's new unit, weapon or character
+                if not new and (not _plain_number(number) or int(number) >= count):
+                    return f"{where}：编号要是 0–{count - 1} 的十进制整数，或新机体、新武器、新人物的 @名字"
+                if key == "pilots" and not new and 25 <= int(number) < 33:
                     return f"{where}：原创主角和搭档的名字写在 heroes 里"
                 if not isinstance(by_locale, dict):
                     return f"{where}：要是对象"
@@ -386,8 +387,27 @@ def names_problem(document, languages: tuple[str, ...] = ()) -> str:
                                 return why
                     elif why := _name_problem(entry, f"{where}.{locale}", 24):
                         return why
+        elif key == "models":
+            # A new unit's model line in the Library (table_window::model_record).
+            if not isinstance(value, dict):
+                return "models：要是对象"
+            for unit, by_locale in value.items():
+                where = f"models.{unit}"
+                if not _reference(unit):
+                    return f"{where}：要是新机体的 @名字（data/new_units.json 里的）"
+                if not isinstance(by_locale, dict):
+                    return f"{where}：要是对象"
+                for locale, text in by_locale.items():
+                    if locale not in known:
+                        return f"{where}.{locale}：未知语言（{'、'.join(known)}）"
+                    if not isinstance(text, str) or not text:
+                        return f"{where}.{locale}：要是非空字符串"
+                    if len(text) > 48:
+                        return f"{where}.{locale}：太长（最多 48 个字符）"
+                    if any(ord(c) < 0x20 or c in "<>{}" for c in text):
+                        return f"{where}.{locale}：不能有控制字符或 < > {{ }}"
         else:
-            return f"未知字段 {key}（schema、heroes、unit、pilots、units、weapons）"
+            return f"未知字段 {key}（schema、heroes、unit、pilots、units、weapons、models）"
     return ""
 
 
@@ -425,8 +445,8 @@ def icon_problem(name: str, data: bytes) -> str | None:
     """A map icon (art/icons/<unit>.png) by the host's rules (src/host/native_icon.cpp,
     unit_icon_art.hpp): named by unit number, a square PNG of 16, 32, 64 or 128 pixels."""
     stem, _, ext = name.rpartition(".")
-    if ext.lower() != "png" or not _plain_number(stem) or int(stem) >= 363:
-        return "文件名要是机体号.png（0–362）"
+    if ext.lower() != "png" or not (_reference(stem) or (_plain_number(stem) and int(stem) < 363)):
+        return "文件名要是机体号.png（0–362）或新机体的 @名字.png"
     if len(data) < 24 or data[:8] != b"\x89PNG\r\n\x1a\n" or data[12:16] != b"IHDR":
         return "不是 PNG"
     width, height = int.from_bytes(data[16:20], "big"), int.from_bytes(data[20:24], "big")
@@ -445,8 +465,8 @@ def icon_facing_problem(data) -> str | None:
         if key not in ("schema", "facing"):
             return f"不认识的字段 {key}"
     for key, value in data["facing"].items():
-        if not _plain_number(key) or int(key) >= 363:
-            return f"{key} 要是机体号（0–362）"
+        if not (_reference(key) or (_plain_number(key) and int(key) < 363)):
+            return f"{key} 要是机体号（0–362）或新机体的 @名字"
         if value not in ("left", "right", "front"):
             return f"{key} 的朝向要是 left、right 或 front"
     return None
@@ -459,7 +479,8 @@ def _plain_number(text: str) -> bool:
 # src/host/mod_data.hpp: each file's fields as (low, high, scale), the special ones by name.
 DATA_FIELDS = {
     "units.json": (363, {"hp": (1, 65535, 1), "en": (0, 65535, 1), "move": (1, 30, 1), "mobility": (0, 65535, 1),
-                         "armor": (0, 65535, 1), "limit": (0, 65535, 1), "repair_cost": (0, 65535, 1), "upgrade_cap": (0, 15, 1)}),
+                         "armor": (0, 65535, 1), "limit": (0, 65535, 1), "repair_cost": (0, 65535, 1), "upgrade_cap": (0, 15, 1),
+                         "swap_class": (0, 7, 1), "funds": (0, 65535, 1), "exp": (0, 255, 1)}),
     "pilots.json": (360, {"melee": (0, 255, 1), "ranged": (0, 255, 1), "evade": (0, 255, 1), "hit": (0, 255, 1),
                           "reaction": (0, 255, 1), "skill": (0, 255, 1), "sp": (0, 255, 1), "double_move": (0, 99, 1)}),
     "weapons.json": (1329, {"power": (0, 25500, 100), "range_min": (0, 30, 1), "range_max": (1, 30, 1), "hit": (-128, 127, 1),
@@ -469,6 +490,7 @@ DATA_FIELDS = {
 REQUIREMENTS = ("ally", "hyper_mode", "super_mode", "level_10", "level_15", "level_20", "level_25", "level_30", "level_35",
                 "level_45", "newtype", "newtype_4", "holy_warrior", "holy_warrior_3", "v_max", "v_max_red")
 TERRAIN = ("air", "land", "sea", "space")
+MOVE_TYPES = ("land", "air", "sea", "space", "underground")
 ABILITIES = ("beam_coat", "i_field", "planet_defensor", "aura_barrier", "afterimage", "mach_special", "true_mach_special",
              "god_shadow", "getter_vision", "shungensoku", "hyper_jammer", "hp_regen_10", "hp_regen_20")
 SKILLS = ("potential", "newtype", "enhanced", "holy_warrior", "esp", "parry", "shield_defense")
@@ -487,12 +509,12 @@ def _levels(value, where: str, ascending_pairs: bool = False) -> str:
     return ""
 
 
-# data/new_units.json (src/host/mod_units.hpp, docs/design/mod-names-art-data.md §2.3.1): the
-# shape and the free numbers; the layout (weapon lists, animation records, inheritance rows)
-# is checked by the host against the ROM.
-NEW_UNITS_SCHEMA = "srw64.new-units.v1"
-FREE_UNITS, FREE_WEAPONS = (314, 325), (881, 882, 1209)
-FREE_SCENES = (1051, 1052, 1003, 1006, 1025, 1026, 1029, 1030, 1032, 1033)
+# data/new_units.json (src/host/mod_units.hpp, docs/design/new-unit-ids.md): the shape and the
+# names; the numbers (the host's, past the ROM's) and the layout (weapon lists, animation
+# records, inheritance rows) are the host's.
+NEW_UNITS_SCHEMA = "srw64.new-units.v2"
+NAME = re.compile(r"[a-z0-9._-]{1,40}")
+REFERENCE = re.compile(r"([a-z0-9][a-z0-9._-]*)?@[a-z0-9._-]{1,40}")
 
 
 def _int_in(value, low: int, high: int) -> bool:
@@ -503,42 +525,95 @@ def _triple(value) -> bool:
     return isinstance(value, list) and len(value) == 3 and all(_int_in(v, 1, 0xFFFF) for v in value)
 
 
-def new_units_problem(document) -> str:
+def _reference(value) -> bool:
+    """A package's new unit, weapon or scene by name: "@final" (its own) or "package@final"."""
+    return isinstance(value, str) and REFERENCE.fullmatch(value) is not None
+
+
+def _unit_or_new(value, high: int = 362) -> bool:
+    return _int_in(value, 0, high) or _reference(value)
+
+
+def _weapon_or_new(value) -> bool:
+    return _int_in(value, 0, 1328) or _reference(value)
+
+
+def _picture(value) -> bool:
+    """A scene or pose: three resource numbers, or "@sprite"."""
+    return _triple(value) or _reference(value)
+
+
+def sprites_problem(sprites, files: set[str] | None) -> str:
+    """data/new_units.json "sprites" (src/host/mod_units.hpp sprites): PNGs the host turns into
+    the game's resources; their colours and size are checked when the game loads them."""
+    for name, entry in sprites.items():
+        where = f"sprites.{name}"
+        if not isinstance(entry, dict):
+            return f"{where}：要是对象"
+        unknown = set(entry) - {"image", "frames", "origin", "mirror", "ticks", "loop", "hd"}
+        if unknown:
+            return f"{where}：未知字段 {sorted(unknown)[0]}（image、frames、origin、mirror、ticks、loop、hd）"
+        if ("image" in entry) == ("frames" in entry):
+            return f"{where}：image 和 frames 写一个"
+        frames = entry["frames"] if "frames" in entry else [entry["image"]]
+        hd = entry.get("hd", [])
+        hd = hd if isinstance(hd, list) else [hd]
+        if not isinstance(frames, list) or not 1 <= len(frames) <= 64:
+            return f"{where}：frames 要 1–64 张"
+        if hd and len(hd) != len(frames):
+            return f"{where}.hd：要每张图一张 HD 图"
+        for path in frames + hd:
+            if not isinstance(path, str) or not path.lower().endswith(".png") or path.startswith("/") or ".." in path.split("/"):
+                return f"{where}：图片要写包里的 PNG 相对路径"
+            if files is not None and path not in files:
+                return f"{where}：包里没有 {path}"
+        origin = entry.get("origin")
+        if not isinstance(origin, list) or len(origin) != 2 or not all(_int_in(v, -2048, 2048) for v in origin):
+            return f"{where}.origin：要写 [x, y]"
+        if "mirror" in entry and not isinstance(entry["mirror"], bool):
+            return f"{where}.mirror：要是 true 或 false"
+        ticks = entry.get("ticks", [])
+        if not isinstance(ticks, list) or (ticks and len(ticks) != len(frames)) or not all(_int_in(v, 1, 255) for v in ticks):
+            return f"{where}.ticks：要每张图一个 1–255 的拍数"
+        if not _int_in(entry.get("loop", 0), 0, len(frames) - 1):
+            return f"{where}.loop：要是 0 到图数减 1"
+    return ""
+
+
+def new_units_problem(document, files: set[str] | None = None) -> str:
     if not isinstance(document, dict) or document.get("schema") != NEW_UNITS_SCHEMA:
         return f"schema 要是 {NEW_UNITS_SCHEMA}"
     for key in document:
-        if key not in ("schema", "units", "weapons", "scenes"):
-            return f"未知分区 {key}（units、weapons、scenes）"
-    scenes = document.get("scenes", {})
-    if not isinstance(scenes, dict):
-        return "scenes 要是对象"
-    for key, triple in scenes.items():
-        if not _plain_number(key) or int(key) not in FREE_SCENES:
-            return f"scenes.{key}：可用的号是 " + "、".join(map(str, FREE_SCENES))
-        if not _triple(triple):
-            return f"scenes.{key}：要是 [场景, 图集, 调色板] 三个资源号"
-    weapons = document.get("weapons", {})
-    if not isinstance(weapons, dict):
-        return "weapons 要是对象"
-    for key, entry in weapons.items():
+        if key not in ("schema", "sprites", "units", "weapons", "scenes", "pilots"):
+            return f"未知分区 {key}（sprites、units、weapons、scenes、pilots）"
+    for part in ("sprites", "scenes", "weapons", "units", "pilots"):
+        if not isinstance(document.get(part, {}), dict):
+            return f"{part} 要是对象"
+        for key in document.get(part, {}):
+            if not NAME.fullmatch(key):
+                return f"{part}.{key}：名字只能用小写字母、数字和 - _ ."
+    if why := sprites_problem(document.get("sprites", {}), files):
+        return why
+    for key, triple in document.get("scenes", {}).items():
+        if not _picture(triple):
+            return f"scenes.{key}：要是 [场景, 图集, 调色板] 三个资源号，或 @图片名"
+    for key, entry in document.get("weapons", {}).items():
         where = f"weapons.{key}"
-        if not _plain_number(key) or int(key) not in FREE_WEAPONS:
-            return f"{where}：可用的号是 881、882、1209"
         if not isinstance(entry, dict):
             return f"{where}：要是对象"
         unknown = set(entry) - {"copy", "animation", "inherits_from"}
         if unknown:
             return f"{where}：未知字段 {sorted(unknown)[0]}（copy、animation、inherits_from）"
-        if not _int_in(entry.get("copy"), 0, 1328):
-            return f"{where}.copy：要写照抄的武器号（0–1328）"
-        if "inherits_from" in entry and not _int_in(entry["inherits_from"], 0, 1328):
-            return f"{where}.inherits_from：要是武器号"
+        if not _weapon_or_new(entry.get("copy")):
+            return f"{where}.copy：要写照抄的武器（原版武器号或 @名字）"
+        if "inherits_from" in entry and not _weapon_or_new(entry["inherits_from"]):
+            return f"{where}.inherits_from：要是武器号或 @名字"
         animation = entry.get("animation", {"copy": entry["copy"]})
         if not isinstance(animation, dict):
-            return f"{where}.animation：要是 {{\"copy\": 武器号}} 或整条记录"
+            return f"{where}.animation：要是 {{\"copy\": 武器}} 或整条记录"
         if "copy" in animation:
-            if len(animation) != 1 or not _int_in(animation["copy"], 0, 1328):
-                return f"{where}.animation.copy：要是武器号，且不和别的字段同写"
+            if len(animation) != 1 or not _weapon_or_new(animation["copy"]):
+                return f"{where}.animation.copy：要是武器号或 @名字，且不和别的字段同写"
             continue
         unknown = set(animation) - {"camera", "hit", "action", "defender", "sounds", "actors"}
         if unknown:
@@ -554,8 +629,8 @@ def new_units_problem(document) -> str:
             return f"{where}.animation.actors：要 1–24 个"
         for k, a in enumerate(actors):
             here = f"{where}.animation.actors[{k}]"
-            if not isinstance(a, dict) or not _int_in(a.get("scene"), 0, 1052):
-                return f"{here}.scene：要是战斗场景总表的号（0–1052）"
+            if not isinstance(a, dict) or not (_int_in(a.get("scene"), 0, 1052) or _reference(a.get("scene"))):
+                return f"{here}.scene：要是战斗场景总表的号（0–1052）或 @场景名"
             if not all(_int_in(a.get(n, 0), -32768, 32767) for n in ("x", "y", "z")):
                 return f"{here}：x、y、z 要是整数"
             if not all(_int_in(a.get(n, 0), 0, 0xFFFF) for n in ("h4", "h5", "h6")):
@@ -564,33 +639,81 @@ def new_units_problem(document) -> str:
                 return f"{here}.behavior：要是行为例程号（3–382）"
         if 8 + 2 * len(sounds) + 2 + 16 * len(actors) + 2 > 0x3C0:
             return f"{where}.animation：记录太长"
-    units = document.get("units", {})
-    if not isinstance(units, dict):
-        return "units 要是对象"
-    rows = 0
-    for key, entry in units.items():
+    for key, entry in document.get("units", {}).items():
         where = f"units.{key}"
-        if not _plain_number(key) or int(key) not in FREE_UNITS:
-            return f"{where}：可用的号是 314、325"
         if not isinstance(entry, dict):
             return f"{where}：要是对象"
-        unknown = set(entry) - {"copy", "pose", "icon", "weapons", "inherits_from"}
+        unknown = set(entry) - {"copy", "pose", "icon", "weapons", "inherits_from", "crew", "combine", "work"}
         if unknown:
-            return f"{where}：未知字段 {sorted(unknown)[0]}（copy、pose、icon、weapons、inherits_from）"
-        if not _int_in(entry.get("copy"), 0, 353):
-            return f"{where}.copy：要写照抄的机体号（0–353，要有战斗记录）"
-        if "pose" in entry and not _triple(entry["pose"]):
-            return f"{where}.pose：要是 [场景, 图集, 调色板] 三个资源号"
+            return f"{where}：未知字段 {sorted(unknown)[0]}（copy、pose、icon、weapons、inherits_from、crew、combine、work）"
+        if "work" in entry and not _int_in(entry["work"], 0, 24):
+            return f"{where}.work：要是原版作品号 0–24"
+        if not _unit_or_new(entry.get("copy"), 353):
+            return f"{where}.copy：要写照抄的机体（原版 0–353 或 @名字）"
+        if "pose" in entry and not _picture(entry["pose"]):
+            return f"{where}.pose：要是 [场景, 图集, 调色板] 三个资源号，或 @图片名"
         if "icon" in entry and not _int_in(entry["icon"], 688, 1009):
-            return f"{where}.icon：要是地图图标资源号（688–1009；没人用的是 978、991）"
+            return f"{where}.icon：要是地图图标资源号（688–1009）"
         weapons_of = entry.get("weapons")
-        if not isinstance(weapons_of, list) or not weapons_of or not all(_int_in(w, 0, 1328) for w in weapons_of):
-            return f"{where}.weapons：要是武器号的数组"
-        rows += len(weapons_of) + 1
-        if "inherits_from" in entry and not _int_in(entry["inherits_from"], 0, 362):
-            return f"{where}.inherits_from：要是机体号"
-    if rows * 12 > 0x83110 - 0x82E40:
-        return "units：武器表的空隙用完了"
+        if not isinstance(weapons_of, list) or not 1 <= len(weapons_of) <= 63 or not all(_weapon_or_new(w) for w in weapons_of):
+            return f"{where}.weapons：要是 1–63 件武器（原版武器号或 @名字）的数组"
+        if "inherits_from" in entry and not _unit_or_new(entry["inherits_from"]):
+            return f"{where}.inherits_from：要是机体号或 @名字"
+        if "crew" in entry:
+            crew = entry["crew"]
+            if not isinstance(crew, list) or not 1 <= len(crew) <= 5:
+                return f"{where}.crew：要写 1–5 个人物号，第一个是主驾驶"
+            if not all(_int_in(c, 0, 360) for c in crew):
+                return f"{where}.crew：人物号是 0–360"
+        if "combine" in entry:
+            combine = entry["combine"]
+            parts = combine.get("parts") if isinstance(combine, dict) else None
+            if not isinstance(combine, dict) or set(combine) - {"parts", "over"} or not isinstance(parts, list) \
+                    or not 2 <= len(parts) <= 5 or not all(_unit_or_new(p) for p in parts):
+                return f"{where}.combine：要写 {{\"parts\": [2–5 台部件], \"over\": [原版合体机]}}"
+            over = combine.get("over", [])
+            if not isinstance(over, list) or not all(_int_in(o, 0, 362) for o in over):
+                return f"{where}.combine.over：要是原版合体机的机体号"
+    # New characters (src/host/mod_units.hpp, docs/design/unit-mod-kit.md §5.4). Whether the
+    # copied character has an ability record only the game knows.
+    for key, entry in document.get("pilots", {}).items():
+        where = f"pilots.{key}"
+        if not NAME.fullmatch(key):
+            return f"{where}：名字只能用小写字母、数字和 - _ ."
+        if not isinstance(entry, dict):
+            return f"{where}：要是对象"
+        unknown = set(entry) - {"copy", "voice", "portrait", "love", "combo_as"}
+        if unknown:
+            return f"{where}：未知字段 {sorted(unknown)[0]}（copy、voice、portrait、love、combo_as）"
+        if "love" in entry:
+            love = entry["love"]
+            if not isinstance(love, list) or not love or not all(
+                    isinstance(row, dict) and "with" in row and not set(row) - {"with", "mutual"}
+                    and isinstance(row.get("mutual", False), bool) for row in love):
+                return f'{where}.love：要写 [{{"with": 人物号或 @名字, "mutual": true/false}}]'
+            if not all(_int_in(row["with"], 0, 360) or _reference(row["with"]) for row in love):
+                return f"{where}.love.with：要是人物号（0–360）或新人物的 @名字"
+        if "combo_as" in entry and not _int_in(entry["combo_as"], 0, 359):
+            return f"{where}.combo_as：要写原版人物号（0–359）"
+        if not _int_in(entry.get("copy"), 0, 359):
+            return f"{where}.copy：要写照抄的原版人物（0–359，有能力记录的）"
+        if "voice" in entry and not _int_in(entry["voice"], 0, 359):
+            return f"{where}.voice：要写借台词的原版人物（0–359，有能力记录的）"
+        portrait = entry.get("portrait")
+        if isinstance(portrait, dict):
+            # The package's own: a 96×96 picture (up to 63 colours, checked by the game) and an HD one.
+            if set(portrait) - {"image", "hd"} or "image" not in portrait:
+                return f"{where}.portrait：要写 {{\"image\": 96×96 的 PNG, \"hd\": 高清 PNG}}"
+            for key in ("image", "hd"):
+                path = portrait.get(key)
+                if path is None:
+                    continue
+                if not isinstance(path, str) or not path.lower().endswith(".png") or path.startswith("/") or ".." in path.split("/"):
+                    return f"{where}.portrait.{key}：要写包里的 PNG 相对路径"
+                if files is not None and path not in files:
+                    return f"{where}.portrait.{key}：包里没有 {path}"
+        elif portrait is not None and (not isinstance(portrait, list) or len(portrait) != 2 or not all(_int_in(v, 1, 0xFFFF) for v in portrait)):
+            return f"{where}.portrait：要是头像的两个资源号 [图, 调色板]，或 {{\"image\": …, \"hd\": …}}"
     return ""
 
 
@@ -601,8 +724,9 @@ def data_problem(name: str, document) -> str:
     if not isinstance(document, dict):
         return "顶层要是对象"
     for key, entry in document.items():
-        if not _plain_number(key) or int(key) >= count:
-            return f"{key}：编号要是 0–{count - 1} 的十进制整数"
+        new = _reference(key)   # a package's new unit, weapon or character
+        if not new and (not _plain_number(key) or int(key) >= count):
+            return f"{key}：编号要是 0–{count - 1} 的十进制整数，或新机体、新武器、新人物的 @名字"
         if not isinstance(entry, dict):
             return f"{key}：要是对象"
         if name == "weapons.json" and "range_min" in entry and "range_max" in entry and \
@@ -648,6 +772,9 @@ def data_problem(name: str, document) -> str:
             elif name == "units.json" and field == "size":
                 if value not in ("SS", "S", "M", "L", "LL"):
                     return f"{where}：要是 SS、S、M、L 或 LL"
+            elif name == "units.json" and field == "move_types":
+                if not isinstance(value, list) or not value or any(v not in MOVE_TYPES for v in value):
+                    return f"{where}：要是非空数组，每项是 {'、'.join(MOVE_TYPES)} 之一"
             elif name == "units.json" and field == "parts_slots":
                 if not isinstance(value, int) or isinstance(value, bool) or not 0 <= value <= 4:
                     return f"{where}：要是 0–4 的整数"
@@ -759,7 +886,7 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
                 problems.append(Problem("data", f"{e.name}: {why}"))
         elif top == "data" and rest == "new_units.json":
             try:
-                why = new_units_problem(json.loads(e.read().decode("utf-8")))
+                why = new_units_problem(json.loads(e.read().decode("utf-8")), {x.name for x in package.entries})
             except (ValueError, UnicodeDecodeError) as error:
                 why = f"JSON 无效：{error}"
             if why:

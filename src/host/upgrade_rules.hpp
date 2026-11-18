@@ -3,6 +3,7 @@
 #include <mutex>
 #include <memory>
 #include "rule_fixes.hpp"
+#include "table_window.hpp"
 #include <array>
 #include <map>
 #include <optional>
@@ -238,27 +239,54 @@ inline std::vector<std::pair<uint32_t,uint8_t>> build_patches(const Tables& acti
 inline std::vector<std::pair<uint32_t,uint8_t>>& patches(){static std::vector<std::pair<uint32_t,uint8_t>> value;return value;}
 // The same bytes for readers on any thread (pages, the battle viewer, the cheats): set
 // with them whenever they change (mod_data.hpp refresh).
+// New numbers' name records (table_window.hpp names): a private text id -> the ROM address
+// and size of the record it copies (the unit's or weapon's it was copied from).
+using NameSources=std::map<uint16_t,std::pair<uint32_t,uint32_t>>;
 struct Patched {
     std::mutex mutex;
     std::shared_ptr<const std::map<uint32_t,uint8_t>> bytes=std::make_shared<const std::map<uint32_t,uint8_t>>();
+    std::shared_ptr<const NameSources> names=std::make_shared<const NameSources>();
 };
 inline Patched& patched(){static Patched value;return value;}
+inline NameSources& name_sources(){static NameSources value;return value;}
 inline void publish_patches() {
     auto bytes=std::make_shared<const std::map<uint32_t,uint8_t>>(patches().begin(),patches().end());
+    auto names=std::make_shared<const NameSources>(name_sources());
     std::lock_guard lock(patched().mutex);
     patched().bytes=std::move(bytes);
+    patched().names=std::move(names);
 }
-// A ROM byte as the game reads it: a number MOD's or the rules file's, else the ROM's.
+// The record a private name record (table_window.hpp) copies: a package's new unit's or
+// weapon's source, else, for a number no active package gives, number 0's of its kind.
+inline bool name_source(std::span<const uint8_t> rom,const NameSources& names,uint16_t record,uint32_t& from,uint32_t& size) {
+    if(const auto found=names.find(record);found!=names.end()){from=found->second.first;size=found->second.second;return true;}
+    const auto of=table_window::name_of(record);
+    if(!of)return false;
+    const uint32_t entry=0x01A34980+4+uint32_t(table_window::name_record(of->kind,0))*8;
+    if(entry+8>rom.size())return false;
+    const auto u32=[&](uint32_t a){return uint32_t(rom[a])<<24|uint32_t(rom[a+1])<<16|uint32_t(rom[a+2])<<8|rom[a+3];};
+    from=0x01A34980+u32(entry);size=u32(entry+4);
+    return size<=table_window::name_slot;
+}
+// A ROM byte as the game reads it: a number MOD's or the rules file's, else the ROM's. A
+// table window address (table_window.hpp) reads its row the same way.
 inline uint8_t game_byte(std::span<const uint8_t> rom,uint32_t at) {
     std::shared_ptr<const std::map<uint32_t,uint8_t>> bytes;
-    {std::lock_guard lock(patched().mutex);bytes=patched().bytes;}
+    std::shared_ptr<const NameSources> names;
+    {std::lock_guard lock(patched().mutex);bytes=patched().bytes;names=patched().names;}
     if(const auto found=bytes->find(at);found!=bytes->end())return found->second;
+    if(table_window::inside(at))
+        return table_window::window_byte(at,[&](uint32_t a){
+            if(const auto found=bytes->find(a);found!=bytes->end())return found->second;
+            return a<rom.size()?rom[a]:uint8_t(0);
+        },[&](uint16_t record,uint32_t& from,uint32_t& size){return name_source(rom,*names,record,from,size);});
     return at<rom.size()?rom[at]:0;
 }
 // A big-endian value as the game reads it (packages' and rules' bytes over the ROM's).
 inline uint32_t game_read(uint32_t at,unsigned size) {
     const auto& s=state();
-    if(!s.rom || at+size>s.rom_size)throw std::runtime_error("upgrade rules: ROM read outside the image");
+    if(!s.rom || (at+size>s.rom_size && !(table_window::inside(at) && table_window::inside(at+size-1))))
+        throw std::runtime_error("upgrade rules: ROM read outside the image");
     uint32_t value=0;
     for(unsigned i=0;i<size;++i)value=(value<<8)|game_byte({s.rom,s.rom_size},at+i);
     return value;
@@ -326,6 +354,8 @@ inline void configure(const std::filesystem::path& output) {
 // A number MOD's cap (mod_data.hpp) sits over both.
 inline uint8_t original_cap(uint16_t unit) {
     const auto& s=state();
+    // A package's new unit: its record in the table window (table_window.hpp).
+    if(table_window::new_unit(unit) && s.rom)return game_byte({s.rom,s.rom_size},table_window::row(table_window::units,unit)+record_cap);
     if(unit<unit_record_count && s.rom) {
         const uint32_t at=unit_records+unit*unit_record_size+record_cap;
         if(const uint8_t value=game_byte({s.rom,s.rom_size},at);value!=s.rom[at])return value;
@@ -335,6 +365,7 @@ inline uint8_t original_cap(uint16_t unit) {
 }
 inline uint8_t original_type(uint16_t weapon) {
     const auto& s=state();
+    if(table_window::new_weapon(weapon) && s.rom)return game_byte({s.rom,s.rom_size},table_window::row(table_window::weapons,weapon)+record_type);
     if(const auto found=s.active.types.find(weapon);found!=s.active.types.end())return found->second;
     return weapon<weapon_record_count?uint8_t(rom_read(weapon_records+weapon*weapon_record_size+record_type,1)):0;
 }

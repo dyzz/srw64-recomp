@@ -2,6 +2,9 @@
 #include "game_hooks.hpp"
 #include "battle_viewer.hpp"
 #include "music.hpp"
+#include "save_page.hpp"
+#include "mod_combine.hpp"
+#include "mod_pilots.hpp"
 #include "battle_hud.hpp"
 #include "battle_spread.hpp"
 #include "guest_memory.hpp"
@@ -19,6 +22,7 @@
 #include "battle_animation_probe.hpp"
 #include "base_fixes.hpp"
 #include "upgrade_rules.hpp"
+#include "mod_data.hpp"
 #include "upgrade_refund.hpp"
 #include "upgrade_page.hpp"
 #include "parts_carry.hpp"
@@ -208,8 +212,19 @@ void resident_func_80080A14(uint8_t* ram,recomp_context* ctx) {
 // the transfer's message was never handed over, and the window thread and the present
 // waited behind them: the save hung on an iQOO 12 and a Seeker (0.5.0); a unit upgrade
 // hang showed the same locks. So the page frame hooks below take theirs only when free.
+// 8020178C(handle, unit, 0): which combination attacks a unit may use now. A package's new
+// character that counts as an original one (mod_pilots.hpp combo_aliases) carries that
+// number while it runs.
+extern "C" void srw64_original_combo_locks(uint8_t* rdram, recomp_context* ctx);
+extern "C" void load_000AB160_func_8020178C(uint8_t* rdram, recomp_context* ctx) {
+    const auto swaps = srw64::mod_pilots::combo_aliases(rdram);
+    srw64_original_combo_locks(rdram, ctx);
+    srw64::mod_pilots::restore(rdram, swaps);
+}
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     srw64_original_frame_boundary(ram,ctx);
+    srw64::mod_combine::fill(ram);   // the combined-unit table's copies (mod_combine.hpp)
+    srw64::mod_pilots::fill(ram);    // the character maps' copies (mod_pilots.hpp)
     if(srw64_game_hooks.frame_start)srw64_game_hooks.frame_start(ram);
     if(srw64_game_hooks.presentation_step)srw64_game_hooks.presentation_step(ram);
     if(srw64_game_hooks.intermission_frame)srw64_game_hooks.intermission_frame(ram);
@@ -359,15 +374,50 @@ void resident_func_800A4BE0(uint8_t* ram,recomp_context* ctx) {
     srw64_original_base_level(ram,ctx);
     cheats::hold_base_level(ram);
 }
+void resident_func_800A74D4(uint8_t* ram,recomp_context* ctx) {
+    // A combined unit's part instances (a0 its index, a1 its instance, a2 the side). A
+    // package's combined unit takes the parts already on the roster (mod_combine.hpp).
+    const uint32_t made=uint32_t(ctx->r5);
+    if(srw64::guest::valid(made,0x54) && srw64::mod_combine::combined_unit(srw64::guest::read(ram,made+2,2)))return;
+    srw64_original_combine_parts(ram,ctx);
+}
+void load_000AB160_func_801E977C(uint8_t* ram,recomp_context* ctx) {
+    // Whether the unit (a0) can combine, a1 1 for the map menu: a package's combined unit
+    // may take the combine over, its other parts joining (mod_combine.hpp).
+    const unsigned check=uint8_t(ctx->r5);
+    srw64_original_combine_check(ram,ctx);
+    srw64::mod_combine::checked(ram,ctx,check,(ctx->r2&0xFF)!=0,LOOKUP_FUNC(srw64::mod_combine::find_on_map));
+}
+void resident_func_80085CD4(uint8_t* ram,recomp_context* ctx) {
+    // The two slot headers (a0 medium, a1 table): a mini stage's save, with no protagonist
+    // in its roster, is listed too (save_page.cpp headers_read).
+    const unsigned medium=uint8_t(ctx->r4);const uint32_t table=uint32_t(ctx->r5);
+    srw64_original_slot_headers(ram,ctx);
+    srw64::save_page::headers_read(ram,ctx,medium,table);
+}
 void resident_func_800927A4(uint8_t* ram,recomp_context* ctx) {
-    srw64_original_intermission_restore(ram,ctx);srw64::state_probe::capture(ram,"intermission-restored");
+    // A package's unit or weapon whose number moved is read under its number now (mod_saves.hpp).
+    const auto moved=srw64::mod_saves::remap(ram,story::Record::slot);
+    srw64_original_intermission_restore(ram,ctx);
+    srw64::mod_saves::undo(ram,moved);
+    srw64::state_probe::capture(ram,"intermission-restored");
     story::restored(ram,true,story::Record::slot);
     srw64::mod_saves::restored(ram,story::Record::slot);
     if(srw64_game_hooks.cheats_restored)srw64_game_hooks.cheats_restored(ram,ctx);
 }
 void resident_func_800936A0(uint8_t* ram,recomp_context* ctx) {
     const bool from_sram=uint8_t(ctx->r4)!=0;
-    srw64_original_tactical_restore(ram,ctx);srw64::state_probe::capture(ram,"tactical-restored");
+    // The record read from SRAM here (8009365C, the original's first step: 0 when there is
+    // none) so its numbers can move before the original reads the buffer (mod_saves.hpp).
+    bool read=true;
+    if(from_sram){resident_func_8009365C(ram,ctx);read=uint8_t(ctx->r2)!=0;}
+    if(read) {
+        const auto moved=srw64::mod_saves::remap(ram,story::Record::suspend);
+        ctx->r4=0;
+        srw64_original_tactical_restore(ram,ctx);
+        srw64::mod_saves::undo(ram,moved);
+    } else ctx->r2=0;
+    srw64::state_probe::capture(ram,"tactical-restored");
     story::restored(ram,from_sram);
     srw64::mod_saves::restored(ram,story::Record::suspend);
     if(srw64_game_hooks.cheats_restored)srw64_game_hooks.cheats_restored(ram,ctx);
@@ -640,6 +690,15 @@ void resident_func_8009C2DC(uint8_t* rdram, recomp_context* ctx) {
 int srw64_quote_demo(uint8_t* rdram) {
     return srw64_game_hooks.quote_demo && srw64_game_hooks.quote_demo(rdram);
 }
+// The 33 places that add 527, 1370 or 2699 to a unit's or weapon's number for its name's
+// text record (generate_cpu.py NAME_RECORDS): a new number's is a private record
+// (table_window.hpp), the ROM's numbers keep theirs.
+uint32_t srw64_name_record(uint32_t kind, uint32_t number) {
+    static constexpr uint32_t bases[] = {527, 1370, 2699, 4382, 4743};
+    if (kind > 4) return number;
+    if (number >= 0x10000) return bases[kind] + number;
+    return srw64::table_window::name_record(srw64::table_window::NameKind(kind), number);
+}
 // 8022245C(record, slot, base): the special (conditional) quote of this slot, written into
 // the slot (several halfwords for a multi-line exchange), the priority group 0..2 answered,
 // -1 when none matched; the caller 80222050 draws a generic line over a group-2 line or
@@ -904,14 +963,22 @@ void resident_func_800A4790(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_variables_reset(rdram, ctx);
     story::new_game();
 }
+// A story event just started: the combined units it builds, before its first step.
+static void story_builds(uint8_t* rdram, const recomp_context* ctx) {
+    for (const unsigned unit : story::take_builds()) {
+        auto c = *ctx;
+        srw64::mod_combine::build(rdram, &c, unit, resident_func_800A6E68, resident_func_800A5254);
+    }
+}
 void resident_func_8009E3B0(uint8_t* rdram, recomp_context* ctx) {
     // The poll scans event types [a1, a2) of its phase; story MODs' come after the original's.
     const unsigned from = uint16_t(ctx->r5), to = uint16_t(ctx->r6);
     const auto saved = *ctx;
     auto start = [&](uint32_t owner) { story_start(rdram, &saved, owner); };
-    if (story::persuaded(rdram, start)) { ctx->r2 = -1; return; }
+    if (story::persuaded(rdram, start)) { story_builds(rdram, &saved); ctx->r2 = -1; return; }
     srw64_original_event_scan(rdram, ctx);
     story::scan(rdram, from, to, story_view(rdram, &saved), start);
+    story_builds(rdram, &saved);
 }
 void resident_func_800A4634(uint8_t* rdram, recomp_context* ctx) {
     // Whether the unit in +0x9A8 may persuade (its menu, then the command): a story MOD's
@@ -927,6 +994,7 @@ void resident_func_800A4634(uint8_t* rdram, recomp_context* ctx) {
 void resident_func_8009EDB8(uint8_t* rdram, recomp_context* ctx) {
     // The opening, set-up and end events: story MODs' follow the original's.
     story::special(rdram, story_view(rdram, ctx));
+    story_builds(rdram, ctx);
     srw64_original_special_event(rdram, ctx);
 }
 void load_000AB160_func_80209D6C(uint8_t* rdram, recomp_context* ctx) {
@@ -1052,7 +1120,27 @@ void resident_func_800AA8F4(uint8_t* rdram, recomp_context* ctx) {
     const int count = int16_t(ctx->r6);
     srw64_original_weapon_inherit(rdram, ctx);
     rules::inherit_missing_weapons(rdram, unit, saved, count);
+    // A package's new unit: its weapons' (new, old) pairs (mod_units.hpp), whatever the ROM's
+    // map lists; the levels only, as the map's rows move them.
+    if (count > 0 && srw64::guest::valid(unit, 0x54))
+        for (const auto& [to, from] : srw64::mod_data::carries(uint16_t(srw64::guest::read(rdram, unit + 2, 2))))
+            if (const int level = rules::saved_weapon_level(rdram, saved, count, uint16_t(from)); level >= 0)
+                rules::write_weapon_level(rdram, unit, uint16_t(to), uint8_t(level));
     srw64::upgrade_page::inherited(rdram, unit, saved, count);   // unified weapon levels (upgrade_page.hpp)
+}
+// 800AA814(new unit): its row in the predecessor table D_800CA3A0, -1 when none; the swap
+// (800AAD28, 800A9A70) reads the old unit from that row. A package's new unit is in no row:
+// the host writes its pair into a row no script reaches (127 -> 128) and answers with that.
+void resident_func_800AA814(uint8_t* rdram, recomp_context* ctx) {
+    const unsigned unit = uint16_t(ctx->r4);
+    if (const auto from = srw64::mod_data::predecessor(unit)) {
+        const uint32_t row = srw64::mod_units::predecessor_table + srw64::mod_units::borrowed_predecessor_row * 4;
+        srw64::guest::write16(rdram, row, uint16_t(unit));
+        srw64::guest::write16(rdram, row + 2, uint16_t(*from));
+        ctx->r2 = srw64::mod_units::borrowed_predecessor_row;
+        return;
+    }
+    srw64_original_predecessor_row(rdram, ctx);
 }
 // Upgrade limits (upgrade_rules.hpp, docs/gameplay/upgrade-limits.md). With the cap-break
 // rule off and no unit above its cap, every scope below leaves memory unchanged.
@@ -1351,7 +1439,13 @@ void resident_func_800AAD28(uint8_t* rdram, recomp_context* ctx) {
     // Freeing the old machine unequips its parts (parts_carry.hpp); with the carry
     // rule on they go back on the successor once it exists.
     const auto carry = parts_carry::capture(rdram, int16_t(ctx->r4), int16_t(ctx->r5));
+    const uint16_t registered_pilot = uint16_t(ctx->r4), registered_unit = uint16_t(ctx->r5);
     srw64_original_unit_register(rdram, ctx);
+    // A package's new unit with a crew (mod_units.hpp "crew"): the original takes a crew from
+    // its table D_800CA418, which has no room; registered with the crew's first pilot, the
+    // others join it as the story MOD's crew step does (story_mod.hpp set_crew).
+    if (const auto crew = srw64::mod_data::crew(registered_unit); crew.size() > 1 && crew.front() == registered_pilot)
+        srw64::story_mod::set_crew(rdram, registered_unit, crew);
     // The new machine has its ROM slot count until the next frame's cheat write.
     cheats::hold_slots(rdram);
     if (const auto carried = parts_carry::apply(rdram, carry)) {

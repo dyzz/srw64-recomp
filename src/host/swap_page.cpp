@@ -1,4 +1,6 @@
 #include "swap_page.hpp"
+#include "table_window.hpp"
+#include "mod_portraits.hpp"
 #include "intermission_mode.hpp"
 #include "unit_pose_art.hpp"
 #include "dialogue_data.hpp"
@@ -109,16 +111,17 @@ uint32_t pilot_unit(uint8_t* ram,recomp_context* ctx,uint32_t pilot) {
 json pilot_json(const uint8_t* ram,unsigned index) {
     const uint32_t pilot=pilot_at(index);
     const unsigned number=read(ram,pilot+pilot_number,2);
-    json p={{"index",index},{"number",number},{"name",text(ram,uint16_t(text_pilot_names+number))},{"full_name",text(ram,uint16_t(text_pilot_full_names+number))},{"level",read(ram,pilot+pilot_level,1)}};
-    if(art.contains("portraits") && art["portraits"].contains(std::to_string(number)))p["art"]=art["portraits"][std::to_string(number)];
+    json p={{"index",index},{"number",number},{"name",text(ram,table_window::pilot_name(number))},{"full_name",text(ram,table_window::pilot_full_name(number))},{"level",read(ram,pilot+pilot_level,1)}};
+    // A new character's own portrait, or the one of the character it copies (mod_portraits.hpp).
+    if(art.contains("portraits"))if(auto a=mod_portraits::art(art["portraits"],number);!a.empty())p["art"]=std::move(a);
     return p;
 }
 json unit_json(const uint8_t* ram,uint32_t unit) {
     const uint16_t number=uint16_t(read(ram,unit+up::unit_number,2));
-    json u={{"number",number},{"name",text(ram,text_unit_names+number)}};
+    json u={{"number",number},{"name",text(ram,table_window::unit_name(number))}};
     if(auto a=unit_pose_art::of(art,number);!a.empty())u["art"]=std::move(a);
     const uint32_t pilot=read(ram,unit+unit_pilot,4);
-    u["pilot"]=read(ram,unit+unit_crew,1) && pilot && valid(pilot,pilot_size)?text(ram,uint16_t(text_pilot_names+read(ram,pilot+pilot_number,2))):std::string();
+    u["pilot"]=read(ram,unit+unit_crew,1) && pilot && valid(pilot,pilot_size)?text(ram,table_window::pilot_name(read(ram,pilot+pilot_number,2))):std::string();
     return u;
 }
 // The second crew member (fairy) of a unit, as the list details print it.
@@ -126,7 +129,7 @@ json sub_pilot(const uint8_t* ram,uint32_t unit) {
     if(!unit || !valid(unit,0x54) || read(ram,unit+unit_crew,1)<2)return {{"name",std::string()}};
     const uint32_t second=read(ram,unit+unit_second,4);
     if(!second || !valid(second,pilot_size) || !(read(ram,second+pilot_flags,1)&0x40))return {{"name",std::string()}};
-    return {{"name",text(ram,uint16_t(text_pilot_names+read(ram,second+pilot_number,2)))},{"level",read(ram,second+pilot_level,1)}};
+    return {{"name",text(ram,table_window::pilot_name(read(ram,second+pilot_number,2)))},{"level",read(ram,second+pilot_level,1)}};
 }
 void labels(const uint8_t* ram) {
     const std::pair<const char*,uint16_t> keys[]={{"title",text_title},{"fairy",text_fairy},{"sub",text_sub},{"level",text_level},{"hp",text_hp},{"limit",text_limit},{"evade",text_evade},{"hit",text_hit},
@@ -184,7 +187,7 @@ json list_json(uint8_t* ram,recomp_context* ctx,bool fairies) {
         const unsigned index=list_entry(ram,fairies,n);
         const uint32_t pilot=pilot_at(index);
         json row=pilot_json(ram,index);
-        if(const uint32_t unit=pilot_unit(ram,ctx,pilot))row["unit"]=text(ram,uint16_t(text_unit_names+read(ram,unit+up::unit_number,2)+(fairies?0:call(ram,ctx,getter_form,pilot))));
+        if(const uint32_t unit=pilot_unit(ram,ctx,pilot))row["unit"]=text(ram,uint16_t(table_window::unit_name(read(ram,unit+up::unit_number,2)+(fairies?0:call(ram,ctx,getter_form,pilot)))));
         else row["unit"]=std::string();
         rows.push_back(row);
     }
@@ -194,7 +197,7 @@ json list_json(uint8_t* ram,recomp_context* ctx,bool fairies) {
     const unsigned index=list_index(ram);
     if(index<count) {
         const uint32_t unit=pilot_unit(ram,ctx,pilot_at(list_entry(ram,fairies,index)));
-        if(fairies && unit){const uint32_t host=read(ram,unit+unit_pilot,4);if(host && valid(host,pilot_size))sub={{"name",text(ram,uint16_t(text_pilot_names+read(ram,host+pilot_number,2)))},{"level",read(ram,host+pilot_level,1)}};}
+        if(fairies && unit){const uint32_t host=read(ram,unit+unit_pilot,4);if(host && valid(host,pilot_size))sub={{"name",text(ram,table_window::pilot_name(read(ram,host+pilot_number,2)))},{"level",read(ram,host+pilot_level,1)}};}
         else if(unit)sub=sub_pilot(ram,unit);
     }
     return {{"screen",fairies?"fairies":"pilots"},{"page",page},{"pages",std::max(1u,(count+list_rows-1)/list_rows)},{"cursor",read(ram,list_row,2)},{"rows",rows},{"sub",sub}};
@@ -257,7 +260,7 @@ json targets_json(uint8_t* ram,recomp_context* ctx,bool fairy) {
         if(fairy) {
             json row=pilot_json(ram,entry);
             const uint32_t unit=pilot_unit(ram,ctx,pilot_at(entry));
-            row["unit"]=unit?text(ram,uint16_t(text_unit_names+read(ram,unit+up::unit_number,2))):std::string();
+            row["unit"]=unit?text(ram,uint16_t(table_window::unit_name(read(ram,unit+up::unit_number,2)))):std::string();
             rows.push_back(row);
         } else {
             const uint32_t unit=up::unit_at(entry);
@@ -271,8 +274,8 @@ json targets_json(uint8_t* ram,recomp_context* ctx,bool fairy) {
     // whose machine the fairy rides (21).
     json sub={{"name",std::string()}};
     if(const uint32_t unit=pilot_unit(ram,ctx,pilot)) {
-        p["unit"]=text(ram,uint16_t(text_unit_names+read(ram,unit+up::unit_number,2)));
-        if(fairy){const uint32_t host=read(ram,unit+unit_pilot,4);if(host && valid(host,pilot_size))sub={{"name",text(ram,uint16_t(text_pilot_names+read(ram,host+pilot_number,2)))},{"level",read(ram,host+pilot_level,1)}};}
+        p["unit"]=text(ram,uint16_t(table_window::unit_name(read(ram,unit+up::unit_number,2))));
+        if(fairy){const uint32_t host=read(ram,unit+unit_pilot,4);if(host && valid(host,pilot_size))sub={{"name",text(ram,table_window::pilot_name(read(ram,host+pilot_number,2)))},{"level",read(ram,host+pilot_level,1)}};}
         else sub=sub_pilot(ram,unit);
     }
     json page_json={{"screen",fairy?"fairy_targets":"targets"},{"pilot",p},{"sub",sub},{"page",page},{"pages",std::max(1u,(count+target_rows-1)/target_rows)},{"cursor",read(ram,target_row,2)},{"rows",rows}};

@@ -6,6 +6,7 @@
 // parts tested without a game (tests/native_music.cpp): which file wins for a song or a
 // battle quote's voice and how a decoded track is played into a buffer.
 #include "mod_library.hpp"
+#include "table_window.hpp"
 #include "recomp.h"
 #include "json/json.hpp"
 #include <algorithm>
@@ -99,13 +100,23 @@ inline constexpr uint32_t pilot_songs=0x7D6A0,unit_songs=0x7DF30;
 inline constexpr unsigned pilot_count=361,unit_count=363;
 struct BattleSongs {std::map<int,int> pilot,unit;};
 
-inline BattleSongs battle_settings(const json& data) {
+// A unit key may name a package's new unit ("@final", "package@final"): `unit_of` gives its
+// number (mod_ids.hpp), when given.
+inline BattleSongs battle_settings(const json& data,const std::function<std::optional<unsigned>(const std::string&)>& unit_of={}) {
     BattleSongs out;
     if(!data.is_object() || data.value("schema","")!="srw64.music.v1" || !data.contains("battle") || !data["battle"].is_object())return out;
     const auto read=[&](const char* key,unsigned count,std::map<int,int>& into) {
         if(!data["battle"].contains(key) || !data["battle"][key].is_object())return;
         for(const auto& [k,v]:data["battle"][key].items()) {
             int index=-1;
+            if(k.find('@')!=std::string::npos) {
+                if(std::string(key)!="unit" || !unit_of)continue;
+                const auto found=unit_of(k);
+                if(!found || !v.is_number_integer())continue;
+                const int song=v.get<int>();
+                if(song>=1 && song<=255)into[int(*found)]=song;
+                continue;
+            }
             try{index=std::stoi(k);}catch(...){continue;}
             if(index<0 || unsigned(index)>=count || !v.is_number_integer())continue;
             const int song=v.get<int>();
@@ -118,12 +129,15 @@ inline BattleSongs battle_settings(const json& data) {
 }
 
 // The active packages' battle tables, bottom first, so the package higher in the list wins.
+// `unit_of` (key, package id): a new unit's number, as mod_ids::unit.
 inline BattleSongs collect_battle(const std::vector<mods::Package>& packages,
-                                  const std::function<json(const fs::path&)>& read_json) {
+                                  const std::function<json(const fs::path&)>& read_json,
+                                  const std::function<std::optional<unsigned>(const std::string&,const std::string&)>& unit_of={}) {
     BattleSongs out;
     for(const auto& p:packages) {
         if(!p.active)continue;
-        const auto extra=battle_settings(read_json(p.folder/"audio"/"music.json"));
+        const auto extra=battle_settings(read_json(p.folder/"audio"/"music.json"),[&](const std::string& key)->std::optional<unsigned>{
+            return unit_of?unit_of(key,p.id()):std::nullopt;});
         for(const auto& [k,v]:extra.pilot)out.pilot[k]=v;
         for(const auto& [k,v]:extra.unit)out.unit[k]=v;
     }
@@ -139,6 +153,14 @@ inline std::optional<int> battle_song(const BattleSongs& songs,uint32_t rom) {
     } else if(rom>=unit_songs && rom<unit_songs+2*unit_count && !((rom-unit_songs)&1)) {
         const auto found=songs.unit.find(int((rom-unit_songs)/2));
         if(found!=songs.unit.end())return found->second;
+    } else if(const uint32_t moved=table_window::base(table_window::unit_songs);rom>=moved && rom<moved+table_window::block && !((rom-moved)&1)) {
+        // The table is read at the window since new unit numbers (table_window.hpp).
+        const auto found=songs.unit.find(int((rom-moved)/2));
+        if(found!=songs.unit.end())return found->second;
+    } else if(const uint32_t moved=table_window::base(table_window::pilot_songs);rom>=moved && rom<moved+table_window::block && !((rom-moved)&1)) {
+        // A new character's entry (its row past the ROM's 361).
+        const auto found=songs.pilot.find(int((rom-moved)/2));
+        if(found!=songs.pilot.end())return found->second;
     }
     return std::nullopt;
 }

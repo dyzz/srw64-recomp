@@ -1,5 +1,6 @@
 #include "music.hpp"
 #include "guest_memory.hpp"
+#include "mod_ids.hpp"
 #include "presentation_settings.hpp"
 #include "game_speed.hpp"
 #include "wide_map.hpp"
@@ -50,7 +51,7 @@ void refresh_locked() {
     if(const unsigned now=mods::revision();now!=table_revision) {
         const auto packages=mods::installed(mods::game_version());
         table=collect(packages,read_json);
-        battle_table=collect_battle(packages,read_json);
+        battle_table=collect_battle(packages,read_json,[](const std::string& key,const std::string& package){return mod_ids::unit(json(key),package);});
         voice_table=collect_voices(packages,read_json,mods::archive_voices);
         table_revision=now;
         forget_decoded();   // an updated package's files keep their names

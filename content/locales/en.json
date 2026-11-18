@@ -712,6 +712,7 @@
     "library_no_stats": "Does not fight.",
     "library_no_weapons": "No weapons.",
     "library_work_other": "Other",
+    "library_work_mod": "MOD",
     "library_double_move": "Two actions",
     "library_spirit_note": "Costs are the same for everyone",
     "library_skill_note": "Marks: the level each step arrives at (1–99)",

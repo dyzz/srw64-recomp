@@ -5,6 +5,7 @@
 #include "rhi/rt64_render_hooks.h"
 #endif
 #include "guest_memory.hpp"
+#include "mod_ids.hpp"
 #include "mod_library.hpp"
 #include "native_gpu.hpp"
 #include "native_quads.hpp"
@@ -110,6 +111,15 @@ std::unique_ptr<gpu::Program> program;          // the portraits' HdPortrait{VS,
 
 // A package's art/icons.json: {"schema": "srw64.icons.v1", "facing": {"<unit>": "left" |
 // "right" | "front"}}, the way each of its pictures looks when not the original icon's.
+// A unit as an icon file or facing key names it: the ROM's number, or "@name" for one of the
+// package's new units (mod_units.hpp).
+std::optional<unsigned> icon_unit(const std::string& key, const std::string& package) {
+    if (key.find('@') != std::string::npos) return srw64::mod_ids::unit(nlohmann::json(key), package);
+    const bool number = !key.empty() && key.size() <= 3 && std::all_of(key.begin(), key.end(), [](char c) { return c >= '0' && c <= '9'; }) &&
+                        !(key.size() > 1 && key[0] == '0');
+    if (!number || std::stoul(key) >= unit_icon_art::kUnits) return std::nullopt;
+    return unsigned(std::stoul(key));
+}
 std::map<unsigned, char> facings(const std::filesystem::path& folder, const std::string& id, std::vector<std::string>& problems) {
     std::map<unsigned, char> out;
     std::error_code error;
@@ -123,14 +133,13 @@ std::map<unsigned, char> facings(const std::filesystem::path& folder, const std:
         return out;
     }
     for (const auto& [key, value] : doc["facing"].items()) {
-        const bool number = !key.empty() && key.size() <= 3 && std::all_of(key.begin(), key.end(), [](char c) { return c >= '0' && c <= '9'; }) &&
-                            !(key.size() > 1 && key[0] == '0');
+        const auto unit = icon_unit(key, id);
         const std::string way = value.is_string() ? value.get<std::string>() : "";
-        if (!number || std::stoul(key) >= unit_icon_art::kUnits || (way != "left" && way != "right" && way != "front")) {
-            problems.push_back(name + "：" + key + " 要是机体号，值是 left、right 或 front");
+        if (!unit || (way != "left" && way != "right" && way != "front")) {
+            problems.push_back(name + "：" + key + " 要是机体号或新机体的 @名字，值是 left、right 或 front");
             continue;
         }
-        out[unsigned(std::stoul(key))] = way == "left" ? 'L' : way == "right" ? 'R' : 'F';
+        out[*unit] = way == "left" ? 'L' : way == "right" ? 'R' : 'F';
     }
     return out;
 }
@@ -156,11 +165,11 @@ void refresh() {
             auto ext = item.path().extension().string();
             std::transform(ext.begin(), ext.end(), ext.begin(), [](unsigned char c) { return char(std::tolower(c)); });
             if (ext != ".png") continue;
-            const bool number = !stem.empty() && stem.size() <= 3 && std::all_of(stem.begin(), stem.end(), [](char c) { return c >= '0' && c <= '9'; }) &&
-                                !(stem.size() > 1 && stem[0] == '0');
-            const unsigned unit = number ? unsigned(std::stoul(stem)) : unit_icon_art::kUnits;
-            // The icon the game draws for it: a package's new unit (data/new_units.json) has its own.
-            const unsigned icon = unit < unit_icon_art::kUnits ? upgrades::game_read(unit_icon_art::kIconTable + unit * 2, 2) : 0;
+            const auto found = icon_unit(stem, p.id());
+            const unsigned unit = found ? *found : unit_icon_art::kUnits;
+            // The icon the game draws for it: a package's new unit (data/new_units.json) has its
+            // own, in the table window (table_window.hpp).
+            const unsigned icon = found ? upgrades::game_read(srw64::table_window::row(srw64::table_window::map_icons, unit), 2) : 0;
             if (icon < unit_icon_facing::kFirstIcon || icon > unit_icon_facing::kLastIcon) { problems.push_back(name + "：文件名要是有地图图标的机体号"); continue; }
             int w = 0, h = 0, n = 0;
             if (!stbi_info(item.path().string().c_str(), &w, &h, &n) || !unit_icon_art::size_ok(w, h)) {

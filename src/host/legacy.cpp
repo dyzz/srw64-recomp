@@ -1,4 +1,5 @@
 #include "legacy.hpp"
+#include "table_window.hpp"
 #include "campaign.hpp"
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
@@ -87,9 +88,9 @@ std::string names(const uint8_t* ram,const json& entry) {
     std::string out;
     const auto add=[&](const std::string& n){if(n.empty())return;if(!out.empty())out+="、";out+=n;};
     for(const auto& c:entry.at("commands"))if(c.at(0)=="3D5A" && c.at(1).get<int>()!=nobody)
-        add(dialogue::ui_text(ram,uint16_t(text_pilot_names+c.at(1).get<int>())));
+        add(dialogue::ui_text(ram,table_window::pilot_name(c.at(1).get<int>())));
     for(const auto& c:entry.at("commands"))if(c.at(0)=="3D5A" && c.at(1).get<int>()==nobody && c.at(3).get<int>()!=nobody)
-        add(dialogue::ui_text(ram,uint16_t(text_unit_names+c.at(3).get<int>())));
+        add(dialogue::ui_text(ram,uint16_t(table_window::unit_name(c.at(3).get<int>()))));
     return out;
 }
 

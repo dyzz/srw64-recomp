@@ -1,4 +1,5 @@
 #include "cheats.hpp"
+#include "table_window.hpp"
 #include "upgrade_rules.hpp"
 #include "run_files.hpp"
 #include "game_hooks.hpp"
@@ -43,7 +44,7 @@ std::vector<Pilot> list(const uint8_t* ram) {
         const uint32_t pilot=pilots_table+i*pilot_size;
         if(!listed_pilot(ram,pilot))continue;
         const unsigned number=read(ram,pilot+2,2);
-        out.push_back({i,number,read(ram,pilot+5,1),dialogue::ui_text(ram,uint16_t(text_pilot_names+number))});
+        out.push_back({i,number,read(ram,pilot+5,1),dialogue::ui_text(ram,table_window::pilot_name(number))});
     }
     return out;
 }
@@ -60,8 +61,9 @@ void release(uint8_t* ram,recomp_context* ctx) {
     for(unsigned i=0;i<unit_count;++i) {
         const uint32_t unit=units+i*unit_size;
         const unsigned number=read(ram,unit+unit_number,2);
-        const size_t slots_at=size_t(machine_records)+size_t(number)*machine_record_size+machine_record_slots;
-        if(!read(ram,unit,1) || number>=machine_count || slots_at>=rom.size())continue;
+        // The record where the game reads it: a package's new unit's in the table window.
+        const size_t slots_at=size_t(table_window::row(table_window::units,number))+machine_record_slots;
+        if(!read(ram,unit,1) || (number>=machine_count && !table_window::new_unit(number)))continue;
         // The count the game read: a number MOD's (mod_data.hpp) over the ROM's.
         const unsigned own=upgrades::game_byte(rom,uint32_t(slots_at));
         const unsigned before=read(ram,unit+unit_fitted,1);

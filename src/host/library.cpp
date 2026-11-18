@@ -1,4 +1,5 @@
 #include "library.hpp"
+#include "table_window.hpp"
 #include "dialogue_data.hpp"
 #include "native_dialogue.hpp"
 #include "upgrade_page.hpp"
@@ -6,6 +7,8 @@
 #include "library_names_table.hpp"
 #include "text_update.hpp"
 #include "mod_data.hpp"
+#include "mod_names.hpp"
+#include "mod_portraits.hpp"
 #include "localization/catalog.hpp"
 #include "librecomp/game.hpp"
 #include <algorithm>
@@ -101,11 +104,22 @@ constexpr Skill skills[]={{0x04,0x433,0},{0x08,0x40F,0},{0x10,0x418,0},{0x20,0x4
 std::span<const uint8_t> rom;
 mod_data::Bytes modded;   // the enabled number MODs' bytes over the ROM (mod_data.hpp)
 std::map<unsigned,unsigned> copied;   // a MOD's new unit -> the unit it copies (mod_units.hpp)
-unsigned u8(uint32_t at) {
-    if(at>=rom.size())return 0;
-    if(const auto found=modded.find(at);found!=modded.end())return found->second;
-    return rom[at];
+std::map<std::string,mod_units::Sprite> sprites;   // the packages' own pictures
+std::map<unsigned,int> works;                      // a new unit's own work (new_units.json "work")
+// The packages' additions: a new character -> the one it copies; who adds each new unit and
+// character, and the packages' names. They are listed together in a group of their own, last
+// (user, 2026-11-18), each with its package and the work it comes from.
+std::map<unsigned,unsigned> pilot_copied;
+std::map<unsigned,std::string> unit_package,pilot_package;
+std::map<std::string,json> package_names;
+constexpr int mod_work=1000;
+std::optional<json> picture(unsigned scene,unsigned atlas,unsigned palette) {
+    for(const auto& [_,s]:sprites)if(s.scene==scene && s.atlas==atlas && s.palette==palette)return mod_units::art(s);
+    return std::nullopt;
 }
+// A ROM byte as the game reads it; the table window (table_window.hpp) holds new units' and
+// weapons' rows.
+unsigned u8(uint32_t at){return mod_units::read_byte(modded,rom,at);}
 int s8(uint32_t at){return int8_t(u8(at));}
 unsigned u16(uint32_t at){return u8(at)<<8|u8(at+1);}
 int s16(uint32_t at){return int16_t(u16(at));}
@@ -129,8 +143,8 @@ void add_art(json& entry,const char* group,unsigned key) {
 }
 
 json weapon(unsigned number,unsigned cap) {
-    const uint32_t at=weapons_at+number*weapon_size;
-    json w={{"number",number},{"flags",u8(at)},{"name",text(uint16_t(text_weapon_menu+number))},{"power",u8(at+1)*100},{"range_min",u8(at+2)},{"range_max",u8(at+3)},
+    const uint32_t at=table_window::row(table_window::weapons,number);
+    json w={{"number",number},{"flags",u8(at)},{"name",text(table_window::name_record(table_window::NameKind::weapon_menu,number))},{"power",u8(at+1)*100},{"range_min",u8(at+2)},{"range_max",u8(at+3)},
         {"hit",s8(at+4)},{"en",u8(at+6)},{"morale",u8(at+7)},{"terrain",terrain(at+9)},{"critical",s8(at+0xD)}};
     if(s8(at+5)>=0)w["ammo"]=s8(at+5);
     if(u8(at+8)>=2)w["skill_name"]=text(uint16_t(0xFBA+u8(at+8)));   // the requirement's label (801E6B4C)
@@ -140,24 +154,26 @@ json weapon(unsigned number,unsigned cap) {
         w["type"]=type;w["full"]=power;
     }
     if(u8(at+0xF)&0x02)w["combo"]=true;
-    upgrade_page::weapon_markers(w,text(uint16_t(text_weapon_pure+number)));
+    upgrade_page::weapon_markers(w,text(table_window::name_record(table_window::NameKind::weapon,number)));
     return w;
 }
 // The entries of the unit's list that name it among their forms; the list is shared
 // by every form of a machine.
 std::vector<unsigned> weapon_numbers(unsigned unit) {
     std::vector<unsigned> numbers;
-    for(uint32_t at=weapon_lists+u32(weapon_lists+unit*4);at+weapon_entry<=rom.size();at+=weapon_entry) {
+    // Read where the game reads it since new unit numbers: the window (table_window.hpp).
+    const uint32_t lists=table_window::base(table_window::weapon_lists);
+    for(uint32_t at=lists+u32(lists+unit*4),k=0;k<64;at+=weapon_entry,++k) {
         const unsigned number=u16(at);
         if(number==0xFFFF)break;
         bool own=false;
         for(unsigned n=1;n<6;++n)own|=u16(at+n*2)==unit;
-        if(own && number<weapon_count)numbers.push_back(number);
+        if(own && (number<weapon_count || table_window::new_weapon(number)))numbers.push_back(number);
     }
     return numbers;
 }
 json unit(unsigned id,const std::vector<unsigned>& numbers) {
-    const uint32_t at=units_at+id*unit_size;
+    const uint32_t at=table_window::row(table_window::units,id);
     const unsigned size_bits=u8(at+4),move_bits=u8(at+5),equipment=u8(at+0x18);
     const unsigned size=size_bits&1?0:size_bits&2?1:size_bits&4?2:size_bits&8?3:4;
     json types=json::array();
@@ -188,7 +204,7 @@ json unit(unsigned id,const std::vector<unsigned>& numbers) {
         // rows go by pilot, every pilot of the rows; a form no row names shows the forms that lead it.
         if(w.value("combo",false))if(const auto a=combo_attacks::find(rom,uint16_t(number))) {
             json names=json::array();std::vector<int> seen;
-            const auto add=[&](int who,bool pilot){if(who<0 || std::find(seen.begin(),seen.end(),who)!=seen.end())return;seen.push_back(who);names.push_back(text(uint16_t((pilot?text_pilot_names:text_unit_names)+who)));};
+            const auto add=[&](int who,bool pilot){if(who<0 || std::find(seen.begin(),seen.end(),who)!=seen.end())return;seen.push_back(who);names.push_back(text(pilot?table_window::pilot_name(unsigned(who)):table_window::unit_name(unsigned(who))));};
             const bool by_pilot=!a->rows.empty() && a->rows.front().by_pilot;
             const auto row=std::find_if(a->rows.begin(),a->rows.end(),[&](const combo_attacks::Row& r){return (by_pilot?r.unit:r.id)==int(id);});
             if(row==a->rows.end()){for(const auto& r:a->rows)add(by_pilot?r.unit:r.id,false);w["combo_forms"]=names;}
@@ -197,7 +213,7 @@ json unit(unsigned id,const std::vector<unsigned>& numbers) {
         }
         weapons.push_back(std::move(w));
     }
-    json u={{"id",id},{"name",text(uint16_t(text_unit_names+id))},{"hp",u16(at)},{"en",u16(at+2)},{"move",u8(at+6)},{"mobility",u16(at+8)},{"armor",u16(at+0xA)},
+    json u={{"id",id},{"name",text(table_window::name_record(table_window::NameKind::unit,id))},{"hp",u16(at)},{"en",u16(at+2)},{"move",u8(at+6)},{"mobility",u16(at+8)},{"armor",u16(at+0xA)},
         {"limit",u16(at+0xC)},{"repair",u16(at+0x14)},{"size",text(uint16_t(text_sizes+size))},{"types",types},{"terrain",terrain(at+0xE)},
         {"abilities",abilities},{"weapons",weapons}};
     if(equipment&2)u["shield"]=text(text_shield_yes);
@@ -210,19 +226,24 @@ json unit(unsigned id,const std::vector<unsigned>& numbers) {
     // the number's old unit's: unit_pose_art.hpp); a MOD unit names the unit it copies, whose
     // crew the battle viewer offers.
     const auto& art=battle_assets();
-    const auto pose=[&](unsigned k){return std::to_string(u16(poses_at+id*6+k*2));};
-    if(const auto key=pose(0)+"-"+pose(1)+"-"+pose(2);art.contains("poses") && art.at("poses").contains(key))u["art"]=art.at("poses").at(key);
+    const auto pose=[&](unsigned k){return std::to_string(u16(table_window::row(table_window::poses,id)+k*2));};
+    const auto word=[&](unsigned k){return u16(table_window::row(table_window::poses,id)+k*2);};
+    if(auto found=picture(word(0),word(1),word(2)))u["art"]=std::move(*found);
+    else if(const auto key=pose(0)+"-"+pose(1)+"-"+pose(2);art.contains("poses") && art.at("poses").contains(key))u["art"]=art.at("poses").at(key);
     else add_art(u,"units",id);
     if(const auto found=copied.find(id);found!=copied.end())u["copy_of"]=found->second;
     return u;
 }
 json pilot(unsigned actor,int stats,int spirits) {
     const bool person=actor>=first_person && actor<first_person+people;
-    json p={{"actor",actor},{"name",text(uint16_t(person?text_people+actor-first_person:text_pilot_names+actor))},
-        {"full_name",text(uint16_t(person?text_people_full+actor-first_person:text_pilot_full+actor))}};
-    add_art(p,"portraits",actor);
+    json p={{"actor",actor},{"name",text(person?uint16_t(text_people+actor-first_person):table_window::pilot_name(actor))},
+        {"full_name",text(person?uint16_t(text_people_full+actor-first_person):table_window::pilot_full_name(actor))}};
+    if(table_window::new_pilot(actor)) {
+        if(auto a=mod_portraits::art(battle_assets().value("portraits",json::object()),actor);!a.empty())p["art"]=std::move(a);
+    } else add_art(p,"portraits",actor);
+    // A new character's records are its own rows in the table window (table_window.hpp).
     if(stats>=0) {
-        const uint32_t at=pilot_stats_at+uint32_t(stats)*pilot_stats_size;
+        const uint32_t at=table_window::row(table_window::pilot_records,unsigned(stats));
         p["stats"]={{"melee",u8(at+1)},{"ranged",u8(at+2)},{"evade",u8(at+3)},{"hit",u8(at+4)},{"reaction",u8(at+5)},{"skill",u8(at+6)},{"sp",u8(at+0xC)}};
         p["terrain"]=terrain(at+7);
         // +0 (pilot +4): 0x80 a sub-pilot, whose stats the ability page prints as ---;
@@ -241,7 +262,7 @@ json pilot(unsigned actor,int stats,int spirits) {
             if(!(bits&skill.bit) || (skill.group==0 && first_group))continue;
             if(skill.group==0)first_group=true;
             std::vector<unsigned> levels;
-            for(unsigned n=0;n<9;++n)if(const unsigned level=u8(thresholds_at+uint32_t(stats)*thresholds_size+skill.group*10+n))levels.push_back(level);
+            for(unsigned n=0;n<9;++n)if(const unsigned level=u8(table_window::row(table_window::thresholds,unsigned(stats))+skill.group*10+n))levels.push_back(level);
             std::sort(levels.begin(),levels.end());
             json steps=json::array();
             // Levels reached at the same pilot level show only the highest of them.
@@ -254,7 +275,7 @@ json pilot(unsigned actor,int stats,int spirits) {
     if(spirits>=0) {
         json list=json::array();
         for(unsigned n=0;n<6;++n) {
-            const uint32_t at=spirits_at+uint32_t(spirits)*spirits_size+n*2;
+            const uint32_t at=table_window::row(table_window::spirit_records,unsigned(spirits))+n*2;
             if(const unsigned level=u8(at);level && level<100 && u8(at+1)<30)list.push_back({{"name",text(uint16_t(text_spirits+u8(at+1)))},{"level",level},{"cost",u8(spirit_costs+u8(at+1))}});
         }
         p["spirits"]=list;
@@ -286,10 +307,16 @@ void assign_works(json& list,const char* id_key,uint32_t table,unsigned rows,boo
         else if(const auto main=alias.find(id);main!=alias.end() && listed.contains(main->second))work=listed.at(main->second);
         else if(const auto same=by_name.find(e.at("name").get<std::string>());same!=by_name.end())work=same->second;
         for(const auto& [fixed_id,fixed_work]:fixed)if(fixed_id==id)work.work=fixed_work;
+        // A new unit's own work and model line (names.json "models") over the copied one's.
+        if(const auto own=works.find(id);own!=works.end() && models)work.work=own->second;
+        std::optional<std::string> own_model;
+        if(models && id>=table_window::first_new_unit && id<=table_window::last_new_unit)
+            own_model=mod_names::record(localization::catalog().locale,table_window::model_record(id));
         if(work.work<0 || work.work>=int(work_count))work.work=-1;
         e["work"]=work.work;e["place"]=work.place;
         if(work.work>=0)e["work_name"]=text(uint16_t(text_works+work.work));
-        if(work.model>=0)e["model"]=text(uint16_t(text_models+work.model));
+        if(own_model)e["model"]=*own_model;
+        else if(work.model>=0)e["model"]=text(uint16_t(text_models+work.model));
         if(work.flag>=0)e["enemy"]=work.flag==1;
     }
     // Works in the order the original list first shows them, その他 last; within a work the
@@ -306,6 +333,32 @@ void assign_works(json& list,const char* id_key,uint32_t table,unsigned rows,boo
     std::stable_sort(keyed.begin(),keyed.end(),[](const auto& a,const auto& b){return a.first<b.first;});
     list=json::array();
     for(auto& [key,e]:keyed)list.push_back(std::move(e));
+}
+// The packages' entries in one group, last: the work they would go with stays as their
+// detail line's, beside the package's name.
+void mod_group(json& list,const char* id_key,const std::map<unsigned,std::string>& owners) {
+    const auto& locale=localization::catalog().locale;
+    const auto name_of=[&](const std::string& package)->std::string{
+        const auto found=package_names.find(package);
+        if(found==package_names.end())return package;
+        const json& n=found->second;
+        if(n.is_string())return n.get<std::string>();
+        if(!n.is_object() || n.empty())return package;
+        for(const auto& l:{locale,std::string(locale.rfind("zh",0)==0?"zh-Hans":"en"),std::string("en"),std::string("ja")})
+            if(n.contains(l) && n[l].is_string())return n[l].get<std::string>();
+        return n.begin()->is_string()?n.begin()->get<std::string>():package;
+    };
+    json kept=json::array(),added=json::array();
+    for(auto& e:list) {
+        const auto owner=owners.find(e.at(id_key).get<unsigned>());
+        if(owner==owners.end()){kept.push_back(std::move(e));continue;}
+        if(e.contains("work_name"))e["work_title"]=e["work_name"];
+        e["work"]=mod_work;e["work_name"]=localization::catalog().ui("library_work_mod");
+        e["package"]=name_of(owner->second);
+        added.push_back(std::move(e));
+    }
+    for(auto& e:added)kept.push_back(std::move(e));
+    list=std::move(kept);
 }
 // Later records equal to an earlier one of the same name (a unit's stats and weapons, a
 // pilot's records) are dropped; a name still shared within a work is numbered from its
@@ -336,14 +389,21 @@ void rename_records(json& list,bool pilots) {
 json build() {
     rom=recomp::get_rom();
     auto collected=mod_data::collect(mods::installed(mods::game_version()),rom);
-    modded=std::move(collected.bytes);copied=std::move(collected.copies);
+    modded=std::move(collected.bytes);copied=std::move(collected.copies);sprites=std::move(collected.sprites);works=std::move(collected.works);
+    pilot_copied=std::move(collected.pilot_copies);unit_package=std::move(collected.units);pilot_package=std::move(collected.pilots);
+    package_names=std::move(collected.names);
     json units=json::array(),pilots=json::array();
     std::map<std::string,bool> kept;
-    for(unsigned id=0;id<unit_count;++id) {
+    // The ROM's units, then the packages' new ones (their numbers past the ROM's).
+    std::vector<unsigned> ids;
+    for(unsigned id=0;id<unit_count;++id)ids.push_back(id);
+    for(const auto& [id,_]:copied)ids.push_back(id);
+    for(const unsigned id:ids) {
         const auto numbers=weapon_numbers(id);
-        const auto name=text(uint16_t(text_unit_names+id));
+        const auto name=text(table_window::name_record(table_window::NameKind::unit,id));
         if(placeholder(name))continue;
-        std::string key=name+'\0'+bytes(units_at+id*unit_size,unit_size);
+        std::string key=name+'\0';
+        for(uint32_t at=table_window::row(table_window::units,id),k=0;k<unit_size;++k)key+=char(u8(at+k));
         for(const unsigned n:numbers)key+=std::to_string(n)+",";
         if(kept.emplace(key,true).second)units.push_back(unit(id,numbers));
     }
@@ -365,20 +425,29 @@ json build() {
             pilots[found->second]["twins"].push_back(std::move(twin));
         }
     }
+    // The packages' new characters: their own rows (the number is the record), after the ROM's.
+    for(const auto& [actor,source]:pilot_copied) {
+        auto p=pilot(actor,int(actor),int(actor));
+        p["copy_of"]=source;
+        pilots.push_back(std::move(p));
+    }
     // 恋爱補正 partners (801F4C64 compares both partner fields). A holder or partner may be a
     // duplicate record standing for its main one (the alias table). Mutual when the partner
     // holds a row naming this character too; one-way otherwise (only this one gains).
     std::map<unsigned,unsigned> alias;
     for(unsigned n=0;n<actor_alias_count;++n)alias[u16(actor_aliases+n*4)]=u16(actor_aliases+n*4+2);
     const auto main_of=[&](unsigned actor){return alias.contains(actor)?alias.at(actor):actor;};
-    const auto short_name=[](unsigned actor){return text(uint16_t(actor>=first_person && actor<first_person+people?text_people+actor-first_person:text_pilot_names+actor));};
+    const auto short_name=[](unsigned actor){return text(actor>=first_person && actor<first_person+people?uint16_t(text_people+actor-first_person):table_window::pilot_name(actor));};
+    // The ROM's rows, then the packages' (mod_units.hpp love).
+    std::vector<std::array<int,3>> love;
+    for(unsigned row=0;row<love_rows;++row)love.push_back({s16(love_table+row*8+2),s16(love_table+row*8+4),s16(love_table+row*8+6)});
+    for(const auto& [holder,partner]:mod_data::loves())love.push_back({int(holder),int(partner),-1});
     const auto partners_of=[&](unsigned actor) {
         std::vector<unsigned> out;
-        for(unsigned row=0;row<love_rows;++row) {
-            const int holder=s16(love_table+row*8+2);
-            if(holder<0 || main_of(unsigned(holder))!=main_of(actor))continue;
-            for(const uint32_t field:{4u,6u})
-                if(const int partner=s16(love_table+row*8+field);partner>=0 && std::find(out.begin(),out.end(),unsigned(partner))==out.end())out.push_back(unsigned(partner));
+        for(const auto& r:love) {
+            if(r[0]<0 || main_of(unsigned(r[0]))!=main_of(actor))continue;
+            for(const int partner:{r[1],r[2]})
+                if(partner>=0 && std::find(out.begin(),out.end(),unsigned(partner))==out.end())out.push_back(unsigned(partner));
         }
         return out;
     };
@@ -397,6 +466,7 @@ json build() {
     // Grouped first, so a repeated name is numbered in the order the page shows it.
     assign_works(units,"id",robot_list,robot_rows,true,unit_aliases,unit_alias_count,unit_works);
     assign_works(pilots,"actor",character_list,character_rows,false,actor_aliases,actor_alias_count,actor_works);
+    mod_group(units,"id",unit_package);mod_group(pilots,"actor",pilot_package);
     number_repeats(units);number_repeats(pilots);
     rename_records(units,false);rename_records(pilots,true);
     json labels;

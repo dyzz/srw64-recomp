@@ -712,6 +712,7 @@
     "library_no_stats": "戦闘には参加しない人物。",
     "library_no_weapons": "武器なし。",
     "library_work_other": "その他",
+    "library_work_mod": "MOD",
     "library_double_move": "2回行動",
     "library_spirit_note": "消費は全員共通",
     "library_skill_note": "目盛りはその段階に達するレベル（1〜99）",

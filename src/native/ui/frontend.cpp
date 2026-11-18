@@ -2468,6 +2468,11 @@ std::string library_tiles(const json& L,const std::string& letters) {
 // The work, and a unit's model number, above the name.
 std::string library_work(const json& entry) {
     std::string line=entry.contains("work_name")?entry.at("work_name").get<std::string>():localization::catalog().ui("library_work_other");
+    // A package's addition (the MOD group): the package, and the work it goes with.
+    if(entry.contains("package")) {
+        line=entry.at("package").get<std::string>();
+        if(entry.contains("work_title"))line+="  ·  "+entry.at("work_title").get<std::string>();
+    }
     if(entry.contains("model"))line+="  ·  "+entry.at("model").get<std::string>();
     return escape(line);
 }
@@ -2946,11 +2951,20 @@ const ViewerCrew* viewer_crew(unsigned unit) {
     for(const auto& c:viewer_crews)if(c.unit==unit)return &c;
     return nullptr;
 }
+// A package's new character flies what the character it copies flies (its Library entry's copy_of).
+const json& viewer_pilots();
+unsigned viewer_as(unsigned actor) {
+    if(actor<400)return actor;
+    for(const auto& p:viewer_pilots())if(p.value("actor",~0u)==actor)return p.value("copy_of",actor);
+    return actor;
+}
 bool viewer_flies(unsigned actor,unsigned unit) {
     const auto* crew=viewer_crew(unit);
+    actor=viewer_as(actor);
     return crew && std::find(crew->actors.begin(),crew->actors.end(),actor)!=crew->actors.end();
 }
 bool viewer_flies_any(unsigned actor) {
+    actor=viewer_as(actor);
     for(const auto& c:viewer_crews)if(std::find(c.actors.begin(),c.actors.end(),actor)!=c.actors.end())return true;
     return false;
 }

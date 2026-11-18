@@ -39,7 +39,7 @@ UI_KEYS |= {"dlc_leave", "dlc_start", "dlc_note", "dlc_empty", "dlc_enter", "dlc
             "mod_row", "mod_row_note"}
 # The title's Library (src/native/ui/frontend.cpp, src/host/library.cpp).
 UI_KEYS |= {"library_open", "library_title", "library_tab_units", "library_tab_pilots", "library_hint", "library_hint_pad",
-            "library_growth_note", "library_no_stats", "library_no_weapons", "library_work_other", "library_double_move", "library_spirit_note",
+            "library_growth_note", "library_no_stats", "library_no_weapons", "library_work_other", "library_work_mod", "library_double_move", "library_spirit_note",
             "library_cap", "library_cap_value", "library_slots", "library_full", "library_type", "library_critical", "library_morale", "library_unlock", "library_combo", "library_full_note", "library_type_line", "library_ally", "library_enemy", "library_sub_pilot", "library_fairy", "library_love", "library_love_mutual", "library_love_one_way", "library_spirit_cost", "library_skill_note", "library_row", "library_row_note", "viewer_row", "viewer_row_note"}
 # The stage info page (src/native/ui/frontend.cpp, docs/design/stage-info.md).
 UI_KEYS |= {"quit_open", "quit_title", "quit_text", "quit_yes", "title_return_open", "title_return_title", "title_return_text", "title_return_note", "title_return_yes", "title_return_no", "title_return_unavailable", "title_return_failed", "menu_title_return"}

@@ -1,5 +1,6 @@
 #define HLSL_CPU
 #include "native_portrait.hpp"
+#include "mod_data.hpp"
 #include "app/runtime.hpp"
 #include "battle_hud.hpp"
 #include "presentation/image_mode.hpp"
@@ -82,6 +83,7 @@ std::map<unsigned, PilotImage> pilot_images;
 std::map<std::string, std::filesystem::path> mod_pages;          // original page picture -> MOD file
 std::mutex mod_mutex;
 std::optional<unsigned> mod_revision;
+std::string mod_signature;   // the new characters' own portraits last taken (mod_data.hpp)
 mods::Version mod_game{-1, -1, -1};
 bool hooks_installed = false;
 std::mutex asset_mutex;                      // decoded levels and textures cross threads
@@ -308,9 +310,14 @@ namespace {
 void refresh_mods() {
     const unsigned now = mods::revision();
     const auto game = mods::game_version();
+    // New characters' own portraits (data/new_units.json pilots.<name>.portrait) come with
+    // the number MODs, which may take them in after this revision is first seen.
+    const auto own = mod_data::portraits();
+    std::string signature;
+    for (const auto& [pilot, p] : own) signature += std::to_string(pilot) + '\0' + p.hd.string() + '\0' + std::to_string(p.pixel_digest) + '\0';
     std::lock_guard lock(mod_mutex);
-    if (mod_revision == now && game == mod_game) return;
-    mod_revision = now; mod_game = game;
+    if (mod_revision == now && game == mod_game && signature == mod_signature) return;
+    mod_revision = now; mod_game = game; mod_signature = signature;
     std::map<unsigned, std::filesystem::path> files;
     std::vector<std::string> problems;
     std::error_code error;
@@ -362,6 +369,33 @@ void refresh_mods() {
             }
             table[{identity->pixels, identity->palette_digest}] = {index, false};
             table[{identity->pixels, kSilhouettePalette}] = {index, true};
+        }
+    }
+    {
+        std::lock_guard assets_lock(asset_mutex);
+        for (const auto& [pilot, p] : own) {
+            if (p.hd.empty()) continue;
+            int w = 0, h = 0, n = 0;
+            if (!stbi_info(p.hd.string().c_str(), &w, &h, &n) || w != h || w < 96 || w > 2048 || w % 96) {
+                problems.push_back("pilot " + std::to_string(pilot) + " " + p.hd.filename().string() + "：要是 96–2048 像素、96 的倍数的正方形 PNG");
+                continue;
+            }
+            std::error_code stamp_error;
+            const auto stamp = std::filesystem::last_write_time(p.hd, stamp_error);
+            int index = -1;
+            for (size_t i = 0; i < assets.size(); ++i)
+                if (assets[i].file == p.hd && assets[i].size == w && assets[i].stamp == stamp) index = int(i);
+            if (index < 0) {
+                if (assets.size() >= kCapacity) { problems.push_back("too many MOD portraits"); break; }
+                Asset asset;
+                asset.stamp = stamp;
+                asset.size = w;
+                asset.file = p.hd;
+                index = int(assets.size());
+                assets.push_back(std::move(asset));
+            }
+            table[{p.pixel_digest, p.palette_digest}] = {index, false};
+            pages[p.pixels.string()] = p.hd;
         }
     }
     mod_by_content = std::move(table);

@@ -1,7 +1,7 @@
 {
   "schema": "srw64.mod.v1",
   "id": "srw64.final-dancouga",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "name": {
     "ja": "ファイナルダンクーガ",
     "zh-Hans": "终极断空我",
@@ -20,8 +20,5 @@
     "SRW64"
   ],
   "license": "CC0-1.0",
-  "game": ">=0.5.3",
-  "requires": {
-    "srw64.hd": ">=1.3"
-  }
+  "game": ">=0.5.4"
 }

@@ -15,7 +15,9 @@
 // redraws the whole page (801E79B8), so this runs each time. The host's own lines are
 // ui_text labels (set_extra), dropped when a page resets (801E61BC), when the pages'
 // dispatcher draws another page (801E7430), and whenever the game leaves the tactical modes.
+#include "mod_pilots.hpp"
 #include "combo_attacks.hpp"
+#include "table_window.hpp"
 #include "enemy_pilot_page.hpp"
 #include "guest_memory.hpp"
 #include "recomp.h"
@@ -73,7 +75,8 @@ inline std::string joined(const std::vector<std::string>& names) {
 }
 inline int lead_pilot_number(const uint8_t* ram,uint32_t unit) {
     const uint32_t pilot=read(ram,unit+0x38,4);
-    return guest::valid(pilot,0x4C)?int(read(ram,pilot+2,2)):-1;
+    // A new character counts as the original it names (mod_pilots.hpp combo_number).
+    return guest::valid(pilot,0x4C)?int(mod_pilots::combo_number(read(ram,pilot+2,2))):-1;
 }
 inline uint32_t roster_unit(const uint8_t* ram,unsigned side,int handle) {
     const int slot=handle-handle_bases[side];
@@ -96,7 +99,7 @@ inline Status evaluate(uint8_t* ram,recomp_context* ctx,const Page& page,uint32_
         std::vector<int> seen;
         for(const auto& r:attack->rows) {
             const int form=r.by_pilot?r.unit:r.id;
-            if(form>=0 && std::find(seen.begin(),seen.end(),form)==seen.end()){seen.push_back(form);names.push_back(dialogue::ui_text(ram,uint16_t(text_unit_names+form)));}
+            if(form>=0 && std::find(seen.begin(),seen.end(),form)==seen.end()){seen.push_back(form);names.push_back(dialogue::ui_text(ram,uint16_t(table_window::unit_name(form))));}
         }
         s.ok=false;
     } else for(const int16_t id:row->partners) {
@@ -105,7 +108,7 @@ inline Status evaluate(uint8_t* ram,recomp_context* ctx,const Page& page,uint32_
         const int handle=int16_t(result);
         uint32_t unit=handle>=0?roster_unit(ram,page.side,handle):0;
         if(unit && row->by_pilot && int(read(ram,unit+2,2))!=row->unit)unit=0;
-        names.push_back(dialogue::ui_text(ram,uint16_t((row->by_pilot?text_pilot_names:text_unit_names)+id)));
+        names.push_back(dialogue::ui_text(ram,row->by_pilot?table_window::pilot_name(id):table_window::unit_name(id)));
         if(unit){members.push_back({unit,handle});leads.push_back(lead_pilot_number(ram,unit));}
         else s.ok=false;   // not on the field
     }
@@ -208,7 +211,7 @@ inline void finish(uint8_t* ram,recomp_context* ctx,const Page& page) {
         if(found==page.status.end() || found->second.ok)continue;
         const uint32_t at=row_handles+k*4;const unsigned y=row_y+k*row_pitch;
         if(const int8_t handle=enemy_pilot_page::renew(ram,ctx,at);handle>=0)
-            enemy_pilot_page::call(ram,ctx,resident_func_8008D0E8,uint32_t(int32_t(handle)),text_weapon_menu+read(ram,w+2,2),0x1C,y,palette_grey);
+            enemy_pilot_page::call(ram,ctx,resident_func_8008D0E8,uint32_t(int32_t(handle)),table_window::weapon_menu(read(ram,w+2,2)),0x1C,y,palette_grey);
         sprintf1(ram,ctx,format_number,read(ram,w+6,2));draw(ram,ctx,at+1,0xB4,y);
         const unsigned lo=read(ram,w+8,1),hi=read(ram,w+9,1);
         if(lo==hi)sprintf1(ram,ctx,format_number,hi);else sprintf1(ram,ctx,format_range,lo,hi);

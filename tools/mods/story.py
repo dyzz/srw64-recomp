@@ -25,6 +25,8 @@ from recomp.script_lab.script_debug import SCHEMA as SCRIPT_SCHEMA, assemble, la
 SCHEMA = "srw64.story.v1"
 IMAGE_SCHEMA = "srw64.story-image.v1"
 TEXT = 0xFFFE                  # a line's place in the words until the host numbers it
+NUMBER = 0xFFFD                # a new unit's or weapon's place, numbered by the host (mod_ids.hpp)
+NAME = re.compile(r"([a-z0-9][a-z0-9._-]*)?@[a-z0-9._-]{1,40}")
 SIDES = {"player": 1, "enemy": 2, "third": 3, "any": 4}
 LONGEST = 200                  # code points a line may have
 LOCALES = {"ja", "zh-Hans", "zh-Hant", "en", "ko"}
@@ -50,12 +52,61 @@ def _side(value, name: str, default: str = "any") -> int:
 FLAG = re.compile(r"[a-z0-9_-]{1,32}")
 
 
+def _named(value) -> bool:
+    """A package's new unit or weapon by name: "@final" (its own) or "package@final"."""
+    return isinstance(value, str) and NAME.fullmatch(value) is not None
+
+
+def _unit(value, name: str):
+    """A unit: the ROM's number, or a new one by name (numbered by the host)."""
+    return value if _named(value) else _int(value, name, 0, 362)
+
+
+def _pilot(value, name: str, top: int = 360):
+    """A character: the ROM's number, or a new one by name (numbered by the host)."""
+    return value if _named(value) else _int(value, name, 0, top)
+
+
+def _weapon(value, name: str):
+    return value if _named(value) else _int(value, name, 0, 1328)
+
+
 def roster(value, name: str) -> dict:
     """{"pilots": [...], "units": [...]}: who must be on (or off) our roster."""
     if not isinstance(value, dict) or not value or set(value) - {"pilots", "units"}:
-        raise StoryError(f"{name} 写 {{\"pilots\": [人物号], \"units\": [机体号]}}")
-    return {kind: [_int(n, f"{name}.{kind}", 0, 360 if kind == "pilots" else 362) for n in value[kind]]
+        raise StoryError(f"{name} 写 {{\"pilots\": [人物号], \"units\": [机体号或 @新机体]}}")
+    return {kind: [_int(n, f"{name}.{kind}", 0, 360) if kind == "pilots" else _unit(n, f"{name}.{kind}") for n in value[kind]]
             for kind in ("pilots", "units") if kind in value}
+
+
+def _by_locale(value, name: str) -> dict:
+    """A text by locale for the stage information page, Japanese required."""
+    if not isinstance(value, dict) or "ja" not in value:
+        raise StoryError(f"{name} 写成 {{\"ja\": …, \"zh-Hans\": …, \"en\": …}}，至少有 ja")
+    for locale, words in value.items():
+        if locale not in LOCALES:
+            raise StoryError(f"{name}：不认识的语言 {locale}")
+        if not isinstance(words, str) or not words.strip() or len(words) > LONGEST:
+            raise StoryError(f"{name}.{locale}：为空或超过 {LONGEST} 字")
+    return dict(value)
+
+
+def stage_info(rows) -> list[dict]:
+    """Hidden elements the package adds to scenes' stage information pages (src/host/
+    stage_info.cpp): scene, title, text, and optionally `done`, a roster that marks it done."""
+    if not isinstance(rows, list):
+        raise StoryError("stage_info 要是数组")
+    out = []
+    for n, row in enumerate(rows):
+        where = f"stage_info[{n}]"
+        if not isinstance(row, dict) or set(row) - {"scene", "title", "text", "done"}:
+            raise StoryError(f"{where} 只能写 scene、title、text、done")
+        entry = {"scene": _int(row.get("scene"), f"{where}.scene", 0, 255),
+                 "title": _by_locale(row.get("title"), f"{where}.title"), "text": _by_locale(row.get("text"), f"{where}.text")}
+        if "done" in row:
+            entry["done"] = roster(row["done"], f"{where}.done")
+        out.append(entry)
+    return out
 
 
 def flags(value, name: str) -> list[str]:
@@ -112,12 +163,25 @@ class Builder:
         self.refs: list[int] = []         # command indexes whose argument is a line
         self.like: list[tuple[int, int]] = []   # (command index, pilot): a join's level, set by the host
         self.crew: list[dict] = []              # a unit's crew, set by the host once the event has run
+        self.builds: list = []                  # combined units the host builds when the event starts
+        self.named: list[tuple[int, int, str, str]] = []   # (command, operand, name, "unit"|"weapon"|"pilot")
 
-    def op(self, opcode: int, *args: int) -> None:
-        self.commands.append({"op": opcode, "args": list(args)})
+    def op(self, opcode: int, *args) -> None:
+        """An instruction; an operand that names a new unit or weapon is numbered by the host."""
+        values = []
+        for k, a in enumerate(args):
+            if isinstance(a, tuple):
+                kind, value = a
+                if _named(value):
+                    self.named.append((len(self.commands), k, value, kind))
+                    a = NUMBER
+                else:
+                    a = value
+            values.append(a)
+        self.commands.append({"op": opcode, "args": values})
 
     def line(self, speaker, text) -> int:
-        speaker = _int(speaker, "say", 0, 360)
+        speaker = _pilot(speaker, "say")   # a new character by name: numbered by the host
         if not isinstance(text, dict) or not text:
             raise StoryError("text 写成 {\"ja\": …, \"zh-Hans\": …, \"en\": …}")
         if "ja" not in text:
@@ -189,28 +253,32 @@ class Builder:
                 offset = _int(level["offset"], "level.offset", -98, 98)
             else:
                 self.like.append((len(self.commands), _int(level["like"], "level.like", 0, 360)))
-            self.op(0x3D5A, _int(value.get("pilot"), "pilot", 0, 360), offset & 0xFFFF, _int(value.get("unit"), "unit", 0, 362), 500)
+            self.op(0x3D5A, ("pilot", _pilot(value.get("pilot"), "pilot")), offset & 0xFFFF, ("unit", _unit(value.get("unit"), "unit")), 500)
         elif kind == "remove":
-            self.op(0x3D5A, _int(value.get("pilot"), "pilot", 0, 360), 0, _int(value.get("unit"), "unit", 0, 362), 4000)
+            self.op(0x3D5A, ("pilot", _pilot(value.get("pilot"), "pilot")), 0, ("unit", _unit(value.get("unit"), "unit")), 4000)
         elif kind == "replace":
             # The original's machine change (3D5A pilot,0,new,old, as 224 replacing 223): the old
             # unit goes, upgrades follow D_800CA3A0 / D_800CB5E8 (docs/gameplay/upgrade-inheritance.md).
             if not isinstance(value, dict) or set(value) != {"pilot", "unit", "with"}:
                 raise StoryError("replace 写 {\"pilot\": 人物号, \"unit\": 旧机体, \"with\": 新机体}")
-            self.op(0x3D5A, _int(value["pilot"], "pilot", 0, 360), 0, _int(value["with"], "with", 0, 362), _int(value["unit"], "unit", 0, 362))
+            self.op(0x3D5A, ("pilot", _pilot(value["pilot"], "pilot")), 0, ("unit", _unit(value["with"], "with")), ("unit", _unit(value["unit"], "unit")))
         elif kind == "remove_unit":
             # 3D5A pilot,0,unit,3000: the unit leaves the roster, its pilot stays (800A3540).
             if not isinstance(value, dict) or set(value) != {"pilot", "unit"}:
                 raise StoryError("remove_unit 写 {\"pilot\": 人物号, \"unit\": 机体号}")
-            self.op(0x3D5A, _int(value["pilot"], "pilot", 0, 359), 0, _int(value["unit"], "unit", 0, 362), 3000)
+            self.op(0x3D5A, _int(value["pilot"], "pilot", 0, 359), 0, ("unit", _unit(value["unit"], "unit")), 3000)
         elif kind == "unlock":
-            self.op(0x3D6F, _int(value, "unlock", 0, 1328))   # as 断空光牙剣 874 is unlocked
+            self.op(0x3D6F, ("weapon", _weapon(value, "unlock")))   # as 断空光牙剣 874 is unlocked
         elif kind == "crew":
             if not isinstance(value, dict) or set(value) != {"unit", "pilots"} or not isinstance(value["pilots"], list) \
                     or not 1 <= len(value["pilots"]) <= 5:
                 raise StoryError("crew 写 {\"unit\": 机体号, \"pilots\": [1–5 个人物号，第一个是主驾驶]}")
-            self.crew.append({"unit": _int(value["unit"], "unit", 0, 362),
+            self.crew.append({"unit": _unit(value["unit"], "unit"),
                               "pilots": [_int(x, "crew 人物", 0, 360) for x in value["pilots"]]})
+        elif kind == "build":
+            # A package's combined unit (data/new_units.json "combine") gets our instance when
+            # the event starts, its crew the parts' pilots; the host does it (mod_combine.hpp).
+            self.builds.append(_unit(value, "build"))
         elif kind == "leave":
             self.op(0x3D46, _int(value, "leave", 0, 360), 1)
         elif kind == "leave_group":
@@ -238,7 +306,7 @@ class Builder:
 def compile_story(document: dict, spec: dict | None = None) -> dict:
     if not isinstance(document, dict) or document.get("schema") != SCHEMA:
         raise StoryError(f"schema 要是 {SCHEMA}")
-    unknown = set(document) - {"schema", "events"}
+    unknown = set(document) - {"schema", "events", "stage_info"}
     if unknown:
         raise StoryError(f"不认识的字段 {sorted(unknown)}")
     spec = spec or layout()
@@ -274,6 +342,10 @@ def compile_story(document: dict, spec: dict | None = None) -> dict:
             words = assembled["words"][5:]
             offsets = [entry["offset"] // 2 - 5 for entry in assembled["listing"]]
             levels = [[offsets[command] + 2, pilot] for command, pilot in builder.like]
+            numbers = []
+            for command, operand, value, kind in builder.named:
+                at = offsets[command] + 1 + operand
+                numbers.append([at, value, kind])
             refs = []
             for command in builder.refs:
                 at = offsets[command] + 1
@@ -285,7 +357,8 @@ def compile_story(document: dict, spec: dict | None = None) -> dict:
                            **{k: flags(cond[k], k) for k in ("flags", "not_flags") if k in cond},
                            "set_flags": flags(row.get("set_flags", []), "set_flags"), "fired": list(cond.get("fired", [])),
                            "not_fired": list(cond.get("not_fired", [])), "repeat": repeat,
-                           "words": words, "texts": refs, "levels": levels, "crew": builder.crew,
+                           "words": words, "texts": refs, "levels": levels, "crew": builder.crew, **({"builds": builder.builds} if builder.builds else {}),
+                           **({"numbers": numbers} if numbers else {}),
                            "listing": [f"{e['opcode']} {','.join(map(str, e['operands']))}".rstrip() for e in assembled["listing"]]})
         except (StoryError, ValueError, KeyError, TypeError) as error:
             raise StoryError(f"事件 {where}：{error}") from None
@@ -293,7 +366,8 @@ def compile_story(document: dict, spec: dict | None = None) -> dict:
         for other in event["fired"] + event["not_fired"]:
             if other not in ids:
                 raise StoryError(f"事件 {event['id']}：fired／not_fired 引用了不存在的事件 {other}")
-    return {"schema": IMAGE_SCHEMA, "events": events, "texts": texts}
+    info = stage_info(document["stage_info"]) if "stage_info" in document else []
+    return {"schema": IMAGE_SCHEMA, "events": events, "texts": texts, **({"stage_info": info} if info else {})}
 
 
 def compile_file(source: Path, out: Path) -> dict:

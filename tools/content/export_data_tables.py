@@ -44,6 +44,7 @@ ABILITIES = (('beam_coat', 0x200), ('i_field', 0x20), ('planet_defensor', 0x800)
              ('getter_vision', 0x20000), ('shungensoku', 0x40000), ('hyper_jammer', 0x100000),
              ('hp_regen_10', 0x4), ('hp_regen_20', 0x8))
 SIZES = ('SS', 'S', 'M', 'L', 'LL')
+MOVE_TYPES = ('land', 'air', 'sea', 'space', 'underground')   # unit +5 bits (mod_data.hpp)
 SKILLS = (('potential', 0x04, 0), ('newtype', 0x08, 0), ('enhanced', 0x10, 0), ('holy_warrior', 0x20, 0),
           ('esp', 0x40, 0), ('parry', 0x01, 1), ('shield_defense', 0x02, 2))
 SPIRITS = ('self_destruct', 'scout', 'accel', 'mercy', 'focus', 'alert', 'guts', 'strike', 'trust', 'wall', 'cover',
@@ -93,6 +94,9 @@ def main() -> None:
         return {'hp': u16(at), 'en': u16(at + 2), 'move': u8(at + 6), 'mobility': u16(at + 8), 'armor': u16(at + 0xA),
                 'limit': u16(at + 0xC), 'repair_cost': u16(at + 0x14), 'upgrade_cap': u8(at + 0x20), 'size': size,
                 'shield': bool(u8(at + 0x18) & 2), 'sword': bool(u8(at + 0x18) & 1), 'parts_slots': u8(at + 0x19),
+                # +5 how it moves, +12 the のりかえ class, +16 funds and +1A experience for shooting it down.
+                'move_types': [k for b, k in enumerate(MOVE_TYPES) if u8(at + 5) & (1 << b)],
+                'swap_class': u8(at + 0x12), 'funds': u16(at + 0x16), 'exp': u8(at + 0x1A),
                 'abilities': [k for k, m in ABILITIES if bits & m]}
     units = [(u, name(UNIT_NAMES + u), ranks(UNIT_RECORDS + u * UNIT_SIZE + UNIT_TERRAIN), unit_row(u)) for u in range(UNITS)]
     # The map icon each unit draws (layout images.units) and the way it looks, for icon MODs
@@ -150,9 +154,11 @@ def main() -> None:
                 'requires': REQUIREMENTS.get(u8(at + 8)), 'upgrade_type': u8(at + 0xE), 'locked': bool(u8(at + 0xF) & 0x04)}
     weapons = [(n, name(WEAPON_NAMES + n), ranks(WEAPON_RECORDS + n * WEAPON_SIZE + 9), weapon_row(n), carried[n]) for n in range(WEAPONS)]
 
-    unit_stats = ('hp', 'en', 'move', 'mobility', 'armor', 'limit', 'repair_cost', 'upgrade_cap', 'size', 'parts_slots')
-    write('units.csv', ['unit', 'name_ja', 'name_zh', 'name_en', *CHANNELS, *unit_stats, 'shield', 'sword', 'abilities'],
-          [[u, *n, *t, *(d[k] for k in unit_stats), int(d['shield']), int(d['sword']), ' '.join(d['abilities'])] for u, n, t, d in units])
+    unit_stats = ('hp', 'en', 'move', 'mobility', 'armor', 'limit', 'repair_cost', 'upgrade_cap', 'size', 'parts_slots',
+                  'swap_class', 'funds', 'exp')
+    write('units.csv', ['unit', 'name_ja', 'name_zh', 'name_en', *CHANNELS, *unit_stats, 'shield', 'sword', 'move_types', 'abilities'],
+          [[u, *n, *t, *(d[k] for k in unit_stats), int(d['shield']), int(d['sword']), ' '.join(d['move_types']),
+            ' '.join(d['abilities'])] for u, n, t, d in units])
     pilot_stats = ('melee', 'ranged', 'evade', 'hit', 'reaction', 'skill', 'sp', 'double_move')
     write('pilots.csv', ['pilot', 'name_ja', 'name_zh', 'name_en', 'record', 'shares_record_with', *CHANNELS, *pilot_stats, 'skills', 'spirits'],
           [[a, *n, r, ' '.join(map(str, shared)), *t, *(d[k] for k in pilot_stats),

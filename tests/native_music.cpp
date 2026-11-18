@@ -66,6 +66,12 @@ int main(int argc,char** argv) {
             "pilot":{"36":7,"999":3,"4":0,"x":2,"70":"7"},"unit":{"50":12,"362":4}}})"));
         check(b.pilot.size()==1 && b.pilot.at(36)==7,"pilots: out of range, song 0, bad keys and strings are left out");
         check(b.unit.size()==2 && b.unit.at(50)==12 && b.unit.at(362)==4,"units, the last one included");
+        // A package's new unit by name (mod_ids.hpp gives its number); a name for a pilot is left out.
+        const auto named=music::battle_settings(json::parse(R"({"schema":"srw64.music.v1","battle":{
+            "pilot":{"@final":3},"unit":{"@final":21,"@gone":5}}})"),[](const std::string& key)->std::optional<unsigned>{
+                return key=="@final"?std::optional<unsigned>(995):std::nullopt;});
+        check(named.pilot.empty() && named.unit.size()==1 && named.unit.at(995)==21,"a new unit's song by its name");
+        check(music::battle_song(named,table_window::base(table_window::unit_songs)+2*995)==21,"its entry in the window's unit table");
         namespace fs=std::filesystem;
         const fs::path root=(argc>1?fs::path(argv[1]):fs::temp_directory_path()/"srw64-music-test")/"battle";
         fs::remove_all(root);
