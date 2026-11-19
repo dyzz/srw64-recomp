@@ -4,6 +4,7 @@
 #include "music.hpp"
 #include "save_page.hpp"
 #include "mod_combine.hpp"
+#include "mod_forms.hpp"
 #include "mod_pilots.hpp"
 #include "battle_hud.hpp"
 #include "battle_spread.hpp"
@@ -281,6 +282,7 @@ extern "C" void load_000AB160_func_8020178C(uint8_t* rdram, recomp_context* ctx)
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     srw64_original_frame_boundary(ram,ctx);
     srw64::mod_combine::fill(ram);   // the combined-unit table's copies (mod_combine.hpp)
+    srw64::mod_forms::fill(ram);     // the form families' copies (mod_forms.hpp)
     srw64::mod_pilots::fill(ram);    // the character maps' copies (mod_pilots.hpp)
     if(srw64_game_hooks.frame_start)srw64_game_hooks.frame_start(ram);
     if(srw64_game_hooks.presentation_step)srw64_game_hooks.presentation_step(ram);

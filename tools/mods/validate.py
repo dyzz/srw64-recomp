@@ -737,9 +737,9 @@ def new_units_problem(document, files: set[str] | None = None) -> str:
         where = f"units.{key}"
         if not isinstance(entry, dict):
             return f"{where}：要是对象"
-        unknown = set(entry) - {"copy", "pose", "icon", "weapons", "inherits_from", "crew", "combine", "work"}
+        unknown = set(entry) - {"copy", "pose", "icon", "weapons", "inherits_from", "crew", "combine", "work", "forms"}
         if unknown:
-            return f"{where}：未知字段 {sorted(unknown)[0]}（copy、pose、icon、weapons、inherits_from、crew、combine、work）"
+            return f"{where}：未知字段 {sorted(unknown)[0]}（copy、pose、icon、weapons、inherits_from、crew、combine、work、forms）"
         if "work" in entry and not _int_in(entry["work"], 0, 24):
             return f"{where}.work：要是原版作品号 0–24"
         if not _unit_or_new(entry.get("copy"), 353):
@@ -768,6 +768,21 @@ def new_units_problem(document, files: set[str] | None = None) -> str:
             over = combine.get("over", [])
             if not isinstance(over, list) or not all(_int_in(o, 0, 362) for o in over):
                 return f"{where}.combine.over：要是原版合体机的机体号"
+        # Form families (src/host/mod_units.hpp, mod_forms.hpp): other new units of this file.
+        if "forms" in entry:
+            forms = entry["forms"]
+            units = document.get("units", {})
+            if not isinstance(forms, list) or not 1 <= len(forms) <= 2 or not all(
+                    isinstance(f, str) and f.startswith("@") and f[1:] in units and f[1:] != key for f in forms) \
+                    or len(set(forms)) != len(forms):
+                return f"{where}.forms：要写 1–2 个别的形态（同一文件里的新机体 @名字）"
+    seen_forms: set[str] = set()
+    for key, entry in document.get("units", {}).items():
+        if isinstance(entry, dict) and "forms" in entry:
+            for name in [key] + [f[1:] for f in entry["forms"]]:
+                if name in seen_forms:
+                    return f"units.{key}.forms：一台机体只能在一个变形族里"
+                seen_forms.add(name)
     # New characters (src/host/mod_units.hpp, docs/design/unit-mod-kit.md §5.4). Whether the
     # copied character has an ability record only the game knows.
     for key, entry in document.get("pilots", {}).items():

@@ -167,6 +167,8 @@ struct Taken {
     struct Combine { std::vector<unsigned> parts,over; };
     std::map<unsigned,Combine> combines;
     std::map<unsigned,int> works;            // a new unit -> its work in the Library (text 60 + it)
+    // Form families (mod_forms.hpp): the base form -> every form of the family, the base first.
+    std::map<unsigned,std::vector<unsigned>> forms;
     // New characters (docs/design/unit-mod-kit.md §5.4): the character each copies (its records,
     // portrait, song, names) and the one whose battle quotes it speaks.
     std::map<unsigned,unsigned> pilot_copies,voices;
@@ -414,6 +416,8 @@ inline std::string parse(const json& document,const std::string& package,const N
     // Units.
     const auto& unit_part=document.value("units",json::object());
     if(!unit_part.is_object())return "units 要是对象";
+    std::map<unsigned,std::vector<unsigned>> unit_weapons;   // each new unit's own list, for its family's
+    std::vector<std::pair<std::string,std::vector<unsigned>>> families;   // where, the base form first
     for(const auto& [name,entry]:unit_part.items()) {
         const std::string where="units."+name;
         if(!valid_name(name))return where+"：名字只能用小写字母、数字和 - _ .";
@@ -422,8 +426,8 @@ inline std::string parse(const json& document,const std::string& package,const N
         const unsigned n=number->second;
         if(!entry.is_object())return where+"：要是对象";
         for(const auto& [field,_]:entry.items())
-            if(field!="copy" && field!="pose" && field!="icon" && field!="weapons" && field!="inherits_from" && field!="crew" && field!="combine" && field!="work")
-                return where+"：未知字段 "+field+"（copy、pose、icon、weapons、inherits_from、crew、combine、work）";
+            if(field!="copy" && field!="pose" && field!="icon" && field!="weapons" && field!="inherits_from" && field!="crew" && field!="combine" && field!="work" && field!="forms")
+                return where+"：未知字段 "+field+"（copy、pose、icon、weapons、inherits_from、crew、combine、work、forms）";
         const auto source=resolve(entry.value("copy",json()),package,numbers,Of::unit);
         if(!source || *source==n || (*source<tw::rom_units && *source>=battle_units_with_rows))
             return where+".copy：要写照抄的机体（原版 0–353 或 @名字）";
@@ -470,6 +474,21 @@ inline std::string parse(const json& document,const std::string& package,const N
         }
         for(unsigned f=0;f<6;++f)put16(t.list_next+uint32_t(weapons.size())*list_row+f*2,0xFFFF);
         t.list_next+=size;
+        unit_weapons[n]=weapons;
+        // Other forms it changes into (変形): new units of this file, two at most, as the
+        // original's families have (ゲッター, ダイターン3); written once every unit is read.
+        if(entry.contains("forms")) {
+            const auto& f=entry["forms"];
+            if(!f.is_array() || f.empty() || f.size()>2)return where+".forms：要写 1–2 个别的形态（同一文件里的新机体 @名字）";
+            std::vector<unsigned> members{n};
+            for(const auto& other:f) {
+                const auto u=resolve(other,package,numbers,Of::unit);
+                if(!u || !tw::new_unit(*u) || std::find(members.begin(),members.end(),*u)!=members.end())
+                    return where+".forms：要写同一文件里别的新机体 @名字";
+                members.push_back(*u);
+            }
+            families.emplace_back(where,members);
+        }
         // The Library's work (the original's 25, text 60 + n); without it, the copied unit's.
         if(entry.contains("work")) {
             if(!integer(entry["work"],0,24))return where+".work：要是原版作品号 0–24";
@@ -516,6 +535,39 @@ inline std::string parse(const json& document,const std::string& package,const N
             const unsigned old=inherits!=weapon_inherits.end()?inherits->second:w;
             if(std::find(old_ones.begin(),old_ones.end(),old)!=old_ones.end() || weapon_inherits.count(w))pairs.push_back({w,old});
         }
+    }
+    // Form families: one weapon list the forms share, each row naming the forms that have the
+    // weapon (as the original's: ダイターン3's lists name 216, 217, 218 per row), every form's
+    // list pointing at it, and 変形 (+1C's 0x2) back on.
+    std::set<unsigned> in_family;
+    for(const auto& [where,members]:families) {
+        for(const unsigned m:members) {
+            if(!unit_weapons.count(m))return where+".forms：要写同一文件里别的新机体 @名字";
+            if(!in_family.insert(m).second)return where+".forms：一台机体只能在一个变形族里";
+        }
+        std::vector<unsigned> shared;
+        for(const unsigned m:members)
+            for(const unsigned w:unit_weapons[m])if(std::find(shared.begin(),shared.end(),w)==shared.end())shared.push_back(w);
+        if(shared.size()>63)return where+".forms：各形态的武器合起来最多 63 件";
+        const uint32_t lists=tw::base(tw::weapon_lists);
+        const uint32_t size=uint32_t(shared.size()+1)*list_row;
+        if(t.list_next+size>lists+tw::block)return where+".forms：武器表的空位用完了";
+        for(size_t k=0;k<shared.size();++k) {
+            const uint32_t row=t.list_next+uint32_t(k)*list_row;
+            put16(row,shared[k]);
+            unsigned slot=1;
+            for(const unsigned m:members)
+                if(const auto& own_list=unit_weapons[m];std::find(own_list.begin(),own_list.end(),shared[k])!=own_list.end())put16(row+slot++*2,m);
+            for(;slot<6;++slot)put16(row+slot*2,0xFFFF);
+        }
+        for(unsigned f=0;f<6;++f)put16(t.list_next+uint32_t(shared.size())*list_row+f*2,0xFFFF);
+        for(const unsigned m:members) {
+            put32(tw::row(tw::weapon_lists,m),t.list_next-lists);
+            const uint32_t unit=tw::row(tw::units,m);
+            put8(unit+0x1F,at(unit+0x1F)|0x02);
+        }
+        t.list_next+=size;
+        t.forms[members[0]]=members;
     }
     // New characters: a copy of an original character's ability record, thresholds, spirit
     // learning, portrait, battle song and names at the character's own rows (its records are

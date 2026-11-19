@@ -7,6 +7,7 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb/stb_image_write.h"
 #include "mod_data.hpp"
+#include "mod_forms.hpp"
 #include <cstdio>
 #include <cstdlib>
 #include <iterator>
@@ -269,6 +270,33 @@ int main(int argc,char** argv) {
                   (t5.combines.at(n5.units.at("pkg@final")).parts==std::vector<unsigned>{219,230,233,225,228}) &&
                   (t5.combines.at(n5.units.at("pkg@final")).over==std::vector<unsigned>{223,224}),"a unit combined from five parts");
             check(t5.works.at(n5.units.at("pkg@final"))==21,"a new unit's Library work");
+            // A form family (mod_forms.hpp): one shared weapon list naming the forms per row,
+            // 変形 back on for both, the records as the original's.
+            {
+                const json zeta=json::parse(R"({"schema":"srw64.new-units.v2","units":{
+                    "z":{"copy":48,"weapons":[193,195,196,198],"forms":["@wr"]},
+                    "wr":{"copy":49,"weapons":[199,196,198]}}})");
+                const auto nz=mod_units::assign({{"pkg",zeta}});
+                mod_units::Bytes bz;mod_units::Taken tz;
+                {const auto why=mod_units::parse(zeta,"pkg",nz,rom,{},bz,tz);if(!why.empty())std::fprintf(stderr,"%s\n",why.c_str());check(why.empty(),"a form family");}
+                const unsigned z=nz.units.at("pkg@z"),wr=nz.units.at("pkg@wr");
+                check(tz.forms.size()==1 && (tz.forms.at(z)==std::vector<unsigned>{z,wr}),"the family, its base first");
+                const auto w32=[&](uint32_t a){return uint32_t(bz.at(a))<<24|uint32_t(bz.at(a+1))<<16|uint32_t(bz.at(a+2))<<8|bz.at(a+3);};
+                check(w32(tw::row(tw::weapon_lists,z))==w32(tw::row(tw::weapon_lists,wr)),"both forms read one list");
+                const uint32_t list=tw::base(tw::weapon_lists)+w32(tw::row(tw::weapon_lists,z));
+                const auto u16=[&](uint32_t a){return unsigned(bz.at(a)<<8|bz.at(a+1));};
+                std::vector<std::vector<unsigned>> rows;
+                for(uint32_t r=list;u16(r)!=0xFFFF;r+=12){std::vector<unsigned> row{u16(r)};for(unsigned f=1;f<6;++f)if(u16(r+f*2)!=0xFFFF)row.push_back(u16(r+f*2));rows.push_back(row);}
+                check(rows==std::vector<std::vector<unsigned>>{{193,z},{195,z},{196,z,wr},{198,z,wr},{199,wr}},"each row names the forms that have the weapon");
+                check((bz.at(tw::row(tw::units,z)+0x1F)&0x02) && (bz.at(tw::row(tw::units,wr)+0x1F)&0x02),"変形 on for both");
+                check((mod_forms::record({z,wr},wr)==std::vector<uint8_t>{1,0,uint8_t(z>>8),uint8_t(z),0xFF,0xFF,uint8_t(z>>8),uint8_t(z)}),"wr's record: one other form, z, base z");
+                json loop=zeta;loop["units"]["wr"]["forms"]={"@z"};
+                mod_units::Bytes bl;mod_units::Taken tl;
+                check(!mod_units::parse(loop,"pkg",mod_units::assign({{"pkg",loop}}),rom,{},bl,tl).empty(),"a unit in two families is refused");
+                json outside=zeta;outside["units"]["z"]["forms"]={49};
+                mod_units::Bytes bo;mod_units::Taken to;
+                check(!mod_units::parse(outside,"pkg",mod_units::assign({{"pkg",outside}}),rom,{},bo,to).empty(),"an original unit as a form is refused");
+            }
             json far=five;far["units"]["final"]["work"]=25;
             mod_units::Bytes b7;mod_units::Taken t7;
             check(!mod_units::parse(far,"pkg",mod_units::assign({{"pkg",far}}),rom,{},b7,t7).empty(),"a work past the original's 25");

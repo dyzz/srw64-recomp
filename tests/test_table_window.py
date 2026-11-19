@@ -82,6 +82,13 @@ class TableWindowTest(unittest.TestCase):
         maps -= {("srw64_original_demo_battle_fill", 0x8009C480), ("load_00121560_func_801C6F14", 0x801C6FAC),
                  ("load_00121560_func_801C6F14", 0x801C6FB0)}
         self.assertEqual(maps, set(self.generate.PILOT_MAP_READERS))
+        # The form families (mod_forms.hpp): the list's one walk and every read of the pointers,
+        # but for 801E174C, which reads through 801E170C's moved base.
+        forms = {(h["function"], int(h["address"], 16)) for h in hits if h["table"] == "forms" and h["how"] == "常量"}
+        self.assertEqual(forms, set(self.generate.FORMS_LIST_READERS))
+        pointers = {(h["function"], int(h["address"], 16)) for h in hits if h["table"] == "forms_pointers"}
+        pointers -= {("load_000AB160_func_801E1688", 0x801E174C)}
+        self.assertEqual(pointers, set(self.generate.FORMS_POINTER_READERS))
 
 
 if __name__ == "__main__":

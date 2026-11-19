@@ -554,6 +554,24 @@ for function, address in COMBINE_LIST_READERS:
     MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X4BF4", literal(COMBINE_LIST_COPY - 0x800D0000))
 for function, address in COMBINE_POINTER_READERS:
     MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X4A5C", literal(COMBINE_POINTERS_COPY - 0x800D0000))
+# The form families D_800CAC94 (unit numbers, -1) and their record pointers D_800CAEF0 move the
+# same way (unit-mod-kit.md §4.6; mod_forms.hpp fills the copies): 800A87FC is the one walk of the
+# list, and every user of a family's record indexes the pointers by what it answers. 801E174C
+# reads through 801E170C's base, moved with it.
+FORMS_LIST_COPY, FORMS_POINTERS_COPY = 0x807D4000, 0x807D4100
+FORMS_LIST_READERS = [("resident_func_800A87FC", 0x800A8804)]
+FORMS_POINTER_READERS = [
+    ("load_0008F4B0_func_801D33F4", 0x801D3470), ("load_000AB160_func_801E1688", 0x801E170C),
+    ("load_000AB160_func_801E1688", 0x801E17C8), ("load_000AB160_func_801E8B28", 0x801E8C80),
+    ("load_000AB160_func_801E8ED0", 0x801E8F38), ("resident_func_800A5924", 0x800A597C),
+    ("resident_func_800A7330", 0x800A7360), ("resident_func_800A81E0", 0x800A8274),
+    ("resident_func_800A9DCC", 0x800A9E4C), ("resident_func_800AA210", 0x800AA268),
+    ("resident_func_800AAB5C", 0x800AAC70), ("resident_func_800AC078", 0x800AC0AC),
+    ("srw64_original_weapon_inherit", 0x800AA9E4)]
+for function, address in FORMS_LIST_READERS:
+    MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X536C", literal(FORMS_LIST_COPY - 0x800D0000))
+for function, address in FORMS_POINTER_READERS:
+    MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X5110", literal(FORMS_POINTERS_COPY - 0x800D0000))
 # 801E7EA8 (where a separated unit's parts stand) looks for the unit in the first 11 entries
 # only, and takes index 11 for "not there" (two literals: the loop's end and its delay slot).
 for address in (0x801E7F44, 0x801E7F4C, 0x801E7F58):

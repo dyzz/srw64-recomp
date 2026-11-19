@@ -193,6 +193,12 @@ class PackageTests(unittest.TestCase):
                          ({"units": {"u": {"copy": 1, "weapons": [1], "combine": {"parts": [219, 228], "over": ["@x"]}}}}, "over")]:
             self.assertIn(why, validate.new_units_problem({**base, **bad}))
         self.assertIn("schema", validate.new_units_problem({"schema": "srw64.new-units.v1", "units": {}}))
+        # Form families: other new units of the same file, each in one family.
+        zeta = {"z": {"copy": 48, "weapons": [193], "forms": ["@wr"]}, "wr": {"copy": 49, "weapons": [199]}}
+        self.assertEqual(validate.new_units_problem({**base, "units": zeta}), "")
+        for forms, why in [(["@missing"], "forms"), ([49], "forms"), (["@wr", "@wr"], "forms"), (["@z"], "forms"), ([], "forms")]:
+            self.assertIn(why, validate.new_units_problem({**base, "units": {**zeta, "z": {**zeta["z"], "forms": forms}}}))
+        self.assertIn("一个变形族", validate.new_units_problem({**base, "units": {**zeta, "wr": {**zeta["wr"], "forms": ["@z"]}}}))
         # New characters (docs/design/unit-mod-kit.md §5.4).
         self.assertEqual(validate.new_units_problem({**base, "pilots": {"hero": {"copy": 133, "voice": 4, "portrait": [3000, 3001]}}}), "")
         for bad, why in [({"pilots": {"Hero": {"copy": 133}}}, "小写"), ({"pilots": {"hero": {"copy": 360}}}, "copy"),
