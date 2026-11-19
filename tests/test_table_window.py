@@ -69,6 +69,8 @@ class TableWindowTest(unittest.TestCase):
         found = {(h["function"], int(h["address"], 16)) for h in hits
                  if h["table"] in bases and h["how"] == "常量" and int(h["value"], 16) == bases[h["table"]]}
         found = {f for f in found if not f[0].startswith("load_000856D0")}
+        # 0x1161C0 is also where an overlay's code ends (8007FEB0 loads 0x1156A0-0x1161C0).
+        found -= {("resident_func_8007FEB0", 0x8007FECC)}
         self.assertEqual(found, set(self.generate.TABLE_READERS))
         icons = {(h["function"], int(h["address"], 16)) for h in hits if h["table"] == "map_icons_ram" and h["value"] == "80218218"}
         icons -= {("load_000AB160_func_801C60A4", 0x801C6158)}   # reads through 801C60C0's moved base

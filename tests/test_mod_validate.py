@@ -226,6 +226,35 @@ class PackageTests(unittest.TestCase):
         files["audio/voice/battle/99999.ogg"] = b"OggS"
         self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["voice"])
 
+    def test_battle_quotes(self):
+        # A new character's own lines (src/host/mod_quotes.hpp); a voice file a line names may
+        # have any name in audio/voice/battle/.
+        quotes = {"schema": "srw64.battle-quotes.v1", "pilots": {"@hero": {
+            "attack": [{"ja": "「行くぞ!」", "zh-Hans": "「上了！」", "voice": "hero-attack.ogg"}],
+            "special": [{"weapon": "@cannon", "lines": [{"ja": "「必殺!」"}]},
+                        {"opponent": 4, "situation": "evade", "lines": [{"ja": "「ドモンか」"}]}]}}}
+        files = self.good_files()
+        files["dialogue/battle_quotes.json"] = json.dumps(quotes).encode()
+        files["audio/voice/battle/hero-attack.ogg"] = b"OggS"
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], [])
+        del files["audio/voice/battle/hero-attack.ogg"]
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["quotes"])
+        files["audio/voice/battle/other.ogg"] = b"OggS"
+        self.assertIn("voice", self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0])
+
+        def problem(change):
+            document = json.loads(json.dumps(quotes))
+            change(document["pilots"]["@hero"])
+            return validate.battle_quotes_problem(document)[0]
+        self.assertEqual(problem(lambda p: None), "")
+        self.assertIn("ja", problem(lambda p: p["attack"][0].pop("ja")))
+        self.assertIn("42", problem(lambda p: p["attack"][0].update(ja="あ" * 43)))
+        self.assertIn("taunt", problem(lambda p: p.update(taunt=[{"ja": "「あ」"}])))
+        self.assertIn("weapon 和 opponent", problem(lambda p: p["special"][0].update(opponent=4)))
+        self.assertIn("situation", problem(lambda p: p["special"][0].update(situation="evade")))
+        self.assertIn("voice", problem(lambda p: p["attack"][0].update(voice="../x.ogg")))
+        self.assertIn("新人物", validate.battle_quotes_problem({"schema": "srw64.battle-quotes.v1", "pilots": {"4": {}}})[0])
+
     def test_map_icons(self):
         def png(width, height):
             return b"\x89PNG\r\n\x1a\n" + b"\0\0\0\rIHDR" + width.to_bytes(4, "big") + height.to_bytes(4, "big") + b"\x08\x06\0\0\0"

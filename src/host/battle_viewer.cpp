@@ -353,11 +353,12 @@ json request(const json& params) {
             // story line opens as the quote, and the quote state (801C840C) waits for a close
             // that never comes. The page never offers such a one; a hand-written request did.
             const unsigned actor=picked.at(side).at("pilot").get<unsigned>();
-            // A package's new character speaks as the one it borrows (mod_pilots.hpp).
+            // A package's new character speaks with its own part when it has quotes
+            // (mod_quotes.hpp), else as the one it borrows (mod_pilots.hpp).
             const auto voices=mod_data::voices();
             const auto voice=voices.find(actor);
             const unsigned speaker=voice!=voices.end()?voice->second:actor;
-            if(speaker>=voice_part_count || int16_t(rom16(voice_parts+2*speaker))<0)
+            if(!mod_data::own_voices().count(actor) && (speaker>=voice_part_count || int16_t(rom16(voice_parts+2*speaker))<0))
                 throw std::invalid_argument(std::string(side)+" pilot "+std::to_string(actor)+" has no battle quotes (D_800CA9C4 is -1), the quote would never close: use a pilot the original flies");
         }
         if(!picked.contains("scene") || picked.at("scene").size()!=2)throw std::invalid_argument("choice needs two scenes");

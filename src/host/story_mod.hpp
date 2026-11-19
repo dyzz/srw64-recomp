@@ -2,6 +2,7 @@
 #include "guest_memory.hpp"
 #include "mod_ids.hpp"
 #include "mod_library.hpp"
+#include "mod_quotes.hpp"
 #include "json/json.hpp"
 #include "localization/locale_fallbacks.hpp"
 #include <algorithm>
@@ -23,7 +24,8 @@
 // place in the original's event table: the host decides when one fires, keeps what has
 // fired with the suspend records, and hands only its instructions to the original
 // script engine, started the way the original starts an event. Their new dialogue is
-// served as text records past the ROM's (0xC800 up), shown by the native reader.
+// served as text records past the ROM's (0xC800-0xDFFF), shown by the native reader; the
+// packages' battle quotes follow (mod_quotes.hpp, 0xE000 up) and are served the same way.
 namespace srw64::story_mod {
 namespace fs=std::filesystem;
 using json=nlohmann::json;
@@ -114,6 +116,7 @@ struct Event {
 struct Text {
     unsigned speaker{};
     std::map<std::string,std::string> lines;       // locale -> text
+    bool battle{};                                 // a battle quote (mod_quotes.hpp)
 };
 // A hidden element a package adds to a scene's stage information page (stage_info.cpp):
 // its title and text by locale, and when it shows as done (our roster has these).
@@ -139,8 +142,8 @@ inline void add_image(Library& library,const std::string& package,const json& im
     const auto& events=image.at("events");
     if(!texts.is_array() || !events.is_array())throw std::runtime_error("texts 与 events 必须是数组");
     const size_t base=library.texts.size();
-    // 0xE800 up are the names of new characters, units and weapons (table_window.hpp).
-    if(base+texts.size()>size_t(table_window::private_first-text_first))throw std::runtime_error("台词太多");
+    // 0xE000 up are the packages' battle quotes, then the names of new numbers (table_window.hpp).
+    if(base+texts.size()>size_t(mod_quotes::text_first-text_first))throw std::runtime_error("台词太多");
     std::vector<Text> new_texts;
     for(const auto& t:texts) {
         Text text;
@@ -313,9 +316,10 @@ inline Library collect(const std::vector<mods::Package>& packages) {
 // A text record as table 0 holds one: an 8-byte ASCII header (speaker, mode, wait) and a
 // page of blanks (glyph 0) about as long as the Japanese line, up to three rows of 14, so
 // the original types and waits on it as on its own; the native reader shows the line
-// (native_dialogue.cpp, story_record()). An empty page passes without being read.
+// (native_dialogue.cpp, story_record()). An empty page passes without being read. A battle
+// quote has the mode and wait of the ROM's (20, 032): it closes on its own.
 inline std::vector<uint8_t> text_record(const Text& text) {
-    char header[9];std::snprintf(header,sizeof header,"%03u00004",text.speaker);
+    char header[9];std::snprintf(header,sizeof header,text.battle?"%03u20032":"%03u00004",text.speaker);
     std::vector<uint8_t> bytes(header,header+8);
     const auto& ja=text.lines.at("ja");
     size_t length=0;
@@ -523,6 +527,11 @@ inline std::shared_ptr<const std::vector<Info>> infos() {
 inline std::string info_ref(const Info& info,size_t n){return "mod:"+info.package+":"+std::to_string(n);}
 // Any thread.
 inline std::optional<Text> text(uint16_t id) {
+    if(mod_quotes::ours(id)) {
+        const auto quote=mod_quotes::line(id);
+        if(!quote)return std::nullopt;
+        return Text{quote->speaker,quote->lines,true};
+    }
     auto& s=state();
     std::shared_ptr<const std::vector<Text>> texts;
     {std::lock_guard lock(s.texts_mutex);texts=s.texts;}

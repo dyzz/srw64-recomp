@@ -3,7 +3,8 @@
 // reads at copies in free RDRAM (generate_cpu.py PILOT_MAP_READERS). The ROM's 360 entries as
 // the resident copy has them, then the new characters: its own number for the ability and
 // spirit records (their rows are in the table window, mod_units.hpp), and for the battle
-// quotes the voice slot of the character it speaks as; -1 for every other number.
+// quotes its own voice part when a package gives it lines (mod_quotes.hpp), else the voice slot
+// of the character it speaks as; -1 for every other number.
 #include "guest_memory.hpp"
 #include "librecomp/game.hpp"
 #include "mod_data.hpp"
@@ -21,6 +22,7 @@ inline void fill(uint8_t* ram) {
     if(!ram)return;
     const auto copies=mod_data::pilot_copies();
     const auto voices=mod_data::voices();
+    const auto own=mod_data::own_voices();
     const auto original=[&](uint32_t map,unsigned p){return uint16_t(guest::read(ram,map+p*2,2));};
     const auto build=[&](uint32_t map,bool voice) {
         std::vector<uint16_t> out(tw::pilot_map_slots,0xFFFF);
@@ -31,6 +33,7 @@ inline void fill(uint8_t* ram) {
         for(const auto& [n,source]:copies) {
             if(n>=out.size())continue;
             if(!voice){out[n]=uint16_t(n);continue;}
+            if(const auto mine=own.find(n);mine!=own.end()){out[n]=uint16_t(mine->second);continue;}
             const auto found=voices.find(n);
             out[n]=original(map,found!=voices.end()?found->second:source);
         }

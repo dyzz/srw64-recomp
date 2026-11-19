@@ -289,6 +289,37 @@ int main(int argc,char** argv) {
                 mod_data::Bytes stats=bp;
                 check(mod_data::parse(json::parse(R"({"@hero":{"melee":200,"spirits":[["focus",1]]}})"),mod_data::Kind::pilots,rom,stats,"pkg",np).empty(),"its stats by name");
                 check(stats.at(tw::row(tw::pilot_records,hero)+1)==200 && stats.at(tw::row(tw::spirit_records,hero)+1)==4,"melee and the first spirit at its rows");
+                // Its own battle quotes (mod_quotes.hpp): a voice part of its own, generic
+                // segments at the package's records, the rest the borrowed part's, and a
+                // conditional list in the window.
+                {
+                    namespace mq=mod_quotes;
+                    const json said=json::parse(R"({"schema":"srw64.battle-quotes.v1","pilots":{"@hero":{
+                        "attack":[{"ja":"「行くぞ!」","zh-Hans":"「上了！」","voice":"hero-attack.ogg"},{"ja":"「二つ目」"}],
+                        "evade":[{"ja":"「当たるか!」"}],
+                        "special":[{"weapon":870,"lines":[{"ja":"「必殺!」"}]},{"opponent":4,"situation":"evade","lines":[{"ja":"「ドモンか」"}]}]}}})");
+                    mod_units::Bytes bq=bp;mq::Taken tq;
+                    {const auto why=mq::parse(said,"pkg",np,rom,bq,tp.voices,tq);if(!why.empty())std::fprintf(stderr,"%s\n",why.c_str());check(why.empty(),"battle quotes");}
+                    const unsigned part=tw::voice_of(hero);
+                    check(part>=257 && tq.voices.at(hero)==part && tq.lines.size()==5 && tq.lines[0].speaker==hero && tq.lines[0].voice=="hero-attack.ogg","its own voice part and five lines");
+                    const auto u16=[&](uint32_t at){return unsigned(bq.at(at)<<8|bq.at(at+1));};
+                    const uint32_t seg=tw::row(tw::quote_segments,part);
+                    check(u16(seg)==unsigned(mq::text_first-mq::generic_first) && u16(seg+2)==2,"attack: two lines from the first record");
+                    check(u16(seg+5*4)==unsigned(mq::text_first+2-mq::generic_first) && u16(seg+5*4+2)==1,"evade: the third");
+                    const int borrowed=mq::rom_voice(rom,4);
+                    check(borrowed>=0 && u16(seg+4)==unsigned(rom[0x1161C0+borrowed*36+4]<<8|rom[0x1161C0+borrowed*36+5]),"shot down: the borrowed part's");
+                    const uint32_t list=tw::base(tw::quote_lists)+(part-tw::first_new_voice)*tw::quote_list,index=tw::row(tw::quote_index,part);
+                    check((u16(index)<<16|u16(index+2))==list-tw::quote_lists_rom,"the list's offset from 0x20F250");
+                    const unsigned field=unsigned(rom[tw::row(tw::battle_weapons,870)]<<8|rom[tw::row(tw::battle_weapons,870)+1]);
+                    check(u16(list)==2600+field && u16(list+2)==unsigned(mq::text_first+3-mq::special_first),"a weapon line: 2600 + its quote code");
+                    check(u16(list+4)==25000+400+unsigned(mq::rom_voice(rom,4)) && u16(list+8)==0xFFFF,"an opponent line when evading, then the end");
+                    const auto refused=[&](const char* text){mod_units::Bytes b=bp;mq::Taken t;return !mq::parse(json::parse(text),"pkg",np,rom,b,tp.voices,t).empty() && t.lines.empty() && b==bp;};
+                    check(refused(R"({"schema":"srw64.battle-quotes.v1","pilots":{"4":{"attack":[{"ja":"「あ」"}]}}})"),"an original character is refused");
+                    check(refused(R"({"schema":"srw64.battle-quotes.v1","pilots":{"@hero":{"attack":[{"zh-Hans":"上"}]}}})"),"a line without ja");
+                    check(refused(R"({"schema":"srw64.battle-quotes.v1","pilots":{"@hero":{"attack":[{"ja":"一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三"}]}}})"),"more than three rows");
+                    check(refused(R"({"schema":"srw64.battle-quotes.v1","pilots":{"@hero":{"taunt":[{"ja":"「あ」"}]}}})"),"an unknown situation");
+                    check(refused(R"({"schema":"srw64.battle-quotes.v1","pilots":{"@hero":{"attack":[{"ja":"「あ」","voice":"../x.ogg"}]}}})"),"a voice outside the folder");
+                }
                 // Love rows (the partner's too when mutual) and who it counts as in combination attacks.
                 json loving=people;loving["pilots"]["hero"]["love"]=json::parse(R"([{"with":166,"mutual":true}])");loving["pilots"]["hero"]["combo_as"]=4;
                 mod_units::Bytes bl;mod_units::Taken tl;

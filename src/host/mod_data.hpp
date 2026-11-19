@@ -1,6 +1,7 @@
 #pragma once
 #include "mod_library.hpp"
 #include "mod_ids.hpp"
+#include "mod_quotes.hpp"
 #include "mod_tables.hpp"
 #include "mod_units.hpp"
 #include "upgrade_rules.hpp"
@@ -379,6 +380,7 @@ struct Collected {
     std::map<unsigned,mod_units::Taken::Portrait> portraits;        // new character -> its own portrait
     std::vector<std::pair<unsigned,unsigned>> loves;                // love rows (holder, partner)
     std::map<unsigned,unsigned> combo_as;                           // new character -> who it counts as in combination attacks
+    mod_quotes::Taken quotes;                                       // dialogue/battle_quotes.json: lines, own voice parts
 };
 // The active packages, bottom first as mods::installed() returns them.
 inline Collected collect(const std::vector<mods::Package>& packages,std::span<const uint8_t> rom) {
@@ -421,6 +423,15 @@ inline Collected collect(const std::vector<mods::Package>& packages,std::span<co
             const auto kind=file=="units.json"?Kind::units:file=="pilots.json"?Kind::pilots:Kind::weapons;
             if(auto why=parse(document,kind,rom,c.bytes,p.id(),c.numbers);!why.empty())c.problems.push_back(where+why);
         }
+        // A new character's own battle quotes, after the number files (a weapon's quote code
+        // is in its battle record).
+        if(const auto path=p.folder/"dialogue"/"battle_quotes.json";fs::is_regular_file(path,error)) {
+            std::ifstream in(path,std::ios::binary);
+            const auto document=json::parse(in,nullptr,false);
+            const std::string where=p.id()+" dialogue/battle_quotes.json：";
+            if(document.is_discarded())c.problems.push_back(where+"JSON 无效");
+            else if(auto why=mod_quotes::parse(document,p.id(),c.numbers,rom,c.bytes,taken.voices,c.quotes);!why.empty())c.problems.push_back(where+why);
+        }
     }
     return c;
 }
@@ -449,6 +460,7 @@ struct State {
     std::map<unsigned,mod_units::Taken::Portrait> portraits;
     std::vector<std::pair<unsigned,unsigned>> loves;
     std::map<unsigned,unsigned> combo_as;
+    std::map<unsigned,unsigned> own_voices;   // mod_quotes::Taken::voices
     // The host draws a package sprite's HD frames (native_sprite.cpp); set at start-up, called
     // on the game thread whenever the packages change.
     std::function<void(const std::map<std::string,mod_units::Sprite>&)> sprites_changed;
@@ -524,6 +536,12 @@ inline std::map<unsigned,unsigned> voices() {
     auto& s=state();
     std::lock_guard lock(s.owners_mutex);
     return s.voices;
+}
+// The new characters with battle quotes of their own: their voice parts (mod_quotes.hpp).
+inline std::map<unsigned,unsigned> own_voices() {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    return s.own_voices;
 }
 // The new units combined from parts (mod_combine.hpp). Any thread.
 inline std::map<unsigned,mod_units::Taken::Combine> combines() {
@@ -612,7 +630,9 @@ inline void refresh(uint8_t* ram=nullptr) {
     s.kinds_changed.store(kinds,std::memory_order_relaxed);
     {std::lock_guard lock(s.owners_mutex);s.owners=found.units;s.names=found.names;s.copies=found.copies;s.weapon_copies=found.weapon_copies;s.numbers=found.numbers;s.sprites=found.sprites;
      s.predecessors=found.predecessors;s.carries=found.carries;s.crews=found.crews;s.combines=found.combines;
-     s.pilot_copies=found.pilot_copies;s.voices=found.voices;s.pilot_owners=found.pilots;s.portraits=found.portraits;s.loves=found.loves;s.combo_as=found.combo_as;}
+     s.pilot_copies=found.pilot_copies;s.voices=found.voices;s.pilot_owners=found.pilots;s.portraits=found.portraits;s.loves=found.loves;s.combo_as=found.combo_as;
+     s.own_voices=found.quotes.voices;}
+    mod_quotes::publish(found.quotes.lines);
     mod_tables::publish_resources(found.resources);
     if(s.sprites_changed)s.sprites_changed(found.sprites);
     upgrades::name_sources()=found.name_sources;

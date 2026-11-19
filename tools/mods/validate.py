@@ -411,18 +411,112 @@ def names_problem(document, languages: tuple[str, ...] = ()) -> str:
     return ""
 
 
-def voice_problem(rest: str) -> str | None:
+def voice_problem(rest: str, named: set[str] = frozenset()) -> str | None:
     """A battle voice (audio/voice/battle/<record>.ogg) by the host's rules (src/host/music.hpp
-    collect_voices): an Ogg file named by a battle quote's text record, 5799-17346."""
+    collect_voices): an Ogg file named by a battle quote's text record, 5799-17346, or one a
+    line of the package's dialogue/battle_quotes.json names (``named``)."""
     folder, _, name = rest.rpartition("/")
     if folder != "battle":
         return "暂不支持：战斗语音放在 audio/voice/battle/"
     stem, _, ext = name.rpartition(".")
     if ext.lower() != "ogg":
         return "要是 Ogg Vorbis（.ogg）"
+    if name in named:
+        return None
     if not (stem.isdigit() and stem.isascii() and not stem.startswith("0")) or not 5799 <= int(stem) <= 17346:
-        return "文件名要是战斗台词的记录号（5799–17346）"
+        return "文件名要是战斗台词的记录号（5799–17346），或 dialogue/battle_quotes.json 里写的文件名"
     return None
+
+
+# dialogue/battle_quotes.json (src/host/mod_quotes.hpp, docs/design/unit-mod-kit.md §7): a new
+# character's own battle quotes. The shape is checked here; numbers, weapons and the opponents'
+# voice parts are the host's to resolve.
+BATTLE_QUOTES_SCHEMA = "srw64.battle-quotes.v1"
+QUOTE_SITUATIONS = ("attack", "shot_down", "heavy", "medium", "light", "evade", "no_damage", "no_ammo", "out_of_range")
+
+
+def battle_quotes_problem(document) -> tuple[str, set[str]]:
+    """"" when it is good, and the voice files its lines name."""
+    voices: set[str] = set()
+
+    def line_problem(line, where: str) -> str:
+        if not isinstance(line, dict):
+            return f"{where}：要是对象（各语言的台词，可加 voice）"
+        for key, value in line.items():
+            if not isinstance(value, str):
+                return f"{where}.{key}：要是字符串"
+            if key == "voice":
+                if not value.lower().endswith(".ogg") or len(value) < 5 or "/" in value or "\\" in value or ".." in value:
+                    return f"{where}.voice：要写 audio/voice/battle/ 里的 .ogg 文件名"
+                voices.add(value)
+            elif not value or len(value) > 200:
+                return f"{where}.{key}：台词为空或太长"
+        if "ja" not in line:
+            return f"{where}：每句都要有 ja"
+        if len(line["ja"]) > 42:
+            return f"{where}.ja：战斗台词最多 42 字（一页三行）"
+        return ""
+
+    if not isinstance(document, dict) or document.get("schema") != BATTLE_QUOTES_SCHEMA:
+        return f"schema 要写 {BATTLE_QUOTES_SCHEMA}", voices
+    for key in document:
+        if key not in ("schema", "pilots"):
+            return f"未知字段 {key}（schema、pilots）", voices
+    pilots = document.get("pilots")
+    if not isinstance(pilots, dict):
+        return "pilots 要是对象", voices
+    for who, entry in pilots.items():
+        where = f"pilots.{who}"
+        if "@" not in who:
+            return f"{where}：要写包里的新人物（@名字）", voices
+        if not isinstance(entry, dict):
+            return f"{where}：要是对象", voices
+        specials = 0
+        for key, value in entry.items():
+            if key in QUOTE_SITUATIONS:
+                if not isinstance(value, list) or not 1 <= len(value) <= 255:
+                    return f"{where}.{key}：要是 1–255 句的数组", voices
+                for i, line in enumerate(value):
+                    if why := line_problem(line, f"{where}.{key}[{i}]"):
+                        return why, voices
+            elif key == "special":
+                if not isinstance(value, list):
+                    return f"{where}.special：要是数组", voices
+                for n, c in enumerate(value):
+                    at = f"{where}.special[{n}]"
+                    if not isinstance(c, dict):
+                        return f"{at}：要是对象", voices
+                    for k in c:
+                        if k not in ("weapon", "opponent", "situation", "sometimes", "lines"):
+                            return f"{at}：未知字段 {k}（weapon、opponent、situation、sometimes、lines）", voices
+                    if ("weapon" in c) == ("opponent" in c):
+                        return f"{at}：weapon 和 opponent 要写一个", voices
+                    if "weapon" in c:
+                        if "situation" in c:
+                            return f"{at}.situation：武器台词总是攻击时", voices
+                        if not _weapon_or_new(c["weapon"]):
+                            return f"{at}.weapon：没有这件武器", voices
+                        if "sometimes" in c and not isinstance(c["sometimes"], bool):
+                            return f"{at}.sometimes：要是 true 或 false", voices
+                    else:
+                        if "sometimes" in c:
+                            return f"{at}.sometimes：只有武器台词能写", voices
+                        if not _int_in(c["opponent"], 0, 359):
+                            return f"{at}.opponent：要写原版人物（0–359）", voices
+                        if c.get("situation", "attack") not in QUOTE_SITUATIONS:
+                            return f"{at}.situation：要写九种情境之一", voices
+                    lines = c.get("lines")
+                    if not isinstance(lines, list) or not lines:
+                        return f"{at}.lines：要是非空数组", voices
+                    for i, line in enumerate(lines):
+                        if why := line_problem(line, f"{at}.lines[{i}]"):
+                            return why, voices
+                    specials += len(lines)
+            else:
+                return f"{where}：未知字段 {key}（{'、'.join(QUOTE_SITUATIONS)}、special）", voices
+        if specials > 119:
+            return f"{where}.special：条件台词最多 119 句", voices
+    return "", voices
 
 
 def voice_settings_problem(data) -> str | None:
@@ -875,6 +969,20 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
             problems.append(Problem("campaign", "not " + CAMPAIGN_IMAGE_SCHEMA))
         elif image.get("id") != m["id"]:
             problems.append(Problem("campaign", f"id {image.get('id')!r}, the package is {m['id']!r}"))
+    named_voices: set[str] = set()
+    for e in package.entries:
+        if e.name != "dialogue/battle_quotes.json":
+            continue
+        try:
+            why, named_voices = battle_quotes_problem(json.loads(e.read().decode("utf-8")))
+        except (ValueError, UnicodeDecodeError) as error:
+            why = f"JSON 无效：{error}"
+        if why:
+            problems.append(Problem("quotes", f"{e.name}: {why}"))
+        present = {x.name for x in package.entries}
+        for name in sorted(named_voices):
+            if f"audio/voice/battle/{name}" not in present:
+                problems.append(Problem("quotes", f"{e.name}: 没有 audio/voice/battle/{name}"))
     for e in package.entries:
         top, _, rest = e.name.partition("/")
         if top == "data" and rest in DATA_FIELDS:
@@ -898,7 +1006,7 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
             if ext.lower() != "png" or not _plain_number(stem) or int(stem) > 360:
                 problems.append(Problem("portrait", f"{e.name}: 文件名要是人物号.png"))
         elif e.name.startswith("audio/voice/"):
-            why = voice_problem(e.name[len("audio/voice/"):])
+            why = voice_problem(e.name[len("audio/voice/"):], named_voices)
             if why:
                 problems.append(Problem("voice", f"{e.name}: {why}"))
         elif e.name == "audio/voice.json":

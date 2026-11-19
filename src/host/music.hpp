@@ -200,10 +200,18 @@ inline std::optional<int> quote_record(const fs::path& file) {
 }
 // The line for each quote record from the active packages, bottom first, so the package
 // higher in the list wins, whether its lines are in its package file (`archive_voices`
-// lists it) or in its folder. A package with both: the folder's.
+// lists it) or in its folder. A package with both: the folder's. A package's own battle
+// quotes (mod_quotes.hpp) name their files: `named` gives the record of the line a package's
+// file name speaks.
+using NamedVoice=std::function<std::optional<int>(const std::string& package,const std::string& file)>;
 inline std::map<int,Line> collect_voices(const std::vector<mods::Package>& packages,
                                          const std::function<json(const fs::path&)>& read_json,
-                                         const std::function<std::vector<std::string>(const fs::path&)>& archive_voices) {
+                                         const std::function<std::vector<std::string>(const fs::path&)>& archive_voices,
+                                         const NamedVoice& named={}) {
+    const auto record_of=[&](const std::string& package,const fs::path& name)->std::optional<int> {
+        if(const auto record=quote_record(name))return record;
+        return named?named(package,name.filename().string()):std::nullopt;
+    };
     std::map<int,Line> out;
     for(const auto& p:packages) {
         if(!p.active)continue;
@@ -213,7 +221,7 @@ inline std::map<int,Line> collect_voices(const std::vector<mods::Package>& packa
             auto path=entry;   // the file's own spelling; some archivers write backslashes
             std::replace(path.begin(),path.end(),'\\','/');
             const fs::path name(path);
-            const auto record=quote_record(name);
+            const auto record=record_of(p.id(),name);
             if(record && name.parent_path().string().ends_with("audio/voice/battle"))out[*record]={archive,entry,p.id(),extra.gain_db,extra.delay_ms};
         }
         const auto dir=p.folder/"audio"/"voice"/"battle";
@@ -221,7 +229,7 @@ inline std::map<int,Line> collect_voices(const std::vector<mods::Package>& packa
         if(!fs::is_directory(dir,error))continue;
         for(const auto& item:fs::directory_iterator(dir,error)) {
             if(!item.is_regular_file(error))continue;
-            if(const auto record=quote_record(item.path()))out[*record]={item.path(),{},p.id(),extra.gain_db,extra.delay_ms};
+            if(const auto record=record_of(p.id(),item.path()))out[*record]={item.path(),{},p.id(),extra.gain_db,extra.delay_ms};
         }
     }
     return out;

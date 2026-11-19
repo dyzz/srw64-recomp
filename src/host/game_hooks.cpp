@@ -767,11 +767,16 @@ uint32_t srw64_name_record(uint32_t kind, uint32_t number) {
 }
 // 8022245C(record, slot, base): the special (conditional) quote of this slot, written into
 // the slot (several halfwords for a multi-line exchange), the priority group 0..2 answered,
-// -1 when none matched; the caller 80222050 draws a generic line over a group-2 line or
-// none. quote.force (quote_force.hpp): when the original did pick a special line, a waiting
-// forced record that is one of this speaker's special lines replaces it, as a group-1 line
-// so the generic draw stays away (the forced line is taken to fit the situation like the
-// one it replaces: the video's lines were drawn by the original in an earlier take).
+// -1 when none matched, 1000 for a group-1 line after the k = 1000 / 1300 conditions (evaded
+// with result 21, shield). The caller 80222050 draws a generic line over the slot: for the
+// attack after group 2 or none, for being hit after anything but 1000, and a filled slot
+// keeps its line only when the draw over count * 3 / 2 lands past the count (never with one
+// generic line; docs/data/battle-quotes.md). A package's voice part (mod_quotes.hpp) says
+// its conditional lines whenever they match: group 0 or 1 answers 1000. quote.force
+// (quote_force.hpp): when the original did pick a special line, a waiting forced record
+// that is one of this speaker's special lines replaces it, answered 1000 so the generic
+// draw stays away (the forced line is taken to fit the situation like the one it replaces:
+// the video's lines were drawn by the original in an earlier take).
 void load_00121560_func_8022245C(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t record = uint32_t(ctx->r4), slot = uint32_t(ctx->r5);
     if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, record);
@@ -786,17 +791,19 @@ void load_00121560_func_8022245C(uint8_t* rdram, recomp_context* ctx) {
         if (forced < 0 || !in_special(voice, forced)) continue;
         srw64::guest::write16(rdram, slot, uint16_t(forced));
         srw64::guest::write16(rdram, slot + 2, 0xFFFF);
-        ctx->r2 = 1;
+        ctx->r2 = 1000;
         p = -1;
         ++served;
         note_served(forced);
         return;
     }
+    if (group <= 1 && srw64::table_window::new_voice(unsigned(voice))) ctx->r2 = 1000;
 }
 // 80222B14(record, slot, context): the generic quote of a context (0 attack ... 8) drawn at
 // random from the speaker's segment (ROM 0x1161C0; docs/data/battle-quotes.md) into the slot
 // (record + 0x2C the attack, + 0x848 being hit): slot[0] the record, slot[2] -1. A slot that
-// already holds a conditional quote keeps it two times in three. quote.force
+// already holds a conditional quote keeps it when a draw over count * 3 / 2 lands past the
+// count: one time in three, never with a single line. quote.force
 // (quote_force.hpp) writes the first waiting forced record there instead, once, when it is
 // one of this speaker's lines for this context; the speaker is the record's voice part (record + 2; the
 // sub pilot's for contexts 7 and 8 of a two-seater is not handled).

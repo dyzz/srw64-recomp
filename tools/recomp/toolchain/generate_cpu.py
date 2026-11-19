@@ -342,6 +342,9 @@ TABLE_BLOCKS = {   # key: (block, ROM address)
     # New characters (docs/design/unit-mod-kit.md §5.4).
     "pilot_records": (13, 0x7A1A0), "thresholds": (14, 0x7B1B0), "spirit_records": (15, 0x7CFB0),
     "portraits": (16, 0x84220), "pilot_songs": (17, 0x7D6A0),
+    # Battle quotes by voice part (unit-mod-kit.md §7): a new character's own part reads its
+    # generic segments and the offset of its conditional list (mod_quotes.hpp).
+    "quote_segments": (18, 0x1161C0), "quote_index": (19, 0x121150),
 }
 # The map icons (ROM 0x100D78) live in the tactical map overlay at 80218218: their 23 readers
 # load from a copy the host keeps in free RDRAM.
@@ -370,6 +373,8 @@ TABLE_READERS = {   # (function, instruction): (table, the addiu's literal, lui'
     ("resident_func_8009C768", 0x8009C7A0): ("portraits", 0x4220, 0x80000),
     ("load_000AB160_func_801E085C", 0x801E08B4): ("pilot_songs", -0x2960, 0x80000),
     ("load_000AB160_func_801E085C", 0x801E0AAC): ("pilot_songs", -0x2960, 0x80000),
+    ("srw64_original_generic_quote_draw", 0x80222B98): ("quote_segments", 0x61C0, 0x110000),
+    ("load_00121560_func_80222CAC", 0x80222CBC): ("quote_index", 0x1150, 0x120000),
 }
 # The character -> record maps (D_800CA9C4 ability, D_800CA6F4 spirits; s16 × 360 in resident
 # RAM, built as 0x800D0000 plus a literal) are read at copies in free RDRAM with room for new

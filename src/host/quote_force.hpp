@@ -40,7 +40,7 @@ constexpr int first_record = 5813;
 constexpr uint32_t special_index = 0x121150, special_data = 0x20F250;
 constexpr int first_special = 14227;
 inline bool in_special(int voice, int forced) {
-    if (!rom || voice < 0 || forced < first_special) return false;
+    if (!rom || voice < 0 || voice >= 257 || forced < first_special) return false;
     const size_t index = special_index + size_t(voice) * 4;
     if (index + 4 > rom_bytes) return false;
     const uint32_t offset = (uint32_t(rom[index]) << 24) | (uint32_t(rom[index + 1]) << 16) | (uint32_t(rom[index + 2]) << 8) | rom[index + 3];
@@ -54,7 +54,8 @@ inline bool in_special(int voice, int forced) {
 }
 // Whether record `forced` is in voice part `voice`'s generic segment of `context`.
 inline bool in_segment(int voice, int context, int forced) {
-    if (!rom || voice < 0 || context < 0 || context > 8) return false;
+    // A package's voice part (257 up, mod_quotes.hpp) is not in the ROM's table.
+    if (!rom || voice < 0 || voice >= 257 || context < 0 || context > 8) return false;
     const size_t entry = segment_table + size_t(voice) * 36 + size_t(context) * 4;
     if (entry + 4 > rom_bytes) return false;
     const int start = (rom[entry] << 8) | rom[entry + 1], count = (rom[entry + 2] << 8) | rom[entry + 3];

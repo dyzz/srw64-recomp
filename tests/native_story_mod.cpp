@@ -222,6 +222,15 @@ int main(int argc,char** argv) {
     check(story::read_text(story::text_table+offset,ram.data(),0x80310000,4),"the header alone");
     check(story::line(story::text_first,"zh-Hans").value_or("").find("师父")!=std::string::npos,"the Chinese line");
     check(story::line(story::text_first,"ko")==story::line(story::text_first,"ja"),"Japanese otherwise");
+    // A package's battle quote (mod_quotes.hpp) is served the same way, with a battle quote's
+    // header: it closes on its own.
+    srw64::mod_quotes::publish({{430,{{"ja","「行くぞ!」"},{"zh-Hans","「上了！」"}},"pkg","hero.ogg"}});
+    const uint16_t quote=srw64::mod_quotes::text_first;
+    check(story::descriptor(0,quote,offset,size) && size==8+6*2+2,"a battle quote's descriptor");
+    check(story::read_text(story::text_table+offset,ram.data(),0x80310000,size),"a battle quote served");
+    header.clear();for(uint32_t i=0;i<8;++i)header+=char(read(ram.data(),0x80310000+i,1));
+    check(header=="43020032","header 430 20 032: "+header);
+    check(story::line(quote,"zh-Hans")==std::optional<std::string>("「上了！」") && !story::descriptor(0,quote+1,offset,size),"its Chinese line; only lines given");
 
     if(failures)std::fprintf(stderr,"%d failure(s)\n",failures);
     else std::printf("story MOD tests passed\n");
