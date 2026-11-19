@@ -138,6 +138,10 @@ inline uint8_t window_byte(uint32_t at,const Byte& byte,const Source& source) {
     const unsigned t=(at-window)/block;
     const uint32_t off=(at-window)%block;
     const auto& l=layouts[t];
+    // Row -1 of the next table (a speaker with no face asks 8009C768 for portrait -1, which reads
+    // the four bytes before the portraits: zero, no picture): the end of each block is the ROM
+    // just before the next block's table, as the original read it. No table reaches that far.
+    if(off>=block-0x1000 && t+1<table_count && layouts[t+1].rom)return byte(layouts[t+1].rom-(block-off));
     // A number no active package gives (a save made with one, loaded without it, until it is
     // turned back: mod_saves.hpp) reads row 0's bytes and an empty weapon list, so the game
     // never walks zeros as records.

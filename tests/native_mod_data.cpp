@@ -164,6 +164,10 @@ int main(int argc,char** argv) {
     const auto w32=[&](const mod_units::Bytes& b,uint32_t at){return uint32_t(w16(b,at))<<16|w16(b,at+2);};
     check(tw::row(tw::units,184)==mod_data::unit_records+184*0x24 && tw::row(tw::units,400)==tw::base(tw::units)+400*0x24,"rows: the ROM's, the window's");
     check(window({},tw::base(tw::units)+184*0x24+0xE)==4 && window({},tw::base(tw::battle_units)+360*14)==rom[0x118610+360*14],"the window reads the ROM's rows");
+    // Row -1 (a speaker with no face asks for portrait -1): the ROM's bytes before the table.
+    bool before=true;
+    for(uint32_t i=1;i<=4;++i)before&=window({},tw::base(tw::portraits)-i)==rom[0x84220-i] && window({},tw::base(tw::thresholds)-i)==rom[0x7B1B0-i];
+    check(before,"row -1 reads the ROM before the table");
     {
         const uint32_t lists=tw::base(tw::weapon_lists),rom_offset=uint32_t(rom[0x7E210+224*4])<<24|rom[0x7E210+224*4+1]<<16|rom[0x7E210+224*4+2]<<8|rom[0x7E210+224*4+3];
         check(w32({},lists+224*4)==rom_offset+tw::lists_copy && w16({},lists+w32({},lists+224*4))==(unsigned(rom[0x7E210+rom_offset])<<8|rom[0x7E210+rom_offset+1]),"a unit's weapon list through the window");
