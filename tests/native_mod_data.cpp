@@ -57,6 +57,12 @@ int main(int argc,char** argv) {
     check(mod_data::parse(json::parse(R"({"133":{"melee":160,"sp":90,"double_move":40}})"),mod_data::Kind::pilots,rom,numbers).empty(),"pilot numbers");
     check(numbers==mod_data::Bytes{{pilot_at+1,160},{pilot_at+0xC,90},{pilot_at+0xE,40}},"pilot bytes, on 真吾's record");
     numbers.clear();
+    // The のりかえ class, +0xB: Brad (27) is on record 17.
+    check(mod_data::parse(json::parse(R"({"27":{"swap_class":8}})"),mod_data::Kind::pilots,rom,numbers).empty(),"pilot swap class");
+    check(numbers==mod_data::Bytes{{mod_data::pilot_records+17*mod_data::pilot_record_size+0xB,8}},"pilot swap class byte");
+    numbers.clear();
+    check(!mod_data::parse(json::parse(R"({"27":{"swap_class":9}})"),mod_data::Kind::pilots,rom,numbers).empty(),"pilot swap class range");
+    numbers.clear();
     check(mod_data::parse(json::parse(R"({"731":{"power":3600,"hit":-5,"ammo":-1,"critical":20,"terrain":{"space":"A"}}})"),mod_data::Kind::weapons,rom,numbers).empty(),"weapon numbers");
     check(numbers==mod_data::Bytes{{weapon_at+1,36},{weapon_at+4,0xFB},{weapon_at+5,0xFF},{weapon_at+0xD,20},{weapon_at+0xC,4}},"weapon bytes");
     const auto weapon=[&](const char* text){mod_data::Bytes b;return mod_data::parse(json::parse(text),mod_data::Kind::weapons,rom,b);};
@@ -99,7 +105,8 @@ int main(int argc,char** argv) {
         b.clear();
         check(!mod_data::parse(json::parse(R"({"184":{"move_types":[]}})"),mod_data::Kind::units,rom,b).empty(),"no move type");
         check(!mod_data::parse(json::parse(R"({"184":{"move_types":["fly"]}})"),mod_data::Kind::units,rom,b).empty(),"unknown move type");
-        check(!mod_data::parse(json::parse(R"({"184":{"swap_class":8}})"),mod_data::Kind::units,rom,b).empty(),"swap class range");
+        check(mod_data::parse(json::parse(R"({"184":{"swap_class":8}})"),mod_data::Kind::units,rom,b).empty(),"swap class 8");
+        check(!mod_data::parse(json::parse(R"({"184":{"swap_class":9}})"),mod_data::Kind::units,rom,b).empty(),"swap class range");
         b.clear();
         check(mod_data::parse(json::parse(R"({"133":{"skills":{"newtype":[1,4,8,12,18,24,30,38,45],"parry":null},"spirits":[["focus",1],["valor",10],["soul",40]]}})"),mod_data::Kind::pilots,rom,b).empty(),"skills and spirits");
         const uint32_t rows=mod_data::threshold_records+110*mod_data::threshold_record_size;

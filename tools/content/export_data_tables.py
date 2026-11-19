@@ -115,6 +115,7 @@ def main() -> None:
         row = dict(zip(('melee', 'ranged', 'evade', 'hit', 'reaction', 'skill'), (u8(at + n) for n in range(1, 7))))
         row['sp'] = u8(at + 0xC)
         row['double_move'] = u8(at + 0xE)
+        row['swap_class'] = u8(at + 0xB)
         skills = {}
         first = False
         for key, bit, line in SKILLS:
@@ -159,7 +160,7 @@ def main() -> None:
     write('units.csv', ['unit', 'name_ja', 'name_zh', 'name_en', *CHANNELS, *unit_stats, 'shield', 'sword', 'move_types', 'abilities'],
           [[u, *n, *t, *(d[k] for k in unit_stats), int(d['shield']), int(d['sword']), ' '.join(d['move_types']),
             ' '.join(d['abilities'])] for u, n, t, d in units])
-    pilot_stats = ('melee', 'ranged', 'evade', 'hit', 'reaction', 'skill', 'sp', 'double_move')
+    pilot_stats = ('melee', 'ranged', 'evade', 'hit', 'reaction', 'skill', 'sp', 'double_move', 'swap_class')
     write('pilots.csv', ['pilot', 'name_ja', 'name_zh', 'name_en', 'record', 'shares_record_with', *CHANNELS, *pilot_stats, 'skills', 'spirits'],
           [[a, *n, r, ' '.join(map(str, shared)), *t, *(d[k] for k in pilot_stats),
             ' '.join(f"{k}:{'/'.join(map(str, v))}" for k, v in d['skills'].items()), ' '.join(f'{k}:{l}' for k, l in d['spirits'])]

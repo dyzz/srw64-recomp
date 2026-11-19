@@ -77,6 +77,16 @@ class StoryTests(unittest.TestCase):
             with self.assertRaises(story.StoryError):
                 story.compile_story(source(event(do=[bad])))
 
+    def test_super_earthgain_package(self):
+        # config/recomp/mods/super-earthgain: Brad changes into 306 as the original's other branch
+        # does, but with 500 for the old unit, so Earthgain (34) stays in the roster.
+        document = json.loads((ROOT / "config/recomp/mods/super-earthgain/story/kurtz.json").read_text(encoding="utf-8"))
+        image = story.compile_story(document)
+        got = image["events"][0]
+        self.assertEqual(got["listing"][0], "3D5A 27,0,306,500")
+        self.assertEqual(got["vars"], {"21": 2})
+        self.assertEqual(image["stage_info"][0]["done"], {"units": [306]})
+
     def test_stage_info(self):
         # Hidden elements a package adds to a scene's stage information page (stage_info.cpp).
         info = {"scene": 78, "title": {"ja": "ファイナルダンクーガ", "en": "Final Dancouga"}, "text": {"ja": "入手"},

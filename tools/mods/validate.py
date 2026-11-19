@@ -480,9 +480,9 @@ def _plain_number(text: str) -> bool:
 DATA_FIELDS = {
     "units.json": (363, {"hp": (1, 65535, 1), "en": (0, 65535, 1), "move": (1, 30, 1), "mobility": (0, 65535, 1),
                          "armor": (0, 65535, 1), "limit": (0, 65535, 1), "repair_cost": (0, 65535, 1), "upgrade_cap": (0, 15, 1),
-                         "swap_class": (0, 7, 1), "funds": (0, 65535, 1), "exp": (0, 255, 1)}),
+                         "swap_class": (0, 8, 1), "funds": (0, 65535, 1), "exp": (0, 255, 1)}),
     "pilots.json": (360, {"melee": (0, 255, 1), "ranged": (0, 255, 1), "evade": (0, 255, 1), "hit": (0, 255, 1),
-                          "reaction": (0, 255, 1), "skill": (0, 255, 1), "sp": (0, 255, 1), "double_move": (0, 99, 1)}),
+                          "reaction": (0, 255, 1), "skill": (0, 255, 1), "sp": (0, 255, 1), "double_move": (0, 99, 1), "swap_class": (0, 8, 1)}),
     "weapons.json": (1329, {"power": (0, 25500, 100), "range_min": (0, 30, 1), "range_max": (1, 30, 1), "hit": (-128, 127, 1),
                             "ammo": (-1, 99, 1), "en": (0, 255, 1), "morale": (0, 255, 1), "critical": (-128, 127, 1),
                             "upgrade_type": (0, 4, 1)}),

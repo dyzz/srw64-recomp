@@ -32,9 +32,9 @@
 - 键是编号，十进制、不补零：机体号 0–362（[units.csv](units.csv)），人物号 0–359（[pilots.csv](pilots.csv)），武器号 0–1328（[weapons.csv](weapons.csv)）。
 - 只写要改的字段，没写的保持原版。字段、范围和键的完整列表在官网文档「[数值 MOD](../../../web/src/content/docs/zh/mod-data.md)」，这里只列一览：
   - 机体：`hp` `en` `move` `mobility` `armor` `limit` `repair_cost` `upgrade_cap` `terrain` `size` `shield` `sword` `parts_slots` `move_types` `swap_class` `funds` `exp` `abilities`；
-  - 驾驶员：`melee` `ranged` `evade` `hit` `reaction` `skill` `sp` `double_move` `terrain` `skills` `spirits`；
+  - 驾驶员：`melee` `ranged` `evade` `hit` `reaction` `skill` `sp` `double_move` `swap_class` `terrain` `skills` `spirits`；
   - 武器：`power`（100 的倍数）`range_min` `range_max` `hit` `critical` `ammo`（-1 不用弹数）`en` `morale` `terrain`；属性类：`attack`（`melee`／`ranged`，格斗或射击）`post_move`（`true`／`false`，移动后能不能用，即名字后的 P；例：`{ "209": { "post_move": true } }` 让 νガンダム 的フィンファンネル 移动后也能用）`beam`（光束，名字后的 B）`parryable`（能被切落）`terrain_at`（`attacker`／`target`，武器地形适应按哪一格判定）`requires`（必要技能：`null`、`ally`、`hyper_mode`、`super_mode`、`level_10`…`level_45`、`newtype`、`newtype_4`、`holy_warrior`、`holy_warrior_3`、`v_max`、`v_max_red`）`upgrade_type`（0–4）`locked`（剧情解禁前隐藏）。名字前后的 格／射、P、B 跟着字段走。MAP 武器和合体技不能加减。
-- `move_types`（`land` 陆、`air` 空、`sea` 海、`space` 宇、`underground` 地中）也是写全的；`swap_class` 是换乘类别（0 不能换乘），`funds`／`exp` 是被击坠时给的资金与经验，这三项在建机体实例和读档时才进实例（`800A6E68`、`800A8CE8`），能力重算不重读。
+- `move_types`（`land` 陆、`air` 空、`sea` 海、`space` 宇、`underground` 地中）也是写全的；`swap_class` 是换乘类别（0 不能换乘；驾驶员与机体同类才能换。原版用了 1–7，8 留给 MOD 当专用类别，例如只让一名驾驶员在两台机体间换），`funds`／`exp` 是被击坠时给的资金与经验，这三项在建机体实例和读档时才进实例（`800A6E68`、`800A8CE8`），能力重算不重读。
 - `abilities`、`spirits` 是写全的：数组里没有的就去掉。`skills` 只改写到的技能，`null` 去掉。
 - `terrain` 里写要改的通道：`air`（空）、`land`（陸）、`sea`（海）、`space`（宇），值是 `A`、`B`、`C`、`D` 或 `-`。
 - 规则很严：不认识的字段、键或等级，范围外的值或编号，没有能力／精神记录的人物，都算错。**一个文件有错就整份不用**，游戏日志里有一行 `SRW64_MOD_DATA_PROBLEM` 写明哪个包、哪个文件、什么原因。`tools/mods/validate.py` 按同样的规则检查。
@@ -64,7 +64,7 @@
 | 文件 | 列 |
 | --- | --- |
 | [units.csv](units.csv) | `unit` 机体号，`name_ja`／`name_zh`／`name_en`，四个地形等级，`hp` `en` `move` `mobility` `armor` `limit` `repair_cost` `upgrade_cap` `size` `parts_slots`，`shield`／`sword`（1 有 0 无），`abilities`（空格分隔的键） |
-| [pilots.csv](pilots.csv) | `pilot` 人物号，三语名字，`record` 能力记录号，`shares_record_with`，四个地形等级，六项能力值、`sp`、`double_move`，`skills`（`键:等级/等级/…`），`spirits`（`键:等级`） |
+| [pilots.csv](pilots.csv) | `pilot` 人物号，三语名字，`record` 能力记录号，`shares_record_with`，四个地形等级，六项能力值、`sp`、`double_move`、`swap_class`，`skills`（`键:等级/等级/…`），`spirits`（`键:等级`） |
 | [weapons.csv](weapons.csv) | `weapon` 武器号，三语名字，四个地形等级，`power` `range_min` `range_max` `hit` `ammo` `en` `morale` `critical`，`attack`（melee／ranged），`beam` `post_move` `parryable` `locked`（1 是 0 否），`terrain_at`（attacker／target），`requires`（条件键，空为无），`upgrade_type`，`units`（带它的机体号） |
 
 人物表只列有能力记录的人物；副驾驶员、妖精也有记录，四项多是 `-`。同名的条目是不同的编号（形态、敌我版本、剧情专用），改之前对一下数值。
@@ -74,6 +74,8 @@
 ## 7. 示例
 
 仓库里的 [`config/recomp/mods/space-a`](../../../config/recomp/mods/space-a/)：把我方主力里宇宙不到 A 的 20 名驾驶员与 21 台机体的宇宙改成 A。
+
+[`config/recomp/mods/super-earthgain`](../../../config/recomp/mods/super-earthgain/)：数值文件给布拉德（27）、夺地者（34）、超级夺地者（306）同一个换乘类别 8，剧情文件在「了断之时」（场景 124）招回卡茨后让布拉德换到 306、34 留在部队里，于是两台能在换乘里互换。
 
 ## 新机体与新武器（`data/new_units.json`）
 

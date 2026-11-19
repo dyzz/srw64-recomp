@@ -154,7 +154,7 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], [])
         for name, bad, why in [("units.json", {"184": {"hp": 0}}, "超出范围"), ("units.json", {"184": {"abilities": ["transform"]}}, "abilities"),
                                ("units.json", {"184": {"move_types": []}}, "非空"), ("units.json", {"184": {"move_types": ["fly"]}}, "underground"),
-                               ("units.json", {"184": {"swap_class": 8}}, "超出范围"), ("units.json", {"184": {"exp": 256}}, "超出范围"),
+                               ("units.json", {"184": {"swap_class": 9}}, "超出范围"), ("units.json", {"184": {"exp": 256}}, "超出范围"),
                                ("weapons.json", {"731": {"power": 3650}}, "100 的倍数"), ("weapons.json", {"731": {"range_min": 5, "range_max": 3}}, "range_min"),
                                ("pilots.json", {"133": {"skills": {"newtype": [1], "esp": [2]}}}, "只能有一个"),
                                ("pilots.json", {"133": {"spirits": [["focus", 5], ["soul", 1]]}}, "从小到大"), ("units.json", {"363": {}}, "编号")]:

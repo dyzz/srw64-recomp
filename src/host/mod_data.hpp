@@ -59,12 +59,17 @@ inline constexpr Field unit_fields[]={
     {"repair_cost",0x14,2,false,0,65535},{"upgrade_cap",0x20,1,false,0,15},
     // Copied when an instance is built (800A6E68) or a save rebuilds it (800A8CE8), not at
     // recompute: the のりかえ class (runtime +0x1A, 801C5618), the funds for shooting it
-    // down (+0x1E, 801F6588) and the experience it gives (+0x27, 801F60D4).
-    {"swap_class",0x12,1,false,0,7},{"funds",0x16,2,false,0,65535},{"exp",0x1A,1,false,0,255}};
+    // down (+0x1E, 801F6588) and the experience it gives (+0x27, 801F60D4). Class 8 is the
+    // one the ROM leaves free: 801C5618 counts classes 0-7 in eight u16s, and the generator
+    // masks its index with 7 (generate_cpu.py), so 8 counts in class 0's, which no unit uses.
+    {"swap_class",0x12,1,false,0,8},{"funds",0x16,2,false,0,65535},{"exp",0x1A,1,false,0,255}};
 inline constexpr Field pilot_fields[]={
     {"melee",0x01,1,false,0,255},{"ranged",0x02,1,false,0,255},{"evade",0x03,1,false,0,255},
     {"hit",0x04,1,false,0,255},{"reaction",0x05,1,false,0,255},{"skill",0x06,1,false,0,255},
-    {"sp",0x0C,1,false,0,255},{"double_move",0x0E,1,false,0,99}};
+    {"sp",0x0C,1,false,0,255},{"double_move",0x0E,1,false,0,99},
+    // The のりかえ class (runtime +0x32): 800A7F8C copies it when a character is registered,
+    // levels up or a save is read; 0 never changes machines. 8 as the units' above.
+    {"swap_class",0x0B,1,false,0,8}};
 // ammo -1 is none (0xFF).
 inline constexpr Field weapon_fields[]={
     {"power",0x01,1,false,0,25500,100},{"range_min",0x02,1,false,0,30},{"range_max",0x03,1,false,1,30},

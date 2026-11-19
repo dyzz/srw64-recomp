@@ -525,6 +525,12 @@ NAME_RECORDS = {   # (function, instruction): (U unit, W weapon, M weapon menu; 
 # raises it by exactly the packages' own resources (mod_tables.hpp), so a number none gives is
 # refused as before instead of reading a descriptor past the ROM's table.
 MAP_WIDTH_CONSTANTS[("resident_func_80089E9C", 0x80089EAC)] = ("0X1924", "srw64_resource_limit()")
+# The のりかえ candidates (801C5618) count roster units per class in eight u16s on its stack
+# (classes 0-7) and read them back by the pilot's class: a class above 7 would run past them.
+# The index is masked with 7, so class 8 (mod_data.hpp, the one a package may add) counts in
+# class 0's slot, which no unit takes (class 0 is skipped before counting) and no pilot reads.
+for address, statement in ((0x801C56BC, "ctx->r3 << 1"), (0x801C57A8, "ctx->r3 << 1"), (0x801C5840, "ctx->r3 << 1")):
+    MAP_WIDTH_CONSTANTS[("load_0008F4B0_func_801C5618", address)] = (statement, "(ctx->r3 & 7) << 1")
 # The combined-unit table (src/host/mod_combine.hpp): its list of combined units D_800CB40C
 # and their record pointers D_800CB5A4 are read at copies in free RDRAM that have room for
 # a package's combined units (the originals are followed by other tables). Both are built
