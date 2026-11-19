@@ -98,6 +98,8 @@
 #include "map_combo.hpp"
 #include "legacy.hpp"
 #include "music.hpp"
+#include "voice_wait.hpp"
+#include "presentation_settings.hpp"
 #include "title_page.hpp"
 #include "battle_viewer.hpp"
 #include "move_jump.hpp"
@@ -684,8 +686,22 @@ static int run_host(int argc, char** argv) {
     srw64_game_hooks.terrain_panel_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end) {
         srw64::hdmap::rewrite_panel(ram, {begin, end});
     };
-    srw64::dialogue::battle_quote_opened = srw64::music::battle_quote;   // MOD battle voices
-    srw64_game_hooks.battle_aborted = srw64::music::battle_aborted;
+    // MOD battle voices. A quote opening while the previous line is still spoken waits for it
+    // (voice_wait.hpp Pending; game_hooks.cpp starts it).
+    srw64::dialogue::battle_quote_opened = [](unsigned record) {
+        namespace vw = srw64::voice_wait;
+        const bool enabled = srw64::settings::mod_voice() && srw64::settings::mod_voice_wait();
+        if (vw::defer(srw64::music::speaking_line(), record, enabled, srw64::game_speed::running.load(), vw::wait.released)) {
+            vw::pending = {int(record), 0};
+            return;
+        }
+        vw::pending = {};
+        srw64::music::battle_quote(record);
+    };
+    srw64_game_hooks.battle_aborted = [] {
+        srw64::voice_wait::pending = {};
+        srw64::music::battle_aborted();
+    };
     srw64_game_hooks.unit_icon_drawn = [](uint8_t* ram, uint32_t slot, uint32_t begin, uint32_t end) {
         srw64::unit_icons::rewrite(ram, slot, begin, end);
     };

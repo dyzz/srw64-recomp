@@ -1,0 +1,441 @@
+{
+  "checked_at": "2026-11-05T11:35:28+08:00",
+  "note": "Hashes of temporary HTML observations; source bodies and downloaded mod binaries are not distributed with this report. Observations are not atomic; counters may change during collection. Only current detail pages and their visible changelog excerpts were examined, not every historical version.",
+  "pages": [
+    {
+      "url": "https://twilitrealm.dev/mods/alexandre.cooper_hat.texture_selector/",
+      "sha256": "8f533eaf429a5d9ddadc1276c04f3d52faa7de9450aab1f08d01c2aa47dee84c",
+      "bytes": 35410
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/alternate.button.prompts.217/",
+      "sha256": "fa8410e38ac7a82f0eab4792fd44a29bef8a70cd78cba729bd2615c02e41c08b",
+      "bytes": 40466
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/carco_games.carco_corp/",
+      "sha256": "a3a5fea61cfa959b2b3812d9b57d6f8a716debe529ef04ee3fb77dbe472e7f59",
+      "bytes": 32403
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.agustinfuac.fairy_companion/",
+      "sha256": "84fa49ce33e4e6ca974fd3efa7beeefafdbae4170dcc402b35ffcddafa6ef1f7",
+      "bytes": 37968
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.blueflaregames.cutscene_theater/",
+      "sha256": "571e302d2fc23511483c5ed006ea999963b3b3f4705d699799fec146ecbfab6a",
+      "bytes": 35445
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.blueflaregames.dark_armogohma/",
+      "sha256": "5807c11821011e93267b47d74ce9532b45917a3c3ba9411d5305a5cb0e0fe40b",
+      "bytes": 37017
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.blueflaregames.dark_morpheel/",
+      "sha256": "1f02628fc08544b5abd6af83cf61f60b65b1f1f9b0fc84defc28cee2cb383012",
+      "bytes": 37445
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.blueflaregames.zora_swim/",
+      "sha256": "b356a4a6e8562fdd88aab74e01b6c8a76f1ca262b786b4e51b85c36878887dd6",
+      "bytes": 47151
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.bulankabur.bahasa_indonesia/",
+      "sha256": "1cae57c22210ba98e35f88fa87555552eb0e529474c0927fd97eea776a1984af",
+      "bytes": 30364
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.cgwolf.dialogue_options/",
+      "sha256": "2b0e98a0378aa8cd1e9ef6c0a9b9eb0d7b25c6ef61bca0545a2899d8927a2c83",
+      "bytes": 35030
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.cgwolf.health_bar/",
+      "sha256": "91aab7423b32403d150c2a3f8b5e78ce104c2f60fca36074c5259d976b7b123a",
+      "bytes": 33163
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.darkzant.custom_capacities/",
+      "sha256": "244e7b51d0b45ad0e24e425537e78623547c6c6252a67b61f80fd241c7ced560",
+      "bytes": 34183
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.ditrey.linkle/",
+      "sha256": "743235d16e68174d3b5ea706e57eb9884056513c8d92a2e3bf2987d60d706b41",
+      "bytes": 36667
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.dusklight.twilight_compass/",
+      "sha256": "8cce51842cff6c764a5fdda97a8aee65ddd72f0b4b63dca79ee5a0f977c30ca9",
+      "bytes": 33996
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.dusklight.twilit_essentials/",
+      "sha256": "575feb06291f79b09baf88d228071d69088fd59ccbd5e4695e82ad2e40a531d0",
+      "bytes": 53904
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.etrd.tp.android/",
+      "sha256": "05bec1cb0f1e35c5521b27587e041e90c565f67dce16bc522366a5620ad81b55",
+      "bytes": 32550
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.giorgiomendieta.dof_hq/",
+      "sha256": "ba968a194c6fc023177d0f6561d3c08102177c45d73f2ea7b6a94c08369418eb",
+      "bytes": 39745
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.i12bp8.hyrule_hide_and_seek/",
+      "sha256": "349e1da302fa335f261664ab58766b09ea1252887ca1c18e88b7d54eb5d747ab",
+      "bytes": 34132
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.i12bp8.nightwalker_epona/",
+      "sha256": "e4194fe422faf17e69154f38754670ed7c0277e5dc03998a2bacd079a4f46796",
+      "bytes": 27062
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.jdflyer.betaquest/",
+      "sha256": "83d2de0d270598533c9c21da94e2a1dfdc44760af37c26ac2838a990d259ab40",
+      "bytes": 25466
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.kamilink.lazytweaks/",
+      "sha256": "4031f0672b220084c056e7f06a2f503db50946aa945f613ffc631bbf2fdd4f45",
+      "bytes": 27688
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.kite.kh2camera/",
+      "sha256": "98471e90051029aba9c3b08b944f05f7262a15ce04ae8993a012a7a04d13bf7e",
+      "bytes": 40145
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.krowten.chicken_bomb/",
+      "sha256": "8fc346c5707cceda6dcc0f8b471b9fa09f70a7cec2987d960494cd4e67054a4f",
+      "bytes": 43105
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.krowten.object_yeet/",
+      "sha256": "f6c1386ee21984ce1e5174d825b95cdf798c4058bfb9e99ea23a14498a4f49df",
+      "bytes": 37833
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.krowten.spin_flight/",
+      "sha256": "bf76abcdb4aef8e437c136aefe9479a50b60d4ed3ada94f13d9df11e4e8af5fe",
+      "bytes": 35721
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.loadingerror.dink/",
+      "sha256": "6a213bad9281818b1202673bc43416b9fa63a300e9c008ea37ead83a50a4061f",
+      "bytes": 35062
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.madnessgod.bare_legs/",
+      "sha256": "09c5606cbbe7bfbec61e391b3dc3a31e437f35b5e1b7e2570e12e4bb45dcfceb",
+      "bytes": 36390
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.madnessgod.link_blue_tunic/",
+      "sha256": "76bb520ae97bcce870e8f2757399f32b01748adcfd7605d15cf09b77427e3d8f",
+      "bytes": 37239
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.magyarzeldak.hu.tp/",
+      "sha256": "9e97bcdcf20521be23a77993d319631e221ace7030f7761dd162d15ca6fb05a5",
+      "bytes": 29216
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.melonspeedruns.manualjumps/",
+      "sha256": "d045202569f976e6cd68c94494b81981806158b8e45dc58bf794cc1f840920b6",
+      "bytes": 33020
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.melonspeedruns.rollandsprint/",
+      "sha256": "0213aa890c93cc2748d9acfc9129b6074d048f6e69ecc22b0c7cd7eee1fec82b",
+      "bytes": 34521
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.mikey022.quick_game_over/",
+      "sha256": "ecbfeffbaef59424927a31059ec76f4fe454863d491306a962df640a6857f962",
+      "bytes": 27360
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.mikey022.tp_randomizer_tracker/",
+      "sha256": "65587868085e987c0b9ba0dabf13c622eb24c18be62b1e4437da9af9c94298a5",
+      "bytes": 42560
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.misc_bow_wow/",
+      "sha256": "0fcfe775a472dbe6fd003a9af56c08d3e8e4edf0b26f6b19e6ad932448b1cff7",
+      "bytes": 32427
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.misc_custom_twilight_wolf/",
+      "sha256": "7d4beffef996be7b998d9c76ef0e003ceffc2abf25011186919a09371a71b216",
+      "bytes": 39805
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.misc_lokomo_master_sword/",
+      "sha256": "9c1d5d2a4c28c0b89398fc95b1e1cbdcbbdd33f5fef1feb05a83eec9fa17ea1f",
+      "bytes": 34331
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.misc_recruit_ordon_sword/",
+      "sha256": "3ee14d8f2991d4c099717a8798f635635fd94ec40d55a409e8fe0de11c6ac306",
+      "bytes": 35061
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.noahsmaximum.dusklight_vr/",
+      "sha256": "1256842984d54652e583cf8cd1124dc839d0e556691d346f48199b1bc085770c",
+      "bytes": 38825
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.nozzly.action_prompt_removal/",
+      "sha256": "2d2d61a5e6f7199201fae191c2f3b729b7098484c589d2beda5a0d5b1c1b2efb",
+      "bytes": 26592
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.olivia.extrabuttons/",
+      "sha256": "b2e8c84bb19e2be7c7e1146ae76fe4466c27945d830cbebb0442aac747ff1679",
+      "bytes": 28150
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.ordonhero.zeldartist/",
+      "sha256": "4b9b0d484fd4b377832b7e00cf5128e3a872d67a0a6068a3f6d59e15f9d13eb8",
+      "bytes": 27371
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.owlero.link_gold_tunic/",
+      "sha256": "b2f2525e76799ecf2f8e5bb62d0dfc42de265e917a379190d214866304ddd7a7",
+      "bytes": 38158
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.owlero.link_green_tunic/",
+      "sha256": "2ced96e91e0b889b5a00557d7910d62c51075352534b128e20cd6cb16b8ab86a",
+      "bytes": 42294
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.peter.link_ragdoll/",
+      "sha256": "698107f7ecaaf05969768bb5484960e4b3e38f93dbad603ee6a025e0f25aca76",
+      "bytes": 37559
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.tomtee.no_underwater_filter/",
+      "sha256": "5a815cc78e4e03ce5434f73cd92fc1cb6d3ec8f49d483b8e41db0017dffd98dd",
+      "bytes": 27776
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/com.zelda64rus.tpru/",
+      "sha256": "ea4ac1ae3c964024dd7507e079ece1b7ec238200086704bae3fd4c1717629e4f",
+      "bytes": 34005
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.albt.albw/",
+      "sha256": "a261392967d318b71b949dcad7fb77a74f794b2f1ced72f76a3c704c936f691a",
+      "bytes": 42127
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.automata.deferred_fog/",
+      "sha256": "e85b4a35a3dae1a47f4c29b1bf09cee9c87d1a61bbe7fe7e70d94f5c41e5f540",
+      "bytes": 30438
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.automata.vbao/",
+      "sha256": "3550bf01917678cf80ba2043315413d109008e4937ee32026990a2f52d1ca5ba",
+      "bytes": 28557
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.baxlek.fire_arrows/",
+      "sha256": "273504c3bd915f3e05735fea05a0e16565faaa19e0f97b508a165663fc104eeb",
+      "bytes": 32330
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.baxlek.hide_infinite_counts/",
+      "sha256": "912fb1bcd0cd476bd6b4592de058907bbd117d08920bada3225b3dd4967fae50",
+      "bytes": 27406
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.baxlek.time_sync_neo/",
+      "sha256": "25b911b30f01df33167e60bcb0c8fd4cec2d6a67b2a716d8c5500ad7bbeab832",
+      "bytes": 29464
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.baxlek.unrestricted_items/",
+      "sha256": "241bd87193d9d7759d9b79a0bcfc8f6b0e6be5c20ec52c06d1ca994876315add",
+      "bytes": 29496
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.baxlek.zelda_on_epona/",
+      "sha256": "0936dd0e6691095bf2dbbd99d49f6ef4753f79cc9ccb20842f63fbf407eb11d2",
+      "bytes": 29804
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.bezide.dawnlight/",
+      "sha256": "29e00903a8440f48848ea932b6e6cedd0ca5c1404e67eb86483f41ebaa0bea43",
+      "bytes": 49560
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.bezide.dawnlight_custom_model/",
+      "sha256": "42819dcd4c43e4066e68ede54491cc9a8b7fe11c2e0981c3a44f3692c7f2d2db",
+      "bytes": 28984
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.dusklight.gz/",
+      "sha256": "e7d99b48f4b069d18f33808a7cdbd637520e8f5d0cc7038fdaae6853b2167585",
+      "bytes": 28406
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.remiafterdark.coop_mod/",
+      "sha256": "47c2bfdb0aba242c28faeed2fc7e33c52b4f92e50a4e5ffc63462e01c7e8d94d",
+      "bytes": 33221
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.remiafterdark.ganondorf/",
+      "sha256": "21a38d0553507953657d06a0696debec21b1581f169558012a2bd73644768842",
+      "bytes": 27512
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.remiafterdark.heros_shade/",
+      "sha256": "08b05b6e4c04c248ee0e91fc2faaf377681ceb5680b2eb3a148689e70e464588",
+      "bytes": 27591
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.siggemckvack.dualscreen_companion/",
+      "sha256": "4a08efb1b6510437cbacf752ef360ee5b5c7ced1b2744643ba0c426e02c366a1",
+      "bytes": 26111
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/dev.twilitrealm.randomizer/",
+      "sha256": "a615c1be9f01548475650bc815655ef624c00f7d677695c0116c6b8964f64964",
+      "bytes": 29734
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/hopex.dark_link/",
+      "sha256": "754985e235a793eccd47be5da8b2f9b36f0606705e1a671e6b6387dfc8567145",
+      "bytes": 27806
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/?sort=name&page=1",
+      "sha256": "f27d2ec7cb9e395d8f8e3611e41d8ad307bdb3d68fed13a2367536753b70ae7b",
+      "bytes": 41727
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/?sort=name&page=2",
+      "sha256": "81c663681f84b67886de9234f6cef468ee106b6899ace384ff83bf7f312d4d96",
+      "bytes": 45864
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/?sort=name&page=3",
+      "sha256": "f98ce35aff6f579e31139ebd63c47ab79aa5ae4689a11a815f98fbef56409de4",
+      "bytes": 45163
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/?sort=name&page=4",
+      "sha256": "652350937afd8de3a8e558e745a3469813720abe5039b23a35ec2540806b2faa",
+      "bytes": 45954
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/?sort=name&page=5",
+      "sha256": "7cb37c913229be11b716a806964526643b73dfd2411cd1a4f547b3538debc942",
+      "bytes": 44514
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/?sort=name&page=6",
+      "sha256": "8fe4d9d3206799fd795337a624326923b9fd88669fcfcb00376b2efa69ad8da0",
+      "bytes": 45972
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/?sort=name&page=7",
+      "sha256": "8b1bd818278465339e376ae1fbbda2a7c6c3e511d9a9af55d0144c518df6afa0",
+      "bytes": 44160
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/?sort=name&page=8",
+      "sha256": "2a13cd186b525ac814fc9d86f22e43c54395a941eb3860c560bef8e2d9929ae8",
+      "bytes": 46562
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/?sort=name&page=9",
+      "sha256": "7c59d6faa2dc0d06f4067d6903351f0ae98fc931fc795083d0722c75e46959b5",
+      "bytes": 37146
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/io.github.aldeus_vip.dusklight_item_tracker/",
+      "sha256": "f8b617f97f700c7523d9f0a7f2c0c245d1c29d8df03af347013f02e8943c2dc1",
+      "bytes": 48243
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/io.github.mdra5000.dusklight_online/",
+      "sha256": "6917519c0b07af44dbbb3fcd5801884f7addc44bdda98516edb7fff7f47935f9",
+      "bytes": 30046
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/io.github.noaseto.arachnophobia/",
+      "sha256": "5ea7b7c9c44900910d6f79259311da0da1270901bf79fc8c13f712e479028b1c",
+      "bytes": 27630
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/io.github.noaseto.english_names/",
+      "sha256": "86e466be7bd2e419a757941ca7b6823c25951e104924fc3cd00758e716faa109",
+      "bytes": 35667
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/io.github.noaseto.uwunglish/",
+      "sha256": "74482e80aafa7878f7b306a29d97f3631568e9489303481f53d721bdf349061a",
+      "bytes": 34864
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/local.brian.twilight_princess.alttp_master_sword_blue_glow/",
+      "sha256": "99472115c83d3faece941596d9bff7a97b6968cec2bf46696a5a583da5c49734",
+      "bytes": 29046
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/local.brian.twilight_princess.alttp_master_sword_no_glow/",
+      "sha256": "23448703e7f374638680b8ce9bc5e15d78ff6aa1431d033838c09b66f0bfb59a",
+      "bytes": 28671
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/local.brian.twilight_princess.alttp_master_sword_white_glow/",
+      "sha256": "e9c328ee71244db661baecfcb63528ddbddfef1861510ca1a966295dbd134c3b",
+      "bytes": 26443
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/local.brian.twilight_princess.fighter_s_sword_and_sheath/",
+      "sha256": "927eb8e348d2c18b66bfb84db7319bb94592135f09fe39152c56c43b3ad93673",
+      "bytes": 28644
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/local.brian.twilight_princess.hylian_shield/",
+      "sha256": "6e39f903dce7d2972b34ac96de380408b12e15b1cec7c9ed06a382587a272804",
+      "bytes": 28419
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/local.brian.twilight_princess.red_shield/",
+      "sha256": "41ba3b8196a6ed26d90460237316f9c2e01b9983dd6863603ba92017e9cf3fe9",
+      "bytes": 28598
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/org.dusklight.tp_classic_buttons/",
+      "sha256": "729941c5e72337d9b8ff8b7b9d6f550a921de3d27b1ccc31a036986e0078ffb2",
+      "bytes": 42055
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/systems.slugcat.interlacing/",
+      "sha256": "20fa00f42b12c4efea7b12123b7e833a5ff15b9bb095a4f06143f85add789913",
+      "bytes": 27557
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/xandaslegend.twilight_princess_ptbr/",
+      "sha256": "f7063d3aaa61ae47d3a4d0f378baa147a69fe93d5788cc87bbf6690b3d4091d9",
+      "bytes": 40321
+    },
+    {
+      "url": "https://twilitrealm.dev/mods/yiga.zh.hans/",
+      "sha256": "e3b21c9edd5c6ae63b40d2856ba4d2450643373f68d18d88522ed6947b5e5fc2",
+      "bytes": 31759
+    }
+  ]
+}

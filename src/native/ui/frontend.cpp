@@ -1574,7 +1574,7 @@ std::string controls_page() {
 // differs needs a second press, which imports it with the sum redone.
 nlohmann::json save_candidates;
 bool save_candidates_read{};
-std::string save_message,save_force;
+std::string save_message,save_message_seen,save_force;
 #ifdef __ANDROID__
 bool android_export_saves(const std::string& folder);
 int android_export_status(const char* method);
@@ -1643,7 +1643,7 @@ std::string saves_page() {
         }
         body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(name)+" <span class='set-note'>"+escape(file.value("format",std::string()))+"</span></div><div class='set-seg'>"+slots+"</div></div></div>";
     }
-    if(!save_message.empty())body+="<p class='set-message'>"+escape(save_message)+"</p>";
+    if(!save_message.empty())body+="<p id='save-message' class='set-message'>"+escape(save_message)+"</p>";
     return body;
 }
 // The Cheats page (docs/gameplay/cheats.md): the switches, three rows of choices, then
@@ -3329,6 +3329,18 @@ std::string viewer_icon(const json& e,float box) {
     const auto art=library_art(e,box);
     return art.empty()?"<span class='ph'>"+escape(viewer_initial(e.value("name",std::string())))+"</span>":art;
 }
+// The scene box: each scene's three sizes queued together, one read of the file, so moving
+// through the list finds the card's background there instead of a black card on the Switch.
+void viewer_read_scenes() {
+    static float read_for=0;
+    if(read_for==viewer_col_width)return;
+    read_for=viewer_col_width;
+    for(unsigned i=0,count=unsigned(battle_viewer::scenes().size());i<count;++i) {
+        const auto path=srw64::sprites::viewer_scene_image(viewer_scene_key(i));
+        if(path.empty())continue;
+        for(const float w:{62.f,viewer_col_width*1.1f,40.f})image_async(path,std::min(dp_pixels(w),479),true);
+    }
+}
 // The box a row opens, over the other side (the song's over the defender's).
 std::string viewer_popup() {
     const auto kind=viewer_kind();
@@ -3380,6 +3392,7 @@ std::string viewer_popup() {
                 i==viewer_saved.side[s].weapon?label("viewer_badge_now"):std::string(),i==viewer_side[s].weapon);
         }
     } else if(kind=="scene") {
+        viewer_read_scenes();
         title=label("viewer_choose_scene");
         const unsigned count=unsigned(battle_viewer::scenes().size());
         for(unsigned i=0;i<count;++i) {
@@ -3789,7 +3802,7 @@ void settings_sync() {
     report_export_poll();
 #endif
     const auto stamp=localization::catalog().locale+localization::catalog().revision+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+std::to_string(settings::unified_weapon_upgrades())+
-        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_level())+std::to_string(settings::dialogue_hints_always())+std::to_string(settings::mod_music())+"/"+std::to_string(settings::mod_music_volume())+"/"+std::to_string(settings::mod_voice())+"/"+std::to_string(settings::mod_voice_volume())+"/"+settings::mod_voice_speed()+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
+        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_level())+std::to_string(settings::dialogue_hints_always())+std::to_string(settings::mod_music())+"/"+std::to_string(settings::mod_music_volume())+"/"+std::to_string(settings::mod_voice())+"/"+std::to_string(settings::mod_voice_volume())+"/"+settings::mod_voice_speed()+"/"+std::to_string(settings::mod_voice_wait())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
@@ -3853,6 +3866,10 @@ void settings_sync() {
             std::string voice_speeds;
             for(const char* mode:{"follow","original","mute"})voice_speeds+=button(std::string("mod-voice-speed:")+mode,label(std::string("settings_mod_voice_speed_")+mode),settings::mod_voice_speed()==std::string(mode),!settings::mod_voice());
             body+=settings_row("settings_mod_voice_speed",voice_speeds,{},"settings_mod_voice_speed_note");
+            // A quote stays until its line is spoken (voice_wait.hpp).
+            std::string voice_waits;
+            for(const char* mode:{"on","off"})voice_waits+=button(std::string("mod-voice-wait:")+mode,label(std::string("settings_mod_voice_wait_")+mode),(settings::mod_voice_wait()?"on":"off")==std::string(mode),!settings::mod_voice());
+            body+=settings_row("settings_mod_voice_wait",voice_waits,{},"settings_mod_voice_wait_note");
         }
 
         body+=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
@@ -3937,6 +3954,12 @@ void settings_sync() {
     auto* focus=focus_id.empty() || focus_id=="first"?nullptr:settings_doc->GetElementById(focus_id);
     if(focus){focus->Focus();focus->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));}
     else if(focus_id=="first" || !pointer_mode)settings_focus_first();
+    // The Saves page's result sits under the list of imports, past the bottom of a full page:
+    // a new one is brought into view, or the player cannot tell the button did anything.
+    if(save_message!=save_message_seen) {
+        save_message_seen=save_message;
+        if(auto* note=settings_doc->GetElementById("save-message"))note->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));
+    }
 }
 // Turns the settings window to a page and remembers it for the next time it opens.
 void settings_show(unsigned page,const std::string& focus) {
@@ -6068,6 +6091,7 @@ void choose(const std::string& id) {
         if(id.starts_with("mod-voice:"))settings::set_mod_voice(id=="mod-voice:on");
         if(id.starts_with("mod-voice-volume:"))settings::set_mod_voice_volume(unsigned(std::stoul(id.substr(17))));
         if(id.starts_with("mod-voice-speed:"))settings::set_mod_voice_speed(id.substr(16));
+        if(id.starts_with("mod-voice-wait:"))settings::set_mod_voice_wait(id=="mod-voice-wait:on");
         if(id.starts_with("debug:"))settings::set_debug_interface(id=="debug:on");
         if(id=="debug-copy-run")SDL_SetClipboardText(settings::debug_endpoint().run.c_str());
         if(id=="report-export") {

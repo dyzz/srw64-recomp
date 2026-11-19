@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SRW64 战斗美术 · 动画审阅</title>
+<style>
+body{background:#141923;color:#e8edf4;font:15px system-ui;margin:28px auto;max-width:1440px;padding:0 22px}h1{font-size:30px}p{line-height:1.65;color:#b9c6d9}button,select,input{padding:9px;border-radius:7px;background:#263348;color:inherit;border:1px solid #567}button{cursor:pointer}button:disabled{opacity:.5;cursor:default}nav{position:sticky;top:0;background:#141923;padding:12px 0;z-index:2;display:flex;gap:10px;flex-wrap:wrap}#cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,390px),1fr));gap:18px}article{background:#202837;padding:16px;border-radius:12px}h3{font-size:16px;min-height:42px;margin-top:0}.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pic{height:200px;position:relative;background:repeating-conic-gradient(#384253 0% 25%,#303a49 0% 50%) 50%/20px 20px}.pic canvas{width:100%;height:100%;object-fit:contain}.notice{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:#ffb78a;padding:10px;pointer-events:none}small{color:#b3c2d8}a{color:#a7d7ff}.bad{color:#ffb78a}#stats{margin:16px 0}input[type=range]{box-sizing:border-box;width:100%}.controls{display:flex;gap:8px;margin:12px 0;align-items:center;flex-wrap:wrap}.status{font-size:13px;min-height:42px}footer{padding:28px}summary{cursor:pointer}details{margin:10px 0}
+</style>
+<h1>SRW64 · 战斗美术与动画审阅</h1><p><a href="../../../output/imagegen/human-actions-v2/index.html">查看多蒙／东方不败／阿尔贝托全部 HD 动画试验（含 4983 右手修正版）</a></p>
+<p>原图／当前 HD 同步播放，保留场景步序、重复帧与相对停留时长，按统一坐标摆放，避免逐帧自动居中导致抖动。<br>这是<strong>单个素材的离线动画</strong>，不模拟完整招式的演员叠层、镜头、动态调色板与相位。默认预览 30 tick/s，未校准游戏实际速度；末尾从头循环便于审阅。</p>
+<details><summary>覆盖与候选说明</summary><p>“有图”仅说明精确键与文件存在。“其他动作缺图候选”来自全资源扫描，以相邻登记场景及图集尺寸推断配对，可能误配；不是已证实的运行时漏图。全部登记表、来源 SHA-256 和候选明细见 <a href="audit.json">audit.json</a>。静态画面不会伪造成动画；缺失 HD 时只播放原图，右侧明确留空。</p></details>
+<nav><select id="kind" aria-label="素材类别"></select><input id="query" placeholder="搜索名称、场景、图集、武器号" aria-label="搜索"><label><input id="missing" type="checkbox">只看缺图</label><label><input id="animated" type="checkbox">只看可播放</label><select id="speed" aria-label="预览速度"><option value="15">慢速 · 15 tick/s</option><option value="30" selected>默认 · 30 tick/s</option><option value="60">快速 · 60 tick/s</option></select><button id="playAll">播放本页</button><button id="pauseAll">全部暂停</button><button id="prev">上一页</button><button id="next">下一页</button></nav>
+<div id="stats"></div><div id="cards"></div>
+<footer>建议先补生身动作，再挑人物特写试画。点击“播放”会预载该素材的图片，随后同步播放。只看缺图还会列出未经确认的配对候选。</footer>
+<script>
+const DATA=__DATA__, LABELS=__LABELS__;
+const $=id=>document.getElementById(id);let page=0, players=[];
+for(const [v,n] of Object.entries({human:LABELS.human,gap:LABELS.gap,cutin:LABELS.cutin,movie:LABELS.movie,all:'全部导出素材',...LABELS})){
+ const o=document.createElement('option');o.value=v;o.textContent=n;$('kind').append(o);
+}
+const initial=new URLSearchParams(location.search).get('kind');if([...$('kind').options].some(o=>o.value===initial))$('kind').value=initial;
+function element(tag,text,cls){const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e}
+function makePlayer(g){
+ const card=element('article'), title=element('h3',g.title);card.append(title);
+ if(g.trial){const link=element('a','查看 image_gen 动画试验（未采用）');link.href=g.trial;card.append(link,element('br'))}
+ card.append(element('small',`scene ${g.scene} / atlas ${g.atlas} / palette ${g.palette} · ${g.frames.length} 非空帧 · ${g.steps.length} 步`));
+ const pair=element('div',null,'pair');card.append(pair);
+ const bounds=g.bounds, width=Math.max(1,bounds[2]-bounds[0]),height=Math.max(1,bounds[3]-bounds[1]);
+ const scale=Math.min(6,720/Math.max(width,height));
+ const panes=['original','hd'].map((key,i)=>{
+  const pane=element('div'),caption=element('small',i?'当前 HD':'原图'),wrap=element('div',null,'pic'),canvas=element('canvas'),notice=element('div',null,'notice');
+  canvas.width=Math.max(1,Math.round(width*scale));canvas.height=Math.max(1,Math.round(height*scale));
+  wrap.append(canvas,notice);pane.append(caption,wrap);pair.append(pane);
+  return {key,canvas,notice,ctx:canvas.getContext('2d')};
+ });
+ const controls=element('div',null,'controls'),play=element('button',g.animated?'播放':'静态素材'),restart=element('button','回到开头');play.disabled=!g.animated;controls.append(play,restart);card.append(controls);
+ const slider=element('input');slider.type='range';slider.min=0;slider.max=Math.max(0,g.steps.length-1);slider.value=0;slider.setAttribute('aria-label','动画步序');card.append(slider);
+ const status=element('p',null,'status');card.append(status,element('small',g.basis));
+ const rows=new Map(g.frames.map(f=>[f.frame,f])),cache=new Map();
+ let step=0, playing=false, disposed=false, visible=false, loading=false, elapsed=0, generation=0;
+ function load(src){if(!cache.has(src)){const im=new Image();const item={im,ready:false,failed:false};item.promise=new Promise(resolve=>{im.onload=()=>{item.ready=true;resolve()};im.onerror=()=>{item.failed=true;resolve()}});im.src=src;cache.set(src,item)}return cache.get(src)}
+ function draw(){
+  if(disposed)return;const [frame,ticks]=g.steps[step]||[0,1],row=rows.get(frame),blank=frame===255||g.empty_frames.includes(frame);
+  slider.value=step;
+  for(const pane of panes){
+   const {ctx,canvas,key,notice}=pane;ctx.clearRect(0,0,canvas.width,canvas.height);notice.textContent='';
+   if(blank)continue;
+   const src=row?.[key];if(!src){notice.textContent=key==='hd'?'此帧缺少 HD':'未导出此帧';continue}
+   const item=load(src);
+   if(item.failed){notice.textContent='图片加载失败';continue}
+   if(!item.ready){notice.textContent='加载中…';item.promise.then(()=>{if(!disposed)draw()});continue}
+   const [x,y,x1,y1]=row.box;ctx.imageSmoothingEnabled=key==='hd';
+   ctx.drawImage(item.im,(x-bounds[0])*scale,(y-bounds[1])*scale,(x1-x)*scale,(y1-y)*scale);
+  }
+  status.textContent=`步 ${step+1}/${g.steps.length} · ${blank?'空白帧':`帧 ${frame}`} · ${ticks} tick${row?` · ${row.method}`:''}${loading?' · 预载中':''}`;
+ }
+ function pause(){generation++;playing=false;loading=false;play.textContent=g.animated?'播放':'静态素材'}
+ async function start(){
+  if(disposed||!g.animated||playing||loading)return;loading=true;const token=++generation;play.textContent='预载中…';draw();
+  await Promise.all(g.frames.flatMap(f=>[f.original,f.hd].filter(Boolean).map(src=>load(src).promise)));
+  if(disposed||token!==generation)return;loading=false;playing=true;elapsed=0;play.textContent='暂停';draw();
+ }
+ play.onclick=()=>playing||loading?pause():start();restart.onclick=()=>{step=0;elapsed=0;draw()};slider.oninput=()=>{pause();step=Number(slider.value);elapsed=0;draw()};
+ const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting},{rootMargin:'100px'});observer.observe(card);
+ draw();
+ return {card,start,pause,dispose(){disposed=true;pause();observer.disconnect();cache.clear()},tick(dt){if(!playing||!visible||document.hidden)return;elapsed+=dt*Number($('speed').value)/1000;let changed=false;while(elapsed>=Math.max(1,(g.steps[step]||[0,1])[1])){elapsed-=Math.max(1,(g.steps[step]||[0,1])[1]);step=(step+1)%Math.max(1,g.steps.length);changed=true}if(changed)draw()}};
+}
+function render(){
+ players.forEach(p=>p.dispose());players=[];
+ const k=$('kind').value,q=$('query').value.toLowerCase();const rows=DATA.cards.filter(g=>(k==='all'||g.kind===k)&&JSON.stringify([g.title,g.scene,g.atlas,g.palette]).toLowerCase().includes(q)&&(!$('missing').checked||g.frames.some(f=>f.state!=='present'))&&(!$('animated').checked||g.animated));
+ page=Math.max(0,Math.min(page,Math.ceil(rows.length/24)-1));$('stats').textContent=`${rows.length} 组 · 可播放 ${rows.filter(g=>g.animated).length} 组 · 第 ${page+1} / ${Math.max(1,Math.ceil(rows.length/24))} 页`;
+ $('cards').replaceChildren();for(const g of rows.slice(page*24,page*24+24)){const p=makePlayer(g);players.push(p);$('cards').append(p.card)}
+ $('prev').disabled=page===0;$('next').disabled=(page+1)*24>=rows.length;
+}
+for(const id of ['kind','query','missing','animated'])$(id).oninput=()=>{page=0;render()};$('prev').onclick=()=>{page--;render()};$('next').onclick=()=>{page++;render()};$('playAll').onclick=()=>players.forEach(p=>p.start());$('pauseAll').onclick=()=>players.forEach(p=>p.pause());
+let previous=performance.now();function tick(now){const dt=Math.min(now-previous,250);previous=now;players.forEach(p=>p.tick(dt));requestAnimationFrame(tick)}render();requestAnimationFrame(tick);
+</script></html>

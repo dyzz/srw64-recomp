@@ -352,6 +352,11 @@ void battle_quote(unsigned record);
 // The player ended the animation early (battle_animation_probe.hpp): the line fades with
 // the picture, 300 ms. Game thread.
 void battle_aborted();
+// Whether this battle quote's line is still being spoken: decoding, in its delay, or playing
+// (voice_wait.hpp holds its box open meanwhile). Game thread.
+bool speaking(unsigned record);
+// The battle line being spoken (decoding, its delay or playing), -1 when none.
+int speaking_line();
 // How much faster a line is spoken now (1, 1.75 at 2x, 2 at 3x and 4x, from the settings).
 double voice_speed();
 // The sound test's view of a song: replaced, and the package's title in the locale.

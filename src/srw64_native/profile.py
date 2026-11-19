@@ -68,7 +68,8 @@ UI_KEYS |= {"settings_speed", "settings_speed_1x", "settings_speed_2x", "setting
 # The dialogue controls bar: auto-hidden or always shown (settings dialogue_hints).
 UI_KEYS |= {"settings_mod_music", "settings_mod_music_on", "settings_mod_music_off", "settings_mod_music_volume", "settings_mod_music_note"}
 UI_KEYS |= {"settings_mod_voice", "settings_mod_voice_on", "settings_mod_voice_off", "settings_mod_voice_volume", "settings_mod_voice_note",
-            "settings_mod_voice_speed", "settings_mod_voice_speed_follow", "settings_mod_voice_speed_original", "settings_mod_voice_speed_mute", "settings_mod_voice_speed_note"}
+            "settings_mod_voice_speed", "settings_mod_voice_speed_follow", "settings_mod_voice_speed_original", "settings_mod_voice_speed_mute", "settings_mod_voice_speed_note",
+            "settings_mod_voice_wait", "settings_mod_voice_wait_on", "settings_mod_voice_wait_off", "settings_mod_voice_wait_note"}
 UI_KEYS |= {"settings_dialogue_hints", "settings_dialogue_hints_auto", "settings_dialogue_hints_always", "settings_dialogue_hints_note"}
 UI_KEYS |= {"settings_dialogue_font_size", "settings_dialogue_font_size_note"}
 # The debug interface switch on the About page (settings debug_interface).

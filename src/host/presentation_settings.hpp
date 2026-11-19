@@ -107,6 +107,10 @@ void set_mod_voice_volume(unsigned percent);
 // mod_voice_speed.
 const char* mod_voice_speed();
 void set_mod_voice_speed(const std::string& mode);
+// Whether a battle quote stays on screen until its line has been spoken, so the animation
+// waits for the voice where it waits for the quote (voice_wait.hpp). Saved as mod_voice_wait.
+bool mod_voice_wait();
+void set_mod_voice_wait(bool on);
 // Dialogue text size, independent of the interface scale. Saved as dialogue_font_size.
 // Safe on the game thread too: the window thread writes pending changes in update().
 unsigned dialogue_font_size();

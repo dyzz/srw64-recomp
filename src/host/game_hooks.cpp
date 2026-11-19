@@ -37,6 +37,8 @@
 #include "map_miss.hpp"
 #include "ui_text.hpp"
 #include "game_speed.hpp"
+#include "voice_wait.hpp"
+#include "presentation_settings.hpp"
 #include "sched_rate.hpp"
 #include "enemy_pilot_page.hpp"
 #include "map_combo.hpp"
@@ -102,14 +104,69 @@ void resident_func_800A158C(uint8_t* ram,recomp_context* ctx) {
     repair_daitarn(ram,ctx,{srw64::base_fixes::daitarn_join_event(ram,uint32_t(ctx->r4)),false});
     srw64_original_party_pair_flag(ram,ctx);
 }
+// A battle quote's box stays open while its MOD voice is still speaking (voice_wait.hpp).
+static void hold_quote_for_voice(uint8_t* ram) {
+    auto& wait=srw64::voice_wait::wait;
+    if(!srw64::settings::mod_voice() || !srw64::settings::mod_voice_wait())return;
+    const bool hurried=srw64::game_speed::running.load();
+    const bool a=srw64::guest::read(ram,srw64::voice_wait::pressed,2)&srw64::voice_wait::a_button;
+    for(unsigned slot=0;slot<2;++slot) {
+        const auto box=srw64::voice_wait::read_box(ram,slot);
+        if(!srw64::voice_wait::closing(box))continue;
+        if(srw64::voice_wait::hold(wait,box,srw64::music::speaking(box.record),hurried,a))
+            srw64::guest::write16(ram,srw64::voice_wait::slots+slot*srw64::voice_wait::stride+0x210,1);
+    }
+}
+// A quote that opened while the previous line is still being spoken waits for it
+// (voice_wait.hpp Pending): true while the animation is to stay where it is this frame.
+// Letting it go starts its voice.
+static bool wait_for_previous_line(uint8_t* ram) {
+    namespace vw=srw64::voice_wait;
+    auto& p=vw::pending;
+    if(p.record<0)return false;
+    if(int8_t(srw64::guest::read(ram,vw::state,1))<=1){p={};return false;}   // a new battle
+    const bool enabled=srw64::settings::mod_voice() && srw64::settings::mod_voice_wait();
+    const bool a=srw64::guest::read(ram,vw::pressed,2)&vw::a_button;
+    if(vw::keep(p,srw64::music::speaking_line(),enabled,srw64::game_speed::running.load(),a)) {
+        for(unsigned slot=0;slot<2;++slot) {   // its box stays full until it is spoken
+            const auto box=vw::read_box(ram,slot);
+            const uint32_t at=vw::slots+slot*vw::stride;
+            if(box.status==1 && int(box.record)==p.record)srw64::guest::write16(ram,at+0x210,srw64::guest::read(ram,at+0x212,2));
+        }
+        return true;
+    }
+    const unsigned record=unsigned(p.record);
+    p={};
+    srw64::music::battle_quote(record);
+    return false;
+}
+static bool battle_step_stopped=false;
 void load_00121560_func_801C9710(uint8_t* ram,recomp_context* ctx) {
+    // The stopped state's handler (below): the main loop calls this address in its place.
+    if(battle_step_stopped)return;
     // X ends the presentation early; the settled result lives in the map
     // overlay's participant table and is applied when the map is back.
     srw64::battle_animation_probe::step(ram,ctx);
+    hold_quote_for_voice(ram);
+    const bool stop=wait_for_previous_line(ram);
     srw64::wide_map::mark_battle();   // the sky is drawn to each side (background_sides)
     srw64::battle_viewer::animation_frame();   // a viewer recording starts with the animation's first frame
     srw64::battle_spread::in_step = true;
-    srw64_original_battle_animation_step(ram,ctx);
+    if(stop) {
+        // The main loop runs as usual (drawing, the text engine) but calls this function
+        // instead of the state's handler (the table at D_80222DD4, by D_80250000), and the
+        // state's frame count (D_8025020C) is put back: the animation stays where it is.
+        namespace vw=srw64::voice_wait;
+        const uint32_t entry=vw::handlers+uint32_t(int8_t(srw64::guest::read(ram,vw::state,1)))*4;
+        const uint32_t handler=srw64::guest::read(ram,entry,4);
+        const uint32_t frames=srw64::guest::read(ram,vw::state_frames,2);
+        srw64::guest::write32(ram,entry,vw::battle_step);
+        battle_step_stopped=true;
+        srw64_original_battle_animation_step(ram,ctx);
+        battle_step_stopped=false;
+        srw64::guest::write32(ram,entry,handler);
+        srw64::guest::write16(ram,vw::state_frames,uint16_t(frames));
+    } else srw64_original_battle_animation_step(ram,ctx);
     srw64::battle_spread::in_step = false;
 }
 // 8008261C: every sprite's matrix from its slot. In the battle's step the slots are spread
@@ -267,7 +324,12 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
         int song=-2;   // battle_viewer::no_music
         const bool battle=srw64_game_hooks.viewer_start(ram,&song);
         if(song!=-2)call(resident_func_8007E810,uint32_t(song));
-        if(battle){call(resident_func_80080188,0x1C);call(resident_func_80099814,5,1,2);}
+        if(battle) {
+            // The viewer skips the title's Start Game exit, which clears framebuffer feedback.
+            call(resident_func_800836CC,0);
+            call(resident_func_80080188,0x1C);
+            call(resident_func_80099814,5,1,2);
+        }
     }
     srw64::mini_stage::service(ram);
     srw64::script_inject::service(ram);

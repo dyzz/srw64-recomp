@@ -169,6 +169,34 @@ int main(int argc,char** argv) {
         check(!r.ok && r.problem.code=="archive_path" && !fs::exists(library/"test.bad"),"a path leaving the folder refused");
         zip_file(root/"nomanifest.srw64mod",{{"audio/music/1.ogg","x"}});
         check(mods::install(root/"nomanifest.srw64mod").problem.code=="no_manifest","no mod.json refused");
+        // A Thunderstore package: its own manifest.json, icon and README beside the .srw64mod.
+        {
+            const auto bytes=[](const fs::path& p){std::ifstream in(p,std::ios::binary);return std::string(std::istreambuf_iterator<char>(in),{});};
+            zip_file(root/"inner-a.srw64mod",{{"mod.json",manifest("test.ts-a","1.0.0").dump()},{"audio/music/3.ogg","a"}});
+            zip_file(root/"inner-b.srw64mod",{{"b/mod.json",manifest("test.ts-b","2.0.0").dump()},{"b/audio/voice/battle/1.ogg","v"}});
+            const std::string thunderstore_manifest=R"({"name":"Ts_A","version_number":"1.0.0","website_url":"","description":"x","dependencies":[]})";
+            zip_file(root/"Team-Ts_A-1.0.0.zip",{{"manifest.json",thunderstore_manifest},{"icon.png","png"},{"README.md","# A"},{"test.ts-a-1.0.0.srw64mod",bytes(root/"inner-a.srw64mod")}});
+            r=mods::install(root/"Team-Ts_A-1.0.0.zip");
+            check(r.ok && r.id=="test.ts-a" && r.version==mods::Version{1,0,0} && !r.voices,"a Thunderstore package installs the package inside: "+r.problem.code+" "+r.problem.detail);
+            check(fs::is_regular_file(library/"test.ts-a"/"audio"/"music"/"3.ogg") && !fs::exists(library/"test.ts-a"/"manifest.json"),"its contents, not the wrapper");
+            // Two in one zip, one with voices (kept whole in its package), in a folder.
+            zip_file(root/"two.zip",{{"README.md","both"},{"pkgs/a.srw64mod",bytes(root/"inner-a.srw64mod")},{"pkgs/b.SRW64MOD",bytes(root/"inner-b.srw64mod")}});
+            r=mods::install(root/"two.zip");
+            check(r.ok && fs::is_directory(library/"test.ts-a") && fs::is_regular_file(library/"test.ts-b"/mods::voice_archive),"every package in a zip installs");
+            // A bad one inside: refused, and no staging left behind.
+            zip_file(root/"bad-inner.zip",{{"manifest.json",thunderstore_manifest},{"x.srw64mod","not a zip"}});
+            r=mods::install(root/"bad-inner.zip");
+            check(!r.ok && r.problem.code=="archive","a broken package inside is refused: "+r.problem.code);
+            bool staging=false;
+            for(const auto& item:fs::directory_iterator(library))staging|=item.path().filename().string().starts_with(".installing-");
+            check(!staging,"nothing left being installed");
+            // Placed in the folder, the zip goes to .trash once its package is in.
+            mods::remove("test.ts-a");
+            fs::copy_file(root/"Team-Ts_A-1.0.0.zip",library/"Team-Ts_A-1.0.0.zip");
+            const auto placed=mods::installed(game);
+            check(!fs::exists(library/"Team-Ts_A-1.0.0.zip") && find(placed,"test.ts-a").active,"a placed Thunderstore package is unpacked");
+            mods::remove("test.ts-a");mods::remove("test.ts-b");
+        }
         // Off and on; removing.
         mods::set_enabled("test.music",false);
         list=mods::installed(game);
