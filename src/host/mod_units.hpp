@@ -439,6 +439,10 @@ inline std::string parse(const json& document,const std::string& package,const N
         // stop naming them (Final Dancouga showed 分離, copied from 224).
         put8(unit+0x1E,at(unit+0x1E)&~0x01);
         put8(unit+0x1F,at(unit+0x1F)&~0x42);
+        // +4's 0x80 is the form that goes out (800A8CE8 copies it to the instance's +0xC): a
+        // family's base and every unit of its own have it, its other forms not (49, 229). A
+        // new unit stands alone unless its family says otherwise below.
+        put8(unit+4,at(unit+4)|0x80);
         for(const auto table:{tw::battle_units,tw::status_offsets,tw::unit_songs,tw::poses,tw::map_icons})
             copy(tw::row(table,n),tw::row(table,*source),tw::layouts[table].stride);
         {
@@ -565,6 +569,9 @@ inline std::string parse(const json& document,const std::string& package,const N
             put32(tw::row(tw::weapon_lists,m),t.list_next-lists);
             const uint32_t unit=tw::row(tw::units,m);
             put8(unit+0x1F,at(unit+0x1F)|0x02);
+            // Only the base form goes out; the others wait in the family (a copy of ZZ 47, a
+            // base in the original, went out as a unit of its own beside its family).
+            put8(unit+4,m==members[0]?at(unit+4)|0x80:at(unit+4)&~0x80);
         }
         t.list_next+=size;
         t.forms[members[0]]=members;

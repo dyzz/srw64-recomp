@@ -289,6 +289,12 @@ int main(int argc,char** argv) {
                 for(uint32_t r=list;u16(r)!=0xFFFF;r+=12){std::vector<unsigned> row{u16(r)};for(unsigned f=1;f<6;++f)if(u16(r+f*2)!=0xFFFF)row.push_back(u16(r+f*2));rows.push_back(row);}
                 check(rows==std::vector<std::vector<unsigned>>{{193,z},{195,z},{196,z,wr},{198,z,wr},{199,wr}},"each row names the forms that have the weapon");
                 check((bz.at(tw::row(tw::units,z)+0x1F)&0x02) && (bz.at(tw::row(tw::units,wr)+0x1F)&0x02),"変形 on for both");
+                check((bz.at(tw::row(tw::units,z)+4)&0x80) && !(bz.at(tw::row(tw::units,wr)+4)&0x80),"only the base form goes out");
+                const json alone=json::parse(R"({"schema":"srw64.new-units.v2","units":{"wr":{"copy":49,"weapons":[199]}}})");
+                const auto na=mod_units::assign({{"pkg",alone}});
+                mod_units::Bytes ba;mod_units::Taken ta;
+                check(mod_units::parse(alone,"pkg",na,rom,{},ba,ta).empty() && (ba.at(tw::row(tw::units,na.units.at("pkg@wr"))+4)&0x80),
+                      "a copy of a form that waits goes out on its own");
                 check((mod_forms::record({z,wr},wr)==std::vector<uint8_t>{1,0,uint8_t(z>>8),uint8_t(z),0xFF,0xFF,uint8_t(z>>8),uint8_t(z)}),"wr's record: one other form, z, base z");
                 json loop=zeta;loop["units"]["wr"]["forms"]={"@z"};
                 mod_units::Bytes bl;mod_units::Taken tl;
