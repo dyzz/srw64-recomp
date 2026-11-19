@@ -46,6 +46,14 @@ inline void publish_resources(const std::map<unsigned,std::vector<uint8_t>>& dec
 }
 // 80089BBC wrapper: a package resource's decoded size and its offset from the resource
 // table (where the loader reads its stream, 4 bytes on). False for the ROM's own.
+// The loader's cap (generate_cpu.py, 80089E9C): the ROM's 6,436 and then the packages' own,
+// which take the numbers after it one by one (mod_units.hpp resource_next).
+inline uint32_t resource_limit_now() {
+    const auto r=resources();
+    uint32_t limit=tw::rom_resources;
+    while(r->at.count(uint16_t(limit)) && limit<tw::resource_limit)++limit;
+    return limit;
+}
 inline bool resource(uint16_t number,uint32_t& size,uint32_t& offset) {
     if(number<tw::rom_resources)return false;
     const auto r=resources();

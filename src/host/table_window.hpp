@@ -166,7 +166,16 @@ inline uint8_t window_byte(uint32_t at,const Byte& byte,const Source& source) {
         return byte(rom+within);
     }
     if(l.stride && off<l.rows*l.stride)return byte(l.rom+off);
-    if(l.stride && l.rows)return byte(l.rom+off%l.stride);
+    // Past the ROM's rows: a new number (one no active package gives) reads row 0's bytes; any
+    // other number reads on into the ROM after the table, as the original did (a speaker past
+    // the portraits, a record past the thresholds).
+    if(l.stride && l.rows) {
+        const unsigned n=off/l.stride;
+        const bool fresh=t==pilot_records || t==thresholds || t==spirit_records || t==portraits || t==pilot_songs?new_pilot(n):
+                         t==weapons || t==battle_weapons || t==anim_offsets?new_weapon(n):
+                         t==scenes?n<new_scene_limit:new_unit(n);
+        return fresh?byte(l.rom+off%l.stride):byte(l.rom+off);
+    }
     return 0;
 }
 }

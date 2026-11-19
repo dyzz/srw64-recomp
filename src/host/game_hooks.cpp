@@ -755,6 +755,10 @@ int srw64_quote_demo(uint8_t* rdram) {
 // The 33 places that add 527, 1370 or 2699 to a unit's or weapon's number for its name's
 // text record (generate_cpu.py NAME_RECORDS): a new number's is a private record
 // (table_window.hpp), the ROM's numbers keep theirs.
+// 80089E9C's cap on resource numbers (generate_cpu.py): the packages' resources, no more.
+uint32_t srw64_resource_limit(void) {
+    return srw64::mod_tables::resource_limit_now();
+}
 uint32_t srw64_name_record(uint32_t kind, uint32_t number) {
     static constexpr uint32_t bases[] = {527, 1370, 2699, 4382, 4743};
     if (kind > 4) return number;

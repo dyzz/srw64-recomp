@@ -521,8 +521,10 @@ NAME_RECORDS = {   # (function, instruction): (U unit, W weapon, M weapon menu; 
     ("load_00216730_func_801C3028", 0x801C3158): ("P", "r5"),
     ("resident_func_8008F648", 0x8008F8E4): ("P", "r5"),
 }
-# The loader's cap on resource numbers (80089E9C refuses 6,436 up): packages' own follow.
-MAP_WIDTH_CONSTANTS[("resident_func_80089E9C", 0x80089EAC)] = ("0X1924", "0X4000")
+# The loader's cap on resource numbers (80089E9C refuses 6,436 up, returning -2): the host
+# raises it by exactly the packages' own resources (mod_tables.hpp), so a number none gives is
+# refused as before instead of reading a descriptor past the ROM's table.
+MAP_WIDTH_CONSTANTS[("resident_func_80089E9C", 0x80089EAC)] = ("0X1924", "srw64_resource_limit()")
 # The combined-unit table (src/host/mod_combine.hpp): its list of combined units D_800CB40C
 # and their record pointers D_800CB5A4 are read at copies in free RDRAM that have room for
 # a package's combined units (the originals are followed by other tables). Both are built
@@ -756,6 +758,7 @@ def main() -> int:
                               "uint32_t srw64_map_figure(uint8_t* rdram, uint32_t shown);\nuint32_t srw64_battle_figure(uint8_t* rdram, uint32_t shown);\n"
                               "int srw64_quote_demo(uint8_t* rdram);\n"
                               "uint32_t srw64_name_record(uint32_t kind, uint32_t number);\n"
+                              "uint32_t srw64_resource_limit(void);\n"
                               "void srw64_render_node(uint8_t* rdram, recomp_context* ctx, int32_t function, int32_t sprite);\n#ifdef __cplusplus\n}\n#endif\n")
         trap = work / "generated/funcs_unsupported.c"
         trap.write_text('#include "recomp.h"\n#include <stdio.h>\n#include <stdlib.h>\n' + "\n".join(

@@ -168,6 +168,10 @@ int main(int argc,char** argv) {
     bool before=true;
     for(uint32_t i=1;i<=4;++i)before&=window({},tw::base(tw::portraits)-i)==rom[0x84220-i] && window({},tw::base(tw::thresholds)-i)==rom[0x7B1B0-i];
     check(before,"row -1 reads the ROM before the table");
+    // Past the ROM's rows: a number outside the new range reads on into the ROM as the original
+    // did; a new number no package gives reads row 0.
+    check(window({},tw::base(tw::portraits)+380*4)==rom[0x84220+380*4] && window({},tw::base(tw::portraits)+450*4+1)==rom[0x84220+1],
+          "past the table: the ROM's bytes, or row 0 for a new number");
     {
         const uint32_t lists=tw::base(tw::weapon_lists),rom_offset=uint32_t(rom[0x7E210+224*4])<<24|rom[0x7E210+224*4+1]<<16|rom[0x7E210+224*4+2]<<8|rom[0x7E210+224*4+3];
         check(w32({},lists+224*4)==rom_offset+tw::lists_copy && w16({},lists+w32({},lists+224*4))==(unsigned(rom[0x7E210+rom_offset])<<8|rom[0x7E210+rom_offset+1]),"a unit's weapon list through the window");

@@ -43,7 +43,8 @@ class TableWindowTest(unittest.TestCase):
         # The loader's raised cap is the host's limit on resource numbers.
         cap = g.MAP_WIDTH_CONSTANTS[("resident_func_80089E9C", 0x80089EAC)]
         self.assertEqual(cap[0], "0X1924")
-        self.assertEqual(int(cap[1], 16), int(re.search(r"resource_limit=(0x[0-9A-Fa-f]+)", HEADER)[1], 16))
+        # Raised only by the packages' own resources (mod_tables.hpp resource_limit_now).
+        self.assertEqual(cap[1], "srw64_resource_limit()")
         self.assertEqual(g.NATIVE_HOOKS["resident_func_80089BBC"], "srw64_original_resource_descriptor")
         for key, (block, rom) in g.TABLE_BLOCKS.items():
             self.assertEqual(names.index(key), block, key)
