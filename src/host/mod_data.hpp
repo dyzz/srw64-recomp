@@ -345,7 +345,8 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
     }
     if(kind==Kind::weapons)
         for(const auto& [key,record]:records) {
-            const auto at=[&](uint32_t offset){
+            // Copied: before clang 16 (Ubuntu 22.04's) a lambda can't capture a structured binding.
+            const auto at=[&,record=record](uint32_t offset){
                 if(const auto f=bytes.find(record+offset);f!=bytes.end())return f->second;
                 return mod_units::read_byte(out,rom,record+offset);
             };
