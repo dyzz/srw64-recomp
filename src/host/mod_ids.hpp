@@ -16,10 +16,10 @@ inline std::vector<std::pair<std::string,json>> documents(const std::vector<mods
     std::vector<std::pair<std::string,json>> out;
     std::error_code error;
     for(const auto& p:packages) {
-        const auto path=p.folder/"data"/"new_units.json";
-        if(!p.active || !fs::is_regular_file(path,error))continue;
-        std::ifstream in(path,std::ios::binary);
-        auto document=json::parse(in,nullptr,false);
+        if(!p.active)continue;
+        const auto text=mods::files_of(p)->read_text("data/new_units.json");   // its folder or its .srw64mod
+        if(!text)continue;
+        auto document=json::parse(*text,nullptr,false);
         if(!document.is_discarded() && document.is_object() && document.value("schema","")==mod_units::schema)
             out.emplace_back(p.id(),std::move(document));
     }

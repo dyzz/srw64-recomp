@@ -11,7 +11,7 @@
 
 ## 2. 包格式 v1
 
-一个包是一个文件夹，或把它压成的 zip（扩展名 `.srw64mod`）。制作时用文件夹，发布时用 zip，拖进 MOD 管理即安装到用户目录 `mods/`。
+一个包是一个文件夹，或把它压成的 zip（扩展名 `.srw64mod`）。制作时用文件夹，发布时用 zip，拖进 MOD 管理即安装到用户目录 `mods/`。游戏不解压包文件，直接从 zip 里读（2026-11-20，§10.1「包文件直接读」）；图片和音频在 zip 里要「仅存储」，不要再压缩。
 
 ```text
 mod.json
@@ -278,16 +278,24 @@ audio/      音乐与语音
 - **包库**（`src/host/mod_library.{hpp,cpp}`）：
   - `mod.json` 按 §2 严格校验：未知字段报错；`id` 是文件夹名；版本 `主.次.修`；`game`／`requires`／`optional`／`conflicts` 的版本要求写作 `*` 或空格分隔的 `>=`、`>`、`<=`、`<`、`=` 子句。
   - 按 §3 检查依赖与冲突、排载入顺序：被依赖的在下；其余按玩家顺序；冲突的两个包里后面那个不启用；缺依赖、版本不符、依赖被停用、成环、需要更新的游戏都写明原因。
-  - 安装目录是用户目录的 `mods/<id>/`（启动器传 `SRW64_MODS_DIR`）。玩家的选择（顺序、停用的包）记在 `mods/mods.json`。
-  - 安装来源：`.srw64mod`／`.zip` 文件（`mod.json` 在顶层，或在唯一的一个顶层文件夹里），或者含 `mod.json` 的文件夹。直接放进 `mods/` 的包文件，下次打开页面时自动解压。解压前先校验清单和每条路径（拒绝 `..`、绝对路径、盘符），总量上限 4 GiB、两万个文件。同 id 的旧版本和删除的包都移进 `mods/.trash`，不直接删。带 `audio/voice/` 的包文件保留在包里（`<包>/voice.srw64mod`，audio-mods.md §4.3），跟着包一起进 `.trash`。解压和拷贝不持包库的锁（窗口线程要继续列包，持锁拷贝 34 MB 时 Switch 卡死看门狗断过一次），只在换目录时加锁。`installed()` 的结果缓存到文件夹变化：判断依据是 `mods/` 下的包文件、文件夹和各 `mod.json` 的修改时间（`folder_stamp`），玩家的启用和顺序每次重读。手动往已装的包里加文件要到下次启动才显示。Switch 上这次列包要 300–800 ms，十个读取方各来一遍，是 Library、鉴赏、MOD 页打开慢的主因（switch-port.md）。
+  - 安装目录是用户目录的 `mods/`（启动器传 `SRW64_MODS_DIR`），包是 `mods/<id>.srw64mod` 或 `mods/<id>/`。玩家的选择（顺序、停用的包）记在 `mods/mods.json`。
+  - 安装来源：`.srw64mod`／`.zip` 文件（`mod.json` 在顶层，或在唯一的一个顶层文件夹里），或者含 `mod.json` 的文件夹。直接放进 `mods/` 的包文件，下次打开页面时改名成 `<id>.srw64mod`（2026-11-20 以前是解压）。放到位前先校验清单和每条路径（拒绝 `..`、绝对路径、盘符），总量上限 4 GiB、两万个文件。同 id 的旧版本和删除的包都移进 `mods/.trash`，不直接删。拷贝不持包库的锁（窗口线程要继续列包，持锁拷贝 34 MB 时 Switch 卡死看门狗断过一次），只在换目录时加锁。`installed()` 的结果缓存到文件夹变化：判断依据是 `mods/` 下的包文件（大小与修改时间）、文件夹和各 `mod.json` 的修改时间（`folder_stamp`），玩家的启用和顺序每次重读。手动往已装的包里加文件要到下次启动才显示。Switch 上这次列包要 300–800 ms，十个读取方各来一遍，是 Library、鉴赏、MOD 页打开慢的主因（switch-port.md）。
+- **包文件直接读**（2026-11-20，用户「之后就默认 mod 包 zip 直接读取了，不用解压」）：
+  - 安装只把文件放到位：校验（同上）后，放进 `mods/` 的文件改名成 `<id>.srw64mod`，从别处来的拷成 `<id>.srw64mod`（先写 `.part` 再改名）。含多个 `.srw64mod` 的 Thunderstore zip 照旧拆出里面的包，外层 zip 进 `.trash`。文件夹包照旧拷成 `mods/<id>/`。
+  - 文件夹和同 id 的包文件都在时，**文件夹优先**（方便作者把包解开来改）；安装新版本、删除时两种都移进 `.trash`。0.5.4 以前已经解压出来的文件夹不迁移，照旧读；里面若有旧做法留下的 `voice.srw64mod`（audio-mods.md §4.3），`FolderWithVoices` 把它并进文件夹的文件表。
+  - 读法：`mods::Files`（`all`／`read`／`exists`／`list`／`folders`／`read_json`）统一文件夹与 zip，`Package::files` 由 `open_files` 给出，`files_of(package)` 是各读取方的入口。zip 用 miniz 只读中央目录（`ArchiveFiles`），每条按需解到内存，单条上限 512 MiB；读取器按路径缓存，包被移走（`to_trash`）时关句柄，之后旧读取器的 `read` 返回空。
+  - 只拿到路径的代码（头像、图标、立绘、战役、台词文本、语言包、音乐）走 `presentation::file_source()`（`src/native/presentation/file_source.hpp`）：`<mods>/<id>.srw64mod/art/a.png` 这种路径把包文件当文件夹，包库在静态初始化时装上这个钩子，没装时就是普通磁盘读写。
+  - 字体要文件路径（FreeType／RmlUi 按路径打开），`mods::local_file` 把它解到 `mods/.cache/<包名>-<大小>-<修改时间>/…`，同一个包的旧缓存文件夹顺手删掉。修改时间改由 `mods::file_time` 给（zip 内条目取包文件的）。
+  - 作者：图片、音频「仅存储」；`tools/mods/pack.py` 对 `.png`、`.ogg` 用 ZIP_STORED（`validate.STORED`），网页工具本来就是 level 0；`validate.py` 遇到压缩过的只给警告（`summary.warnings`），不算问题。官网托管的包和官网页面**等下个版本发布时再改**（用户 2026-11-20：在那之前页面不动、网页上的 MOD 不更新）：发版时跑 `web/scripts/export_mods.py`（终极断空我 0.2.0 会重打，字节与 SHA-256 变），去掉 `tests/test_web_mods.py` 的 skip，四语 `mods.md` 补「0.5.4 起不解压、装包不用等、图片音频仅存储」（草稿在本地 `local/release-next/`）。
+  - 实机（Windows 台式机，GL 构建）：7 个包以下载时的文件名放进 `mods/`，打开游戏全部改名成 `<id>.srw64mod`、没有解压出任何文件，只有语言包的字体进了 `.cache`；日志里语言层、数值、名字、音乐替换（`test.music.srw64mod\audio/music/30.ogg`）、战斗语音都从包文件读；MOD 页统计与解压版一致。同样的包换成文件夹形式，日志行相同。安卓实机（Seeker，同日）：覆盖安装后旧版解压的文件夹包照旧可用；收件箱放 7 个包，启动时 10 ms 内全部放成 `<id>.srw64mod`（同 id 的旧文件夹按更新移进 `.trash`）；韩文台词与标题图、音乐替换、战斗语音都从包文件读，两个语音包重叠时取列表上面的；「从文件安装」经系统选择器拷进来、旧包进 `.trash`、不留 `.part`。实机发现并修掉一处：装不上的文件（选择器误选 ROM，存成 `rom.z64.srw64mod`）除了报错还被当成一个坏包列出，现在只报错（`installed` 跳过本次 `loose` 里失败的文件）。Switch 还没实机。
 - **MOD 管理页**：标题和设置窗口的 MOD 入口重新显示；新增第一个分页「已安装」，上面的包覆盖下面的。每个包显示名字、版本、作者、内容统计（音乐几首、语音几条……）和状态，可以启用／停用、删除（按两次确认），还有「打开 MOD 文件夹」。把包文件或文件夹拖进游戏窗口就会在后台安装，完成后在顶上提示，并打开这一页。
-- **测试**：`tests/native_mod_library.cpp`（`make recomp-mod-library-test`）覆盖清单规则、版本要求、依赖与顺序、冲突、危险路径，以及在临时目录里实际安装、更新、停用、删除和自动解压。
+- **测试**：`tests/native_mod_library.cpp`（`make recomp-mod-library-test`）覆盖清单规则、版本要求、依赖与顺序、冲突、危险路径，以及在临时目录里实际安装、更新、停用、删除、放进 `mods/` 的文件自动改名、从包文件里读（含更新后旧读取器失效、字体缓存）、文件夹与同 id 包文件并存、旧版 `voice.srw64mod`。
 - **实机（2026-10-20，Mac，分支构建）**：用调试接口的 `ui.drop`（MCP `srw64_drop`，走的是桌面拖放的同一段代码）依次拖入音乐包（`.srw64mod`，包在一个顶层文件夹里）、依赖它的语音包（文件夹）和缺依赖的包：三个都装进 `mods/<id>/`，顶上提示安装完成，列表显示内容统计和状态（缺依赖的写明缺哪个、几版）；停用音乐包后语音包显示「需要的 MOD 未启用」；删除按两次确认后移进 `.trash`。
 - **校验工具**（2026-10-22）：`tools/mods/validate.py` 按宿主的清单与归档规则（同一套问题码，`--locale` 用游戏自己的文案）加上投稿规则（文件名 `<id>-<版本>.srw64mod`、100 MB 上限、`license` 必填、只许 §2 的目录与文件类型、不含原版数据 `--original-hashes`、对照索引的版本递增与依赖 `--index`、作者前缀所有权 `--owners --owner`）检查一个包，`--json` 给 CI，`--summary` 输出索引条目要抄的字段。`tests/mods/manifests.json` 是两边共用的清单用例，`tests/native_mod_library.cpp` 与 `tests/test_mod_validate.py` 都跑它。
 - **战役走包格式**（2026-10-22）：包里 `campaign/campaign.json` 是编译好的战役镜像；`tools/mods/pack.py <源目录> -o build/mods` 从带 `mod.json` 的战役源编译并打成包文件（可复现：固定日期、排序条目），打完用 `validate.py` 检查。`frontend.cpp` 的 `installed_campaigns()` 先列启用的包里的战役（id、版本取包的），再补旧 `campaigns/` 目录里的；`campaign_library::read` 读单个镜像。`config/recomp/campaigns/sample`、`retry` 各加了 `mod.json`（`srw64.sample`、`srw64.retry`，CC-BY-NC-4.0）；调试会话 `campaigns=True` 改为把它们建成包放进运行的 `mods/`（`check_mod.py` 随之改，未重跑）。`tests/test_mod_pack.py`。
 - **数值类第一项**（2026-10-26）：地形适应，见 §5 末尾。
 - **安卓**（2026-10-27）：没有拖放，私有目录的 `mods/` 玩家也打不开，之前整个装不了。两条入口：
-  - **收件箱**：存档文件夹（save-slots-autosave.md §11）里的 `mods/`。`PlayerFolder.mods()` 把其中的包文件（只认 .srw64mod、.zip；文件夹和别的文件不动）拷进私有 `mods/`，拷完就从文件夹删除——否则宿主装完把文件移进 `.trash` 后，下次同步会再拷一遍、再装一遍。时机：进游戏前（`everything`）、回到前台（`onResume`）、宿主打开 MOD 页和按「刷新」时（`syncMods`，阻塞最多 20 秒）。安装仍由包库的 `unpack_loose` 在下一次列表时完成，所以放好文件重开游戏也生效（音乐等在启动时就读包）。
+  - **收件箱**：存档文件夹（save-slots-autosave.md §11）里的 `mods/`。`PlayerFolder.mods()` 把其中的包文件（只认 .srw64mod、.zip；文件夹和别的文件不动）拷进私有 `mods/`，拷完就从文件夹删除——否则宿主装完把文件移进 `.trash` 后，下次同步会再拷一遍、再装一遍。时机：进游戏前（`everything`）、回到前台（`onResume`）、宿主打开 MOD 页和按「刷新」时（`syncMods`，阻塞最多 20 秒）。安装仍由包库的 `place_loose` 在下一次列表时完成，所以放好文件重开游戏也生效（音乐等在启动时就读包）。
   - **「从文件安装」**：`pickMod()` 开系统 `ACTION_OPEN_DOCUMENT`，选中的文件按显示名拷进私有 `mods/`（没有包扩展名的补 `.srw64mod`，让包库去报它哪里不对），宿主每帧轮询 `modPickStatus()`（1 等待／2 已拷入／3 取消／4 失败），拷入后同打开页面一样刷新列表。没选存档文件夹时只有这一条路，页面说明也这样写。
   - MOD 页安卓分支（`mod_installed_page`）：说明按有无存档文件夹两种；一行「安装 MOD」放「从文件安装」「刷新」「打开文件夹」（系统「文件」打开 `…/mods`），路径显示 `Documents/Marchwind64/mods`。桌面的「MOD 文件夹」行不变。
   - 包库新增 `loose_results()`：上一次列表时放在 `mods/` 里的包文件各自的结果。装成的宿主在打开页面／刷新／选文件后各发一条「已安装」通知；没装成的（文件留在原处，下次再试）在页面上按文件名列出原因——桌面也一样，以前失败是无声的。

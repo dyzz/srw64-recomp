@@ -1,4 +1,5 @@
 #pragma once
+#include "../presentation/file_source.hpp"
 // Plain-text dialogue files (docs/guide/dialogue-text.md), read in the game.
 // Same rules as src/srw64_native/dialogue_text.py: an entry becomes catalog
 // form (<BR> lines, <STOP> pages, <G:XXXX> placeholders, <END>) after its
@@ -194,23 +195,21 @@ inline std::optional<std::string> compile(const Entry& entry,const std::string* 
     }
     return result+"<END>";
 }
-// All *.txt under the roots; a later root overrides an earlier one entry by entry.
+// All *.txt under the roots; a later root overrides an earlier one entry by entry. A root may
+// be a folder in a MOD package file, read in place (presentation/file_source.hpp).
 inline Result load(const std::vector<std::filesystem::path>& roots,const Catalog& catalog) {
     namespace fs=std::filesystem;
     Result result;
     for(const auto& root:roots) {
-        std::error_code error;
-        if(root.empty() || !fs::is_directory(root,error))continue;
+        if(root.empty())continue;
         std::vector<fs::path> files;
-        for(auto it=fs::recursive_directory_iterator(root,fs::directory_options::skip_permission_denied,error);!error && it!=fs::recursive_directory_iterator();it.increment(error))
-            if(it->is_regular_file(error) && it->path().extension()==".txt")files.push_back(it->path());
-        std::sort(files.begin(),files.end());
+        for(auto& file:presentation::list_files(root))if(file.extension()==".txt")files.push_back(std::move(file));
         std::map<std::string,std::pair<std::string,unsigned>> seen;
         for(const auto& file:files) {
-            const auto name=fs::relative(file,root,error).generic_string();
-            std::ifstream input(file,std::ios::binary);
-            std::string text((std::istreambuf_iterator<char>(input)),std::istreambuf_iterator<char>());
-            if(!input && !input.eof()){result.problems.push_back({name,0,"","unreadable"});continue;}
+            const auto name=file.lexically_relative(root).generic_string();
+            const auto bytes=presentation::read_file(file);
+            if(!bytes){result.problems.push_back({name,0,"","unreadable"});continue;}
+            std::string text(bytes->begin(),bytes->end());
             ++result.files;
             for(auto& entry:parse(text,name,result.problems)) {
                 if(const auto found=seen.find(entry.key);found!=seen.end()) {

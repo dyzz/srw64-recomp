@@ -2105,7 +2105,9 @@ void mod_install(const std::filesystem::path& path) {
         else if(result.replaced)text=filled("mod_updated",{{"{id}",result.id},{"{old}",srw64::mods::version_text(*result.replaced)},{"{version}",srw64::mods::version_text(result.version)}});
         else text=filled("mod_installed",{{"{id}",result.id},{"{version}",srw64::mods::version_text(result.version)}});
         // The reading languages are set at start-up (docs/design/mod-language-packs.md).
-        if(result.ok && !srw64::mods::summarize(srw64::mods::directory()/result.id).languages.empty())
+        const auto kept=[&]{std::error_code e;const auto folder=srw64::mods::directory()/result.id;
+            return std::filesystem::is_directory(folder,e)?folder:srw64::mods::directory()/(result.id+srw64::mods::package_extension);};
+        if(result.ok && !srw64::mods::summarize(*srw64::mods::open_files(kept())).languages.empty())
             text+=" "+localization::catalog().ui("mod_language_restart");
         notices::post("mod",text);
         mod_installing=false;
@@ -2114,7 +2116,7 @@ void mod_install(const std::filesystem::path& path) {
 }
 #ifdef __ANDROID__
 // The player's folder's mods/ into the private one (SRW64Activity.syncMods), then the
-// listing installs what arrived (mod_library unpack_loose); a notice per package that
+// listing installs what arrived (mod_library place_loose); a notice per package that
 // installed. The window thread, on opening the page and on its refresh button.
 void mod_inbox_sync() {
     android_call("syncMods");

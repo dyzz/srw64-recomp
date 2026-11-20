@@ -1,4 +1,5 @@
 #pragma once
+#include "../native/presentation/file_source.hpp"
 #include "recomp.h"
 #include "script_inject.hpp"
 #include "native_intro.hpp"
@@ -234,9 +235,10 @@ inline void configure(const std::filesystem::path& directory) {
     s.directory=directory; // runtime loads (load_file) log here as well
     if(const char* direct=std::getenv("SRW64_MINI_STAGE_DIRECT"))s.direct=std::string_view(direct)!="0";
     if(const char* campaign_path=std::getenv("SRW64_CAMPAIGN");campaign_path && *campaign_path) {
-        std::ifstream file(campaign_path);
-        if(!file)throw std::runtime_error(std::string("campaign image unreadable: ")+campaign_path);
-        nlohmann::json document;file>>document;
+        // A package's campaign is read in place from its .srw64mod (presentation/file_source.hpp).
+        const auto bytes=srw64::presentation::read_file(campaign_path);
+        if(!bytes)throw std::runtime_error(std::string("campaign image unreadable: ")+campaign_path);
+        const auto document=nlohmann::json::parse(bytes->begin(),bytes->end());
         auto [info,stages]=parse_campaign(document);
         log({{"action","campaign-loaded"},{"path",campaign_path},{"id",info.id},{"stages",stages.size()},{"start",info.start}});
         use_campaign(s,std::move(info),std::move(stages));
@@ -484,9 +486,9 @@ inline std::string load_file(const std::filesystem::path& file,bool enter=true) 
         restart=true;
     }
     const auto read_json=[](const std::filesystem::path& path) {
-        std::ifstream input(path);
-        if(!input)throw std::runtime_error("mini stage: cannot read "+path.string());
-        nlohmann::json document;input>>document;return document;
+        const auto bytes=srw64::presentation::read_file(path);   // a package's campaign too
+        if(!bytes)throw std::runtime_error("mini stage: cannot read "+path.string());
+        return nlohmann::json::parse(bytes->begin(),bytes->end());
     };
     auto document=read_json(file);
     static unsigned loads=0;

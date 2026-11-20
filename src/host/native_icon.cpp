@@ -18,6 +18,7 @@
 #include "wide_map.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
+#include "presentation/file_source.hpp"
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -121,13 +122,11 @@ std::optional<unsigned> icon_unit(const std::string& key, const std::string& pac
     if (!number || std::stoul(key) >= unit_icon_art::kUnits) return std::nullopt;
     return unsigned(std::stoul(key));
 }
-std::map<unsigned, char> facings(const std::filesystem::path& folder, const std::string& id, std::vector<std::string>& problems) {
+std::map<unsigned, char> facings(const mods::Files& files, const std::string& id, std::vector<std::string>& problems) {
     std::map<unsigned, char> out;
-    std::error_code error;
-    const auto path = folder / "art" / "icons.json";
-    if (!std::filesystem::is_regular_file(path, error)) return out;
-    std::ifstream in(path, std::ios::binary);
-    const auto doc = nlohmann::json::parse(in, nullptr, false);
+    const auto text = files.read_text("art/icons.json");
+    if (!text) return out;
+    const auto doc = nlohmann::json::parse(*text, nullptr, false);
     const std::string name = id + " art/icons.json";
     if (doc.is_discarded() || !doc.is_object() || doc.value("schema", "") != "srw64.icons.v1" || !doc.contains("facing") || !doc["facing"].is_object()) {
         problems.push_back(name + "：要是 {\"schema\": \"srw64.icons.v1\", \"facing\": {…}}");
@@ -157,11 +156,16 @@ void refresh() {
     std::vector<std::string> problems;
     std::error_code error;
     for (const auto& p : mods::installed(game)) {
+        if (!p.active) continue;
+        // Its folder or its .srw64mod: a path into the file reads in place (file_source.hpp).
         const auto dir = p.folder / "art" / "icons";
-        if (!p.active || !std::filesystem::is_directory(dir, error)) continue;
+        const auto package = mods::files_of(p);
+        const auto names = package->list("art/icons");
+        if (names.empty()) continue;
         std::map<unsigned, unsigned> mine;      // icon -> the unit this package gave it for
-        const auto ways = facings(p.folder, p.id(), problems);
-        for (const auto& item : std::filesystem::directory_iterator(dir, error)) {
+        const auto ways = facings(*package, p.id(), problems);
+        for (const auto& listed : names) {
+            const std::filesystem::directory_entry item(dir / listed);
             const auto stem = item.path().stem().string(), name = p.id() + " art/icons/" + item.path().filename().string();
             auto ext = item.path().extension().string();
             std::transform(ext.begin(), ext.end(), ext.begin(), [](unsigned char c) { return char(std::tolower(c)); });
@@ -173,7 +177,8 @@ void refresh() {
             const unsigned icon = found ? upgrades::game_read(srw64::table_window::row(srw64::table_window::map_icons, unit), 2) : 0;
             if (icon < unit_icon_facing::kFirstIcon || icon > unit_icon_facing::kLastIcon) { problems.push_back(name + "：文件名要是有地图图标的机体号"); continue; }
             int w = 0, h = 0, n = 0;
-            if (!stbi_info(item.path().string().c_str(), &w, &h, &n) || !unit_icon_art::size_ok(w, h)) {
+            const auto bytes = presentation::read_file(item.path());
+            if (!bytes || !stbi_info_from_memory(bytes->data(), int(bytes->size()), &w, &h, &n) || !unit_icon_art::size_ok(w, h)) {
                 problems.push_back(name + "：要是 16、32、64 或 128 像素的正方形 PNG");
                 continue;
             }
@@ -191,7 +196,7 @@ void refresh() {
     {
         std::lock_guard lock(asset_mutex);
         for (const auto& [icon, file] : files) {
-            Icon entry{file, std::filesystem::last_write_time(file, error)};
+            Icon entry{file, mods::file_time(file)};
             entry.facing = facing.count(icon) ? facing[icon] : 0;
             // A picture already made (same file and time) is used again.
             if (const auto old = icons.find(icon); old != icons.end() && old->second.file == file && old->second.stamp == entry.stamp) {
@@ -201,7 +206,8 @@ void refresh() {
             }
             if (assets.size() + 4 > kCapacity) { problems.push_back("too many MOD icons"); break; }
             int w = 0, h = 0, n = 0;
-            stbi_uc* pixels = stbi_load(file.string().c_str(), &w, &h, &n, 4);
+            const auto bytes = presentation::read_file(file);
+            stbi_uc* pixels = bytes ? stbi_load_from_memory(bytes->data(), int(bytes->size()), &w, &h, &n, 4) : nullptr;
             if (!pixels || !unit_icon_art::size_ok(w, h)) {
                 if (pixels) stbi_image_free(pixels);
                 problems.push_back(file.filename().string() + "：读不出来");

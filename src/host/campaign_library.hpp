@@ -1,4 +1,5 @@
 #pragma once
+#include "../native/presentation/file_source.hpp"
 #include "campaign.hpp"
 #include "json/json.hpp"
 #include "localization/locale_fallbacks.hpp"
@@ -63,8 +64,9 @@ inline bool has_saves(const std::string& id) {
 // One compiled campaign image, or nothing when the file is not one. `saves` is left
 // for the caller, which knows the id the campaign plays under.
 inline std::optional<Entry> read(const fs::path& path) {
-    std::ifstream file(path);
-    const auto document=nlohmann::json::parse(file,nullptr,false);
+    // A package's campaign is read in place from its .srw64mod (presentation/file_source.hpp).
+    const auto bytes=srw64::presentation::read_file(path);
+    const auto document=bytes?nlohmann::json::parse(bytes->begin(),bytes->end(),nullptr,false):nlohmann::json(nlohmann::json::value_t::discarded);
     if(document.is_discarded() || document.value("schema","")!="srw64.campaign-image.v1" || !document.contains("id") || !document.at("id").is_string())return std::nullopt;
     Entry entry;
     entry.id=document.at("id").get<std::string>();

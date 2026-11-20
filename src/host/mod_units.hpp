@@ -193,7 +193,7 @@ inline bool integer(const json& v,int64_t low,int64_t high) {
     return v.is_number_integer() && v.get<int64_t>()>=low && v.get<int64_t>()<=high;
 }
 
-// A sprite's file, inside the package's folder.
+// A sprite's file, inside the package's folder (or its .srw64mod, read as a folder: file_source.hpp).
 inline std::optional<std::filesystem::path> inside(const std::filesystem::path& folder,const json& value) {
     if(!value.is_string())return std::nullopt;
     const std::filesystem::path relative=value.get<std::string>();
@@ -252,7 +252,7 @@ inline std::string sprites(const json& part,const std::string& package,const std
             if(hd.size()!=frames.size())return where+".hd：要每张图一张 HD 图";
             for(const auto& h:hd) {
                 const auto file=inside(folder,h);
-                if(!file || !std::filesystem::is_regular_file(*file))return where+".hd：找不到 "+h.dump();
+                if(!file || !presentation::file_exists(*file))return where+".hd：找不到 "+h.dump();
                 sprite.hd.push_back(*file);
             }
         }
@@ -566,7 +566,7 @@ inline std::string parse(const json& document,const std::string& package,const N
                 own.pixels=*image;
                 if(p.contains("hd")) {
                     const auto hd=inside(folder,p["hd"]);
-                    if(!hd || !std::filesystem::is_regular_file(*hd))return where+".portrait.hd：包里没有这张图";
+                    if(!hd || !presentation::file_exists(*hd))return where+".portrait.hd：包里没有这张图";
                     own.hd=*hd;
                 }
                 std::vector<uint16_t> colors{0};

@@ -238,11 +238,11 @@ inline Collected collect(const std::vector<mods::Package>& packages,const std::v
     std::error_code error;
     const auto numbers=mod_ids::assign(packages);
     for(const auto& p:packages) {
-        const auto path=p.folder/"dialogue"/file;
-        if(!p.active || !fs::is_regular_file(path,error))continue;
+        if(!p.active)continue;
+        const auto text=mods::files_of(p)->read_text(std::string("dialogue/")+file);   // its folder or its .srw64mod
+        if(!text)continue;
         const std::string where=p.id()+" dialogue/"+file+"：";
-        std::ifstream in(path,std::ios::binary);
-        const auto document=json::parse(in,nullptr,false);
+        const auto document=json::parse(*text,nullptr,false);
         if(document.is_discarded()){c.problems.push_back(where+"JSON 无效");continue;}
         Parsed parsed;
         if(auto why=parse(document,locales,widest,parsed,p.id(),numbers);!why.empty()){c.problems.push_back(where+why);continue;}

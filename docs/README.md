@@ -166,6 +166,7 @@
 | [安卓移植方案](design/android-port.md) | 调研：社区 N64Recomp 安卓移植先例、固定版本 RT64／plume／运行库的安卓缺口与 GPU 门槛、ROM 派生代码与侧载分发、宿主改动清单（构建、入口、生命周期与存档、触屏与手机界面）、A0–A4 阶段与待定事项 |
 | [PS Vita 移植方案](design/psv-port.md) | 调研：Vita 只有 GLES2 级 GPU、RT64/plume 不可用，整条渲染路径要换成 vitaGL 上的 GL2 实现（Fast3D 解释器、宿主自绘层、对白合成器、RmlUi GL2）；运行库 32 位阻塞项与补丁、依赖与内存预算、社区 libultraship 系移植的实机经验、Mac 上的 Vita3K 与 VitaSDK 开发环境、V0–V4 阶段、风险与待定 |
 | [Nintendo Switch 移植方案](design/switch-port.md) | 调研：自制系统没有 Vulkan（devkitPro 只有 Mesa 20.1 GL 4.3/GLES 3.2 与 deko3d），RT64/plume 不可用，`vita` 分支的 GL 路径与 `srw64-gl-host` 几乎原样复用；libnx 上的运行库缺口、应用/小程序模式内存与 HD 包的 GL 4.3 做法、N64Recomp 与 libultraship 系的 Switch 先例、模拟器冒烟与 Erista＋RCM＋离线 emuMMC 的实机环境、NRO 侧载、S0–S5 阶段、风险与待定 |
+| [Windows 老机器：GL（ANGLE）回退渲染器](design/windows-gl-fallback.md) | RT64 用不了的 Windows 电脑改用 Switch 那套 GL 渲染器（ANGLE 走 D3D11）：同一个 exe 两种都编进去、启动时按显卡与显卡名单自动回退、回退时降画质与画质选项、CI 与发布包、云主机与无显卡实例的测试、Win7/8 要什么 |
 | [手机触屏操作](design/touch-controls.md) | 按场景显示功能名按钮：MOBA 式左侧任意位置方向区、右下固定的确定／返回、各场景的按钮与识别依据、三语词条、实施顺序 |
 | [触屏界面复盘（2026-10-10）](design/touch-ui-review-20261010.md) | 安卓对白回看入口消失的原因、各版按键布局的离线对照与复用返回键的方案 |
 | [周目继承](design/new-game-plus.md) | 上周目完成的隐藏要素在原入队关之后补登记（33 项、不改变量）与历代记录；规则 `inherit-hidden`；为何不继承击坠数（已实现，Windows 实机过） |
@@ -187,7 +188,7 @@
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |
 | [扩展架构方案](design/native-extensibility-architecture.md) | 内容分层与语义接口，暂缓的外部 MOD 扩展 |
 | [自定义战役](design/custom-campaign.md) | 多关串联（借场景号、开局结局、存档附加文件）、新台词的虚拟记录、整张绘制的新地图（地形表、资源替换、原版降级版原型）与分阶段 |
-| [MOD 包](design/mod-packages.md) | 包格式与依赖、外观／数值／规则／剧情分类、按键叠加、挑战奖励带回主线、存档记录、分发与投稿（§13：只读索引、GitHub Release 正本、网盘镜像、PR 投稿与校验） |
+| [MOD 包](design/mod-packages.md) | 包格式与依赖、包文件不解压直接读（§10.1）、外观／数值／规则／剧情分类、按键叠加、挑战奖励带回主线、存档记录、分发与投稿（§13：只读索引、GitHub Release 正本、网盘镜像、PR 投稿与校验） |
 | [语言包 MOD](design/mod-language-packs.md) | MOD 增加阅读语言或改现有语言：包格式、退回链与排版跟退回语言、宿主登记与重启生效、字体与按语言换图、韩文断行、测试记录 |
 | [新机体、新武器用真正的新编号](design/new-unit-ids.md) | 按机体号、武器号读的表挪进宿主的虚拟窗口：读取点审计、名字记录、号码分配、存档校验；终极断空我已迁移 |
 | [完整机体 MOD 规划](design/unit-mod-kit.md) | 一个包加入完整的新机体与驾驶员：机体数据、形态与合体、新人物、技能、台词与语音、动画编辑器、合体技、入队与周目、敌方使用、工具与分发的分期与待拍板事项 |

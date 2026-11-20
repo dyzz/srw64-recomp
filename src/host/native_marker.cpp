@@ -973,7 +973,9 @@ void load_plate(Model& m, const std::filesystem::path& pack, const json& plate) 
         if (file.empty() && textures.contains(plateSlotLocales[l])) file = pack / textures.at(plateSlotLocales[l]).get<std::string>();
         if (file.empty()) continue;
         int width = 0, height = 0, channels = 0;
-        uint8_t *pixels = stbi_load(file.string().c_str(), &width, &height, &channels, 4);
+        // A package's plate is read in place from its .srw64mod (presentation/file_source.hpp).
+        const auto bytes = srw64::presentation::read_file(file);
+        uint8_t *pixels = bytes ? stbi_load_from_memory(bytes->data(), int(bytes->size()), &width, &height, &channels, 4) : nullptr;
         if (!pixels || width != m.plateWidth || height != m.plateHeight) {
             std::fprintf(stderr, "SRW64_MOD_LANGUAGE_PROBLEM %s: %s must be a %dx%d PNG\n", plateSlotLocales[l].c_str(),
                          file.string().c_str(), m.plateWidth, m.plateHeight);
