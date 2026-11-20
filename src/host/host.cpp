@@ -1,3 +1,4 @@
+#include "renderer_fallback.hpp"
 #include "quote_force.hpp"
 #include "state_probe.hpp"
 #include "app/runtime.hpp"
@@ -903,6 +904,11 @@ int main(int argc, char** argv) {
 #ifdef __ANDROID__
     import_java_environment();
 #endif
+#if defined(_WIN32) && !defined(SRW64_GL_ONLY)
+    // A PC RT64 cannot draw on plays in Marchwind64-gl.exe (renderer_fallback.hpp), started
+    // before this process takes its streams, its log or the user directory.
+    if (const int code = srw64::renderer_fallback::run_gl_host_if_needed(argc, argv); code >= 0) return code;
+#endif
 #if defined(_WIN32)
     // Streams first: console_log needs them, and they take descriptors 0 to 2 (desktop_windows.cpp).
     srw64::app::windows_connect_streams();
@@ -916,6 +922,8 @@ int main(int argc, char** argv) {
 #endif
     // Which release, on what: the first lines of every console.log (bug_report.hpp).
     srw64::bug_report::log_start();
+    // Started by Marchwind64.exe in its place (renderer_fallback.hpp): why, for a bug report.
+    if (const char* why = std::getenv("SRW64_RENDERER_FALLBACK"); why && *why) std::fprintf(stderr, "SRW64_RENDERER_FALLBACK %s\n", why);
 #if defined(__linux__) && !defined(__ANDROID__)
     // Android: bionic has backtrace() only from API 33, and debuggerd's tombstone needs
     // its own handlers, so crashes go to logcat as tombstones.

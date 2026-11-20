@@ -1,6 +1,6 @@
 # Windows 老机器：GL（ANGLE）回退渲染器
 
-状态：**原型（2026-11-20）**。`srw64-gl-host`（Switch / Vita 用的 GL 路径）已能在 Windows 上编译运行，底层走 ANGLE。还没有和正式版 `Marchwind64.exe` 接成自动回退，也没进 CI 和发布包。
+状态：**原型（2026-11-20）**。`srw64-gl-host`（Switch / Vita 用的 GL 路径）已能在 Windows 上编译运行，底层走 ANGLE；`Marchwind64.exe` 已能检测显卡并自动回退到它（见「自动回退」）。还没进 CI 和发布包。
 
 ## 为什么
 
@@ -12,6 +12,26 @@ RT64 在 Windows 上要 D3D12（功能级别 11_0、SM 6.0、`ID3D12Device8`，W
 - **底层用 ANGLE，不用系统 OpenGL。** `src/gl/gl_api.hpp` 的 `_WIN32` 分支取 ANGLE 的 GLES3 头文件、定义 `SRW64_GLES`，和 Switch 走同一条 GLES 路线。SDL 通过 `SDL_HINT_OPENGL_ES_DRIVER` 用 EGL 建上下文（`graphics.cpp`），加载游戏旁边的 `libEGL.dll`、`libGLESv2.dll`。理由：Windows 的 `opengl32.dll` 不带加载器只有 GL 1.1；老 Intel 的 OpenGL 驱动问题最多，D3D11 稳得多（浏览器在这类机器上也靠 ANGLE）。
 - **ANGLE 的后端。** 默认 D3D11。vcpkg 编的 `libGLESv2.dll` 也带 D3D9 后端（导入了 `d3d9.dll`；D3D9 只给 ES 2.0，本路径只用 ES 2 的子集），但 D3D11 建不起来时会不会自动退到 D3D9 还没验证。环境变量 `ANGLE_DEFAULT_PLATFORM=d3d11|gl` 可以强制选后端，只用于测试。
 - **构建：** vcpkg 的 `angle` 端口（chromium_7258），`find_package(unofficial-angle)`；端口的目标不带头文件目录，`CMakeLists.txt` 用 `find_path` 补。SDL2 用 RT64 自带的那份 2.26.3，两个宿主共用一个 `SDL2.dll`。Windows 平台文件（选 ROM 对话框、菜单栏、崩溃转储、显卡报告、清单、WinHTTP）与 RT64 宿主相同。
+
+## 自动回退
+
+`src/host/renderer_fallback.hpp`、`src/host/windows/renderer_fallback_windows.cpp`。发布包里两个程序并排：`Marchwind64.exe`（RT64）和 `Marchwind64-gl.exe`（GL），玩家和 RecompLauncher 照旧只启动前者。
+
+1. **启动前检测。** `main` 一开头（还没接管输出流、没开日志、没拿用户目录锁），只对会开游戏窗口的启动方式（无参数、`--choose-rom`、`--play`，不含 `--play --help`／`--prepare`）检测：有没有一块非软件显卡能建 D3D12 设备（功能级别 11_0）且 SM ≥ 6.0、有 `ID3D12Device8`；没有的话再看 Vulkan：加载器带 `VK_KHR_surface`／`VK_KHR_win32_surface`，能建 1.2 实例，且有一块非 CPU 的物理设备 `apiVersion` ≥ 1.2。两项都不满足就启动同目录的 `Marchwind64-gl.exe`，命令行原样转交，标准输出句柄（`--play` 重定向的日志）传过去，自己挂到启动它的控制台上让子进程接上。父进程等子进程结束并返回它的退出码；子进程放进「随父进程关闭」的作业对象，启动器停止游戏时一起结束。
+2. **运行中途失败。** 检测通过但 RT64 实际初始化失败（`graphics_failure`，例如驱动报的能力和实际不符）：不再弹「显卡不支持」的错误框，而是用同一命令行启动 GL 版后立即退出；GL 版拿用户目录锁时 `UserLock` 会等最多 10 秒，等父进程退干净。这条路径下 RecompLauncher 会以为游戏已结束（它等的是父进程），属少见情况，可以接受。
+3. **玩家手动选。** 环境变量 `SRW64_GRAPHICS_API`（原来就用来在 D3D12／Vulkan 之间选，launch.cpp 会保留它）：`gl` 直接用 GL 版；`d3d12`、`vulkan` 跳过检测强制用 RT64（失败时仍会交给 GL 版）。
+4. **日志。** GL 版开头写 `SRW64_RENDERER_FALLBACK <原因>`（`chosen (SRW64_GRAPHICS_API=gl)`、`no GPU for RT64 …`、`RT64 failed: …`），进问题报告的 console.log。设置窗口里不支持的三行会灰掉（见下）。
+5. **没有 `Marchwind64-gl.exe`**（开发构建）时一切照旧。
+6. **测试开关：** `SRW64_RENDERER_PROBE=no-d3d12` 让检测把 D3D12 当作不可用，用来在好显卡上走 Vulkan／GL 分支；配合假的 `vulkan-1.dll`（exe 旁放一个不报 surface 扩展的加载器）就能模拟老机器。
+
+实测（同一台 1080 Ti）：
+
+| 用例 | 结果 |
+| --- | --- |
+| 自动，正常显卡 | 留在 RT64，无回退 |
+| `SRW64_GRAPHICS_API=gl` | 父进程等待，GL 版运行，日志写入同一文件；结束父进程后 GL 版随之结束 |
+| `SRW64_RENDERER_PROBE=no-d3d12`＋假 `vulkan-1.dll` | 判定 `no GPU for RT64`，进 GL 版；正常退出后父子都退出，退出码 0 |
+| `SRW64_GRAPHICS_API=vulkan`＋假 `vulkan-1.dll` | RT64 `SETUP_FAILED result=3` → 交给 GL 版，新会话进入游戏，没有错误框 |
 
 ## 原型实测（Windows 11，GTX 1080 Ti）
 
@@ -30,7 +50,7 @@ RT64 在 Windows 上要 D3D12（功能级别 11_0、SM 6.0、`ID3D12Device8`，W
 
 1. **没有显卡或只有微软基本显示适配器（WARP）的机器。** ANGLE 只能用 EGL 属性选 WARP，SDL2 建显示时传不进去，环境变量也不支持。打算用不分配显卡的 Hyper-V 虚拟机测（那里 D3D11 硬件设备本身就是 WARP）。
 2. **真实老显卡。** 老 Intel 核显的驱动问题和性能只有真机测得出来，见下节。
-3. **接成自动回退。** 候选做法：`Marchwind64.exe` 启动前按 `gpu_report` 判断没有一块显卡满足 RT64、也没有 Vulkan surface 时，改为启动同目录的 `Marchwind64-gl.exe`（同参数），设置里再加手动选项。要处理父子进程的「已在运行」锁、RecompLauncher 的启动方式和问题报告。另一条路是把 GL 渲染器编进同一个 exe、运行时切换，但 `SRW64_GL_ONLY` 是编译期开关，涉及约十个文件的分支，工作量大得多。
+3. **双击启动（无参数）的回退没实测**：那条路径用真实的用户目录，测试机上没跑；代码与 `--play` 走同一个函数。设置窗口里也还没有「渲染方式」选项，目前只能用环境变量手动选。
 4. **CI 与打包：** `build.yml` 的 Windows 任务要多装 `angle`（vcpkg 缓存会变大）、多编一个宿主（约多几分钟）、包里加 exe 和两个 DLL。
 5. **HD 内存：** 桌面 GL 路径直接解 PNG/JPEG（`hd_texture.cpp` 只在 Switch 读预处理的 BC7 包），老核显共享显存小，可能要像 Switch 一样用预处理包或者限预算。
 

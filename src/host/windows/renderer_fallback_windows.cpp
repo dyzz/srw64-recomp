@@ -1,0 +1,223 @@
+// Marchwind64.exe hands the game to Marchwind64-gl.exe on a PC RT64 cannot use
+// (renderer_fallback.hpp). The DLLs are loaded here rather than linked, as in gpu_report.
+#include "../renderer_fallback.hpp"
+#include <cstdint>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <string>
+#include <string_view>
+#include <vector>
+#include <windows.h>
+#include <d3d12.h>
+#include <dxgi1_4.h>
+
+namespace srw64::renderer_fallback {
+namespace {
+std::string env(const char* name) {
+    const char* value = std::getenv(name);
+    return value ? value : "";
+}
+
+// An adapter plume's D3D12 device takes (plume_d3d12.cpp, gpu_report_windows.cpp): feature
+// level 11_0, shader model 6.0, ID3D12Device8. The Basic Render Driver is passed over there too.
+bool d3d12_usable() {
+    const HMODULE dxgi = LoadLibraryW(L"dxgi.dll");
+    const HMODULE d3d12 = LoadLibraryW(L"d3d12.dll");
+    using CreateFactory = HRESULT(WINAPI*)(REFIID, void**);
+    const auto create_factory = dxgi ? reinterpret_cast<CreateFactory>(GetProcAddress(dxgi, "CreateDXGIFactory1")) : nullptr;
+    const auto create_device = d3d12 ? reinterpret_cast<PFN_D3D12_CREATE_DEVICE>(GetProcAddress(d3d12, "D3D12CreateDevice")) : nullptr;
+    IDXGIFactory1* factory = nullptr;
+    if (!create_factory || !create_device || FAILED(create_factory(__uuidof(IDXGIFactory1), reinterpret_cast<void**>(&factory))))
+        return false;
+    bool usable = false;
+    IDXGIAdapter1* adapter = nullptr;
+    for (UINT index = 0; !usable && factory->EnumAdapters1(index, &adapter) != DXGI_ERROR_NOT_FOUND; ++index) {
+        DXGI_ADAPTER_DESC1 desc{};
+        adapter->GetDesc1(&desc);
+        ID3D12Device* device = nullptr;
+        if (!(desc.Flags & DXGI_ADAPTER_FLAG_SOFTWARE) &&
+            SUCCEEDED(create_device(adapter, D3D_FEATURE_LEVEL_11_0, __uuidof(ID3D12Device), reinterpret_cast<void**>(&device)))) {
+            D3D12_FEATURE_DATA_SHADER_MODEL model{D3D_SHADER_MODEL_6_0};
+            const bool sm6 = SUCCEEDED(device->CheckFeatureSupport(D3D12_FEATURE_SHADER_MODEL, &model, sizeof model)) &&
+                             model.HighestShaderModel >= D3D_SHADER_MODEL_6_0;
+            ID3D12Device8* device8 = nullptr;
+            const bool has8 = SUCCEEDED(device->QueryInterface(__uuidof(ID3D12Device8), reinterpret_cast<void**>(&device8)));
+            if (device8) device8->Release();
+            device->Release();
+            usable = sm6 && has8;
+        }
+        adapter->Release();
+    }
+    factory->Release();
+    return usable;
+}
+
+// A GPU (not a CPU implementation) with Vulkan 1.2, behind a loader that offers the window
+// surface: RT64's other API on Windows. The few Vulkan structures needed, as gpu_report does.
+bool vulkan_usable() {
+    const HMODULE loader = LoadLibraryW(L"vulkan-1.dll");
+    if (!loader) return false;
+    struct Extension { char name[256]; uint32_t spec; };
+    struct AppInfo { int32_t type; const void* next; const char* name; uint32_t version; const char* engine; uint32_t engine_version; uint32_t api; };
+    struct CreateInfo { int32_t type; const void* next; uint32_t flags; const AppInfo* app; uint32_t layers; const char* const* layer_names;
+                        uint32_t extensions; const char* const* extension_names; };
+    using Enumerate = int32_t(__stdcall*)(const char*, uint32_t*, Extension*);
+    using Create = int32_t(__stdcall*)(const CreateInfo*, const void*, void**);
+    using Destroy = void(__stdcall*)(void*, const void*);
+    using Devices = int32_t(__stdcall*)(void*, uint32_t*, void**);
+    using Properties = void(__stdcall*)(void*, void*);
+    const auto enumerate = reinterpret_cast<Enumerate>(GetProcAddress(loader, "vkEnumerateInstanceExtensionProperties"));
+    const auto create = reinterpret_cast<Create>(GetProcAddress(loader, "vkCreateInstance"));
+    const auto destroy = reinterpret_cast<Destroy>(GetProcAddress(loader, "vkDestroyInstance"));
+    const auto devices = reinterpret_cast<Devices>(GetProcAddress(loader, "vkEnumeratePhysicalDevices"));
+    const auto properties = reinterpret_cast<Properties>(GetProcAddress(loader, "vkGetPhysicalDeviceProperties"));
+    bool usable = false;
+    uint32_t count = 0;
+    if (enumerate && create && destroy && devices && properties && enumerate(nullptr, &count, nullptr) == 0) {
+        std::vector<Extension> extensions(count);
+        if (enumerate(nullptr, &count, extensions.data()) < 0) count = 0;
+        bool surface = false, win32 = false;
+        for (uint32_t i = 0; i < count; ++i) {
+            surface = surface || !std::strcmp(extensions[i].name, "VK_KHR_surface");
+            win32 = win32 || !std::strcmp(extensions[i].name, "VK_KHR_win32_surface");
+        }
+        constexpr uint32_t api12 = (1u << 22) | (2u << 12);
+        const AppInfo app{0, nullptr, "Marchwind64", 1, "Marchwind64", 1, api12};
+        const CreateInfo info{1, nullptr, 0, &app, 0, nullptr, 0, nullptr};
+        void* instance = nullptr;
+        if (surface && win32 && create(&info, nullptr, &instance) == 0 && instance) {
+            uint32_t found = 0;
+            if (devices(instance, &found, nullptr) == 0 && found) {
+                std::vector<void*> list(found);
+                if (devices(instance, &found, list.data()) >= 0)
+                    for (uint32_t i = 0; i < found && !usable; ++i) {
+                        // VkPhysicalDeviceProperties: apiVersion, driverVersion, vendorID, deviceID,
+                        // deviceType (4 is a CPU), ... 824 bytes in all.
+                        alignas(8) unsigned char bytes[1024] = {};
+                        properties(list[i], bytes);
+                        uint32_t api = 0;
+                        int32_t type = 0;
+                        std::memcpy(&api, bytes, 4);
+                        std::memcpy(&type, bytes + 16, 4);
+                        usable = api >= api12 && type != 4;
+                    }
+            }
+            destroy(instance, nullptr);
+        }
+    }
+    FreeLibrary(loader);
+    return usable;
+}
+
+std::wstring wide(const std::string& text) {
+    std::wstring out(size_t(MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, nullptr, 0)), L'\0');
+    MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, out.data(), int(out.size()));
+    if (!out.empty()) out.pop_back();
+    return out;
+}
+
+// Marchwind64-gl.exe beside this program, when it is there.
+std::wstring gl_host() {
+    std::wstring path(MAX_PATH, L'\0');
+    for (;;) {
+        const DWORD length = GetModuleFileNameW(nullptr, path.data(), DWORD(path.size()));
+        if (length == 0) return {};
+        if (length < path.size()) { path.resize(length); break; }
+        path.resize(path.size() * 2);
+    }
+    const auto slash = path.find_last_of(L"\\/");
+    path = path.substr(0, slash == std::wstring::npos ? 0 : slash + 1) + L"Marchwind64-gl.exe";
+    const DWORD attributes = GetFileAttributesW(path.c_str());
+    return attributes != INVALID_FILE_ATTRIBUTES && !(attributes & FILE_ATTRIBUTE_DIRECTORY) ? path : std::wstring{};
+}
+
+// This process's command line with the GL host in place of the program's own name.
+std::wstring command_line(const std::wstring& program) {
+    std::wstring_view line = GetCommandLineW();
+    size_t end = 0;
+    if (!line.empty() && line[0] == L'"') {
+        end = line.find(L'"', 1);
+        end = end == std::wstring_view::npos ? line.size() : end + 1;
+    } else {
+        end = line.find_first_of(L" \t");
+        if (end == std::wstring_view::npos) end = line.size();
+    }
+    return L"\"" + program + L"\"" + std::wstring(line.substr(end));
+}
+
+struct Streams { HANDLE in = nullptr, out = nullptr, err = nullptr; };
+Streams streams() { return {GetStdHandle(STD_INPUT_HANDLE), GetStdHandle(STD_OUTPUT_HANDLE), GetStdHandle(STD_ERROR_HANDLE)}; }
+
+// Starts the GL host with `given` as its standard handles when there are any (a --play run's
+// redirected console.log); otherwise it joins this process's console as it would its own.
+HANDLE start(const std::wstring& program, const std::string& reason, const Streams& given) {
+    SetEnvironmentVariableW(L"SRW64_RENDERER_FALLBACK", wide(reason).c_str());
+    STARTUPINFOW startup{};
+    startup.cb = sizeof startup;
+    const auto [in, out, err] = given;
+    const auto valid = [](HANDLE h) { return h && h != INVALID_HANDLE_VALUE; };
+    if (valid(out) || valid(err)) {
+        startup.dwFlags = STARTF_USESTDHANDLES;
+        startup.hStdInput = in; startup.hStdOutput = out; startup.hStdError = err;
+    }
+    PROCESS_INFORMATION process{};
+    std::wstring line = command_line(program);
+    if (!CreateProcessW(program.c_str(), line.data(), nullptr, nullptr, startup.dwFlags ? TRUE : FALSE, 0, nullptr, nullptr, &startup, &process)) {
+        std::fprintf(stderr, "SRW64_RENDERER_FALLBACK_FAILED CreateProcess error %lu\n", GetLastError());
+        return nullptr;
+    }
+    CloseHandle(process.hThread);
+    return process.hProcess;
+}
+}  // namespace
+
+int run_gl_host_if_needed(int argc, char** argv) {
+    const std::string_view first = argc > 1 ? std::string_view(argv[1]) : std::string_view();
+    const bool game = argc == 1 || (argc == 2 && first == "--choose-rom") ||
+        (first == "--play" && !(argc >= 3 && (std::string_view(argv[2]) == "--help" || std::string_view(argv[2]) == "--prepare")));
+    if (!game) return -1;
+    const std::string api = env("SRW64_GRAPHICS_API");
+    if (api == "d3d12" || api == "vulkan") return -1;   // the player's choice: RT64
+    std::string reason;
+    if (api == "gl") reason = "chosen (SRW64_GRAPHICS_API=gl)";
+    else {
+        // SRW64_RENDERER_PROBE=no-d3d12 answers the D3D12 question no, to try the Vulkan and
+        // GL branches on a PC that has D3D12 (with a fake vulkan-1.dll for the last).
+        const bool skip_d3d12 = env("SRW64_RENDERER_PROBE") == "no-d3d12";
+        if ((!skip_d3d12 && d3d12_usable()) || vulkan_usable()) return -1;
+        reason = "no GPU for RT64 (D3D12 shader model 6.0 or Vulkan 1.2)";
+    }
+    const std::wstring program = gl_host();
+    if (program.empty()) return -1;   // a development build without it: RT64 says what it can
+    // The handles this process was given, then the console of the shell that started it
+    // (Marchwind64.cmd), which the GL host joins through this process (desktop_windows.cpp).
+    const Streams given = streams();
+    AttachConsole(ATTACH_PARENT_PROCESS);
+    const HANDLE child = start(program, reason, given);
+    if (!child) return -1;
+    // The GL host ends with this process: a launcher that stops the game stops this one
+    // (RecompLauncher waits on Marchwind64.exe), and the job takes the child along.
+    if (const HANDLE job = CreateJobObjectW(nullptr, nullptr)) {
+        JOBOBJECT_EXTENDED_LIMIT_INFORMATION limits{};
+        limits.BasicLimitInformation.LimitFlags = JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE;
+        SetInformationJobObject(job, JobObjectExtendedLimitInformation, &limits, sizeof limits);
+        AssignProcessToJobObject(job, child);   // the job stays open until this process ends
+    }
+    WaitForSingleObject(child, INFINITE);
+    DWORD code = 1;
+    GetExitCodeProcess(child, &code);
+    CloseHandle(child);
+    return int(code);
+}
+
+bool hand_over(const std::string& reason) {
+    const std::wstring program = gl_host();
+    if (program.empty()) return false;
+    const HANDLE child = start(program, "RT64 failed: " + reason, streams());
+    if (!child) return false;
+    CloseHandle(child);
+    std::fprintf(stderr, "SRW64_RENDERER_FALLBACK handed over to Marchwind64-gl.exe\n");
+    return true;
+}
+}  // namespace srw64::renderer_fallback

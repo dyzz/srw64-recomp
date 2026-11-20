@@ -1,5 +1,6 @@
 #define HLSL_CPU
 #include "launcher_env.hpp"
+#include "renderer_fallback.hpp"
 #ifndef SRW64_GL_ONLY
 #include "hle/rt64_application.h"
 #endif
@@ -172,6 +173,14 @@ namespace {
 [[noreturn]] void graphics_failure(const std::string& detail) {
     const char* interactive = std::getenv("SRW64_INTERACTIVE");
     if (!interactive || std::string(interactive) != "1") std::abort();
+#if defined(_WIN32) && !defined(SRW64_GL_ONLY)
+    // RT64 passed the check at the start (renderer_fallback.hpp) and failed anyway: the GL host
+    // takes over, with the same command line, once this process has left.
+    if (srw64::renderer_fallback::hand_over(detail.empty() ? std::string("setup") : detail)) {
+        srw64::console_log::flush_now();
+        std::_Exit(0);
+    }
+#endif
     std::string locale = "zh-Hans";
     if (const char* path = std::getenv("SRW64_PRESENTATION_SETTINGS")) {
         std::ifstream file(std::filesystem::path(reinterpret_cast<const char8_t*>(path)));

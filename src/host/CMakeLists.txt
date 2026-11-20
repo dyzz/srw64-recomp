@@ -216,6 +216,8 @@ if(SRW64_ENABLE_RT64)
         target_link_libraries(srw64-gfx-host PRIVATE dbghelp synchronization)
         # Each adapter's D3D12 support and the Vulkan loader's, into console.log (gpu_report.hpp).
         target_sources(srw64-gfx-host PRIVATE windows/gpu_report_windows.cpp)
+        # Marchwind64-gl.exe in its place on a PC RT64 cannot draw on (renderer_fallback.hpp).
+        target_sources(srw64-gfx-host PRIVATE windows/renderer_fallback_windows.cpp)
     endif()
     # The update check: the website's /latest.json through the system's HTTP (docs/native/update-check.md),
     # and RecompLauncher's setup step, which installs the HD pack it names (hd_prepare.hpp).
