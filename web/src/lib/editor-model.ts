@@ -1,3 +1,5 @@
+import { commandSource } from './editor-commands.ts';
+
 // The level editor's project (scripts/level-editor.ts): what its author sets, stage by
 // stage, and how that becomes the sources the compiler takes (srw64.campaign.v2,
 // srw64.stage.v1: docs/design/level-editor.md §3.1). The page keeps the project as it is
@@ -14,6 +16,7 @@ export type When =
   | { kind: 'reach'; who: number; side: Side; area: Area }  // who 0: any unit of the side
   | { kind: 'downed'; side: Side; group: number; atLeast: number }   // group -1: any of the side
   | { kind: 'group_gone'; group: number }
+  | { kind: 'turns_after'; event: string; turns: number; side: Side }   // the original's delayed count
   | { kind: 'hp_below'; who: number; percent: number }
   | { kind: 'battle'; a: number; b: number; moment: 'before' | 'after' }
   | { kind: 'enemies_gone' }
@@ -32,7 +35,9 @@ export type Step =
   | { kind: 'raw'; op: string; args: number[] }
   // A branch, written flat: the steps after `if` up to its `else` or `end` run when its
   // conditions hold, those after `else` up to `end` when they do not.
-  | { kind: 'if'; conds: Conds } | { kind: 'else' } | { kind: 'end' };
+  | { kind: 'if'; conds: Conds } | { kind: 'else' } | { kind: 'end' }
+  // One of the further commands (editor-commands.ts), its fields by name.
+  | { kind: 'cmd'; name: string; args: Record<string, unknown> };
 // A condition (docs/design/level-editor.md §5.3); `not` turns it round.
 export type Cond = { not?: boolean } & (
   | { kind: 'turn'; from: number; to: number }
@@ -46,12 +51,15 @@ export type Cond = { not?: boolean } & (
   | { kind: 'downed'; side: Side; atLeast: number }
   | { kind: 'fired'; event: string }
   | { kind: 'roster'; pilot: number }
-  | { kind: 'var'; n: number; is: number });
+  | { kind: 'var'; n: number; is: number }
+  | { kind: 'level'; who: number; of: number }          // who's level at least of's
+  | { kind: 'opponent'; who: number; is: number });     // in this battle, who fights is
 export type Conds = { any: boolean; list: Cond[] };      // any: one of them is enough
 export type BattleLine = { id: string; who: number; against: number; when: string[]; text: Text3; once: boolean; conds?: Conds };
 export type GameEvent = { id: string; name: string; when: When; once: boolean; fired: string[]; notFired: string[]; conds?: Conds; steps: Step[] };
 // When a group comes on: with the opening, by a trigger of its own, or when a story event says so.
-export type GroupWhen = { kind: 'opening' } | { kind: 'event' } | Extract<When, { kind: 'turn' | 'remaining' | 'defeated' | 'hp_below' | 'reach' | 'downed' | 'group_gone' }>;
+// spot: never comes on; its first unit's cell is where a sortie choice (3D3D) places the picks.
+export type GroupWhen = { kind: 'opening' } | { kind: 'event' } | { kind: 'spot' } | Extract<When, { kind: 'turn' | 'remaining' | 'defeated' | 'hp_below' | 'reach' | 'downed' | 'group_gone' }>;
 export type Group = { id: number; name: string; side: 0 | 1 | 2; when: GroupWhen };
 // ai: how a computer-run unit acts (mode: 0 attacks the weakest, 1 the likeliest to hit,
 // 2 hunts `target`, 3 walks to (x, y) without attacking, 4 the same and never answers back,
@@ -81,6 +89,9 @@ export type Stage = {
   // The map menu's 作戦目的 window: which of the original's texts it shows (3D65): winning
   // 5567 + win, losing 5593 + lose. Unset: chosen from the rules (objectiveOf).
   objective?: { win?: number; lose?: number; own?: { win: Text3; lose: Text3 } };
+  // Where on the world map the opening and the end are (3D32, the place table 801C5310).
+  // Unset: 0 and 1, the sample campaign's.
+  place?: number; endPlace?: number;
 };
 export type OwnMapInfo = { name: string; like: number; columns: number; rows: number; scale: number; terrain: number[][] };
 export type Project = { route: number; stages: Stage[]; maps: OwnMapInfo[] };
@@ -116,6 +127,7 @@ function action(step: Step): Record<string, unknown> {
     case 'win': return { win: true };
     case 'lose': return { lose: true };
     case 'raw': return step.args.length ? { op: step.op, args: step.args } : { op: step.op };
+    case 'cmd': return commandSource(step.name, step.args);
     default: throw new Error(`${step.kind} is not a step of its own`);
   }
 }
@@ -135,6 +147,8 @@ function condition(c: Cond): Record<string, unknown> {
     case 'fired': out = { fired: [c.event] }; break;
     case 'roster': out = { roster: { pilots: [c.pilot] } }; break;
     case 'var': out = { vars: { [c.n]: c.is } }; break;
+    case 'level': out = { level: { who: c.who, at_least_of: c.of } }; break;
+    case 'opponent': out = { opponent: { of: c.who, is: c.is } }; break;
   }
   return c.not ? { not: out } : out;
 }
@@ -183,6 +197,7 @@ function trigger(when: When | GroupWhen): Record<string, unknown> {
     case 'reach': return { reach: { ...(when.who ? { who: when.who } : { side: when.side }), area: when.area } };
     case 'downed': return { downed: { side: when.side, ...(when.group >= 0 ? { group: when.group } : {}), at_least: when.atLeast } };
     case 'group_gone': return { group_gone: when.group };
+    case 'turns_after': return { turns_after: { event: when.event, turns: when.turns, side: when.side } };
     case 'hp_below': return { hp_below: { who: when.who, percent: when.percent } };
     case 'battle': return { battle: { between: [when.a, when.b], moment: when.moment } };
     case 'enemies_gone': return { enemies_gone: true };
@@ -207,10 +222,10 @@ const manned = (stage: Stage, group: Group) => stage.units.some((u) => u.group =
 // fixed instructions around them are the sample campaign's (config/recomp/campaigns/sample).
 export function stageEvents(stage: Stage): Record<string, unknown>[] {
   const events: Record<string, unknown>[] = [];
-  events.push({ when: 'opening', do: [{ bgm: 49 }, { op: '3D32', args: [4] }, { op: '3D32', args: [0] }, { fade: 'in' }, ...actions(stage.before),
+  events.push({ when: 'opening', do: [{ bgm: 49 }, { op: '3D32', args: [4] }, { op: '3D32', args: [stage.place ?? 0] }, { fade: 'in' }, ...actions(stage.before),
     { fade: 'out' }, { to_map: true }, { op: '3D65', args: [objectiveOf(stage).win, objectiveOf(stage).lose] }, { fade: 'in' }, { bgm: stage.bgm },
     ...stage.groups.filter((g) => g.when.kind === 'opening' && manned(stage, g)).map((g) => ({ deploy: g.id })), ...actions(stage.enter), { op: '3D48' }] });
-  for (const group of stage.groups) if (group.when.kind !== 'opening' && group.when.kind !== 'event' && manned(stage, group))
+  for (const group of stage.groups) if (group.when.kind !== 'opening' && group.when.kind !== 'event' && group.when.kind !== 'spot' && manned(stage, group))
     events.push({ id: `group-${group.id}`, when: trigger(group.when), do: [{ deploy: group.id }] });
   for (const event of stage.events) {
     const cond: Record<string, unknown> = {};
@@ -234,7 +249,7 @@ export function stageEvents(stage: Stage): Record<string, unknown>[] {
   const after = stage.after;
   const leads = after.kind === 'ending' ? [{ ending: true }] : after.kind === 'next' ? [{ next: after.stage }]
     : [{ choose: { text: after.own ? optionTexts(after.own) : after.text, options: after.stages.map((s) => [{ next: s }]) } }];
-  events.push({ when: 'end', do: [{ bgm: 49 }, { op: '3D32', args: [1] }, { fade: 'in' }, ...actions(stage.end),
+  events.push({ when: 'end', do: [{ bgm: 49 }, { op: '3D32', args: [stage.endPlace ?? 1] }, { fade: 'in' }, ...actions(stage.end),
     ...(stage.end.some((s) => s.kind === 'say') ? [{ close: true }] : []), ...leads] });
   return events;
 }

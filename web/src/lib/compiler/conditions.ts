@@ -42,7 +42,7 @@ export function who(value: Obj, name: string): { pilot: number } | { side: numbe
 
 // Keys an event's `if` has always had; the host keeps reading them from the event's fields.
 export const OLD_KEYS = ['vars', 'fired', 'not_fired', 'kills', 'kills_below', 'roster', 'not_roster', 'flags', 'not_flags'];
-export const NEW_KEYS = ['turn', 'on_map', 'defeated', 'absent', 'hp', 'count', 'in_area', 'route', 'choice', 'funds', 'downed', 'all', 'any', 'not'];
+export const NEW_KEYS = ['turn', 'on_map', 'defeated', 'absent', 'hp', 'count', 'in_area', 'route', 'choice', 'funds', 'downed', 'level', 'opponent', 'all', 'any', 'not'];
 export const ALL_KEYS = [...OLD_KEYS, ...NEW_KEYS];
 
 export type Refs = { fired: string[] };   // the ids a condition names (checked by the caller)
@@ -111,6 +111,14 @@ function one(key: string, value: any, refs: Refs, prefix: (id: string) => string
       return [{ funds: ['at_least' in value ? int(value.at_least, 'funds.at_least', 0, 99999999) : 0, 'below' in value ? int(value.below, 'funds.below', 1, 99999999) - 1 : 99999999] }];
     }
     case 'downed': return [downed(value, 'downed')];
+    case 'level': {   // 3E06: one pilot's level at least another's
+      if (!isObj(value) || Object.keys(value).sort().join(',') !== 'at_least_of,who') throw new CompileError('level 写 {"who": 人物号, "at_least_of": 人物号}');
+      return [{ level: [pilot(value.who, 'level.who'), pilot(value.at_least_of, 'level.at_least_of')] }];
+    }
+    case 'opponent': {   // 3E16: in the battle now, `of` fights `is`
+      if (!isObj(value) || Object.keys(value).sort().join(',') !== 'is,of') throw new CompileError('opponent 写 {"of": 人物号, "is": 人物号}');
+      return [{ opponent: [pilot(value.of, 'opponent.of'), pilot(value.is, 'opponent.is')] }];
+    }
     case 'any': {
       if (!Array.isArray(value) || value.length < 2) throw new CompileError('any 写两个以上的条件对象，满足其一即可');
       return [{ any: value.map((c, n) => test(c, refs, prefix, `any[${n}]`)) }];

@@ -58,6 +58,13 @@ def export_ops() -> None:
 
 OBJECTIVE_FIRST = 5567   # the winning texts; the losing ones from 5593
 PART_NAMES = 1129        # text of part 0
+TITLES = 281             # a scene's title: 281 + scene
+PLACE_TABLE, PLACES = 0xAABD0, 127   # ROM of the world map overlay's 801C5310 (0xA7EC0 + 0x2D10), 6 bytes a place
+REGIONS = {13: {"ja": "地球", "zh": "地球", "en": "Earth", "ko": "지구"}, 17: {"ja": "地球", "zh": "地球", "en": "Earth", "ko": "지구"},
+           18: {"ja": "ヨーロッパ・地中海", "zh": "欧洲、地中海", "en": "Europe and the Mediterranean", "ko": "유럽·지중해"},
+           19: {"ja": "中央アジア・インド", "zh": "中亚、印度", "en": "Central Asia and India", "ko": "중앙아시아·인도"},
+           20: {"ja": "北アメリカ", "zh": "北美", "en": "North America", "ko": "북아메리카"},
+           14: {"ja": "宇宙", "zh": "宇宙", "en": "Space", "ko": "우주"}}
 
 
 def main() -> int:
@@ -67,7 +74,8 @@ def main() -> int:
     with (ROOT / "assets/text-export/records.jsonl").open(encoding="utf-8") as f:
         for line in f:
             r = json.loads(line)
-            if r.get("table") == 0 and (r["id"] < 64 or OBJECTIVE_FIRST <= r["id"] < OBJECTIVE_FIRST + 0x80 or r.get("category") == "names.part"):
+            if r.get("table") == 0 and (r["id"] < 64 or OBJECTIVE_FIRST <= r["id"] < OBJECTIVE_FIRST + 0x80 or r.get("category") == "names.part"
+                                        or TITLES <= r["id"] < TITLES + 143):
                 names[r["id"]] = r
     korean = {int(e["key"][-5:]): plain(e["target"]) for e in
               json.loads((ROOT / "content/locales/ko.json").read_text(encoding="utf-8"))["entries"]}
@@ -89,6 +97,23 @@ def main() -> int:
     objectives = [{"id": i, **name(i)} for i in sorted(names) if names[i].get("category") == "story.condition"]
     # The parts an enemy may leave when defeated (deployment record +0x12): text 1129 + part.
     parts = [{"id": i - PART_NAMES, **name(i)} for i in sorted(names) if names[i].get("category") == "names.part"]
+
+    # The world map's places (3D32 / 3D33, table 801C5310: surface, x, y): which surface, and
+    # the original's stages that show or travel to each, so the page can say where it is.
+    used: dict[int, set[int]] = {}
+    with (ROOT / "assets/original-data/records/stage_events.jsonl").open(encoding="utf-8") as f:
+        for line in f:
+            script = json.loads(line).get("script") or {}
+            for ins in script.get("instructions", []):
+                if ins["opcode"] in (0x3D32, 0x3D33) and ins["operands"]:
+                    used.setdefault(ins["operands"][0], set()).update(
+                        s for s in script.get("scenes", []) if 0 < s < 143 and TITLES + s in names and plain(names[TITLES + s]["display"]) != "リザーブ")
+    places = []
+    for number in range(PLACES):
+        surface, x, y = struct.unpack_from(">3h", rom, PLACE_TABLE + number * 6)
+        places.append({"id": number, "surface": surface, "region": REGIONS.get(surface, REGIONS[13]), "x": x, "y": y,
+                       "scenes": sorted(used.get(number, ()))[:4]})
+    titles = {str(scene): name(TITLES + scene) for scene in sorted({s for p in places for s in p["scenes"]}) if TITLES + scene in names}
 
     (GEN / "maps").mkdir(parents=True, exist_ok=True)
     maps, drawn = [], 0
@@ -126,6 +151,7 @@ def main() -> int:
     # first guess for a picture's cells: [r, g, b, cells seen]. Only terrains seen on 200 cells or more.
     colours = {str(t): [*(round(v / acc[3]) for v in acc[:3]), acc[3]] for t, acc in sorted(sums.items()) if acc[3] >= 200}
     (GEN / "editor.json").write_text(json.dumps({"schema": "srw64.web-editor.v1", "maps": maps, "terrain": terrain, "objectives": objectives, "parts": parts,
+                                                "places": places, "titles": titles,
                                                 "terrain_colours": colours},
                                                 ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     export_ops()

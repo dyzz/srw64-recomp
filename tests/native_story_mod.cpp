@@ -249,7 +249,7 @@ int main(int argc,char** argv) {
             write16(ram.data(),e+story::f_status,0x80);write16(ram.data(),e+story::f_turn,0);write16(ram.data(),e+story::f_side,1);
             const auto before=s.fired;
             story::scan(ram.data(),0,1,none,[](uint32_t){});
-            for(const auto& key:s.fired)if(!before.count(key))return key;
+            for(const auto& key:s.fired)if(!before.count(key) && key[0]!='#')return key;
             return std::string();
         };
         write8(ram.data(),story::scene_byte,2);
@@ -390,6 +390,38 @@ int main(int argc,char** argv) {
         check(!story::battle_quote(ram.data(),40,0,w),"against someone else: no line");
         s.scene=10;w.battle_b=287;check(!story::battle_quote(ram.data(),40,0,w),"another scene: no line");
         s.campaign.clear();
+    }
+
+    // --- Some turns after an event; levels; the opponent -------------------------------
+    {
+        json image={{"schema",story::image_schema},{"texts",json::array()},{"events",json::array({
+            event("start","turn",{0,1}),
+            {{"id","later"},{"scene",129},{"trigger","turns_after"},{"params",{2,1}},{"after","start"},{"words",{0x3D4E,0xFFFF}}},
+            {{"id","stronger"},{"scene",129},{"trigger","turn"},{"params",{0,2}},{"words",{0x3D4E,0xFFFF}},
+             {"test",{{"all",{{{"level",{4,18}}},{{"opponent",{4,18}}}}}}}}})}};
+        check(fails(image).empty(),"turns_after and the new conditions load: "+fails(image));
+        auto bad=image;bad["events"][1].erase("after");check(!fails(bad).empty(),"turns_after without its event");
+        story::Library l;story::add_image(l,"p",image);
+        s.library=l;s.campaign.clear();s.scene=129;s.fired.clear();s.running.reset();
+        auto fires=[&](story::View w,unsigned from,unsigned to) {
+            write16(ram.data(),e+story::f_status,0x80);s.running.reset();
+            write16(ram.data(),e+story::f_turn,uint16_t(w.turn));
+            const auto before=s.fired;
+            story::scan(ram.data(),from,to,w,[](uint32_t){});
+            for(const auto& key:s.fired)if(!before.count(key) && key[0]!='#')return key;
+            return std::string();
+        };
+        story::View w;w.side=1;w.turn=1;
+        check(fires(w,0,2)=="p/start" && story::started_turn("p/start")==1u,"the start event, on turn 2 (1 0-based)");
+        check(fires(w,0,2).empty(),"not yet the later one");
+        w.turn=2;check(fires(w,0,2).empty(),"one turn on: not yet");
+        w.turn=3;w.side=2;check(fires(w,0,2).empty(),"two turns on, the enemy's phase: not yet");
+        w.side=1;check(fires(w,0,2)=="p/later","two turns on, ours: now");
+        story::View b;b.side=2;b.turn=0;b.battle_a=18;b.battle_b=4;
+        b.level=[](unsigned p)->std::optional<unsigned>{return p==4?std::optional<unsigned>(30):p==18?std::optional<unsigned>(28):std::nullopt;};
+        check(fires(b,0,2)=="p/stronger","4 at level 30 over 18's 28, fighting 18");
+        s.fired.erase("p/stronger");b.level=[](unsigned)->std::optional<unsigned>{return 10;};b.battle_b=5;
+        check(fires(b,0,2).empty(),"another opponent: no");
     }
 
     if(failures)std::fprintf(stderr,"%d failure(s)\n",failures);

@@ -89,6 +89,11 @@ export function trigger(when: unknown): [string, number[]] {
     return ['defeated', [int(value.who, 'defeated.who', 0, 360), 'by' in value ? int(value.by, 'defeated.by', 1, 360) : 0]];
   }
   if (kind === 'downed') return ['downed', downed(value, 'downed').downed];
+  if (kind === 'turns_after') {   // the original's delayed count (type 1, 3D52): N turns after an event ran
+    if (!isObj(value) || Object.keys(value).some((k) => !['event', 'turns', 'side'].includes(k)) || typeof value.event !== 'string')
+      throw new CompileError('turns_after 写 {"event": 事件 id, "turns": 回合数, "side": player|enemy|third}');
+    return ['turns_after', [int(value.turns, 'turns_after.turns', 1, 99), side(value.side, 'side', 'player')]];
+  }
   if (kind === 'group_gone') return ['group_gone', [int(value, 'group_gone', 0, 99)]];
   if (kind === 'reach') {
     if (!isObj(value) || Object.keys(value).some((k) => !['who', 'side', 'area'].includes(k))) throw new CompileError('reach 写 {"who": 人物号 或 "side": 阵营, "area": [x0, y0, x1, y1]}');
@@ -162,6 +167,161 @@ export class Builder {
     }
     this.texts.push({ speaker: who, lines: { ...text } });
     return this.texts.length - 1;
+  }
+
+  // A map position (800A38DC): [x, y] is absolute (x << 8 | y); {"near": pilot, "dir":
+  // "at"|"up"|"right"|"down"|"left", "by": cells} is relative to where that pilot stands,
+  // which 3D54 remembers first (codes 0x40-0x44).
+  position(value: unknown, name: string): number {
+    if (Array.isArray(value) && value.length === 2) return int(value[0], `${name}[0]`, 0, 127) << 8 | int(value[1], `${name}[1]`, 0, 127);
+    if (isObj(value) && 'near' in value) {
+      const dirs = ['at', 'up', 'right', 'down', 'left'];
+      const dir = value.dir ?? 'at';
+      if (!dirs.includes(dir) || Object.keys(value).some((k) => !['near', 'dir', 'by'].includes(k))) throw new CompileError(`${name} 写 [x, y] 或 {"near": 人物号, "dir": ${dirs.join('|')}, "by": 格数}`);
+      this.op(0x3D54, int(value.near, `${name}.near`, 0, 360));
+      return (0x40 + dirs.indexOf(dir)) << 8 | (dir === 'at' ? 0 : int(value.by ?? 1, `${name}.by`, 1, 63));
+    }
+    throw new CompileError(`${name} 写 [x, y] 或 {"near": 人物号, "dir": …, "by": 格数}`);
+  }
+
+  // The stage and presentation commands (level-editor.md §5.8): true when `kind` is one.
+  stage(kind: string, value: any): boolean {
+    const who = (v: unknown, name: string) => int(v, name, 0, 360);
+    const obj = (keys: string[], hint: string) => {
+      if (!isObj(value) || Object.keys(value).some((k) => !keys.includes(k))) throw new CompileError(`${kind} 写 ${hint}`);
+      return value;
+    };
+    const SIDE: Record<string, number> = { player: 0, enemy: 1, third: 2 };
+    switch (kind) {
+      case 'camera': {   // 3D35: scroll there; "wait" blocks until it arrives
+        const v = isObj(value) && 'to' in value ? obj(['to', 'wait'], '{"to": 位置, "wait": true}') : { to: value };
+        this.op(0x3D35, this.position(v.to, 'camera'), v.wait ? 0 : 1);
+        return true;
+      }
+      case 'camera_follows': if (typeof value !== 'boolean') throw new CompileError('camera_follows 写 true/false'); this.op(0x3D66, value ? 0 : 1); return true;
+      case 'camera_back': this.op(0x3D68); return true;
+      case 'effect': {   // 3D37: 0 big explosion, 1 hit sparks, 11 shield ring, ...
+        const v = obj(['id', 'at'], '{"id": 特效编号, "at": 位置}');
+        this.op(0x3D37, int(v.id, 'effect.id', 0, 255), this.position(v.at, 'effect.at'));
+        return true;
+      }
+      case 'shake': this.op(0x3D36, int(value, 'shake', 1, 20)); return true;
+      case 'destroy': this.op(0x3D4F, who(value, 'destroy')); return true;
+      case 'destroy_group': this.op(0x3D4F, 500 + int(value, 'destroy_group', 0, 99)); return true;
+      case 'move': {   // 3D3C: a pilot's unit walks to a cell
+        const v = obj(['who', 'to'], '{"who": 人物号, "to": 位置}');
+        const at = this.position(v.to, 'move.to');
+        this.op(0x3D3C, who(v.who, 'move.who'), at);
+        return true;
+      }
+      case 'change_side': {
+        const v = obj(['who', 'to'], '{"who": 人物号, "to": "player"|"enemy"|"third"}');
+        if (!(v.to in SIDE)) throw new CompileError('change_side.to 只能是 player、enemy、third');
+        this.op(0x3D58, who(v.who, 'change_side.who'), SIDE[v.to]);
+        return true;
+      }
+      case 'can_act': {
+        const v = obj(['who', 'value'], '{"who": 人物号, "value": true/false}');
+        if (typeof v.value !== 'boolean') throw new CompileError('can_act.value 写 true/false');
+        this.op(0x3D69, who(v.who, 'can_act.who'), v.value ? 1 : 0);
+        return true;
+      }
+      case 'upgrade': {
+        const v = obj(['unit', 'level'], '{"unit": 机体号, "level": 段数}');
+        this.op(0x3D6C, ['unit', unit(v.unit, 'upgrade.unit')], int(v.level, 'upgrade.level', 0, 15));
+        return true;
+      }
+      case 'funds': {
+        const n = int(value, 'funds', 1000, 999000);
+        if (n % 1000) throw new CompileError('funds 是 1000 的倍数（原版按千加）');
+        this.op(0x3D5B, n / 1000);
+        return true;
+      }
+      case 'bump': {   // 3E0E / 3E0F: a variable one up or down, round the four values
+        const v = isObj(value) ? obj(['var', 'by'], '{"var": 变量号, "by": 1 或 -1}') : { var: value, by: 1 };
+        if (v.by !== 1 && v.by !== -1) throw new CompileError('bump.by 只能是 1 或 -1');
+        this.op(v.by === 1 ? 0x3E0E : 0x3E0F, int(v.var, 'bump.var', 0, 199));
+        return true;
+      }
+      case 'morale_down': if (value !== true) throw new CompileError('morale_down 写 true'); this.op(0x3D5F, 0); return true;
+      case 'transform': {
+        const v = obj(['who', 'from', 'to'], '{"who": 人物号, "from": 机体号, "to": 机体号}');
+        this.op(0x3D50, who(v.who, 'transform.who'), ['unit', unit(v.from, 'transform.from')], ['unit', unit(v.to, 'transform.to')]);
+        return true;
+      }
+      case 'combine': {
+        const v = obj(['who', 'join'], '{"who": 人物号, "join": true/false}');
+        this.op(0x3D5C, who(v.who, 'combine.who'), v.join ? 1 : 0);
+        return true;
+      }
+      case 'combined_form': {   // 3D5D: 0 ダンクーガ, 1 コン・バトラーV
+        const v = obj(['family', 'join'], '{"family": "dancouga"|"combattler", "join": true/false}');
+        if (!['dancouga', 'combattler'].includes(v.family)) throw new CompileError('combined_form.family 只能是 dancouga 或 combattler');
+        this.op(0x3D5D, v.join ? 1 : 0, v.family === 'dancouga' ? 0 : 1);
+        return true;
+      }
+      case 'battle_scene': {   // 3D49: two entries of the scripted battle table 800C9A18
+        if (!Array.isArray(value) || value.length !== 2) throw new CompileError('battle_scene 写 [表项 A, 表项 B]');
+        this.op(0x3D49, int(value[0], 'battle_scene', 0, 999), int(value[1], 'battle_scene', 0, 999));
+        return true;
+      }
+      case 'map_weapon': {
+        const v = obj(['who', 'unit', 'weapon', 'dir'], '{"who": 人物号, "unit": 机体号, "weapon": MAP 兵器号, "dir": 方向}');
+        this.op(0x3D51, who(v.who, 'map_weapon.who'), ['unit', unit(v.unit, 'map_weapon.unit')], ['weapon', weapon(v.weapon, 'map_weapon.weapon')], int(v.dir ?? 0, 'map_weapon.dir', 0, 0xFFFF), 0);
+        return true;
+      }
+      case 'formation': {
+        const v = obj(['at', 'per_row'], '{"at": [x, y], "per_row": 每行台数}');
+        if (!Array.isArray(v.at) || v.at.length !== 2) throw new CompileError('formation.at 写 [x, y]');
+        this.op(0x3D60, int(v.at[0], 'formation.at', 0, 127), int(v.at[1], 'formation.at', 0, 127), int(v.per_row ?? 3, 'formation.per_row', 1, 30));
+        return true;
+      }
+      case 'powerup_scene': this.op(0x3D67, int(value, 'powerup_scene', 0, 10)); return true;
+      case 'godmars': this.op(0x3D6A, int(value, 'godmars', 0, 4)); return true;
+      case 'launch': this.op(0x3D75, value === 'all' ? 999 : who(value, 'launch')); return true;
+      case 'all_lost_defeat': if (typeof value !== 'boolean') throw new CompileError('all_lost_defeat 写 true/false'); this.op(0x3D61, value ? 0 : 1); return true;
+      case 'player_phase': if (value !== true) throw new CompileError('player_phase 写 true'); this.op(0x3D6D, 0); return true;
+      case 'swap_identity': {
+        if (!Array.isArray(value) || value.length !== 2) throw new CompileError('swap_identity 写 [原人物号, 新人物号]');
+        this.op(0x3D62, who(value[0], 'swap_identity'), who(value[1], 'swap_identity'));
+        return true;
+      }
+      case 'land': this.op(0x3D63, who(value, 'land')); return true;
+      case 'copilot': {
+        const v = obj(['pilot', 'add'], '{"pilot": 主驾驶, "add": 同乘人物}');
+        this.op(0x3D70, who(v.pilot, 'copilot.pilot'), who(v.add, 'copilot.add'));
+        return true;
+      }
+      case 'world_map': this.op(0x3D32, int(value, 'world_map', 0, 255)); return true;
+      case 'travel': this.op(0x3D33, int(value, 'travel', 0, 255)); return true;
+      case 'vehicle': this.op(0x3D72, int(value, 'vehicle', 0, 14)); return true;
+      case 'change_map': {   // 3D34: an original map in the middle of a stage
+        const v = obj(['map', 'at'], '{"map": 原版地图号, "at": [x, y]}');
+        if (!Array.isArray(v.at) || v.at.length !== 2) throw new CompileError('change_map.at 写 [x, y]');
+        this.op(0x3D34, int(v.map, 'change_map.map', 0, 157), int(v.at[0], 'change_map.at', 0, 127), int(v.at[1], 'change_map.at', 0, 127), 1);
+        return true;
+      }
+      case 'sortie': {   // 3D3D: the player picks who goes out, placed from the group's first record
+        const v = obj(['group', 'max'], '{"group": 出击位置的组, "max": 台数（1–15）|"all"（全部自动）|"ship"（选母舰）}');
+        const max = v.max === 'all' ? 200 : v.max === 'ship' ? 0 : int(v.max, 'sortie.max', 1, 15);
+        this.op(0x3D3D, 0, 0, 0, max, int(v.group, 'sortie.group', 0, 99));
+        return true;
+      }
+      case 'green_area': {   // 3D56: blinks a green rectangle; x*10 + width, y*10 + height (each at most 9)
+        if (!Array.isArray(value) || value.length !== 4) throw new CompileError('green_area 写 [x0, y0, x1, y1]');
+        const [x0, y0, x1, y1] = value.map((v: unknown) => int(v, 'green_area', 0, 127));
+        const w = Math.abs(x1 - x0) + 1, h = Math.abs(y1 - y0) + 1;
+        if (w > 9 || h > 9) throw new CompileError('green_area 宽高各最多 9 格（原版的编码只有一位）');
+        this.op(0x3D56, Math.min(x0, x1) * 10 + w, Math.min(y0, y1) * 10 + h, 60);
+        return true;
+      }
+      case 'forbid': {   // 3D59: kept out of the next sortie choice; a unit as {"unit": n}
+        const n = isObj(value) ? 500 + int(obj(['unit'], '人物号或 {"unit": 机体号}').unit, 'forbid.unit', 0, 362) : who(value, 'forbid');
+        this.op(0x3D59, n);
+        return true;
+      }
+    }
+    return false;
   }
 
   actions(rows: unknown): void {
@@ -270,6 +430,7 @@ export class Builder {
         throw new CompileError('crew 写 {"unit": 机体号, "pilots": [1–5 个人物号，第一个是主驾驶]}');
       this.crew.push({ unit: unit(value.unit, 'unit'), pilots: value.pilots.map((x: unknown) => int(x, 'crew 人物', 0, 360)) });
     } else if (kind === 'build') this.builds.push(unit(value, 'build'));
+    else if (this.stage(kind, value)) return;
     else if (kind === 'leave') this.op(0x3D46, int(value, 'leave', 0, 360), 1);
     else if (kind === 'leave_group') this.op(0x3D46, 500 + int(value, 'leave_group', 0, 99), 1);
     else if (kind === 'deploy') this.op(0x3D45, int(value, 'deploy', 0, 99));
@@ -329,6 +490,7 @@ export function compileStory(document: Obj, stages: Record<string, number> | nul
       const numbers = builder.named.map(([command, operand, value, kind]) => [offsets[command] + 1 + operand, value, kind]);
       const refs = builder.refs.map((command) => { const at = offsets[command] + 1 + (builder.refOperand[command] ?? 0); const ref = [at, words[at]]; words[at] = TEXT; return ref; });
       const event: StoryEvent = { id: row.id, scene: int(row.scene, 'scene', 0, 255), trigger: name, params, vars: variables, kills, kills_below: killsBelow };
+      if (name === 'turns_after') { event.after = prefix(row.when.turns_after.event); used.fired.push(event.after); }
       for (const k of ['roster', 'not_roster']) if (k in cond) event[k] = roster(cond[k], k);
       for (const k of ['flags', 'not_flags']) if (k in cond) event[k] = flags(cond[k], k);
       Object.assign(event, { set_flags: flags(row.set_flags ?? [], 'set_flags'), fired: [...(cond.fired ?? [])], not_fired: [...(cond.not_fired ?? [])], repeat,

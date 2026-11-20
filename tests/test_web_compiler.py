@@ -270,6 +270,24 @@ class WebConditionTests(WebCompilerTests):
                 self.write({"one": {"events": [self.opening()], **row}})
                 self.assertIn(said, self.web().get("error", ""))
 
+    def test_stage_commands(self):
+        out = self.events(
+            {"id": "x", "when": {"turn": {"turn": 2}}, "do": [
+                {"camera": {"to": {"near": 28, "dir": "right", "by": 2}, "wait": True}}, {"effect": {"id": 0, "at": [10, 5]}}, {"shake": 5},
+                {"move": {"who": 28, "to": [12, 7]}}, {"destroy_group": 3}, {"change_side": {"who": 31, "to": "player"}}, {"funds": 5000},
+                {"bump": {"var": 9, "by": -1}}, {"sortie": {"group": 2, "max": "all"}}, {"forbid": {"unit": 117}}, {"camera_follows": False}]},
+            {"id": "y", "when": {"turns_after": {"event": "x", "turns": 3}}, "if": {"level": {"who": 28, "at_least_of": 287}, "opponent": {"of": 28, "is": 287}}, "do": []})
+        x, y = out["story"]["events"]
+        self.assertEqual(x["listing"], ["3D54 28", "3D35 16898,0", "3D37 0,2565", "3D36 5", "3D3C 28,3079", "3D4F 503", "3D58 31,0", "3D5B 5",
+                                        "3E0F 9", "3D3D 0,0,0,200,2", "3D59 617", "3D66 1", "FFFF"])
+        self.assertEqual((y["trigger"], y["params"], y["after"]), ("turns_after", [3, 1], "one.x"))
+        self.assertEqual(y["test"], {"all": [{"level": [28, 287]}, {"opponent": [28, 287]}]})
+        for row, said in [({"do": [{"funds": 1500}]}, "1000 的倍数"), ({"do": [{"camera": {"near": 28, "dir": "north"}}]}, "dir"),
+                          ({"do": [{"sortie": {"group": 2, "max": 20}}]}, "sortie.max"), ({"when": {"turns_after": {"event": "none", "turns": 1}}}, "不存在的事件 one.none")]:
+            with self.subTest(said=said):
+                self.write({"one": {"events": [self.opening(), {"id": "a", "when": {"turn": {"turn": 1}}, "do": [], **row}]}})
+                self.assertIn(said, self.web().get("error", ""))
+
     def test_what_is_wrong(self):
         for row, said in [
             ({"when": {"reach": {"who": 1, "side": "enemy", "area": [1, 1, 2, 2]}}}, "who（人物号）或 side"),

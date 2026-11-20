@@ -12,6 +12,7 @@ import { el, fill, openPackage, packageForm, readJson, say, writePackage, type T
 import { picker, type Pickable } from './picker';
 import { CompileError } from '../lib/compiler/assemble.ts';
 import { QUOTE_MOMENTS, SILHOUETTES } from '../lib/compiler/story.ts';
+import { COMMANDS, commandOf, defaults, type Field, type Pos } from '../lib/editor-commands.ts';
 import { compileCampaign } from '../lib/compiler/campaign.ts';
 import { buildMap, type Template } from '../lib/compiler/map.ts';
 import { campaignSource, FRAME, freeName, leadsTo, newStage, objectiveOf, problems, stageSource, type Area, type Cond, type Conds, type GameEvent, type Group, type GroupWhen,
@@ -36,7 +37,8 @@ export async function initLevelEditor() {
   const $ = <E extends HTMLElement>(q: string) => root.querySelector<E>(q)!;
   const nameOf = (n?: Names) => n ? n[lang] || n.en || n.ja : '?';
   const form = packageForm(root, T, locale, game);
-  const original: { maps: OriginalMap[]; terrain: Terrain[]; objectives?: ({ id: number } & Names)[]; parts?: ({ id: number } & Names)[]; terrain_colours?: Record<string, number[]> } =
+  const original: { maps: OriginalMap[]; terrain: Terrain[]; objectives?: ({ id: number } & Names)[]; parts?: ({ id: number } & Names)[];
+    places?: { id: number; region: Names; scenes: number[] }[]; titles?: Record<string, Names>; terrain_colours?: Record<string, number[]> } =
     await (await fetch('/gen/editor.json')).json();
   const terrainOf = new Map(original.terrain.map((t) => [t.id, t]));
   const templates = new Map(original.maps.filter((m) => m.template).map((m) => [m.map, m.template!]));
@@ -483,11 +485,13 @@ export async function initLevelEditor() {
     switch (w.kind) {
       case 'opening': return T.whenOpening;
       case 'event': return T.whenEvent;
+      case 'spot': return T.whenSpot;
       case 'turn': return fill(T.whenTurn, { turn: w.turn, side: sideName(['player', 'enemy', 'third'].indexOf(w.side)) });
       case 'defeated': return fill(w.by ? T.whenDefeatedBy : T.whenDefeated, { who: pilotName(w.who), by: pilotName(w.by ?? 0) });
       case 'reach': return fill(T.whenReach, { who: w.who ? pilotName(w.who) : sideName(SIDE_NAMES.indexOf(w.side)), area: areaText(w.area) });
       case 'downed': return fill(T.whenDowned, { side: w.group >= 0 ? groupLabel(w.group) : sideName(SIDE_NAMES.indexOf(w.side)), n: w.atLeast });
       case 'group_gone': return fill(T.whenGroupGone, { group: groupLabel(w.group) });
+      case 'turns_after': return fill(T.whenTurnsAfter, { event: stage().events.find((e) => e.id === w.event)?.name || w.event, n: w.turns });
       case 'hp_below': return fill(T.whenHp, { who: pilotName(w.who), percent: w.percent });
       case 'battle': return fill(w.moment === 'before' ? T.whenBattleBefore : T.whenBattleAfter, { a: pilotName(w.a), b: pilotName(w.b) });
       case 'enemies_gone': return T.whenGone;
@@ -555,6 +559,10 @@ export async function initLevelEditor() {
   }
 
   // --- Story ------------------------------------------------------------------------------------------
+  // A world map place: its region, and which of the original's stages show it.
+  const placeSelect = (value: number, set: (v: number) => void) => select((original.places ?? []).map((p): [string, string] => [String(p.id),
+    [String(p.id), nameOf(p.region), ...(p.scenes.length ? [fill(T.placeUsed, { titles: p.scenes.slice(0, 3).map((n) => `「${nameOf(original.titles?.[String(n)])}」`).join('') })] : [])].join(' · ')]),
+    String(value), (v) => set(Number(v)));
   const stepsOf = (s: Stage, at: string): Step[] | null => at === 'before' ? s.before : at === 'enter' ? s.enter : at === 'end' ? s.end : s.events.find((e) => e.id === at)?.steps ?? null;
   const STEP_KINDS: [Step['kind'], string][] = [['say', 'stepSay'], ['deploy', 'stepDeploy'], ['leave', 'stepLeave'], ['join', 'stepJoin'], ['bgm', 'stepBgm'], ['focus', 'stepFocus'], ['wait', 'stepWait'],
     ['fade', 'stepFade'], ['win', 'stepWin'], ['lose', 'stepLose'], ['if', 'stepIf'], ['else', 'stepElse'], ['end', 'stepEnd'], ['raw', 'stepRaw']];
@@ -573,6 +581,39 @@ export async function initLevelEditor() {
       default: return { kind } as Step;
     }
   };
+  // A further command's form (editor-commands.ts): a control a field.
+  function commandFields(s: Stage, args: Record<string, unknown>, fields: Field[]): Node[] {
+    const out: Node[] = [];
+    for (const f of fields) {
+      const set = (v: unknown) => { args[f.key] = v; };
+      const label = el('span', { class: 'sub' }, T[`f_${f.key}`] ?? '');
+      if (f.type === 'pilot') out.push(label, who('pilot', Number(args[f.key]), set));
+      else if (f.type === 'unit') out.push(label, who('unit', Number(args[f.key]), set));
+      else if (f.type === 'group') out.push(label, select(s.groups.map((gr): [string, string] => [String(gr.id), groupName(gr)]), String(args[f.key]), (v) => set(Number(v))));
+      else if (f.type === 'bool') out.push(el('label', { class: 'check' }, el('input', { type: 'checkbox', checked: !!args[f.key], onchange: (e: Event) => { set((e.target as HTMLInputElement).checked); update(); } }), T[`f_${f.key}`] ?? f.key));
+      else if (f.type === 'number') out.push(label, number(Number(args[f.key]), set, f.min, f.max, f.step ? { step: f.step } : {}));
+      else if (f.type === 'select') out.push(label, select(f.options.map(([v, k]): [string, string] => [v, T[k] ?? v]), String(args[f.key]), set));
+      else if (f.type === 'area') out.push(label, ...areaFields(args[f.key] as Area));
+      else if (f.type === 'place') out.push(label, placeSelect(Number(args[f.key]), (v) => set(v)));
+      else if (f.type === 'map') out.push(label, select(original.maps.map((m): [string, string] => [String(m.map), `${m.map}`]), String(args[f.key]), (v) => set(Number(v))));
+      else if (f.type === 'xy') {
+        const p = args[f.key] as { x: number; y: number };
+        out.push(label, number(p.x, (v) => { p.x = v; }, 0, 127), number(p.y, (v) => { p.y = v; }, 0, 127));
+      } else if (f.type === 'pos') {
+        const p = args[f.key] as Pos;
+        out.push(label, select([['cell', T.posCell], ['near', T.posNear]], 'near' in p ? 'near' : 'cell',
+          (v) => set(v === 'near' ? { near: s.units[0]?.pilot ?? 28, dir: 'at', by: 1 } : { x: 0, y: 0 })));
+        if ('near' in p) out.push(who('pilot', p.near, (id) => { p.near = id; }),
+          select(['at', 'up', 'right', 'down', 'left'].map((d): [string, string] => [d, T[`dir_${d}`]]), p.dir, (v) => { p.dir = v as never; }),
+          p.dir === 'at' ? null : number(p.by, (v) => { p.by = v; }, 1, 63), p.dir === 'at' ? null : el('span', { class: 'sub' }, T.cells));
+        else {
+          const cell: Area = [p.x, p.y, p.x, p.y];
+          out.push(el('span', { class: 'static' }, `(${p.x}, ${p.y})`), act(T.pickCell, () => { areaPick = { area: cell, back: tab, done: (a) => { p.x = a[0]; p.y = a[1]; } }; tab = 'units'; }, 'mini'));
+        }
+      }
+    }
+    return out.filter((n): n is Node => n !== null);
+  }
   // The fields of a trigger after its kind.
   function whenFields(w: When | GroupWhen): Node[] {
     const s = stage(), groups = (all: boolean) => select([...(all ? [['-1', T.anyGroup] as [string, string]] : []), ...s.groups.map((gr): [string, string] => [String(gr.id), groupName(gr)])],
@@ -581,6 +622,8 @@ export async function initLevelEditor() {
       case 'reach': return [...whoOrSide(w.who, w.side, (id, side) => { w.who = id; w.side = side; }), el('span', {}, T.into), ...areaFields(w.area)];
       case 'downed': return [sideSelect(w.side, (v) => { w.side = v; }), groups(true), el('span', {}, T.atLeast), number(w.atLeast, (v) => { w.atLeast = v; }, 1, 99), el('span', {}, T.unitsWord)];
       case 'group_gone': return [groups(false)];
+      case 'turns_after': return [select(s.events.map((e): [string, string] => [e.id, e.name || e.id]), w.event, (v) => { w.event = v; }),
+        el('span', {}, T.afterEvent), number(w.turns, (v) => { w.turns = v; }, 1, 99), el('span', {}, T.turnsLater), sideSelect(w.side, (v) => { w.side = v; })];
       case 'turn': return [number(w.turn, (v) => { w.turn = v; }, 1, 99), select([['player', T.sidePlayer], ['enemy', T.sideEnemy], ['third', T.sideThird]], w.side, (v) => { w.side = v as never; })];
       case 'defeated': return [who('pilot', w.who, (id) => { w.who = id; }), el('span', {}, T.by),
         select([['0', T.anyone], ...[...new Set(s.units.map((u) => u.pilot))].map((p): [string, string] => [String(p), pilotName(p)])], String(w.by ?? 0), (v) => { w.by = Number(v) || undefined; })];
@@ -597,13 +640,14 @@ export async function initLevelEditor() {
     if (kind === 'reach') return { kind, who: ours, side: 'player', area: [0, 0, 2, 2] };
     if (kind === 'downed') return { kind, side: 'player', group: -1, atLeast: 1 };
     if (kind === 'group_gone') return { kind, group: last };
+    if (kind === 'turns_after') return { kind, event: s.events[0]?.id ?? '', turns: 2, side: 'player' };
     return kind === 'turn' ? { kind, turn: 3, side: 'enemy' } : kind === 'defeated' ? { kind, who: theirs } : kind === 'hp_below' ? { kind, who: theirs, percent: 30 }
       : kind === 'battle' ? { kind, a: ours, b: theirs, moment: 'before' } : kind === 'remaining' ? { kind, side: 'enemy', atMost: 3 } : kind === 'persuade' ? { kind, by: ours, target: theirs } : { kind: 'enemies_gone' };
   };
-  const WHEN_KINDS = ['turn', 'defeated', 'hp_below', 'battle', 'enemies_gone', 'remaining', 'persuade', 'reach', 'downed', 'group_gone'];
+  const WHEN_KINDS = ['turn', 'defeated', 'hp_below', 'battle', 'enemies_gone', 'remaining', 'persuade', 'reach', 'downed', 'group_gone', 'turns_after'];
 
   // --- Conditions: one editor for an event's and a step's ---------------------------------------
-  const COND_KINDS: Cond['kind'][] = ['turn', 'on_map', 'defeated', 'absent', 'hp', 'count', 'in_area', 'downed', 'fired', 'roster', 'route', 'choice', 'funds', 'var'];
+  const COND_KINDS: Cond['kind'][] = ['turn', 'on_map', 'defeated', 'absent', 'hp', 'count', 'in_area', 'downed', 'fired', 'roster', 'route', 'choice', 'funds', 'var', 'level', 'opponent'];
   function condDefault(kind: Cond['kind'], s: Stage, self?: GameEvent): Cond {
     const ours = s.units.find((u) => sideOf(s, u) === 0)?.pilot ?? 28, theirs = s.units.find((u) => sideOf(s, u) === 1)?.pilot ?? 298;
     switch (kind) {
@@ -619,6 +663,8 @@ export async function initLevelEditor() {
       case 'choice': return { kind, n: 1 };
       case 'funds': return { kind, atLeast: 10000 };
       case 'var': return { kind, n: 0, is: 0 };
+      case 'level': return { kind, who: ours, of: theirs };
+      case 'opponent': return { kind, who: ours, is: theirs };
     }
   }
   function condFields(c: Cond, s: Stage, self?: GameEvent): Node[] {
@@ -635,6 +681,8 @@ export async function initLevelEditor() {
       case 'choice': return [select([['1', '1'], ['2', '2'], ['3', '3']], String(c.n), (v) => { c.n = Number(v); })];
       case 'funds': return [el('span', {}, '≥'), number(c.atLeast, (v) => { c.atLeast = v; }, 0, 99999999)];
       case 'var': return [number(c.n, (v) => { c.n = v; }, 0, 199), el('span', {}, '='), number(c.is, (v) => { c.is = v; }, 0, 3)];
+      case 'level': return [who('pilot', c.who, (id) => { c.who = id; }), el('span', {}, '≥'), who('pilot', c.of, (id) => { c.of = id; })];
+      case 'opponent': return [who('pilot', c.who, (id) => { c.who = id; }), el('span', {}, T.fights), who('pilot', c.is, (id) => { c.is = id; })];
     }
   }
   function condEditor(set: Conds, s: Stage, self?: GameEvent, hint?: string): HTMLElement {
@@ -728,13 +776,15 @@ export async function initLevelEditor() {
       else if (step.kind === 'wait') body.push(number(step.frames, (v) => { step.frames = v; }, 1, 32767), el('span', { class: 'sub' }, T.frames));
       else if (step.kind === 'fade') body.push(select([['in', T.fadeIn], ['out', T.fadeOut]], step.dir, (v) => { step.dir = v as never; }));
       else if (step.kind === 'if') body.push(condEditor(step.conds, s, event, T.stepIfHint));
+      else if (step.kind === 'cmd') body.push(el('div', { class: 'when' }, ...commandFields(s, step.args, commandOf(step.name)?.fields ?? [])),
+        T[`cmdHint_${step.name}`] ? el('p', { class: 'hint' }, T[`cmdHint_${step.name}`]) : null);
       else if (step.kind === 'raw') body.push(input(step.op, (v) => { step.op = v.trim().toUpperCase(); }, { class: 'op-in', spellcheck: 'false', 'aria-label': T.stepRaw }),
         input(step.args.join(' '), (v) => { step.args = v.split(/[\s,]+/).filter(Boolean).map(Number).filter(Number.isFinite); }, { placeholder: T.rawArgs, spellcheck: 'false', 'aria-label': T.rawArgs }));
       if (step.kind === 'else' || step.kind === 'end') depth = Math.max(0, depth - 1);
       const indent = depth;
       if (step.kind === 'if' || step.kind === 'else') ++depth;
       rowNodes.push(el('div', { class: `step-row k-${step.kind}`, style: indent ? `margin-left:${indent * 22}px` : '', onclick: () => { if (stepAt !== n) { stepAt = n; preview(); } } },
-        el('span', { class: 'step-n' }, String(n + 1)), el('span', { class: 'step-kind' }, T[STEP_KINDS.find(([k]) => k === step.kind)![1]]), el('div', { class: 'step-body' }, ...body),
+        el('span', { class: 'step-n' }, String(n + 1)), el('span', { class: 'step-kind' }, step.kind === 'cmd' ? T[`cmd_${step.name}`] ?? step.name : T[STEP_KINDS.find(([k]) => k === step.kind)![1]]), el('div', { class: 'step-body' }, ...body),
         el('span', { class: 'step-tools' }, button('↑', () => { move(n, n - 1); update(); }, 'icon', { 'aria-label': T.moveUp, disabled: n === 0 }),
           button('↓', () => { move(n, n + 1); update(); }, 'icon', { 'aria-label': T.moveDown, disabled: n === steps.length - 1 }),
           button('✕', () => { steps.splice(n, 1); stepAt = -1; update(); }, 'icon', { 'aria-label': T.remove }))));
@@ -754,7 +804,9 @@ export async function initLevelEditor() {
           el('span', { class: 'sub' }, T.andLabel), condEditor(eventConds(event), s, event),
           el('label', { class: 'check' }, el('input', { type: 'checkbox', checked: event.once, onchange: (e: Event) => { event.once = (e.target as HTMLInputElement).checked; update(); } }), T.once)));
     } else head.push(el('h2', {}, eventAt === 'before' ? T.eventBefore : eventAt === 'enter' ? T.eventEnter : T.eventEnd),
-      el('p', { class: 'note' }, eventAt === 'before' ? T.beforeNote : eventAt === 'enter' ? T.enterNote : T.endNote));
+      el('p', { class: 'note' }, eventAt === 'before' ? T.beforeNote : eventAt === 'enter' ? T.enterNote : T.endNote),
+      eventAt === 'enter' ? null : field(T.placeLabel, placeSelect(eventAt === 'before' ? s.place ?? 0 : s.endPlace ?? 1,
+        (v) => { if (eventAt === 'before') s.place = v; else s.endPlace = v; update(); }), T.placeHint));
     const center = el('main', { class: 'center' }, ...head,
       el('div', { class: 'row' }, el('span', { class: 'sub' }, T.lineLanguage), el('div', { class: 'segment' }, ...LOCALES.map(([code, label]) => act(label, () => { language = code; }, language === code ? 'seg on' : 'seg')))),
       ...rowNodes,
@@ -765,7 +817,15 @@ export async function initLevelEditor() {
           // An if comes with its else and end; anything else goes after the selected step.
           const added = k === 'if' ? [blank('if', s), { kind: 'else' } as Step, { kind: 'end' } as Step] : [blank(k, s)];
           steps.splice(at, 0, ...added); stepAt = at;
-        }, 'chip'))));
+        }, 'chip')),
+        // The further commands, by kind, from one list.
+        select([['', T.moreSteps], ...(['camera', 'show', 'unit', 'army', 'story', 'world'] as const).flatMap((g) =>
+          COMMANDS.filter((c) => c.group === g).map((c): [string, string] => [c.name, `${T[`cmdGroup_${g}`]} · ${T[`cmd_${c.name}`] ?? c.name}`]))], '', (v) => {
+          if (!v) return;
+          const c = commandOf(v)!, at = stepAt >= 0 ? stepAt + 1 : steps.length;
+          steps.splice(at, 0, { kind: 'cmd', name: v, args: defaults(c, s.units[0]?.pilot ?? 28, s.units[0]?.unit ?? 36, s.groups[s.groups.length - 1].id) });
+          stepAt = at;
+        })));
     preview();
     return [left, center, el('aside', { class: 'inspector' }, el('h3', {}, T.inGame), box, about, el('p', { class: 'hint' }, T.lineHint))];
   }
@@ -800,12 +860,12 @@ export async function initLevelEditor() {
         act(T.addEnemyReach, () => { s.lose.push({ kind: 'reach', area: [0, 0, 2, 2] }); }, 'chip'), act(T.addDowned, () => { s.lose.push({ kind: 'downed', atLeast: 1 }); }, 'chip')),
       el('p', { class: 'hint' }, T.rulesHint));
     const groupKinds: [string, string][] = [['opening', T.whenOpening], ['turn', T.kind_turn], ['remaining', T.kind_remaining], ['defeated', T.kind_defeated], ['hp_below', T.kind_hp_below],
-      ['reach', T.kind_reach], ['downed', T.kind_downed], ['group_gone', T.kind_group_gone], ['event', T.whenEvent]];
+      ['reach', T.kind_reach], ['downed', T.kind_downed], ['group_gone', T.kind_group_gone], ['event', T.whenEvent], ['spot', T.whenSpot]];
     const arrivals = el('section', { class: 'panel' }, el('h3', {}, T.arrivals, el('span', { class: 'sub' }, T.arrivalsNote)),
       ...s.groups.map((gr) => { const count = s.units.filter((u) => u.group === gr.id).length;
         return el('div', { class: 'rule' }, el('span', { class: 'side-dot', style: `background:${SIDES[gr.side]}` }), el('strong', { class: 'rule-name' }, groupName(gr)),
           el('span', { class: count ? 'sub' : 'sub late' }, count ? fill(T.unitsCount, { n: count }) : T.noUnits),
-          el('div', { class: 'when' }, select(groupKinds, gr.when.kind, (v) => { gr.when = v === 'opening' || v === 'event' ? { kind: v } : whenDefault(v, s) as GroupWhen; }), ...whenFields(gr.when))); }),
+          el('div', { class: 'when' }, select(groupKinds, gr.when.kind, (v) => { gr.when = v === 'opening' || v === 'event' || v === 'spot' ? { kind: v } : whenDefault(v, s) as GroupWhen; }), ...whenFields(gr.when))); }),
       el('p', { class: 'hint' }, T.arrivalsHint));
     const others = project.stages.filter((o) => o !== s).map((o): [string, string] => [o.key, stageLabel(o)]);
     const after = s.after;

@@ -51,13 +51,13 @@ inline constexpr uint32_t text_table=0x01A34980, text_virtual=0x03400000, text_s
 inline constexpr size_t longest_text=200;   // code points; the native reader pages it
 
 enum class Trigger {turn,defeated,hp_below,battle_after,battle_before,enemies_gone,remaining,persuade,after_opening,after_setup,after_end,
-    downed,group_gone,reach};
+    downed,group_gone,reach,turns_after};
 inline std::optional<Trigger> trigger_of(const std::string& name) {
     static const std::map<std::string,Trigger> names{{"turn",Trigger::turn},{"defeated",Trigger::defeated},
         {"hp_below",Trigger::hp_below},{"battle_after",Trigger::battle_after},{"battle_before",Trigger::battle_before},
         {"enemies_gone",Trigger::enemies_gone},{"remaining",Trigger::remaining},{"persuade",Trigger::persuade},
         {"after_opening",Trigger::after_opening},{"after_setup",Trigger::after_setup},{"after_end",Trigger::after_end},
-        {"downed",Trigger::downed},{"group_gone",Trigger::group_gone},{"reach",Trigger::reach}};
+        {"downed",Trigger::downed},{"group_gone",Trigger::group_gone},{"reach",Trigger::reach},{"turns_after",Trigger::turns_after}};
     const auto found=names.find(name);
     return found==names.end()?std::nullopt:std::optional(found->second);
 }
@@ -65,6 +65,7 @@ inline std::optional<Trigger> trigger_of(const std::string& name) {
 inline int event_type(Trigger t) {
     switch(t) {
         case Trigger::turn: return 0;
+        case Trigger::turns_after: return 1;   // the original's delayed count (3D52)
         case Trigger::defeated: case Trigger::downed: case Trigger::group_gone: return 2;
         case Trigger::hp_below: return 3;
         case Trigger::battle_after: return 4;
@@ -92,7 +93,7 @@ inline uint16_t start_status(Trigger t) {
 // A condition the compiler wrote as a tree (web/src/lib/compiler/conditions.ts): an event's
 // `if` beyond its older fields, or a step's `if` (Event::checks), decided by the host.
 struct Test {
-    enum class Kind {all,any,not_,var,kills,turn,status,hp,count,in_area,route,choice,funds,downed,roster,flag,fired};
+    enum class Kind {all,any,not_,var,kills,turn,status,hp,count,in_area,route,choice,funds,downed,roster,flag,fired,level,opponent};
     Kind kind{};
     std::vector<int> n;               // the numbers, as the compiler lists them
     std::string name;                 // flag, fired: package-relative
@@ -115,6 +116,7 @@ struct Event {
     // side (4 any); persuade: by, target.
     int a{},b{},c{};
     std::vector<int> params;                       // all of them (downed: 4, reach: 6)
+    std::string after;                             // turns_after: the event (package-relative id) counted from
     std::optional<Test> test;                      // the `if` keys an older game does not know
     std::vector<std::pair<size_t,Test>> checks;    // a step's condition: its word, 0 or 1 before each step
     std::map<unsigned,unsigned> vars;              // all must hold (story variables 0..199)
@@ -187,12 +189,13 @@ inline Test parse_test(const json& j,const std::string& package,unsigned depth=0
     static const std::map<std::string,Test::Kind> kinds{{"all",Test::Kind::all},{"any",Test::Kind::any},{"not",Test::Kind::not_},
         {"var",Test::Kind::var},{"kills",Test::Kind::kills},{"turn",Test::Kind::turn},{"status",Test::Kind::status},{"hp",Test::Kind::hp},
         {"count",Test::Kind::count},{"in_area",Test::Kind::in_area},{"route",Test::Kind::route},{"choice",Test::Kind::choice},
-        {"funds",Test::Kind::funds},{"downed",Test::Kind::downed},{"roster",Test::Kind::roster},{"flag",Test::Kind::flag},{"fired",Test::Kind::fired}};
+        {"funds",Test::Kind::funds},{"downed",Test::Kind::downed},{"roster",Test::Kind::roster},{"flag",Test::Kind::flag},{"fired",Test::Kind::fired},
+        {"level",Test::Kind::level},{"opponent",Test::Kind::opponent}};
     const auto found=kinds.find(key);
     if(found==kinds.end())throw std::runtime_error("不认识的条件 "+key);
     Test t;t.kind=found->second;
     static const std::map<Test::Kind,size_t> sizes{{Test::Kind::var,2},{Test::Kind::kills,3},{Test::Kind::turn,2},{Test::Kind::hp,2},
-        {Test::Kind::count,3},{Test::Kind::in_area,6},{Test::Kind::funds,2},{Test::Kind::downed,4}};
+        {Test::Kind::count,3},{Test::Kind::in_area,6},{Test::Kind::funds,2},{Test::Kind::downed,4},{Test::Kind::level,2},{Test::Kind::opponent,2}};
     switch(t.kind) {
         case Test::Kind::all: case Test::Kind::any:
             if(!value.is_array() || value.empty())throw std::runtime_error(key+" 要是条件的数组");
@@ -274,6 +277,8 @@ inline void add_image(Library& library,const std::string& package,const json& im
         for(size_t i=0;i<params.size();++i){event.params.push_back(params[i].get<int>());if(i<3)*slots[i]=event.params.back();}
         if(event.trigger==Trigger::reach && params.size()!=6)throw std::runtime_error(event.id+"：reach 要六个参数");
         if(event.trigger==Trigger::downed && params.size()!=4)throw std::runtime_error(event.id+"：downed 要四个参数");
+        event.after=e.value("after",std::string());
+        if(event.trigger==Trigger::turns_after && (params.size()!=2 || event.after.empty()))throw std::runtime_error(event.id+"：turns_after 要回合数、阶段和 after");
         try {
             if(e.contains("test"))event.test=parse_test(e["test"],package);
             for(const auto& c:e.value("checks",json::array()))event.checks.emplace_back(c.at(0).get<size_t>(),parse_test(c.at(1),package));
@@ -613,6 +618,7 @@ struct View {
     std::vector<MapUnit> units;                       // on the map now
     // The group of a unit as the scene's deployment records (engine+0) place it, -1 none.
     std::function<int(const MapUnit&)> group_of;
+    std::function<std::optional<unsigned>(unsigned)> level;   // a pilot's level (record +5), on the map or ours
     unsigned funds{};                                 // 8010F5F4
     int route=-1;                                     // 801602EE: 0 Brad, 1 Manami, 2 Ark, 3 Selain
     int choice=0;                                     // 801602E4: the last option picked, 1..3
@@ -621,6 +627,8 @@ struct View {
 // pilot (-1 any of each); whether a unit of a group stands on the map now.
 inline unsigned downs(int side,int group,int pilot);
 inline bool group_on_map(int group);
+// The turn (0-based) an event of this package started in, if it has (began() keeps it).
+inline std::optional<unsigned> started_turn(const std::string& key);
 inline bool inside(const MapUnit& u,int pilot,int side,const int* area) {
     return (pilot<0 || int(u.pilot)==pilot) && (side<0 || int(u.side)==side) &&
            int(u.x)>=area[0] && int(u.y)>=area[1] && int(u.x)<=area[2] && int(u.y)<=area[3];
@@ -642,6 +650,10 @@ inline bool holds(const Event& e,const View& v) {
             return v.hp && int(v.hp(unsigned(e.a)))==0 && (e.b<=0 || unsigned(e.b)==v.battle_a || unsigned(e.b)==v.battle_b);
         case Trigger::downed: return e.params.size()==4 && downs(e.params[0],e.params[1],e.params[2])>=unsigned(e.params[3]);
         case Trigger::group_gone: return downs(-1,e.a,-1)>0 && !group_on_map(e.a);
+        case Trigger::turns_after: {
+            const auto from=started_turn(e.package+"/"+e.after);
+            return from && unsigned(e.b)==v.side && v.turn>=*from+unsigned(e.a);
+        }
         case Trigger::reach:
             return e.params.size()==6 && std::any_of(v.units.begin(),v.units.end(),[&](const MapUnit& u){return inside(u,e.params[0],e.params[1],&e.params[2]);});
         case Trigger::hp_below: {
@@ -820,6 +832,12 @@ inline unsigned downs(int side,int group,int pilot) {
     }
     return n;
 }
+inline std::optional<unsigned> started_turn(const std::string& key) {
+    const auto prefix="#at/"+key+"/";
+    for(const auto& k:state().fired)
+        if(!k.rfind(prefix,0))return unsigned(std::strtoul(k.c_str()+prefix.size(),nullptr,10));
+    return std::nullopt;
+}
 inline bool group_on_map(int group) {
     return std::any_of(state().seen.begin(),state().seen.end(),[&](const State::Seen& u){return u.used && u.group==group;});
 }
@@ -877,6 +895,12 @@ inline bool evaluate(const Test& t,const std::string& package,const View& v) {
         case K::roster:
             return std::all_of(t.pilots.begin(),t.pilots.end(),[&](unsigned p){return v.has_pilot && v.has_pilot(p);}) &&
                    std::all_of(t.units.begin(),t.units.end(),[&](unsigned u){return v.has_unit && v.has_unit(u);});
+        case K::level: {
+            const auto a=v.level?v.level(unsigned(n[0])):std::nullopt,b=v.level?v.level(unsigned(n[1])):std::nullopt;
+            return a && b && *a>=*b;
+        }
+        case K::opponent:
+            return (v.battle_a==unsigned(n[0]) && v.battle_b==unsigned(n[1])) || (v.battle_b==unsigned(n[0]) && v.battle_a==unsigned(n[1]));
         case K::flag: return state().flags.count(package+"/"+t.name)>0;
         case K::fired: return state().fired.count(package+"/"+t.name)>0;
     }
@@ -983,6 +1007,8 @@ inline void began(uint8_t* ram,size_t index,const View* v) {
     const auto& e=s.library.events[index];
     write16(ram,engine+f_count,uint16_t(read(ram,engine+f_count,2)+1));
     s.fired.insert(e.key());s.running=index;
+    // When it started, for turns_after (kept with the suspend records as the rest of fired).
+    if(!started_turn(e.key()))s.fired.insert("#at/"+e.key()+"/"+std::to_string(read(ram,engine+f_turn,2)));
     if(v)decide(ram,*v);
     for(const auto unit:e.builds)s.builds_due.push_back(unit);
     log({{"action","started"},{"event",e.key()},{"scene",s.scene},{"trigger",event_type(e.trigger)}});

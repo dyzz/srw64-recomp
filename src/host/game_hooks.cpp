@@ -119,6 +119,17 @@ static story::View story_view(uint8_t* ram,const recomp_context* ctx) {
         }
         return found;
     };
+    // A pilot's level: on the map (the unit's pilot record +5), else on our roster.
+    v.level=[ram](unsigned pilot)->std::optional<unsigned> {
+        for(uint32_t side=0;side<3;++side)for(uint32_t slot=0;slot<30;++slot) {
+            const uint32_t entry=0x8015E100+side*0x258+slot*0x14,unit=read(ram,entry+0xC,4);
+            if(read(ram,entry,1)!=1 || !srw64::guest::valid(unit,0x54))continue;
+            const uint32_t p=read(ram,unit+0x38,4);
+            if(srw64::guest::valid(p,0x4C) && read(ram,p+2,2)==pilot)return read(ram,p+5,1);
+        }
+        if(const auto r=story::pilot_record(ram,pilot))return read(ram,*r+5,1);
+        return std::nullopt;
+    };
     v.funds=read(ram,0x8010F5F4,4);
     v.route=int((read(ram,0x801602EE,2)-0x3DD1+2)&3);
     if(const unsigned last=read(ram,0x801602E4,2);last>=0x3DD9 && last<0x3DD9+8)v.choice=int(last-0x3DD9+1);
