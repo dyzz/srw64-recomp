@@ -1,4 +1,5 @@
 #include "battle_viewer.hpp"
+#include "battle_speaker.hpp"
 #include "table_window.hpp"
 #include "mod_data.hpp"
 #include "upgrade_rules.hpp"
@@ -249,6 +250,7 @@ bool start(uint8_t* ram,int* music) {
     if(running && current!=demo_mode && title_mode(current)) {
         std::lock_guard lock(mutex);
         running=false;returned=true;
+        battle_speaker::viewer()={};
         note({{"event","returned"},{"vi",srw64_current_vi()},{"mode",current}});
     }
     if(!title_mode(current))return false;
@@ -296,6 +298,9 @@ void filled_records(uint8_t* ram) {
     if(!armed)return;
     armed=false;++filled;
     const auto writes=choice.is_object()?compute(ram,choice):raw;
+    // Whose records these are, for the quotes' speaker (battle_speaker.hpp).
+    if(choice.is_object())
+        battle_speaker::viewer()={true,{choice.at("attacker").at("pilot").get<unsigned>(),choice.at("defender").at("pilot").get<unsigned>()}};
     // A combination attack's partners, for its quotes (quote_participants); the defender's only
     // when it counters.
     for(unsigned s=0;s<2;++s) {

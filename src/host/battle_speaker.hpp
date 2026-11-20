@@ -35,10 +35,17 @@ inline unsigned character_at(const uint8_t* ram,uint32_t pointer_at) {
 // +2 is its voice part: of the attacker and the defender, the one with that voice part. The
 // two index words follow the exchange (a counter swaps them) while the pilot pointers stay,
 // so they only settle two participants of one voice part.
+// The battle viewer's battle (battle_viewer.cpp) runs as the title's demo, without the map's
+// participant table: it writes record 0 for the attacker and record 1 for the defender itself
+// and says here whose they are while it runs.
+struct Viewer { bool on=false; unsigned characters[2]{}; };
+inline Viewer& viewer(){static Viewer value;return value;}
+
 inline unsigned character_of_slot(const uint8_t* ram,uint32_t slot) {
     if(slot<records || slot>=records+2*record_size)return 0;
     const uint32_t index=(slot-records)/record_size,offset=(slot-records)%record_size;
     if(offset!=attack_slot && offset!=hit_slot)return 0;
+    if(viewer().on)return viewer().characters[index];
     const unsigned part=read(ram,records+index*record_size+2,2);
     const unsigned attacker=character_at(ram,attacker_pilot),defender=character_at(ram,defender_pilot);
     const bool a=attacker && voice(ram,attacker)==part,d=defender && voice(ram,defender)==part;

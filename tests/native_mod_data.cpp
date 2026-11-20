@@ -420,7 +420,18 @@ int main(int argc,char** argv) {
         std::ofstream(dir/"sprite.palette",std::ios::binary).write(reinterpret_cast<const char*>(b.palette.data()),std::streamsize(b.palette.size()));
         const auto u16=[](const std::vector<uint8_t>& d,size_t a){return unsigned(d[a])<<8|d[a+1];};
         const auto s16=[&](const std::vector<uint8_t>& d,size_t a){return int(int16_t(u16(d,a)));};
-        check(u16(b.atlas,0)==7 && u16(b.atlas,2)==4*32+1 && u16(b.atlas,4)==33 && b.atlas.size()==8+129*33,"its atlas: kind 7, 32k+1");
+        check(u16(b.atlas,0)==7 && u16(b.atlas,2)==2*32+1 && u16(b.atlas,4)==2*32+1 && b.atlas.size()==8+65*65,"its atlas: kind 7, the picture's 32k+1 grid");
+        // The texels under and right of a part are the picture's (the filter draws them): row
+        // 32 is the red-only quarter, column 32 the green-only one, not another part's.
+        const auto at=[&](unsigned x,unsigned y){return b.atlas[8+size_t(y)*65+x];};
+        check(at(0,32)==at(0,39) && at(0,32)!=at(0,0) && at(32,0)==at(39,0) && at(32,0)!=at(0,0) && at(64,0)==0 && at(0,64)==0,"each part's neighbours are the picture's");
+        {
+            ms::Frame small;small.width=20;small.height=20;small.rgba.assign(20*20*4,255);
+            ms::Built two;
+            check(ms::build({f,small},20,40,true,{{0,1},{1,1}},0,two).empty() && u16(two.atlas,2)==65 && u16(two.atlas,4)==65+33,"frames one under another, a row of nothing between");
+            const size_t second=u16(two.scene,10);   // two steps, FF and loop, then the frame table: frame 1's first part
+            check(u16(two.scene,second+2)==0 && u16(two.scene,second+4)==65,"the second frame's part is under the first frame");
+        }
         check(u16(b.palette,0)==3 && u16(b.palette,2)==256 && b.palette.size()==264 && u16(b.palette,8)==0 && b.colors==4,"its palette: 128 entries, 0 transparent");
         const auto& sc=b.scene;
         check(sc[0]==1 && sc[1]==0 && sc[2]==0 && sc[3]==1 && sc[4]==0xFF && sc[5]==0 && u16(sc,6)==8,"its steps and frame table");
@@ -508,6 +519,10 @@ int main(int argc,char** argv) {
         check(bs::character_of_slot(ram.data(),bs::records+bs::record_size+bs::hit_slot)==166,"one voice part: by the index words");
         w16(tw::pilot_voice_copy+2*433,120);w16(bs::records+bs::record_size+2,120);w16(bs::attacker_index,1);w16(bs::defender_index,0);
         check(!bs::character_of_slot(ram.data(),bs::records+0x30) && !bs::character_of_slot(ram.data(),0x80300000),"no participant's slot");
+        bs::viewer()={true,{423,298}};   // the battle viewer: no pilot pointers, record 0 the attacker
+        check(bs::character_of_slot(ram.data(),bs::records+bs::attack_slot)==423 && bs::character_of_slot(ram.data(),bs::records+bs::record_size+bs::hit_slot)==298,
+              "the battle viewer's participants by record");
+        bs::viewer()={};
         const auto swap=bs::swap(ram.data(),298,433);
         check(swap && swap->first==298 && swap->second==433,"the rival's quote, a ムゲ兵 record: shown as the rival");
         check(!bs::swap(ram.data(),166,166) && !bs::swap(ram.data(),298,166),"Alan's own lines stay his");
