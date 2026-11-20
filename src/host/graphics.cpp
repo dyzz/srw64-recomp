@@ -1453,6 +1453,10 @@ public:
     void send_dummy_workload(uint32_t) override {}
     void update_screen() override {
         int width = 0, height = 0;
+        // osViBlack (800B6620) blanks the VI: ultramodern writes an H_START of 0, which RT64
+        // presents as black (VI::visible). The game draws behind it, e.g. each battle animation
+        // lays out both units with the camera on the attacker before its fade-in.
+        const bool vi_black = ultramodern::renderer::get_vi_regs()->VI_H_START_REG == 0;
 #ifdef __SWITCH__
         // The game shows a new picture every second or third VI; the rest of the time the
         // screen would be drawn again as it is (as on the PS Vita, where that was 9 ms a VI).
@@ -1461,7 +1465,7 @@ public:
         // screen keeps the last swap.
         {
             const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
-            const uint32_t image = renderer->image_at(origin);
+            const uint32_t image = vi_black ? 0 : renderer->image_at(origin);
             const auto found = image_workloads.find(image);
             const ScreenKey key{image, renderer->drawn_at(image), found != image_workloads.end() ? found->second : 0,
                                 srw64::ui::readout_changes()};
@@ -1487,7 +1491,7 @@ public:
         const int picture_height = int(std::lround(picture_width * srw64::n64gl::kPictureHeight / picture));
         const int picture_x = (width - picture_width) / 2, picture_y = (height - picture_height) / 2;
         const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
-        renderer->present(origin, picture_x, picture_y, picture_width, picture_height);
+        if (!vi_black) renderer->present(origin, picture_x, picture_y, picture_width, picture_height);
 #ifdef __SWITCH__
         // Until the game's picture is more than black, the splash instead of it.
         if (!splash_done && (splash_done = shows_picture(width, height))) { splash.release(); srw64_switch_drop_splash(); }
