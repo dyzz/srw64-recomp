@@ -1,6 +1,6 @@
 # Windows 老机器：GL（ANGLE）回退渲染器
 
-状态：**原型（2026-11-20）**。`srw64-gl-host`（Switch / Vita 用的 GL 路径）已能在 Windows 上编译运行，底层走 ANGLE；`Marchwind64.exe` 已能检测显卡并自动回退到它（见「自动回退」）。还没进 CI 和发布包。
+状态：**原型（2026-11-20）**。`srw64-gl-host`（Switch / Vita 用的 GL 路径）已能在 Windows 上编译运行，底层走 ANGLE；`Marchwind64.exe` 已能检测显卡并自动回退到它（见「自动回退」）。CI 的 Windows 任务已编出并打包（`build.yml`），还没随正式版发布。
 
 ## 为什么
 
@@ -75,11 +75,12 @@ AWS ap-southeast-1，m5.xlarge（4 vCPU Xeon 8175M 2.5 GHz），Windows Server 2
 
 ## 还没做 / 没验证
 
-1. **没有显卡或只有微软基本显示适配器（WARP）的机器。** ANGLE 只能用 EGL 属性选 WARP，SDL2 建显示时传不进去，环境变量也不支持。打算用不分配显卡的 Hyper-V 虚拟机测（那里 D3D11 硬件设备本身就是 WARP）。
+1. **没有显卡的机器（已测）：** 见「无显卡云主机实测」。
 2. **真实老显卡。** 老 Intel 核显的驱动问题和性能只有真机测得出来，见下节。
 3. **双击启动（无参数）的回退没实测**：那条路径用真实的用户目录，测试机上没跑；代码与 `--play` 走同一个函数。设置窗口里也还没有「渲染方式」选项，目前只能用环境变量手动选。
-4. **CI 与打包：** `build.yml` 的 Windows 任务要多装 `angle`（vcpkg 缓存会变大）、多编一个宿主（约多几分钟）、包里加 exe 和两个 DLL。
-5. **HD 内存：** 桌面 GL 路径直接解 PNG/JPEG（`hd_texture.cpp` 只在 Switch 读预处理的 BC7 包），老核显共享显存小，可能要像 Switch 一样用预处理包或者限预算。
+4. **CI 与打包（已做）：** `build.yml` 的 Windows 任务多装 vcpkg `angle`，在 `build/recomp/gl-build` 单独配置编 `srw64-gl-host`（游戏代码命中 ccache），包里加 `Marchwind64-gl.exe`、`libEGL.dll`、`libGLESv2.dll`（随 vcpkg 的 bin 一起复制）和 `licenses/ANGLE-LICENSE.txt`，并像 RT64 版一样试跑 `--play --help`。
+5. **发版时要同步：** 系统要求（官网安装页 `web/src/copy/install.ts`、三语 README、FAQ）里 Windows 的显卡门槛要改成「D3D12/Vulkan 走 RT64，否则 D3D11 兼容模式」；发布说明写上无驱动机器的闪退修复。发版前别改官网。
+6. **HD 内存：** 桌面 GL 路径直接解 PNG/JPEG（`hd_texture.cpp` 只在 Switch 读预处理的 BC7 包），老核显共享显存小，可能要像 Switch 一样用预处理包或者限预算。
 
 ## 测试做法
 
