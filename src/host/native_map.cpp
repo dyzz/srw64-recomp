@@ -4,6 +4,7 @@
 #include "native_map_geometry.hpp"
 #include "native_marker.hpp"
 #include "native_quads.hpp"
+#include "renderer_mode.hpp"
 #include "presentation/image_mode.hpp"
 #ifndef SRW64_GL_ONLY
 #include "hle/rt64_state.h"
@@ -214,10 +215,10 @@ void decode(Asset& asset) {
     if (asset.from_rom) { generate(asset); return; }
     const auto& folder = asset.folder;
     const int w = asset.width * asset.scale, h = asset.height * asset.scale;
-#ifdef SRW64_GL_ONLY
+#ifdef SRW64_GL_RENDERER
     // The prepared copies (the Switch): the base BC7-compressed with its mips, the indices raw.
     hd_texture::Compressed base, index;
-    if (hd_texture::load(folder / asset.base_file, base) && hd_texture::load(folder / "index.png", index) &&
+    if (renderer_mode::gl() && hd_texture::load(folder / asset.base_file, base) && hd_texture::load(folder / "index.png", index) &&
         base.width == uint32_t(w) && base.height == uint32_t(h) && index.format == 0x8229 && index.width == uint32_t(w) && index.height == uint32_t(h)) {
         asset.gl_base = base.data; asset.gl_format = base.format; asset.gl_levels = base.levels;
         asset.gl_index = index.data;
@@ -248,18 +249,19 @@ void decode(Asset& asset) {
 }
 
 void make_textures(Asset& asset) {
-#ifdef SRW64_GL_ONLY
-    // Nothing for the GPU here: native_gl uploads what gl_quads hands it.
-    if (!asset.gl_base) {
-        if (asset.base_levels.empty()) asset.base_levels.push_back(std::move(asset.base));   // ROM frames
-        asset.gl_base = std::make_shared<const std::vector<uint8_t>>(std::move(asset.base_levels.front()));
-        asset.gl_format = 0; asset.gl_levels = 1;
-        asset.gl_index = std::make_shared<const std::vector<uint8_t>>(std::move(asset.index));
+    // The GL renderer (renderer_mode.hpp): nothing for the GPU here, native_gl uploads what
+    // gl_quads hands it.
+    if (renderer_mode::gl()) {
+        if (!asset.gl_base) {
+            if (asset.base_levels.empty()) asset.base_levels.push_back(std::move(asset.base));   // ROM frames
+            asset.gl_base = std::make_shared<const std::vector<uint8_t>>(std::move(asset.base_levels.front()));
+            asset.gl_format = 0; asset.gl_levels = 1;
+            asset.gl_index = std::make_shared<const std::vector<uint8_t>>(std::move(asset.index));
+        }
+        asset.base_levels.clear(); asset.base.clear(); asset.index.clear();
+        asset.state = Asset::State::ready;
+        return;
     }
-    asset.base_levels.clear(); asset.base.clear(); asset.index.clear();
-    asset.state = Asset::State::ready;
-    return;
-#endif
     const auto level = [](std::vector<uint8_t>& pixels) {
         std::vector<std::vector<uint8_t>> levels;
         levels.push_back(std::move(pixels));
@@ -517,10 +519,10 @@ void configure(const std::filesystem::path& directory) {
                 for (const auto& map : assets)
                     if (!map.colonies.empty() && frame.reference != map.reference)
                         throw std::runtime_error("Colony and map reference palettes differ");
-#ifndef SRW64_GL_ONLY   // the GL renderer draws no colony overlay yet: nothing to decode at start
-                decode(frame);
-                frame.state = Asset::State::decoded;
-#endif
+                if (!renderer_mode::gl()) {   // the GL renderer draws no colony overlay yet: nothing to decode at start
+                    decode(frame);
+                    frame.state = Asset::State::decoded;
+                }
             }
             colony_events.open(output / "hd-colony-events.jsonl");
         }

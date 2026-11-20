@@ -11,6 +11,7 @@
 #endif
 #include "native_gpu.hpp"
 #include "native_quads.hpp"
+#include "renderer_mode.hpp"
 #include "hd_texture.hpp"
 #include "mod_library.hpp"
 #include "portrait_identities_table.hpp"
@@ -149,7 +150,7 @@ void decode(Asset& asset) {
     ++decoded;
 }
 
-#ifdef SRW64_GL_ONLY
+#ifdef SRW64_GL_RENDERER
 // The GL renderer's picture: the prepared, compressed copy where there is one (the Switch,
 // hd_texture.hpp), else the decoded level 0. Idle ones beyond kResident go again.
 void gl_prepare(Asset& asset) {
@@ -196,8 +197,9 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
     ++rendered;
     return true;
 }
+#endif
 
-#else
+#ifndef SRW64_GL_ONLY
 uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     const RT64::DisplayList& tag = dl[-1];
     if (tag.w0 == kTagW0 && (tag.w1 & 0xFFFF0000u) == kTagW1) return kIdBase | (tag.w1 & 0xFFFF);
@@ -258,9 +260,11 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
 void install() {
     if (hooks_installed) return;
     hooks_installed = true;
-#ifdef SRW64_GL_ONLY
+    // Both where the host has both renderers (renderer_mode.hpp): only the running one asks.
+#ifdef SRW64_GL_RENDERER
     native_quads::add(gl_quads);
-#else
+#endif
+#ifndef SRW64_GL_ONLY
     // Chain after marker/hdmap, which install their hooks first.
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
@@ -479,11 +483,11 @@ void rewrite(uint8_t* rdram, const PortraitDraw& draw) {
     Asset& asset = assets[size_t(found.second.first)];
     {
         std::lock_guard lock(asset_mutex);
-#ifdef SRW64_GL_ONLY
-        if (!asset.gl_pixels) gl_prepare(asset);
-#else
-        if (!asset.set && asset.levels.empty()) decode(asset);
+#ifdef SRW64_GL_RENDERER
+        if (renderer_mode::gl()) { if (!asset.gl_pixels) gl_prepare(asset); }
+        else
 #endif
+        if (!asset.set && asset.levels.empty()) decode(asset);
     }
     Draw record;
     record.asset = found.second.first;

@@ -111,6 +111,9 @@ UI_KEYS |= {"settings_bezel", "settings_bezel_note", "settings_filter", "setting
             "settings_filter_scale_note", "settings_look_off", "settings_look_choose", "settings_bezel_mine", "settings_filter_mine",
             "settings_browse_retroarch", "settings_browse_builtin", "settings_browse_open", "settings_browse_up", "settings_browse_empty", "settings_filter_loading",
             "settings_filter_error", "settings_filter_unavailable", "settings_about_librashader"}
+# A row the running renderer cannot honour (frontend.cpp renderer_note: the GL renderer).
+UI_KEYS |= {"settings_renderer_unsupported", "settings_picture_scale", "settings_picture_scale_note"}
+UI_KEYS |= {f"settings_picture_scale_{n}" for n in (0, 1, 2, 3)}
 UI_KEYS |= {f"settings_filter_scale_{n}" for n in (1, 2, 4, 0)}
 # The Cheats page (frontend.cpp cheats_page; the switch ids are cheats.hpp catalog).
 UI_KEYS |= {"cheats_note", "cheat_levels", "cheat_levels_note", "cheat_levels_open", "cheat_levels_close", "cheat_levels_away"}

@@ -1,3 +1,4 @@
+#include "renderer_fallback.hpp"
 #include "quote_force.hpp"
 #include "state_probe.hpp"
 #include "app/runtime.hpp"
@@ -903,6 +904,11 @@ int main(int argc, char** argv) {
 #ifdef __ANDROID__
     import_java_environment();
 #endif
+#if defined(_WIN32) && !defined(SRW64_GL_ONLY)
+    // A PC RT64 cannot draw on plays with the GL renderer over ANGLE (renderer_fallback.hpp),
+    // decided before anything else starts.
+    srw64::renderer_fallback::decide(argc, argv);
+#endif
 #if defined(_WIN32)
     // Streams first: console_log needs them, and they take descriptors 0 to 2 (desktop_windows.cpp).
     srw64::app::windows_connect_streams();
@@ -916,6 +922,8 @@ int main(int argc, char** argv) {
 #endif
     // Which release, on what: the first lines of every console.log (bug_report.hpp).
     srw64::bug_report::log_start();
+    // The GL renderer chosen in RT64's place (renderer_fallback.hpp): why, for a bug report.
+    if (const char* why = std::getenv("SRW64_RENDERER_FALLBACK"); why && *why) std::fprintf(stderr, "SRW64_RENDERER_FALLBACK %s\n", why);
 #if defined(__linux__) && !defined(__ANDROID__)
     // Android: bionic has backtrace() only from API 33, and debuggerd's tombstone needs
     // its own handlers, so crashes go to logcat as tombstones.

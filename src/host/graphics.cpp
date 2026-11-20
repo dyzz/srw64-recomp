@@ -1,6 +1,8 @@
 #define HLSL_CPU
-#ifndef SRW64_GL_ONLY
 #include "launcher_env.hpp"
+#include "renderer_fallback.hpp"
+#include "renderer_mode.hpp"
+#ifndef SRW64_GL_ONLY
 #include "hle/rt64_application.h"
 #endif
 #include "graphics.hpp"
@@ -172,6 +174,14 @@ namespace {
 [[noreturn]] void graphics_failure(const std::string& detail) {
     const char* interactive = std::getenv("SRW64_INTERACTIVE");
     if (!interactive || std::string(interactive) != "1") std::abort();
+#if defined(_WIN32) && !defined(SRW64_GL_ONLY)
+    // RT64 passed the check at the start (renderer_fallback.hpp) and failed anyway: the game
+    // starts again with the GL renderer, with the same command line, once this process has left.
+    if (!srw64::renderer_mode::gl() && srw64::renderer_fallback::hand_over(detail.empty() ? std::string("setup") : detail)) {
+        srw64::console_log::flush_now();
+        std::_Exit(0);
+    }
+#endif
     std::string locale = "zh-Hans";
     if (const char* path = std::getenv("SRW64_PRESENTATION_SETTINGS")) {
         std::ifstream file(std::filesystem::path(reinterpret_cast<const char8_t*>(path)));
@@ -1098,7 +1108,13 @@ bool gl_mode() {
 #ifdef SRW64_GL_ONLY
     return true;
 #else
-    static const bool value = std::getenv("SRW64_RENDERER") && std::string(std::getenv("SRW64_RENDERER")) == "gl";
+    // SRW64_RENDERER=gl (development), SRW64_GRAPHICS_API=gl (the player's choice, kept by
+    // launch.cpp), or Windows' check at the start (renderer_fallback.hpp). Decided once,
+    // before the window: the window, the UI's renderer and the HD layers follow it.
+    static const bool value = [] {
+        const auto gl = [](const char* name) { const char* v = std::getenv(name); return v && std::string(v) == "gl"; };
+        return gl("SRW64_RENDERER") || gl("SRW64_GRAPHICS_API") || srw64::renderer_fallback::gl_chosen();
+    }();
     return value;
 #endif
 }
@@ -1254,7 +1270,30 @@ public:
         // thread's from here on, the graphics thread's, which also presents.
         if (SDL_GL_MakeCurrent(window, gl_context) != 0) graphics_failure(SDL_GetError());
         SDL_GL_SetSwapInterval(0);
+        // The picture at three times the original's lines on the consoles. On Windows this host
+        // is the fallback for PCs RT64 cannot use (renderer_fallback.hpp), old or without a GPU
+        // driver, and draws at two; at one on a renderer that draws on the CPU (Microsoft's WARP,
+        // SwiftShader, llvmpipe). A battle on WARP with four cores: 25-27 of the game's 30 frames
+        // at three, all 30 at two (1.25 cores) and one (0.9) (docs/design/windows-gl-fallback.md).
+        // The host's own layers (text, portraits, pages) keep the window's resolution.
+#ifdef _WIN32
+        int scale = 2;
+#else
         int scale = 3;
+#endif
+        {
+            const std::string device = (const char*)glGetString(GL_RENDERER);
+            for (const char* cpu : {"Basic Render Driver", "SwiftShader", "llvmpipe", "softpipe", "WARP"})
+                if (device.find(cpu) != std::string::npos) {
+                    scale = 1;
+                    std::fprintf(stderr, "SRW64_GL_QUALITY software renderer (%s): scale 1\n", cpu);
+                    break;
+                }
+        }
+#ifdef SRW64_NATIVE_DIALOGUE
+        // The player's choice in the settings window (画面精细度), over the automatic one.
+        if (const unsigned chosen = srw64::settings::picture_scale_at_start()) scale = int(chosen);
+#endif
         if (const char* value = std::getenv("SRW64_GL_SCALE")) scale = std::clamp(std::atoi(value), 1, 8);
         renderer = std::make_unique<srw64::n64gl::Renderer>(srw64::n64gl::kPictureWidth * scale, srw64::n64gl::kPictureHeight * scale);
         interpreter = std::make_unique<srw64::n64gl::Interpreter>([this](uint64_t key) { return renderer->known(key); });
@@ -1453,7 +1492,7 @@ public:
     void send_dummy_workload(uint32_t) override {}
     void update_screen() override {
         int width = 0, height = 0;
-#ifdef __SWITCH__
+#if defined(__SWITCH__) || defined(_WIN32)
         // The game shows a new picture every second or third VI; the rest of the time the
         // screen would be drawn again as it is (as on the PS Vita, where that was 9 ms a VI).
         // The same colour image not drawn since, the same dialogue frame, no page of the shared
@@ -1463,16 +1502,25 @@ public:
             const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
             const uint32_t image = renderer->image_at(origin);
             const auto found = image_workloads.find(image);
+            // On Windows a 120 Hz VI asked for four swaps a picture, each a full redraw: three of
+            // them the same, the most of a battle's cost on a CPU renderer. The window's size
+            // counts too, so a resized window is drawn again at once.
+            int drawable_width = 0, drawable_height = 0;
+            SDL_GL_GetDrawableSize(window, &drawable_width, &drawable_height);
             const ScreenKey key{image, renderer->drawn_at(image), found != image_workloads.end() ? found->second : 0,
-                                srw64::ui::readout_changes()};
+                                srw64::ui::readout_changes(), drawable_width, drawable_height};
             if (key == last_screen && !srw64::ui::shown() && !srw64::debug::screenshots().wanted() &&
                 !srw64::debug::recording().active() && !player_shot_armed.load()) {
+#ifdef __SWITCH__
                 ++perf.kept;
                 perf.report(renderer->programs_held());
+#endif
                 return;
             }
             last_screen = key;
         }
+#endif
+#ifdef __SWITCH__
         const auto p0 = SwitchPerf::clock::now();
 #endif
         SDL_GL_GetDrawableSize(window, &width, &height);
@@ -1619,15 +1667,18 @@ private:
     uint64_t workload = 0;
     std::map<uint32_t, uint64_t> image_workloads;
     std::map<uint32_t, srw64::wide_map::Shape> image_shapes;
-#ifdef __SWITCH__
+#if defined(__SWITCH__) || defined(_WIN32)
     // What the last swap showed (update_screen): the colour image, the frame that drew it,
-    // the dialogue frame over it and the readout's version.
+    // the dialogue frame over it, the readout's version and the window's size.
     struct ScreenKey {
         uint32_t image = 0, drawn = 0;
         uint64_t workload = 0, readout = 0;
+        int width = 0, height = 0;
         bool operator==(const ScreenKey&) const = default;
     };
     ScreenKey last_screen{};
+#endif
+#ifdef __SWITCH__
     SwitchPerf perf;
     std::vector<uint32_t> combiner_keys;
 #endif
@@ -1636,12 +1687,21 @@ private:
 #ifdef __vita__
 void srw64_vita_graphics_begin() { vita_graphics = std::thread(vita_graphics_init); }
 #endif
+#ifndef SRW64_GL_ONLY
+// renderer_mode.hpp: the HD layers prepare their pictures for the renderer chosen here.
+bool srw64::renderer_mode::gl() { return gl_mode(); }
+#endif
 #endif
 
 std::unique_ptr<ultramodern::renderer::RendererContext> srw64_create_renderer(
     uint8_t* rdram, ultramodern::renderer::WindowHandle handle) {
 #ifdef SRW64_GL_RENDERER
-    if (gl_mode()) return std::make_unique<GLRenderer>(rdram);
+    if (gl_mode()) {
+#ifdef SRW64_NATIVE_DIALOGUE
+        srw64::settings::set_renderer_features({false, false, false, true});   // the settings window says so
+#endif
+        return std::make_unique<GLRenderer>(rdram);
+    }
 #endif
 #ifdef SRW64_GL_ONLY
     (void)handle;
@@ -1704,8 +1764,12 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     Uint32 surface_flags = surface;
 #ifdef SRW64_GL_RENDERER
     if (gl_mode()) {
-#ifdef __SWITCH__
-        // OpenGL ES 2 on the Switch's Mesa (src/gl/gl_api.hpp); it gives ES 3.2.
+#if defined(__SWITCH__) || defined(_WIN32)
+        // OpenGL ES 2 on the Switch's Mesa (src/gl/gl_api.hpp); it gives ES 3.2. On Windows
+        // through EGL, ANGLE's libEGL.dll beside the game, not WGL's opengl32.dll.
+#ifdef _WIN32
+        SDL_SetHint(SDL_HINT_OPENGL_ES_DRIVER, "1");
+#endif
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);

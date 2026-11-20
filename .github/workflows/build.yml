@@ -157,12 +157,14 @@ jobs:
           key: vcpkg-x64-windows-${{ env.VCPKG_COMMIT }}-${{ github.run_id }}
           restore-keys: vcpkg-x64-windows-${{ env.VCPKG_COMMIT }}-
 
-      - name: FreeType, HarfBuzz, ICU (vcpkg)
+      # ANGLE (OpenGL ES over Direct3D 11) for the GL renderer in Marchwind64.exe, the fallback
+      # on PCs RT64 cannot draw on (docs/design/windows-gl-fallback.md): 16 minutes the first time.
+      - name: FreeType, HarfBuzz, ICU, ANGLE (vcpkg)
         id: vcpkg
         run: |
           New-Item -ItemType Directory -Force vcpkg-cache | Out-Null
           $before = (Get-ChildItem -Recurse -File vcpkg-cache).Count
-          & "$env:VCPKG_INSTALLATION_ROOT\vcpkg.exe" install freetype harfbuzz icu --triplet x64-windows
+          & "$env:VCPKG_INSTALLATION_ROOT\vcpkg.exe" install freetype harfbuzz icu angle --triplet x64-windows
           if ($LASTEXITCODE -ne 0) { exit 1 }
           if ((Get-ChildItem -Recurse -File vcpkg-cache).Count -gt $before) { "built=true" | Out-File -Append -Encoding utf8 $env:GITHUB_OUTPUT }
 
@@ -261,6 +263,7 @@ jobs:
           $out = "Marchwind64-windows-x64"
           New-Item -ItemType Directory -Force $out | Out-Null
           Copy-Item build/recomp/gfx-build/srw64-gfx-host.exe "$out/Marchwind64.exe"
+          # ANGLE's DLLs (libEGL, libGLESv2) for the GL renderer come with vcpkg's below.
           Copy-Item build/recomp/upstream/RT64/src/contrib/mupen64plus-win32-deps/SDL2-2.26.3/lib/x64/SDL2.dll $out
           Get-ChildItem -Recurse build/recomp/gfx-build -Include dxcompiler.dll,dxil.dll | Select-Object -First 2 | Copy-Item -Destination $out
           Copy-Item "$env:VCPKG_INSTALLATION_ROOT/installed/x64-windows/bin/*.dll" $out
@@ -290,6 +293,7 @@ jobs:
           Remove-Item -Force -ErrorAction SilentlyContinue "$out/filters/.commit"
           New-Item -ItemType Directory -Force "$out/licenses" | Out-Null
           Copy-Item build/recomp/thirdparty/librashader/windows/LICENSE.md "$out/licenses/librashader-LICENSE.md"
+          Copy-Item "$env:VCPKG_INSTALLATION_ROOT/installed/x64-windows/share/angle/copyright" "$out/licenses/ANGLE-LICENSE.txt"
           # The VC++ runtime (redistributable with the program), so no separate installer is needed.
           Copy-Item "$env:VCToolsRedistDir/x64/Microsoft.VC143.CRT/*.dll" $out
           dumpbin /nologo /dependents "$out/Marchwind64.exe"
@@ -300,6 +304,8 @@ jobs:
           if ($LASTEXITCODE -ne 0 -or $usage -notmatch '--play --rom') {
             Write-Error ("Marchwind64.exe --play --help exited 0x{0:X8}" -f $LASTEXITCODE); exit 1
           }
+          # The GL renderer's ANGLE DLLs: without them Marchwind64.exe keeps to RT64 everywhere.
+          foreach ($dll in "libEGL.dll", "libGLESv2.dll") { if (-not (Test-Path "$out/$dll")) { Write-Error "$dll missing"; exit 1 } }
 
       # The program carries the recompiled game, like a release download; until a release is
       # public it stays encrypted too (decrypt: openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000).
