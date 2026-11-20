@@ -1,6 +1,8 @@
+#include "../native/presentation/frame_cost.hpp"
 #include "gl_renderer.hpp"
 #include "program_cache.hpp"
 
+#include <cstdlib>
 #include <algorithm>
 #include <cstring>
 #include <cmath>
@@ -19,6 +21,9 @@ constexpr const char* kPreamble = "#version 120\n";
 
 enum Attribute : GLuint { attribute_position = 0, attribute_uv = 1, attribute_shade = 2, attribute_prim = 3, attribute_bounds = 4 };
 constexpr int kPageSize = 1024, kPages = 6, kAtlasLargest = 128;
+// A program's key beside display_list.hpp's bits: the fragment wraps the texture
+// coordinate inside the texture's place in its page (see the draw loop, "leaves").
+constexpr uint32_t shader_wrap = 1u << 31;
 #ifdef __SWITCH__
 // The Switch's Mesa waits for the GPU to finish with a page before each glTexSubImage2D into
 // it: a frame's few hundred small textures took 3 ms each, 1.7 s of every 5 s while the
@@ -71,12 +76,32 @@ std::string vertex_source() {
         "void main() {\n  gl_Position = a_position;\n  v_uv = a_uv;\n  v_shade = a_shade;\n  v_prim = a_prim;\n  v_bounds = a_bounds;\n}\n";
 }
 
+namespace {
+std::string fixed(double value) {
+    char text[32];
+    std::snprintf(text, sizeof text, "%.10f", value);
+    return text;
+}
+}
+
 std::string fragment_source(uint32_t key) {
     const Combiner c = combiner_of(key);
     std::string s = kPreamble;
     s += "uniform sampler2D u_texture;\nuniform vec4 u_env;\nuniform float u_alpha_ref;\n"
          "varying vec2 v_uv;\nvarying vec4 v_shade;\nvarying vec4 v_prim;\nvarying vec4 v_bounds;\n"
          "void main() {\n";
+    if ((key & shader_textured) && (key & shader_wrap)) {
+        // v_bounds.xy carries each axis's wrap mode as 2 * mode added to the first texel's
+        // centre (0 clamp, 1 repeat, 2 mirror); the texture's place is half a texel around.
+        s += "  vec2 mode = floor(v_bounds.xy * 0.5);\n"
+             "  vec2 low = v_bounds.xy - 2.0 * mode;\n"
+             "  vec2 origin = low - vec2(" + fixed(0.5 / kPageSize) + ");\n"
+             "  vec2 size = v_bounds.zw - low + vec2(" + fixed(1.0 / kPageSize) + ");\n"
+             "  vec2 rel = (v_uv - origin) / size;\n"
+             "  vec2 mirrored = 1.0 - abs(1.0 - mod(rel, 2.0));\n"
+             "  vec2 wrapped = mix(clamp(rel, 0.0, 1.0), mix(fract(rel), mirrored, step(1.5, mode)), step(0.5, mode));\n"
+             "  vec4 texel = texture2D(u_texture, clamp(origin + wrapped * size, low, v_bounds.zw));\n";
+    } else
     s += (key & shader_textured) ? "  vec4 texel = texture2D(u_texture, clamp(v_uv, v_bounds.xy, v_bounds.zw));\n" : "  vec4 texel = vec4(0.0);\n";
     s += std::string("  vec3 color = clamp((") + color_a(c.a) + " - " + color_b(c.b) + ") * " + color_c(c.c) + " + " + color_d(c.d) + ", 0.0, 1.0);\n";
     s += std::string("  float alpha = clamp((") + alpha_abd(c.aa) + " - " + alpha_abd(c.ab) + ") * " + alpha_c(c.ac) + " + " + alpha_abd(c.ad) + ", 0.0, 1.0);\n";
@@ -289,6 +314,7 @@ void Renderer::flush_pages() {
         page.current = next;
         page.id = c.id;
         gl_stats().upload_ms += gl_ms_since(start);
+        srw64::frame_cost::add("texture page", "", gl_ms_since(start));
         ++gl_stats().page_flushes;
     }
 }
@@ -368,7 +394,7 @@ void Renderer::upload(const Frame::Texture& t) {
     const auto start = std::chrono::steady_clock::now();
     struct Count {
         std::chrono::steady_clock::time_point start; size_t bytes;
-        ~Count() { auto& s = gl_stats(); ++s.uploads; s.upload_bytes += bytes; s.upload_ms += gl_ms_since(start); }
+        ~Count() { auto& s = gl_stats(); ++s.uploads; s.upload_bytes += bytes; s.upload_ms += gl_ms_since(start); srw64::frame_cost::add("texture", "", gl_ms_since(start)); }
     } count{start, t.rgba.size() * sizeof(t.rgba[0])};
     Texture texture;
     texture.width = t.width;
@@ -398,6 +424,7 @@ void Renderer::upload(const Frame::Texture& t) {
         if (!texture.wraps || kBatchPageUploads) { textures[t.key] = texture; return; }
     }
     GLuint& own = placed ? texture.own : texture.id;
+    const srw64::frame_cost::Timer cost("texture outside the pages", std::to_string(t.width) + "x" + std::to_string(t.height));
     glGenTextures(1, &own);
     glBindTexture(GL_TEXTURE_2D, own);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, t.width, t.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, t.rgba.data());
@@ -430,6 +457,7 @@ GLuint Renderer::own_texture(Texture& t) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrap(t.wrap_t));
     auto& s = gl_stats();
     ++s.uploads; s.upload_bytes += pixels.size(); s.upload_ms += gl_ms_since(start);
+    srw64::frame_cost::add("texture of its own", "", gl_ms_since(start));
     return t.own;
 }
 
@@ -452,17 +480,18 @@ void Renderer::draw(const Frame& frame) {
 
     // The vertices in the bound texture's coordinates, and the batches: draws one after the
     // other that differ only in where their texture lies in the same page draw as one.
-    struct Batch { const Command* command; GLuint texture; uint32_t first, count; };
+    struct Batch { const Command* command; GLuint texture; uint32_t first, count; uint32_t shader; };
     std::vector<Batch> batches;
     batches.reserve(frame.commands.size());
     staging.resize(frame.vertices.size());
     for (const auto& command : frame.commands) {
-        if (command.kind != Command::draw) { batches.push_back({&command, 0, 0, 0}); continue; }
+        if (command.kind != Command::draw) { batches.push_back({&command, 0, 0, 0, 0}); continue; }
         const DrawState& s = command.state;
         GLuint bound = 0;
         float scale_u = 1, scale_v = 1, offset_u = 0, offset_v = 0;
         float bounds[4] = {-1e6f, -1e6f, 1e6f, 1e6f};
         float remap[2][2] = {{1, 0}, {1, 0}};   // per axis: scale and offset into one period
+        uint32_t shader = s.shader;
         if (s.shader & shader_textured) {
             if (is_picture(s.texture)) {
                 const uint32_t image = picture_address(s.texture);
@@ -503,12 +532,27 @@ void Renderer::draw(const Frame& frame) {
                         remap[axis][1] = flip ? period + 1 : -period;
                     }
                 }
-                if (leaves) bound = own_texture(t);
+                // One that crosses a period's edge and is drawn texel by texel stays in its
+                // page too: the fragment wraps the coordinate (shader_wrap), exact with no
+                // filtering. The lines behind a unit's picture are 16 x 16 mirrored tiles
+                // repeated along a rectangle, 112 new ones a frame for 14 frames: as GL
+                // textures of their own (0.3 ms each on the Switch) the first showing of the
+                // upgrade screen held six lists in a row over 50 ms (2026-11-20). A filtered
+                // one still gets its own texture, for the blend across the period's edge.
+                // SRW64_GL_WRAP_OWN=1: the textures of their own again, to compare the two.
+                static const bool wrap_own = std::getenv("SRW64_GL_WRAP_OWN") != nullptr;
+                const bool wrap_in_page = leaves && !t.linear && !wrap_own;
+                if (leaves && !wrap_in_page) bound = own_texture(t);
                 else if (t.page >= 0) {
                     scale_u = float(t.width) / kPageSize; scale_v = float(t.height) / kPageSize;
                     offset_u = float(t.x) / kPageSize; offset_v = float(t.y) / kPageSize;
                     bounds[0] = (t.x + 0.5f) / kPageSize; bounds[1] = (t.y + 0.5f) / kPageSize;
                     bounds[2] = (t.x + t.width - 0.5f) / kPageSize; bounds[3] = (t.y + t.height - 0.5f) / kPageSize;
+                    if (wrap_in_page) {
+                        remap[0][0] = remap[1][0] = 1; remap[0][1] = remap[1][1] = 0;
+                        bounds[0] += 2.f * t.wrap_s; bounds[1] += 2.f * t.wrap_t;
+                        shader |= shader_wrap;
+                    }
                 } else if (!t.wraps) {
                     bounds[0] = 0.5f / t.width; bounds[1] = 0.5f / t.height;
                     bounds[2] = 1 - 0.5f / t.width; bounds[3] = 1 - 0.5f / t.height;
@@ -529,13 +573,13 @@ void Renderer::draw(const Frame& frame) {
         if (!batches.empty() && batches.back().command->kind == Command::draw && batches.back().texture == bound &&
             batches.back().first + batches.back().count == command.first) {
             const DrawState& last = batches.back().command->state;
-            if (last.shader == s.shader && last.blend == s.blend && last.depth == s.depth && last.env == s.env &&
+            if (batches.back().shader == shader && last.blend == s.blend && last.depth == s.depth && last.env == s.env &&
                 last.alpha_ref == s.alpha_ref && std::equal(last.scissor, last.scissor + 4, s.scissor)) {
                 batches.back().count += command.count;
                 continue;
             }
         }
-        batches.push_back({&command, bound, command.first, command.count});
+        batches.push_back({&command, bound, command.first, command.count, shader});
     }
 
     const Target& into = target(frame.color_image);
@@ -607,9 +651,9 @@ void Renderer::draw(const Frame& frame) {
             continue;
         }
         const DrawState& s = command.state;
-        if (s.shader != current_key) {
-            current_key = s.shader;
-            current = program(s.shader);
+        if (batch.shader != current_key) {
+            current_key = batch.shader;
+            current = program(batch.shader);
             if (current) glUseProgram(current->id);
         }
         if (!current) continue;

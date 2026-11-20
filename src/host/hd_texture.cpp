@@ -1,3 +1,4 @@
+#include "../native/presentation/frame_cost.hpp"
 #include "hd_texture.hpp"
 #include "app/runtime.hpp"
 
@@ -142,6 +143,7 @@ bool exists(const std::filesystem::path& picture) {
 
 bool load(const std::filesystem::path& picture, Compressed& out) {
 #ifdef __SWITCH__
+    const frame_cost::Timer cost("prepared picture", picture.filename().string());   // read and unpacked
     const Watched watched(prepared(picture));
     const auto started = Clock::now();
     std::string file;

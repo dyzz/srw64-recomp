@@ -1,4 +1,5 @@
 #pragma once
+#include "frame_cost.hpp"
 #include <cstdint>
 #include <filesystem>
 #include <fstream>
@@ -48,6 +49,7 @@ inline std::vector<char> read_image_bytes(const std::string& path) {
 }
 
 inline RgbaFile load_rgba(const std::filesystem::path& file) {
+    const frame_cost::Timer cost("picture file", file.filename().string());   // read and decoded where it is asked for
     RgbaFile image;
     int n = 0;
     if (const auto name = file.string(); name.find('#') != std::string::npos) {

@@ -1,3 +1,4 @@
+#include "../native/presentation/frame_cost.hpp"
 #define HLSL_CPU
 #ifndef SRW64_GL_ONLY
 #include "launcher_env.hpp"
@@ -1411,11 +1412,13 @@ public:
             srw64::frame::picture_width = picture;
             interpreter->picture_width(picture);
         }
+        const auto cost_start = std::chrono::steady_clock::now();
         const auto shape = srw64::wide_map::take_shape();
         interpreter->run(rdram, start, frame, native_text ? display_copy.data() : nullptr, native_text ? task->t.data_size : 0);
 #ifdef __SWITCH__
         const auto t2 = SwitchPerf::clock::now();
 #endif
+        const auto cost_run = std::chrono::steady_clock::now();
         renderer->draw(frame);
         srw64::hd_replace::end_frame();
 #ifdef __SWITCH__
@@ -1425,7 +1428,14 @@ public:
 #ifdef __SWITCH__
         const auto t2b = SwitchPerf::clock::now();
 #endif
+        const auto cost_drawn = std::chrono::steady_clock::now();
         srw64::native_gl::end_frame();
+        {
+            // A list that held the screen up says what it met for the first time (frame_cost.hpp).
+            const auto cost_end = std::chrono::steady_clock::now();
+            const auto span = [](auto from, auto to) { return std::chrono::duration<double, std::milli>(to - from).count(); };
+            srw64::frame_cost::end_list(span(cost_start, cost_end), span(cost_start, cost_run), span(cost_run, cost_drawn), span(cost_drawn, cost_end));
+        }
 #ifdef __SWITCH__
         const auto t3 = SwitchPerf::clock::now();
         perf.gl_draw += SwitchPerf::ms(t2, t2a);
@@ -1457,29 +1467,55 @@ public:
         // presents as black (VI::visible). The game draws behind it, e.g. each battle animation
         // lays out both units with the camera on the attacker before its fade-in.
         const bool vi_black = ultramodern::renderer::get_vi_regs()->VI_H_START_REG == 0;
-#ifdef __SWITCH__
+        SDL_GL_GetDrawableSize(window, &width, &height);
         // The game shows a new picture every second or third VI; the rest of the time the
         // screen would be drawn again as it is (as on the PS Vita, where that was 9 ms a VI).
-        // The same colour image not drawn since, the same dialogue frame, no page of the shared
-        // UI up (the frame-rate readout aside, unless it changed) and no capture wanted: the
-        // screen keeps the last swap.
-        {
+        // The same colour image not drawn since, the same dialogue frame, the shared UI's
+        // pages and readout asking for the same draws as the last time (probe_gl) and no
+        // capture wanted: the screen keeps the last swap. On the Switch; elsewhere with
+        // SRW64_GL_KEEP=1, to try it.
+        if (keep_swaps) {
             const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
             const uint32_t image = vi_black ? 0 : renderer->image_at(origin);
             const auto found = image_workloads.find(image);
-            const ScreenKey key{image, renderer->drawn_at(image), found != image_workloads.end() ? found->second : 0,
-                                srw64::ui::readout_changes()};
-            if (key == last_screen && !srw64::ui::shown() && !srw64::debug::screenshots().wanted() &&
-                !srw64::debug::recording().active() && !player_shot_armed.load()) {
+            ScreenKey key{image, renderer->drawn_at(image), found != image_workloads.end() ? found->second : 0, 0};
+            const bool captured = srw64::debug::screenshots().wanted() || srw64::debug::recording().active() ||
+                                  player_shot_armed.load();
+            // Asking the UI costs a walk of its documents (2-4 ms with the Library open, a
+            // Switch, 2026-11-20). While the game shows 30 pictures a second the next one
+            // comes within 33 ms and draws the UI with it: the UI is asked only once the
+            // picture has stood that long.
+            const auto now = std::chrono::steady_clock::now();
+            const bool same_picture = key.image == last_screen.image && key.drawn == last_screen.drawn &&
+                                      key.workload == last_screen.workload;
+            const bool recent = now - last_swap < std::chrono::milliseconds(30);
+            key.ui = last_screen.ui;
+#ifdef SRW64_NATIVE_DIALOGUE
+            if (!(same_picture && recent && !captured))
+                key.ui = srw64::ui::probe_gl(width, height, key.workload && srw64::names::frame_cover(key.workload));
+#endif
+            if (key == last_screen && !captured) {
+#ifdef __SWITCH__
                 ++perf.kept;
                 perf.report(renderer->programs_held());
+#else
+                ++kept_swaps;
+#endif
                 return;
             }
             last_screen = key;
+            last_swap = now;
+#ifndef __SWITCH__
+            // The trial's count, where there are no performance lines.
+            if (++drawn_swaps + kept_swaps >= 300) {
+                std::fprintf(stderr, "SRW64_GL_KEEP kept=%u drawn=%u ui=%016llx\n", kept_swaps, drawn_swaps, (unsigned long long)key.ui);
+                kept_swaps = drawn_swaps = 0;
+            }
+#endif
         }
+#ifdef __SWITCH__
         const auto p0 = SwitchPerf::clock::now();
 #endif
-        SDL_GL_GetDrawableSize(window, &width, &height);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glViewport(0, 0, width, height);
         glDisable(GL_SCISSOR_TEST);
@@ -1623,15 +1659,22 @@ private:
     uint64_t workload = 0;
     std::map<uint32_t, uint64_t> image_workloads;
     std::map<uint32_t, srw64::wide_map::Shape> image_shapes;
-#ifdef __SWITCH__
     // What the last swap showed (update_screen): the colour image, the frame that drew it,
-    // the dialogue frame over it and the readout's version.
+    // the dialogue frame over it and what the shared UI drew (its pages and the readout).
     struct ScreenKey {
         uint32_t image = 0, drawn = 0;
-        uint64_t workload = 0, readout = 0;
+        uint64_t workload = 0, ui = 0;
         bool operator==(const ScreenKey&) const = default;
     };
     ScreenKey last_screen{};
+    std::chrono::steady_clock::time_point last_swap{};
+#ifdef __SWITCH__
+    const bool keep_swaps = true;
+#else
+    const bool keep_swaps = std::getenv("SRW64_GL_KEEP") != nullptr;
+    unsigned kept_swaps = 0, drawn_swaps = 0;
+#endif
+#ifdef __SWITCH__
     SwitchPerf perf;
     std::vector<uint32_t> combiner_keys;
 #endif

@@ -6772,7 +6772,7 @@ void initialize() {
     context=Rml::CreateContext("game-ui",{pixels_w,pixels_h},nullptr,&input);
     if(!context)throw std::runtime_error("Cannot create shared UI context");input.bind(*context);
     name_page=std::make_unique<NamePage>(*context,NameActions{names::select,names::choose,names::review,
-        [](const std::string& path,int dp){return image(path,dp_pixels(dp));},fit_lines});
+        [](const std::string& path,int dp){return image_async(path,dp_pixels(dp),true);},fit_lines});
     std::ofstream(output/"shared-ui.json")<<json({{"schema","srw64.shared-ui.v1"},{"backend","SDL2/RmlUi/RT64"},{"font",path.string()},{"chinese_font",chinese_font_family()},{"traditional_font",traditional_font_family()},{"english_font",english_font_family()}}).dump(2)<<'\n';
 }
 bool held() {
@@ -7570,22 +7570,52 @@ bool shown(){
     return false;
 }
 uint64_t readout_changes(){return fps_changes.load();}
-bool draw_gl(int width,int height,bool name_cover){
-    ++ui_draws;
-    const auto asked=UiClock::now();
-    auto lock=lock_ui();
-    const auto locked=UiClock::now();
-    if(!context || !gl_renderer || width!=pixels_w || height!=pixels_h)return false;
-    if(names::request().visible && !name_cover)return false;
+// The pages are gathered (RmlUi's Render into the renderer's list) and then painted, so the
+// graphics thread can ask first whether they changed: probe_gl gathers and gives the hash, 0
+// when nothing of the UI is to be drawn, and a draw_gl for the same window right after paints
+// what the probe gathered. The Switch keeps its last swap while the game's picture and this
+// hash stay (graphics.cpp): a page left alone cost 7-15 ms every VI before.
+bool gl_gathered=false;int gl_gathered_w=0,gl_gathered_h=0;bool gl_gathered_cover=false;uint64_t gl_gathered_hash=0;
+uint64_t gather_gl(int width,int height,bool name_cover){
+    gl_gathered=false;
+    if(!context || !gl_renderer || width!=pixels_w || height!=pixels_h)return 0;
+    if(names::request().visible && !name_cover)return 0;
     bool shown=false;
     for(int i=0;i<context->GetNumDocuments() && !shown;++i)shown=context->GetDocument(i)->IsVisible();
-    if(!shown)return false;
+    if(!shown)return 0;
     layer_pass=-1;layer_now=0;
-    gl_renderer->start(width,height);context->Render();gl_renderer->end();
+    gl_renderer->begin(width,height);context->Render();
+    // A page up with nothing to paint still counts as drawn (1), as it did.
+    const uint64_t hash=gl_renderer->finish();
+    gl_gathered=true;gl_gathered_w=width;gl_gathered_h=height;gl_gathered_cover=name_cover;
+    return gl_gathered_hash=(hash?hash:1)^(name_cover?0x9E3779B97F4A7C15ull:0);
+}
+void count_gl(UiClock::time_point asked,UiClock::time_point locked){
     const auto done=UiClock::now();
     std::lock_guard times(ui_times_mutex);
     ui_times.draw_wait+=ui_ms(asked,locked);ui_times.draw_work+=ui_ms(locked,done);
     ui_times.draw_max=std::max(ui_times.draw_max,ui_ms(asked,done));++ui_times.draws;
+}
+uint64_t probe_gl(int width,int height,bool name_cover){
+    ++ui_draws;   // a frame of the UI has passed, painted again or kept (the screenshot's steps count them)
+    const auto asked=UiClock::now();
+    auto lock=lock_ui();
+    const auto locked=UiClock::now();
+    const uint64_t hash=gather_gl(width,height,name_cover);
+    if(hash)count_gl(asked,locked);
+    return hash;
+}
+bool draw_gl(int width,int height,bool name_cover){
+    const auto asked=UiClock::now();
+    auto lock=lock_ui();
+    const auto locked=UiClock::now();
+    if(!gl_gathered)++ui_draws;
+    const bool probed=gl_gathered && gl_gathered_w==width && gl_gathered_h==height && gl_gathered_cover==name_cover;
+    const uint64_t hash=probed?gl_gathered_hash:gather_gl(width,height,name_cover);
+    gl_gathered=false;
+    if(!hash)return false;
+    gl_renderer->draw();
+    count_gl(asked,locked);
     return true;
 }
 void render_shutdown_gl(){
