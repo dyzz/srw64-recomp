@@ -356,7 +356,10 @@ void refresh(uint8_t* ram,bool create_events) {
         if(box.speaker.empty()) {current[slot]={};continue;}
         // A battle quote follows the original page by page; a story record is read whole.
         Record source;
-        if(display_only) {
+        if(display_only && story_mod::text(box.text_id)) {
+            // A story MOD's battle line (0xC800 up): its own text in the reading language.
+            source.text=utf16(story_mod::line(box.text_id,localization::catalog().locale).value_or(std::string()));
+        } else if(display_only) {
             const auto* message=localization::catalog().resolve(game_adapter::standard_dialogue_key(box.text_id));
             source.text=utf16(segment(message?expand(ram,*message,localization::catalog().locale):decode(ram,p+12,256),box.segment));
         } else source=story_record(ram,localization::catalog(),box.text_id,p);
@@ -847,6 +850,15 @@ void configure(const std::filesystem::path& directory) {
     if(reader.font_size<10 || reader.font_size>18)throw std::runtime_error("Native font size outside 10..18");
     settings::set_dialogue_font_size(reader.font_size,false);
     for(const auto& [key,value]:data.at("glyphs").items())glyphs.emplace(std::stoul(key),value.get<std::string>());
+    {
+        // The other way round, for the records of a story MOD's choices and objectives.
+        auto codes=std::make_shared<std::map<std::string,uint16_t>>();
+        for(const auto& [code,text]:glyphs)if(!text.empty() && !codes->count(text))codes->emplace(text,code);
+        story_mod::glyph_of()=[codes](const std::string& c)->std::optional<uint16_t> {
+            const auto found=codes->find(c);
+            return found==codes->end()?std::nullopt:std::optional<uint16_t>(found->second);
+        };
+    }
     enabled=true;observe=data.at("config").value("mode","replace")=="observe";
     output=directory;srw64::open_run_log(log,directory/"dialogue-events.jsonl");
     {
@@ -1037,6 +1049,9 @@ std::string body_page(const uint8_t* ram,uint32_t body) {
     const unsigned page=byte(ram,body+0x214) && byte(ram,body+0x215)?byte(ram,body+0x215):0;
     const auto shown=segment(decode(ram,body+12,256),page);
     const uint16_t id=half(ram,body);
+    // A story MOD's choice or objective (0xC800 up): its own text in the reading language.
+    if(id>=story_mod::text_first)
+        if(const auto line=story_mod::line(id,localization::catalog().locale))return segment(*line,page);
     const auto japanese=localization::find("ja");
     if(!id || !japanese || segment(guest_record_text(ram,*japanese,id),page)!=shown)return shown;
     const auto translated=segment(record_text(ram,localization::catalog(),id),page);

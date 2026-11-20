@@ -20,7 +20,7 @@ export type When =
   | { kind: 'remaining'; side: Side; atMost: number }
   | { kind: 'persuade'; by: number; target: number };
 export type Step =
-  | { kind: 'say'; speaker: number; mode: number; text: Text3 }
+  | { kind: 'say'; speaker: number; mode: number; text: Text3; silhouette?: boolean }   // silhouette: the original's 「???」
   | { kind: 'deploy'; group: number }
   | { kind: 'leave'; who: number }
   | { kind: 'join'; pilot: number; unit: number }
@@ -48,6 +48,7 @@ export type Cond = { not?: boolean } & (
   | { kind: 'roster'; pilot: number }
   | { kind: 'var'; n: number; is: number });
 export type Conds = { any: boolean; list: Cond[] };      // any: one of them is enough
+export type BattleLine = { id: string; who: number; against: number; when: string[]; text: Text3; once: boolean; conds?: Conds };
 export type GameEvent = { id: string; name: string; when: When; once: boolean; fired: string[]; notFired: string[]; conds?: Conds; steps: Step[] };
 // When a group comes on: with the opening, by a trigger of its own, or when a story event says so.
 export type GroupWhen = { kind: 'opening' } | { kind: 'event' } | Extract<When, { kind: 'turn' | 'remaining' | 'defeated' | 'hp_below' | 'reach' | 'downed' | 'group_gone' }>;
@@ -64,18 +65,22 @@ export type WinRule = ({ kind: 'enemies_gone' } | { kind: 'defeated'; who: numbe
   | { kind: 'reach'; who: number; area: Area } | { kind: 'group_gone'; group: number }) & { within?: number };
 // reach: an enemy gets there; downed: this many of ours are defeated.
 export type LoseRule = { kind: 'defeated'; who: number } | { kind: 'turn'; turn: number } | { kind: 'reach'; area: Area } | { kind: 'downed'; atLeast: number };
-export type After = { kind: 'ending' } | { kind: 'next'; stage: string } | { kind: 'choice'; text: number; stages: string[] };
+// A choice's options: the original's text `text`, or the author's own (`own`, one per option).
+export type After = { kind: 'ending' } | { kind: 'next'; stage: string } | { kind: 'choice'; text: number; stages: string[]; own?: Text3[] };
 export type Stage = {
   key: string; title: string; map: number | string; bgm: number;
   groups: Group[]; units: Unit[];
   before: Step[];          // the opening on the world map, before the battlefield
   enter: Step[];           // the opening on the battlefield, once the opening groups are on
   events: GameEvent[];     // during the battle
+  // In the stage's battles: `who` says `text` at these moments (story.ts QUOTE_MOMENTS),
+  // against `against` (0 anyone), if the conditions hold; once only, if so.
+  battleLines?: BattleLine[];
   end: Step[];             // after the stage is cleared, on the world map
   win: WinRule[]; lose: LoseRule[]; after: After;
   // The map menu's 作戦目的 window: which of the original's texts it shows (3D65): winning
   // 5567 + win, losing 5593 + lose. Unset: chosen from the rules (objectiveOf).
-  objective?: { win?: number; lose?: number };
+  objective?: { win?: number; lose?: number; own?: { win: Text3; lose: Text3 } };
 };
 export type OwnMapInfo = { name: string; like: number; columns: number; rows: number; scale: number; terrain: number[][] };
 export type Project = { route: number; stages: Stage[]; maps: OwnMapInfo[] };
@@ -100,7 +105,7 @@ function lines(text: Text3): Text3 {
 }
 function action(step: Step): Record<string, unknown> {
   switch (step.kind) {
-    case 'say': return { say: step.speaker, ...(step.mode ? { mode: step.mode } : {}), text: lines(step.text) };
+    case 'say': return { say: step.speaker, ...(step.mode ? { mode: step.mode } : {}), ...(step.silhouette ? { silhouette: true } : {}), text: lines(step.text) };
     case 'deploy': return { deploy: step.group };
     case 'leave': return { leave: step.who };
     case 'join': return { join: { pilot: step.pilot, unit: step.unit } };
@@ -189,6 +194,7 @@ function trigger(when: When | GroupWhen): Record<string, unknown> {
 // The objective texts the rules suggest, as 3D65's numbers: 17 「敵の全滅」, losing 31
 // 「主人公機の撃墜」, 41 「味方機の撃墜」, 21 「指定ターンの経過」, 38 「味方の全滅」.
 export function objectiveOf(stage: Stage): { win: number; lose: number } {
+  if (stage.objective?.own) return { win: 127, lose: 127 };   // the host shows the stage's own
   const lost = stage.lose[0];
   const lose = !lost ? 38 : lost.kind === 'turn' ? 21 : lost.kind === 'downed' ? 41 : lost.kind === 'defeated' ? 31 : 38;
   return { win: stage.objective?.win ?? 17, lose: stage.objective?.lose ?? lose };
@@ -227,14 +233,23 @@ export function stageEvents(stage: Stage): Record<string, unknown>[] {
       : rule.kind === 'downed' ? { kind: 'downed', side: 'player', group: -1, atLeast: rule.atLeast } : { kind: 'defeated', who: rule.who }), do: [{ lose: true }] }));
   const after = stage.after;
   const leads = after.kind === 'ending' ? [{ ending: true }] : after.kind === 'next' ? [{ next: after.stage }]
-    : [{ choose: { text: after.text, options: after.stages.map((s) => [{ next: s }]) } }];
+    : [{ choose: { text: after.own ? optionTexts(after.own) : after.text, options: after.stages.map((s) => [{ next: s }]) } }];
   events.push({ when: 'end', do: [{ bgm: 49 }, { op: '3D32', args: [1] }, { fade: 'in' }, ...actions(stage.end),
     ...(stage.end.some((s) => s.kind === 'say') ? [{ close: true }] : []), ...leads] });
   return events;
 }
+// The options' own text by locale, as the compiler takes it: a locale every option has
+// (Japanese filled in as lines() does).
+function optionTexts(own: Text3[]): Record<string, string[]> {
+  const each = own.map(lines), out: Record<string, string[]> = {};
+  for (const locale of ['ja', 'zh-Hans', 'en']) if (each.every((t) => t[locale])) out[locale] = each.map((t) => t[locale]);
+  return out;
+}
 export function stageSource(stage: Stage): Record<string, unknown> {
   const side = new Map(stage.groups.map((g) => [g.id, g.side]));
+  const own = stage.objective?.own;
   return { schema: 'srw64.stage.v1', ...(stage.title ? { title: stage.title } : {}), map: stage.map,
+    ...(own ? { objective: { win: lines(own.win), lose: lines(own.lose) } } : {}),
     units: { place: stage.units.map((u) => {
       const ours = (side.get(u.group) ?? 1) === 0, ai = u.ai;
       return { group: u.group, x: u.x, y: u.y, pilot: u.pilot, unit: u.unit, faction: side.get(u.group) ?? 1, level: u.level,
@@ -243,7 +258,9 @@ export function stageSource(stage: Stage): Record<string, unknown> {
         ...(!ours && ai && (ai.mode || ai.wait) ? { ai: { mode: AI_NAMES[ai.mode], ...(ai.wait ? { wait: ai.wait } : {}),
           ...(ai.mode === 2 || ai.mode === 5 ? { target: ai.target ?? 0 } : {}), ...(ai.mode === 3 || ai.mode === 4 ? { to: [ai.x ?? 0, ai.y ?? 0] } : {}) } } : {}) };
     }) },
-    events: stageEvents(stage) };
+    events: stageEvents(stage),
+    ...(stage.battleLines?.length ? { battle_lines: stage.battleLines.map((b) => ({ id: b.id, who: b.who, ...(b.against ? { against: b.against } : {}), when: b.when,
+      text: lines(b.text), ...(b.once ? { once: true } : {}), ...(conditions(b.conds) ? { if: conditions(b.conds) } : {}) })) } : {}) };
 }
 export const campaignSource = (project: Project, id: string, name: unknown, version: string) => ({ schema: 'srw64.campaign.v2', id, name, version,
   start: project.stages[0].key, route: project.route, stages: project.stages.map((s) => s.key) });
@@ -280,6 +297,7 @@ export function problems(project: Project, size: (s: Stage) => { columns: number
       && ![...s.before, ...s.enter, ...s.end, ...s.events.flatMap((e) => e.steps)].some((step) => step.kind === 'deploy' && step.group === g.id)) add('groupNever', false, g.id);
     const says = [...s.before, ...s.enter, ...s.end, ...s.events.flatMap((e) => e.steps)].filter((step) => step.kind === 'say');
     if (says.some((step) => step.kind === 'say' && !Object.values(step.text).some((t) => t?.trim()))) add('emptyLine');
+    if ((s.battleLines ?? []).some((b) => !Object.values(b.text).some((t) => t?.trim()) || !b.when.length)) add('emptyBattleLine');
     if (![s.before, s.enter, s.end, ...s.events.map((e) => e.steps)].every(balanced)) add('unbalanced');
     const { columns: c, rows: r } = size(s), cells = (a: Area) => a.every((v, k) => v >= 0 && v < (k % 2 ? r : c) - 2 * FRAME);
     const areas = [...s.events.flatMap((e) => [e.when, ...(e.conds?.list ?? []), ...e.steps.flatMap((x) => x.kind === 'if' ? x.conds.list : [])]), ...s.groups.map((gr) => gr.when), ...s.win, ...s.lose]

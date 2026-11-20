@@ -11,10 +11,11 @@ import { strFromU8, strToU8 } from 'fflate';
 import { el, fill, openPackage, packageForm, readJson, say, writePackage, type Text } from './mod-package';
 import { picker, type Pickable } from './picker';
 import { CompileError } from '../lib/compiler/assemble.ts';
+import { QUOTE_MOMENTS, SILHOUETTES } from '../lib/compiler/story.ts';
 import { compileCampaign } from '../lib/compiler/campaign.ts';
 import { buildMap, type Template } from '../lib/compiler/map.ts';
 import { campaignSource, FRAME, freeName, leadsTo, newStage, objectiveOf, problems, stageSource, type Area, type Cond, type Conds, type GameEvent, type Group, type GroupWhen,
-  type OwnMapInfo, type Project, type Side, type Stage, type Step, type When } from '../lib/editor-model.ts';
+  type OwnMapInfo, type Project, type Side, type Stage, type Step, type When, type BattleLine } from '../lib/editor-model.ts';
 
 type Names = { ja: string; zh: string; en: string; ko?: string };
 type Terrain = { id: number; name: Names; defense: number; hit: number; hp: number; en: number; move: number[] };
@@ -653,17 +654,45 @@ export async function initLevelEditor() {
     }
     return e.conds;
   }
+  // One battle line (level-editor.md §5.7): who says it, against whom, when, its text.
+  function battleLineView(s: Stage, line: BattleLine): Node[] {
+    const opponents: [string, string][] = [['0', T.anyone], ...[...new Set(s.units.map((u) => u.pilot))].filter((p) => p !== line.who).map((p): [string, string] => [String(p), pilotName(p)])];
+    const area = el('textarea', { rows: 2, placeholder: T.linePlaceholder, onchange: (e: Event) => { line.text[language] = (e.target as HTMLTextAreaElement).value; update(); } }) as HTMLTextAreaElement;
+    area.value = line.text[language] ?? '';
+    const written = LOCALES.map(([code, label]) => `${label} ${line.text[code]?.trim() ? '✓' : '—'}`).join('　');
+    return [el('div', { class: 'row' }, el('h2', {}, T.battleLine),
+        act(T.removeLine, () => { s.battleLines = (s.battleLines ?? []).filter((b) => b !== line); eventAt = 'enter'; }, 'mini danger')),
+      el('div', { class: 'when-box' },
+        el('div', { class: 'when' }, el('span', { class: 'sub' }, T.quoteWho), who('pilot', line.who, (id) => { line.who = id; }),
+          el('span', { class: 'sub' }, T.quoteAgainst), select(opponents, String(line.against), (v) => { line.against = Number(v); })),
+        el('div', { class: 'when' }, el('span', { class: 'sub' }, T.quoteWhen), ...Object.keys(QUOTE_MOMENTS).map((m) => el('label', { class: 'check' },
+          el('input', { type: 'checkbox', checked: line.when.includes(m), onchange: (e: Event) => {
+            line.when = (e.target as HTMLInputElement).checked ? [...line.when, m] : line.when.filter((x) => x !== m); update(); } }), T[`moment_${m}`]))),
+        el('span', { class: 'sub' }, T.andLabel), condEditor(line.conds ??= { any: false, list: [] }, s),
+        el('label', { class: 'check' }, el('input', { type: 'checkbox', checked: line.once, onchange: (e: Event) => { line.once = (e.target as HTMLInputElement).checked; update(); } }), T.quoteOnce)),
+      el('div', { class: 'row' }, el('span', { class: 'sub' }, T.lineLanguage), el('div', { class: 'segment' }, ...LOCALES.map(([code, label]) => act(label, () => { language = code; }, language === code ? 'seg on' : 'seg')))),
+      el('div', { class: 'say' }, face(pilotOf.get(line.who)?.img), el('div', { class: 'say-body' }, el('span', { class: 'sub langs-done' }, written), area)),
+      el('p', { class: 'hint' }, T.battleLineHint)];
+  }
   function storyTab() {
     const s = stage();
-    if (!stepsOf(s, eventAt)) eventAt = 'enter';
-    const steps = stepsOf(s, eventAt)!, event = s.events.find((e) => e.id === eventAt);
+    const quoteAt = eventAt.startsWith('q:') ? (s.battleLines ?? []).find((b) => `q:${b.id}` === eventAt) : undefined;
+    if (!stepsOf(s, eventAt) && !quoteAt) eventAt = 'enter';
+    const steps = stepsOf(s, eventAt) ?? [], event = s.events.find((e) => e.id === eventAt);
     const says = (list: Step[]) => list.filter((x) => x.kind === 'say').length;
     const item = (at: string, title: string, sub: string, late = false) => card(eventAt === at, () => { eventAt = at; stepAt = -1; update(); }, el('strong', {}, title), el('span', { class: late ? 'sub late' : 'sub' }, sub));
     const left = el('aside', { class: 'rail wide' }, el('div', { class: 'rail-head' }, T.events),
       el('div', { class: 'rail-part' }, T.partOpening), item('before', T.eventBefore, fill(T.lines, { n: says(s.before) })), item('enter', T.eventEnter, fill(T.lines, { n: says(s.enter) })),
       el('div', { class: 'rail-part' }, T.partBattle), ...s.events.map((e) => item(e.id, e.name || T.unnamed, whenText(e.when), true)),
       act(T.addEvent, () => { const id = freeName('event', s.events.map((e) => e.id)); s.events.push({ id, name: '', when: whenDefault('turn', s), once: true, fired: [], notFired: [], steps: [] }); eventAt = id; stepAt = -1; }, 'add'),
-      el('div', { class: 'rail-part' }, T.partEnd), item('end', T.eventEnd, fill(T.lines, { n: says(s.end) })));
+      el('div', { class: 'rail-part' }, T.partEnd), item('end', T.eventEnd, fill(T.lines, { n: says(s.end) })),
+      el('div', { class: 'rail-part' }, T.partQuotes), ...(s.battleLines ?? []).map((b) => item(`q:${b.id}`, pilotName(b.who), b.when.map((m) => T[`moment_${m}`]).join('、') || '—', true)),
+      act(T.addBattleLine, () => {
+        const id = freeName('line', (s.battleLines ?? []).map((b) => b.id));
+        (s.battleLines ??= []).push({ id, who: s.units.find((u) => sideOf(s, u) === 0)?.pilot ?? 28, against: 0, when: ['attack'], text: {}, once: false });
+        eventAt = `q:${id}`;
+      }, 'add'));
+    if (quoteAt) return [left, el('main', { class: 'center' }, ...battleLineView(s, quoteAt)), el('aside', { class: 'inspector' }, el('p', { class: 'hint' }, T.battleLineNote))];
     const move = (from: number, to: number) => { steps.splice(to, 0, ...steps.splice(from, 1)); stepAt = to; };
     const box = el('div', { class: 'game-box' }), about = el('p', { class: 'note' });
     const rowNodes: HTMLElement[] = [];
@@ -683,9 +712,15 @@ export async function initLevelEditor() {
         const area = el('textarea', { rows: 2, placeholder: T.linePlaceholder, onchange: (e: Event) => { step.text[language] = (e.target as HTMLTextAreaElement).value; update(); },
           onfocus: () => { if (stepAt !== n) { stepAt = n; preview(); } } }) as HTMLTextAreaElement;
         area.value = step.text[language] ?? '';
-        body.push(el('div', { class: 'say' }, face(pilotOf.get(step.speaker)?.img),
+        const dark = step.silhouette && SILHOUETTES[step.speaker] !== undefined;
+        const picture = face(pilotOf.get(step.speaker)?.img);
+        if (dark && picture instanceof HTMLImageElement) picture.style.filter = 'brightness(0) opacity(.75)';
+        body.push(el('div', { class: 'say' }, picture,
           el('div', { class: 'say-body' }, el('div', { class: 'row' }, who('pilot', step.speaker, (id) => { step.speaker = id; }),
-            select([0, 1, 2, 3, 4, 5].map((m): [string, string] => [String(m), fill(T.boxMode, { n: m })]), String(step.mode), (v) => { step.mode = Number(v); }), el('span', { class: 'sub langs-done' }, written)), area)));
+            select([0, 1, 2, 3, 4, 5].map((m): [string, string] => [String(m), fill(T.boxMode, { n: m })]), String(step.mode), (v) => { step.mode = Number(v); }),
+            SILHOUETTES[step.speaker] !== undefined ? el('label', { class: 'check', title: T.silhouetteHint }, el('input', { type: 'checkbox', checked: !!step.silhouette,
+              onchange: (e: Event) => { step.silhouette = (e.target as HTMLInputElement).checked || undefined; update(); } }), T.silhouette) : null,
+            el('span', { class: 'sub langs-done' }, written)), area)));
       } else if (step.kind === 'deploy') body.push(select(s.groups.map((gr): [string, string] => [String(gr.id), `${groupName(gr)}（${s.units.filter((u) => u.group === gr.id).length}）`]), String(step.group), (v) => { step.group = Number(v); }));
       else if (step.kind === 'leave' || step.kind === 'focus') body.push(who('pilot', step.who, (id) => { step.who = id; }));
       else if (step.kind === 'join') body.push(who('pilot', step.pilot, (id) => { step.pilot = id; }), who('unit', step.unit, (id) => { step.unit = id; }));
@@ -738,6 +773,9 @@ export async function initLevelEditor() {
   // --- Rules ------------------------------------------------------------------------------------------
   function rulesTab() {
     const s = stage();
+    // Three inputs, a language each, for one piece of the author's text.
+    const three = (text: Record<string, string>, hint = '') => el('div', { class: 'grid3' }, ...LOCALES.map(([code, label]) =>
+      input(text[code] ?? '', (v) => { text[code] = v; }, { placeholder: `${label}${hint}`, 'aria-label': label })));
     const rule = (label: (Node | null)[], remove: () => void) => el('div', { class: 'rule' }, el('div', { class: 'when' }, ...label), act('✕', remove, 'icon'));
     const within = (r: { within?: number }) => [el('span', { class: 'sub' }, T.within), number(r.within ?? 0, (v) => { r.within = v || undefined; }, 0, 99), el('span', { class: 'sub' }, T.withinHint)];
     const win = s.win.map((r, n) => rule([...(r.kind === 'enemies_gone' ? [el('strong', {}, T.whenGone)] : r.kind === 'defeated' ? [el('span', {}, T.ruleDefeat), who('pilot', r.who, (id) => { r.who = id; })]
@@ -774,14 +812,29 @@ export async function initLevelEditor() {
     const afterBody: Node[] = [select([['ending', T.ending], ...(others.length ? [['next', T.afterNext] as [string, string]] : []), ...(others.length > 1 ? [['choice', T.afterChoice] as [string, string]] : [])], after.kind,
       (v) => { s.after = v === 'ending' ? { kind: 'ending' } : v === 'next' ? { kind: 'next', stage: others[0][0] } : { kind: 'choice', text: 18402, stages: [others[0][0], others[1][0]] }; })];
     if (after.kind === 'next') afterBody.push(select(others, after.stage, (v) => { after.stage = v; }));
-    if (after.kind === 'choice') afterBody.push(field(T.choiceText, number(after.text, (v) => { after.text = v; }, 0, 0xC7FF), T.choiceHint),
-      ...after.stages.map((key, n) => field(fill(T.choiceOption, { n: n + 1 }), select(others, key, (v) => { after.stages[n] = v; }))));
+    if (after.kind === 'choice') {
+      afterBody.push(el('label', { class: 'check' }, el('input', { type: 'checkbox', checked: !!after.own, onchange: (e: Event) => {
+        after.own = (e.target as HTMLInputElement).checked ? after.stages.map(() => ({})) : undefined; update(); } }), T.choiceOwn));
+      if (!after.own) afterBody.push(field(T.choiceText, number(after.text, (v) => { after.text = v; }, 0, 0xC7FF), T.choiceHint));
+      after.stages.forEach((key, n) => {
+        afterBody.push(field(fill(T.choiceOption, { n: n + 1 }), select(others, key, (v) => { after.stages[n] = v; })));
+        if (after.own) afterBody.push(three(after.own[n] ??= {}, T.choiceOptionHint));
+      });
+      if (after.own && after.stages.length < 3 && others.length > after.stages.length)
+        afterBody.push(act(T.addOption, () => { after.stages.push(others.find(([k]) => !after.stages.includes(k))![0]); after.own!.push({}); }, 'chip'));
+    }
     // The 作戦目的 window: one of the original's winning and losing texts each.
     const shown = objectiveOf(s), texts = original.objectives ?? [];
     const objectiveSelect = (first: number, top: number, value: number, set: (n: number | undefined) => void, auto: boolean) =>
       select([['', T.objectiveAuto], ...texts.filter((o) => o.id >= first && o.id - first < top).map((o): [string, string] => [String(o.id - first), nameOf(o)])],
         auto ? '' : String(value), (v) => set(v === '' ? undefined : Number(v)));
-    const objective = el('section', { class: 'panel' }, el('h3', {}, T.objectiveTitle, el('span', { class: 'sub' }, T.objectiveNote)),
+    const own = s.objective?.own;
+    const objective = own ? el('section', { class: 'panel' }, el('h3', {}, T.objectiveTitle, el('span', { class: 'sub' }, T.objectiveNote)),
+      el('label', { class: 'check' }, el('input', { type: 'checkbox', checked: true, onchange: () => { s.objective = { ...s.objective, own: undefined }; update(); } }), T.objectiveOwn),
+      field(T.objectiveWin, three(own.win)), field(T.objectiveLose, three(own.lose)), el('p', { class: 'hint' }, T.objectiveOwnHint))
+    : el('section', { class: 'panel' }, el('h3', {}, T.objectiveTitle, el('span', { class: 'sub' }, T.objectiveNote)),
+      el('label', { class: 'check' }, el('input', { type: 'checkbox', checked: false, onchange: () => {
+        s.objective = { ...s.objective, own: { win: { [language]: nameOf(texts.find((o) => o.id === 5567 + shown.win)) }, lose: { [language]: nameOf(texts.find((o) => o.id === 5593 + shown.lose)) } } }; update(); } }), T.objectiveOwn),
       field(T.objectiveWin, objectiveSelect(5567, 26, shown.win, (n) => { s.objective = { ...s.objective, win: n }; }, s.objective?.win === undefined)),
       el('p', { class: 'note' }, nameOf(texts.find((o) => o.id === 5567 + shown.win))),
       field(T.objectiveLose, objectiveSelect(5593, 128, shown.lose, (n) => { s.objective = { ...s.objective, lose: n }; }, s.objective?.lose === undefined)),

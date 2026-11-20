@@ -339,6 +339,59 @@ int main(int argc,char** argv) {
         check(read(ram.data(),story::region+(story::header_words+1)*2,2)==0,"after a step, nobody there: 0");
     }
 
+    // --- A choice's options, a stage's own objective ----------------------------------
+    {
+        story::glyph_of()=[](const std::string& c)->std::optional<uint16_t> {
+            if(c=="は")return 0x0120;if(c=="い")return 0x0121;if(c=="・")return 0x0050;return std::nullopt;
+        };
+        story::Text choice{0,{{"ja","はい<BR>いいえ"}},story::TextKind::choice};
+        const auto bytes=story::text_record(choice);
+        const std::vector<uint8_t> want={'0','2','5','0','0','0','0','4', 0,0, 0x01,0x20,0x01,0x21, 0xFF,0xFE, 0,0, 0x01,0x21,0x01,0x21,0x00,0x50, 0xFF,0xFF};
+        check(bytes==want,"a choice: a row per option, each after a blank, ROM glyphs, ・ for one the font lacks");
+        story::Text goal{0,{{"ja","はい"}},story::TextKind::objective};
+        const auto g=story::text_record(goal);
+        check(std::string(g.begin(),g.begin()+8)=="00040000" && g.size()==8+4+2,"an objective: one row, the original's header");
+        json image={{"schema",story::image_schema},{"campaign","c.goal"},{"texts",json::array({
+            {{"speaker",0},{"kind","objective"},{"lines",{{"ja","勝つ"}}}},{{"speaker",0},{"kind","objective"},{"lines",{{"ja","負け"}}}}})},
+            {"events",json::array()},{"objectives",json::array({{{"scene",7},{"win",0},{"lose",1}}})}};
+        check(!fails(image).empty(),"objectives outside a campaign's image");
+        story::Library l;story::add_image(l,"c.goal",image,"c.goal");
+        s.library=l;s.campaign="c.goal";
+        write8(ram.data(),story::scene_byte,7);
+        check(story::objective_text(ram.data(),story::objective_win)==story::text_first && story::objective_text(ram.data(),story::objective_lose)==story::text_first+1,
+              "on the stage, 5694 / 5720 are its own texts");
+        check(story::objective_text(ram.data(),5584)==5584,"another objective text stays");
+        write8(ram.data(),story::scene_byte,8);
+        check(story::objective_text(ram.data(),story::objective_win)==story::objective_win,"another scene keeps 5694");
+        s.campaign.clear();
+        auto bad=image;bad["texts"][0]["kind"]="poem";check(!fails(bad).empty(),"an unknown kind of text");
+    }
+
+    // --- Battle lines ---------------------------------------------------------------------
+    {
+        json image={{"schema",story::image_schema},{"campaign","c.q"},{"texts",json::array({
+            {{"speaker",28},{"kind","battle"},{"lines",{{"ja","「行くわよ！」"}}}},{{"speaker",287},{"kind","battle"},{"lines",{{"ja","「馬鹿な」"}}}}})},
+            {"events",json::array()},{"quotes",json::array({
+                {{"id","duel"},{"scene",9},{"who",28},{"against",287},{"moments",{0,5}},{"text",0},{"once",true}},
+                {{"id","down"},{"scene",9},{"who",287},{"moments",{1}},{"text",1},{"test",{{"turn",{0,2}}}}}})}};
+        story::Library l;story::add_image(l,"c.q",image,"c.q");
+        check(l.quotes.size()==2 && l.quotes[0].moments==0x21 && l.quotes[0].text==story::text_first,"battle lines loaded");
+        const auto record=story::text_record(l.texts[0]);
+        check(std::string(record.begin(),record.begin()+8)=="02820032","a battle line's record: the speaker and the battle quotes' header");
+        s.library=l;s.campaign="c.q";s.scene=9;s.fired.clear();
+        write16(ram.data(),story::voice_table+28*2,40);write16(ram.data(),story::voice_table+287*2,77);
+        story::View w;w.turn=1;w.battle_a=28;w.battle_b=287;
+        check(story::battle_quote(ram.data(),40,0,w)==story::text_first,"28 attacking 287: her line");
+        check(!story::battle_quote(ram.data(),40,5,w),"once: not again when she evades");
+        check(!story::battle_quote(ram.data(),40,2,w),"not at a moment it does not name");
+        check(story::battle_quote(ram.data(),77,1,w)==story::text_first+1,"287 defeated by turn 3: his line");
+        w.turn=4;check(!story::battle_quote(ram.data(),77,1,w),"its condition: not after turn 3");
+        s.fired.clear();w.turn=1;w.battle_b=300;
+        check(!story::battle_quote(ram.data(),40,0,w),"against someone else: no line");
+        s.scene=10;w.battle_b=287;check(!story::battle_quote(ram.data(),40,0,w),"another scene: no line");
+        s.campaign.clear();
+    }
+
     if(failures)std::fprintf(stderr,"%d failure(s)\n",failures);
     else std::printf("story MOD tests passed\n");
     return failures?1:0;

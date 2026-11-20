@@ -136,10 +136,16 @@ struct Event {
     std::vector<unsigned> builds;
     std::string key() const {return package+"/"+id;}
 };
+// A line, a choice's options (one per row, "<BR>" between them, 3D44) or a stage's own
+// objective (the map menu's 作戦目的, in place of text 5694 / 5720 there).
+enum class TextKind {line,choice,objective,battle};
 struct Text {
     unsigned speaker{};
     std::map<std::string,std::string> lines;       // locale -> text
+    TextKind kind{};
 };
+// A campaign stage's own winning and losing text (3D65 127,127 in its opening).
+inline constexpr uint16_t objective_win=5567+127, objective_lose=5593+127;
 // A hidden element a package adds to a scene's stage information page (stage_info.cpp):
 // its title and text by locale, and when it shows as done (our roster has these).
 struct Info {
@@ -161,6 +167,12 @@ struct Library {
     // A step's condition in those events: its place in the block, 0 or 1 before each step.
     struct Check {std::string package;unsigned scene{};uint32_t at{};Test test;};
     std::vector<Check> checks;
+    struct Objective {std::string campaign;unsigned scene{};uint16_t win{},lose{};};
+    std::vector<Objective> objectives;
+    // A battle line (story.ts battleLines): `who` says `text` in a battle of the scene at
+    // these moments (80222B14's contexts, a bit each), against `against` (0 anyone).
+    struct Quote {std::string package,campaign,id;unsigned scene{},who{},against{},moments{};uint16_t text{};bool once{};std::optional<Test> test;};
+    std::vector<Quote> quotes;
     std::vector<std::string> problems;
 };
 inline constexpr uint32_t event_block=0x8019B400,event_block_size=0x1A00;
@@ -238,6 +250,11 @@ inline void add_image(Library& library,const std::string& package,const json& im
             text.lines[locale]=s;
         }
         if(!text.lines.count("ja"))throw std::runtime_error("每句台词都要有 ja");
+        const auto kind=t.value("kind","line");
+        if(kind=="choice")text.kind=TextKind::choice;
+        else if(kind=="objective")text.kind=TextKind::objective;
+        else if(kind=="battle")text.kind=TextKind::battle;
+        else if(kind!="line")throw std::runtime_error("文字种类只能是 line、choice、objective、battle");
         new_texts.push_back(std::move(text));
     }
     std::vector<Event> new_events;
@@ -389,6 +406,26 @@ inline void add_image(Library& library,const std::string& package,const json& im
         new_patches.push_back(patch);
     }
     for(auto& t:new_texts)library.texts.push_back(std::move(t));
+    std::vector<Library::Quote> new_quotes;
+    for(const auto& q:image.value("quotes",json::array())) {
+        Library::Quote quote{package,campaign,q.at("id").get<std::string>(),q.at("scene").get<unsigned>(),q.at("who").get<unsigned>(),q.value("against",0u),0,0,
+            q.value("once",false),std::nullopt};
+        const size_t text=q.at("text").get<size_t>();
+        if(quote.scene>255 || quote.who>360 || quote.against>360 || text>=new_texts.size() || new_texts[text].kind!=TextKind::battle)
+            throw std::runtime_error("quotes "+quote.id+"：场景、人物或台词引用越界");
+        for(const auto& m:q.at("moments")){const unsigned n=m.get<unsigned>();if(n>8)throw std::runtime_error("quotes "+quote.id+"：时机 0–8");quote.moments|=1u<<n;}
+        quote.text=uint16_t(text_first+base+text);
+        if(q.contains("test"))quote.test=parse_test(q["test"],package);
+        new_quotes.push_back(std::move(quote));
+    }
+    for(auto& q:new_quotes)library.quotes.push_back(std::move(q));
+    std::vector<Library::Objective> new_objectives;
+    for(const auto& o:image.value("objectives",json::array())) {
+        const size_t win=o.at("win").get<size_t>(),lose=o.at("lose").get<size_t>();
+        if(campaign.empty() || win>=new_texts.size() || lose>=new_texts.size())throw std::runtime_error("objectives：只有战役关卡能写，或文字引用越界");
+        new_objectives.push_back({campaign,o.at("scene").get<unsigned>(),uint16_t(text_first+base+win),uint16_t(text_first+base+lose)});
+    }
+    for(auto& o:new_objectives)library.objectives.push_back(std::move(o));
     for(const auto& p:new_patches)library.patches.push_back(p);
     for(auto& c:new_checks)library.checks.push_back(std::move(c));
     for(auto& e:new_events)library.events.push_back(std::move(e));
@@ -437,8 +474,41 @@ inline Library collect(const std::vector<mods::Package>& packages,const std::str
 // page of blanks (glyph 0) about as long as the Japanese line, up to three rows of 14, so
 // the original types and waits on it as on its own; the native reader shows the line
 // (native_dialogue.cpp, story_record()). An empty page passes without being read.
+// The ROM font's glyph of one character (native_dialogue.cpp fills it from its glyph table),
+// for the records a choice and an objective need: the original draws their glyphs itself
+// in the Japanese original image mode, and the text overlay counts their ink elsewhere.
+inline std::function<std::optional<uint16_t>(const std::string&)>& glyph_of(){static std::function<std::optional<uint16_t>(const std::string&)> f;return f;}
+inline void encode_japanese(std::vector<uint8_t>& bytes,const std::string& text) {
+    const auto push=[&](uint16_t code){bytes.push_back(uint8_t(code>>8));bytes.push_back(uint8_t(code));};
+    const uint16_t fallback=glyph_of()?glyph_of()("・").value_or(0x0001):0x0001;
+    for(size_t i=0;i<text.size();) {
+        size_t n=1;const auto c=uint8_t(text[i]);
+        if(c>=0xF0)n=4;else if(c>=0xE0)n=3;else if(c>=0xC0)n=2;
+        const auto one=text.substr(i,n);i+=n;
+        push(glyph_of()?glyph_of()(one).value_or(fallback):fallback);
+    }
+}
 inline std::vector<uint8_t> text_record(const Text& text) {
-    char header[9];std::snprintf(header,sizeof header,"%03u00004",text.speaker);
+    if(text.kind==TextKind::choice || text.kind==TextKind::objective) {
+        // As the original's own: a choice is its options a row each, each after a blank (the
+        // cursor bar's room), header 02500004; an objective one row, header 00040000.
+        const char* header=text.kind==TextKind::choice?"02500004":"00040000";
+        std::vector<uint8_t> bytes(header,header+8);
+        const auto& ja=text.lines.at("ja");
+        size_t from=0;
+        for(bool first=true;;first=false) {
+            const auto at=ja.find("<BR>",from);
+            if(!first){bytes.push_back(0xFF);bytes.push_back(0xFE);}
+            if(text.kind==TextKind::choice){bytes.push_back(0);bytes.push_back(0);}
+            encode_japanese(bytes,ja.substr(from,at==std::string::npos?std::string::npos:at-from));
+            if(at==std::string::npos)break;
+            from=at+4;
+        }
+        bytes.push_back(0xFF);bytes.push_back(0xFF);
+        return bytes;
+    }
+    // A battle quote's header is the original's 20032 kind (record 5813 on).
+    char header[9];std::snprintf(header,sizeof header,text.kind==TextKind::battle?"%03u20032":"%03u00004",text.speaker);
     std::vector<uint8_t> bytes(header,header+8);
     const auto& ja=text.lines.at("ja");
     size_t length=0;
@@ -638,6 +708,19 @@ inline void set_campaign(const std::string& id,const fs::path& story) {
 }
 inline bool here(const Event& e){const auto& s=state();return int(e.scene)==s.scene && e.campaign==s.campaign;}
 
+// Game thread, 8008C9C0 (a text into a body slot): the map menu's 作戦目的 asks for 5694 /
+// 5720 when the stage's opening wrote 3D65 127,127; a campaign stage with its own objective
+// gets its text there instead. Otherwise the id as it is.
+inline uint16_t objective_text(const uint8_t* ram,uint16_t id) {
+    if(id!=objective_win && id!=objective_lose)return id;
+    const auto& s=state();
+    if(s.campaign.empty())return id;
+    const unsigned scene=read(ram,scene_byte,1);
+    for(const auto& o:s.library.objectives)
+        if(o.campaign==s.campaign && o.scene==scene)return id==objective_win?o.win:o.lose;
+    return id;
+}
+
 // Game thread, after a change: the copy the debug interface reads.
 inline void publish() {
     auto& s=state();
@@ -808,6 +891,31 @@ inline void decide(uint8_t* ram,const View& v) {
         write16(ram,region+uint32_t((header_words+at)*2),evaluate(test,s.library.events[*s.running].package,v)?1:0);
     if(!s.campaign.empty())for(const auto& c:s.library.checks)
         if(int(c.scene)==s.scene && c.package==s.campaign)write16(ram,event_block+c.at,evaluate(c.test,c.package,v)?1:0);
+}
+
+// Battle overlay, 80222B14 (a generic quote drawn into a slot): the voice part of the
+// speaking side (combatant record +2) and the context. A battle line of this scene whose
+// speaker has that voice (D_800CA9C4[pilot]) and whose opponent, if it names one, is the
+// other side of the battle (engine+0x9A0 / +0x9A4) takes the slot's place.
+inline constexpr uint32_t voice_table=0x800CA9C4;
+inline std::optional<uint16_t> battle_quote(const uint8_t* ram,unsigned voice,unsigned context,const View& v) {
+    auto& s=state();
+    if(s.scene<0 || context>8)return std::nullopt;
+    for(const auto& q:s.library.quotes) {
+        if(int(q.scene)!=s.scene || q.campaign!=s.campaign || !(q.moments&(1u<<context)))continue;
+        if(int16_t(read(ram,voice_table+q.who*2,2))!=int(voice))continue;
+        if(q.against) {
+            const unsigned other=v.battle_a==q.who?v.battle_b:v.battle_b==q.who?v.battle_a:0;
+            if(other!=q.against)continue;
+        }
+        const auto key="#quote/"+q.package+"/"+q.id;
+        if(q.once && s.fired.count(key))continue;
+        if(q.test && !evaluate(*q.test,q.package,v))continue;
+        if(q.once)s.fired.insert(key);
+        log({{"action","quote"},{"quote",q.package+"/"+q.id},{"text",q.text},{"context",context}});
+        return q.text;
+    }
+    return std::nullopt;
 }
 
 inline bool eligible(const Event& e,const std::set<std::string>& fired,const View& v) {

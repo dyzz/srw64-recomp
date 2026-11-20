@@ -225,6 +225,51 @@ class WebConditionTests(WebCompilerTests):
                 self.write({"one": {"units": {"place": [{**place[1], "ai": None, "drop": None, "entry": 0, **row}]}, "events": [self.opening()]}})
                 self.assertIn(said, self.web().get("error", ""))
 
+    def test_new_choice_text_and_objective(self):
+        opening = self.opening({"op": "3D65", "args": [127, 127]},
+                               {"choose": {"text": {"ja": ["進む", "戻る"], "zh-Hans": ["前进", "后退"]}, "options": [[{"bgm": 3}], [{"bgm": 4}]]}})
+        self.write({"one": {"objective": {"win": {"ja": "敵の全滅", "zh-Hans": "全灭敌人"}, "lose": {"ja": "母艦の撃墜", "en": "The mothership falls"}},
+                            "events": [opening, {"id": "a", "when": {"turn": {"turn": 2}},
+                                                 "do": [{"choose": {"text": {"ja": ["はい", "いいえ", "どちらでも"]}, "options": [[], [], []]}}]}]}})
+        out = self.web()
+        self.assertNotIn("error", out, out)
+        story = out["story"]
+        kinds = [(t.get("kind"), t["lines"].get("zh-Hans") or t["lines"]["ja"]) for t in story["texts"]]
+        self.assertEqual(kinds, [("choice", "はい<BR>いいえ<BR>どちらでも"), ("choice", "前进<BR>后退"), ("objective", "全灭敌人"), ("objective", "母艦の撃墜")])
+        self.assertEqual(story["objectives"], [{"scene": 1, "win": 2, "lose": 3}])
+        event = story["events"][0]
+        self.assertEqual(event["listing"][0], "3D44 0,3,0")
+        self.assertEqual((event["words"][3], event["texts"]), (0xFFFE, [[3, 0]]))   # the third operand waits for the host's number
+        block = bytes.fromhex(out["campaign"]["stages"][0]["image"]["events_hex"])
+        choice = [p for p in story["patches"] if p.get("text") == 1][0]
+        self.assertEqual((block[choice["at"]:choice["at"] + 2], block[choice["at"] - 6:choice["at"] - 4]), (b"\xff\xfe", b"\x3d\x44"))
+        for row, said in [({"objective": {"win": {"ja": "勝"}, "lose": {"ja": "負"}}, "events": [self.opening()]}, "3D65"),
+                          ({"events": [self.opening({"choose": {"text": {"ja": ["一つだけ"]}, "options": [[], []]}})]}, "2 个选项文字"),
+                          ({"events": [self.opening({"choose": {"text": {"zh-Hans": ["甲", "乙"]}, "options": [[], []]}})]}, "要有 ja")]:
+            with self.subTest(said=said):
+                self.write({"one": row})
+                self.assertIn(said, self.web().get("error", ""))
+
+    def test_battle_lines_and_silhouettes(self):
+        out = self.events({"id": "a", "when": {"turn": {"turn": 2}}, "do": [{"say": 36, "silhouette": True, "text": {"ja": "「……」"}}]})
+        self.assertEqual(out["story"]["texts"][0]["speaker"], 324)                  # アムロ's silhouette, 「???」
+        self.write({"one": {"events": [self.opening()], "battle_lines": [
+            {"id": "duel", "who": 28, "against": 287, "when": ["attack", "evade"], "text": {"ja": "「行くわよ！」", "zh-Hans": "“上了！”"}, "once": True},
+            {"who": 287, "when": "defeated", "text": {"ja": "「馬鹿な……」"}, "if": {"turn": {"to": 3}}}]}})
+        out = self.web()
+        self.assertNotIn("error", out, out)
+        story = out["story"]
+        self.assertEqual([(t["speaker"], t.get("kind")) for t in story["texts"]], [(28, "battle"), (287, "battle")])
+        self.assertEqual(story["quotes"], [
+            {"id": "one.duel", "scene": 1, "who": 28, "against": 287, "moments": [0, 5], "text": 0, "once": True},
+            {"id": "one.line-2", "scene": 1, "who": 287, "against": 0, "moments": [1], "text": 1, "once": False, "test": {"turn": [0, 2]}}])
+        for row, said in [({"battle_lines": [{"who": 28, "when": "dance", "text": {"ja": "あ"}}]}, "when 只能是"),
+                          ({"battle_lines": [{"who": 28, "when": "attack", "text": {"zh-Hans": "啊"}}]}, "至少有 ja"),
+                          ({"events": [self.opening({"say": 28, "silhouette": True, "text": {"ja": "あ"}})]}, "没有剪影")]:
+            with self.subTest(said=said):
+                self.write({"one": {"events": [self.opening()], **row}})
+                self.assertIn(said, self.web().get("error", ""))
+
     def test_what_is_wrong(self):
         for row, said in [
             ({"when": {"reach": {"who": 1, "side": "enemy", "area": [1, 1, 2, 2]}}}, "who（人物号）或 side"),

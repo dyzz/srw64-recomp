@@ -594,6 +594,8 @@ void resident_func_8008D748(uint8_t* rdram, recomp_context* ctx) {
 }
 void resident_func_8008C9C0(uint8_t* rdram, recomp_context* ctx) {
     const unsigned slot = uint8_t(ctx->r4);
+    // A campaign stage's own 作戦目的 (story_mod.hpp objective_text): a2 is the text's id.
+    ctx->r6 = int32_t(story::objective_text(rdram, uint16_t(ctx->r6)));
     srw64_original_dialogue_load(rdram, ctx);
     if (srw64_game_hooks.text_loaded) srw64_game_hooks.text_loaded(rdram, slot);
 }
@@ -842,6 +844,15 @@ void load_00121560_func_80222B14(uint8_t* rdram, recomp_context* ctx) {
     last_voice = voice; last_context = context;
     last_drawn = int16_t(srw64::guest::read(rdram, slot, 2));
     if (!srw64::guest::valid(slot, 4)) return;
+    // A story MOD's battle line (story_mod.hpp battle_quote), unless a debug quote is forced.
+    bool forcing = false;
+    for (auto& p : pending) forcing = forcing || p.load() >= 0;
+    if (!forcing)
+        if (const auto line = story::battle_quote(rdram, unsigned(voice), unsigned(context), story_view(rdram, ctx))) {
+            srw64::guest::write16(rdram, slot, *line);
+            srw64::guest::write16(rdram, slot + 2, 0xFFFF);
+            return;
+        }
     for (auto& p : pending) {
         const int forced = p.load();
         if (forced < 0 || !in_segment(voice, context, forced)) continue;

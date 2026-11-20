@@ -149,7 +149,7 @@ export function compileCampaign(source: CampaignSource): { campaign: Obj; story:
     stages[key] = { ...stage };
   }
   for (const [key, stage] of Object.entries(stages)) {
-    const extra = Object.keys(stage).filter((k) => !['schema', 'title', 'scene', 'map', 'note', 'units', 'setup', 'events', 'raw_events'].includes(k)).sort();
+    const extra = Object.keys(stage).filter((k) => !['schema', 'title', 'scene', 'map', 'note', 'units', 'setup', 'events', 'raw_events', 'objective', 'battle_lines'].includes(k)).sort();
     if (extra.length) throw new CompileError(`关卡 ${key}：不认识的字段 ${list(extra)}`);
     if (!isInt(stage.map) && typeof stage.map !== 'string') throw new CompileError(`关卡 ${key}：要写 map（原版地图号，或 maps/ 下自己的地图名）`);
   }
@@ -175,7 +175,18 @@ export function compileCampaign(source: CampaignSource): { campaign: Obj; story:
     hosted.push(event);
   }
   const own = (eventId: string) => (id: string) => `${eventId.slice(0, eventId.indexOf('.'))}.${id}`;
-  const image = compileStory({ schema: 'srw64.story.v1', events: hosted }, scenes, own);
+  // A stage's battle lines: its scene, ids prefixed as its events' are.
+  const lines: Obj[] = [];
+  for (const [key, stage] of Object.entries(stages)) {
+    const rows = stage.battle_lines ?? [];
+    if (!Array.isArray(rows)) throw new CompileError(`关卡 ${key}：battle_lines 要是数组`);
+    rows.forEach((row: unknown, n: number) => {
+      if (!isObj(row)) throw new CompileError(`关卡 ${key}：battle_lines[${n}] 要是对象`);
+      if ('scene' in row) throw new CompileError(`关卡 ${key} 的战斗台词：不写 scene`);
+      lines.push({ ...row, id: `${key}.${row.id ?? `line-${n + 1}`}`, scene: scenes[key] });
+    });
+  }
+  const image = compileStory({ schema: 'srw64.story.v1', events: hosted, battle_lines: lines }, scenes, own);
   const known = new Set(image.events.map((e) => e.id as string));
   const texts: Line[] = image.texts;
 
@@ -189,10 +200,10 @@ export function compileCampaign(source: CampaignSource): { campaign: Obj; story:
     stage.map = built.like;
   }
 
-  const compiled: Obj[] = [], patches: Obj[] = [];
+  const compiled: Obj[] = [], patches: Obj[] = [], objectives: Obj[] = [];
   for (const [key, stage] of Object.entries(stages)) {
     const [native] = split[key];
-    const events: RawEvent[] = [], refs: [number, number[]][] = [], checks: [number, [number, Test][]][] = [];
+    const events: RawEvent[] = [], refs: [number, number[], Record<number, number>][] = [], checks: [number, [number, Test][]][] = [];
     for (const [when, row] of Object.entries(native)) {
       let builder: Builder;
       try {
@@ -205,7 +216,7 @@ export function compileCampaign(source: CampaignSource): { campaign: Obj; story:
       } catch (error) {
         throw new CompileError(`关卡 ${key} 的 ${when} 事件：${(error as Error).message}`);
       }
-      refs.push([events.length, builder.refs]);
+      refs.push([events.length, builder.refs, builder.refOperand]);
       checks.push([events.length, builder.checks]);
       // 3DD0 opens the section every context runs, as each of the original's events does.
       events.push({ name: when, type: NATIVE[when], header: [0, 0, 0, 0], commands: [{ op: 0x3DD0, args: [] }, ...builder.commands] });
@@ -233,10 +244,10 @@ export function compileCampaign(source: CampaignSource): { campaign: Obj; story:
     // The new lines of the three events: their place in the scene's event block holds
     // TEXT until the host, which numbers the lines, writes the number there.
     let block = stageImage.events_hex;
-    for (const [index, commands] of refs) {
+    for (const [index, commands, operands] of refs) {
       const event = stageImage.events[index];
       for (const command of commands) {
-        const at = event.offset + event.listing[command + 1].offset + 2;   // after 3DD0
+        const at = event.offset + event.listing[command + 1].offset + 2 + 2 * (operands[command] ?? 0);   // after 3DD0
         const text = parseInt(block.substr(at * 2, 4), 16);
         block = block.slice(0, at * 2) + TEXT.toString(16).toUpperCase() + block.slice(at * 2 + 4);
         patches.push({ scene: scenes[key], at, text });
@@ -252,6 +263,22 @@ export function compileCampaign(source: CampaignSource): { campaign: Obj; story:
       }
     }
     stageImage.events_hex = block;
+    // The stage's own 作戦目的: its opening writes 3D65 127,127, the host shows these two there.
+    if ('objective' in stage) {
+      const o = stage.objective;
+      if (!isObj(o) || Object.keys(o).sort().join(',') !== 'lose,win') throw new CompileError(`关卡 ${key}：objective 写 {"win": {"ja": …}, "lose": {"ja": …}}`);
+      const opening = stageImage.events.find((event) => event.type === 12)!;
+      if (!opening.listing.some((row) => row.opcode === '3D65' && row.operands[0] === 127 && row.operands[1] === 127))
+        throw new CompileError(`关卡 ${key}：写了 objective，开场要有 {"op": "3D65", "args": [127, 127]}`);
+      const text = (value: unknown, name: string) => {
+        if (!isObj(value) || !('ja' in value)) throw new CompileError(`关卡 ${key}：objective.${name} 写成 {"ja": …, "zh-Hans": …}，至少有 ja`);
+        for (const [locale, words] of Object.entries(value))
+          if (typeof words !== 'string' || !words.trim() || [...words].length > 30 || words.includes('<')) throw new CompileError(`关卡 ${key}：objective.${name}.${locale} 为空或超过 30 字`);
+        texts.push({ speaker: 0, lines: { ...value }, kind: 'objective' });
+        return texts.length - 1;
+      };
+      objectives.push({ scene: scenes[key], win: text(o.win, 'win'), lose: text(o.lose, 'lose') });
+    }
     if (key in custom) stageImage.custom_map = custom[key];
     const entry: Obj = { key, scene: scenes[key], title: stage.title ?? null, image: stageImage };
     const meta = source.meta?.[key];
@@ -288,5 +315,6 @@ export function compileCampaign(source: CampaignSource): { campaign: Obj; story:
   if (!(image.events.length || texts.length || patches.length)) return { campaign: result, story: null };
   image.campaign = id;
   if (patches.length) image.patches = patches;
+  if (objectives.length) image.objectives = objectives;
   return { campaign: result, story: image };
 }

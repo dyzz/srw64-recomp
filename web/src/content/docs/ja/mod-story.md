@@ -157,6 +157,8 @@ yourname.story/
 
 ## 確認とパッケージ化
 
+コンパイラーはサイトのステージエディターと同じもの（TypeScript）です。コマンドラインでは [Node.js](https://nodejs.org/) 23 以降が必要で、`python3` が自動で呼び出します。
+
 ```bash
 python3 tools/mods/story.py compile story/master.json -o out.json
 ```

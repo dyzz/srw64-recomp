@@ -157,6 +157,8 @@ yourname.story/
 
 ## 检查和打包
 
+编译器和官网的关卡编辑器是同一份（TypeScript），命令行要装 [Node.js](https://nodejs.org/) 23 或更新的版本，`python3` 会自动调用它。
+
 ```bash
 python3 tools/mods/story.py compile story/master.json -o out.json
 ```

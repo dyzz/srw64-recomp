@@ -14,7 +14,17 @@ const LOCALES = new Set(['ja', 'zh-Hans', 'zh-Hant', 'en', 'ko']);
 export const FLAG = /^[a-z0-9_-]{1,32}$/;
 
 type Obj = Record<string, any>;
-export type Line = { speaker: number | string; lines: Record<string, string> };
+// kind: a line (the default), a choice's options ("<BR>" between them) or a stage's own objective.
+export type Line = { speaker: number | string; lines: Record<string, string>; kind?: 'choice' | 'objective' | 'battle' };
+// The original's silhouettes: a character's portrait in the dark palette 609, named 「???」,
+// actors 317-353 (assets/original-data/records/actors.jsonl, by the portrait's pixels).
+export const SILHOUETTES: Record<number, number> = { 165: 317, 162: 318, 156: 319, 174: 320, 141: 321, 143: 322, 240: 323, 36: 324, 56: 325,
+  103: 326, 98: 327, 18: 328, 3: 329, 13: 330, 12: 331, 8: 332, 11: 333, 10: 334, 32: 335, 34: 336, 33: 337, 35: 338, 219: 339, 199: 340,
+  93: 341, 14: 342, 245: 343, 142: 344, 191: 349, 90: 350, 161: 351, 286: 352, 38: 353 };
+// When a battle quote is drawn (80222B14's context, docs/data/battle-quotes.md).
+export const QUOTE_MOMENTS: Record<string, number> = { attack: 0, defeated: 1, heavy: 2, damaged: 3, light: 4, evade: 5, no_effect: 6, no_ammo: 7, out_of_range: 8 };
+const QUOTE_LONGEST = 60;
+const CHOICE_LONGEST = 24;   // code points an option may have: one row of the choice window
 export type StoryEvent = Obj;
 export type StoryImage = { schema: string; events: StoryEvent[]; texts: Line[]; stage_info?: Obj[]; campaign?: string; patches?: Obj[] };
 
@@ -117,6 +127,7 @@ type Operand = number | [string, number | string];
 export class Builder {
   commands: Command[] = [];
   refs: number[] = [];                              // command indexes whose argument is a line
+  refOperand: Record<number, number> = {};          // ...when it is not their first operand
   like: [number, number][] = [];                    // (command index, pilot): a join's level, set by the host
   crew: Obj[] = [];
   builds: (number | string)[] = [];
@@ -163,7 +174,14 @@ export class Builder {
     if ('op' in row) { this.commands.push({ op: row.op, args: row.args ?? [] }); return; }
     if ('say' in row) {
       const mode = int(row.mode ?? 0, 'mode', 0, 5);
-      const index = this.line(row.say, row.text);
+      if (Object.keys(row).some((k) => !['say', 'text', 'mode', 'silhouette'].includes(k))) throw new CompileError('say 只写 say、text、mode、silhouette');
+      let speaker = row.say;
+      if (row.silhouette !== undefined && row.silhouette !== false) {
+        if (row.silhouette !== true) throw new CompileError('silhouette 写 true');
+        if (!isInt(speaker) || !(speaker in SILHOUETTES)) throw new CompileError(`人物 ${speaker} 原版没有剪影头像；有剪影的：${Object.keys(SILHOUETTES).join(', ')}`);
+        speaker = SILHOUETTES[speaker];
+      }
+      const index = this.line(speaker, row.text);
       this.refs.push(this.commands.length);
       this.op(0x3D3E + mode, index);
       return;
@@ -200,8 +218,21 @@ export class Builder {
     if ('choose' in row) {
       const value = row.choose;
       if (!isObj(value) || Object.keys(value).sort().join(',') !== 'options,text' || !Array.isArray(value.options) || value.options.length < 2 || value.options.length > 3)
-        throw new CompileError('choose 写 {"text": 原版选项文本号, "options": [[动作…], [动作…]]}，2–3 项');
-      this.op(0x3D44, 0, value.options.length, int(value.text, 'choose.text', 0, 0xC7FF));
+        throw new CompileError('choose 写 {"text": 原版选项文本号 或 {"ja": [选项…], …}, "options": [[动作…], [动作…]]}，2–3 项');
+      if (isObj(value.text)) {
+        // New text: the options by locale, one row each; the record is the host's (0xC800 up).
+        const lines: Record<string, string> = {};
+        for (const [locale, list] of Object.entries(value.text)) {
+          if (!LOCALES.has(locale)) throw new CompileError(`choose.text：不认识的语言 ${locale}`);
+          if (!Array.isArray(list) || list.length !== value.options.length || !list.every((o) => typeof o === 'string' && o.trim() && !o.includes('<') && codePoints(o) <= CHOICE_LONGEST))
+            throw new CompileError(`choose.text.${locale} 要写 ${value.options.length} 个选项文字（和 options 一样多），每个不超过 ${CHOICE_LONGEST} 字`);
+          lines[locale] = list.map((o: string) => o.trim()).join('<BR>');
+        }
+        if (!('ja' in lines)) throw new CompileError('choose.text 要有 ja（原版界面和缺译时用它）');
+        this.texts.push({ speaker: 0, lines, kind: 'choice' });
+        this.refs.push(this.commands.length); this.refOperand[this.commands.length] = 2;
+        this.op(0x3D44, 0, value.options.length, this.texts.length - 1);
+      } else this.op(0x3D44, 0, value.options.length, int(value.text, 'choose.text', 0, 0xC7FF));
       value.options.forEach((block: unknown, n: number) => { this.op(0x3E10 + n); this.actions(block); this.op(0x3E1D); });
       return;
     }
@@ -264,7 +295,7 @@ const ONCE = new Set(['downed', 'group_gone', 'reach']);
 export function compileStory(document: Obj, stages: Record<string, number> | null = null,
   prefixOf: (eventId: string) => (id: string) => string = () => (id) => id): StoryImage {
   if (!isObj(document) || document.schema !== 'srw64.story.v1') throw new CompileError('schema 要是 srw64.story.v1');
-  const extra = Object.keys(document).filter((k) => !['schema', 'events', 'stage_info'].includes(k)).sort();
+  const extra = Object.keys(document).filter((k) => !['schema', 'events', 'stage_info', 'battle_lines'].includes(k)).sort();
   if (extra.length) throw new CompileError(`不认识的字段 ['${extra.join("', '")}']`);
   const texts: Line[] = [];
   const events: StoryEvent[] = [];
@@ -296,7 +327,7 @@ export function compileStory(document: Obj, stages: Record<string, number> | nul
       const offsets = assembled.listing.map((entry) => entry.offset / 2 - 5);
       const levels = builder.like.map(([command, who]) => [offsets[command] + 2, who]);
       const numbers = builder.named.map(([command, operand, value, kind]) => [offsets[command] + 1 + operand, value, kind]);
-      const refs = builder.refs.map((command) => { const at = offsets[command] + 1; const ref = [at, words[at]]; words[at] = TEXT; return ref; });
+      const refs = builder.refs.map((command) => { const at = offsets[command] + 1 + (builder.refOperand[command] ?? 0); const ref = [at, words[at]]; words[at] = TEXT; return ref; });
       const event: StoryEvent = { id: row.id, scene: int(row.scene, 'scene', 0, 255), trigger: name, params, vars: variables, kills, kills_below: killsBelow };
       for (const k of ['roster', 'not_roster']) if (k in cond) event[k] = roster(cond[k], k);
       for (const k of ['flags', 'not_flags']) if (k in cond) event[k] = flags(cond[k], k);
@@ -314,7 +345,46 @@ export function compileStory(document: Obj, stages: Record<string, number> | nul
   }
   for (const event of events) for (const other of [...event.fired, ...event.not_fired])
     if (!ids.has(other)) throw new CompileError(`事件 ${event.id}：fired／not_fired 引用了不存在的事件 ${other}`);
+  const quotes = battleLines(document.battle_lines ?? [], texts, used, prefixOf);
   for (const other of used.fired) if (!ids.has(other)) throw new CompileError(`条件里的 fired 引用了不存在的事件 ${other}`);
   const info = 'stage_info' in document ? stageInfo(document.stage_info) : [];
-  return { schema: 'srw64.story-image.v1', events, texts, ...(info.length ? { stage_info: info } : {}) };
+  return { schema: 'srw64.story-image.v1', events, texts, ...(quotes.length ? { quotes } : {}), ...(info.length ? { stage_info: info } : {}) };
+}
+
+// Battle lines: in a stage's battles, `who` says `text` at these moments (against `against`,
+// any opponent without it), in place of the line the original would draw; the host swaps it
+// in when it draws a generic one (80222B14). `if` as an event's; `once` only the first time.
+function battleLines(rows: unknown, texts: Line[], used: Refs, prefixOf: (eventId: string) => (id: string) => string): Obj[] {
+  if (!Array.isArray(rows)) throw new CompileError('battle_lines 要是数组');
+  const ids = new Set<string>();
+  return rows.map((row, n) => {
+    const where = `battle_lines[${n}]`;
+    try {
+      if (!isObj(row)) throw new CompileError('要是对象');
+      const unknown = Object.keys(row).filter((k) => !['id', 'scene', 'who', 'against', 'when', 'text', 'if', 'once', 'note'].includes(k)).sort();
+      if (unknown.length) throw new CompileError(`不认识的字段 ['${unknown.join("', '")}']`);
+      if (typeof row.id !== 'string' || !row.id || ids.has(row.id)) throw new CompileError('每条要有不重复的 id');
+      ids.add(row.id);
+      const moments = (Array.isArray(row.when) ? row.when : [row.when]).map((m: unknown) => {
+        if (typeof m !== 'string' || !(m in QUOTE_MOMENTS)) throw new CompileError(`when 只能是 ${Object.keys(QUOTE_MOMENTS).join('、')}（可以是数组）`);
+        return QUOTE_MOMENTS[m];
+      });
+      const who = int(row.who, 'who', 0, 360);
+      const text = row.text;
+      if (!isObj(text) || !('ja' in text)) throw new CompileError('text 写成 {"ja": …, "zh-Hans": …}，至少有 ja');
+      for (const [locale, words] of Object.entries(text)) {
+        if (!LOCALES.has(locale)) throw new CompileError(`不认识的语言 ${locale}`);
+        if (typeof words !== 'string' || !words.trim() || codePoints(words) > QUOTE_LONGEST || words.includes('<')) throw new CompileError(`text.${locale} 为空或超过 ${QUOTE_LONGEST} 字`);
+      }
+      texts.push({ speaker: who, lines: { ...text }, kind: 'battle' });
+      const once = row.once ?? false;
+      if (typeof once !== 'boolean') throw new CompileError('once 是 true/false');
+      const quote: Obj = { id: row.id, scene: int(row.scene, 'scene', 0, 255), who, against: row.against === undefined ? 0 : int(row.against, 'against', 1, 360),
+        moments: [...new Set(moments)].sort(), text: texts.length - 1, once };
+      if (row.if !== undefined) quote.test = condition(row.if, used, prefixOf(row.id));
+      return quote;
+    } catch (error) {
+      throw new CompileError(`战斗台词 ${isObj(row) && row.id ? row.id : where}：${(error as Error).message}`);
+    }
+  });
 }

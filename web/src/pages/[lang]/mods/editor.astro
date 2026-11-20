@@ -111,6 +111,13 @@ const text = {
   cond_fired: t('事件已经发生', 'An event has happened'), cond_roster: t('部队里有', 'The roster has'), cond_route: t('主角路线', 'Protagonist'), cond_choice: t('上一个选项选了第几项', 'The last choice was'),
   cond_funds: t('资金', 'Funds'), cond_var: t('剧情变量', 'Story variable'),
   route0: t('布拉德', 'Brad'), route1: t('真奈美', 'Manami'), route2: t('阿克', 'Ark'), route3: t('赛莲', 'Selain'),
+  silhouette: t('剪影', 'Silhouette'), silhouetteHint: t('像原版那样只显示黑色剪影，名字是「???」；原版有剪影头像的人物才能选', 'shown as the original’s dark silhouette named “???”; only characters the original has one for'),
+  partQuotes: t('战斗台词', 'Battle lines'), addBattleLine: t('＋ 加一句战斗台词', '+ Add a battle line'), battleLine: t('战斗台词', 'Battle line'),
+  removeLine: t('删除这句', 'Remove this line'), quoteWho: t('谁说', 'Who'), quoteAgainst: t('对手', 'Against'), quoteWhen: t('什么时候', 'When'), quoteOnce: t('这一关只说一次', 'Once this stage'),
+  moment_attack: t('出手', 'attacking'), moment_defeated: t('被击坠', 'shot down'), moment_heavy: t('重伤', 'badly hit'), moment_damaged: t('中伤', 'hit'),
+  moment_light: t('轻伤', 'grazed'), moment_evade: t('回避', 'evading'), moment_no_effect: t('攻击无效', 'no effect'), moment_no_ammo: t('弹药／EN 不足', 'out of ammo or EN'), moment_out_of_range: t('射程外', 'out of range'),
+  battleLineHint: t('战斗演出里，在这些时候换掉原版这句话。一句最多 60 字。', 'In the battle scene, at these moments, in place of the original’s line. 60 characters at most.'),
+  battleLineNote: t('只有原版本来就有战斗台词的人物会说（新人物没有台词）。合体技对话等原版的条件台词出现时，可能仍是原版那句。', 'Only characters the original gives battle lines say them (a new character has none). Where the original has a conditional line, such as a combination attack’s talk, it may still be the original’s.'),
   stepIf: t('如果', 'If'), stepElse: t('否则', 'Otherwise'), stepEnd: t('如果结束', 'End if'),
   stepIfHint: t('在执行到这一步前判断。', 'Decided just before this step runs.'),
   within: t('限', 'by turn'), withinHint: t('回合内（0 不限）', '(0: any turn)'),
@@ -134,6 +141,8 @@ const text = {
   arrivalsHint: t('选「由剧情事件叫出来」的组，要在某个事件里加一步「登场」。', 'A group “brought on by a story event” needs a Bring on step in some event.'),
   objectiveTitle: t('作战目标', 'Objective'), objectiveNote: t('地图菜单「作战目标」里显示的文字', 'what the map menu’s Objective window shows'),
   objectiveWin: t('胜利条件', 'Winning'), objectiveLose: t('失败条件', 'Losing'), objectiveAuto: t('按上面的条件自动选', 'chosen from the rules'),
+  objectiveOwn: t('自己写', 'Write my own'), objectiveOwnHint: t('每句不超过 30 字。没写日文的用中文或英文那一句。', 'At most 30 characters each. Without Japanese, the Chinese or English is used.'),
+  choiceOwn: t('自己写选项文字', 'Write the options myself'), choiceOptionHint: t('（不超过 24 字）', ' (24 characters at most)'), addOption: t('＋ 加一项', '+ Add an option'),
   objectiveHint: t('只能从原版用过的说法里选；它只是显示，过关与失败看上面的条件。', 'Only the original’s own wordings; they are shown only, the rules above decide.'),
   afterTitle: t('过关以后', 'Once cleared'), afterNext: t('去下一关', 'Go to a stage'), afterChoice: t('让玩家选', 'The player chooses'),
   choiceText: t('选项文本号', 'Choice text number'), choiceHint: t('只能用原版已有的选项文本（如 18402）；新写的选项文字还不支持。', 'Only a choice text the original has (18402, for one); new choice texts are not supported yet.'),
@@ -154,6 +163,7 @@ const text = {
   err_groupNever: t('「{stage}」的第 {n} 组要由剧情事件叫出来，但没有事件让它登场', 'Group {n} of “{stage}” waits for a story event, and none brings it on'),
   err_emptyLine: t('「{stage}」有一句台词还没写', '“{stage}” has a line with nothing written'),
   err_unreached: t('没有哪一关通向「{stage}」', 'No stage leads to “{stage}”'),
+  err_emptyBattleLine: t('「{stage}」有一句战斗台词没写文字或没选时机', '“{stage}” has a battle line without text or a moment'),
   err_unbalanced: t('「{stage}」有「如果／否则／如果结束」没有配对', '“{stage}” has an If, Otherwise or End if that does not pair up'),
   err_areaOutside: t('「{stage}」有一个区域超出了地图', '“{stage}” has an area off the map'),
   errRuntime: t('出错了：{detail}', 'Something went wrong: {detail}'), errNotEditors: t('这个包不是用这个编辑器导出的', 'this package was not exported by this editor'),
@@ -233,6 +243,7 @@ const routes = text.routes.split('|');
   .editor .mini.file { cursor: pointer; display: inline-flex; align-items: center; }
   .editor .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
   .editor .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .editor .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-bottom: 8px; }
   .editor .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
   .editor .panel, .editor .step { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
   .editor .dot { width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--ink); font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }

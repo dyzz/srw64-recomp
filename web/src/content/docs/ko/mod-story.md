@@ -157,6 +157,8 @@ yourname.story/
 
 ## 검사와 묶기
 
+컴파일러는 사이트의 스테이지 편집기와 같은 것(TypeScript)입니다. 명령줄에서는 [Node.js](https://nodejs.org/) 23 이상이 필요하며, `python3`가 자동으로 호출합니다.
+
 ```bash
 python3 tools/mods/story.py compile story/master.json -o out.json
 ```
