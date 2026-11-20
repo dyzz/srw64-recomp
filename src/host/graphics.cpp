@@ -38,6 +38,7 @@
 #include "library.hpp"
 #include "settings_window.hpp"
 #include "debug_server.hpp"
+#include "web_link.hpp"
 #include "debug_ui.hpp"
 #include "ui/frontend.hpp"
 #endif
@@ -1818,6 +1819,7 @@ void srw64_update_window(void*) {
     srw64::library::prepare();
     srw64::settings_window::control(capture_directory);
     srw64::debug::service_main();
+    srw64::web_link::service();
     // A native page owns the keyboard: no F6/F8 and no Esc-to-quit meanwhile.
     const bool editing_name=srw64::battle_page::owns_input() || srw64::intermission_page::owns_input() || srw64::upgrade_page::owns_input() || srw64::parts_page::owns_input() || srw64::ability_page::owns_input() || srw64::swap_page::owns_input() || srw64::save_page::owns_input() || srw64::title_page::owns_input() || srw64::names::owns_input() || srw64::link_page::owns_input();
 #else

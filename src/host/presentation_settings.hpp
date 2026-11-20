@@ -127,6 +127,11 @@ void set_touch_customs(const touch_pad::Customs& customs);
 // it on for a run whatever is saved, and the switch then cannot turn it off.
 bool debug_interface();
 void set_debug_interface(bool on);
+// The web maker link (web_link.cpp, docs/design/unit-mod-web-tool.md W3): the site's unit MOD
+// maker may put a package to try in the game and start the battle viewer. About page, saved
+// as web_link, off by default.
+bool web_link();
+void set_web_link(bool on);
 bool debug_interface_forced();
 // Where it listens while on ("127.0.0.1:port") and the run directory, for the About page;
 // both empty while off. Set by debug_server.cpp.

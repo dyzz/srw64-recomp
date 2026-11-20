@@ -366,6 +366,8 @@ fs::path directory() {
     return dir && *dir?fs::path(dir):fs::path{};
 }
 
+fs::path trial_directory(){return directory().empty()?fs::path{}:directory()/".web-link";}
+
 std::vector<Package> installed(const Version& game) {
     std::lock_guard lock(mutex);
     if(directory().empty())return {};
@@ -378,14 +380,16 @@ std::vector<Package> installed(const Version& game) {
     }
     unpack_loose();
     adopt_folders();
-    std::vector<fs::path> folders;
-    for(const auto& item:fs::directory_iterator(directory(),error)) {
-        const auto name=item.path().filename().string();
-        if(item.is_directory(error) && !name.starts_with("."))folders.push_back(item.path());
-    }
-    std::sort(folders.begin(),folders.end());
-    std::vector<Package> packages;
-    for(const auto& folder:folders) {
+    const auto folders_in=[&](const fs::path& root) {
+        std::vector<fs::path> folders;
+        for(const auto& item:fs::directory_iterator(root,error)) {
+            const auto name=item.path().filename().string();
+            if(item.is_directory(error) && !name.starts_with("."))folders.push_back(item.path());
+        }
+        std::sort(folders.begin(),folders.end());
+        return folders;
+    };
+    const auto read=[&](const fs::path& folder) {
         Package p;
         p.folder=folder;
         if(!fs::is_regular_file(folder/"mod.json",error))p.problem={"no_manifest",""};
@@ -399,10 +403,60 @@ std::vector<Package> installed(const Version& game) {
             }
         }
         p.contents=summarize(folder);
-        packages.push_back(std::move(p));
-    }
+        return p;
+    };
+    std::vector<Package> packages;
+    for(const auto& folder:folders_in(directory()))packages.push_back(read(folder));
+    // The web maker's package to try stands in for an installed one of its id.
+    if(fs::is_directory(trial_directory(),error))
+        for(const auto& folder:folders_in(trial_directory())) {
+            auto p=read(folder);
+            p.trial=true;
+            std::erase_if(packages,[&](const Package& q){return q.id()==p.id();});
+            packages.push_back(std::move(p));
+        }
     listed=packages;listed_stamp=folder_stamp();
     return resolve(std::move(packages),read_state(),game);
+}
+
+InstallResult install_trial(const fs::path& source) {
+    InstallResult result;
+    if(directory().empty()){result.problem={"no_folder",""};return result;}
+    std::error_code error;
+    const auto root=trial_directory();
+    fs::create_directories(root,error);
+    std::random_device random;
+    const auto staging=root/(".installing-"+stamp()+"-"+std::to_string(random()%100000));
+    result=unpack(source,staging,false);
+    if(!result.ok){fs::remove_all(staging,error);return result;}
+    if(result.voices && !copy_package(source,staging/voice_archive)) {
+        fs::remove_all(staging,error);
+        result.ok=false;result.problem={"write",voice_archive};
+        return result;
+    }
+    std::lock_guard lock(mutex);
+    // One package to try at a time: the one before goes (its voices' archive closed first).
+    for(const auto& item:fs::directory_iterator(root,error)) {
+        const auto name=item.path().filename().string();
+        if(!item.is_directory(error) || name.starts_with("."))continue;
+        close_archive(item.path()/voice_archive);
+        fs::remove_all(item.path(),error);
+    }
+    fs::rename(staging,root/result.id,error);
+    if(error){fs::remove_all(staging,error);result.ok=false;result.problem={"write",result.id};return result;}
+    listed.reset();
+    ++changes;
+    return result;
+}
+
+void clear_trial() {
+    std::lock_guard lock(mutex);
+    if(directory().empty())return;
+    std::error_code error;
+    if(!fs::exists(trial_directory(),error))return;
+    fs::remove_all(trial_directory(),error);
+    listed.reset();
+    ++changes;
 }
 
 InstallResult install(const fs::path& source) {

@@ -236,6 +236,8 @@ if(SRW64_ENABLE_RT64)
     endif()
     # Debug interface (docs/guide/debug-interface.md), inert unless SRW64_DEBUG=1.
     target_sources(srw64-gfx-host PRIVATE debug_server.cpp debug_transport.cpp)
+    # The web maker link (docs/design/unit-mod-web-tool.md W3), off unless the About page turns it on.
+    target_sources(srw64-gfx-host PRIVATE web_link.cpp)
     # Display list statistics for the PS Vita study (docs/design/psv-port.md), with SRW64_GBI_STATS.
     target_sources(srw64-gfx-host PRIVATE gbi_stats.cpp)
     if(WIN32)
@@ -358,7 +360,7 @@ if(SRW64_GL_ONLY)
         sprite_text.cpp ui_text.cpp title_page.cpp battle_viewer.cpp move_jump.cpp move_range.cpp enemy_cycle.cpp unit_name.cpp
         native_name_entry.cpp "${SRW64_ROOT}/src/native/ui/frontend.cpp" "${SRW64_ROOT}/src/native/ui/presentation_settings.cpp"
         update_check.cpp update_http.cpp hd_prepare.cpp text_update.cpp console_log.cpp bug_report.cpp stall_watchdog.cpp
-        debug_server.cpp debug_transport.cpp gbi_stats.cpp
+        debug_server.cpp debug_transport.cpp web_link.cpp gbi_stats.cpp
         link_page.cpp battle_page.cpp intermission_page.cpp upgrade_page.cpp parts_page.cpp ability_page.cpp swap_page.cpp
         cheats.cpp save_page.cpp save_store.cpp autosave.cpp campaign_switch.cpp library.cpp stage_info.cpp
         rom_art.cpp legacy.cpp quick_load.cpp mod_library.cpp music.cpp "${SRW64_ROOT}/src/native/ui/window_test_control.cpp"

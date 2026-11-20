@@ -26,6 +26,7 @@
 #include "base_fixes.hpp"
 #include "upgrade_rules.hpp"
 #include "mod_data.hpp"
+#include "native_intro.hpp"
 #include "upgrade_refund.hpp"
 #include "upgrade_page.hpp"
 #include "parts_carry.hpp"
@@ -360,6 +361,10 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
         call(resident_func_800836CC,0);
         call(resident_func_80080188,1);call(resident_func_8007F510,0x800801A4,0,1);
     }
+    // On the title the game loads nothing, and the packages are read again on loads (mod_data
+    // refresh): a package the web maker link just put in (web_link.cpp) is read here, before
+    // the viewer starts with it.
+    if(const int major=srw64::intro::title_major();major==2 || major==3)srw64::mod_data::refresh(ram);
     if(srw64_game_hooks.viewer_start) {
         // The battle viewer: a song to listen to (or the title's back), or a battle with
         // its song through the title overlay's own demo start (801CA230..801CA250): mode

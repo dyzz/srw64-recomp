@@ -620,6 +620,11 @@ inline void sync_resident(uint8_t* ram,const std::vector<std::pair<uint32_t,uint
     for(const auto& [at,v]:after)if(inside(at)){write(at,v);now.insert(at);}
     for(const auto& [at,v]:before)if(inside(at) && !now.count(at) && at<rom.size())write(at,rom[at]);
 }
+// Whether the packages as they are now have been read (refresh caught up with an install).
+inline bool current() {
+    auto& s=state();
+    return s.revision==mods::revision() && s.game==mods::game_version();
+}
 inline void refresh(uint8_t* ram=nullptr) {
     auto& s=state();
     if(s.rom.empty())return;

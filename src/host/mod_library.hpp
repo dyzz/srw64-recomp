@@ -194,6 +194,7 @@ struct Package {
     Contents contents;
     bool enabled{true};
     bool active{};                      // enabled and every check passed
+    bool trial{};                       // the web maker's package to try (trial_directory)
     std::string id() const {return manifest?manifest->id:folder.filename().string();}
 };
 
@@ -394,6 +395,13 @@ InstallResult install(const fs::path& source);
 bool set_enabled(const std::string& id,bool on);
 // Moves the package to <mods>/.trash.
 bool remove(const std::string& id);
+// The web maker's package to try (web_link.cpp, docs/design/unit-mod-web-tool.md W3): kept in
+// <mods>/.web-link/<id>/, listed with the player's packages and on, in place of an installed
+// package of the same id, never in mods.json; one at a time, the one before replaced. The
+// folder is emptied when the game starts (clear_trial).
+fs::path trial_directory();
+InstallResult install_trial(const fs::path& source);
+void clear_trial();
 // Moves on every install, switch and removal, so readers of the packages know to look again.
 unsigned revision();
 // The game's version, for the packages' "game" requirement (the window thread sets it).

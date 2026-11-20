@@ -606,6 +606,7 @@ static int run_host(int argc, char** argv) {
     cfg.project_version = {0, 0, 1, "cpu-probe"};
     srw64_set_capture_directory(output_dir);
     srw64::debug::start(output_dir, {{"interactive", interactive}, {"max_vis", max_vis}, {"variant", variant->key}});
+    srw64::mods::clear_trial();   // the web maker's package to try lasts one run (web_link.cpp)
     srw64::app::boot_step("dialogue load");
     // Packages placed in mods/ as files unpack on the first listing, here (the language
     // packages): minutes for a voice package on a Switch, which shows the percents.

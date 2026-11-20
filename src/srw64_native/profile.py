@@ -72,6 +72,8 @@ UI_KEYS |= {"settings_mod_voice", "settings_mod_voice_on", "settings_mod_voice_o
             "settings_mod_voice_wait", "settings_mod_voice_wait_on", "settings_mod_voice_wait_off", "settings_mod_voice_wait_note"}
 UI_KEYS |= {"settings_dialogue_hints", "settings_dialogue_hints_auto", "settings_dialogue_hints_always", "settings_dialogue_hints_note"}
 UI_KEYS |= {"settings_dialogue_font_size", "settings_dialogue_font_size_note"}
+# The web maker link switch on the About page and its question (settings web_link, web_link.hpp).
+UI_KEYS |= {"settings_web_link", "settings_web_link_on", "settings_web_link_off", "settings_web_link_note", "settings_web_link_status", "settings_web_link_failed", "web_link_ask_title", "web_link_ask_text", "web_link_ask_note", "web_link_ask_yes", "web_link_ask_no", "web_link_not_title", "web_link_busy"}
 # The debug interface switch on the About page (settings debug_interface).
 UI_KEYS |= {"settings_debug", "settings_debug_on", "settings_debug_off", "settings_debug_note", "settings_debug_note_android", "settings_debug_forced",
             "settings_debug_status", "settings_debug_run", "settings_debug_copy", "debug_interface_notice"}
