@@ -303,6 +303,25 @@ int main(int argc,char** argv) {
                 mod_units::Bytes bo;mod_units::Taken to;
                 check(!mod_units::parse(outside,"pkg",mod_units::assign({{"pkg",outside}}),rom,{},bo,to).empty(),"an original unit as a form is refused");
             }
+            // A combination attack (mod_combos.hpp): the record's combination bit, the units,
+            // their component weapons and the multiplier.
+            {
+                const json duo=json::parse(R"({"schema":"srw64.new-units.v2",
+                    "weapons":{"duo":{"copy":878,"combination":{"units":["@z",228],"parts":[198,899],"multiplier":1.6,"pilots":[["@hero",166]]}}},
+                    "units":{"z":{"copy":48,"weapons":[193,"@duo"]}},"pilots":{"hero":{"copy":133}}})");
+                const auto nd=mod_units::assign({{"pkg",duo}});
+                mod_units::Bytes bd;mod_units::Taken td;
+                {const auto why=mod_units::parse(duo,"pkg",nd,rom,{},bd,td);if(!why.empty())std::fprintf(stderr,"%s\n",why.c_str());check(why.empty(),"a combination attack");}
+                const unsigned w=nd.weapons.at("pkg@duo"),z=nd.units.at("pkg@z");
+                check(bd.at(tw::row(tw::weapons,w)+0xF)&0x02,"its record's combination bit");
+                check(bd.at(tw::row(tw::weapons,w)+0xE)==0,"no upgrade type, as the original's");
+                const auto& c=td.combinations.at(w);
+                check((c.units==std::vector<unsigned>{z,228}) && (c.parts==std::vector<unsigned>{198,899}) && std::abs(c.multiplier-1.6f)<1e-6f &&
+                      (c.pilots==std::vector<std::vector<unsigned>>{{nd.pilots.at("pkg@hero"),166}}),"its units, parts, multiplier and pilots");
+                json short_parts=duo;short_parts["weapons"]["duo"]["combination"]["parts"]={198};
+                mod_units::Bytes bs;mod_units::Taken ts;
+                check(!mod_units::parse(short_parts,"pkg",mod_units::assign({{"pkg",short_parts}}),rom,{},bs,ts).empty(),"a part for each unit");
+            }
             json far=five;far["units"]["final"]["work"]=25;
             mod_units::Bytes b7;mod_units::Taken t7;
             check(!mod_units::parse(far,"pkg",mod_units::assign({{"pkg",far}}),rom,{},b7,t7).empty(),"a work past the original's 25");

@@ -245,6 +245,8 @@ NATIVE_HOOKS = {
     "resident_func_80085CD4": "srw64_original_slot_headers",
     "load_000AB160_func_801E977C": "srw64_original_combine_check",
     "load_000AB160_func_8020178C": "srw64_original_combo_locks",
+    # EN and ammo after an attack: a package's combination attack lists its participants first (mod_combos.hpp).
+    "load_000AB160_func_801FC83C": "srw64_original_battle_spend",
     "resident_func_800A74D4": "srw64_original_combine_parts",
     "load_0008F4B0_func_801D6FF4": "srw64_original_link_open",
     "load_0008F4B0_func_801D70FC": "srw64_original_link_step",

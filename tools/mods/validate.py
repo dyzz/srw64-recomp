@@ -695,13 +695,31 @@ def new_units_problem(document, files: set[str] | None = None) -> str:
         where = f"weapons.{key}"
         if not isinstance(entry, dict):
             return f"{where}：要是对象"
-        unknown = set(entry) - {"copy", "animation", "inherits_from"}
+        unknown = set(entry) - {"copy", "animation", "inherits_from", "combination"}
         if unknown:
-            return f"{where}：未知字段 {sorted(unknown)[0]}（copy、animation、inherits_from）"
+            return f"{where}：未知字段 {sorted(unknown)[0]}（copy、animation、inherits_from、combination）"
         if not _weapon_or_new(entry.get("copy")):
             return f"{where}.copy：要写照抄的武器（原版武器号或 @名字）"
         if "inherits_from" in entry and not _weapon_or_new(entry["inherits_from"]):
             return f"{where}.inherits_from：要是武器号或 @名字"
+        # A combination attack (src/host/mod_units.hpp, mod_combos.hpp).
+        if "combination" in entry:
+            c = entry["combination"]
+            if not isinstance(c, dict) or set(c) - {"units", "parts", "multiplier", "pilots"}:
+                return f'{where}.combination：要写 {{"units": [2–5 台], "parts": [每台的组成武器], "multiplier": 倍率}}'
+            units, parts = c.get("units"), c.get("parts")
+            if not isinstance(units, list) or not 2 <= len(units) <= 5 or not all(_unit_or_new(u) for u in units) \
+                    or len({json.dumps(u) for u in units}) != len(units):
+                return f"{where}.combination.units：要是 2–5 台不重复的机体号或 @名字"
+            if not isinstance(parts, list) or len(parts) != len(units) or not all(_weapon_or_new(w) for w in parts):
+                return f"{where}.combination.parts：每台参加机体写一件组成武器，顺序和 units 一样"
+            m = c.get("multiplier", 1.5)
+            if isinstance(m, bool) or not isinstance(m, (int, float)) or not 0.5 <= m <= 5:
+                return f"{where}.combination.multiplier：要是 0.5–5 的数"
+            pilots = c.get("pilots", [[0]])
+            if not isinstance(pilots, list) or not pilots or not all(
+                    isinstance(row, list) and 1 <= len(row) <= 4 and all(_int_in(i, 0, 511) or _reference(i) for i in row) for row in pilots):
+                return f"{where}.combination.pilots：要写人物组合的数组，每组 1–4 个人物"
         animation = entry.get("animation", {"copy": entry["copy"]})
         if not isinstance(animation, dict):
             return f"{where}.animation：要是 {{\"copy\": 武器}} 或整条记录"

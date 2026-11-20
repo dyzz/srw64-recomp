@@ -169,6 +169,11 @@ struct Taken {
     std::map<unsigned,int> works;            // a new unit -> its work in the Library (text 60 + it)
     // Form families (mod_forms.hpp): the base form -> every form of the family, the base first.
     std::map<unsigned,std::vector<unsigned>> forms;
+    // A new weapon that is a combination attack (mod_combos.hpp): the units taking part (any of
+    // them with the weapon in its list leads), each one's component weapon, the multiplier
+    // of their average power, and the pilot pairings of which one must be present.
+    struct Combination { std::vector<unsigned> units,parts; float multiplier=1.5f; std::vector<std::vector<unsigned>> pilots; };
+    std::map<unsigned,Combination> combinations;
     // New characters (docs/design/unit-mod-kit.md §5.4): the character each copies (its records,
     // portrait, song, names) and the one whose battle quotes it speaks.
     std::map<unsigned,unsigned> pilot_copies,voices;
@@ -351,7 +356,7 @@ inline std::string parse(const json& document,const std::string& package,const N
         const unsigned n=number->second;
         if(!entry.is_object())return where+"：要是对象";
         for(const auto& [field,_]:entry.items())
-            if(field!="copy" && field!="animation" && field!="inherits_from")return where+"：未知字段 "+field+"（copy、animation、inherits_from）";
+            if(field!="copy" && field!="animation" && field!="inherits_from" && field!="combination")return where+"：未知字段 "+field+"（copy、animation、inherits_from、combination）";
         const auto source=resolve(entry.value("copy",json()),package,numbers,Of::weapon);
         if(!source || *source==n)return where+".copy：要写照抄的武器（原版武器号或 @名字）";
         t.weapon_copies[n]=*source;
@@ -367,6 +372,50 @@ inline std::string parse(const json& document,const std::string& package,const N
             const auto from=resolve(entry["inherits_from"],package,numbers,Of::weapon);
             if(!from)return where+".inherits_from：要是武器号或 @名字";
             weapon_inherits[n]=*from;
+        }
+        if(entry.contains("combination")) {
+            const auto& c=entry["combination"];
+            const std::string why=where+".combination：要写 {\"units\": [2–5 台], \"parts\": [每台的组成武器], \"multiplier\": 倍率}";
+            if(!c.is_object())return why;
+            for(const auto& [k,_]:c.items())if(k!="units" && k!="parts" && k!="multiplier" && k!="pilots")return why;
+            if(!c.contains("units") || !c["units"].is_array() || c["units"].size()<2 || c["units"].size()>5)return why;
+            if(!c.contains("parts") || !c["parts"].is_array() || c["parts"].size()!=c["units"].size())return where+".combination.parts：每台参加机体写一件组成武器，顺序和 units 一样";
+            Taken::Combination combination;
+            for(const auto& u:c["units"]) {
+                const auto found=resolve(u,package,numbers,Of::unit);
+                if(!found || std::find(combination.units.begin(),combination.units.end(),*found)!=combination.units.end())
+                    return where+".combination.units：要是不重复的机体号或 @名字";
+                combination.units.push_back(*found);
+            }
+            for(const auto& w:c["parts"]) {
+                const auto found=resolve(w,package,numbers,Of::weapon);
+                if(!found)return where+".combination.parts："+w.dump()+" 不是武器号或 @名字";
+                combination.parts.push_back(*found);
+            }
+            if(c.contains("multiplier")) {
+                if(!c["multiplier"].is_number() || c["multiplier"].get<double>()<0.5 || c["multiplier"].get<double>()>5)return where+".combination.multiplier：要是 0.5–5 的数";
+                combination.multiplier=c["multiplier"].get<float>();
+            }
+            if(c.contains("pilots")) {
+                if(!c["pilots"].is_array() || c["pilots"].empty())return where+".combination.pilots：要写人物组合的数组，如 [[184, 185]]";
+                for(const auto& row:c["pilots"]) {
+                    if(!row.is_array() || row.empty() || row.size()>4)return where+".combination.pilots：每组 1–4 个人物";
+                    std::vector<unsigned> ids;
+                    for(const auto& id:row) {
+                        const auto found=resolve(id,package,numbers,Of::pilot);
+                        if(!found)return where+".combination.pilots："+id.dump()+" 不是人物号或 @名字";
+                        ids.push_back(*found);
+                    }
+                    combination.pilots.push_back(ids);
+                }
+            }
+            // The weapon record's combination bit (+0xF 0x02; 800A6A68 copies it to the
+            // instance's +0x22): 8020178C then looks at it each time the list opens.
+            put8(tw::row(tw::weapons,n)+0xF,at(tw::row(tw::weapons,n)+0xF)|0x02);
+            // No upgrades, as the original's 25 (+0xE 0): its power is worked out each time the
+            // list opens. A number file can still give it a type.
+            put8(tw::row(tw::weapons,n)+0xE,0);
+            t.combinations[n]=combination;
         }
         const json animation=entry.value("animation",json{{"copy",entry.value("copy",json())}});
         if(!animation.is_object())return where+".animation：要是 {\"copy\": 武器} 或整条记录";

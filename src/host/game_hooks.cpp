@@ -5,6 +5,7 @@
 #include "save_page.hpp"
 #include "mod_combine.hpp"
 #include "mod_forms.hpp"
+#include "mod_combos.hpp"
 #include "mod_pilots.hpp"
 #include "battle_hud.hpp"
 #include "battle_spread.hpp"
@@ -275,9 +276,26 @@ void resident_func_80080A14(uint8_t* ram,recomp_context* ctx) {
 // number while it runs.
 extern "C" void srw64_original_combo_locks(uint8_t* rdram, recomp_context* ctx);
 extern "C" void load_000AB160_func_8020178C(uint8_t* rdram, recomp_context* ctx) {
+    const int handle = int16_t(ctx->r4);
+    const uint32_t unit = uint32_t(ctx->r5);
     const auto swaps = srw64::mod_pilots::combo_aliases(rdram);
     srw64_original_combo_locks(rdram, ctx);
+    // The packages' combination attacks, which the original's table does not know (mod_combos.hpp).
+    const auto keep = *ctx;
+    srw64::mod_combos::locks(rdram, ctx, handle, unit);
+    *ctx = keep;
     srw64::mod_pilots::restore(rdram, swaps);
+}
+// 801FC83C(k): EN and ammo after participant k's attack; a package's combination attack gets
+// its participants listed first, as the settlement does the original's (mod_combos.hpp).
+extern "C" void load_000AB160_func_801FC83C(uint8_t* rdram, recomp_context* ctx) {
+    const unsigned k = uint32_t(ctx->r4) & 0xFF;
+    if (k < 16) {
+        const auto keep = *ctx;
+        srw64::mod_combos::spend(rdram, ctx, k);
+        *ctx = keep;
+    }
+    srw64_original_battle_spend(rdram, ctx);
 }
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     srw64_original_frame_boundary(ram,ctx);

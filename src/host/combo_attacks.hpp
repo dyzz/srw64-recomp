@@ -25,7 +25,12 @@
 // u8 count, u8 pad, s16 pilot[4]; 0 ends) wholly among the participants' lead pilots
 // (80200404); 石破ラブラブ天驚拳 (80200B1C) needs the first 石破天驚拳 (19) in the weapon
 // pool unlocked as well.
+//
+// A package's new weapon can be one too (docs/design/unit-mod-kit.md §9; mod_combos.hpp):
+// find() answers it from the package's combination (index `count`), every unit taking part
+// a lead row with the others as its partners.
 #include "guest_memory.hpp"
+#include "mod_data.hpp"
 #include <algorithm>
 #include <array>
 #include <cstdint>
@@ -88,8 +93,27 @@ inline std::optional<Attack> find(std::span<const uint8_t> rom,uint16_t weapon) 
         }
         return a;
     }
+    const auto packages=mod_data::combinations();
+    if(const auto found=packages.find(weapon);found!=packages.end()) {
+        const auto& c=found->second;
+        Attack a{count,weapon,{},{},{},c.multiplier,0};
+        a.parts.fill({-1,-1});
+        for(size_t k=0;k<c.units.size() && k<a.parts.size();++k)a.parts[k]={int16_t(c.units[k]),int16_t(c.parts[k])};
+        for(const unsigned lead:c.units) {
+            Row r{int16_t(lead),false,{},-1};
+            for(const unsigned other:c.units)if(other!=lead)r.partners.push_back(int16_t(other));
+            a.rows.push_back(std::move(r));
+        }
+        for(const auto& row:c.pilots) {
+            std::vector<int16_t> ids;
+            for(const unsigned id:row)ids.push_back(int16_t(id));
+            a.pilots.push_back(std::move(ids));
+        }
+        return a;
+    }
     return std::nullopt;
 }
+inline bool from_package(const Attack& a){return a.index==count;}
 // The row this unit leads: by its number, or (a pilot table) by its lead pilot's number
 // while the unit is the table's one unit. None: this form never uses the attack.
 inline const Row* lead_row(const Attack& a,int unit_number,int pilot_number) {

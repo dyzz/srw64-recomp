@@ -193,6 +193,15 @@ class PackageTests(unittest.TestCase):
                          ({"units": {"u": {"copy": 1, "weapons": [1], "combine": {"parts": [219, 228], "over": ["@x"]}}}}, "over")]:
             self.assertIn(why, validate.new_units_problem({**base, **bad}))
         self.assertIn("schema", validate.new_units_problem({"schema": "srw64.new-units.v1", "units": {}}))
+        # A combination attack: two to five units, one component weapon each.
+        combo = {"weapons": {"duo": {"copy": 1219, "combination": {"units": ["@z", 228], "parts": [198, 899], "multiplier": 1.5}}},
+                 "units": {"z": {"copy": 48, "weapons": [193, "@duo"]}}}
+        self.assertEqual(validate.new_units_problem({**base, **combo}), "")
+        for change, why in [({"units": ["@z"]}, "units"), ({"parts": [198]}, "parts"), ({"multiplier": 9}, "multiplier"),
+                            ({"pilots": [[]]}, "pilots"), ({"leader": 1}, "combination")]:
+            bad = json.loads(json.dumps(combo))
+            bad["weapons"]["duo"]["combination"].update(change)
+            self.assertIn(why, validate.new_units_problem({**base, **bad}))
         # Form families: other new units of the same file, each in one family.
         zeta = {"z": {"copy": 48, "weapons": [193], "forms": ["@wr"]}, "wr": {"copy": 49, "weapons": [199]}}
         self.assertEqual(validate.new_units_problem({**base, "units": zeta}), "")

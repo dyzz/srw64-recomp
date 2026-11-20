@@ -376,6 +376,7 @@ struct Collected {
     std::map<unsigned,std::vector<unsigned>> crews;
     std::map<unsigned,mod_units::Taken::Combine> combines;
     std::map<unsigned,std::vector<unsigned>> forms;                 // a form family's base -> its forms (mod_forms.hpp)
+    std::map<unsigned,mod_units::Taken::Combination> combinations;  // new weapon -> its combination attack (mod_combos.hpp)
     std::map<unsigned,int> works;                                   // new unit -> its Library work
     std::map<unsigned,unsigned> pilot_copies,voices;                // new character -> the one it copies / speaks as
     std::map<unsigned,mod_units::Taken::Portrait> portraits;        // new character -> its own portrait
@@ -410,7 +411,7 @@ inline Collected collect(const std::vector<mods::Package>& packages,std::span<co
                     if(key.compare(0,p.id().size()+1,p.id()+"@")==0){c.pilots[pilot]=p.id();c.names[p.id()]=p.manifest?p.manifest->name:json(p.id());}
                 c.copies=taken.copies;c.weapon_copies=taken.weapon_copies;c.name_sources=taken.names;
                 c.resources=taken.resources;c.sprites=taken.sprites;
-                c.predecessors=taken.predecessors;c.carries=taken.carries;c.crews=taken.crews;c.combines=taken.combines;c.forms=taken.forms;c.works=taken.works;
+                c.predecessors=taken.predecessors;c.carries=taken.carries;c.crews=taken.crews;c.combines=taken.combines;c.forms=taken.forms;c.combinations=taken.combinations;c.works=taken.works;
                 c.pilot_copies=taken.pilot_copies;c.voices=taken.voices;c.portraits=taken.portraits;c.loves=taken.loves;c.combo_as=taken.combo_as;
             }
         }
@@ -458,6 +459,7 @@ struct State {
     std::map<unsigned,std::vector<unsigned>> crews;
     std::map<unsigned,mod_units::Taken::Combine> combines;
     std::map<unsigned,std::vector<unsigned>> forms;
+    std::map<unsigned,mod_units::Taken::Combination> combinations;
     std::map<unsigned,unsigned> pilot_copies,voices;
     std::map<unsigned,mod_units::Taken::Portrait> portraits;
     std::vector<std::pair<unsigned,unsigned>> loves;
@@ -551,6 +553,12 @@ inline std::map<unsigned,std::vector<unsigned>> forms() {
     std::lock_guard lock(s.owners_mutex);
     return s.forms;
 }
+// The packages' combination attacks by weapon number (mod_combos.hpp). Any thread.
+inline std::map<unsigned,mod_units::Taken::Combination> combinations() {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    return s.combinations;
+}
 // The new units combined from parts (mod_combine.hpp). Any thread.
 inline std::map<unsigned,mod_units::Taken::Combine> combines() {
     auto& s=state();
@@ -637,7 +645,7 @@ inline void refresh(uint8_t* ram=nullptr) {
     }
     s.kinds_changed.store(kinds,std::memory_order_relaxed);
     {std::lock_guard lock(s.owners_mutex);s.owners=found.units;s.names=found.names;s.copies=found.copies;s.weapon_copies=found.weapon_copies;s.numbers=found.numbers;s.sprites=found.sprites;
-     s.predecessors=found.predecessors;s.carries=found.carries;s.crews=found.crews;s.combines=found.combines;s.forms=found.forms;
+     s.predecessors=found.predecessors;s.carries=found.carries;s.crews=found.crews;s.combines=found.combines;s.forms=found.forms;s.combinations=found.combinations;
      s.pilot_copies=found.pilot_copies;s.voices=found.voices;s.pilot_owners=found.pilots;s.portraits=found.portraits;s.loves=found.loves;s.combo_as=found.combo_as;
      s.own_voices=found.quotes.voices;}
     mod_quotes::publish(found.quotes.lines);
