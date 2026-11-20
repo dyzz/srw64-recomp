@@ -28,4 +28,10 @@ struct PanelDraw {
     uint32_t dl_begin = 0, dl_end = 0;   // physical RDRAM range written by 801E2D54
 };
 void rewrite_panel(uint8_t* rdram, const PanelDraw& draw);
+// Game thread. A campaign's own map (map_mod.hpp) is loaded under an original map's
+// layout number: draws of that layout take the picture in `folder` (its meta.json, as the
+// pack's maps have one) instead of the pack's, or with an empty folder stay the original's
+// cells. clear_override: every layout is the pack's again.
+void set_override(uint16_t layout, const std::filesystem::path& folder);
+void clear_override();
 }

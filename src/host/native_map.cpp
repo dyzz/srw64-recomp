@@ -64,6 +64,7 @@ struct Asset {
     // drawn for a while (lazy). Window frames (docs/native/native-ui-text.md §4) are made
     // from the ROM (rom_art.cpp) the same way and draw from the next frame on.
     bool from_rom = false, lazy = false, waited = false;
+    bool custom = false;                     // a campaign's own map: only drawn as an override (set_override)
     enum class State { waiting, queued, decoded, ready } state = State::waiting;
     std::vector<uint8_t> base, index;        // RGBA8 and one index per pixel, at width*scale
     std::vector<std::vector<uint8_t>> base_levels;   // base with its mip chain, from the decoder thread
@@ -302,8 +303,14 @@ void decode_loop() {
     }
 }
 
+// set_override: the layout a campaign's own map stands in for, and its asset (-1: no HD
+// picture, the cells stay as the game draws them).
+int override_layout = -1, override_asset = -1;
+std::map<std::string, int> custom_assets;    // by folder
+
 int find_asset(uint16_t layout) {
-    for (size_t i = 0; i < assets.size(); ++i) if (assets[i].layout == layout) return int(i);
+    if (override_layout >= 0 && layout == uint16_t(override_layout)) return override_asset;
+    for (size_t i = 0; i < assets.size(); ++i) if (assets[i].layout == layout && !assets[i].custom) return int(i);
     return -1;
 }
 
@@ -475,6 +482,36 @@ std::filesystem::path maps_root() {
     if (root.is_relative()) root = std::filesystem::path(art) / root;
     // A public pack may leave the maps out (tools/release/build_release.py): original maps then.
     return std::filesystem::is_directory(root) ? root : std::filesystem::path{};
+}
+
+void clear_override() {
+    if (override_layout >= 0) current_map = -1;
+    override_layout = override_asset = -1;
+}
+
+void set_override(uint16_t layout, const std::filesystem::path& folder) {
+    int asset = -1;
+    if (!folder.empty()) {
+        const auto key = folder.string();
+        if (const auto found = custom_assets.find(key); found != custom_assets.end()) asset = found->second;
+        else {
+            try {
+                Asset loaded = load_meta(folder);
+                if (loaded.layout != layout || !loaded.colonies.empty() || loaded.alpha) throw std::runtime_error("not this layout's opaque map");
+                loaded.lazy = loaded.custom = true;
+                std::lock_guard lock(asset_mutex);
+                if (assets.size() < assets.capacity()) {     // reserved at start: no reallocation under the renderer
+                    assets.push_back(std::move(loaded));
+                    asset = int(assets.size() - 1);
+                }
+            } catch (const std::exception& error) {
+                fprintf(stderr, "SRW64_HD_MAPS campaign map %s: %s\n", key.c_str(), error.what());
+            }
+            custom_assets[key] = asset;
+        }
+    }
+    override_layout = layout; override_asset = asset;
+    current_map = -1;
 }
 
 void configure(const std::filesystem::path& directory) {

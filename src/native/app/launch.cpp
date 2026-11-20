@@ -47,8 +47,8 @@ std::vector<std::string> selected_rules(const Options& options,const GameIdentit
 static std::string read_campaign_id(const fs::path& campaign) {
     // Stage images make a compiled campaign a few hundred KB; 64 MiB is only a sanity bound.
     const auto document=json::parse(read_text(campaign,64u<<20),nullptr,false);
-    if(document.is_discarded() || document.value("schema","")!="srw64.campaign-image.v1")
-        throw std::runtime_error("Not a compiled campaign (srw64.campaign-image.v1): "+campaign.string());
+    if(document.is_discarded() || (document.value("schema","")!="srw64.campaign-image.v1" && document.value("schema","")!="srw64.campaign-image.v2"))
+        throw std::runtime_error("Not a compiled campaign (srw64.campaign-image.v1 / v2): "+campaign.string());
     auto id=document.value("id",std::string());
     if(!valid_campaign_id(id))throw std::runtime_error("A campaign id is 1-64 letters, digits, '.', '_' or '-': "+campaign.string());
     return id;

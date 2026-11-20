@@ -12,7 +12,9 @@
 #include "script_trace.hpp"
 #include "script_inject.hpp"
 #include "forced_game_over.hpp"
+#include "map_mod.hpp"
 #include "mini_stage.hpp"
+#include "native_map.hpp"
 #include "mod_saves.hpp"
 #include "story_mod.hpp"
 #include "script_move_probe.hpp"
@@ -93,6 +95,33 @@ static story::View story_view(uint8_t* ram,const recomp_context* ctx) {
     v.hp=[ram,ctx](unsigned who) {   // 800A293C
         auto c=story_call(ctx);c.r4=int32_t(who);resident_func_800A293C(ram,&c);return double(c.f0.fl);
     };
+    // The map's roster: 30 slots a side at 8015E100 + side*0x258 + slot*0x14; +0 1 on the
+    // map, +4/+5 its tile, +0xC the unit (+4 HP, +0x38 the pilot record, whose +2 is the pilot).
+    for(uint32_t side=0;side<3;++side)for(uint32_t slot=0;slot<30;++slot) {
+        const uint32_t entry=0x8015E100+side*0x258+slot*0x14,unit=read(ram,entry+0xC,4);
+        if(read(ram,entry,1)!=1 || !srw64::guest::valid(unit,0x54) || !read(ram,unit+4,2))continue;
+        const uint32_t pilot=read(ram,unit+0x38,4);
+        if(!srw64::guest::valid(pilot,0x4C))continue;
+        v.units.push_back({side,slot,read(ram,pilot+2,2),read(ram,unit+2,2),read(ram,entry+4,1),read(ram,entry+5,1)});
+    }
+    // The scene's deployment records (28 bytes from engine+0, to group 999): +0 group, +2/+4
+    // the tile, +6 the pilot, +10 the unit, +20 the side. Where it stands decides a tie.
+    v.group_of=[ram](const story::MapUnit& u) {
+        const uint32_t base=read(ram,story::engine,4);
+        int found=-1;
+        if(!srw64::guest::valid(base,28))return found;
+        for(uint32_t r=base;r<base+28*512 && srw64::guest::valid(r,28);r+=28) {
+            const unsigned group=read(ram,r,2);
+            if(group==999)break;
+            if(read(ram,r+6,2)!=u.pilot || read(ram,r+10,2)!=u.unit || read(ram,r+20,2)!=u.side)continue;
+            if(read(ram,r+2,2)==u.x && read(ram,r+4,2)==u.y)return int(group);
+            if(found<0)found=int(group);
+        }
+        return found;
+    };
+    v.funds=read(ram,0x8010F5F4,4);
+    v.route=int((read(ram,0x801602EE,2)-0x3DD1+2)&3);
+    if(const unsigned last=read(ram,0x801602E4,2);last>=0x3DD9 && last<0x3DD9+8)v.choice=int(last-0x3DD9+1);
     return v;
 }
 static void story_start(uint8_t* ram,const recomp_context* ctx,uint32_t owner) {   // 8009EE98
@@ -301,6 +330,9 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
             auto c=*ctx;c.r29=int32_t(uint32_t(ctx->r29)-0x200);c.r4=int32_t(a0);c.r5=int32_t(a1);c.r6=int32_t(a2);function(ram,&c);
         };
         call(resident_func_800836CC,0);call(resident_func_800A5138);
+        // A campaign started from its first stage: nothing has fired, no flag is set (the
+        // main story's new game clears them in 800A4790, which this entry does not pass).
+        if(srw64::campaign::active())story::new_game();
         srw64::mini_stage::direct_scene(ram);
         call(resident_func_80080188,0xC);call(resident_func_8007F510,0x800801A4,0,1);
     }
@@ -986,7 +1018,7 @@ void resident_func_8009EFDC(uint8_t* rdram, recomp_context* ctx) {
         if(now!=completed){completed=now;srw64::state_probe::capture(rdram,"script-inject-complete",uint32_t(sequence));}
     }
     srw64::mini_stage::poll_hook(rdram,owner);
-    story::stepped(uint16_t(ctx->r2),rdram);
+    {const auto view=story_view(rdram,ctx);story::stepped(uint16_t(ctx->r2),rdram,&view);}
     srw64::rule_probe::poll(rdram,ctx,owner);
     srw64::battle_ui_probe::poll(rdram,ctx,owner);
     move_probe.after(rdram,owner);
@@ -1020,9 +1052,28 @@ void resident_func_8009DE7C(uint8_t* rdram, recomp_context* ctx) {
     // Scene registration: a mini stage image replaces the pointer table and buffers first.
     srw64::mini_stage::register_hook(rdram, ctx);
     const unsigned mode = uint16_t(ctx->r4);
+    {
+        // The stage's own map, if it has one, stands in for the original map it names: its
+        // resources (map_mod.hpp) and, in the HD mode, its picture (native_map.cpp).
+        const auto name = srw64::mini_stage::custom_map();
+        const auto beside = srw64::campaign::story();
+        std::shared_ptr<const srw64::map_mod::Map> map;
+        try {
+            map = srw64::map_mod::activate(name.empty() || beside.empty() ? std::filesystem::path() : beside.parent_path() / "maps" / name);
+        } catch (const std::exception& error) {
+            std::fprintf(stderr, "SRW64_MAP_MOD_PROBLEM %s\n", error.what());
+        }
+        if (map) {
+            srw64::hdmap::set_override(map->numbers[0], map->hd ? map->folder : std::filesystem::path());
+            std::fprintf(stderr, "SRW64_MAP_MOD %s in place of resources %u/%u/%u%s\n", name.c_str(), map->numbers[0], map->numbers[1], map->numbers[2], map->hd ? ", HD" : "");
+        } else srw64::hdmap::clear_override();
+    }
     srw64_original_script_register(rdram, ctx);
-    story::disabled() = srw64::campaign::active();
-    story::registered(rdram, mode);
+    // A campaign's stages have their own events (campaign/story.json); the main story's
+    // packages' events stay out of the scenes it borrows.
+    story::set_campaign(srw64::campaign::id(), srw64::campaign::story());
+    const auto view = story_view(rdram, ctx);
+    story::registered(rdram, mode, &view);
 }
 void resident_func_800A4790(uint8_t* rdram, recomp_context* ctx) {
     // Every story variable set to 3: a new game (the protagonist select, 801C69E4).
@@ -1041,7 +1092,9 @@ void resident_func_8009E3B0(uint8_t* rdram, recomp_context* ctx) {
     const unsigned from = uint16_t(ctx->r5), to = uint16_t(ctx->r6);
     const auto saved = *ctx;
     auto start = [&](uint32_t owner) { story_start(rdram, &saved, owner); };
-    if (story::persuaded(rdram, start)) { story_builds(rdram, &saved); ctx->r2 = -1; return; }
+    const auto view = story_view(rdram, &saved);
+    if (srw64::guest::read(rdram, story::engine + story::f_status, 2) < 0x2000) story::observe(view, false);
+    if (story::persuaded(rdram, start, &view)) { story_builds(rdram, &saved); ctx->r2 = -1; return; }
     srw64_original_event_scan(rdram, ctx);
     story::scan(rdram, from, to, story_view(rdram, &saved), start);
     story_builds(rdram, &saved);

@@ -223,6 +223,122 @@ int main(int argc,char** argv) {
     check(story::line(story::text_first,"zh-Hans").value_or("").find("师父")!=std::string::npos,"the Chinese line");
     check(story::line(story::text_first,"ko")==story::line(story::text_first,"ja"),"Japanese otherwise");
 
+    // --- A custom campaign's stages (tools/mods/stage.py) ---------------------------------
+    {
+        // Its story image beside its campaign image: an event of scene 2, a line of the
+        // opening event at offset 12 of the scene's event block.
+        json campaign_story={{"schema",story::image_schema},{"campaign","c.one"},
+            {"texts",json::array({{{"speaker",4},{"lines",{{"ja","キャンペーン"}}}}})},
+            {"events",json::array({{{"id","two.turn-1"},{"scene",2},{"trigger","turn"},{"params",{0,1}},{"words",{0x3D4A,0xFFFF}}}})},
+            {"patches",json::array({{{"scene",2},{"at",12},{"text",0}}})}};
+        std::ofstream(dir/"story.json")<<campaign_story.dump();
+        check(!fails(campaign_story).empty(),"patches outside a campaign's image");
+        auto bad=campaign_story;bad["patches"][0]["text"]=3;
+        {story::Library l;bool threw=false;try{story::add_image(l,"c.one",bad,"c.one");}catch(const std::exception&){threw=true;}check(threw,"a patch naming no line");}
+        auto library=story::collect({},"c.one",dir/"story.json");
+        check(library.problems.empty() && library.events.size()==1 && library.events[0].campaign=="c.one" && library.patches.size()==1 &&
+              library.patches[0].text==story::text_first,"the campaign's story image: "+(library.problems.empty()?std::string():library.problems[0]));
+        check(story::collect({},"c.two",dir/"story.json").events.empty(),"another campaign's story image is refused");
+        check(story::collect({},"",dir/"story.json").events.empty(),"no campaign, no campaign events");
+        // A main story event of the scene the stage borrows, beside the campaign's.
+        library.events.push_back(story::Event{.package="x",.id="main",.scene=2,.trigger=story::Trigger::turn,.a=0,.b=1,.words={0x3D4E,0xFFFF}});
+        s.library=library;s.loaded=true;s.revision=mods::revision();s.game=mods::game_version();
+        story::View none;none.side=1;
+        std::vector<std::string> ran;
+        const auto first=[&] {
+            write16(ram.data(),e+story::f_status,0x80);write16(ram.data(),e+story::f_turn,0);write16(ram.data(),e+story::f_side,1);
+            const auto before=s.fired;
+            story::scan(ram.data(),0,1,none,[](uint32_t){});
+            for(const auto& key:s.fired)if(!before.count(key))return key;
+            return std::string();
+        };
+        write8(ram.data(),story::scene_byte,2);
+        write16(ram.data(),story::event_block+12,story::text_placeholder);
+        story::set_campaign("c.one",dir/"story.json");s.loaded_story=dir/"story.json";
+        story::registered(ram.data(),0);
+        check(read(ram.data(),story::event_block+12,2)==story::text_first,"the opening's line gets its number");
+        check(first()=="c.one/two.turn-1","in the campaign its own event runs");
+        check(first().empty(),"and the main story's of the borrowed scene does not");
+        check(story::infos()->empty(),"nor its stage information");
+        story::set_campaign("",{});s.loaded_story.clear();
+        write16(ram.data(),story::event_block+12,story::text_placeholder);
+        story::registered(ram.data(),0);
+        check(read(ram.data(),story::event_block+12,2)==story::text_placeholder,"the main story's block is left alone");
+        check(first()=="x/main","in the main story the campaign's event stays out");
+    }
+
+    // --- Conditions (level-editor.md §5.3) ------------------------------------------------
+    {
+        json conditions={{"schema",story::image_schema},{"texts",json::array()},{"events",json::array({
+            event("reach","reach",{28,-1,7,2,9,4}),
+            event("down2","downed",{0,-1,-1,2}),
+            event("wave","group_gone",{3}),
+            event("by","defeated",{298,28}),
+            event("few","remaining",{2,1,4}),
+            {{"id","tested"},{"scene",129},{"trigger","turn"},{"params",{0,1}},{"words",{0x3D4E,0xFFFF}},
+             {"test",{{"all",{{{"turn",{0,4}}},{{"status",{18,"on_map"}}},{{"any",{{{"route",{0,1}}},{{"not",{{"fired","reach"}}}}}}},
+                              {{"count",{1,0,3}}},{{"funds",{5000,99999999}}},{{"choice",2}}}}}}},
+            {{"id","step"},{"scene",129},{"trigger","turn"},{"params",{0,1}},{"words",{0x3E14,0xFFFC,0x3E08,1,0x3D4E,0x3E1D,0xFFFF}},
+             {"checks",{{1,{{"in_area",{-1,1,1,1,3,3}}}}}}}})}};
+        check(fails(conditions).empty(),"the condition image: "+fails(conditions));
+        auto bad=conditions;bad["events"][0]["params"]={28,-1,7};check(!fails(bad).empty(),"reach without its area");
+        bad=conditions;bad["events"][5]["test"]={{"weather",1}};check(!fails(bad).empty(),"an unknown condition");
+        bad=conditions;bad["events"][5]["test"]={{"turn",{1}}};check(!fails(bad).empty(),"a condition with too few numbers");
+        bad=conditions;bad["events"][6]["checks"]={{2,{{"choice",1}}}};check(!fails(bad).empty(),"a step's condition not at 3E14's operand");
+        story::Library l;story::add_image(l,"p",conditions);
+        s.library=l;s.campaign.clear();s.scene=129;s.fired.clear();s.flags.clear();s.running.reset();s.seen={};s.primed=false;
+        write16(ram.data(),e+story::f_status,0x80);
+        auto map=[&](std::vector<story::MapUnit> units){story::View w;w.side=1;w.turn=1;w.units=std::move(units);
+            w.group_of=[](const story::MapUnit& u){return u.pilot==298?3:u.side==0?1:0;};w.hp=[](unsigned){return 50.0;};
+            w.funds=8000;w.route=2;w.choice=2;return w;};
+        auto fires=[&](const story::View& w,unsigned from,unsigned to) {
+            write16(ram.data(),e+story::f_status,0x80);s.running.reset();
+            const auto before=s.fired;
+            story::scan(ram.data(),from,to,w,[](uint32_t){});
+            for(const auto& key:s.fired)if(!before.count(key) && key[0]!='#')return key;
+            return std::string();
+        };
+        const std::vector<story::MapUnit> start_units={{0,0,28,36,10,10},{0,1,29,37,11,10},{1,0,298,239,1,1},{1,1,298,239,2,1},{1,2,18,5,20,20}};
+        auto w=map(start_units);
+        story::observe(w,false);   // the first look only records
+        check(story::downs(-1,-1,-1)==0 && story::group_on_map(3),"the first look records, groups from the deployment records");
+        check(fires(w,8,10).empty(),"nobody in the area yet");
+        w=map({{0,0,28,36,8,3},start_units[1],start_units[2],start_units[3],start_units[4]});
+        story::observe(w,false);
+        check(fires(w,8,10)=="p/reach","28 walks into [7,2]-[9,4]");
+        // One of the two 298s leaves in an event: not a defeat. The other falls in battle.
+        w=map({start_units[0],start_units[1],start_units[3],start_units[4]});
+        story::observe(w,true);
+        check(story::downs(-1,-1,-1)==0,"leaving in an event is not a defeat");
+        check(fires(w,2,4).empty(),"group 3 still has one on the map");
+        w=map({start_units[0],start_units[1],start_units[4]});w.battle_a=28;w.battle_b=298;
+        w.hp=[](unsigned who){return who==298?0.0:50.0;};
+        story::observe(w,false);
+        check(story::downs(1,3,298)==1 && !story::group_on_map(3),"the other falls: a defeat of group 3");
+        const auto a=fires(w,2,4),b=fires(w,2,4);
+        check(a=="p/wave" && b=="p/by","group 3 gone, then 298 defeated by 28: "+a+" "+b);
+        w.battle_a=29;s.fired.erase("p/by");
+        check(fires(w,2,4).empty(),"defeated by someone else: not \"by 28\"");
+        check(fires(w,6,8).empty(),"two of ours on the map: more than one");
+        w=map({start_units[0],start_units[4]});story::observe(w,false);
+        check(fires(w,6,8)=="p/few" && fires(w,2,4).empty(),"one of ours left: remaining; one defeat is not two");
+        w=map({start_units[4]});story::observe(w,false);
+        check(fires(w,2,4)=="p/down2","two of ours defeated");
+        // The tested event: turn 1-5, 18 on the map, route 0/1 or reach not fired... (it has).
+        s.fired.insert("p/step");   // out of the way: it has the same trigger
+        check(fires(w,0,2).empty(),"route 2 and reach fired: the any fails");
+        s.fired.erase("p/reach");
+        check(fires(w,0,2)=="p/tested","with reach not fired the any holds");
+        // A step's condition: written where 3E14 reads it, when the event starts and each step.
+        s.fired.clear();s.seen={};s.primed=false;
+        auto inside=map({{1,0,298,239,2,2}}),outside=map({{1,0,298,239,9,9}});
+        s.fired.insert("p/tested");
+        check(fires(inside,0,2)=="p/step","the step's event starts");
+        check(read(ram.data(),story::region+(story::header_words+1)*2,2)==1,"an enemy in [1,1]-[3,3]: 1");
+        story::stepped(0x2000,ram.data(),&outside);
+        check(read(ram.data(),story::region+(story::header_words+1)*2,2)==0,"after a step, nobody there: 0");
+    }
+
     if(failures)std::fprintf(stderr,"%d failure(s)\n",failures);
     else std::printf("story MOD tests passed\n");
     return failures?1:0;

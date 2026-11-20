@@ -36,11 +36,13 @@ class PackTests(unittest.TestCase):
         self.assertEqual(folder, self.out / "srw64.sample")
         self.assertEqual(path.name, "srw64.sample-1.0.0.srw64mod")
         self.assertEqual(sorted(p.relative_to(folder).as_posix() for p in folder.rglob("*") if p.is_file()),
-                         ["campaign/campaign.json", "mod.json"])
+                         ["campaign/campaign.json", "campaign/story.json", "mod.json"])
         image = json.loads((folder / "campaign" / "campaign.json").read_text(encoding="utf-8"))
-        self.assertEqual((image["schema"], image["id"], len(image["stages"])), ("srw64.campaign-image.v1", "srw64.sample", 4))
+        self.assertEqual((image["schema"], image["id"], len(image["stages"])), ("srw64.campaign-image.v2", "srw64.sample", 4))
+        events = json.loads((folder / "campaign" / "story.json").read_text(encoding="utf-8"))
+        self.assertEqual((events["schema"], events["campaign"], len(events["events"])), ("srw64.story-image.v1", "srw64.sample", 4))
         with zipfile.ZipFile(path) as z:
-            self.assertEqual(z.namelist(), ["campaign/campaign.json", "mod.json"])
+            self.assertEqual(z.namelist(), ["campaign/campaign.json", "campaign/story.json", "mod.json"])
             self.assertTrue(all(i.date_time == pack.FIXED_DATE for i in z.infolist()))
         problems, summary = validate.check(path)
         self.assertEqual([p.code for p in problems], [])

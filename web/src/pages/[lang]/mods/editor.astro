@@ -1,0 +1,289 @@
+---
+// The level editor (docs/design/level-editor.md §5): a campaign put together stage by stage
+// (scripts/level-editor.ts) and exported as a .srw64mod by the page's own compiler
+// (lib/compiler, the command line's in TypeScript). The original maps, terrain, units and
+// pilots it shows are the site's own exports (web/scripts/export_editor.py, the Library's
+// pictures); no ROM is read. Its texts are Chinese and English for now: Japanese and
+// Korean pages show the English.
+import Base from '../../../layouts/Base.astro';
+import SubmitHint from '../../../components/SubmitHint.astro';
+import ModPackageForm from '../../../components/ModPackageForm.astro';
+import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
+import { packageText, versionNotice } from '../../../lib/mod-maker-text';
+import { pickables } from '../../../lib/mod-picker';
+import '../../../styles/mod-maker.css';
+import data from '../../../data/data-mods.json';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = (zh: string, en: string) => tl(lang) === 'zh' ? zh : en;
+const title = t('关卡编辑器', 'Level editor');
+const lead = t('做自己的追加剧本：导入一张地图图片切成格子、给每格选地形，摆上敌我单位，写剧情和台词，定胜败条件和增援，把几关连起来，导出 .srw64mod 拖进游戏窗口即可安装。所有处理都在浏览器里完成，不需要 ROM，图片不会上传。',
+  'Make a campaign of your own: bring a map picture, cut it into cells and give each a terrain, place both sides’ units, write the story and its lines, set how the stage is won and lost and when reinforcements come, chain the stages and export a .srw64mod to drag into the game window. Everything happens in your browser; no ROM is needed and no picture is uploaded.');
+const text = {
+  ...packageText(lang),
+  tab_overview: t('总览', 'Overview'), tab_map: t('地图', 'Map'), tab_units: t('单位', 'Units'), tab_story: t('剧情', 'Story'), tab_rules: t('胜败与增援', 'Rules'),
+  saved: t('已自动保存', 'Saved in this browser'), newProject: t('新建', 'New'), confirmNew: t('清空现在的战役，重新开始？', 'Clear this campaign and start over?'),
+  close: t('关闭', 'Close'), allSeries: t('全部作品', 'All series'), none: t('没有找到', 'Nothing found'), pickUnit: t('选机体', 'Pick a unit'), pickPilot: t('选人物', 'Pick a character'),
+  campaign: t('战役信息', 'Campaign'), route: t('主角', 'Protagonist'),
+  routeHint: t('战役没有选主角的画面；用到主角头像的台词按这里画。', 'A campaign has no protagonist select; lines that show the protagonist’s portrait use this one.'),
+  routes: t('布拉德|真奈美|阿克|赛莲', 'Brad|Manami|Ark|Selain'),
+  // Overview
+  stages: t('关卡', 'Stages'), addStage: t('＋ 加一关', '+ Add a stage'), startStage: t('开局', 'Start'), stageNumber: t('第 {n} 关', 'Stage {n}'),
+  stagesNote: t('第一关是开局关。发布后要加关就加在最后：存档按这里的顺序记住每一关。', 'The first stage is where the campaign starts. Once released, add stages at the end: saves keep a stage by its place here.'),
+  stageProblems: t('{n} 个问题待处理', '{n} to fix'), stageCounts: t('我方 {player} · 敌方 {enemy} · 事件 {events}', 'Player {player} · Enemy {enemy} · Events {events}'),
+  flow: t('关卡流程', 'How the stages lead on'), flowNote: t('每一关过关后去哪里，在「胜败与增援」里定。点一关选中它。', 'Where each stage leads once cleared is set under Rules. Click a stage to select it.'),
+  ending: t('结局', 'Ending'), checks: t('检查', 'Checks'), noProblems: t('没有发现问题。', 'Nothing to fix.'),
+  thisStage: t('选中的关：{stage}', 'Selected: {stage}'), stageTitle: t('标题', 'Title'), stageKey: t('关卡名', 'Key'), stageKeyHint: t('小写字母、数字、_、-', 'lower-case letters, digits, _ and -'),
+  editMap: t('地图', 'Map'), editUnits: t('单位', 'Units'), editStory: t('剧情', 'Story'), editRules: t('胜败与增援', 'Rules'),
+  removeStage: t('删除这一关', 'Remove this stage'), confirmRemove: t('删除「{stage}」？', 'Remove “{stage}”?'),
+  // Map
+  mapOriginal: t('原版地图', 'Original map'), mapOwn: t('自己的地图', 'Own map'), mapNumber: t('地图', 'Map'), space: t('宇宙', 'space'),
+  stepPicture: t('图片', 'Picture'), stepCut: t('切成格子', 'Cut into cells'), stepTerrain: t('给每格选地形', 'A terrain for each cell'),
+  importPicture: t('导入地图图片', 'Bring a map picture'), otherPicture: t('换一张图', 'Another picture'), useOriginal: t('改用原版地图', 'Use an original map'), useOwn: t('用已导入的地图', 'Use a map brought in'),
+  mapOwnNote: t('导入一张自己画的整张地图（PNG、JPEG、WebP）。我来把它切成格子，你再给每格选地形。最清楚的做法是一格画 64×64 像素。', 'Bring a whole map you painted (PNG, JPEG, WebP). It is cut into cells here and you give each a terrain. Sharpest when a cell is painted 64×64 pixels.'),
+  mapOriginalNote: t('可走的范围 {columns}×{rows} 格。上色的是每格的地形，鼠标移上去看名称和数值。原版地图的地形不能改。', 'The playable area is {columns}×{rows} cells. The tint is each cell’s terrain; hover for its name and values. An original map’s terrain cannot be changed.'),
+  originalMapNote: t('原版地图的音乐、战斗背景和地形都是现成的。要自己定地形，导入一张自己的图。', 'An original map comes with its music, battle backgrounds and terrain. To set the terrain yourself, bring a picture of your own.'),
+  columns: t('横向格数', 'Columns'), rows: t('纵向格数', 'Rows'),
+  cutNote: t('整张图按这个格数切开：一格 {px}×{px} 像素（游戏里的 {scale} 倍）。可走范围 {columns}×{rows} 格，最外两圈是边框。格数和图片比例不一致时图会被拉伸。', 'The whole picture is cut into this many cells: a cell is {px}×{px} pixels ({scale} times the game’s). Playable {columns}×{rows} cells; the outer two rings are the frame. The picture is stretched if the cells do not match its proportions.'),
+  guessTerrain: t('按颜色先猜一遍', 'Guess from the colours'), guessHint: t('按原版地图上各地形常见的颜色给每格先填一个，再自己改', 'fills each cell with the terrain whose usual colour in the original maps is nearest; then correct it'),
+  guessConfirm: t('按颜色重新猜一遍会改掉所有格子的地形（可以撤销）。继续吗？', 'Guessing from the colours replaces every cell’s terrain (undo brings it back). Go on?'),
+  terrainNote: t('选一种地形，在地图上点或拖。地形决定移动消耗、防御和命中修正、回复，和画面无关。', 'Pick a terrain, then click or drag on the map. Terrain sets movement cost, defence and hit modifiers and recovery, whatever the picture shows.'),
+  terrainStats: t('防御 {defense}% · 命中 {hit}% · 移动 {move}', 'def {defense}% · hit {hit}% · move {move}'), terrainRecover: t(' · 回复 HP {hp}% EN {en}%', ' · recover HP {hp}% EN {en}%'),
+  cells: t('{n} 格', '{n} cells'), toolBrush: t('画笔', 'Brush'), toolRect: t('矩形', 'Rectangle'), toolFill: t('填充相连', 'Fill'), toolPick: t('吸取', 'Pick'),
+  undo: t('撤销', 'Undo'), redo: t('重做', 'Redo'), showTerrain: t('显示地形色块', 'Terrain tint'), gridLines: t('网格线', 'Grid'), zoom: t('缩放', 'Zoom'),
+  hover: t('格 ({x}, {y})　{name}（{id}）　{stats}', 'Cell ({x}, {y})  {name} ({id})  {stats}'), hoverFrame: t('边框：单位进不去', 'The frame: no unit enters'),
+  thisMap: t('这张地图', 'This map'), mapName: t('名字', 'Name'), mapLike: t('场所（顶替的原版地图）', 'Place (the original map it stands in for)'),
+  mapLikeHint: t('音乐、战斗背景、是否宇宙都跟这张原版地图走，挑同一类场所。', 'Its music, battle backgrounds and space rules stay this original map’s; pick one of the same kind of place.'),
+  spaceNote: t('这是宇宙地图：单位按宇宙规则移动，地形适应按宇宙算。', 'This is a space map: units move by the space rules and terrain ranks are the space ones.'),
+  originalMode: t('原版画面模式', 'Original picture mode'),
+  originalModeNote: t('HD 模式直接画你的图。原版模式要压成 256 色、最多 1,023 种图块，可以先看看效果。', 'The HD mode draws your picture as it is. The original mode needs it in 256 colours and at most 1,023 kinds of tile; see how that looks.'),
+  previewOriginal: t('看原版模式的样子', 'Show the original mode'), backToPicture: t('回到原图', 'Back to the picture'),
+  previewExact: t('{tiles} 种图块，不用合并，和原图相差 {psnr} dB。', '{tiles} kinds of tile, none merged; {psnr} dB from the picture.'),
+  previewMerged: t('{kinds} 种图块合并成 {tiles} 种，和原图相差 {psnr} dB：细纹理会变糊。', '{kinds} kinds of tile merged into {tiles}; {psnr} dB from the picture: fine textures blur.'),
+  errPicture: t('这张图片读不出来', 'This picture could not be read'), working: t('正在处理……', 'Working…'),
+  // Units
+  groups: t('编组', 'Groups'), groupsNote: t('一组一起登场', 'a group comes on together'), addGroup: t('＋ 加一组', '+ Add a group'),
+  groupsHint: t('每个阵营同时在场最多 30 个单位。我方的组过关后留在部队里。', 'At most 30 units of a side at once. The player’s units stay in the roster after the stage.'),
+  sidePlayer: t('我方', 'Player'), sideEnemy: t('敌方', 'Enemy'), sideThird: t('第三方', 'Third side'),
+  toolSelect: t('选择与移动', 'Select and move'), toolPlace: t('往「{group}」放单位', 'Place into “{group}”'),
+  thisGroup: t('选中的组', 'Selected group'), groupName: t('组名', 'Name'), side: t('阵营', 'Side'), changeWhen: t('改登场时机', 'change when it comes on'), removeGroup: t('删除这一组', 'Remove this group'),
+  thisUnit: t('选中的单位', 'Selected unit'), unit: t('机体', 'Unit'), pilot: t('驾驶员', 'Pilot'), inGroup: t('所在的组', 'Group'),
+  level: t('等级加成', 'Level offset'), levelHint: t('加在这一关的基准等级上', 'added to the stage’s base level'), upgrade: t('改造段数', 'Upgrades'), cellAt: t('位置', 'Cell'),
+  entry: t('登场时', 'Comes on with'), entry0: t('满状态', 'full HP and EN'), entry1: t('HP 10%、EN 和弹药 0', 'HP 10%, no EN or ammo'), entry2: t('HP 10%、EN 10%', 'HP 10%, EN 10%'),
+  entry3: t('HP、EN 30%', 'HP and EN 30%'), entry4: t('HP、EN 50%', 'HP and EN 50%'), entry5: t('HP、EN 70%', 'HP and EN 70%'), entry6: t('HP 满、EN 和弹药 0', 'full HP, no EN or ammo'), entry7: t('HP 10%、EN 满', 'HP 10%, full EN'),
+  aiTitle: t('行动方式', 'How it acts'), aiMode: t('方式', 'Mode'),
+  ai0: t('自由进攻（打最弱的）', 'Attack (the weakest)'), ai1: t('自由进攻（挑好打中的）', 'Attack (the likeliest hit)'), ai2: t('只追打某人', 'Hunt someone'),
+  ai3: t('前往某格', 'Go to a cell'), ai4: t('前往某格（被打也不还手）', 'Go to a cell, never answering back'), ai5: t('护卫某人', 'Guard someone'),
+  aiHint0: t('先打装甲、HP 最低的', 'goes for the lowest armour, then HP'), aiHint1: t('按命中率挑目标，命中率低于 30% 的武器不用', 'picks by hit chance; skips weapons under 30%'),
+  aiHint2: t('那人不在地图上了就改成「挑好打中的」', 'turns to “likeliest hit” once that one is gone'), aiHint3: t('途中不主动攻击，被打会反击', 'does not attack on the way; answers back'),
+  aiHint4: t('像撤离、护送的机体', 'like a unit escaping or escorted'), aiHint5: t('离开那人身边 1 格就回去；射程内照打', 'keeps within a cell of them; attacks in range'),
+  aiWait: t('原地不动的回合数', 'Turns it stays put'), aiWaitHint: t('0 马上行动；31 一直不动（射程内照样攻击）', '0 acts at once; 31 never moves (still attacks in range)'),
+  aiTarget: t('目标人物', 'Whom'), aiTo: t('目标格', 'Where'), pickCell: t('在地图上点选', 'Pick on the map'),
+  drop: t('被击破时掉落', 'Leaves when defeated'), dropNone: t('不掉落', 'nothing'),
+  duplicate: t('再放一个同样的', 'Place another like it'), removeUnit: t('移除这个单位', 'Remove this unit'),
+  unitsNote: t('左边选一组，点「往这组放单位」后在地图上点格子。点一个单位选中它，再点空格把它移过去。', 'Pick a group on the left, press “Place into” and click cells on the map. Click a unit to select it, then an empty cell to move it there.'),
+  // Story
+  events: t('这一关的事件', 'This stage’s events'), partOpening: t('开场', 'Opening'), partBattle: t('战斗中', 'During the battle'), partEnd: t('结束', 'End'),
+  eventBefore: t('出发前（世界地图）', 'Before setting out (world map)'), eventEnter: t('进入战场', 'Entering the battlefield'), eventEnd: t('战后（世界地图）', 'After the battle (world map)'),
+  beforeNote: t('进战场之前，在世界地图上说的话。', 'What is said on the world map before the battlefield.'),
+  enterNote: t('开场的各组登场以后发生的事。', 'What happens once the opening groups are on.'),
+  endNote: t('过关后在世界地图上说的话，说完去下一关或结局。', 'What is said on the world map once the stage is cleared, before the next stage or the ending.'),
+  lines: t('台词 {n} 句', '{n} lines'), unnamed: t('（未命名）', '(unnamed)'), addEvent: t('＋ 加一个事件', '+ Add an event'), eventName: t('事件名', 'Event name'), removeEvent: t('删除这个事件', 'Remove this event'),
+  whenLabel: t('什么时候', 'When'), andLabel: t('并且', 'and'), noCondition: t('没有别的条件', 'no other condition'),
+  condNotFired: t('「{event}」还没发生', '“{event}” has not happened'), condFired: t('「{event}」已经发生', '“{event}” has happened'), once: t('只发生一次', 'Once only'),
+  kind_turn: t('到了某一回合', 'A turn begins'), kind_defeated: t('某人被击破', 'Someone is defeated'), kind_hp_below: t('某人 HP 低于', 'Someone’s HP falls below'),
+  kind_battle: t('两人交战', 'Two fight'), kind_enemies_gone: t('敌方全灭', 'No enemy is left'), kind_remaining: t('剩余数量不超过', 'At most this many are left'), kind_persuade: t('说服', 'Persuasion'),
+  before: t('交战前', 'before'), after: t('交战后', 'after'),
+  whenOpening: t('开场时登场', 'Comes on in the opening'), whenEvent: t('由剧情事件叫出来', 'Brought on by a story event'),
+  whenTurn: t('第 {turn} 回合 · {side}阶段', 'Turn {turn} · {side} phase'), whenDefeated: t('{who} 被击破', '{who} is defeated'), whenHp: t('{who} HP 低于 {percent}%', '{who} below {percent}% HP'),
+  whenBattleBefore: t('{a} 与 {b} 交战前', 'Before {a} and {b} fight'), whenBattleAfter: t('{a} 与 {b} 交战后', 'After {a} and {b} fight'), whenGone: t('敌方全灭', 'No enemy is left'),
+  whenRemaining: t('{side}剩 {n} 个以下', '{side}: {n} or fewer left'), whenPersuade: t('{by} 说服 {target}', '{by} persuades {target}'),
+  whenDefeatedBy: t('{who} 被 {by} 击破', '{who} is defeated by {by}'), whenReach: t('{who} 进入 {area}', '{who} reaches {area}'),
+  whenDowned: t('{side}被击破 {n} 台', '{n} of {side} defeated'), whenGroupGone: t('「{group}」全部被击破', 'All of “{group}” defeated'),
+  kind_reach: t('到达某个区域', 'Someone reaches an area'), kind_downed: t('被击破了几台', 'This many are defeated'), kind_group_gone: t('某一组全部被击破', 'A group is wiped out'),
+  by: t('击破者', 'by'), anyone: t('任何人', 'anyone'), anyGroup: t('任何组', 'any group'), into: t('进入', 'into'), atLeast: t('至少', 'at least'), unitsWord: t('台', 'units'),
+  anyOfSide: t('某阵营任意一台', 'any unit of a side'), somebody: t('某人', 'someone'), anyOfOurs: t('我方任意一台', 'any of ours'),
+  pickArea: t('在地图上框选', 'Pick on the map'), areaPicking: t('在地图上拖出一个矩形，松手就选好了', 'Drag a rectangle on the map; letting go picks it'), cancel: t('取消', 'Cancel'),
+  allOf: t('全部满足', 'All of these'), oneOf: t('满足其一', 'Any one of these'), notWord: t('不', 'not'), addCond: t('＋ 加条件', '+ Add a condition'),
+  cond_turn: t('回合在', 'Turn between'), cond_on_map: t('在场上', 'Is on the map'), cond_defeated: t('已被击破', 'Has been defeated'), cond_absent: t('不在场上', 'Is not on the map'),
+  cond_hp: t('HP 低于', 'HP below'), cond_count: t('在场数量', 'Units on the map'), cond_in_area: t('此刻在区域内', 'Is in an area now'), cond_downed: t('被击破了几台', 'Defeated so far'),
+  cond_fired: t('事件已经发生', 'An event has happened'), cond_roster: t('部队里有', 'The roster has'), cond_route: t('主角路线', 'Protagonist'), cond_choice: t('上一个选项选了第几项', 'The last choice was'),
+  cond_funds: t('资金', 'Funds'), cond_var: t('剧情变量', 'Story variable'),
+  route0: t('布拉德', 'Brad'), route1: t('真奈美', 'Manami'), route2: t('阿克', 'Ark'), route3: t('赛莲', 'Selain'),
+  stepIf: t('如果', 'If'), stepElse: t('否则', 'Otherwise'), stepEnd: t('如果结束', 'End if'),
+  stepIfHint: t('在执行到这一步前判断。', 'Decided just before this step runs.'),
+  within: t('限', 'by turn'), withinHint: t('回合内（0 不限）', '(0: any turn)'),
+  ruleReach: t('到达', 'reaches'), ruleGroupGone: t('全部击破', 'Wipe out'), ruleEnemyReach: t('敌方到达', 'An enemy reaches'), ruleDowned: t('我方被击破', 'Ours defeated:'),
+  addReach: t('＋ 到达某处', '+ Reach an area'), addGroupGone: t('＋ 全部击破某一组', '+ Wipe out a group'), addEnemyReach: t('＋ 敌方到达某处', '+ An enemy reaches an area'), addDowned: t('＋ 我方被击破几台', '+ Ours defeated'),
+  lineLanguage: t('正在写的语言', 'Writing in'), addStep: t('＋ 加一步', '+ Add a step'),
+  stepSay: t('台词', 'Line'), stepDeploy: t('登场', 'Bring on'), stepLeave: t('离场', 'Leave'), stepJoin: t('入队', 'Join'), stepBgm: t('音乐', 'Music'), stepFocus: t('镜头', 'Camera'),
+  stepWait: t('等待', 'Wait'), stepFade: t('淡入淡出', 'Fade'), stepWin: t('胜利', 'Win'), stepLose: t('失败', 'Lose'), stepRaw: t('原版指令', 'Original command'),
+  boxMode: t('对话框样式 {n}', 'Box style {n}'), frames: t('帧', 'frames'), fadeIn: t('淡入', 'in'), fadeOut: t('淡出', 'out'), rawArgs: t('操作数，用空格分开', 'operands, separated by spaces'),
+  moveUp: t('上移', 'Move up'), moveDown: t('下移', 'Move down'), linePlaceholder: t('在这里写台词', 'Write the line here'),
+  inGame: t('游戏里的样子', 'As the game shows it'), noLine: t('这里还没有台词。', 'No line here yet.'), lineLength: t('{n} 字（一句最多 200 字）', '{n} characters (200 at most)'), lineTooLong: t('超过 200 字，拆成几句。', 'Over 200 characters: split it.'),
+  lineHint: t('说话人从图鉴里选，头像和名字跟着人走。没写日文的台词，日文界面显示中文或英文那一句。', 'The speaker comes from the Library; the portrait and the name go with the character. A line without Japanese shows its Chinese or English in the Japanese interface.'),
+  // Rules
+  winTitle: t('胜利条件', 'Winning'), anyOf: t('满足任意一条就过关', 'any one clears the stage'), loseTitle: t('失败条件', 'Losing'), anyOfLose: t('满足任意一条就 GAME OVER', 'any one is a game over'),
+  ruleDefeat: t('击破', 'Defeat'), ruleSurvive: t('撑到第', 'Hold out until turn'), turnWord: t('回合', ''), ruleRemaining: t('敌方剩余不超过', 'Enemies left, at most'),
+  ruleLost: t('被击破', 'is defeated'), ruleTurnLimit: t('没能在这一回合结束前过关：第', 'Not cleared by the end of turn'),
+  addGone: t('＋ 敌方全灭', '+ No enemy left'), addDefeat: t('＋ 击破某人', '+ Defeat someone'), addSurvive: t('＋ 撑到第几回合', '+ Hold out'), addRemaining: t('＋ 敌方剩几个以下', '+ Few enemies left'),
+  addLost: t('＋ 某人被击破', '+ Someone is defeated'), addTurnLimit: t('＋ 超过回合数', '+ Turn limit'),
+  rulesHint: t('要给某一条配台词，在「剧情」里加一个同样时机的事件，最后一步放「胜利」或「失败」。', 'To give a rule lines, add an event with the same trigger under Story and end it with Win or Lose.'),
+  arrivals: t('登场与增援', 'Arrivals'), arrivalsNote: t('每一组什么时候上场', 'when each group comes on'), unitsCount: t('{n} 个单位', '{n} units'), noUnits: t('还没有单位', 'no units yet'),
+  arrivalsHint: t('选「由剧情事件叫出来」的组，要在某个事件里加一步「登场」。', 'A group “brought on by a story event” needs a Bring on step in some event.'),
+  objectiveTitle: t('作战目标', 'Objective'), objectiveNote: t('地图菜单「作战目标」里显示的文字', 'what the map menu’s Objective window shows'),
+  objectiveWin: t('胜利条件', 'Winning'), objectiveLose: t('失败条件', 'Losing'), objectiveAuto: t('按上面的条件自动选', 'chosen from the rules'),
+  objectiveHint: t('只能从原版用过的说法里选；它只是显示，过关与失败看上面的条件。', 'Only the original’s own wordings; they are shown only, the rules above decide.'),
+  afterTitle: t('过关以后', 'Once cleared'), afterNext: t('去下一关', 'Go to a stage'), afterChoice: t('让玩家选', 'The player chooses'),
+  choiceText: t('选项文本号', 'Choice text number'), choiceHint: t('只能用原版已有的选项文本（如 18402）；新写的选项文字还不支持。', 'Only a choice text the original has (18402, for one); new choice texts are not supported yet.'),
+  choiceOption: t('选第 {n} 项去', 'Option {n} leads to'), stageBgm: t('战场音乐', 'Battlefield music'), stageBgmHint: t('曲目号 0–255', 'track number 0–255'),
+  // Problems
+  err_key: t('「{stage}」的关卡名只能用小写字母、数字、_、-', '“{stage}”: the key may use lower-case letters, digits, _ and - only'),
+  err_keyTwice: t('有两关的关卡名相同：{stage}', 'Two stages share the key of “{stage}”'),
+  err_next: t('「{stage}」过关后去的那一关不存在', 'The stage after “{stage}” does not exist'),
+  err_noPlayer: t('「{stage}」没有我方单位', '“{stage}” has no player unit'),
+  err_noEnemy: t('「{stage}」没有敌方单位，「敌方全灭」一开始就成立', '“{stage}” has no enemy unit: “no enemy left” holds from the start'),
+  err_tooMany: t('「{stage}」同一阵营超过 30 个单位', '“{stage}” has more than 30 units on one side'),
+  err_noWin: t('「{stage}」没有胜利条件', '“{stage}” has no way to win'),
+  err_outside: t('「{stage}」的第 {n} 个单位在地图外面', 'Unit {n} of “{stage}” is off the map'),
+  err_onWall: t('「{stage}」的第 {n} 个单位站在进不去的格上', 'Unit {n} of “{stage}” stands on a cell nothing can enter'),
+  err_unit: t('「{stage}」的第 {n} 个单位：没有这个机体', 'Unit {n} of “{stage}”: no such unit'),
+  err_pilot: t('「{stage}」的第 {n} 个单位：没有这个驾驶员', 'Unit {n} of “{stage}”: no such pilot'),
+  err_sameCell: t('「{stage}」的第 {n} 个单位和同组的另一个在同一格', 'Unit {n} of “{stage}” shares its cell with another of its group'),
+  err_groupNever: t('「{stage}」的第 {n} 组要由剧情事件叫出来，但没有事件让它登场', 'Group {n} of “{stage}” waits for a story event, and none brings it on'),
+  err_emptyLine: t('「{stage}」有一句台词还没写', '“{stage}” has a line with nothing written'),
+  err_unreached: t('没有哪一关通向「{stage}」', 'No stage leads to “{stage}”'),
+  err_unbalanced: t('「{stage}」有「如果／否则／如果结束」没有配对', '“{stage}” has an If, Otherwise or End if that does not pair up'),
+  err_areaOutside: t('「{stage}」有一个区域超出了地图', '“{stage}” has an area off the map'),
+  errRuntime: t('出错了：{detail}', 'Something went wrong: {detail}'), errNotEditors: t('这个包不是用这个编辑器导出的', 'this package was not exported by this editor'),
+  game: '0.5.4',
+};
+const pick = pickables(lang, data.units.map((u) => u.id), data.pilots.map((p) => p.id));
+const iconOf = new Map(data.units.map((u) => [u.id, u.icon]));
+const units = pick.units.map((u) => ({ ...u, icon: iconOf.get(u.id) }));
+const notice = versionNotice(lang, text.game);
+const routes = text.routes.split('|');
+---
+<Base lang={lang} title={title} description={lead}>
+  <div class="maker editor" data-level-editor>
+    <header class="editor-head">
+      <div class="editor-title">
+        <span class="tag">MOD</span>
+        <h1>{title}</h1>
+        <span class="saved" data-saved></span>
+      </div>
+      <nav class="tabs" data-tabs aria-label={title}></nav>
+      <div class="editor-actions">
+        <span data-stage></span>
+        <button type="button" class="mini" data-new>{text.newProject}</button>
+        <button type="button" class="btn" data-export>{text.exportButton}</button>
+      </div>
+    </header>
+    <p class="status export-status" data-export-status></p>
+    <div class="editor-body" data-body></div>
+
+    <div class="overview-only" data-overview-only>
+      <p class="lead">{lead}</p>
+      {notice && <p class="version-notice">{notice}</p>}
+      <ModPackageForm lang={lang} placeholder="yourname.campaign" />
+      <section class="block">
+        <h2>{text.campaign}</h2>
+        <div class="form">
+          <label>{text.route}<select data-route>{routes.map((name, n) => <option value={n}>{name}</option>)}</select><span class="hint">{text.routeHint}</span></label>
+        </div>
+      </section>
+      <SubmitHint lang={lang} />
+    </div>
+  </div>
+  <script type="application/json" id="editor-data" is:inline set:html={JSON.stringify({ text, units, pilots: pick.pilots, series: pick.series, locale: langInfo(lang).tag, lang: tl(lang), game: text.game })}></script>
+  <script>
+    import { initLevelEditor } from '../../../scripts/level-editor';
+    initLevelEditor();
+  </script>
+</Base>
+<style is:global>
+  .editor { padding: 0 clamp(12px, 2vw, 28px) 80px; }
+  .editor-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding: 14px 0 0; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--bg); z-index: 5; }
+  .editor-title { display: flex; align-items: center; gap: 10px; }
+  .editor-title h1 { font-size: 20px; margin: 0; }
+  .editor .saved { color: var(--green); font-size: 12.5px; }
+  .editor .tabs { display: flex; flex: 1 1 auto; gap: 2px; }
+  .editor .tab { font: inherit; background: none; border: 0; border-bottom: 2px solid transparent; color: var(--muted); padding: 12px 14px; cursor: pointer; }
+  .editor .tab.on { color: var(--gold); border-bottom-color: var(--gold); font-weight: 600; }
+  .editor-actions { display: flex; align-items: center; gap: 8px; padding-bottom: 8px; }
+  .editor .export-status { margin: 6px 0 0; }
+  .editor-body { display: flex; flex-wrap: wrap; gap: 18px; padding-top: 16px; align-items: flex-start; }
+  .editor .rail { flex: 0 0 240px; display: flex; flex-direction: column; gap: 8px; }
+  .editor .rail.wide { flex-basis: 290px; }
+  .editor .center { flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+  .editor .center.columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); align-items: start; }
+  .editor .inspector { flex: 1 1 280px; max-width: 340px; display: flex; flex-direction: column; gap: 12px; }
+  .editor h2 { font-size: 18px; margin: 0; } .editor h3 { font-size: 15px; margin: 0; display: flex; align-items: baseline; gap: 8px; }
+  .editor h3.good { color: var(--green); } .editor h3.bad { color: var(--pink); margin-top: 12px; }
+  .editor .sub { color: var(--muted); font-size: 12px; font-weight: 400; } .editor .sub.late { color: var(--orange); }
+  .editor .rail-head { display: flex; align-items: baseline; gap: 8px; font-weight: 600; }
+  .editor .rail-part { color: var(--dim); font-size: 12px; letter-spacing: .08em; padding-top: 8px; }
+  .editor .stage-card, .editor .flow-node { font: inherit; flex: 0 0 auto; text-align: left; display: grid; gap: 2px; padding: 8px 10px; min-height: 48px; background: transparent; color: var(--text); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; }
+  .editor .stage-card.on, .editor .flow-node.on { border-color: var(--gold); background: #16204a; }
+  .editor .stage-card strong { display: flex; align-items: center; gap: 8px; } .editor .count { margin-left: auto; }
+  .editor .side-dot { width: 10px; height: 10px; border-radius: 2px; flex: 0 0 auto; display: inline-block; }
+  .editor .add { font: inherit; min-height: 44px; background: transparent; border: 1px dashed var(--line); border-radius: 4px; color: var(--cyan); cursor: pointer; }
+  .editor .mini.danger { color: var(--pink); } .editor .mini:disabled { opacity: .4; }
+  .editor .mini.file { cursor: pointer; display: inline-flex; align-items: center; }
+  .editor .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .editor .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .editor .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .editor .panel, .editor .step { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .editor .dot { width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--ink); font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+  .editor .dot.done { background: var(--green); }
+  .editor .flow-box { overflow: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+  .editor .flow { position: relative; } .editor .flow svg { position: absolute; inset: 0; }
+  .editor .flow-node { position: absolute; background: #121a3c; align-content: center; }
+  .editor .flow-end { position: absolute; padding: 4px 12px; border: 1px solid var(--green); border-radius: 16px; color: var(--green); font-size: 13px; }
+  .editor .problem { display: flex; gap: 8px; margin: 0; } .editor .problem span { color: var(--orange); font-weight: 700; }
+  .editor .problem.hard span { color: var(--pink); } .editor .problem.ok span { color: var(--green); }
+  .editor .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; } .editor .spacer { flex: 1 1 auto; }
+  .editor .segment { display: flex; gap: 4px; padding: 4px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+  .editor .seg { font: inherit; min-height: 36px; padding: 0 12px; background: transparent; color: var(--text); border: 1px solid transparent; border-radius: 4px; cursor: pointer; }
+  .editor .seg.on { color: var(--gold); border-color: var(--gold); background: #16204a; }
+  .editor .zoom, .editor .check { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--muted); }
+  .editor .scroll { max-height: 74vh; overflow: auto; border: 1px solid var(--line); border-radius: 6px; background: #05070f; margin-top: 8px; }
+  .editor canvas { display: block; cursor: crosshair; }
+  .editor .hover { min-height: 1.4em; margin: 6px 0 0; }
+  .editor .brushes { display: flex; flex-direction: column; gap: 6px; max-height: 46vh; overflow: auto; padding-right: 4px; }
+  .editor .brush { font: inherit; flex: 0 0 auto; display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 6px 10px; background: transparent; color: var(--text); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; text-align: left; }
+  .editor .brush.on { border-color: var(--gold); background: #16204a; }
+  .editor .swatch { width: 22px; height: 22px; border-radius: 3px; flex: 0 0 auto; } .editor .brush-name { flex: 1; display: grid; }
+  .editor .faces img, .editor .faces .blank, .editor .say img, .editor .say .blank, .editor .game-line img, .editor .game-line .blank { width: 64px; height: 64px; object-fit: cover; border-radius: 4px; border: 1px solid var(--line); background: #121a3c; flex: 0 0 auto; display: block; }
+  .editor .pick-button { font: inherit; min-height: 40px; padding: 0 10px; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; text-align: left; }
+  .editor .num-in { width: 5.5em; } .editor .op-in { width: 6em; font-family: var(--mono); } .editor .static { padding: 8px 0; }
+  .editor .title-in { flex: 1 1 240px; font-size: 18px; font-weight: 600; }
+  .editor .when-box { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+  .editor .when { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; flex: 1 1 auto; }
+  .editor .step-row { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+  .editor .step-row.on { border-color: var(--gold); }
+  .editor .step-n { color: var(--dim); width: 18px; padding-top: 8px; }
+  .editor .step-kind { padding: 3px 8px; border-radius: 3px; background: #1d2a5c; color: var(--cyan); font-size: 12px; margin-top: 6px; white-space: nowrap; }
+  .editor .k-say .step-kind { background: #3a3210; color: var(--gold); } .editor .k-deploy .step-kind, .editor .k-leave .step-kind { background: #4a1d2a; color: #ff9aa6; }
+  .editor .k-win .step-kind, .editor .k-join .step-kind { background: #12382a; color: var(--green); } .editor .k-lose .step-kind { background: #4a1d2a; color: var(--pink); }
+  .editor .step-body { flex: 1; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; min-width: 0; }
+  .editor .say { display: flex; gap: 10px; flex: 1; min-width: 0; } .editor .say img, .editor .say .blank { width: 56px; height: 56px; }
+  .editor .say-body { flex: 1; display: grid; gap: 6px; min-width: 0; } .editor .say textarea { width: 100%; font-size: 15px; line-height: 1.6; }
+  .editor .langs-done { margin-left: auto; }
+  .editor .step-tools { display: flex; gap: 2px; }
+  .editor .icon { font: inherit; min-width: 36px; min-height: 36px; background: transparent; color: var(--muted); border: 0; border-radius: 4px; cursor: pointer; } .editor .icon:disabled { opacity: .3; }
+  .editor .add-step { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 12px; border: 1px dashed var(--line); border-radius: 6px; }
+  .editor .chip { font: inherit; min-height: 34px; padding: 0 12px; background: #121a3c; color: var(--cyan); border: 1px solid var(--line); border-radius: 18px; cursor: pointer; }
+  .editor .game-box { background: #1c2a1a; border: 1px solid var(--line); border-radius: 6px; padding: 12px; min-height: 150px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .editor .game-line { display: flex; gap: 8px; align-items: flex-end; }
+  .editor .game-text { flex: 1; display: grid; gap: 2px; background: rgba(8, 12, 40, .88); border: 2px solid #9fb0e8; border-radius: 4px; padding: 8px 10px; font-size: 15px; line-height: 1.5; white-space: pre-wrap; }
+  .editor .game-name { color: #6fb8ff; font-size: 12px; }
+  .editor .rule { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 8px 10px; background: #121a3c; border: 1px solid var(--line); border-radius: 6px; }
+  .editor .rule-name { min-width: 6em; }
+  .editor .overview-only { max-width: var(--max); margin-top: 28px; } .editor .lead { color: var(--muted); }
+  .editor .pick-dialog { width: min(920px, 94vw); max-height: 86vh; background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
+  .editor .pick-dialog::backdrop { background: rgba(0, 0, 0, .6); }
+  .editor .pick-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  @media (max-width: 900px) { .editor .rail, .editor .rail.wide, .editor .inspector { flex: 1 1 100%; max-width: none; } }
+</style>

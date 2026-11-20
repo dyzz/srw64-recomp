@@ -50,6 +50,9 @@ struct Image {
     std::optional<unsigned> route;
     std::vector<std::pair<unsigned,unsigned>> story_vars;
     std::optional<unsigned> last_choice;
+    // A campaign stage's own map (tools/mods/stage.py): its name under the campaign's maps/
+    // (map_mod.hpp); `map` is then the original map it stands in for.
+    std::string custom_map;
 };
 struct State {
     std::mutex mutex;
@@ -103,6 +106,8 @@ inline bool write_route(uint8_t* ram,unsigned route) {
     return route_names && route_names(ram,route);
 }
 inline bool active(){auto& s=state();std::lock_guard lock(s.mutex);return s.active;}
+// The registered stage's own map ("" when it uses an original map or no stage is in place).
+inline std::string custom_map(){auto& s=state();std::lock_guard lock(s.mutex);return s.active && s.image?s.image->custom_map:std::string();}
 
 inline bool quick_start() {
     auto& s=state();std::lock_guard lock(s.mutex);return s.image && s.armed && !s.applied;
@@ -194,14 +199,20 @@ inline Image parse(const nlohmann::json& document) {
         image.last_choice=small_int(document.at("last_choice"),8);
         if(!image.last_choice || *image.last_choice<1)throw std::runtime_error("mini stage last_choice: option 1 to 8");
     }
+    image.custom_map=document.value("custom_map",std::string());
+    if(image.custom_map.find_first_of("/\\.")!=std::string::npos)throw std::runtime_error("mini stage custom_map: a name, not a path");
     return image;
 }
 
-// A compiled campaign (srw64.campaign-image.v1, mini_stage.py campaign): every
-// stage's image and the scene it borrows. Throws on a scene no stage may borrow.
-inline std::pair<campaign::Info,std::map<uint32_t,Image>> parse_campaign(const nlohmann::json& document) {
-    if(document.value("schema","")!="srw64.campaign-image.v1")throw std::runtime_error("campaign: unsupported schema");
+// A compiled campaign: every stage's image and the scene it borrows. v1 is mini_stage.py
+// campaign's; v2 (tools/mods/stage.py) has most of its events in the story image beside it
+// (`file`'s folder, story.json), which only a host that runs them may play.
+inline bool campaign_image(const std::string& schema){return schema=="srw64.campaign-image.v1" || schema=="srw64.campaign-image.v2";}
+// Throws on a scene no stage may borrow.
+inline std::pair<campaign::Info,std::map<uint32_t,Image>> parse_campaign(const nlohmann::json& document,const std::filesystem::path& file={}) {
+    if(!campaign_image(document.value("schema","")))throw std::runtime_error("campaign: unsupported schema");
     campaign::Info info;
+    if(!file.empty())info.story=file.parent_path()/"story.json";
     info.id=document.at("id").get<std::string>();info.name=document.value("name",nlohmann::json(info.id));info.version=document.value("version","");
     info.start=document.at("start_scene").get<uint32_t>();
     std::map<uint32_t,Image> stages;
@@ -237,7 +248,7 @@ inline void configure(const std::filesystem::path& directory) {
         std::ifstream file(campaign_path);
         if(!file)throw std::runtime_error(std::string("campaign image unreadable: ")+campaign_path);
         nlohmann::json document;file>>document;
-        auto [info,stages]=parse_campaign(document);
+        auto [info,stages]=parse_campaign(document,campaign_path);
         log({{"action","campaign-loaded"},{"path",campaign_path},{"id",info.id},{"stages",stages.size()},{"start",info.start}});
         use_campaign(s,std::move(info),std::move(stages));
         return;
@@ -292,14 +303,19 @@ inline void register_hook(uint8_t* ram,recomp_context* ctx) {
     // first clear (3D4A adds one) reads 第1話 in the intermission and the saves.
     if(!s.stages.empty() && s.direct_done && !s.applied && read(ram,0x8010F5EF,1)==1)write8(ram,0x8010F5EF,0);
     // Story set-up before the opening runs: variables (two bits each, 8 to a halfword from
-    // 8015E818) and the last choice (engine+0x994, the 3E10-3E12 tests read it).
-    for(const auto& [index,value]:image.story_vars) {
+    // 8015E818) and the last choice (engine+0x994, the 3E10-3E12 tests read it). Only
+    // when the stage begins (mode 0): a suspend record restored (mode 1) or the stage's own
+    // screens coming back have their own, which the stage's events may have changed.
+    if(mode==0)for(const auto& [index,value]:image.story_vars) {
         const uint32_t at=0x8015E818+(index/8)*2;const unsigned shift=2*(index%8);
         guest::write16(ram,at,uint16_t((read(ram,at,2)&~(3u<<shift))|(value<<shift)));
     }
-    if(image.last_choice)guest::write16(ram,0x801602E4,uint16_t(0x3DD9+*image.last_choice-1));
-    if(!image.story_vars.empty() || image.last_choice)log({{"action","story-setup"},{"vars",image.story_vars.size()},{"last_choice",image.last_choice?nlohmann::json(*image.last_choice):nlohmann::json()}});
-    s.active=true;s.ready=false;++s.applied;
+    if(mode==0 && image.last_choice)guest::write16(ram,0x801602E4,uint16_t(0x3DD9+*image.last_choice-1));
+    if(mode==0 && (!image.story_vars.empty() || image.last_choice))log({{"action","story-setup"},{"vars",image.story_vars.size()},{"last_choice",image.last_choice?nlohmann::json(*image.last_choice):nlohmann::json()}});
+    // The one-time unit resources (service()) likewise only when the stage begins: on a
+    // restored suspend record the units are the record's, and one may be gone (seen on
+    // Windows: continuing after the unit was defeated threw "unit not deployed").
+    s.active=true;s.ready=mode!=0;++s.applied;
     log({{"action","applied"},{"scene",scene},{"stage",s.image->name},{"mode",mode},{"pointer_table",table},{"original_aux",original_aux},
          {"events",image.pointers.size()},{"event_bytes",image.events.size()},{"aux_bytes",image.aux.size()},{"applied",s.applied}});
 }
@@ -490,7 +506,9 @@ inline std::string load_file(const std::filesystem::path& file,bool enter=true) 
     };
     auto document=read_json(file);
     static unsigned loads=0;
+    std::filesystem::path compiled;   // the image built here from a source
     const auto schema=document.value("schema","");
+    if(schema=="srw64.campaign.v2")throw std::runtime_error("mini stage: compile this campaign with tools/mods/stage.py (or pack it) and open campaign/campaign.json");
     if(schema=="srw64.mini-stage.v1" || schema=="srw64.campaign.v1") {
         const char* compiler=std::getenv("SRW64_MINI_STAGE_COMPILER");
         if(!compiler || !*compiler)throw std::runtime_error("mini stage: a stage source needs SRW64_MINI_STAGE_COMPILER; compile it with mini_stage.py first");
@@ -502,11 +520,12 @@ inline std::string load_file(const std::filesystem::path& file,bool enter=true) 
         const auto command=std::string(compiler)+(schema=="srw64.campaign.v1"?" campaign ":" compile ")+quote(file.string())+" --out "+quote(image.string())+" > "+quote((directory/"runtime-mini-stage-compile.log").string())+" 2>&1";
         if(std::system(command.c_str())!=0)throw std::runtime_error("mini stage: compile failed, see runtime-mini-stage-compile.log");
         document=read_json(image);
+        compiled=image;
     }
     auto& s=state();
     std::unique_lock lock(s.mutex,std::defer_lock);
-    if(document.value("schema","")=="srw64.campaign-image.v1") {
-        auto [info,stages]=parse_campaign(document);
+    if(campaign_image(document.value("schema",""))) {
+        auto [info,stages]=parse_campaign(document,compiled.empty()?file:compiled);
         lock.lock();
         use_campaign(s,std::move(info),std::move(stages));
     } else {

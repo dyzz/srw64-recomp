@@ -65,7 +65,7 @@ inline bool has_saves(const std::string& id) {
 inline std::optional<Entry> read(const fs::path& path) {
     std::ifstream file(path);
     const auto document=nlohmann::json::parse(file,nullptr,false);
-    if(document.is_discarded() || document.value("schema","")!="srw64.campaign-image.v1" || !document.contains("id") || !document.at("id").is_string())return std::nullopt;
+    if(document.is_discarded() || (document.value("schema","")!="srw64.campaign-image.v1" && document.value("schema","")!="srw64.campaign-image.v2") || !document.contains("id") || !document.at("id").is_string())return std::nullopt;
     Entry entry;
     entry.id=document.at("id").get<std::string>();
     entry.path=path;entry.version=document.value("version","");entry.author=document.value("author","");

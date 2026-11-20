@@ -30,7 +30,7 @@ from pathlib import Path
 from typing import Callable
 
 SCHEMA = "srw64.mod.v1"
-CAMPAIGN_IMAGE_SCHEMA = "srw64.campaign-image.v1"
+CAMPAIGN_IMAGE_SCHEMAS = ("srw64.campaign-image.v1", "srw64.campaign-image.v2")
 PACKAGE_EXTENSION = ".srw64mod"
 # src/host/mod_library.hpp `licenses`: the ones that allow the package to be passed on.
 LICENSES = ("CC-BY-4.0", "CC-BY-SA-4.0", "CC-BY-NC-4.0", "CC-BY-NC-SA-4.0", "CC0-1.0", "MIT", "GPL-3.0-or-later")
@@ -871,10 +871,21 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
         except (ValueError, UnicodeDecodeError) as error:
             problems.append(Problem("campaign", str(error)))
             continue
-        if not isinstance(image, dict) or image.get("schema") != CAMPAIGN_IMAGE_SCHEMA:
-            problems.append(Problem("campaign", "not " + CAMPAIGN_IMAGE_SCHEMA))
+        if not isinstance(image, dict) or image.get("schema") not in CAMPAIGN_IMAGE_SCHEMAS:
+            problems.append(Problem("campaign", "not " + " / ".join(CAMPAIGN_IMAGE_SCHEMAS)))
         elif image.get("id") != m["id"]:
             problems.append(Problem("campaign", f"id {image.get('id')!r}, the package is {m['id']!r}"))
+    # The events of a campaign's stages that the host runs (tools/mods/stage.py).
+    for e in package.entries:
+        if e.name != "campaign/story.json":
+            continue
+        try:
+            image = json.loads(e.read().decode("utf-8"))
+        except (ValueError, UnicodeDecodeError) as error:
+            problems.append(Problem("campaign", f"story.json: {error}"))
+            continue
+        if not isinstance(image, dict) or image.get("schema") != "srw64.story-image.v1" or image.get("campaign") != m["id"]:
+            problems.append(Problem("campaign", f"story.json is not this campaign's story image ({m['id']!r})"))
     for e in package.entries:
         top, _, rest = e.name.partition("/")
         if top == "data" and rest in DATA_FIELDS:

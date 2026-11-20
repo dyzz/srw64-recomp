@@ -4,9 +4,11 @@
     tools/mods/pack.py config/recomp/campaigns/sample -o build/mods
 
 The source folder holds mod.json (docs/design/mod-packages.md §2) and the content as the
-package carries it, with one exception: a campaign source (campaign.json of
-srw64.campaign.v1 with its stages/, docs/design/custom-campaign.md §3) is compiled here
-into campaign/campaign.json, the image the game plays. Everything that is not a package
+package carries it, with one exception: a campaign source (campaign.json with its
+stages/: srw64.campaign.v2, docs/design/level-editor.md §3, or the earlier
+srw64.campaign.v1, docs/design/custom-campaign.md §3) is compiled here into
+campaign/campaign.json, the image the game plays, and with v2 campaign/story.json, the
+events the host runs. Everything that is not a package
 folder or file (the campaign's sources, notes) stays out.
 
 Writes <out>/<id>/ (the package unpacked, as the game keeps it in mods/) and
@@ -79,7 +81,18 @@ def build_folder(source: Path, out_dir: Path) -> tuple[Path, dict]:
     shutil.copyfile(source / "mod.json", folder / "mod.json")
     campaign_source = source / "campaign.json"
     is_campaign_source = campaign_source.is_file() and json.loads(campaign_source.read_text(encoding="utf-8")).get("schema") == CAMPAIGN_SOURCE_SCHEMA
-    if is_campaign_source:
+    # A campaign written stage by stage (srw64.campaign.v2, stage.py): its image and the
+    # events the host runs, campaign/campaign.json and campaign/story.json.
+    import stage
+    if stage.is_source(source):
+        is_campaign_source = True
+        try:
+            image, _ = stage.compile_into(source, folder / "campaign")
+        except stage.StoryError as error:
+            raise ValueError(str(error)) from None
+        if image["id"] != manifest["id"]:
+            raise ValueError(f"{campaign_source}: id {image['id']!r} is not the package's {manifest['id']!r}")
+    elif is_campaign_source:
         compile_campaign_source(source, folder, manifest["id"])
     for name in validate.CONTENT_DIRS:
         if name == "campaign" and is_campaign_source:
