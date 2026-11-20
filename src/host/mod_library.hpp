@@ -479,6 +479,9 @@ InstallResult install(const fs::path& source);
 bool set_enabled(const std::string& id,bool on);
 // Moves the package (its folder and its file) to <mods>/.trash.
 bool remove(const std::string& id);
+// Moves a file placed in the folder that did not install (one of loose_results' failures,
+// by its file name) to <mods>/.trash, so the MOD page stops reporting it.
+bool remove_failed(const std::string& file_name);
 // Moves on every install, switch and removal, so readers of the packages know to look again.
 unsigned revision();
 // The game's version, for the packages' "game" requirement (the window thread sets it).

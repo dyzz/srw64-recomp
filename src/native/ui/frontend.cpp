@@ -2057,10 +2057,16 @@ std::string mod_installed_page() {
 #endif
     if(mod_installing)body+="<p class='dlc-meta'>"+label("mod_installing")+"</p>";
     const auto& list=installed_mods();
-    // Package files placed in the folder that did not install (still there, tried again).
-    for(const auto& r:srw64::mods::loose_results())if(!r.result.ok)
-        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(r.file.filename().string())+"</div></div><p class='dlc-meta'>"+
+    // Package files placed in the folder that did not install (still there, tried again), each
+    // with a removal asked twice: on a phone the inbox moved it into the private folder, which
+    // only the system's file manager reaches (Seeker, 2026-11-20).
+    unsigned failed=0;
+    for(const auto& r:srw64::mods::loose_results())if(!r.result.ok) {
+        const auto file=r.file.filename().string();
+        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(file)+"</div><div class='set-seg'>"+
+            button("mod-remove-file:"+std::to_string(failed++),label(mod_remove_pending=="file:"+file?"mod_remove_confirm":"mod_remove"))+"</div></div><p class='dlc-meta'>"+
             escape(filled("mod_install_failed",{{"{reason}",mod_problem_text(r.result.problem)}}))+"</p></div>";
+    }
     if(list.empty())body+="<p>"+label("mod_none")+"</p>";
     for(auto it=list.rbegin();it!=list.rend();++it) {
         const auto& p=*it;
@@ -5412,8 +5418,10 @@ void mini_sync() {
 bool touch_active();
 void home_sync() {
     const bool settings_entry=pad_mode || !app_menu::available();
-    // Not while the opening's works fly past or the logo comes in, nor in a demo.
-    if(!intro::title_waiting() || settings_open){document_close(home_doc);document_close(home_chrome_doc);home_stamp.clear();return;}
+    // Not while the opening's works fly past or the logo comes in, nor in a demo, nor once a
+    // Battle Viewer battle is under way: the title is still waiting while the screen goes
+    // black, and the corner stayed on it for half a second (Seeker, 2026-11-20).
+    if(!intro::title_waiting() || settings_open || battle_viewer::busy()){document_close(home_doc);document_close(home_chrome_doc);home_stamp.clear();return;}
     // With touch controls the settings are a touch button along the top; the corner stays.
     const bool touch=touch_active();
     // The catalog's revision too: a text update or F5 changes labels within a language.
@@ -5922,6 +5930,18 @@ void choose(const std::string& id) {
         }
         mod_remove_pending.clear();++mod_revision;settings_focus=id;return;
     }
+    // A file that did not install: the n-th failure the page listed, removed on the second press.
+    if(mod_open && id.starts_with("mod-remove-file:")) {
+        const unsigned n=unsigned(std::strtoul(id.c_str()+16,nullptr,10));
+        std::string file;
+        unsigned i=0;
+        for(const auto& r:srw64::mods::loose_results())if(!r.result.ok && i++==n){file=r.file.filename().string();break;}
+        if(file.empty()){mod_remove_pending.clear();++mod_revision;return;}
+        if(mod_remove_pending!="file:"+file){mod_remove_pending="file:"+file;settings_focus=id;return;}
+        mod_remove_pending.clear();
+        notices::post("mod",filled(srw64::mods::remove_failed(file)?"mod_removed":"mod_remove_failed",{{"{id}",file}}));
+        ++mod_revision;settings_focus="first";return;
+    }
     if(mod_open && id.starts_with("mod-remove:")) {
         const auto pid=id.substr(11);
         if(mod_remove_pending!=pid){mod_remove_pending=pid;settings_focus=id;return;}
@@ -6428,6 +6448,18 @@ bool touch_owns_point(float x,float y) {
     const auto layout=touch_layout();const auto& scene=touch_controls;
     return touch_pad::hit(layout,scene,x,y) || touch_pad::in_stick_area(layout,scene,x,y) || scene.tap_primary;
 }
+// The title's entries (Library, the battle viewer, MOD; the campaign box) sit in the title
+// picture's corners, where on a wide phone the default controls overlap them: the B button
+// covered most of MOD at 16:9 (Seeker, 2026-11-20). A finger on one of them is the page's,
+// whatever control is drawn over it.
+bool title_entry_at(float x,float y) {
+    for(auto* doc:{home_doc,mini_doc}) {
+        if(!doc || !doc->IsVisible())continue;
+        for(auto* e=context->GetElementAtPoint({x,y},nullptr,doc);e && e!=doc;e=e->GetParentNode())
+            if(e->GetTagName()=="button")return true;
+    }
+    return false;
+}
 // Through sdl2-compat the back key has no scancode and SDL3's keycode (0x4000011A, SDL2's
 // SDLK_AC_BACK is 0x4000010E).
 bool touch_back_key(const SDL_Event& event) {
@@ -6475,7 +6507,7 @@ bool touch_event(const SDL_Event& event) {
     switch(event.type) {
     case SDL_FINGERDOWN: {
         touch_shown=true;touch_hints(true);
-        if(!touch_active() || !touch_fingers.down(touch_layout(),touch_controls,event.tfinger.fingerId,
+        if(!touch_active() || title_entry_at(event.tfinger.x*pixels_w,event.tfinger.y*pixels_h) || !touch_fingers.down(touch_layout(),touch_controls,event.tfinger.fingerId,
                                                   event.tfinger.x*pixels_w,event.tfinger.y*pixels_h))return false;
         touch_down_at[event.tfinger.fingerId]=SDL_GetTicks64();
         touch_publish();return true;
@@ -6502,7 +6534,8 @@ bool touch_event(const SDL_Event& event) {
     }
     // The mouse SDL makes from the first finger: not for the pages under the controls.
     case SDL_MOUSEBUTTONDOWN:
-        if(event.button.which!=SDL_TOUCH_MOUSEID || !touch_active() || !touch_owns_point(event.button.x*pixel_ratio,event.button.y*pixel_ratio))return false;
+        if(event.button.which!=SDL_TOUCH_MOUSEID || !touch_active() || !touch_owns_point(event.button.x*pixel_ratio,event.button.y*pixel_ratio) ||
+           title_entry_at(event.button.x*pixel_ratio,event.button.y*pixel_ratio))return false;
         touch_mouse_eaten=true;return true;
     case SDL_MOUSEMOTION:
         return event.motion.which==SDL_TOUCH_MOUSEID && touch_mouse_eaten;

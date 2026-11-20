@@ -649,6 +649,19 @@ bool set_enabled(const std::string& id,bool on) {
     return write_state(state);
 }
 
+bool remove_failed(const std::string& file_name) {
+    std::lock_guard lock(mutex);
+    if(directory().empty())return false;
+    // Only a name the last listing reported as failed, so no path reaches outside the folder.
+    const auto it=std::find_if(loose.begin(),loose.end(),[&](const LooseResult& r){return !r.result.ok && r.file.filename().string()==file_name;});
+    if(it==loose.end())return false;
+    std::error_code error;
+    if(fs::exists(it->file,error) && !to_trash(it->file,file_name))return false;
+    loose.erase(it);
+    ++changes;
+    return true;
+}
+
 bool remove(const std::string& id) {
     std::lock_guard lock(mutex);
     if(directory().empty() || !campaign_library::valid_id(id))return false;

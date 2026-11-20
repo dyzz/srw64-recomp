@@ -266,7 +266,18 @@ int main(int argc,char** argv) {
                   "a file that does not install is reported, not listed");
             list=mods::installed(game);
             check(ids(list).size()==before,"nor on the next look");
-            fs::remove(library/"rom.z64.srw64mod");
+            // The page's removal: only a reported failure, by its name, into .trash.
+            check(!mods::remove_failed("test.loose2.srw64mod") && !mods::remove_failed("../rom.z64.srw64mod"),"no removal of a name not reported");
+            check(mods::remove_failed("rom.z64.srw64mod") && !fs::exists(library/"rom.z64.srw64mod"),"a failed file goes");
+            {
+                std::error_code error;bool kept=false;
+                for(const auto& item:fs::directory_iterator(library/".trash",error))kept|=item.path().filename().string().starts_with("rom.z64.srw64mod-");
+                check(kept,"kept in .trash");
+            }
+            const auto after=mods::loose_results();
+            check(std::none_of(after.begin(),after.end(),[](const auto& r){return r.file.filename()=="rom.z64.srw64mod";}),"and is no longer reported");
+            list=mods::installed(game);
+            check(ids(list).size()==before,"the packages untouched");
         }
         // A folder of an id takes the place of its file: an author's working copy.
         write(library/"test.loose"/"mod.json",manifest("test.loose","9.0.0").dump());
