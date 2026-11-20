@@ -157,12 +157,14 @@ jobs:
           key: vcpkg-x64-windows-${{ env.VCPKG_COMMIT }}-${{ github.run_id }}
           restore-keys: vcpkg-x64-windows-${{ env.VCPKG_COMMIT }}-
 
-      - name: FreeType, HarfBuzz, ICU (vcpkg)
+      # ANGLE (OpenGL ES over Direct3D 11) for Marchwind64-gl.exe, the fallback on PCs RT64
+      # cannot draw on (docs/design/windows-gl-fallback.md): some 7 minutes the first time.
+      - name: FreeType, HarfBuzz, ICU, ANGLE (vcpkg)
         id: vcpkg
         run: |
           New-Item -ItemType Directory -Force vcpkg-cache | Out-Null
           $before = (Get-ChildItem -Recurse -File vcpkg-cache).Count
-          & "$env:VCPKG_INSTALLATION_ROOT\vcpkg.exe" install freetype harfbuzz icu --triplet x64-windows
+          & "$env:VCPKG_INSTALLATION_ROOT\vcpkg.exe" install freetype harfbuzz icu angle --triplet x64-windows
           if ($LASTEXITCODE -ne 0) { exit 1 }
           if ((Get-ChildItem -Recurse -File vcpkg-cache).Count -gt $before) { "built=true" | Out-File -Append -Encoding utf8 $env:GITHUB_OUTPUT }
 
@@ -236,6 +238,28 @@ jobs:
           ccache -s
           if ($built -ne 0) { exit $built }
 
+      # The GL host over ANGLE (src/gl, as on the Switch): Marchwind64.exe starts it in its
+      # place when no GPU can take RT64 (renderer_fallback.hpp). Its own build folder (the two
+      # hosts cannot share one); the game code comes from ccache, compiled just above.
+      - name: GL host (fallback)
+        env:
+          CMAKE_C_COMPILER_LAUNCHER: ccache
+          CMAKE_CXX_COMPILER_LAUNCHER: ccache
+        run: |
+          cmake -S src/host -B build/recomp/gl-build -G Ninja -DCMAKE_BUILD_TYPE=Release `
+            -DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl `
+            "-DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake" `
+            -DSRW64_GL_ONLY=ON -DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON `
+            "-DPython3_EXECUTABLE=$PWD/.venv/Scripts/python.exe"
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          cmake --build build/recomp/gl-build --target srw64_cpu -j 4 *> gl-cpu-build.log
+          if ($LASTEXITCODE -ne 0) { "srw64_cpu (GL) failed: " + (Select-String -Path gl-cpu-build.log -Pattern "error:" | Measure-Object).Count + " errors"; exit 1 }
+          Remove-Item gl-cpu-build.log
+          cmake --build build/recomp/gl-build --target srw64-gl-host -j 4 -- -k 0
+          $built = $LASTEXITCODE
+          ccache -s
+          if ($built -ne 0) { exit $built }
+
       - name: Encrypt the compiler cache
         shell: bash
         env:
@@ -261,6 +285,8 @@ jobs:
           $out = "Marchwind64-windows-x64"
           New-Item -ItemType Directory -Force $out | Out-Null
           Copy-Item build/recomp/gfx-build/srw64-gfx-host.exe "$out/Marchwind64.exe"
+          # The fallback for old GPUs; its ANGLE DLLs (libEGL, libGLESv2) come with vcpkg's below.
+          Copy-Item build/recomp/gl-build/srw64-gl-host.exe "$out/Marchwind64-gl.exe"
           Copy-Item build/recomp/upstream/RT64/src/contrib/mupen64plus-win32-deps/SDL2-2.26.3/lib/x64/SDL2.dll $out
           Get-ChildItem -Recurse build/recomp/gfx-build -Include dxcompiler.dll,dxil.dll | Select-Object -First 2 | Copy-Item -Destination $out
           Copy-Item "$env:VCPKG_INSTALLATION_ROOT/installed/x64-windows/bin/*.dll" $out
@@ -290,6 +316,7 @@ jobs:
           Remove-Item -Force -ErrorAction SilentlyContinue "$out/filters/.commit"
           New-Item -ItemType Directory -Force "$out/licenses" | Out-Null
           Copy-Item build/recomp/thirdparty/librashader/windows/LICENSE.md "$out/licenses/librashader-LICENSE.md"
+          Copy-Item "$env:VCPKG_INSTALLATION_ROOT/installed/x64-windows/share/angle/copyright" "$out/licenses/ANGLE-LICENSE.txt"
           # The VC++ runtime (redistributable with the program), so no separate installer is needed.
           Copy-Item "$env:VCToolsRedistDir/x64/Microsoft.VC143.CRT/*.dll" $out
           dumpbin /nologo /dependents "$out/Marchwind64.exe"
@@ -299,6 +326,12 @@ jobs:
           $usage = & "$out/Marchwind64.exe" --play --help | Out-String
           if ($LASTEXITCODE -ne 0 -or $usage -notmatch '--play --rom') {
             Write-Error ("Marchwind64.exe --play --help exited 0x{0:X8}" -f $LASTEXITCODE); exit 1
+          }
+          # The GL host and its ANGLE DLLs load too (only its start is tried here).
+          foreach ($dll in "libEGL.dll", "libGLESv2.dll") { if (-not (Test-Path "$out/$dll")) { Write-Error "$dll missing"; exit 1 } }
+          $usage = & "$out/Marchwind64-gl.exe" --play --help | Out-String
+          if ($LASTEXITCODE -ne 0 -or $usage -notmatch '--play --rom') {
+            Write-Error ("Marchwind64-gl.exe --play --help exited 0x{0:X8}" -f $LASTEXITCODE); exit 1
           }
 
       # The program carries the recompiled game, like a release download; until a release is
