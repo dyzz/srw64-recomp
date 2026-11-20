@@ -78,14 +78,16 @@ class StoryTests(unittest.TestCase):
                 story.compile_story(source(event(do=[bad])))
 
     def test_super_earthgain_package(self):
-        # config/recomp/mods/super-earthgain: Brad changes into 306 as the original's other branch
-        # does, but with 500 for the old unit, so Earthgain (34) stays in the roster.
+        # config/recomp/mods/super-earthgain: when Kurtz joins, the package's Super Earthgain is
+        # built from Earthgain (34) and Virose (35) (mod_combine.hpp), not given as 306.
         document = json.loads((ROOT / "config/recomp/mods/super-earthgain/story/kurtz.json").read_text(encoding="utf-8"))
         image = story.compile_story(document)
         got = image["events"][0]
-        self.assertEqual(got["listing"][0], "3D5A 27,0,306,500")
+        self.assertEqual(got["builds"], ["@super"])
+        self.assertEqual(got["listing"], ["FFFF"])
         self.assertEqual(got["vars"], {"21": 2})
-        self.assertEqual(image["stage_info"][0]["done"], {"units": [306]})
+        self.assertEqual(got["roster"], {"pilots": [27, 31], "units": [34, 35]})
+        self.assertEqual(image["stage_info"][0]["done"], {"units": ["@super"]})
 
     def test_stage_info(self):
         # Hidden elements a package adds to a scene's stage information page (stage_info.cpp).

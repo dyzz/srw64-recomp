@@ -3,7 +3,7 @@
   "events": [
     {
       "id": "super-earthgain",
-      "note": "決着の時 (scene 124, Brad's route, Independence Army and OZ): its end event sets var21 = 2 and registers Kurtz with Virose (3D5A 31,0,35,500) when Brad has 100 kills. Then Brad also takes Super Earthgain the way the original's other branch does (3D5A 27,0,306,34), but with 500 as the old unit, so Earthgain stays in the roster unmanned. 800AAD28 finds 306's predecessor 34 still there and carries its five upgrade levels over. Brad and the two units share swap class 8 (data/), so the のりかえ menu moves him between them; in Earthgain next to Virose he has 招雷 天竜魔滅陣 (1219, found by unit, not by pilot).",
+      "note": "決着の時 (scene 124, Brad's route, Independence Army and OZ): its end event sets var21 = 2 and registers Kurtz with Virose (3D5A 31,0,35,500) when Brad has 100 kills. Then Super Earthgain @super is built for our roster (data/new_units.json combine: Earthgain 34 leading, Virose 35; the host builds the instance when the event starts, its crew Brad and Kurtz, its levels from 34). It deploys combined; on the map 分離 gives Earthgain and Virose back (招雷 天竜魔滅陣 between them), and Earthgain's 合体 next to Virose, neither acted, makes Super Earthgain again.",
       "scene": 124,
       "when": {
         "after": "end"
@@ -24,16 +24,13 @@
         },
         "not_roster": {
           "units": [
-            306
+            "@super"
           ]
         }
       },
       "do": [
         {
-          "join": {
-            "pilot": 27,
-            "unit": 306
-          }
+          "build": "@super"
         }
       ]
     }
@@ -49,15 +46,15 @@
         "ko": "슈퍼 어스게인"
       },
       "text": {
-        "ja": "カーツが仲間になれば、スーパーアースゲインも入手。ブラッドはのりかえでアースゲインと乗り換えられる",
-        "zh-Hans": "卡茨入队时也得到超级夺地者。布拉德可以在换乘里和夺地者互换",
-        "zh-Hant": "卡茨入隊時也得到超級奪地者。布拉德可以在換乘裡和奪地者互換",
-        "en": "When Kurtz joins, Super Earthgain comes too. Brad can swap between it and Earthgain",
-        "ko": "카츠가 동료가 되면 슈퍼 어스게인도 입수. 브래드는 갈아타기로 어스게인과 바꿔 탈 수 있다"
+        "ja": "カーツが仲間になれば、アースゲインとヴァイローズが合体したスーパーアースゲインで出撃。マップ上で分離・合体できる",
+        "zh-Hans": "卡茨入队后，夺地者与瓦伊罗斯合体为超级夺地者出击，地图上可以分离、再合体",
+        "zh-Hant": "卡茨入隊後，奪地者與瓦伊羅斯合體為超級奪地者出擊，地圖上可以分離、再合體",
+        "en": "When Kurtz joins, Earthgain and Virose combine into Super Earthgain and deploy as one; on the map they can separate and combine again",
+        "ko": "카츠가 동료가 되면 어스게인과 바이로즈가 합체한 슈퍼 어스게인으로 출격. 맵에서 분리·합체할 수 있다"
       },
       "done": {
         "units": [
-          306
+          "@super"
         ]
       }
     }

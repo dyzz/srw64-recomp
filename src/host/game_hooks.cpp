@@ -327,6 +327,8 @@ extern "C" void resident_func_8008F970(uint8_t* rdram, recomp_context* ctx) {
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     srw64_original_frame_boundary(ram,ctx);
     srw64::mod_combine::fill(ram);   // the combined-unit table's copies (mod_combine.hpp)
+    srw64::mod_combine::fill_recipes(ram);   // and the combine recipes
+    srw64::mod_combine::deploy_sync(ram);    // a package's combined unit deploys combined
     srw64::mod_forms::fill(ram);     // the form families' copies (mod_forms.hpp)
     srw64::mod_pilots::fill(ram);    // the character maps' copies (mod_pilots.hpp)
     if(srw64_game_hooks.frame_start)srw64_game_hooks.frame_start(ram);
@@ -493,6 +495,36 @@ void resident_func_800A74D4(uint8_t* ram,recomp_context* ctx) {
     const uint32_t made=uint32_t(ctx->r5);
     if(srw64::guest::valid(made,0x54) && srw64::mod_combine::combined_unit(srw64::guest::read(ram,made+2,2)))return;
     srw64_original_combine_parts(ram,ctx);
+}
+void resident_func_800A5924(uint8_t* ram,recomp_context* ctx) {
+    // A unit's upgrades or 強化パーツ spread to its forms and combine parts (a0, a1 1 parts):
+    // the parts of a package's combined unit with no `over` keep their own (mod_combine.hpp).
+    const auto kept=srw64::mod_combine::keep_parts(ram,uint32_t(ctx->r4));
+    srw64_original_upgrade_spread(ram,ctx);
+    if(kept.empty())return;
+    srw64::mod_combine::restore_parts(ram,kept);
+    for(const auto& one:kept){auto c=*ctx;c.r4=int32_t(one.at);c.r5=1;resident_func_800A5254(ram,&c);}
+}
+void resident_func_800A79EC(uint8_t* ram,recomp_context* ctx) {
+    // Registering a unit (a0, side a1): a part of a recipe whose other part is already on the
+    // roster shares that part's weapons. A package's recipe is for the map's 合体 only: its
+    // parts keep their own weapons (mod_combine.hpp recipe_parts).
+    if(srw64::mod_combine::recipe_part(ram,unsigned(int16_t(ctx->r4)))){ctx->r2=0;return;}
+    srw64_original_recipe_partner(ram,ctx);
+}
+void resident_func_800A794C(uint8_t* ram,recomp_context* ctx) {
+    // A unit registered (a0 its instance, a1 the side): with all the parts of its recipe on the
+    // roster, the original builds the combined unit sharing the leader's weapons. A package's
+    // combined unit is built by its story (story_mod.hpp build), with weapons of its own.
+    const uint32_t made=uint32_t(ctx->r4);
+    if(srw64::guest::valid(made,0x54) && srw64::mod_combine::recipe_part(ram,srw64::guest::read(ram,made+2,2)))return;
+    srw64_original_recipe_build(ram,ctx);
+}
+void resident_func_800AB5C0(uint8_t* ram,recomp_context* ctx) {
+    // 3D5D: Dancouga or the beast fighters deploy (a0 combined, a1 the family). A package's
+    // unit taking Dancouga over follows it (mod_combine.hpp deploy_sync).
+    srw64_original_deploy_form(ram,ctx);
+    srw64::mod_combine::deploy_sync(ram);
 }
 void load_000AB160_func_801E977C(uint8_t* ram,recomp_context* ctx) {
     // Whether the unit (a0) can combine, a1 1 for the map menu: a package's combined unit

@@ -252,6 +252,16 @@ NATIVE_HOOKS = {
     "load_00121560_func_801C6F14": "srw64_original_battle_quote_show",
     "resident_func_8008F970": "srw64_original_dialogue_portrait",
     "resident_func_800A74D4": "srw64_original_combine_parts",
+    # Registering a unit looks up the recipes of its parts (800A79EC: share the weapons of a part
+    # already there; 800A794C: build the combined unit). A package's recipe is for the map's 合体
+    # only (mod_combine.hpp recipe_parts), so its parts register on their own. 800AB5C0 is 3D5D.
+    "resident_func_800A79EC": "srw64_original_recipe_partner",
+    # A unit's upgrades or 強化パーツ changed (a0, a1 1 for the parts): the original copies them to
+    # its form family and its combine parts; a package's combine of units that are whole on
+    # their own (no `over`) keeps the parts' own (mod_combine.hpp keep_parts).
+    "resident_func_800A5924": "srw64_original_upgrade_spread",
+    "resident_func_800A794C": "srw64_original_recipe_build",
+    "resident_func_800AB5C0": "srw64_original_deploy_form",
     "load_0008F4B0_func_801D6FF4": "srw64_original_link_open",
     "load_0008F4B0_func_801D70FC": "srw64_original_link_step",
 }
@@ -556,7 +566,7 @@ COMBINE_LIST_READERS = [("resident_func_800A8880", 0x800A8888), ("load_000AB160_
 COMBINE_POINTER_READERS = [
     ("load_0008F4B0_func_801D33F4", 0x801D350C), ("load_000AB160_func_801E1688", 0x801E16F4),
     ("load_000AB160_func_801E7EA8", 0x801E7F6C), ("load_000AB160_func_801E8344", 0x801E8548),
-    ("resident_func_800A5924", 0x800A5A80), ("srw64_original_combine_parts", 0x800A750C),
+    ("srw64_original_upgrade_spread", 0x800A5A80), ("srw64_original_combine_parts", 0x800A750C),
     ("resident_func_800A9DCC", 0x800A9F50), ("resident_func_800AA210", 0x800AA318),
     ("resident_func_800AAB5C", 0x800AABA8), ("resident_func_800AC220", 0x800AC468),
     ("resident_func_800AC50C", 0x800AC598), ("srw64_original_weapon_inherit", 0x800AA958)]
@@ -564,6 +574,16 @@ for function, address in COMBINE_LIST_READERS:
     MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X4BF4", literal(COMBINE_LIST_COPY - 0x800D0000))
 for function, address in COMBINE_POINTER_READERS:
     MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X4A5C", literal(COMBINE_POINTERS_COPY - 0x800D0000))
+# The combine recipes (the map's 合体, mod_combine.hpp fill_recipes): the parts list D_800CAFEC
+# has one walk (800A8A90), its record pointers D_800CB390 three readers indexed by its answer.
+RECIPE_LIST_COPY, RECIPE_POINTERS_COPY = 0x807D1400, 0x807D1480
+RECIPE_LIST_READERS = [("resident_func_800A8A90", 0x800A8A98)]
+RECIPE_POINTER_READERS = [("srw64_original_recipe_build", 0x800A79BC), ("srw64_original_recipe_partner", 0x800A7A68),
+                          ("srw64_original_combine_check", 0x801E98A8)]
+for function, address in RECIPE_LIST_READERS:
+    MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X5014", literal(RECIPE_LIST_COPY - 0x800D0000))
+for function, address in RECIPE_POINTER_READERS:
+    MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X4C70", literal(RECIPE_POINTERS_COPY - 0x800D0000))
 # The form families D_800CAC94 (unit numbers, -1) and their record pointers D_800CAEF0 move the
 # same way (unit-mod-kit.md §4.6; mod_forms.hpp fills the copies): 800A87FC is the one walk of the
 # list, and every user of a family's record indexes the pointers by what it answers. 801E174C
@@ -573,7 +593,7 @@ FORMS_LIST_READERS = [("resident_func_800A87FC", 0x800A8804)]
 FORMS_POINTER_READERS = [
     ("load_0008F4B0_func_801D33F4", 0x801D3470), ("load_000AB160_func_801E1688", 0x801E170C),
     ("load_000AB160_func_801E1688", 0x801E17C8), ("load_000AB160_func_801E8B28", 0x801E8C80),
-    ("load_000AB160_func_801E8ED0", 0x801E8F38), ("resident_func_800A5924", 0x800A597C),
+    ("load_000AB160_func_801E8ED0", 0x801E8F38), ("srw64_original_upgrade_spread", 0x800A597C),
     ("resident_func_800A7330", 0x800A7360), ("resident_func_800A81E0", 0x800A8274),
     ("resident_func_800A9DCC", 0x800A9E4C), ("resident_func_800AA210", 0x800AA268),
     ("resident_func_800AAB5C", 0x800AAC70), ("resident_func_800AC078", 0x800AC0AC),

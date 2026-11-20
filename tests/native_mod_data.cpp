@@ -8,6 +8,7 @@
 #include "stb/stb_image_write.h"
 #include "mod_data.hpp"
 #include "mod_forms.hpp"
+#include "mod_combine.hpp"
 #include "battle_speaker.hpp"
 #include <cstdio>
 #include <cstdlib>
@@ -543,6 +544,65 @@ int main(int argc,char** argv) {
         json big=people;big["pilots"]["kai"]["portrait"]["image"]="art/stand.png";
         mod_units::Bytes bb;mod_units::Taken bt;
         check(!mod_units::parse(big,"pkg",mod_units::assign({{"pkg",big}}),rom,{},bb,bt,pack).empty(),"a portrait must be 96x96");
+    }
+
+    {
+        // A package's combine with no `over` (mod_combine.hpp): a recipe on each part for the
+        // map's 合体, after the original's, and the combined unit deploying in their place.
+        namespace mc=srw64::mod_combine;
+        std::vector<uint8_t> ram(0x800000);
+        const auto w8=[&](uint32_t a,unsigned v){srw64::guest::write8(ram.data(),a,uint8_t(v));};
+        const auto w16=[&](uint32_t a,unsigned v){srw64::guest::write16(ram.data(),a,uint16_t(v));};
+        const auto w32=[&](uint32_t a,uint32_t v){srw64::guest::write32(ram.data(),a,v);};
+        const auto r=[&](uint32_t a,unsigned n){return srw64::guest::read(ram.data(),a,n);};
+        w16(mc::recipe_list_ram,219);w16(mc::recipe_list_ram+2,0xFFFF);w32(mc::recipe_pointers_ram,0x800CB2A0);
+        mc::Combines all;
+        all[450]={{34,35},{}};           // Super Earthgain: Earthgain leads, Virose
+        all[451]={{219,228},{}};         // 219 has the original's recipe: not taken
+        all[452]={{219,230,233,225,228},{223,224}};   // over Dancouga: no recipe of its own
+        mc::fill_recipes(ram.data(),all);
+        check(r(mc::recipe_list_copy,2)==219 && r(mc::recipe_list_copy+2,2)==34 && r(mc::recipe_list_copy+4,2)==35 &&
+              r(mc::recipe_list_copy+6,2)==0xFFFF,"the recipe parts: the original's, then 34 and 35");
+        check(r(mc::recipe_pointers_copy,4)==0x800CB2A0,"the original's record pointer kept");
+        const uint32_t rec34=r(mc::recipe_pointers_copy+4,4),rec35=r(mc::recipe_pointers_copy+8,4);
+        const uint32_t body34=r(rec34+4,4),body35=r(rec35+4,4);
+        check(r(rec34,1)==0 && r(rec34+1,1)==1 && r(rec34+0x10,2)==34 && r(rec35+0x10,2)==34,"by unit number, one recipe, Earthgain leads");
+        check(r(body34,1)==1 && r(body34+2,2)==35 && r(body34+4,2)==0xFFFF && r(body34+0xA,2)==450,"Earthgain's recipe: Virose makes 450");
+        check(r(body35,1)==1 && r(body35+2,2)==34 && r(body35+0xA,2)==450,"Virose's recipe: Earthgain makes 450");
+        // The roster: Earthgain (Brad), Virose (Kurtz) deployed, then the combined unit with both.
+        const uint32_t brad=0x80300000,kurtz=0x80300100;
+        const auto put=[&](unsigned i,unsigned unit,std::vector<uint32_t> crew,bool out){
+            const uint32_t at=mc::pool+i*mc::pool_size;
+            w8(at,1);w16(at+mc::unit_number,unit);w8(at+mc::unit_deploy,out?0x80:0);w8(at+mc::unit_crew,uint8_t(crew.size()));
+            for(size_t k=0;k<crew.size();++k)w32(at+mc::unit_crew_pilots+uint32_t(k)*4,crew[k]);
+            return at;};
+        const uint32_t earthgain=put(0,34,{brad},true),virose=put(1,35,{kurtz},true),super=put(2,450,{brad,kurtz},false);
+        mc::deploy_sync(ram.data(),all);
+        check((r(super+mc::unit_deploy,1)&0x80) && !(r(earthgain+mc::unit_deploy,1)&0x80) && !(r(virose+mc::unit_deploy,1)&0x80),
+              "the combined unit deploys, its parts not");
+        w8(virose,0);   // Virose gone: the parts deploy again
+        mc::deploy_sync(ram.data(),all);
+        check(!(r(super+mc::unit_deploy,1)&0x80) && (r(earthgain+mc::unit_deploy,1)&0x80),"without Virose, Earthgain deploys");
+        // Over Dancouga: it follows 224's bit, Black Wing with it; 3D5D 0 gives it back.
+        mc::Combines over;over[452]=all[452];
+        std::memset(ram.data()+(mc::pool&0x7FFFFF),0,mc::pool_side);
+        w16(mc::list_ram,224);w16(mc::list_ram+2,0xFFFF);w32(mc::pointers_ram,0x80310000);
+        w8(0x80310000,4);for(unsigned k=0;k<4;++k)w16(0x80310000+2+k*4,std::vector<unsigned>{219,230,233,225}[k]);
+        std::vector<uint32_t> five;for(unsigned k=0;k<5;++k)five.push_back(0x80300000+k*0x100);
+        std::vector<uint32_t> fighters;
+        for(unsigned k=0;k<5;++k)fighters.push_back(put(k,std::vector<unsigned>{219,230,233,225,228}[k],{five[k]},k==4));
+        const uint32_t dancouga=put(5,224,{five[0],five[1],five[2],five[3]},true),fin=put(6,452,five,false);
+        mc::deploy_sync(ram.data(),over);
+        check((r(fin+mc::unit_deploy,1)&0x80) && !(r(dancouga+mc::unit_deploy,1)&0x80) && !(r(fighters[4]+mc::unit_deploy,1)&0x80),
+              "Final Dancouga deploys for Dancouga, Black Wing with it");
+        mc::deploy_sync(ram.data(),over);
+        check((r(fin+mc::unit_deploy,1)&0x80),"and stays when nothing changes");
+        for(unsigned k=0;k<4;++k)w8(fighters[k]+mc::unit_deploy,0x80);   // 3D5D 0,0
+        mc::deploy_sync(ram.data(),over);
+        check(!(r(fin+mc::unit_deploy,1)&0x80) && (r(fighters[4]+mc::unit_deploy,1)&0x80),"3D5D 0: the beast fighters and Black Wing");
+        w8(dancouga+mc::unit_deploy,0x80);for(unsigned k=0;k<4;++k)w8(fighters[k]+mc::unit_deploy,0);w8(fighters[4]+mc::unit_deploy,0x80);   // 3D5D 1,0
+        mc::deploy_sync(ram.data(),over);
+        check((r(fin+mc::unit_deploy,1)&0x80) && !(r(dancouga+mc::unit_deploy,1)&0x80) && !(r(fighters[4]+mc::unit_deploy,1)&0x80),"3D5D 1: Final Dancouga again");
     }
 
     {

@@ -610,7 +610,7 @@ inline std::string parse(const json& document,const std::string& package,const N
         }
         if(entry.contains("combine")) {
             const auto& c=entry["combine"];
-            const std::string why=where+".combine：要写 {\"parts\": [2–5 台部件], \"over\": [原版合体机]}";
+            const std::string why=where+".combine：要写 {\"parts\": [2–5 台部件，第一台领队], \"over\": [原版合体机，可不写]}";
             if(!c.is_object() || !c.contains("parts") || !c["parts"].is_array() || c["parts"].size()<2 || c["parts"].size()>5)return why;
             for(const auto& [k,_]:c.items())if(k!="parts" && k!="over")return why;
             Taken::Combine combine;
@@ -628,6 +628,8 @@ inline std::string parse(const json& document,const std::string& package,const N
                 }
             }
             t.combines[n]=combine;
+            // It is in the combined-unit table now (mod_combine.hpp): 分離 again on its pages.
+            put8(unit+0x1F,at(unit+0x1F)|0x40);
         }
         if(!entry.contains("inherits_from"))continue;
         const auto from=resolve(entry["inherits_from"],package,numbers,Of::unit);

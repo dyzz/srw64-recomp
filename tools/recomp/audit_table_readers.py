@@ -48,6 +48,10 @@ TABLES = [
     # Combinations: 11 combined units and -1, then records; D_800CB5A4 points at them.
     ("combine",         "合体表 D_800CB40C",               "ram", 0x800CB40C, 0x800CB5A4 - 0x800CB40C),
     ("combine_pointers", "合体指针 D_800CB5A4",            "ram", 0x800CB5A4, 0x800CB5E8 - 0x800CB5A4),
+    # Combine recipes (the map's 合体, 801E977C): part unit numbers and -1, then 0x14-byte
+    # records and their recipes; D_800CB390 points at the records (unit-mod-kit.md §4.4).
+    ("recipes",         "合体配方部件 D_800CAFEC",          "ram", 0x800CAFEC, 0x800CB390 - 0x800CAFEC),
+    ("recipe_pointers", "合体配方指针 D_800CB390 21×4",     "ram", 0x800CB390, 21 * 4),
     ("weapon_map",      "武器继承映射 D_800CB5E8",         "ram", 0x800CB5E8, 115 * 4),
 ]
 
