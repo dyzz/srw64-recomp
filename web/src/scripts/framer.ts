@@ -57,3 +57,30 @@ export function framer(pic: Picture, done: () => void, text: Text, make: (pic: P
         pic.zoom = 1; pic.cx = pic.source.width / 2; pic.cy = pic.source.height / 2; zoom.value = '1'; changed();
       } }, text.resetFrame)));
 }
+
+// A map icon (scripts/icon-maker.ts, unit-maker.ts): a PNG square of the sizes the game takes
+// goes in as it is; anything else is framed first, then made at 128 with the pixels repeated
+// when enlarging and averaged when shrinking.
+export const ICON = 128, ICON_SIZES = [16, 32, 64, 128];
+export async function loadIcon(blob: Blob, bytes?: Uint8Array): Promise<Picture> {
+  const source = await createImageBitmap(blob);
+  const pic: Picture = { source, cx: source.width / 2, cy: source.height / 2, zoom: 1, png: new Uint8Array(), size: 0, url: '', framing: true };
+  if (blob.type === 'image/png' && source.width === source.height && ICON_SIZES.includes(source.width)) {
+    pic.png = bytes ?? new Uint8Array(await blob.arrayBuffer());
+    pic.size = source.width; pic.url = dataUrl(pic.png); pic.framing = false;
+  }
+  return pic;
+}
+export async function encodeIcon(pic: Picture) {
+  const { side, x, y } = frame(pic);
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = ICON;
+  const g = canvas.getContext('2d')!;
+  g.imageSmoothingEnabled = side > ICON;
+  g.imageSmoothingQuality = 'high';
+  g.drawImage(pic.source, x, y, side, side, 0, 0, ICON, ICON);
+  const blob: Blob = await new Promise((resolve, reject) => canvas.toBlob((b) => b ? resolve(b) : reject(new Error('png')), 'image/png'));
+  pic.png = new Uint8Array(await blob.arrayBuffer());
+  pic.size = ICON;
+  pic.url = dataUrl(pic.png);
+}

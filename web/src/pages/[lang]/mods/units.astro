@@ -1,0 +1,227 @@
+---
+// The unit MOD maker (docs/design/unit-mod-web-tool.md W1): new characters, units and weapons
+// copied from the original's and changed, exported as a .srw64mod, all in the browser
+// (scripts/unit-maker.ts; the package's files in lib/unit-package.ts).
+import Base from '../../../layouts/Base.astro';
+import SubmitHint from '../../../components/SubmitHint.astro';
+import ModPackageForm from '../../../components/ModPackageForm.astro';
+import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
+import { packageText, versionNotice } from '../../../lib/mod-maker-text';
+import { pickables } from '../../../lib/mod-picker';
+import { dataFields } from '../../../lib/data-fields';
+import data from '../../../data/data-mods.json';
+import '../../../styles/mod-maker.css';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const L = <T,>(v: { zh: T; en: T; ja: T; ko: T }) => v[tl(lang)];
+const title = { zh: '机体 MOD 制作', en: 'Unit mod maker', ja: 'ユニット MOD メーカー', ko: '기체 MOD 제작' };
+const lead = {
+  zh: '给游戏加新人物、新机体和新武器：照抄一个原版的起步，起名字、改能力和数值、配武器、变形和乘员，给人物换上自己的头像、给机体换上自己的战斗图和地图图标，导出 .srw64mod 拖进游戏窗口即可安装。',
+  en: 'Add new characters, units and weapons to the game: start from a copy of an original one, name it, change its stats, give it weapons, forms and a crew, give a character a portrait and a unit a battle picture and map icon of their own, then drag the exported .srw64mod into the game window to install it.',
+  ja: '新しいキャラクター・ユニット・武器をゲームに加えます。原作のものをコピーして始め、名前を付け、能力や数値を変え、武器・変形・搭乗者を決め、キャラクターには顔グラフィック、ユニットには戦闘グラフィックとマップアイコンを付けて、書き出した .srw64mod をゲームのウィンドウにドラッグすればインストールできます。',
+  ko: '게임에 새 인물, 새 기체, 새 무기를 더합니다. 원작의 것을 복사해서 시작하고, 이름을 붙이고, 능력과 수치를 바꾸고, 무기·변형·탑승자를 정하고, 인물에게 초상화를, 기체에게 전투 그림과 맵 아이콘을 넣은 뒤, 내보낸 .srw64mod를 게임 창에 끌어다 놓으면 설치됩니다.',
+};
+const fields = dataFields(lang);
+const text = {
+  ...packageText(lang),
+  ...fields.text,
+  allSeries: L({ zh: '全部作品', en: 'All series', ja: 'すべての作品', ko: '모든 작품' }),
+  choosePicture: L({ zh: '选择图片', en: 'Choose picture', ja: '画像を選択', ko: '그림 선택' }),
+  otherPicture: L({ zh: '换一张图', en: 'Another picture', ja: '別の画像', ko: '다른 그림' }),
+  zoom: L({ zh: '缩放', en: 'Zoom', ja: 'ズーム', ko: '확대/축소' }),
+  resetFrame: L({ zh: '复位', en: 'Reset', ja: 'リセット', ko: '초기화' }),
+  confirmFrame: L({ zh: '确定', en: 'OK', ja: '決定', ko: '확인' }),
+  frameHint: L({ zh: '拖动图片调整位置，滚轮或滑块缩放，方框里的部分就是头像。调好后点「确定」。', en: 'Drag the picture to move it and use the wheel or the slider to zoom; what the square shows is the portrait. Press OK when it looks right.', ja: '画像をドラッグして位置を、ホイールかスライダーで大きさを調整します。枠内が顔グラフィックになります。決まったら「決定」を押してください。', ko: '그림을 드래그해 위치를 옮기고, 휠이나 슬라이더로 확대·축소합니다. 사각형 안에 보이는 부분이 초상화가 됩니다. 다 맞췄으면 “확인”을 누르세요.' }),
+  newPilots: L({ zh: '新人物', en: 'New characters', ja: '新キャラクター', ko: '새 인물' }),
+  newUnits: L({ zh: '新机体', en: 'New units', ja: '新ユニット', ko: '새 기체' }),
+  newWeapons: L({ zh: '新武器', en: 'New weapons', ja: '新武器', ko: '새 무기' }),
+  addNew: L({ zh: '新建', en: 'New', ja: '新規', ko: '새로 만들기' }),
+  copyHint_pilots: L({ zh: '挑一个原版人物照抄：能力、技能、精神、头像、战斗曲都从他起步。', en: 'Pick an original character to copy: stats, skills, spirits, portrait and battle music start from theirs.', ja: 'コピーする原作キャラクターを選びます。能力・技能・精神・顔グラフィック・戦闘曲はそのキャラクターから始まります。', ko: '복사할 원작 인물을 고르세요. 능력·특수 기능·정신기·초상화·전투곡이 그 인물에서 시작합니다.' }),
+  copyHint_units: L({ zh: '挑一台原版机体照抄：数值、武器、站姿、战斗演出都从它起步。', en: 'Pick an original unit to copy: its stats, weapons, pose and battle animations are where it starts.', ja: 'コピーする原作ユニットを選びます。数値・武器・立ち絵・戦闘演出はそのユニットから始まります。', ko: '복사할 원작 기체를 고르세요. 수치·무기·대기 자세·전투 연출이 그 기체에서 시작합니다.' }),
+  copyHint_weapons: L({ zh: '查找一件原版武器照抄：数值和战斗演出都从它起步。', en: 'Find an original weapon to copy: its numbers and battle animation are where it starts.', ja: 'コピーする原作の武器を探します。数値と戦闘演出はその武器から始まります。', ko: '복사할 원작 무기를 찾으세요. 수치와 전투 연출이 그 무기에서 시작합니다.' }),
+  empty_pilots: L({ zh: '还没有新人物。点「新建」挑一个原版人物照抄。', en: 'No new characters yet. Press New and pick one to copy.', ja: 'まだ新キャラクターはありません。「新規」を押してコピー元を選んでください。', ko: '아직 새 인물이 없습니다. “새로 만들기”를 눌러 복사할 인물을 고르세요.' }),
+  empty_units: L({ zh: '还没有新机体。点「新建」挑一台原版机体照抄。', en: 'No new units yet. Press New and pick one to copy.', ja: 'まだ新ユニットはありません。「新規」を押してコピー元を選んでください。', ko: '아직 새 기체가 없습니다. “새로 만들기”를 눌러 복사할 기체를 고르세요.' }),
+  empty_weapons: L({ zh: '还没有新武器。点「新建」查找一件原版武器照抄；新武器要放进某台机体的武器表才会出现。', en: 'No new weapons yet. Press New and find one to copy; a new weapon shows up once a unit carries it.', ja: 'まだ新武器はありません。「新規」を押してコピー元を探してください。新武器はユニットの武器表に入れると登場します。', ko: '아직 새 무기가 없습니다. “새로 만들기”를 눌러 복사할 무기를 찾으세요. 새 무기는 기체의 무기 목록에 넣어야 나옵니다.' }),
+  pickOne: L({ zh: '从上面选一项来编辑。', en: 'Pick one above to edit it.', ja: '上から一つ選んで編集してください。', ko: '위에서 하나를 골라 편집하세요.' }),
+  copyOf: L({ zh: '照抄', en: 'Copy of', ja: 'コピー元', ko: '복사 원본' }),
+  copyNewHint: L({ zh: '照抄的是本包的新武器，数值在它那里改。', en: 'This copies another new weapon of the package; change the numbers there.', ja: 'このパッケージの新武器のコピーです。数値はそちらで変えてください。', ko: '이 패키지의 새 무기를 복사한 것입니다. 수치는 그쪽에서 바꾸세요.' }),
+  deleteEntry: L({ zh: '删除这一项', en: 'Delete this one', ja: 'これを削除', ko: '이 항목 삭제' }),
+  slug: L({ zh: '内部名', en: 'Internal name', ja: '内部名', ko: '내부 이름' }),
+  slugHint: L({ zh: '小写字母、数字和 - _ .；别的文件用 @内部名 指它，发布后不要再改', en: 'lowercase letters, digits and - _ .; other files name it @name, so keep it once released', ja: '小文字の英字・数字・- _ .。ほかのファイルは @内部名 で指すので、公開後は変えないでください', ko: '영문 소문자, 숫자, - _ .만 씁니다. 다른 파일은 @내부이름으로 가리키므로 공개 후에는 바꾸지 마세요' }),
+  slugBad: L({ zh: '内部名只用小写字母、数字和 - _ .，同类里不能重复', en: 'An internal name uses lowercase letters, digits and - _ ., once per kind', ja: '内部名は小文字の英字・数字・- _ . だけで、同じ種類の中で重複できません', ko: '내부 이름은 영문 소문자, 숫자, - _ .만 쓰며 같은 종류 안에서 겹칠 수 없습니다' }),
+  names: L({ zh: '名字', en: 'Names', ja: '名前', ko: '이름' }),
+  namesHint: L({ zh: '至少写一种语言；没写的语言显示照抄对象的名字。最多 24 个字。', en: 'At least one language; the others show the copied one’s name. Up to 24 characters.', ja: '少なくとも一つの言語で。書かない言語はコピー元の名前が出ます。24 文字まで。', ko: '적어도 한 언어는 쓰세요. 쓰지 않은 언어는 복사 원본의 이름이 나옵니다. 최대 24자.' }),
+  namesPilotHint: L({ zh: '简称用在对白框和列表，全名用在能力页；至少写一种语言。最多 24 个字。', en: 'The short name is for dialogue and lists, the full name for the status page; at least one language. Up to 24 characters.', ja: '略称は会話枠と一覧、フルネームはステータス画面に出ます。少なくとも一つの言語で。24 文字まで。', ko: '짧은 이름은 대화창과 목록에, 전체 이름은 능력 화면에 나옵니다. 적어도 한 언어는 쓰세요. 최대 24자.' }),
+  shortName: L({ zh: '简称', en: 'Short name', ja: '略称', ko: '짧은 이름' }),
+  fullName: L({ zh: '全名（可选）', en: 'Full name (optional)', ja: 'フルネーム（任意）', ko: '전체 이름 (선택)' }),
+  name: L({ zh: '名字', en: 'Name', ja: '名前', ko: '이름' }),
+  model: L({ zh: '图鉴型号（可选，最多 48 字）', en: 'Library model line (optional, 48 at most)', ja: '図鑑の型式（任意、48 文字まで）', ko: '도감 형식 번호 (선택, 최대 48자)' }),
+  portrait: L({ zh: '头像', en: 'Portrait', ja: '顔グラフィック', ko: '초상화' }),
+  portraitCopied: L({ zh: '用照抄对象的头像', en: 'The copied one’s portrait', ja: 'コピー元の顔グラフィック', ko: '복사 원본의 초상화' }),
+  portraitHint: L({ zh: '选一张本机图片后框出脸部，自动生成游戏用的 96×96（最多 63 色）和高清图；原版画面用前者，HD 画面用后者。图片只在浏览器里处理，不会发到网站。', en: 'Pick a picture on your computer and frame the face: the game’s 96×96 (63 colours at most) and an HD one are made from it, for the original and the HD pictures. The picture stays in your browser; nothing is sent to the site.', ja: '画像を読み込んで顔を枠に収めると、ゲーム用の 96×96（最大 63 色）と高解像度版が作られます。原作画面では前者、HD 画面では後者を使います。画像はブラウザ内だけで処理され、サイトには送られません。', ko: '내 컴퓨터의 그림을 고르고 얼굴을 맞추면 게임용 96×96(최대 63색)과 고해상도 그림이 만들어집니다. 원작 화면은 앞의 것, HD 화면은 뒤의 것을 씁니다. 그림은 브라우저 안에서만 처리되고 사이트로 보내지지 않습니다.' }),
+  voice: L({ zh: '借谁的战斗台词', en: 'Battle lines borrowed from', ja: '戦闘台詞を借りる相手', ko: '전투 대사를 빌릴 인물' }),
+  voiceCopy: L({ zh: '照抄的人物', en: 'The copied character', ja: 'コピー元', ko: '복사 원본' }),
+  voiceHint: L({ zh: '台词框显示的仍是这个新人物的名字和头像', en: 'the line box still shows this character’s name and face', ja: '台詞枠にはこの新キャラクターの名前と顔が出ます', ko: '대사창에는 이 새 인물의 이름과 얼굴이 나옵니다' }),
+  comboAs: L({ zh: '合体技里算作', en: 'Counts in combination attacks as', ja: '合体攻撃での扱い', ko: '합체 공격에서 취급' }),
+  comboAsHint: L({ zh: '原版合体技要求某个驾驶员时，这个新人物也算', en: 'when an original combination attack needs that pilot, this one counts too', ja: '原作の合体攻撃がそのパイロットを求めるとき、この新キャラクターも数えます', ko: '원작 합체 공격이 그 파일럿을 요구할 때 이 새 인물도 해당됩니다' }),
+  nobody: L({ zh: '无', en: 'None', ja: 'なし', ko: '없음' }),
+  love: L({ zh: '恋爱／友情补正', en: 'Love / friendship bonus', ja: '恋愛・友情補正', ko: '연애 / 우정 보정' }),
+  loveHint: L({ zh: '和这些人相隔 2 格内时攻击 +30%、受伤 −30%；勾「双方」让对方也有。', en: 'Within 2 squares of these: +30% damage dealt, −30% taken; Both gives them the bonus too.', ja: 'この相手と 2 マス以内で与ダメージ +30%、被ダメージ −30%。「双方」で相手にも付きます。', ko: '이 상대와 2칸 이내일 때 주는 피해 +30%, 받는 피해 −30%. “양쪽”을 체크하면 상대에게도 붙습니다.' }),
+  mutual: L({ zh: '双方', en: 'Both', ja: '双方', ko: '양쪽' }),
+  stats: L({ zh: '数值', en: 'Numbers', ja: '数値', ko: '수치' }),
+  swapClass: L({ zh: '换乘类别（0 不能换乘，8 留给 MOD 专用）', en: 'Swap class (0 none, 8 for mods alone)', ja: '乗り換え区分（0 は不可、8 は MOD 専用）', ko: '탑승 교체 분류 (0은 불가, 8은 MOD 전용)' }),
+  work: L({ zh: '图鉴里的原作', en: 'Series in the Library', ja: '図鑑の原作', ko: '도감의 원작' }),
+  workCopy: L({ zh: '跟照抄的机体', en: 'As the copied unit', ja: 'コピー元と同じ', ko: '복사 원본과 같음' }),
+  workHint: L({ zh: '包加的机体都排在图鉴最后的 MOD 组', en: 'a package’s units come last in the Library, in the MOD group', ja: 'パッケージのユニットは図鑑の最後の MOD グループに並びます', ko: '패키지의 기체는 도감 마지막 MOD 그룹에 놓입니다' }),
+  weaponList: L({ zh: '武器表', en: 'Weapons', ja: '武器', ko: '무기 목록' }),
+  weaponListHint: L({ zh: '1–63 件，原版武器和本包的新武器都可以；顺序就是武器页的顺序。', en: '1 to 63, original weapons or this package’s; the order is the weapon page’s.', ja: '1〜63 件。原作の武器もこのパッケージの新武器も入れられます。順番が武器画面の順になります。', ko: '1~63개. 원작 무기와 이 패키지의 새 무기 모두 넣을 수 있습니다. 순서가 무기 화면의 순서입니다.' }),
+  addWeaponHint: L({ zh: '加一件：输入武器号或 @内部名', en: 'Add one: a weapon number or @name', ja: '追加：武器番号か @内部名', ko: '추가: 무기 번호나 @내부이름' }),
+  carries: L({ zh: '带上', en: 'Carries', ja: '装備', ko: '장비' }),
+  forms: L({ zh: '变形', en: 'Forms', ja: '変形', ko: '변형' }),
+  formsHint: L({ zh: '勾 1–2 台本包的新机体当它的别的形态（写在基本形态上）；各形态的武器合成一张表，地图菜单出「变形」。', en: 'Tick 1 or 2 of this package’s units as its other forms (on the base form); their weapons make one list and the map menu offers Transform.', ja: 'このパッケージの新ユニットを 1〜2 台、別形態として選びます（基本形態に書きます）。各形態の武器は一つの表になり、マップのメニューに「変形」が出ます。', ko: '이 패키지의 새 기체 1~2대를 다른 형태로 고르세요 (기본 형태에 씁니다). 각 형태의 무기는 하나의 목록이 되고, 맵 메뉴에 “변형”이 나옵니다.' }),
+  crew: L({ zh: '乘员', en: 'Crew', ja: '搭乗者', ko: '탑승자' }),
+  crewHint: L({ zh: '1–5 个原版人物号，第一个是主驾驶；这台机体登记给主驾驶时，其余人一起上机。', en: '1 to 5 original character numbers, the first the pilot; when the unit is given to the pilot the others come aboard.', ja: '原作の人物番号を 1〜5 人、最初がメインパイロット。メインパイロットに登録されるとほかの人も乗り込みます。', ko: '원작 인물 번호 1~5명, 첫 번째가 메인 파일럿. 메인 파일럿에게 등록되면 나머지도 함께 탑니다.' }),
+  inherits: L({ zh: '改造从谁继承', en: 'Upgrades carried from', ja: '改造の引き継ぎ元', ko: '개조 계승 원본' }),
+  inheritsHint: L({ zh: '剧情把旧机体换成它时，改造段数从这台搬过来（可不写）', en: 'when a story swaps that unit for this one, its upgrade steps come along (optional)', ja: 'ストーリーでそのユニットから乗り換えるとき、改造段階を引き継ぎます（任意）', ko: '스토리에서 그 기체를 이 기체로 바꿀 때 개조 단계를 옮겨 옵니다 (선택)' }),
+  inheritsWeapon: L({ zh: '武器改造从哪件继承', en: 'Weapon upgrades carried from', ja: '武器改造の引き継ぎ元', ko: '무기 개조 계승 원본' }),
+  inheritsWeaponHint: L({ zh: '换机时这件新武器的段数从旧机体的这件武器来（可不写）', en: 'on a swap this weapon’s steps come from that weapon of the old unit (optional)', ja: '乗り換え時、この新武器の段階は旧ユニットのこの武器から引き継ぎます（任意）', ko: '기체를 바꿀 때 이 새 무기의 단계를 옛 기체의 이 무기에서 가져옵니다 (선택)' }),
+  carriedBy: L({ zh: '带这件武器的新机体：', en: 'Carried by: ', ja: 'この武器を持つ新ユニット：', ko: '이 무기를 가진 새 기체: ' }),
+  notCarried: L({ zh: '还没有机体带这件武器：去新机体的武器表里勾上它。', en: 'No unit carries it yet: tick it in a new unit’s weapons.', ja: 'まだどのユニットもこの武器を持っていません。新ユニットの武器でチェックしてください。', ko: '아직 이 무기를 가진 기체가 없습니다. 새 기체의 무기 목록에서 체크하세요.' }),
+  combination: L({ zh: '合体技', en: 'Combination attack', ja: '合体攻撃', ko: '합체 공격' }),
+  combinationOn: L({ zh: '这是合体技', en: 'This is a combination attack', ja: 'これは合体攻撃', ko: '합체 공격으로 사용' }),
+  combinationHint: L({ zh: '参加的 2–5 台机体全员在场、连成一片、EN 和气力够才能用；威力是各台组成武器的平均乘倍率，每台都扣这件武器的 EN，不扣弹药。', en: 'The 2 to 5 units taking part must all be there, side by side, with the EN and morale; the power is their part weapons’ mean times the multiplier, and each pays this weapon’s EN, no ammo.', ja: '参加する 2〜5 機が全員そろって隣接し、EN と気力が足りるときに使えます。威力は各機の構成武器の平均に倍率を掛けた値で、全機がこの武器の EN を消費します（弾数は使いません）。', ko: '참가하는 2~5대가 모두 있고 서로 붙어 있으며 EN과 기력이 충분해야 씁니다. 위력은 각 기체 구성 무기의 평균에 배율을 곱한 값이고, 모든 기체가 이 무기의 EN을 소비합니다 (탄수는 쓰지 않음).' }),
+  comboUnit: L({ zh: '参加机体', en: 'Unit', ja: '参加ユニット', ko: '참가 기체' }),
+  comboPart: L({ zh: '它的组成武器', en: 'Its part weapon', ja: 'その構成武器', ko: '그 기체의 구성 무기' }),
+  multiplier: L({ zh: '倍率', en: 'Multiplier', ja: '倍率', ko: '배율' }),
+  multiplierHint: L({ zh: '0.5–5', en: '0.5 to 5', ja: '0.5〜5', ko: '0.5~5' }),
+  comboPilots: L({ zh: '驾驶员条件（可选）', en: 'Pilots needed (optional)', ja: 'パイロット条件（任意）', ko: '파일럿 조건 (선택)' }),
+  comboPilotsHint: L({ zh: '人物号，用「/」分开几组，凑齐任一组就行', en: 'character numbers, groups split by /; any one group will do', ja: '人物番号。「/」で組を分け、どれか一組がそろえば可', ko: '인물 번호, “/”로 조를 나누며 어느 한 조만 갖추면 됩니다' }),
+  add: L({ zh: '添加', en: 'Add', ja: '追加', ko: '추가' }),
+  problems: L({ zh: '要改正的', en: 'To fix', ja: '直すところ', ko: '고칠 곳' }),
+  noProblems: L({ zh: '没有问题。', en: 'Nothing to fix.', ja: '問題はありません。', ko: '문제가 없습니다.' }),
+  errEmpty: L({ zh: '还没有新人物、新机体或新武器', en: 'No new character, unit or weapon yet', ja: 'まだ新しいキャラクター・ユニット・武器がありません', ko: '아직 새 인물, 새 기체, 새 무기가 없습니다' }),
+  p_slug_bad: L({ zh: '内部名只用小写字母、数字和 - _ .', en: 'the internal name uses lowercase letters, digits and - _ . only', ja: '内部名は小文字の英字・数字・- _ . だけです', ko: '내부 이름은 영문 소문자, 숫자, - _ .만 씁니다' }),
+  p_slug_twice: L({ zh: '内部名重复了', en: 'the internal name is used twice', ja: '内部名が重複しています', ko: '내부 이름이 겹칩니다' }),
+  p_needs_name: L({ zh: '至少写一种语言的名字', en: 'give a name in one language at least', ja: '少なくとも一つの言語で名前を書いてください', ko: '적어도 한 언어로 이름을 쓰세요' }),
+  p_name_spaces: L({ zh: '{locale} 的名字首尾不能有空格', en: 'the {locale} name has spaces at an end', ja: '{locale} の名前の前後に空白があります', ko: '{locale} 이름의 앞뒤에 공백이 있습니다' }),
+  p_name_chars: L({ zh: '{locale} 的名字不能有控制字符、全角空格或 < > { }', en: 'the {locale} name has a control character, a wide space or < > { }', ja: '{locale} の名前に制御文字・全角空白・< > { } があります', ko: '{locale} 이름에 제어 문자, 전각 공백, < > { }가 있습니다' }),
+  p_name_long: L({ zh: '{locale} 的名字超过 {longest} 字', en: 'the {locale} name is over {longest} characters', ja: '{locale} の名前が {longest} 文字を超えています', ko: '{locale} 이름이 {longest}자를 넘습니다' }),
+  p_love_bad: L({ zh: '补正对象要是原版人物号（0–360）或本包新人物', en: 'a bonus partner is an original character number (0–360) or a new character of the package', ja: '補正の相手は原作の人物番号（0〜360）かこのパッケージの新キャラクターです', ko: '보정 상대는 원작 인물 번호(0~360)나 이 패키지의 새 인물이어야 합니다' }),
+  p_weapons_count: L({ zh: '武器表要有 1–63 件', en: 'the weapon list needs 1 to 63', ja: '武器は 1〜63 件必要です', ko: '무기 목록은 1~63개여야 합니다' }),
+  p_weapon_missing: L({ zh: '武器表里的 {weapon} 不存在', en: '{weapon} in the weapon list does not exist', ja: '武器の {weapon} がありません', ko: '무기 목록의 {weapon}이(가) 없습니다' }),
+  p_crew_bad: L({ zh: '乘员要是 1–5 个原版人物号', en: 'the crew is 1 to 5 original character numbers', ja: '搭乗者は原作の人物番号 1〜5 人です', ko: '탑승자는 원작 인물 번호 1~5명이어야 합니다' }),
+  p_combine_bad: L({ zh: '合体的部件要 2–5 台', en: 'a combination needs 2 to 5 parts', ja: '合体の部品は 2〜5 機です', ko: '합체 부품은 2~5대여야 합니다' }),
+  p_forms_bad: L({ zh: '变形要写 1–2 台本包的别的新机体', en: 'forms are 1 or 2 other new units of the package', ja: '変形はこのパッケージのほかの新ユニット 1〜2 台です', ko: '변형은 이 패키지의 다른 새 기체 1~2대여야 합니다' }),
+  p_forms_family: L({ zh: '{unit} 已经在另一个变形族里', en: '{unit} is in another family of forms already', ja: '{unit} はすでに別の変形グループにいます', ko: '{unit}은(는) 이미 다른 변형 그룹에 있습니다' }),
+  p_inherits_missing: L({ zh: '改造继承的机体不存在', en: 'the unit upgrades come from does not exist', ja: '改造の引き継ぎ元ユニットがありません', ko: '개조 계승 원본 기체가 없습니다' }),
+  p_copy_missing: L({ zh: '照抄的武器不存在', en: 'the copied weapon does not exist', ja: 'コピー元の武器がありません', ko: '복사 원본 무기가 없습니다' }),
+  p_combination_units: L({ zh: '合体技要 2–5 台不重复的参加机体', en: 'a combination attack needs 2 to 5 different units', ja: '合体攻撃には重複しない参加ユニットが 2〜5 機必要です', ko: '합체 공격에는 겹치지 않는 참가 기체 2~5대가 필요합니다' }),
+  p_combination_parts: L({ zh: '每台参加机体都要写组成武器', en: 'each unit taking part needs its part weapon', ja: '参加ユニットごとに構成武器を書いてください', ko: '참가 기체마다 구성 무기를 써야 합니다' }),
+  p_combination_multiplier: L({ zh: '倍率要在 0.5–5 之间', en: 'the multiplier is 0.5 to 5', ja: '倍率は 0.5〜5 です', ko: '배율은 0.5~5여야 합니다' }),
+  p_weapon_unused: L({ zh: '没有机体带这件武器', en: 'no unit carries it', ja: 'どのユニットもこの武器を持っていません', ko: '이 무기를 가진 기체가 없습니다' }),
+  sprites: L({ zh: '战斗图', en: 'Battle pictures', ja: '戦闘グラフィック', ko: '전투 그림' }),
+  scenes: L({ zh: '场景', en: 'Scenes', ja: 'シーン', ko: '장면' }),
+  copyHint_sprites: L({ zh: '选本机的图片（可以一次选多张做成多帧）。站姿、攻击姿势这类图到了另一侧会镜像；cut-in 不镜像。图片只在浏览器里处理，不会发到网站。', en: 'Pick pictures on your computer (several at once make frames). Poses and attack stances are mirrored for the other side; cut-ins are not. The pictures stay in your browser; nothing is sent to the site.', ja: 'パソコンの画像を選びます（複数選ぶとコマになります）。立ち絵や攻撃の構えは反対側では左右反転し、カットインは反転しません。画像はブラウザー内だけで処理され、サイトには送られません。', ko: '내 컴퓨터의 그림을 고르세요(여러 장을 고르면 프레임이 됩니다). 대기 자세나 공격 자세는 반대편에서 좌우 반전되고, 컷인은 반전되지 않습니다. 그림은 브라우저 안에서만 처리되고 사이트로 보내지지 않습니다.' }),
+  empty_sprites: L({ zh: '还没有战斗图。机体的站姿可以在机体页里直接做；武器动画用的 cut-in 等在这里点「新建」。', en: 'No battle pictures yet. A unit’s pose can be made on its page; cut-ins and other pictures for weapon animations are made here with New.', ja: 'まだ戦闘グラフィックはありません。ユニットの立ち絵はユニットの画面で作れます。武器演出用のカットインなどはここで「新規」から作ります。', ko: '아직 전투 그림이 없습니다. 기체의 대기 자세는 기체 화면에서 바로 만들 수 있고, 무기 연출용 컷인 등은 여기서 “새로 만들기”로 만듭니다.' }),
+  spriteAddPose: L({ zh: '选图：站姿／动作（会镜像）', en: 'Pictures: pose or stance (mirrored)', ja: '画像を選択：立ち絵・構え（反転あり）', ko: '그림 선택: 자세(반전)' }),
+  spriteAddCutin: L({ zh: '选图：cut-in（不镜像）', en: 'Pictures: cut-in (not mirrored)', ja: '画像を選択：カットイン（反転なし）', ko: '그림 선택: 컷인(반전 없음)' }),
+  spriteName: L({ zh: '图片名', en: 'Picture name', ja: '画像名', ko: '그림 이름' }),
+  spriteUnused: L({ zh: '还没有用到', en: 'not used yet', ja: 'まだ使われていません', ko: '아직 쓰이지 않음' }),
+  spriteNoArt: L({ zh: '这张图的图片文件不在包里。', en: 'This picture’s files are not in the package.', ja: 'この画像のファイルがパッケージにありません。', ko: '이 그림의 파일이 패키지에 없습니다.' }),
+  poseOf: L({ zh: '站姿：{unit}', en: 'pose of {unit}', ja: '立ち絵：{unit}', ko: '대기 자세: {unit}' }),
+  sceneOf: L({ zh: '场景 {scene}', en: 'scene {scene}', ja: 'シーン {scene}', ko: '장면 {scene}' }),
+  originClick: L({ zh: '点图片设原点（十字线）：站姿是脚下中间，cut-in 一般是正中。', en: 'Click the picture to set the origin (the cross): under the feet in the middle for a pose, usually the centre for a cut-in.', ja: '画像をクリックして原点（十字線）を決めます。立ち絵は足元の中央、カットインはふつう中心です。', ko: '그림을 클릭해 원점(십자선)을 정하세요. 대기 자세는 발밑 가운데, 컷인은 보통 정중앙입니다.' }),
+  colorCount: L({ zh: '{n} 色（最多 127）', en: '{n} colours (127 at most)', ja: '{n} 色（最大 127）', ko: '{n}색(최대 127)' }),
+  hdKept: L({ zh: '原图作 HD 图', en: 'your picture is the HD one', ja: '元の画像を HD 画像に使用', ko: '원본을 HD 그림으로 사용' }),
+  hdNone: L({ zh: '没有 HD 图（原图已是游戏尺寸）', en: 'no HD picture (yours is the game’s size)', ja: 'HD 画像なし（元の画像がゲームの大きさ）', ko: 'HD 그림 없음(원본이 게임 크기)' }),
+  pixelWidth: L({ zh: '像素图宽', en: 'Pixel width', ja: 'ドット絵の幅', ko: '도트 그림 너비' }),
+  pixelWidthHint: L({ zh: '游戏里原版画面用的大小；原版站姿约 130×96', en: 'the size the original pictures draw it at; the original’s poses are about 130×96', ja: '原作画面での大きさ。原作の立ち絵は約 130×96', ko: '원작 화면에서의 크기. 원작 대기 자세는 약 130×96' }),
+  originX: L({ zh: '原点 x', en: 'Origin x', ja: '原点 x', ko: '원점 x' }),
+  originY: L({ zh: '原点 y', en: 'Origin y', ja: '原点 y', ko: '원점 y' }),
+  originHint: L({ zh: '像素图里的坐标', en: 'in the pixel picture', ja: 'ドット絵での座標', ko: '도트 그림 안의 좌표' }),
+  mirror: L({ zh: '到另一侧时镜像（站姿、动作图勾上，cut-in 不勾）', en: 'Mirror on the other side (on for poses and stances, off for cut-ins)', ja: '反対側では左右反転（立ち絵・構えはオン、カットインはオフ）', ko: '반대편에서 좌우 반전(자세는 켜기, 컷인은 끄기)' }),
+  frames: L({ zh: '画面', en: 'Frames', ja: 'コマ', ko: '프레임' }),
+  framesHint: L({ zh: '多帧时每帧写拍数，播完回到「循环」那一帧。所有帧共用 127 色。', en: 'With several frames give each its ticks; after the last it goes back to the loop frame. All frames share the 127 colours.', ja: '複数コマのときはコマごとに拍数を書きます。最後まで進むと「ループ」のコマに戻ります。全コマで 127 色を共有します。', ko: '여러 프레임이면 프레임마다 박자 수를 쓰세요. 마지막까지 가면 “반복” 프레임으로 돌아갑니다. 모든 프레임이 127색을 같이 씁니다.' }),
+  ticks: L({ zh: '拍数', en: 'Ticks', ja: '拍数', ko: '박자 수' }),
+  tickUnit: L({ zh: '拍', en: 'ticks', ja: '拍', ko: '박' }),
+  loop: L({ zh: '循环', en: 'Loop', ja: 'ループ', ko: '반복' }),
+  loopHint: L({ zh: '播完回到第几帧', en: 'the frame it goes back to', ja: '最後のあとに戻るコマ', ko: '끝난 뒤 돌아갈 프레임' }),
+  addFrames: L({ zh: '加帧（选本机图片）', en: 'Add frames (pick pictures)', ja: 'コマを追加（画像を選択）', ko: '프레임 추가(그림 선택)' }),
+  pose: L({ zh: '站姿（战斗图）', en: 'Pose (battle picture)', ja: '立ち絵（戦闘グラフィック）', ko: '대기 자세(전투 그림)' }),
+  poseHint: L({ zh: '战斗里和改造、能力等画面显示的机体图。可以照抄对象的，也可以用本机图片做一张：大图会留作 HD 图，再缩成像素图减到 127 色。', en: 'The unit’s picture in battle and on the upgrade, status and other screens. Keep the copied unit’s, or make one from a picture on your computer: a large one is kept as the HD picture and shrunk to a pixel picture of 127 colours.', ja: '戦闘や改造・能力などの画面に出るユニットの絵です。コピー元のものを使うか、パソコンの画像から作れます。大きな画像は HD 画像として残し、127 色のドット絵に縮小します。', ko: '전투와 개조·능력 등 화면에 나오는 기체 그림입니다. 복사 원본의 것을 쓰거나 내 컴퓨터의 그림으로 만들 수 있습니다. 큰 그림은 HD 그림으로 남기고 127색 도트 그림으로 줄입니다.' }),
+  poseCopy: L({ zh: '照抄对象的站姿', en: 'The copied unit’s pose', ja: 'コピー元の立ち絵', ko: '복사 원본의 대기 자세' }),
+  poseResources: L({ zh: '原版资源', en: 'original resources', ja: '原作リソース', ko: '원작 리소스' }),
+  poseMake: L({ zh: '用本机图片做站姿', en: 'Make a pose from a picture', ja: '画像から立ち絵を作る', ko: '그림으로 대기 자세 만들기' }),
+  poseAnother: L({ zh: '用别的图片再做一张', en: 'Make another from a picture', ja: '別の画像でもう一枚作る', ko: '다른 그림으로 하나 더 만들기' }),
+  mapIcon: L({ zh: '地图图标', en: 'Map icon', ja: 'マップアイコン', ko: '맵 아이콘' }),
+  iconCopied: L({ zh: '没有自己的图标时用照抄对象的。16、32、64、128 像素的正方形 PNG 原样使用，别的图先框选。', en: 'Without one of its own it has the copied unit’s. A square PNG of 16, 32, 64 or 128 pixels goes in as it is; other pictures are framed first.', ja: '自分のアイコンがなければコピー元のものになります。16・32・64・128 ピクセルの正方形 PNG はそのまま使い、それ以外は先に枠を決めます。', ko: '자신의 아이콘이 없으면 복사 원본의 것을 씁니다. 16·32·64·128픽셀 정사각형 PNG는 그대로 쓰고, 다른 그림은 먼저 영역을 맞춥니다.' }),
+  iconMake: L({ zh: '选本机图片做图标', en: 'Pick a picture for the icon', ja: '画像を選んでアイコンにする', ko: '그림을 골라 아이콘 만들기' }),
+  iconFrameHint: L({ zh: '拖动、缩放，让方框里正好是机体；放大时像素按原样放大。调好后点「确定」。', en: 'Drag and zoom until the square holds the unit; enlarging repeats the pixels. Press OK when it looks right.', ja: 'ドラッグと拡大縮小で枠にユニットを収めます。拡大時はドットをそのまま大きくします。決まったら「決定」を押してください。', ko: '드래그와 확대·축소로 사각형 안에 기체를 맞추세요. 확대할 때는 픽셀을 그대로 키웁니다. 다 맞췄으면 “확인”을 누르세요.' }),
+  iconWay: L({ zh: '图里机体朝向', en: 'The picture looks', ja: '画像の向き', ko: '그림 속 방향' }),
+  iconWayHint: L({ zh: '游戏按这个翻转：我方朝左、敌方朝右', en: 'the game turns it by this: the player’s look left, the enemy’s right', ja: 'ゲームはこれで反転します：味方は左向き、敵は右向き', ko: '게임은 이걸 보고 뒤집습니다: 아군은 왼쪽, 적은 오른쪽' }),
+  way_left: L({ zh: '朝左', en: 'Left', ja: '左向き', ko: '왼쪽' }),
+  way_right: L({ zh: '朝右', en: 'Right', ja: '右向き', ko: '오른쪽' }),
+  way_front: L({ zh: '正面（不翻转）', en: 'Front (never turned)', ja: '正面（反転しない）', ko: '정면(뒤집지 않음)' }),
+  sidePlayer: L({ zh: '我方', en: 'Player', ja: '味方', ko: '아군' }),
+  sideEnemy: L({ zh: '敌方', en: 'Enemy', ja: '敵', ko: '적' }),
+  reframe: L({ zh: '重新框选', en: 'Frame again', ja: '枠をやり直す', ko: '다시 맞추기' }),
+  errPicture: L({ zh: '读不了这张图：{detail}', en: 'Could not read the picture: {detail}', ja: '画像を読み込めません：{detail}', ko: '그림을 읽을 수 없습니다: {detail}' }),
+  p_iconFraming: L({ zh: '地图图标还没点「确定」', en: 'the map icon is not confirmed yet', ja: 'マップアイコンがまだ「決定」されていません', ko: '맵 아이콘을 아직 “확인”하지 않았습니다' }),
+  p_spriteNoArt: L({ zh: '图片文件不在包里，重新选图或删掉', en: 'its files are not in the package; pick the pictures again or delete it', ja: '画像ファイルがパッケージにありません。選び直すか削除してください', ko: '그림 파일이 패키지에 없습니다. 다시 고르거나 지우세요' }),
+  p_sprite_frames: L({ zh: '要有 1–64 帧', en: 'needs 1 to 64 frames', ja: 'コマは 1〜64 です', ko: '프레임은 1~64개여야 합니다' }),
+  p_sprite_hd: L({ zh: 'HD 图要每帧一张', en: 'needs an HD picture for each frame', ja: 'HD 画像はコマごとに 1 枚です', ko: 'HD 그림은 프레임마다 한 장이어야 합니다' }),
+  p_sprite_origin: L({ zh: '原点要是 −2048 到 2048 的整数', en: 'the origin is whole numbers from −2048 to 2048', ja: '原点は −2048〜2048 の整数です', ko: '원점은 −2048~2048의 정수여야 합니다' }),
+  p_sprite_ticks: L({ zh: '每帧拍数要是 1–255', en: 'each frame’s ticks are 1 to 255', ja: 'コマごとの拍数は 1〜255 です', ko: '프레임별 박자 수는 1~255여야 합니다' }),
+  p_sprite_loop: L({ zh: '循环帧超出了帧数', en: 'the loop frame is past the last frame', ja: 'ループのコマがコマ数を超えています', ko: '반복 프레임이 프레임 수를 넘습니다' }),
+  p_pose_missing: L({ zh: '站姿 {sprite} 不在战斗图里', en: 'the pose {sprite} is not among the battle pictures', ja: '立ち絵 {sprite} が戦闘グラフィックにありません', ko: '대기 자세 {sprite}이(가) 전투 그림에 없습니다' }),
+  p_scene_missing: L({ zh: '场景用的 {sprite} 不在战斗图里', en: 'the scene’s {sprite} is not among the battle pictures', ja: 'シーンの {sprite} が戦闘グラフィックにありません', ko: '장면의 {sprite}이(가) 전투 그림에 없습니다' }),
+  p_framing: L({ zh: '头像还没点「确定」', en: 'the portrait is not confirmed yet', ja: '顔グラフィックがまだ「決定」されていません', ko: '초상화를 아직 “확인”하지 않았습니다' }),
+};
+const pick = pickables(lang, data.units.map((u) => u.id), data.pilots.map((p) => p.id));
+const works = pick.series.filter((s) => s.id !== null && s.id <= 24).map((s) => ({ id: s.id as number, name: s.name }));
+const notice = versionNotice(lang, '0.5.4');
+---
+<Base lang={lang} title={title[tl(lang)]} description={lead[tl(lang)]}>
+  <div class="wrap maker" data-unit-maker>
+    <header class="page-head">
+      <span class="tag">MOD</span>
+      <h1>{title[tl(lang)]}</h1>
+      {notice && <p class="version-notice">{notice}</p>}
+      <p>{lead[tl(lang)]}</p>
+      <p class="note"><a href={`/${lang}/mods/ids/units/`}>{L({ zh: 'ID 表', en: 'ID tables', ja: 'ID 表', ko: 'ID 표' })}</a> · {L({ zh: '所有处理都在浏览器里完成；没导出的进度存在这个浏览器里（图片除外）。', en: 'Everything happens in your browser; work not exported yet is kept in this browser (pictures aside).', ja: '処理はすべてブラウザー内で行われます。書き出していない作業はこのブラウザーに保存されます（画像を除く）。', ko: '모든 처리는 브라우저 안에서 이루어집니다. 내보내지 않은 작업은 이 브라우저에 저장됩니다 (그림 제외).' })}</p>
+    </header>
+
+    <ModPackageForm lang={lang} placeholder="yourname.units" />
+
+    <section class="block">
+      <div class="kinds" role="tablist">
+        <button type="button" class="kind on" data-kind="pilots">{text.newPilots} <span class="count">0</span></button>
+        <button type="button" class="kind" data-kind="units">{text.newUnits} <span class="count">0</span></button>
+        <button type="button" class="kind" data-kind="weapons">{text.newWeapons} <span class="count">0</span></button>
+        <button type="button" class="kind" data-kind="sprites">{text.sprites} <span class="count">0</span></button>
+      </div>
+      <div data-list></div>
+      <div data-add></div>
+      <div data-editor></div>
+    </section>
+
+    <section class="block">
+      <h2>{text.problems}</h2>
+      <div data-problems></div>
+      <p class="status" data-status></p>
+    </section>
+
+    <section class="block">
+      <h2>{text.export}</h2>
+      <button type="button" class="btn big" data-export>{text.exportButton}</button>
+      <p class="status" data-export-status></p>
+      <SubmitHint lang={lang} />
+    </section>
+  </div>
+  <script type="application/json" id="unit-maker-data" is:inline set:html={JSON.stringify({ text, labels: fields.labels, pick, works, locale: langInfo(lang).tag, lang: tl(lang) })}></script>
+  <script>
+    import { initUnitMaker } from '../../../scripts/unit-maker';
+    initUnitMaker();
+  </script>
+</Base>
