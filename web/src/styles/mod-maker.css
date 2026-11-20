@@ -160,6 +160,20 @@
 .maker input.port { width: 90px; }
 .maker .link-numbers { display: flex; gap: 6px; }
 .maker .link-shot img { display: block; max-width: 100%; margin-top: 10px; border-radius: var(--radius); }
+.maker .anim-stage-box { margin: 8px 0; }
+.maker .anim-stage { display: block; width: 100%; max-width: 720px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); touch-action: none; }
+.maker .anim-stage .ground, .maker .anim-stage .axis { stroke: var(--line); stroke-width: 0.5; }
+.maker .anim-stage .actor { cursor: grab; }
+.maker .anim-stage .actor rect { fill: rgba(232, 176, 74, 0.08); stroke: var(--gold); stroke-width: 0.6; }
+.maker .anim-stage .actor.on rect { fill: rgba(232, 176, 74, 0.22); stroke-width: 1.2; }
+.maker .anim-stage .actor text { font-size: 8px; fill: var(--gold); pointer-events: none; }
+.maker .anim-table-box { overflow-x: auto; }
+.maker .anim-table { border-collapse: collapse; font-size: 13px; }
+.maker .anim-table th, .maker .anim-table td { padding: 3px 4px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.maker .anim-table tr.on td { background: var(--bg-2); }
+.maker .anim-table .num-cell { width: 64px; }
+.maker .anim-table .num-cell.wide { width: 110px; }
+.maker .anim-table .was { display: block; font-size: 11px; }
 .maker .sprite-card { border-left: 2px solid var(--line); padding-left: 12px; margin: 8px 0; }
 .maker .sprite-box { max-width: 100%; overflow-x: auto; margin: 8px 0; }
 .maker .sprite-view { display: block; max-width: 100%; height: auto; cursor: crosshair; background: repeating-conic-gradient(var(--bg-2) 0 25%, var(--panel) 0 50%) 0 0 / 12px 12px; border-radius: var(--radius); }

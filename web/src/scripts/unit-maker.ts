@@ -12,6 +12,7 @@ import { dataUrl, encodeIcon, frame, framer, loadIcon, type Picture } from './fr
 import { LOCALES, KINDS, SLUG, QUOTE_SITUATIONS, emptyModel, fromFiles, placeSprite, voicesOf, problems, rename, renameSprite, spriteFiles, toFiles, type Changes, type Locale, type Model, type Pilot, type Problem, type Ref, type Unit, type Weapon, type Line, type Quotes, type Special } from '../lib/unit-package';
 import { vorbisEncoder, vorbisInfo } from './audio-tools';
 import * as storyImage from '../lib/story-image';
+import * as anim from '../lib/weapon-animation';
 import type { Join, Wave, WaveUnit, DeploySide } from '../lib/story-image';
 import { foot, reduce } from '../lib/pixels';
 
@@ -725,6 +726,204 @@ export function initUnitMaker() {
       c ? listEditor(T('combineOver'), T('combineOverHint'), c.over, (o, i) => refInput('units', o, (v) => { c.over[i] = typeof v === 'number' ? v : 0; changed(); }),
         () => { c.over.push(0); changed(); }, 8) : null);
   }
+  // --- Weapon animations (lib/weapon-animation.ts, W4: cut-ins and the original's effects) -----------
+  // The original's records (tools/content/export_weapon_animations.py), loaded when first needed.
+  let bank: anim.Bank | null = null, bankAsked = false;
+  const needBank = () => {
+    if (bank || bankAsked) return;
+    bankAsked = true;
+    import('../data/weapon-animations.json').then((m) => { bank = m.default as unknown as anim.Bank; render(); });
+  };
+  const selectedActor = new Map<string, number>();   // by weapon slug
+  // The original weapon a weapon's animation comes from when it copies: its own copy, or the
+  // weapon its animation names, followed to an original.
+  const animationSource = (w: Weapon): number | undefined => {
+    const a = w.animation as anim.AnimationField | undefined;
+    let ref: Ref | undefined = a && anim.isCopy(a) ? a.copy : w.copy;
+    for (let hop = 0; hop < 16 && typeof ref === 'string' && ref.startsWith('@'); hop++) {
+      const next = find('weapons', ref.slice(1)) as Weapon | null;
+      const na = next?.animation as anim.AnimationField | undefined;
+      ref = na && anim.isCopy(na) ? na.copy : next?.copy;
+    }
+    return typeof ref === 'number' ? ref : undefined;
+  };
+  // The unit shown beside the actors: a unit of the package carrying it, else the original's carrier.
+  function stageUnit(w: Weapon): { image: string; canvas: number[] } | null {
+    const carrier = model.units.find((u) => u.weapons.includes(`@${w.slug}`));
+    if (carrier && typeof carrier.pose === 'string' && carrier.pose.startsWith('@')) {
+      const s = sprites()[carrier.pose.slice(1)], a = art.get(carrier.pose.slice(1));
+      if (s && a) return { image: a.urls[0], canvas: [-s.origin[0], -s.origin[1], a.rgba[0].width - s.origin[0], a.rgba[0].height - s.origin[1]] };
+    }
+    const source = animationSource(w);
+    const unit = carrier ? baseOf('units', carrier)?.id : (lists.weapons.find((x) => x.id === source)?.units as number[] | undefined)?.[0];
+    if (unit === undefined || !bank) return null;
+    return { image: `/gen/units/${unit}.webp`, canvas: bank.poses[unit] };
+  }
+  // An actor's canvas: the original scene's, or the package picture's.
+  function actorCanvas(a: anim.Actor): { canvas: number[]; image?: string } | undefined {
+    if (typeof a.scene === 'number') return bank ? { canvas: bank.scenes[a.scene] } : undefined;
+    const sceneName = a.scene.startsWith('@') ? a.scene.slice(1) : '';
+    const target = (model.scenes ?? {})[sceneName];
+    const spriteName = typeof target === 'string' && target.startsWith('@') ? target.slice(1) : '';
+    const s = sprites()[spriteName], art1 = art.get(spriteName);
+    if (!s || !art1) return undefined;
+    return { canvas: [-s.origin[0], -s.origin[1], art1.rgba[0].width - s.origin[0], art1.rgba[0].height - s.origin[1]], image: art1.urls[0] };
+  }
+  const SVG = 'http://www.w3.org/2000/svg';
+  const svg = (tag: string, attrs: Record<string, string | number>) => {
+    const node = document.createElementNS(SVG, tag);
+    for (const [k, v] of Object.entries(attrs)) node.setAttribute(k, String(v));
+    return node;
+  };
+  // The stage: the attacker's pose at its origin (facing left, as the attacking side draws it),
+  // each actor's box where it starts; drag a box to move it.
+  function stage(w: Weapon, a: anim.Animation): Node {
+    const view = { x0: -320, y0: -200, x1: 160, y1: 80 };
+    const root2 = svg('svg', { viewBox: `${view.x0} ${view.y0} ${view.x1 - view.x0} ${view.y1 - view.y0}`, class: 'anim-stage' });
+    root2.append(svg('line', { x1: view.x0, y1: 0, x2: view.x1, y2: 0, class: 'ground' }), svg('line', { x1: 0, y1: view.y0, x2: 0, y2: view.y1, class: 'axis' }));
+    const unit = stageUnit(w);
+    if (unit) {
+      const [x0, y0, x1, y1] = unit.canvas;
+      root2.append(svg('image', { href: unit.image, x: x0, y: y0, width: x1 - x0, height: y1 - y0, preserveAspectRatio: 'none', class: 'pose' }));
+    }
+    const chosen = selectedActor.get(w.slug) ?? -1;
+    a.actors.forEach((actor, i) => {
+      const c = actorCanvas(actor);
+      const box = anim.actorBox(actor, c?.canvas);
+      if (!box) return;
+      const g = svg('g', { class: `actor${i === chosen ? ' on' : ''}`, 'data-index': i });
+      if (c?.image) g.append(svg('image', { href: c.image, x: box.x0, y: box.y0, width: box.x1 - box.x0, height: box.y1 - box.y0, preserveAspectRatio: 'none' }));
+      g.append(svg('rect', { x: box.x0, y: box.y0, width: Math.max(1, box.x1 - box.x0), height: Math.max(1, box.y1 - box.y0) }));
+      const label = svg('text', { x: box.x0 + 2, y: box.y0 + 9 });
+      label.textContent = String(i + 1);
+      g.append(label);
+      let drag: { x: number; y: number; ax: number; ay: number } | null = null;
+      g.addEventListener('pointerdown', (e) => {
+        const p = (e as PointerEvent);
+        drag = { x: p.clientX, y: p.clientY, ax: actor.x, ay: actor.y };
+        (g as Element).setPointerCapture(p.pointerId);
+        selectedActor.set(w.slug, i);
+        for (const other of root2.querySelectorAll('.actor')) other.classList.toggle('on', other === g);
+      });
+      g.addEventListener('pointermove', (e) => {
+        if (!drag) return;
+        const p = e as PointerEvent, scale = (view.x1 - view.x0) / (root2 as SVGSVGElement).clientWidth;
+        actor.x = Math.round(drag.ax + (p.clientX - drag.x) * scale);
+        actor.y = Math.round(drag.ay - (p.clientY - drag.y) * scale);
+        const moved = anim.actorBox(actor, c?.canvas)!;
+        for (const child of g.children) { child.setAttribute('x', String(moved.x0 + (child.tagName === 'text' ? 2 : 0))); child.setAttribute('y', String(moved.y0 + (child.tagName === 'text' ? 9 : 0))); }
+      });
+      g.addEventListener('pointerup', () => { if (drag) { drag = null; changed(); } });
+      root2.append(g);
+    });
+    return el('div', { class: 'anim-stage-box' }, root2 as unknown as Node, el('p', { class: 'hint' }, T('animStageHint')));
+  }
+  const numberCell = (value: number, set: (v: number) => void, hex = false) => {
+    const i = el('input', { value: hex ? `0x${value.toString(16).toUpperCase()}` : String(value), class: 'num-cell', spellcheck: 'false' }) as HTMLInputElement;
+    i.addEventListener('change', () => { const v = Number(i.value.trim()); if (Number.isFinite(v)) set(Math.round(v)); changed(); });
+    return i;
+  };
+  function actorRows(w: Weapon, a: anim.Animation): Node {
+    const own = Object.keys(model.scenes ?? {}).map((k) => `@${k}`);
+    const rows = a.actors.map((actor, i) => {
+      const scene = el('input', { value: String(actor.scene), list: 'unit-maker-scenes', class: 'num-cell wide', spellcheck: 'false' }) as HTMLInputElement;
+      scene.addEventListener('change', () => { const v = scene.value.trim(); actor.scene = /^\d+$/.test(v) ? Number(v) : v; changed(); });
+      const known = anim.KNOWN[actor.behavior];
+      const what = el('span', { class: 'was' }, anim.isCutin(actor) ? T('beh_cutin_at', { when: T(`cutin_${anim.cutinTiming(actor.h4).timing}`) }) : known ? T(`beh_${known}`) : T('beh_other'));
+      return el('tr', { class: i === (selectedActor.get(w.slug) ?? -1) ? 'on' : '' },
+        el('td', {}, String(i + 1)), el('td', {}, scene), el('td', {}, numberCell(actor.behavior, (v) => (actor.behavior = v)), what),
+        el('td', {}, numberCell(actor.x, (v) => (actor.x = v))), el('td', {}, numberCell(actor.y, (v) => (actor.y = v))), el('td', {}, numberCell(actor.z, (v) => (actor.z = v))),
+        el('td', {}, numberCell(actor.h4, (v) => (actor.h4 = v), true)), el('td', {}, numberCell(actor.h5, (v) => (actor.h5 = v))), el('td', {}, numberCell(actor.h6, (v) => (actor.h6 = v))),
+        el('td', {}, el('button', { type: 'button', class: 'mini', disabled: i === 0, onclick: () => { [a.actors[i - 1], a.actors[i]] = [a.actors[i], a.actors[i - 1]]; changed(); } }, '↑'),
+          el('button', { type: 'button', class: 'mini', disabled: a.actors.length >= anim.MAX_ACTORS, onclick: () => { a.actors.splice(i + 1, 0, { ...actor }); changed(); } }, T('animDuplicate')),
+          el('button', { type: 'button', class: 'mini', onclick: () => { a.actors.splice(i, 1); changed(); } }, text.remove)));
+    });
+    return el('div', { class: 'anim-table-box' }, el('datalist', { id: 'unit-maker-scenes' }, ...own.map((s) => el('option', { value: s }))),
+      el('table', { class: 'anim-table' }, el('thead', {}, el('tr', {}, ...['#', T('animScene'), T('animBehavior'), 'x', 'y', 'z', 'h4', 'h5', 'h6', ''].map((h) => el('th', {}, h)))), el('tbody', {}, ...rows)),
+      el('p', { class: 'hint' }, T('animTableHint')));
+  }
+  // A cut-in: a picture of the package (made here, not mirrored, 128×96) or an original cut-in.
+  function cutinAdder(w: Weapon, a: anim.Animation): Node {
+    const pictures = Object.entries(sprites()).filter(([, s]) => s.mirror === false).map(([n]) => n);
+    const pick = el('select', {}, ...pictures.map((n) => el('option', { value: `@${n}` }, `@${n}`)),
+      ...(bank ? Array.from({ length: bank.cutins[1] - bank.cutins[0] + 1 }, (_, k) => bank!.cutins[0] + k).map((n) => el('option', { value: String(n) }, `${T('animOriginalCutin')} ${n}`)) : [])) as HTMLSelectElement;
+    const timing = el('select', {}, ...(['fire', 'after', 'with'] as anim.CutinTiming[]).map((m) => el('option', { value: m }, T(`cutin_${m}`)))) as HTMLSelectElement;
+    // How long a picture of the package stays: its one frame's ticks (behaviour 240 ends the
+    // cut-in when its scene has played, so a frame of 1 tick is gone at once).
+    const ticks = el('input', { type: 'number', min: 1, max: 255, value: anim.CUTIN_TICKS, class: 'port' }) as HTMLInputElement;
+    const add = () => {
+      if (a.actors.length >= anim.MAX_ACTORS) return say(statusLine, T('p_anim_actors'), true);
+      let scene: Ref = /^\d+$/.test(pick.value) ? Number(pick.value) : pick.value;
+      // A package picture is named through the scenes table (data/new_units.json "scenes").
+      if (typeof scene === 'string') {
+        model.scenes ??= {};
+        const name = scene.slice(1);
+        if (!(name in model.scenes)) model.scenes[name] = `@${name}`;
+        const s = sprites()[name];
+        if (s && (art.get(name)?.images.length ?? 1) === 1) s.ticks = [Math.min(255, Math.max(1, Math.round(Number(ticks.value) || anim.CUTIN_TICKS)))];
+        scene = `@${name}`;
+      }
+      // Before the effects, after the cut-ins already there (as the original's records have them).
+      const at = anim.cutinPlace(a.actors);
+      const before = [...a.actors.slice(0, at)].reverse().find(anim.isCutin);
+      a.actors.splice(at, 0, anim.cutin(scene, timing.value as anim.CutinTiming, false, before ? before.h4 & 0xff : anim.FIRE));
+      selectedActor.set(w.slug, at);
+      changed();
+    };
+    const make = fileButton(T('animCutinMake'), false, async (files) => {
+      const name = await addSprite(`${w.slug}-cutin`, files, false);
+      model.scenes ??= {}; model.scenes[name] = `@${name}`;
+      changed();
+    });
+    return el('div', {}, el('div', { class: 'sub' }, T('animCutins')), el('p', { class: 'hint' }, T('animCutinHint')),
+      el('div', { class: 'list-row' }, pick, timing, el('label', { class: 'field inline' }, T('animCutinTicks'), ticks),
+        el('button', { type: 'button', class: 'mini', onclick: add, disabled: !pick.options.length }, T('add')), make));
+  }
+  // An effect of another weapon (its beam, its shot): the actor as that weapon has it.
+  function borrower(w: Weapon, a: anim.Animation): Node {
+    const list = el('div', { class: 'borrow-list' });
+    const show = (id: number | undefined) => {
+      if (id === undefined || !bank || !bank.weapons[id] && bank.weapons[id] !== 0) { list.replaceChildren(); return; }
+      const other = anim.original(bank, id);
+      list.replaceChildren(...other.actors.map((actor) => el('div', { class: 'list-row' },
+        el('span', {}, `${T('animScene')} ${actor.scene} · ${T('animBehavior')} ${actor.behavior} ${anim.KNOWN[actor.behavior] ? T(`beh_${anim.KNOWN[actor.behavior]}`) : ''} · (${actor.x}, ${actor.y})`),
+        el('button', { type: 'button', class: 'mini', disabled: a.actors.length >= anim.MAX_ACTORS, onclick: () => { a.actors.push({ ...actor }); selectedActor.set(w.slug, a.actors.length - 1); changed(); } }, T('animBorrowThis')))));
+    };
+    return el('div', {}, el('div', { class: 'sub' }, T('animBorrow')), el('p', { class: 'hint' }, T('animBorrowHint')),
+      refInput('weapons', undefined, (v) => show(typeof v === 'number' ? v : undefined), T('animBorrowPick')), list);
+  }
+  function animationEditor(w: Weapon): Node[] {
+    needBank();
+    const field = w.animation as anim.AnimationField | undefined;
+    const source = animationSource(w);
+    const mode = !field ? 'copy' : anim.isCopy(field) ? 'other' : 'own';
+    const select = el('select', {}, el('option', { value: 'copy' }, T('animCopy')), el('option', { value: 'other' }, T('animOther')), el('option', { value: 'own' }, T('animOwn'))) as HTMLSelectElement;
+    select.value = mode;
+    select.addEventListener('change', () => {
+      if (select.value === 'copy') delete w.animation;
+      else if (select.value === 'other') w.animation = { copy: source ?? (w.copy as number) };
+      else if (bank && source !== undefined) w.animation = anim.original(bank, source);
+      changed();
+    });
+    const parts: Node[] = [el('div', { class: 'sub' }, T('animTitle')), el('p', { class: 'hint' }, T('animHint')),
+      el('label', { class: 'field' }, T('animMode'), select, el('span', { class: 'was' }, source !== undefined ? `${T('animFrom')} ${refName('weapons', source)}` : ''))];
+    if (mode === 'other') parts.push(el('label', { class: 'field' }, T('animOtherPick'), refInput('weapons', (field as { copy: Ref }).copy, (v) => { if (v !== undefined) { w.animation = { copy: v }; changed(); } })));
+    if (mode !== 'own') return parts;
+    if (!bank) return [...parts, el('p', { class: 'hint' }, T('animLoading'))];
+    const a = field as anim.Animation;
+    const header = el('details', {}, el('summary', {}, T('animHeader')),
+      el('div', { class: 'grid' },
+        el('label', { class: 'field' }, T('animCamera'), numberCell(a.camera, (v) => (a.camera = v))),
+        el('label', { class: 'field' }, T('animHit'), numberCell(a.hit, (v) => (a.hit = v))),
+        el('label', { class: 'field' }, T('animAction'), numberCell(a.action, (v) => (a.action = v))),
+        el('label', { class: 'field' }, T('animDefender'), numberCell(a.defender, (v) => (a.defender = v)))),
+      el('label', { class: 'field' }, T('animSounds'), textInput(a.sounds.join(', '), (v) => { a.sounds = v.split(/[\s,，、]+/).filter(Boolean).map(Number).filter(Number.isFinite); changed(); }), el('span', { class: 'was' }, T('animSoundsHint'))));
+    parts.push(stage(w, a), actorRows(w, a), cutinAdder(w, a), borrower(w, a), header,
+      el('p', { class: 'hint' }, T('animSize', { actors: a.actors.length, bytes: anim.recordSize(a), most: anim.WINDOW })),
+      el('div', {}, el('button', { type: 'button', class: 'mini', onclick: () => { if (bank && source !== undefined) { w.animation = anim.original(bank, source); changed(); } } }, T('animReset'))));
+    return parts;
+  }
+
   function weaponEditor(w: Weapon): Node[] {
     const carriers = model.units.filter((u) => u.weapons.includes(`@${w.slug}`));
     const combo = w.combination;
@@ -755,6 +954,7 @@ export function initUnitMaker() {
       el('div', { class: 'grid' },
         el('label', { class: 'field' }, T('inheritsWeapon'), refInput('weapons', w.inherits_from, (v) => { w.inherits_from = v; changed(false); }), el('span', { class: 'was' }, T('inheritsWeaponHint')))),
       el('div', { class: 'sub' }, T('combination')), el('label', { class: 'check' }, comboBox, T('combinationOn')), el('p', { class: 'hint' }, T('combinationHint')), comboEditor,
+      ...animationEditor(w),
       el('div', { class: 'sub' }, T('stats')), ...dataEditor('weapons', w),
     ];
   }
@@ -979,6 +1179,8 @@ export function initUnitMaker() {
     }
     for (const name of Object.keys(sprites())) if (!art.has(name)) out.push(`@${name}：${T('p_spriteNoArt')}`);
     for (const name of voicesOf(model)) if (!voices.has(name)) out.push(`${name}：${T('p_voiceMissing')}`);
+    const ownScenes = new Set(Object.keys(model.scenes ?? {}));
+    for (const w of model.weapons) if (w.animation) for (const code of anim.animationProblems(w.animation as anim.AnimationField, ownScenes, true)) out.push(`${shownName(w)}：${T(`p_${code}`)}`);
     const s = story();
     for (const p of storyImage.storyProblems(s.joins, s.waves)) { const [k, id] = p.where.split(/\.(.*)/); out.push(`${kindTitle[k]} ${id}：${T(`p_${p.code}`)}`); }
     // A new character or unit by name must be one of the package's.
@@ -1209,7 +1411,8 @@ export function initUnitMaker() {
       choice.pilot ||= model.pilots[0] ? `@${model.pilots[0].slug}` : '166';
       pilotSelect.value = choice.pilot;
       const weaponSelect = el('select', {}, ...(u?.weapons ?? []).map((w) => el('option', { value: String(w) }, refName('weapons', w)))) as HTMLSelectElement;
-      if (!u?.weapons.map(String).includes(choice.weapon)) choice.weapon = String(u?.weapons[0] ?? '');
+      // The package's own weapon by default: the one being made.
+      if (!u?.weapons.map(String).includes(choice.weapon)) choice.weapon = String(u?.weapons.find((x) => typeof x === 'string') ?? u?.weapons[0] ?? '');
       weaponSelect.value = choice.weapon;
       unitSelect.addEventListener('change', () => { choice.unit = unitSelect.value; choice.weapon = ''; renderControls(); });
       pilotSelect.addEventListener('change', () => { choice.pilot = pilotSelect.value; });

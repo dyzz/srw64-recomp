@@ -236,6 +236,49 @@ class StoryTests(unittest.TestCase):
 
 
 @unittest.skipUnless(NODE, "node is not installed")
+class AnimationTests(unittest.TestCase):
+    """web/src/lib/weapon-animation.ts and the exported records (web/src/data/weapon-animations.json)."""
+
+    def test_records_and_cutins(self):
+        module = (ROOT / "web/src/lib/weapon-animation.ts").as_uri()
+        bank = ROOT / "web/src/data/weapon-animations.json"
+        got = run(f"import * as a from {json.dumps(module)}; import fs from 'node:fs';"
+                  f"const bank = JSON.parse(fs.readFileSync({json.dumps(str(bank))}, 'utf8'));"
+                  "const beam = a.original(bank, 228), cannon = a.original(bank, 875);"
+                  "cannon.actors.push(a.cutin('@cut', 'fire', false)); cannon.actors[0].x = 10; cannon.actors[0].y = 92; cannon.actors[0].h4 = 50;"
+                  "const chained = a.cutin(1000, 'after', true), along = a.cutin(1001, 'with', false, 0x56);"
+                  "console.log(JSON.stringify({ beam, cannon, counts: [bank.records.length, bank.weapons.length, bank.scenes.length, bank.poses.length],"
+                  " h4: [chained.h4, along.h4, a.cutinTiming(0x4044), a.cutinTiming(0x8057)], box: a.actorBox(beam.actors[2], bank.scenes[56]), pose: bank.poses[55],"
+                  " problems: [a.animationProblems(cannon, new Set(['cut'])), a.animationProblems(cannon, new Set()), a.animationProblems({ copy: 3 }, new Set())],"
+                  " size: a.recordSize(cannon) }));")
+        self.assertEqual(got["counts"], [1115, 1329, 1053, 365])
+        # The original records as battle_graphics reads them (docs/data/battle-animation.md).
+        self.assertEqual((got["beam"]["camera"], got["beam"]["hit"], got["beam"]["action"], got["beam"]["defender"], got["beam"]["sounds"]), (1, 6, 113, 125, [-2, 1, 5, 8]))
+        self.assertEqual([x["behavior"] for x in got["beam"]["actors"]], [359, 124, 118])
+        self.assertEqual(got["box"], {"x0": -321, "y0": -44, "x1": -65, "y1": -12})
+        self.assertEqual(got["pose"][:4], [-49, -82, 47, 14])          # the HD pose 768 = 96 x 8
+        self.assertEqual(got["h4"], [0x4056, 0x8056, {"timing": "fire", "phase": 0x44}, {"timing": "with", "phase": 0x57}])
+        # The record written (终极断空我's 断空砲 the way the editor makes it) is one the validator takes.
+        doc = {"schema": "srw64.new-units.v2", "scenes": {"cut": "@x"}, "sprites": {"x": {"image": "x.png", "origin": [64, 48], "mirror": False}},
+               "weapons": {"w": {"copy": 875, "animation": got["cannon"]}}, "units": {"u": {"copy": 224, "weapons": ["@w"]}}}
+        self.assertEqual(validate.new_units_problem(doc, {"x.png"}), "")
+        self.assertEqual(got["problems"], [[], ["anim_scene"], []])
+        self.assertEqual(got["size"], 8 + 2 * 4 + 2 + 16 * 3 + 2)
+        bad = run(f"import * as a from {json.dumps(module)};"
+                  "console.log(JSON.stringify(a.animationProblems({ camera: -1, hit: 0, action: 0, defender: 0, sounds: [1,2,3,4,5,6,7,8,9],"
+                  " actors: [{ scene: 2000, x: 0, y: 0, z: 0, h4: 70000, h5: 0, h6: 0, behavior: 2 }] }, new Set())));")
+        self.assertEqual(bad, ["anim_header", "anim_sounds", "anim_scene", "anim_numbers", "anim_behavior"])
+        # Cut-ins go after the cut-ins at the head, before the effects; the package's own pictures
+        # only on cut-ins for now.
+        place = run(f"import * as a from {json.dumps(module)};"
+                    "const c = a.cutin(1000, 'fire', false), e = { scene: 20, x: 0, y: 0, z: 0, h4: 0, h5: 190, h6: 0, behavior: 111 };"
+                    "const own = { camera: 1, hit: 0, action: 83, defender: 125, sounds: [], actors: [{ ...e, scene: '@x' }] };"
+                    "console.log(JSON.stringify([a.cutinPlace([]), a.cutinPlace([e]), a.cutinPlace([c, c, e]), a.animationProblems(own, new Set(['x']), true),"
+                    " a.animationProblems({ ...own, actors: [a.cutin('@x', 'fire', false)] }, new Set(['x']), true), a.CUTIN_TICKS]));")
+        self.assertEqual(place, [0, 0, 2, ["anim_own_effect"], [], 30])
+
+
+@unittest.skipUnless(NODE, "node is not installed")
 class PixelsTests(unittest.TestCase):
     def test_foot(self):
         # The default origin of the sample's stand (59, 90 by hand) comes out within a few pixels.
