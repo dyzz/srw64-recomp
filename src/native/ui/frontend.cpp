@@ -28,6 +28,7 @@
 #include "save_page.hpp"
 #include "save_store.hpp"
 #include "library.hpp"
+#include "map_movie.hpp"
 #include "stage_info.hpp"
 #include "quick_load.hpp"
 #include "title_row.hpp"
@@ -224,7 +225,10 @@ bool quit_ask_open{};
 // The intermission menu's own last row, 返回标题画面 (not one of the original's items):
 // selected below the original's cursor, confirmed as the title question.
 unsigned library_tab{};
-std::array<unsigned,2> library_index{};
+std::array<unsigned,3> library_index{};   // units, characters, map movies
+bool movie_active{};           // a map movie plays on the Library's animations page (map_movie.hpp)
+uint64_t movie_serial{};       // the last of its pictures shown
+int movie_images=-1;           // the animations page's own Original (0) / HD (1); -1 follows the image mode
 bool library_tab_focus{};
 // The stage info page (stage_info.hpp), in the same frame: which column the controller
 // scrolls.
@@ -794,6 +798,22 @@ body.pointer button.vw-listen:focus {background-color:#3fd0ff;} body.pointer but
 .lx-terrain .t.none {border-color:#2c3a66;} .lx-terrain .t.none .r {color:#5d6890;}
 .lx-head {margin:12dp 0 5dp; padding-bottom:4dp; font-size:13dp; font-weight:bold; color:#3fd0ff; border-bottom:1dp #3fd0ff59;}
 .lx-head span {margin-left:10dp; font-size:11dp; font-weight:normal; color:#8f9bbd;}
+/* Map movies: the original's 4:3 picture on the left, the controls under it */
+.mv-hero {display:flex; gap:14dp; pointer-events:auto;}   /* the details float in a document that takes no clicks */
+.mv-left {flex-shrink:0; display:flex; flex-direction:column; gap:6dp;}
+button.mv-stage {display:block; position:relative; overflow:hidden; margin:0; padding:0; background-color:#000000; border:1dp #3fd0ff59; border-radius:0;}
+button.mv-stage:focus, .pad button.mv-stage:focus {border-color:#ffd75e; background-color:#000000;}
+button.mv-stage img, button.mv-stage div {position:absolute; margin:0;}
+button.mv-stage div {background-color:#000000;}
+button.mv-stage .mv-fail {position:absolute; left:0; top:45%; width:100%; text-align:center; font-size:12dp; color:#ffb0a6; background-color:transparent;}
+.mv-ctl {display:flex; align-items:center; gap:5dp; font-size:12dp; color:#a4b0d2;}
+.mv-ctl button {margin:0; padding:2dp 8dp; font-size:12dp; white-space:nowrap; color:#e8eefc; background-color:#0c122c; border:1dp #3fd0ff; border-radius:0;}
+.mv-ctl button.on {color:#0b1230; background-color:#3fd0ff;}
+.mv-ctl button:focus, .pad .mv-ctl button:focus {color:#ffd75e; border-color:#ffd75e;}
+.mv-bar {flex:1 1 0; min-width:20dp; height:5dp; background-color:#1a2448;}
+.mv-bar div {height:5dp; background-color:#3fd0ff;}
+.mv-time {white-space:nowrap; font-size:11dp;}
+.mv-side p {font-size:12dp; color:#c8d4ee; margin:0;}
 /* Units: the weapon table */
 .lib-wrow {display:flex; align-items:center; padding:4dp 0; font-size:13dp; border-bottom:1dp #3fd0ff1f;}
 .lib-wrow.head {color:#a4b0d2; font-size:11dp; padding:0 0 5dp;}
@@ -2407,7 +2427,8 @@ std::string mod_panel() {
 // C-down scroll the details, L / R switch between units and characters.
 const char* marker_glyph(const std::string& token);
 void library_turn(int step);
-const nlohmann::json& library_entries(){return library::contents().at(library_tab?"pilots":"units");}
+const nlohmann::json& library_movie_entries();
+const nlohmann::json& library_entries(){return library_tab==2?library_movie_entries():library::contents().at(library_tab?"pilots":"units");}
 std::string library_number(const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("-");}
 std::string library_signed(const json& v){const int n=v.is_number()?v.get<int>():0;return n>0?"+"+std::to_string(n):std::to_string(n);}
 // A label with a number filled in for "{n}".
@@ -2626,20 +2647,142 @@ std::string library_pilot(const json& p,const json& L) {
     }
     return body;
 }
+// The map movies (map_movie.hpp): grouped under the work of the unit each shows, in the
+// order the units list has the works; a movie's entry keeps its number.
+const nlohmann::json& library_movie_entries() {
+    static json cached;
+    static std::string made_for;
+    const auto& all=library::contents();
+    const auto key=localization::catalog().locale+"/"+std::to_string(reinterpret_cast<uintptr_t>(&all))+"/"+std::to_string(all.at("units").size());
+    if(key==made_for && cached.is_array())return cached;
+    made_for=key;
+    const auto& units=all.at("units");
+    std::map<int,size_t> work_first;   // a work -> its first unit's place
+    for(size_t i=0;i<units.size();++i)work_first.emplace(units[i].value("work",-1),i);
+    struct Row{size_t order;unsigned movie;json entry;};
+    std::vector<Row> rows;
+    for(unsigned m=0;m<map_movie::count;++m) {
+        const auto& in=map_movie::info(m);
+        json e={{"movie",m},{"name",label_text("library_movie_title_"+std::to_string(m))},{"work",-1}};
+        if(!in.used)e["model"]=label_text("library_movie_unused");
+        size_t order=units.size();
+        for(const auto& u:units)
+            if(u.value("id",-1)==in.unit) {
+                e["work"]=u.value("work",-1);
+                if(u.contains("work_name"))e["work_name"]=u.at("work_name");
+                order=work_first[e["work"].get<int>()];
+                break;
+            }
+        rows.push_back({order,m,std::move(e)});
+    }
+    std::stable_sort(rows.begin(),rows.end(),[](const Row& a,const Row& b){return a.order<b.order;});
+    cached=json::array();
+    for(auto& r:rows)cached.push_back(std::move(r.entry));
+    return cached;
+}
+// The picture's sprites and bars over the black 4:3 stage, placed in percent of it. A frame's
+// image is the art pack's HD one in HD image mode, else the ROM's pixels (made once).
+bool movie_hd(){return movie_images<0?hd_portraits():movie_images==1;}
+std::string movie_image(const map_movie::Draw& d) {
+    if(movie_hd())
+        if(const auto path=srw64::sprites::frame_file(d.scene,d.atlas,d.palette,d.frame);!path.empty())
+            if(auto src=image_async(path,0,true,true);!src.empty())return src;
+    const auto key="movie:"+std::to_string(d.scene)+"-"+std::to_string(d.atlas)+"-"+std::to_string(d.palette)+"-"+std::to_string(d.frame);
+    if(const auto found=images.find(key);found!=images.end())return found->second;
+    const auto image=map_movie::frame_image(d.scene,d.atlas,d.palette,d.frame);
+    if(!image)return images[key]=std::string();
+    const auto name="portrait-"+std::to_string(images.size());
+    queue_rgba(name,std::vector<char>(image->rgba.begin(),image->rgba.end()),uint32_t(image->width),uint32_t(image->height));
+    return images[key]=name;
+}
+// The stage is the window the movies play in, 112 x 96 in the middle of the map (every
+// movie's backdrop fills it); the wipe's bars cover the rows above and below it, so they are
+// not drawn. Parts reaching past its sides (over the map in the original) are cut.
+std::string movie_stage(const map_movie::Picture& pic) {
+    const auto pc=[](float v,float whole){char b[32];std::snprintf(b,sizeof b,"%.3f%%",v/whole*100);return std::string(b);};
+    const auto& W=map_movie::window;
+    const auto place=[&](const float* r){return "left:"+pc(r[0]-W[0],W[2]-W[0])+"; top:"+pc(r[1]-W[1],W[3]-W[1])+"; width:"+pc(r[2]-r[0],W[2]-W[0])+"; height:"+pc(r[3]-r[1],W[3]-W[1])+";";};
+    std::string body;
+    for(const auto& d:pic.draws) {
+        const auto src=movie_image(d);
+        if(src.empty())continue;
+        std::string style=place(d.rect);
+        if(d.alpha<.999f)style+=" opacity:"+std::to_string(std::max(0.f,d.alpha))+";";
+        std::string transform;
+        if(d.rotation!=0)transform+=" rotate("+std::to_string(d.rotation)+"deg)";
+        if(d.flip_x || d.flip_y)transform+=std::string(" scale(")+(d.flip_x?"-1":"1")+","+(d.flip_y?"-1":"1")+")";
+        if(!transform.empty()) {
+            if(d.rotation!=0)style+=" transform-origin:"+pc(d.pivot[0]-d.rect[0],std::max(1.f,d.rect[2]-d.rect[0]))+" "+pc(d.pivot[1]-d.rect[1],std::max(1.f,d.rect[3]-d.rect[1]))+";";
+            style+=" transform:"+transform+";";
+        }
+        body+="<img src='"+escape(src)+"' style='"+style+"'/>";
+    }
+    if(pic.failed)body+="<span class='mv-fail'>"+label("library_movie_failed")+"</span>";
+    return body;
+}
+std::string movie_clock(unsigned ticks){const unsigned s=(ticks+15)/30;return std::to_string(s/60)+":"+(s%60<10?"0":"")+std::to_string(s%60);}
+// The stage as large as the page allows (the HD pack has every frame of the movies): up to
+// 68 % of the details' width (the panel less its list and gaps, as library_hero reckons it)
+// and the panel's height less its title row, footer and the controls under the stage; its
+// height keeps the window's 7:6. About 370 x 320 dp on a Steam Deck at the Largest size.
+float movie_stage_width() {
+    const float window=float(pixels_w)/std::max(.1f,ui_density),panel=std::min(window*.96f,1180.f)-36;
+    const float tall=std::min(float(pixels_h)/std::max(.1f,ui_density)*.94f,760.f)-18-38-36-34;
+    const auto& W=map_movie::window;
+    return std::max(200.f,std::min((panel-246)*.68f,tall*(W[2]-W[0])/(W[3]-W[1])));
+}
+std::string library_movie(const json& e) {
+    const unsigned movie=e.value("movie",0u);
+    const auto& in=map_movie::info(movie);
+    const unsigned length=map_movie::length(movie);
+    const auto& W=map_movie::window;
+    const float w=movie_stage_width(),h=w*(W[3]-W[1])/(W[2]-W[0]);
+    // Before it plays: a still from a little before its middle.
+    const auto still=map_movie::preview(movie,length*9/20);
+    const char* kinds[]={"library_movie_kind_combine","library_movie_kind_aura_road","library_movie_kind_change"};
+    std::string tags="<span>"+library_with("library_movie_scenes",std::to_string(map_movie::scenes(movie)))+"</span>";
+    if(length)tags+="<span>"+library_with("library_movie_seconds",std::to_string((length+15)/30))+"</span>";
+    if(!in.used)tags+="<span class='on'>"+label("library_movie_unused")+"</span>";
+    const char* when=movie==0?"library_movie_when_combattler":movie==11?"library_movie_when_godmars":!in.used?"library_movie_when_unused":
+                     in.kind==map_movie::Kind::aura_road?"library_movie_when_aura_road":"library_movie_when_change";
+    std::string units;
+    for(const int id:in.units) {
+        if(id<0)continue;
+        for(const auto& u:library::contents().at("units"))
+            if(u.value("id",-1)==id){units+="<span>"+escape(u.value("name",std::string()))+"</span>";break;}
+    }
+    const auto ws=std::to_string(int(w)),hs=std::to_string(int(h));
+    // Original / HD on this page alone, when the art pack has the movie's frames.
+    bool hd_frames=false;
+    for(const auto& d:still.draws)hd_frames=hd_frames || !srw64::sprites::frame_file(d.scene,d.atlas,d.palette,d.frame).empty();
+    const std::string images=hd_frames?button("mv-img:0",label("library_movie_original"),!movie_hd())+button("mv-img:1",label("library_movie_hd"),movie_hd()):std::string();
+    wrap_texts.clear();   // the paragraphs below, broken into lines by wrap_paragraphs(library_detail_doc)
+    return "<div class='mv-hero'><div class='mv-left' style='width:"+ws+"dp;'>"
+        "<button id='mv-stage' class='mv-stage' style='width:"+ws+"dp; height:"+hs+"dp;'>"+movie_stage(still)+"</button>"
+        "<div class='mv-ctl'>"+button("mv-play",label("library_movie_play"))+button("mv-back","◀")+button("mv-fwd","▶")+button("mv-replay",label("library_movie_replay"))+
+        button("mv-loop",label("library_movie_loop"),map_movie::picture().looping)+images+
+        "<div class='mv-bar'><div id='mv-fill' style='width:0%;'></div></div><span id='mv-time' class='mv-time'>0:00 / "+movie_clock(length)+"</span></div></div>"
+        "<div class='lx-side mv-side'><div class='lib-sub'>"+library_work(e)+"</div>"
+        "<div class='lx-name'><span class='lib-name fit'>"+escape(e.value("name",std::string()))+"</span><span class='gold'>"+label(kinds[int(in.kind)])+"</span></div>"
+        "<div class='lx-tags'>"+tags+"</div>"+library_section(label("library_movie_when"),"")+wrap_label(when)+
+        (units.empty()?std::string():library_section(label("library_movie_units"),"")+"<div class='lx-tags'>"+units+"</div>")+
+        wrap_label("library_movie_note","lib-note")+"</div></div>";
+}
 std::string library_detail() {
     const auto& entries=library_entries();
     if(entries.empty())return {};
     const auto& entry=entries[std::min<size_t>(library_index[library_tab],entries.size()-1)];
     const auto& all=library::contents();
+    if(library_tab==2)return library_movie(entry);
     return library_tab?library_pilot(entry,all.at("labels")):library_unit(entry,all.at("labels"),all.at("weapon_labels"),all.at("upgrade_types"));
 }
 std::string library_panel() {
     // Laid out for a Steam Deck at the Largest size (865 x 540 dp): nearly the whole window,
     // the title and tabs on one row, a fixed-width list.
     std::string body="<div class='set-shade solid'><div class='set-panel lib-panel'><div class='lib-top'><h1>"+label("library_title")+"</h1><div class='set-tabs nav'>";
-    const char* tabs[]={"units","pilots"};
-    for(unsigned i=0;i<2;++i)
-        body+=button("lib-tab:"+std::to_string(i),label("library_tab_"+std::string(tabs[i]))+"  ("+std::to_string(library::contents().at(tabs[i]).size())+")",i==library_tab,false,"set-tab");
+    const char* tabs[]={"units","pilots","movies"};
+    for(unsigned i=0;i<3;++i)
+        body+=button("lib-tab:"+std::to_string(i),label("library_tab_"+std::string(tabs[i]))+"  ("+std::to_string(i<2?library::contents().at(tabs[i]).size():size_t(map_movie::count))+")",i==library_tab,false,"set-tab");
     body+="</div></div><div class='lib-main'><div id='lib-list' class='lib-list'>";
     const auto& entries=library_entries();
     // A heading over each work's entries.
@@ -2651,12 +2794,12 @@ std::string library_panel() {
         }
         // Units carry their model number; characters who first appear as enemies a red dot.
         const auto& e=entries[i];
-        std::string text=library_tab?"<span class='dot"+std::string(e.value("enemy",false)?" enemy":"")+"'></span><span class='n fit'>"+escape(e.value("name",std::string()))+"</span>"
+        std::string text=library_tab==1?"<span class='dot"+std::string(e.value("enemy",false)?" enemy":"")+"'></span><span class='n fit'>"+escape(e.value("name",std::string()))+"</span>"
                                     :"<span class='n fit'>"+escape(e.value("name",std::string()))+"</span>"+(e.contains("model")?"<span class='m'>"+escape(e.at("model").get<std::string>())+"</span>":std::string());
         body+=button("lib-item:"+std::to_string(i),text,i==library_index[library_tab],false,"lib-item");
     }
     body+="</div><div id='lib-detail' class='lib-detail'></div></div>"
-        "<div class='set-foot'><div class='set-hint'>"+label("library_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
+        "<div class='set-foot'><div class='set-hint'>"+label(library_tab==2?"library_movie_hint":"library_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
     return body;
 }
 // Pictures that arrived since a page was made: only their places are filled. Making the page
@@ -2679,6 +2822,7 @@ uint64_t library_pictures=0;   // pictures::serial when the Library's details we
 // document lays out the details alone.
 Rml::ElementDocument* library_detail_doc{};
 Rml::Element* library_detail_element(){return library_detail_doc?library_detail_doc->GetElementById("lib-detail-float"):nullptr;}
+void wrap_paragraphs(Rml::ElementDocument* doc);
 void library_detail_open() {
     document_close(library_detail_doc);
     auto* place=settings_doc?settings_doc->GetElementById("lib-detail"):nullptr;
@@ -2687,6 +2831,7 @@ void library_detail_open() {
     const auto px=[](float v){return std::to_string(int(v+.5f))+"px";};
     library_detail_doc=document("<div id='lib-detail-float' class='lib-detail' style='position:absolute; flex:none; left:"+px(at.x)+"; top:"+px(at.y)+
         "; width:"+px(size.x)+"; height:"+px(size.y)+";'>"+library_detail()+"</div>",false,true);
+    if(library_tab==2)wrap_paragraphs(library_detail_doc);
     library_detail_doc->PullToFront();
 }
 void library_select(unsigned index,bool focus=true) {
@@ -2697,6 +2842,7 @@ void library_select(unsigned index,bool focus=true) {
     if(auto* old=settings_doc->GetElementById("lib-item:"+std::to_string(library_index[library_tab])))old->SetClass("on",false);
     const bool changed=index!=library_index[library_tab];
     library_index[library_tab]=index;
+    if(changed && library_tab==2 && movie_active){map_movie::stop();movie_active=false;}
     if(auto* item=settings_doc->GetElementById("lib-item:"+std::to_string(index))) {
         item->SetClass("on",true);
         if(focus) {
@@ -2717,9 +2863,53 @@ void library_select(unsigned index,bool focus=true) {
     if(library_detail_doc)library_detail_doc->UpdateDocument();
     const auto t3=Clock::now();
     if(library_detail_doc)fit_lines(library_detail_doc);
+    if(library_tab==2)wrap_paragraphs(library_detail_doc);
     const auto t4=Clock::now();
     const auto ms=[](Clock::time_point a,Clock::time_point b){return std::chrono::duration<double,std::milli>(b-a).count();};
     if(ms(t0,t4)>20)std::fprintf(stderr,"SRW64_LIBRARY_STEP %.1fms build=%.1f parse=%.1f layout=%.1f fit=%.1f\n",ms(t0,t4),ms(t0,t1),ms(t1,t2),ms(t2,t3),ms(t3,t4));
+}
+// The playing map movie (map_movie.hpp): its pictures into the stage as they come, every
+// frame of the window while the Library shows the animations page.
+unsigned library_movie_selected(){const auto& e=library_movie_entries();return e.empty()?0:e[std::min<size_t>(library_index[2],e.size()-1)].value("movie",0u);}
+void library_movie_sync() {
+    if(!movie_active || !library_detail_doc)return;
+    const auto pic=map_movie::picture();
+    if(pic.serial==movie_serial || pic.movie!=int(library_movie_selected()))return;
+    movie_serial=pic.serial;
+    if(auto* stage=library_detail_doc->GetElementById("mv-stage"))stage->SetInnerRML(movie_stage(pic));
+    const unsigned length=pic.length?pic.length:map_movie::length(unsigned(pic.movie));
+    if(auto* fill=library_detail_doc->GetElementById("mv-fill"))
+        fill->SetProperty("width",std::to_string(length?std::min(100.f,100.f*float(pic.tick)/float(length)):0.f)+"%");
+    if(auto* time=library_detail_doc->GetElementById("mv-time"))time->SetInnerRML(movie_clock(pic.tick)+" / "+movie_clock(length));
+    if(auto* play=library_detail_doc->GetElementById("mv-play"))
+        play->SetInnerRML(label(pic.playing && !pic.paused?"library_movie_pause":"library_movie_play"));
+    if(auto* loop=library_detail_doc->GetElementById("mv-loop"))loop->SetClass("on",pic.looping);
+}
+// Play from the start, or pause and go on.
+void library_movie_toggle() {
+    const unsigned movie=library_movie_selected();
+    const auto pic=map_movie::picture();
+    if(!movie_active || pic.movie!=int(movie) || pic.finished || pic.failed){map_movie::play(movie);movie_active=true;movie_serial=0;return;}
+    map_movie::pause(!pic.paused);
+}
+void library_movie_control(const std::string& id) {
+    if(id=="mv-stage" || id=="mv-play"){library_movie_toggle();return;}
+    if(id=="mv-replay"){map_movie::play(library_movie_selected());movie_active=true;movie_serial=0;return;}
+    if(id=="mv-loop"){map_movie::set_loop(!map_movie::picture().looping);return;}
+    if(id.starts_with("mv-img:")) {
+        movie_images=id.back()=='1';
+        if(movie_active){
+            movie_serial=0;   // the next sync draws the stage again
+            if(library_detail_doc)for(const char* b:{"mv-img:0","mv-img:1"})if(auto* e=library_detail_doc->GetElementById(b))e->SetClass("on",(b[7]=='1')==movie_hd());
+        } else if(auto* detail=library_detail_element()){detail->SetInnerRML(library_detail());library_detail_doc->UpdateDocument();fit_lines(library_detail_doc);wrap_paragraphs(library_detail_doc);}
+        return;
+    }
+    if(id=="mv-back" || id=="mv-fwd") {
+        // A frame at a time holds the movie still first.
+        if(!movie_active){map_movie::play(library_movie_selected());movie_active=true;movie_serial=0;}
+        map_movie::pause(true);
+        map_movie::step(id=="mv-fwd"?1:-1);
+    }
 }
 // Scrolls the details by `dp` (C-up / C-down, held: a little every frame).
 void library_scroll(float dp) {
@@ -2872,13 +3062,13 @@ std::string stage_panel(const json& snap) {
     return body+foot;
 }
 // After layout: each paragraph broken into lines that fit its column, in its own font.
-void wrap_paragraphs() {
-    if(!settings_doc)return;
+void wrap_paragraphs(Rml::ElementDocument* doc) {
+    if(!doc)return;
     auto* engine=Rml::GetFontEngineInterface();
     const Rml::String language;
     const Rml::TextShapingContext shaping{language};
     for(size_t i=0;i<wrap_texts.size();++i) {
-        auto* e=settings_doc->GetElementById("wrap:"+std::to_string(i));
+        auto* e=doc->GetElementById("wrap:"+std::to_string(i));
         if(!e)continue;
         const auto handle=e->GetFontFaceHandle();
         const float width=e->GetClientWidth();
@@ -2888,8 +3078,9 @@ void wrap_paragraphs() {
             rml+=(rml.empty()?"":"<br/>")+escape(line);
         e->SetInnerRML(rml);
     }
-    settings_doc->UpdateDocument();
+    doc->UpdateDocument();
 }
+void wrap_paragraphs(){wrap_paragraphs(settings_doc);}
 void stage_mark_column() {
     for(unsigned i=0;i<2;++i)if(auto* c=settings_doc?settings_doc->GetElementById("si-col:"+std::to_string(i)):nullptr)c->SetClass("focus",i==stage_column);
 }
@@ -3681,6 +3872,8 @@ void viewer_sync() {
 void settings_sync() {
     const auto stage_opening=stage_info::want(settings_open && stage_open);
     if(!settings_open || !library_open)document_close(library_detail_doc);
+    // A map movie stops (and the title's song comes back) when its page goes.
+    if(movie_active && !(settings_open && library_open && library_tab==2)){map_movie::stop();movie_active=false;}
 #ifdef __ANDROID__
     if(!settings_open)hd_import_confirm=false;
 #endif
@@ -3731,6 +3924,7 @@ void settings_sync() {
         const auto stamp="library"+std::to_string(library_tab)+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
         if(settings_doc && stamp==settings_stamp) {
             if(library_pictures!=pictures::serial){library_pictures=pictures::serial;fill_pending(library_detail_doc);}
+            if(library_tab==2)library_movie_sync();
             settings_doc->PullToFront();
             if(library_detail_doc)library_detail_doc->PullToFront();
             return;
@@ -3973,7 +4167,7 @@ void open_about(const std::string& focus) {
 void library_turn(int step) {
     auto* focus=context->GetFocusElement();
     library_tab_focus=focus && focus->IsClassSet("set-tab");
-    library_tab=(library_tab+2+step)%2;
+    library_tab=(library_tab+3+step)%3;
 }
 void settings_turn(int step) {
     if(viewer_open) {   // L/R: the unit box's work, the scene box's category
@@ -5858,8 +6052,15 @@ void choose(const std::string& id) {
     // The stage info page: Y / I on the map or in the intermission, the touch controls' button, the General page.
     if(id=="stage-info-open"){viewer_open=false;library_open=false;mod_open=false;update_ask_open=false;stage_open=true;stage_column=0;
         settings_open=true;settings_stamp.clear();settings_release.hold();input.clear();return;}
-    if(library_open && id.starts_with("lib-tab:")){library_tab=id.back()=='1';library_tab_focus=true;return;}
-    if(library_open && id.starts_with("lib-item:")){library_select(unsigned(std::stoul(id.substr(9))),true);return;}
+    if(library_open && id.starts_with("lib-tab:")){library_tab=std::min(2u,unsigned(id.back()-'0'));library_tab_focus=true;return;}
+    // A map movie plays (or pauses) when its entry is chosen again (A, Enter, a click).
+    if(library_open && id.starts_with("lib-item:")) {
+        const auto index=unsigned(std::stoul(id.substr(9)));
+        if(library_tab==2 && index==library_index[2])library_movie_toggle();
+        else {library_select(index,true);if(library_tab==2 && pointer_mode)library_movie_toggle();}
+        return;
+    }
+    if(library_open && id.starts_with("mv-")){library_movie_control(id);return;}
     if(id=="viewer-open"){viewer_open=true;library_open=false;mod_open=false;stage_open=false;viewer_picker.clear();settings_open=true;settings_release.hold();input.clear();return;}
     if(viewer_open && id=="settings-close" && !viewer_picker.empty()){viewer_cancel_picker();return;}   // B in a box: back to the page as it was
     if(viewer_open && id.starts_with("vw-")){viewer_choose(id);return;}

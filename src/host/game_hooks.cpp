@@ -1,6 +1,7 @@
 #include <cstdio>
 #include "game_hooks.hpp"
 #include "battle_viewer.hpp"
+#include "map_movie.hpp"
 #include "music.hpp"
 #include "battle_hud.hpp"
 #include "battle_spread.hpp"
@@ -316,6 +317,8 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
             call(resident_func_80099814,5,1,2);
         }
     }
+    // The Library's map movies: their ticks, music and sound effects (map_movie.hpp).
+    srw64::map_movie::game_frame(ram,ctx);
     srw64::mini_stage::service(ram);
     srw64::script_inject::service(ram);
     // State captures bracket each injected script when the state probe is on.

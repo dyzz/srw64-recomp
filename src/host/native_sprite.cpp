@@ -1301,4 +1301,16 @@ std::string viewer_scene_image(const std::string& key) {
     const auto found = scene_thumbs.find(key);
     return found == scene_thumbs.end() ? std::string() : found->second;
 }
+std::string frame_file(uint16_t scene, uint16_t atlas, uint16_t palette, uint8_t frame) {
+    int asset = -1;
+    {
+        std::lock_guard lock(image_mutex);
+        for (const auto& image : images)
+            if (image.scene == scene && image.atlas == atlas && (image.palette == palette || image.any_palette) &&
+                image.frames.count(frame) && image.asset >= 0) { asset = image.asset; break; }
+    }
+    if (asset < 0) return {};
+    std::lock_guard lock(asset_mutex);
+    return asset < int(assets.size()) && !assets[size_t(asset)]->render ? assets[size_t(asset)]->file.string() : std::string();
+}
 }
