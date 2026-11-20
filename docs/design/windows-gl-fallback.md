@@ -96,6 +96,28 @@ AWS ap-southeast-1，m5.xlarge（4 vCPU Xeon 8175M 2.5 GHz），Windows Server 2
 5. **发版时要同步：** 系统要求（官网安装页 `web/src/copy/install.ts`、三语 README、FAQ）里 Windows 的显卡门槛要改成「D3D12/Vulkan 走 RT64，否则 D3D11 兼容模式」；发布说明写上无驱动机器的闪退修复。发版前别改官网。
 6. **HD 内存：** 桌面 GL 路径直接解 PNG/JPEG（`hd_texture.cpp` 只在 Switch 读预处理的 BC7 包），老核显共享显存小，可能要像 Switch 一样用预处理包或者限预算。
 
+## Windows 7 / 8（评估，2026-11-20，未实施）
+
+现在的最低要求实际是 **Windows 10 1607**：Win7/8 上程序在载入阶段就失败，到不了显卡检测。按 CI 包（run 44674482909）全部 41 个二进制的导入表查出的缺口：
+
+| 文件 | Win7 没有的 | 来源 | 办法 |
+| --- | --- | --- | --- |
+| `Marchwind64.exe` | `d3d12.dll`（`D3D12SerializeRootSignature`）、`dxgi!CreateDXGIFactory2` | RT64 的 plume D3D12 后端 | `/DELAYLOAD` d3d12、dxgi（顺带 d3dcompiler_47、dxcompiler），Win7 上不会走到 D3D12 |
+| 同上 | `WaitOnAddress`、`WakeByAddressAll`（Win8） | 我们的 `crash_dump_windows.cpp` | 改成运行时查找，没有就退回事件 |
+| 同上 | `kernel32!SetThreadDescription`（Win10 1607） | RT64 `rt64_thread.cpp`、运行库 `threads.cpp` | 一个垫片文件定义 `__imp_` 指针，运行时查找（不改上游） |
+| 同上 | `shcore!SetProcessDpiAwareness`（Win8.1） | RT64 `rt64_application_window.cpp` | 同上 |
+| `libGLESv2.dll`（ANGLE chromium_7258） | `WaitOnAddress`、`WakeByAddressSingle` | ANGLE 自己的互斥锁 | 换 vcpkg 曾有的 chromium_5414（Chrome 109，最后支持 Win7 的一版）做 overlay 端口，或给 7258 打补丁；换版本后 GL 渲染器要重新验证 |
+| `librashader.dll` | 同上，外加 `ProcessPrng`（新版 Rust 要求 Win10） | Rust 标准库 | 动态加载，Win7 上只是滤镜不可用，可以接受 |
+| `vccorlib140.dll` | WinRT | 没有文件引用它 | 不会被加载 |
+
+ICU、FreeType、HarfBuzz、SDL2 2.26.3、VC++ 运行库的导入表没扫出 Win8+ 函数。另外 Win7 上还要：UCRT（KB2999226，或随包带 Windows SDK 里可再分发的 UCRT DLL，Win10 会忽略它们）、`d3dcompiler_47.dll`（ANGLE 运行时要，随包带可再分发版）；更新检查走 WinHTTP，Win7 上 TLS 1.2 要 KB3140245，失败不致命。VC++ 2015–2022 运行库微软总体说支持 Win7，但没找到 14.44 这一版的明确说明。
+
+带 Win7 驱动的较新显卡（NVIDIA 到 474.x、AMD 到 22.6.1 都有 Vulkan 1.2）在 Win7 上理论上还能走 RT64 的 Vulkan：检测会因为没有 `d3d12.dll` 直接看 Vulkan。没验证。
+
+**测试环境：** AWS 已经没有 2008 R2 / 2012 R2 的公开镜像（ap-southeast-1、us-east-1 都查过）。只能在 Win 台式机的 Hyper-V 里装 Win7 虚拟机（要自备 Win7 安装镜像和授权，只能测软件渲染那条路），或者用真机。
+
+**值不值：** Steam 硬件调查里 Win7 约 0.07%（2026 年 6 月）。
+
 ## 测试做法
 
 - **构建：** 照 CI 的 Windows 任务（clang-cl＋vcpkg），另装 `vcpkg install angle:x64-windows`（首次约 7–16 分钟）；RT64 宿主（`-DSRW64_ENABLE_RT64=ON`）在 Windows 上自动带 GL 渲染器，构建后 `libEGL.dll`、`libGLESv2.dll` 复制到 exe 旁边。
