@@ -411,6 +411,46 @@ def names_problem(document, languages: tuple[str, ...] = ()) -> str:
     return ""
 
 
+SONG_NAME = re.compile(r"(?![0-9]+$)[a-z0-9._-]{1,40}")
+
+
+def music_file_problem(name: str) -> str | None:
+    """audio/music/<song>.ogg (src/host/music.hpp collect): a song number 1-255 replaces that
+    song; a name (lowercase, not all digits) is the package's own song, "@name" in music.json."""
+    stem, _, ext = name.rpartition(".")
+    if "/" in name or ext != "ogg":
+        return "要是 audio/music/ 下的 .ogg"
+    if stem.isascii() and stem.isdigit():
+        return None if 1 <= int(stem) <= 255 and not stem.startswith("0") else "歌号要是 1–255"
+    return None if SONG_NAME.fullmatch(stem) else "文件名要是歌号，或自己的曲名（小写字母、数字和 - _ .）"
+
+
+def music_settings_problem(document, songs: set[str], pilots: set[str], units: set[str]) -> str:
+    """audio/music.json: the "@name" songs it names have their files (``songs``), the "@name"
+    characters and units are the package's (``pilots``, ``units``); another package's
+    ("other@name") is the host's to find."""
+    if not isinstance(document, dict) or document.get("schema") != "srw64.music.v1":
+        return "schema 要是 srw64.music.v1"
+    def song(value, where: str) -> str:
+        if isinstance(value, bool) or not (isinstance(value, int) and 1 <= value <= 255 or isinstance(value, str) and value.startswith("@")):
+            return f"{where}：要是歌号 1–255 或 @曲名"
+        if isinstance(value, str) and value[1:] not in songs:
+            return f"{where}：包里没有 audio/music/{value[1:]}.ogg"
+        return ""
+    for key in document.get("tracks", {}) or {}:
+        if key.startswith("@") and (why := song(key, f"tracks.{key}")):
+            return why
+    battle = document.get("battle", {}) or {}
+    for part, own in (("pilot", pilots), ("unit", units)):
+        for key, value in (battle.get(part, {}) or {}).items():
+            where = f"battle.{part}.{key}"
+            if key.startswith("@") and key[1:] not in own:
+                return f"{where}：包里没有这个新{'人物' if part == 'pilot' else '机体'}"
+            if why := song(value, where):
+                return why
+    return ""
+
+
 def voice_problem(rest: str, named: set[str] = frozenset()) -> str | None:
     """A battle voice (audio/voice/battle/<record>.ogg) by the host's rules (src/host/music.hpp
     collect_voices): an Ogg file named by a battle quote's text record, 5799-17346, or one a
@@ -1084,6 +1124,20 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
             why = voice_problem(e.name[len("audio/voice/"):], named_voices)
             if why:
                 problems.append(Problem("voice", f"{e.name}: {why}"))
+        elif e.name.startswith("audio/music/"):
+            if why := music_file_problem(e.name[len("audio/music/"):]):
+                problems.append(Problem("music", f"{e.name}: {why}"))
+        elif e.name == "audio/music.json":
+            songs = {x.name[len("audio/music/"):-4] for x in package.entries if x.name.startswith("audio/music/") and x.name.endswith(".ogg")}
+            new_units = next((x for x in package.entries if x.name == "data/new_units.json"), None)
+            try:
+                units_doc = json.loads(new_units.read().decode("utf-8")) if new_units else {}
+                why = music_settings_problem(json.loads(e.read().decode("utf-8")), songs,
+                                             set((units_doc.get("pilots") or {})), set((units_doc.get("units") or {})))
+            except (ValueError, UnicodeDecodeError, AttributeError) as error:
+                why = f"JSON 无效：{error}"
+            if why:
+                problems.append(Problem("music", f"{e.name}: {why}"))
         elif e.name == "audio/voice.json":
             try:
                 why = voice_settings_problem(json.loads(e.read().decode("utf-8")))

@@ -69,7 +69,8 @@ void refresh_locked() {
     if(const unsigned now=mods::revision();now!=table_revision) {
         const auto packages=mods::installed(mods::game_version());
         table=collect(packages,read_json);
-        battle_table=collect_battle(packages,read_json,[](const std::string& key,const std::string& package){return mod_ids::unit(json(key),package);});
+        battle_table=collect_battle(packages,read_json,[](const std::string& key,const std::string& package){return mod_ids::unit(json(key),package);},
+                                    [](const std::string& key,const std::string& package){return mod_ids::pilot(json(key),package);});
         voice_table=collect_voices(packages,read_json,mods::archive_voices,named_voice);
         table_revision=now;
         forget_decoded();   // an updated package's files keep their names
@@ -254,6 +255,13 @@ bool playing(uint8_t* ram,recomp_context* ctx) {
     if(!voice)return false;
     ctx->r2=voice->finished?0:1;
     return true;
+}
+
+std::optional<int> package_battle_song(uint32_t rom) {
+    if(!settings::mod_music())return std::nullopt;
+    std::lock_guard lock(table_mutex);
+    refresh_locked();
+    return battle_song(battle_table,rom);
 }
 
 bool battle(uint8_t* ram,recomp_context* ctx) {

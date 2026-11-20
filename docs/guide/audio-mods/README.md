@@ -13,6 +13,7 @@
   mod.json
   audio/
     music/<歌号>.ogg              替换第 N 首（已实现）
+    music/<曲名>.ogg              包自己的曲子（新人物、新机体的战斗曲），music.json 里写 @曲名
     music.json                    可选：循环点、音量、曲名、改战斗曲
     voice/battle/<记录号>.ogg     某一句战斗台词的语音（0.5.2 起）
     voice.json                    可选：语音的音量和起始延迟
@@ -76,6 +77,8 @@
 | `tracks.<歌号>.title` | 音乐鉴赏里显示的曲名，按语言写。 |
 | `battle.pilot.<人物号>` | 这个人物在我方时，战斗放哪首歌（值是歌号）。人物号见 [`pilots.csv`](pilots.csv)。 |
 | `battle.unit.<机体号>` | 交战双方都不是我方时，按攻方机体选曲。机体号见 [`units.csv`](units.csv)；MOD 包的新机体写 `@名字`（本包）或 `包id@名字`。 |
+| `battle.pilot.@名字` | MOD 包的新人物（本包写 `@名字`，别的包 `包id@名字`）。 |
+| `@曲名`（值或 `tracks` 的键） | 包自己的曲子 `audio/music/<曲名>.ogg`：曲名用小写字母、数字和 `- _ .`，不能全是数字。它不替换任何原版曲子，游戏给它一个没被占用的歌号（128 起），只在 `battle` 表里点名时才会放。例：`"battle": {"pilot": {"@kai": "@kai-theme"}}`，`"tracks": {"@kai-theme": {"loop": [0, 1323000]}}`。 |
 
 原版怎么选歌：
 

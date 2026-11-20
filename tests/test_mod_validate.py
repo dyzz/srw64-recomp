@@ -241,6 +241,28 @@ class PackageTests(unittest.TestCase):
         files["audio/voice/battle/99999.ogg"] = b"OggS"
         self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["voice"])
 
+    def test_music(self):
+        # Replacements by song number, a package's own songs by name (src/host/music.hpp), and
+        # music.json naming them and its new characters and units.
+        self.assertIsNone(validate.music_file_problem("7.ogg"))
+        self.assertIsNone(validate.music_file_problem("kai-theme.ogg"))
+        self.assertIn("1–255", validate.music_file_problem("300.ogg"))
+        self.assertIn("小写", validate.music_file_problem("Kai.ogg"))
+        self.assertIn(".ogg", validate.music_file_problem("kai.mp3"))
+        settings = {"schema": "srw64.music.v1", "tracks": {"7": {"gain": -2}, "@kai-theme": {"loop": [0, 10]}},
+                    "battle": {"pilot": {"@kai": "@kai-theme", "36": 7}, "unit": {"@final": 21, "other@x": 3}}}
+        ok = lambda d: validate.music_settings_problem(d, {"kai-theme"}, {"kai"}, {"final"})
+        self.assertEqual(ok(settings), "")
+        self.assertIn("audio/music/gone.ogg", ok({**settings, "tracks": {"@gone": {}}}))
+        self.assertIn("新人物", ok({**settings, "battle": {"pilot": {"@nobody": 7}}}))
+        self.assertIn("歌号", ok({**settings, "battle": {"unit": {"@final": 0}}}))
+        files = self.good_files()
+        files["audio/music/kai-theme.ogg"] = b"OggS"
+        files["audio/music.json"] = json.dumps({"schema": "srw64.music.v1", "tracks": {"@kai-theme": {"gain": -3}}}).encode()
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], [])
+        files["audio/music/Bad.ogg"] = b"OggS"
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["music"])
+
     def test_battle_quotes(self):
         # A new character's own lines (src/host/mod_quotes.hpp); a voice file a line names may
         # have any name in audio/voice/battle/.

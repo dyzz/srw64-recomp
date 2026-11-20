@@ -9,6 +9,7 @@
 #include "guest_memory.hpp"
 #include "native_dialogue.hpp"
 #include "mini_stage.hpp"
+#include "music.hpp"
 #include "debug_protocol.hpp"
 #include "librecomp/game.hpp"
 #include <algorithm>
@@ -171,15 +172,23 @@ int quote_participants(uint8_t* ram,unsigned* actors,unsigned max) {
 // The battle music (801E085C, docs/design/battle-viewer.md §6.7): a player unit plays its
 // pilot's song (s16 per character, ROM 0x7D6A0), except the forms its super mode makes
 // (ゴッドガンダムH, the S forms, V-MAX); an enemy its unit's (s16 per unit, 0x7DF30). The
-// viewer plays the attacker's: its pilot's when it has one, else its unit's.
-constexpr uint32_t pilot_songs=0x7D6A0,unit_songs=0x7DF30;
-constexpr unsigned pilot_song_count=361,unit_song_count=363;
+// viewer plays the attacker's: its pilot's when it has one, else its unit's. A new character's
+// and unit's rows are the table window's (table_window.hpp); a package's music.json "battle"
+// entry goes first while MOD music is on (music.hpp package_battle_song), as on the map.
+constexpr uint32_t pilot_songs=0x7D6A0;
+constexpr unsigned pilot_song_count=361;
 int attacker_song(unsigned unit,unsigned actor) {
     if(unit==2)return 0xA;                                                       // 明鏡止水
     if(unit==4 || unit==10 || unit==12 || unit==14 || unit==16)return 0xB;      // 燃え上がれ闘志
     if(unit==270 || unit==273 || unit==277 || unit==278)return 0xD;            // V-MAX
-    const int pilot=actor<pilot_song_count?int16_t(rom16(pilot_songs+2*actor)):-1;
-    return pilot>0?pilot:int16_t(rom16(table_window::row(table_window::unit_songs,unit)));
+    const uint32_t pilot_at=actor<pilot_song_count?pilot_songs+2*actor:table_window::new_pilot(actor)?table_window::row(table_window::pilot_songs,actor):0;
+    const uint32_t unit_at=table_window::row(table_window::unit_songs,unit);
+    if(pilot_at) {
+        if(const auto chosen=music::package_battle_song(pilot_at))return *chosen;
+        if(const int pilot=int16_t(rom16(pilot_at));pilot>0)return pilot;
+    }
+    if(const auto chosen=music::package_battle_song(unit_at))return *chosen;
+    return int16_t(rom16(unit_at));
 }
 
 int animation(unsigned unit,unsigned weapon) {

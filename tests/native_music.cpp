@@ -54,10 +54,23 @@ int main(int argc,char** argv) {
         touch(root/"high"/"audio"/"music"/"7.OGG");
         touch(root/"high"/"audio"/"music.json",R"({"schema":"srw64.music.v1","tracks":{"7":{"title":"New main","loop":[1,9]}}})");
         touch(root/"off"/"audio"/"music"/"12.ogg");
-        const auto table=music::collect({package(root/"low"),package(root/"high"),package(root/"off",false)},read_json);
-        check(table.size()==2,"two songs: names that are not song numbers, other formats and turned-off packages are left out");
+        // A name that is not a number is a package's own song (intro, theme, a-side, b-side),
+        // numbered from 128 in the packages' order, then the names'; capitals are no name.
+        touch(root/"low"/"audio"/"music"/"theme.ogg");
+        touch(root/"high"/"audio"/"music"/"b-side.ogg");touch(root/"high"/"audio"/"music"/"a-side.ogg");touch(root/"high"/"audio"/"music"/"Upper.ogg");
+        touch(root/"off"/"audio"/"music"/"gone.ogg");
+        touch(root/"high"/"audio"/"music.json",R"({"schema":"srw64.music.v1","tracks":{"7":{"title":"New main","loop":[1,9]},"@a-side":{"gain":-3},"@none":{"gain":-1}}})");
+        const std::vector<srw64::mods::Package> all{package(root/"low"),package(root/"high"),package(root/"off",false)};
+        const auto names=music::named_songs(all);
+        check(names.size()==4 && names.at("low@intro")==128 && names.at("low@theme")==129 && names.at("high@a-side")==130 && names.at("high@b-side")==131,
+              "named songs: 128 up, bottom package first, names in order; turned-off packages and capitals left out");
+        const auto table=music::collect(all,read_json);
+        check(table.size()==6,"two numbered songs and four named: other formats, numbers past 255 and turned-off packages are left out");
         check(table.at(7).package=="high" && table.at(7).title=="New main" && table.at(7).loop==std::pair<uint64_t,uint64_t>{1,9},"the higher package wins, with its settings");
         check(table.at(12).package=="low","a song only one package has");
+        check(table.at(130).package=="high" && table.at(130).gain_db==-3 && table.at(130).file.filename()=="a-side.ogg","a named song's file and its settings by @name");
+        const auto own=music::named_in(names,"high");
+        check(own("@a-side")==130 && own("low@theme")==129 && !own("@theme") && !own("a-side"),"@name is the package's own, other@name another's");
         fs::remove_all(root);
     }
     // Who fights to which song: music.json "battle", the higher package winning per entry,
@@ -73,6 +86,14 @@ int main(int argc,char** argv) {
                 return key=="@final"?std::optional<unsigned>(995):std::nullopt;});
         check(named.pilot.empty() && named.unit.size()==1 && named.unit.at(995)==21,"a new unit's song by its name");
         check(music::battle_song(named,table_window::base(table_window::unit_songs)+2*995)==21,"its entry in the window's unit table");
+        // A new character by name, and a package's own song by name.
+        const auto mine=music::battle_settings(json::parse(R"({"schema":"srw64.music.v1","battle":{
+            "pilot":{"@kai":"@theme","@gone":5,"36":"@nothing"},"unit":{"@final":"@theme"}}})"),
+            [](const std::string& key)->std::optional<unsigned>{return key=="@final"?std::optional<unsigned>(995):std::nullopt;},
+            [](const std::string& key)->std::optional<unsigned>{return key=="@kai"?std::optional<unsigned>(434):std::nullopt;},
+            [](const std::string& key)->std::optional<int>{return key=="@theme"?std::optional<int>(128):std::nullopt;});
+        check(mine.pilot.size()==1 && mine.pilot.at(434)==128 && mine.unit.at(995)==128,"a new character's and unit's own song; unknown names left out");
+        check(music::battle_song(mine,table_window::base(table_window::pilot_songs)+2*434)==128,"its entry in the window's pilot table");
         namespace fs=std::filesystem;
         const fs::path root=(argc>1?fs::path(argv[1]):fs::temp_directory_path()/"srw64-music-test")/"battle";
         fs::remove_all(root);
