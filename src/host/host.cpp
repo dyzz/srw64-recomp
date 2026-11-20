@@ -1,3 +1,4 @@
+#include "audio_hle.hpp"
 #include "quote_force.hpp"
 #include "state_probe.hpp"
 #include "app/runtime.hpp"
@@ -328,7 +329,7 @@ RspUcodeFunc* get_microcode(const OSTask* task) {
 #ifdef __vita__
     srw64_vita_perf_thread("rsp");
 #endif
-    return srw64_audio_probe;
+    return srw64::audio_hle::microcode(task);
 }
 }
 

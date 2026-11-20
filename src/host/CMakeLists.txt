@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
 project(srw64_native_probe LANGUAGES C CXX)
+# The audio microcode as native code (audio_hle.cpp): the Switch's, a trial elsewhere.
+set(SRW64_RSP_HLE "${CMAKE_CURRENT_LIST_DIR}/../thirdparty/mupen64plus-rsp-hle")
+set(SRW64_AUDIO_HLE audio_hle.cpp "${SRW64_RSP_HLE}/alist.c" "${SRW64_RSP_HLE}/alist_audio.c" "${SRW64_RSP_HLE}/audio.c" "${SRW64_RSP_HLE}/memory.c")
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -162,11 +165,11 @@ if(SRW64_ENABLE_RT64)
     target_compile_options(rt64 PRIVATE $<IF:$<BOOL:${MSVC}>,/FIstdlib.h,-include stdlib.h>)
     if(ANDROID)
         # SDL's Java glue loads libmain.so and calls its SDL_main.
-        add_library(srw64-gfx-host SHARED host.cpp graphics.cpp audio.cpp "${SRW64_BUILD}/audio-probe/audio.cpp")
+        add_library(srw64-gfx-host SHARED host.cpp graphics.cpp audio.cpp "${SRW64_BUILD}/audio-probe/audio.cpp" ${SRW64_AUDIO_HLE})
         set_target_properties(srw64-gfx-host PROPERTIES OUTPUT_NAME main)
         target_link_libraries(srw64-gfx-host PRIVATE android log)
     else()
-        add_executable(srw64-gfx-host host.cpp graphics.cpp audio.cpp "${SRW64_BUILD}/audio-probe/audio.cpp")
+        add_executable(srw64-gfx-host host.cpp graphics.cpp audio.cpp "${SRW64_BUILD}/audio-probe/audio.cpp" ${SRW64_AUDIO_HLE})
     endif()
     target_link_libraries(srw64-gfx-host PRIVATE srw64_launch srw64_ui_pages srw64_dialogue_cpu)
     include("${SRW64_ROOT}/cmake/PixelCompositor.cmake")
@@ -353,7 +356,7 @@ if(SRW64_GL_ONLY)
         find_package(OpenGL REQUIRED)
     endif()
     add_subdirectory("${SRW64_ROOT}/src/native/ui" ui-probe)
-    add_executable(srw64-gl-host host.cpp graphics.cpp audio.cpp "${SRW64_BUILD}/audio-probe/audio.cpp"
+    add_executable(srw64-gl-host host.cpp graphics.cpp audio.cpp "${SRW64_BUILD}/audio-probe/audio.cpp" ${SRW64_AUDIO_HLE}
         native_dialogue.cpp native_intro.cpp dialogue_data.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp"
         sprite_text.cpp ui_text.cpp title_page.cpp battle_viewer.cpp move_jump.cpp move_range.cpp enemy_cycle.cpp unit_name.cpp
         native_name_entry.cpp "${SRW64_ROOT}/src/native/ui/frontend.cpp" "${SRW64_ROOT}/src/native/ui/presentation_settings.cpp"
