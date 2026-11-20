@@ -38,6 +38,7 @@
 .maker .sub { font-size: 14px; color: var(--muted); font-weight: 600; }
 .maker .spirit-row { display: flex; gap: 8px; align-items: center; }
 .maker .mini { font: inherit; font-size: 13px; color: var(--text); background: var(--cyan-soft); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 5px 10px; cursor: pointer; }
+.maker .mini.disabled { opacity: 0.45; cursor: not-allowed; }
 .maker .edited-row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line-soft, var(--line)); font-size: 14px; }
 .maker .weapon-list { margin-top: 12px; }
 .maker .weapon-list h3 { font-size: 15px; margin-bottom: 6px; display: flex; gap: 8px; align-items: center; }

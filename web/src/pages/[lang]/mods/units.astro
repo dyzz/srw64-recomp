@@ -382,6 +382,8 @@ const text = {
   p_anim_own_effect: L({ zh: '自己的图目前只能用在 cut-in 上，别的演员要用原版的场景', en: 'your own pictures go on cut-ins only for now; other actors use the original’s scenes', ja: '自作の絵は今のところカットインにだけ使えます。他のアクターは原作のシーンを使ってください', ko: '직접 만든 그림은 지금은 컷인에만 쓸 수 있습니다. 다른 액터는 원작 장면을 쓰세요' }),
   animSwap: L({ zh: '换图', en: 'Picture', ja: '絵を替える', ko: '그림 바꾸기' }),
   p_anim_scene_set: L({ zh: '有演员的动作会切到自己场景前后的场景，但它用的本包图片没有带上这些（用「换图」会自动带上）', en: 'an actor’s routine moves to the scenes next to its own, which its package picture does not cover (Picture adds them)', ja: '前後のシーンに切り替わるアクターがありますが、その自作の絵が前後の分を持っていません（「絵を替える」なら自動で付きます）', ko: '앞뒤 장면으로 바뀌는 액터가 있지만 그 직접 만든 그림에 앞뒤 분량이 없습니다(“그림 바꾸기”를 쓰면 자동으로 붙습니다)' }),
+  animLocked: L({ zh: '这条演出里有按场景号计算的动作，演员只能用原版的图（cut-in 除外）', en: 'A routine in this animation computes with scene numbers, so its actors keep the original pictures (cut-ins aside)', ja: 'この演出には場面番号で計算する動きがあるため、アクターは元の絵のままです（カットインは除く）', ko: '이 연출에는 장면 번호로 계산하는 동작이 있어 액터는 원래 그림만 쓸 수 있습니다(컷인 제외)' }),
+  p_anim_locked: L({ zh: '这条演出里有按场景号计算的动作，演员不能换成本包的图（cut-in 除外）', en: 'a routine in this animation computes with scene numbers; its actors cannot take the package’s pictures (cut-ins aside)', ja: 'この演出には場面番号で計算する動きがあり、アクターにパッケージの絵は使えません（カットインは除く）', ko: '이 연출에는 장면 번호로 계산하는 동작이 있어 액터에 패키지 그림을 쓸 수 없습니다(컷인 제외)' }),
   p_framing: L({ zh: '头像还没点「确定」', en: 'the portrait is not confirmed yet', ja: '顔グラフィックがまだ「決定」されていません', ko: '초상화를 아직 “확인”하지 않았습니다' }),
 };
 const pick = pickables(lang, data.units.map((u) => u.id), data.pilots.map((p) => p.id));

@@ -1,5 +1,6 @@
 #pragma once
 #include "json/json.hpp"
+#include "battle_steps.hpp"
 #include "mod_sprites.hpp"
 #include "table_window.hpp"
 #include <filesystem>
@@ -192,6 +193,7 @@ struct Taken {
     std::vector<std::pair<unsigned,unsigned>> loves;
     std::map<unsigned,unsigned> combo_as;
     std::map<std::string,unsigned> scenes;   // "package@name" -> battle scene registry number
+    std::map<std::string,std::string> scene_sprites;   // "package@name" scene -> its "package@sprite"
     std::map<unsigned,unsigned> copies;      // a new unit -> the unit it copies
     std::map<unsigned,unsigned> weapon_copies;
     std::map<uint16_t,std::pair<uint32_t,uint32_t>> names;   // private text id -> source record (ROM address, size)
@@ -214,7 +216,7 @@ inline std::optional<std::filesystem::path> inside(const std::filesystem::path& 
     return folder/relative;
 }
 // The "sprites" of one package: PNGs into resources (mod_sprites.hpp build).
-inline constexpr int max_around=16;
+inline constexpr int max_around=32;
 inline std::string sprites(const json& part,const std::string& package,const std::filesystem::path& folder,Taken& t) {
     if(!part.is_object())return "sprites 要是对象";
     for(const auto& [name,entry]:part.items()) {
@@ -359,6 +361,11 @@ inline std::string parse(const json& document,const std::string& package,const N
         if(t.scene_next>=tw::new_scene_limit)return where+"：战斗场景总表的空位用完了";
         const unsigned n=t.scene_next++;
         t.scenes[own(name)]=n;
+        if(value.is_string()) {
+            const auto text=value.get<std::string>();
+            const auto a=text.find('@');
+            t.scene_sprites[own(name)]=(a==0?package:text.substr(0,a))+"@"+text.substr(a+1);
+        }
         for(unsigned k=0;k<3;++k)put16(tw::row(tw::scenes,n)+k*2,(*picture)[k]);
     }
     const auto scene_of=[&](const json& v)->std::optional<unsigned>{
@@ -468,6 +475,11 @@ inline std::string parse(const json& document,const std::string& package,const N
         push16(-1);
         const auto& actors=animation.value("actors",json::array());
         if(!actors.is_array() || actors.empty() || actors.size()>24)return where+".animation.actors：要 1–24 个";
+        // A record with a routine that computes with scene numbers (battle_steps.hpp complex)
+        // keeps the original's pictures, a cut-in's (240) aside.
+        bool complex_record=false;
+        for(const auto& a:actors)
+            if(a.is_object() && integer(a.value("behavior",json()),3,382) && battle_steps::is_complex(a["behavior"].get<unsigned>()))complex_record=true;
         for(size_t k=0;k<actors.size();++k) {
             const auto& a=actors[k];
             const std::string here=where+".animation.actors["+std::to_string(k)+"]";
@@ -479,6 +491,21 @@ inline std::string parse(const json& document,const std::string& package,const N
             for(const char* f:{"h4","h5","h6"}){if(!integer(a.value(f,json(0)),0,0xFFFF))return here+"."+f+"：要是 0–65535";push16(a.value(f,0));}
             if(!integer(a.value("behavior",json()),3,382))return here+".behavior：要是行为例程号（3–382）";
             push16(a["behavior"].get<int>());
+            // A package picture on a routine that moves to the scene resources next to its own:
+            // its sprite has to have copies of the scene there (battle_steps.hpp).
+            if(const auto& v=a["scene"];v.is_string()) {
+                const auto text=v.get<std::string>();
+                const auto at=text.find('@');
+                const auto scene=t.scene_sprites.find((at==0?package:text.substr(0,at))+"@"+text.substr(at+1));
+                const auto sprite=scene==t.scene_sprites.end()?t.sprites.end():t.sprites.find(scene->second);
+                const unsigned behaviour=a["behavior"].get<unsigned>();
+                if(sprite!=t.sprites.end() && complex_record && behaviour!=240)
+                    return here+"：这条演出里有按场景号计算的行为例程，演员只能用原版的图（cut-in 除外）";
+                if(const auto* reach=battle_steps::of(behaviour);reach && sprite!=t.sprites.end() &&
+                   (sprite->second.before<reach->before || sprite->second.after<reach->after))
+                    return here+"：行为 "+std::to_string(reach->behaviour)+" 会切到场景前后的资源，图片 "+scene->second+
+                           " 要写 \"around\": ["+std::to_string(reach->before)+", "+std::to_string(reach->after)+"]";
+            }
         }
         push16(-1);
         if(data.size()>animation_window)return where+".animation：记录太长";

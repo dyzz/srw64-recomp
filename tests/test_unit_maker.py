@@ -161,6 +161,9 @@ class UnitMakerTests(unittest.TestCase):
         self.assertEqual(validate.sprites_problem({"beam": several}, files), "")
         # All ticks 1 is the default and goes; without HD there is none.
         self.assertEqual(call("placeSprite", {"image": "", "origin": [0, 0], "ticks": [1]}, "a", 1, False), {"image": "art/battle/a.png", "origin": [0, 0]})
+        # "around" stays (a picture in a beam's place); none is the default.
+        self.assertEqual(call("placeSprite", {"image": "", "origin": [0, 0], "around": [0, 2]}, "a", 1, False)["around"], [0, 2])
+        self.assertNotIn("around", call("placeSprite", {"image": "", "origin": [0, 0], "around": [0, 0]}, "a", 1, False))
 
         model = {**MODEL, "units": [{**MODEL["units"][0], "pose": "@stand"}, MODEL["units"][1]],
                  "sprites": {"stand": {"image": "art/battle/stand.png", "origin": [59, 90]}}, "scenes": {"cut": "@stand", "old": [1, 2, 3]}}
@@ -286,15 +289,36 @@ class AnimationTests(unittest.TestCase):
                   f"const bank = JSON.parse(fs.readFileSync({json.dumps(str(bank))}, 'utf8'));"
                   "const beam = a.original(bank, 228); beam.actors[2].scene = '@b';"
                   "const has = (r) => () => r;"
-                  "console.log(JSON.stringify([bank.steps['118'], bank.steps['125'] ?? null, bank.steps['205'], a.sceneSpan(bank.steps, 118), a.sceneSpan(bank.steps, 205),"
-                  " a.animationProblems(beam, new Set(['b']), false, bank.steps, has([0, 0])), a.animationProblems(beam, new Set(['b']), false, bank.steps, has([0, 2])),"
-                  " a.animationProblems(beam, new Set(['b']), false, bank.steps, has(undefined))]));")
-        self.assertEqual(got[:5], [[1, 2], None, [-4, 9], {"low": 0, "high": 2}, {"low": -4, "high": 9}])
-        self.assertEqual(got[5:], [["anim_scene_set"], [], []])
+                  "const fifty = a.original(bank, 57); fifty.actors[7].scene = '@b';"
+                  "console.log(JSON.stringify([bank.steps['118'], bank.steps['125'] ?? null, bank.steps['351'], a.sceneSpan(bank.steps, 118), a.sceneSpan(bank.steps, 351),"
+                  " a.animationProblems(beam, new Set(['b']), false, bank, has([0, 0])), a.animationProblems(beam, new Set(['b']), false, bank, has([0, 2])),"
+                  " a.animationProblems(beam, new Set(['b']), false, bank, has(undefined)), bank.complex.includes(205), a.lockedPictures(a.original(bank, 228), bank.complex),"
+                  " a.lockedPictures(fifty, bank.complex), a.animationProblems(fifty, new Set(['b']), false, bank, has([4, 9]))]));")
+        self.assertEqual(got[:5], [[1, 2], None, [-1, 2, 4], {"low": 0, "high": 2}, {"low": -1, "high": 4}])
+        self.assertEqual(got[5:8], [["anim_scene_set"], [], []])
+        # Weapon 57's routines compute with scene numbers (205, 211): it keeps the original's pictures.
+        self.assertEqual(got[8:], [True, False, True, ["anim_locked"]])
         doc = {"schema": "srw64.new-units.v2", "sprites": {"b": {"image": "b.png", "origin": [256, 16], "around": [0, 2]}}, "scenes": {"b": "@b"}}
         self.assertEqual(validate.new_units_problem(doc, {"b.png"}), "")
-        doc["sprites"]["b"]["around"] = [0, 17]
+        doc["sprites"]["b"]["around"] = [0, 33]
         self.assertIn("around", validate.new_units_problem(doc, {"b.png"}))
+        # The host's table is the exported one; an actor of the beam on the picture needs it.
+        exported = json.loads(bank.read_text())
+        self.assertEqual({str(b): list(r) for b, r in validate._STEPS.items()},
+                         {k: [-min(0, *v), max(0, *v)] for k, v in exported["steps"].items()})
+        self.assertEqual(sorted(validate._COMPLEX), exported["complex"])
+        beam = json.loads(json.dumps(doc))
+        beam["sprites"]["b"]["around"] = [0, 1]
+        beam["weapons"] = {"w": {"copy": 228, "animation": {"camera": 1, "hit": 6, "action": 113, "defender": 125, "sounds": [],
+                                                           "actors": [{"scene": "@b", "behavior": 118}]}}}
+        self.assertIn("around\": [0, 2]", validate.new_units_problem(beam, {"b.png"}))
+        beam["sprites"]["b"]["around"] = [0, 2]
+        self.assertEqual(validate.new_units_problem(beam, {"b.png"}), "")
+        # In 57's record (205 computes with scene numbers) a picture is refused, a cut-in's taken.
+        beam["weapons"]["w"]["animation"]["actors"] = [{"scene": 479, "behavior": 205}, {"scene": "@b", "behavior": 125}]
+        self.assertIn("原版的图", validate.new_units_problem(beam, {"b.png"}))
+        beam["weapons"]["w"]["animation"]["actors"][1]["behavior"] = 240
+        self.assertEqual(validate.new_units_problem(beam, {"b.png"}), "")
 
 
 @unittest.skipUnless(NODE, "node is not installed")

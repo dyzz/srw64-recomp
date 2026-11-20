@@ -151,6 +151,7 @@ export function placeSprite(s: Sprite, name: string, count: number, hd: boolean)
   if (s.ticks?.length === count && s.ticks.some((t) => t !== 1)) out.ticks = s.ticks;
   if (s.loop && s.loop < count) out.loop = s.loop;
   if (hd) out.hd = count === 1 ? hds[0] : hds;
+  if (s.around && (s.around[0] || s.around[1])) out.around = s.around;
   return out;
 }
 

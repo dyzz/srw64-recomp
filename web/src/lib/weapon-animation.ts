@@ -10,7 +10,7 @@ export interface Animation { camera: number; hit: number; action: number; defend
 export type AnimationField = { copy: Ref } | Animation;
 // The original's records as exported (tools/content/export_weapon_animations.py).
 export type RawRecord = [number, number, number, number, number[], number[][]];
-export interface Bank { records: RawRecord[]; weapons: number[]; scenes: number[][]; poses: number[][]; cutins: [number, number]; steps: Record<string, number[]> }
+export interface Bank { records: RawRecord[]; weapons: number[]; scenes: number[][]; poses: number[][]; cutins: [number, number]; steps: Record<string, number[]>; complex: number[] }
 // The scene resources before and after its own an actor's behaviour moves to (801C5700 with
 // its scene's resource number plus k, tools/content/export_weapon_animations.py): a package
 // picture there needs copies of its scene in as many resources around it, the sprite's
@@ -19,7 +19,10 @@ export function sceneSpan(steps: Record<string, number[]> | undefined, behavior:
   const ks = steps?.[String(behavior)] ?? [];
   return { low: Math.min(0, ...ks), high: Math.max(0, ...ks) };
 }
-export const MAX_AROUND = 16;
+export const MAX_AROUND = 32;
+// A record with a routine that computes with scene numbers (compares them, keeps them, reads
+// another actor's): it keeps the original's pictures, a cut-in's aside.
+export const lockedPictures = (a: Animation, complex: number[] | undefined) => !!complex && a.actors.some((actor) => complex.includes(actor.behavior));
 
 export const MAX_ACTORS = 24, MAX_SOUNDS = 8, WINDOW = 0x3c0, SCENES = 1052;
 export const isCopy = (a: unknown): a is { copy: Ref } => !!a && typeof a === 'object' && 'copy' in (a as object);
@@ -78,10 +81,13 @@ export const recordSize = (a: Animation) => 8 + 2 * a.sounds.length + 2 + 16 * a
 // `onlyOriginalEffects`: the package's pictures only on cut-ins (W4 for now: the game's own
 // effects, plus cut-ins).
 // `around`: per package scene, its sprite's "around" (a scene of resource numbers: none).
-export function animationProblems(a: AnimationField, ownScenes: Set<string>, onlyOriginalEffects = false, steps?: Record<string, number[]>,
+export function animationProblems(a: AnimationField, ownScenes: Set<string>, onlyOriginalEffects = false, bank?: Pick<Bank, 'steps' | 'complex'> | null,
   around?: (scene: string) => [number, number] | undefined): string[] {
   const out: string[] = [];
   if (isCopy(a)) return out;
+  const steps = bank?.steps;
+  if (around && lockedPictures(a, bank?.complex)
+    && a.actors.some((actor) => typeof actor.scene === 'string' && actor.behavior !== CUTIN && around(actor.scene.slice(1)))) out.push('anim_locked');
   // A package picture on a routine that moves to the scene resources next to its own: they
   // have to be copies of it.
   for (const actor of a.actors) {

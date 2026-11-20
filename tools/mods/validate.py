@@ -637,6 +637,43 @@ def _picture(value) -> bool:
     return _triple(value) or _reference(value)
 
 
+# Per behaviour, how far it moves its actor to the scene resources around its own, and the
+# behaviours that compute with scene numbers otherwise (src/host/battle_steps.hpp, from the
+# recompiled code; web/src/data/weapon-animations.json "steps" and "complex").
+def _steps() -> tuple[dict[int, tuple[int, int]], set[int]]:
+    text = (Path(__file__).resolve().parents[2] / "src/host/battle_steps.hpp").read_text(encoding="utf-8")
+    hard = text[text.index("complex[]={"):]
+    return ({int(b): (int(lo), int(hi)) for b, lo, hi in re.findall(r"\{(\d+),(\d+),(\d+)\}", text)},
+            {int(b) for b in re.findall(r"(\d+),", hard[:hard.index("};")])})
+
+
+def _reach_problem(document, actor, here: str, complex_record: bool = False) -> str:
+    """A picture of this package on an actor whose routine moves to the scene resources next to
+    its own needs "around" that far; in a record with a routine that computes with scene numbers
+    only a cut-in may have one (the host refuses the package otherwise)."""
+    scene = actor.get("scene")
+    if not isinstance(scene, str) or not scene.startswith("@"):
+        return ""
+    target = document.get("scenes", {}).get(scene[1:])
+    if not isinstance(target, str) or not target.startswith("@"):
+        return ""
+    sprite = document.get("sprites", {}).get(target[1:])
+    if not isinstance(sprite, dict):
+        return ""
+    if complex_record and actor.get("behavior") != 240:
+        return f"{here}：这条演出里有按场景号计算的行为例程，演员只能用原版的图（cut-in 除外）"
+    if actor.get("behavior") not in _STEPS:
+        return ""
+    before, after = _STEPS[actor["behavior"]]
+    has = sprite.get("around", [0, 0])
+    if has[0] < before or has[1] < after:
+        return f"{here}：行为 {actor['behavior']} 会切到场景前后的资源，图片 {target[1:]} 要写 \"around\": [{before}, {after}]"
+    return ""
+
+
+_STEPS, _COMPLEX = _steps()
+
+
 def sprites_problem(sprites, files: set[str] | None) -> str:
     """data/new_units.json "sprites" (src/host/mod_units.hpp sprites): PNGs the host turns into
     the game's resources; their colours and size are checked when the game loads them."""
@@ -672,8 +709,8 @@ def sprites_problem(sprites, files: set[str] | None) -> str:
         if not _int_in(entry.get("loop", 0), 0, len(frames) - 1):
             return f"{where}.loop：要是 0 到图数减 1"
         around = entry.get("around", [0, 0])
-        if not isinstance(around, list) or len(around) != 2 or not all(_int_in(v, 0, 16) for v in around):
-            return f"{where}.around：要写 [前, 后]：自己的场景前后还要几份（0–16）"
+        if not isinstance(around, list) or len(around) != 2 or not all(_int_in(v, 0, 32) for v in around):
+            return f"{where}.around：要写 [前, 后]：自己的场景前后还要几份（0–32）"
     return ""
 
 
@@ -752,6 +789,8 @@ def new_units_problem(document, files: set[str] | None = None) -> str:
                 return f"{here}：h4、h5、h6 要是 0–65535"
             if not _int_in(a.get("behavior"), 3, 382):
                 return f"{here}.behavior：要是行为例程号（3–382）"
+            if why := _reach_problem(document, a, here, any(isinstance(x, dict) and x.get("behavior") in _COMPLEX for x in actors)):
+                return why
         if 8 + 2 * len(sounds) + 2 + 16 * len(actors) + 2 > 0x3C0:
             return f"{where}.animation：记录太长"
     for key, entry in document.get("units", {}).items():

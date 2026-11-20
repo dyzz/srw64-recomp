@@ -847,6 +847,11 @@ export function initUnitMaker() {
         actor.scene = `@${name}`;
         place(name); changed();
       });
+      // A record with a routine that computes with scene numbers keeps the original's pictures.
+      if (!anim.isCutin(actor) && anim.lockedPictures(a, bank?.complex)) {
+        const input = swap.querySelector('input'); if (input) input.disabled = true;
+        swap.classList.add('disabled'); swap.title = T('animLocked');
+      }
       const known = anim.KNOWN[actor.behavior];
       const what = el('span', { class: 'was' }, anim.isCutin(actor) ? T('beh_cutin_at', { when: T(`cutin_${anim.cutinTiming(actor.h4).timing}`) }) : known ? T(`beh_${known}`) : T('beh_other'));
       return el('tr', { class: i === (selectedActor.get(w.slug) ?? -1) ? 'on' : '' },
@@ -1204,7 +1209,7 @@ export function initUnitMaker() {
       if (typeof target !== 'string' || !target.startsWith('@')) return undefined;
       return sprites()[target.slice(1)]?.around ?? [0, 0];
     };
-    for (const w of model.weapons) if (w.animation) for (const code of anim.animationProblems(w.animation as anim.AnimationField, ownScenes, false, bank?.steps, aroundOf)) out.push(`${shownName(w)}：${T(`p_${code}`)}`);
+    for (const w of model.weapons) if (w.animation) for (const code of anim.animationProblems(w.animation as anim.AnimationField, ownScenes, false, bank, aroundOf)) out.push(`${shownName(w)}：${T(`p_${code}`)}`);
     const s = story();
     for (const p of storyImage.storyProblems(s.joins, s.waves)) { const [k, id] = p.where.split(/\.(.*)/); out.push(`${kindTitle[k]} ${id}：${T(`p_${p.code}`)}`); }
     // A new character or unit by name must be one of the package's.

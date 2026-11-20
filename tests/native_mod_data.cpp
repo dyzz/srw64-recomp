@@ -493,9 +493,29 @@ int main(int argc,char** argv) {
         check(around.scene==tw::rom_resources+1 && around.atlas==tw::rom_resources+4 && around.palette==tw::rom_resources+5 && t2.resources.size()==6,"four scenes, then the atlas and palette");
         check(t2.resources.at(tw::rom_resources)==t2.resources.at(around.scene) && t2.resources.at(tw::rom_resources+3)==t2.resources.at(around.scene),"the copies are its scene");
         check(w16(b2,tw::row(tw::scenes,tw::rom_scenes))==around.scene,"the scene row names its own");
-        const json far=json::parse(R"({"schema":"srw64.new-units.v2","sprites":{"beam":{"image":"art/stand.png","origin":[20,40],"around":[0,17]}}})");
+        // An actor of the beam's routine (118: +1, +2) on a picture without them is refused.
+        const auto beam_on=[&](const char* reach){
+            json d=json::parse(R"({"schema":"srw64.new-units.v2","sprites":{"beam":{"image":"art/stand.png","origin":[20,40]}},"scenes":{"beam":"@beam"},
+                "weapons":{"w":{"copy":228,"animation":{"camera":1,"hit":6,"action":113,"defender":125,"sounds":[],"actors":[{"scene":"@beam","behavior":118}]}}}})");
+            if(reach)d["sprites"]["beam"]["around"]=json::parse(reach);
+            mod_units::Taken tb;mod_units::Bytes bb;
+            return mod_units::parse(d,"pkg",mod_units::assign({{"pkg",d}}),rom,{},bb,tb,pack);
+        };
+        check(beam_on(nullptr).find("around")!=std::string::npos && beam_on("[0,1]").find("around")!=std::string::npos && beam_on("[0,2]").empty(),
+              "a beam on a picture needs two scenes after it");
+        // In a record with a routine that computes with scene numbers (205), no package picture
+        // but a cut-in's.
+        const auto in_complex=[&](int behaviour){
+            json d=json::parse(R"({"schema":"srw64.new-units.v2","sprites":{"p":{"image":"art/stand.png","origin":[20,40]}},"scenes":{"p":"@p"},
+                "weapons":{"w":{"copy":57,"animation":{"camera":1,"hit":6,"action":113,"defender":125,"sounds":[],"actors":[{"scene":479,"behavior":205},{"scene":"@p","behavior":0}]}}}})");
+            d["weapons"]["w"]["animation"]["actors"][1]["behavior"]=behaviour;
+            mod_units::Taken tc;mod_units::Bytes bc;
+            return mod_units::parse(d,"pkg",mod_units::assign({{"pkg",d}}),rom,{},bc,tc,pack);
+        };
+        check(!in_complex(125).empty() && in_complex(240).empty(),"a record with a complex routine keeps its pictures, cut-ins aside");
+        const json far=json::parse(R"({"schema":"srw64.new-units.v2","sprites":{"beam":{"image":"art/stand.png","origin":[20,40],"around":[0,33]}}})");
         mod_units::Taken t4;mod_units::Bytes b4;
-        check(!mod_units::parse(far,"pkg",numbers,rom,{},b4,t4,pack).empty(),"at most 16 around");
+        check(!mod_units::parse(far,"pkg",numbers,rom,{},b4,t4,pack).empty(),"at most 32 around");
         const json escape=json::parse(R"({"schema":"srw64.new-units.v2","sprites":{"x":{"image":"../x.png","origin":[0,0]}}})");
         mod_units::Taken t3;mod_units::Bytes b3;
         check(!mod_units::parse(escape,"pkg",numbers,rom,{},b3,t3,pack).empty(),"a sprite's file stays inside the package");
