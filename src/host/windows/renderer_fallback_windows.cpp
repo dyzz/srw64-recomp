@@ -36,7 +36,11 @@ bool d3d12_usable() {
         DXGI_ADAPTER_DESC1 desc{};
         adapter->GetDesc1(&desc);
         ID3D12Device* device = nullptr;
-        if (!(desc.Flags & DXGI_ADAPTER_FLAG_SOFTWARE) &&
+        // Microsoft's own adapters are WARP, the CPU renderer: on a PC without a GPU driver
+        // (a cloud machine, a fresh Windows) the Basic Render Driver comes first, not marked
+        // software, with D3D12 12_1 and shader model 6.0, and RT64 crashed on it in
+        // D3D12Core.dll (2026-11-20, an EC2 instance with no GPU).
+        if (!(desc.Flags & DXGI_ADAPTER_FLAG_SOFTWARE) && desc.VendorId != 0x1414 &&
             SUCCEEDED(create_device(adapter, D3D_FEATURE_LEVEL_11_0, __uuidof(ID3D12Device), reinterpret_cast<void**>(&device)))) {
             D3D12_FEATURE_DATA_SHADER_MODEL model{D3D_SHADER_MODEL_6_0};
             const bool sm6 = SUCCEEDED(device->CheckFeatureSupport(D3D12_FEATURE_SHADER_MODEL, &model, sizeof model)) &&

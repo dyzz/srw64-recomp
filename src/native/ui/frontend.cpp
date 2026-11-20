@@ -3806,7 +3806,7 @@ void settings_sync() {
 #endif
     const auto stamp=localization::catalog().locale+localization::catalog().revision+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+std::to_string(settings::unified_weapon_upgrades())+
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_level())+std::to_string(settings::dialogue_hints_always())+std::to_string(settings::mod_music())+"/"+std::to_string(settings::mod_music_volume())+"/"+std::to_string(settings::mod_voice())+"/"+std::to_string(settings::mod_voice_volume())+"/"+settings::mod_voice_speed()+"/"+std::to_string(settings::mod_voice_wait())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
-        std::to_string(presentation::image_mode.enabled())+[]{const auto f=settings::renderer_features();return std::to_string(f.interpolation)+std::to_string(f.msaa)+std::to_string(f.filters);}()+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
+        std::to_string(presentation::image_mode.enabled())+[]{const auto f=settings::renderer_features();return std::to_string(f.interpolation)+std::to_string(f.msaa)+std::to_string(f.filters)+std::to_string(f.picture_scale)+std::to_string(settings::picture_scale());}()+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
         // The セーブ page: its choices, the import folder as last read and the last result.
@@ -3887,6 +3887,15 @@ void settings_sync() {
         else body+=settings_row("settings_msaa",button("msaa:on",label("settings_msaa_on"),settings::msaa())+button("msaa:off",label("settings_msaa_off"),!settings::msaa()),
             settings::msaa()!=settings::msaa_at_start()?"<p class='set-note'>"+label("settings_msaa_restart")+"</p>":std::string());
 #endif
+        // The GL renderer's picture (the fallback on Windows, the consoles): automatic, or the
+        // player's 1 to 3 times the original's lines, from the next launch.
+        if(settings::renderer_features().picture_scale) {
+            std::string scales;
+            for(const unsigned n:{0u,1u,2u,3u})
+                scales+=button("picture-scale:"+std::to_string(n),label("settings_picture_scale_"+std::to_string(n)),settings::picture_scale()==n);
+            body+=settings_row("settings_picture_scale",scales,
+                settings::picture_scale()!=settings::picture_scale_at_start()?"<p class='set-note'>"+label("settings_msaa_restart")+"</p>":std::string());
+        }
         // A handheld or a phone plays full screen and has no window to size.
         if(!handheld()) {
             const auto window_state=window_menu_state();
@@ -6082,6 +6091,7 @@ void choose(const std::string& id) {
         if(id.starts_with("battle-ui:"))settings::set_battle_ui(settings::battle_ui_from(id.substr(10)));
         if(id.starts_with("aspect:"))settings::set_wide_picture(id=="aspect:wide");
         if(id.starts_with("msaa:"))settings::set_msaa(id=="msaa:on");
+        if(id.starts_with("picture-scale:"))settings::set_picture_scale(unsigned(std::stoul(id.substr(14))));
         if(id.starts_with("window:") && (id=="window:fullscreen")!=bool(SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN))toggle_fullscreen();
         if(id.starts_with("window-size:"))scale_window(std::stoi(id.substr(12)));
         if(id.starts_with("ui-size:"))for(const auto size:{settings::UiSize::Standard,settings::UiSize::Large,settings::UiSize::Largest})

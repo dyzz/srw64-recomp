@@ -79,8 +79,10 @@ void log_d3d12(std::vector<std::string>& names) {
                 const bool has8 = SUCCEEDED(device->QueryInterface(__uuidof(ID3D12Device8), reinterpret_cast<void**>(&device8)));
                 if (device8) device8->Release();
                 device->Release();
+                // Microsoft's Basic Render Driver (WARP, vendor 1414) passes, but RT64 crashes on it
+                // (renderer_fallback_windows.cpp), so it counts as no.
                 std::snprintf(d3d, sizeof d3d, "fl=%s sm=%s device8=%s rt64=%s", level_name(level.MaxSupportedFeatureLevel), sm,
-                              has8 ? "yes" : "no", sm6 && has8 ? "yes" : "no");
+                              has8 ? "yes" : "no", sm6 && has8 && desc.VendorId != 0x1414 ? "yes" : desc.VendorId == 0x1414 ? "no(warp)" : "no");
             }
         }
         std::fprintf(stderr, "SRW64_GPU adapter=%u name=\"%s\" vendor=%04X device=%04X driver=%s vram_mb=%llu%s d3d12 %s\n",

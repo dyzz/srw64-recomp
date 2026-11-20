@@ -17,7 +17,7 @@ RT64 在 Windows 上要 D3D12（功能级别 11_0、SM 6.0、`ID3D12Device8`，W
 
 `src/host/renderer_fallback.hpp`、`src/host/windows/renderer_fallback_windows.cpp`。发布包里两个程序并排：`Marchwind64.exe`（RT64）和 `Marchwind64-gl.exe`（GL），玩家和 RecompLauncher 照旧只启动前者。
 
-1. **启动前检测。** `main` 一开头（还没接管输出流、没开日志、没拿用户目录锁），只对会开游戏窗口的启动方式（无参数、`--choose-rom`、`--play`，不含 `--play --help`／`--prepare`）检测：有没有一块非软件显卡能建 D3D12 设备（功能级别 11_0）且 SM ≥ 6.0、有 `ID3D12Device8`；没有的话再看 Vulkan：加载器带 `VK_KHR_surface`／`VK_KHR_win32_surface`，能建 1.2 实例，且有一块非 CPU 的物理设备 `apiVersion` ≥ 1.2。两项都不满足就启动同目录的 `Marchwind64-gl.exe`，命令行原样转交，标准输出句柄（`--play` 重定向的日志）传过去，自己挂到启动它的控制台上让子进程接上。父进程等子进程结束并返回它的退出码；子进程放进「随父进程关闭」的作业对象，启动器停止游戏时一起结束。
+1. **启动前检测。** `main` 一开头（还没接管输出流、没开日志、没拿用户目录锁），只对会开游戏窗口的启动方式（无参数、`--choose-rom`、`--play`，不含 `--play --help`／`--prepare`）检测：有没有一块非软件、且不是微软厂商号 0x1414（Basic Render Driver，即 WARP）的显卡能建 D3D12 设备（功能级别 11_0）且 SM ≥ 6.0、有 `ID3D12Device8`；没有的话再看 Vulkan：加载器带 `VK_KHR_surface`／`VK_KHR_win32_surface`，能建 1.2 实例，且有一块非 CPU 的物理设备 `apiVersion` ≥ 1.2。两项都不满足就启动同目录的 `Marchwind64-gl.exe`，命令行原样转交，标准输出句柄（`--play` 重定向的日志）传过去，自己挂到启动它的控制台上让子进程接上。父进程等子进程结束并返回它的退出码；子进程放进「随父进程关闭」的作业对象，启动器停止游戏时一起结束。
 2. **运行中途失败。** 检测通过但 RT64 实际初始化失败（`graphics_failure`，例如驱动报的能力和实际不符）：不再弹「显卡不支持」的错误框，而是用同一命令行启动 GL 版后立即退出；GL 版拿用户目录锁时 `UserLock` 会等最多 10 秒，等父进程退干净。这条路径下 RecompLauncher 会以为游戏已结束（它等的是父进程），属少见情况，可以接受。
 3. **玩家手动选。** 环境变量 `SRW64_GRAPHICS_API`（原来就用来在 D3D12／Vulkan 之间选，launch.cpp 会保留它）：`gl` 直接用 GL 版；`d3d12`、`vulkan` 跳过检测强制用 RT64（失败时仍会交给 GL 版）。
 4. **日志。** GL 版开头写 `SRW64_RENDERER_FALLBACK <原因>`（`chosen (SRW64_GRAPHICS_API=gl)`、`no GPU for RT64 …`、`RT64 failed: …`），进问题报告的 console.log。设置窗口里不支持的三行会灰掉（见下）。
@@ -32,6 +32,33 @@ RT64 在 Windows 上要 D3D12（功能级别 11_0、SM 6.0、`ID3D12Device8`，W
 | `SRW64_GRAPHICS_API=gl` | 父进程等待，GL 版运行，日志写入同一文件；结束父进程后 GL 版随之结束 |
 | `SRW64_RENDERER_PROBE=no-d3d12`＋假 `vulkan-1.dll` | 判定 `no GPU for RT64`，进 GL 版；正常退出后父子都退出，退出码 0 |
 | `SRW64_GRAPHICS_API=vulkan`＋假 `vulkan-1.dll` | RT64 `SETUP_FAILED result=3` → 交给 GL 版，新会话进入游戏，没有错误框 |
+
+## 回退时降画质
+
+只要走回退（Windows 上的 GL 版），画质就自动降低（`graphics.cpp` GLRenderer）：
+
+- **内部分辨率**：游戏底图在主机上是原版的 3 倍，Windows 回退默认 2 倍；`GL_RENDERER` 是 CPU 渲染器（Basic Render Driver／WARP、SwiftShader、llvmpipe、softpipe）时 1 倍，日志 `SRW64_GL_QUALITY`。文字、头像、页面等宿主图层仍按窗口分辨率画，不受影响。
+- **不重画相同的画面**：Switch 原有的「画面没变就保留上一次交换」在 Windows 也打开，键里加了窗口尺寸。120 Hz 下原来每张画面要整屏重画 4 次。
+- **玩家可以改**：设置「通用」页「画面精细度」：自动／1×／2×／3×（只在 GL 渲染器下出现，`RendererFeatures::picture_scale`），存为 `presentation.json` 的 `picture_scale`，重启游戏后生效。主机版同样有这一行（自动＝3×）。开发用环境变量 `SRW64_GL_SCALE`（launch.cpp 保留）优先于两者。
+
+## 无显卡云主机实测（2026-11-20）
+
+AWS ap-southeast-1，m5.xlarge（4 vCPU Xeon 8175M 2.5 GHz），Windows Server 2022，没有显卡，只有「Microsoft Basic Display Adapter」。开机脚本装 OpenSSH、设自动登录；包（不含 HD 111 MB、HD 670 MB）几秒传完。测完实例与临时安全组已删，约 45 分钟。
+
+- **原来的版本在这里会崩。** 第 0 块适配器是 Basic Render Driver，**没有**标成软件适配器，报 D3D12 FL12_1、SM 6.0、`ID3D12Device8` 都有，`gpu_report` 写 `rt64=yes`；RT64 选了它，标题后在 `D3D12Core.dll` 里访问冲突（0xC0000005）。没装显卡驱动的玩家机器很可能一样。现在检测与 `gpu_report`（`rt64=no(warp)`）都按厂商号 0x1414 排除它。
+- 排除后自动回退：ANGLE 在 WARP 的 D3D11 上建出 ES 3.0，标题、片头、演示战斗画面都正确。
+
+演示战斗（标题演示，原速 30 帧）：
+
+| 设置 | 游戏逻辑（帧/秒） | 进程 CPU（核） |
+| --- | --- | --- |
+| 3 倍，每次 VI 都重画（改前） | 25–27 | 约 3.4 |
+| 3 倍＋不重画相同画面 | 30 | 约 2.0 |
+| 2 倍＋不重画 | 30 | 约 1.25 |
+| 1 倍＋不重画（现在的软件渲染默认） | 30 | 约 0.8 |
+| 1 倍＋HD 图 | 30 | 约 1.05 |
+
+另：这台机器和 1080 Ti 上的 GL 版，HD 包装好时「图像」默认都是「原版」（`requested: false`），手动切到 HD 正常；原因还没查。
 
 ## 原型实测（Windows 11，GTX 1080 Ti）
 
