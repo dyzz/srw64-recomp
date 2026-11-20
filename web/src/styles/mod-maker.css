@@ -39,6 +39,18 @@
 .maker .spirit-row { display: flex; gap: 8px; align-items: center; }
 .maker .mini { font: inherit; font-size: 13px; color: var(--text); background: var(--cyan-soft); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 5px 10px; cursor: pointer; }
 .maker .mini.disabled { opacity: 0.45; cursor: not-allowed; }
+/* An audio clip's editor (scripts/audio-clip.ts), as the BGM maker's. */
+.maker .editor { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; margin: 6px 0 12px; display: grid; gap: 12px; }
+.maker canvas.wave { width: 100%; height: 96px; display: block; background: var(--bg-2); border-radius: var(--radius); cursor: pointer; touch-action: none; }
+.maker .editor .row { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: end; }
+.maker .editor .row .field { min-width: 120px; }
+.maker .radio { display: inline-flex; gap: 6px; align-items: center; font-size: 14px; color: var(--text); }
+.maker .clip-state.err { color: var(--danger, #e66); }
+.maker .drop-zone { border: 1px dashed var(--line); border-radius: var(--radius); padding: 10px 12px; margin: 8px 0; }
+.maker .drop-zone.over { border-color: var(--cyan); background: var(--cyan-soft); }
+.maker .orig-line { display: grid; grid-template-columns: 4.5em minmax(8em, 14em) 1fr auto; gap: 4px 10px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line-soft, var(--line)); font-size: 14px; }
+.maker .orig-line.never { opacity: 0.5; }
+@media (max-width: 700px) { .maker .orig-line { grid-template-columns: 4.5em 1fr; } }
 .maker .edited-row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line-soft, var(--line)); font-size: 14px; }
 .maker .weapon-list { margin-top: 12px; }
 .maker .weapon-list h3 { font-size: 15px; margin-bottom: 6px; display: flex; gap: 8px; align-items: center; }

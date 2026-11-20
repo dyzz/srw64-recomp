@@ -35,11 +35,15 @@ export interface Pilot {
   slug: string; copy: number; voice?: number; portrait?: { image: string; hd?: string } | [number, number];
   love?: { with: Ref; mutual: boolean }[]; combo_as?: number;
   quotes?: Quotes;
+  // Its battle song (audio/music.json "battle", written by the maker): an original song, or
+  // "@name" one of the package's own (audio/music/<name>.ogg). Not a new_units.json field.
+  battle_song?: number | string;
   names: PilotNames; data: Changes;
 }
 export interface Unit {
   slug: string; copy: number; weapons: Ref[]; forms?: string[]; crew?: number[];
   combine?: { parts: Ref[]; over?: number[] }; inherits_from?: Ref; icon?: number; pose?: unknown; work?: number;
+  battle_song?: number | string;      // as a character's (Pilot)
   names: Texts; models: Texts; data: Changes;
 }
 export interface Combination { units: Ref[]; parts: Ref[]; multiplier: number; pilots?: Ref[][] }

@@ -10,14 +10,14 @@ import * as ts from '../lib/thunderstore';
 import { picker, type Pickable } from './picker';
 import { dataUrl, encodeIcon, frame, framer, loadIcon, type Picture } from './framer';
 import { LOCALES, KINDS, SLUG, QUOTE_SITUATIONS, emptyModel, fromFiles, placeSprite, voicesOf, problems, rename, renameSprite, spriteFiles, toFiles, type Changes, type Locale, type Model, type Pilot, type Problem, type Ref, type Unit, type Weapon, type Line, type Quotes, type Special } from '../lib/unit-package';
-import { vorbisEncoder, vorbisInfo } from './audio-tools';
+import { audioKit, newClip, recordOfFile, FIRST_RECORD, LAST_RECORD, type Clip, type ClipText } from './audio-clip';
 import * as storyImage from '../lib/story-image';
 import * as anim from '../lib/weapon-animation';
 import type { Join, Wave, WaveUnit, DeploySide } from '../lib/story-image';
 import { foot, reduce } from '../lib/pixels';
 
 type Kind = 'pilots' | 'units' | 'weapons';
-type Tab = Kind | 'sprites' | 'story';
+type Tab = Kind | 'sprites' | 'story' | 'voices';
 type Field = { key: string; label: string; low: number; high: number; step?: number };
 type Labels = {
   fields: Record<Kind, Field[]>;
@@ -69,7 +69,12 @@ export function initUnitMaker() {
   let keptJson: Record<string, unknown> = {};        // the opened package's rows this maker does not own
   let keptFiles: Record<string, Uint8Array> = {};    // and its other files, as they were
   const portraits = new Map<string, Portrait>();     // by character slug
-  const voices = new Map<string, Uint8Array>();      // battle voices by file name (audio/voice/battle/)
+  const voices = new Map<string, Clip>();            // the new characters' voices by file name (audio/voice/battle/)
+  const recordVoices = new Map<number, Clip>();      // original lines' voices by record (audio/voice/battle/<record>.ogg)
+  // Own battle themes by name (audio/music/<name>.ogg, "@name" in music.json), with their titles.
+  type Song = Clip & { titles: { 'zh-Hans': string; en: string; ja: string } };
+  const songs = new Map<string, Song>();
+  let keptMusic: Record<string, any> | null = null;  // the opened package's music.json entries this maker does not own
   const openSituations = new Set<string>();          // the quote lists shown open
   const art = new Map<string, Art>();                // by sprite name
   const icons = new Map<string, Icon>();             // by unit slug
@@ -542,46 +547,63 @@ export function initUnitMaker() {
     ];
   }
 
+  // --- Audio (audio-clip.ts): voices, battle themes -----------------------------------------------
+  const kit = audioKit();
+  const VOICE_QUALITY = 4, SONG_QUALITY = 6;      // as the voice and BGM makers
+  const clipText = (): ClipText => Object.fromEntries(['play', 'stop', 'seam', 'gain', 'loudness', 'loudnessOthers', 'seekHint', 'loop', 'loopWhole', 'loopRange',
+    'loopOnce', 'loopStart', 'loopEnd', 'loopHint', 'trimStart', 'trimEnd', 'trimHint'].map((k) => [k, T(`clip_${k}`)])) as unknown as ClipText;
+  const openClips = new Set<string>();             // clips whose editor is shown, by key
+  const clipStates = new Map<string, HTMLElement>();
+  const allClips = () => [...voices.values(), ...recordVoices.values(), ...songs.values()];
+  function showState(clip: Clip) {
+    const s = clipStates.get(clip.key);
+    if (!s) return;
+    s.textContent = clip.state === 'decoding' ? T('clipDecoding') : clip.state === 'encoding' ? `${T('clipEncoding')} ${Math.round((clip.progress ?? 0) * 100)}%`
+      : clip.state === 'error' ? T('clipFailed') : `${(((clip.kind === 'voice' ? clip.end - clip.start : clip.frames)) / clip.rate).toFixed(1)}s`;
+    s.classList.toggle('err', clip.state === 'error');
+  }
+  // A clip in: its state shown as it decodes and encodes, the page drawn again once it is ready.
+  async function loadClip(clip: Clip, quality: number, loopGiven = false) {
+    let was = clip.state;
+    await kit.load(clip, quality, () => { showState(clip); if (clip.state !== was && (clip.state === 'ready' || clip.state === 'error')) render(); was = clip.state; }, loopGiven);
+  }
+  // Voices with a cut or a gain changed are encoded again before the package is made.
+  async function bakeVoices() {
+    for (const c of [...voices.values(), ...recordVoices.values()]) if (!c.baked && c.state === 'ready') await kit.bake(c, VOICE_QUALITY, () => showState(c));
+  }
+  const busyClips = () => allClips().some((c) => c.state === 'decoding' || c.state === 'encoding');
+  // A clip's buttons (its state, play, its editor, remove) and its editor when open.
+  function clipParts(clip: Clip | undefined, remove: () => void, extra: Node[] = []): { buttons: Node[]; editor: Node | null } {
+    if (!clip) return { buttons: [], editor: null };
+    const state = el('span', { class: 'was clip-state' });
+    clipStates.set(clip.key, state); showState(clip);
+    const ready = clip.state === 'ready';
+    const open = ready && openClips.has(clip.key);
+    const buttons: Node[] = [state];
+    if (ready) buttons.push(el('button', { type: 'button', class: 'mini', title: clip.fileName, onclick: () => kit.play(clip) }, '▶'),
+      el('button', { type: 'button', class: `mini${open ? ' on' : ''}`, onclick: () => { if (open) openClips.delete(clip.key); else openClips.add(clip.key); render(); } },
+        T(clip.kind === 'voice' ? 'voiceTrim' : 'songEdit')));
+    buttons.push(el('button', { type: 'button', class: 'mini', onclick: () => { kit.stop(); kit.forget(clip); openClips.delete(clip.key); remove(); } }, T(clip.kind === 'voice' ? 'voiceRemove' : 'songRemove')));
+    const others = allClips().filter((c) => c !== clip && c.kind === clip.kind && c.level !== undefined).map((c) => c.level! + c.gain);
+    return { buttons, editor: open ? kit.editor(clip, clipText(), { others, root: root!, extra, edited: () => { showState(clip); changed(false); } }) : null };
+  }
+
   // --- Battle quotes (dialogue/battle_quotes.json) ------------------------------------------------
-  // A voice: an Ogg as it is, anything else the browser decodes is encoded (as the voice maker).
-  let encoder: ReturnType<typeof vorbisEncoder> | null = null;
-  let audio: AudioContext | null = null;
-  let playing: AudioBufferSourceNode | null = null;
-  async function toOgg(file: File): Promise<Uint8Array> {
-    const bytes = new Uint8Array(await file.arrayBuffer());
-    if (vorbisInfo(bytes.subarray(0, 65536))) return bytes;
-    audio ??= new AudioContext();
-    const buffer = await audio.decodeAudioData(bytes.slice().buffer);
-    encoder ??= vorbisEncoder();
-    return encoder(buffer, 4);
-  }
-  async function play(name: string) {
-    const ogg = voices.get(name);
-    if (!ogg) return;
-    audio ??= new AudioContext();
-    playing?.stop();
-    const source = audio.createBufferSource();
-    source.buffer = await audio.decodeAudioData(ogg.slice().buffer);
-    source.connect(audio.destination); source.start();
-    playing = source;
-  }
   const freeVoice = (slug: string) => { let n = 1; while (voices.has(`${slug}-${n}.ogg`) || voicesOf(model).includes(`${slug}-${n}.ogg`)) n++; return `${slug}-${n}.ogg`; };
   const QUOTE_LOCALES = ['ja', 'zh-Hans', 'en', 'ko'] as const;
   function lineRow(p: Pilot, line: Line, list: Line[], i: number): Node {
     const cells = QUOTE_LOCALES.map((loc) => textInput(line[loc] ?? '', (v) => { if (v) line[loc] = v; else delete line[loc]; changed(false); }, LOCALE_LABEL[loc]));
-    const voiceCell: Node[] = [];
     const pick = fileButton(line.voice ? '♪' : T('voicePick'), false, async ([f]) => {
-      say(statusLine, T('voiceEncoding'));
-      const ogg = await toOgg(f);
       const name = line.voice ?? freeVoice(p.slug);
-      voices.set(name, ogg); line.voice = name;
-      say(statusLine, ''); changed();
+      const clip = newClip(`voice:${name}`, 'voice', f, f.name);
+      voices.set(name, clip); line.voice = name;
+      changed();
+      await loadClip(clip, VOICE_QUALITY);
     });
-    voiceCell.push(pick);
-    if (line.voice) voiceCell.push(el('button', { type: 'button', class: 'mini', title: line.voice, onclick: () => play(line.voice!) }, '▶'),
-      el('button', { type: 'button', class: 'mini', onclick: () => { voices.delete(line.voice!); delete line.voice; changed(); } }, T('voiceRemove')));
-    return el('div', { class: 'quote-row' }, ...cells, ...voiceCell,
+    const parts = clipParts(line.voice ? voices.get(line.voice) : undefined, () => { voices.delete(line.voice!); delete line.voice; changed(); });
+    const row = el('div', { class: 'quote-row' }, ...cells, pick, ...parts.buttons,
       el('button', { type: 'button', class: 'mini', onclick: () => { list.splice(i, 1); changed(); } }, text.remove));
+    return parts.editor ? el('div', { class: 'quote-voice' }, row, parts.editor) : row;
   }
   function linesEditor(p: Pilot, list: Line[]): Node[] {
     return [...list.map((l, i) => lineRow(p, l, list, i)), el('button', { type: 'button', class: 'mini', onclick: () => { list.push({}); changed(); } }, T('quoteAdd'))];
@@ -665,6 +687,49 @@ export function initUnitMaker() {
       values.length < most ? el('button', { type: 'button', class: 'mini', onclick: add }, T('add')) : null);
   }
 
+  // The original's songs (data/bgm.json), read when an editor first wants them.
+  let songList: { song: number; row: number; title: string }[] | null = null, songsAsked = false;
+  const wantSongs = () => {
+    if (songList || songsAsked) return;
+    songsAsked = true;
+    import('../data/bgm.json').then((m) => { songList = (m.default as any).songs.map((s: any) => ({ song: s.song, row: s.row, title: s.title })); render(); });
+  };
+  const freeSong = (slug: string) => { let n = slug, k = 2; while (songs.has(n) || songUsers(n).length) n = `${slug}-${k++}`; return n; };
+  const songUsers = (name: string) => [...model.pilots, ...model.units].filter((e) => e.battle_song === `@${name}`);
+  // Who fights to which song (music.json "battle", src/host/music.hpp): the original's song of
+  // the copied character or unit, another of the original's, or one of the package's own.
+  function battleSongEditor(e: Pilot | Unit): Node[] {
+    wantSongs();
+    const value = e.battle_song;
+    const select = el('select', {}, el('option', { value: '' }, T('battleSongCopy')),
+      ...(songList ?? []).map((s) => el('option', { value: String(s.song) }, `${s.row}. ${s.title}`)),
+      el('option', { value: 'own' }, T('battleSongOwn'))) as HTMLSelectElement;
+    select.value = value === undefined ? '' : typeof value === 'number' ? String(value) : 'own';
+    select.addEventListener('change', () => {
+      if (select.value === '') delete e.battle_song;
+      else if (select.value === 'own') { if (typeof e.battle_song !== 'string') e.battle_song = `@${freeSong(e.slug)}`; }
+      else e.battle_song = Number(select.value);
+      changed();
+    });
+    const parts: Node[] = [el('div', { class: 'sub' }, T('battleSong')), el('p', { class: 'hint' }, T('battleSongHint')),
+      el('label', { class: 'field' }, T('battleSong'), select)];
+    if (typeof value === 'string') {
+      const name = value.slice(1), song = songs.get(name);
+      const pick = fileButton(song ? T('songReplace') : T('songPick'), false, async ([f]) => {
+        const clip: Song = { ...newClip(`song:${name}`, 'music', f, f.name), titles: song?.titles ?? { 'zh-Hans': '', en: '', ja: '' } };
+        songs.set(name, clip); openClips.add(clip.key);
+        changed();
+        await loadClip(clip, SONG_QUALITY);
+      });
+      const titleInput = (s: Song, key: keyof Song['titles'], label: string) => el('label', { class: 'field' }, label,
+        el('input', { value: s.titles[key], oninput: (ev: Event) => { s.titles[key] = (ev.target as HTMLInputElement).value; } }));
+      const clip = clipParts(song, () => { songs.delete(name); changed(); }, song ? [el('div', { class: 'row' }, el('strong', {}, T('songTitle'))),
+        el('div', { class: 'row' }, titleInput(song, 'zh-Hans', '中文'), titleInput(song, 'en', 'English'), titleInput(song, 'ja', '日本語'))] : []);
+      parts.push(el('div', { class: 'quote-row' }, el('span', { class: 'num' }, `audio/music/${name}.ogg`), pick, ...clip.buttons));
+      if (clip.editor) parts.push(clip.editor);
+    }
+    return parts;
+  }
   function pilotEditor(p: Pilot): Node[] {
     const pilotsSelect = (value: number | undefined, onchange: (v: number | undefined) => void, noneLabel: string) => {
       const s = el('select', {}, el('option', { value: '' }, noneLabel), ...lists.pilots.map((x) => el('option', { value: String(x.id) }, `${x.id} ${nameOf(x)}`))) as HTMLSelectElement;
@@ -683,6 +748,7 @@ export function initUnitMaker() {
         (() => { const c = el('input', { type: 'checkbox', checked: l.mutual }) as HTMLInputElement; c.addEventListener('change', () => { l.mutual = c.checked; changed(false); }); return el('label', { class: 'check' }, c, T('mutual')); })()),
         () => { p.love!.push({ with: p.copy, mutual: true }); changed(); }, 8),
       quotesEditor(p),
+      ...battleSongEditor(p),
       el('div', { class: 'sub' }, T('stats')), el('p', { class: 'hint' }, text.stats1), ...dataEditor('pilots', p),
     ];
   }
@@ -706,6 +772,7 @@ export function initUnitMaker() {
       namesEditor(u, 'units'),
       el('div', { class: 'grid' }, el('label', { class: 'field' }, T('work'), work, el('span', { class: 'was' }, T('workHint')))),
       ...picturesEditor(u),
+      ...battleSongEditor(u),
       listEditor(T('weaponList'), T('weaponListHint'), u.weapons, (w) => el('span', { class: 'ref-name' }, refName('weapons', w)), () => {}, 63),
       addWeapon,
       model.weapons.length ? el('div', { class: 'checks' }, ...model.weapons.map((w) => {
@@ -1036,8 +1103,8 @@ export function initUnitMaker() {
   const problemBox = root.querySelector<HTMLElement>('[data-problems]')!;
   const statusLine = root.querySelector<HTMLElement>('[data-status]')!;
   const kindTitle: Record<string, string> = { pilots: T('newPilots'), units: T('newUnits'), weapons: T('newWeapons'), sprites: T('sprites'), scenes: T('scenes'), story: T('story'), joins: T('joinsTitle'), waves: T('wavesTitle') };
-  const count = (k: Tab) => (k === 'sprites' ? Object.keys(sprites()).length : k === 'story' ? story().joins.length + story().waves.length : entries(k).length);
-  const first = (k: Tab) => (k === 'sprites' ? Object.keys(sprites())[0] : k === 'story' ? storyKeys()[0] : entries(k)[0]?.slug) ?? null;
+  const count = (k: Tab) => (k === 'voices' ? recordVoices.size : k === 'sprites' ? Object.keys(sprites()).length : k === 'story' ? story().joins.length + story().waves.length : entries(k).length);
+  const first = (k: Tab) => (k === 'voices' ? null : k === 'sprites' ? Object.keys(sprites())[0] : k === 'story' ? storyKeys()[0] : entries(k)[0]?.slug) ?? null;
 
   // --- Joins and reinforcements (lib/story-image.ts, story/unit-maker.json) --------------------------
   const sceneTitle = (n: number) => `${n} ${scenes.find((s) => s.id === n)?.title ?? ''}`.trim();
@@ -1174,7 +1241,82 @@ export function initUnitMaker() {
       } }, T('deleteEntry')))));
   }
 
+  // --- Voices for the original characters' lines (audio/voice/battle/<record>.ogg) ------------------
+  // The voice maker's table (lib/voice-lines.ts, the published battle-voices.csv), read the first
+  // time this tab shows.
+  type VoiceData = ReturnType<typeof import('../lib/voice-lines').voiceLines>;
+  let voiceData: VoiceData | null = null, voiceAsked = false, voicePicker: ReturnType<typeof picker> | null = null;
+  const lineByRecord = new Map<number, number>();
+  const speakerOf = (record: number) => voiceData!.lines[lineByRecord.get(record)!][1];
+  function wantVoiceData() {
+    if (voiceData || voiceAsked) return;
+    voiceAsked = true;
+    import('../lib/voice-lines').then((m) => {
+      voiceData = m.voiceLines(lang);
+      voiceData.lines.forEach((l, i) => lineByRecord.set(l[0], i));
+      const known = new Map(pick.pilots.map((x) => [x.id, x]));
+      const items: Pickable[] = voiceData.speakers.map((s) => known.get(s.id) ?? { id: s.id, name: s.name, series: null, img: null } as Pickable);
+      voicePicker = picker(items, pick.series, lang, { allSeries: text.allSeries, search: text.search, none: text.none },
+        (id) => { current = String(id); adding = false; render(); },
+        { badge: (id) => { const n = [...recordVoices.keys()].filter((r) => speakerOf(r) === id).length, all = voiceData!.speakers.find((s) => s.id === id)?.lines ?? 0; return n ? `${n}/${all}` : String(all); } });
+      render();
+    });
+  }
+  function addRecordVoice(record: number, file: File) {
+    const clip = newClip(`rec:${record}`, 'voice', file, file.name);
+    recordVoices.set(record, clip);
+    return loadClip(clip, VOICE_QUALITY);
+  }
+  // Many files at once, each named after its record (as the voice maker takes them).
+  async function addManyVoices(files: File[]) {
+    let added = 0;
+    const skipped: string[] = [];
+    const chain: File[] = [];
+    for (const f of files) {
+      const r = recordOfFile(f.name);
+      if (r === null || r < FIRST_RECORD || r > LAST_RECORD || !lineByRecord.has(r)) { skipped.push(f.name); continue; }
+      chain.push(f); added++;
+    }
+    say(statusLine, T('bulkDone', { n: added }) + (skipped.length ? ' ' + T('bulkSkipped', { n: skipped.length, names: skipped.slice(0, 5).join(', ') }) : ''), !added && skipped.length > 0);
+    changed();
+    for (const f of chain) await addRecordVoice(recordOfFile(f.name)!, f);   // one at a time
+  }
+  function renderVoiceList() {
+    wantVoiceData();
+    const voiced = new Map<number, number>();
+    if (voiceData) for (const r of recordVoices.keys()) voiced.set(speakerOf(r), (voiced.get(speakerOf(r)) ?? 0) + 1);
+    const nameOfSpeaker = (id: number) => { const s = voiceData?.speakers.find((x) => x.id === id); return s ? (s.name[lang === 'ko' ? 'en' : lang] || s.name.ja) : String(id); };
+    listBox.replaceChildren(el('div', { class: 'new-list' },
+      ...[...voiced].sort((a, b) => a[0] - b[0]).map(([id, n]) => el('button', { type: 'button', class: `new-entry${String(id) === current ? ' on' : ''}`, onclick: () => { current = String(id); adding = false; render(); } },
+        el('span', { class: 'num' }, String(id)), `${nameOfSpeaker(id)} (${n})`)),
+      el('button', { type: 'button', class: `new-entry add${adding ? ' on' : ''}`, onclick: () => { adding = !adding; render(); } }, `＋ ${T('origPick')}`)));
+    const bulk = fileButton(T('origBulk'), true, (files) => addManyVoices(files));
+    const drop = el('div', { class: 'drop-zone' }, el('p', { class: 'hint' }, T('origBulkHint')), bulk);
+    drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.classList.add('over'); });
+    drop.addEventListener('dragleave', () => drop.classList.remove('over'));
+    drop.addEventListener('drop', (e) => { e.preventDefault(); drop.classList.remove('over'); if (voiceData) addManyVoices([...(e.dataTransfer?.files ?? [])]); });
+    voicePicker?.refresh();
+    addBox.replaceChildren(...(!voiceData ? [el('p', { class: 'hint' }, T('origLoading'))] : [el('p', { class: 'hint' }, T('origHint')), drop, ...(adding && voicePicker ? [voicePicker.node] : [])]));
+  }
+  function renderVoiceEditor() {
+    if (!voiceData) { editor.replaceChildren(el('p', { class: 'hint' }, T('origLoading'))); return; }
+    const id = current === null ? NaN : Number(current);
+    const lines = voiceData.lines.filter((l) => l[1] === id);
+    if (!lines.length) { editor.replaceChildren(el('p', { class: 'hint' }, T('origEmpty'))); return; }
+    const rows = lines.map(([record, , label, words, never]) => {
+      const pickFile = fileButton(recordVoices.has(record) ? '♪' : T('voicePick'), false, async ([f]) => { changed(); await addRecordVoice(record, f); });
+      const parts = clipParts(recordVoices.get(record), () => { recordVoices.delete(record); changed(); });
+      const row = el('div', { class: `orig-line${never ? ' never' : ''}` },
+        el('span', { class: 'num' }, String(record)), el('span', { class: 'was' }, voiceData!.labels[label]), el('span', {}, words),
+        el('span', { class: 'quote-row' }, pickFile, ...parts.buttons));
+      return parts.editor ? el('div', {}, row, parts.editor) : row;
+    });
+    editor.replaceChildren(el('div', { class: 'card' }, el('h3', {}, el('span', { class: 'num' }, String(id)), T('origLines', { n: lines.length })),
+      el('p', { class: 'hint' }, T('origLinesHint')), ...rows));
+  }
+
   function renderList() {
+    if (kind === 'voices') return renderVoiceList();
     if (kind === 'sprites') return renderSpriteList();
     if (kind === 'story') return renderStoryList();
     listBox.replaceChildren(el('div', { class: 'new-list' },
@@ -1185,6 +1327,7 @@ export function initUnitMaker() {
       kind === 'weapons' ? el('div', {}, weaponFind, weaponResults) : pickers[kind].node] : []));
   }
   function renderEditor() {
+    if (kind === 'voices') return renderVoiceEditor();
     if (kind === 'sprites') return renderSpriteEditor();
     if (kind === 'story') return renderStoryEditor();
     const e = find(kind, current);
@@ -1225,6 +1368,7 @@ export function initUnitMaker() {
     }
     for (const name of Object.keys(sprites())) if (!art.has(name)) out.push(`@${name}：${T('p_spriteNoArt')}`);
     for (const name of voicesOf(model)) if (!voices.has(name)) out.push(`${name}：${T('p_voiceMissing')}`);
+    for (const e of [...model.pilots, ...model.units]) if (typeof e.battle_song === 'string' && !songs.get(e.battle_song.slice(1))?.ogg) out.push(`@${e.slug}：${T('p_songMissing')}`);
     const ownScenes = new Set(Object.keys(model.scenes ?? {}));
     const aroundOf = (scene: string): [number, number] | undefined => {
       const target = (model.scenes ?? {})[scene];
@@ -1260,7 +1404,7 @@ export function initUnitMaker() {
     try { localStorage.setItem('unit-maker-draft', JSON.stringify({ model: { ...model, sprites: undefined } })); } catch { /* private window */ }
   }
   for (const b of root.querySelectorAll<HTMLButtonElement>('[data-kind]'))
-    b.addEventListener('click', () => { kind = b.dataset.kind as Tab; current = first(kind); adding = !count(kind); render(); });
+    b.addEventListener('click', () => { kind = b.dataset.kind as Tab; current = first(kind); adding = kind === 'voices' ? true : !count(kind); render(); });
 
   // --- Files ----------------------------------------------------------------------------------
   function packageFiles(): Record<string, Uint8Array> {
@@ -1279,7 +1423,13 @@ export function initUnitMaker() {
       frames.forEach((path, i) => (out[path] = a.images[i]));
       hd.forEach((path, i) => (out[path] = a.hds[i]));
     }
-    for (const name of voicesOf(model)) { const ogg = voices.get(name); if (ogg) out[`audio/voice/battle/${name}`] = ogg; }
+    for (const name of voicesOf(model)) { const ogg = voices.get(name)?.ogg; if (ogg) out[`audio/voice/battle/${name}`] = ogg; }
+    for (const [record, clip] of recordVoices) if (clip.ogg) out[`audio/voice/battle/${record}.ogg`] = clip.ogg;
+    const music = musicFile();
+    if (music) {
+      out['audio/music.json'] = jsonBytes(music.doc);
+      for (const name of music.songs) out[`audio/music/${name}.ogg`] = songs.get(name)!.ogg!;
+    }
     const image = storyImage.compile(story().joins, story().waves);
     if (image) out[storyImage.STORY_FILE] = jsonBytes(image);
     const facing: Record<string, string> = { ...keptFacing };
@@ -1295,6 +1445,29 @@ export function initUnitMaker() {
       if (own?.image.length) { out[`art/pilots/${p.slug}.png`] = own.image; out[`art/pilots/${p.slug}-hd.png`] = own.hd; }
     }
     return out;
+  }
+  // audio/music.json (src/host/music.hpp): the opened package's other entries, the new characters'
+  // and units' songs, and the settings of the package's own songs they name.
+  function musicFile(): { doc: Record<string, any>; songs: string[] } | null {
+    const doc: Record<string, any> = JSON.parse(JSON.stringify(keptMusic ?? {}));
+    doc.schema = 'srw64.music.v1';
+    const used: string[] = [];
+    for (const [who, list] of [['pilot', model.pilots], ['unit', model.units]] as const)
+      for (const e of list) {
+        if (e.battle_song === undefined) continue;
+        if (typeof e.battle_song === 'string') { const name = e.battle_song.slice(1); if (!songs.get(name)?.ogg) continue; if (!used.includes(name)) used.push(name); }
+        ((doc.battle ??= {})[who] ??= {})[`@${e.slug}`] = e.battle_song;
+      }
+    for (const name of used) {
+      const s = songs.get(name)!, settings: Record<string, unknown> = {};
+      if (s.loop === 'once') settings.loop = false;
+      else if (s.loop === 'range' && (s.start > 0 || s.end < s.frames)) settings.loop = [s.start, s.end];
+      if (s.gain) settings.gain = s.gain;
+      const titles = Object.fromEntries(Object.entries(s.titles).filter(([, v]) => v.trim()));
+      if (Object.keys(titles).length) settings.title = titles;
+      if (Object.keys(settings).length) (doc.tracks ??= {})[`@${name}`] = settings;
+    }
+    return doc.battle || doc.tracks || keptMusic ? { doc, songs: used } : null;
   }
   // Thunderstore (lib/thunderstore.ts): beside the .srw64mod, the zip its upload page takes.
   let tsIcon: Uint8Array | null = null;
@@ -1346,6 +1519,8 @@ export function initUnitMaker() {
       if (!icon) return say(status, T('tsNeedIcon'), true);
       tsPlan = { team, name, icon };
     }
+    if (busyClips()) return say(status, T('clipBusy'), true);
+    await bakeVoices();
     const made = writePackage(m.manifest, m.version, packageFiles(), status, text);
     if (!tsPlan) return;
     const zip = thunderstoreZip(ts.entries(m.manifest, tsPlan.name, tsPlan.icon, made.name, made.zip, strToU8));
@@ -1379,14 +1554,18 @@ export function initUnitMaker() {
         portraits.set(p.slug, { pic: null, image, hd: hd ?? image, url: dataUrl(image) });
         delete keptFiles[portrait.image]; if (portrait.hd) delete keptFiles[portrait.hd];
       }
-      art.clear(); icons.clear(); keptFacing = {}; voices.clear();
+      kit.stop(); art.clear(); icons.clear(); keptFacing = {}; voices.clear(); recordVoices.clear(); songs.clear(); keptMusic = null; openClips.clear();
       if (keptFiles[storyImage.STORY_FILE]) {
         (model as Model & { story?: unknown }).story = storyImage.read(readJson(keptFiles[storyImage.STORY_FILE]));
         delete keptFiles[storyImage.STORY_FILE];
       }
       for (const name of voicesOf(model)) {
         const bytes = keptFiles[`audio/voice/battle/${name}`];
-        if (bytes) { voices.set(name, bytes); delete keptFiles[`audio/voice/battle/${name}`]; }
+        if (bytes) {
+          const clip = newClip(`voice:${name}`, 'voice', new Blob([bytes as BlobPart]), name);
+          voices.set(name, clip); loadClip(clip, VOICE_QUALITY);
+          delete keptFiles[`audio/voice/battle/${name}`];
+        }
       }
       for (const [name, s] of Object.entries(model.sprites ?? {})) {
         const { frames, hd } = spriteFiles(s);
@@ -1399,6 +1578,43 @@ export function initUnitMaker() {
         a.colors = seen.size;
         art.set(name, a);
         for (const f of [...frames, ...hd]) delete keptFiles[f];
+      }
+      // Original lines' voices; the new characters' and units' songs and the package's own songs
+      // they name (the rest of music.json kept as it is).
+      for (const path of Object.keys(keptFiles)) {
+        const m = /^audio\/voice\/battle\/(\d{4,5})\.ogg$/.exec(path);
+        if (!m) continue;
+        const clip = newClip(`rec:${m[1]}`, 'voice', new Blob([keptFiles[path] as BlobPart]), path.split('/').pop()!);
+        recordVoices.set(Number(m[1]), clip); loadClip(clip, VOICE_QUALITY);
+        delete keptFiles[path];
+      }
+      if (keptFiles['audio/music.json']) {
+        const music = readJson(keptFiles['audio/music.json']);
+        delete keptFiles['audio/music.json'];
+        for (const [who, list] of [['pilot', model.pilots], ['unit', model.units]] as const)
+          for (const e of list) {
+            const v = music?.battle?.[who]?.[`@${e.slug}`];
+            if (v === undefined) continue;
+            delete music.battle[who][`@${e.slug}`];
+            if (typeof v === 'number') { e.battle_song = v; continue; }
+            if (typeof v !== 'string' || !v.startsWith('@')) continue;
+            const name = v.slice(1), bytes = keptFiles[`audio/music/${name}.ogg`];
+            e.battle_song = v;
+            if (!bytes || songs.has(name)) continue;
+            const s = music.tracks?.[v] ?? {}, titles = typeof s.title === 'string' ? { en: s.title } : s.title ?? {};
+            const song: Song = { ...newClip(`song:${name}`, 'music', new Blob([bytes as BlobPart]), `${name}.ogg`, { gain: typeof s.gain === 'number' ? s.gain : 0 }),
+              titles: { 'zh-Hans': titles['zh-Hans'] ?? '', en: titles.en ?? '', ja: titles.ja ?? '' } };
+            if (s.loop === false) song.loop = 'once';
+            else if (Array.isArray(s.loop) && s.loop.length === 2) { song.loop = 'range'; [song.start, song.end] = s.loop; }
+            songs.set(name, song); loadClip(song, SONG_QUALITY, s.loop !== undefined);
+            delete keptFiles[`audio/music/${name}.ogg`];
+            if (music.tracks) delete music.tracks[v];
+          }
+        for (const part of ['battle', 'tracks']) {
+          for (const k of Object.keys(music?.[part] ?? {})) if (part === 'battle' && !Object.keys(music.battle[k] ?? {}).length) delete music.battle[k];
+          if (music && !Object.keys(music[part] ?? {}).length) delete music[part];
+        }
+        keptMusic = music && (music.battle || music.tracks) ? music : null;
       }
       const said: Record<string, string> = keptFiles['art/icons.json'] ? readJson(keptFiles['art/icons.json'])?.facing ?? {} : {};
       for (const u of model.units) {
@@ -1488,6 +1704,7 @@ export function initUnitMaker() {
       if (!choice.unit) return sayLink('linkNoUnit', {}, true);
       try {
         sayLink('linkInstalling');
+        await bakeVoices();
         const done = await link.install(zipPackage(m.manifest, packageFiles()));
         if (!done.ok || !done.numbers) return sayLink('linkInstallFailed', { detail: (done.problems ?? []).join('；') }, true);
         const resolve = (kind: 'units' | 'pilots' | 'weapons', v: string) => (/^\d+$/.test(v) ? Number(v) : done.numbers![kind][v]);
@@ -1520,7 +1737,8 @@ export function initUnitMaker() {
       for (const p of model.pilots) if (p.portrait && !Array.isArray(p.portrait)) delete p.portrait;
       for (const u of model.units) if (typeof u.pose === 'string' && u.pose.startsWith('@')) delete u.pose;
       delete model.sprites;
-      // Voices are files too: the lines stay, their voices go.
+      // Voices and own songs are files too: the lines stay, their voices go; an own song goes.
+      for (const e of [...model.pilots, ...model.units]) if (typeof e.battle_song === 'string') delete e.battle_song;
       for (const p of model.pilots) for (const l of [...QUOTE_SITUATIONS.flatMap((s) => p.quotes?.[s] ?? []), ...(p.quotes?.special ?? []).flatMap((c) => c.lines)]) delete l.voice;
     }
   } catch { /* none */ }
@@ -1528,5 +1746,5 @@ export function initUnitMaker() {
   adding = !count(kind);
   refreshLists();
   render();
-  addEventListener('beforeunload', (e) => { if (model.pilots.length || model.units.length || model.weapons.length) e.preventDefault(); });
+  addEventListener('beforeunload', (e) => { if (model.pilots.length || model.units.length || model.weapons.length || recordVoices.size) e.preventDefault(); });
 }

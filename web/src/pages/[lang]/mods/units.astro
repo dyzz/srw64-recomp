@@ -385,6 +385,49 @@ const text = {
   p_anim_scene_set: L({ zh: '有演员的动作会切到自己场景前后的场景，但它用的本包图片没有带上这些（用「换图」会自动带上）', en: 'an actor’s routine moves to the scenes next to its own, which its package picture does not cover (Picture adds them)', ja: '前後のシーンに切り替わるアクターがありますが、その自作の絵が前後の分を持っていません（「絵を替える」なら自動で付きます）', ko: '앞뒤 장면으로 바뀌는 액터가 있지만 그 직접 만든 그림에 앞뒤 분량이 없습니다(“그림 바꾸기”를 쓰면 자동으로 붙습니다)' }),
   animLocked: L({ zh: '这条演出里有按场景号计算的动作，演员只能用原版的图（cut-in 除外）', en: 'A routine in this animation computes with scene numbers, so its actors keep the original pictures (cut-ins aside)', ja: 'この演出には場面番号で計算する動きがあるため、アクターは元の絵のままです（カットインは除く）', ko: '이 연출에는 장면 번호로 계산하는 동작이 있어 액터는 원래 그림만 쓸 수 있습니다(컷인 제외)' }),
   p_anim_locked: L({ zh: '这条演出里有按场景号计算的动作，演员不能换成本包的图（cut-in 除外）', en: 'a routine in this animation computes with scene numbers; its actors cannot take the package’s pictures (cut-ins aside)', ja: 'この演出には場面番号で計算する動きがあり、アクターにパッケージの絵は使えません（カットインは除く）', ko: '이 연출에는 장면 번호로 계산하는 동작이 있어 액터에 패키지 그림을 쓸 수 없습니다(컷인 제외)' }),
+  clip_play: L({ zh: '从头播放', en: 'Play', ja: '再生', ko: '재생' }),
+  clip_stop: L({ zh: '停止', en: 'Stop', ja: '停止', ko: '정지' }),
+  clip_seam: L({ zh: '试听接缝', en: 'Hear the seam', ja: 'つなぎ目を試聴', ko: '이음매 미리 듣기' }),
+  clip_gain: L({ zh: '音量修正（dB）', en: 'Volume (dB)', ja: '音量補正（dB）', ko: '음량 (dB)' }),
+  clip_loudness: L({ zh: '平均电平', en: 'Average level', ja: '平均レベル', ko: '평균 레벨' }),
+  clip_loudnessOthers: L({ zh: '其他已替换曲目平均', en: 'other replaced songs', ja: '他の差し替え曲の平均', ko: '다른 교체곡 평균' }),
+  clip_seekHint: L({ zh: '点波形上任意位置从那里开始播放；靠近蓝色、金色竖线时拖动是调循环点。', en: 'Click anywhere on the waveform to play from there; near the blue or gold line, dragging moves the loop point.', ja: '波形のどこかをクリックするとそこから再生します。青・金の線の近くでドラッグするとループ位置を動かします。', ko: '파형의 아무 곳이나 클릭하면 그 위치부터 재생합니다. 파란색이나 금색 선 근처에서 드래그하면 루프 지점을 옮깁니다.' }),
+  clip_loop: L({ zh: '循环', en: 'Loop', ja: 'ループ', ko: '루프' }),
+  clip_loopWhole: L({ zh: '整首循环', en: 'Loop the whole song', ja: '曲全体をループ', ko: '곡 전체 루프' }),
+  clip_loopRange: L({ zh: '循环区间', en: 'Loop a section', ja: '区間をループ', ko: '구간 루프' }),
+  clip_loopOnce: L({ zh: '只放一次', en: 'Play once', ja: '一回だけ再生', ko: '한 번만 재생' }),
+  clip_loopStart: L({ zh: '起点（秒）', en: 'Start (s)', ja: '開始（秒）', ko: '시작 (초)' }),
+  clip_loopEnd: L({ zh: '终点（秒）', en: 'End (s)', ja: '終了（秒）', ko: '끝 (초)' }),
+  clip_loopHint: L({ zh: '在波形上拖动蓝色（起点）和金色（终点）竖线，会自动对齐到最近的过零点。', en: 'Drag the blue (start) and gold (end) lines on the waveform; they snap to the nearest zero crossing.', ja: '波形上の青（開始）と金（終了）の線をドラッグします。近くのゼロクロスに合わせます。', ko: '파형 위의 파란색(시작)과 금색(끝) 세로선을 드래그하세요. 가장 가까운 제로 크로싱에 자동으로 맞춰집니다.' }),
+  clip_trimStart: L({ zh: '保留从（秒）', en: 'Keep from (s)', ja: '残す範囲の開始（秒）', ko: '남길 구간 시작(초)' }),
+  clip_trimEnd: L({ zh: '到（秒）', en: 'to (s)', ja: '終了（秒）', ko: '끝(초)' }),
+  clip_trimHint: L({ zh: '拖动蓝色（起点）和金色（终点）竖线，只保留中间这段，剪掉前后的空白；音量和剪辑在导出时写进语音文件。', en: 'Drag the blue (start) and gold (end) lines to keep only what is between them, cutting the silence around it; the cut and the volume go into the voice file when exporting.', ja: '青（開始）と金（終了）の線をドラッグして間だけを残し、前後の無音を切ります。カットと音量は書き出し時に音声ファイルへ反映されます。', ko: '파란(시작)·금색(끝) 선을 끌어 그 사이만 남기고 앞뒤 무음을 잘라냅니다. 자르기와 음량은 내보낼 때 음성 파일에 반영됩니다.' }),
+  clipDecoding: L({ zh: '解码中…', en: 'Decoding…', ja: 'デコード中…', ko: '디코딩 중…' }),
+  clipEncoding: L({ zh: '转换中', en: 'Encoding', ja: '変換中', ko: '변환 중' }),
+  clipFailed: L({ zh: '读不了这个文件', en: 'This file cannot be read', ja: 'このファイルは読めません', ko: '이 파일을 읽을 수 없습니다' }),
+  clipBusy: L({ zh: '还有音频在转换，等它完成再导出。', en: 'Some audio is still being converted; export once it is done.', ja: 'まだ変換中の音声があります。終わってから書き出してください。', ko: '아직 변환 중인 오디오가 있습니다. 끝난 뒤 내보내세요.' }),
+  voiceTrim: L({ zh: '剪辑', en: 'Trim', ja: '編集', ko: '편집' }),
+  songEdit: L({ zh: '循环与音量', en: 'Loop and volume', ja: 'ループと音量', ko: '루프와 음량' }),
+  battleSong: L({ zh: '战斗曲', en: 'Battle song', ja: '戦闘曲', ko: '전투곡' }),
+  battleSongCopy: L({ zh: '照抄对象的曲子（原版）', en: 'The copied one’s (original)', ja: 'コピー元の曲（原作）', ko: '복사한 대상의 곡(원작)' }),
+  battleSongOwn: L({ zh: '自己的曲子…', en: 'Your own song…', ja: '自作の曲…', ko: '직접 준비한 곡…' }),
+  battleSongHint: L({ zh: '战斗时放哪首曲子。玩家在设置里开着「MOD 音乐」才生效；超级模式、明镜止水、V-MAX 的固定曲子不变。', en: 'Which song plays in its battles. It takes effect while MOD music is on in the settings; the fixed songs of super mode, Meikyo Shisui and V-MAX stay.', ja: '戦闘で流れる曲です。設定で「MOD 音楽」がオンのときに有効です。スーパーモード・明鏡止水・V-MAX の固定曲は変わりません。', ko: '전투 때 나오는 곡입니다. 설정에서 “MOD 음악”이 켜져 있을 때 적용되며, 슈퍼 모드·명경지수·V-MAX의 고정곡은 그대로입니다.' }),
+  songPick: L({ zh: '选音频文件', en: 'Choose an audio file', ja: '音声ファイルを選ぶ', ko: '오디오 파일 고르기' }),
+  songReplace: L({ zh: '换一个文件', en: 'Another file', ja: '別のファイル', ko: '다른 파일' }),
+  songRemove: L({ zh: '去掉曲子', en: 'Remove the song', ja: '曲を外す', ko: '곡 빼기' }),
+  songTitle: L({ zh: '曲名（音乐鉴赏里显示，可不填）', en: 'Title (shown in the music room; optional)', ja: '曲名（音楽鑑賞で表示、省略可）', ko: '곡명(음악 감상에 표시, 생략 가능)' }),
+  p_songMissing: L({ zh: '选了自己的战斗曲，但还没有放音频文件', en: 'its own battle song has no audio file yet', ja: '自作の戦闘曲を選びましたが、音声ファイルがまだありません', ko: '직접 준비한 전투곡을 골랐지만 아직 오디오 파일이 없습니다' }),
+  origVoices: L({ zh: '原版台词配音', en: 'Original lines’ voices', ja: '原作セリフの音声', ko: '원작 대사 음성' }),
+  origPick: L({ zh: '选一个原版人物', en: 'Pick an original character', ja: '原作キャラクターを選ぶ', ko: '원작 인물 고르기' }),
+  origHint: L({ zh: '给原版人物的战斗台词配语音（和「战斗语音」工具一样，按台词号 audio/voice/battle/<号>.ogg）。可以选人物逐句配，也可以一次放进很多以台词号命名的文件。', en: 'Give the original characters’ battle lines a voice (as the battle voice maker does, by record: audio/voice/battle/<record>.ogg). Pick a character and voice line by line, or drop many files named by record at once.', ja: '原作キャラクターの戦闘セリフに音声を付けます（戦闘ボイスツールと同じく、記録番号の audio/voice/battle/<番号>.ogg）。キャラクターを選んで一行ずつ付けるか、記録番号の名前のファイルをまとめて入れられます。', ko: '원작 인물의 전투 대사에 음성을 붙입니다(전투 음성 도구처럼 기록 번호 audio/voice/battle/<번호>.ogg). 인물을 골라 한 줄씩 붙이거나, 기록 번호로 이름 지은 파일을 한꺼번에 넣을 수 있습니다.' }),
+  origBulk: L({ zh: '一次放进多个文件', en: 'Add many files', ja: 'まとめて追加', ko: '여러 파일 추가' }),
+  origBulkHint: L({ zh: '文件名里要有台词号（如 7018.ogg、7018_attack.wav），拖到这里或点按钮。', en: 'File names carry the record (7018.ogg, 7018_attack.wav): drop them here or use the button.', ja: 'ファイル名に記録番号を入れてください（7018.ogg、7018_attack.wav など）。ここにドロップするかボタンから。', ko: '파일 이름에 기록 번호가 있어야 합니다(7018.ogg, 7018_attack.wav 등). 여기에 끌어 놓거나 버튼을 누르세요.' }),
+  origLoading: L({ zh: '正在读取台词表…', en: 'Reading the lines…', ja: 'セリフ表を読み込み中…', ko: '대사 표를 읽는 중…' }),
+  origEmpty: L({ zh: '从左边选一个人物，或点「选一个原版人物」。', en: 'Pick a character on the left, or “Pick an original character”.', ja: '左から選ぶか「原作キャラクターを選ぶ」を押してください。', ko: '왼쪽에서 고르거나 “원작 인물 고르기”를 누르세요.' }),
+  origLines: L({ zh: '{n} 句台词', en: '{n} lines', ja: 'セリフ {n} 行', ko: '대사 {n}줄' }),
+  origLinesHint: L({ zh: '灰色的句子游戏里不会出现。', en: 'Lines in grey never show in the game.', ja: '灰色のセリフはゲームに出てきません。', ko: '회색 대사는 게임에 나오지 않습니다.' }),
+  bulkDone: L({ zh: '加了 {n} 个文件。', en: 'Added {n} files.', ja: '{n} 個のファイルを追加しました。', ko: '파일 {n}개를 추가했습니다.' }),
+  bulkSkipped: L({ zh: '{n} 个文件名里没有可用的台词号：{names}', en: '{n} files have no usable record in their names: {names}', ja: '{n} 個のファイル名に使える記録番号がありません：{names}', ko: '{n}개 파일 이름에 쓸 수 있는 기록 번호가 없습니다: {names}' }),
   p_framing: L({ zh: '头像还没点「确定」', en: 'the portrait is not confirmed yet', ja: '顔グラフィックがまだ「決定」されていません', ko: '초상화를 아직 “확인”하지 않았습니다' }),
 };
 const pick = pickables(lang, data.units.map((u) => u.id), data.pilots.map((p) => p.id));
@@ -415,6 +458,7 @@ const scenes = sceneRows.slice(1).map((row) => { const cells = row.split(','); r
         <button type="button" class="kind" data-kind="weapons">{text.newWeapons} <span class="count">0</span></button>
         <button type="button" class="kind" data-kind="sprites">{text.sprites} <span class="count">0</span></button>
         <button type="button" class="kind" data-kind="story">{text.story} <span class="count">0</span></button>
+        <button type="button" class="kind" data-kind="voices">{text.origVoices} <span class="count">0</span></button>
       </div>
       <div data-list></div>
       <div data-add></div>
