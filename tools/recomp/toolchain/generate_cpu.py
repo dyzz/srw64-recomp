@@ -536,6 +536,10 @@ NAME_RECORDS = {   # (function, instruction): (U unit, W weapon, M weapon menu; 
 # raises it by exactly the packages' own resources (mod_tables.hpp), so a number none gives is
 # refused as before instead of reading a descriptor past the ROM's table.
 MAP_WIDTH_CONSTANTS[("resident_func_80089E9C", 0x80089EAC)] = ("0X1924", "srw64_resource_limit()")
+# A battle quote's weapon (8022241C, the quote picker's): field 0 of the weapon's battle record,
+# or -1 for a weapon number past the ROM's 1,329, so a package's new weapon (1400-2399,
+# table_window.hpp; its battle record is in the table window) never had its weapon lines.
+MAP_WIDTH_CONSTANTS[("load_00121560_func_8022241C", 0x80222424)] = ("0X531", "0X960")
 # The のりかえ candidates (801C5618) count roster units per class in eight u16s on its stack
 # (classes 0-7) and read them back by the pilot's class: a class above 7 would run past them.
 # The index is masked with 7, so class 8 (mod_data.hpp, the one a package may add) counts in

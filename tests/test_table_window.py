@@ -46,6 +46,9 @@ class TableWindowTest(unittest.TestCase):
         # Raised only by the packages' own resources (mod_tables.hpp resource_limit_now).
         self.assertEqual(cap[1], "srw64_resource_limit()")
         self.assertEqual(g.NATIVE_HOOKS["resident_func_80089BBC"], "srw64_original_resource_descriptor")
+        # The quote picker's weapon (8022241C) takes the new weapons' numbers too.
+        last_weapon = int(re.search(r"last_new_weapon=(\d+)", HEADER)[1])
+        self.assertEqual(g.MAP_WIDTH_CONSTANTS[("load_00121560_func_8022241C", 0x80222424)], ("0X531", f"0X{last_weapon + 1:X}"))
         for key, (block, rom) in g.TABLE_BLOCKS.items():
             self.assertEqual(names.index(key), block, key)
             self.assertEqual(int(layouts[block][0], 16), rom, key)
