@@ -24,7 +24,7 @@ RT64 在 Windows 上要 D3D12（功能级别 11_0、SM 6.0、`ID3D12Device8`，W
 
 **包体：** `Marchwind64-gl.exe` 23.9 MB、`libGLESv2.dll` 5.6 MB、`libEGL.dll` 不到 0.1 MB；与 RT64 版并排发约多 30 MB（未压缩）。
 
-**GL 路径没有的东西：** 60 帧插帧、RetroArch 滤镜（`gl_only_stubs.cpp` 空实现）、依赖 RT64 的 120 Hz 真 4 倍速。
+**GL 路径没有的东西：** 60 帧插帧（刷新率设置）、MSAA、RetroArch 滤镜（`gl_only_stubs.cpp` 空实现）。设置窗口按 `settings::renderer_features()` 自动把这三行灰掉，下面写「当前渲染方式不支持此项」（`settings_renderer_unsupported`）；刷新率显示为「原版」、MSAA 显示为「关」，存档里的选择不动，回到 RT64 时照旧生效。GL-only 宿主一开始就没有这三项，带 GL 渲染器的 RT64 宿主（`SRW64_RENDERER=gl`）在建渲染器时改写。Switch 版同样受益（以前这几项显示了但不起作用）。边框是 RmlUi 图层，GL 下照常可用。倍速（含 3、4 倍）由调度器和游戏帧间隔控制，与渲染器无关，保留可用；GL 下没有实测过。
 
 ## 还没做 / 没验证
 

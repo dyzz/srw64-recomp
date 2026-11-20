@@ -1540,7 +1540,9 @@ std::string capture_prompt() {
 // shortcuts and restore.
 bool touch_supported();
 std::string settings_row(const std::string& key,const std::string& choices,const std::string& more={},const std::string& note={});
-std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled=false);
+std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled=false,const std::string& more={});
+// Under a row the running renderer cannot honour (settings::renderer_features).
+std::string renderer_note(){return "<p class='set-note'>"+label("settings_renderer_unsupported")+"</p>";}
 std::string controls_page() {
     std::string body;
     if(touch_supported()) {
@@ -1823,7 +1825,8 @@ std::string look_rows() {
     const auto status=post_filter::status();
     const auto filter=settings::filter();
     std::string more;
-    if(!status.available)more+="<p class='set-note'>"+label("settings_filter_unavailable")+"</p>";
+    if(!settings::renderer_features().filters)more+=renderer_note();
+    else if(!status.available)more+="<p class='set-note'>"+label("settings_filter_unavailable")+"</p>";
     else if(status.loading)more+="<p class='set-note'>"+label("settings_filter_loading")+"</p>";
     else if(!status.error.empty())more+="<p class='set-note'>"+label("settings_filter_error")+" "+escape(status.error.substr(0,status.error.find('\n')).substr(0,200))+"</p>";
     if(status.available && browse_kind=="filter")more+=browser();
@@ -1885,10 +1888,10 @@ std::string settings_row(const std::string& key,const std::string& choices,const
     return "<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label(key)+"</div><div class='set-seg'>"+choices+"</div></div><p>"+label(note.empty()?key+"_note":note)+"</p>"+more+"</div>";
 }
 // A setting with one button per mode: ids prefix:mode, labels key_mode.
-std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled) {
+std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled,const std::string& more) {
     std::string choices;
     for(const std::string mode:modes)choices+=button(prefix+":"+mode,label(key+"_"+mode),mode==current,disabled);
-    return settings_row(key,choices);
+    return settings_row(key,choices,more);
 }
 // The button a row offers first: its selected one, else its first enabled one.
 Rml::Element* settings_choice_of(Rml::Element* row) {
@@ -3803,7 +3806,7 @@ void settings_sync() {
 #endif
     const auto stamp=localization::catalog().locale+localization::catalog().revision+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+std::to_string(settings::unified_weapon_upgrades())+
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_level())+std::to_string(settings::dialogue_hints_always())+std::to_string(settings::mod_music())+"/"+std::to_string(settings::mod_music_volume())+"/"+std::to_string(settings::mod_voice())+"/"+std::to_string(settings::mod_voice_volume())+"/"+settings::mod_voice_speed()+"/"+std::to_string(settings::mod_voice_wait())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
-        std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
+        std::to_string(presentation::image_mode.enabled())+[]{const auto f=settings::renderer_features();return std::to_string(f.interpolation)+std::to_string(f.msaa)+std::to_string(f.filters);}()+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
         // The セーブ page: its choices, the import folder as last read and the last result.
@@ -3878,7 +3881,10 @@ void settings_sync() {
         body+=look_rows();
 #ifndef __ANDROID__
         // Android draws without MSAA either way. Taken at start: says so until a restart.
-        body+=settings_row("settings_msaa",button("msaa:on",label("settings_msaa_on"),settings::msaa())+button("msaa:off",label("settings_msaa_off"),!settings::msaa()),
+        // The GL renderer has none: shown off and disabled, the saved choice kept for RT64.
+        if(const bool can=settings::renderer_features().msaa;!can)
+            body+=settings_row("settings_msaa",button("msaa:on",label("settings_msaa_on"),false,true)+button("msaa:off",label("settings_msaa_off"),true,true),renderer_note());
+        else body+=settings_row("settings_msaa",button("msaa:on",label("settings_msaa_on"),settings::msaa())+button("msaa:off",label("settings_msaa_off"),!settings::msaa()),
             settings::msaa()!=settings::msaa_at_start()?"<p class='set-note'>"+label("settings_msaa_restart")+"</p>":std::string());
 #endif
         // A handheld or a phone plays full screen and has no window to size.
@@ -3904,7 +3910,10 @@ void settings_sync() {
         body+=settings_choice("settings_weapon_upgrade","weapon-upgrade",{"unified","single"},settings::unified_weapon_upgrades()?"unified":"single",!settings::native_intermission_ui());
         body+=settings_choice("settings_name_entry_ui","name-entry-ui",{"native","original"},settings::native_name_entry_ui()?"native":"original");
         body+=settings_choice("settings_title_ui","title-ui",{"native","original"},settings::native_title_ui()?"native":"original");
-        body+=settings_choice("settings_refresh","refresh",{"original","60","display"},settings::refresh_rate_name(settings::refresh_rate()));
+        // Without RT64's interpolation the picture stays at the original 30: shown so, disabled.
+        if(const bool can=settings::renderer_features().interpolation;!can)
+            body+=settings_choice("settings_refresh","refresh",{"original","60","display"},"original",true,renderer_note());
+        else body+=settings_choice("settings_refresh","refresh",{"original","60","display"},settings::refresh_rate_name(settings::refresh_rate()));
         body+=settings_choice("settings_fps","fps",{"off","on"},settings::show_fps()?"on":"off");
         body+=settings_choice("settings_dialogue_hints","dialogue-hints",{"auto","always"},settings::dialogue_hints_always()?"always":"auto");
     } else if(page=="rules") {

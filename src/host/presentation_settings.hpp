@@ -78,6 +78,14 @@ RefreshRate refresh_rate();
 void set_refresh_rate(RefreshRate rate);
 const char* refresh_rate_name(RefreshRate rate);
 RefreshRate refresh_rate_from(const std::string& name);
+// What the renderer the game draws with can do: RT64 all of it; the GL renderer (src/gl: the
+// Switch, the Vita, Windows PCs RT64 cannot use) has no frame interpolation (the refresh rate
+// above), no MSAA and no RetroArch filters. The settings window shows those rows disabled,
+// saying why, and keeps the saved choices for a run under RT64. graphics.cpp sets it as it
+// makes the renderer; the GL-only host starts without them.
+struct RendererFeatures { bool interpolation = true, msaa = true, filters = true; };
+RendererFeatures renderer_features();
+void set_renderer_features(RendererFeatures features);
 // The speed on the tactical map, in battle and in the story (game_speed.hpp): 1 (off, the
 // default) to 4; 2 at most with SRW64_VI_RATE=60. Saved as game_speed. The Speed button
 // (Tab, R4) steps through them and back to 1.

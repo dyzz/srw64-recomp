@@ -129,6 +129,7 @@
     "settings_filter_loading": "正在编译滤镜……",
     "settings_filter_error": "滤镜载入失败：",
     "settings_filter_unavailable": "这里不能用滤镜：缺少 librashader，或这个平台（安卓）还不支持。",
+    "settings_renderer_unsupported": "当前渲染方式不支持此项（这台设备没有使用 RT64）。",
     "settings_window": "显示方式",
     "settings_window_windowed": "窗口",
     "settings_window_fullscreen": "全屏",

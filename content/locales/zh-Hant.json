@@ -129,6 +129,7 @@
     "settings_filter_loading": "正在編譯濾鏡……",
     "settings_filter_error": "濾鏡載入失敗：",
     "settings_filter_unavailable": "這裡不能用濾鏡：缺少 librashader，或這個平臺（安卓）還不支援。",
+    "settings_renderer_unsupported": "當前渲染方式不支援此項（這臺裝置沒有使用 RT64）。",
     "settings_window": "顯示方式",
     "settings_window_windowed": "視窗",
     "settings_window_fullscreen": "全屏",

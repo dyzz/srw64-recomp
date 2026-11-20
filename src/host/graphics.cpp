@@ -1641,7 +1641,12 @@ void srw64_vita_graphics_begin() { vita_graphics = std::thread(vita_graphics_ini
 std::unique_ptr<ultramodern::renderer::RendererContext> srw64_create_renderer(
     uint8_t* rdram, ultramodern::renderer::WindowHandle handle) {
 #ifdef SRW64_GL_RENDERER
-    if (gl_mode()) return std::make_unique<GLRenderer>(rdram);
+    if (gl_mode()) {
+#ifdef SRW64_NATIVE_DIALOGUE
+        srw64::settings::set_renderer_features({false, false, false});   // the settings window says so
+#endif
+        return std::make_unique<GLRenderer>(rdram);
+    }
 #endif
 #ifdef SRW64_GL_ONLY
     (void)handle;

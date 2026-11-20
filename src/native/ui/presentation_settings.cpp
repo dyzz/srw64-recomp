@@ -177,6 +177,18 @@ void set_show_fps(bool show) {
 const char* refresh_rate_name(RefreshRate rate){return rate==RefreshRate::Original?"original":rate==RefreshRate::Sixty?"60":"display";}
 RefreshRate refresh_rate_from(const std::string& name){return name=="original"?RefreshRate::Original:name=="60"?RefreshRate::Sixty:RefreshRate::Display;}
 RefreshRate refresh_rate(){return refresh_choice.load();}
+namespace {
+#ifdef SRW64_GL_ONLY
+std::atomic<uint8_t> features_bits{0};
+#else
+std::atomic<uint8_t> features_bits{7};
+#endif
+}
+RendererFeatures renderer_features() {
+    const uint8_t bits=features_bits.load();
+    return {bool(bits&1),bool(bits&2),bool(bits&4)};
+}
+void set_renderer_features(RendererFeatures f){features_bits=uint8_t((f.interpolation?1:0)|(f.msaa?2:0)|(f.filters?4:0));}
 void set_refresh_rate(RefreshRate rate) {
     refresh_choice=rate;
     if(destination.empty())return;

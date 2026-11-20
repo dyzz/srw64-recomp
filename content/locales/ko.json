@@ -130,6 +130,7 @@
     "settings_filter_loading": "필터 컴파일 중…",
     "settings_filter_error": "필터를 불러오지 못했습니다:",
     "settings_filter_unavailable": "필터를 사용할 수 없습니다. librashader가 없거나 아직 지원하지 않는 플랫폼(Android)입니다.",
+    "settings_renderer_unsupported": "현재 렌더링 방식에서는 사용할 수 없습니다(이 기기에서는 RT64를 사용하지 않습니다).",
     "settings_window": "화면",
     "settings_window_windowed": "창 모드",
     "settings_window_fullscreen": "전체 화면",
