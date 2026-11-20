@@ -291,7 +291,15 @@ int main(int argc,char** argv) {
     check(story::read_text(story::text_table+offset,ram.data(),0x80310000,size),"a battle quote served");
     header.clear();for(uint32_t i=0;i<8;++i)header+=char(read(ram.data(),0x80310000+i,1));
     check(header=="43020032","header 430 20 032: "+header);
-    check(story::line(quote,"zh-Hans")==std::optional<std::string>("「上了！」") && !story::descriptor(0,quote+1,offset,size),"its Chinese line; only lines given");
+    check(story::line(quote,"zh-Hans")==std::optional<std::string>("「上了！」"),"its Chinese line");
+    // A routine that shows the lines after it (194: +1 to +5) gets a blank line of the same
+    // speaker past the last one, not the ROM's empty entry.
+    check(story::descriptor(0,quote+5,offset,size) && size==8+2+2 && story::line(quote+5,"ja")==std::optional<std::string>(""),"a blank line after the last");
+    check(story::read_text(story::text_table+offset,ram.data(),0x80310000,size),"the blank line served");
+    header.clear();for(uint32_t i=0;i<8;++i)header+=char(read(ram.data(),0x80310000+i,1));
+    check(header=="43020032","the blank line's speaker: "+header);
+    srw64::mod_quotes::publish({});
+    check(!story::descriptor(0,quote,offset,size),"none without package lines");
 
     if(failures)std::fprintf(stderr,"%d failure(s)\n",failures);
     else std::printf("story MOD tests passed\n");

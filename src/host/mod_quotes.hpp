@@ -206,10 +206,18 @@ inline std::shared_ptr<const std::vector<Line>> lines() {
 }
 inline bool ours(uint16_t id){return id>=text_first && id<text_end;}
 // A package line by its text record. Any thread.
+// Some routines show the lines after the one the speaker said (8008FFAC with the line plus k:
+// 194, 石破天惊拳's shouts, up to +5; 323 up to +9). Past the packages' last line that is a
+// blank line of the same speaker, never the ROM's text table (whose entry there is empty: the
+// game read through a null pointer).
 inline std::optional<Line> line(uint16_t id) {
     if(!ours(id))return std::nullopt;
     const auto all=lines();
-    if(size_t(id-text_first)>=all->size())return std::nullopt;
+    if(all->empty())return std::nullopt;
+    if(size_t(id-text_first)>=all->size()) {
+        Line blank;blank.speaker=all->back().speaker;blank.lines["ja"]="";
+        return blank;
+    }
     return (*all)[id-text_first];
 }
 }
