@@ -247,6 +247,10 @@ NATIVE_HOOKS = {
     "load_000AB160_func_8020178C": "srw64_original_combo_locks",
     # EN and ammo after an attack: a package's combination attack lists its participants first (mod_combos.hpp).
     "load_000AB160_func_801FC83C": "srw64_original_battle_spend",
+    # A battle quote shown, and the dialogue portrait: a new character speaking with a copied
+    # voice part shows its own name and face (battle_speaker.hpp).
+    "load_00121560_func_801C6F14": "srw64_original_battle_quote_show",
+    "resident_func_8008F970": "srw64_original_dialogue_portrait",
     "resident_func_800A74D4": "srw64_original_combine_parts",
     "load_0008F4B0_func_801D6FF4": "srw64_original_link_open",
     "load_0008F4B0_func_801D70FC": "srw64_original_link_step",
@@ -390,7 +394,7 @@ PILOT_MAP_READERS = {   # (function, instruction): (literal, copy)
     ("resident_func_800A6398", 0x800A63B0): ("-0X563C", PILOT_STATS_COPY),
     ("load_000AB160_func_801F3578", 0x801F3664): ("-0X563C", PILOT_VOICE_COPY),
     ("load_000AB160_func_801F3578", 0x801F3AB8): ("-0X563C", PILOT_VOICE_COPY),
-    ("load_00121560_func_801C6F14", 0x801C6F90): ("-0X563C", PILOT_VOICE_COPY),
+    ("srw64_original_battle_quote_show", 0x801C6F90): ("-0X563C", PILOT_VOICE_COPY),
     ("load_00121560_func_80222050", 0x80222318): ("-0X563C", PILOT_VOICE_COPY),
     ("srw64_original_generic_quote_draw", 0x80222B7C): ("-0X563C", PILOT_VOICE_COPY),
     ("load_00216730_func_801C2CAC", 0x801C2D18): ("-0X563C", PILOT_VOICE_COPY),

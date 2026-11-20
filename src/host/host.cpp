@@ -34,6 +34,7 @@
 #include "rom_variants.hpp"
 #include "script_inject.hpp"
 #include "mini_stage.hpp"
+#include "mod_ids.hpp"
 #include "rule_fixes.hpp"
 #include "upgrade_refund.hpp"
 #include "mod_data.hpp"
@@ -173,6 +174,9 @@ void on_init(uint8_t* rdram, recomp_context*) {
     srw64_rdram = rdram;
     srw64::stall::start();
     srw64::state_probe::directory=output_dir;
+    srw64::mini_stage::name_resolver()=[](const nlohmann::json& name,const std::string& package,bool unit) {
+        return unit?srw64::mod_ids::unit(name,package):srw64::mod_ids::pilot(name,package);
+    };
     srw64::mini_stage::configure(output_dir);
     srw64::rules::configure(output_dir);
     const auto rom=recomp::get_rom();

@@ -205,6 +205,8 @@ python3 tools/mods/pack.py my-campaign -o build/mods
 
 战役的存档在用户目录的 `campaigns/<id>/saves/`，和本篇互不影响。
 
+出击记录的 `actor`、`unit` 也可以写包里的新人物、新机体：`"@名字"`（这个战役包自己的）或 `"别的包id@名字"`（写进 `requires`）。号码由游戏载入战役时按启用的包算出；名字对不上时战役不载入。
+
 ## 分享
 
 `template`、`deployments_from`、`copy_from` 会把你 ROM 里的原版数据复制进包里，这样的包只适合自己玩。想公开分享，出击记录要逐个字段自己写（`group`、`x`、`y`、`actor`、`unit`、`faction`、`level_offset`、`upgrade` 等），事件也全部自己写；文本号、地图号、人物号、机体号只是编号，可以用。其余照 [MOD 包的版权要求](../mods/#版权)。

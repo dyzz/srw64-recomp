@@ -122,6 +122,25 @@ class StoryTests(unittest.TestCase):
         with self.assertRaises(story.StoryError):
             story.compile_story({**source(event()), "stage_info": [info, info]})
 
+    def test_deployments(self):
+        # The package's own groups (story_mod.hpp assign_groups): numbered by the host per scene.
+        wave = {"id": "wave", "scene": 129, "units": [{"x": 10, "y": 5, "pilot": "@rival", "unit": "@zaku", "level": 2},
+                                                      {"x": 11, "y": 5, "pilot": 289, "unit": 21, "side": "third_hostile"}]}
+        row = event(do=[{"deploy": "wave"}, {"leave_group": "wave"}, {"deploy": 3}])
+        image = story.compile_story({**source(row), "deployments": [wave]})
+        self.assertEqual(image["deployments"], [{"id": "wave", "scene": 129, "records": [
+            {"x": 10, "y": 5, "pilot": "@rival", "unit": "@zaku", "side": 1, "level": 2, "upgrade": 0},
+            {"x": 11, "y": 5, "pilot": 289, "unit": 21, "side": 4, "level": 0, "upgrade": 0}]}])
+        e = image["events"][0]
+        self.assertEqual(e["listing"][:3], ["3D45 65533", "3D46 65533,1", "3D45 3"])
+        self.assertEqual(e["groups"], [[1, "wave", False], [3, "wave", True]])
+        for bad in ({**wave, "scene": 130}, {**wave, "units": []}, {**wave, "units": [{**wave["units"][0], "side": "ally"}]},
+                    {**wave, "units": [{**wave["units"][0], "x": 64}]}, {**wave, "id": "Wave"}):
+            with self.assertRaises(story.StoryError):
+                story.compile_story({**source(row), "deployments": [bad]})
+        with self.assertRaises(story.StoryError):
+            story.compile_story(source(event(do=[{"deploy": "nope"}])))
+
     def test_new_speaker(self):
         # A package's new character speaks by name; the host numbers it (story_mod.hpp add_image).
         image = story.compile_story(source(event(do=[{"say": "@kai", "text": {"ja": "よろしく"}}])))

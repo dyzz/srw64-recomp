@@ -226,6 +226,46 @@ def stage_info(rows) -> list[dict]:
     return out
 
 
+# A deployment record's side (+0x14, 8020ABB4): 0 ours, 1 the enemy, 2 the third party, 4 a
+# third party that also attacks us (deployed with the slot's 0x20, docs/native/unit-icon-facing.md).
+DEPLOY_SIDES = {"player": 0, "enemy": 1, "third": 2, "third_hostile": 4}
+
+
+def deployments(rows) -> list[dict]:
+    """The package's own deployment groups (src/host/story_mod.hpp): records the host appends to
+    the scene's deployment block at its registration, under group numbers that scene leaves
+    free; events deploy them with {"deploy": "<id>"} and take them off with {"leave_group": ...}."""
+    if not isinstance(rows, list):
+        raise StoryError("deployments 要是数组")
+    out, ids = [], set()
+    for n, row in enumerate(rows):
+        where = f"deployments[{n}]"
+        if not isinstance(row, dict) or set(row) - {"id", "scene", "units", "note"}:
+            raise StoryError(f"{where} 只能写 id、scene、units")
+        if not isinstance(row.get("id"), str) or not KEY.fullmatch(row["id"]) or len(row["id"]) > 40:
+            raise StoryError(f"{where}.id 只用小写字母、数字、- _ .，最多 40 个")
+        if row["id"] in ids:
+            raise StoryError(f"{where}.id {row['id']} 重复")
+        ids.add(row["id"])
+        units = row.get("units")
+        if not isinstance(units, list) or not 1 <= len(units) <= 30:
+            raise StoryError(f"{where}.units 写 1–30 台")
+        records = []
+        for k, u in enumerate(units):
+            at = f"{where}.units[{k}]"
+            if not isinstance(u, dict) or set(u) - {"x", "y", "pilot", "unit", "side", "level", "upgrade", "note"}:
+                raise StoryError(f"{at} 只能写 x、y、pilot、unit、side、level、upgrade")
+            side = u.get("side", "enemy")
+            if side not in DEPLOY_SIDES:
+                raise StoryError(f"{at}.side 只能是 {'、'.join(DEPLOY_SIDES)}")
+            records.append({"x": _int(u.get("x"), f"{at}.x", 0, 63), "y": _int(u.get("y"), f"{at}.y", 0, 63),
+                            "pilot": _pilot(u.get("pilot"), f"{at}.pilot"), "unit": _unit(u.get("unit"), f"{at}.unit"),
+                            "side": DEPLOY_SIDES[side], "level": _int(u.get("level", 0), f"{at}.level", 0, 20),
+                            "upgrade": _int(u.get("upgrade", 0), f"{at}.upgrade", 0, 5)})
+        out.append({"id": row["id"], "scene": _int(row.get("scene"), f"{where}.scene", 0, 255), "records": records})
+    return out
+
+
 def flags(value, name: str) -> list[str]:
     if not isinstance(value, list) or not all(isinstance(f, str) and FLAG.fullmatch(f) for f in value):
         raise StoryError(f"{name} 是标记名的数组：小写字母、数字、_、-，最多 32 个")
@@ -282,6 +322,7 @@ class Builder:
         self.crew: list[dict] = []              # a unit's crew, set by the host once the event has run
         self.builds: list = []                  # combined units the host builds when the event starts
         self.named: list[tuple[int, int, str, str]] = []   # (command, operand, name, "unit"|"weapon"|"pilot")
+        self.groups: list[tuple[int, str, bool]] = []       # (command, the package's group, leaving): numbered by the host
 
     def op(self, opcode: int, *args) -> None:
         """An instruction; an operand that names a new unit or weapon is numbered by the host."""
@@ -400,9 +441,17 @@ class Builder:
         elif kind == "leave":
             self.op(0x3D46, _int(value, "leave", 0, 360), 1)
         elif kind == "leave_group":
-            self.op(0x3D46, 500 + _int(value, "leave_group", 0, 99), 1)
+            if isinstance(value, str):             # the package's own group (deployments)
+                self.groups.append((len(self.commands), value, True))
+                self.op(0x3D46, NUMBER, 1)
+            else:
+                self.op(0x3D46, 500 + _int(value, "leave_group", 0, 99), 1)
         elif kind == "deploy":
-            self.op(0x3D45, _int(value, "deploy", 0, 99))
+            if isinstance(value, str):
+                self.groups.append((len(self.commands), value, False))
+                self.op(0x3D45, NUMBER)
+            else:
+                self.op(0x3D45, _int(value, "deploy", 0, 99))
         elif kind == "focus":
             self.op(0x3D55, _int(value, "focus", 0, 360), 30)
         elif kind == "bgm":
@@ -426,10 +475,11 @@ def compile_story(document: dict, spec: dict | None = None, lines: dict | None =
     _LINES = lines or {}
     if not isinstance(document, dict) or document.get("schema") != SCHEMA:
         raise StoryError(f"schema 要是 {SCHEMA}")
-    unknown = set(document) - {"schema", "events", "stage_info"}
+    unknown = set(document) - {"schema", "events", "stage_info", "deployments"}
     if unknown:
         raise StoryError(f"不认识的字段 {sorted(unknown)}")
     spec = spec or layout()
+    groups = {g["id"]: g for g in deployments(document.get("deployments", []))}
     texts: list[dict] = []
     events, ids = [], set()
     for row in document.get("events", []):
@@ -466,6 +516,13 @@ def compile_story(document: dict, spec: dict | None = None, lines: dict | None =
             for command, operand, value, kind in builder.named:
                 at = offsets[command] + 1 + operand
                 numbers.append([at, value, kind])
+            group_refs = []
+            for command, group, leaving in builder.groups:
+                if group not in groups:
+                    raise StoryError(f"deploy／leave_group 的 {group} 不在 deployments 里")
+                if groups[group]["scene"] != row.get("scene"):
+                    raise StoryError(f"增援组 {group} 是第 {groups[group]['scene']} 关的，事件在第 {row.get('scene')} 关")
+                group_refs.append([offsets[command] + 1, group, leaving])
             refs = []
             for command in builder.refs:
                 at = offsets[command] + 1
@@ -478,7 +535,7 @@ def compile_story(document: dict, spec: dict | None = None, lines: dict | None =
                            "set_flags": flags(row.get("set_flags", []), "set_flags"), "fired": list(cond.get("fired", [])),
                            "not_fired": list(cond.get("not_fired", [])), "repeat": repeat,
                            "words": words, "texts": refs, "levels": levels, "crew": builder.crew, **({"builds": builder.builds} if builder.builds else {}),
-                           **({"numbers": numbers} if numbers else {}),
+                           **({"numbers": numbers} if numbers else {}), **({"groups": group_refs} if group_refs else {}),
                            "listing": [f"{e['opcode']} {','.join(map(str, e['operands']))}".rstrip() for e in assembled["listing"]]})
         except (StoryError, ValueError, KeyError, TypeError) as error:
             raise StoryError(f"事件 {where}：{error}") from None
@@ -487,7 +544,8 @@ def compile_story(document: dict, spec: dict | None = None, lines: dict | None =
             if other not in ids:
                 raise StoryError(f"事件 {event['id']}：fired／not_fired 引用了不存在的事件 {other}")
     info = stage_info(document["stage_info"]) if "stage_info" in document else []
-    return {"schema": IMAGE_SCHEMA, "events": events, "texts": texts, **({"stage_info": info} if info else {})}
+    return {"schema": IMAGE_SCHEMA, "events": events, "texts": texts, **({"stage_info": info} if info else {}),
+            **({"deployments": list(groups.values())} if groups else {})}
 
 
 def compile_file(source: Path, out: Path) -> dict:

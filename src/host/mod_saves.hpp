@@ -43,61 +43,80 @@ inline constexpr const char* schema="srw64.mod-units-state.v2";
 // suspend's player bank (800936A0's first pass).
 // And 100 pilot records, +0 the character (0xFFFF none): the intermission's 12 bytes each
 // (80092498's), the suspend's player bank 0x14 each (80092E78 writes them after the units).
-struct Layout { uint32_t units,unit_stride,weapons,pilots,pilot_stride; };
+// The suspend has two more banks, the enemy's and the third party's: 80093278 runs three
+// passes, side k reading its own pools (units 8016A210 + k x 0x2DF0, pilots 80172F40 +
+// k x 0x1DB0, weapons 80178F80 + k x 0x6270) and writing 30 units, 30 pilots and 150 weapon
+// slots of each other side in the same formats (new-unit-ids.md §10.7).
+struct Bank { uint32_t units; unsigned unit_count; uint32_t unit_stride,pilots; unsigned pilot_count; uint32_t pilot_stride,weapons; unsigned weapon_count; };
 inline constexpr unsigned unit_records=140, weapon_slots=700, weapon_stride=6, pilot_records=100;
-inline Layout layout(story_mod::Record kind) {
-    return kind==story_mod::Record::slot?Layout{0x801C2710,0x10,0x801C3480,0x801C2FD0,0xC}:Layout{0x800FC2A0,0x14,0x800FD560,0x800FCD90,0x14};
+inline std::vector<Bank> banks(story_mod::Record kind) {
+    if(kind==story_mod::Record::slot)return {{0x801C2710,unit_records,0x10,0x801C2FD0,pilot_records,0xC,0x801C3480,weapon_slots}};
+    return {{0x800FC2A0,unit_records,0x14,0x800FCD90,pilot_records,0x14,0x800FD560,weapon_slots},
+            {0x800FE6F4,30,0x14,0x800FEBA4,30,0x14,0x800FF054,150},     // the enemy's
+            {0x800FE94C,30,0x14,0x800FEDFC,30,0x14,0x800FF3D8,150}};    // the third party's
 }
+// A pilot record keeps the character in nine bits (800923B4, 80092E78 mask & 0x1FF) and flags
+// above them (0x200, 0x400: the suspend's enemy bank has 0x200 on every one): the character
+// is the low nine bits, and a new number goes in under the same flags.
+inline constexpr unsigned pilot_bits=0x1FF;
 inline std::vector<std::pair<uint32_t,unsigned>> record_pilots(const uint8_t* ram,story_mod::Record kind) {
     std::vector<std::pair<uint32_t,unsigned>> out;
-    const auto l=layout(kind);
-    for(unsigned i=0;i<pilot_records;++i) {
-        const uint32_t at=l.pilots+i*l.pilot_stride;
-        const unsigned number=guest::read(ram,at,2);
-        if(number!=0xFFFF)out.emplace_back(at,number);
-    }
+    for(const auto& b:banks(kind))
+        for(unsigned i=0;i<b.pilot_count;++i) {
+            const uint32_t at=b.pilots+i*b.pilot_stride;
+            const unsigned word=guest::read(ram,at,2);
+            if(word!=0xFFFF)out.emplace_back(at,word&pilot_bits);
+        }
     return out;
 }
-// Our characters in use (the pilot table, 100 × 0x4C at 80172F40: +0 in use, +2 the character).
-inline std::set<unsigned> pilots(const uint8_t* ram) {
+// Our characters in use (the pilot table, 100 × 0x4C at 80172F40: +0 in use, +2 the character);
+// with `sides` 3 the enemy's and the third party's tables after it too.
+inline constexpr uint32_t pilot_pool=0x80172F40, pilot_side=0x1DB0;
+inline std::set<unsigned> pilots(const uint8_t* ram,unsigned sides=1) {
     std::set<unsigned> out;
-    for(uint32_t i=0;i<pilot_records;++i) {
-        const uint32_t at=0x80172F40+i*0x4C;
-        if(guest::read(ram,at,1))out.insert(guest::read(ram,at+2,2));
-    }
+    for(uint32_t side=0;side<sides;++side)
+        for(uint32_t i=0;i<pilot_records;++i) {
+            const uint32_t at=pilot_pool+side*pilot_side+i*0x4C;
+            if(guest::read(ram,at,1))out.insert(guest::read(ram,at+2,2));
+        }
     return out;
 }
 // The record's numbers: each unit or weapon record's address and number.
 inline std::vector<std::pair<uint32_t,unsigned>> record_units(const uint8_t* ram,story_mod::Record kind) {
     std::vector<std::pair<uint32_t,unsigned>> out;
-    const auto l=layout(kind);
-    for(unsigned i=0;i<unit_records;++i) {
-        const uint32_t at=l.units+i*l.unit_stride;
-        const unsigned word=guest::read(ram,at,2);
-        if(word!=0xFFFF)out.emplace_back(at,word>>6);
-    }
+    for(const auto& b:banks(kind))
+        for(unsigned i=0;i<b.unit_count;++i) {
+            const uint32_t at=b.units+i*b.unit_stride;
+            const unsigned word=guest::read(ram,at,2);
+            if(word!=0xFFFF)out.emplace_back(at,word>>6);
+        }
     return out;
 }
 inline std::vector<std::pair<uint32_t,unsigned>> record_weapons(const uint8_t* ram,story_mod::Record kind) {
     std::vector<std::pair<uint32_t,unsigned>> out;
-    const auto l=layout(kind);
-    for(unsigned i=0;i<weapon_slots;++i) {
-        const uint32_t at=l.weapons+i*weapon_stride;
-        const unsigned number=guest::read(ram,at,2);
-        if(number!=0xFFFF)out.emplace_back(at,number);
-    }
+    for(const auto& b:banks(kind))
+        for(unsigned i=0;i<b.weapon_count;++i) {
+            const uint32_t at=b.weapons+i*weapon_stride;
+            const unsigned number=guest::read(ram,at,2);
+            if(number!=0xFFFF)out.emplace_back(at,number);
+        }
     return out;
 }
 
-// The unit numbers of the player's instances in use (+0 non-zero, +2 the unit).
-inline std::set<unsigned> units(const uint8_t* ram) {
+// The unit numbers of the player's instances in use (+0 non-zero, +2 the unit); with `sides`
+// 3 the enemy's and the third party's pools after it too.
+inline constexpr uint32_t pool_side=0x2DF0;
+inline std::set<unsigned> units(const uint8_t* ram,unsigned sides=1) {
     std::set<unsigned> out;
-    for(uint32_t i=0;i<pool_count;++i) {
-        const uint32_t at=pool+i*pool_size;
-        if(guest::read(ram,at,1))out.insert(guest::read(ram,at+2,2));
-    }
+    for(uint32_t side=0;side<sides;++side)
+        for(uint32_t i=0;i<pool_count;++i) {
+            const uint32_t at=pool+side*pool_side+i*pool_size;
+            if(guest::read(ram,at,1))out.insert(guest::read(ram,at+2,2));
+        }
     return out;
 }
+// How many sides a record keeps: the suspend all three, the intermission only ours.
+inline unsigned sides(story_mod::Record kind){return kind==story_mod::Record::slot?1:3;}
 inline bool new_unit(unsigned unit){return unit>=table_window::rom_units;}
 inline fs::path sidecar(uint64_t hash) {
     char name[32];std::snprintf(name,sizeof name,"%016llx.json",static_cast<unsigned long long>(hash));
@@ -136,7 +155,7 @@ inline void serialized(const uint8_t* ram,bool lasting,story_mod::Record kind) {
     const auto numbers=mod_ids::current();
     json packages=json::object();
     json added=json::array(),keys=json::object(),weapon_keys=json::object(),pilot_keys=json::object();
-    for(const auto unit:units(ram))
+    for(const auto unit:units(ram,sides(kind)))
         if(const auto o=owners.find(unit);o!=owners.end()) {
             packages[o->second.package]=o->second.name;added.push_back(unit);
             if(const auto k=numbers->unit_keys.find(unit);k!=numbers->unit_keys.end())keys[std::to_string(unit)]=k->second;
@@ -207,8 +226,9 @@ inline Undo remap(uint8_t* ram,story_mod::Record kind) {
     unsigned changed_units=0,changed_weapons=0,changed_pilots=0;
     for(const auto& [at,pilot]:record_pilots(ram,kind))
         if(const auto m=people.find(pilot);m!=people.end()) {
-            undo.emplace_back(at,uint16_t(pilot));
-            guest::write16(ram,at,uint16_t(m->second));++changed_pilots;
+            const uint16_t word=uint16_t(guest::read(ram,at,2));
+            undo.emplace_back(at,word);
+            guest::write16(ram,at,uint16_t((word&~pilot_bits)|(m->second&pilot_bits)));++changed_pilots;
         }
     for(const auto& [at,unit]:record_units(ram,kind))
         if(const auto m=units.find(unit);m!=units.end()) {
@@ -260,7 +280,7 @@ inline void restored(const uint8_t* ram,story_mod::Record kind) {
             keys[n]=key.get<std::string>();
         }
     json missing=json::array();
-    for(const auto unit:units(ram)) {
+    for(const auto unit:units(ram,sides(kind))) {
         if(!new_unit(unit))continue;
         bool fine=owners.count(unit);
         if(const auto k=keys.find(unit);fine && k!=keys.end()) {
@@ -281,7 +301,7 @@ inline void restored(const uint8_t* ram,story_mod::Record kind) {
         }
     const auto pilot_owners=mod_data::pilot_owners();
     json missing_pilots=json::array();
-    for(const auto pilot:pilots(ram)) {
+    for(const auto pilot:pilots(ram,sides(kind))) {
         if(pilot<table_window::rom_pilots)continue;
         bool fine=pilot_owners.count(pilot);
         if(const auto k=pilot_keys.find(pilot);fine && k!=pilot_keys.end()) {

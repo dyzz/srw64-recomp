@@ -1,6 +1,7 @@
 #include <cstdio>
 #include "game_hooks.hpp"
 #include "battle_viewer.hpp"
+#include "battle_speaker.hpp"
 #include "music.hpp"
 #include "save_page.hpp"
 #include "mod_combine.hpp"
@@ -296,6 +297,31 @@ extern "C" void load_000AB160_func_801FC83C(uint8_t* rdram, recomp_context* ctx)
         *ctx = keep;
     }
     srw64_original_battle_spend(rdram, ctx);
+}
+// 801C6F14(slot): the battle overlay shows the slot's current quote (8008FFAC with its text
+// id). Its speaker digits name the voice part's character; a package's new character that
+// borrows that voice is shown in its place for this call (battle_speaker.hpp): the name
+// through srw64_name_record, the face through 8008F970.
+extern "C" void load_00121560_func_801C6F14(uint8_t* rdram, recomp_context* ctx) {
+    namespace speaker = srw64::battle_speaker;
+    const uint32_t slot = uint32_t(ctx->r4);
+    std::optional<std::pair<unsigned, unsigned>> swap;
+    if (const unsigned character = speaker::character_of_slot(rdram, slot)) {
+        const unsigned index = srw64::guest::read(rdram, slot + 0x22, 1);
+        const uint16_t text = uint16_t(srw64::guest::read(rdram, slot + 2 * index, 2));
+        if (text != 0xFFFF) {
+            auto c = *ctx; c.r29 = int32_t(uint32_t(ctx->r29) - 0x100); c.r4 = text;
+            resident_func_8008CE54(rdram, &c);   // the record's speaker digits
+            swap = speaker::swap(rdram, unsigned(int16_t(c.r2)), character);
+        }
+    }
+    if (swap) speaker::active() = {int(swap->first), int(swap->second)};
+    srw64_original_battle_quote_show(rdram, ctx);
+    speaker::active() = {};
+}
+extern "C" void resident_func_8008F970(uint8_t* rdram, recomp_context* ctx) {
+    ctx->r5 = int32_t(int16_t(srw64::battle_speaker::shown(unsigned(int16_t(ctx->r5)))));
+    srw64_original_dialogue_portrait(rdram, ctx);
 }
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     srw64_original_frame_boundary(ram,ctx);
@@ -782,6 +808,7 @@ uint32_t srw64_resource_limit(void) {
 uint32_t srw64_name_record(uint32_t kind, uint32_t number) {
     static constexpr uint32_t bases[] = {527, 1370, 2699, 4382, 4743};
     if (kind > 4) return number;
+    if (kind == 3 && number < 0x10000) number = srw64::battle_speaker::shown(number);   // a borrowed voice's quote
     if (number >= 0x10000) return bases[kind] + number;
     return srw64::table_window::name_record(srw64::table_window::NameKind(kind), number);
 }

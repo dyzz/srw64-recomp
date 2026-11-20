@@ -35,6 +35,17 @@ class MiniStageCompilerTests(unittest.TestCase):
             with self.subTest(bad=bad), self.assertRaises(ValueError):
                 compile_stage({**base, "initial_resources": bad})
 
+    def test_named_deployments(self):
+        # A package's new unit or character by name: NUMBER in the record, its place in "numbers".
+        base = {"schema": SCHEMA, "events": [{"type": 12, "commands": []}]}
+        image = compile_stage({**base, "deployments": [{"group": 0, "x": 3, "y": 4, "actor": 289, "unit": 21, "faction": 1},
+                                                       {"group": 1, "x": 5, "y": 6, "actor": "@rival", "unit": "other@zaku", "faction": 1}]})
+        self.assertEqual(sorted(image["numbers"]), [[28 + 6, "@rival", "pilot"], [28 + 10, "other@zaku", "unit"]])
+        self.assertEqual(image["deployments"][1]["actor"], 0xFFFD)
+        self.assertNotIn("numbers", compile_stage(base))
+        with self.assertRaises(ValueError):
+            compile_stage({**base, "deployments": [{"group": 0, "actor": "rival", "unit": 21}]})
+
     def test_route_passes_through_checked(self):
         base = {"schema": SCHEMA, "events": [{"type": 12, "commands": []}]}
         self.assertEqual(compile_stage({**base, "route": 2})["route"], 2)

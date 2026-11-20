@@ -8,6 +8,7 @@
 #include "stb/stb_image_write.h"
 #include "mod_data.hpp"
 #include "mod_forms.hpp"
+#include "battle_speaker.hpp"
 #include <cstdio>
 #include <cstdlib>
 #include <iterator>
@@ -484,6 +485,39 @@ int main(int argc,char** argv) {
         json big=people;big["pilots"]["kai"]["portrait"]["image"]="art/stand.png";
         mod_units::Bytes bb;mod_units::Taken bt;
         check(!mod_units::parse(big,"pkg",mod_units::assign({{"pkg",big}}),rom,{},bb,bt,pack).empty(),"a portrait must be 96x96");
+    }
+
+    {
+        // Who says a battle quote (battle_speaker.hpp): the slot's participant, shown for the
+        // record's speaker when it is a new character with that speaker's voice part.
+        namespace bs=srw64::battle_speaker;
+        std::vector<uint8_t> ram(0x800000);
+        const auto w16=[&](uint32_t a,unsigned v){srw64::guest::write16(ram.data(),a,uint16_t(v));};
+        const auto w32=[&](uint32_t a,uint32_t v){srw64::guest::write32(ram.data(),a,v);};
+        w16(bs::attacker_index,1);w16(bs::defender_index,0);
+        w32(bs::attacker_pilot,0x80300000);w16(0x80300002,433);   // the rival attacks
+        w32(bs::defender_pilot,0x80300100);w16(0x80300102,166);   // Alan defends
+        w16(tw::pilot_voice_copy+2*298,120);w16(tw::pilot_voice_copy+2*433,120);w16(tw::pilot_voice_copy+2*166,30);
+        w16(tw::pilot_voice_copy+2*434,30);w16(tw::pilot_voice_copy+2*435,0xFFFF);
+        w16(bs::records+bs::record_size+2,120);w16(bs::records+2,30);   // each record's voice part
+        check(bs::character_of_slot(ram.data(),bs::records+bs::record_size+bs::attack_slot)==433,"the attacker's slot");
+        check(bs::character_of_slot(ram.data(),bs::records+bs::hit_slot)==166,"the defender's slot");
+        w16(bs::attacker_index,0);w16(bs::defender_index,1);   // Alan's counter: the indices swap, the pointers stay
+        check(bs::character_of_slot(ram.data(),bs::records+bs::record_size+bs::hit_slot)==433,"the rival hit by the counter: still the rival");
+        w16(tw::pilot_voice_copy+2*433,30);w16(bs::records+bs::record_size+2,30);   // both of one voice part: the indices decide
+        check(bs::character_of_slot(ram.data(),bs::records+bs::record_size+bs::hit_slot)==166,"one voice part: by the index words");
+        w16(tw::pilot_voice_copy+2*433,120);w16(bs::records+bs::record_size+2,120);w16(bs::attacker_index,1);w16(bs::defender_index,0);
+        check(!bs::character_of_slot(ram.data(),bs::records+0x30) && !bs::character_of_slot(ram.data(),0x80300000),"no participant's slot");
+        const auto swap=bs::swap(ram.data(),298,433);
+        check(swap && swap->first==298 && swap->second==433,"the rival's quote, a ムゲ兵 record: shown as the rival");
+        check(!bs::swap(ram.data(),166,166) && !bs::swap(ram.data(),298,166),"Alan's own lines stay his");
+        check(!bs::swap(ram.data(),166,433),"another voice part's line (a two-person exchange) keeps its speaker");
+        check(!bs::swap(ram.data(),4,273),"the original's copies (Domon 273) stay as they are");
+        check(!bs::swap(ram.data(),435,435) && !bs::swap(ram.data(),166,435),"no voice part: nothing to borrow");
+        bs::active()={298,433};
+        check(bs::shown(298)==433 && bs::shown(166)==166,"during the call");
+        bs::active()={};
+        check(bs::shown(298)==298,"and not after it");
     }
 
     if(failures)std::fprintf(stderr,"%d failures\n",failures);

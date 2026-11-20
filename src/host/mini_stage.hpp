@@ -11,6 +11,7 @@
 #include <fstream>
 #include <iterator>
 #include <mutex>
+#include <functional>
 #include <optional>
 #include <stdexcept>
 #include <string>
@@ -136,7 +137,14 @@ inline std::vector<uint8_t> unhex(const std::string& hex) {
     return out;
 }
 
-inline Image parse(const nlohmann::json& document) {
+// New units and characters a stage's deployments name (mini_stage.py "numbers": the place in
+// the deployment bytes, the name, "unit" or "pilot"): settled by the enabled packages, a
+// campaign's names against its own package (host.cpp sets this to mod_ids). Without it, or for
+// a name no enabled package gives, the image is refused.
+using NameResolver=std::function<std::optional<unsigned>(const nlohmann::json& name,const std::string& package,bool unit)>;
+inline NameResolver& name_resolver(){static NameResolver value;return value;}
+
+inline Image parse(const nlohmann::json& document,const std::string& package={}) {
     if(document.value("schema","")!="srw64.mini-stage-image.v1")throw std::runtime_error("mini stage image: unsupported schema");
     Image image;
     image.name=document.value("name","mini-stage");
@@ -144,6 +152,14 @@ inline Image parse(const nlohmann::json& document) {
     image.aux=unhex(document.at("aux_hex").get<std::string>());
     if(image.events.empty() || image.events.size()>event_limit)throw std::runtime_error("mini stage image: event bytes out of range");
     if(image.aux.size()<4 || image.aux.size()>aux_limit)throw std::runtime_error("mini stage image: deployment bytes out of range");
+    for(const auto& ref:document.value("numbers",nlohmann::json::array())) {
+        const size_t at=ref.at(0).get<size_t>();
+        const bool unit=ref.at(2).get<std::string>()=="unit";
+        if(at+2>image.aux.size() || image.aux[at]!=0xFF || image.aux[at+1]!=0xFD)throw std::runtime_error("mini stage image: a named deployment field out of place");
+        const auto found=name_resolver()?name_resolver()(ref.at(1),package,unit):std::nullopt;
+        if(!found)throw std::runtime_error("mini stage: "+ref.at(1).dump()+" is no enabled package's new "+(unit?"unit":"character"));
+        image.aux[at]=uint8_t(*found>>8);image.aux[at+1]=uint8_t(*found);
+    }
     for(const auto& event:document.at("events")) {
         const uint32_t offset=event.at("offset").get<uint32_t>(), size=event.at("size").get<uint32_t>();
         if(offset%4 || offset+size>image.events.size())throw std::runtime_error("mini stage image: event outside the block");
@@ -209,7 +225,7 @@ inline std::pair<campaign::Info,std::map<uint32_t,Image>> parse_campaign(const n
         const uint32_t scene=stage.at("scene").get<uint32_t>();
         if(!campaign::borrowable(scene))throw std::runtime_error("campaign: scene "+std::to_string(scene)+" cannot be borrowed");
         if(stages.count(scene))throw std::runtime_error("campaign: two stages borrow scene "+std::to_string(scene));
-        auto image=parse(stage.at("image"));
+        auto image=parse(stage.at("image"),info.id);
         image.slot=scene;
         stages.emplace(scene,std::move(image));
         info.keys[scene]=stage.at("key").get<std::string>();

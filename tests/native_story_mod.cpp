@@ -83,6 +83,49 @@ int main(int argc,char** argv) {
     const auto& joins=master.events[2].words;
     check(std::vector<uint16_t>(joins.end()-6,joins.end())==std::vector<uint16_t>{0x3D5A,18,0,27,500,0xFFFF},"3D5A 18,0,27,500 at its end");
 
+    // --- A package's own deployment groups ---------------------------------------------
+    {
+        auto with=image;
+        with["deployments"]=json::parse(R"([{"id":"wave","scene":129,"records":[{"x":10,"y":5,"pilot":289,"unit":21,"side":1,"level":2,"upgrade":1},
+            {"x":11,"y":5,"pilot":290,"unit":22,"side":4,"level":0,"upgrade":0}]}])");
+        with["events"].push_back(event("w","turn",{1,1},{0x3D45,0xFFFD,0x3D46,0xFFFD,1,0xFFFF}));
+        with["events"][1]["groups"]=json::parse(R"([[1,"wave",false],[3,"wave",true]])");
+        story::Library library;
+        story::add_image(library,"p",with);
+        check(library.deployments.size()==1 && library.deployments[0].records.size()==2 && library.events[1].groups.size()==2,"a package's group and its references");
+        check(library.deployments[0].records[0]==std::array<uint16_t,14>{0,10,5,289,2,21,1,0,0,0xFFFF,1,0,0,0},"the record as the ROM's");
+        auto bad=with;bad["events"][1]["groups"]=json::parse(R"([[1,"nope",false]])");check(!fails(bad).empty(),"an unknown group");
+        bad=with;bad["deployments"][0]["records"][0]["side"]=3;check(!fails(bad).empty(),"side 3");
+        bad=with;bad["deployments"][0]["scene"]=130;check(!fails(bad).empty(),"a group of another scene");
+        // The scene's block: groups 0, 1 and 3, then 999.
+        auto& st=story::state();
+        const auto saved=st.library;st.library=library;st.scene=129;st.appended.clear();st.appended_at=0;
+        const uint32_t block=0x80199400;
+        write32(ram.data(),e,block);
+        const auto rom=[&]{for(unsigned i=0;i<0x2000;i+=2)write16(ram.data(),block+i,0x5555);
+            const uint16_t groups[]={0,1,3};
+            for(unsigned k=0;k<3;++k)write16(ram.data(),block+k*28,groups[k]);
+            write16(ram.data(),block+3*28,999);};
+        rom();
+        story::assign_groups(ram.data());
+        check(st.groups==std::map<std::string,unsigned>{{"p/wave",2u}},"the first group the block leaves free");
+        check(read(ram.data(),block+3*28,2)==2 && read(ram.data(),block+3*28+6,2)==289 && read(ram.data(),block+4*28,2)==2 &&
+              read(ram.data(),block+4*28+20,2)==4 && read(ram.data(),block+5*28,2)==999,"appended before a new 999");
+        story::assign_groups(ram.data());
+        check(st.groups==std::map<std::string,unsigned>{{"p/wave",2u}} && read(ram.data(),block+5*28,2)==999 && read(ram.data(),block+6*28,2)==0x5555,"registered again: known as ours, not twice");
+        rom();write16(ram.data(),block+2*28,2);   // copied again, its third record now group 2: 0, 1, 2 used
+        story::assign_groups(ram.data());
+        check(st.groups==std::map<std::string,unsigned>{{"p/wave",3u}},"a fresh copy numbered afresh");
+        story::place(ram.data(),library.events[1]);
+        check(read(ram.data(),story::region+(story::header_words+1)*2,2)==3 && read(ram.data(),story::region+(story::header_words+3)*2,2)==503,"3D45 3, 3D46 503");
+        write16(ram.data(),block,0x5555);for(unsigned i=0;i<0x2000;i+=28)write16(ram.data(),block+i,7);
+        st.appended.clear();story::assign_groups(ram.data());
+        check(st.groups.empty(),"no 999: nothing appended");
+        story::View none;
+        check(!story::eligible(library.events[1],{},none),"an event whose group found no room does not fire");
+        st.library=saved;st.groups.clear();st.appended.clear();st.appended_at=0;
+    }
+
     // --- Triggers --------------------------------------------------------------------
     auto& s=story::state();
     s.library=master;

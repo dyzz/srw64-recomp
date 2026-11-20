@@ -135,6 +135,7 @@ The roster is checked as well because the original story or another event may ta
 | `{"remove": {"pilot": 18, "unit": 27}}` | Take them off the roster (the unit must have left the map first) |
 | `{"leave": 18}` | The character's unit leaves the map (not shot down) |
 | `{"leave_group": 11}`, `{"deploy": 11}` | One of the stage's original deployment groups leaves or arrives |
+| `{"deploy": "rival"}`, `{"leave_group": "rival"}` | The package's own reinforcement group (`deployments`, below) arrives or leaves |
 | `{"set": {"131": 3}}` | Set story variables |
 | `{"if": {"var": 128, "is": 2}, "then": [...], "else": [...]}` | Branch on a story variable |
 | `{"focus": 18}` | Move the camera to the character |
@@ -146,6 +147,27 @@ The roster is checked as well because the original story or another event may ta
 **Lines.** `text` must have `ja`. Other languages left out show the Japanese (Traditional Chinese falls back to Simplified). A line holds up to 200 characters and the reader pages it itself, so do not write `<STOP>`. Write the quotation marks yourself, as the original lines have them: 「」 in Japanese and Traditional Chinese, “ ” in Simplified Chinese and English. `mode` is how the original dialogue shows the line: on the map usually 0 for the player and 2 for the enemy, and on the world map 0 and 1 alternate top and bottom.
 
 **The level on joining** follows the original rule, the stage's base level (from the average of the player's top 15). `"level": {"offset": 3}` adds to it or takes from it, and `"level": {"like": 4}` gives character 4's level at the moment of joining. SP, abilities, skills and spirits come from the original by level. To change the base values use `data/pilots.json` (enemy characters often have no SP or spirits; the example adds SP).
+
+## The package's own reinforcements
+
+A story file's top level can have `deployments`: deployment groups of the package's own (enemies can use the package's new units and characters too). Events bring one in with `{"deploy": "<id>"}` and take it off with `{"leave_group": "<id>"}`:
+
+```json
+"deployments": [
+  { "id": "rival", "scene": 78, "units": [
+    { "x": 10, "y": 9, "pilot": "@rival", "unit": "@rz", "level": 1 },
+    { "x": 12, "y": 10, "pilot": 289, "unit": 21, "side": "enemy" } ] }
+]
+```
+
+```json
+{ "id": "rival-comes", "scene": 78, "when": { "turn": { "turn": 2, "side": "player" } },
+  "do": [ { "deploy": "rival" } ] }
+```
+
+- `id` uses lowercase letters, digits and `- _ .`; the events using it must be in the same stage (`scene`). 1 to 30 units a group.
+- Each unit has `x`, `y`, `pilot` (a number or `@new character`) and `unit` (a number or `@new unit`); optionally `side` (`enemy`, the default; `third`, a third party; `third_hostile`, a third party that also attacks you; `player`), `level` (0 to 20 over the stage's base level) and `upgrade` (upgrade step 0 to 5).
+- The game picks the group number from those the stage leaves unused; when there is no room the group is left out and the events naming it do not fire.
 
 ## Hidden elements on the stage information page
 

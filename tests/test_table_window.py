@@ -79,8 +79,8 @@ class TableWindowTest(unittest.TestCase):
         # the spirits'), but for reads through a base already moved in the same function.
         maps = {(h["function"], int(h["address"], 16)) for h in pilot_hits
                 if h["table"] in ("pilot_records_map", "spirit_map") and h["value"] in ("800CA9C4", "800CA6F4")}
-        maps -= {("srw64_original_demo_battle_fill", 0x8009C480), ("load_00121560_func_801C6F14", 0x801C6FAC),
-                 ("load_00121560_func_801C6F14", 0x801C6FB0)}
+        maps -= {("srw64_original_demo_battle_fill", 0x8009C480), ("srw64_original_battle_quote_show", 0x801C6FAC),
+                 ("srw64_original_battle_quote_show", 0x801C6FB0)}
         self.assertEqual(maps, set(self.generate.PILOT_MAP_READERS))
         # The form families (mod_forms.hpp): the list's one walk and every read of the pointers,
         # but for 801E174C, which reads through 801E170C's moved base.

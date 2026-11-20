@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import functools
 import json
+import re
 from pathlib import Path
 import sys
 
@@ -35,6 +36,12 @@ RECORD_FIELDS = [("group", 0, 2), ("x", 2, 2), ("y", 4, 2), ("actor", 6, 2), ("b
                  ("unit", 10, 2), ("upgrade", 12, 2), ("raw14", 14, 2), ("raw16", 16, 2), ("raw18", 18, 2),
                  ("faction", 20, 2), ("behavior", 22, 2), ("extra", 24, 2), ("raw26", 26, 2)]
 RECORDS = ROOT / "assets/original-data/records"
+# A package's new unit or character by name in a deployment's "unit" or "actor": "@name" (the
+# campaign's own package) or "package@name". The record keeps NUMBER there and the image lists
+# the place ("numbers"); the host settles it with the enabled packages (src/host/mini_stage.hpp).
+NAME = re.compile(r"([a-z0-9][a-z0-9._-]*)?@[a-z0-9._-]{1,40}")
+NUMBER = 0xFFFD
+NAMED_FIELDS = {"unit": (10, "unit"), "actor": (6, "pilot")}
 
 
 @functools.cache
@@ -146,7 +153,16 @@ def compile_stage(document: dict, spec: dict | None = None) -> dict:
     records = []
     if "deployments_from" in document:
         records += parse_block(bytes.fromhex(catalog_record("stage_auxiliary", document["deployments_from"])["raw_hex"]))
-    records += [encode_record(r) for r in document.get("deployments", [])]
+    numbers = []
+    for spec_row in document.get("deployments", []):
+        row = dict(spec_row)
+        for field, (offset, kind) in NAMED_FIELDS.items():
+            if isinstance(row.get(field), str):
+                if not NAME.fullmatch(row[field]):
+                    raise ValueError(f"Deployment {field} {row[field]!r} is neither a number nor a new {kind} by name (@name)")
+                numbers.append([len(records) * RECORD_BYTES + offset, row[field], kind])
+                row[field] = NUMBER
+        records.append(encode_record(row))
     aux = b"".join(records) + TERMINATOR.to_bytes(2, "big") + b"\0\0"
     if len(aux) > AUX_LIMIT:
         raise ValueError(f"Deployment block takes {len(aux)} bytes; the buffer holds {AUX_LIMIT}")
@@ -188,6 +204,7 @@ def compile_stage(document: dict, spec: dict | None = None) -> dict:
             "event_block": EVENT_BLOCK, "aux_block": AUX_BLOCK,
             "route": route, "story_vars": {str(int(k)): v for k, v in story_vars.items()}, "last_choice": last_choice,
             "initial_resources": initial_resources, "events": events, "events_hex": blob.hex().upper(), "aux_hex": aux.hex().upper(),
+            **({"numbers": numbers} if numbers else {}),
             "deployments": [decode_record(r) for r in records], "source": document,
             "scope": "Per-scene event and deployment buffers at registration, plus optional one-time unit resources at initial map idle; ROM and other scenes are untouched."}
 
