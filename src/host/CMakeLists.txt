@@ -216,7 +216,7 @@ if(SRW64_ENABLE_RT64)
         target_link_libraries(srw64-gfx-host PRIVATE dbghelp synchronization)
         # Each adapter's D3D12 support and the Vulkan loader's, into console.log (gpu_report.hpp).
         target_sources(srw64-gfx-host PRIVATE windows/gpu_report_windows.cpp)
-        # Marchwind64-gl.exe in its place on a PC RT64 cannot draw on (renderer_fallback.hpp).
+        # The GL renderer in RT64's place on a PC RT64 cannot draw on (renderer_fallback.hpp).
         target_sources(srw64-gfx-host PRIVATE windows/renderer_fallback_windows.cpp)
     endif()
     # The update check: the website's /latest.json through the system's HTTP (docs/native/update-check.md),
@@ -296,14 +296,30 @@ if(SRW64_ENABLE_RT64)
     endif()
     if(SRW64_HOST_TARGET STREQUAL "srw64-gfx-host")
         target_sources(${SRW64_HOST_TARGET} PRIVATE game_hooks.cpp)
-        # The PS Vita's GL renderer, chosen at run time with SRW64_RENDERER=gl (graphics.cpp),
-        # on the Mac only, for developing the consoles' renderer: the Windows SDK's GL/gl.h needs
-        # <windows.h> first and has no GL/glext.h, and the Linux package may not link libOpenGL.
+        # The consoles' GL renderer (src/gl) beside RT64, chosen at run time (graphics.cpp
+        # gl_mode, renderer_mode.hpp). On Windows over ANGLE: the fallback for PCs RT64 cannot
+        # draw on (renderer_fallback.hpp, docs/design/windows-gl-fallback.md). On the Mac with
+        # SRW64_RENDERER=gl, for developing the consoles' renderer. Not on Linux, whose package
+        # may not link libOpenGL.
+        set(SRW64_GL_SOURCES "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp"
+            dialogue_gl.cpp native_gl.cpp hd_replace.cpp "${SRW64_ROOT}/src/native/ui/ui_renderer_gl.cpp")
         if(OpenGL_FOUND AND APPLE)
-            target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp" dialogue_gl.cpp native_gl.cpp hd_replace.cpp
-                "${SRW64_ROOT}/src/native/ui/ui_renderer_gl.cpp")
+            target_sources(${SRW64_HOST_TARGET} PRIVATE ${SRW64_GL_SOURCES})
             target_compile_definitions(${SRW64_HOST_TARGET} PRIVATE SRW64_GL_RENDERER)
             target_link_libraries(${SRW64_HOST_TARGET} PRIVATE OpenGL::GL)
+        elseif(WIN32)
+            # vcpkg's angle port; its targets name no include directory (include/GLES3 there).
+            # libGLESv2.dll loads only when the GL renderer first calls it (delay-loaded), so a
+            # PC on RT64 never maps it; SDL loads libEGL.dll itself.
+            find_package(unofficial-angle CONFIG REQUIRED)
+            find_path(SRW64_ANGLE_INCLUDE GLES3/gl3.h REQUIRED)
+            target_sources(${SRW64_HOST_TARGET} PRIVATE ${SRW64_GL_SOURCES})
+            target_compile_definitions(${SRW64_HOST_TARGET} PRIVATE SRW64_GL_RENDERER)
+            target_include_directories(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ANGLE_INCLUDE}")
+            target_link_libraries(${SRW64_HOST_TARGET} PRIVATE unofficial::angle::libGLESv2 delayimp)
+            target_link_options(${SRW64_HOST_TARGET} PRIVATE /DELAYLOAD:libGLESv2.dll)
+            add_custom_command(TARGET ${SRW64_HOST_TARGET} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:unofficial::angle::libEGL> $<TARGET_FILE:unofficial::angle::libGLESv2> "$<TARGET_FILE_DIR:${SRW64_HOST_TARGET}>")
         endif()
         target_link_libraries(${SRW64_HOST_TARGET} PRIVATE srw64_cpu librecomp)
     else()

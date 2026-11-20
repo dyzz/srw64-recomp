@@ -9,6 +9,7 @@
 #include "mod_library.hpp"
 #include "native_gpu.hpp"
 #include "native_quads.hpp"
+#include "renderer_mode.hpp"
 #include "presentation/image_mode.hpp"
 #include "unit_icon_art.hpp"
 #include "unit_icon_facing.hpp"
@@ -225,16 +226,20 @@ void refresh() {
 
 // Game thread, asset_mutex held: the variant's pixels for a draw whose texture is not there.
 void prepare(Asset& asset) {
-#ifdef SRW64_GL_ONLY
-    if (asset.gl_pixels) return;
-    asset.gl_pixels = std::make_shared<const std::vector<uint8_t>>(std::move(unit_icon_art::levels(unit_icon_art::marked(*asset.master, asset.variant)).front()));
-#else
+#ifdef SRW64_GL_RENDERER
+    if (renderer_mode::gl()) {
+        if (asset.gl_pixels) return;
+        asset.gl_pixels = std::make_shared<const std::vector<uint8_t>>(std::move(unit_icon_art::levels(unit_icon_art::marked(*asset.master, asset.variant)).front()));
+        return;
+    }
+#endif
+#ifndef SRW64_GL_ONLY
     if (asset.set || !asset.levels.empty()) return;
     asset.levels = unit_icon_art::levels(unit_icon_art::marked(*asset.master, asset.variant));
 #endif
 }
 
-#ifdef SRW64_GL_ONLY
+#ifdef SRW64_GL_RENDERER
 bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
     if ((id & 0xFFFF0000u) != kIdBase) return false;
     Draw draw;
@@ -259,8 +264,9 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
     ++rendered;
     return true;
 }
+#endif
 
-#else
+#ifndef SRW64_GL_ONLY
 uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     const RT64::DisplayList& tag = dl[-1];
     if (tag.w0 == kTagW0 && (tag.w1 & 0xFFFF0000u) == kTagW1) return kIdBase | (tag.w1 & 0xFFFF);
@@ -320,9 +326,11 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
 void install() {
     if (hooks_installed) return;
     hooks_installed = true;
-#ifdef SRW64_GL_ONLY
+    // Both where the host has both renderers (renderer_mode.hpp): only the running one asks.
+#ifdef SRW64_GL_RENDERER
     native_quads::add(gl_quads);
-#else
+#endif
+#ifndef SRW64_GL_ONLY
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
     RT64::SetNativeMeshHooks(classify, render);

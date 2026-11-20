@@ -1,9 +1,9 @@
-// Marchwind64.exe hands the game to Marchwind64-gl.exe on a PC RT64 cannot use
+// Marchwind64.exe draws with its GL renderer over ANGLE on a PC RT64 cannot use
 // (renderer_fallback.hpp). The DLLs are loaded here rather than linked, as in gpu_report.
 #include "../renderer_fallback.hpp"
 #include <cstdint>
 #include <cstdio>
-#include <cstdlib>
+#include <cstdlib>   // _wputenv_s: the C runtime's copy too, which getenv reads (not SetEnvironmentVariable's alone)
 #include <cstring>
 #include <string>
 #include <string_view>
@@ -121,8 +121,8 @@ std::wstring wide(const std::string& text) {
     return out;
 }
 
-// Marchwind64-gl.exe beside this program, when it is there.
-std::wstring gl_host() {
+// This program's own path.
+std::wstring program_path() {
     std::wstring path(MAX_PATH, L'\0');
     for (;;) {
         const DWORD length = GetModuleFileNameW(nullptr, path.data(), DWORD(path.size()));
@@ -130,11 +130,23 @@ std::wstring gl_host() {
         if (length < path.size()) { path.resize(length); break; }
         path.resize(path.size() * 2);
     }
-    const auto slash = path.find_last_of(L"\\/");
-    path = path.substr(0, slash == std::wstring::npos ? 0 : slash + 1) + L"Marchwind64-gl.exe";
-    const DWORD attributes = GetFileAttributesW(path.c_str());
-    return attributes != INVALID_FILE_ATTRIBUTES && !(attributes & FILE_ATTRIBUTE_DIRECTORY) ? path : std::wstring{};
+    return path;
 }
+
+// ANGLE's two DLLs beside the program, which the GL renderer needs (libGLESv2.dll is
+// delay-loaded, libEGL.dll loaded by SDL): without them (a development build) RT64 stays.
+bool angle_beside() {
+    const std::wstring path = program_path();
+    const auto slash = path.find_last_of(L"\\/");
+    const std::wstring folder = path.substr(0, slash == std::wstring::npos ? 0 : slash + 1);
+    for (const wchar_t* dll : {L"libEGL.dll", L"libGLESv2.dll"}) {
+        const DWORD attributes = GetFileAttributesW((folder + dll).c_str());
+        if (attributes == INVALID_FILE_ATTRIBUTES || (attributes & FILE_ATTRIBUTE_DIRECTORY)) return false;
+    }
+    return true;
+}
+
+bool gl = false;
 
 // This process's command line with the GL host in place of the program's own name.
 std::wstring command_line(const std::wstring& program) {
@@ -156,7 +168,7 @@ Streams streams() { return {GetStdHandle(STD_INPUT_HANDLE), GetStdHandle(STD_OUT
 // Starts the GL host with `given` as its standard handles when there are any (a --play run's
 // redirected console.log); otherwise it joins this process's console as it would its own.
 HANDLE start(const std::wstring& program, const std::string& reason, const Streams& given) {
-    SetEnvironmentVariableW(L"SRW64_RENDERER_FALLBACK", wide(reason).c_str());
+    _wputenv_s(L"SRW64_RENDERER_FALLBACK", wide(reason).c_str());
     STARTUPINFOW startup{};
     startup.cb = sizeof startup;
     const auto [in, out, err] = given;
@@ -176,52 +188,39 @@ HANDLE start(const std::wstring& program, const std::string& reason, const Strea
 }
 }  // namespace
 
-int run_gl_host_if_needed(int argc, char** argv) {
+void decide(int argc, char** argv) {
     const std::string_view first = argc > 1 ? std::string_view(argv[1]) : std::string_view();
     const bool game = argc == 1 || (argc == 2 && first == "--choose-rom") ||
         (first == "--play" && !(argc >= 3 && (std::string_view(argv[2]) == "--help" || std::string_view(argv[2]) == "--prepare")));
-    if (!game) return -1;
+    if (!game) return;
     const std::string api = env("SRW64_GRAPHICS_API");
-    if (api == "d3d12" || api == "vulkan") return -1;   // the player's choice: RT64
+    if (api == "d3d12" || api == "vulkan") return;   // the player's choice: RT64
     std::string reason;
     if (api == "gl") reason = "chosen (SRW64_GRAPHICS_API=gl)";
     else {
         // SRW64_RENDERER_PROBE=no-d3d12 answers the D3D12 question no, to try the Vulkan and
         // GL branches on a PC that has D3D12 (with a fake vulkan-1.dll for the last).
         const bool skip_d3d12 = env("SRW64_RENDERER_PROBE") == "no-d3d12";
-        if ((!skip_d3d12 && d3d12_usable()) || vulkan_usable()) return -1;
+        if ((!skip_d3d12 && d3d12_usable()) || vulkan_usable()) return;
         reason = "no GPU for RT64 (D3D12 shader model 6.0 or Vulkan 1.2)";
     }
-    const std::wstring program = gl_host();
-    if (program.empty()) return -1;   // a development build without it: RT64 says what it can
-    // The handles this process was given, then the console of the shell that started it
-    // (Marchwind64.cmd), which the GL host joins through this process (desktop_windows.cpp).
-    const Streams given = streams();
-    AttachConsole(ATTACH_PARENT_PROCESS);
-    const HANDLE child = start(program, reason, given);
-    if (!child) return -1;
-    // The GL host ends with this process: a launcher that stops the game stops this one
-    // (RecompLauncher waits on Marchwind64.exe), and the job takes the child along.
-    if (const HANDLE job = CreateJobObjectW(nullptr, nullptr)) {
-        JOBOBJECT_EXTENDED_LIMIT_INFORMATION limits{};
-        limits.BasicLimitInformation.LimitFlags = JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE;
-        SetInformationJobObject(job, JobObjectExtendedLimitInformation, &limits, sizeof limits);
-        AssignProcessToJobObject(job, child);   // the job stays open until this process ends
-    }
-    WaitForSingleObject(child, INFINITE);
-    DWORD code = 1;
-    GetExitCodeProcess(child, &code);
-    CloseHandle(child);
-    return int(code);
+    if (!angle_beside()) return;   // a development build without ANGLE: RT64 says what it can
+    gl = true;
+    // For console.log once it starts (host.cpp prints it after the release line); a restart
+    // after RT64 failed (hand_over) keeps the reason it was given.
+    if (env("SRW64_RENDERER_FALLBACK").empty()) _wputenv_s(L"SRW64_RENDERER_FALLBACK", wide(reason).c_str());
 }
 
+bool gl_chosen() { return gl; }
+
 bool hand_over(const std::string& reason) {
-    const std::wstring program = gl_host();
-    if (program.empty()) return false;
-    const HANDLE child = start(program, "RT64 failed: " + reason, streams());
+    if (gl || !angle_beside()) return false;
+    // This program again with the GL renderer chosen; launch.cpp keeps SRW64_GRAPHICS_API.
+    _wputenv_s(L"SRW64_GRAPHICS_API", L"gl");
+    const HANDLE child = start(program_path(), "RT64 failed: " + reason, streams());
     if (!child) return false;
     CloseHandle(child);
-    std::fprintf(stderr, "SRW64_RENDERER_FALLBACK handed over to Marchwind64-gl.exe\n");
+    std::fprintf(stderr, "SRW64_RENDERER_FALLBACK restarting with the GL renderer\n");
     return true;
 }
 }  // namespace srw64::renderer_fallback

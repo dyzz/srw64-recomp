@@ -1,6 +1,7 @@
 #define HLSL_CPU
 #include "launcher_env.hpp"
 #include "renderer_fallback.hpp"
+#include "renderer_mode.hpp"
 #ifndef SRW64_GL_ONLY
 #include "hle/rt64_application.h"
 #endif
@@ -174,9 +175,9 @@ namespace {
     const char* interactive = std::getenv("SRW64_INTERACTIVE");
     if (!interactive || std::string(interactive) != "1") std::abort();
 #if defined(_WIN32) && !defined(SRW64_GL_ONLY)
-    // RT64 passed the check at the start (renderer_fallback.hpp) and failed anyway: the GL host
-    // takes over, with the same command line, once this process has left.
-    if (srw64::renderer_fallback::hand_over(detail.empty() ? std::string("setup") : detail)) {
+    // RT64 passed the check at the start (renderer_fallback.hpp) and failed anyway: the game
+    // starts again with the GL renderer, with the same command line, once this process has left.
+    if (!srw64::renderer_mode::gl() && srw64::renderer_fallback::hand_over(detail.empty() ? std::string("setup") : detail)) {
         srw64::console_log::flush_now();
         std::_Exit(0);
     }
@@ -1107,7 +1108,13 @@ bool gl_mode() {
 #ifdef SRW64_GL_ONLY
     return true;
 #else
-    static const bool value = std::getenv("SRW64_RENDERER") && std::string(std::getenv("SRW64_RENDERER")) == "gl";
+    // SRW64_RENDERER=gl (development), SRW64_GRAPHICS_API=gl (the player's choice, kept by
+    // launch.cpp), or Windows' check at the start (renderer_fallback.hpp). Decided once,
+    // before the window: the window, the UI's renderer and the HD layers follow it.
+    static const bool value = [] {
+        const auto gl = [](const char* name) { const char* v = std::getenv(name); return v && std::string(v) == "gl"; };
+        return gl("SRW64_RENDERER") || gl("SRW64_GRAPHICS_API") || srw64::renderer_fallback::gl_chosen();
+    }();
     return value;
 #endif
 }
@@ -1679,6 +1686,10 @@ private:
 }  // namespace
 #ifdef __vita__
 void srw64_vita_graphics_begin() { vita_graphics = std::thread(vita_graphics_init); }
+#endif
+#ifndef SRW64_GL_ONLY
+// renderer_mode.hpp: the HD layers prepare their pictures for the renderer chosen here.
+bool srw64::renderer_mode::gl() { return gl_mode(); }
 #endif
 #endif
 
