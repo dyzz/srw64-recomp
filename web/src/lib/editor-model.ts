@@ -36,6 +36,9 @@ export type Step =
   // A branch, written flat: the steps after `if` up to its `else` or `end` run when its
   // conditions hold, those after `else` up to `end` when they do not.
   | { kind: 'if'; conds: Conds } | { kind: 'else' } | { kind: 'end' }
+  // Options in the middle of the story, written flat too: the steps after `choose` up to the
+  // first `or` run when the first option is picked, and so on; `end` closes it. 2–3 options.
+  | { kind: 'choose'; options: Text3[] } | { kind: 'or' }
   // One of the further commands (editor-commands.ts), its fields by name.
   | { kind: 'cmd'; name: string; args: Record<string, unknown> };
 // A condition (docs/design/level-editor.md §5.3); `not` turns it round.
@@ -53,7 +56,8 @@ export type Cond = { not?: boolean } & (
   | { kind: 'roster'; pilot: number }
   | { kind: 'var'; n: number; is: number }
   | { kind: 'level'; who: number; of: number }          // who's level at least of's
-  | { kind: 'opponent'; who: number; is: number });     // in this battle, who fights is
+  | { kind: 'opponent'; who: number; is: number }      // in this battle, who fights is
+  | { kind: 'we_struck'; value: boolean });            // in this battle, ours attacked or countered (3E17)
 export type Conds = { any: boolean; list: Cond[] };      // any: one of them is enough
 export type BattleLine = { id: string; who: number; against: number; when: string[]; text: Text3; once: boolean; conds?: Conds };
 export type GameEvent = { id: string; name: string; when: When; once: boolean; fired: string[]; notFired: string[]; conds?: Conds; steps: Step[] };
@@ -149,6 +153,7 @@ function condition(c: Cond): Record<string, unknown> {
     case 'var': out = { vars: { [c.n]: c.is } }; break;
     case 'level': out = { level: { who: c.who, at_least_of: c.of } }; break;
     case 'opponent': out = { opponent: { of: c.who, is: c.is } }; break;
+    case 'we_struck': out = { we_struck: c.value }; break;
   }
   return c.not ? { not: out } : out;
 }
@@ -167,8 +172,15 @@ export function actions(steps: Step[]): Record<string, unknown>[] {
     const out: Record<string, unknown>[] = [];
     while (at < steps.length) {
       const step = steps[at];
-      if (step.kind === 'else' || step.kind === 'end') { if (inside) return out; ++at; continue; }
+      if (step.kind === 'else' || step.kind === 'end' || step.kind === 'or') { if (inside) return out; ++at; continue; }
       ++at;
+      if (step.kind === 'choose') {
+        const options: Record<string, unknown>[][] = [block(true)];
+        while (steps[at]?.kind === 'or') { ++at; options.push(block(true)); }
+        if (steps[at]?.kind === 'end') ++at;
+        out.push({ choose: { text: optionTexts(step.options), options } });
+        continue;
+      }
       if (step.kind !== 'if') { out.push(action(step)); continue; }
       const then = block(true);
       let otherwise: Record<string, unknown>[] = [];
@@ -182,11 +194,15 @@ export function actions(steps: Step[]): Record<string, unknown>[] {
 }
 // Whether the flat markers pair up.
 export function balanced(steps: Step[]): boolean {
-  const open: boolean[] = [];   // per open if: whether its else came
+  // Per open if: whether its else came; per open choose: the branches so far and how many it has.
+  const open: ({ kind: 'if'; otherwise: boolean } | { kind: 'choose'; branches: number; of: number })[] = [];
   for (const step of steps) {
-    if (step.kind === 'if') open.push(false);
-    else if (step.kind === 'else') { if (!open.length || open[open.length - 1]) return false; open[open.length - 1] = true; }
-    else if (step.kind === 'end') { if (!open.length) return false; open.pop(); }
+    const top = open[open.length - 1];
+    if (step.kind === 'if') open.push({ kind: 'if', otherwise: false });
+    else if (step.kind === 'choose') open.push({ kind: 'choose', branches: 1, of: step.options.length });
+    else if (step.kind === 'else') { if (top?.kind !== 'if' || top.otherwise) return false; top.otherwise = true; }
+    else if (step.kind === 'or') { if (top?.kind !== 'choose' || top.branches >= top.of) return false; ++top.branches; }
+    else if (step.kind === 'end') { if (!top || (top.kind === 'choose' && top.branches !== top.of)) return false; open.pop(); }
   }
   return !open.length;
 }

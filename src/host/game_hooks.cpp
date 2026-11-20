@@ -88,6 +88,7 @@ static story::View story_view(uint8_t* ram,const recomp_context* ctx) {
     v.side=read(ram,e+story::f_side,2);v.enemies=read(ram,e+story::f_enemies,1);v.third=read(ram,e+story::f_third,1);
     if(const auto a=read(ram,e+story::f_battle_a,4))v.battle_a=read(ram,a+2,2);
     if(const auto b=read(ram,e+story::f_battle_b,4))v.battle_b=read(ram,b+2,2);
+    v.we_struck=int8_t(read(ram,e+story::f_struck,1))==1;
     v.variable=[ram](unsigned n){return story::variable(ram,n);};
     v.kills=[ram](unsigned pilot){return story::kills(ram,pilot);};
     v.has_pilot=[ram](unsigned pilot){return story::pilot_record(ram,pilot).has_value();};

@@ -41,7 +41,7 @@ inline constexpr uint32_t header_words=5;   // an event's type and four paramete
 // engine fields: status (0x80 idle, 0x2000+ an event started), poll phase, turn and side,
 // unit counts, the persuader, the persuasion picked, the registered-event count.
 inline constexpr uint32_t f_mode=0x4, f_status=0x97C, f_count=0x98E, f_persuade=0x992, f_phase=0x9AA,
-    f_turn=0x9AC, f_side=0x9AE, f_enemies=0x9B1, f_third=0x9B2, f_battle_a=0x9A0, f_battle_b=0x9A4, f_persuader=0x9A8;
+    f_turn=0x9AC, f_side=0x9AE, f_enemies=0x9B1, f_third=0x9B2, f_battle_a=0x9A0, f_battle_b=0x9A4, f_persuader=0x9A8, f_struck=0x9B6;
 // A host persuasion in +0x992: never a slot number (0..15) nor -1.
 inline constexpr uint16_t persuade_mark=0x7000;
 // Text records of the packages: ids past table 0's 50,975, served from a virtual ROM
@@ -93,7 +93,7 @@ inline uint16_t start_status(Trigger t) {
 // A condition the compiler wrote as a tree (web/src/lib/compiler/conditions.ts): an event's
 // `if` beyond its older fields, or a step's `if` (Event::checks), decided by the host.
 struct Test {
-    enum class Kind {all,any,not_,var,kills,turn,status,hp,count,in_area,route,choice,funds,downed,roster,flag,fired,level,opponent};
+    enum class Kind {all,any,not_,var,kills,turn,status,hp,count,in_area,route,choice,funds,downed,roster,flag,fired,level,opponent,we_struck};
     Kind kind{};
     std::vector<int> n;               // the numbers, as the compiler lists them
     std::string name;                 // flag, fired: package-relative
@@ -190,7 +190,7 @@ inline Test parse_test(const json& j,const std::string& package,unsigned depth=0
         {"var",Test::Kind::var},{"kills",Test::Kind::kills},{"turn",Test::Kind::turn},{"status",Test::Kind::status},{"hp",Test::Kind::hp},
         {"count",Test::Kind::count},{"in_area",Test::Kind::in_area},{"route",Test::Kind::route},{"choice",Test::Kind::choice},
         {"funds",Test::Kind::funds},{"downed",Test::Kind::downed},{"roster",Test::Kind::roster},{"flag",Test::Kind::flag},{"fired",Test::Kind::fired},
-        {"level",Test::Kind::level},{"opponent",Test::Kind::opponent}};
+        {"level",Test::Kind::level},{"opponent",Test::Kind::opponent},{"we_struck",Test::Kind::we_struck}};
     const auto found=kinds.find(key);
     if(found==kinds.end())throw std::runtime_error("不认识的条件 "+key);
     Test t;t.kind=found->second;
@@ -210,7 +210,7 @@ inline Test parse_test(const json& j,const std::string& package,unsigned depth=0
             break;
         }
         case Test::Kind::route: t.n=value.get<std::vector<int>>();break;
-        case Test::Kind::choice: t.n={value.get<int>()};break;
+        case Test::Kind::choice: case Test::Kind::we_struck: t.n={value.get<int>()};break;
         case Test::Kind::flag: case Test::Kind::fired: t.name=value.get<std::string>();break;
         case Test::Kind::roster:
             t.pilots=value.value("pilots",std::vector<unsigned>{});
@@ -611,6 +611,9 @@ inline uint16_t level_offset(const uint8_t* ram,unsigned pilot) {
 struct View {
     unsigned phase{},turn{},side{},enemies{},third{};
     unsigned battle_a{},battle_b{};                   // the combatants' pilots, 0 when none
+    // engine+0x9B6 (3E17): we struck in this battle, attacking or countering (not defending
+    // or evading when attacked); a MAP weapon of ours too. 801F3F88 / 801FE794 write it.
+    bool we_struck{};
     std::function<unsigned(unsigned)> variable;       // 800A496C
     std::function<double(unsigned)> hp;               // 800A293C: percent, 0 defeated, 103 gone
     std::function<std::optional<unsigned>(unsigned)> kills;   // our pilot's kills; none when not ours
@@ -901,6 +904,7 @@ inline bool evaluate(const Test& t,const std::string& package,const View& v) {
         }
         case K::opponent:
             return (v.battle_a==unsigned(n[0]) && v.battle_b==unsigned(n[1])) || (v.battle_b==unsigned(n[0]) && v.battle_a==unsigned(n[1]));
+        case K::we_struck: return v.we_struck==(n[0]!=0);
         case K::flag: return state().flags.count(package+"/"+t.name)>0;
         case K::fired: return state().fired.count(package+"/"+t.name)>0;
     }

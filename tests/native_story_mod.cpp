@@ -398,7 +398,7 @@ int main(int argc,char** argv) {
             event("start","turn",{0,1}),
             {{"id","later"},{"scene",129},{"trigger","turns_after"},{"params",{2,1}},{"after","start"},{"words",{0x3D4E,0xFFFF}}},
             {{"id","stronger"},{"scene",129},{"trigger","turn"},{"params",{0,2}},{"words",{0x3D4E,0xFFFF}},
-             {"test",{{"all",{{{"level",{4,18}}},{{"opponent",{4,18}}}}}}}}})}};
+             {"test",{{"all",{{{"level",{4,18}}},{{"opponent",{4,18}}},{{"we_struck",1}}}}}}}})}};
         check(fails(image).empty(),"turns_after and the new conditions load: "+fails(image));
         auto bad=image;bad["events"][1].erase("after");check(!fails(bad).empty(),"turns_after without its event");
         story::Library l;story::add_image(l,"p",image);
@@ -417,9 +417,10 @@ int main(int argc,char** argv) {
         w.turn=2;check(fires(w,0,2).empty(),"one turn on: not yet");
         w.turn=3;w.side=2;check(fires(w,0,2).empty(),"two turns on, the enemy's phase: not yet");
         w.side=1;check(fires(w,0,2)=="p/later","two turns on, ours: now");
-        story::View b;b.side=2;b.turn=0;b.battle_a=18;b.battle_b=4;
+        story::View b;b.side=2;b.turn=0;b.battle_a=18;b.battle_b=4;b.we_struck=false;
         b.level=[](unsigned p)->std::optional<unsigned>{return p==4?std::optional<unsigned>(30):p==18?std::optional<unsigned>(28):std::nullopt;};
-        check(fires(b,0,2)=="p/stronger","4 at level 30 over 18's 28, fighting 18");
+        check(fires(b,0,2).empty(),"ours defended: no");
+        b.we_struck=true;check(fires(b,0,2)=="p/stronger","4 at level 30 over 18's 28, fighting 18, struck");
         s.fired.erase("p/stronger");b.level=[](unsigned)->std::optional<unsigned>{return 10;};b.battle_b=5;
         check(fires(b,0,2).empty(),"another opponent: no");
     }

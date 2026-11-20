@@ -276,14 +276,18 @@ class WebConditionTests(WebCompilerTests):
                 {"camera": {"to": {"near": 28, "dir": "right", "by": 2}, "wait": True}}, {"effect": {"id": 0, "at": [10, 5]}}, {"shake": 5},
                 {"move": {"who": 28, "to": [12, 7]}}, {"destroy_group": 3}, {"change_side": {"who": 31, "to": "player"}}, {"funds": 5000},
                 {"bump": {"var": 9, "by": -1}}, {"sortie": {"group": 2, "max": "all"}}, {"forbid": {"unit": 117}}, {"camera_follows": False}]},
-            {"id": "y", "when": {"turns_after": {"event": "x", "turns": 3}}, "if": {"level": {"who": 28, "at_least_of": 287}, "opponent": {"of": 28, "is": 287}}, "do": []})
-        x, y = out["story"]["events"]
+            {"id": "y", "when": {"turns_after": {"event": "x", "turns": 3}}, "if": {"level": {"who": 28, "at_least_of": 287}, "opponent": {"of": 28, "is": 287}, "we_struck": True}, "do": []},
+            {"id": "z", "when": {"turn": {"turn": 3}}, "do": [{"off_map": 3}, {"hand_over": 32}, {"squad_mark": {"pilot": 124, "unit": 171, "on": True}},
+                                                               {"squad_split": "a"}, {"squad_split": "b"}, {"squad_clear": True},
+                                                               {"replace": {"pilot": 28, "unit": 36, "with": 37}}, {"godmars": 4}]})
+        x, y, z = out["story"]["events"]
+        self.assertEqual(z["listing"], ["3D6E 3", "3D64 32,0", "3D6B 124,171,1", "3D73 1", "3D73 0", "3D74", "3D5A 28,0,37,36", "3D6A 4", "FFFF"])
         self.assertEqual(x["listing"], ["3D54 28", "3D35 16898,0", "3D37 0,2565", "3D36 5", "3D3C 28,3079", "3D4F 503", "3D58 31,0", "3D5B 5",
                                         "3E0F 9", "3D3D 0,0,0,200,2", "3D59 617", "3D66 1", "FFFF"])
         self.assertEqual((y["trigger"], y["params"], y["after"]), ("turns_after", [3, 1], "one.x"))
-        self.assertEqual(y["test"], {"all": [{"level": [28, 287]}, {"opponent": [28, 287]}]})
+        self.assertEqual(y["test"], {"all": [{"level": [28, 287]}, {"opponent": [28, 287]}, {"we_struck": 1}]})
         for row, said in [({"do": [{"funds": 1500}]}, "1000 的倍数"), ({"do": [{"camera": {"near": 28, "dir": "north"}}]}, "dir"),
-                          ({"do": [{"sortie": {"group": 2, "max": 20}}]}, "sortie.max"), ({"when": {"turns_after": {"event": "none", "turns": 1}}}, "不存在的事件 one.none")]:
+                          ({"do": [{"sortie": {"group": 2, "max": 20}}]}, "sortie.max"), ({"if": {"we_struck": 1}}, "we_struck 写 true"), ({"do": [{"squad_split": 1}]}, "squad_split 写"), ({"when": {"turns_after": {"event": "none", "turns": 1}}}, "不存在的事件 one.none")]:
             with self.subTest(said=said):
                 self.write({"one": {"events": [self.opening(), {"id": "a", "when": {"turn": {"turn": 1}}, "do": [], **row}]}})
                 self.assertIn(said, self.web().get("error", ""))

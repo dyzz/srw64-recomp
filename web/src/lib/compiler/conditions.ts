@@ -42,7 +42,7 @@ export function who(value: Obj, name: string): { pilot: number } | { side: numbe
 
 // Keys an event's `if` has always had; the host keeps reading them from the event's fields.
 export const OLD_KEYS = ['vars', 'fired', 'not_fired', 'kills', 'kills_below', 'roster', 'not_roster', 'flags', 'not_flags'];
-export const NEW_KEYS = ['turn', 'on_map', 'defeated', 'absent', 'hp', 'count', 'in_area', 'route', 'choice', 'funds', 'downed', 'level', 'opponent', 'all', 'any', 'not'];
+export const NEW_KEYS = ['turn', 'on_map', 'defeated', 'absent', 'hp', 'count', 'in_area', 'route', 'choice', 'funds', 'downed', 'level', 'opponent', 'we_struck', 'all', 'any', 'not'];
 export const ALL_KEYS = [...OLD_KEYS, ...NEW_KEYS];
 
 export type Refs = { fired: string[] };   // the ids a condition names (checked by the caller)
@@ -118,6 +118,10 @@ function one(key: string, value: any, refs: Refs, prefix: (id: string) => string
     case 'opponent': {   // 3E16: in the battle now, `of` fights `is`
       if (!isObj(value) || Object.keys(value).sort().join(',') !== 'is,of') throw new CompileError('opponent 写 {"of": 人物号, "is": 人物号}');
       return [{ opponent: [pilot(value.of, 'opponent.of'), pilot(value.is, 'opponent.is')] }];
+    }
+    case 'we_struck': {   // 3E17: in the battle now, ours attacked, or countered when attacked
+      if (typeof value !== 'boolean') throw new CompileError('we_struck 写 true（这一战我方出手了：攻击，或被打时反击）或 false');
+      return [{ we_struck: value ? 1 : 0 }];
     }
     case 'any': {
       if (!Array.isArray(value) || value.length < 2) throw new CompileError('any 写两个以上的条件对象，满足其一即可');

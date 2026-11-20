@@ -38,7 +38,7 @@ export async function initLevelEditor() {
   const nameOf = (n?: Names) => n ? n[lang] || n.en || n.ja : '?';
   const form = packageForm(root, T, locale, game);
   const original: { maps: OriginalMap[]; terrain: Terrain[]; objectives?: ({ id: number } & Names)[]; parts?: ({ id: number } & Names)[];
-    places?: { id: number; region: Names; scenes: number[] }[]; titles?: Record<string, Names>; terrain_colours?: Record<string, number[]> } =
+    places?: { id: number; region: Names; scenes: number[] }[]; battles?: { id: number; pilot: number; scenes: number[] }[]; titles?: Record<string, Names>; terrain_colours?: Record<string, number[]> } =
     await (await fetch('/gen/editor.json')).json();
   const terrainOf = new Map(original.terrain.map((t) => [t.id, t]));
   const templates = new Map(original.maps.filter((m) => m.template).map((m) => [m.map, m.template!]));
@@ -565,7 +565,7 @@ export async function initLevelEditor() {
     String(value), (v) => set(Number(v)));
   const stepsOf = (s: Stage, at: string): Step[] | null => at === 'before' ? s.before : at === 'enter' ? s.enter : at === 'end' ? s.end : s.events.find((e) => e.id === at)?.steps ?? null;
   const STEP_KINDS: [Step['kind'], string][] = [['say', 'stepSay'], ['deploy', 'stepDeploy'], ['leave', 'stepLeave'], ['join', 'stepJoin'], ['bgm', 'stepBgm'], ['focus', 'stepFocus'], ['wait', 'stepWait'],
-    ['fade', 'stepFade'], ['win', 'stepWin'], ['lose', 'stepLose'], ['if', 'stepIf'], ['else', 'stepElse'], ['end', 'stepEnd'], ['raw', 'stepRaw']];
+    ['fade', 'stepFade'], ['win', 'stepWin'], ['lose', 'stepLose'], ['if', 'stepIf'], ['else', 'stepElse'], ['end', 'stepEnd'], ['choose', 'stepChoose'], ['or', 'stepOr'], ['raw', 'stepRaw']];
   const blank = (kind: Step['kind'], s: Stage): Step => {
     const someone = s.units[0]?.pilot ?? 28;
     switch (kind) {
@@ -578,6 +578,7 @@ export async function initLevelEditor() {
       case 'fade': return { kind, dir: 'in' };
       case 'raw': return { kind, op: '3D48', args: [] };
       case 'if': return { kind, conds: { any: false, list: [] } };
+      case 'choose': return { kind, options: [{}, {}] };
       default: return { kind } as Step;
     }
   };
@@ -595,6 +596,9 @@ export async function initLevelEditor() {
       else if (f.type === 'select') out.push(label, select(f.options.map(([v, k]): [string, string] => [v, T[k] ?? v]), String(args[f.key]), set));
       else if (f.type === 'area') out.push(label, ...areaFields(args[f.key] as Area));
       else if (f.type === 'place') out.push(label, placeSelect(Number(args[f.key]), (v) => set(v)));
+      else if (f.type === 'battle') out.push(label, select((original.battles ?? []).map((b): [string, string] => [String(b.id),
+        [String(b.id), pilotName(b.pilot), ...(b.scenes.length ? [fill(T.placeUsed, { titles: b.scenes.map((n) => `「${nameOf(original.titles?.[String(n)])}」`).join('') })] : [])].join(' · ')]),
+        String(args[f.key]), (v) => set(Number(v))));
       else if (f.type === 'map') out.push(label, select(original.maps.map((m): [string, string] => [String(m.map), `${m.map}`]), String(args[f.key]), (v) => set(Number(v))));
       else if (f.type === 'xy') {
         const p = args[f.key] as { x: number; y: number };
@@ -647,7 +651,7 @@ export async function initLevelEditor() {
   const WHEN_KINDS = ['turn', 'defeated', 'hp_below', 'battle', 'enemies_gone', 'remaining', 'persuade', 'reach', 'downed', 'group_gone', 'turns_after'];
 
   // --- Conditions: one editor for an event's and a step's ---------------------------------------
-  const COND_KINDS: Cond['kind'][] = ['turn', 'on_map', 'defeated', 'absent', 'hp', 'count', 'in_area', 'downed', 'fired', 'roster', 'route', 'choice', 'funds', 'var', 'level', 'opponent'];
+  const COND_KINDS: Cond['kind'][] = ['turn', 'on_map', 'defeated', 'absent', 'hp', 'count', 'in_area', 'downed', 'fired', 'roster', 'route', 'choice', 'funds', 'var', 'level', 'opponent', 'we_struck'];
   function condDefault(kind: Cond['kind'], s: Stage, self?: GameEvent): Cond {
     const ours = s.units.find((u) => sideOf(s, u) === 0)?.pilot ?? 28, theirs = s.units.find((u) => sideOf(s, u) === 1)?.pilot ?? 298;
     switch (kind) {
@@ -665,6 +669,7 @@ export async function initLevelEditor() {
       case 'var': return { kind, n: 0, is: 0 };
       case 'level': return { kind, who: ours, of: theirs };
       case 'opponent': return { kind, who: ours, is: theirs };
+      case 'we_struck': return { kind, value: true };
     }
   }
   function condFields(c: Cond, s: Stage, self?: GameEvent): Node[] {
@@ -683,6 +688,7 @@ export async function initLevelEditor() {
       case 'var': return [number(c.n, (v) => { c.n = v; }, 0, 199), el('span', {}, '='), number(c.is, (v) => { c.is = v; }, 0, 3)];
       case 'level': return [who('pilot', c.who, (id) => { c.who = id; }), el('span', {}, '≥'), who('pilot', c.of, (id) => { c.of = id; })];
       case 'opponent': return [who('pilot', c.who, (id) => { c.who = id; }), el('span', {}, T.fights), who('pilot', c.is, (id) => { c.is = id; })];
+      case 'we_struck': return [select([['1', T.struckYes], ['0', T.struckNo]], c.value ? '1' : '0', (v) => { c.value = v === '1'; })];
     }
   }
   function condEditor(set: Conds, s: Stage, self?: GameEvent, hint?: string): HTMLElement {
@@ -745,6 +751,20 @@ export async function initLevelEditor() {
     const box = el('div', { class: 'game-box' }), about = el('p', { class: 'note' });
     const rowNodes: HTMLElement[] = [];
     let depth = 0;
+    // The flat markers' partners: the if or choose a step at `n` sits in (-1 none), the end
+    // that closes the block opened at `n`, a choose's last `or`, which branch an `or` begins.
+    const opens = (k: Step['kind']) => k === 'if' || k === 'choose';
+    function opener(n: number): number {
+      for (let i = n - 1, d = 0; i >= 0; --i) { const k = steps[i].kind; if (k === 'end') ++d; else if (opens(k)) { if (!d) return i; --d; } }
+      return -1;
+    }
+    function closing(n: number): number {
+      for (let i = n + 1, d = 0; i < steps.length; ++i) { const k = steps[i].kind; if (opens(k)) ++d; else if (k === 'end') { if (!d) return i; --d; } }
+      return -1;
+    }
+    const sameLevel = (head: number, to: number) => steps.slice(head + 1, to).map((x, i) => [x, head + 1 + i] as const).filter(([x, i]) => x.kind === 'or' && opener(i) === head).map(([, i]) => i);
+    const branchOf = (head: number, at: number) => sameLevel(head, at + 1).indexOf(at) + 2;
+    const lastOr = (head: number, close: number) => sameLevel(head, close).at(-1) ?? -1;
     function preview() {
       const at = steps[stepAt]?.kind === 'say' ? steps[stepAt] as Say : steps.find((x) => x.kind === 'say') as Say | undefined;
       rowNodes.forEach((row, n) => row.classList.toggle('on', n === stepAt));
@@ -776,15 +796,31 @@ export async function initLevelEditor() {
       else if (step.kind === 'wait') body.push(number(step.frames, (v) => { step.frames = v; }, 1, 32767), el('span', { class: 'sub' }, T.frames));
       else if (step.kind === 'fade') body.push(select([['in', T.fadeIn], ['out', T.fadeOut]], step.dir, (v) => { step.dir = v as never; }));
       else if (step.kind === 'if') body.push(condEditor(step.conds, s, event, T.stepIfHint));
+      else if (step.kind === 'choose') {
+        const close = closing(n);
+        body.push(...step.options.map((o, k) => el('div', { class: 'row' }, el('span', { class: 'sub' }, fill(T.optionN, { n: k + 1 })),
+          input(o[language] ?? '', (v) => { o[language] = v; }, { placeholder: LOCALES.find(([c]) => c === language)?.[1] ?? '', 'aria-label': fill(T.optionN, { n: k + 1 }) }))),
+          el('div', { class: 'row' }, step.options.length < 3 && close >= 0 ? act(T.addThird, () => { step.options.push({}); steps.splice(close, 0, { kind: 'or' }); }, 'chip') : null,
+            step.options.length > 2 && close >= 0 ? act(T.dropThird, () => {
+              // The third branch goes with its text: the steps from the last `or` to the end.
+              const last = lastOr(n, close); step.options.pop(); if (last >= 0) steps.splice(last, close - last);
+            }, 'chip') : null),
+          el('p', { class: 'hint' }, T.chooseHint));
+      } else if (step.kind === 'or') {
+        const head = opener(n), k = head >= 0 ? branchOf(head, n) : 0, o = head >= 0 ? (steps[head] as Extract<Step, { kind: 'choose' }>).options[k - 1] : undefined;
+        body.push(el('span', { class: 'sub' }, fill(T.whenPicked, { n: k, text: o?.[language] || o?.['zh-Hans'] || o?.ja || '…' })));
+      }
       else if (step.kind === 'cmd') body.push(el('div', { class: 'when' }, ...commandFields(s, step.args, commandOf(step.name)?.fields ?? [])),
         T[`cmdHint_${step.name}`] ? el('p', { class: 'hint' }, T[`cmdHint_${step.name}`]) : null);
       else if (step.kind === 'raw') body.push(input(step.op, (v) => { step.op = v.trim().toUpperCase(); }, { class: 'op-in', spellcheck: 'false', 'aria-label': T.stepRaw }),
         input(step.args.join(' '), (v) => { step.args = v.split(/[\s,]+/).filter(Boolean).map(Number).filter(Number.isFinite); }, { placeholder: T.rawArgs, spellcheck: 'false', 'aria-label': T.rawArgs }));
-      if (step.kind === 'else' || step.kind === 'end') depth = Math.max(0, depth - 1);
+      if (step.kind === 'else' || step.kind === 'end' || step.kind === 'or') depth = Math.max(0, depth - 1);
       const indent = depth;
-      if (step.kind === 'if' || step.kind === 'else') ++depth;
+      if (step.kind === 'if' || step.kind === 'else' || step.kind === 'choose' || step.kind === 'or') ++depth;
+      const kindLabel = step.kind === 'cmd' ? T[`cmd_${step.name}`] ?? step.name : step.kind === 'end' && steps[opener(n)]?.kind === 'choose' ? T.stepEndChoose
+        : T[STEP_KINDS.find(([k]) => k === step.kind)![1]];
       rowNodes.push(el('div', { class: `step-row k-${step.kind}`, style: indent ? `margin-left:${indent * 22}px` : '', onclick: () => { if (stepAt !== n) { stepAt = n; preview(); } } },
-        el('span', { class: 'step-n' }, String(n + 1)), el('span', { class: 'step-kind' }, step.kind === 'cmd' ? T[`cmd_${step.name}`] ?? step.name : T[STEP_KINDS.find(([k]) => k === step.kind)![1]]), el('div', { class: 'step-body' }, ...body),
+        el('span', { class: 'step-n' }, String(n + 1)), el('span', { class: 'step-kind' }, kindLabel), el('div', { class: 'step-body' }, ...body),
         el('span', { class: 'step-tools' }, button('↑', () => { move(n, n - 1); update(); }, 'icon', { 'aria-label': T.moveUp, disabled: n === 0 }),
           button('↓', () => { move(n, n + 1); update(); }, 'icon', { 'aria-label': T.moveDown, disabled: n === steps.length - 1 }),
           button('✕', () => { steps.splice(n, 1); stepAt = -1; update(); }, 'icon', { 'aria-label': T.remove }))));
@@ -811,11 +847,12 @@ export async function initLevelEditor() {
       el('div', { class: 'row' }, el('span', { class: 'sub' }, T.lineLanguage), el('div', { class: 'segment' }, ...LOCALES.map(([code, label]) => act(label, () => { language = code; }, language === code ? 'seg on' : 'seg')))),
       ...rowNodes,
       el('div', { class: 'add-step' }, el('span', { class: 'sub' }, T.addStep), ...STEP_KINDS.filter(([k]) => event || (k !== 'win' && k !== 'lose'))
-        .filter(([k]) => k !== 'else' && k !== 'end')
+        .filter(([k]) => k !== 'else' && k !== 'end' && k !== 'or')
         .map(([k, label]) => act(T[label], () => {
           const at = stepAt >= 0 ? stepAt + 1 : steps.length;
           // An if comes with its else and end; anything else goes after the selected step.
-          const added = k === 'if' ? [blank('if', s), { kind: 'else' } as Step, { kind: 'end' } as Step] : [blank(k, s)];
+          const added = k === 'if' ? [blank('if', s), { kind: 'else' } as Step, { kind: 'end' } as Step]
+            : k === 'choose' ? [blank('choose', s), { kind: 'or' } as Step, { kind: 'end' } as Step] : [blank(k, s)];
           steps.splice(at, 0, ...added); stepAt = at;
         }, 'chip')),
         // The further commands, by kind, from one list.

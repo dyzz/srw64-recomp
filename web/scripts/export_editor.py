@@ -59,6 +59,7 @@ def export_ops() -> None:
 OBJECTIVE_FIRST = 5567   # the winning texts; the losing ones from 5593
 PART_NAMES = 1129        # text of part 0
 TITLES = 281             # a scene's title: 281 + scene
+BATTLES = 0x5440A        # D_800C9A18, 3D49's table: 14 bytes (pilot, weapon, …, next), 999 ends it
 PLACE_TABLE, PLACES = 0xAABD0, 127   # ROM of the world map overlay's 801C5310 (0xA7EC0 + 0x2D10), 6 bytes a place
 REGIONS = {13: {"ja": "地球", "zh": "地球", "en": "Earth", "ko": "지구"}, 17: {"ja": "地球", "zh": "地球", "en": "Earth", "ko": "지구"},
            18: {"ja": "ヨーロッパ・地中海", "zh": "欧洲、地中海", "en": "Europe and the Mediterranean", "ko": "유럽·지중해"},
@@ -113,7 +114,25 @@ def main() -> int:
         surface, x, y = struct.unpack_from(">3h", rom, PLACE_TABLE + number * 6)
         places.append({"id": number, "surface": surface, "region": REGIONS.get(surface, REGIONS[13]), "x": x, "y": y,
                        "scenes": sorted(used.get(number, ()))[:4]})
-    titles = {str(scene): name(TITLES + scene) for scene in sorted({s for p in places for s in p["scenes"]}) if TITLES + scene in names}
+    # 3D49's scripted battles: each entry's pilot, and the original's stages that play it.
+    fought: dict[int, set[int]] = {}
+    with (ROOT / "assets/original-data/records/stage_events.jsonl").open(encoding="utf-8") as f:
+        for line in f:
+            script = json.loads(line).get("script") or {}
+            for ins in script.get("instructions", []):
+                if ins["opcode"] == 0x3D49:
+                    for n in ins["operands"]:
+                        fought.setdefault(n, set()).update(s for s in script.get("scenes", []) if 0 < s < 143)
+    battles = []
+    for number in range(64):
+        pilot, *_, following = struct.unpack_from(">7H", rom, BATTLES + number * 14)
+        battles.append({"id": number, "pilot": pilot, "scenes": sorted(fought.get(number, ()))[:3]})
+        if following == 999:
+            break
+    else:
+        raise SystemExit("3D49's table has no end where it should")
+    used_scenes = {s for p in places for s in p["scenes"]} | {s for b in battles for s in b["scenes"]}
+    titles = {str(scene): name(TITLES + scene) for scene in sorted(used_scenes) if TITLES + scene in names}
 
     (GEN / "maps").mkdir(parents=True, exist_ok=True)
     maps, drawn = [], 0
@@ -151,7 +170,7 @@ def main() -> int:
     # first guess for a picture's cells: [r, g, b, cells seen]. Only terrains seen on 200 cells or more.
     colours = {str(t): [*(round(v / acc[3]) for v in acc[:3]), acc[3]] for t, acc in sorted(sums.items()) if acc[3] >= 200}
     (GEN / "editor.json").write_text(json.dumps({"schema": "srw64.web-editor.v1", "maps": maps, "terrain": terrain, "objectives": objectives, "parts": parts,
-                                                "places": places, "titles": titles,
+                                                "places": places, "battles": battles, "titles": titles,
                                                 "terrain_colours": colours},
                                                 ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     export_ops()

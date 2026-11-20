@@ -292,6 +292,26 @@ export class Builder {
         this.op(0x3D70, who(v.pilot, 'copilot.pilot'), who(v.add, 'copilot.add'));
         return true;
       }
+      // 3D6E: 8020AB14 on the pilot's roster unit; the original writes it after a scripted
+      // defeat (3D4F) and before a pilot leaves the army (3D5A …,4000).
+      case 'off_map': this.op(0x3D6E, who(value, 'off_map')); return true;
+      // 3D64's general branch (80212668): the unit on the map whose main pilot this is drops
+      // them from its crew (+0x34 less one, +0x38… moved up), so its first co-pilot takes over,
+      // and the pilot's record is freed (seen on Windows: 28 gone, 24 flying Manami's unit).
+      // Its 500,500 form is the original's one fixed story case.
+      case 'hand_over': this.op(0x3D64, who(value, 'hand_over'), 0); return true;
+      case 'squad_mark': {   // 3D6B: the squad mark (pilot +0 bit 7, unit +0x0C bit 6)
+        const v = obj(['pilot', 'unit', 'on'], '{"pilot": 人物号, "unit": 机体号, "on": true/false}');
+        if (typeof v.on !== 'boolean') throw new CompileError('squad_mark.on 写 true/false');
+        this.op(0x3D6B, who(v.pilot, 'squad_mark.pilot'), ['unit', unit(v.unit, 'squad_mark.unit')], v.on ? 1 : 0);
+        return true;
+      }
+      case 'squad_split': {   // 3D73: mark the original's list A (D_800D06A8) or B (D_800D06E4)
+        if (value !== 'a' && value !== 'b') throw new CompileError('squad_split 写 "a" 或 "b"（原版的两份分队名单）');
+        this.op(0x3D73, value === 'a' ? 1 : 0);
+        return true;
+      }
+      case 'squad_clear': if (value !== true) throw new CompileError('squad_clear 写 true'); this.op(0x3D74); return true;
       case 'world_map': this.op(0x3D32, int(value, 'world_map', 0, 255)); return true;
       case 'travel': this.op(0x3D33, int(value, 'travel', 0, 255)); return true;
       case 'vehicle': this.op(0x3D72, int(value, 'vehicle', 0, 14)); return true;
