@@ -61,6 +61,10 @@ void watch_thread(Handle handle, const char* name, const uintptr_t* made) {
     if (made) std::memcpy(entry.made, made, sizeof entry.made);
     watched.push_back(entry);
 }
+void unwatch_thread(Handle handle) {
+    std::lock_guard lock(watched_mutex);
+    std::erase_if(watched, [&](const Watched& entry) { return entry.handle == handle; });
+}
 }
 
 namespace ultramodern {
@@ -421,11 +425,38 @@ u32 __nx_nv_transfermem_size = 32 * 1024 * 1024;
 
 // Threads: libnx gives a thread made without a stack 128 KiB, too little for the
 // recompiled code's frames; 1 MiB, as on the desktop's smallest. And it cannot detach a
-// thread (std::thread::detach threw ENOSYS): a detached thread here lives until the
-// program ends anyway, so detaching succeeds without freeing anything.
+// thread (std::thread::detach threw ENOSYS). Detaching succeeds here and the thread is
+// kept in a list: once it has ended (its handle is signalled) the next thread made joins
+// it, which closes its handle and frees its stack. Left alone they stayed until the
+// program ended, each against the process's limit of threads: a battle line spoken from a
+// voice MOD is a thread of its own (music.cpp battle_quote), and the 73rd line of a demo
+// loop could not make one (std::system_error, abort; a Switch, 2026-11-20).
+struct __pthread_t;
+extern "C" void* __syscall_thread_join(struct __pthread_t* thread);
+namespace {
+std::mutex detached_mutex;
+std::vector<struct __pthread_t*> detached;
+void join_ended_threads() {
+    std::vector<struct __pthread_t*> ended;
+    {
+        std::lock_guard lock(detached_mutex);
+        std::erase_if(detached, [&](struct __pthread_t* thread) {
+            // libnx's struct __pthread_t starts with its Thread, whose first member is the handle.
+            if (R_FAILED(svcWaitSynchronizationSingle(*reinterpret_cast<const Handle*>(thread), 0))) return false;
+            ended.push_back(thread);
+            return true;
+        });
+    }
+    for (auto* thread : ended) {
+        unwatch_thread(*reinterpret_cast<const Handle*>(thread));
+        __syscall_thread_join(thread);
+    }
+}
+}
 int __real___syscall_thread_create(struct __pthread_t** thread, void* (*function)(void*), void* argument, void* stack, size_t size);
 int __wrap___syscall_thread_create(struct __pthread_t** thread, void* (*function)(void*), void* argument, void* stack, size_t size) {
     if (!stack && !size) size = 1024 * 1024;
+    join_ended_threads();
     const int result = __real___syscall_thread_create(thread, function, argument, stack, size);
     if (result == 0 && thread && *thread) {
         // Where it was made: the frame records' return addresses above this call, as offsets.
@@ -444,7 +475,11 @@ int __wrap___syscall_thread_create(struct __pthread_t** thread, void* (*function
     }
     return result;
 }
-int __syscall_thread_detach(struct __pthread_t*) { return 0; }
+int __syscall_thread_detach(struct __pthread_t* thread) {
+    std::lock_guard lock(detached_mutex);
+    detached.push_back(thread);
+    return 0;
+}
 
 // The save files and the run's state are written to a temporary name and renamed over
 // the old file; FAT on the SD card refuses to rename onto an existing file
