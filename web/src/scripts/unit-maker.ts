@@ -4,14 +4,19 @@
 // with the characters' portraits, the units' battle pictures and map icons made in the browser
 // (lib/pixels.ts): the pictures are the player's own files and never leave the page.
 import data from '../data/data-mods.json';
-import { el, fill, jsonBytes, openPackage, packageForm, readJson, say, search, writePackage, type Text } from './mod-package';
+import { el, fill, jsonBytes, offer, openPackage, packageForm, readJson, say, search, size, strToU8, thunderstoreZip, writePackage, zipPackage, type Text } from './mod-package';
+import { GameLink, PORT } from '../lib/game-link';
+import * as ts from '../lib/thunderstore';
 import { picker, type Pickable } from './picker';
 import { dataUrl, encodeIcon, frame, framer, loadIcon, type Picture } from './framer';
-import { LOCALES, KINDS, SLUG, emptyModel, fromFiles, placeSprite, problems, rename, renameSprite, spriteFiles, toFiles, type Changes, type Locale, type Model, type Pilot, type Problem, type Ref, type Unit, type Weapon } from '../lib/unit-package';
+import { LOCALES, KINDS, SLUG, QUOTE_SITUATIONS, emptyModel, fromFiles, placeSprite, voicesOf, problems, rename, renameSprite, spriteFiles, toFiles, type Changes, type Locale, type Model, type Pilot, type Problem, type Ref, type Unit, type Weapon, type Line, type Quotes, type Special } from '../lib/unit-package';
+import { vorbisEncoder, vorbisInfo } from './audio-tools';
+import * as storyImage from '../lib/story-image';
+import type { Join, Wave, WaveUnit, DeploySide } from '../lib/story-image';
 import { foot, reduce } from '../lib/pixels';
 
 type Kind = 'pilots' | 'units' | 'weapons';
-type Tab = Kind | 'sprites';
+type Tab = Kind | 'sprites' | 'story';
 type Field = { key: string; label: string; low: number; high: number; step?: number };
 type Labels = {
   fields: Record<Kind, Field[]>;
@@ -33,6 +38,7 @@ type Way = 'left' | 'right' | 'front';
 type Icon = { pic: Picture; way: Way };
 
 const CHANNELS = ['air', 'land', 'sea', 'space'];
+const MOVE_TYPES = ['land', 'air', 'sea', 'space', 'underground'];
 const RANKS = ['A', 'B', 'C', 'D', '-'];
 const PORTRAIT = 96, PORTRAIT_COLORS = 63, PORTRAIT_HD = 768;
 // Battle pictures: 127 colours, at most 1024 a side (mod_sprites.hpp); new ones fit 128 (the
@@ -45,8 +51,8 @@ export function initUnitMaker() {
   const root = document.querySelector<HTMLElement>('[data-unit-maker]');
   const payload = document.getElementById('unit-maker-data');
   if (!root || !payload) return;
-  const { text, labels, pick, works, locale, lang } = JSON.parse(payload.textContent!) as {
-    text: Text & { terrainNames: string[] }; labels: Labels; locale: string; lang: 'zh' | 'en' | 'ja' | 'ko';
+  const { text, labels, pick, works, scenes, locale, lang } = JSON.parse(payload.textContent!) as {
+    text: Text & { terrainNames: string[] }; labels: Labels; locale: string; lang: 'zh' | 'en' | 'ja' | 'ko'; scenes: { id: number; title: string }[];
     pick: { units: Pickable[]; pilots: Pickable[]; series: { id: number | null; name: string }[] }; works: { id: number; name: string }[];
   };
   const T = (key: string, values: Record<string, string | number> = {}) => fill(text[key] ?? key, values);
@@ -62,6 +68,8 @@ export function initUnitMaker() {
   let keptJson: Record<string, unknown> = {};        // the opened package's rows this maker does not own
   let keptFiles: Record<string, Uint8Array> = {};    // and its other files, as they were
   const portraits = new Map<string, Portrait>();     // by character slug
+  const voices = new Map<string, Uint8Array>();      // battle voices by file name (audio/voice/battle/)
+  const openSituations = new Set<string>();          // the quote lists shown open
   const art = new Map<string, Art>();                // by sprite name
   const icons = new Map<string, Icon>();             // by unit slug
   let keptFacing: Record<string, string> = {};       // art/icons.json ways of others' icons
@@ -117,13 +125,17 @@ export function initUnitMaker() {
   };
 
   // --- Number fields, against the copied original (as the number maker does) ---------------
+  // A copy of another new entry of the package starts from the original that one copies (the
+  // host follows the chain the same way, mod_units.hpp rooted); its own changes are its own.
   function baseOf(k: Kind, e: AnyNew): Entry | undefined {
-    const copy = (e as any).copy;
+    let copy = (e as any).copy;
+    for (let hop = 0; hop < 16 && typeof copy === 'string' && copy.startsWith('@'); hop++) copy = (find(k, copy.slice(1)) as any)?.copy;
     return typeof copy === 'number' ? byId[k].get(copy) : undefined;
   }
   function dataEditor(k: Kind, e: AnyNew): Node[] {
     const base = baseOf(k, e);
     if (!base) return [el('p', { class: 'hint' }, T('copyNewHint'))];
+    const chained = typeof (e as any).copy === 'string' ? [el('p', { class: 'hint' }, T('copyChainHint', { from: String((e as any).copy), original: `${base.id} ${nameOf(base)}` }))] : [];
     const row = e.data as Changes;
     const original = (key: string): any => {
       if (key.startsWith('terrain.')) return base.terrain[CHANNELS.indexOf(key.slice(8))];
@@ -136,7 +148,7 @@ export function initUnitMaker() {
       return key in row ? row[key] : original(key);
     };
     const same = (key: string, a: any, b: any) =>
-      key === 'abilities' ? [...a].sort().join(' ') === [...b].sort().join(' ') : key === 'spirits' ? JSON.stringify(a) === JSON.stringify(b) : a === b;
+      key === 'abilities' || key === 'move_types' ? [...(a ?? [])].sort().join(' ') === [...(b ?? [])].sort().join(' ') : key === 'spirits' ? JSON.stringify(a) === JSON.stringify(b) : a === b;
     const set = (key: string, v: any) => {
       if (key.startsWith('terrain.')) {
         const t = { ...((row.terrain as object) ?? {}) } as Record<string, string>;
@@ -176,7 +188,7 @@ export function initUnitMaker() {
       return wrap;
     };
     const plain = (options: string[]) => options.map((o) => ({ value: o, label: o }));
-    const parts: Node[] = [];
+    const parts: Node[] = [...chained];
     const fields = [...labels.fields[k], ...(k !== 'weapons' ? [{ key: 'swap_class', label: T('swapClass'), low: 0, high: 8 }] : [])];
     parts.push(el('div', { class: 'grid' }, ...fields.map(number), k === 'units' ? select(text.size, 'size', plain(labels.sizes)) : null));
     parts.push(el('div', { class: 'sub' }, text.terrain), el('div', { class: 'grid' }, ...CHANNELS.map((c, n) => select(text.terrainNames[n], `terrain.${c}`, plain(RANKS)))));
@@ -185,6 +197,18 @@ export function initUnitMaker() {
       el('div', { class: 'checks' }, check(text.postMove, 'post_move'), check(text.beam, 'beam'), check(text.parryable, 'parryable'), check(text.locked, 'locked')));
     if (k === 'units') {
       parts.push(el('div', { class: 'sub' }, text.equipment), el('div', { class: 'checks' }, check(text.shield, 'shield'), check(text.sword, 'sword')));
+      // Where it can move (units.json move_types): at least one.
+      const moves: string[] = value('move_types') ?? [];
+      parts.push(el('div', { class: 'sub' }, T('moveTypes')), el('div', { class: 'checks' }, ...MOVE_TYPES.map((m) => {
+        const input = el('input', { type: 'checkbox', checked: moves.includes(m) }) as HTMLInputElement;
+        const wrap = el('label', { class: `check${input.checked !== (base.move_types ?? []).includes(m) ? ' changed' : ''}` }, input, T(`move_${m}`));
+        input.addEventListener('change', () => {
+          const now = MOVE_TYPES.filter((x) => (x === m ? input.checked : (value('move_types') ?? []).includes(x)));
+          if (!now.length) { input.checked = true; return; }
+          set('move_types', now); render();
+        });
+        return wrap;
+      })));
       const have = new Set<string>(value('abilities'));
       parts.push(el('div', { class: 'sub' }, text.abilities), el('div', { class: 'checks' }, ...labels.abilities.map((a) => {
         const input = el('input', { type: 'checkbox', checked: have.has(a.key) }) as HTMLInputElement;
@@ -278,6 +302,7 @@ export function initUnitMaker() {
 
   // --- Battle pictures --------------------------------------------------------------------------
   const sprites = () => (model.sprites ??= {});
+  const story = () => ((model as Model & { story?: { joins: Join[]; waves: Wave[] } }).story ??= { joins: [], waves: [] });
   const freeSprite = (base: string) => {
     const stem = base.slice(0, 36);
     let name = stem, n = 2;
@@ -492,12 +517,107 @@ export function initUnitMaker() {
         el('div', {}, el('button', { type: 'button', class: 'mini', onclick: () => { icon.pic.framing = true; changed(); } }, T('reframe')), ' ', chooseIcon, ' ',
           el('button', { type: 'button', class: 'mini', onclick: () => { icons.delete(u.slug); changed(); } }, text.remove))];
     } else iconPart = [el('p', { class: 'hint' }, T('iconCopied')), el('div', {}, chooseIcon)];
+    // The original pictures draw a ROM icon (native_icon.cpp draws a package's own only in HD).
+    const copiedIcon = byId.units.get(baseOf('units', u)?.id ?? -1)?.icon as number | undefined;
+    const iconNumber = el('input', { type: 'number', min: 688, max: 1009, value: u.icon ?? '', placeholder: copiedIcon !== undefined ? String(copiedIcon) : '' }) as HTMLInputElement;
+    const shownIcon = u.icon ?? copiedIcon;
+    iconNumber.addEventListener('change', () => {
+      const v = iconNumber.value.trim() === '' ? undefined : Math.round(Number(iconNumber.value));
+      u.icon = v === undefined || v === copiedIcon ? undefined : v; changed();
+    });
+    iconPart.push(el('div', { class: 'faces' },
+      el('label', { class: 'field' }, T('iconNumber'), iconNumber, el('span', { class: 'was' }, T('iconNumberHint'))),
+      shownIcon !== undefined ? el('img', { src: `/gen/icons/${shownIcon}.png`, alt: '', class: 'pixel-art icon-look' }) : null));
     return [
       el('div', { class: 'sub' }, T('pose')), el('p', { class: 'hint' }, T('poseHint')),
       el('div', { class: 'faces' }, copied ? el('img', { src: copied, alt: '' }) : el('span', { class: 'hint' }, '—'), el('span', { class: 'arrow' }, '→'), pose),
       ...(own ? [spriteCard(own, true)] : []), el('div', {}, make),
       el('div', { class: 'sub' }, T('mapIcon')), ...iconPart,
     ];
+  }
+
+  // --- Battle quotes (dialogue/battle_quotes.json) ------------------------------------------------
+  // A voice: an Ogg as it is, anything else the browser decodes is encoded (as the voice maker).
+  let encoder: ReturnType<typeof vorbisEncoder> | null = null;
+  let audio: AudioContext | null = null;
+  let playing: AudioBufferSourceNode | null = null;
+  async function toOgg(file: File): Promise<Uint8Array> {
+    const bytes = new Uint8Array(await file.arrayBuffer());
+    if (vorbisInfo(bytes.subarray(0, 65536))) return bytes;
+    audio ??= new AudioContext();
+    const buffer = await audio.decodeAudioData(bytes.slice().buffer);
+    encoder ??= vorbisEncoder();
+    return encoder(buffer, 4);
+  }
+  async function play(name: string) {
+    const ogg = voices.get(name);
+    if (!ogg) return;
+    audio ??= new AudioContext();
+    playing?.stop();
+    const source = audio.createBufferSource();
+    source.buffer = await audio.decodeAudioData(ogg.slice().buffer);
+    source.connect(audio.destination); source.start();
+    playing = source;
+  }
+  const freeVoice = (slug: string) => { let n = 1; while (voices.has(`${slug}-${n}.ogg`) || voicesOf(model).includes(`${slug}-${n}.ogg`)) n++; return `${slug}-${n}.ogg`; };
+  const QUOTE_LOCALES = ['ja', 'zh-Hans', 'en', 'ko'] as const;
+  function lineRow(p: Pilot, line: Line, list: Line[], i: number): Node {
+    const cells = QUOTE_LOCALES.map((loc) => textInput(line[loc] ?? '', (v) => { if (v) line[loc] = v; else delete line[loc]; changed(false); }, LOCALE_LABEL[loc]));
+    const voiceCell: Node[] = [];
+    const pick = fileButton(line.voice ? '♪' : T('voicePick'), false, async ([f]) => {
+      say(statusLine, T('voiceEncoding'));
+      const ogg = await toOgg(f);
+      const name = line.voice ?? freeVoice(p.slug);
+      voices.set(name, ogg); line.voice = name;
+      say(statusLine, ''); changed();
+    });
+    voiceCell.push(pick);
+    if (line.voice) voiceCell.push(el('button', { type: 'button', class: 'mini', title: line.voice, onclick: () => play(line.voice!) }, '▶'),
+      el('button', { type: 'button', class: 'mini', onclick: () => { voices.delete(line.voice!); delete line.voice; changed(); } }, T('voiceRemove')));
+    return el('div', { class: 'quote-row' }, ...cells, ...voiceCell,
+      el('button', { type: 'button', class: 'mini', onclick: () => { list.splice(i, 1); changed(); } }, text.remove));
+  }
+  function linesEditor(p: Pilot, list: Line[]): Node[] {
+    return [...list.map((l, i) => lineRow(p, l, list, i)), el('button', { type: 'button', class: 'mini', onclick: () => { list.push({}); changed(); } }, T('quoteAdd'))];
+  }
+  function quotesEditor(p: Pilot): Node {
+    const q: Quotes = (p.quotes ??= {});
+    const situations = QUOTE_SITUATIONS.map((s) => {
+      const list = (q[s] ??= []);
+      const key = `${p.slug}:${s}`;
+      const box = el('details', { open: openSituations.has(key) }, el('summary', {}, `${T(`sit_${s}`)} (${list.filter((l) => l.ja).length})`), ...linesEditor(p, list)) as HTMLDetailsElement;
+      box.addEventListener('toggle', () => { if (box.open) openSituations.add(key); else openSituations.delete(key); });
+      return box;
+    });
+    q.special ??= [];
+    const specials = q.special.map((c: Special, n: number) => {
+      const kindSelect = el('select', {}, el('option', { value: 'weapon' }, T('specialWeapon')), el('option', { value: 'opponent' }, T('specialOpponent'))) as HTMLSelectElement;
+      kindSelect.value = c.opponent !== undefined ? 'opponent' : 'weapon';
+      kindSelect.addEventListener('change', () => {
+        if (kindSelect.value === 'weapon') { delete c.opponent; delete c.situation; c.weapon = c.weapon ?? 0; } else { delete c.weapon; delete c.sometimes; c.opponent = c.opponent ?? 0; }
+        changed();
+      });
+      const head: Node[] = [kindSelect];
+      if (c.opponent === undefined) {
+        head.push(refInput('weapons', c.weapon, (v) => { c.weapon = v ?? 0; changed(false); }, T('specialWeaponHint')));
+        const s = el('input', { type: 'checkbox', checked: !!c.sometimes }) as HTMLInputElement;
+        s.addEventListener('change', () => { c.sometimes = s.checked || undefined; changed(false); });
+        head.push(el('label', { class: 'check' }, s, T('specialSometimes')));
+      } else {
+        const who = el('select', {}, ...lists.pilots.filter((x) => x.id <= 359).map((x) => el('option', { value: String(x.id) }, `${x.id} ${nameOf(x)}`))) as HTMLSelectElement;
+        who.value = String(c.opponent);
+        who.addEventListener('change', () => { c.opponent = Number(who.value); changed(false); });
+        const when = el('select', {}, ...QUOTE_SITUATIONS.map((s) => el('option', { value: s }, T(`sit_${s}`)))) as HTMLSelectElement;
+        when.value = c.situation ?? 'attack';
+        when.addEventListener('change', () => { c.situation = when.value as Special['situation']; changed(false); });
+        head.push(who, when);
+      }
+      head.push(el('button', { type: 'button', class: 'mini', onclick: () => { q.special!.splice(n, 1); changed(); } }, text.remove));
+      return el('div', { class: 'special' }, el('div', { class: 'list-row' }, ...head), ...linesEditor(p, c.lines));
+    });
+    return el('div', {}, el('div', { class: 'sub' }, T('quotes')), el('p', { class: 'hint' }, T('quotesHint')), ...situations,
+      el('div', { class: 'sub' }, T('specials')), el('p', { class: 'hint' }, T('specialsHint')), ...specials,
+      el('button', { type: 'button', class: 'mini', onclick: () => { q.special!.push({ weapon: 0, lines: [{}] }); changed(); } }, T('specialAdd')));
   }
 
   // --- The entry editors ----------------------------------------------------------------------
@@ -521,7 +641,13 @@ export function initUnitMaker() {
       if (!SLUG.test(v) || (v !== e.slug && find(k, v))) { box.value = e.slug; say(statusLine, T('slugBad'), true); return; }
       if (k === 'pilots' && portraits.has(e.slug)) { portraits.set(v, portraits.get(e.slug)!); portraits.delete(e.slug); }
       if (k === 'units' && icons.has(e.slug)) { icons.set(v, icons.get(e.slug)!); icons.delete(e.slug); }
-      rename(model, k, e.slug, v); current = v; changed();
+      rename(model, k, e.slug, v);
+      if (k !== 'weapons') {
+        const swap = (r: Ref) => (r === `@${e.slug}` ? `@${v}` : r);
+        for (const j of story().joins) { if (k === 'pilots') j.pilot = swap(j.pilot); else j.unit = swap(j.unit); }
+        for (const w of story().waves) for (const u of w.units) { if (k === 'pilots') u.pilot = swap(u.pilot); else u.unit = swap(u.unit); }
+      }
+      current = v; changed();
     });
     return el('label', { class: 'field' }, T('slug'), box, el('span', { class: 'was' }, T('slugHint')));
   }
@@ -550,6 +676,7 @@ export function initUnitMaker() {
       listEditor(T('love'), T('loveHint'), p.love, (l) => el('span', {}, refInput('pilots', l.with, (v) => { l.with = v ?? 0; changed(); }),
         (() => { const c = el('input', { type: 'checkbox', checked: l.mutual }) as HTMLInputElement; c.addEventListener('change', () => { l.mutual = c.checked; changed(false); }); return el('label', { class: 'check' }, c, T('mutual')); })()),
         () => { p.love!.push({ with: p.copy, mutual: true }); changed(); }, 8),
+      quotesEditor(p),
       el('div', { class: 'sub' }, T('stats')), el('p', { class: 'hint' }, text.stats1), ...dataEditor('pilots', p),
     ];
   }
@@ -577,12 +704,26 @@ export function initUnitMaker() {
         c.addEventListener('change', () => { const f = new Set(u.forms ?? []); if (c.checked) f.add(ref); else f.delete(ref); u.forms = [...f]; changed(); });
         return el('label', { class: 'check' }, c, shownName(o));
       }))) : null,
+      combineEditor(u),
       listEditor(T('crew'), T('crewHint'), u.crew, (c, i) => refInput('pilots', c, (v) => { u.crew![i] = typeof v === 'number' ? v : 0; changed(); }),
         () => { u.crew!.push(0); changed(); }, 5),
       el('div', { class: 'grid' },
         el('label', { class: 'field' }, T('inherits'), refInput('units', u.inherits_from, (v) => { u.inherits_from = v; changed(false); }), el('span', { class: 'was' }, T('inheritsHint')))),
       el('div', { class: 'sub' }, T('stats')), ...dataEditor('units', u),
     ];
+  }
+  // A unit others combine into (new_units.json combine, mod_combine.hpp): its parts in crew
+  // order, the first the leader, and the original combined units whose 合体 makes this one.
+  function combineEditor(u: Unit): Node {
+    const on = el('input', { type: 'checkbox', checked: !!u.combine }) as HTMLInputElement;
+    on.addEventListener('change', () => { u.combine = on.checked ? { parts: [0, 0], over: [] } : undefined; changed(); });
+    const c = u.combine;
+    if (c) c.over ??= [];
+    return el('div', {}, el('div', { class: 'sub' }, T('combine')), el('label', { class: 'check' }, on, T('combineOn')), el('p', { class: 'hint' }, T('combineHint')),
+      c ? listEditor(T('combineParts'), T('combinePartsHint'), c.parts, (part, i) => refInput('units', part, (v) => { c.parts[i] = v ?? 0; changed(); }),
+        () => { c.parts.push(0); changed(); }, 5) : null,
+      c ? listEditor(T('combineOver'), T('combineOverHint'), c.over, (o, i) => refInput('units', o, (v) => { c.over[i] = typeof v === 'number' ? v : 0; changed(); }),
+        () => { c.over.push(0); changed(); }, 8) : null);
   }
   function weaponEditor(w: Weapon): Node[] {
     const carriers = model.units.filter((u) => u.weapons.includes(`@${w.slug}`));
@@ -648,9 +789,123 @@ export function initUnitMaker() {
   const editor = root.querySelector<HTMLElement>('[data-editor]')!;
   const problemBox = root.querySelector<HTMLElement>('[data-problems]')!;
   const statusLine = root.querySelector<HTMLElement>('[data-status]')!;
-  const kindTitle: Record<Tab | 'scenes', string> = { pilots: T('newPilots'), units: T('newUnits'), weapons: T('newWeapons'), sprites: T('sprites'), scenes: T('scenes') };
-  const count = (k: Tab) => (k === 'sprites' ? Object.keys(sprites()).length : entries(k).length);
-  const first = (k: Tab) => (k === 'sprites' ? Object.keys(sprites())[0] : entries(k)[0]?.slug) ?? null;
+  const kindTitle: Record<string, string> = { pilots: T('newPilots'), units: T('newUnits'), weapons: T('newWeapons'), sprites: T('sprites'), scenes: T('scenes'), story: T('story'), joins: T('joinsTitle'), waves: T('wavesTitle') };
+  const count = (k: Tab) => (k === 'sprites' ? Object.keys(sprites()).length : k === 'story' ? story().joins.length + story().waves.length : entries(k).length);
+  const first = (k: Tab) => (k === 'sprites' ? Object.keys(sprites())[0] : k === 'story' ? storyKeys()[0] : entries(k)[0]?.slug) ?? null;
+
+  // --- Joins and reinforcements (lib/story-image.ts, story/unit-maker.json) --------------------------
+  const sceneTitle = (n: number) => `${n} ${scenes.find((s) => s.id === n)?.title ?? ''}`.trim();
+  const storyKeys = () => [...story().joins.map((j) => `join:${j.id}`), ...story().waves.map((w) => `wave:${w.id}`)];
+  const freeStoryId = (prefix: string, taken: string[]) => { let n = 1; while (taken.includes(`${prefix}${n}`)) n++; return `${prefix}${n}`; };
+  const sceneSelect = (value: number, onchange: (v: number) => void) => {
+    const s = el('select', {}, ...scenes.map((x) => el('option', { value: String(x.id) }, sceneTitle(x.id)))) as HTMLSelectElement;
+    s.value = String(value);
+    s.addEventListener('change', () => onchange(Number(s.value)));
+    return s;
+  };
+  const numberBox = (value: number, low: number, high: number, onchange: (v: number) => void) => {
+    const i = el('input', { type: 'number', min: low, max: high, value }) as HTMLInputElement;
+    i.addEventListener('change', () => { const v = Math.round(Number(i.value)); onchange(Number.isFinite(v) ? v : low); });
+    return i;
+  };
+  function textsEditor(title: string, value: storyImage.Texts, onchange: () => void): Node {
+    return el('div', {}, el('div', { class: 'sub' }, title), ...LOCALES.map((loc) => el('div', { class: 'name-row' }, el('span', { class: 'loc' }, LOCALE_LABEL[loc]),
+      textInput(value[loc] ?? '', (v) => { if (v) value[loc] = v; else delete value[loc]; onchange(); }))));
+  }
+  function joinEditor(j: Join): Node[] {
+    const at = el('select', {}, el('option', { value: 'end' }, T('joinAtEnd')), el('option', { value: 'opening' }, T('joinAtOpening'))) as HTMLSelectElement;
+    at.value = j.at;
+    at.addEventListener('change', () => { j.at = at.value as Join['at']; changed(false); });
+    const info = el('input', { type: 'checkbox', checked: !!j.info }) as HTMLInputElement;
+    info.addEventListener('change', () => { j.info = info.checked ? { title: {}, text: {}, inherit: true } : undefined; changed(); });
+    const parts: Node[] = [
+      el('p', { class: 'hint' }, T('joinHint')),
+      el('div', { class: 'grid' },
+        el('label', { class: 'field' }, T('storyScene'), sceneSelect(j.scene, (v) => { j.scene = v; changed(false); }), el('span', { class: 'was' }, T('storySceneHint'))),
+        el('label', { class: 'field' }, T('joinAt'), at),
+        el('label', { class: 'field' }, T('joinPilot'), refInput('pilots', j.pilot, (v) => { j.pilot = v ?? 0; changed(false); })),
+        el('label', { class: 'field' }, T('joinUnit'), refInput('units', j.unit, (v) => { j.unit = v ?? 0; changed(false); })),
+        el('label', { class: 'field' }, T('joinLevel'), numberBox(j.level, -98, 98, (v) => { j.level = v; changed(false); }), el('span', { class: 'was' }, T('joinLevelHint')))),
+      el('label', { class: 'check' }, info, T('joinInfo')), el('p', { class: 'hint' }, T('joinInfoHint')),
+    ];
+    if (j.info) {
+      const keep = el('input', { type: 'checkbox', checked: j.info.inherit }) as HTMLInputElement;
+      keep.addEventListener('change', () => { j.info!.inherit = keep.checked; changed(false); });
+      parts.push(textsEditor(T('infoTitle'), j.info.title, () => changed(false)), textsEditor(T('infoText'), j.info.text, () => changed(false)),
+        el('label', { class: 'check' }, keep, T('joinInherit')), el('p', { class: 'hint' }, T('joinInheritHint')));
+    }
+    return parts;
+  }
+  function waveEditor(w: Wave): Node[] {
+    const phase = el('select', {}, ...(['player', 'enemy', 'third'] as const).map((p) => el('option', { value: p }, T(`phase_${p}`)))) as HTMLSelectElement;
+    phase.value = w.phase;
+    phase.addEventListener('change', () => { w.phase = phase.value as Wave['phase']; changed(false); });
+    const rows = w.units.map((u: WaveUnit, i: number) => {
+      const side = el('select', {}, ...(Object.keys(storyImage.DEPLOY_SIDES) as DeploySide[]).map((s) => el('option', { value: s }, T(`side_${s}`)))) as HTMLSelectElement;
+      side.value = u.side;
+      side.addEventListener('change', () => { u.side = side.value as DeploySide; changed(false); });
+      return el('div', { class: 'wave-row' },
+        el('label', {}, 'x', numberBox(u.x, 0, 63, (v) => { u.x = v; changed(false); })), el('label', {}, 'y', numberBox(u.y, 0, 63, (v) => { u.y = v; changed(false); })),
+        refInput('pilots', u.pilot, (v) => { u.pilot = v ?? 0; changed(false); }, T('joinPilot')),
+        refInput('units', u.unit, (v) => { u.unit = v ?? 0; changed(false); }, T('joinUnit')),
+        side, el('label', {}, T('waveLevel'), numberBox(u.level, 0, 20, (v) => { u.level = v; changed(false); })),
+        el('label', {}, T('waveUpgrade'), numberBox(u.upgrade, 0, 5, (v) => { u.upgrade = v; changed(false); })),
+        el('button', { type: 'button', class: 'mini', onclick: () => { w.units.splice(i, 1); changed(); } }, text.remove));
+    });
+    return [
+      el('p', { class: 'hint' }, T('waveHint')),
+      el('div', { class: 'grid' },
+        el('label', { class: 'field' }, T('storyScene'), sceneSelect(w.scene, (v) => { w.scene = v; changed(false); }), el('span', { class: 'was' }, T('storySceneHint'))),
+        el('label', { class: 'field' }, T('waveTurn'), numberBox(w.turn, 1, 99, (v) => { w.turn = v; changed(false); })),
+        el('label', { class: 'field' }, T('wavePhase'), phase)),
+      el('div', { class: 'sub' }, T('waveUnits')), el('p', { class: 'hint' }, T('waveUnitsHint')), ...rows,
+      w.units.length < 30 ? el('button', { type: 'button', class: 'mini', onclick: () => {
+        const last = w.units[w.units.length - 1];
+        w.units.push(last ? { ...last, x: Math.min(63, last.x + 1) } : { x: 10, y: 10, pilot: model.pilots[0] ? `@${model.pilots[0].slug}` : 298, unit: model.units[0] ? `@${model.units[0].slug}` : 170, side: 'enemy', level: 0, upgrade: 0 });
+        changed();
+      } }, T('add')) : null,
+    ];
+  }
+  function renderStoryList() {
+    const s = story();
+    listBox.replaceChildren(el('div', { class: 'new-list' },
+      ...s.joins.map((j) => el('button', { type: 'button', class: `new-entry${current === `join:${j.id}` ? ' on' : ''}`, onclick: () => { current = `join:${j.id}`; adding = false; render(); } },
+        el('span', { class: 'num' }, T('joinTag')), `${j.id} · ${sceneTitle(j.scene)}`)),
+      ...s.waves.map((w) => el('button', { type: 'button', class: `new-entry${current === `wave:${w.id}` ? ' on' : ''}`, onclick: () => { current = `wave:${w.id}`; adding = false; render(); } },
+        el('span', { class: 'num' }, T('waveTag')), `${w.id} · ${sceneTitle(w.scene)}`)),
+      el('button', { type: 'button', class: `new-entry add${adding ? ' on' : ''}`, onclick: () => { adding = !adding; render(); } }, `＋ ${T('addNew')}`)));
+    addBox.replaceChildren(...(adding ? [el('p', { class: 'hint' }, T('copyHint_story')), el('div', {},
+      el('button', { type: 'button', class: 'mini', onclick: () => {
+        const id = freeStoryId(model.pilots[0]?.slug ? `${model.pilots[0].slug}-` : 'join-', s.joins.map((j) => j.id));
+        s.joins.push({ id, scene: scenes[0]?.id ?? 0, at: 'end', pilot: model.pilots[0] ? `@${model.pilots[0].slug}` : 0, unit: model.units[0] ? `@${model.units[0].slug}` : 0, level: 0 });
+        current = `join:${id}`; adding = false; changed();
+      } }, T('joinNew')), ' ',
+      el('button', { type: 'button', class: 'mini', onclick: () => {
+        const id = freeStoryId('wave-', s.waves.map((w) => w.id));
+        s.waves.push({ id, scene: scenes[0]?.id ?? 0, turn: 2, phase: 'player', units: [{ x: 10, y: 10, pilot: model.pilots[0] ? `@${model.pilots[0].slug}` : 298, unit: model.units[0] ? `@${model.units[0].slug}` : 170, side: 'enemy', level: 0, upgrade: 0 }] });
+        current = `wave:${id}`; adding = false; changed();
+      } }, T('waveNew')))] : []));
+  }
+  function renderStoryEditor() {
+    const s = story();
+    const [what, id] = (current ?? '').split(/:(.*)/);
+    const j = what === 'join' ? s.joins.find((x) => x.id === id) : undefined, w = what === 'wave' ? s.waves.find((x) => x.id === id) : undefined;
+    if (!j && !w) { editor.replaceChildren(el('p', { class: 'hint' }, T(count('story') ? 'pickOne' : 'empty_story'))); return; }
+    const entry = (j ?? w)!;
+    const idBox = textInput(entry.id, (v) => {
+      const list = j ? s.joins : s.waves;
+      if (!storyImage.KEY.test(v) || (v !== entry.id && list.some((x) => x.id === v))) { say(statusLine, T('slugBad'), true); render(); return; }
+      entry.id = v; current = `${what}:${v}`; changed();
+    });
+    editor.replaceChildren(el('div', { class: 'card' },
+      el('h3', {}, el('span', { class: 'num' }, T(j ? 'joinTag' : 'waveTag')), entry.id),
+      el('label', { class: 'field' }, T('storyId'), idBox, el('span', { class: 'was' }, T('storyIdHint'))),
+      ...(j ? joinEditor(j) : waveEditor(w!)),
+      el('div', {}, el('button', { type: 'button', class: 'mini danger', onclick: () => {
+        if (j) s.joins.splice(s.joins.indexOf(j), 1); else s.waves.splice(s.waves.indexOf(w!), 1);
+        current = null; changed();
+      } }, T('deleteEntry')))));
+  }
 
   function renderSpriteList() {
     listBox.replaceChildren(el('div', { class: 'new-list' },
@@ -675,6 +930,7 @@ export function initUnitMaker() {
 
   function renderList() {
     if (kind === 'sprites') return renderSpriteList();
+    if (kind === 'story') return renderStoryList();
     listBox.replaceChildren(el('div', { class: 'new-list' },
       ...entries(kind).map((e) => el('button', { type: 'button', class: `new-entry${e.slug === current ? ' on' : ''}`, onclick: () => { current = e.slug; adding = false; render(); } },
         el('span', { class: 'num' }, `@${e.slug}`), shownName(e))),
@@ -684,6 +940,7 @@ export function initUnitMaker() {
   }
   function renderEditor() {
     if (kind === 'sprites') return renderSpriteEditor();
+    if (kind === 'story') return renderStoryEditor();
     const e = find(kind, current);
     if (!e) { editor.replaceChildren(entries(kind).length ? el('p', { class: 'hint' }, T('pickOne')) : el('p', { class: 'hint' }, T(`empty_${kind}`))); return; }
     const base = baseOf(kind, e);
@@ -721,6 +978,13 @@ export function initUnitMaker() {
       if (k === 'units' && icons.get(e.slug)?.pic.framing) out.push(`${shownName(e)}：${T('p_iconFraming')}`);
     }
     for (const name of Object.keys(sprites())) if (!art.has(name)) out.push(`@${name}：${T('p_spriteNoArt')}`);
+    for (const name of voicesOf(model)) if (!voices.has(name)) out.push(`${name}：${T('p_voiceMissing')}`);
+    const s = story();
+    for (const p of storyImage.storyProblems(s.joins, s.waves)) { const [k, id] = p.where.split(/\.(.*)/); out.push(`${kindTitle[k]} ${id}：${T(`p_${p.code}`)}`); }
+    // A new character or unit by name must be one of the package's.
+    const own = (k: Kind, v: Ref) => typeof v !== 'string' || !v.startsWith('@') || !!find(k, v.slice(1));
+    for (const j of s.joins) if (!own('pilots', j.pilot) || !own('units', j.unit)) out.push(`${kindTitle.joins} ${j.id}：${T('p_story_missing')}`);
+    for (const w of s.waves) if (w.units.some((u) => !own('pilots', u.pilot) || !own('units', u.unit))) out.push(`${kindTitle.waves} ${w.id}：${T('p_story_missing')}`);
     return out;
   }
   function renderProblems() {
@@ -762,6 +1026,9 @@ export function initUnitMaker() {
       frames.forEach((path, i) => (out[path] = a.images[i]));
       hd.forEach((path, i) => (out[path] = a.hds[i]));
     }
+    for (const name of voicesOf(model)) { const ogg = voices.get(name); if (ogg) out[`audio/voice/battle/${name}`] = ogg; }
+    const image = storyImage.compile(story().joins, story().waves);
+    if (image) out[storyImage.STORY_FILE] = jsonBytes(image);
     const facing: Record<string, string> = { ...keptFacing };
     for (const u of model.units) {
       const icon = icons.get(u.slug);
@@ -776,14 +1043,62 @@ export function initUnitMaker() {
     }
     return out;
   }
-  root.querySelector('[data-export]')!.addEventListener('click', () => {
+  // Thunderstore (lib/thunderstore.ts): beside the .srw64mod, the zip its upload page takes.
+  let tsIcon: Uint8Array | null = null;
+  const tsOn = el('input', { type: 'checkbox' }) as HTMLInputElement;
+  const tsTeam = el('input', { placeholder: 'YourTeam', autocomplete: 'off', spellcheck: 'false' }) as HTMLInputElement;
+  const tsName = el('input', { placeholder: '', autocomplete: 'off', spellcheck: 'false' }) as HTMLInputElement;
+  const tsIconView = el('span', { class: 'hint' }, T('tsIconAuto'));
+  const tsIconPick = fileButton(T('tsIcon'), false, async ([f]) => {
+    const b = await createImageBitmap(f);
+    if (b.width !== b.height) { say(statusLine, T('tsIconSquare'), true); return; }
+    const c = document.createElement('canvas'); c.width = c.height = ts.ICON_SIZE;
+    const g = c.getContext('2d')!; g.imageSmoothingEnabled = b.width > ts.ICON_SIZE; g.imageSmoothingQuality = 'high';
+    g.drawImage(b, 0, 0, ts.ICON_SIZE, ts.ICON_SIZE);
+    tsIcon = await png(c);
+    tsIconView.replaceChildren(el('img', { src: dataUrl(tsIcon), alt: '', width: 64, height: 64 }));
+  });
+  const tsBox = el('div', { class: 'ts-options', hidden: true },
+    el('p', { class: 'hint' }, T('tsHint')),
+    el('div', { class: 'grid' },
+      el('label', { class: 'field' }, T('tsTeam'), tsTeam, el('span', { class: 'was' }, T('tsTeamHint'))),
+      el('label', { class: 'field' }, T('tsName'), tsName, el('span', { class: 'was' }, T('tsNameHint')))),
+    el('div', { class: 'faces' }, tsIconPick, tsIconView));
+  tsOn.addEventListener('change', () => { tsBox.hidden = !tsOn.checked; });
+  root.querySelector('[data-export]')!.before(el('label', { class: 'check' }, tsOn, T('tsOn')), tsBox);
+  // Without a chosen icon: the first new unit's map icon, else the first portrait, made 256.
+  async function defaultTsIcon(): Promise<Uint8Array | null> {
+    const own = [...icons.values()].find((i) => !i.pic.framing)?.pic.png ?? [...portraits.values()].find((p) => p.hd.length)?.hd;
+    if (!own) return null;
+    const b = await createImageBitmap(new Blob([own as BlobPart], { type: 'image/png' }));
+    const c = document.createElement('canvas'); c.width = c.height = ts.ICON_SIZE;
+    const g = c.getContext('2d')!; g.imageSmoothingEnabled = b.width > ts.ICON_SIZE;
+    g.drawImage(b, 0, 0, ts.ICON_SIZE, ts.ICON_SIZE);
+    return png(c);
+  }
+  root.querySelector('[data-export]')!.addEventListener('click', async () => {
     const status = root.querySelector<HTMLElement>('[data-export-status]')!;
     const m = form.manifest();
     if (typeof m === 'string') return say(status, m, true);
     const list = allProblems();
     if (list.length) return say(status, text.fixFirst + list.join(lang === 'en' || lang === 'ko' ? '; ' : '；'), true);
-    if (!model.pilots.length && !model.units.length && !model.weapons.length && !count('sprites')) return say(status, T('errEmpty'), true);
-    writePackage(m.manifest, m.version, packageFiles(), status, text);
+    if (!model.pilots.length && !model.units.length && !model.weapons.length && !count('sprites') && !count('story')) return say(status, T('errEmpty'), true);
+    let tsPlan: { team: string; name: string; icon: Uint8Array } | null = null;
+    if (tsOn.checked) {
+      const team = tsTeam.value.trim(), name = tsName.value.trim() || ts.defaultName(String(m.manifest.id));
+      if (team && !ts.NAME_RE.test(team)) return say(status, T('tsBadTeam'), true);
+      if (!ts.NAME_RE.test(name) || name.length > ts.NAME_LIMIT) return say(status, T('tsBadName'), true);
+      if (ts.unmappedRequires(m.manifest).length) return say(status, T('tsRequires', { ids: ts.unmappedRequires(m.manifest).join(', ') }), true);
+      const icon = tsIcon ?? (await defaultTsIcon());
+      if (!icon) return say(status, T('tsNeedIcon'), true);
+      tsPlan = { team, name, icon };
+    }
+    const made = writePackage(m.manifest, m.version, packageFiles(), status, text);
+    if (!tsPlan) return;
+    const zip = thunderstoreZip(ts.entries(m.manifest, tsPlan.name, tsPlan.icon, made.name, made.zip, strToU8));
+    const file = ts.zipName(tsPlan.team, tsPlan.name, m.version);
+    setTimeout(() => offer(zip, file), 400);   // a second download, after the first
+    say(status, `${status.textContent} ${T('tsExported', { file, size: size(zip.length) })}`);
   });
   root.querySelector<HTMLInputElement>('[data-import]')!.addEventListener('change', async (ev) => {
     const input = ev.target as HTMLInputElement, file = input.files?.[0];
@@ -794,7 +1109,7 @@ export function initUnitMaker() {
       const { mod, files } = await openPackage(file);
       form.fill(mod);
       const json: Record<string, unknown> = {};
-      const owned = ['data/new_units.json', 'data/pilots.json', 'data/units.json', 'data/weapons.json', 'dialogue/names.json'];
+      const owned = ['data/new_units.json', 'data/pilots.json', 'data/units.json', 'data/weapons.json', 'dialogue/names.json', 'dialogue/battle_quotes.json'];
       keptFiles = {};
       for (const [path, bytes] of Object.entries(files)) {
         if (path === 'mod.json') continue;
@@ -811,7 +1126,15 @@ export function initUnitMaker() {
         portraits.set(p.slug, { pic: null, image, hd: hd ?? image, url: dataUrl(image) });
         delete keptFiles[portrait.image]; if (portrait.hd) delete keptFiles[portrait.hd];
       }
-      art.clear(); icons.clear(); keptFacing = {};
+      art.clear(); icons.clear(); keptFacing = {}; voices.clear();
+      if (keptFiles[storyImage.STORY_FILE]) {
+        (model as Model & { story?: unknown }).story = storyImage.read(readJson(keptFiles[storyImage.STORY_FILE]));
+        delete keptFiles[storyImage.STORY_FILE];
+      }
+      for (const name of voicesOf(model)) {
+        const bytes = keptFiles[`audio/voice/battle/${name}`];
+        if (bytes) { voices.set(name, bytes); delete keptFiles[`audio/voice/battle/${name}`]; }
+      }
       for (const [name, s] of Object.entries(model.sprites ?? {})) {
         const { frames, hd } = spriteFiles(s);
         if (!frames.length || frames.some((f) => !keptFiles[f]) || hd.some((f) => !keptFiles[f])) continue;
@@ -836,7 +1159,7 @@ export function initUnitMaker() {
         for (const [key, way] of Object.entries(said)) if (!(key.startsWith('@') && icons.has(key.slice(1)))) keptFacing[key] = way;
         delete keptFiles['art/icons.json'];
       }
-      kind = model.pilots.length ? 'pilots' : model.units.length ? 'units' : model.weapons.length ? 'weapons' : 'sprites';
+      kind = model.pilots.length ? 'pilots' : model.units.length ? 'units' : model.weapons.length ? 'weapons' : count('sprites') ? 'sprites' : 'story';
       current = first(kind); adding = false;
       changed();
       say(status, fill(text.imported, { id: mod.id ?? file.name }));
@@ -844,6 +1167,96 @@ export function initUnitMaker() {
       say(status, fill(text.errImport, { detail: String((error as Error).message ?? error) }), true);
     }
   });
+
+  // --- In the game (lib/game-link.ts, W3) -----------------------------------------------------------
+  // The package goes to the game on this computer as a package to try, then the battle viewer
+  // shows a new unit of it against an original one.
+  const linkBox = root.querySelector<HTMLElement>('[data-link]');
+  if (linkBox) {
+    const link = new GameLink();
+    try { link.token = sessionStorage.getItem('unit-maker-link') ?? ''; } catch { /* none */ }
+    const linkStatus = el('p', { class: 'status' });
+    const port = el('input', { type: 'number', min: 1024, max: 65535, value: PORT, class: 'port' }) as HTMLInputElement;
+    const shot = el('div', { class: 'link-shot' });
+    const controls = el('div', { class: 'link-controls', hidden: true });
+    const sayLink = (key: string, values: Record<string, string | number> = {}, error = false) => say(linkStatus, T(key, values), error);
+    const why = (error: unknown) => { const m = String((error as Error)?.message ?? error); return m === 'Failed to fetch' ? T('linkNoGame') : m; };
+    async function connect() {
+      link.port = Number(port.value) || PORT;
+      try {
+        const hello = await link.hello();
+        if (hello.protocol !== 1) return sayLink('linkProtocol', {}, true);
+        if (!link.token || !hello.paired) {
+          link.token = '';
+          await link.pair(() => sayLink('linkWaiting'));
+          try { sessionStorage.setItem('unit-maker-link', link.token); } catch { /* private window */ }
+        }
+        sayLink('linkReady', { version: hello.version });
+        controls.hidden = false; renderControls();
+      } catch (error) {
+        sayLink(String((error as Error)?.message) === 'refused' ? 'linkRefused' : 'linkFailed', { detail: why(error) }, true);
+      }
+    }
+    // Attacker: a new unit of the package with a character and one of its weapons; defender: any.
+    const choice = { unit: '', pilot: '', weapon: '', defender: { unit: 170, pilot: 298, weapon: 677 }, damage: 500 };
+    function renderControls() {
+      const unitSelect = el('select', {}, ...model.units.map((u) => el('option', { value: `@${u.slug}` }, `@${u.slug} ${shownName(u)}`))) as HTMLSelectElement;
+      choice.unit ||= model.units[0] ? `@${model.units[0].slug}` : '';
+      unitSelect.value = choice.unit;
+      const u = model.units.find((x) => `@${x.slug}` === choice.unit);
+      const pilotSelect = el('select', {}, ...model.pilots.map((p) => el('option', { value: `@${p.slug}` }, `@${p.slug} ${shownName(p)}`)),
+        ...lists.pilots.map((p) => el('option', { value: String(p.id) }, `${p.id} ${nameOf(p)}`))) as HTMLSelectElement;
+      choice.pilot ||= model.pilots[0] ? `@${model.pilots[0].slug}` : '166';
+      pilotSelect.value = choice.pilot;
+      const weaponSelect = el('select', {}, ...(u?.weapons ?? []).map((w) => el('option', { value: String(w) }, refName('weapons', w)))) as HTMLSelectElement;
+      if (!u?.weapons.map(String).includes(choice.weapon)) choice.weapon = String(u?.weapons[0] ?? '');
+      weaponSelect.value = choice.weapon;
+      unitSelect.addEventListener('change', () => { choice.unit = unitSelect.value; choice.weapon = ''; renderControls(); });
+      pilotSelect.addEventListener('change', () => { choice.pilot = pilotSelect.value; });
+      weaponSelect.addEventListener('change', () => { choice.weapon = weaponSelect.value; });
+      const number = (v: number, set: (n: number) => void) => { const i = el('input', { type: 'number', value: v, class: 'port' }) as HTMLInputElement; i.addEventListener('change', () => set(Math.round(Number(i.value)) || 0)); return i; };
+      controls.replaceChildren(
+        el('div', { class: 'grid' },
+          el('label', { class: 'field' }, T('linkUnit'), unitSelect), el('label', { class: 'field' }, T('linkPilot'), pilotSelect),
+          el('label', { class: 'field' }, T('linkWeapon'), weaponSelect),
+          el('label', { class: 'field' }, T('linkDefender'), el('span', { class: 'link-numbers' },
+            number(choice.defender.unit, (n) => (choice.defender.unit = n)), number(choice.defender.pilot, (n) => (choice.defender.pilot = n)), number(choice.defender.weapon, (n) => (choice.defender.weapon = n))),
+            el('span', { class: 'was' }, T('linkDefenderHint'))),
+          el('label', { class: 'field' }, T('linkDamage'), number(choice.damage, (n) => (choice.damage = n)))),
+        el('div', {}, el('button', { type: 'button', class: 'btn', onclick: tryIt }, T('linkTry')), ' ',
+          el('button', { type: 'button', class: 'mini', onclick: screenshot }, T('linkShot'))));
+    }
+    async function tryIt() {
+      const m = form.manifest();
+      if (typeof m === 'string') return sayLink('linkPackage', { detail: m }, true);
+      const list = allProblems();
+      if (list.length) return say(linkStatus, text.fixFirst + list.join(lang === 'en' || lang === 'ko' ? '; ' : '；'), true);
+      if (!choice.unit) return sayLink('linkNoUnit', {}, true);
+      try {
+        sayLink('linkInstalling');
+        const done = await link.install(zipPackage(m.manifest, packageFiles()));
+        if (!done.ok || !done.numbers) return sayLink('linkInstallFailed', { detail: (done.problems ?? []).join('；') }, true);
+        const resolve = (kind: 'units' | 'pilots' | 'weapons', v: string) => (/^\d+$/.test(v) ? Number(v) : done.numbers![kind][v]);
+        const attacker = { unit: resolve('units', choice.unit), pilot: resolve('pilots', choice.pilot), weapon: resolve('weapons', choice.weapon) };
+        if ([attacker.unit, attacker.pilot, attacker.weapon].some((n) => n === undefined)) return sayLink('linkInstallFailed', { detail: T('linkNumbers') }, true);
+        const started = await link.viewer({ attacker, defender: choice.defender, damage: choice.damage, scene: [0, 0] });
+        if (!started.ok) return sayLink('linkViewerFailed', { detail: started.error ?? '' }, true);
+        sayLink('linkStarted', { unit: attacker.unit });
+      } catch (error) {
+        if (String((error as Error)?.message) === 'unpaired') { controls.hidden = true; try { sessionStorage.removeItem('unit-maker-link'); } catch { /* none */ } }
+        sayLink('linkFailed', { detail: why(error) }, true);
+      }
+    }
+    async function screenshot() {
+      try {
+        const blob = await link.screenshot();
+        shot.replaceChildren(el('img', { src: dataUrl(new Uint8Array(await blob.arrayBuffer())), alt: '' }));
+      } catch (error) { sayLink('linkFailed', { detail: why(error) }, true); }
+    }
+    linkBox.append(el('p', { class: 'hint' }, T('linkHint')),
+      el('div', { class: 'faces' }, el('label', { class: 'field' }, T('linkPort'), port), el('button', { type: 'button', class: 'btn', onclick: connect }, T('linkConnect'))),
+      linkStatus, controls, shot);
+  }
 
   // A draft from this browser (the model only; pictures are not kept).
   try {
@@ -853,6 +1266,8 @@ export function initUnitMaker() {
       for (const p of model.pilots) if (p.portrait && !Array.isArray(p.portrait)) delete p.portrait;
       for (const u of model.units) if (typeof u.pose === 'string' && u.pose.startsWith('@')) delete u.pose;
       delete model.sprites;
+      // Voices are files too: the lines stay, their voices go.
+      for (const p of model.pilots) for (const l of [...QUOTE_SITUATIONS.flatMap((s) => p.quotes?.[s] ?? []), ...(p.quotes?.special ?? []).flatMap((c) => c.lines)]) delete l.voice;
     }
   } catch { /* none */ }
   current = first(kind);

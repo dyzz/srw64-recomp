@@ -153,6 +153,13 @@
 .maker .problems { margin: 0; padding-left: 20px; color: var(--pink); font-size: 14px; }
 .maker .mini.danger { color: var(--pink); }
 .maker .pixel-art { image-rendering: pixelated; }
+.maker .quote-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 4px 0; }
+.maker .quote-row input { flex: 1 1 140px; min-width: 0; }
+.maker details summary { cursor: pointer; margin: 6px 0; color: var(--text); }
+.maker .special { border-left: 2px solid var(--line); padding-left: 10px; margin: 8px 0; }
+.maker input.port { width: 90px; }
+.maker .link-numbers { display: flex; gap: 6px; }
+.maker .link-shot img { display: block; max-width: 100%; margin-top: 10px; border-radius: var(--radius); }
 .maker .sprite-card { border-left: 2px solid var(--line); padding-left: 12px; margin: 8px 0; }
 .maker .sprite-box { max-width: 100%; overflow-x: auto; margin: 8px 0; }
 .maker .sprite-view { display: block; max-width: 100%; height: auto; cursor: crosshair; background: repeating-conic-gradient(var(--bg-2) 0 25%, var(--panel) 0 50%) 0 0 / 12px 12px; border-radius: var(--radius); }

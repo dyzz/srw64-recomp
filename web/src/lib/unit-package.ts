@@ -20,14 +20,26 @@ export type Changes = Record<string, unknown>;
 export type PilotNames = Partial<Record<Locale, { name: string; full?: string }>>;
 export type Texts = Partial<Record<Locale, string>>;
 
+// dialogue/battle_quotes.json (src/host/mod_quotes.hpp): a new character's own battle lines.
+// A line by locale (ja required) and the Ogg it may play (audio/voice/battle/<voice>).
+export const QUOTE_SITUATIONS = ['attack', 'shot_down', 'heavy', 'medium', 'light', 'evade', 'no_damage', 'no_ammo', 'out_of_range'] as const;
+export type Situation = (typeof QUOTE_SITUATIONS)[number];
+export type Line = Partial<Record<'ja' | 'zh-Hans' | 'zh-Hant' | 'en' | 'ko', string>> & { voice?: string };
+// A line for a weapon (always attacking; `sometimes` lets the general lines win now and then)
+// or against an original character in a situation.
+export type Special = { weapon?: Ref; opponent?: number; situation?: Situation; sometimes?: boolean; lines: Line[] };
+export type Quotes = Partial<Record<Situation, Line[]>> & { special?: Special[] };
+export const QUOTE_LONGEST = 42, QUOTE_SPECIALS = 119;
+
 export interface Pilot {
   slug: string; copy: number; voice?: number; portrait?: { image: string; hd?: string } | [number, number];
   love?: { with: Ref; mutual: boolean }[]; combo_as?: number;
+  quotes?: Quotes;
   names: PilotNames; data: Changes;
 }
 export interface Unit {
   slug: string; copy: number; weapons: Ref[]; forms?: string[]; crew?: number[];
-  combine?: { parts: Ref[]; over: number[] }; inherits_from?: Ref; icon?: number; pose?: unknown; work?: number;
+  combine?: { parts: Ref[]; over?: number[] }; inherits_from?: Ref; icon?: number; pose?: unknown; work?: number;
   names: Texts; models: Texts; data: Changes;
 }
 export interface Combination { units: Ref[]; parts: Ref[]; multiplier: number; pilots?: Ref[][] }
@@ -68,7 +80,7 @@ export function toFiles(model: Model, kept: Record<string, unknown> = {}): Recor
       love: p.love?.length ? p.love : undefined, combo_as: p.combo_as });
   for (const u of model.units)
     units[u.slug] = pruned({ copy: u.copy, pose: u.pose, icon: u.icon, weapons: u.weapons, inherits_from: u.inherits_from,
-      crew: u.crew?.length ? u.crew : undefined, combine: u.combine, work: u.work, forms: u.forms?.length ? u.forms : undefined });
+      crew: u.crew?.length ? u.crew : undefined, combine: u.combine && pruned({ parts: u.combine.parts, over: u.combine.over?.length ? u.combine.over : undefined }), work: u.work, forms: u.forms?.length ? u.forms : undefined });
   for (const w of model.weapons)
     weapons[w.slug] = pruned({ copy: w.copy, inherits_from: w.inherits_from, combination: w.combination, animation: w.animation });
   const doc: Record<string, unknown> = { schema: NEW_UNITS_SCHEMA };
@@ -110,6 +122,14 @@ export function toFiles(model: Model, kept: Record<string, unknown> = {}): Recor
     if (Object.keys(by).length) names.weapons[`@${w.slug}`] = by;
   }
   for (const kind of [...KINDS, 'models']) if (!Object.keys(names[kind]).length) delete names[kind];
+  // battle_quotes.json: this package's characters' entries over the opened file's others.
+  const quotes: Record<string, unknown> = { ...(((kept['dialogue/battle_quotes.json'] as Record<string, any>)?.pilots) ?? {}) };
+  for (const key of Object.keys(quotes)) if (key.startsWith('@')) delete quotes[key];
+  for (const p of model.pilots) {
+    const q = cleanQuotes(p.quotes);
+    if (q) quotes[`@${p.slug}`] = q;
+  }
+  if (Object.keys(quotes).length) out['dialogue/battle_quotes.json'] = { schema: BATTLE_QUOTES_SCHEMA, pilots: quotes };
   if (Object.keys(names).some((k) => k !== 'schema')) out['dialogue/names.json'] = names;
   return out;
 }
@@ -132,6 +152,22 @@ export function placeSprite(s: Sprite, name: string, count: number, hd: boolean)
   return out;
 }
 
+// A character's lines as the file has them: empty situations and empty locales left out.
+export const BATTLE_QUOTES_SCHEMA = 'srw64.battle-quotes.v1';
+const cleanLine = (l: Line): Line => Object.fromEntries(Object.entries(l).filter(([, v]) => typeof v === 'string' && v.trim() !== '')) as Line;
+export function cleanQuotes(q?: Quotes): Quotes | undefined {
+  if (!q) return undefined;
+  const out: Quotes = {};
+  for (const s of QUOTE_SITUATIONS) { const lines = (q[s] ?? []).map(cleanLine).filter((l) => Object.keys(l).length); if (lines.length) out[s] = lines; }
+  const special = (q.special ?? []).map((c) => ({ ...pruned({ weapon: c.weapon, opponent: c.opponent, situation: c.opponent !== undefined && c.situation !== 'attack' ? c.situation : undefined,
+    sometimes: c.weapon !== undefined && c.sometimes ? true : undefined }), lines: c.lines.map(cleanLine).filter((l) => Object.keys(l).length) })).filter((c) => c.lines.length);
+  if (special.length) out.special = special;
+  return Object.keys(out).length ? out : undefined;
+}
+// The voice files a model's lines name.
+export const voicesOf = (model: Model) => model.pilots.flatMap((p) => [...QUOTE_SITUATIONS.flatMap((s) => p.quotes?.[s] ?? []), ...(p.quotes?.special ?? []).flatMap((c) => c.lines)])
+  .map((l) => l.voice).filter((v): v is string => !!v);
+
 // --- From files --------------------------------------------------------------------------
 
 // A package's files read back: the model, and what it keeps as it was (the files' other rows).
@@ -140,8 +176,9 @@ export function fromFiles(files: Record<string, unknown>): { model: Model; kept:
   const doc = (files['data/new_units.json'] ?? {}) as Record<string, any>;
   const names = (files['dialogue/names.json'] ?? {}) as Record<string, any>;
   const rows = (kind: Kind) => ((files[DATA_FILES[kind]] ?? {}) as Record<string, Changes>);
+  const quoteFile = (files['dialogue/battle_quotes.json'] ?? {}) as Record<string, any>;
   for (const [slug, e] of Object.entries((doc.pilots ?? {}) as Record<string, any>))
-    model.pilots.push(pruned({ slug, copy: e.copy, voice: e.voice, portrait: e.portrait, love: e.love, combo_as: e.combo_as,
+    model.pilots.push(pruned({ slug, copy: e.copy, voice: e.voice, portrait: e.portrait, love: e.love, combo_as: e.combo_as, quotes: quoteFile.pilots?.[`@${slug}`],
       names: names.pilots?.[`@${slug}`] ?? {}, data: rows('pilots')[`@${slug}`] ?? {} }));
   for (const [slug, e] of Object.entries((doc.units ?? {}) as Record<string, any>))
     model.units.push(pruned({ slug, copy: e.copy, weapons: e.weapons ?? [], forms: e.forms, crew: e.crew, combine: e.combine,
@@ -155,6 +192,7 @@ export function fromFiles(files: Record<string, unknown>): { model: Model; kept:
   const kept: Record<string, unknown> = {};
   for (const kind of KINDS) if (files[DATA_FILES[kind]]) kept[DATA_FILES[kind]] = files[DATA_FILES[kind]];
   if (files['dialogue/names.json']) kept['dialogue/names.json'] = files['dialogue/names.json'];
+  if (files['dialogue/battle_quotes.json']) kept['dialogue/battle_quotes.json'] = files['dialogue/battle_quotes.json'];
   return { model, kept };
 }
 
@@ -186,6 +224,20 @@ export function problems(model: Model, packages: Set<string> = new Set()): Probl
       const text = v?.[field];
       if (text && nameProblem(text, NAME_LONGEST)) add(where, nameProblem(text, NAME_LONGEST), { locale: loc, longest: NAME_LONGEST });
     }
+    const q = cleanQuotes(p.quotes);
+    const lines = q ? [...QUOTE_SITUATIONS.flatMap((s) => q[s] ?? []), ...(q.special ?? []).flatMap((c) => c.lines)] : [];
+    for (const l of lines) {
+      if (!l.ja) add(where, 'quote_ja');
+      else if ([...l.ja].length > QUOTE_LONGEST) add(where, 'quote_long', { longest: QUOTE_LONGEST });
+      if (Object.entries(l).some(([k, v]) => k !== 'voice' && [...(v as string)].length > 200)) add(where, 'quote_long', { longest: 200 });
+    }
+    for (const s of QUOTE_SITUATIONS) if ((q?.[s]?.length ?? 0) > 255) add(where, 'quote_many');
+    if ((q?.special ?? []).reduce((n, c) => n + c.lines.length, 0) > QUOTE_SPECIALS) add(where, 'quote_specials', { most: QUOTE_SPECIALS });
+    for (const c of q?.special ?? []) {
+      if ((c.weapon === undefined) === (c.opponent === undefined)) add(where, 'quote_special');
+      else if (c.weapon !== undefined && !known('weapons', c.weapon)) add(where, 'quote_weapon');
+      else if (c.opponent !== undefined && !(Number.isInteger(c.opponent) && c.opponent >= 0 && c.opponent <= 359)) add(where, 'quote_opponent');
+    }
     for (const l of p.love ?? []) if (!(typeof l.with === 'number' ? l.with >= 0 && l.with <= 360 : isReference(l.with) && known('pilots', l.with))) add(where, 'love_bad');
   }
   const formOwners = new Map<string, string>();
@@ -197,6 +249,8 @@ export function problems(model: Model, packages: Set<string> = new Set()): Probl
     if (u.weapons.length < 1 || u.weapons.length > 63) add(where, 'weapons_count');
     for (const w of u.weapons) if (!known('weapons', w)) add(where, 'weapon_missing', { weapon: String(w) });
     if (u.crew && (u.crew.length > 5 || u.crew.some((c) => c < 0 || c > 360))) add(where, 'crew_bad');
+    if (u.icon !== undefined && !(Number.isInteger(u.icon) && u.icon >= 688 && u.icon <= 1009)) add(where, 'icon_bad');
+    if (u.combine?.over?.some((o) => !Number.isInteger(o) || o < 0 || o > 362)) add(where, 'combine_over');
     if (u.combine && (u.combine.parts.length < 2 || u.combine.parts.length > 5 || u.combine.parts.some((p) => !known('units', p)))) add(where, 'combine_bad');
     if (u.forms?.length) {
       if (u.forms.length > 2 || u.forms.some((f) => !f.startsWith('@') || !slugs.units.has(f.slice(1)) || f.slice(1) === u.slug) || new Set(u.forms).size !== u.forms.length)

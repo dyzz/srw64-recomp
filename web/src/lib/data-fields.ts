@@ -46,6 +46,8 @@ export function dataFields(lang: Lang) {
       { key: 'repair_cost', label: L({ zh: '修理费', en: 'Repair cost', ja: '修理費', ko: '수리 비용' }), low: 0, high: 65535 },
       { key: 'upgrade_cap', label: L({ zh: '改造上限', en: 'Upgrade limit', ja: '改造上限', ko: '개조 상한' }), low: 0, high: 15 },
       { key: 'parts_slots', label: L({ zh: '部件槽', en: 'Part slots', ja: 'パーツスロット', ko: '강화파츠 슬롯' }), low: 0, high: 4 },
+      { key: 'funds', label: L({ zh: '击坠资金', en: 'Funds when shot down', ja: '撃墜時の資金', ko: '격추 시 자금' }), low: 0, high: 65535 },
+      { key: 'exp', label: L({ zh: '击坠经验', en: 'Exp when shot down', ja: '撃墜時の経験値', ko: '격추 시 경험치' }), low: 0, high: 255 },
     ],
     pilots: [
       { key: 'melee', label: L({ zh: '格斗', en: 'Melee', ja: '格闘', ko: '격투' }), low: 0, high: 255 },

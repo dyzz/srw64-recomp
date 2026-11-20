@@ -10,6 +10,8 @@ import { packageText, versionNotice } from '../../../lib/mod-maker-text';
 import { pickables } from '../../../lib/mod-picker';
 import { dataFields } from '../../../lib/data-fields';
 import data from '../../../data/data-mods.json';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import '../../../styles/mod-maker.css';
 
 export const getStaticPaths = langPaths;
@@ -45,7 +47,7 @@ const text = {
   empty_weapons: L({ zh: '还没有新武器。点「新建」查找一件原版武器照抄；新武器要放进某台机体的武器表才会出现。', en: 'No new weapons yet. Press New and find one to copy; a new weapon shows up once a unit carries it.', ja: 'まだ新武器はありません。「新規」を押してコピー元を探してください。新武器はユニットの武器表に入れると登場します。', ko: '아직 새 무기가 없습니다. “새로 만들기”를 눌러 복사할 무기를 찾으세요. 새 무기는 기체의 무기 목록에 넣어야 나옵니다.' }),
   pickOne: L({ zh: '从上面选一项来编辑。', en: 'Pick one above to edit it.', ja: '上から一つ選んで編集してください。', ko: '위에서 하나를 골라 편집하세요.' }),
   copyOf: L({ zh: '照抄', en: 'Copy of', ja: 'コピー元', ko: '복사 원본' }),
-  copyNewHint: L({ zh: '照抄的是本包的新武器，数值在它那里改。', en: 'This copies another new weapon of the package; change the numbers there.', ja: 'このパッケージの新武器のコピーです。数値はそちらで変えてください。', ko: '이 패키지의 새 무기를 복사한 것입니다. 수치는 그쪽에서 바꾸세요.' }),
+  copyNewHint: L({ zh: '照抄的是别的包的条目（或找不到照抄对象），网页里看不到它的原版数值，不能在这里改。', en: 'This copies an entry of another package (or one that is missing), whose original numbers the page cannot see; they cannot be changed here.', ja: 'ほかのパッケージの項目（または見つからない項目）のコピーなので、元の数値が分からず、ここでは変更できません。', ko: '다른 패키지의 항목(또는 찾을 수 없는 항목)을 복사했으므로 원래 수치를 알 수 없어 여기서 바꿀 수 없습니다.' }),
   deleteEntry: L({ zh: '删除这一项', en: 'Delete this one', ja: 'これを削除', ko: '이 항목 삭제' }),
   slug: L({ zh: '内部名', en: 'Internal name', ja: '内部名', ko: '내부 이름' }),
   slugHint: L({ zh: '小写字母、数字和 - _ .；别的文件用 @内部名 指它，发布后不要再改', en: 'lowercase letters, digits and - _ .; other files name it @name, so keep it once released', ja: '小文字の英字・数字・- _ .。ほかのファイルは @内部名 で指すので、公開後は変えないでください', ko: '영문 소문자, 숫자, - _ .만 씁니다. 다른 파일은 @내부이름으로 가리키므로 공개 후에는 바꾸지 마세요' }),
@@ -155,7 +157,7 @@ const text = {
   poseMake: L({ zh: '用本机图片做站姿', en: 'Make a pose from a picture', ja: '画像から立ち絵を作る', ko: '그림으로 대기 자세 만들기' }),
   poseAnother: L({ zh: '用别的图片再做一张', en: 'Make another from a picture', ja: '別の画像でもう一枚作る', ko: '다른 그림으로 하나 더 만들기' }),
   mapIcon: L({ zh: '地图图标', en: 'Map icon', ja: 'マップアイコン', ko: '맵 아이콘' }),
-  iconCopied: L({ zh: '没有自己的图标时用照抄对象的。16、32、64、128 像素的正方形 PNG 原样使用，别的图先框选。', en: 'Without one of its own it has the copied unit’s. A square PNG of 16, 32, 64 or 128 pixels goes in as it is; other pictures are framed first.', ja: '自分のアイコンがなければコピー元のものになります。16・32・64・128 ピクセルの正方形 PNG はそのまま使い、それ以外は先に枠を決めます。', ko: '자신의 아이콘이 없으면 복사 원본의 것을 씁니다. 16·32·64·128픽셀 정사각형 PNG는 그대로 쓰고, 다른 그림은 먼저 영역을 맞춥니다.' }),
+  iconCopied: L({ zh: 'HD 图像下的图标；没有自己的图标时用照抄对象的。16、32、64、128 像素的正方形 PNG 原样使用，别的图先框选。', en: 'The icon in the HD pictures; without one of its own it has the copied unit’s. A square PNG of 16, 32, 64 or 128 pixels goes in as it is; other pictures are framed first.', ja: 'HD 画面でのアイコンです。自分のアイコンがなければコピー元のものになります。16・32・64・128 ピクセルの正方形 PNG はそのまま使い、それ以外は先に枠を決めます。', ko: 'HD 화면의 아이콘입니다. 자신의 아이콘이 없으면 복사 원본의 것을 씁니다. 16·32·64·128픽셀 정사각형 PNG는 그대로 쓰고, 다른 그림은 먼저 영역을 맞춥니다.' }),
   iconMake: L({ zh: '选本机图片做图标', en: 'Pick a picture for the icon', ja: '画像を選んでアイコンにする', ko: '그림을 골라 아이콘 만들기' }),
   iconFrameHint: L({ zh: '拖动、缩放，让方框里正好是机体；放大时像素按原样放大。调好后点「确定」。', en: 'Drag and zoom until the square holds the unit; enlarging repeats the pixels. Press OK when it looks right.', ja: 'ドラッグと拡大縮小で枠にユニットを収めます。拡大時はドットをそのまま大きくします。決まったら「決定」を押してください。', ko: '드래그와 확대·축소로 사각형 안에 기체를 맞추세요. 확대할 때는 픽셀을 그대로 키웁니다. 다 맞췄으면 “확인”을 누르세요.' }),
   iconWay: L({ zh: '图里机体朝向', en: 'The picture looks', ja: '画像の向き', ko: '그림 속 방향' }),
@@ -176,11 +178,156 @@ const text = {
   p_sprite_loop: L({ zh: '循环帧超出了帧数', en: 'the loop frame is past the last frame', ja: 'ループのコマがコマ数を超えています', ko: '반복 프레임이 프레임 수를 넘습니다' }),
   p_pose_missing: L({ zh: '站姿 {sprite} 不在战斗图里', en: 'the pose {sprite} is not among the battle pictures', ja: '立ち絵 {sprite} が戦闘グラフィックにありません', ko: '대기 자세 {sprite}이(가) 전투 그림에 없습니다' }),
   p_scene_missing: L({ zh: '场景用的 {sprite} 不在战斗图里', en: 'the scene’s {sprite} is not among the battle pictures', ja: 'シーンの {sprite} が戦闘グラフィックにありません', ko: '장면의 {sprite}이(가) 전투 그림에 없습니다' }),
+  copyChainHint: L({ zh: '照抄的是本包的 {from}，数值从它照抄的原版 {original} 起步（{from} 自己改过的数值不算）。', en: 'This copies {from} of the package, so its numbers start from the original {from} copies, {original} ({from}’s own changes do not carry over).', ja: 'このパッケージの {from} のコピーなので、数値は {from} のコピー元の原作 {original} から始まります（{from} 自身の変更は引き継ぎません）。', ko: '이 패키지의 {from}을(를) 복사했으므로 수치는 {from}의 원본인 원작 {original}에서 시작합니다({from} 자신의 변경은 이어지지 않습니다).' }),
+  moveTypes: L({ zh: '移动类型（至少一种）', en: 'Moves on (one at least)', ja: '移動タイプ（1 つ以上）', ko: '이동 유형(하나 이상)' }),
+  move_land: L({ zh: '陆', en: 'Land', ja: '陸', ko: '육' }),
+  move_air: L({ zh: '空', en: 'Air', ja: '空', ko: '공' }),
+  move_sea: L({ zh: '海', en: 'Sea', ja: '海', ko: '해' }),
+  move_space: L({ zh: '宇', en: 'Space', ja: '宇', ko: '우' }),
+  move_underground: L({ zh: '地中', en: 'Underground', ja: '地中', ko: '지중' }),
+  combine: L({ zh: '合体机', en: 'Combined unit', ja: '合体ユニット', ko: '합체 기체' }),
+  combineOn: L({ zh: '这台由几台部件合体而成', en: 'Parts combine into this unit', ja: 'このユニットは複数の部品が合体したもの', ko: '이 기체는 여러 부품이 합체한 것' }),
+  combineHint: L({ zh: '部件在地图上用「合体」指令合成这一台（终极断空我那样）。部件的顺序就是乘员顺序，第一台是领队；写了合体就不用再写乘员。', en: 'Its parts become this unit with the map’s Combine command (as Final Dancouga does). The parts’ order is the crew’s, the first leading; a combined unit needs no crew list.', ja: 'マップの「合体」コマンドで部品がこのユニットになります（ファイナルダンクーガと同じ）。部品の順番が搭乗者の順番で、先頭がリーダーです。合体を書けば搭乗者は書かなくて構いません。', ko: '맵의 “합체” 명령으로 부품이 이 기체가 됩니다(파이널 단쿠가처럼). 부품 순서가 탑승자 순서이고 첫 번째가 리더입니다. 합체를 쓰면 탑승자는 쓰지 않아도 됩니다.' }),
+  combineParts: L({ zh: '部件（2–5 台）', en: 'Parts (2 to 5)', ja: '部品（2〜5 機）', ko: '부품(2~5대)' }),
+  combinePartsHint: L({ zh: '原版机体号或本包新机体（@名字）', en: 'original unit numbers or new units of the package (@name)', ja: '原作ユニット番号かこのパッケージの新ユニット（@名前）', ko: '원작 기체 번호나 이 패키지의 새 기체(@이름)' }),
+  combineOver: L({ zh: '接管的原版合体机', en: 'Original combined units it takes over', ja: '置き換える原作の合体ユニット', ko: '대신하는 원작 합체 기체' }),
+  combineOverHint: L({ zh: '原版「合体」本来得到这些机体时，改成得到这一台（终极断空我写 223、224）', en: 'when the original’s Combine would make one of these, it makes this unit instead (Final Dancouga gives 223 and 224)', ja: '原作の「合体」でこれらになるとき、代わりにこのユニットになります（ファイナルダンクーガは 223・224）', ko: '원작 “합체”로 이 기체들이 될 때 대신 이 기체가 됩니다(파이널 단쿠가는 223, 224)' }),
+  iconNumber: L({ zh: '原版图像下的图标', en: 'Icon in the original pictures', ja: '原作画面でのアイコン', ko: '원작 화면의 아이콘' }),
+  iconNumberHint: L({ zh: '借一个原版地图图标的资源号（688–1009），空＝照抄对象的；自己的图标只在 HD 图像下显示', en: 'a resource number of an original map icon (688–1009), empty for the copied unit’s; your own icon shows in the HD pictures only', ja: '原作マップアイコンのリソース番号（688〜1009）。空欄はコピー元のもの。自作アイコンは HD 画面でのみ表示されます', ko: '원작 맵 아이콘의 리소스 번호(688~1009). 비우면 복사 원본의 것. 직접 만든 아이콘은 HD 화면에서만 보입니다' }),
+  p_icon_bad: L({ zh: '原版图标号要在 688–1009 之间', en: 'the original icon number is 688 to 1009', ja: '原作アイコン番号は 688〜1009 です', ko: '원작 아이콘 번호는 688~1009여야 합니다' }),
+  p_combine_over: L({ zh: '接管的合体机要是原版机体号（0–362）', en: 'the combined units taken over are original unit numbers (0–362)', ja: '置き換える合体ユニットは原作のユニット番号（0〜362）です', ko: '대신하는 합체 기체는 원작 기체 번호(0~362)여야 합니다' }),
+  tsOn: L({ zh: '同时导出 Thunderstore 包', en: 'Also export a Thunderstore package', ja: 'Thunderstore 用パッケージも書き出す', ko: 'Thunderstore 패키지도 내보내기' }),
+  tsHint: L({ zh: 'Thunderstore 上传页要的 zip：manifest.json、256×256 的 icon.png、README.md，加上原样的 .srw64mod（和 tools/mods/thunderstore.py 一样）。游戏能直接装这个 zip。', en: 'The zip Thunderstore’s upload page takes: manifest.json, a 256×256 icon.png, README.md and the .srw64mod as made (as tools/mods/thunderstore.py makes it). The game installs this zip as it is.', ja: 'Thunderstore のアップロード画面が受け付ける zip です：manifest.json、256×256 の icon.png、README.md と、そのままの .srw64mod（tools/mods/thunderstore.py と同じ）。ゲームはこの zip をそのままインストールできます。', ko: 'Thunderstore 업로드 화면이 받는 zip입니다: manifest.json, 256×256 icon.png, README.md와 그대로의 .srw64mod(tools/mods/thunderstore.py와 같음). 게임은 이 zip을 그대로 설치할 수 있습니다.' }),
+  tsTeam: L({ zh: 'Thunderstore 团队名', en: 'Thunderstore team', ja: 'Thunderstore チーム名', ko: 'Thunderstore 팀 이름' }),
+  tsTeamHint: L({ zh: '只用于文件名；字母、数字和 _', en: 'for the file’s name only; letters, digits and _', ja: 'ファイル名にだけ使います。英数字と _', ko: '파일 이름에만 씁니다. 영문, 숫자, _' }),
+  tsName: L({ zh: 'Thunderstore 包名', en: 'Thunderstore package name', ja: 'Thunderstore パッケージ名', ko: 'Thunderstore 패키지 이름' }),
+  tsNameHint: L({ zh: '空＝包 ID 去掉作者前缀；字母、数字和 _', en: 'empty: the package id without its author prefix; letters, digits and _', ja: '空欄は ID から作者名を除いたもの。英数字と _', ko: '비우면 ID에서 작성자 접두사를 뺀 것. 영문, 숫자, _' }),
+  tsIcon: L({ zh: '选本机图片作包图标', en: 'Pick a picture for the package icon', ja: '画像を選んでパッケージアイコンにする', ko: '그림을 골라 패키지 아이콘으로' }),
+  tsIconAuto: L({ zh: '不选就用第一个新机体的地图图标或第一个头像', en: 'without one, the first new unit’s map icon or the first portrait', ja: '選ばなければ最初の新ユニットのマップアイコンか最初の顔グラフィック', ko: '고르지 않으면 첫 새 기체의 맵 아이콘이나 첫 초상화' }),
+  tsIconSquare: L({ zh: '包图标要是正方形的图', en: 'The package icon must be square', ja: 'パッケージアイコンは正方形の画像です', ko: '패키지 아이콘은 정사각형이어야 합니다' }),
+  tsNeedIcon: L({ zh: 'Thunderstore 包要一个图标：选一张图，或先给新机体做地图图标', en: 'A Thunderstore package needs an icon: pick a picture, or give a new unit a map icon first', ja: 'Thunderstore パッケージにはアイコンが必要です。画像を選ぶか、新ユニットのマップアイコンを作ってください', ko: 'Thunderstore 패키지에는 아이콘이 필요합니다. 그림을 고르거나 새 기체의 맵 아이콘을 먼저 만드세요' }),
+  tsBadTeam: L({ zh: '团队名只能用字母、数字和 _', en: 'The team name takes letters, digits and _ only', ja: 'チーム名は英数字と _ だけです', ko: '팀 이름은 영문, 숫자, _만 쓸 수 있습니다' }),
+  tsBadName: L({ zh: 'Thunderstore 包名只能用字母、数字和 _（最多 128 个）', en: 'The Thunderstore name takes letters, digits and _ only (128 at most)', ja: 'Thunderstore パッケージ名は英数字と _ だけです（128 文字まで）', ko: 'Thunderstore 패키지 이름은 영문, 숫자, _만 쓸 수 있습니다(최대 128자)' }),
+  tsRequires: L({ zh: '包依赖 {ids}，网页不知道它们在 Thunderstore 上的名字：请用 tools/mods/thunderstore.py 的 --dep', en: 'The package requires {ids}, whose Thunderstore names the page does not know: use tools/mods/thunderstore.py with --dep', ja: 'パッケージが {ids} を必要としていますが、Thunderstore での名前が分かりません。tools/mods/thunderstore.py の --dep を使ってください', ko: '패키지가 {ids}을(를) 필요로 하지만 Thunderstore 이름을 알 수 없습니다. tools/mods/thunderstore.py의 --dep을 쓰세요' }),
+  tsExported: L({ zh: '另存了 Thunderstore 包 {file}（{size}）。', en: 'Also saved the Thunderstore package {file} ({size}).', ja: 'Thunderstore パッケージ {file}（{size}）も保存しました。', ko: 'Thunderstore 패키지 {file}({size})도 저장했습니다.' }),
+  quotes: L({ zh: '战斗台词', en: 'Battle lines', ja: '戦闘台詞', ko: '전투 대사' }),
+  quotesHint: L({ zh: '新人物自己的战斗台词。没写的情境用「借谁的战斗台词」那位的台词；每句要有日文（最多 42 字，一页三行），可以配一段语音（选本机音频，在浏览器里转成 Ogg，不发到网站）。', en: 'The new character’s own battle lines. A situation without lines borrows those of the character in “Battle lines borrowed from”; each line needs Japanese (42 characters at most, three rows) and may have a voice (pick audio on your computer; it becomes Ogg in your browser and is not sent to the site).', ja: '新キャラクター自身の戦闘台詞です。書かない状況は「戦闘台詞を借りる相手」の台詞になります。各台詞に日本語が必要です（最大 42 文字、3 行）。ボイスも付けられます（パソコンの音声を選ぶとブラウザー内で Ogg に変換し、サイトには送りません）。', ko: '새 인물 자신의 전투 대사입니다. 쓰지 않은 상황은 “전투 대사를 빌릴 인물”의 대사를 씁니다. 대사마다 일본어가 필요하고(최대 42자, 세 줄) 음성을 붙일 수 있습니다(내 컴퓨터의 오디오를 고르면 브라우저 안에서 Ogg로 바꾸며 사이트로 보내지 않습니다).' }),
+  sit_attack: L({ zh: '攻击', en: 'Attacking', ja: '攻撃', ko: '공격' }),
+  sit_shot_down: L({ zh: '被击坠', en: 'Shot down', ja: '撃墜された', ko: '격추됨' }),
+  sit_heavy: L({ zh: '受重伤', en: 'Heavy damage', ja: '大ダメージ', ko: '큰 피해' }),
+  sit_medium: L({ zh: '受中伤', en: 'Medium damage', ja: '中ダメージ', ko: '중간 피해' }),
+  sit_light: L({ zh: '受轻伤', en: 'Light damage', ja: '小ダメージ', ko: '작은 피해' }),
+  sit_evade: L({ zh: '回避', en: 'Evading', ja: '回避', ko: '회피' }),
+  sit_no_damage: L({ zh: '无伤', en: 'No damage', ja: 'ノーダメージ', ko: '피해 없음' }),
+  sit_no_ammo: L({ zh: '弹尽／EN 不足', en: 'Out of ammo or EN', ja: '弾切れ・EN 不足', ko: '탄약·EN 부족' }),
+  sit_out_of_range: L({ zh: '射程外', en: 'Out of range', ja: '射程外', ko: '사거리 밖' }),
+  quoteAdd: L({ zh: '加一句', en: 'Add a line', ja: '台詞を追加', ko: '대사 추가' }),
+  voicePick: L({ zh: '配语音', en: 'Voice', ja: 'ボイス', ko: '음성' }),
+  voiceRemove: L({ zh: '去掉语音', en: 'No voice', ja: 'ボイスを外す', ko: '음성 빼기' }),
+  voiceEncoding: L({ zh: '正在转换语音…', en: 'Converting the voice…', ja: 'ボイスを変換中…', ko: '음성 변환 중…' }),
+  specials: L({ zh: '条件台词', en: 'Lines for a weapon or an opponent', ja: '条件付き台詞', ko: '조건 대사' }),
+  specialsHint: L({ zh: '用某件武器攻击时说的话，或对上某个原版人物时某种情境说的话；比上面的通用台词优先。最多 119 句。', en: 'What it says attacking with a weapon, or in a situation against an original character; these come before the general lines above. 119 lines at most.', ja: '特定の武器で攻撃するとき、または原作の特定キャラクター相手のある状況での台詞です。上の汎用台詞より優先されます。最大 119 句。', ko: '특정 무기로 공격할 때, 또는 원작의 특정 인물을 상대로 한 상황에서 하는 대사입니다. 위의 일반 대사보다 우선합니다. 최대 119줄.' }),
+  specialWeapon: L({ zh: '武器', en: 'Weapon', ja: '武器', ko: '무기' }),
+  specialOpponent: L({ zh: '对手', en: 'Opponent', ja: '相手', ko: '상대' }),
+  specialWeaponHint: L({ zh: '武器号或 @新武器', en: 'weapon number or @new weapon', ja: '武器番号か @新武器', ko: '무기 번호나 @새 무기' }),
+  specialSometimes: L({ zh: '有时（偶尔让通用台词说）', en: 'Sometimes (the general lines now and then)', ja: 'ときどき（汎用台詞の場合もある）', ko: '가끔(때때로 일반 대사)' }),
+  specialAdd: L({ zh: '加一组条件台词', en: 'Add lines for a weapon or opponent', ja: '条件付き台詞を追加', ko: '조건 대사 추가' }),
+  p_quote_ja: L({ zh: '每句台词都要有日文', en: 'every line needs Japanese', ja: 'どの台詞にも日本語が必要です', ko: '모든 대사에 일본어가 필요합니다' }),
+  p_quote_long: L({ zh: '有台词超过 {longest} 字', en: 'a line is over {longest} characters', ja: '{longest} 文字を超える台詞があります', ko: '{longest}자를 넘는 대사가 있습니다' }),
+  p_quote_many: L({ zh: '一种情境最多 255 句', en: 'a situation has 255 lines at most', ja: '1 つの状況は最大 255 句です', ko: '한 상황은 최대 255줄입니다' }),
+  p_quote_specials: L({ zh: '条件台词最多 {most} 句', en: 'lines for weapons and opponents are {most} at most', ja: '条件付き台詞は最大 {most} 句です', ko: '조건 대사는 최대 {most}줄입니다' }),
+  p_quote_special: L({ zh: '条件台词要选武器或对手', en: 'lines for a condition need a weapon or an opponent', ja: '条件付き台詞には武器か相手が必要です', ko: '조건 대사에는 무기나 상대가 필요합니다' }),
+  p_quote_weapon: L({ zh: '条件台词的武器不存在', en: 'the weapon of a condition does not exist', ja: '条件の武器がありません', ko: '조건의 무기가 없습니다' }),
+  p_quote_opponent: L({ zh: '对手要是原版人物（0–359）', en: 'the opponent is an original character (0–359)', ja: '相手は原作キャラクター（0〜359）です', ko: '상대는 원작 인물(0~359)이어야 합니다' }),
+  p_voiceMissing: L({ zh: '语音文件不在了（浏览器草稿不存语音），重新配一次', en: 'the voice file is gone (the browser draft keeps no voices); pick it again', ja: 'ボイスファイルがありません（ブラウザーの下書きには保存されません）。選び直してください', ko: '음성 파일이 없습니다(브라우저 초안에는 저장되지 않습니다). 다시 고르세요' }),
+  story: L({ zh: '入队与增援', en: 'Joining and reinforcements', ja: '加入と増援', ko: '합류와 증원' }),
+  joinsTitle: L({ zh: '入队', en: 'Joining', ja: '加入', ko: '합류' }),
+  wavesTitle: L({ zh: '增援', en: 'Reinforcements', ja: '増援', ko: '증원' }),
+  joinTag: L({ zh: '入队', en: 'Joins', ja: '加入', ko: '합류' }),
+  waveTag: L({ zh: '增援', en: 'Wave', ja: '増援', ko: '증원' }),
+  copyHint_story: L({ zh: '入队：某一话开场后或过关后，一个人物和一台机体加入我方。增援：某一话某回合开始时，本包自己的一组机体登场（敌方、第三方或我方）。更复杂的剧情请手写剧情文件（见剧情 MOD 指南）。', en: 'Joining: a character and a unit join us when a stage opens or ends. Reinforcements: a group of the package’s own comes on a stage’s map when a turn starts (enemy, third party or ours). For more involved stories write a story file by hand (see the story mod guide).', ja: '加入：ある話の開始後か終了後に、キャラクターとユニットが味方に加わります。増援：ある話のあるターン開始時に、このパッケージ自身の部隊が登場します（敵・第三勢力・味方）。複雑なシナリオはシナリオファイルを手書きしてください（シナリオ MOD ガイド参照）。', ko: '합류: 어떤 화의 시작 후나 클리어 후에 인물과 기체가 아군에 합류합니다. 증원: 어떤 화의 어떤 턴 시작 시 이 패키지 자신의 부대가 등장합니다(적·제3세력·아군). 더 복잡한 시나리오는 시나리오 파일을 직접 쓰세요(시나리오 MOD 가이드 참조).' }),
+  empty_story: L({ zh: '还没有入队或增援。点「新建」。', en: 'No joining or reinforcements yet. Press New.', ja: 'まだ加入も増援もありません。「新規」を押してください。', ko: '아직 합류나 증원이 없습니다. “새로 만들기”를 누르세요.' }),
+  joinNew: L({ zh: '新建入队', en: 'New joining', ja: '加入を追加', ko: '합류 추가' }),
+  waveNew: L({ zh: '新建增援', en: 'New reinforcements', ja: '増援を追加', ko: '증원 추가' }),
+  storyId: L({ zh: '内部名', en: 'Internal name', ja: '内部名', ko: '내부 이름' }),
+  storyIdHint: L({ zh: '小写字母、数字和 - _ .；周目继承的历代记录按它记，发布后别改', en: 'lowercase letters, digits and - _ .; the record across playthroughs keeps it, so leave it once released', ja: '小文字・数字・- _ .。周回の記録はこれで残るので、公開後は変えないでください', ko: '영문 소문자, 숫자, - _ .. 회차 기록이 이것으로 남으므로 공개 후에는 바꾸지 마세요' }),
+  storyScene: L({ zh: '关卡', en: 'Stage', ja: 'ステージ', ko: '스테이지' }),
+  storySceneHint: L({ zh: '场景号与原版标题；一关有几条路线时按场景号算', en: 'scene number and the original’s title; a stage of several routes counts by scene', ja: 'シーン番号と原作のタイトル。ルートが分かれる話はシーン番号で数えます', ko: '장면 번호와 원작 제목. 루트가 갈리는 화는 장면 번호로 셉니다' }),
+  joinHint: L({ zh: '这一关开场事件或过关事件之后，人物带机体加入我方（同 3D5A，等级取这关的基准等级加减）。每个周目只触发一次。', en: 'After the stage’s opening or ending event the character joins us with the unit (as 3D5A, at the stage’s base level plus the offset). Once a playthrough.', ja: 'その話の開始イベントか終了イベントのあと、キャラクターがユニットごと味方に加わります（3D5A と同じ。レベルはその話の基準レベル＋補正）。周回ごとに 1 回だけです。', ko: '그 화의 시작 이벤트나 클리어 이벤트 뒤에 인물이 기체와 함께 아군에 합류합니다(3D5A와 같음. 레벨은 그 화의 기준 레벨 + 보정). 회차마다 한 번만입니다.' }),
+  joinAt: L({ zh: '时机', en: 'When', ja: 'タイミング', ko: '시점' }),
+  joinAtEnd: L({ zh: '过关后', en: 'After the stage', ja: 'クリア後', ko: '클리어 후' }),
+  joinAtOpening: L({ zh: '开场后', en: 'When it opens', ja: '開始後', ko: '시작 후' }),
+  joinPilot: L({ zh: '人物', en: 'Character', ja: 'キャラクター', ko: '인물' }),
+  joinUnit: L({ zh: '机体', en: 'Unit', ja: 'ユニット', ko: '기체' }),
+  joinLevel: L({ zh: '等级加减', en: 'Level offset', ja: 'レベル補正', ko: '레벨 보정' }),
+  joinLevelHint: L({ zh: '在这关基准等级上加减（−98–98）', en: 'on the stage’s base level (−98 to 98)', ja: 'その話の基準レベルに足す値（−98〜98）', ko: '그 화의 기준 레벨에 더하는 값(−98~98)' }),
+  joinInfo: L({ zh: '写进「本关情报」的隐藏要素', en: 'A hidden element on the stage information page', ja: '「ステージ情報」の隠し要素に載せる', ko: '“스테이지 정보”의 숨겨진 요소로 싣기' }),
+  joinInfoHint: L({ zh: '玩家在本关情报页能看到这条和它完成没有（机体在我方机体池里就算完成）。', en: 'Players see it on the stage information page, and whether it is done (the unit in our pool).', ja: 'プレイヤーはステージ情報画面でこの項目と達成したかどうかを見られます（ユニットが味方にいれば達成）。', ko: '플레이어는 스테이지 정보 화면에서 이 항목과 달성 여부를 볼 수 있습니다(기체가 아군에 있으면 달성).' }),
+  infoTitle: L({ zh: '标题（必须有日文）', en: 'Title (Japanese required)', ja: 'タイトル（日本語必須）', ko: '제목(일본어 필수)' }),
+  infoText: L({ zh: '说明（必须有日文）', en: 'Text (Japanese required)', ja: '説明（日本語必須）', ko: '설명(일본어 필수)' }),
+  joinInherit: L({ zh: '周目继承：下一周目也补登记', en: 'New game plus: given again in the next playthrough', ja: '周回引き継ぎ：次の周回でも加入させる', ko: '회차 계승: 다음 회차에도 합류' }),
+  joinInheritHint: L({ zh: '规则页「周目继承」开着时，下一周目在这关之后（开场入队则在进这关之前）的场间补上；已经在队就不补。', en: 'With New game plus on (rules page), the next playthrough gives it in the intermission after this stage (before it, for a join at the opening), unless it is already ours.', ja: 'ルール画面の「周回引き継ぎ」がオンなら、次の周回でこの話のあと（開始時の加入ならこの話の前）のインターミッションで加入します。すでにいれば何もしません。', ko: '규칙 화면의 “회차 계승”이 켜져 있으면 다음 회차에서 이 화 뒤(시작 시 합류라면 이 화 앞)의 인터미션에 합류합니다. 이미 있으면 아무것도 하지 않습니다.' }),
+  waveHint: L({ zh: '这一关第几回合、哪一方的回合开始时，下面这组机体登场。组号由游戏挑这关没用到的；一组最多 30 台。', en: 'At the start of that turn and side on this stage, the group below comes on the map. The game picks a group number the stage leaves free; 30 units at most.', ja: 'その話の指定ターン・指定陣営のターン開始時に、下の部隊が登場します。グループ番号はゲームが空いている番号を選びます。最大 30 機。', ko: '그 화의 지정 턴, 지정 진영의 턴 시작 시 아래 부대가 등장합니다. 그룹 번호는 게임이 빈 번호를 고릅니다. 최대 30대.' }),
+  waveTurn: L({ zh: '回合', en: 'Turn', ja: 'ターン', ko: '턴' }),
+  wavePhase: L({ zh: '谁的回合开始时', en: 'At the start of', ja: 'どの陣営のターン開始時', ko: '어느 진영의 턴 시작 시' }),
+  phase_player: L({ zh: '我方回合', en: 'our turn', ja: '味方ターン', ko: '아군 턴' }),
+  phase_enemy: L({ zh: '敌方回合', en: 'the enemy’s turn', ja: '敵ターン', ko: '적 턴' }),
+  phase_third: L({ zh: '第三方回合', en: 'the third party’s turn', ja: '第三勢力ターン', ko: '제3세력 턴' }),
+  waveUnits: L({ zh: '登场的机体', en: 'Units', ja: '登場する部隊', ko: '등장하는 기체' }),
+  waveUnitsHint: L({ zh: '坐标 0–63；人物、机体可写原版号或本包新人物／新机体（@名字）；等级在这关基准上加 0–20，改造 0–5 档。', en: 'x, y 0–63; character and unit an original number or a new one of the package (@name); level 0–20 over the stage’s base, upgrades 0–5.', ja: '座標 0〜63。キャラクター・ユニットは原作番号かこのパッケージの新規（@名前）。レベルはその話の基準に 0〜20 を足し、改造は 0〜5 段。', ko: '좌표 0~63. 인물·기체는 원작 번호나 이 패키지의 새 것(@이름). 레벨은 그 화 기준에 0~20을 더하고, 개조는 0~5단계.' }),
+  waveLevel: L({ zh: '等级＋', en: 'Level +', ja: 'レベル＋', ko: '레벨 +' }),
+  waveUpgrade: L({ zh: '改造', en: 'Upgrades', ja: '改造', ko: '개조' }),
+  side_enemy: L({ zh: '敌方', en: 'Enemy', ja: '敵', ko: '적' }),
+  side_third: L({ zh: '第三方', en: 'Third party', ja: '第三勢力', ko: '제3세력' }),
+  side_third_hostile: L({ zh: '第三方（也打我方）', en: 'Third party (hostile to us)', ja: '第三勢力（味方も攻撃）', ko: '제3세력(아군도 공격)' }),
+  side_player: L({ zh: '我方', en: 'Ours', ja: '味方', ko: '아군' }),
+  p_story_id: L({ zh: '内部名只用小写字母、数字和 - _ .（最多 35 个）', en: 'the internal name uses lowercase letters, digits and - _ . (35 at most)', ja: '内部名は小文字・数字・- _ . だけです（35 文字まで）', ko: '내부 이름은 영문 소문자, 숫자, - _ .만 씁니다(최대 35자)' }),
+  p_story_twice: L({ zh: '内部名重复了', en: 'the internal name is used twice', ja: '内部名が重複しています', ko: '내부 이름이 겹칩니다' }),
+  p_story_scene: L({ zh: '关卡号要在 0–255', en: 'the scene is 0 to 255', ja: 'シーン番号は 0〜255 です', ko: '장면 번호는 0~255여야 합니다' }),
+  p_join_pilot: L({ zh: '人物要是原版号（0–360）或 @新人物', en: 'the character is an original number (0–360) or @new character', ja: 'キャラクターは原作番号（0〜360）か @新キャラクターです', ko: '인물은 원작 번호(0~360)나 @새 인물이어야 합니다' }),
+  p_join_unit: L({ zh: '机体要是原版号（0–362）或 @新机体', en: 'the unit is an original number (0–362) or @new unit', ja: 'ユニットは原作番号（0〜362）か @新ユニットです', ko: '기체는 원작 번호(0~362)나 @새 기체여야 합니다' }),
+  p_join_level: L({ zh: '等级加减要在 −98–98', en: 'the level offset is −98 to 98', ja: 'レベル補正は −98〜98 です', ko: '레벨 보정은 −98~98이어야 합니다' }),
+  p_info_ja: L({ zh: '本关情报的标题和说明都要有日文', en: 'the stage information title and text need Japanese', ja: 'ステージ情報のタイトルと説明には日本語が必要です', ko: '스테이지 정보의 제목과 설명에 일본어가 필요합니다' }),
+  p_info_long: L({ zh: '本关情报一条最多 200 字', en: 'a stage information text is 200 characters at most', ja: 'ステージ情報は 1 項目 200 文字までです', ko: '스테이지 정보는 한 항목 200자까지입니다' }),
+  p_wave_turn: L({ zh: '回合要在 1–99', en: 'the turn is 1 to 99', ja: 'ターンは 1〜99 です', ko: '턴은 1~99여야 합니다' }),
+  p_wave_count: L({ zh: '一组要 1–30 台', en: 'a group has 1 to 30 units', ja: '1 グループは 1〜30 機です', ko: '한 그룹은 1~30대여야 합니다' }),
+  p_wave_unit: L({ zh: '有一台的坐标、人物、机体、等级或改造不对', en: 'a unit’s place, character, unit, level or upgrades are wrong', ja: '座標・キャラクター・ユニット・レベル・改造のどれかが正しくない機体があります', ko: '좌표·인물·기체·레벨·개조 중 하나가 잘못된 기체가 있습니다' }),
+  p_story_missing: L({ zh: '用到的新人物或新机体不在本包里', en: 'a new character or unit it names is not in the package', ja: '指定した新キャラクターか新ユニットがパッケージにありません', ko: '지정한 새 인물이나 새 기체가 패키지에 없습니다' }),
+  linkTitle: L({ zh: '在游戏里看（连本机游戏）', en: 'Try it in the game (on this computer)', ja: 'ゲームで見る（このパソコンのゲームに接続）', ko: '게임에서 보기(이 컴퓨터의 게임에 연결)' }),
+  linkHint: L({ zh: '在游戏的设置里打开「网页工具连接」，再点「连接游戏」；第一次要在游戏里确认。连上后，网页把包装进游戏的试用位置（不进你的 MOD 列表、关掉游戏就没了），在战斗鉴赏里播出来。只连这台电脑上的游戏。', en: 'Turn on “Web maker link” in the game’s settings, then press Connect; the first time, allow it in the game. Once connected the page puts the package in the game’s try-out place (not your MOD list; gone when the game closes) and plays it in the battle viewer. Only the game on this computer.', ja: 'ゲームの設定で「Web ツール接続」をオンにしてから「ゲームに接続」を押します。初回はゲーム内で許可してください。接続後、パッケージはゲームの試用枠（MOD 一覧には入らず、ゲームを閉じると消えます）に入り、戦闘鑑賞で再生されます。このパソコンのゲームにだけつながります。', ko: '게임 설정에서 “웹 도구 연결”을 켠 뒤 “게임에 연결”을 누르세요. 처음에는 게임 안에서 허용해야 합니다. 연결되면 패키지를 게임의 시험 자리(MOD 목록에 들어가지 않고 게임을 끄면 사라짐)에 넣고 전투 감상에서 재생합니다. 이 컴퓨터의 게임에만 연결됩니다.' }),
+  linkPort: L({ zh: '端口', en: 'Port', ja: 'ポート', ko: '포트' }),
+  linkConnect: L({ zh: '连接游戏', en: 'Connect', ja: 'ゲームに接続', ko: '게임에 연결' }),
+  linkNoGame: L({ zh: '没连上：游戏没开，或设置里没打开「网页工具连接」，或浏览器没允许访问本机（地址栏旁的提示）', en: 'no answer: the game is not running, its “Web maker link” is off, or the browser has not allowed this computer (see the prompt by the address bar)', ja: '応答なし：ゲームが起動していないか、「Web ツール接続」がオフか、ブラウザーがローカル接続を許可していません（アドレスバー付近の表示）', ko: '응답 없음: 게임이 꺼져 있거나, “웹 도구 연결”이 꺼져 있거나, 브라우저가 이 컴퓨터 접속을 허용하지 않았습니다(주소 표시줄 옆 안내)' }),
+  linkProtocol: L({ zh: '游戏版本和网页不配套，请更新游戏', en: 'The game and this page do not match; update the game', ja: 'ゲームとこのページの版が合いません。ゲームを更新してください', ko: '게임과 이 페이지의 버전이 맞지 않습니다. 게임을 업데이트하세요' }),
+  linkWaiting: L({ zh: '请在游戏里允许这个网页连接…', en: 'Allow this page in the game…', ja: 'ゲーム内でこのページの接続を許可してください…', ko: '게임 안에서 이 페이지의 연결을 허용하세요…' }),
+  linkReady: L({ zh: '已连上游戏 {version}。', en: 'Connected to the game {version}.', ja: 'ゲーム {version} に接続しました。', ko: '게임 {version}에 연결했습니다.' }),
+  linkRefused: L({ zh: '游戏里拒绝了连接。', en: 'The game refused.', ja: 'ゲームで拒否されました。', ko: '게임에서 거부했습니다.' }),
+  linkFailed: L({ zh: '连接出错：{detail}', en: 'The link failed: {detail}', ja: '接続エラー：{detail}', ko: '연결 오류: {detail}' }),
+  linkUnit: L({ zh: '攻方机体（本包新机体）', en: 'Attacker (a new unit)', ja: '攻撃側ユニット（新ユニット）', ko: '공격 기체(새 기체)' }),
+  linkPilot: L({ zh: '驾驶员', en: 'Pilot', ja: 'パイロット', ko: '파일럿' }),
+  linkWeapon: L({ zh: '武器', en: 'Weapon', ja: '武器', ko: '무기' }),
+  linkDefender: L({ zh: '守方：机体、人物、反击武器', en: 'Defender: unit, character, weapon', ja: '防御側：ユニット・キャラクター・武器', ko: '방어: 기체·인물·무기' }),
+  linkDefenderHint: L({ zh: '原版号；默认ムゲ兵（170、298、677）', en: 'original numbers; a Muge soldier (170, 298, 677) by default', ja: '原作番号。既定はムゲ兵（170・298・677）', ko: '원작 번호. 기본은 무게병(170, 298, 677)' }),
+  linkDamage: L({ zh: '伤害', en: 'Damage', ja: 'ダメージ', ko: '피해' }),
+  linkTry: L({ zh: '装进游戏并在鉴赏里看', en: 'Put it in the game and watch', ja: 'ゲームに入れて鑑賞で見る', ko: '게임에 넣고 감상에서 보기' }),
+  linkShot: L({ zh: '截图', en: 'Screenshot', ja: 'スクリーンショット', ko: '스크린샷' }),
+  linkPackage: L({ zh: '包信息不完整：{detail}', en: 'The package details: {detail}', ja: 'パッケージ情報：{detail}', ko: '패키지 정보: {detail}' }),
+  linkNoUnit: L({ zh: '先建一台新机体', en: 'Make a new unit first', ja: '先に新ユニットを作ってください', ko: '먼저 새 기체를 만드세요' }),
+  linkInstalling: L({ zh: '正在装进游戏…', en: 'Putting it in the game…', ja: 'ゲームに入れています…', ko: '게임에 넣는 중…' }),
+  linkInstallFailed: L({ zh: '游戏装不上这个包：{detail}', en: 'The game could not take the package: {detail}', ja: 'ゲームがパッケージを読み込めません：{detail}', ko: '게임이 패키지를 읽지 못했습니다: {detail}' }),
+  linkNumbers: L({ zh: '游戏没给出新编号', en: 'the game gave no numbers for the new entries', ja: 'ゲームから新しい番号が返りません', ko: '게임이 새 번호를 주지 않았습니다' }),
+  linkViewerFailed: L({ zh: '鉴赏没能开始：{detail}', en: 'The viewer did not start: {detail}', ja: '鑑賞を開始できません：{detail}', ko: '감상을 시작하지 못했습니다: {detail}' }),
+  linkStarted: L({ zh: '已在游戏里开始（新机体 {unit} 号）。游戏要在标题画面才会开始。', en: 'Started in the game (new unit {unit}). The game starts it from the title screen.', ja: 'ゲームで開始しました（新ユニット {unit}）。タイトル画面から始まります。', ko: '게임에서 시작했습니다(새 기체 {unit}). 타이틀 화면에서 시작됩니다.' }),
   p_framing: L({ zh: '头像还没点「确定」', en: 'the portrait is not confirmed yet', ja: '顔グラフィックがまだ「決定」されていません', ko: '초상화를 아직 “확인”하지 않았습니다' }),
 };
 const pick = pickables(lang, data.units.map((u) => u.id), data.pilots.map((p) => p.id));
 const works = pick.series.filter((s) => s.id !== null && s.id <= 24).map((s) => ({ id: s.id as number, name: s.name }));
 const notice = versionNotice(lang, '0.5.4');
+// The stages by scene number (docs/guide/story-mods/scenes.csv, export_story_tables.py).
+const sceneColumn = { zh: 'title_zh-Hans', en: 'title_en', ja: 'title_ja', ko: 'title_en' }[tl(lang)];
+const sceneRows = readFileSync(resolve(process.cwd(), '../docs/guide/story-mods/scenes.csv'), 'utf8').trim().split(/\r?\n/);
+const sceneHead = sceneRows[0].split(',');
+const scenes = sceneRows.slice(1).map((row) => { const cells = row.split(','); return { id: Number(cells[0]), title: cells[sceneHead.indexOf(sceneColumn)] ?? '' }; });
 ---
 <Base lang={lang} title={title[tl(lang)]} description={lead[tl(lang)]}>
   <div class="wrap maker" data-unit-maker>
@@ -200,6 +347,7 @@ const notice = versionNotice(lang, '0.5.4');
         <button type="button" class="kind" data-kind="units">{text.newUnits} <span class="count">0</span></button>
         <button type="button" class="kind" data-kind="weapons">{text.newWeapons} <span class="count">0</span></button>
         <button type="button" class="kind" data-kind="sprites">{text.sprites} <span class="count">0</span></button>
+        <button type="button" class="kind" data-kind="story">{text.story} <span class="count">0</span></button>
       </div>
       <div data-list></div>
       <div data-add></div>
@@ -212,6 +360,10 @@ const notice = versionNotice(lang, '0.5.4');
       <p class="status" data-status></p>
     </section>
 
+    <section class="block" data-link>
+      <h2>{text.linkTitle}</h2>
+    </section>
+
     <section class="block">
       <h2>{text.export}</h2>
       <button type="button" class="btn big" data-export>{text.exportButton}</button>
@@ -219,7 +371,7 @@ const notice = versionNotice(lang, '0.5.4');
       <SubmitHint lang={lang} />
     </section>
   </div>
-  <script type="application/json" id="unit-maker-data" is:inline set:html={JSON.stringify({ text, labels: fields.labels, pick, works, locale: langInfo(lang).tag, lang: tl(lang) })}></script>
+  <script type="application/json" id="unit-maker-data" is:inline set:html={JSON.stringify({ text, labels: fields.labels, pick, works, scenes, locale: langInfo(lang).tag, lang: tl(lang) })}></script>
   <script>
     import { initUnitMaker } from '../../../scripts/unit-maker';
     initUnitMaker();

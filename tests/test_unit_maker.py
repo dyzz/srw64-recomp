@@ -107,6 +107,48 @@ class UnitMakerTests(unittest.TestCase):
         self.assertEqual(model["weapons"][0]["combination"]["units"][0], "@zeta")
         self.assertEqual(call("problems", model), [])
 
+    def test_combine_icon_moves(self):
+        # A combined unit without "over" leaves it out; an icon number out of range and an
+        # original combined unit past 362 are problems the validator also refuses.
+        model = {**MODEL, "units": [{**MODEL["units"][0], "forms": [], "combine": {"parts": ["@wr", 228], "over": []}, "icon": 978,
+                                     "data": {"move_types": ["air", "space"], "funds": 3000, "exp": 120}}, MODEL["units"][1]]}
+        files = call("toFiles", model)
+        self.assertEqual(files["data/new_units.json"]["units"]["z"]["combine"], {"parts": ["@wr", 228]})
+        self.assertEqual(validate.new_units_problem(files["data/new_units.json"]), "")
+        self.assertEqual(validate.data_problem("units.json", files["data/units.json"]), "")
+        self.assertEqual(call("problems", model), [])
+        bad = {**model, "units": [{**model["units"][0], "icon": 2000, "combine": {"parts": ["@wr", 228], "over": [400]}}, MODEL["units"][1]]}
+        self.assertEqual({p["code"] for p in call("problems", bad)}, {"icon_bad", "combine_over"})
+        bad_files = call("toFiles", bad)
+        self.assertNotEqual(validate.new_units_problem(bad_files["data/new_units.json"]), "")
+
+    def test_quotes(self):
+        # A character's own lines: empty ones left out, the file the validator takes, read back,
+        # other characters' entries kept; the voices they name.
+        quotes = {"attack": [{"ja": "行くぞ！", "zh-Hans": "上了！", "voice": "kai-1.ogg"}, {"ja": "", "en": ""}], "evade": [],
+                  "special": [{"weapon": "@duo", "sometimes": True, "lines": [{"ja": "合わせろ！"}]},
+                              {"opponent": 298, "situation": "evade", "lines": [{"ja": "遅い！"}]},
+                              {"opponent": 298, "situation": "attack", "sometimes": True, "lines": [{"ja": "そこだ！"}]}]}
+        model = {**MODEL, "pilots": [{**MODEL["pilots"][0], "quotes": quotes}]}
+        kept = {"dialogue/battle_quotes.json": {"schema": "srw64.battle-quotes.v1", "pilots": {"other@x": {"attack": [{"ja": "あ"}]}, "@kai": {"light": [{"ja": "古い"}]}}}}
+        files = call("toFiles", model, kept)
+        doc = files["dialogue/battle_quotes.json"]
+        why, voices = validate.battle_quotes_problem(doc)
+        self.assertEqual((why, voices), ("", {"kai-1.ogg"}))
+        self.assertEqual(doc["pilots"]["@kai"], {"attack": [{"ja": "行くぞ！", "zh-Hans": "上了！", "voice": "kai-1.ogg"}],
+                                                  "special": [{"weapon": "@duo", "sometimes": True, "lines": [{"ja": "合わせろ！"}]},
+                                                              {"opponent": 298, "situation": "evade", "lines": [{"ja": "遅い！"}]},
+                                                              {"opponent": 298, "lines": [{"ja": "そこだ！"}]}]})
+        self.assertIn("other@x", doc["pilots"])
+        self.assertEqual(call("voicesOf", model), ["kai-1.ogg"])
+        back = run(f"import * as m from {json.dumps(MODULE.as_uri())}; const f = {json.dumps({**files, **{k: v for k, v in kept.items() if k not in files}}, ensure_ascii=False)};"
+                   "const r = m.fromFiles(f); console.log(JSON.stringify(m.toFiles(r.model, r.kept)));")
+        self.assertEqual(back["dialogue/battle_quotes.json"], doc)
+        self.assertEqual(call("problems", model), [])
+        long = {**MODEL, "pilots": [{**MODEL["pilots"][0], "quotes": {"attack": [{"zh-Hans": "没有日文"}, {"ja": "あ" * 43}],
+                                                                           "special": [{"lines": [{"ja": "x"}]}, {"opponent": 400, "lines": [{"ja": "x"}]}]}}]}
+        self.assertEqual({p["code"] for p in call("problems", long)}, {"quote_ja", "quote_long", "quote_special", "quote_opponent"})
+
     def test_sprites(self):
         # The maker's paths for the sample package's pictures are the ones it has, fields kept.
         doc = json.loads((ROOT / "config/recomp/mods/final-dancouga/data/new_units.json").read_text(encoding="utf-8"))
@@ -130,6 +172,67 @@ class UnitMakerTests(unittest.TestCase):
                   "scenes": {"cut": "@gone"}, "units": [{**MODEL["units"][0], "pose": "@missing"}, MODEL["units"][1]]}
         codes = {p["code"] for p in call("problems", broken)}
         self.assertEqual(codes, {"sprite_hd", "sprite_origin", "sprite_ticks", "sprite_loop", "pose_missing", "scene_missing"})
+
+
+@unittest.skipUnless(NODE, "node is not installed")
+class ThunderstoreTests(unittest.TestCase):
+    """web/src/lib/thunderstore.ts writes what tools/mods/thunderstore.py writes."""
+
+    def test_same_as_the_script(self):
+        spec = importlib.util.spec_from_file_location("thunderstore", ROOT / "tools/mods/thunderstore.py")
+        script = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(script)
+        module = (ROOT / "web/src/lib/thunderstore.ts").as_uri()
+        long = "长" * 260
+        for manifest in (
+            {"schema": "srw64.mod.v1", "id": "test.webunits", "version": "1.2.0", "name": {"zh-Hans": "测试", "en": "Test"},
+             "description": {"zh-Hans": "一台  新机体\n和人物", "en": "A new unit\tand a character"}, "license": "CC-BY-4.0",
+             "authors": ["A", "B"], "game": ">=0.5.4", "requires": {"srw64.hd": ">=1.0.0"}},
+            {"schema": "srw64.mod.v1", "id": "plain", "version": "0.1.0", "name": "Plain", "description": long, "license": "MIT", "game": ">=0.5.4"},
+        ):
+            file = f"{manifest['id']}-{manifest['version']}.srw64mod"
+            parsed, problem = validate.parse_manifest(manifest)
+            self.assertIsNone(problem)
+            name = script.default_name(manifest["id"])
+            got = run(f"import * as ts from {json.dumps(module)}; const m = {json.dumps(manifest, ensure_ascii=False)};"
+                      f"console.log(JSON.stringify({{ name: ts.defaultName(m.id), readme: ts.readme(m, {json.dumps(file)}),"
+                      f" manifest: ts.manifestFor(m, ts.defaultName(m.id)), zip: ts.zipName('Team', 'n', m.version) }}));")
+            self.assertEqual(got["name"], name)
+            self.assertEqual(got["readme"], script.readme(parsed, file))
+            self.assertEqual(got["manifest"], script.thunderstore_manifest(parsed, name, "", {}))
+            self.assertEqual(got["zip"], f"Team-n-{manifest['version']}.zip")
+
+
+@unittest.skipUnless(NODE, "node is not installed")
+class StoryTests(unittest.TestCase):
+    """web/src/lib/story-image.ts compiles joins and reinforcements as tools/mods/story.py does."""
+
+    def test_same_as_story_py(self):
+        sys.path.insert(0, str(ROOT / "tools"))
+        sys.path.insert(0, str(ROOT / "tools/mods"))
+        import story
+        module = (ROOT / "web/src/lib/story-image.ts").as_uri()
+        joins = [{"id": "kai", "scene": 78, "at": "end", "pilot": "@kai", "unit": "@z", "level": -2,
+                  "info": {"title": {"ja": "カイ", "zh-Hans": "凯"}, "text": {"ja": "クリアで加入"}, "inherit": True}},
+                 {"id": "early", "scene": 12, "at": "opening", "pilot": 166, "unit": 228, "level": 3,
+                  "info": {"title": {"ja": "早い"}, "text": {"ja": "開幕"}, "inherit": True}},
+                 {"id": "plain", "scene": 5, "at": "end", "pilot": 18, "unit": "@z", "level": 0}]
+        waves = [{"id": "rival", "scene": 78, "turn": 2, "phase": "player", "units": [
+                     {"x": 10, "y": 9, "pilot": "@rival", "unit": "@rz", "side": "enemy", "level": 1, "upgrade": 0},
+                     {"x": 12, "y": 10, "pilot": 289, "unit": 21, "side": "third_hostile", "level": 0, "upgrade": 3}]},
+                 {"id": "late", "scene": 78, "turn": 5, "phase": "enemy", "units": [
+                     {"x": 0, "y": 63, "pilot": 300, "unit": 100, "side": "player", "level": 20, "upgrade": 5}]}]
+        got = run(f"import * as s from {json.dumps(module)}; const j = {json.dumps(joins, ensure_ascii=False)}, w = {json.dumps(waves)};"
+                  "const image = s.compile(j, w); console.log(JSON.stringify({ image, source: s.source(j, w), back: s.read(image),"
+                  " problems: s.storyProblems(j, w), empty: s.compile([], []) }));")
+        self.assertEqual(got["image"], story.compile_story(got["source"]))
+        self.assertEqual(got["back"], {"joins": joins, "waves": waves})
+        self.assertEqual(got["problems"], [])
+        self.assertIsNone(got["empty"])
+        bad = run(f"import * as s from {json.dumps(module)};"
+                  "console.log(JSON.stringify(s.storyProblems([{id: 'Bad', scene: 300, at: 'end', pilot: 999, unit: 'x', level: 200, info: {title: {}, text: {ja: 'a'}, inherit: false}}],"
+                  " [{id: 'w', scene: 1, turn: 0, phase: 'player', units: [{x: 64, y: 0, pilot: 1, unit: 1, side: 'enemy', level: 0, upgrade: 0}]}])));")
+        self.assertEqual({p["code"] for p in bad}, {"story_id", "story_scene", "join_pilot", "join_unit", "join_level", "info_ja", "wave_turn", "wave_unit"})
 
 
 @unittest.skipUnless(NODE, "node is not installed")
