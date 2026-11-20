@@ -1,6 +1,6 @@
 #define HLSL_CPU
-#ifndef SRW64_GL_ONLY
 #include "launcher_env.hpp"
+#ifndef SRW64_GL_ONLY
 #include "hle/rt64_application.h"
 #endif
 #include "graphics.hpp"
@@ -1704,8 +1704,12 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     Uint32 surface_flags = surface;
 #ifdef SRW64_GL_RENDERER
     if (gl_mode()) {
-#ifdef __SWITCH__
-        // OpenGL ES 2 on the Switch's Mesa (src/gl/gl_api.hpp); it gives ES 3.2.
+#if defined(__SWITCH__) || defined(_WIN32)
+        // OpenGL ES 2 on the Switch's Mesa (src/gl/gl_api.hpp); it gives ES 3.2. On Windows
+        // through EGL, ANGLE's libEGL.dll beside the game, not WGL's opengl32.dll.
+#ifdef _WIN32
+        SDL_SetHint(SDL_HINT_OPENGL_ES_DRIVER, "1");
+#endif
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);

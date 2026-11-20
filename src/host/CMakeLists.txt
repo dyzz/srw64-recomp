@@ -340,10 +340,27 @@ if(SRW64_GL_ONLY)
     srw64_add_launch("${SRW64_RT64}/src/contrib")
     include("${SRW64_ROOT}/cmake/DialogueCpu.cmake")
     srw64_add_dialogue_cpu("${SRW64_RT64}/src/contrib")
-    if(NOT TARGET SDL2::SDL2)
+    if(WIN32)
+        # The SDL2 the RT64 host ships (its checkout's contrib), so both hosts carry one SDL2.dll.
+        set(SRW64_SDL2 "${SRW64_RT64}/src/contrib/mupen64plus-win32-deps/SDL2-2.26.3")
+        add_library(SDL2::SDL2 SHARED IMPORTED)
+        set_target_properties(SDL2::SDL2 PROPERTIES
+            IMPORTED_IMPLIB "${SRW64_SDL2}/lib/x64/SDL2.lib"
+            IMPORTED_LOCATION "${SRW64_SDL2}/lib/x64/SDL2.dll"
+            INTERFACE_INCLUDE_DIRECTORIES "${SRW64_SDL2}/include")
+    elseif(NOT TARGET SDL2::SDL2)
         find_package(SDL2 REQUIRED)
     endif()
-    if(NINTENDO_SWITCH)
+    if(WIN32)
+        # ANGLE (vcpkg's angle port): OpenGL ES over Direct3D 11 for the PCs RT64 cannot draw
+        # on (src/gl/gl_api.hpp). SDL loads libEGL.dll itself; the renderer calls libGLESv2.
+        find_package(unofficial-angle CONFIG REQUIRED)
+        # The port's targets name no include directory; its headers are vcpkg's include/GLES3.
+        find_path(SRW64_ANGLE_INCLUDE GLES3/gl3.h REQUIRED)
+        add_library(OpenGL::GL INTERFACE IMPORTED)
+        target_link_libraries(OpenGL::GL INTERFACE unofficial::angle::libGLESv2 unofficial::angle::libEGL)
+        target_include_directories(OpenGL::GL INTERFACE "${SRW64_ANGLE_INCLUDE}")
+    elseif(NINTENDO_SWITCH)
         # OpenGL ES 2 on devkitPro's Mesa (nouveau) through EGL; src/gl/gl_api.hpp takes the
         # GLES headers there.
         find_package(PkgConfig REQUIRED)
@@ -383,7 +400,18 @@ if(SRW64_GL_ONLY)
         target_link_libraries(srw64-gl-host PRIVATE zstd)   # the NRO's HD pictures (hd_texture.cpp)
         # The update check (update_http.cpp): devkitPro's libcurl, over libnx's SSL service.
         target_link_libraries(srw64-gl-host PRIVATE curl z)
-    elseif(NOT WIN32)
+    elseif(WIN32)
+        # As the RT64 host (above): the ROM dialog, no console, the menu bar, icon and UTF-8
+        # manifest, crash dumps, the adapters' report, the update check's HTTP, the debug socket.
+        target_sources(srw64-gl-host PRIVATE windows/desktop_windows.cpp windows/app_menu_windows.cpp
+            windows/marchwind64.rc windows/marchwind64.manifest windows/crash_dump_windows.cpp windows/gpu_report_windows.cpp)
+        target_link_options(srw64-gl-host PRIVATE /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup)
+        target_link_libraries(srw64-gl-host PRIVATE comdlg32 user32 ole32 shell32 dbghelp synchronization winhttp ws2_32)
+        # SDL2.dll and ANGLE's two DLLs beside the executable.
+        add_custom_command(TARGET srw64-gl-host POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${SRW64_SDL2}/lib/x64/SDL2.dll" $<TARGET_FILE:unofficial::angle::libEGL> $<TARGET_FILE:unofficial::angle::libGLESv2>
+            "$<TARGET_FILE_DIR:srw64-gl-host>")
+    else()
         target_link_libraries(srw64-gl-host PRIVATE ${CMAKE_DL_LIBS})
     endif()
     if(NINTENDO_SWITCH)   # the runtime's Switch headers ahead of upstream's (the semaphore)
