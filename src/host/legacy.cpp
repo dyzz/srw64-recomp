@@ -3,10 +3,12 @@
 #include "campaign.hpp"
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
+#include "mod_combine.hpp"
 #include "native_dialogue.hpp"
 #include "notices.hpp"
 #include "rule_fixes.hpp"
 #include "save_store.hpp"
+#include "story_mod.hpp"
 #include "localization/catalog.hpp"
 #include "funcs.h"
 #include <fstream>
@@ -63,7 +65,7 @@ void event(const char* kind,json extra) {
 }
 
 // One original script command, as its handler would run it (800A0B3C, 800A15D0, 800A16BC,
-// 800A12CC). Each call gets a fresh stack frame below the caller's.
+// 800A12CC, 800ACF44). Each call gets a fresh stack frame below the caller's.
 void run(uint8_t* ram,recomp_context* ctx,const json& command) {
     auto c=*ctx;c.r29=int32_t(uint32_t(ctx->r29)-0x200);
     const auto word=[&](size_t i){return int32_t(command.at(i).get<int>());};
@@ -81,6 +83,8 @@ void run(uint8_t* ram,recomp_context* ctx,const json& command) {
         c.r4=word(1);c.r5=word(2);resident_func_800ACFAC(ram,&c);
     } else if(name=="3D64" && word(1)==500) {
         resident_func_800AB96C(ram,&c);   // アイシャ into マナミ's mothership
+    } else if(name=="3D6F") {
+        c.r4=word(1);resident_func_800ACF44(ram,&c);   // a story weapon unlocked (packages only)
     }
 }
 // The names a grant registers, for the banner: pilots first, then machines no pilot came with.
@@ -91,6 +95,21 @@ std::string names(const uint8_t* ram,const json& entry) {
         add(dialogue::ui_text(ram,table_window::pilot_name(c.at(1).get<int>())));
     for(const auto& c:entry.at("commands"))if(c.at(0)=="3D5A" && c.at(1).get<int>()==nobody && c.at(3).get<int>()!=nobody)
         add(dialogue::ui_text(ram,uint16_t(table_window::unit_name(c.at(3).get<int>()))));
+    return out;
+}
+
+// The entries with an id of these story packages' (story_mod::infos(), enabled ones only).
+std::vector<Package> packages_of(const std::vector<story_mod::Info>& infos) {
+    std::vector<Package> out;
+    for(size_t n=0;n<infos.size();++n) {
+        const auto& info=infos[n];
+        if(info.id.empty() || !info.checks)continue;
+        Package p{package_key(info.package,info.id),story_mod::info_ref(info,n),{},{},{},{},n};
+        for(const auto q:info.pilots)p.pilots.push_back(int(q));
+        for(const auto u:info.units)p.units.push_back(int(u));
+        if(info.inherit){p.after=info.inherit->after;p.before=info.inherit->before;}
+        out.push_back(std::move(p));
+    }
     return out;
 }
 
@@ -120,6 +139,30 @@ void intermission(uint8_t* ram,recomp_context* ctx) {
         if(const auto at=text.find("{name}");at!=std::string::npos)text.replace(at,6,names(ram,*entry));
         notices::post("legacy",text);
     }
+    // The story packages' own (§8): built, joined, unlocked and crewed as their events would.
+    // Entries and grants from one snapshot of the enabled packages, so an index cannot name
+    // another package's entry; one whose package is gone is not in it.
+    const auto infos=story_mod::infos();
+    const auto all=packages_of(*infos);
+    for(const auto* p:due(current(),all,state)) {
+        const auto& info=(*infos)[p->index];
+        if(!info.inherit || package_key(info.package,info.id)!=p->key)continue;
+        const auto& grant=*info.inherit;
+        for(const unsigned unit:grant.builds)mod_combine::build(ram,ctx,unit,resident_func_800A6E68,resident_func_800A5254);
+        json done=json::array(),skipped=json::array();
+        for(size_t k=0;k<grant.commands.size();++k) {
+            auto command=grant.commands[k];
+            for(const auto& [at,pilot]:grant.like)if(at==k)command[2]=int16_t(story_mod::level_offset(ram,pilot));
+            if(!runnable(command,stage_info::read_state(ram).units)){skipped.push_back(command);continue;}
+            run(ram,ctx,command);done.push_back(command);
+        }
+        for(const auto& [unit,pilots]:grant.crew)story_mod::set_crew(ram,unit,pilots);
+        event("grant",{{"id",p->key},{"cleared",state.cleared},{"next",state.scene},{"commands",done},{"skipped",skipped}});
+        if(done.empty() && grant.builds.empty())continue;
+        auto text=localization::catalog().ui("legacy_joined");
+        if(const auto at=text.find("{name}");at!=std::string::npos)text.replace(at,6,names(ram,{{"commands",done}}));
+        notices::post("legacy",text);
+    }
 }
 }
 
@@ -127,11 +170,12 @@ Record current() {
     std::lock_guard lock(mutex);
     return record_locked();
 }
+std::vector<Package> packages(){return packages_of(*story_mod::infos());}
 void observe(const uint8_t*,const Rules& rules,const State& state,const Evaluator& evaluator) {
     if(campaign::active() || state.protagonist.empty() || rules.grants.empty())return;
     std::lock_guard lock(mutex);
     auto& now=record_locked();
-    auto next=record(now,rules,evaluator,state);
+    auto next=record(record(now,rules,evaluator,state),packages(),state);
     if(next==now)return;
     for(const auto& [id,ids]:next)if(!now.contains(id))event("finished",{{"id",id},{"scene",state.scene}});
     now=std::move(next);

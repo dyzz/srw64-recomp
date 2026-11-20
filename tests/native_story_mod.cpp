@@ -47,6 +47,24 @@ int main(int argc,char** argv) {
         bad=image;bad["events"][0]["kills"]={{"4",0}};check(!fails(bad).empty(),"kills of 0");
         bad=image;bad["events"][0]["kills"]={{"400",5}};check(!fails(bad).empty(),"kills of a pilot past 360");
     }
+    // A stage information entry granted again in a later playthrough (legacy.cpp).
+    {
+        auto with=image;
+        with["stage_info"]=json::parse(R"([{"id":"kai","scene":40,"title":{"ja":"a"},"text":{"ja":"b"},"done":{"pilots":[18],"units":[27]},
+            "inherit":{"after":[40],"commands":[["3D5A",18,{"like":4},27,500],["3D5A",18,-2,30,27],["3D6F",874]],"crew":[{"unit":27,"pilots":[18,4]}]}}])");
+        story::Library library;
+        story::add_image(library,"p",with);
+        const auto& info=library.infos.at(0);
+        check(info.id=="kai" && info.inherit && info.inherit->after==std::vector<int>{40} && info.inherit->before.empty(),"an entry's grant");
+        check(info.inherit->commands==json::parse(R"([["3D5A",18,0,27,500],["3D5A",18,-2,30,27],["3D6F",874]])") &&
+              info.inherit->like==std::vector<std::pair<size_t,unsigned>>{{0,4}},"its commands, a level like Domon's");
+        check(info.inherit->crew.size()==1 && info.inherit->crew[0].second==std::vector<unsigned>{18,4},"its crew");
+        auto bad=with;bad["stage_info"][0].erase("id");check(!fails(bad).empty(),"a grant without an id");
+        bad=with;bad["stage_info"][0].erase("done");check(!fails(bad).empty(),"a grant without done");
+        bad=with;bad["stage_info"][0]["inherit"].erase("after");check(!fails(bad).empty(),"a grant at no stage");
+        bad=with;bad["stage_info"][0]["inherit"]["commands"].push_back(json::parse(R"(["3E13",5,0])"));check(!fails(bad).empty(),"a grant setting a variable");
+        bad=with;bad["stage_info"].push_back(bad["stage_info"][0]);check(!fails(bad).empty(),"two entries of one id");
+    }
     // Two packages: their lines are numbered on from each other.
     story::Library two;
     story::add_image(two,"p1",image);story::add_image(two,"p2",image);

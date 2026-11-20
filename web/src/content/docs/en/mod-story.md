@@ -147,6 +147,48 @@ The roster is checked as well because the original story or another event may ta
 
 **The level on joining** follows the original rule, the stage's base level (from the average of the player's top 15). `"level": {"offset": 3}` adds to it or takes from it, and `"level": {"like": 4}` gives character 4's level at the moment of joining. SP, abilities, skills and spirits come from the original by level. To change the base values use `data/pilots.json` (enemy characters often have no SP or spirits; the example adds SP).
 
+## Hidden elements on the stage information page
+
+A story file's top level can have `stage_info`: hidden elements added to a stage's information page, beside the original's:
+
+```json
+"stage_info": [
+  { "id": "final", "scene": 78,
+    "title": { "ja": "ファイナルダンクーガ", "zh-Hans": "终极断空我", "en": "Final Dancouga" },
+    "text":  { "ja": "クリア時にアランとブラックウイングがいれば入手", "zh-Hans": "通关时阿兰和黑翼在队即可获得", "en": "Clear with Alan and Black Wing on your side" },
+    "done":  { "units": ["@final"] },
+    "inherit": { "after": [78], "do": [ { "build": "@final" } ] } }
+]
+```
+
+- `scene` is the stage; `title` and `text` go by language, `ja` required, up to 200 characters each. A stage with several route cards gets it on every card.
+- `done` is optional; with it the roster decides: when the `units` (numbers or `@name`) and `pilots` (numbers) are all on your side it shows as "Done", otherwise "Not started".
+- `id` (lowercase letters, digits and `- _ .`, unique in the package) is optional; with it the entry joins the cross-playthrough record like the original's hidden elements: once `done` held in any playthrough, the page marks it "Finished before".
+- `inherit` carries it into a later playthrough: with the difficulty rule "New game plus" on, the entry in the record and its `done` not yet true, the intermission after a stage of `after` (or before one of `before`) runs `do`. `do` takes only `join`, `replace`, `unlock`, `crew` and `build`, and changes no story variable. `inherit` needs `id` and `done`. With its package removed or turned off the entry is neither granted nor shown, but the record keeps it for when the package comes back.
+
+## Lines in text files
+
+When there is a lot of dialogue, or someone else translates it, `text` (and a stage information entry's `title` and `text`) can be `"@name"`, with each language's words in the package's `story/<locale>/*.txt`:
+
+```json
+{ "say": "@kai", "text": "@kai-joins" }
+```
+
+```text
+# story/ja/kai.txt
+@kai-joins カイ
+カイ、出撃する！
+
+# story/zh-Hans/kai.txt
+@kai-joins 凯
+凯，出击！
+```
+
+- The format is the shipped dialogue files': `@name note` starts an entry and the next line is the line itself; `#` is a comment and blank lines are free. A line starting with `@`, `#` or `\` takes a `\` in front. Names use lowercase letters, digits and `- _ .` only.
+- One line per entry: the reader pages and wraps it. Up to 200 characters.
+- `ja` must have the entry; other languages fall back to `ja` (Traditional Chinese to Simplified). A name appears once per language, over as many files as you like.
+- Packing builds the words into the story file and leaves the `.txt` files out. Writing `{"ja": …}` in the JSON still works, and the two can be mixed.
+
 ## Things to know
 
 - **Original events read only the original variables.** To stop an original event or make it play another part, change the variable it checks. In the example, persuasion sets `131 = 3`, and the original ending plays Master Asia's farewell only when 131 is 1 or 2.

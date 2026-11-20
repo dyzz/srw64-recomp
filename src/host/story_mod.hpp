@@ -121,11 +121,23 @@ struct Text {
 // A hidden element a package adds to a scene's stage information page (stage_info.cpp):
 // its title and text by locale, and when it shows as done (our roster has these).
 struct Info {
-    std::string package;
+    std::string package,id;            // with an id the record across playthroughs keeps it (legacy.hpp)
     unsigned scene{};
     json title,text;
     bool checks{};
     std::vector<unsigned> pilots,units;
+    // Its grant in a later playthrough (legacy.cpp): in the intermission after a stage of
+    // `after` or before one of `before`, the combined units built, then the commands as the
+    // original's grants write them (["3D5A", pilot, level, unit, mode], ["3D6F", weapon]),
+    // numbers settled, a level "like" a pilot by command index; then the crews.
+    struct Inherit {
+        std::vector<int> after,before;
+        json commands=json::array();
+        std::vector<std::pair<size_t,unsigned>> like;
+        std::vector<unsigned> builds;
+        std::vector<std::pair<unsigned,std::vector<unsigned>>> crew;
+    };
+    std::optional<Inherit> inherit;
 };
 struct Library {
     std::vector<Event> events;
@@ -279,6 +291,56 @@ inline void add_image(Library& library,const std::string& package,const json& im
                 if(!found)throw std::runtime_error("stage_info.done.units："+u.dump()+" 不是机体号，也不是已启用的新机体");
                 info.units.push_back(*found);
             }
+        }
+        if(s.contains("id")) {
+            info.id=s["id"].get<std::string>();
+            if(info.id.empty() || info.id.size()>40 || info.id.find_first_not_of("abcdefghijklmnopqrstuvwxyz0123456789_.-")!=std::string::npos)
+                throw std::runtime_error("stage_info.id：只用小写字母、数字、- _ .，最多 40 个");
+            for(const auto& other:new_infos)if(other.id==info.id)throw std::runtime_error("stage_info.id 重复："+info.id);
+        }
+        if(s.contains("inherit")) {
+            if(info.id.empty() || !info.checks)throw std::runtime_error("stage_info.inherit：要同时有 id 和 done");
+            const auto& g=s["inherit"];
+            Info::Inherit grant;
+            const auto where="stage_info."+info.id+".inherit";
+            for(const auto& [key,into]:{std::pair{"after",&grant.after},{"before",&grant.before}})
+                for(const auto& n:g.value(key,json::array())) {
+                    if(!n.is_number_unsigned() || n.get<unsigned>()>255)throw std::runtime_error(where+"."+key+"：场景号 0–255");
+                    into->push_back(n.get<int>());
+                }
+            if(grant.after.empty() && grant.before.empty())throw std::runtime_error(where+"：after 或 before 至少一个");
+            const auto number=[&](const json& n,mod_units::Of of,unsigned top)->int {
+                if(n.is_number_unsigned() && n.get<unsigned>()<=top)return n.get<int>();
+                const auto found=n.is_string()?mod_units::resolve(n,package,*mod_ids::current(),of):std::nullopt;
+                if(!found)throw std::runtime_error(where+"："+n.dump()+" 不是编号，也不是已启用的新"+(of==mod_units::Of::pilot?"人物":of==mod_units::Of::weapon?"武器":"机体"));
+                return int(*found);
+            };
+            for(const auto& c:g.at("commands")) {
+                const auto op=c.at(0).get<std::string>();
+                if(op=="3D5A" && c.size()==5) {
+                    // The mode: 500 a join, otherwise (a replace) the old unit, new ones by name.
+                    const auto& m=c.at(4);
+                    const bool plain=m.is_number_integer() && (m.get<int>()>=2000 || m.get<int>()==500 || m.get<int>()==999);
+                    json row={op,number(c.at(1),mod_units::Of::pilot,359),0,number(c.at(3),mod_units::Of::unit,362),
+                              plain?m.get<int>():number(m,mod_units::Of::unit,362)};
+                    if(c.at(2).is_object()) {
+                        const unsigned like=c.at(2).value("like",1000u);
+                        if(like>360)throw std::runtime_error(where+"：level.like 人物 0–360");
+                        grant.like.emplace_back(grant.commands.size(),like);
+                    } else row[2]=c.at(2).get<int>();
+                    grant.commands.push_back(std::move(row));
+                } else if(op=="3D6F" && c.size()==2) {
+                    grant.commands.push_back(json{op,number(c.at(1),mod_units::Of::weapon,1328)});
+                } else throw std::runtime_error(where+"：只能有入队、换机、解锁武器（"+c.dump()+"）");
+            }
+            for(const auto& b:g.value("builds",json::array()))grant.builds.push_back(unsigned(number(b,mod_units::Of::unit,362)));
+            for(const auto& c:g.value("crew",json::array())) {
+                const auto pilots=c.at("pilots").get<std::vector<unsigned>>();
+                if(pilots.empty() || pilots.size()>5)throw std::runtime_error(where+"：crew 要写机体号和 1–5 名人物");
+                for(const auto pilot:pilots)if(pilot>360)throw std::runtime_error(where+"：crew 的人物号越界");
+                grant.crew.emplace_back(unsigned(number(c.at("unit"),mod_units::Of::unit,362)),pilots);
+            }
+            info.inherit=std::move(grant);
         }
         new_infos.push_back(std::move(info));
     }

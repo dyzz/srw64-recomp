@@ -125,6 +125,22 @@ int main(int argc,char** argv) {
         check(legacy::inherited(gato,rules,rule(rules,"secret-gato"),stage_info::Evaluator(rules,with_him)),"Gato shows as inherited");
         const auto without=state("ark",-1,51,{{10,1}});
         check(!legacy::inherited(gato,rules,rule(rules,"secret-gato"),stage_info::Evaluator(rules,without)),"not without him");
+        // A story package's entry: recorded once our roster has its done, granted after its stage.
+        const std::vector<legacy::Package> packs{
+            {legacy::package_key("kai","kai"),"mod:kai:0",{330},{362},{40},{},0},
+            {legacy::package_key("kai","seen"),"mod:kai:1",{5},{},{},{},1}};
+        const auto kai_done=state("ark",-1,41,{},{330,5},{362});
+        const auto kept=legacy::record(legacy::Record{},packs,kai_done);
+        check(kept.size()==2 && kept.at("mod:kai/kai")==legacy::Ids{{330},{362}},"a package's entries recorded");
+        check(legacy::record(legacy::Record{},packs,state("ark",-1,41,{},{330})).empty(),"not before all of done");
+        const auto due_now=legacy::due(kept,packs,state("ark",40,41));
+        check(due_now.size()==1 && due_now[0]->key=="mod:kai/kai","a package's grant after its stage, the entry without one never");
+        check(legacy::due(kept,packs,state("ark",39,40)).empty(),"not before its stage");
+        check(legacy::due(kept,packs,state("ark",40,41,{},{330},{362})).empty(),"not when the roster has it");
+        check(legacy::due({},packs,state("ark",40,41)).empty(),"not when no playthrough finished it");
+        // Its package removed or turned off: not among the entries, so never granted; the record keeps it.
+        check(legacy::due(kept,{},state("ark",40,41)).empty(),"not when its package is gone");
+        check(legacy::record(kept,std::vector<legacy::Package>{},kai_done)==kept,"the record keeps a gone package's entries");
     }
 
     // Line breaking, with every character one unit wide.

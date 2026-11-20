@@ -99,6 +99,29 @@ class StoryTests(unittest.TestCase):
             with self.assertRaises(story.StoryError):
                 story.compile_story({**source(event()), "stage_info": [bad]})
 
+    def test_inherit(self):
+        # Granted again in a later playthrough (legacy.cpp): joins and machines, in the grants' form.
+        info = {"id": "final", "scene": 78, "title": {"ja": "ファイナルダンクーガ"}, "text": {"ja": "入手"},
+                "done": {"units": ["@final"]},
+                "inherit": {"after": [78], "do": [{"join": {"pilot": 166, "unit": 102, "level": {"like": 166}}},
+                                                  {"build": "@final"}, {"unlock": "@cannon"},
+                                                  {"replace": {"pilot": 166, "unit": 102, "with": "@final"}},
+                                                  {"join": {"pilot": "@kai", "unit": 5, "level": {"offset": -3}}},
+                                                  {"crew": {"unit": "@final", "pilots": [166, 167]}}]}}
+        grant = story.compile_story({**source(event()), "stage_info": [info]})["stage_info"][0]["inherit"]
+        self.assertEqual(grant, {"after": [78], "commands": [["3D5A", 166, {"like": 166}, 102, 500], ["3D6F", "@cannon"],
+                                                             ["3D5A", 166, 0, "@final", 102], ["3D5A", "@kai", -3, 5, 500]],
+                                 "crew": [{"unit": "@final", "pilots": [166, 167]}], "builds": ["@final"]})
+        for bad in ({k: v for k, v in info.items() if k != "id"}, {k: v for k, v in info.items() if k != "done"},
+                    {**info, "inherit": {"do": [{"build": "@final"}]}},
+                    {**info, "inherit": {"after": [78], "do": [{"set": {"5": 0}}]}},
+                    {**info, "inherit": {"after": [78], "do": [{"say": 4, "text": {"ja": "x"}}]}},
+                    {**info, "inherit": {"after": [78], "do": []}}, {**info, "id": "Final"}):
+            with self.assertRaises(story.StoryError):
+                story.compile_story({**source(event()), "stage_info": [bad]})
+        with self.assertRaises(story.StoryError):
+            story.compile_story({**source(event()), "stage_info": [info, info]})
+
     def test_new_speaker(self):
         # A package's new character speaks by name; the host numbers it (story_mod.hpp add_image).
         image = story.compile_story(source(event(do=[{"say": "@kai", "text": {"ja": "よろしく"}}])))
@@ -150,6 +173,34 @@ class StoryTests(unittest.TestCase):
         for document in bad:
             with self.assertRaises(story.StoryError, msg=json.dumps(document, ensure_ascii=False)[:120]):
                 story.compile_story(document)
+
+    def test_lines_files(self):
+        # Lines named "@key" come from story/<locale>/*.txt (docs/guide/story-mods/README.md);
+        # the package keeps only the compiled story.
+        with tempfile.TemporaryDirectory() as tmp:
+            src = Path(tmp) / "src"
+            (src / "story/ja").mkdir(parents=True)
+            (src / "story/zh-Hans").mkdir(parents=True)
+            (src / "mod.json").write_text(json.dumps({"schema": "srw64.mod.v1", "id": "test.lines", "version": "1.0.0", "game": "*",
+                                                      "authors": ["test"], "license": "CC0-1.0", "name": {"en": "Lines"}}), encoding="utf-8")
+            (src / "story/s.json").write_text(json.dumps(source(event(do=[{"say": 4, "text": "@shout"}]))
+                                              | {"stage_info": [{"scene": 129, "title": "@info", "text": {"ja": "本文"}}]}), encoding="utf-8")
+            (src / "story/ja/lines.txt").write_text("# 第129話\n@shout ドモン\n「師匠！」\n\n@info\n隠し要素\n", encoding="utf-8")
+            (src / "story/zh-Hans/lines.txt").write_text("@shout 多蒙\n\\# “师父！”\n", encoding="utf-8")
+            folder, _, _ = pack.build_package(src, Path(tmp) / "out", archive=False)
+            image = json.loads((folder / "story/s.json").read_text(encoding="utf-8"))
+            self.assertEqual(image["texts"][0]["lines"], {"ja": "「師匠！」", "zh-Hans": "# “师父！”"})
+            self.assertEqual(image["stage_info"][0]["title"], {"ja": "隠し要素"})
+            self.assertFalse((folder / "story/ja").exists())
+            for text, why in [("@shout\n一\n二\n", "一行"), ("「師匠！」\n", "@名字"), ("@shout\n一\n@shout\n二\n", "两次"),
+                              ("@Shout\n一\n", "名字")]:
+                (src / "story/ja/lines.txt").write_text(text, encoding="utf-8")
+                with self.assertRaises(story.StoryError) as caught:
+                    story.load_lines(src / "story")
+                self.assertIn(why, str(caught.exception))
+            with self.assertRaises(story.StoryError) as caught:
+                story.compile_story(source(event(do=[{"say": 4, "text": "@missing"}])), lines={})
+            self.assertIn("@missing", str(caught.exception))
 
     def test_pack_compiles_the_story(self):
         with tempfile.TemporaryDirectory() as tmp:
