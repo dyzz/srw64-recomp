@@ -77,6 +77,13 @@ class Problem:
         yield self.detail
 
 
+# The game reads a .srw64mod in place (mod_library.hpp ArchiveFiles), pulling each file out
+# when it is needed. Pictures and sound are compressed already: deflating them again saves
+# nothing and makes every read inflate them. A package should store them; one that does not
+# still works, so this is a warning, not a problem (tools/mods/pack.py, web mod-package.ts).
+STORED = (".png", ".ogg")
+
+
 # --- The host's rules (mod_library.hpp) ---------------------------------------------------
 
 def parse_version(text: str) -> tuple[int, int, int] | None:
@@ -210,6 +217,7 @@ class Entry:
     name: str           # '/'-separated, without the single top folder a zip may wrap everything in
     size: int
     read: Callable[[], bytes]
+    deflated: bool = False   # in a zip, compressed rather than stored
 
 
 @dataclass
@@ -255,7 +263,7 @@ def _collect(path: Path) -> tuple[list[Entry], Problem | None]:
         total += info.file_size
         if info.is_dir():
             continue
-        entries.append(Entry(safe, info.file_size, (lambda i=info, a=archive: a.read(i))))
+        entries.append(Entry(safe, info.file_size, (lambda i=info, a=archive: a.read(i)), info.compress_type != zipfile.ZIP_STORED))
     if total > MAX_TOTAL:
         return [], Problem("archive_size", "")
     return entries, None
@@ -844,6 +852,10 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
         summary["file"] = path.name
         summary["bytes"] = path.stat().st_size
         summary["sha256"] = sha256_of(path)
+        deflated = [e.name for e in package.entries if e.deflated and Path(e.name).suffix.lower() in STORED]
+        if deflated:
+            summary["warnings"] = [f"{len(deflated)} picture or sound file(s) are deflated; store them (zip -0, "
+                                   f"tools/mods/pack.py does): {', '.join(deflated[:3])}{', …' if len(deflated) > 3 else ''}"]
     if host_only:
         return [], summary
     problems: list[Problem] = []
@@ -1130,6 +1142,8 @@ def main(argv: list[str] | None = None) -> int:
     else:
         for p in problems:
             print(f"{p.code}: {wording(p, labels)}")
+        for warning in summary.get("warnings", []):
+            print(f"warning: {warning}")
         if not problems or args.summary:
             print(json.dumps(summary, ensure_ascii=False, indent=2) if args.summary else f"ok: {summary.get('id')} {summary.get('version')}")
     return 1 if problems else 0

@@ -46,6 +46,18 @@ class PackTests(unittest.TestCase):
         self.assertEqual([p.code for p in problems], [])
         self.assertEqual((summary["id"], summary["version"], summary["license"], summary["contents"]), ("srw64.sample", "1.0.0", "CC-BY-NC-4.0", ["campaign"]))
 
+    def test_pictures_and_sound_are_stored(self):
+        source = self.out / "src"
+        (source / "audio" / "music").mkdir(parents=True)
+        (source / "mod.json").write_text(json.dumps({"schema": "srw64.mod.v1", "id": "a.b", "version": "1.0.0", "name": {"en": "A"},
+                                                     "license": "CC-BY-NC-4.0"}), encoding="utf-8")
+        (source / "audio" / "music" / "7.ogg").write_bytes(b"OggS" * 100)
+        _, path, _ = pack.build_package(source, self.out / "out")
+        with zipfile.ZipFile(path) as z:
+            kinds = {i.filename: i.compress_type for i in z.infolist()}
+        self.assertEqual(kinds, {"audio/music/7.ogg": zipfile.ZIP_STORED, "mod.json": zipfile.ZIP_DEFLATED})
+        self.assertNotIn("warnings", validate.check(path)[1])
+
     def test_the_file_is_reproducible(self):
         _, first, _ = pack.build_package(ROOT / "config/recomp/campaigns/retry", self.out)
         first_bytes = first.read_bytes()

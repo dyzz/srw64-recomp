@@ -812,6 +812,10 @@ void register_languages() {
     std::vector<mod_languages::Language> added;
     for(auto& language:found.languages) {
         try {
+            // Faces open by path: a package file's come out of it into the MOD cache first
+            // (mods::local_file); a folder's are where they are.
+            for(auto& path:language.text_fonts)path=mods::local_file(path);
+            if(!language.title_font.empty())language.title_font=mods::local_file(language.title_font);
             // A face FreeType cannot open would fail every layout of the language: check
             // them here and leave the language out instead.
             for(const auto& path:language.text_fonts)text::FontSet({{path,0,0}});

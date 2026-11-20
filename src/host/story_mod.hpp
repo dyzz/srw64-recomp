@@ -290,16 +290,11 @@ inline Library collect(const std::vector<mods::Package>& packages) {
     for(const auto& package:packages) {
         if(!package.active)continue;
         const size_t first=library.events.size();
-        const auto folder=package.folder/"story";
-        std::error_code ec;
-        if(!fs::is_directory(folder,ec))continue;
-        std::vector<fs::path> files;
-        for(const auto& entry:fs::directory_iterator(folder,ec))if(entry.path().extension()==".json")files.push_back(entry.path());
-        std::sort(files.begin(),files.end());
-        for(const auto& file:files) {
-            const auto where=package.id()+"/story/"+file.filename().string()+"：";
-            std::ifstream in(file);
-            const auto document=json::parse(in,nullptr,false);
+        const auto package_files=mods::files_of(package);   // its folder or its .srw64mod
+        for(const auto& name:package_files->list("story")) {
+            if(fs::path(name).extension()!=".json")continue;
+            const auto where=package.id()+"/story/"+name+"：";
+            const auto document=json::parse(package_files->read_text("story/"+name).value_or(std::string()),nullptr,false);
             if(document.is_discarded()){library.problems.push_back(where+"JSON 无效");continue;}
             try {add_image(library,package.id(),document);}
             catch(const std::exception& error){library.problems.push_back(where+error.what());}

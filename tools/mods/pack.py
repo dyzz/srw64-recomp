@@ -9,10 +9,11 @@ srw64.campaign.v1 with its stages/, docs/design/custom-campaign.md §3) is compi
 into campaign/campaign.json, the image the game plays. Everything that is not a package
 folder or file (the campaign's sources, notes) stays out.
 
-Writes <out>/<id>/ (the package unpacked, as the game keeps it in mods/) and
-<out>/<id>-<version>.srw64mod (the file to list and share; reproducible: fixed dates,
-sorted entries), then checks the file with tools/mods/validate.py and prints its
-summary. Exit code 1 when the check fails.
+Writes <out>/<id>/ (the package as a folder, which the game reads the same as the file:
+handy while making it) and <out>/<id>-<version>.srw64mod (the file to list and share, which
+the game keeps as it is in mods/ and reads in place; reproducible: fixed dates, sorted
+entries; pictures and sound stored, not deflated: validate.STORED), then checks the file with
+tools/mods/validate.py and prints its summary. Exit code 1 when the check fails.
 """
 from __future__ import annotations
 
@@ -107,7 +108,7 @@ def build_archive(folder: Path, path: Path) -> Path:
     with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
         for file in files:
             info = zipfile.ZipInfo(file.relative_to(folder).as_posix(), date_time=FIXED_DATE)
-            info.compress_type = zipfile.ZIP_DEFLATED
+            info.compress_type = zipfile.ZIP_STORED if file.suffix.lower() in validate.STORED else zipfile.ZIP_DEFLATED
             info.external_attr = 0o644 << 16
             z.writestr(info, file.read_bytes())
     return path

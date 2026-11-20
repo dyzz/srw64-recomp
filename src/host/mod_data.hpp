@@ -387,16 +387,15 @@ inline Collected collect(const std::vector<mods::Package>& packages,std::span<co
     std::error_code error;
     c.numbers=mod_ids::assign(packages);
     for(const auto& p:packages) {
-        if(!p.active || !fs::is_directory(p.folder/"data",error))continue;
-        for(const auto& item:fs::directory_iterator(p.folder/"data",error)) {
-            const auto name=item.path().filename().string();
-            if(item.is_regular_file(error) && item.path().extension()==".json" && name!="new_units.json" && std::find(files.begin(),files.end(),name)==files.end())
+        if(!p.active)continue;
+        const auto package=mods::files_of(p);   // its folder or its .srw64mod (mod_library.hpp)
+        if(!package->has_folder("data"))continue;
+        for(const auto& name:package->list("data"))
+            if(fs::path(name).extension()==".json" && name!="new_units.json" && std::find(files.begin(),files.end(),name)==files.end())
                 c.problems.push_back(p.id()+" data/"+name+"：暂不支持这个文件");
-        }
         // New units first: the number files may change the records they copy.
-        if(const auto path=p.folder/"data"/"new_units.json";fs::is_regular_file(path,error)) {
-            std::ifstream in(path,std::ios::binary);
-            const auto document=json::parse(in,nullptr,false);
+        if(const auto text=package->read_text("data/new_units.json")) {
+            const auto document=json::parse(*text,nullptr,false);
             const std::string where=p.id()+" data/new_units.json：";
             if(document.is_discarded())c.problems.push_back(where+"JSON 无效");
             else if(auto why=mod_units::parse(document,p.id(),c.numbers,rom,c.bytes,c.bytes,taken,p.folder);!why.empty())c.problems.push_back(where+why);
@@ -412,10 +411,9 @@ inline Collected collect(const std::vector<mods::Package>& packages,std::span<co
             }
         }
         for(const auto file:files) {
-            const auto path=p.folder/"data"/std::string(file);
-            if(!fs::is_regular_file(path,error))continue;
-            std::ifstream in(path,std::ios::binary);
-            const auto document=json::parse(in,nullptr,false);
+            const auto text=package->read_text("data/"+std::string(file));
+            if(!text)continue;
+            const auto document=json::parse(*text,nullptr,false);
             const std::string where=p.id()+" data/"+std::string(file)+"：";
             if(document.is_discarded()){c.problems.push_back(where+"JSON 无效");continue;}
             const auto kind=file=="units.json"?Kind::units:file=="pilots.json"?Kind::pilots:Kind::weapons;
