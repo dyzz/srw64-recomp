@@ -673,13 +673,15 @@ button.vw-cell .gates {flex-shrink:0; display:flex; gap:3dp;}
 button.vw-cell .gates span {width:16dp; height:16dp; line-height:16dp; text-align:center; font-size:9dp; font-weight:bold; color:#4f5b80; border:1dp #2a3b66;}
 button.vw-cell .gates span.lit {color:#8fe4ff; border-color:#3fd0ff;}
 button.vw-cell.on {border-color:#ffd75e; background-color:#1d1a2e;}
-button.vw-cell:focus, .pad button.vw-cell:focus {color:#ffd75e; border-color:#ffd75e;}
-body.pointer button.vw-cell:focus {color:#e8eefc; border-color:#2a3b66;} body.pointer button.vw-cell.on:focus {border-color:#ffd75e;} body.pointer button.vw-cell:hover {border-color:#3fd0ff;}
+/* The keys' and the controller's cursor: a tinted row with a bar on its left, read from across a room (the 1dp outline alone was not). */
+button.vw-cell:focus, .pad button.vw-cell:focus {color:#ffd75e; border-color:#ffd75e; border-left-width:4dp; padding-left:7dp; background-color:#ffd75e2e;}
+body.pointer button.vw-cell:focus {color:#e8eefc; border-color:#2a3b66; border-left-width:1dp; padding-left:10dp; background-color:#0d1430;} body.pointer button.vw-cell.on:focus {border-color:#ffd75e; background-color:#1d1a2e;} body.pointer button.vw-cell:hover {border-color:#3fd0ff;}
 button.vw-bgm {flex-shrink:0; display:flex; align-items:center; justify-content:center; gap:10dp; height:30dp; margin:0; padding:0 12dp; color:#e8eefc; background-color:#11112a; border:1dp #ffb54766; border-radius:0;}
 button.vw-bgm .k {font-size:10dp; color:#ffb547;}
 button.vw-bgm .t {font-size:13dp; letter-spacing:1dp; white-space:nowrap;}
 button.vw-bgm.on, button.vw-bgm:focus {border-color:#ffd75e;}
-body.pointer button.vw-bgm:focus {border-color:#ffb54766;} body.pointer button.vw-bgm.on:focus {border-color:#ffd75e;} body.pointer button.vw-bgm:hover {border-color:#3fd0ff;}
+button.vw-bgm:focus {background-color:#ffd75e2e;}
+body.pointer button.vw-bgm:focus {border-color:#ffb54766; background-color:#11112a;} body.pointer button.vw-bgm.on:focus {border-color:#ffd75e;} body.pointer button.vw-bgm:hover {border-color:#3fd0ff;}
 .vw-help {flex:1 1 0; min-width:0; font-size:12dp; color:#c8d4ee; white-space:nowrap;}
 button.vw-start {margin:0; height:32dp; line-height:32dp; text-align:center; padding:0 34dp 0 38dp; font-size:16dp; font-weight:bold; letter-spacing:3dp; color:#0b1230; border:0; border-radius:0; background-color:transparent; decorator:slant(#ffd75e #ffd75e 0dp 0dp 12dp 0dp 0dp 12dp);}
 button.vw-start:focus {decorator:slant(#ffffff #ffffff 0dp 0dp 12dp 0dp 0dp 12dp);}
@@ -687,6 +689,8 @@ body.pointer button.vw-start:focus {decorator:slant(#ffd75e #ffd75e 0dp 0dp 12dp
 /* The slanted button is only its slant: none of the footers' or the controller's rectangle when focused. */
 .set-panel.vw-panel button.vw-start, .set-panel.vw-panel button.vw-start:focus, .set-panel.vw-panel button.vw-start:hover, .pad .set-panel.vw-panel button.vw-start:focus,
 body.pointer .set-panel.vw-panel button.vw-start:focus, body.pointer .set-panel.vw-panel button.vw-start:hover {background-color:transparent; border-width:0;}
+/* Beside the yellow start button a focused close button goes white, as a focused start does, not yellow. */
+.vw-panel .set-foot button:focus, .pad .vw-panel .set-foot button:focus {color:#0b1230; background-color:#ffffff; border-color:#ffffff;}
 .vw-list {flex:1 1 0; min-height:0; width:auto; border-right:0;}
 /* The box a choice opens, over the other side */
 .vw-pop {position:absolute; top:44dp; bottom:50dp; display:flex; flex-direction:column; background-color:#090e26fa; border:2dp #3fd0ff;}
@@ -723,12 +727,12 @@ button.vw-li .t {flex-shrink:0; padding:0 4dp; font-size:10dp; font-weight:bold;
 button.vw-li .t.melee {background-color:#ffb547;}
 button.vw-li .badge {flex-shrink:0; padding:0 5dp; font-size:9dp; line-height:15dp; font-weight:bold; color:#0b1230; background-color:#3fd0ff;}
 button.vw-li.on {background-color:#2a1d3a; border-left-color:#ffd75e; color:#ffd75e; font-weight:bold;}
-button.vw-li:focus {background-color:#3fd0ff26;} button.vw-li.on:focus {background-color:#3a2a4e;}
-body.pointer button.vw-li:focus {background-color:transparent;} body.pointer button.vw-li.on:focus {background-color:#2a1d3a;} body.pointer button.vw-li:hover {background-color:#3fd0ff1a;}
+button.vw-li:focus {background-color:#3fd0ff33; border-left-color:#3fd0ff;} button.vw-li.on:focus {background-color:#3a2a4e; border-left-color:#ffd75e;}
+body.pointer button.vw-li:focus {background-color:transparent; border-left-color:transparent;} body.pointer button.vw-li.on:focus {background-color:#2a1d3a; border-left-color:#ffd75e;} body.pointer button.vw-li:hover {background-color:#3fd0ff1a;}
 .vw-pop-foot {flex-shrink:0; display:flex; align-items:center; gap:8dp; height:42dp; padding:0 8dp; border-top:1dp #2a3b66;}
 .vw-pop-foot .set-hint {flex:1 1 0; min-width:0; white-space:nowrap;}
 .vw-pop-foot button {margin:0; height:28dp; line-height:28dp; padding:0 14dp; font-size:13dp; color:#0b1230; background-color:#3fd0ff; border:0; border-radius:0;}
-.vw-pop-foot button:focus {background-color:#ffd75e;}
+.vw-pop-foot button:focus {background-color:#ffffff;}
 body.pointer .vw-pop-foot button:focus {background-color:#3fd0ff;} body.pointer .vw-pop-foot button:hover {background-color:#8fe4ff;}
 .vw-pop-foot button.vw-start {height:28dp; line-height:28dp; padding:0 26dp 0 30dp; font-size:14dp; background-color:transparent;}
 .vw-resbox {flex:1 1 0; min-height:0; display:flex; gap:8dp; box-sizing:border-box; width:100%; padding:8dp;}
