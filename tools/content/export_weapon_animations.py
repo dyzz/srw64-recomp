@@ -16,6 +16,8 @@ pictures or sounds.
             picture in such an actor's place needs copies of its scene around it ("around").
   complex   the behaviours that compute with scene numbers any other way: a record with one
             keeps the original's pictures (cut-ins aside).
+  lines     per behaviour that shows the battle lines after the one the speaker said (8008FFAC
+            with the line plus k, 石破天惊拳's shouts): the k.
             Both from the recompiled code (build/recomp/cpu-bound/generated, make recomp-cpu);
             src/host/battle_steps.hpp is written from them too.
 
@@ -36,6 +38,7 @@ from srw64_rom.resources import ResourceTable  # noqa: E402
 OUT = ROOT / "web/src/data/weapon-animations.json"
 GENERATED = ROOT / "build/recomp/cpu-bound/generated"
 CHANGE_SCENE = 0x801C5700
+SHOW_LINE = 0x8008FFAC
 LOAD_SCENE = re.compile(r"lhu?\s+\$(\w+), 0x2C\(\$(\w+)\)")
 STEP = re.compile(r"(addiu\s+\$a1, \$a1, -?0x[0-9A-F]+|sll\s+\$a1, \$a1, 16|sra\s+\$a1, \$a1, 16)$")
 
@@ -63,11 +66,13 @@ def overlay_functions() -> dict[int, tuple[list[str], dict[int, int]]]:
     return out
 
 
-def behaviour_scenes() -> tuple[dict[int, list[int]], list[int]]:
+def behaviour_scenes() -> tuple[dict[int, list[int]], list[int], dict[int, list[int]]]:
     """How each behaviour (its routine and the overlay functions it calls) uses its actor's scene
     resource number (+0x2C): `steps`, the k of each load of it straight into 801C5700 plus k (a
     jump to a shared tail followed); `complex`, the behaviours that use it any other way
-    (compared, kept, another actor's). Routines that never read it are in neither."""
+    (compared, kept, another actor's). Routines that never read it are in neither. `lines`: the
+    behaviours that show a battle line by its id plus k (8008FFAC), the lines after the one the
+    speaker said."""
     functions = overlay_functions()
     routines = {}
     dispatcher = functions.pop("_dispatcher")
@@ -95,29 +100,36 @@ def behaviour_scenes() -> tuple[dict[int, list[int]], list[int]]:
                 ks.add(next((int(x, 16) for w in uses for x in re.findall(r"addiu\s+\$a1, \$a1, (-?0x[0-9A-F]+)", w)), 0))
             else:
                 other += 1
+        shows = set()
+        for n, ins in enumerate(lines):
+            if ins.startswith("jal") and f"0x{SHOW_LINE:08X}" in ins:
+                shows |= {int(x, 16) for w in lines[max(0, n - 6):n + 2] for x in re.findall(r"addiu\s+\$a1, \$a1, (-?0x[0-9A-F]+)", w)}
         calls = {int(x, 16) for ins in lines for x in re.findall(r"jal\s+0x([0-9A-F]{8})", ins)} - {CHANGE_SCENE}
-        own[address] = (ks, other, calls)
+        own[address] = (ks, other, calls, shows)
 
     def reach(address, seen):
         if address in seen or address not in own:
-            return set(), 0
+            return set(), 0, set()
         seen.add(address)
-        ks, other, calls = own[address]
-        ks = set(ks)
+        ks, other, calls, shows = own[address]
+        ks, shows = set(ks), set(shows)
         for c in calls:
-            more, worse = reach(c, seen)
+            more, worse, said = reach(c, seen)
             ks |= more
             other += worse
-        return ks, other
+            shows |= said
+        return ks, other, shows
 
-    steps, complex_ = {}, []
+    steps, complex_, line_steps = {}, [], {}
     for behaviour, address in sorted(routines.items()):
-        ks, other = reach(address, set())
+        ks, other, shows = reach(address, set())
         if other:
             complex_.append(behaviour)
         elif ks - {0}:
             steps[behaviour] = sorted(ks - {0})
-    return steps, complex_
+        if shows - {0}:
+            line_steps[behaviour] = sorted(shows - {0})
+    return steps, complex_, line_steps
 
 
 HEADER = ROOT / "src/host/battle_steps.hpp"
@@ -189,10 +201,11 @@ def main() -> None:
         weapons.append(index[offset])
     scenes = [box(t[0]) if t[0] else [0, 0, 1, 1, 0, 0] for t in read_triplets(rom, "battle_scenes")]
     poses = [box(t[0]) if t[0] else [0, 0, 1, 1, 0, 0] for t in read_triplets(rom, "unit_poses")]
-    steps, complex_ = behaviour_scenes()
+    steps, complex_, line_steps = behaviour_scenes()
     data = {"schema": "srw64.weapon-animations.v1", "records": records, "weapons": weapons,
             "scenes": scenes, "poses": poses, "cutins": list(CUTIN_REGISTRY),
-            "steps": {str(k): v for k, v in steps.items()}, "complex": complex_}
+            "steps": {str(k): v for k, v in steps.items()}, "complex": complex_,
+            "lines": {str(k): v for k, v in line_steps.items()}}
     write_steps_header(steps, complex_)
     OUT.write_text(json.dumps(data, separators=(",", ":")) + "\n", encoding="utf-8")
     print(f"{OUT}: {len(records)} records, {len(weapons)} weapons, {len(scenes)} scenes, {OUT.stat().st_size // 1024} KB")

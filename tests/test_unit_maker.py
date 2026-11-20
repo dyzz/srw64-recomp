@@ -280,6 +280,19 @@ class AnimationTests(unittest.TestCase):
                     " a.animationProblems({ ...own, actors: [a.cutin('@x', 'fire', false)] }, new Set(['x']), true), a.CUTIN_TICKS]));")
         self.assertEqual(place, [0, 0, 2, ["anim_own_effect"], [], 30])
 
+    def test_generic_weapons(self):
+        # The maker offers only these for now: each an original weapon whose animation has no
+        # routine that computes with scene numbers or shows the lines after the speaker's.
+        module = (ROOT / "web/src/lib/weapon-animation.ts").as_uri()
+        generic = run(f"import * as a from {json.dumps(module)}; console.log(JSON.stringify(a.GENERIC_WEAPONS));")
+        bank = json.loads((ROOT / "web/src/data/weapon-animations.json").read_text())
+        self.assertEqual(sorted(map(int, bank["lines"])), [34, 139, 160, 194, 248, 303, 307, 323, 342, 343])
+        risky = set(bank["complex"]) | set(map(int, bank["lines"]))
+        self.assertGreaterEqual(len(generic), 10)
+        for weapon in generic:
+            behaviours = {actor[7] for actor in bank["records"][bank["weapons"][weapon]][5]}
+            self.assertFalse(behaviours & risky, weapon)
+
     def test_scenes_around(self):
         # The beam (118) moves its actor to the scene resources +1 and +2: a package picture
         # there needs copies around it (the sprite's "around"), which the validator takes.

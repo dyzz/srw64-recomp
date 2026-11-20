@@ -20,6 +20,28 @@ export function sceneSpan(steps: Record<string, number[]> | undefined, behavior:
   return { low: Math.min(0, ...ks), high: Math.max(0, ...ks) };
 }
 export const MAX_AROUND = 32;
+// The original weapons the maker offers to start a new weapon from, to borrow effects from and
+// to give a unit (besides its original's own): one ordinary weapon of each common kind, whose
+// animation has no routine that computes with scene numbers or shows the lines after the
+// speaker's (docs/design/weapon-animation-survey.md §7.4). Others later.
+export const GENERIC_WEAPONS: readonly number[] = [
+  228,  // 光束步枪 (高达)
+  199,  // 光束枪 (冲浪者): the shot only, no gun in hand
+  227,  // 光束军刀 (高达)
+  226,  // 60mm火神炮 (高达)
+  25,   // 火神炮: a short burst
+  299,  // 100mm机枪 (高达Ez8)
+  327,  // 导弹
+  304,  // 火箭筒 (高达Ez8)
+  204,  // 光束加农炮 (ν高达)
+  224,  // 240mm加农炮 (钢加农)
+  31,   // 拳击
+  32,   // 踢击
+  553,  // 冲撞
+  391,  // 热能斧 (扎古Ⅱ)
+  716,  // 军刀
+];
+export const isGeneric = (weapon: number) => GENERIC_WEAPONS.includes(weapon);
 // A record with a routine that computes with scene numbers (compares them, keeps them, reads
 // another actor's): it keeps the original's pictures, a cut-in's aside.
 export const lockedPictures = (a: Animation, complex: number[] | undefined) => !!complex && a.actors.some((actor) => complex.includes(actor.behavior));

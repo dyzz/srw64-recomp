@@ -692,8 +692,16 @@ export function initUnitMaker() {
     const work = el('select', {}, el('option', { value: '' }, T('workCopy')), ...works.map((w) => el('option', { value: String(w.id) }, w.name))) as HTMLSelectElement;
     work.value = u.work === undefined ? '' : String(u.work);
     work.addEventListener('change', () => { u.work = work.value === '' ? undefined : Number(work.value); changed(false); });
+    // Its original's own weapons (their animations fit its body), the generic ones and the
+    // package's.
+    const original = baseOf('units', u)?.id;
+    const ownWeapons = new Set(lists.weapons.filter((x) => original !== undefined && ((x as any).units as number[] | undefined)?.includes(original)).map((x) => x.id));
     const addWeapon = el('div', { class: 'add-weapon' },
-      refInput('weapons', undefined, (v) => { if (v !== undefined) { u.weapons.push(v); changed(); } }, T('addWeaponHint')));
+      refInput('weapons', undefined, (v) => {
+        if (v === undefined) return;
+        if (typeof v === 'number' && !anim.isGeneric(v) && !ownWeapons.has(v)) return say(statusLine, T('weaponNotGeneric'), true);
+        u.weapons.push(v); changed();
+      }, T('addWeaponHint')));
     return [
       namesEditor(u, 'units'),
       el('div', { class: 'grid' }, el('label', { class: 'field' }, T('work'), work, el('span', { class: 'was' }, T('workHint')))),
@@ -914,7 +922,7 @@ export function initUnitMaker() {
         el('button', { type: 'button', class: 'mini', disabled: a.actors.length >= anim.MAX_ACTORS, onclick: () => { a.actors.push({ ...actor }); selectedActor.set(w.slug, a.actors.length - 1); changed(); } }, T('animBorrowThis')))));
     };
     return el('div', {}, el('div', { class: 'sub' }, T('animBorrow')), el('p', { class: 'hint' }, T('animBorrowHint')),
-      refInput('weapons', undefined, (v) => show(typeof v === 'number' ? v : undefined), T('animBorrowPick')), list);
+      genericSelect(undefined, (v) => show(v), T('animBorrowPick')), list);
   }
   function animationEditor(w: Weapon): Node[] {
     needBank();
@@ -931,7 +939,7 @@ export function initUnitMaker() {
     });
     const parts: Node[] = [el('div', { class: 'sub' }, T('animTitle')), el('p', { class: 'hint' }, T('animHint')),
       el('label', { class: 'field' }, T('animMode'), select, el('span', { class: 'was' }, source !== undefined ? `${T('animFrom')} ${refName('weapons', source)}` : ''))];
-    if (mode === 'other') parts.push(el('label', { class: 'field' }, T('animOtherPick'), refInput('weapons', (field as { copy: Ref }).copy, (v) => { if (v !== undefined) { w.animation = { copy: v }; changed(); } })));
+    if (mode === 'other') parts.push(el('label', { class: 'field' }, T('animOtherPick'), genericSelect((field as { copy: Ref }).copy, (v) => { w.animation = { copy: v }; changed(); })));
     if (mode !== 'own') return parts;
     if (!bank) return [...parts, el('p', { class: 'hint' }, T('animLoading'))];
     const a = field as anim.Animation;
@@ -991,11 +999,25 @@ export function initUnitMaker() {
   };
   const weaponFind = el('input', { type: 'search', class: 'find', placeholder: text.search, autocomplete: 'off', spellcheck: 'false' }) as HTMLInputElement;
   const weaponResults = el('ul', { class: 'results' });
-  weaponFind.addEventListener('input', () => {
-    const found = search(lists.weapons, weaponFind.value);
+  // Only the ordinary weapons of anim.GENERIC_WEAPONS for now.
+  const genericWeapons = lists.weapons.filter((e) => anim.isGeneric(e.id));
+  const showWeapons = () => {
+    const found = weaponFind.value.trim() ? search(genericWeapons, weaponFind.value) : genericWeapons;
     weaponResults.replaceChildren(...found.map((e) => el('li', {}, el('button', { type: 'button', onclick: () => addFrom('weapons', e.id) },
       el('span', { class: 'num' }, String(e.id)), nameOf(e), el('span', { class: 'stat' }, String(e.power))))));
-  });
+  };
+  weaponFind.addEventListener('input', showWeapons);
+  showWeapons();
+  // A select of the generic weapons (the current choice kept when it is another, from a
+  // package made elsewhere).
+  const genericSelect = (value: Ref | undefined, onchange: (v: number) => void, empty?: string) => {
+    const s = el('select', {}, ...(empty !== undefined ? [el('option', { value: '' }, empty)] : []),
+      ...(typeof value === 'number' && !anim.isGeneric(value) ? [el('option', { value: String(value) }, refName('weapons', value))] : []),
+      ...genericWeapons.map((e) => el('option', { value: String(e.id) }, `${e.id} ${nameOf(e)}`))) as HTMLSelectElement;
+    s.value = value === undefined ? '' : String(value);
+    s.addEventListener('change', () => { if (s.value !== '') onchange(Number(s.value)); });
+    return s;
+  };
   function addFrom(k: Kind, id: number) {
     const base = byId[k].get(id)!;
     const slug = freeSlug(k, base.name.en || `${k}-${id}`);
