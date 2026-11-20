@@ -323,6 +323,22 @@ int main(int argc,char** argv) {
                 mod_units::Bytes bs;mod_units::Taken ts;
                 check(!mod_units::parse(short_parts,"pkg",mod_units::assign({{"pkg",short_parts}}),rom,{},bs,ts).empty(),"a part for each unit");
             }
+            // A copy of a copy: "a" names "b", built after it in name order; both start from 878
+            // (and units: "a" from 48 through "b").
+            {
+                const json chain=json::parse(R"({"schema":"srw64.new-units.v2",
+                    "weapons":{"a":{"copy":"@b"},"b":{"copy":"pkg@c"},"c":{"copy":878}},
+                    "units":{"a":{"copy":"@b","weapons":["@a"]},"b":{"copy":48,"weapons":[193]}}})");
+                const auto nc=mod_units::assign({{"pkg",chain}});
+                mod_units::Bytes bc;mod_units::Taken tc;
+                {const auto why=mod_units::parse(chain,"pkg",nc,rom,{},bc,tc);if(!why.empty())std::fprintf(stderr,"%s\n",why.c_str());check(why.empty(),"copies of copies");}
+                const auto same=[&](uint32_t mine,uint32_t theirs,unsigned size){
+                    for(unsigned i=0;i<size;++i)if(mod_units::read_byte(bc,rom,mine+i)!=mod_units::read_byte(bc,rom,theirs+i))return false;
+                    return true;
+                };
+                check(same(tw::row(tw::weapons,nc.weapons.at("pkg@a")),tw::row(tw::weapons,878),16) && tc.weapon_copies.at(nc.weapons.at("pkg@a"))==878,"a weapon copying a later one starts from its original");
+                check(tc.copies.at(nc.units.at("pkg@a"))==48,"a unit copying another starts from its original");
+            }
             json far=five;far["units"]["final"]["work"]=25;
             mod_units::Bytes b7;mod_units::Taken t7;
             check(!mod_units::parse(far,"pkg",mod_units::assign({{"pkg",far}}),rom,{},b7,t7).empty(),"a work past the original's 25");

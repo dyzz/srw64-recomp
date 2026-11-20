@@ -281,6 +281,20 @@ inline std::string parse(const json& document,const std::string& package,const N
     Bytes bytes;
     Taken t=taken;
     Bytes view=below;   // below, then this file's bytes as they come
+    // A copy of another of this file's new units or weapons starts from the original that
+    // one copies: entries are built in name order, so the one named may not be built yet.
+    // Its own number changes (data/*.json "@name" rows) are its own, not the copy's.
+    const auto rooted=[&](const json& part,json value)->json{
+        for(int hop=0;hop<16 && value.is_string();++hop) {
+            std::string text=value.get<std::string>();
+            if(text.rfind(package+"@",0)==0)text=text.substr(package.size());
+            if(text.size()<2 || text[0]!='@' || !part.is_object())break;
+            const auto found=part.find(text.substr(1));
+            if(found==part.end() || !found->is_object() || !found->contains("copy"))break;
+            value=(*found)["copy"];
+        }
+        return value;
+    };
     const auto at=[&](uint32_t a){return read_byte(view,rom,a);};
     const auto u16=[&](uint32_t a){return unsigned(at(a))<<8|at(a+1);};
     const auto u32=[&](uint32_t a){return uint32_t(u16(a))<<16|u16(a+2);};
@@ -357,7 +371,7 @@ inline std::string parse(const json& document,const std::string& package,const N
         if(!entry.is_object())return where+"：要是对象";
         for(const auto& [field,_]:entry.items())
             if(field!="copy" && field!="animation" && field!="inherits_from" && field!="combination")return where+"：未知字段 "+field+"（copy、animation、inherits_from、combination）";
-        const auto source=resolve(entry.value("copy",json()),package,numbers,Of::weapon);
+        const auto source=resolve(rooted(weapon_part,entry.value("copy",json())),package,numbers,Of::weapon);
         if(!source || *source==n)return where+".copy：要写照抄的武器（原版武器号或 @名字）";
         t.weapon_copies[n]=*source;
         copy(tw::row(tw::weapons,n),tw::row(tw::weapons,*source),weapon_record_size);
@@ -477,7 +491,7 @@ inline std::string parse(const json& document,const std::string& package,const N
         for(const auto& [field,_]:entry.items())
             if(field!="copy" && field!="pose" && field!="icon" && field!="weapons" && field!="inherits_from" && field!="crew" && field!="combine" && field!="work" && field!="forms")
                 return where+"：未知字段 "+field+"（copy、pose、icon、weapons、inherits_from、crew、combine、work、forms）";
-        const auto source=resolve(entry.value("copy",json()),package,numbers,Of::unit);
+        const auto source=resolve(rooted(unit_part,entry.value("copy",json())),package,numbers,Of::unit);
         if(!source || *source==n || (*source<tw::rom_units && *source>=battle_units_with_rows))
             return where+".copy：要写照抄的机体（原版 0–353 或 @名字）";
         t.copies[n]=*source;
