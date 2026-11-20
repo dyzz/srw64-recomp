@@ -571,12 +571,13 @@ inline std::vector<unsigned> crew(unsigned unit) {
     const auto found=s.crews.find(unit);
     return found==s.crews.end()?std::vector<unsigned>{}:found->second;
 }
-// A package's sprite by the resource numbers the game draws it from. Any thread.
+// A package's sprite by the resource numbers the game draws it from (its scene or a copy of it
+// around it, mod_units::Sprite before/after). Any thread.
 inline std::optional<mod_units::Sprite> sprite(unsigned scene,unsigned atlas,unsigned palette) {
     auto& s=state();
     std::lock_guard lock(s.owners_mutex);
     for(const auto& [_,sprite]:s.sprites)
-        if(sprite.scene==scene && sprite.atlas==atlas && sprite.palette==palette)return sprite;
+        if(scene+sprite.before>=sprite.scene && scene<=unsigned(sprite.scene)+sprite.after && sprite.atlas==atlas && sprite.palette==palette)return sprite;
     return std::nullopt;
 }
 inline std::vector<unsigned> new_units() {

@@ -53,6 +53,8 @@ export interface Weapon {
 // ticks of each frame and the frame it loops back to, an HD picture per frame.
 export interface Sprite {
   image?: string; frames?: string[]; origin: [number, number]; mirror?: boolean; ticks?: number[]; loop?: number; hd?: string | string[];
+  // Copies of its scene in the resource numbers before and after its own (src/host/mod_units.hpp).
+  around?: [number, number];
 }
 export interface Model {
   pilots: Pilot[]; units: Unit[]; weapons: Weapon[];

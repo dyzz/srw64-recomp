@@ -485,6 +485,17 @@ int main(int argc,char** argv) {
         check(w16(added,tw::row(tw::poses,unit))==tw::rom_resources && w16(added,tw::row(tw::poses,unit)+4)==tw::rom_resources+2,"the pose names them");
         check(w16(added,tw::row(tw::scenes,tw::rom_scenes))==tw::rom_resources,"so does the scene");
         check(mod_units::art(sprite).value("width",0)==40 && mod_units::art(sprite).contains("hd"),"its picture for the pages");
+        // "around": copies of the scene before and after it, the atlas and palette after them.
+        const json beam=json::parse(R"({"schema":"srw64.new-units.v2","sprites":{"beam":{"image":"art/stand.png","origin":[20,40],"around":[1,2]}},"scenes":{"beam":"@beam"}})");
+        mod_units::Taken t2;mod_units::Bytes b2;
+        check(mod_units::parse(beam,"pkg",numbers,rom,{},b2,t2,pack).empty(),"a sprite with scenes around it");
+        const auto& around=t2.sprites.at("pkg@beam");
+        check(around.scene==tw::rom_resources+1 && around.atlas==tw::rom_resources+4 && around.palette==tw::rom_resources+5 && t2.resources.size()==6,"four scenes, then the atlas and palette");
+        check(t2.resources.at(tw::rom_resources)==t2.resources.at(around.scene) && t2.resources.at(tw::rom_resources+3)==t2.resources.at(around.scene),"the copies are its scene");
+        check(w16(b2,tw::row(tw::scenes,tw::rom_scenes))==around.scene,"the scene row names its own");
+        const json far=json::parse(R"({"schema":"srw64.new-units.v2","sprites":{"beam":{"image":"art/stand.png","origin":[20,40],"around":[0,17]}}})");
+        mod_units::Taken t4;mod_units::Bytes b4;
+        check(!mod_units::parse(far,"pkg",numbers,rom,{},b4,t4,pack).empty(),"at most 16 around");
         const json escape=json::parse(R"({"schema":"srw64.new-units.v2","sprites":{"x":{"image":"../x.png","origin":[0,0]}}})");
         mod_units::Taken t3;mod_units::Bytes b3;
         check(!mod_units::parse(escape,"pkg",numbers,rom,{},b3,t3,pack).empty(),"a sprite's file stays inside the package");

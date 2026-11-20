@@ -140,6 +140,11 @@ inline uint8_t read_byte(const Bytes& over,std::span<const uint8_t> rom,uint32_t
 struct Sprite {
     std::string key;                       // "package@name"
     uint16_t scene=0, atlas=0, palette=0;
+    // "around": copies of the scene in the resource numbers before and after its own. An
+    // actor's scene (+0x2C) is a resource number, and some routines move it to the one next to
+    // it (801C5700 with +k: the beam, 118, to +1 and +2, its ROM scenes 3559 and 3560); a
+    // picture in their place has to be there too, or the atlas after it is read as a scene.
+    uint8_t before=0, after=0;
     unsigned frames=0, width=0, height=0;  // the first frame's size
     std::filesystem::path picture;         // the first frame's PNG
     std::vector<std::filesystem::path> hd; // per frame, empty when none
@@ -209,6 +214,7 @@ inline std::optional<std::filesystem::path> inside(const std::filesystem::path& 
     return folder/relative;
 }
 // The "sprites" of one package: PNGs into resources (mod_sprites.hpp build).
+inline constexpr int max_around=16;
 inline std::string sprites(const json& part,const std::string& package,const std::filesystem::path& folder,Taken& t) {
     if(!part.is_object())return "sprites 要是对象";
     for(const auto& [name,entry]:part.items()) {
@@ -216,8 +222,8 @@ inline std::string sprites(const json& part,const std::string& package,const std
         if(!valid_name(name))return where+"：名字只能用小写字母、数字和 - _ .";
         if(!entry.is_object())return where+"：要是对象";
         for(const auto& [field,_]:entry.items())
-            if(field!="image" && field!="frames" && field!="origin" && field!="mirror" && field!="ticks" && field!="loop" && field!="hd")
-                return where+"：未知字段 "+field+"（image、frames、origin、mirror、ticks、loop、hd）";
+            if(field!="image" && field!="frames" && field!="origin" && field!="mirror" && field!="ticks" && field!="loop" && field!="hd" && field!="around")
+                return where+"：未知字段 "+field+"（image、frames、origin、mirror、ticks、loop、hd、around）";
         json files=entry.contains("frames")?entry["frames"]:json::array({entry.value("image",json())});
         if(entry.contains("frames") && entry.contains("image"))return where+"：image 和 frames 只写一个";
         if(!files.is_array() || files.empty() || files.size()>64)return where+"：image 要是一张 PNG，frames 要是 1–64 张";
@@ -249,11 +255,18 @@ inline std::string sprites(const json& part,const std::string& package,const std
         mod_sprites::Built built;
         if(auto why=mod_sprites::build(frames,origin[0].get<int>(),origin[1].get<int>(),mirror,steps,loop.get<unsigned>(),built);!why.empty())
             return where+"："+why;
-        if(t.resource_next+3>tw::resource_limit)return where+"：资源号用完了";
-        sprite.scene=uint16_t(t.resource_next);sprite.atlas=uint16_t(t.resource_next+1);sprite.palette=uint16_t(t.resource_next+2);
+        const json around=entry.value("around",json::array({0,0}));
+        if(!around.is_array() || around.size()!=2 || !integer(around[0],0,max_around) || !integer(around[1],0,max_around))
+            return where+".around：要写 [前, 后]：自己的场景前后还要几份（0–"+std::to_string(max_around)+"）";
+        sprite.before=around[0].get<uint8_t>();sprite.after=around[1].get<uint8_t>();
+        const unsigned scenes=1u+sprite.before+sprite.after;
+        if(t.resource_next+scenes+2>tw::resource_limit)return where+"：资源号用完了";
+        sprite.scene=uint16_t(t.resource_next+sprite.before);
+        sprite.atlas=uint16_t(t.resource_next+scenes);sprite.palette=uint16_t(t.resource_next+scenes+1);
         sprite.frames=built.frames;
-        t.resources[sprite.scene]=std::move(built.scene);t.resources[sprite.atlas]=std::move(built.atlas);t.resources[sprite.palette]=std::move(built.palette);
-        t.resource_next+=3;
+        for(unsigned k=0;k<scenes;++k)t.resources[t.resource_next+k]=built.scene;
+        t.resources[sprite.atlas]=std::move(built.atlas);t.resources[sprite.palette]=std::move(built.palette);
+        t.resource_next+=scenes+2;
         if(entry.contains("hd")) {
             const json hd=entry["hd"].is_array()?entry["hd"]:json::array({entry["hd"]});
             if(hd.size()!=frames.size())return where+".hd：要每张图一张 HD 图";

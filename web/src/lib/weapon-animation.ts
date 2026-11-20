@@ -10,7 +10,16 @@ export interface Animation { camera: number; hit: number; action: number; defend
 export type AnimationField = { copy: Ref } | Animation;
 // The original's records as exported (tools/content/export_weapon_animations.py).
 export type RawRecord = [number, number, number, number, number[], number[][]];
-export interface Bank { records: RawRecord[]; weapons: number[]; scenes: number[][]; poses: number[][]; cutins: [number, number] }
+export interface Bank { records: RawRecord[]; weapons: number[]; scenes: number[][]; poses: number[][]; cutins: [number, number]; steps: Record<string, number[]> }
+// The scene resources before and after its own an actor's behaviour moves to (801C5700 with
+// its scene's resource number plus k, tools/content/export_weapon_animations.py): a package
+// picture there needs copies of its scene in as many resources around it, the sprite's
+// "around" [before, after] (src/host/mod_units.hpp).
+export function sceneSpan(steps: Record<string, number[]> | undefined, behavior: number): { low: number; high: number } {
+  const ks = steps?.[String(behavior)] ?? [];
+  return { low: Math.min(0, ...ks), high: Math.max(0, ...ks) };
+}
+export const MAX_AROUND = 16;
 
 export const MAX_ACTORS = 24, MAX_SOUNDS = 8, WINDOW = 0x3c0, SCENES = 1052;
 export const isCopy = (a: unknown): a is { copy: Ref } => !!a && typeof a === 'object' && 'copy' in (a as object);
@@ -68,9 +77,18 @@ export const recordSize = (a: Animation) => 8 + 2 * a.sounds.length + 2 + 16 * a
 // What keeps the record from loading (validate.py new_units_problem's animation checks), as codes.
 // `onlyOriginalEffects`: the package's pictures only on cut-ins (W4 for now: the game's own
 // effects, plus cut-ins).
-export function animationProblems(a: AnimationField, ownScenes: Set<string>, onlyOriginalEffects = false): string[] {
+// `around`: per package scene, its sprite's "around" (a scene of resource numbers: none).
+export function animationProblems(a: AnimationField, ownScenes: Set<string>, onlyOriginalEffects = false, steps?: Record<string, number[]>,
+  around?: (scene: string) => [number, number] | undefined): string[] {
   const out: string[] = [];
   if (isCopy(a)) return out;
+  // A package picture on a routine that moves to the scene resources next to its own: they
+  // have to be copies of it.
+  for (const actor of a.actors) {
+    if (typeof actor.scene !== 'string' || !actor.scene.startsWith('@') || !around) continue;
+    const { low, high } = sceneSpan(steps, actor.behavior), has = around(actor.scene.slice(1));
+    if (has && (has[0] < -low || has[1] < high)) { out.push('anim_scene_set'); break; }
+  }
   if (onlyOriginalEffects && a.actors.some((actor) => typeof actor.scene === 'string' && actor.behavior !== CUTIN)) out.push('anim_own_effect');
   const int = (v: unknown, lo: number, hi: number) => Number.isInteger(v) && (v as number) >= lo && (v as number) <= hi;
   if (![a.camera, a.hit, a.action, a.defender].every((v) => int(v, 0, 0x7fff))) out.push('anim_header');

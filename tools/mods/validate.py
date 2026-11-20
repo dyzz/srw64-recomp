@@ -644,9 +644,9 @@ def sprites_problem(sprites, files: set[str] | None) -> str:
         where = f"sprites.{name}"
         if not isinstance(entry, dict):
             return f"{where}：要是对象"
-        unknown = set(entry) - {"image", "frames", "origin", "mirror", "ticks", "loop", "hd"}
+        unknown = set(entry) - {"image", "frames", "origin", "mirror", "ticks", "loop", "hd", "around"}
         if unknown:
-            return f"{where}：未知字段 {sorted(unknown)[0]}（image、frames、origin、mirror、ticks、loop、hd）"
+            return f"{where}：未知字段 {sorted(unknown)[0]}（image、frames、origin、mirror、ticks、loop、hd、around）"
         if ("image" in entry) == ("frames" in entry):
             return f"{where}：image 和 frames 写一个"
         frames = entry["frames"] if "frames" in entry else [entry["image"]]
@@ -671,6 +671,9 @@ def sprites_problem(sprites, files: set[str] | None) -> str:
             return f"{where}.ticks：要每张图一个 1–255 的拍数"
         if not _int_in(entry.get("loop", 0), 0, len(frames) - 1):
             return f"{where}.loop：要是 0 到图数减 1"
+        around = entry.get("around", [0, 0])
+        if not isinstance(around, list) or len(around) != 2 or not all(_int_in(v, 0, 16) for v in around):
+            return f"{where}.around：要写 [前, 后]：自己的场景前后还要几份（0–16）"
     return ""
 
 

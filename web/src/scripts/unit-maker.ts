@@ -365,16 +365,21 @@ export function initUnitMaker() {
   }
   // A new picture from the player's files: they are its HD frames unless already about the
   // game's size, and the pixel frames fit 128.
-  async function addSprite(base: string, files: File[], mirror: boolean): Promise<string> {
+  // `box`: fit the picture to an original scene's canvas (x0, y0, x1, y1 around its origin), its
+  // origin where that one's is, for a picture that takes an effect's place.
+  async function addSprite(base: string, files: File[], mirror: boolean, box?: number[]): Promise<string> {
     const { sources, bytes } = await readFrames(files);
     const first = sources[0];
-    const width = Math.round(first.width * Math.min(1, SPRITE_FIT / first.width, SPRITE_FIT / first.height));
+    const fit = box ? Math.min((box[2] - box[0]) / first.width, (box[3] - box[1]) / first.height) : Math.min(1, SPRITE_FIT / first.width, SPRITE_FIT / first.height);
+    const width = Math.max(1, Math.min(SPRITE_LARGEST, Math.round(first.width * fit)));
     const small = width >= first.width;
     const a: Art = { sources, hds: small ? [] : bytes, images: small ? bytes : [], urls: [], rgba: [], colors: 0 };
     await makeFrames(a, width);
     const name = freeSprite(base);
     const r = a.rgba[0];
-    sprites()[name] = { origin: mirror ? foot(r.data, r.width, r.height) : [Math.floor(r.width / 2), Math.floor(r.height / 2)], ...(mirror ? {} : { mirror: false }) };
+    const origin: [number, number] = box ? [Math.round((-box[0] * r.width) / (box[2] - box[0])), Math.round((-box[1] * r.height) / (box[3] - box[1]))]
+      : mirror ? foot(r.data, r.width, r.height) : [Math.floor(r.width / 2), Math.floor(r.height / 2)];
+    sprites()[name] = { origin, ...(mirror ? {} : { mirror: false }) };
     art.set(name, a);
     place(name);
     return name;
@@ -828,10 +833,24 @@ export function initUnitMaker() {
     const rows = a.actors.map((actor, i) => {
       const scene = el('input', { value: String(actor.scene), list: 'unit-maker-scenes', class: 'num-cell wide', spellcheck: 'false' }) as HTMLInputElement;
       scene.addEventListener('change', () => { const v = scene.value.trim(); actor.scene = /^\d+$/.test(v) ? Number(v) : v; changed(); });
+      // Its picture from a picture of the player's: one frame, fitted to the scene it replaces,
+      // the motion the routine's as before.
+      const swap = fileButton(T('animSwap'), false, async (files) => {
+        // A routine that moves to the scene resources next to its own (the beam's body and tail)
+        // finds the picture there too.
+        const span = anim.sceneSpan(bank?.steps, actor.behavior);
+        const box = typeof actor.scene === 'number' && bank ? bank.scenes[actor.scene] : actorCanvas(actor)?.canvas;
+        const name = await addSprite(`${w.slug}-${i + 1}`, files, !anim.isCutin(actor), box && box[2] > box[0] && box[3] > box[1] ? box : undefined);
+        sprites()[name].ticks = [anim.CUTIN_TICKS];
+        if (span.low || span.high) sprites()[name].around = [-span.low, span.high];
+        model.scenes ??= {}; model.scenes[name] = `@${name}`;
+        actor.scene = `@${name}`;
+        place(name); changed();
+      });
       const known = anim.KNOWN[actor.behavior];
       const what = el('span', { class: 'was' }, anim.isCutin(actor) ? T('beh_cutin_at', { when: T(`cutin_${anim.cutinTiming(actor.h4).timing}`) }) : known ? T(`beh_${known}`) : T('beh_other'));
       return el('tr', { class: i === (selectedActor.get(w.slug) ?? -1) ? 'on' : '' },
-        el('td', {}, String(i + 1)), el('td', {}, scene), el('td', {}, numberCell(actor.behavior, (v) => (actor.behavior = v)), what),
+        el('td', {}, String(i + 1)), el('td', {}, scene, swap), el('td', {}, numberCell(actor.behavior, (v) => (actor.behavior = v)), what),
         el('td', {}, numberCell(actor.x, (v) => (actor.x = v))), el('td', {}, numberCell(actor.y, (v) => (actor.y = v))), el('td', {}, numberCell(actor.z, (v) => (actor.z = v))),
         el('td', {}, numberCell(actor.h4, (v) => (actor.h4 = v), true)), el('td', {}, numberCell(actor.h5, (v) => (actor.h5 = v))), el('td', {}, numberCell(actor.h6, (v) => (actor.h6 = v))),
         el('td', {}, el('button', { type: 'button', class: 'mini', disabled: i === 0, onclick: () => { [a.actors[i - 1], a.actors[i]] = [a.actors[i], a.actors[i - 1]]; changed(); } }, '↑'),
@@ -1180,7 +1199,12 @@ export function initUnitMaker() {
     for (const name of Object.keys(sprites())) if (!art.has(name)) out.push(`@${name}：${T('p_spriteNoArt')}`);
     for (const name of voicesOf(model)) if (!voices.has(name)) out.push(`${name}：${T('p_voiceMissing')}`);
     const ownScenes = new Set(Object.keys(model.scenes ?? {}));
-    for (const w of model.weapons) if (w.animation) for (const code of anim.animationProblems(w.animation as anim.AnimationField, ownScenes, true)) out.push(`${shownName(w)}：${T(`p_${code}`)}`);
+    const aroundOf = (scene: string): [number, number] | undefined => {
+      const target = (model.scenes ?? {})[scene];
+      if (typeof target !== 'string' || !target.startsWith('@')) return undefined;
+      return sprites()[target.slice(1)]?.around ?? [0, 0];
+    };
+    for (const w of model.weapons) if (w.animation) for (const code of anim.animationProblems(w.animation as anim.AnimationField, ownScenes, false, bank?.steps, aroundOf)) out.push(`${shownName(w)}：${T(`p_${code}`)}`);
     const s = story();
     for (const p of storyImage.storyProblems(s.joins, s.waves)) { const [k, id] = p.where.split(/\.(.*)/); out.push(`${kindTitle[k]} ${id}：${T(`p_${p.code}`)}`); }
     // A new character or unit by name must be one of the package's.

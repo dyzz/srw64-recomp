@@ -277,6 +277,25 @@ class AnimationTests(unittest.TestCase):
                     " a.animationProblems({ ...own, actors: [a.cutin('@x', 'fire', false)] }, new Set(['x']), true), a.CUTIN_TICKS]));")
         self.assertEqual(place, [0, 0, 2, ["anim_own_effect"], [], 30])
 
+    def test_scenes_around(self):
+        # The beam (118) moves its actor to the scene resources +1 and +2: a package picture
+        # there needs copies around it (the sprite's "around"), which the validator takes.
+        module = (ROOT / "web/src/lib/weapon-animation.ts").as_uri()
+        bank = ROOT / "web/src/data/weapon-animations.json"
+        got = run(f"import * as a from {json.dumps(module)}; import fs from 'node:fs';"
+                  f"const bank = JSON.parse(fs.readFileSync({json.dumps(str(bank))}, 'utf8'));"
+                  "const beam = a.original(bank, 228); beam.actors[2].scene = '@b';"
+                  "const has = (r) => () => r;"
+                  "console.log(JSON.stringify([bank.steps['118'], bank.steps['125'] ?? null, bank.steps['205'], a.sceneSpan(bank.steps, 118), a.sceneSpan(bank.steps, 205),"
+                  " a.animationProblems(beam, new Set(['b']), false, bank.steps, has([0, 0])), a.animationProblems(beam, new Set(['b']), false, bank.steps, has([0, 2])),"
+                  " a.animationProblems(beam, new Set(['b']), false, bank.steps, has(undefined))]));")
+        self.assertEqual(got[:5], [[1, 2], None, [-4, 9], {"low": 0, "high": 2}, {"low": -4, "high": 9}])
+        self.assertEqual(got[5:], [["anim_scene_set"], [], []])
+        doc = {"schema": "srw64.new-units.v2", "sprites": {"b": {"image": "b.png", "origin": [256, 16], "around": [0, 2]}}, "scenes": {"b": "@b"}}
+        self.assertEqual(validate.new_units_problem(doc, {"b.png"}), "")
+        doc["sprites"]["b"]["around"] = [0, 17]
+        self.assertIn("around", validate.new_units_problem(doc, {"b.png"}))
+
 
 @unittest.skipUnless(NODE, "node is not installed")
 class PixelsTests(unittest.TestCase):
