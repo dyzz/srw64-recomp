@@ -510,14 +510,18 @@ std::vector<Package> installed(const Version& game) {
     }
     place_loose();
     adopt_folders();
-    // <id>/ and <id>.srw64mod; a folder takes the place of a file of the same name.
+    // <id>/ and <id>.srw64mod; a folder takes the place of a file of the same name. A file that
+    // did not install (a bad zip, or something else given the extension) is reported by
+    // loose_results, not listed as a package too.
+    std::set<fs::path> refused;
+    for(const auto& r:loose)if(!r.result.ok)refused.insert(r.file);
     std::map<std::string,fs::path> found;
     for(const auto& item:fs::directory_iterator(directory(),error)) {
         const auto path=item.path();
         const auto name=path.filename().string();
         if(name.starts_with("."))continue;
         if(item.is_directory(error))found[name]=path;
-        else if(item.is_regular_file(error) && path.extension()==package_extension && !found.contains(path.stem().string()))
+        else if(item.is_regular_file(error) && path.extension()==package_extension && !refused.contains(path) && !found.contains(path.stem().string()))
             found.emplace(path.stem().string(),path);
     }
     std::vector<Package> packages;

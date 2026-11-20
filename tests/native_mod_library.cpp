@@ -254,6 +254,20 @@ int main(int argc,char** argv) {
         check(told.empty(),"nothing told with nothing to place");
         check(find(list,"test.loose2").contents.voices==1 && text(mods::files_of(find(list,"test.loose2"))->read("audio/voice/battle/1.ogg"))==std::string(4096,'v'),
               "its voices read from the package file");
+        // Something else given the extension (the Android picker names a ROM rom.z64.srw64mod)
+        // stays and is reported, once: not listed as a package as well.
+        {
+            write(library/"rom.z64.srw64mod",std::string(4096,'r'));
+            const auto before=ids(list).size();
+            list=mods::installed(game);
+            const auto results=mods::loose_results();
+            check(ids(list).size()==before && fs::exists(library/"rom.z64.srw64mod") &&
+                  std::count_if(results.begin(),results.end(),[](const auto& r){return !r.result.ok && r.file.filename()=="rom.z64.srw64mod";})==1,
+                  "a file that does not install is reported, not listed");
+            list=mods::installed(game);
+            check(ids(list).size()==before,"nor on the next look");
+            fs::remove(library/"rom.z64.srw64mod");
+        }
         // A folder of an id takes the place of its file: an author's working copy.
         write(library/"test.loose"/"mod.json",manifest("test.loose","9.0.0").dump());
         list=mods::installed(game);
