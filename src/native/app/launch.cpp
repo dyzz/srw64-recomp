@@ -264,6 +264,8 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
                          "SRW64_FFMPEG",
                          // The GL host's picture scale, to compare on slow renderers (graphics.cpp).
                          "SRW64_GL_SCALE",
+                         // A GPU listed for the start-up check's test (windows/gpu_rules.hpp).
+                         "SRW64_GPU_RULE_TEST",
                          // The battle animation as the original places it, to compare (src/host/battle_spread.hpp).
                          "SRW64_BATTLE_SPREAD"})
         if(const char* value=std::getenv(key);value && *value)inherited[key]=value;

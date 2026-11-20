@@ -1,6 +1,7 @@
 // Marchwind64.exe draws with its GL renderer over ANGLE on a PC RT64 cannot use
 // (renderer_fallback.hpp). The DLLs are loaded here rather than linked, as in gpu_report.
 #include "../renderer_fallback.hpp"
+#include "gpu_rules.hpp"
 #include <cstdint>
 #include <cstdio>
 #include <cstdlib>   // _wputenv_s: the C runtime's copy too, which getenv reads (not SetEnvironmentVariable's alone)
@@ -20,8 +21,9 @@ std::string env(const char* name) {
 }
 
 // An adapter plume's D3D12 device takes (plume_d3d12.cpp, gpu_report_windows.cpp): feature
-// level 11_0, shader model 6.0, ID3D12Device8. The Basic Render Driver is passed over there too.
-bool d3d12_usable() {
+// level 11_0, shader model 6.0, ID3D12Device8. The Basic Render Driver is passed over there too,
+// and the GPUs gpu_rules.hpp lists: `listed` gets the first such rule's name and action.
+bool d3d12_usable(const gpu_rules::Rule*& listed) {
     const HMODULE dxgi = LoadLibraryW(L"dxgi.dll");
     const HMODULE d3d12 = LoadLibraryW(L"d3d12.dll");
     using CreateFactory = HRESULT(WINAPI*)(REFIID, void**);
@@ -40,7 +42,9 @@ bool d3d12_usable() {
         // (a cloud machine, a fresh Windows) the Basic Render Driver comes first, not marked
         // software, with D3D12 12_1 and shader model 6.0, and RT64 crashed on it in
         // D3D12Core.dll (2026-11-20, an EC2 instance with no GPU).
-        if (!(desc.Flags & DXGI_ADAPTER_FLAG_SOFTWARE) && desc.VendorId != 0x1414 &&
+        const gpu_rules::Rule* rule = gpu_rules::find(desc.VendorId, desc.DeviceId);
+        if (rule && !listed) listed = rule;
+        if (!(desc.Flags & DXGI_ADAPTER_FLAG_SOFTWARE) && desc.VendorId != 0x1414 && !rule &&
             SUCCEEDED(create_device(adapter, D3D_FEATURE_LEVEL_11_0, __uuidof(ID3D12Device), reinterpret_cast<void**>(&device)))) {
             D3D12_FEATURE_DATA_SHADER_MODEL model{D3D_SHADER_MODEL_6_0};
             const bool sm6 = SUCCEEDED(device->CheckFeatureSupport(D3D12_FEATURE_SHADER_MODEL, &model, sizeof model)) &&
@@ -100,11 +104,16 @@ bool vulkan_usable() {
                         // deviceType (4 is a CPU), ... 824 bytes in all.
                         alignas(8) unsigned char bytes[1024] = {};
                         properties(list[i], bytes);
-                        uint32_t api = 0;
+                        uint32_t api = 0, vendor = 0, device = 0;
                         int32_t type = 0;
                         std::memcpy(&api, bytes, 4);
+                        std::memcpy(&vendor, bytes + 8, 4);
+                        std::memcpy(&device, bytes + 12, 4);
                         std::memcpy(&type, bytes + 16, 4);
-                        usable = api >= api12 && type != 4;
+                        // A GPU listed for GL (gpu_rules.hpp) does not count; one listed for
+                        // Vulkan does, that being its way to RT64.
+                        const auto* rule = gpu_rules::find(vendor, device);
+                        usable = api >= api12 && type != 4 && !(rule && rule->action == gpu_rules::Action::gl);
                     }
             }
             destroy(instance, nullptr);
@@ -201,8 +210,19 @@ void decide(int argc, char** argv) {
         // SRW64_RENDERER_PROBE=no-d3d12 answers the D3D12 question no, to try the Vulkan and
         // GL branches on a PC that has D3D12 (with a fake vulkan-1.dll for the last).
         const bool skip_d3d12 = env("SRW64_RENDERER_PROBE") == "no-d3d12";
-        if ((!skip_d3d12 && d3d12_usable()) || vulkan_usable()) return;
-        reason = "no GPU for RT64 (D3D12 shader model 6.0 or Vulkan 1.2)";
+        const gpu_rules::Rule* listed = nullptr;
+        if (!skip_d3d12 && d3d12_usable(listed)) return;
+        if (vulkan_usable()) {
+            // A GPU listed for Vulkan (D3D12 fails there): RT64 on Vulkan, which its automatic
+            // choice would not try while D3D12 starts. launch.cpp keeps the variable.
+            if (listed && listed->action == gpu_rules::Action::vulkan) {
+                _wputenv_s(L"SRW64_GRAPHICS_API", L"vulkan");
+                _wputenv_s(L"SRW64_RENDERER_FALLBACK", wide(std::string("Vulkan for ") + listed->name + " (listed: D3D12 fails there)").c_str());
+            }
+            return;
+        }
+        reason = listed ? std::string("listed GPU ") + listed->name
+                        : std::string("no GPU for RT64 (D3D12 shader model 6.0 or Vulkan 1.2)");
     }
     if (!angle_beside()) return;   // a development build without ANGLE: RT64 says what it can
     gl = true;

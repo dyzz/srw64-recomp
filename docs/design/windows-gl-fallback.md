@@ -36,6 +36,17 @@ RT64 在 Windows 上要 D3D12（功能级别 11_0、SM 6.0、`ID3D12Device8`，W
 | `SRW64_RENDERER_PROBE=no-d3d12`＋假 `vulkan-1.dll` | 判定 `no GPU for RT64`，同一进程里用 GL 渲染器 |
 | `SRW64_GRAPHICS_API=vulkan`＋假 `vulkan-1.dll` | RT64 `SETUP_FAILED result=3` → 带 `SRW64_GRAPHICS_API=gl` 重启自己，新会话进入游戏，没有错误框 |
 
+## 显卡名单
+
+`src/host/windows/gpu_rules.hpp`：按 PCI 厂商号＋设备号，而不是按驱动报的能力处理的显卡。只会往下降级，玩家仍可用 `SRW64_GRAPHICS_API` 自己选。
+
+- **改用 Vulkan**（RT64 照用，但不走 D3D12）：AMD Vega 核显（Raven Ridge、Picasso/Dali/Pollock、Renoir、Lucienne、Cezanne、Barcelo）。依据 issue #12：5600G 的 Vega 7（驱动 31.0.21925.1001）在 D3D12 下卡死、驱动重置，Vulkan 正常；其他 N64 重编译项目也报过这类核显。启动检测在只剩这类显卡能跑 D3D12 时把 `SRW64_GRAPHICS_API` 设为 `vulkan`（Vulkan 也不行就走 GL）。
+- **直接用 GL**（老机器，RT64 官方门槛 Intel HD 510／GeForce GT 630／Radeon HD 7750 以下）：Intel Ironlake 到 Broadwell（含 Bay Trail、Cherry Trail/Braswell）、NVIDIA Tesla 与 Fermi、AMD TeraScale（HD 2000–6000 和 GCN 以前的 APU）。这些显卡按能力检测本来也会被送去 GL；写进名单是防止某个驱动误报能力。设备号范围按代际划分，止于下一代（Intel Gen 9 从 0x1902 起、NVIDIA Kepler、AMD GCN），避免误伤 RT64 能跑的卡。
+- 有一块不在名单上、能跑 D3D12 的显卡（比如笔记本里的独显）就照常用 RT64，名单只看「剩下的」显卡。Vulkan 检测同样跳过名单里标为 GL 的设备。
+- 显卡报告行末写 `listed=<规则名>(gl|vulkan)`；走名单时日志有 `SRW64_RENDERER_FALLBACK listed GPU …` 或 `Vulkan for …`。
+- 测试开关 `SRW64_GPU_RULE_TEST=VVVV:DDDD:gl|vulkan`（十六进制）临时多列一块显卡；在 1080 Ti 上列为 gl → GL 渲染器，列为 vulkan → RT64 走 Vulkan，不列 → D3D12，三种都实测过。
+- 以后玩家报告某块显卡在 RT64 下有问题，就按问题报告里的 `SRW64_GPU` 行（厂商号、设备号、驱动）往这里加一条。
+
 ## 回退时降画质
 
 只要走回退（Windows 上用 GL 渲染器），
