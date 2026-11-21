@@ -3,6 +3,7 @@
 // mixed into the game's audio.
 #include "music.hpp"
 #include "voice_wait.hpp"
+#include "battle_impact.hpp"
 #include <cstdio>
 #include <fstream>
 
@@ -229,22 +230,87 @@ int main(int argc,char** argv) {
     {   // A quote's box waits for its voice (voice_wait.hpp).
         namespace vw=srw64::voice_wait;
         const vw::Box last{1,2,0,0,0,7018};
-        check(vw::closing(last),"a timed box at its end closes this frame");
-        check(vw::closing({1,3,0,2,2,7018}),"a chained one at its last segment loads the next record this frame");
-        check(!vw::closing({1,2,0,2,1,7018}),"a segment before the last turns the page: not held");
-        check(!vw::closing({1,2,5,0,0,7018}),"a box with time left is left alone");
-        check(!vw::closing({1,0,0,0,0,7018}) && !vw::closing({2,2,0,0,0,7018}),"a story box and a box not shown are left alone");
+        check(vw::timed_last(last),"a timed box at its end closes this frame");
+        check(vw::timed_last({1,3,0,2,2,7018}),"a chained one at its last segment loads the next record this frame");
+        check(!vw::timed_last({1,2,0,2,1,7018}),"a segment before the last turns the page: not held");
+        check(vw::timed_last({1,2,5,0,0,7018}),"a timed box can start its voice before the motion");
+        check(!vw::timed_last({1,0,0,0,0,7018}) && !vw::timed_last({2,2,0,0,0,7018}),"a story box and a box not shown are left alone");
+        const vw::Box window{1,2,30,0,0,7018};
+        vw::Wait lead;
+        check(vw::hold(lead,window,3.0,false,false),"play the two excess seconds before a one-second window");
+        check(!vw::hold(lead,window,1.0,false,false),"resume when speech fits the original window");
+        check(!vw::hold(lead,window,0.5,false,false),"a short line adds no wait");
+        check(vw::hold(lead,window,std::nullopt,false,false),"await the decoder before spending the window");
+        music::Voice line;
+        auto pcm=std::make_shared<music::Pcm>();
+        pcm->rate=22050;pcm->samples.resize(2*pcm->rate*2);
+        line.pcm=pcm;line.position=22050;line.delay=24000;
+        check(std::abs(*music::remaining(line,48000)-1.5)<0.001,"remaining speech uses both sample rates");
         vw::Wait w;
-        check(vw::hold(w,last,true,false,false),"held while its line is spoken");
-        check(!vw::hold(w,last,false,false,false),"let go once the line has ended");
-        check(!vw::hold(w,last,true,true,false),"not while hurried");
+        check(vw::hold(w,last,1.0,false,false),"held while its line is spoken");
+        check(!vw::hold(w,last,0.0,false,false),"let go once the line has ended");
+        check(!vw::hold(w,last,1.0,true,false),"not while hurried");
         vw::Wait capped;unsigned held=0;
-        while(vw::hold(capped,last,true,false,false) && held<1000)++held;
+        while(vw::hold(capped,last,1.0,false,false) && held<1000)++held;
         check(held==vw::limit,"at most the limit for one line");
-        check(vw::hold(capped,{1,2,0,0,0,7028},true,false,false),"the next line has its own limit");
+        check(vw::hold(capped,{1,2,0,0,0,7028},1.0,false,false),"the next line has its own limit");
         vw::Wait pressed;
-        check(vw::hold(pressed,last,true,false,false) && !vw::hold(pressed,last,true,false,true) && !vw::hold(pressed,last,true,false,false),"A lets the line go, for good");
-        check(vw::hold(pressed,{1,2,0,0,0,7028},true,false,false),"the next line waits again");
+        check(vw::hold(pressed,last,1.0,false,false) && !vw::hold(pressed,last,1.0,false,true) && !vw::hold(pressed,last,1.0,false,false),"A lets the line go, for good");
+        check(vw::hold(pressed,{1,2,0,0,0,7028},1.0,false,false),"the next line waits again");
+    }
+    {   // In both attack directions the presentation selects the impact frame.
+        namespace bs=battle_spread;
+        std::vector<uint8_t> ram(0x800000);
+        auto* r=ram.data();
+        for(unsigned defender : {0u,1u}) {
+            guest::write8(r,voice_wait::state,defender?9:20);
+            guest::write16(r,0x80178B50,defender);
+            const auto side=bs::kSides+defender*bs::kSideSize;
+            const auto reaction=side+bs::kBlocks[1];
+            const auto attack=bs::kSides+(1-defender)*bs::kSideSize+bs::kBlocks[0];
+            guest::write16(r,bs::kHitBlock+0x88,0);
+            guest::write16(r,battle_impact::round_damage,0);
+            check(!battle_impact::waiting(r,reaction),"a zero-damage response follows the original");
+            guest::write16(r,battle_impact::round_damage,3000);
+            check(battle_impact::waiting(r,reaction) && !battle_impact::waiting(r,attack),"only the defender waits for contact");
+            guest::write16(r,bs::kHitBlock+0x88,2);
+            check(!battle_impact::waiting(r,reaction),"ordinary contact starts the line");
+            guest::write16(r,0x80250270+0x26,100);
+            check(battle_impact::waiting(r,reaction),"a scripted killing blow is still reserved");
+            guest::write16(r,0x80250270+0x26,0);
+            const auto target=reaction+0x4C;
+            guest::write32(r,target+0x4C,0x801DCBA4);
+            guest::write8(r,target+0x36,0x42);
+            guest::write16(r,target+0x3C,5);
+            guest::write16(r,target+0x3E,1);
+            check(battle_impact::waiting(r,reaction),"follow-up throw still has one strike");
+            guest::write16(r,target+0x3E,0);
+            check(!battle_impact::waiting(r,reaction),"final throw releases the line");
+            guest::write16(r,target+0x3C,1);
+            guest::write8(r,target+0x36,0);
+            check(!battle_impact::waiting(r,reaction),"retired actor cannot strand a line");
+            guest::write8(r,attack+0x26,1);
+            const auto actor=attack+bs::kActors;
+            guest::write32(r,actor+0x4C,0x80217F94);
+            guest::write8(r,actor+0x36,1);
+            check(battle_impact::waiting(r,reaction),"active finisher keeps the line queued after contact");
+            guest::write8(r,actor+0x36,0);
+            check(!battle_impact::waiting(r,reaction),"finishing flash releases the line");
+            guest::write32(r,actor+0x4C,0x80208268);
+            guest::write8(r,actor+0x36,1);
+            guest::write16(r,actor+0x3C,2);
+            check(!battle_impact::waiting(r,reaction),"a single sword uses first contact");
+            guest::write8(r,attack+0x26,2);
+            const auto second=actor+bs::kActorSize;
+            guest::write32(r,second+0x4C,0x80208268);
+            guest::write8(r,second+0x36,1);
+            guest::write16(r,second+0x3C,3);
+            check(battle_impact::waiting(r,reaction),"paired swords wait until both make contact");
+            guest::write16(r,actor+0x3C,3);
+            check(!battle_impact::waiting(r,reaction),"second sword's contact releases the quote");
+            guest::write8(r,voice_wait::state,21);
+            check(!battle_impact::defender_slot(r,defender),"ending the round releases the defender slot");
+        }
     }
     {   // The next quote waits for the previous line (voice_wait.hpp Pending).
         namespace vw=srw64::voice_wait;

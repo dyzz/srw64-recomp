@@ -225,6 +225,14 @@ struct Voice {
     bool fading() const {return fade_total!=0;}
 };
 
+// Seconds left on a one-shot voice, including its delay at the mixer's output rate.
+// Until decoding finishes the duration is unknown.
+inline std::optional<double> remaining(const Voice& v,unsigned output_rate) {
+    if(v.finished)return 0.0;
+    if(!v.pcm)return std::nullopt;
+    return double(v.delay)/output_rate + std::max(0.0,double(v.pcm->frames())-v.position)/v.pcm->rate;
+}
+
 // Adds `frames` stereo frames of the voice at `rate` to `out`, clamped; returns false once
 // the voice has nothing more to play (ended or faded out).
 inline bool mix(Voice& v,int16_t* out,size_t frames,unsigned rate,bool mono) {
@@ -326,13 +334,13 @@ bool playing(uint8_t* ram,recomp_context* ctx);
 bool battle(uint8_t* ram,recomp_context* ctx);
 // The dialogue layer saw a battle quote's box open (native_dialogue.cpp): its line starts,
 // and the one before fades out in 20 ms. Game thread.
+bool has_battle_voice(unsigned record);
 void battle_quote(unsigned record);
 // The player ended the animation early (battle_animation_probe.hpp): the line fades with
 // the picture, 300 ms. Game thread.
 void battle_aborted();
-// Whether this battle quote's line is still being spoken: decoding, in its delay, or playing
-// (voice_wait.hpp holds its box open meanwhile). Game thread.
-bool speaking(unsigned record);
+// Zero for an inactive line, unknown while decoding. Game thread.
+std::optional<double> speech_remaining(unsigned record);
 // The battle line being spoken (decoding, its delay or playing), -1 when none.
 int speaking_line();
 // How much faster a line is spoken now (1, 1.75 at 2x, 2 at 3x and 4x, from the settings).

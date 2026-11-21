@@ -4,6 +4,7 @@
 #include "music.hpp"
 #include "battle_hud.hpp"
 #include "battle_spread.hpp"
+#include "battle_impact.hpp"
 #include "guest_memory.hpp"
 #include "funcs.h"
 #include "script_trace.hpp"
@@ -101,17 +102,23 @@ void resident_func_800A158C(uint8_t* ram,recomp_context* ctx) {
     srw64_original_party_pair_flag(ram,ctx);
 }
 // A battle quote's box stays open while its MOD voice is still speaking (voice_wait.hpp).
-static void hold_quote_for_voice(uint8_t* ram) {
+static bool hold_quote_for_voice(uint8_t* ram) {
     auto& wait=srw64::voice_wait::wait;
-    if(!srw64::settings::mod_voice() || !srw64::settings::mod_voice_wait())return;
+    if(!srw64::settings::mod_voice() || !srw64::settings::mod_voice_wait())return false;
+    bool held=false;
     const bool hurried=srw64::game_speed::running.load();
     const bool a=srw64::guest::read(ram,srw64::voice_wait::pressed,2)&srw64::voice_wait::a_button;
     for(unsigned slot=0;slot<2;++slot) {
         const auto box=srw64::voice_wait::read_box(ram,slot);
-        if(!srw64::voice_wait::closing(box))continue;
-        if(srw64::voice_wait::hold(wait,box,srw64::music::speaking(box.record),hurried,a))
-            srw64::guest::write16(ram,srw64::voice_wait::slots+slot*srw64::voice_wait::stride+0x210,1);
+        if(!srw64::voice_wait::timed_last(box))continue;
+        if(srw64::voice_wait::hold(wait,box,srw64::music::speech_remaining(box.record),hurried,a)) {
+            // A defender can finish speaking while the hit effects play. Keep
+            // its box open without freezing the impact flash or the recoil.
+            if(!srw64::battle_impact::defender_slot(ram,slot))held=true;
+            srw64::guest::write16(ram,srw64::voice_wait::slots+slot*srw64::voice_wait::stride+0x210,uint16_t(std::max(0,int(box.timer))+1));
+        }
     }
+    return held;
 }
 // A quote that opened while the previous line is still being spoken waits for it
 // (voice_wait.hpp Pending): true while the animation is to stay where it is this frame.
@@ -136,33 +143,120 @@ static bool wait_for_previous_line(uint8_t* ram) {
     srw64::music::battle_quote(record);
     return false;
 }
-static bool battle_step_stopped=false;
+// 801C7960 requests the defender's quote on contact. Some attacks still have
+// a finishing sequence to show. Schedule the original quote call, so the box,
+// portrait, MOD speech and its normal wait all start together.
+struct ImpactQuote { uint32_t block{}, speaker{}, round{}; };
+static ImpactQuote impact_quote;
+
+void load_00121560_func_801C6F14(uint8_t* ram,recomp_context* ctx) {
+    const auto block=uint32_t(ctx->r4);
+    if(srw64::settings::mod_voice() && srw64::battle_impact::waiting(ram,block)) {
+        const auto index=srw64::guest::read(ram,block+0x22,1);
+        if(index<0x22/2 && srw64::music::has_battle_voice(srw64::guest::read(ram,block+2*index,2))) {
+            impact_quote={block,uint32_t(ctx->r5),srw64::guest::read(ram,srw64::voice_wait::state,1)};
+            ctx->r2=0; // quote in progress: keep running the attack's actors
+            return;
+        }
+    }
+    if(impact_quote.block==block)impact_quote={};
+    srw64_original_battle_quote_step(ram,ctx);
+}
+
+static void advance_impact_quote(uint8_t* ram,const recomp_context* ctx) {
+    if(!impact_quote.block)return;
+    if(srw64::guest::read(ram,srw64::voice_wait::state,1)!=impact_quote.round) {
+        impact_quote={};
+        return;
+    }
+    if(srw64::battle_impact::waiting(ram,impact_quote.block))return;
+    auto call=*ctx;
+    call.r4=int32_t(impact_quote.block);
+    call.r5=int32_t(impact_quote.speaker);
+    impact_quote={};
+    srw64_original_battle_quote_step(ram,&call);
+}
+
+// Camera travel that the scenery would have seen during added voice time.
+static float voice_scenery_travel=0;
+static void step_voice_scenery(uint8_t* ram,const recomp_context* ctx) {
+    namespace bs=srw64::battle_spread;
+    auto c=*ctx;
+    // 8008422C owns scenery slots 0..22. 801C3610 owns the tiled effect in 25.
+    // Run their animation and velocity only, in the order used by 801C9710.
+    for(unsigned slot=0;slot<=25;++slot) {
+        if(slot==23 || slot==24)continue;
+        const auto record=bs::kSlots+slot*bs::kSlotSize;
+        if(!srw64::guest::read(ram,record+1,1))continue;
+        c.r4=slot;
+        resident_func_80098738(ram,&c);
+        c.r4=slot;
+        resident_func_80081B6C(ram,&c);
+    }
+    // 801C9AE0: scroll the skies at their own parallax and wrap moving terrain.
+    const float pan=bs::real(ram,0x80250240);
+    c.f12.fl=(pan-bs::real(ram,0x80178D44)*0.5f)*bs::real(ram,0x80178D48);
+    c.f14.fl=bs::real(ram,0x8015DE08);
+    resident_func_80085740(ram,&c);
+    voice_scenery_travel+=pan;
+}
+
+// 8008422C lays repeating terrain in three columns, 1000 model units apart.
+// Continue its pan relative to the held camera. Keep the phase when speech ends
+// so the first normal frame joins the last waiting frame.
+static void pan_voice_terrain(uint8_t* ram) {
+    namespace bs=srw64::battle_spread;
+    if(voice_scenery_travel==0)return;
+    const float camera=bs::real(ram,bs::kAt);
+    for(unsigned bank : {5u,14u}) {
+        for(unsigned layer=0;layer<3;++layer) {
+            const auto first=bs::kSlots+(bank+layer)*bs::kSlotSize;
+            constexpr unsigned column=3*bs::kSlotSize;
+            if(!srw64::guest::read(ram,first+1,1) || !srw64::guest::read(ram,first+column+1,1)
+               || !srw64::guest::read(ram,first+2*column+1,1))continue;
+            const float period=3000.f*bs::real(ram,first+0x10);
+            if(!(period>0))continue;
+            for(unsigned i=0;i<3;++i) {
+                const auto record=first+i*column;
+                if(srw64::guest::read(ram,record,1)!=0xF)continue;
+                for(unsigned sub=0;sub<3;++sub) {
+                    const auto part=record+bs::kSubs+sub*bs::kSubSize;
+                    const auto node=srw64::guest::read(ram,part+4,4);
+                    if(srw64::guest::read(ram,part,1)!=1 || !srw64::guest::valid(node,0x6C))continue;
+                    const auto matrix_x=node+0x14+12*sizeof(float);
+                    const float relative=bs::real(ram,matrix_x)-voice_scenery_travel-camera;
+                    bs::put(ram,matrix_x,camera+std::remainder(relative,period));
+                }
+            }
+        }
+    }
+}
 void load_00121560_func_801C9710(uint8_t* ram,recomp_context* ctx) {
-    // The stopped state's handler (below): the main loop calls this address in its place.
-    if(battle_step_stopped)return;
     // X ends the presentation early; the settled result lives in the map
     // overlay's participant table and is applied when the map is back.
     srw64::battle_animation_probe::step(ram,ctx);
-    hold_quote_for_voice(ram);
+    if(srw64::guest::read(ram,srw64::voice_wait::state,1)<=1)impact_quote={};
+    if(int8_t(srw64::guest::read(ram,srw64::voice_wait::state,1))<=1)voice_scenery_travel=0;
+    const bool extended=hold_quote_for_voice(ram);
     const bool stop=wait_for_previous_line(ram);
     srw64::wide_map::mark_battle();   // the sky is drawn to each side (background_sides)
     srw64::battle_viewer::animation_frame();   // a viewer recording starts with the animation's first frame
+    if(stop || extended) {
+        // 801C96F4 draws separately. Keep the last pose and camera during added
+        // voice time. Even without its state handler, 801C9710 would integrate
+        // sprite velocity (80081BFC) and advance the actors on every extra tick.
+        resident_func_8008D748(ram,ctx);
+        if(int8_t(srw64::guest::read(ram,srw64::voice_wait::state,1))>1) {
+            step_voice_scenery(ram,ctx);
+            srw64::battle_spread::in_step=true;
+            resident_func_8008261C(ram,ctx);
+            srw64::battle_spread::in_step=false;
+        }
+        return;
+    }
     srw64::battle_spread::in_step = true;
-    if(stop) {
-        // The main loop runs as usual (drawing, the text engine) but calls this function
-        // instead of the state's handler (the table at D_80222DD4, by D_80250000), and the
-        // state's frame count (D_8025020C) is put back: the animation stays where it is.
-        namespace vw=srw64::voice_wait;
-        const uint32_t entry=vw::handlers+uint32_t(int8_t(srw64::guest::read(ram,vw::state,1)))*4;
-        const uint32_t handler=srw64::guest::read(ram,entry,4);
-        const uint32_t frames=srw64::guest::read(ram,vw::state_frames,2);
-        srw64::guest::write32(ram,entry,vw::battle_step);
-        battle_step_stopped=true;
-        srw64_original_battle_animation_step(ram,ctx);
-        battle_step_stopped=false;
-        srw64::guest::write32(ram,entry,handler);
-        srw64::guest::write16(ram,vw::state_frames,uint16_t(frames));
-    } else srw64_original_battle_animation_step(ram,ctx);
+    srw64_original_battle_animation_step(ram,ctx);
+    advance_impact_quote(ram,ctx);
     srw64::battle_spread::in_step = false;
 }
 // 8008261C: every sprite's matrix from its slot. In the battle's step the slots are spread
@@ -173,6 +267,7 @@ void resident_func_8008261C(uint8_t* ram,recomp_context* ctx) {
     if(srw64::wide_map::battle_shown())srw64::battle_spread::apply(ram,saved);
     srw64_original_sprite_matrices(ram,ctx);
     srw64::battle_spread::restore(ram,saved);
+    if(srw64::battle_spread::in_step)pan_voice_terrain(ram);
 }
 void load_000AB160_func_801DFBD0(uint8_t* ram,recomp_context* ctx) {
     // After an aborted battle, takes over the resume frame (state 24 sub-state

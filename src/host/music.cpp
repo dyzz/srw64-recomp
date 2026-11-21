@@ -264,6 +264,12 @@ double voice_speed() {
     return level>=3 ? 2.0 : level==2 ? 1.75 : 1.0;
 }
 
+bool has_battle_voice(unsigned record) {
+    std::lock_guard lock(table_mutex);
+    refresh_locked();
+    return voice_table.count(int(record))!=0;
+}
+
 void battle_quote(unsigned record) {
     if(!settings::mod_voice())return;
     std::optional<Line> line;
@@ -302,9 +308,10 @@ int speaking_line() {
     return speech && !speech->finished ? speech_line : -1;
 }
 
-bool speaking(unsigned record) {
+std::optional<double> speech_remaining(unsigned record) {
     std::lock_guard lock(engine_mutex);
-    return speech && speech_line==int(record) && !speech->finished;
+    if(!speech || speech_line!=int(record))return 0.0;
+    return remaining(*speech,last_rate);
 }
 
 void battle_aborted() {
