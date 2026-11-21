@@ -664,11 +664,26 @@ void resident_func_80095974(uint8_t* rdram, recomp_context* ctx) {
 void resident_func_80096CD8(uint8_t* rdram, recomp_context* ctx) {
     const int32_t cursor = ctx->r4;
     const uint32_t slot = ctx->r5, sub = ctx->r6;
+    namespace bs = srw64::battle_spread;
+    const uint32_t part = bs::kSlots + slot * bs::kSlotSize + bs::kSubs + sub * bs::kSubSize;
+    const uint32_t scene = slot < bs::kSlotCount && sub < 3 ? srw64::guest::read(rdram, part + 0xC, 2) : 0;
     const uint32_t begin = MEM_W(0, cursor) & 0x1FFFFFFF;
     const recomp_context call = *ctx;
     srw64_original_scene_rect_draw(rdram, ctx);
     const uint32_t end = MEM_W(0, cursor) & 0x1FFFFFFF;
     if (srw64_game_hooks.scene_drawn) srw64_game_hooks.scene_drawn(rdram, begin, end, slot, sub, false);
+    // The tentacles' strips (battle_spread.hpp): copies whole tiles to each side.
+    if (const float extra = scene ? bs::screen_strip_extra(scene) : 0.f; extra > 0.5f) {
+        srw64::wide_map::open_sides(rdram, cursor);
+        for (float offset = bs::kStripPeriod; offset - bs::kStripPeriod < extra; offset += bs::kStripPeriod)
+            for (const float side : {-offset, offset}) {
+                srw64::wide_map::offset_rects(rdram, cursor, side);
+                recomp_context copy = call;
+                srw64_original_scene_rect_draw(rdram, &copy);
+            }
+        srw64::wide_map::offset_rects(rdram, cursor, 0);
+        srw64::wide_map::close_sides(rdram, cursor);
+    }
     // The title's flames in the original's tiles repeat every 256 pixels (half their
     // 512-wide atlas): a copy a period to each side fills a wider picture.
     if (srw64_game_hooks.scene_sides && srw64_game_hooks.scene_sides(rdram, begin, end, slot, sub)) {

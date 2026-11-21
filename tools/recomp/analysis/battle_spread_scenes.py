@@ -26,8 +26,30 @@ from srw64_rom.resources import ResourceTable  # noqa: E402
 from srw64_native.battle_graphics import parse_scene, read_triplets  # noqa: E402
 
 OUTPUT = ROOT / "src/host/battle_spread_scenes.inc"
-EXTRA_BEAMS: set[int] = {3591}   # the scatter bazooka's burst, 153 across
+EXTRA_BEAMS: set[int] = {3591,   # the scatter bazooka's burst, 153 across
+                          # Wired pod tethers (ヴェスバー-type, weapon 411): bent wires running in from the
+                          # original's edge, too tall for the rule; moved as points they stopped short of the picture's.
+                          3631, 3640, 3641}
 EXTRA_BACKDROPS: set[int] = set()
+# Scenes a behaviour routine switches an actor to by number (801C5700 with the actor's scene + n),
+# which no registry row names, so the loop over the registry never saw them: ドラゴンクロー's claw
+# after 2909 (2910-2913) fell short of the defender, moved as a point while its parent 2909 was
+# a beam. These are the ones seen drawn by a weapon's script in the battle viewer (2026-11-21,
+# one weapon per parent scene, then all 466 playable weapons with the hit, destroyed, evaded and
+# countered variants; docs/design/battle-spread-unit-actors.md §9). They are classified by the same
+# rule. Candidates no weapon showed are left out until one does.
+SWITCHED: set[int] = {
+    2910, 2911, 2912, 2913, 3003, 3556, 3559, 3571, 3579, 3580, 3581, 3582, 3583, 3584,
+    3588, 3595, 3604, 3625, 3628, 3634, 3635, 3636, 3637, 3638, 3639, 3642, 3643, 3644,
+    3645, 3651, 3710, 3711, 3716, 3717, 3718, 3719, 3720, 3898, 3903, 3904, 3905, 3906,
+    3908, 3909, 3910, 3911, 3912, 3913, 3914, 3915, 3916, 3927, 3928, 3933, 3934, 3944,
+    3965, 3968, 3969, 3970, 3978, 3988, 4012, 4013, 4018, 4022, 4035, 4048, 4049, 4056,
+    4057, 4058, 4060, 4063, 4064, 4065, 4066, 4067, 4068, 4069, 4070, 4071, 4073, 4074,
+    4075, 4076, 4077, 4078, 4079, 4080, 4081, 4124, 4163, 4164, 4201, 4202, 4203, 4207,
+    4210, 4376, 4404, 4405, 4406, 4407, 4482, 4524, 4525, 4526, 4590, 4591, 4603, 4607,
+    4608, 4612, 4613, 4644, 4662, 4718, 4719, 4720, 4739, 4740, 4810, 4811, 4833, 4835,
+    4836, 4839, 4841,
+}
 NOT_BEAMS: set[int] = set()
 NOT_BACKDROPS: set[int] = set()
 
@@ -51,7 +73,7 @@ def extents(data: bytes):
 def classify(rom: bytes):
     table = ResourceTable(rom)
     beams, backdrops = set(), set()
-    for scene in sorted({s for s, _, _ in read_triplets(rom, "battle_scenes")}):
+    for scene in sorted({s for s, _, _ in read_triplets(rom, "battle_scenes")} | SWITCHED):
         try:
             box = extents(table.extract(scene)[0])
         except Exception:
