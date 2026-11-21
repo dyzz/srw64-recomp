@@ -6,7 +6,19 @@
 #include <cstdio>
 #include <cstring>
 #include <fcntl.h>
+#ifdef _WIN32
+// The reader is built everywhere (CMakeLists.txt) though only the Switch mounts a pack:
+// the POSIX calls under their Windows names, the file in binary mode, 64-bit offsets.
+#include <BaseTsd.h>
+#include <io.h>
+typedef SSIZE_T ssize_t;
+#define SRW64_PACK_OPEN_FLAGS (O_RDONLY | O_BINARY)
+#define SRW64_PACK_SEEK _lseeki64
+#else
 #include <unistd.h>
+#define SRW64_PACK_OPEN_FLAGS O_RDONLY
+#define SRW64_PACK_SEEK ::lseek
+#endif
 
 namespace srw64::hd_pack {
 uint64_t fnv1a(std::string_view text) {
@@ -32,7 +44,7 @@ std::string normal(std::string_view path) {
 Pack::~Pack() { if (file_ >= 0) ::close(file_); }
 
 bool Pack::open(const std::string& file) {
-    const int handle = ::open(file.c_str(), O_RDONLY);
+    const int handle = ::open(file.c_str(), SRW64_PACK_OPEN_FLAGS);
     if (handle < 0) return false;
     const auto all = [&](void* out, size_t size) { return ::read(handle, out, size) == ssize_t(size); };
     uint32_t head[3] = {}, names_size = 0;
@@ -86,8 +98,8 @@ const std::vector<Pack::Child>* Pack::list(std::string_view path) const {
 bool Pack::read(const Entry& entry, uint64_t at, void* out, size_t size) const {
     if (file_ < 0 || at > entry.size || size > entry.size - at) return false;
     std::lock_guard lock(mutex_);
-    const off_t from = off_t(entry.offset + at);
-    if (::lseek(file_, from, SEEK_SET) != from) return false;
+    const int64_t from = int64_t(entry.offset + at);
+    if (int64_t(SRW64_PACK_SEEK(file_, from, SEEK_SET)) != from) return false;
     for (size_t done = 0; done < size;) {
         const ssize_t got = ::read(file_, static_cast<char*>(out) + done, size - done);
         if (got <= 0) return false;
