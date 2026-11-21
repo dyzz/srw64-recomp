@@ -46,7 +46,7 @@ so parts of its structure are weak. If we hit those, it can be done.”
 # 检查提示：未用必用译名：デビルアクシズ→Dark Axis
 > 「ドモンたちがデビルアクシズに
 >  侵入した際の情報によれば
-“According to what Domon and the others learned when they infiltrated Dark Axis,
+“According to what Domon and the others learned when they infiltrated Devil Axis,
 ---
 >  アクシズには坑道がいりくんでいて
 >  構造的にもろい部分がある
@@ -1095,7 +1095,7 @@ then I have to stop it no matter what.”
 @49839 Reika · レイカ
 > 「デビルアクシズ崩壊の影響ね……
 >  坑道もだいぶつぶれて……」
-“Dark Axis collapsing must have done this... A lot of the tunnels have caved in...”
+“Devil Axis collapsing must have done this... A lot of the tunnels have caved in...”
 
 @49840 Sally · サリィ
 > 「上から岩! 気をつけて」

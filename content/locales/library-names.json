@@ -1,21 +1,21 @@
 {
  "schema": "srw64.library-names.v1",
- "about": "Library (図鑑) names for single records in one language, in place of the name the game's numbering gives (\"(2)\"). Units by unit record, pilots by actor. Written into src/host/library_names_table.hpp by tools/content/library_names.py; web/scripts/export_library.py reads this file. Site suggestions #5 #6 #7 #10 #18 #21 #22 #23 (2026-10-26), #42 (2026-10-27); Chinese to match, 2026-10-28. #52 #53 #54 #55 (2026-11-13).",
+ "about": "Library (図鑑) names for single records in one language, in place of the name the game's numbering gives (\"(2)\"). Units by unit record, pilots by actor. Written into src/host/library_names_table.hpp by tools/content/library_names.py; web/scripts/export_library.py reads this file. Site suggestions #5 #6 #7 #10 #18 #21 #22 #23 (2026-10-26), #42 (2026-10-27); Chinese to match, 2026-10-28. #52 #53 #54 #55 (2026-11-13). Japanese and Korean, and Chinese, Japanese and Korean for pilots 311 and 312, to match, 2026-11-21.",
  "units": {
-  "80": {"en": "Jagd Doga (Quess)", "zh-Hans": "亚克托·德卡（葵丝）", "zh-Hant": "亞克托·德卡（葵絲）"},
-  "88": {"en": "Gundam Mk-II (Titans)", "zh-Hans": "高达Mk-Ⅱ（泰坦斯）", "zh-Hant": "鋼彈Mk-Ⅱ（泰坦斯）"},
-  "104": {"en": "Bawoo", "zh-Hans": "巴乌", "zh-Hant": "巴烏"},
-  "111": {"en": "Jagd Doga (Gyunei)", "zh-Hans": "亚克托·德卡（邱尼）", "zh-Hant": "亞克托·德卡（裘尼）"},
-  "224": {"en": "Dancouga (Late Model)", "zh-Hans": "断空我（后期型）", "zh-Hant": "斷空我（後期型）"},
-  "314": {"en": "Nu Gundam (No Funnels)", "zh-Hans": "ν高达（无浮游炮）", "zh-Hant": "ν鋼彈（無感應砲）"},
-  "315": {"en": "Geara Doga (Rezin)", "zh-Hans": "吉拉·德卡（蕾森）", "zh-Hant": "基拉·德卡（蕾森）"},
-  "316": {"en": "MP Bawoo", "zh-Hans": "量产型巴乌", "zh-Hant": "量產型巴烏"},
-  "317": {"en": "Baund Doc (Jerid)", "zh-Hans": "猎犬（杰利德）", "zh-Hant": "獵犬（傑利特）"},
-  "318": {"en": "Baund Doc (Gates)", "zh-Hans": "猎犬（盖茨）", "zh-Hant": "獵犬（蓋茲）"},
-  "320": {"en": "Zwarth (Musy)", "zh-Hans": "兹瓦斯（缪吉）", "zh-Hant": "茲瓦斯（繆吉）"}
+  "80": {"en": "Jagd Doga (Quess)", "zh-Hans": "亚克托·德卡（葵丝）", "zh-Hant": "亞克托·德卡（葵絲）", "ja": "ヤクト・ドーガ（クェス）", "ko": "야크트 도가 (퀘스)"},
+  "88": {"en": "Gundam Mk-II (Titans)", "zh-Hans": "高达Mk-Ⅱ（泰坦斯）", "zh-Hant": "鋼彈Mk-Ⅱ（泰坦斯）", "ja": "ガンダムmkⅡ（ティターンズ）", "ko": "건담 Mk-II (티탄즈)"},
+  "104": {"en": "Bawoo", "zh-Hans": "巴乌", "zh-Hant": "巴烏", "ja": "バウ", "ko": "바우"},
+  "111": {"en": "Jagd Doga (Gyunei)", "zh-Hans": "亚克托·德卡（邱尼）", "zh-Hant": "亞克托·德卡（裘尼）", "ja": "ヤクト・ドーガ（ギュネイ）", "ko": "야크트 도가 (규네이)"},
+  "224": {"en": "Dancouga (Late Model)", "zh-Hans": "断空我（后期型）", "zh-Hant": "斷空我（後期型）", "ja": "ダンクーガ（後期型）", "ko": "단쿠가 (후기형)"},
+  "314": {"en": "Nu Gundam (No Funnels)", "zh-Hans": "ν高达（无浮游炮）", "zh-Hant": "ν鋼彈（無感應砲）", "ja": "νガンダム（フィン・ファンネルなし）", "ko": "뉴 건담 (핀 판넬 없음)"},
+  "315": {"en": "Geara Doga (Rezin)", "zh-Hans": "吉拉·德卡（蕾森）", "zh-Hant": "基拉·德卡（蕾森）", "ja": "ギラ・ドーガ（レズン）", "ko": "기라 도가 (레즌)"},
+  "316": {"en": "MP Bawoo", "zh-Hans": "量产型巴乌", "zh-Hant": "量產型巴烏", "ja": "量産型バウ", "ko": "양산형 바우"},
+  "317": {"en": "Baund Doc (Jerid)", "zh-Hans": "猎犬（杰利德）", "zh-Hant": "獵犬（傑利特）", "ja": "バウンド・ドック（ジェリド）", "ko": "바운드 독 (제리드)"},
+  "318": {"en": "Baund Doc (Gates)", "zh-Hans": "猎犬（盖茨）", "zh-Hant": "獵犬（蓋茲）", "ja": "バウンド・ドック（ゲーツ）", "ko": "바운드 독 (게이츠)"},
+  "320": {"en": "Zwarth (Musy)", "zh-Hans": "兹瓦斯（缪吉）", "zh-Hant": "茲瓦斯（繆吉）", "ja": "ズワァース（ミュージィ）", "ko": "즈와스 (뮤지)"}
  },
  "pilots": {
-  "311": {"en": "Elite Neo Zeon Pilot"},
-  "312": {"en": "Neo Zeon Cyber Newtype"}
+  "311": {"en": "Elite Neo Zeon Pilot", "zh-Hans": "新吉翁精英机师", "zh-Hant": "新吉翁精英機師", "ja": "ネオジオン兵（精鋭）", "ko": "네오지온 정예 파일럿"},
+  "312": {"en": "Neo Zeon Cyber Newtype", "zh-Hans": "新吉翁强化人", "zh-Hant": "新吉翁強化人", "ja": "ネオジオン強化人間", "ko": "네오지온 강화인간"}
  }
 }

@@ -290,19 +290,6 @@
   },
   {
    "ja": [
-    "ガンダムシュピーゲル"
-   ],
-   "en": {
-    "old": "Gundam Spiegel",
-    "new": "Shadow Gundam"
-   },
-   "gate": false,
-   "sections": [
-    "units"
-   ]
-  },
-  {
-   "ja": [
     "ガンダムデスサイズH"
    ],
    "en": {
@@ -446,60 +433,6 @@
    "gate": false,
    "sections": [
     "units"
-   ]
-  },
-  {
-   "ja": [
-    "ゴッドストライク"
-   ],
-   "en": {
-    "old": "God Strike",
-    "new": "Burning Strike"
-   },
-   "gate": false,
-   "sections": [
-    "weapons"
-   ]
-  },
-  {
-   "ja": [
-    "ゴッドスラッシュ",
-    "ゴッド・スラッシュ"
-   ],
-   "en": {
-    "old": "God Slash",
-    "new": "Burning Slash"
-   },
-   "gate": false,
-   "sections": [
-    "story",
-    "weapons"
-   ]
-  },
-  {
-   "ja": [
-    "ゴッドスラッシュタイフーン"
-   ],
-   "en": {
-    "old": "God Slash Typhoon",
-    "new": "Burning Slash Typhoon"
-   },
-   "gate": false,
-   "sections": [
-    "weapons"
-   ]
-  },
-  {
-   "ja": [
-    "ゴッドフィールドダッシュ"
-   ],
-   "en": {
-    "old": "God Field Dash",
-    "new": "Burning Field Dash"
-   },
-   "gate": false,
-   "sections": [
-    "weapons"
    ]
   },
   {
@@ -758,19 +691,6 @@
   },
   {
    "ja": [
-    "ダブルゴッドフィンガー"
-   ],
-   "en": {
-    "old": "Double God Finger",
-    "new": "Double Burning Finger"
-   },
-   "gate": false,
-   "sections": [
-    "weapons"
-   ]
-  },
-  {
-   "ja": [
     "ダブルハーケン"
    ],
    "en": {
@@ -891,19 +811,6 @@
   },
   {
    "ja": [
-    "デビルアクシズ"
-   ],
-   "en": {
-    "old": "Devil Axis",
-    "new": "Dark Axis"
-   },
-   "gate": false,
-   "sections": [
-    "units"
-   ]
-  },
-  {
-   "ja": [
     "デビルガンダム"
    ],
    "en": {
@@ -913,19 +820,6 @@
    "gate": false,
    "sections": [
     "units"
-   ]
-  },
-  {
-   "ja": [
-    "デビルファング"
-   ],
-   "en": {
-    "old": "Devil Fang",
-    "new": "Dark Fang"
-   },
-   "gate": false,
-   "sections": [
-    "weapons"
    ]
   },
   {
@@ -1003,19 +897,6 @@
    "en": {
     "old": "Doctor Elizabeth",
     "new": "Dr. Elizabeth"
-   },
-   "gate": false,
-   "sections": [
-    "story"
-   ]
-  },
-  {
-   "ja": [
-    "ドクーガ"
-   ],
-   "en": {
-    "old": "Dokuga",
-    "new": "Docooga"
    },
    "gate": false,
    "sections": [
@@ -1887,32 +1768,6 @@
    "en": {
     "old": "Detonating Cord",
     "new": "Demolition Chain"
-   },
-   "gate": false,
-   "sections": [
-    "weapons"
-   ]
-  },
-  {
-   "ja": [
-    "爆熱ゴッドスラッシュ"
-   ],
-   "en": {
-    "old": "Erupting God Slash",
-    "new": "Erupting Burning Slash"
-   },
-   "gate": false,
-   "sections": [
-    "weapons"
-   ]
-  },
-  {
-   "ja": [
-    "爆熱ゴッドフィンガー"
-   ],
-   "en": {
-    "old": "Erupting God Finger",
-    "new": "Erupting Burning Finger"
    },
    "gate": false,
    "sections": [
@@ -7191,34 +7046,6 @@
    "zh-Hans": {
     "old": "神斩",
     "new": "神之斩"
-   },
-   "gate": false,
-   "sections": [
-    "weapons",
-    "story"
-   ]
-  },
-  {
-   "ja": [
-    "ゴッドスラッシュ"
-   ],
-   "en": {
-    "old": "God Slash",
-    "new": "Burning Slash"
-   },
-   "gate": false,
-   "sections": [
-    "weapons",
-    "story"
-   ]
-  },
-  {
-   "ja": [
-    "ゴッドフィンガー"
-   ],
-   "en": {
-    "old": "God Finger",
-    "new": "Burning Finger"
    },
    "gate": false,
    "sections": [

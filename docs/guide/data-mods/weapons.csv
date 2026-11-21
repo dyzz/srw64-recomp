@@ -6,18 +6,18 @@ weapon,name_ja,name_zh,name_en,air,land,sea,space,power,range_min,range_max,hit,
 4,シュツルムウントドランク,狂飙突进,Sturm und Drang,-,A,A,A,2600,1,1,5,-1,30,110,20,melee,0,1,0,target,,2,0,0
 5,バルカン砲,火神炮,Vulcan,A,A,B,A,800,1,1,30,20,0,0,-20,ranged,0,1,0,attacker,,4,0,1 2
 6,マシンキャノン,机炮,Machine Cannon,A,A,A,A,1100,1,4,5,10,0,0,10,ranged,0,0,0,attacker,,2,0,1 2
-7,ゴッドストライク,神之打击,Burning Strike,-,A,A,A,1500,1,1,10,-1,0,0,10,melee,0,1,1,target,,2,0,1 2
-8,ゴッドスラッシュ,神之斩,Burning Slash,-,A,A,A,1600,1,1,15,-1,0,0,10,melee,0,1,1,target,,2,0,1 2
-9,ゴッドスラッシュタイフーン,神之斩台风,Burning Slash Typhoon,-,A,A,A,1700,1,1,5,-1,0,0,10,melee,0,1,0,target,,2,0,1 2
+7,ゴッドストライク,神之打击,God Strike,-,A,A,A,1500,1,1,10,-1,0,0,10,melee,0,1,1,target,,2,0,1 2
+8,ゴッドスラッシュ,神之斩,God Slash,-,A,A,A,1600,1,1,15,-1,0,0,10,melee,0,1,1,target,,2,0,1 2
+9,ゴッドスラッシュタイフーン,神之斩台风,God Slash Typhoon,-,A,A,A,1700,1,1,5,-1,0,0,10,melee,0,1,0,target,,2,0,1 2
 10,バルカン砲,火神炮,Vulcan,A,A,B,A,800,1,1,30,20,0,0,-20,ranged,0,1,0,attacker,,4,0,
 11,マシンキャノン,机炮,Machine Cannon,A,A,A,A,1100,1,4,5,10,0,0,10,ranged,0,0,0,attacker,,2,0,
-12,ゴッドストライク,神之打击,Burning Strike,-,A,A,A,1500,1,1,10,-1,0,0,10,melee,0,1,1,target,,2,0,
-13,ゴッドスラッシュ,神之斩,Burning Slash,-,A,A,A,1600,1,1,15,-1,0,0,10,melee,0,1,1,target,,2,0,
-14,ゴッドスラッシュタイフーン,神之斩台风,Burning Slash Typhoon,-,A,A,A,1700,1,1,5,-1,0,0,10,melee,0,1,0,target,,2,0,
-15,ゴッドフィールドダッシュ,神之力场冲刺,Burning Field Dash,-,A,A,A,1700,1,1,10,-1,10,0,10,melee,0,1,0,target,hyper_mode,0,0,2
+12,ゴッドストライク,神之打击,God Strike,-,A,A,A,1500,1,1,10,-1,0,0,10,melee,0,1,1,target,,2,0,
+13,ゴッドスラッシュ,神之斩,God Slash,-,A,A,A,1600,1,1,15,-1,0,0,10,melee,0,1,1,target,,2,0,
+14,ゴッドスラッシュタイフーン,神之斩台风,God Slash Typhoon,-,A,A,A,1700,1,1,5,-1,0,0,10,melee,0,1,0,target,,2,0,
+15,ゴッドフィールドダッシュ,神之力场冲刺,God Field Dash,-,A,A,A,1700,1,1,10,-1,10,0,10,melee,0,1,0,target,hyper_mode,0,0,2
 16,超級覇王電影弾,超级霸王电影弹,Chokyu Hao Den'eidan,A,A,A,A,2100,1,7,10,-1,110,110,10,melee,0,0,0,attacker,hyper_mode,0,0,2
-17,爆熱ゴッドスラッシュ,爆热神之斩,Erupting Burning Slash,-,A,A,A,2200,1,1,15,-1,20,110,10,melee,0,1,0,target,hyper_mode,0,0,2
-18,爆熱ゴッドフィンガー,爆热神之指,Erupting Burning Finger,-,A,A,A,3300,1,1,25,-1,60,130,20,melee,0,1,0,target,hyper_mode,0,0,2
+17,爆熱ゴッドスラッシュ,爆热神之斩,Erupting God Slash,-,A,A,A,2200,1,1,15,-1,20,110,10,melee,0,1,0,target,hyper_mode,0,0,2
+18,爆熱ゴッドフィンガー,爆热神之指,Erupting God Finger,-,A,A,A,3300,1,1,25,-1,60,130,20,melee,0,1,0,target,hyper_mode,0,0,2
 19,石破天驚拳,石破天惊拳,Sekiha Tenkyoken,A,A,A,A,4000,1,1,30,-1,120,150,20,melee,0,1,0,attacker,hyper_mode,0,1,2
 20,バルカン砲,火神炮,Vulcan,A,A,B,A,800,1,1,30,20,0,0,-20,ranged,0,1,0,attacker,,4,0,3 4 310 311 312
 21,ビームソード,光束剑,Beam Sword,-,A,A,A,1300,1,1,15,-1,0,0,0,melee,0,1,1,target,,2,0,3 4 310 311 312
@@ -96,7 +96,7 @@ weapon,name_ja,name_zh,name_en,air,land,sea,space,power,range_min,range_max,hit,
 94,バルカン砲,火神炮,Vulcan,A,A,B,A,1500,1,1,35,20,0,0,-20,ranged,0,1,0,attacker,,1,0,24
 95,マザーテンタクル,母体触手,Mother Tentacle,A,A,A,A,1800,1,1,20,-1,0,0,0,melee,0,1,0,target,,1,0,24
 96,メガビームキャノン,米加光束加农,Mega Beam Cannon,A,A,-,A,1900,1,5,10,20,0,0,20,ranged,1,0,0,attacker,,1,0,24
-97,デビルファング,恶魔之牙,Dark Fang,-,A,A,A,1900,1,1,30,-1,0,0,0,melee,0,1,1,target,,1,0,24
+97,デビルファング,恶魔之牙,Devil Fang,-,A,A,A,1900,1,1,30,-1,0,0,0,melee,0,1,1,target,,1,0,24
 98,拡散粒子弾,扩散粒子弹,Diffuse Particle Shot,A,A,-,A,2000,2,6,30,20,0,0,20,ranged,1,0,0,attacker,,1,0,24
 99,バルカン砲,火神炮,Vulcan,A,A,B,A,1500,1,1,35,20,0,0,-20,ranged,0,1,0,attacker,,1,0,25
 100,メガビームキャノン,米加光束加农,Mega Beam Cannon,A,A,-,A,2100,1,5,10,20,0,0,10,ranged,1,0,0,attacker,,1,0,25
@@ -1214,7 +1214,7 @@ weapon,name_ja,name_zh,name_en,air,land,sea,space,power,range_min,range_max,hit,
 1212,対空砲,对空炮,AA Gun,A,A,B,A,1400,1,1,30,20,0,0,-20,ranged,0,1,0,attacker,,1,0,305
 1213,ビーム,光束,Beam,A,A,B,A,2800,1,12,-10,20,0,0,10,ranged,0,0,0,attacker,,1,0,305
 1214,スパイラルソードMAP,螺旋剑MAP,Spiral Sword MAP,A,A,-,A,1600,1,4,-10,-1,60,110,0,melee,0,0,0,target,,1,0,307
-1215,ダブルゴッドフィンガー,双重神之指,Double Burning Finger,A,A,A,A,3800,1,1,25,-1,60,130,20,melee,0,1,0,target,,0,1,2 6
+1215,ダブルゴッドフィンガー,双重神之指,Double God Finger,A,A,A,A,3800,1,1,25,-1,60,130,20,melee,0,1,0,target,,0,1,2 6
 1216,石破ラブラブ天驚拳,石破Love Love天惊拳,Sekiha Love Love Tenkyoken,A,A,A,A,4500,1,1,30,-1,80,130,20,melee,0,1,0,attacker,,0,1,2 8
 1217,シャッフル同盟拳,洗牌同盟拳,Shuffle Alliance Fist,A,A,A,A,5000,1,1,30,-1,100,130,20,melee,0,1,0,attacker,,0,1,2 10 12 14 16
 1218,無影脚,无影脚,Shadowless Kick,A,A,A,A,1400,1,1,10,-1,0,0,10,melee,0,1,0,target,,2,0,13 14

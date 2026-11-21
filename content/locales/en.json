@@ -2537,7 +2537,7 @@
     {
       "key": "base:t00_00385",
       "source_sha256": "8569aa78b8df0ba5c3447f09ecb7329c2ffe454d01a716363e96f230bd7bb9f8",
-      "target": "Terror! Dark Axis Activates! (Part 1)<END>",
+      "target": "Terror! Devil Axis Activates! (Part 1)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2747,7 +2747,7 @@
     {
       "key": "base:t00_00415",
       "source_sha256": "804feebce174693f7e038bec719a5873c839d1580086e4c893f7ac97b27b0abc",
-      "target": "Terror! Dark Axis Activates! (Part 2)<END>",
+      "target": "Terror! Devil Axis Activates! (Part 2)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3524,7 +3524,7 @@
     {
       "key": "base:t00_00527",
       "source_sha256": "f3534a365e465efbd33a1087a1db4c00a25e5efa73ae6b85f7b1e9d946dfd59f",
-      "target": "Shadow Gundam<END>",
+      "target": "Gundam Spiegel<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3790,7 +3790,7 @@
     {
       "key": "base:t00_00565",
       "source_sha256": "20b2c755b35a300e5915e52aad56f7ae61c931cd54022982b8cd50d27c1f65c4",
-      "target": "Dark Axis<END>",
+      "target": "Devil Axis<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -7997,21 +7997,21 @@
     {
       "key": "base:t00_01377",
       "source_sha256": "3286ad4318f1c0596822f2a87e746dd939cb93bfd5d92e6b6a502fd7a952880d",
-      "target": "Burning Strike<END>",
+      "target": "God Strike<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01378",
       "source_sha256": "2988d710d19b083c46b32b5d3baa980df974c15a2795558b8880c8c3986e7973",
-      "target": "Burning Slash<END>",
+      "target": "God Slash<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01379",
       "source_sha256": "162c3bdeea5a332f8142a6020a2e08af768d3b318c18b787a6df3f02706b94e9",
-      "target": "Burning Slash Typhoon<END>",
+      "target": "God Slash Typhoon<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8032,28 +8032,28 @@
     {
       "key": "base:t00_01382",
       "source_sha256": "3286ad4318f1c0596822f2a87e746dd939cb93bfd5d92e6b6a502fd7a952880d",
-      "target": "Burning Strike<END>",
+      "target": "God Strike<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01383",
       "source_sha256": "2988d710d19b083c46b32b5d3baa980df974c15a2795558b8880c8c3986e7973",
-      "target": "Burning Slash<END>",
+      "target": "God Slash<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01384",
       "source_sha256": "162c3bdeea5a332f8142a6020a2e08af768d3b318c18b787a6df3f02706b94e9",
-      "target": "Burning Slash Typhoon<END>",
+      "target": "God Slash Typhoon<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01385",
       "source_sha256": "39f483c68cfd01d5dfb41195e6e3b8e242c25a7d041e71297d15934b6f8d7609",
-      "target": "Burning Field Dash<END>",
+      "target": "God Field Dash<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8067,14 +8067,14 @@
     {
       "key": "base:t00_01387",
       "source_sha256": "bb1fb90a1604215d23e46f5ffdd1b7c37a74c244e5b9e1ca64de57d6aad5c21f",
-      "target": "Erupting Burning Slash<END>",
+      "target": "Erupting God Slash<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01388",
       "source_sha256": "c026678a3ed4c1f970c536cf89d197c2b32144786b56d7646004a5995a602c04",
-      "target": "Erupting Burning Finger<END>",
+      "target": "Erupting God Finger<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8627,7 +8627,7 @@
     {
       "key": "base:t00_01467",
       "source_sha256": "64b29a08d62f3f166db47e5a035d22715dd9863ce6c4aad639d99af15f1d836c",
-      "target": "Dark Fang<END>",
+      "target": "Devil Fang<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16418,7 +16418,7 @@
     {
       "key": "base:t00_02585",
       "source_sha256": "538c7163abd85d77ee0a7674c807ae694a2b17611089ec2556a0263585019276",
-      "target": "Double Burning Finger<END>",
+      "target": "Double God Finger<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17258,21 +17258,21 @@
     {
       "key": "base:t00_02706",
       "source_sha256": "afaf30e61a71a335334fc2d6aa6d677cf4fb50b86deee9585b16d39b3de425c7",
-      "target": "格Burning StrikeP<END>",
+      "target": "格God StrikeP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02707",
       "source_sha256": "c36a040d0f2c198bf214dfefbc8d57437c85d5a0229ccb658ec356f9e1f94ba5",
-      "target": "格Burning SlashP<END>",
+      "target": "格God SlashP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02708",
       "source_sha256": "10b73de0d4b1624b8c997edcdfe47fa9acd0dd3510c22f81790c5f1702a2a266",
-      "target": "格Burning Slash TyphoonP<END>",
+      "target": "格God Slash TyphoonP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17293,28 +17293,28 @@
     {
       "key": "base:t00_02711",
       "source_sha256": "afaf30e61a71a335334fc2d6aa6d677cf4fb50b86deee9585b16d39b3de425c7",
-      "target": "格Burning StrikeP<END>",
+      "target": "格God StrikeP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02712",
       "source_sha256": "c36a040d0f2c198bf214dfefbc8d57437c85d5a0229ccb658ec356f9e1f94ba5",
-      "target": "格Burning SlashP<END>",
+      "target": "格God SlashP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02713",
       "source_sha256": "10b73de0d4b1624b8c997edcdfe47fa9acd0dd3510c22f81790c5f1702a2a266",
-      "target": "格Burning Slash TyphoonP<END>",
+      "target": "格God Slash TyphoonP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02714",
       "source_sha256": "07e7c258cc7f51274b1f57390d40861f53c5da8fdcda4da617b2ea81321547e5",
-      "target": "格Burning Field DashP<END>",
+      "target": "格God Field DashP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17328,14 +17328,14 @@
     {
       "key": "base:t00_02716",
       "source_sha256": "dd4f055b379c97b74c8db57da695defac4cdf157971bea00a4278e44563088e8",
-      "target": "格Erupting Burning SlashP<END>",
+      "target": "格Erupting God SlashP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_02717",
       "source_sha256": "d3118d3ede9107ebecf1ea8631c649c84be19e64531dd132c678289922f7258d",
-      "target": "格Erupting Burning FingerP<END>",
+      "target": "格Erupting God FingerP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17888,7 +17888,7 @@
     {
       "key": "base:t00_02796",
       "source_sha256": "1da61e74669c5cbf5ae61eb788ff5d2a88d0194d00c268b3d220f8e1af96bdcc",
-      "target": "格Dark FangP<END>",
+      "target": "格Devil FangP<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -25679,7 +25679,7 @@
     {
       "key": "base:t00_03914",
       "source_sha256": "e0f84b529d3c7f959243429f5adf076f26b703c431af4b5740c26a1f9a747247",
-      "target": "格Double Burning FingerP<END>",
+      "target": "格Double God FingerP<END>",
       "review_status": "draft",
       "origin": "terms"
     },

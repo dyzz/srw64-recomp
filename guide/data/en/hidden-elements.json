@@ -403,7 +403,7 @@
     "If you never persuaded her, the Persuade command won't appear later, and only the Devil Gundam path remains",
     "When rescued, Devil Gundam's core is replaced by Wong {+}",
     "The Lantau stage is only reached by picking “Go with Domon and the others” in “All-Out Attack on the Cyber Beast Force Base”",
-    "For the God Gundam and Noble Gundam combination attack “Double Burning Finger”, see “Story-unlocked finishers and combination attacks”"
+    "For the God Gundam and Noble Gundam combination attack “Double God Finger”, see “Story-unlocked finishers and combination attacks”"
    ],
    "akurasu_notes": [
     "Akurasu says she must be persuaded within the same turn in the two later stages; the script has no per-turn reset check, so Domon first and then Rain is enough",
@@ -1366,9 +1366,9 @@
      "text": "Deploy Ryoma at the start (in any unit) {≠}"
     }
    ],
-   "result": "The sacrifice scene still plays, but Schwarz and the Shadow Gundam are not removed from the team; the end of the stage switches to dialogue in which he survives via the Getter path {≠}{?}",
+   "result": "The sacrifice scene still plays, but Schwarz and the Gundam Spiegel are not removed from the team; the end of the stage switches to dialogue in which he survives via the Getter path {≠}{?}",
    "notes": [
-    "If Ryoma isn't deployed, Schwarz leaves permanently along with the Shadow Gundam when the stage is cleared"
+    "If Ryoma isn't deployed, Schwarz leaves permanently along with the Gundam Spiegel when the stage is cleared"
    ],
    "akurasu_notes": [
     "Akurasu says deploy Shin Getter; the script checks whether the pilot Ryoma is on the map at the start",
@@ -1453,7 +1453,7 @@
    "title": "Kyral + Mandala Gundam",
    "kicker": "Character + unit",
    "applies": "Independence Army / OZ routes (the Complete Pacifism route doesn't pass through the deciding stage)",
-   "summary": "Shoot down Kyral with Domon; in “Terror! Dark Axis Activates! (Part 1)” keep him alive until the last enemy wave is wiped out {≠}",
+   "summary": "Shoot down Kyral with Domon; in “Terror! Devil Axis Activates! (Part 1)” keep him alive until the last enemy wave is wiped out {≠}",
    "steps": [
     {
      "stage": "31／32",
@@ -1469,7 +1469,7 @@
     },
     {
      "stage": "50–55",
-     "stage_title": "Terror! Dark Axis Activates! (Part 1)",
+     "stage_title": "Terror! Devil Axis Activates! (Part 1)",
      "route": "Common",
      "text": "When the first enemy wave is wiped out, Kyral appears as an ally together with Rasid's Maganac Corps; if he is still on the map when the last enemy wave is wiped out, he switches to your side and joins. If he is shot down along the way you don't get him {+}"
     }
@@ -1642,7 +1642,7 @@
    "result": "The weapon is added automatically; nothing to do",
    "notes": [
     "Combination attacks are re-checked every time the weapon list opens: they appear when the participants are connected (diagonal adjacency counts) and each meets its EN and Will requirements; each use costs every participant EN once, with no ammo used {+}",
-    "Double Burning Finger: the God Gundam H (Domon enters Super Mode automatically at 130+ Will) and your Allenby's Noble Gundam, each needing 130 Will and 60 EN. No story unlock needed; also usable on the OZ route once Allenby is recruited {≠}{?}",
+    "Double God Finger: the God Gundam H (Domon enters Super Mode automatically at 130+ Will) and your Allenby's Noble Gundam, each needing 130 Will and 60 EN. No story unlock needed; also usable on the OZ route once Allenby is recruited {≠}{?}",
     "Shuffle Alliance Fist: 130 Will, 100 EN; likewise needs no story unlock, and doesn't require the four members' finishers above to be unlocked {≠}{?}",
     "Sekiha Love Love Tenkyoken: besides the combination conditions it requires Sekiha Tenkyoken to be unlocked, so it becomes usable when Sekiha Tenkyoken does {≠}",
     "“Empress Janera's Human Hunt” itself unlocks no weapons {≠}"
@@ -1651,7 +1651,7 @@
     "Akurasu says the Janera branch adds Combattler V's four weapons; the script unlocks them for all three branches at the start of “Desperate Breakthrough (Part 1)”, and on the OZ route at “Cusco Absolute Defense Line (Part 1)”",
     "Akurasu says the Lantau branch adds Sekiha Tenkyoken; the other routes get it too, just one stage later — on the OZ route at the end of “Fist of Despair and Sorrow (Part 1)”",
     "Akurasu gives Sekiha Love Love Tenkyoken and Shuffle Alliance Fist their own unlock stages; the former follows Sekiha Tenkyoken, the latter is usable as soon as its conditions are met",
-    "Akurasu lists Double Burning Finger at EN 80; the ROM data says 60"
+    "Akurasu lists Double God Finger at EN 80; the ROM data says 60"
    ]
   },
   {
@@ -1930,7 +1930,7 @@
      "text": "After the stage, choose “Go to the Muge universe” → A Distant Gamble; choose “Remain in the Earth Sphere” → Char's Rebellion"
     }
    ],
-   "result": "Both sides merge at “Terror! Dark Axis Activates! (Part 1)”, where everyone can deploy again",
+   "result": "Both sides merge at “Terror! Devil Axis Activates! (Part 1)”, where everyone can deploy again",
    "notes": [
     "Obtainable only if you stay on Earth: Mashymre or Chara (Independence Army), Neue Ziel (Independence Army), Qubeley Mk-II recolor",
     "Available when going to the Muge universe, unable to deploy when remaining in the Earth Sphere: Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Roze, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone {+}",
