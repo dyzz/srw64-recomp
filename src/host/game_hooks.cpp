@@ -196,6 +196,7 @@ static bool wait_for_previous_line(uint8_t* ram) {
 // 801C7960 requests the defender's quote on contact. Some attacks still have
 // a finishing sequence to show. Schedule the original quote call, so the box,
 // portrait, MOD speech and its normal wait all start together.
+static void show_battle_quote(uint8_t* rdram, recomp_context* ctx);   // the speaker swap (below)
 struct ImpactQuote { uint32_t block{}, speaker{}, round{}; };
 static ImpactQuote impact_quote;
 
@@ -210,7 +211,7 @@ void load_00121560_func_801C6F14(uint8_t* ram,recomp_context* ctx) {
         }
     }
     if(impact_quote.block==block)impact_quote={};
-    srw64_original_battle_quote_step(ram,ctx);
+    show_battle_quote(ram,ctx);
 }
 
 static void advance_impact_quote(uint8_t* ram,const recomp_context* ctx) {
@@ -224,7 +225,7 @@ static void advance_impact_quote(uint8_t* ram,const recomp_context* ctx) {
     call.r4=int32_t(impact_quote.block);
     call.r5=int32_t(impact_quote.speaker);
     impact_quote={};
-    srw64_original_battle_quote_step(ram,&call);
+    show_battle_quote(ram,&call);
 }
 
 // Camera travel that the scenery would have seen during added voice time.
@@ -440,7 +441,8 @@ extern "C" void load_000AB160_func_801FC83C(uint8_t* rdram, recomp_context* ctx)
 // id). Its speaker digits name the voice part's character; a package's new character that
 // borrows that voice is shown in its place for this call (battle_speaker.hpp): the name
 // through srw64_name_record, the face through 8008F970.
-extern "C" void load_00121560_func_801C6F14(uint8_t* rdram, recomp_context* ctx) {
+// The voice wrapper below (load_00121560_func_801C6F14) calls this for every quote it opens.
+static void show_battle_quote(uint8_t* rdram, recomp_context* ctx) {
     namespace speaker = srw64::battle_speaker;
     const uint32_t slot = uint32_t(ctx->r4);
     std::optional<std::pair<unsigned, unsigned>> swap;

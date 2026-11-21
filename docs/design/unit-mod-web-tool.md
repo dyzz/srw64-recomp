@@ -76,7 +76,7 @@
 
 #### W2 补：音频（2026-11-20）
 
-和 BGM、语音工具共用 `scripts/audio-clip.ts`（[音频 MOD](audio-mods.md) §13）：
+和 BGM、语音工具共用 `web/src/scripts/audio-clip.ts`（[音频 MOD](audio-mods.md) §13）：
 
 - **台词语音**：每句的语音可以「剪辑」：波形上拖两条线只留中间（剪掉前后空白）、音量 dB、看平均电平和别的语音比；导出或装进游戏前按剪辑重新编码。
 - **战斗曲**：新人物、新机体各有「战斗曲」：照抄对象的（默认）、原版 49 首里任选，或「自己的曲子」放一个音频文件（循环方式、循环区间、音量、曲名，和 BGM 工具一样）。写成 `audio/music/<曲名>.ogg` 和 `audio/music.json` 的 `battle`／`tracks`。只在玩家开着 MOD 音乐时生效。
