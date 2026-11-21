@@ -48,6 +48,7 @@ struct Image {
     // garbage), story variables (index, value 0-3) and the last choice (3DD9 + option - 1),
     // written when the scene registers, before any event reads them.
     std::optional<unsigned> route;
+    std::optional<unsigned> episode;
     std::vector<std::pair<unsigned,unsigned>> story_vars;
     std::optional<unsigned> last_choice;
 };
@@ -170,6 +171,10 @@ inline Image parse(const nlohmann::json& document) {
         if(!value.is_number_integer() || value.get<int64_t>()<0 || value.get<int64_t>()>int64_t(most))return std::nullopt;
         return unsigned(value.get<int64_t>());
     };
+    if(document.contains("episode") && !document.at("episode").is_null()) {
+        image.episode=small_int(document.at("episode"),99);
+        if(!image.episode || *image.episode<1)throw std::runtime_error("mini stage episode: 1 to 99");
+    }
     if(document.contains("route") && !document.at("route").is_null()) {
         image.route=small_int(document.at("route"),3);
         if(!image.route)throw std::runtime_error("mini stage route: 0 to 3");
@@ -290,7 +295,9 @@ inline void register_hook(uint8_t* ram,recomp_context* ctx) {
     // Direct entry set the episode count to 1 only so 801C2B9C would take the scene as
     // given; it has done so by now. A campaign starts from 0 as New Game does, so its
     // first clear (3D4A adds one) reads 第1話 in the intermission and the saves.
-    if(!s.stages.empty() && s.direct_done && !s.applied && read(ram,0x8010F5EF,1)==1)write8(ram,0x8010F5EF,0);
+    // The original title card indexes the number sprites by completed episodes.
+    if(image.episode)write8(ram,0x8010F5EF,uint8_t(*image.episode-1));
+    else if(!s.stages.empty() && s.direct_done && !s.applied && read(ram,0x8010F5EF,1)==1)write8(ram,0x8010F5EF,0);
     // Story set-up before the opening runs: variables (two bits each, 8 to a halfword from
     // 8015E818) and the last choice (engine+0x994, the 3E10-3E12 tests read it).
     for(const auto& [index,value]:image.story_vars) {

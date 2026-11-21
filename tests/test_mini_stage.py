@@ -35,6 +35,15 @@ class MiniStageCompilerTests(unittest.TestCase):
             with self.subTest(bad=bad), self.assertRaises(ValueError):
                 compile_stage({**base, "initial_resources": bad})
 
+    def test_episode_uses_the_original_number_card_range(self):
+        base = {"schema": SCHEMA, "events": [{"type": 12, "commands": []}]}
+        self.assertIsNone(compile_stage(base)["episode"])
+        for episode in (1, 24, 99):
+            self.assertEqual(compile_stage({**base, "episode": episode})["episode"], episode)
+        for episode in (0, 100, True, 2.5, "2"):
+            with self.subTest(episode=episode), self.assertRaises(ValueError):
+                compile_stage({**base, "episode": episode})
+
     def test_route_passes_through_checked(self):
         base = {"schema": SCHEMA, "events": [{"type": 12, "commands": []}]}
         self.assertEqual(compile_stage({**base, "route": 2})["route"], 2)
