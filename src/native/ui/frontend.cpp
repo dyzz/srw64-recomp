@@ -1243,12 +1243,39 @@ void unfit(Rml::Element* e,bool descendants) {
 }
 // `doc` again with `body`, in place where it can be (above), else a new document.
 // SRW64_PAGE_REBUILD=1 builds every page again as before, to compare with.
+// A page that took 15 ms or more to bring up to date says where (SRW64_UI_SLOW has only
+// "pages"): which page (the first id or class in its RML), whether it was built again or
+// patched and how many elements changed, and the parts: making and comparing the RML,
+// RmlUi's update of the document (styles and layout), the fit class's second pass.
+//   SRW64_PAGE_SLOW 31.2ms ability-top patched changed=14 rml=2.1 update=24.0 fit=5.1
+struct PageCost {
+    UiClock::time_point start=UiClock::now(),last=start;
+    double rml=0,update=0,fit=0;
+    void mark(double& part){const auto now=UiClock::now();part+=ui_ms(last,now);last=now;}
+    void report(const std::string& source,const char* how,size_t changed) const {
+        // SRW64_PAGE_SLOW_MS: another threshold, to see the lines on a fast machine.
+        static const double limit=[]{const char* asked=std::getenv("SRW64_PAGE_SLOW_MS");return asked?std::atof(asked):15.0;}();
+        const double total=ui_ms(start,UiClock::now());
+        if(total<limit)return;
+        std::string name="?";
+        for(const char* key:{" id='"," class='"}) {
+            const size_t body=source.find("<layer-mark"),at=source.find(key,body==std::string::npos?0:body+12);
+            if(at==std::string::npos)continue;
+            const size_t from=at+std::strlen(key),to=source.find('\'',from);
+            if(to!=std::string::npos && to>from){name=source.substr(from,std::min<size_t>(to-from,40));break;}
+        }
+        std::fprintf(stderr,"SRW64_PAGE_SLOW %.1fms %s %s changed=%zu rml=%.1f update=%.1f fit=%.1f\n",total,name.c_str(),how,changed,rml,update,fit);
+    }
+};
 Rml::ElementDocument* refresh(Rml::ElementDocument*& doc,const std::string& body,bool modal,bool chrome=false) {
     static const bool rebuild=[]{const char* v=std::getenv("SRW64_PAGE_REBUILD");return v && *v=='1';}();
+    PageCost cost;
     update_sheet();
     const auto found=doc?document_sources.find(doc):document_sources.end();
     if(rebuild || found==document_sources.end() || doc->GetStyleSheetContainer()!=sheet.get() || !!doc->GetAttribute("data-chrome")!=chrome) {
-        document_close(doc);return doc=document(body,modal,chrome);
+        document_close(doc);doc=document(body,modal,chrome);
+        cost.mark(cost.update);cost.report(document_sources[doc],"built",0);
+        return doc;
     }
     auto source=document_source(body,modal,chrome);
     if(source==found->second)return doc;
@@ -1258,10 +1285,15 @@ Rml::ElementDocument* refresh(Rml::ElementDocument*& doc,const std::string& body
     RmlPatch patch{found->second,source};
     const auto attributes=[](const RmlNode* n){return std::map<std::string,std::string>(n->attributes.begin(),n->attributes.end());};
     if(!old_body || !new_body || attributes(old_body).at("style")!=attributes(new_body).at("style") || !patch.element(doc,*old_body,*new_body)) {
-        document_close(doc);return doc=document(body,modal,chrome);
+        document_close(doc);doc=document(body,modal,chrome);
+        cost.mark(cost.update);cost.report(document_sources[doc],"built again",0);
+        return doc;
     }
     for(auto* e:patch.changed){unfit(e,true);for(auto* up=e->GetParentNode();up;up=up->GetParentNode())unfit(up,false);}
-    doc->UpdateDocument();fit_lines(doc);
+    cost.mark(cost.rml);
+    doc->UpdateDocument();cost.mark(cost.update);
+    fit_lines(doc);cost.mark(cost.fit);
+    cost.report(source,"patched",patch.changed.size());
     found->second=std::move(source);
     return doc;
 }
