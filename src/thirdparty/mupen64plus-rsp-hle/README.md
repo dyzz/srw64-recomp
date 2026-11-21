@@ -16,7 +16,9 @@ Used by `src/host/audio_hle.cpp`: the Switch's audio, a trial elsewhere.
 every change is marked `SRW64`. The other files are upstream's.
 
 - **RESAMPLE**: each of the four products is rounded on its own (the microcode's VMULF),
-  where upstream adds them and truncates once.
+  where upstream adds them and truncates once. Eight outputs at a time, their inputs all read
+  before any is written (the game puts a short voice's output over the end of its input),
+  and one batch even for a count of 0.
 - **MIXER**: `mulf_macf`, the microcode's VMULF by 0x7fff and VMACF, in place of an added
   truncated product.
 - **ENVMIXER** (`alist_envmix_exp`): rewritten after the microcode's listing. Eight volumes

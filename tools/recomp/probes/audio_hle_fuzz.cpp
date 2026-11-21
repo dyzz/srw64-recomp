@@ -105,6 +105,22 @@ unsigned resample(int tasks) {
     return bad;
 }
 
+// The output over the input's end, as the game's driver places a short voice: in at
+// out + count + 2 and thereabouts, where the last outputs land on samples still to be read.
+unsigned resample_over(int tasks) {
+    unsigned bad = 0;
+    const int pitch = range(0x400, 0x3000);
+    const int count = range(1, 4) * 0x10, out = 0x100 + range(0, 8) * 0x10, in = out + count + range(-3, 3) * 2;
+    for (int task = 0; task < tasks; ++task) {
+        std::vector<uint32_t> c;
+        fresh(c, out & ~0x1F, 0x200);
+        buffers(c, in, out, count);
+        c.insert(c.end(), {0x05000000u | (task ? 0u : 0x10000u) | uint32_t(pitch), kState});
+        bad += run(c, "RESAMPLE over its input", task);
+    }
+    return bad;
+}
+
 unsigned adpcm(int tasks) {
     unsigned bad = 0;
     for (int at = 0; at < 0x80; at += 2) put16(kBook + at, range(-2200, 2200));
@@ -203,7 +219,7 @@ int main(int argc, char** argv) {
     recomp::rsp::constants_init();
     recomp::rsp::set_callbacks({select_ucode});
     struct Command { const char* name; unsigned (*run)(int); int tasks; };
-    const Command commands[] = {{"RESAMPLE", resample, 3}, {"ADPCM", adpcm, 4}, {"ENVMIXER", envmixer, 4}, {"MIXER", mixer, 1},
+    const Command commands[] = {{"RESAMPLE", resample, 3}, {"RESAMPLE over its input", resample_over, 3}, {"ADPCM", adpcm, 4}, {"ENVMIXER", envmixer, 4}, {"MIXER", mixer, 1},
                                 {"POLEF", polef, 3}, {"DMEMMOVE+INTERLEAVE", moves, 1}};
     int failed = 0;
     for (const Command& command : commands) {

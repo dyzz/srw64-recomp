@@ -412,8 +412,12 @@ void alist_envmix_exp(
         envmix_clamp(&sides[0]);
         envmix_clamp(&sides[1]);
 
+        /* The block's eight inputs are read before any output is written, as the
+           microcode's vectors (an output buffer may lie over the input). */
+        int16_t block[8];
+        for (i = 0; i < 8; ++i) block[i] = in[i^S];
         for (i = 0; i < 8; ++i) {
-            const int16_t sample = in[i^S];
+            const int16_t sample = block[i];
             const int16_t left = sides[0].value[i], right = sides[1].value[i];
             dl[i^S] = mulf_macf(dl[i^S], sample, vmulf_rounded(left, dry));
             dr[i^S] = mulf_macf(dr[i^S], sample, vmulf_rounded(right, dry));
@@ -752,22 +756,38 @@ void alist_resample(
     else
         alist_resample_load(hle, address, ipos, &pitch_accu);
 
-    while (count != 0) {
-        const int16_t* lut = RESAMPLE_LUT + ((pitch_accu & 0xfc00) >> 8);
+    /* SRW64: eight outputs at a time, as the microcode's vectors: all the inputs of the
+       eight are read before any of them is written. The game's driver places a short
+       voice's output over the end of its input (in = out + count + 2), where upstream's
+       sample-by-sample loop read outputs it had just written. And a batch is made even
+       for a count of 0: the microcode tests the count after the first. Found against the
+       recompiled microcode (tools/recomp/probes/audio_hle_fuzz.cpp, "RESAMPLE over its
+       input"). */
+    {
+        int left = (int)count;
+        do {
+            int16_t batch[8];
+            unsigned k;
+            for (k = 0; k < 8; ++k) {
+                const int16_t* lut = RESAMPLE_LUT + ((pitch_accu & 0xfc00) >> 8);
 
-        /* SRW64: each product is its own VMULF in the microcode, rounded (+0x4000 before
-           the >> 15), and the four are then added; upstream adds the products and
-           truncates once. Found against the recompiled microcode. */
-        *sample(hle, opos++) = clamp_s16(
-            ((*sample(hle, ipos    ) * lut[0] + 0x4000) >> 15) +
-            ((*sample(hle, ipos + 1) * lut[1] + 0x4000) >> 15) +
-            ((*sample(hle, ipos + 2) * lut[2] + 0x4000) >> 15) +
-            ((*sample(hle, ipos + 3) * lut[3] + 0x4000) >> 15));
+                /* Each product is its own VMULF in the microcode, rounded (+0x4000 before
+                   the >> 15), and the four are then added; upstream adds the products and
+                   truncates once. */
+                batch[k] = clamp_s16(
+                    ((*sample(hle, ipos    ) * lut[0] + 0x4000) >> 15) +
+                    ((*sample(hle, ipos + 1) * lut[1] + 0x4000) >> 15) +
+                    ((*sample(hle, ipos + 2) * lut[2] + 0x4000) >> 15) +
+                    ((*sample(hle, ipos + 3) * lut[3] + 0x4000) >> 15));
 
-        pitch_accu += pitch;
-        ipos += (pitch_accu >> 16);
-        pitch_accu &= 0xffff;
-        --count;
+                pitch_accu += pitch;
+                ipos += (pitch_accu >> 16);
+                pitch_accu &= 0xffff;
+            }
+            for (k = 0; k < 8; ++k)
+                *sample(hle, opos++) = batch[k];
+            left -= 8;
+        } while (left > 0);
     }
 
     alist_resample_save(hle, address, ipos, pitch_accu);
