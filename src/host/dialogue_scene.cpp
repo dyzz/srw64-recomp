@@ -2,6 +2,9 @@
 #include "dialogue_raster.hpp"
 #include "dialogue_layout_adapter.hpp"
 #include "text/game_fonts.hpp"
+#include <memory>
+#include <cstdlib>
+#include <cstdint>
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
@@ -288,22 +291,48 @@ Scene build(const Frame& frame,uint32_t width,uint32_t height,double picture_wid
         }
         y=next;
     }
+    // The lines only clear, and outside what was drawn above there is nothing to clear: a
+    // step for each group of drawing they cross (the HP boxes, the dialogue box), not one
+    // around all the lines. That one's bounds were the window, and its key changes every
+    // frame of a transition: the whole window painted again and handed to the GPU each
+    // frame, 20 ms a frame on a Switch, 17-34 times in five seconds of a battle
+    // (SRW64_PERF "dialogue raster ... patches 34 246.5MB 519ms", 2026-11-20).
     if(!runs.empty()) {
-        uint64_t hash=1469598103934665603ull;
-        PixelRect all_runs;
-        for(const auto& run:runs) {
-            for(int v:{run.left,run.top,run.right,run.bottom})hash=(hash^uint32_t(v))*1099511628211ull;
-            all_runs=all_runs|run;
-        }
-        paint.add("cover "+std::to_string(hash),all_runs,[runs=std::move(runs)](presentation::Bgra8Surface& image,const PixelRect& region) {
-            for(const auto& run:runs) {
-                const auto area=run&region;
-                if(area.empty())continue;
-                for(int py=area.top;py<area.bottom;++py)
-                    std::fill_n(image.pixels.begin()+(size_t(py-region.top)*image.width+(area.left-region.left))*4,
-                        size_t(area.width())*4,uint8_t(0));
+        std::vector<PixelRect> groups;
+        for(const auto& op:paint.ops)if(!op.bounds.empty())groups.push_back(op.bounds);
+        for(bool merged=true;merged;) {
+            merged=false;
+            for(size_t i=0;i<groups.size() && !merged;++i)for(size_t j=i+1;j<groups.size();++j) {
+                const auto &p=groups[i],&q=groups[j];
+                if(p.left<=q.right && q.left<=p.right && p.top<=q.bottom && q.top<=p.bottom) {
+                    groups[i]=p|q;groups.erase(groups.begin()+j);merged=true;break;
+                }
             }
-        });
+        }
+        // SRW64_DIALOGUE_COVER_WHOLE=1: one step around all the lines again, to compare with.
+        static const bool whole=std::getenv("SRW64_DIALOGUE_COVER_WHOLE")!=nullptr;
+        if(whole)groups={PixelRect{0,0,int(width),int(height)}};
+        const auto shared=std::make_shared<const std::vector<PixelRect>>(std::move(runs));
+        for(const auto& group:groups) {
+            uint64_t hash=1469598103934665603ull;
+            PixelRect covered;
+            for(const auto& run:*shared) {
+                const auto part=run&group;
+                if(part.empty())continue;
+                for(int v:{part.left,part.top,part.right,part.bottom})hash=(hash^uint32_t(v))*1099511628211ull;
+                covered=covered|part;
+            }
+            if(covered.empty())continue;
+            paint.add("cover "+std::to_string(hash),covered,[shared,group](presentation::Bgra8Surface& image,const PixelRect& region) {
+                for(const auto& run:*shared) {
+                    const auto area=run&group&region;
+                    if(area.empty())continue;
+                    for(int py=area.top;py<area.bottom;++py)
+                        std::fill_n(image.pixels.begin()+(size_t(py-region.top)*image.width+(area.left-region.left))*4,
+                            size_t(area.width())*4,uint8_t(0));
+                }
+            });
+        }
     }
     if(!reporting)return {std::move(paint.ops),json()};
     json report={{"schema","srw64.native-dialogue-raster.v1"},{"font",text::game_font_path().filename().string()},{"locale",localization::catalog().locale},

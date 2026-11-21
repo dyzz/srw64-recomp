@@ -132,6 +132,19 @@ void incremental() {
     check(std::all_of(canvas.pixels.begin(),canvas.pixels.end(),[](auto b){return b==0;}),"a full cover left pixels");
     frame.cover.clear();
     check(verify_incremental(raster,canvas,frame)>0,"lifting the cover did not repaint");
+    // Lines across the whole picture that move from frame to frame, as in a wipe: what is
+    // painted again is the drawing they cross, not the window (it was, 20 ms a frame of
+    // every transition on a Switch).
+    frame.cover.assign(240,{0.f,0.f});
+    for(size_t y=0;y<240;y+=40)frame.cover[y]={0.f,320.f};
+    frame.cover[239]={0.f,320.f};
+    verify_incremental(raster,canvas,frame);
+    frame.cover.assign(240,{0.f,0.f});
+    for(size_t y=1;y<240;y+=40)frame.cover[y]={0.f,320.f};
+    frame.cover[238]={0.f,320.f};
+    check(verify_incremental(raster,canvas,frame)*4<whole,"a transition frame repainted the picture, not the drawing its lines cross");
+    frame.cover.clear();
+    verify_incremental(raster,canvas,frame);
     // Spans under a pixel wide, left behind after a wipe, cover nothing, not even the
     // margin left of the picture, where a widened battle quote box reaches.
     top.shift_x=-90;verify_incremental(raster,canvas,frame);
