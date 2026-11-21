@@ -190,7 +190,8 @@ class PackageTests(unittest.TestCase):
                          ({"units": {"u": {"copy": 1, "weapons": [1], "crew": [1, 2, 3, 4, 5, 6]}}}, "crew"),
                          ({"units": {"u": {"copy": 1, "weapons": [1], "crew": [361]}}}, "0–360"),
                          ({"units": {"u": {"copy": 1, "weapons": [1], "combine": {"parts": [219]}}}}, "combine"),
-                         ({"units": {"u": {"copy": 1, "weapons": [1], "combine": {"parts": [219, 228], "over": ["@x"]}}}}, "over")]:
+                         ({"units": {"u": {"copy": 1, "weapons": [1], "combine": {"parts": [219, 228], "over": ["@x"]}}}}, "over"),
+                         ({"units": {"u": {"copy": 1, "weapons": [1], "combine": {"parts": [219, 228]}}}}, "219")]:
             self.assertIn(why, validate.new_units_problem({**base, **bad}))
         self.assertIn("schema", validate.new_units_problem({"schema": "srw64.new-units.v1", "units": {}}))
         # A combination attack: two to five units, one component weapon each.

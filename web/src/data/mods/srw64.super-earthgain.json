@@ -1,0 +1,39 @@
+{
+  "id": "srw64.super-earthgain",
+  "version": "0.2.0",
+  "name": {
+    "ja": "カーツとスーパーアースゲイン",
+    "zh-Hans": "卡茨与超级夺地者",
+    "zh-Hant": "卡茨與超級奪地者",
+    "en": "Kurtz and Super Earthgain",
+    "ko": "카츠와 슈퍼 어스게인"
+  },
+  "description": {
+    "ja": "ブラッド編でカーツが仲間になったとき（「決着の時」クリア時にブラッドの撃墜数100以上）、アースゲインとヴァイローズが合体したスーパーアースゲインが手に入る。ブラッドがメイン、カーツがサブパイロットで、改造段数はアースゲインから引き継ぐ。出撃は合体した状態で、マップ上で分離するとアースゲインとヴァイローズに戻り、合体攻撃「招雷 天竜魔滅陣」が使える。隣り合えば再び合体できる。",
+    "zh-Hans": "布拉德篇招回卡茨时（「了断之时」通关时布拉德击坠数 100 以上），夺地者与瓦伊罗斯合体为超级夺地者：布拉德主驾驶、卡茨副驾驶，改造段数从夺地者继承。出击时是合体状态，在地图上分离后回到夺地者和瓦伊罗斯，可以使用合体技「招雷 天龙魔灭阵」；两台相邻时可以再合体。",
+    "zh-Hant": "布拉德篇招回卡茨時（「了斷之時」過關時布拉德擊墜數 100 以上），奪地者與瓦伊羅斯合體為超級奪地者：布拉德主駕駛、卡茨副駕駛，改造段數從奪地者繼承。出擊時是合體狀態，在地圖上分離後回到奪地者和瓦伊羅斯，可以使用合體技「招雷 天龍魔滅陣」；兩台相鄰時可以再合體。",
+    "en": "When Kurtz joins on Brad's route (Brad has 100 or more kills when \"Time to Settle It\" is cleared), Earthgain and Virose combine into Super Earthgain, with Brad as the main pilot and Kurtz as the sub pilot; it carries over Earthgain's upgrades. It deploys combined; separating on the map gives back Earthgain and Virose, who have the combination attack Shorai Tenryu Mametsujin, and next to each other they can combine again.",
+    "ko": "브래드 편에서 카츠가 동료가 될 때(「결착의 때」 클리어 시 브래드의 격추 수 100 이상), 어스게인과 바이로즈가 합체한 슈퍼 어스게인을 얻습니다. 브래드가 메인, 카츠가 서브 파일럿이며 개조 단계는 어스게인에서 계승됩니다. 합체한 상태로 출격하고, 맵에서 분리하면 어스게인과 바이로즈로 돌아가 합체 공격 「초뢰·천룡마멸진」을 쓸 수 있으며, 서로 붙어 있으면 다시 합체할 수 있습니다."
+  },
+  "authors": [
+    "SRW64"
+  ],
+  "license": "CC0-1.0",
+  "game": ">=0.5.4",
+  "requires": {},
+  "optional": {},
+  "conflicts": {},
+  "contents": [
+    "story",
+    "data"
+  ],
+  "file": "srw64.super-earthgain-0.2.0.srw64mod",
+  "bytes": 2827,
+  "sha256": "d5a692be61062f7f79b3c58d5ebc9ff336a37d6b2f9a93a9428e3b99603eadb8",
+  "languages": [],
+  "url": "/mods/srw64.super-earthgain-0.2.0.srw64mod",
+  "page": "/mods/#srw64.super-earthgain",
+  "source": "https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/super-earthgain",
+  "published": "2026-11-20",
+  "yanked": null
+}

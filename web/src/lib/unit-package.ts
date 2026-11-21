@@ -4,6 +4,9 @@
 // imports, so tests/test_unit_maker.py runs it under Node and checks what it writes with
 // the Python validator.
 
+// The parts with a combine recipe in the original (D_800CAFEC): Combattler V's, Dancouga's.
+const RECIPE_PARTS = new Set([197, 198, 199, 200, 201, 202, 203, 204, 205, 219, 220, 221, 225, 226, 227, 230, 231, 232, 233, 234, 235]);
+
 export const NEW_UNITS_SCHEMA = 'srw64.new-units.v2';
 export const NAMES_SCHEMA = 'srw64.mod-names.v1';
 export const LOCALES = ['ja', 'zh-Hans', 'en', 'ko'] as const;
@@ -259,6 +262,9 @@ export function problems(model: Model, packages: Set<string> = new Set()): Probl
     if (u.icon !== undefined && !(Number.isInteger(u.icon) && u.icon >= 688 && u.icon <= 1009)) add(where, 'icon_bad');
     if (u.combine?.over?.some((o) => !Number.isInteger(o) || o < 0 || o > 362)) add(where, 'combine_over');
     if (u.combine && (u.combine.parts.length < 2 || u.combine.parts.length > 5 || u.combine.parts.some((p) => !known('units', p)))) add(where, 'combine_bad');
+    // Without `over` every part gets a recipe of its own (tools/mods/validate.py RECIPE_PARTS).
+    const taken = u.combine && !u.combine.over?.length ? u.combine.parts.find((p) => typeof p === 'number' && RECIPE_PARTS.has(p)) : undefined;
+    if (taken !== undefined) add(where, 'combine_recipe_taken', { unit: String(taken) });
     if (u.forms?.length) {
       if (u.forms.length > 2 || u.forms.some((f) => !f.startsWith('@') || !slugs.units.has(f.slice(1)) || f.slice(1) === u.slug) || new Set(u.forms).size !== u.forms.length)
         add(where, 'forms_bad');

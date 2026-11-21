@@ -628,6 +628,8 @@ MOVE_TYPES = ("land", "air", "sea", "space", "underground")
 ABILITIES = ("beam_coat", "i_field", "planet_defensor", "aura_barrier", "afterimage", "mach_special", "true_mach_special",
              "god_shadow", "getter_vision", "shungensoku", "hyper_jammer", "hp_regen_10", "hp_regen_20")
 SKILLS = ("potential", "newtype", "enhanced", "holy_warrior", "esp", "parry", "shield_defense")
+# The parts with a combine recipe in the original (D_800CAFEC): Combattler V's, Dancouga's.
+RECIPE_PARTS = frozenset((*range(197, 206), 219, 220, 221, 225, 226, 227, *range(230, 236)))
 SPIRITS = ("self_destruct", "scout", "accel", "mercy", "focus", "alert", "guts", "strike", "trust", "wall", "cover", "valor",
            "spirit", "great_guts", "luck", "drain", "effort", "soul", "stealth", "awaken", "refuel", "provoke", "encourage",
            "disrupt", "friendship", "love", "reactivate", "miracle", "prayer", "revive")
@@ -868,6 +870,11 @@ def new_units_problem(document, files: set[str] | None = None) -> str:
             over = combine.get("over", [])
             if not isinstance(over, list) or not all(_int_in(o, 0, 362) for o in over):
                 return f"{where}.combine.over：要是原版合体机的机体号"
+            # Without `over` each part gets a recipe of its own (src/host/mod_combine.hpp
+            # recipe_parts); a part with one in the original (D_800CAFEC) keeps the original's.
+            taken = [p for p in parts if isinstance(p, int) and p in RECIPE_PARTS]
+            if not over and taken:
+                return f"{where}.combine.parts：{taken[0]} 原版已经有合体配方，要用 over 写它合出的原版合体机"
         # Form families (src/host/mod_units.hpp, mod_forms.hpp): other new units of this file.
         if "forms" in entry:
             forms = entry["forms"]

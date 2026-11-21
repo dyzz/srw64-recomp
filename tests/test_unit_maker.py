@@ -121,6 +121,12 @@ class UnitMakerTests(unittest.TestCase):
         self.assertEqual({p["code"] for p in call("problems", bad)}, {"icon_bad", "combine_over"})
         bad_files = call("toFiles", bad)
         self.assertNotEqual(validate.new_units_problem(bad_files["data/new_units.json"]), "")
+        # Without "over", a part that combines in the original (219, Dancouga's eagle) is refused.
+        taken = {**model, "units": [{**model["units"][0], "combine": {"parts": [219, 228], "over": []}}, MODEL["units"][1]]}
+        self.assertEqual({p["code"] for p in call("problems", taken)}, {"combine_recipe_taken"})
+        self.assertIn("219", validate.new_units_problem(call("toFiles", taken)["data/new_units.json"]))
+        over = {**model, "units": [{**model["units"][0], "combine": {"parts": [219, 228], "over": [224]}}, MODEL["units"][1]]}
+        self.assertEqual(call("problems", over), [])
 
     def test_quotes(self):
         # A character's own lines: empty ones left out, the file the validator takes, read back,
