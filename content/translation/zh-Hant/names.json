@@ -228,7 +228,7 @@
   },
   {
    "ja": "リ・ガズィ(BWS)",
-   "zh_hant": "靈格斯（BWS）",
+   "zh_hant": "靈格斯(BWS)",
    "basis": "official_tw",
    "group": "A_uc1",
    "source": "玩具人 toy-people（台灣媒體，沿用萬代商品中文名）「RGZ-91B 靈格斯改」 https://www.toy-people.com/?p=78089；中文維基 Template:CGroup/GundamUC（zh-tw 轉換） https://zh.wikipedia.org/wiki/Template:CGroup/GundamUC"
@@ -1536,7 +1536,7 @@
   },
   {
    "ja": "メタス(MA)",
-   "zh_hant": "梅塔斯（MA）",
+   "zh_hant": "梅塔斯(MA)",
    "basis": "official_srw",
    "group": "B_zeta",
    "source": "超級機器人大戰30 繁中版（巴哈姆特玩家轉錄的全機體/駕駛員表）https://forum.gamer.com.tw/C.php?bsn=430&snA=45369（梅塔斯+MA型態）；GUNDAM 官方網站繁中《機動戰士Z鋼彈》機械 https://tw.gundam-official.com/series/z/mecha"
@@ -1551,7 +1551,7 @@
   },
   {
    "ja": "メタス改(MA)",
-   "zh_hant": "梅塔斯改（MA）",
+   "zh_hant": "梅塔斯改(MA)",
    "basis": "official_tw",
    "group": "B_zeta",
    "source": "GUNDAM 官方網站繁中《機動戰士Z鋼彈》機械 https://tw.gundam-official.com/series/z/mecha",
@@ -2814,7 +2814,7 @@
   },
   {
    "ja": "ウイングガンダム(バード)",
-   "zh_hant": "飛翼鋼彈（鳥型態）",
+   "zh_hant": "飛翼鋼彈(鳥型態)",
    "basis": "official_tw",
    "group": "C_g_w",
    "source": "SD鋼彈G世代 火線縱橫 繁中版（萬代南夢宮官方中文），飛翼鋼彈[鳥型型態] https://www.youtube.com/watch?v=hMYhnvXQI2Q",
@@ -2842,7 +2842,7 @@
   },
   {
    "ja": "ウイングゼロ(バード)",
-   "zh_hant": "飛翼零式（鳥型態）",
+   "zh_hant": "飛翼零式(鳥型態)",
    "basis": "official_srw",
    "group": "C_g_w",
    "source": "超級機器人大戰X 繁中版，飛翼鋼彈零式（玩家影片轉錄遊戲內文字）https://www.youtube.com/watch?v=WhaPLrrLJ5Y",
@@ -2879,7 +2879,7 @@
   },
   {
    "ja": "ガンダムエピオン(MA)",
-   "zh_hant": "次代鋼彈（MA）",
+   "zh_hant": "次代鋼彈(MA)",
    "basis": "official_tw",
    "group": "C_g_w",
    "source": "SD鋼彈G世代 火線縱橫 繁中版（萬代南夢宮官方中文），次代鋼彈[飛行型態] https://www.youtube.com/watch?v=tozKQVFxHQE"
@@ -3129,7 +3129,7 @@
   },
   {
    "ja": "トーラス(MA)",
-   "zh_hant": "陶拉斯（MA）",
+   "zh_hant": "陶拉斯(MA)",
    "basis": "official_srw",
    "group": "C_g_w",
    "source": "超級機器人大戰X 繁中版，陶拉斯(MA)招式集（玩家影片轉錄遊戲內文字）https://www.youtube.com/watch?v=Kq8V_7Zd5QQ"
@@ -4855,7 +4855,7 @@
   },
   {
    "ja": "グレンダイザー(DS)",
-   "zh_hant": "克雷飛天神（DS）",
+   "zh_hant": "克雷飛天神(DS)",
    "basis": "official_srw",
    "group": "D_mazinger_getter",
    "source": "SRW DD 台灣官網「金剛戰神」作品頁 https://srw-dd-tw.suparobo.jp/character/detail/character002.html",
@@ -4863,7 +4863,7 @@
   },
   {
    "ja": "グレンダイザー(MS)",
-   "zh_hant": "克雷飛天神（MS）",
+   "zh_hant": "克雷飛天神(MS)",
    "basis": "official_srw",
    "group": "D_mazinger_getter",
    "source": "SRW DD 台灣官網「金剛戰神」作品頁 https://srw-dd-tw.suparobo.jp/character/detail/character002.html",
@@ -4871,7 +4871,7 @@
   },
   {
    "ja": "グレンダイザー(WS)",
-   "zh_hant": "克雷飛天神（WS）",
+   "zh_hant": "克雷飛天神(WS)",
    "basis": "official_srw",
    "group": "D_mazinger_getter",
    "source": "SRW DD 台灣官網「金剛戰神」作品頁 https://srw-dd-tw.suparobo.jp/character/detail/character002.html",
@@ -5127,7 +5127,7 @@
   },
   {
    "ja": "マジンガーZ(JS)",
-   "zh_hant": "無敵鐵金剛（JS）",
+   "zh_hant": "無敵鐵金剛(JS)",
    "basis": "official_srw",
    "group": "D_mazinger_getter",
    "source": "SRW 30 繁中版參戰作品「劇場版 無敵鐵金剛/INFINITY」「真蓋特機器人 世界最後之日」 https://www.playstation.com/zh-hant-tw/games/super-robot-wars-30/；SRW DD 台灣官網「魔神凱撒」作品頁 https://srw-dd-tw.suparobo.jp/character/detail/character006.html",
@@ -8532,7 +8532,7 @@
   },
   {
    "ja": "ドール(飛行)",
-   "zh_hant": "多爾（飛行）",
+   "zh_hant": "多爾(飛行)",
    "basis": "common_tw",
    "group": "F_dancouga_layzner",
    "source": "玩具人 Toy People（台灣） SMP 蒼之流星SPT雷茲納 vol.3（新雷茲納、加修蘭、多爾） https://www.toy-people.com/?p=67987"

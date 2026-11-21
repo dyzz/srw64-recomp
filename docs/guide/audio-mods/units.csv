@@ -65,13 +65,13 @@ unit,name_ja,name_zh,name_en,battle_song
 63,ネェル・アーガマ,新阿伽玛号,Nahel Argama,3
 64,ミデア,米迪亚,Medea,1
 65,メタス,梅塔斯,Methuss,2
-66,メタス(MA),梅塔斯（MA）,Methuss (MA),2
+66,メタス(MA),梅塔斯(MA),Methuss (MA),2
 67,メタス改,梅塔斯改,Methuss Kai,3
-68,メタス改(MA),梅塔斯改（MA）,Methuss Kai (MA),3
+68,メタス改(MA),梅塔斯改(MA),Methuss Kai (MA),3
 69,ラー・カイラム,拉·凯拉姆,Ra Cailum,7
 70,ラビアンローズ,玫瑰人生号,La Vie en Rose,3
 71,リ・ガズィ,灵·格斯,Re-GZ,7
-72,リ・ガズィ(BWS),灵·格斯（BWS）,Re-GZ (BWS),7
+72,リ・ガズィ(BWS),灵·格斯(BWS),Re-GZ (BWS),7
 73,百式,百式,Hyaku-Shiki,2
 74,ガンダムEz8,高达Ez8,Gundam Ez8,1
 75,GP02Aサイサリス,GP02A酸浆果,GP02A Physalis,5
@@ -117,9 +117,9 @@ unit,name_ja,name_zh,name_en,battle_song
 115,アルトロンガンダム,双头龙高达,Altron Gundam,8
 116,アルトロンカスタム,哪吒高达,Gundam Nataku,8
 117,ウイングガンダム,飞翼高达,Wing Gundam,8
-118,ウイングガンダム(バード),飞翼高达（鸟形态）,Wing Gundam (Bird),8
+118,ウイングガンダム(バード),飞翼高达(鸟形态),Wing Gundam (Bird),8
 119,ウイングゼロ,飞翼零式,Wing Zero,8
-120,ウイングゼロ(バード),飞翼零式（鸟形态）,Wing Zero (Bird),8
+120,ウイングゼロ(バード),飞翼零式(鸟形态),Wing Zero (Bird),8
 121,ウイングゼロカスタム,飞翼零式特装型,Wing Zero Custom,8
 122,エアリーズ,艾亚里斯,Aries,8
 123,ガンダムエピオン,艾比安高达,Gundam Epyon,8
@@ -158,9 +158,9 @@ unit,name_ja,name_zh,name_en,battle_song
 156,暗黒大将軍,暗黑大将军,Great General of Darkness,16
 157,量産型グレート,量产型大魔神,MP Great Mazinger,16
 158,グレンダイザー,古连泰沙,Grendizer,17
-159,グレンダイザー(WS),古连泰沙（WS）,Grendizer (WS),17
-160,グレンダイザー(DS),古连泰沙（DS）,Grendizer (DS),17
-161,グレンダイザー(MS),古连泰沙（MS）,Grendizer (MS),17
+159,グレンダイザー(WS),古连泰沙(WS),Grendizer (WS),17
+160,グレンダイザー(DS),古连泰沙(DS),Grendizer (DS),17
+161,グレンダイザー(MS),古连泰沙(MS),Grendizer (MS),17
 162,スペイザー,斯派扎,Spazer,17
 163,ダブルスペイザー,双重斯派扎,Double Spazer,17
 164,ドリルスペイザー,钻头斯派扎,Drill Spazer,17
@@ -262,7 +262,7 @@ unit,name_ja,name_zh,name_en,battle_song
 260,ダイアナンA,戴安娜A,Diana A,15
 261,ボスボロット,波士机器人,Boss Borot,15
 262,マジンガーZ,魔神Z,Mazinger Z,15
-263,マジンガーZ(JS),魔神Z（JS）,Mazinger Z (JS),15
+263,マジンガーZ(JS),魔神Z(JS),Mazinger Z (JS),15
 264,ミネルバX,米涅瓦X,Minerva X,15
 265,戦闘獣グラトニオス,战斗兽格拉托尼奥斯,Battle Beast Gratonios,15
 266,戦闘獣ダンテ,战斗兽但丁,Battle Beast Dante,15
@@ -290,8 +290,8 @@ unit,name_ja,name_zh,name_en,battle_song
 288,ジャムル・フィン,杰姆鲁·芬,Jamru Fin,3
 289,ビギナ・ギナ,比基纳·基纳,Vigna-Ghina,9
 290,ガンダムマックスターB,极限之星高达B,Gundam Maxter B,4
-291,トーラス(MA),陶拉斯（MA）,Taurus (MA),8
-292,ガンダムエピオン(MA),艾比安高达（MA）,Gundam Epyon (MA),8
+291,トーラス(MA),陶拉斯(MA),Taurus (MA),8
+292,ガンダムエピオン(MA),艾比安高达(MA),Gundam Epyon (MA),8
 293,ダルジャン,达尔姜,Daljan,12
 294,量産型νガンダムF,量产型ν高达F,MP Nu Gundam F,7
 295,フルアーマー百式改,全装甲百式改,FA Hyaku-Shiki Kai,7
@@ -301,7 +301,7 @@ unit,name_ja,name_zh,name_en,battle_song
 299,マグマ獣ダークロン,岩浆兽达克隆,Magma Beast Darkron,20
 300,セント・マグマ,圣·马格玛,Saint Magma,20
 301,超獣シシリス・キバ,超兽西西里斯·基巴,Super Beast Shishiris Kiba,20
-302,ドール(飛行),多尔（飞行）,Doll (Flight),12
+302,ドール(飛行),多尔(飞行),Doll (Flight),12
 303,デビルガンダム,恶魔高达,Devil Gundam,4
 304,デモニカ,德摩尼卡,Demonica,16
 305,ムゲ・ゾルバドス城,穆格·佐尔巴多斯城,Muge Zorbados Castle,22
@@ -339,8 +339,8 @@ unit,name_ja,name_zh,name_en,battle_song
 337,ガニメデス,加尼梅德斯,Ganymedes,23
 338,ギャンドーラ,甘多拉,Gandora,23
 339,ドール,多尔,Doll,12
-340,ドール(飛行),多尔（飞行）,Doll (Flight),12
-341,リ・ガズィ(BWS),灵·格斯（BWS）,Re-GZ (BWS),7
+340,ドール(飛行),多尔(飞行),Doll (Flight),12
+341,リ・ガズィ(BWS),灵·格斯(BWS),Re-GZ (BWS),7
 342,リ・ガズィ,灵·格斯,Re-GZ,7
 343,ガンダムmkⅡ,高达Mk-Ⅱ,Gundam Mk-II,2
 344,バストール,巴斯托尔,Bastole,6
@@ -352,7 +352,7 @@ unit,name_ja,name_zh,name_en,battle_song
 350,ハイパーレプラカーン,超级莱普拉康,Hyper Leprechaun,6
 351,ジェガン,杰刚,Jegan,7
 352,トーラス,陶拉斯,Taurus,8
-353,トーラス(MA),陶拉斯（MA）,Taurus (MA),8
+353,トーラス(MA),陶拉斯(MA),Taurus (MA),8
 354,イーグル号,飞鹰号,Eagle,14
 355,ジャガー号,美洲豹号,Jaguar,14
 356,ベアー号,巨熊号,Bear,14

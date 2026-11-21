@@ -3979,7 +3979,7 @@
     {
       "key": "base:t00_00593",
       "source_sha256": "72510b6c483364568d524f4b721d4191805ae1cc1c532f11b187dde702f2e649",
-      "target": "梅塔斯（MA）<END>",
+      "target": "梅塔斯(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3993,7 +3993,7 @@
     {
       "key": "base:t00_00595",
       "source_sha256": "09888d58856fcf6f2b15113bf7527b998cd265d30b5344e2e3a081c534e7d749",
-      "target": "梅塔斯改（MA）<END>",
+      "target": "梅塔斯改(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4021,7 +4021,7 @@
     {
       "key": "base:t00_00599",
       "source_sha256": "4f200f5993fa9d0145131f53bf30f61604b6c0e6ad78203741f90f59f5257e8c",
-      "target": "灵·格斯（BWS）<END>",
+      "target": "灵·格斯(BWS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4343,7 +4343,7 @@
     {
       "key": "base:t00_00645",
       "source_sha256": "8253289b023bddb4cbb390b07dada31b92ae40c90f3c27d606dcb5d91b0a84eb",
-      "target": "飞翼高达（鸟形态）<END>",
+      "target": "飞翼高达(鸟形态)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4357,7 +4357,7 @@
     {
       "key": "base:t00_00647",
       "source_sha256": "efac91e9c586051791ab24f13f26d30e31f892dba169d86b64fad1101cdef4be",
-      "target": "飞翼零式（鸟形态）<END>",
+      "target": "飞翼零式(鸟形态)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4630,21 +4630,21 @@
     {
       "key": "base:t00_00686",
       "source_sha256": "90bdebb2059274ce66bc02d4785c25c6c8e087f313495df81be3151e9ef721e3",
-      "target": "古连泰沙（WS）<END>",
+      "target": "古连泰沙(WS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00687",
       "source_sha256": "c6bddd06b3641195afb83a292776e518e26f888c21583eddd6bbf48213abce2b",
-      "target": "古连泰沙（DS）<END>",
+      "target": "古连泰沙(DS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00688",
       "source_sha256": "a9c633ad069f0ab177b8de93a34e8b9200423b9e9d19769c11ab2cd79b2b5a61",
-      "target": "古连泰沙（MS）<END>",
+      "target": "古连泰沙(MS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5358,7 +5358,7 @@
     {
       "key": "base:t00_00790",
       "source_sha256": "8ad85c28fb97b94c18b812f0e829c2a6d418cb970519b446a891b811b4bffea8",
-      "target": "魔神Z（JS）<END>",
+      "target": "魔神Z(JS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5554,14 +5554,14 @@
     {
       "key": "base:t00_00818",
       "source_sha256": "1f55eaa857fbff855b0af5e0c15b3a6e7f7d32bbdda84f66657438f271f669c1",
-      "target": "陶拉斯（MA）<END>",
+      "target": "陶拉斯(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00819",
       "source_sha256": "40de6f6b478d5789b9185600037a9c183643ef26e2a8924440707bb51355020b",
-      "target": "艾比安高达（MA）<END>",
+      "target": "艾比安高达(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5631,7 +5631,7 @@
     {
       "key": "base:t00_00829",
       "source_sha256": "fccf7ea2c3820f2d5cc78e290595f99d50b44bb22c7df10cfe5a3750fb3e2bf8",
-      "target": "多尔（飞行）<END>",
+      "target": "多尔(飞行)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5897,14 +5897,14 @@
     {
       "key": "base:t00_00867",
       "source_sha256": "fccf7ea2c3820f2d5cc78e290595f99d50b44bb22c7df10cfe5a3750fb3e2bf8",
-      "target": "多尔（飞行）<END>",
+      "target": "多尔(飞行)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00868",
       "source_sha256": "4f200f5993fa9d0145131f53bf30f61604b6c0e6ad78203741f90f59f5257e8c",
-      "target": "灵·格斯（BWS）<END>",
+      "target": "灵·格斯(BWS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5988,7 +5988,7 @@
     {
       "key": "base:t00_00880",
       "source_sha256": "1f55eaa857fbff855b0af5e0c15b3a6e7f7d32bbdda84f66657438f271f669c1",
-      "target": "陶拉斯（MA）<END>",
+      "target": "陶拉斯(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },

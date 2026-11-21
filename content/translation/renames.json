@@ -4480,7 +4480,7 @@
    ],
    "zh-Hans": {
     "old": "金牛座（MA）",
-    "new": "陶拉斯（MA）"
+    "new": "陶拉斯(MA)"
    },
    "gate": false,
    "sections": [
@@ -5989,7 +5989,7 @@
    ],
    "zh-Hans": {
     "old": "里·卡兹（BWS）",
-    "new": "灵·格斯（BWS）"
+    "new": "灵·格斯(BWS)"
    },
    "gate": false,
    "sections": [
@@ -8598,7 +8598,7 @@
    ],
    "zh-Hans": {
     "old": "灵格斯（BWS）",
-    "new": "灵·格斯（BWS）"
+    "new": "灵·格斯(BWS)"
    },
    "gate": true,
    "sections": [
