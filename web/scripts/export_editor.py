@@ -71,12 +71,23 @@ REGIONS = {13: {"ja": "地球", "zh": "地球", "en": "Earth", "ko": "지구"}, 
 def main() -> int:
     rom = ROM.read_bytes()
     table = ResourceTable(rom)
+    records = ROOT / "assets/original-data/records"
+    events = [json.loads(line).get("script") or {} for line in (records / "stage_events.jsonl").open(encoding="utf-8")]
+    # Weapons: the name's text and the unit each belongs to (weapons.jsonl's links).
+    weapon_rows = []
+    for line in (records / "weapons.jsonl").open(encoding="utf-8"):
+        r = json.loads(line)
+        links = {l["relation"]: l["key"] for l in r.get("links", [])}
+        text = links.get("武器名称", "")
+        owner = next((l["key"] for l in r.get("links", []) if l["key"].startswith("base:units:")), "")
+        weapon_rows.append((int(r["key"].rsplit(":", 1)[1]), int(text.rsplit("_", 1)[1]) if text else None, int(owner.rsplit(":", 1)[1]) if owner else None))
+    weapon_texts = {t for _, t, _ in weapon_rows if t is not None}
     names = {}
     with (ROOT / "assets/text-export/records.jsonl").open(encoding="utf-8") as f:
         for line in f:
             r = json.loads(line)
             if r.get("table") == 0 and (r["id"] < 64 or OBJECTIVE_FIRST <= r["id"] < OBJECTIVE_FIRST + 0x80 or r.get("category") == "names.part"
-                                        or TITLES <= r["id"] < TITLES + 143):
+                                        or TITLES <= r["id"] < TITLES + 143 or r["id"] in weapon_texts):
                 names[r["id"]] = r
     korean = {int(e["key"][-5:]): plain(e["target"]) for e in
               json.loads((ROOT / "content/locales/ko.json").read_text(encoding="utf-8"))["entries"]}
@@ -131,7 +142,27 @@ def main() -> int:
             break
     else:
         raise SystemExit("3D49's table has no end where it should")
-    used_scenes = {s for p in places for s in p["scenes"]} | {s for b in battles for s in b["scenes"]}
+    weapons = [{"id": w, **(name(t) if t in names else {"ja": f"#{w}", "zh": f"#{w}", "en": f"#{w}", "ko": f"#{w}"}), "unit": u} for w, t, u in weapon_rows]
+    # Sound effects (3D39): no names anywhere, so how often and where the original plays each.
+    sounds: dict[int, list] = {}
+    # Each original map's stages: the scene's first map (stage_maps), and maps 3D34 changes to.
+    on_map: dict[int, set[int]] = {}
+    for line in (records / "stage_maps.jsonl").open(encoding="utf-8"):
+        r = json.loads(line)
+        scene = int(r["key"].rsplit(":", 1)[1])
+        if 0 < scene < 143:
+            on_map.setdefault(r["fields"][0]["value"], set()).add(scene)
+    for script in events:
+        scenes = [s for s in script.get("scenes", []) if 0 < s < 143]
+        for ins in script.get("instructions", []):
+            if ins["opcode"] == 0x3D39 and ins["operands"]:
+                row = sounds.setdefault(ins["operands"][0], [0, set()]); row[0] += 1; row[1].update(scenes)
+            if ins["opcode"] == 0x3D34 and ins["operands"]:
+                on_map.setdefault(ins["operands"][0], set()).update(scenes)
+    sounds_out = [{"id": n, "times": c, "scenes": sorted(sc)[:2]} for n, (c, sc) in sorted(sounds.items(), key=lambda kv: -kv[1][0])]
+    songs = [{"id": s["song"], "title": s["title"]} for s in json.loads((ROOT / "web/src/data/bgm.json").read_text(encoding="utf-8"))["songs"]]
+    used_scenes = ({s for p in places for s in p["scenes"]} | {s for b in battles for s in b["scenes"]} | {s for v in on_map.values() for s in v}
+                   | {s for row in sounds_out for s in row["scenes"]})
     titles = {str(scene): name(TITLES + scene) for scene in sorted(used_scenes) if TITLES + scene in names}
 
     (GEN / "maps").mkdir(parents=True, exist_ok=True)
@@ -150,6 +181,7 @@ def main() -> int:
             entry["template"] = {"map": number, "layout": like["layout"], "atlas": like["atlas"], "palette": like["palette"],
                                  "palette_hex": like["palette_bytes"].hex(), "cycles": like["cycles"],
                                  "space": like["space"], "music": like["music"]}
+        entry["scenes"] = sorted(s for s in on_map.get(number, ()) if names.get(TITLES + s) and plain(names[TITLES + s]["display"]) != "リザーブ")[:3]
         maps.append(entry)
         out = GEN / "maps" / f"{number}.png"
         if not out.exists() or out.stat().st_mtime < ROM.stat().st_mtime:
@@ -171,6 +203,7 @@ def main() -> int:
     colours = {str(t): [*(round(v / acc[3]) for v in acc[:3]), acc[3]] for t, acc in sorted(sums.items()) if acc[3] >= 200}
     (GEN / "editor.json").write_text(json.dumps({"schema": "srw64.web-editor.v1", "maps": maps, "terrain": terrain, "objectives": objectives, "parts": parts,
                                                 "places": places, "battles": battles, "titles": titles,
+                                                "songs": songs, "sounds": sounds_out, "weapons": weapons,
                                                 "terrain_colours": colours},
                                                 ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     export_ops()

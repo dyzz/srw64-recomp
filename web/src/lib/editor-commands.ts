@@ -4,7 +4,7 @@
 // (scripts/level-editor.ts); the model writes the action from it (editor-model.ts).
 
 export type Field =
-  | { key: string; type: 'pilot' | 'unit' | 'group' | 'pos' | 'bool' | 'map' | 'xy' | 'area' | 'place' | 'battle' }
+  | { key: string; type: 'pilot' | 'unit' | 'group' | 'pos' | 'bool' | 'map' | 'xy' | 'area' | 'place' | 'battle' | 'song' | 'sound' | 'var' | 'weapon' }
   | { key: string; type: 'number'; min: number; max: number; step?: number }
   | { key: string; type: 'select'; options: [string, string][] };   // [value, label key]
 export type Command = { name: string; group: 'camera' | 'unit' | 'army' | 'world' | 'story' | 'show'; fields: Field[];
@@ -23,10 +23,10 @@ export const COMMANDS: Command[] = [
   { name: 'effect', group: 'show', fields: [{ key: 'id', type: 'select', options: [['0', 'effect0'], ['1', 'effect1'], ['11', 'effect11']] }, { key: 'at', type: 'pos' }] },
   { name: 'green_area', group: 'show', fields: [{ key: 'value', type: 'area' }], shape: 'scalar' },
   { name: 'shake', group: 'show', fields: [{ key: 'value', type: 'number', min: 1, max: 20 }], shape: 'scalar' },
-  { name: 'sound', group: 'show', fields: [{ key: 'value', type: 'number', min: 0, max: 0xFFFF }], shape: 'scalar' },
+  { name: 'sound', group: 'show', fields: [{ key: 'value', type: 'sound' }], shape: 'scalar' },
   { name: 'powerup_scene', group: 'show', fields: [{ key: 'value', type: 'number', min: 0, max: 10 }], shape: 'scalar' },
   { name: 'battle_scene', group: 'show', fields: [{ key: 'a', type: 'battle' }, { key: 'b', type: 'battle' }] },
-  { name: 'map_weapon', group: 'show', fields: [{ key: 'who', type: 'pilot' }, { key: 'unit', type: 'unit' }, { key: 'weapon', type: 'number', min: 0, max: 1328 }, { key: 'dir', type: 'number', min: 0, max: 3 }] },
+  { name: 'map_weapon', group: 'show', fields: [{ key: 'who', type: 'pilot' }, { key: 'unit', type: 'unit' }, { key: 'weapon', type: 'weapon' }, { key: 'dir', type: 'number', min: 0, max: 3 }] },
   { name: 'move', group: 'unit', fields: [{ key: 'who', type: 'pilot' }, { key: 'to', type: 'pos' }] },
   { name: 'destroy', group: 'unit', fields: [{ key: 'value', type: 'pilot' }], shape: 'scalar' },
   { name: 'destroy_group', group: 'unit', fields: [{ key: 'value', type: 'group' }], shape: 'scalar' },
@@ -51,12 +51,12 @@ export const COMMANDS: Command[] = [
   { name: 'squad_mark', group: 'army', fields: [{ key: 'pilot', type: 'pilot' }, { key: 'unit', type: 'unit' }, { key: 'on', type: 'bool' }] },
   { name: 'squad_split', group: 'army', fields: [{ key: 'value', type: 'select', options: [['a', 'squadA'], ['b', 'squadB']] }], shape: 'scalar' },
   { name: 'squad_clear', group: 'army', fields: [], shape: 'flag' },
-  { name: 'unlock', group: 'army', fields: [{ key: 'value', type: 'number', min: 0, max: 1328 }], shape: 'scalar' },
+  { name: 'unlock', group: 'army', fields: [{ key: 'value', type: 'weapon' }], shape: 'scalar' },
   { name: 'copilot', group: 'army', fields: [{ key: 'pilot', type: 'pilot' }, { key: 'add', type: 'pilot' }] },
   { name: 'funds', group: 'army', fields: [{ key: 'value', type: 'number', min: 1000, max: 999000, step: 1000 }], shape: 'scalar' },
   { name: 'morale_down', group: 'army', fields: [], shape: 'flag' },
-  { name: 'set', group: 'story', fields: [{ key: 'var', type: 'number', min: 0, max: 199 }, { key: 'value', type: 'number', min: 0, max: 3 }] },
-  { name: 'bump', group: 'story', fields: [{ key: 'var', type: 'number', min: 0, max: 199 }, { key: 'by', type: 'select', options: [['1', 'bumpUp'], ['-1', 'bumpDown']] }] },
+  { name: 'set', group: 'story', fields: [{ key: 'var', type: 'var' }, { key: 'value', type: 'number', min: 0, max: 3 }] },
+  { name: 'bump', group: 'story', fields: [{ key: 'var', type: 'var' }, { key: 'by', type: 'select', options: [['1', 'bumpUp'], ['-1', 'bumpDown']] }] },
   { name: 'all_lost_defeat', group: 'story', fields: [{ key: 'value', type: 'bool' }], shape: 'scalar' },
   { name: 'player_phase', group: 'story', fields: [], shape: 'flag' },
   { name: 'swap_identity', group: 'story', fields: [{ key: 'a', type: 'pilot' }, { key: 'b', type: 'pilot' }] },
@@ -71,7 +71,7 @@ export const commandOf = (name: string) => COMMANDS.find((c) => c.name === name)
 export function defaults(c: Command, pilot: number, unit: number, group: number): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const f of c.fields) out[f.key] = f.type === 'pilot' ? pilot : f.type === 'unit' ? unit : f.type === 'group' ? group : f.type === 'bool' ? true
-    : f.type === 'area' ? [0, 0, 2, 2] : f.type === 'pos' ? { x: 0, y: 0 } : f.type === 'xy' ? { x: 0, y: 0 } : f.type === 'map' ? 20 : f.type === 'place' ? 0 : f.type === 'battle' ? (f.key === 'b' ? 16 : 15) : f.type === 'select' ? f.options[0][0] : f.type === 'number' ? Math.max(f.min, f.step ?? 1) : 0;
+    : f.type === 'area' ? [0, 0, 2, 2] : f.type === 'pos' ? { x: 0, y: 0 } : f.type === 'xy' ? { x: 0, y: 0 } : f.type === 'map' ? 20 : f.type === 'place' ? 0 : f.type === 'sound' ? 174 : f.type === 'weapon' ? 0 : f.type === 'var' ? 60 : f.type === 'song' ? 27 : f.type === 'battle' ? (f.key === 'b' ? 16 : 15) : f.type === 'select' ? f.options[0][0] : f.type === 'number' ? Math.max(f.min, f.step ?? 1) : 0;
   if (c.name === 'sortie') out.max = 15;
   return out;
 }

@@ -98,7 +98,8 @@ export type Stage = {
   place?: number; endPlace?: number;
 };
 export type OwnMapInfo = { name: string; like: number; columns: number; rows: number; scale: number; terrain: number[][] };
-export type Project = { route: number; stages: Stage[]; maps: OwnMapInfo[] };
+// vars: the story variables by the author's names (the editor gives each a free number).
+export type Project = { route: number; stages: Stage[]; maps: OwnMapInfo[]; vars?: { id: number; name: string }[] };
 
 export const FRAME = 2;    // rings of cells that are a map's frame
 export const KEY = /^[a-z0-9_-]{1,32}$/;

@@ -7,7 +7,7 @@
 // line's compiler in TypeScript). What it shows of the original game comes from the site's
 // exports (/gen/editor.json, /gen/maps, the Library's pictures): no ROM is read, nothing is
 // uploaded.
-import { strFromU8, strToU8 } from 'fflate';
+import { strFromU8, strToU8, unzipSync, zipSync } from 'fflate';
 import { el, fill, openPackage, packageForm, readJson, say, writePackage, type Text } from './mod-package';
 import { picker, type Pickable } from './picker';
 import { CompileError } from '../lib/compiler/assemble.ts';
@@ -20,7 +20,7 @@ import { campaignSource, FRAME, freeName, leadsTo, newStage, objectiveOf, proble
 
 type Names = { ja: string; zh: string; en: string; ko?: string };
 type Terrain = { id: number; name: Names; defense: number; hit: number; hp: number; en: number; move: number[] };
-type OriginalMap = { map: number; columns: number; rows: number; mode: number; space: number; terrain: string; template?: Template };
+type OriginalMap = { map: number; columns: number; rows: number; mode: number; space: number; terrain: string; template?: Template; scenes?: number[] };
 type Data = { text: Text; units: (Pickable & { icon: number })[]; pilots: Pickable[]; series: { id: number | null; name: string }[]; lang: 'zh' | 'en' | 'ja' | 'ko'; locale: string; game: string };
 type Tab = 'overview' | 'map' | 'units' | 'story' | 'rules';
 type Picture = { bitmap: ImageBitmap; blob: Blob };
@@ -38,7 +38,8 @@ export async function initLevelEditor() {
   const nameOf = (n?: Names) => n ? n[lang] || n.en || n.ja : '?';
   const form = packageForm(root, T, locale, game);
   const original: { maps: OriginalMap[]; terrain: Terrain[]; objectives?: ({ id: number } & Names)[]; parts?: ({ id: number } & Names)[];
-    places?: { id: number; region: Names; scenes: number[] }[]; battles?: { id: number; pilot: number; scenes: number[] }[]; titles?: Record<string, Names>; terrain_colours?: Record<string, number[]> } =
+    places?: { id: number; region: Names; scenes: number[] }[]; battles?: { id: number; pilot: number; scenes: number[] }[];
+    songs?: { id: number; title: string }[]; sounds?: { id: number; times: number; scenes: number[] }[]; weapons?: ({ id: number; unit: number | null } & Names)[]; titles?: Record<string, Names>; terrain_colours?: Record<string, number[]> } =
     await (await fetch('/gen/editor.json')).json();
   const terrainOf = new Map(original.terrain.map((t) => [t.id, t]));
   const templates = new Map(original.maps.filter((m) => m.template).map((m) => [m.map, m.template!]));
@@ -67,7 +68,6 @@ export async function initLevelEditor() {
   // Picking an area on the units tab's map for a trigger or a condition, then back.
   let areaPick: { area: Area; back: Tab; done?: (a: Area) => void } | null = null;
   let eventAt = 'enter', stepAt = -1, language = lang === 'ja' ? 'ja' : lang === 'en' ? 'en' : 'zh-Hans';
-  const undo = new Map<string, { past: number[][][]; future: number[][][] }>();
   const stage = () => project.stages[current];
   const ownMap = (name: unknown) => project.maps.find((m) => m.name === name);
   const size = (s: Stage) => { const m = ownMap(s.map) ?? original.maps[Number(s.map)] ?? original.maps[0]; return { columns: m.columns, rows: m.rows }; };
@@ -102,7 +102,9 @@ export async function initLevelEditor() {
     saving = window.setTimeout(async () => {
       const db = await database;
       if (!db) return;
-      const record = { project, pictures: Object.fromEntries([...pictures].map(([name, p]) => [name, p.blob])), form: Object.fromEntries(fields.map((k) => [k, fieldOf(k).value])) };
+      // Only the pictures the project uses: a picture left behind by 新建 or a removed map stays in
+      // memory for undo, not in the browser's store.
+      const record = { project, pictures: Object.fromEntries([...pictures].filter(([name]) => ownMap(name)).map(([name, p]) => [name, p.blob])), form: Object.fromEntries(fields.map((k) => [k, fieldOf(k).value])) };
       const done = db.transaction('kv', 'readwrite');
       done.objectStore('kv').put(record, 'project');
       done.oncomplete = () => { saved.textContent = T.saved; };
@@ -192,12 +194,6 @@ export async function initLevelEditor() {
   }
   const cellAt = (e: MouseEvent) => { const box = canvas.getBoundingClientRect(); return { x: Math.floor((e.clientX - box.left) / box.width * canvas.width / cell), y: Math.floor((e.clientY - box.top) / box.height * canvas.height / cell) }; };
   const inside = (own: OwnMapInfo, x: number, y: number) => x >= FRAME && y >= FRAME && x < own.columns - FRAME && y < own.rows - FRAME;
-  const remember = (own: OwnMapInfo) => {
-    const history = undo.get(own.name) ?? { past: [], future: [] };
-    history.past.push(own.terrain.map((row) => [...row])); history.future = [];
-    if (history.past.length > 60) history.past.shift();
-    undo.set(own.name, history);
-  };
   canvas.addEventListener('mousedown', (e) => {
     const s = stage(), at = cellAt(e), own = ownMap(s.map);
     if (tab === 'units' && areaPick) { drag = at; draw(); return; }
@@ -216,7 +212,6 @@ export async function initLevelEditor() {
     }
     if (!own || compare || !inside(own, at.x, at.y)) return;
     if (tool === 'pick' || e.altKey) { brush = own.terrain[at.y][at.x]; tool = 'brush'; update(); return; }
-    remember(own);
     if (tool === 'fill') {
       const from = own.terrain[at.y][at.x], queue = [at];
       if (from !== brush) while (queue.length) {
@@ -231,16 +226,9 @@ export async function initLevelEditor() {
     drag = at;
     if (tool === 'brush') { own.terrain[at.y][at.x] = brush; draw(); }
   });
-  // Undo and redo on the map tab from the keyboard (not while typing in a field).
-  const history = (back: boolean) => {
-    const own = ownMap(stage().map), h = own && undo.get(own.name);
-    if (!own || !h) return;
-    const from = back ? h.past : h.future, to = back ? h.future : h.past;
-    if (!from.length) return;
-    to.push(own.terrain); own.terrain = from.pop()!; update();
-  };
+  // Undo and redo of every edit, from the keyboard (not while typing in a field: the field's own).
   window.addEventListener('keydown', (e) => {
-    if (tab !== 'map' || !(e.ctrlKey || e.metaKey) || (e.target as HTMLElement)?.closest?.('input, textarea, select')) return;
+    if (!(e.ctrlKey || e.metaKey) || (e.target as HTMLElement)?.closest?.('input, textarea, select')) return;
     const key = e.key.toLowerCase();
     if (key === 'z') { e.preventDefault(); history(!e.shiftKey); }
     else if (key === 'y') { e.preventDefault(); history(false); }
@@ -317,7 +305,6 @@ export async function initLevelEditor() {
     c.imageSmoothingEnabled = true; c.imageSmoothingQuality = 'high';
     c.drawImage(pictures.get(own.name)!.bitmap, 0, 0, own.columns, own.rows);
     const pixels = c.getImageData(0, 0, own.columns, own.rows).data;
-    remember(own);
     for (let y = FRAME; y < own.rows - FRAME; ++y) for (let x = FRAME; x < own.columns - FRAME; ++x) {
       const at = (y * own.columns + x) * 4;
       let best = colours[0], far = Infinity;
@@ -387,6 +374,10 @@ export async function initLevelEditor() {
       el('div', { class: 'two' },
         el('section', { class: 'panel' }, el('h3', {}, T.checks), ...(list.length ? list.map((p) => el('p', { class: p.hard ? 'problem hard' : 'problem' }, el('span', {}, p.hard ? '✕' : '!'), problemText(p)))
           : [el('p', { class: 'problem ok' }, el('span', {}, '✓'), T.noProblems)])),
+        el('section', { class: 'panel' }, el('h3', {}, T.varsTitle, el('span', { class: 'sub' }, T.varsNote)),
+          ...(project.vars ?? []).map((v) => el('div', { class: 'row' }, input(v.name, (name) => { v.name = name.trim() || v.name; }, { 'aria-label': T.varsTitle }), el('span', { class: 'sub' }, `#${v.id}`),
+            act('✕', () => { project.vars = project.vars!.filter((x) => x !== v); }, 'icon'))),
+          el('div', { class: 'row' }, act(T.varAdd, () => { newVar(); }, 'chip')), el('p', { class: 'hint' }, T.varsHint)),
         el('section', { class: 'panel' }, el('h3', {}, fill(T.thisStage, { stage: stageLabel(s) })),
           el('div', { class: 'grid2' },
             field(T.stageTitle, input(s.title, (v) => { s.title = v.trim(); })),
@@ -405,7 +396,7 @@ export async function initLevelEditor() {
     const pick = el('input', { type: 'file', accept: 'image/png,image/jpeg,image/webp', hidden: true, onchange: (e: Event) => { const file = (e.target as HTMLInputElement).files?.[0]; if (file) void importPicture(file); } });
     const importer = el('label', { class: 'mini file' }, own ? T.otherPicture : T.importPicture, pick);
     const step = (n: number, title: string, done: boolean, ...body: (Node | null)[]) => el('section', { class: 'step' }, el('h3', {}, el('span', { class: done ? 'dot done' : 'dot' }, String(n)), title), ...body);
-    const spaceTag = (o: OriginalMap) => `${o.map} · ${o.columns - 2 * FRAME}×${o.rows - 2 * FRAME}${o.space ? ` · ${T.space}` : ''}`;
+    const spaceTag = (o: OriginalMap) => `${o.map} · ${o.columns - 2 * FRAME}×${o.rows - 2 * FRAME}${o.space ? ` · ${T.space}` : ''}${o.scenes?.length ? ` · ${usedIn(o.scenes)}` : ''}`;
     const left: Node[] = [];
     if (!own) {
       const m = original.maps[Number(s.map)];
@@ -433,19 +424,16 @@ export async function initLevelEditor() {
             node.append(el('span', { class: 'swatch', style: `background:${k.colour}` }), el('span', { class: 'brush-name' }, el('strong', {}, nameOf(k.t.name)), el('span', { class: 'sub' }, stats(k.t))),
               el('span', { class: 'sub' }, used(k) ? fill(T.cells, { n: used(k) }) : '')); return node; }))));
     }
-    const steps = own ? undo.get(own.name) : undefined;
     const tools: [typeof tool, string][] = [['brush', T.toolBrush], ['rect', T.toolRect], ['fill', T.toolFill], ['pick', T.toolPick]];
     const center = el('main', { class: 'center' }, board(
       own ? el('div', { class: 'segment' }, ...tools.map(([t, label]) => act(label, () => { tool = t; }, tool === t ? 'seg on' : 'seg'))) : null,
-      own ? button(T.undo, () => history(true), 'mini', { disabled: !steps?.past.length, title: 'Ctrl/⌘+Z' }) : null,
-      own ? button(T.redo, () => history(false), 'mini', { disabled: !steps?.future.length, title: 'Ctrl/⌘+Shift+Z' }) : null,
       el('label', { class: 'check' }, el('input', { type: 'checkbox', checked: overlay, onchange: (e: Event) => { overlay = (e.target as HTMLInputElement).checked; draw(); } }), T.showTerrain)));
     const right: Node[] = [el('h3', {}, T.thisMap)];
     if (own) {
       const note = el('p', { class: 'status', 'data-preview-note': true });
       right.push(
         field(T.mapName, input(own.name, (v) => { const name = v.trim(); if (!/^[a-z0-9_-]{1,32}$/.test(name) || ownMap(name)) return;
-          for (const o of project.stages) if (o.map === own.name) o.map = name; pictures.set(name, pictures.get(own.name)!); pictures.delete(own.name); undo.delete(own.name); own.name = name; }), T.stageKeyHint),
+          for (const o of project.stages) if (o.map === own.name) o.map = name; pictures.set(name, pictures.get(own.name)!); own.name = name; }), T.stageKeyHint),
         field(T.mapLike, select([...templates.keys()].map((n): [string, string] => [String(n), spaceTag(original.maps[n])]), String(own.like), (v) => { own.like = Number(v); compare = null; }), T.mapLikeHint),
         original.maps[own.like].space ? el('p', { class: 'warn' }, T.spaceNote) : null,
         el('section', { class: 'panel' }, el('h3', {}, T.originalMode), el('p', { class: 'note' }, T.originalModeNote),
@@ -559,9 +547,52 @@ export async function initLevelEditor() {
   }
 
   // --- Story ------------------------------------------------------------------------------------------
+  // 「原版「…」「…」」: the original's stages that use something.
+  const usedIn = (scenes: number[]) => fill(T.placeUsed, { titles: scenes.slice(0, 3).map((n) => `「${nameOf(original.titles?.[String(n)])}」`).join('') });
+  // Music by its title (the game's 49 songs, titles in Japanese everywhere); a number outside them kept as it is.
+  const songSelect = (value: number, set: (v: number) => void) => {
+    const songs = original.songs ?? [];
+    return select([...(songs.some((s) => s.id === value) ? [] : [[String(value), `${value}`] as [string, string]]), ...songs.map((s): [string, string] => [String(s.id), `${s.id} · ${s.title}`])],
+      String(value), (v) => set(Number(v)));
+  };
+  // Sound effects have no names: how often the original plays each, and where.
+  const soundSelect = (value: number, set: (v: number) => void) => {
+    const sounds = original.sounds ?? [];
+    return select([...(sounds.some((s) => s.id === value) ? [] : [[String(value), `${value}`] as [string, string]]),
+      ...sounds.map((s): [string, string] => [String(s.id), [String(s.id), fill(T.soundTimes, { n: s.times }), ...(s.scenes.length ? [usedIn(s.scenes)] : [])].join(' · ')])],
+      String(value), (v) => set(Number(v)));
+  };
+  // A weapon from the picker: its unit's picture and series; `of` keeps it to one unit's.
+  const weaponOf = new Map((original.weapons ?? []).map((w) => [w.id, w]));
+  const weaponName = (id: number) => { const w = weaponOf.get(id); return w ? `${nameOf(w)}${w.unit !== null ? ` · ${unitName(w.unit)}` : ''}` : `#${id}`; };
+  function chooseWeapon(of: number | null, done: (id: number) => void) {
+    const items: Pickable[] = (original.weapons ?? []).filter((w) => of === null || w.unit === of).map((w) => {
+      const u = w.unit === null ? undefined : unitOf.get(w.unit);
+      return { id: w.id, name: { ja: w.ja, zh: w.zh, en: w.en, ko: w.ko }, series: u?.series ?? null, img: u?.img ?? null };
+    });
+    const list = picker(items, series, lang, { allSeries: T.allSeries, search: T.search, none: T.none }, (id) => { dialog.close(); done(id); update(); },
+      { badge: (id) => { const w = weaponOf.get(id); return w?.unit !== null && w?.unit !== undefined ? unitName(w.unit) : null; } });
+    dialog.replaceChildren(el('div', { class: 'pick-head' }, el('strong', {}, T.pickWeapon), button(T.close, () => dialog.close())), list.node);
+    dialog.showModal();
+  }
+  const weaponButton = (id: number, of: number | null, done: (id: number) => void) => button(`${weaponName(id)} ▾`, () => chooseWeapon(of, done), 'pick-button');
+  // Story variables by the author's names. New ones take numbers the original's scripts never
+  // touch (60–99): 100–114 are the game's own switches, reset as a stage begins.
+  const FREE_VARS = Array.from({ length: 40 }, (_, n) => 60 + n);
+  const varName = (id: number) => project.vars?.find((v) => v.id === id)?.name;
+  function newVar(): number | null {
+    const id = FREE_VARS.find((n) => !project.vars?.some((v) => v.id === n));
+    if (id === undefined) return null;
+    (project.vars ??= []).push({ id, name: fill(T.varNew, { n: (project.vars?.length ?? 0) + 1 }) });
+    return id;
+  }
+  const varSelect = (value: number, set: (v: number) => void) => select([
+    ...(varName(value) === undefined ? [[String(value), `#${value}`] as [string, string]] : []),
+    ...(project.vars ?? []).map((v): [string, string] => [String(v.id), v.name]), ['new', T.varAdd]], String(value),
+    (v) => { if (v === 'new') { const id = newVar(); if (id !== null) set(id); } else set(Number(v)); });
   // A world map place: its region, and which of the original's stages show it.
   const placeSelect = (value: number, set: (v: number) => void) => select((original.places ?? []).map((p): [string, string] => [String(p.id),
-    [String(p.id), nameOf(p.region), ...(p.scenes.length ? [fill(T.placeUsed, { titles: p.scenes.slice(0, 3).map((n) => `「${nameOf(original.titles?.[String(n)])}」`).join('') })] : [])].join(' · ')]),
+    [String(p.id), nameOf(p.region), ...(p.scenes.length ? [usedIn(p.scenes)] : [])].join(' · ')]),
     String(value), (v) => set(Number(v)));
   const stepsOf = (s: Stage, at: string): Step[] | null => at === 'before' ? s.before : at === 'enter' ? s.enter : at === 'end' ? s.end : s.events.find((e) => e.id === at)?.steps ?? null;
   const STEP_KINDS: [Step['kind'], string][] = [['say', 'stepSay'], ['deploy', 'stepDeploy'], ['leave', 'stepLeave'], ['join', 'stepJoin'], ['bgm', 'stepBgm'], ['focus', 'stepFocus'], ['wait', 'stepWait'],
@@ -596,6 +627,10 @@ export async function initLevelEditor() {
       else if (f.type === 'select') out.push(label, select(f.options.map(([v, k]): [string, string] => [v, T[k] ?? v]), String(args[f.key]), set));
       else if (f.type === 'area') out.push(label, ...areaFields(args[f.key] as Area));
       else if (f.type === 'place') out.push(label, placeSelect(Number(args[f.key]), (v) => set(v)));
+      else if (f.type === 'song') out.push(label, songSelect(Number(args[f.key]), (v) => set(v)));
+      else if (f.type === 'sound') out.push(label, soundSelect(Number(args[f.key]), (v) => set(v)));
+      else if (f.type === 'var') out.push(label, varSelect(Number(args[f.key]), (v) => set(v)));
+      else if (f.type === 'weapon') out.push(label, weaponButton(Number(args[f.key]), fields.some((x) => x.type === 'unit') ? Number(args.unit) : null, (v) => set(v)));
       else if (f.type === 'battle') out.push(label, select((original.battles ?? []).map((b): [string, string] => [String(b.id),
         [String(b.id), pilotName(b.pilot), ...(b.scenes.length ? [fill(T.placeUsed, { titles: b.scenes.map((n) => `「${nameOf(original.titles?.[String(n)])}」`).join('') })] : [])].join(' · ')]),
         String(args[f.key]), (v) => set(Number(v))));
@@ -666,7 +701,7 @@ export async function initLevelEditor() {
       case 'route': return { kind, route: project.route };
       case 'choice': return { kind, n: 1 };
       case 'funds': return { kind, atLeast: 10000 };
-      case 'var': return { kind, n: 0, is: 0 };
+      case 'var': return { kind, n: project.vars?.[0]?.id ?? newVar() ?? 60, is: 1 };
       case 'level': return { kind, who: ours, of: theirs };
       case 'opponent': return { kind, who: ours, is: theirs };
       case 'we_struck': return { kind, value: true };
@@ -685,7 +720,7 @@ export async function initLevelEditor() {
       case 'route': return [select([['0', T.route0], ['1', T.route1], ['2', T.route2], ['3', T.route3]], String(c.route), (v) => { c.route = Number(v); })];
       case 'choice': return [select([['1', '1'], ['2', '2'], ['3', '3']], String(c.n), (v) => { c.n = Number(v); })];
       case 'funds': return [el('span', {}, '≥'), number(c.atLeast, (v) => { c.atLeast = v; }, 0, 99999999)];
-      case 'var': return [number(c.n, (v) => { c.n = v; }, 0, 199), el('span', {}, '='), number(c.is, (v) => { c.is = v; }, 0, 3)];
+      case 'var': return [varSelect(c.n, (v) => { c.n = v; }), el('span', {}, '='), number(c.is, (v) => { c.is = v; }, 0, 3)];
       case 'level': return [who('pilot', c.who, (id) => { c.who = id; }), el('span', {}, '≥'), who('pilot', c.of, (id) => { c.of = id; })];
       case 'opponent': return [who('pilot', c.who, (id) => { c.who = id; }), el('span', {}, T.fights), who('pilot', c.is, (id) => { c.is = id; })];
       case 'we_struck': return [select([['1', T.struckYes], ['0', T.struckNo]], c.value ? '1' : '0', (v) => { c.value = v === '1'; })];
@@ -792,7 +827,7 @@ export async function initLevelEditor() {
       } else if (step.kind === 'deploy') body.push(select(s.groups.map((gr): [string, string] => [String(gr.id), `${groupName(gr)}（${s.units.filter((u) => u.group === gr.id).length}）`]), String(step.group), (v) => { step.group = Number(v); }));
       else if (step.kind === 'leave' || step.kind === 'focus') body.push(who('pilot', step.who, (id) => { step.who = id; }));
       else if (step.kind === 'join') body.push(who('pilot', step.pilot, (id) => { step.pilot = id; }), who('unit', step.unit, (id) => { step.unit = id; }));
-      else if (step.kind === 'bgm') body.push(number(step.n, (v) => { step.n = v; }, 0, 255));
+      else if (step.kind === 'bgm') body.push(songSelect(step.n, (v) => { step.n = v; }));
       else if (step.kind === 'wait') body.push(number(step.frames, (v) => { step.frames = v; }, 1, 32767), el('span', { class: 'sub' }, T.frames));
       else if (step.kind === 'fade') body.push(select([['in', T.fadeIn], ['out', T.fadeOut]], step.dir, (v) => { step.dir = v as never; }));
       else if (step.kind === 'if') body.push(condEditor(step.conds, s, event, T.stepIfHint));
@@ -805,7 +840,8 @@ export async function initLevelEditor() {
               // The third branch goes with its text: the steps from the last `or` to the end.
               const last = lastOr(n, close); step.options.pop(); if (last >= 0) steps.splice(last, close - last);
             }, 'chip') : null),
-          el('p', { class: 'hint' }, T.chooseHint));
+          el('p', { class: 'hint' }, T.chooseHint),
+          el('span', { class: 'sub' }, fill(T.whenPicked, { n: 1, text: step.options[0]?.[language] || step.options[0]?.['zh-Hans'] || step.options[0]?.ja || '…' })));
       } else if (step.kind === 'or') {
         const head = opener(n), k = head >= 0 ? branchOf(head, n) : 0, o = head >= 0 ? (steps[head] as Extract<Step, { kind: 'choose' }>).options[k - 1] : undefined;
         body.push(el('span', { class: 'sub' }, fill(T.whenPicked, { n: k, text: o?.[language] || o?.['zh-Hans'] || o?.ja || '…' })));
@@ -860,7 +896,11 @@ export async function initLevelEditor() {
           COMMANDS.filter((c) => c.group === g).map((c): [string, string] => [c.name, `${T[`cmdGroup_${g}`]} · ${T[`cmd_${c.name}`] ?? c.name}`]))], '', (v) => {
           if (!v) return;
           const c = commandOf(v)!, at = stepAt >= 0 ? stepAt + 1 : steps.length;
-          steps.splice(at, 0, { kind: 'cmd', name: v, args: defaults(c, s.units[0]?.pilot ?? 28, s.units[0]?.unit ?? 36, s.groups[s.groups.length - 1].id) });
+          const args = defaults(c, s.units[0]?.pilot ?? 28, s.units[0]?.unit ?? 36, s.groups[s.groups.length - 1].id);
+          for (const f of c.fields) if (f.type === 'var') args[f.key] = project.vars?.[0]?.id ?? newVar() ?? 60;
+          // A weapon of the command's own unit to start with.
+          for (const f of c.fields) if (f.type === 'weapon' && 'unit' in args) args[f.key] = original.weapons?.find((w) => w.unit === args.unit)?.id ?? args[f.key];
+          steps.splice(at, 0, { kind: 'cmd', name: v, args });
           stepAt = at;
         })));
     preview();
@@ -907,7 +947,7 @@ export async function initLevelEditor() {
     const others = project.stages.filter((o) => o !== s).map((o): [string, string] => [o.key, stageLabel(o)]);
     const after = s.after;
     const afterBody: Node[] = [select([['ending', T.ending], ...(others.length ? [['next', T.afterNext] as [string, string]] : []), ...(others.length > 1 ? [['choice', T.afterChoice] as [string, string]] : [])], after.kind,
-      (v) => { s.after = v === 'ending' ? { kind: 'ending' } : v === 'next' ? { kind: 'next', stage: others[0][0] } : { kind: 'choice', text: 18402, stages: [others[0][0], others[1][0]] }; })];
+      (v) => { s.after = v === 'ending' ? { kind: 'ending' } : v === 'next' ? { kind: 'next', stage: others[0][0] } : { kind: 'choice', text: 18402, stages: [others[0][0], others[1][0]], own: [{}, {}] }; })];
     if (after.kind === 'next') afterBody.push(select(others, after.stage, (v) => { after.stage = v; }));
     if (after.kind === 'choice') {
       afterBody.push(el('label', { class: 'check' }, el('input', { type: 'checkbox', checked: !!after.own, onchange: (e: Event) => {
@@ -937,12 +977,38 @@ export async function initLevelEditor() {
       field(T.objectiveLose, objectiveSelect(5593, 128, shown.lose, (n) => { s.objective = { ...s.objective, lose: n }; }, s.objective?.lose === undefined)),
       el('p', { class: 'note' }, nameOf(texts.find((o) => o.id === 5593 + shown.lose))),
       el('p', { class: 'hint' }, T.objectiveHint));
-    const leads = el('section', { class: 'panel' }, el('h3', {}, T.afterTitle), ...afterBody, field(T.stageBgm, number(s.bgm, (v) => { s.bgm = v; }, 0, 255), T.stageBgmHint));
+    const leads = el('section', { class: 'panel' }, el('h3', {}, T.afterTitle), ...afterBody, field(T.stageBgm, songSelect(s.bgm, (v) => { s.bgm = v; })));
     return [el('main', { class: 'center columns' }, conditions, arrivals, el('div', {}, objective, leads))];
   }
 
   // --- The frame: tabs, the stage, export ----------------------------------------------------
   const body = $('[data-body]'), tabsBox = $('[data-tabs]'), stageBox = $('[data-stage]'), overviewOnly = $('[data-overview-only]');
+  // Undo: the project as it was before each change update() sees (the page's state, like the
+  // tab, is not part of it). Kept in memory for this visit.
+  const past: string[] = [], future: string[] = [];
+  let last = '';
+  const undoButton = $<HTMLButtonElement>('[data-undo]'), redoButton = $<HTMLButtonElement>('[data-redo]');
+  function track() {
+    const now = JSON.stringify(project);
+    if (last && now !== last) { past.push(last); if (past.length > 200) past.shift(); future.length = 0; }
+    last = now;
+    undoButton.disabled = !past.length; redoButton.disabled = !future.length;
+  }
+  function history(back: boolean) {
+    const from = back ? past : future, to = back ? future : past;
+    if (!from.length) return;
+    to.push(JSON.stringify(project));
+    last = from.pop()!;
+    const was: Project = JSON.parse(last);
+    for (const k of Object.keys(project)) delete (project as Record<string, unknown>)[k];
+    Object.assign(project, was);
+    route.value = String(project.route);
+    picked = -1; stepAt = -1; compare = null;
+    if (!stepsOf(stage() ?? project.stages[0], eventAt)) eventAt = 'enter';
+    update();
+  }
+  undoButton.addEventListener('click', () => history(true));
+  redoButton.addEventListener('click', () => history(false));
   function update() {
     if (current >= project.stages.length) current = 0;
     tabsBox.replaceChildren(...(['overview', 'map', 'units', 'story', 'rules'] as Tab[]).map((t) => button(T[`tab_${t}`], () => { tab = t; compare = null; update(); }, tab === t ? 'tab on' : 'tab')));
@@ -952,6 +1018,7 @@ export async function initLevelEditor() {
     body.className = `editor-body t-${tab}`;
     body.replaceChildren(...(tab === 'overview' ? overview() : tab === 'map' ? mapTab() : tab === 'units' ? unitsTab() : tab === 'story' ? storyTab() : rulesTab()));
     draw();
+    track();
     changed();
   }
   const route = $<HTMLSelectElement>('[data-route]');
@@ -1010,24 +1077,66 @@ export async function initLevelEditor() {
   opener.addEventListener('change', async () => {
     const file = opener.files?.[0];
     opener.value = '';
-    if (!file) return;
+    if (file) await openMod(file);
+  });
+  async function openMod(file: File) {
     try {
       const { mod, files } = await openPackage(file);
       const kept = readJson(files['campaign/source/editor.json']);
       if (kept?.schema !== 'srw64.web-editor-project.v1') throw new Error(T.errNotEditors);
-      pictures.clear();
       for (const m of kept.project.maps as OwnMapInfo[]) { const blob = new Blob([files[`campaign/source/maps/${m.name}/picture.png`] as BlobPart]); pictures.set(m.name, { bitmap: await createImageBitmap(blob), blob }); }
+      for (const k of Object.keys(project)) delete (project as Record<string, unknown>)[k];
       Object.assign(project, kept.project);
       route.value = String(project.route);
       current = 0; picked = -1; tab = 'overview';
       form.fill(mod);
       say(importStatus, fill(T.imported, { id: mod.id }));
+      say(status, fill(T.imported, { id: mod.id }));
       update();
-    } catch (error) { say(importStatus, fill(T.errImport, { detail: String((error as Error).message ?? error) }), true); }
-  });
+    } catch (error) { say(importStatus, fill(T.errImport, { detail: String((error as Error).message ?? error) }), true); say(status, fill(T.errImport, { detail: String((error as Error).message ?? error) }), true); }
+  }
   $('[data-new]').addEventListener('click', () => {
     if (!window.confirm(T.confirmNew)) return;
-    project.route = 1; project.stages = [newStage('stage-1')]; project.maps = []; pictures.clear(); undo.clear(); current = 0; tab = 'overview'; route.value = '1'; update();
+    project.route = 1; project.stages = [newStage('stage-1')]; project.maps = []; project.vars = []; current = 0; tab = 'overview'; route.value = '1'; update();
+  });
+  // The project file: the whole project as the page keeps it (every map and its picture, the
+  // package form), saved whatever state it is in, unlike the package.
+  const PROJECT = 'srw64.web-editor-project.v1';
+  $('[data-save-project]').addEventListener('click', async () => {
+    const files: Record<string, Uint8Array> = {
+      'editor.json': strToU8(JSON.stringify({ schema: PROJECT, project, form: Object.fromEntries(fields.map((k) => [k, fieldOf(k).value])) }) + '\n') };
+    for (const m of project.maps) { const p = pictures.get(m.name); if (p) files[`maps/${m.name}/picture.png`] = await bytesOf(p.blob); }
+    const zip = zipSync(files, { level: 6 });
+    const name = `${(fieldOf('id').value.trim() || 'campaign').replace(/[^\w.-]+/g, '_')}.srw64edit`;
+    const url = URL.createObjectURL(new Blob([zip as BlobPart], { type: 'application/zip' }));
+    const a = el('a', { href: url, download: name });
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60_000);
+    say(status, fill(T.projectSaved, { file: name }));
+  });
+  const projectOpener = $<HTMLInputElement>('[data-open-project]');
+  projectOpener.addEventListener('change', async () => {
+    const file = projectOpener.files?.[0];
+    projectOpener.value = '';
+    if (!file) return;
+    try {
+      if (/\.srw64mod$/i.test(file.name)) { await openMod(file); return; }
+      const files = unzipSync(new Uint8Array(await file.arrayBuffer()));
+      const kept = readJson(files['editor.json']);
+      if (kept?.schema !== PROJECT) throw new Error(T.errNotProject);
+      for (const m of kept.project.maps as OwnMapInfo[]) {
+        const bytes = files[`maps/${m.name}/picture.png`];
+        if (bytes) { const blob = new Blob([bytes as BlobPart]); pictures.set(m.name, { bitmap: await createImageBitmap(blob), blob }); }
+      }
+      for (const k of Object.keys(project)) delete (project as Record<string, unknown>)[k];
+      Object.assign(project, kept.project);
+      project.maps = project.maps.filter((m) => pictures.has(m.name));
+      for (const [k, v] of Object.entries<string>(kept.form ?? {})) if (fieldOf(k)) fieldOf(k).value = v;
+      route.value = String(project.route);
+      current = 0; picked = -1; tab = 'overview';
+      say(status, fill(T.projectOpened, { file: file.name }));
+      update();
+    } catch (error) { say(status, fill(T.errImport, { detail: String((error as Error).message ?? error) }), true); }
   });
 
   await restore();

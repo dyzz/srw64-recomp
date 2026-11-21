@@ -23,7 +23,17 @@ const lead = t('做自己的追加剧本：导入一张地图图片切成格子�
 const text = {
   ...packageText(lang),
   tab_overview: t('总览', 'Overview'), tab_map: t('地图', 'Map'), tab_units: t('单位', 'Units'), tab_story: t('剧情', 'Story'), tab_rules: t('胜败与增援', 'Rules'),
-  saved: t('已自动保存', 'Saved in this browser'), newProject: t('新建', 'New'), confirmNew: t('清空现在的战役，重新开始？', 'Clear this campaign and start over?'),
+  saved: t('已自动保存', 'Saved in this browser'), newProject: t('新建', 'New'), confirmNew: t('清空现在的战役，重新开始？（点「撤销」可以找回；要留一份就先「保存工程」）', 'Clear this campaign and start over? (Undo brings it back; “Save project” keeps a copy first.)'),
+  saveProject: t('保存工程', 'Save project'), openProject: t('打开工程', 'Open project'),
+  saveProjectHint: t('把整个工程（所有地图和原图、包信息）存成 .srw64edit 文件，没做完、有错误也能存；换电脑或给别人接着做用。', 'Saves the whole project (every map and its picture, the package details) as a .srw64edit file, finished or not; to move it to another computer or hand it on.'),
+  openProjectHint: t('打开 .srw64edit 工程文件，或用这个编辑器导出的 .srw64mod', 'Open a .srw64edit project file, or a .srw64mod exported by this editor'),
+  projectSaved: t('已保存 {file}', 'Saved {file}'), projectOpened: t('已打开 {file}', 'Opened {file}'),
+  errNotProject: t('这不是这个编辑器的工程文件', 'this is not a project file of this editor'),
+  undoHint: t('撤销（Ctrl/⌘+Z）', 'Undo (Ctrl/⌘+Z)'), redoHint: t('重做（Ctrl/⌘+Shift+Z）', 'Redo (Ctrl/⌘+Shift+Z)'),
+  soundTimes: t('原版用过 {n} 次', 'used {n} times'), pickWeapon: t('选武器', 'Pick a weapon'),
+  varsTitle: t('剧情变量', 'Story variables'), varsNote: t('设变量、条件里用的名字', 'the names steps and conditions use'),
+  varsHint: t('每个变量存 0–3 的一个数，整个战役共用。编辑器给它挑原版剧本没用过的编号（60–99），改名不影响已经写好的步骤。', 'Each holds a number 0–3 for the whole campaign. The editor gives it a number the original’s scripts never use (60–99); renaming it changes nothing already written.'),
+  varNew: t('变量 {n}', 'Variable {n}'), varAdd: t('＋ 新变量', '+ New variable'),
   close: t('关闭', 'Close'), allSeries: t('全部作品', 'All series'), none: t('没有找到', 'Nothing found'), pickUnit: t('选机体', 'Pick a unit'), pickPilot: t('选人物', 'Pick a character'),
   campaign: t('战役信息', 'Campaign'), route: t('主角', 'Protagonist'),
   routeHint: t('战役没有选主角的画面；用到主角头像的台词按这里画。', 'A campaign has no protagonist select; lines that show the protagonist’s portrait use this one.'),
@@ -233,7 +243,11 @@ const routes = text.routes.split('|');
       <nav class="tabs" data-tabs aria-label={title}></nav>
       <div class="editor-actions">
         <span data-stage></span>
+        <button type="button" class="mini" data-undo title={text.undoHint} aria-label={text.undoHint} disabled>{text.undo}</button>
+        <button type="button" class="mini" data-redo title={text.redoHint} aria-label={text.redoHint} disabled>{text.redo}</button>
         <button type="button" class="mini" data-new>{text.newProject}</button>
+        <label class="mini file" title={text.openProjectHint}>{text.openProject}<input type="file" accept=".srw64edit,.srw64mod,.zip" data-open-project hidden /></label>
+        <button type="button" class="mini" data-save-project title={text.saveProjectHint}>{text.saveProject}</button>
         <button type="button" class="btn" data-export>{text.exportButton}</button>
       </div>
     </header>
