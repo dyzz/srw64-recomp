@@ -159,7 +159,7 @@ namespace srw64::portraits { std::string mod_picture(const std::string& original
 namespace recompui {
 struct RmlRenderInterface_GL::Impl {};
 RmlRenderInterface_GL::RmlRenderInterface_GL(){} RmlRenderInterface_GL::~RmlRenderInterface_GL(){}
-Rml::RenderInterface* RmlRenderInterface_GL::get_rml_interface(){return nullptr;} void RmlRenderInterface_GL::start(int,int){} void RmlRenderInterface_GL::end(){}
+Rml::RenderInterface* RmlRenderInterface_GL::get_rml_interface(){return nullptr;} void RmlRenderInterface_GL::begin(int,int){} uint64_t RmlRenderInterface_GL::finish(){return 0;} void RmlRenderInterface_GL::draw(){}
 void RmlRenderInterface_GL::release_gl(){} void RmlRenderInterface_GL::queue_image_from_bytes_file(const std::string&,const std::vector<char>&){}
 void RmlRenderInterface_GL::queue_image_from_bytes_rgba32(const std::string&,const std::vector<char>&,uint32_t,uint32_t){}
 }
