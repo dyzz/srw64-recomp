@@ -1,0 +1,13 @@
+{
+  "schema": "srw64.new-units.v2",
+  "units": {
+    "super": {
+      "copy": 306,
+      "weapons": [1175, 1176, 1177, 1178, 1180, 1182, 1183],
+      "inherits_from": 34,
+      "combine": {
+        "parts": [34, 35]
+      }
+    }
+  }
+}

@@ -34,6 +34,7 @@
 #include "title_row.hpp"
 #include "text_wrap.hpp"
 #include "battle_viewer.hpp"
+#include "web_link.hpp"
 #include "native_sprite.hpp"
 #include "title_page.hpp"
 #include "mini_stage.hpp"
@@ -222,6 +223,11 @@ bool quick_load_ask_open{};
 // The question before a return to the title screen (quick_load.hpp): the same entries ask it.
 bool title_return_ask_open{};
 bool quit_ask_open{};
+// A page of the site's unit MOD maker asking to link to the game (web_link.hpp): the
+// question, its request and where the page is.
+bool web_link_ask_open{};
+unsigned web_link_ask_id{};
+std::string web_link_ask_origin;
 // The intermission menu's own last row, 返回标题画面 (not one of the original's items):
 // selected below the original's cursor, confirmed as the title question.
 unsigned library_tab{};
@@ -2276,6 +2282,21 @@ std::string short_path(std::string path) {
     }
     return path;
 }
+// The web maker link (settings web_link, web_link.hpp): its switch, and while on where it
+// listens or why it could not.
+std::string web_link_row() {
+    const bool on=settings::web_link();
+    std::string choices;
+    for(const std::string mode:{"on","off"})choices+=button("web-link-switch:"+mode,label("settings_web_link_"+mode),(mode=="on")==on);
+    std::string more;
+    if(on) {
+        auto text=localization::catalog().ui(web_link::listening()?"settings_web_link_status":"settings_web_link_failed");
+        for(const auto& [mark,value]:{std::pair<std::string,std::string>{"{address}","127.0.0.1:"+std::to_string(web_link::port)},{"{why}",web_link::failure()}})
+            if(const auto at=text.find(mark);at!=std::string::npos)text.replace(at,mark.size(),value);
+        more+="<p class='set-path'>"+escape(text)+"</p>";
+    }
+    return settings_row("settings_web_link",choices,more);
+}
 // The debug interface for AI agents (settings debug_interface): its switch, and while on
 // where it listens and the run directory a client attaches to, with a button to copy it.
 // --debug turns it on for the run; the switch then shows on and cannot turn it off.
@@ -2374,7 +2395,7 @@ std::string about_rows() {
             button("update-hd-import",label(hd_import_confirm?"update_hd_import_confirm":"update_hd_import"))+"</div></div><p>"+hd+"</p></div>";
     }
 #endif
-    if(!update::supported())return rows+debug_row();
+    if(!update::supported())return rows+web_link_row()+debug_row();
     const auto s=update::status(update::site_language(localization::catalog().locale));
     using update::State;
     const char* key=s.state==State::Checking?"update_status_checking":s.state==State::Current?"update_status_current":
@@ -2408,7 +2429,7 @@ std::string about_rows() {
     }
     const auto automatic=update::automatic();
     rows+=settings_choice("settings_update_auto","update-auto",{"on","off"},automatic?(*automatic?"on":"off"):"");
-    return rows+debug_row();
+    return rows+web_link_row()+debug_row();
 }
 // Asked once on the title: whether to check on start-up. Closing it is a no.
 std::string update_ask_panel() {
@@ -2434,6 +2455,15 @@ std::string quit_ask_panel() {
     return "<div class='set-shade'><div class='set-panel set-ask'><h1>"+label("quit_title")+"</h1><div id='set-body' class='set-body'>"
         "<div class='set-row nav'><div class='set-name'>"+label("quit_text")+"</div><p>"+label("title_return_note")+"</p><div class='set-seg'>"+
         button("quit:yes",label("quit_yes"))+button("quit:no",label("title_return_no"),true)+"</div></div></div>"
+        "<div class='set-foot'><div class='set-hint'></div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
+}
+// Whether a page of the site may link to the game: refuse comes selected, as quitting.
+std::string web_link_ask_panel() {
+    auto text=localization::catalog().ui("web_link_ask_text");
+    if(const auto at=text.find("{origin}");at!=std::string::npos)text.replace(at,8,web_link_ask_origin);
+    return "<div class='set-shade'><div class='set-panel set-ask'><h1>"+label("web_link_ask_title")+"</h1><div id='set-body' class='set-body'>"
+        "<div class='set-row nav'><div class='set-name'>"+escape(text)+"</div><p>"+label("web_link_ask_note")+"</p><div class='set-seg'>"+
+        button("web-link:yes",label("web_link_ask_yes"))+button("web-link:no",label("web_link_ask_no"),true)+"</div></div></div>"
         "<div class='set-foot'><div class='set-hint'></div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
 }
 // Whether to go back to the title screen: what is not saved is lost.
@@ -3941,6 +3971,15 @@ void settings_sync() {
     mod_pick_poll();   // before the MOD page's early return below, which keeps an unchanged page as it is
 #endif
     if(viewer_open){viewer_sync();return;}
+    if(web_link_ask_open) {
+        const auto stamp="web-link"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
+        if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
+        document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
+        settings_doc=document(web_link_ask_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+        settings_doc->UpdateDocument();
+        if(!pointer_mode)settings_focus_first();
+        return;
+    }
     if(quit_ask_open) {
         const auto stamp="quit"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
         if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
@@ -4060,7 +4099,7 @@ void settings_sync() {
         (settings_pages[settings_page]==std::string("cheats")?cheats_stamp():std::string())+
         // The About page: the update check as it goes.
         (settings_pages[settings_page]==std::string("about")?std::to_string(update::status("en").serial)+"t"+std::to_string(text_update::status().serial)+std::to_string(settings::debug_interface())+
-            settings::debug_endpoint().address:std::string());
+            settings::debug_endpoint().address+std::to_string(settings::web_link())+std::to_string(web_link::listening()):std::string());
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
     // A rebuilt window keeps its focused control and scroll position, so a controller
     // does not lose its place; another page starts at its top.
@@ -6064,6 +6103,10 @@ void choose(const std::string& id) {
         viewer_open=false;library_open=false;mod_open=false;stage_open=false;update_ask_open=false;title_return_ask_open=false;quick_load_ask_open=false;quit_ask_open=true;
         settings_open=true;settings_stamp.clear();settings_release.hold();input.clear();return;
     }
+    if(id.starts_with("web-link:") || (web_link_ask_open && id=="settings-close")) {
+        web_link::answer(web_link_ask_id,id=="web-link:yes");
+        web_link_ask_open=false;physical_held=held();settings_open=false;return;
+    }
     if(id.starts_with("quit:") || (quit_ask_open && id=="settings-close")) {
         quit_ask_open=false;
         if(id=="quit:yes"){debug_ui::close_game_window();physical_held=held();settings_open=false;return;}
@@ -6371,6 +6414,7 @@ void choose(const std::string& id) {
         if(id.starts_with("mod-voice-speed:"))settings::set_mod_voice_speed(id.substr(16));
         if(id.starts_with("mod-voice-wait:"))settings::set_mod_voice_wait(id=="mod-voice-wait:on");
         if(id.starts_with("debug:"))settings::set_debug_interface(id=="debug:on");
+        if(id.starts_with("web-link-switch:"))settings::set_web_link(id=="web-link-switch:on");
         if(id=="debug-copy-run")SDL_SetClipboardText(settings::debug_endpoint().run.c_str());
         if(id=="report-export") {
 #ifdef __ANDROID__
@@ -7387,6 +7431,21 @@ void sync() {
         update_asked=true;update_ask_open=true;settings_open=true;settings_release.hold();input.clear();
     }
     if(app_menu::take_reload_request())srw64::dialogue::request_reload();
+    // The web maker link (web_link.hpp): a page asking to pair is asked about at once.
+    if(!web_link_ask_open)
+        if(const auto asking=web_link::prompt()) {
+            web_link_ask_id=asking->id;web_link_ask_origin=asking->origin;
+            viewer_open=false;library_open=false;mod_open=false;stage_open=false;update_ask_open=false;quick_load_ask_open=false;quit_ask_open=false;title_return_ask_open=false;
+            web_link_ask_open=true;settings_open=true;settings_stamp.clear();settings_release.hold();input.clear();
+        }
+    // A viewer battle a linked page asked for starts as the page's 開始 would, from the title only.
+    web_link::run_view([&](const nlohmann::json& choice)->std::string {
+        if(!viewer_title())return localization::catalog().ui("web_link_not_title");
+        if(battle_viewer::busy())return localization::catalog().ui("web_link_busy");
+        battle_viewer::request({{"choice",choice}});
+        physical_held=held();viewer_open=false;library_open=false;mod_open=false;stage_open=false;settings_open=false;
+        return {};
+    });
     // A viewer battle back on the title opens the page again with the same choices.
     if(viewer_title() && battle_viewer::take_returned()){viewer_open=true;library_open=false;mod_open=false;settings_open=true;settings_release.hold();input.clear();}
     battle_viewer::set_page_open(settings_open && viewer_open);

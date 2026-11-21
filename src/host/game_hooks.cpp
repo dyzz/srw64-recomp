@@ -2,9 +2,12 @@
 #include "game_hooks.hpp"
 #include "battle_viewer.hpp"
 #include "map_movie.hpp"
+#include "battle_speaker.hpp"
 #include "music.hpp"
 #include "save_page.hpp"
 #include "mod_combine.hpp"
+#include "mod_forms.hpp"
+#include "mod_combos.hpp"
 #include "mod_pilots.hpp"
 #include "battle_hud.hpp"
 #include "battle_spread.hpp"
@@ -25,6 +28,7 @@
 #include "base_fixes.hpp"
 #include "upgrade_rules.hpp"
 #include "mod_data.hpp"
+#include "native_intro.hpp"
 #include "upgrade_refund.hpp"
 #include "upgrade_page.hpp"
 #include "parts_carry.hpp"
@@ -370,13 +374,58 @@ void resident_func_80080A14(uint8_t* ram,recomp_context* ctx) {
 // number while it runs.
 extern "C" void srw64_original_combo_locks(uint8_t* rdram, recomp_context* ctx);
 extern "C" void load_000AB160_func_8020178C(uint8_t* rdram, recomp_context* ctx) {
+    const int handle = int16_t(ctx->r4);
+    const uint32_t unit = uint32_t(ctx->r5);
     const auto swaps = srw64::mod_pilots::combo_aliases(rdram);
     srw64_original_combo_locks(rdram, ctx);
+    // The packages' combination attacks, which the original's table does not know (mod_combos.hpp).
+    const auto keep = *ctx;
+    srw64::mod_combos::locks(rdram, ctx, handle, unit);
+    *ctx = keep;
     srw64::mod_pilots::restore(rdram, swaps);
+}
+// 801FC83C(k): EN and ammo after participant k's attack; a package's combination attack gets
+// its participants listed first, as the settlement does the original's (mod_combos.hpp).
+extern "C" void load_000AB160_func_801FC83C(uint8_t* rdram, recomp_context* ctx) {
+    const unsigned k = uint32_t(ctx->r4) & 0xFF;
+    if (k < 16) {
+        const auto keep = *ctx;
+        srw64::mod_combos::spend(rdram, ctx, k);
+        *ctx = keep;
+    }
+    srw64_original_battle_spend(rdram, ctx);
+}
+// 801C6F14(slot): the battle overlay shows the slot's current quote (8008FFAC with its text
+// id). Its speaker digits name the voice part's character; a package's new character that
+// borrows that voice is shown in its place for this call (battle_speaker.hpp): the name
+// through srw64_name_record, the face through 8008F970.
+extern "C" void load_00121560_func_801C6F14(uint8_t* rdram, recomp_context* ctx) {
+    namespace speaker = srw64::battle_speaker;
+    const uint32_t slot = uint32_t(ctx->r4);
+    std::optional<std::pair<unsigned, unsigned>> swap;
+    if (const unsigned character = speaker::character_of_slot(rdram, slot)) {
+        const unsigned index = srw64::guest::read(rdram, slot + 0x22, 1);
+        const uint16_t text = uint16_t(srw64::guest::read(rdram, slot + 2 * index, 2));
+        if (text != 0xFFFF) {
+            auto c = *ctx; c.r29 = int32_t(uint32_t(ctx->r29) - 0x100); c.r4 = text;
+            resident_func_8008CE54(rdram, &c);   // the record's speaker digits
+            swap = speaker::swap(rdram, unsigned(int16_t(c.r2)), character);
+        }
+    }
+    if (swap) speaker::active() = {int(swap->first), int(swap->second)};
+    srw64_original_battle_quote_show(rdram, ctx);
+    speaker::active() = {};
+}
+extern "C" void resident_func_8008F970(uint8_t* rdram, recomp_context* ctx) {
+    ctx->r5 = int32_t(int16_t(srw64::battle_speaker::shown(unsigned(int16_t(ctx->r5)))));
+    srw64_original_dialogue_portrait(rdram, ctx);
 }
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     srw64_original_frame_boundary(ram,ctx);
     srw64::mod_combine::fill(ram);   // the combined-unit table's copies (mod_combine.hpp)
+    srw64::mod_combine::fill_recipes(ram);   // and the combine recipes
+    srw64::mod_combine::deploy_sync(ram);    // a package's combined unit deploys combined
+    srw64::mod_forms::fill(ram);     // the form families' copies (mod_forms.hpp)
     srw64::mod_pilots::fill(ram);    // the character maps' copies (mod_pilots.hpp)
     if(srw64_game_hooks.frame_start)srw64_game_hooks.frame_start(ram);
     if(srw64_game_hooks.presentation_step)srw64_game_hooks.presentation_step(ram);
@@ -410,6 +459,10 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
         call(resident_func_800836CC,0);
         call(resident_func_80080188,1);call(resident_func_8007F510,0x800801A4,0,1);
     }
+    // On the title the game loads nothing, and the packages are read again on loads (mod_data
+    // refresh): a package the web maker link just put in (web_link.cpp) is read here, before
+    // the viewer starts with it.
+    if(const int major=srw64::intro::title_major();major==2 || major==3)srw64::mod_data::refresh(ram);
     if(srw64_game_hooks.viewer_start) {
         // The battle viewer: a song to listen to (or the title's back), or a battle with
         // its song through the title overlay's own demo start (801CA230..801CA250): mode
@@ -540,6 +593,36 @@ void resident_func_800A74D4(uint8_t* ram,recomp_context* ctx) {
     const uint32_t made=uint32_t(ctx->r5);
     if(srw64::guest::valid(made,0x54) && srw64::mod_combine::combined_unit(srw64::guest::read(ram,made+2,2)))return;
     srw64_original_combine_parts(ram,ctx);
+}
+void resident_func_800A5924(uint8_t* ram,recomp_context* ctx) {
+    // A unit's upgrades or 強化パーツ spread to its forms and combine parts (a0, a1 1 parts):
+    // the parts of a package's combined unit with no `over` keep their own (mod_combine.hpp).
+    const auto kept=srw64::mod_combine::keep_parts(ram,uint32_t(ctx->r4));
+    srw64_original_upgrade_spread(ram,ctx);
+    if(kept.empty())return;
+    srw64::mod_combine::restore_parts(ram,kept);
+    for(const auto& one:kept){auto c=*ctx;c.r4=int32_t(one.at);c.r5=1;resident_func_800A5254(ram,&c);}
+}
+void resident_func_800A79EC(uint8_t* ram,recomp_context* ctx) {
+    // Registering a unit (a0, side a1): a part of a recipe whose other part is already on the
+    // roster shares that part's weapons. A package's recipe is for the map's 合体 only: its
+    // parts keep their own weapons (mod_combine.hpp recipe_parts).
+    if(srw64::mod_combine::recipe_part(ram,unsigned(int16_t(ctx->r4)))){ctx->r2=0;return;}
+    srw64_original_recipe_partner(ram,ctx);
+}
+void resident_func_800A794C(uint8_t* ram,recomp_context* ctx) {
+    // A unit registered (a0 its instance, a1 the side): with all the parts of its recipe on the
+    // roster, the original builds the combined unit sharing the leader's weapons. A package's
+    // combined unit is built by its story (story_mod.hpp build), with weapons of its own.
+    const uint32_t made=uint32_t(ctx->r4);
+    if(srw64::guest::valid(made,0x54) && srw64::mod_combine::recipe_part(ram,srw64::guest::read(ram,made+2,2)))return;
+    srw64_original_recipe_build(ram,ctx);
+}
+void resident_func_800AB5C0(uint8_t* ram,recomp_context* ctx) {
+    // 3D5D: Dancouga or the beast fighters deploy (a0 combined, a1 the family). A package's
+    // unit taking Dancouga over follows it (mod_combine.hpp deploy_sync).
+    srw64_original_deploy_form(ram,ctx);
+    srw64::mod_combine::deploy_sync(ram);
 }
 void load_000AB160_func_801E977C(uint8_t* ram,recomp_context* ctx) {
     // Whether the unit (a0) can combine, a1 1 for the map menu: a package's combined unit
@@ -884,16 +967,22 @@ uint32_t srw64_resource_limit(void) {
 uint32_t srw64_name_record(uint32_t kind, uint32_t number) {
     static constexpr uint32_t bases[] = {527, 1370, 2699, 4382, 4743};
     if (kind > 4) return number;
+    if (kind == 3 && number < 0x10000) number = srw64::battle_speaker::shown(number);   // a borrowed voice's quote
     if (number >= 0x10000) return bases[kind] + number;
     return srw64::table_window::name_record(srw64::table_window::NameKind(kind), number);
 }
 // 8022245C(record, slot, base): the special (conditional) quote of this slot, written into
 // the slot (several halfwords for a multi-line exchange), the priority group 0..2 answered,
-// -1 when none matched; the caller 80222050 draws a generic line over a group-2 line or
-// none. quote.force (quote_force.hpp): when the original did pick a special line, a waiting
-// forced record that is one of this speaker's special lines replaces it, as a group-1 line
-// so the generic draw stays away (the forced line is taken to fit the situation like the
-// one it replaces: the video's lines were drawn by the original in an earlier take).
+// -1 when none matched, 1000 for a group-1 line after the k = 1000 / 1300 conditions (evaded
+// with result 21, shield). The caller 80222050 draws a generic line over the slot: for the
+// attack after group 2 or none, for being hit after anything but 1000, and a filled slot
+// keeps its line only when the draw over count * 3 / 2 lands past the count (never with one
+// generic line; docs/data/battle-quotes.md). A package's voice part (mod_quotes.hpp) says
+// its conditional lines whenever they match: group 0 or 1 answers 1000. quote.force
+// (quote_force.hpp): when the original did pick a special line, a waiting forced record
+// that is one of this speaker's special lines replaces it, answered 1000 so the generic
+// draw stays away (the forced line is taken to fit the situation like the one it replaces:
+// the video's lines were drawn by the original in an earlier take).
 void load_00121560_func_8022245C(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t record = uint32_t(ctx->r4), slot = uint32_t(ctx->r5);
     if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, record);
@@ -908,17 +997,19 @@ void load_00121560_func_8022245C(uint8_t* rdram, recomp_context* ctx) {
         if (forced < 0 || !in_special(voice, forced)) continue;
         srw64::guest::write16(rdram, slot, uint16_t(forced));
         srw64::guest::write16(rdram, slot + 2, 0xFFFF);
-        ctx->r2 = 1;
+        ctx->r2 = 1000;
         p = -1;
         ++served;
         note_served(forced);
         return;
     }
+    if (group <= 1 && srw64::table_window::new_voice(unsigned(voice))) ctx->r2 = 1000;
 }
 // 80222B14(record, slot, context): the generic quote of a context (0 attack ... 8) drawn at
 // random from the speaker's segment (ROM 0x1161C0; docs/data/battle-quotes.md) into the slot
 // (record + 0x2C the attack, + 0x848 being hit): slot[0] the record, slot[2] -1. A slot that
-// already holds a conditional quote keeps it two times in three. quote.force
+// already holds a conditional quote keeps it when a draw over count * 3 / 2 lands past the
+// count: one time in three, never with a single line. quote.force
 // (quote_force.hpp) writes the first waiting forced record there instead, once, when it is
 // one of this speaker's lines for this context; the speaker is the record's voice part (record + 2; the
 // sub pilot's for contexts 7 and 8 of a two-seater is not handled).

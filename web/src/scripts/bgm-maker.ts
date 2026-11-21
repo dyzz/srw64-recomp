@@ -3,7 +3,7 @@
 // Files are decoded by the browser, encoded to Ogg Vorbis in a worker unless they already
 // are Vorbis, and zipped here; nothing leaves the player's machine.
 import { strFromU8, strToU8, unzipSync, zipSync, type Zippable } from 'fflate';
-import { vorbisEncoder, vorbisInfo } from './audio-tools';
+import { audioKit, newClip, type Clip, type LoopMode } from './audio-clip';
 
 type Lang = 'zh' | 'en' | 'ja' | 'ko';
 type Names = { ja: string; zh: string; en: string; ko?: string };
@@ -11,28 +11,11 @@ type SongInfo = { song: number; row: number; title: string; karaoke: boolean; fi
 type Named = { id: number; name: Names; song: number };
 type Data = { songs: SongInfo[]; pilots: Named[]; units: Named[] };
 type Text = Record<string, any>;
-type LoopMode = 'whole' | 'range' | 'once';
 type Titles = { 'zh-Hans': string; en: string; ja: string };
 
-// One replaced song. Loop points are samples at the Ogg file's own rate, as music.json wants.
-type Track = {
-  song: number;
-  fileName: string;
-  source: Blob;               // what the player gave (or the packaged .ogg)
-  ogg?: Uint8Array;           // the file that goes into the package
-  passthrough: boolean;       // already Vorbis: packaged as it is
-  rate: number;
-  frames: number;
-  loop: LoopMode;
-  start: number;
-  end: number;
-  gain: number;
-  titles: Titles;
-  peaks?: Float32Array;       // min/max pairs for the waveform
-  level?: number;             // average level, dBFS
-  state: 'decoding' | 'encoding' | 'ready' | 'error';
-  progress?: number;
-};
+// One replaced song (audio-clip.ts): loop points are samples at the Ogg file's own rate, as
+// music.json wants.
+type Track = Clip & { song: number; titles: Titles };
 
 const JINGLE = 0x26;          // plays once unless music.json loops it (music.hpp jingle_song)
 const RATE = 44100;           // the rate the page decodes and encodes at
@@ -57,128 +40,30 @@ export function initBgmMaker() {
   let keptManifest: Record<string, unknown> = {};
   let keptFiles: Record<string, Uint8Array> = {};
   let keptTracks: Record<string, unknown> = {};
+  let keptBattle: Record<string, Record<string, unknown>> = {};
   let open: number | null = null;
-  let preview: { song: number; buffer: AudioBuffer } | null = null;
 
-  // --- Audio --------------------------------------------------------------------------
-  let ctx: AudioContext | null = null;
-  const audio = () => (ctx ??= new AudioContext({ sampleRate: RATE }));
-  let playing: AudioBufferSourceNode | null = null;
-  // What plays, to draw its playhead and mark its row: the song, where in it the source
-  // started (seconds) and when (context time), and the loop it runs.
-  let now: { song: number; offset: number; at: number; start: number; end: number; loop: boolean; duration: number } | null = null;
-  const stop = () => {
-    try { playing?.stop(); } catch {}
-    playing = null;
-    const was = now?.song; now = null;
-    if (was !== undefined) markPlaying(was);
-  };
-  // The position now, in seconds, following the loop once the source has passed its end.
-  function position() {
-    if (!now || !ctx) return null;
-    let p = now.offset + (ctx.currentTime - now.at);
-    if (now.loop && p >= now.end) p = now.start + ((p - now.start) % Math.max(0.001, now.end - now.start));
-    return Math.min(p, now.duration);
-  }
-
-  async function decode(blob: Blob): Promise<AudioBuffer> {
-    return audio().decodeAudioData(await blob.arrayBuffer());
-  }
-
-  function measure(buffer: AudioBuffer) {
-    const chans = [...Array(Math.min(2, buffer.numberOfChannels))].map((_, c) => buffer.getChannelData(c));
-    const n = buffer.length, peaks = new Float32Array(PEAKS * 2);
-    let sum = 0, count = 0;
-    for (let i = 0; i < PEAKS; i++) {
-      let lo = 1, hi = -1;
-      const a = Math.floor((i * n) / PEAKS), z = Math.max(a + 1, Math.floor(((i + 1) * n) / PEAKS));
-      for (let j = a; j < z; j++) {
-        let v = 0;
-        for (const c of chans) v += c[j];
-        v /= chans.length;
-        if (v < lo) lo = v;
-        if (v > hi) hi = v;
-        if ((j & 3) === 0) { sum += v * v; count++; }
-      }
-      peaks[2 * i] = lo; peaks[2 * i + 1] = hi;
-    }
-    return { peaks, level: 10 * Math.log10(sum / Math.max(1, count) + 1e-12) };
-  }
-
-  const vorbisEncode = vorbisEncoder();
-  const encode = (track: Track, buffer: AudioBuffer) =>
-    vorbisEncode(buffer, QUALITY, (p) => { track.progress = p; renderState(track.song); });
-
+  // --- Audio (audio-clip.ts) -----------------------------------------------------------
+  const kit = audioKit({ rate: RATE, peaks: PEAKS });
+  const stop = kit.stop;
+  const play = (t: Track, from: number | 'seam' = 0) => kit.play(t, from);
+  kit.watch((clip, was) => { for (const c of [clip, was]) if (c) markPlaying(Number(c.key)); });
   async function addFile(song: number, blob: Blob, fileName: string, settings?: Partial<Track>) {
     stop();
-    const head = new Uint8Array(await blob.slice(0, 65536).arrayBuffer());
-    const vorbis = vorbisInfo(head);
-    const track: Track = {
-      song, fileName, source: blob, passthrough: !!vorbis, rate: vorbis?.rate ?? RATE, frames: 0,
-      loop: song === JINGLE ? 'once' : 'whole', start: 0, end: 0, gain: 0, titles: { 'zh-Hans': '', en: '', ja: '' },
-      state: 'decoding', ...settings,
-    };
-    if (vorbis?.loop && !settings?.loop) { track.loop = 'range'; [track.start, track.end] = vorbis.loop; }
+    const track = { ...newClip(String(song), 'music', blob, fileName, { loop: song === JINGLE ? 'once' : 'whole' }),
+      song, titles: { 'zh-Hans': '', en: '', ja: '' }, ...settings } as Track;
     tracks.set(song, track);
     renderSong(song);
-    try {
-      const buffer = await decode(blob);
+    await kit.load(track, QUALITY, () => {
       if (tracks.get(song) !== track) return;
-      Object.assign(track, measure(buffer));
-      track.frames = track.passthrough ? Math.round(buffer.duration * track.rate) : buffer.length;
-      if (!track.end || track.end > track.frames) track.end = track.frames;
-      if (track.start >= track.end) track.start = 0;
-      preview = { song, buffer };
-      if (track.passthrough) {
-        track.ogg = new Uint8Array(await blob.arrayBuffer());
-      } else {
-        track.state = 'encoding'; renderSong(song);
-        track.ogg = await encode(track, buffer);
-        if (tracks.get(song) !== track) return;
-      }
-      track.state = 'ready';
-    } catch {
-      track.state = 'error';
-    }
-    renderSong(song);
-  }
-
-  async function previewBuffer(track: Track) {
-    if (preview?.song === track.song) return preview.buffer;
-    preview = { song: track.song, buffer: await decode(track.ogg ? new Blob([track.ogg as BlobPart]) : track.source) };
-    return preview.buffer;
-  }
-
-  // From `from` seconds, or 3 seconds before the loop's end to hear the seam.
-  async function play(track: Track, from: number | 'seam' = 0) {
-    stop();
-    const buffer = await previewBuffer(track);
-    const c = audio();
-    await c.resume();
-    const source = c.createBufferSource();
-    source.buffer = buffer;
-    const gain = c.createGain();
-    gain.gain.value = 10 ** (track.gain / 20);
-    source.connect(gain).connect(c.destination);
-    const start = track.loop === 'range' ? track.start / track.rate : 0;
-    const end = track.loop === 'range' ? track.end / track.rate : buffer.duration;
-    const loop = track.loop !== 'once';
-    if (loop) { source.loop = true; source.loopStart = start; source.loopEnd = end; }
-    const offset = from === 'seam' ? Math.max(start, end - 3) : Math.max(0, Math.min(from, buffer.duration - 0.01));
-    source.start(0, offset);
-    source.onended = () => { if (playing === source) stop(); };
-    playing = source;
-    now = { song: track.song, offset, at: c.currentTime, start, end, loop, duration: buffer.duration };
-    markPlaying(track.song);
-    tick();
+      if (track.state === 'encoding' && track.progress !== undefined) renderState(song); else renderSong(song);
+    }, !!settings?.loop);
   }
   // Each row's play button and the open editor's playhead follow what plays.
   function markPlaying(song: number) {
     const b = document.querySelector<HTMLButtonElement>(`#song-${song} [data-play]`);
-    if (b) { const on = now?.song === song; b.textContent = on ? '■' : '▶'; b.title = on ? text.stop : text.play; b.classList.toggle('on', on); }
+    if (b) { const on = kit.playing()?.key === String(song); b.textContent = on ? '■' : '▶'; b.title = on ? text.stop : text.play; b.classList.toggle('on', on); }
   }
-  let redraw: (() => void) | null = null;
-  function tick() { if (!now) { redraw?.(); return; } redraw?.(); requestAnimationFrame(tick); }
 
   // --- Song list ----------------------------------------------------------------------
   const list = root.querySelector<HTMLOListElement>('[data-songs]')!;
@@ -240,11 +125,11 @@ export function initBgmMaker() {
     } });
     const ready = t?.state === 'ready';
     const playButton = ready ? el('button', { type: 'button', class: 'mini play', 'data-play': '', title: text.play,
-      onclick: () => { if (now?.song === song) stop(); else if (t) play(t); } }, '▶') : null;
+      onclick: () => { if (kit.playing() === t) stop(); else if (t) play(t); } }, '▶') : null;
     const actions = el('div', { class: 'song-actions' },
       playButton,
       el('label', { class: 'mini' }, text.choose, file),
-      t ? el('button', { type: 'button', class: 'mini', onclick: () => { stop(); tracks.delete(song); if (open === song) open = null; if (preview?.song === song) preview = null; renderSong(song); } }, text.remove) : null,
+      t ? el('button', { type: 'button', class: 'mini', onclick: () => { stop(); tracks.delete(song); if (open === song) open = null; if (t) kit.forget(t); renderSong(song); } }, text.remove) : null,
       ready ? el('span', { class: 'song-fold', 'aria-hidden': 'true' }, open === song ? '▴' : '▾') : null);
     // A ready song's whole head opens and closes its editor; the buttons in it keep their own clicks.
     const head = el('div', { class: `song-head${ready ? ' openable' : ''}` },
@@ -272,126 +157,12 @@ export function initBgmMaker() {
 
   // --- Editor -------------------------------------------------------------------------
   function editor(t: Track) {
-    const canvas = el('canvas', { class: 'wave' }) as HTMLCanvasElement;
-    const css = getComputedStyle(root!);
-    const color = (v: string) => css.getPropertyValue(v).trim();
-    const draw = () => {
-      const w = (canvas.width = canvas.clientWidth * devicePixelRatio), h = (canvas.height = canvas.clientHeight * devicePixelRatio);
-      const g = canvas.getContext('2d')!;
-      g.clearRect(0, 0, w, h);
-      const x = (samples: number) => (samples / Math.max(1, t.frames)) * w;
-      if (t.loop === 'range') { g.fillStyle = color('--cyan-soft'); g.fillRect(x(t.start), 0, x(t.end) - x(t.start), h); }
-      g.fillStyle = color('--muted');
-      const p = t.peaks!;
-      for (let i = 0; i < w; i++) {
-        const k = Math.min(PEAKS - 1, Math.floor((i / w) * PEAKS));
-        const lo = p[2 * k], hi = p[2 * k + 1];
-        g.fillRect(i, ((1 - hi) / 2) * h, 1, Math.max(1, ((hi - lo) / 2) * h));
-      }
-      if (t.loop === 'range') {
-        g.fillStyle = color('--cyan'); g.fillRect(x(t.start) - devicePixelRatio, 0, 2 * devicePixelRatio, h);
-        g.fillStyle = color('--gold'); g.fillRect(x(t.end) - devicePixelRatio, 0, 2 * devicePixelRatio, h);
-      }
-      const head = now?.song === t.song ? position() : null;
-      if (head !== null) { g.fillStyle = color('--text'); g.fillRect(x(head * t.rate) - devicePixelRatio / 2, 0, devicePixelRatio, h); }
-    };
-    redraw = draw;
-    // Dragging a loop line; on release it snaps to the nearest zero crossing.
-    let dragging: 'start' | 'end' | null = null;
-    const at = (e: PointerEvent) => Math.round(((e.clientX - canvas.getBoundingClientRect().left) / canvas.clientWidth) * t.frames);
-    // Near a loop line (within 8 pixels) a press moves it; anywhere else it plays from there.
-    canvas.addEventListener('pointerdown', (e) => {
-      const s = at(e), near = (samples: number) => Math.abs(s - samples) / t.frames * canvas.clientWidth <= 8;
-      if (t.loop === 'range' && (near(t.start) || near(t.end))) {
-        dragging = Math.abs(s - t.start) <= Math.abs(s - t.end) ? 'start' : 'end';
-        canvas.setPointerCapture(e.pointerId);
-        move(e);
-        return;
-      }
-      play(t, Math.max(0, s) / t.rate);
-    });
-    canvas.addEventListener('pointermove', (e) => {
-      if (dragging || t.loop !== 'range') { canvas.style.cursor = dragging ? 'ew-resize' : 'pointer'; return; }
-      const s = at(e), near = (samples: number) => Math.abs(s - samples) / t.frames * canvas.clientWidth <= 8;
-      canvas.style.cursor = near(t.start) || near(t.end) ? 'ew-resize' : 'pointer';
-    });
-    const move = (e: PointerEvent) => {
-      if (!dragging) return;
-      const s = Math.max(0, Math.min(t.frames, at(e)));
-      if (dragging === 'start') t.start = Math.min(s, t.end - 1); else t.end = Math.max(s, t.start + 1);
-      draw(); syncInputs();
-    };
-    canvas.addEventListener('pointermove', move);
-    canvas.addEventListener('pointerup', async () => {
-      if (!dragging) return;
-      const which = dragging; dragging = null;
-      const buffer = await previewBuffer(t);
-      const snapped = snap(buffer, which === 'start' ? t.start : t.end, t.rate);
-      if (which === 'start' && snapped < t.end) t.start = snapped;
-      if (which === 'end' && snapped > t.start) t.end = snapped;
-      draw(); syncInputs();
-    });
-
-    const seconds = (samples: number) => (samples / t.rate).toFixed(3);
-    const startInput = el('input', { type: 'number', step: '0.001', min: '0' }) as HTMLInputElement;
-    const endInput = el('input', { type: 'number', step: '0.001', min: '0' }) as HTMLInputElement;
-    const syncInputs = () => { startInput.value = seconds(t.start); endInput.value = seconds(t.end); };
-    const fromInput = () => {
-      const s = Math.round(Number(startInput.value) * t.rate), e = Math.round(Number(endInput.value) * t.rate);
-      if (Number.isFinite(s) && Number.isFinite(e) && s >= 0 && e <= t.frames && s < e) { t.start = s; t.end = e; }
-      syncInputs(); draw();
-    };
-    startInput.addEventListener('change', fromInput);
-    endInput.addEventListener('change', fromInput);
-    syncInputs();
-
-    const range = el('div', { class: 'row' },
-      el('label', { class: 'field' }, text.loopStart, startInput),
-      el('label', { class: 'field' }, text.loopEnd, endInput),
-      el('span', { class: 'hint' }, text.loopHint));
-    range.hidden = t.loop !== 'range';
-    const seamButton = el('button', { type: 'button', class: 'mini', disabled: t.loop === 'once', onclick: () => play(t, 'seam') }, text.seam) as HTMLButtonElement;
-    const modes = el('div', { class: 'row' }, el('strong', {}, text.loop),
-      ...(['whole', 'range', 'once'] as LoopMode[]).map((m) => el('label', { class: 'radio' },
-        el('input', { type: 'radio', name: `loop-${t.song}`, checked: t.loop === m, onchange: () => {
-          t.loop = m; range.hidden = m !== 'range'; seamButton.disabled = m === 'once'; stop(); draw();
-        } }), text[m === 'whole' ? 'loopWhole' : m === 'range' ? 'loopRange' : 'loopOnce'])));
-
-    const others = [...tracks.values()].filter((o) => o !== t && o.level !== undefined);
-    const average = others.length ? others.reduce((a, o) => a + o.level!, 0) / others.length : null;
-    const level = el('span', { class: 'hint' }, `${text.loudness} ${(t.level! + t.gain).toFixed(1)} dBFS` + (average === null ? '' : ` · ${text.loudnessOthers} ${average.toFixed(1)} dBFS`));
-    const gain = el('input', { type: 'number', step: '0.5', min: '-24', max: '12', value: String(t.gain), onchange: (e: Event) => {
-      const v = Number((e.target as HTMLInputElement).value);
-      t.gain = Number.isFinite(v) ? Math.max(-24, Math.min(12, v)) : 0;
-      (e.target as HTMLInputElement).value = String(t.gain);
-      level.textContent = `${text.loudness} ${(t.level! + t.gain).toFixed(1)} dBFS` + (average === null ? '' : ` · ${text.loudnessOthers} ${average.toFixed(1)} dBFS`);
-    } });
     const titleInput = (key: keyof Titles, label: string) => el('label', { class: 'field' }, label,
       el('input', { value: t.titles[key], oninput: (e: Event) => { t.titles[key] = (e.target as HTMLInputElement).value; } }));
-
-    const box = el('div', { class: 'editor' },
-      canvas, modes, range,
-      el('div', { class: 'row' },
-        el('button', { type: 'button', class: 'mini', onclick: () => play(t) }, text.play), seamButton,
-        el('button', { type: 'button', class: 'mini', onclick: stop }, text.stop),
-        el('label', { class: 'field' }, text.gain, gain), level),
-      el('p', { class: 'hint' }, text.seekHint),
+    const others = [...tracks.values()].filter((o) => o !== t && o.level !== undefined).map((o) => o.level!);
+    return kit.editor(t, { ...text, trimStart: '', trimEnd: '', trimHint: '' }, { others, root: root!, extra: [
       el('div', { class: 'row' }, el('strong', {}, text.titles)),
-      el('div', { class: 'row' }, titleInput('zh-Hans', '中文'), titleInput('en', 'English'), titleInput('ja', '日本語')));
-    requestAnimationFrame(draw);
-    new ResizeObserver(draw).observe(canvas);
-    return box;
-  }
-
-  function snap(buffer: AudioBuffer, samples: number, rate: number) {
-    const ch = buffer.getChannelData(0), ratio = buffer.sampleRate / rate;
-    const i = Math.round(samples * ratio), reach = Math.round(buffer.sampleRate * 0.01);
-    for (let d = 0; d <= reach; d++) {
-      for (const j of [i - d, i + d]) {
-        if (j > 0 && j < ch.length && Math.sign(ch[j - 1]) !== Math.sign(ch[j])) return Math.round(j / ratio);
-      }
-    }
-    return samples;
+      el('div', { class: 'row' }, titleInput('zh-Hans', '中文'), titleInput('en', 'English'), titleInput('ja', '日本語'))] });
   }
 
   // --- Battle songs -------------------------------------------------------------------
@@ -458,8 +229,11 @@ export function initBgmMaker() {
       if (Object.keys(s).length) trackSettings[t.song] = s; else delete trackSettings[t.song];
     }
     if (Object.keys(trackSettings).length) out.tracks = trackSettings;
-    const b: Record<string, Record<string, number>> = {};
-    for (const kind of ['pilot', 'unit'] as const) if (battle[kind].size) b[kind] = Object.fromEntries(battle[kind]);
+    const b: Record<string, Record<string, unknown>> = {};
+    for (const kind of ['pilot', 'unit'] as const) {
+      const all = { ...(keptBattle[kind] ?? {}), ...Object.fromEntries(battle[kind]) };
+      if (Object.keys(all).length) b[kind] = all;
+    }
     if (Object.keys(b).length) out.battle = b;
     return out;
   }
@@ -504,8 +278,8 @@ export function initBgmMaker() {
       const read = (p: string) => entries[top + p];
       const mod = JSON.parse(strFromU8(read('mod.json')));
       const music = read('audio/music.json') ? JSON.parse(strFromU8(read('audio/music.json'))) : {};
-      stop(); tracks.clear(); battle.pilot.clear(); battle.unit.clear(); open = null; preview = null;
-      keptManifest = mod; keptFiles = {}; keptTracks = {};
+      stop(); tracks.clear(); battle.pilot.clear(); battle.unit.clear(); open = null;
+      keptManifest = mod; keptFiles = {}; keptTracks = {}; keptBattle = {};
       field('id').value = mod.id ?? '';
       field('version').value = mod.version ?? '1.0.0';
       for (const l of ['zh-Hans', 'en', 'ja']) field(`name-${l}`).value = typeof mod.name === 'string' ? (l === 'en' ? mod.name : '') : mod.name?.[l] ?? '';
@@ -513,7 +287,10 @@ export function initBgmMaker() {
       field('license').value = LICENSES.includes(mod.license) ? mod.license : '';
         field('description').value = typeof mod.description === 'string' ? mod.description : mod.description?.[locale] ?? '';
       for (const kind of ['pilot', 'unit'] as const)
-        for (const [k, v] of Object.entries(music.battle?.[kind] ?? {})) if (Number.isInteger(v)) battle[kind].set(Number(k), v as number);
+        for (const [k, v] of Object.entries(music.battle?.[kind] ?? {})) {
+          if (/^\d+$/.test(k) && Number.isInteger(v)) battle[kind].set(Number(k), v as number);
+          else (keptBattle[kind] ??= {})[k] = v;
+        }
       renderBattle();
       const loaded: Promise<void>[] = [];
       for (const n of names) {

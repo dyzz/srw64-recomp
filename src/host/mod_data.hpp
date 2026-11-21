@@ -1,6 +1,7 @@
 #pragma once
 #include "mod_library.hpp"
 #include "mod_ids.hpp"
+#include "mod_quotes.hpp"
 #include "mod_tables.hpp"
 #include "mod_units.hpp"
 #include "upgrade_rules.hpp"
@@ -374,17 +375,19 @@ struct Collected {
     std::map<unsigned,std::vector<std::pair<unsigned,unsigned>>> carries;
     std::map<unsigned,std::vector<unsigned>> crews;
     std::map<unsigned,mod_units::Taken::Combine> combines;
+    std::map<unsigned,std::vector<unsigned>> forms;                 // a form family's base -> its forms (mod_forms.hpp)
+    std::map<unsigned,mod_units::Taken::Combination> combinations;  // new weapon -> its combination attack (mod_combos.hpp)
     std::map<unsigned,int> works;                                   // new unit -> its Library work
     std::map<unsigned,unsigned> pilot_copies,voices;                // new character -> the one it copies / speaks as
     std::map<unsigned,mod_units::Taken::Portrait> portraits;        // new character -> its own portrait
     std::vector<std::pair<unsigned,unsigned>> loves;                // love rows (holder, partner)
     std::map<unsigned,unsigned> combo_as;                           // new character -> who it counts as in combination attacks
+    mod_quotes::Taken quotes;                                       // dialogue/battle_quotes.json: lines, own voice parts
 };
 // The active packages, bottom first as mods::installed() returns them.
 inline Collected collect(const std::vector<mods::Package>& packages,std::span<const uint8_t> rom) {
     Collected c;
     mod_units::Taken taken;
-    std::error_code error;
     c.numbers=mod_ids::assign(packages);
     for(const auto& p:packages) {
         if(!p.active)continue;
@@ -406,7 +409,7 @@ inline Collected collect(const std::vector<mods::Package>& packages,std::span<co
                     if(key.compare(0,p.id().size()+1,p.id()+"@")==0){c.pilots[pilot]=p.id();c.names[p.id()]=p.manifest?p.manifest->name:json(p.id());}
                 c.copies=taken.copies;c.weapon_copies=taken.weapon_copies;c.name_sources=taken.names;
                 c.resources=taken.resources;c.sprites=taken.sprites;
-                c.predecessors=taken.predecessors;c.carries=taken.carries;c.crews=taken.crews;c.combines=taken.combines;c.works=taken.works;
+                c.predecessors=taken.predecessors;c.carries=taken.carries;c.crews=taken.crews;c.combines=taken.combines;c.forms=taken.forms;c.combinations=taken.combinations;c.works=taken.works;
                 c.pilot_copies=taken.pilot_copies;c.voices=taken.voices;c.portraits=taken.portraits;c.loves=taken.loves;c.combo_as=taken.combo_as;
             }
         }
@@ -418,6 +421,14 @@ inline Collected collect(const std::vector<mods::Package>& packages,std::span<co
             if(document.is_discarded()){c.problems.push_back(where+"JSON 无效");continue;}
             const auto kind=file=="units.json"?Kind::units:file=="pilots.json"?Kind::pilots:Kind::weapons;
             if(auto why=parse(document,kind,rom,c.bytes,p.id(),c.numbers);!why.empty())c.problems.push_back(where+why);
+        }
+        // A new character's own battle quotes, after the number files (a weapon's quote code
+        // is in its battle record).
+        if(const auto text=package->read_text("dialogue/battle_quotes.json")) {
+            const auto document=json::parse(*text,nullptr,false);
+            const std::string where=p.id()+" dialogue/battle_quotes.json：";
+            if(document.is_discarded())c.problems.push_back(where+"JSON 无效");
+            else if(auto why=mod_quotes::parse(document,p.id(),c.numbers,rom,c.bytes,taken.voices,c.quotes);!why.empty())c.problems.push_back(where+why);
         }
     }
     return c;
@@ -443,10 +454,13 @@ struct State {
     std::map<unsigned,std::vector<std::pair<unsigned,unsigned>>> carries;
     std::map<unsigned,std::vector<unsigned>> crews;
     std::map<unsigned,mod_units::Taken::Combine> combines;
+    std::map<unsigned,std::vector<unsigned>> forms;
+    std::map<unsigned,mod_units::Taken::Combination> combinations;
     std::map<unsigned,unsigned> pilot_copies,voices;
     std::map<unsigned,mod_units::Taken::Portrait> portraits;
     std::vector<std::pair<unsigned,unsigned>> loves;
     std::map<unsigned,unsigned> combo_as;
+    std::map<unsigned,unsigned> own_voices;   // mod_quotes::Taken::voices
     // The host draws a package sprite's HD frames (native_sprite.cpp); set at start-up, called
     // on the game thread whenever the packages change.
     std::function<void(const std::map<std::string,mod_units::Sprite>&)> sprites_changed;
@@ -523,6 +537,24 @@ inline std::map<unsigned,unsigned> voices() {
     std::lock_guard lock(s.owners_mutex);
     return s.voices;
 }
+// The new characters with battle quotes of their own: their voice parts (mod_quotes.hpp).
+inline std::map<unsigned,unsigned> own_voices() {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    return s.own_voices;
+}
+// The new units' form families (mod_forms.hpp): the base -> every form, the base first. Any thread.
+inline std::map<unsigned,std::vector<unsigned>> forms() {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    return s.forms;
+}
+// The packages' combination attacks by weapon number (mod_combos.hpp). Any thread.
+inline std::map<unsigned,mod_units::Taken::Combination> combinations() {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    return s.combinations;
+}
 // The new units combined from parts (mod_combine.hpp). Any thread.
 inline std::map<unsigned,mod_units::Taken::Combine> combines() {
     auto& s=state();
@@ -535,12 +567,13 @@ inline std::vector<unsigned> crew(unsigned unit) {
     const auto found=s.crews.find(unit);
     return found==s.crews.end()?std::vector<unsigned>{}:found->second;
 }
-// A package's sprite by the resource numbers the game draws it from. Any thread.
+// A package's sprite by the resource numbers the game draws it from (its scene or a copy of it
+// around it, mod_units::Sprite before/after). Any thread.
 inline std::optional<mod_units::Sprite> sprite(unsigned scene,unsigned atlas,unsigned palette) {
     auto& s=state();
     std::lock_guard lock(s.owners_mutex);
     for(const auto& [_,sprite]:s.sprites)
-        if(sprite.scene==scene && sprite.atlas==atlas && sprite.palette==palette)return sprite;
+        if(scene+sprite.before>=sprite.scene && scene<=unsigned(sprite.scene)+sprite.after && sprite.atlas==atlas && sprite.palette==palette)return sprite;
     return std::nullopt;
 }
 inline std::vector<unsigned> new_units() {
@@ -584,6 +617,11 @@ inline void sync_resident(uint8_t* ram,const std::vector<std::pair<uint32_t,uint
     for(const auto& [at,v]:after)if(inside(at)){write(at,v);now.insert(at);}
     for(const auto& [at,v]:before)if(inside(at) && !now.count(at) && at<rom.size())write(at,rom[at]);
 }
+// Whether the packages as they are now have been read (refresh caught up with an install).
+inline bool current() {
+    auto& s=state();
+    return s.revision==mods::revision() && s.game==mods::game_version();
+}
 inline void refresh(uint8_t* ram=nullptr) {
     auto& s=state();
     if(s.rom.empty())return;
@@ -609,8 +647,10 @@ inline void refresh(uint8_t* ram=nullptr) {
     }
     s.kinds_changed.store(kinds,std::memory_order_relaxed);
     {std::lock_guard lock(s.owners_mutex);s.owners=found.units;s.names=found.names;s.copies=found.copies;s.weapon_copies=found.weapon_copies;s.numbers=found.numbers;s.sprites=found.sprites;
-     s.predecessors=found.predecessors;s.carries=found.carries;s.crews=found.crews;s.combines=found.combines;
-     s.pilot_copies=found.pilot_copies;s.voices=found.voices;s.pilot_owners=found.pilots;s.portraits=found.portraits;s.loves=found.loves;s.combo_as=found.combo_as;}
+     s.predecessors=found.predecessors;s.carries=found.carries;s.crews=found.crews;s.combines=found.combines;s.forms=found.forms;s.combinations=found.combinations;
+     s.pilot_copies=found.pilot_copies;s.voices=found.voices;s.pilot_owners=found.pilots;s.portraits=found.portraits;s.loves=found.loves;s.combo_as=found.combo_as;
+     s.own_voices=found.quotes.voices;}
+    mod_quotes::publish(found.quotes.lines);
     mod_tables::publish_resources(found.resources);
     if(s.sprites_changed)s.sprites_changed(found.sprites);
     upgrades::name_sources()=found.name_sources;

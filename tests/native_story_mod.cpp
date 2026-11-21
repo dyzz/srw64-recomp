@@ -47,6 +47,24 @@ int main(int argc,char** argv) {
         bad=image;bad["events"][0]["kills"]={{"4",0}};check(!fails(bad).empty(),"kills of 0");
         bad=image;bad["events"][0]["kills"]={{"400",5}};check(!fails(bad).empty(),"kills of a pilot past 360");
     }
+    // A stage information entry granted again in a later playthrough (legacy.cpp).
+    {
+        auto with=image;
+        with["stage_info"]=json::parse(R"([{"id":"kai","scene":40,"title":{"ja":"a"},"text":{"ja":"b"},"done":{"pilots":[18],"units":[27]},
+            "inherit":{"after":[40],"commands":[["3D5A",18,{"like":4},27,500],["3D5A",18,-2,30,27],["3D6F",874]],"crew":[{"unit":27,"pilots":[18,4]}]}}])");
+        story::Library library;
+        story::add_image(library,"p",with);
+        const auto& info=library.infos.at(0);
+        check(info.id=="kai" && info.inherit && info.inherit->after==std::vector<int>{40} && info.inherit->before.empty(),"an entry's grant");
+        check(info.inherit->commands==json::parse(R"([["3D5A",18,0,27,500],["3D5A",18,-2,30,27],["3D6F",874]])") &&
+              info.inherit->like==std::vector<std::pair<size_t,unsigned>>{{0,4}},"its commands, a level like Domon's");
+        check(info.inherit->crew.size()==1 && info.inherit->crew[0].second==std::vector<unsigned>{18,4},"its crew");
+        auto bad=with;bad["stage_info"][0].erase("id");check(!fails(bad).empty(),"a grant without an id");
+        bad=with;bad["stage_info"][0].erase("done");check(!fails(bad).empty(),"a grant without done");
+        bad=with;bad["stage_info"][0]["inherit"].erase("after");check(!fails(bad).empty(),"a grant at no stage");
+        bad=with;bad["stage_info"][0]["inherit"]["commands"].push_back(json::parse(R"(["3E13",5,0])"));check(!fails(bad).empty(),"a grant setting a variable");
+        bad=with;bad["stage_info"].push_back(bad["stage_info"][0]);check(!fails(bad).empty(),"two entries of one id");
+    }
     // Two packages: their lines are numbered on from each other.
     story::Library two;
     story::add_image(two,"p1",image);story::add_image(two,"p2",image);
@@ -64,6 +82,49 @@ int main(int argc,char** argv) {
     check(master.events[2].trigger==story::Trigger::after_end && master.events[2].fired==std::vector<std::string>{"persuade"},"joins after the end event");
     const auto& joins=master.events[2].words;
     check(std::vector<uint16_t>(joins.end()-6,joins.end())==std::vector<uint16_t>{0x3D5A,18,0,27,500,0xFFFF},"3D5A 18,0,27,500 at its end");
+
+    // --- A package's own deployment groups ---------------------------------------------
+    {
+        auto with=image;
+        with["deployments"]=json::parse(R"([{"id":"wave","scene":129,"records":[{"x":10,"y":5,"pilot":289,"unit":21,"side":1,"level":2,"upgrade":1},
+            {"x":11,"y":5,"pilot":290,"unit":22,"side":4,"level":0,"upgrade":0}]}])");
+        with["events"].push_back(event("w","turn",{1,1},{0x3D45,0xFFFD,0x3D46,0xFFFD,1,0xFFFF}));
+        with["events"][1]["groups"]=json::parse(R"([[1,"wave",false],[3,"wave",true]])");
+        story::Library library;
+        story::add_image(library,"p",with);
+        check(library.deployments.size()==1 && library.deployments[0].records.size()==2 && library.events[1].groups.size()==2,"a package's group and its references");
+        check(library.deployments[0].records[0]==std::array<uint16_t,14>{0,10,5,289,2,21,1,0,0,0xFFFF,1,0,0,0},"the record as the ROM's");
+        auto bad=with;bad["events"][1]["groups"]=json::parse(R"([[1,"nope",false]])");check(!fails(bad).empty(),"an unknown group");
+        bad=with;bad["deployments"][0]["records"][0]["side"]=3;check(!fails(bad).empty(),"side 3");
+        bad=with;bad["deployments"][0]["scene"]=130;check(!fails(bad).empty(),"a group of another scene");
+        // The scene's block: groups 0, 1 and 3, then 999.
+        auto& st=story::state();
+        const auto saved=st.library;st.library=library;st.scene=129;st.appended.clear();st.appended_at=0;
+        const uint32_t block=0x80199400;
+        write32(ram.data(),e,block);
+        const auto rom=[&]{for(unsigned i=0;i<0x2000;i+=2)write16(ram.data(),block+i,0x5555);
+            const uint16_t groups[]={0,1,3};
+            for(unsigned k=0;k<3;++k)write16(ram.data(),block+k*28,groups[k]);
+            write16(ram.data(),block+3*28,999);};
+        rom();
+        story::assign_groups(ram.data());
+        check(st.groups==std::map<std::string,unsigned>{{"p/wave",2u}},"the first group the block leaves free");
+        check(read(ram.data(),block+3*28,2)==2 && read(ram.data(),block+3*28+6,2)==289 && read(ram.data(),block+4*28,2)==2 &&
+              read(ram.data(),block+4*28+20,2)==4 && read(ram.data(),block+5*28,2)==999,"appended before a new 999");
+        story::assign_groups(ram.data());
+        check(st.groups==std::map<std::string,unsigned>{{"p/wave",2u}} && read(ram.data(),block+5*28,2)==999 && read(ram.data(),block+6*28,2)==0x5555,"registered again: known as ours, not twice");
+        rom();write16(ram.data(),block+2*28,2);   // copied again, its third record now group 2: 0, 1, 2 used
+        story::assign_groups(ram.data());
+        check(st.groups==std::map<std::string,unsigned>{{"p/wave",3u}},"a fresh copy numbered afresh");
+        story::place(ram.data(),library.events[1]);
+        check(read(ram.data(),story::region+(story::header_words+1)*2,2)==3 && read(ram.data(),story::region+(story::header_words+3)*2,2)==503,"3D45 3, 3D46 503");
+        write16(ram.data(),block,0x5555);for(unsigned i=0;i<0x2000;i+=28)write16(ram.data(),block+i,7);
+        st.appended.clear();story::assign_groups(ram.data());
+        check(st.groups.empty(),"no 999: nothing appended");
+        story::View none;
+        check(!story::eligible(library.events[1],{},none),"an event whose group found no room does not fire");
+        st.library=saved;st.groups.clear();st.appended.clear();st.appended_at=0;
+    }
 
     // --- Triggers --------------------------------------------------------------------
     auto& s=story::state();
@@ -222,6 +283,23 @@ int main(int argc,char** argv) {
     check(story::read_text(story::text_table+offset,ram.data(),0x80310000,4),"the header alone");
     check(story::line(story::text_first,"zh-Hans").value_or("").find("师父")!=std::string::npos,"the Chinese line");
     check(story::line(story::text_first,"ko")==story::line(story::text_first,"ja"),"Japanese otherwise");
+    // A package's battle quote (mod_quotes.hpp) is served the same way, with a battle quote's
+    // header: it closes on its own.
+    srw64::mod_quotes::publish({{430,{{"ja","「行くぞ!」"},{"zh-Hans","「上了！」"}},"pkg","hero.ogg"}});
+    const uint16_t quote=srw64::mod_quotes::text_first;
+    check(story::descriptor(0,quote,offset,size) && size==8+6*2+2,"a battle quote's descriptor");
+    check(story::read_text(story::text_table+offset,ram.data(),0x80310000,size),"a battle quote served");
+    header.clear();for(uint32_t i=0;i<8;++i)header+=char(read(ram.data(),0x80310000+i,1));
+    check(header=="43020032","header 430 20 032: "+header);
+    check(story::line(quote,"zh-Hans")==std::optional<std::string>("「上了！」"),"its Chinese line");
+    // A routine that shows the lines after it (194: +1 to +5) gets a blank line of the same
+    // speaker past the last one, not the ROM's empty entry.
+    check(story::descriptor(0,quote+5,offset,size) && size==8+2+2 && story::line(quote+5,"ja")==std::optional<std::string>(""),"a blank line after the last");
+    check(story::read_text(story::text_table+offset,ram.data(),0x80310000,size),"the blank line served");
+    header.clear();for(uint32_t i=0;i<8;++i)header+=char(read(ram.data(),0x80310000+i,1));
+    check(header=="43020032","the blank line's speaker: "+header);
+    srw64::mod_quotes::publish({});
+    check(!story::descriptor(0,quote,offset,size),"none without package lines");
 
     if(failures)std::fprintf(stderr,"%d failure(s)\n",failures);
     else std::printf("story MOD tests passed\n");

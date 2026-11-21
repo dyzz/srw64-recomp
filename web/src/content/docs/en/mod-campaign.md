@@ -205,6 +205,8 @@ This writes `build/mods/<id>-<version>.srw64mod` and checks it with `tools/mods/
 
 The campaign's saves are in `campaigns/<id>/saves/` in the user directory, apart from the main game's.
 
+A deployment record's `actor` and `unit` can name a package's new character or unit: `"@name"` (the campaign package's own) or `"other.package@name"` (listed in `requires`). The game numbers them when it loads the campaign, from the packages enabled; a name it cannot find keeps the campaign from loading.
+
 ## Sharing
 
 `template`, `deployments_from` and `copy_from` copy original data from your ROM into the package; a package made that way is for your own play only. To share one publicly, write every deployment record field by field yourself (`group`, `x`, `y`, `actor`, `unit`, `faction`, `level_offset`, `upgrade` and so on) and write every event yourself; text, map, character and unit numbers are only numbers and are fine. Otherwise the [mod package copyright rules](../mods/#copyright) apply.

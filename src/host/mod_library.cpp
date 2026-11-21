@@ -498,6 +498,8 @@ fs::path directory() {
     return dir && *dir?fs::path(dir):fs::path{};
 }
 
+fs::path trial_directory(){return directory().empty()?fs::path{}:directory()/".web-link";}
+
 std::vector<Package> installed(const Version& game) {
     std::lock_guard lock(mutex);
     if(directory().empty())return {};
@@ -515,17 +517,19 @@ std::vector<Package> installed(const Version& game) {
     // loose_results, not listed as a package too.
     std::set<fs::path> refused;
     for(const auto& r:loose)if(!r.result.ok)refused.insert(r.file);
-    std::map<std::string,fs::path> found;
-    for(const auto& item:fs::directory_iterator(directory(),error)) {
-        const auto path=item.path();
-        const auto name=path.filename().string();
-        if(name.starts_with("."))continue;
-        if(item.is_directory(error))found[name]=path;
-        else if(item.is_regular_file(error) && path.extension()==package_extension && !refused.contains(path) && !found.contains(path.stem().string()))
-            found.emplace(path.stem().string(),path);
-    }
-    std::vector<Package> packages;
-    for(const auto& [name,where]:found) {
+    const auto found_in=[&](const fs::path& root) {
+        std::map<std::string,fs::path> found;
+        for(const auto& item:fs::directory_iterator(root,error)) {
+            const auto path=item.path();
+            const auto name=path.filename().string();
+            if(name.starts_with("."))continue;
+            if(item.is_directory(error))found[name]=path;
+            else if(item.is_regular_file(error) && path.extension()==package_extension && !refused.contains(path) && !found.contains(path.stem().string()))
+                found.emplace(path.stem().string(),path);
+        }
+        return found;
+    };
+    const auto read=[&](const std::string& name,const fs::path& where) {
         Package p;
         p.folder=where;
         p.files=open_files(where);
@@ -540,10 +544,65 @@ std::vector<Package> installed(const Version& game) {
             }
         }
         p.contents=summarize(*p.files);
-        packages.push_back(std::move(p));
-    }
+        return p;
+    };
+    std::vector<Package> packages;
+    for(const auto& [name,where]:found_in(directory()))packages.push_back(read(name,where));
+    // The web maker's package to try stands in for an installed one of its id.
+    if(fs::is_directory(trial_directory(),error))
+        for(const auto& [name,where]:found_in(trial_directory())) {
+            auto p=read(name,where);
+            p.trial=true;
+            std::erase_if(packages,[&](const Package& q){return q.id()==p.id();});
+            packages.push_back(std::move(p));
+        }
     listed=packages;listed_stamp=folder_stamp();
     return resolve(std::move(packages),read_state(),game);
+}
+
+InstallResult install_trial(const fs::path& source) {
+    InstallResult result;
+    if(directory().empty()){result.problem={"no_folder",""};return result;}
+    std::error_code error;
+    const auto root=trial_directory();
+    fs::create_directories(root,error);
+    // Checked as an install's file is, then kept as .web-link/<id>.srw64mod and read in place.
+    result=check(source);
+    if(!result.ok)return result;
+    std::random_device random;
+    const auto part=root/(".installing-"+stamp()+"-"+std::to_string(random()%100000)+package_extension+".part");
+    if(!copy_package(source,part)) {
+        fs::remove(part,error);
+        result.ok=false;result.problem={"write",result.id};
+        return result;
+    }
+    std::lock_guard lock(mutex);
+    // One package to try at a time: the one before goes (its archives closed first).
+    for(const auto& item:fs::directory_iterator(root,error)) {
+        const auto path=item.path();
+        if(path.filename().string().starts_with("."))continue;
+        forget_files(path);close_archive(path);close_archive(path/voice_archive);
+        fs::remove_all(path,error);
+    }
+    fs::rename(part,root/(result.id+package_extension),error);
+    if(error){fs::remove(part,error);result.ok=false;result.problem={"write",result.id};return result;}
+    listed.reset();
+    ++changes;
+    return result;
+}
+
+void clear_trial() {
+    std::lock_guard lock(mutex);
+    if(directory().empty())return;
+    std::error_code error;
+    const auto root=trial_directory();
+    if(!fs::exists(root,error))return;
+    for(const auto& item:fs::directory_iterator(root,error)) {
+        forget_files(item.path());close_archive(item.path());close_archive(item.path()/voice_archive);
+    }
+    fs::remove_all(root,error);
+    listed.reset();
+    ++changes;
 }
 
 InstallResult install(const fs::path& source) {

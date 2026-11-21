@@ -89,18 +89,35 @@ export async function openPackage(file: File): Promise<{ mod: Record<string, any
 export const readJson = (bytes?: Uint8Array) => bytes ? JSON.parse(strFromU8(bytes)) : undefined;
 export const jsonBytes = (value: unknown) => strToU8(JSON.stringify(value, null, 2) + '\n');
 
-// Zip `files` with mod.json and offer the package; says what it wrote.
-export function writePackage(manifest: Record<string, unknown>, version: string, files: Record<string, Uint8Array>, status: HTMLElement, text: Text) {
-  const zippable: Zippable = { 'mod.json': jsonBytes(manifest) };
-  for (const [path, bytes] of Object.entries(files)) zippable[path] = /\.(png|ogg)$/.test(path) ? [bytes, { level: 0 }] : bytes;
-  const zip = zipSync(zippable, { level: 6 });
-  const name = `${manifest.id}-${version}.srw64mod`;
-  const url = URL.createObjectURL(new Blob([zip as BlobPart], { type: 'application/zip' }));
+// A file the browser saves for the player.
+export function offer(bytes: Uint8Array, name: string) {
+  const url = URL.createObjectURL(new Blob([bytes as BlobPart], { type: 'application/zip' }));
   const a = el('a', { href: url, download: name });
   document.body.append(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 60_000);
-  say(status, fill(text.exported, { file: name, size: size(zip.length) }));
 }
+// Zip `files` with mod.json and offer the package; says what it wrote, returns the file.
+// The package's bytes: mod.json and `files`, pictures and sounds stored as they are.
+export function zipPackage(manifest: Record<string, unknown>, files: Record<string, Uint8Array>) {
+  const zippable: Zippable = { 'mod.json': jsonBytes(manifest) };
+  for (const [path, bytes] of Object.entries(files)) zippable[path] = /\.(png|ogg)$/.test(path) ? [bytes, { level: 0 }] : bytes;
+  return zipSync(zippable, { level: 6 });
+}
+export function writePackage(manifest: Record<string, unknown>, version: string, files: Record<string, Uint8Array>, status: HTMLElement, text: Text) {
+  const zip = zipPackage(manifest, files);
+  const name = `${manifest.id}-${version}.srw64mod`;
+  offer(zip, name);
+  say(status, fill(text.exported, { file: name, size: size(zip.length) }));
+  return { name, zip };
+}
+// A Thunderstore zip of `entries` in order (lib/thunderstore.ts): fixed dates, the package stored.
+export function thunderstoreZip(entries: [string, Uint8Array][]) {
+  const zippable: Zippable = {};
+  const mtime = new Date(1980, 0, 1, 0, 0, 0);
+  for (const [path, bytes] of entries) zippable[path] = [bytes, { level: /\.srw64mod$/.test(path) ? 0 : 6, mtime }];
+  return zipSync(zippable);
+}
+export { size, strToU8 };
 
 // Matches for a search box over named entries: an exact number first, then names.
 export function search<T extends { id: number; name: { ja: string; zh: string; en: string } }>(list: T[], query: string, limit = 30): T[] {

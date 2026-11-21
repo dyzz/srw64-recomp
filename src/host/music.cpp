@@ -1,6 +1,7 @@
 #include "music.hpp"
 #include "guest_memory.hpp"
 #include "mod_ids.hpp"
+#include "mod_quotes.hpp"
 #include "presentation_settings.hpp"
 #include "game_speed.hpp"
 #include "wide_map.hpp"
@@ -41,12 +42,30 @@ unsigned table_revision{};
 std::map<int,Track> table;
 BattleSongs battle_table;
 std::map<int,Line> voice_table;
+unsigned quotes_revision{~0u};
+// The packages' own battle quotes by the file each names (mod_quotes.hpp).
+std::optional<int> named_voice(const std::string& package,const std::string& file) {
+    static std::mutex mutex;
+    static std::shared_ptr<const std::vector<mod_quotes::Line>> seen;
+    static std::map<std::pair<std::string,std::string>,int> by_file;
+    std::lock_guard lock(mutex);
+    if(const auto now=mod_quotes::lines();now!=seen) {
+        seen=now;by_file.clear();
+        for(size_t i=0;i<now->size();++i)
+            if(!(*now)[i].voice.empty())by_file[{(*now)[i].package,(*now)[i].voice}]=int(mod_quotes::text_first+i);
+    }
+    const auto found=by_file.find({package,file});
+    return found==by_file.end()?std::nullopt:std::optional<int>(found->second);
+}
 void refresh_locked() {
+    // The quotes' records come with the packages' data (mod_data.hpp), which may follow.
+    if(const unsigned quotes=mod_quotes::revision();quotes!=quotes_revision){quotes_revision=quotes;table_revision=~0u;}
     if(const unsigned now=mods::revision();now!=table_revision) {
         const auto packages=mods::installed(mods::game_version());
         table=collect(packages);
-        battle_table=collect_battle(packages,[](const std::string& key,const std::string& package){return mod_ids::unit(json(key),package);});
-        voice_table=collect_voices(packages);
+        battle_table=collect_battle(packages,[](const std::string& key,const std::string& package){return mod_ids::unit(json(key),package);},
+                                    [](const std::string& key,const std::string& package){return mod_ids::pilot(json(key),package);});
+        voice_table=collect_voices(packages,named_voice);
         table_revision=now;
         forget_decoded();   // an updated package's files keep their names
     }
@@ -224,6 +243,13 @@ bool playing(uint8_t* ram,recomp_context* ctx) {
     if(!voice)return false;
     ctx->r2=voice->finished?0:1;
     return true;
+}
+
+std::optional<int> package_battle_song(uint32_t rom) {
+    if(!settings::mod_music())return std::nullopt;
+    std::lock_guard lock(table_mutex);
+    refresh_locked();
+    return battle_song(battle_table,rom);
 }
 
 bool battle(uint8_t* ram,recomp_context* ctx) {

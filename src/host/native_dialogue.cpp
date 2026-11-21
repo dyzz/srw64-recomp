@@ -357,8 +357,11 @@ void refresh(uint8_t* ram,bool create_events) {
         // A battle quote follows the original page by page; a story record is read whole.
         Record source;
         if(display_only) {
-            const auto* message=localization::catalog().resolve(game_adapter::standard_dialogue_key(box.text_id));
-            source.text=utf16(segment(message?expand(ram,*message,localization::catalog().locale):decode(ram,p+12,256),box.segment));
+            const auto& catalog=localization::catalog();
+            const auto* message=catalog.resolve(game_adapter::standard_dialogue_key(box.text_id));
+            // A package's battle quote (mod_quotes.hpp): one page of its own.
+            const auto line=message?std::nullopt:story_mod::line(box.text_id,catalog.locale);
+            source.text=utf16(segment(message?expand(ram,*message,catalog.locale):line?expand(ram,*line,catalog.locale):decode(ram,p+12,256),box.segment));
         } else source=story_record(ram,localization::catalog(),box.text_id,p);
         const auto& body=source.text;
         if(body.empty()) {current[slot]={};continue;}

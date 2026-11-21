@@ -46,6 +46,9 @@ class TableWindowTest(unittest.TestCase):
         # Raised only by the packages' own resources (mod_tables.hpp resource_limit_now).
         self.assertEqual(cap[1], "srw64_resource_limit()")
         self.assertEqual(g.NATIVE_HOOKS["resident_func_80089BBC"], "srw64_original_resource_descriptor")
+        # The quote picker's weapon (8022241C) takes the new weapons' numbers too.
+        last_weapon = int(re.search(r"last_new_weapon=(\d+)", HEADER)[1])
+        self.assertEqual(g.MAP_WIDTH_CONSTANTS[("load_00121560_func_8022241C", 0x80222424)], ("0X531", f"0X{last_weapon + 1:X}"))
         for key, (block, rom) in g.TABLE_BLOCKS.items():
             self.assertEqual(names.index(key), block, key)
             self.assertEqual(int(layouts[block][0], 16), rom, key)
@@ -69,6 +72,8 @@ class TableWindowTest(unittest.TestCase):
         found = {(h["function"], int(h["address"], 16)) for h in hits
                  if h["table"] in bases and h["how"] == "常量" and int(h["value"], 16) == bases[h["table"]]}
         found = {f for f in found if not f[0].startswith("load_000856D0")}
+        # 0x1161C0 is also where an overlay's code ends (8007FEB0 loads 0x1156A0-0x1161C0).
+        found -= {("resident_func_8007FEB0", 0x8007FECC)}
         self.assertEqual(found, set(self.generate.TABLE_READERS))
         icons = {(h["function"], int(h["address"], 16)) for h in hits if h["table"] == "map_icons_ram" and h["value"] == "80218218"}
         icons -= {("load_000AB160_func_801C60A4", 0x801C6158)}   # reads through 801C60C0's moved base
@@ -77,9 +82,16 @@ class TableWindowTest(unittest.TestCase):
         # the spirits'), but for reads through a base already moved in the same function.
         maps = {(h["function"], int(h["address"], 16)) for h in pilot_hits
                 if h["table"] in ("pilot_records_map", "spirit_map") and h["value"] in ("800CA9C4", "800CA6F4")}
-        maps -= {("srw64_original_demo_battle_fill", 0x8009C480), ("load_00121560_func_801C6F14", 0x801C6FAC),
-                 ("load_00121560_func_801C6F14", 0x801C6FB0)}
+        maps -= {("srw64_original_demo_battle_fill", 0x8009C480), ("srw64_original_battle_quote_show", 0x801C6FAC),
+                 ("srw64_original_battle_quote_show", 0x801C6FB0)}
         self.assertEqual(maps, set(self.generate.PILOT_MAP_READERS))
+        # The form families (mod_forms.hpp): the list's one walk and every read of the pointers,
+        # but for 801E174C, which reads through 801E170C's moved base.
+        forms = {(h["function"], int(h["address"], 16)) for h in hits if h["table"] == "forms" and h["how"] == "常量"}
+        self.assertEqual(forms, set(self.generate.FORMS_LIST_READERS))
+        pointers = {(h["function"], int(h["address"], 16)) for h in hits if h["table"] == "forms_pointers"}
+        pointers -= {("load_000AB160_func_801E1688", 0x801E174C)}
+        self.assertEqual(pointers, set(self.generate.FORMS_POINTER_READERS))
 
 
 if __name__ == "__main__":

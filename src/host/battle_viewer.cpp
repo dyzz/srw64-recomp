@@ -1,4 +1,5 @@
 #include "battle_viewer.hpp"
+#include "battle_speaker.hpp"
 #include "table_window.hpp"
 #include "mod_data.hpp"
 #include "upgrade_rules.hpp"
@@ -8,6 +9,7 @@
 #include "guest_memory.hpp"
 #include "native_dialogue.hpp"
 #include "mini_stage.hpp"
+#include "music.hpp"
 #include "debug_protocol.hpp"
 #include "librecomp/game.hpp"
 #include <algorithm>
@@ -170,15 +172,23 @@ int quote_participants(uint8_t* ram,unsigned* actors,unsigned max) {
 // The battle music (801E085C, docs/design/battle-viewer.md §6.7): a player unit plays its
 // pilot's song (s16 per character, ROM 0x7D6A0), except the forms its super mode makes
 // (ゴッドガンダムH, the S forms, V-MAX); an enemy its unit's (s16 per unit, 0x7DF30). The
-// viewer plays the attacker's: its pilot's when it has one, else its unit's.
-constexpr uint32_t pilot_songs=0x7D6A0,unit_songs=0x7DF30;
-constexpr unsigned pilot_song_count=361,unit_song_count=363;
+// viewer plays the attacker's: its pilot's when it has one, else its unit's. A new character's
+// and unit's rows are the table window's (table_window.hpp); a package's music.json "battle"
+// entry goes first while MOD music is on (music.hpp package_battle_song), as on the map.
+constexpr uint32_t pilot_songs=0x7D6A0;
+constexpr unsigned pilot_song_count=361;
 int attacker_song(unsigned unit,unsigned actor) {
     if(unit==2)return 0xA;                                                       // 明鏡止水
     if(unit==4 || unit==10 || unit==12 || unit==14 || unit==16)return 0xB;      // 燃え上がれ闘志
     if(unit==270 || unit==273 || unit==277 || unit==278)return 0xD;            // V-MAX
-    const int pilot=actor<pilot_song_count?int16_t(rom16(pilot_songs+2*actor)):-1;
-    return pilot>0?pilot:int16_t(rom16(table_window::row(table_window::unit_songs,unit)));
+    const uint32_t pilot_at=actor<pilot_song_count?pilot_songs+2*actor:table_window::new_pilot(actor)?table_window::row(table_window::pilot_songs,actor):0;
+    const uint32_t unit_at=table_window::row(table_window::unit_songs,unit);
+    if(pilot_at) {
+        if(const auto chosen=music::package_battle_song(pilot_at))return *chosen;
+        if(const int pilot=int16_t(rom16(pilot_at));pilot>0)return pilot;
+    }
+    if(const auto chosen=music::package_battle_song(unit_at))return *chosen;
+    return int16_t(rom16(unit_at));
 }
 
 int animation(unsigned unit,unsigned weapon) {
@@ -252,6 +262,7 @@ bool start(uint8_t* ram,int* music) {
     if(running && current!=demo_mode && title_mode(current)) {
         std::lock_guard lock(mutex);
         running=false;returned=true;
+        battle_speaker::viewer()={};
         note({{"event","returned"},{"vi",srw64_current_vi()},{"mode",current}});
     }
     if(!title_mode(current))return false;
@@ -299,6 +310,9 @@ void filled_records(uint8_t* ram) {
     if(!armed)return;
     armed=false;++filled;
     const auto writes=choice.is_object()?compute(ram,choice):raw;
+    // Whose records these are, for the quotes' speaker (battle_speaker.hpp).
+    if(choice.is_object())
+        battle_speaker::viewer()={true,{choice.at("attacker").at("pilot").get<unsigned>(),choice.at("defender").at("pilot").get<unsigned>()}};
     // A combination attack's partners, for its quotes (quote_participants); the defender's only
     // when it counters.
     for(unsigned s=0;s<2;++s) {
@@ -356,11 +370,12 @@ json request(const json& params) {
             // story line opens as the quote, and the quote state (801C840C) waits for a close
             // that never comes. The page never offers such a one; a hand-written request did.
             const unsigned actor=picked.at(side).at("pilot").get<unsigned>();
-            // A package's new character speaks as the one it borrows (mod_pilots.hpp).
+            // A package's new character speaks with its own part when it has quotes
+            // (mod_quotes.hpp), else as the one it borrows (mod_pilots.hpp).
             const auto voices=mod_data::voices();
             const auto voice=voices.find(actor);
             const unsigned speaker=voice!=voices.end()?voice->second:actor;
-            if(speaker>=voice_part_count || int16_t(rom16(voice_parts+2*speaker))<0)
+            if(!mod_data::own_voices().count(actor) && (speaker>=voice_part_count || int16_t(rom16(voice_parts+2*speaker))<0))
                 throw std::invalid_argument(std::string(side)+" pilot "+std::to_string(actor)+" has no battle quotes (D_800CA9C4 is -1), the quote would never close: use a pilot the original flies");
         }
         if(!picked.contains("scene") || picked.at("scene").size()!=2)throw std::invalid_argument("choice needs two scenes");

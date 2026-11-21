@@ -1,5 +1,6 @@
 #pragma once
 #include "json/json.hpp"
+#include "battle_steps.hpp"
 #include "mod_sprites.hpp"
 #include "table_window.hpp"
 #include <filesystem>
@@ -140,6 +141,11 @@ inline uint8_t read_byte(const Bytes& over,std::span<const uint8_t> rom,uint32_t
 struct Sprite {
     std::string key;                       // "package@name"
     uint16_t scene=0, atlas=0, palette=0;
+    // "around": copies of the scene in the resource numbers before and after its own. An
+    // actor's scene (+0x2C) is a resource number, and some routines move it to the one next to
+    // it (801C5700 with +k: the beam, 118, to +1 and +2, its ROM scenes 3559 and 3560); a
+    // picture in their place has to be there too, or the atlas after it is read as a scene.
+    uint8_t before=0, after=0;
     unsigned frames=0, width=0, height=0;  // the first frame's size
     std::filesystem::path picture;         // the first frame's PNG
     std::vector<std::filesystem::path> hd; // per frame, empty when none
@@ -167,6 +173,13 @@ struct Taken {
     struct Combine { std::vector<unsigned> parts,over; };
     std::map<unsigned,Combine> combines;
     std::map<unsigned,int> works;            // a new unit -> its work in the Library (text 60 + it)
+    // Form families (mod_forms.hpp): the base form -> every form of the family, the base first.
+    std::map<unsigned,std::vector<unsigned>> forms;
+    // A new weapon that is a combination attack (mod_combos.hpp): the units taking part (any of
+    // them with the weapon in its list leads), each one's component weapon, the multiplier
+    // of their average power, and the pilot pairings of which one must be present.
+    struct Combination { std::vector<unsigned> units,parts; float multiplier=1.5f; std::vector<std::vector<unsigned>> pilots; };
+    std::map<unsigned,Combination> combinations;
     // New characters (docs/design/unit-mod-kit.md §5.4): the character each copies (its records,
     // portrait, song, names) and the one whose battle quotes it speaks.
     std::map<unsigned,unsigned> pilot_copies,voices;
@@ -180,6 +193,7 @@ struct Taken {
     std::vector<std::pair<unsigned,unsigned>> loves;
     std::map<unsigned,unsigned> combo_as;
     std::map<std::string,unsigned> scenes;   // "package@name" -> battle scene registry number
+    std::map<std::string,std::string> scene_sprites;   // "package@name" scene -> its "package@sprite"
     std::map<unsigned,unsigned> copies;      // a new unit -> the unit it copies
     std::map<unsigned,unsigned> weapon_copies;
     std::map<uint16_t,std::pair<uint32_t,uint32_t>> names;   // private text id -> source record (ROM address, size)
@@ -202,6 +216,7 @@ inline std::optional<std::filesystem::path> inside(const std::filesystem::path& 
     return folder/relative;
 }
 // The "sprites" of one package: PNGs into resources (mod_sprites.hpp build).
+inline constexpr int max_around=32;
 inline std::string sprites(const json& part,const std::string& package,const std::filesystem::path& folder,Taken& t) {
     if(!part.is_object())return "sprites 要是对象";
     for(const auto& [name,entry]:part.items()) {
@@ -209,8 +224,8 @@ inline std::string sprites(const json& part,const std::string& package,const std
         if(!valid_name(name))return where+"：名字只能用小写字母、数字和 - _ .";
         if(!entry.is_object())return where+"：要是对象";
         for(const auto& [field,_]:entry.items())
-            if(field!="image" && field!="frames" && field!="origin" && field!="mirror" && field!="ticks" && field!="loop" && field!="hd")
-                return where+"：未知字段 "+field+"（image、frames、origin、mirror、ticks、loop、hd）";
+            if(field!="image" && field!="frames" && field!="origin" && field!="mirror" && field!="ticks" && field!="loop" && field!="hd" && field!="around")
+                return where+"：未知字段 "+field+"（image、frames、origin、mirror、ticks、loop、hd、around）";
         json files=entry.contains("frames")?entry["frames"]:json::array({entry.value("image",json())});
         if(entry.contains("frames") && entry.contains("image"))return where+"：image 和 frames 只写一个";
         if(!files.is_array() || files.empty() || files.size()>64)return where+"：image 要是一张 PNG，frames 要是 1–64 张";
@@ -242,11 +257,18 @@ inline std::string sprites(const json& part,const std::string& package,const std
         mod_sprites::Built built;
         if(auto why=mod_sprites::build(frames,origin[0].get<int>(),origin[1].get<int>(),mirror,steps,loop.get<unsigned>(),built);!why.empty())
             return where+"："+why;
-        if(t.resource_next+3>tw::resource_limit)return where+"：资源号用完了";
-        sprite.scene=uint16_t(t.resource_next);sprite.atlas=uint16_t(t.resource_next+1);sprite.palette=uint16_t(t.resource_next+2);
+        const json around=entry.value("around",json::array({0,0}));
+        if(!around.is_array() || around.size()!=2 || !integer(around[0],0,max_around) || !integer(around[1],0,max_around))
+            return where+".around：要写 [前, 后]：自己的场景前后还要几份（0–"+std::to_string(max_around)+"）";
+        sprite.before=around[0].get<uint8_t>();sprite.after=around[1].get<uint8_t>();
+        const unsigned scenes=1u+sprite.before+sprite.after;
+        if(t.resource_next+scenes+2>tw::resource_limit)return where+"：资源号用完了";
+        sprite.scene=uint16_t(t.resource_next+sprite.before);
+        sprite.atlas=uint16_t(t.resource_next+scenes);sprite.palette=uint16_t(t.resource_next+scenes+1);
         sprite.frames=built.frames;
-        t.resources[sprite.scene]=std::move(built.scene);t.resources[sprite.atlas]=std::move(built.atlas);t.resources[sprite.palette]=std::move(built.palette);
-        t.resource_next+=3;
+        for(unsigned k=0;k<scenes;++k)t.resources[t.resource_next+k]=built.scene;
+        t.resources[sprite.atlas]=std::move(built.atlas);t.resources[sprite.palette]=std::move(built.palette);
+        t.resource_next+=scenes+2;
         if(entry.contains("hd")) {
             const json hd=entry["hd"].is_array()?entry["hd"]:json::array({entry["hd"]});
             if(hd.size()!=frames.size())return where+".hd：要每张图一张 HD 图";
@@ -274,6 +296,20 @@ inline std::string parse(const json& document,const std::string& package,const N
     Bytes bytes;
     Taken t=taken;
     Bytes view=below;   // below, then this file's bytes as they come
+    // A copy of another of this file's new units or weapons starts from the original that
+    // one copies: entries are built in name order, so the one named may not be built yet.
+    // Its own number changes (data/*.json "@name" rows) are its own, not the copy's.
+    const auto rooted=[&](const json& part,json value)->json{
+        for(int hop=0;hop<16 && value.is_string();++hop) {
+            std::string text=value.get<std::string>();
+            if(text.rfind(package+"@",0)==0)text=text.substr(package.size());
+            if(text.size()<2 || text[0]!='@' || !part.is_object())break;
+            const auto found=part.find(text.substr(1));
+            if(found==part.end() || !found->is_object() || !found->contains("copy"))break;
+            value=(*found)["copy"];
+        }
+        return value;
+    };
     const auto at=[&](uint32_t a){return read_byte(view,rom,a);};
     const auto u16=[&](uint32_t a){return unsigned(at(a))<<8|at(a+1);};
     const auto u32=[&](uint32_t a){return uint32_t(u16(a))<<16|u16(a+2);};
@@ -325,6 +361,11 @@ inline std::string parse(const json& document,const std::string& package,const N
         if(t.scene_next>=tw::new_scene_limit)return where+"：战斗场景总表的空位用完了";
         const unsigned n=t.scene_next++;
         t.scenes[own(name)]=n;
+        if(value.is_string()) {
+            const auto text=value.get<std::string>();
+            const auto a=text.find('@');
+            t.scene_sprites[own(name)]=(a==0?package:text.substr(0,a))+"@"+text.substr(a+1);
+        }
         for(unsigned k=0;k<3;++k)put16(tw::row(tw::scenes,n)+k*2,(*picture)[k]);
     }
     const auto scene_of=[&](const json& v)->std::optional<unsigned>{
@@ -349,8 +390,8 @@ inline std::string parse(const json& document,const std::string& package,const N
         const unsigned n=number->second;
         if(!entry.is_object())return where+"：要是对象";
         for(const auto& [field,_]:entry.items())
-            if(field!="copy" && field!="animation" && field!="inherits_from")return where+"：未知字段 "+field+"（copy、animation、inherits_from）";
-        const auto source=resolve(entry.value("copy",json()),package,numbers,Of::weapon);
+            if(field!="copy" && field!="animation" && field!="inherits_from" && field!="combination")return where+"：未知字段 "+field+"（copy、animation、inherits_from、combination）";
+        const auto source=resolve(rooted(weapon_part,entry.value("copy",json())),package,numbers,Of::weapon);
         if(!source || *source==n)return where+".copy：要写照抄的武器（原版武器号或 @名字）";
         t.weapon_copies[n]=*source;
         copy(tw::row(tw::weapons,n),tw::row(tw::weapons,*source),weapon_record_size);
@@ -365,6 +406,50 @@ inline std::string parse(const json& document,const std::string& package,const N
             const auto from=resolve(entry["inherits_from"],package,numbers,Of::weapon);
             if(!from)return where+".inherits_from：要是武器号或 @名字";
             weapon_inherits[n]=*from;
+        }
+        if(entry.contains("combination")) {
+            const auto& c=entry["combination"];
+            const std::string why=where+".combination：要写 {\"units\": [2–5 台], \"parts\": [每台的组成武器], \"multiplier\": 倍率}";
+            if(!c.is_object())return why;
+            for(const auto& [k,_]:c.items())if(k!="units" && k!="parts" && k!="multiplier" && k!="pilots")return why;
+            if(!c.contains("units") || !c["units"].is_array() || c["units"].size()<2 || c["units"].size()>5)return why;
+            if(!c.contains("parts") || !c["parts"].is_array() || c["parts"].size()!=c["units"].size())return where+".combination.parts：每台参加机体写一件组成武器，顺序和 units 一样";
+            Taken::Combination combination;
+            for(const auto& u:c["units"]) {
+                const auto found=resolve(u,package,numbers,Of::unit);
+                if(!found || std::find(combination.units.begin(),combination.units.end(),*found)!=combination.units.end())
+                    return where+".combination.units：要是不重复的机体号或 @名字";
+                combination.units.push_back(*found);
+            }
+            for(const auto& w:c["parts"]) {
+                const auto found=resolve(w,package,numbers,Of::weapon);
+                if(!found)return where+".combination.parts："+w.dump()+" 不是武器号或 @名字";
+                combination.parts.push_back(*found);
+            }
+            if(c.contains("multiplier")) {
+                if(!c["multiplier"].is_number() || c["multiplier"].get<double>()<0.5 || c["multiplier"].get<double>()>5)return where+".combination.multiplier：要是 0.5–5 的数";
+                combination.multiplier=c["multiplier"].get<float>();
+            }
+            if(c.contains("pilots")) {
+                if(!c["pilots"].is_array() || c["pilots"].empty())return where+".combination.pilots：要写人物组合的数组，如 [[184, 185]]";
+                for(const auto& row:c["pilots"]) {
+                    if(!row.is_array() || row.empty() || row.size()>4)return where+".combination.pilots：每组 1–4 个人物";
+                    std::vector<unsigned> ids;
+                    for(const auto& id:row) {
+                        const auto found=resolve(id,package,numbers,Of::pilot);
+                        if(!found)return where+".combination.pilots："+id.dump()+" 不是人物号或 @名字";
+                        ids.push_back(*found);
+                    }
+                    combination.pilots.push_back(ids);
+                }
+            }
+            // The weapon record's combination bit (+0xF 0x02; 800A6A68 copies it to the
+            // instance's +0x22): 8020178C then looks at it each time the list opens.
+            put8(tw::row(tw::weapons,n)+0xF,at(tw::row(tw::weapons,n)+0xF)|0x02);
+            // No upgrades, as the original's 25 (+0xE 0): its power is worked out each time the
+            // list opens. A number file can still give it a type.
+            put8(tw::row(tw::weapons,n)+0xE,0);
+            t.combinations[n]=combination;
         }
         const json animation=entry.value("animation",json{{"copy",entry.value("copy",json())}});
         if(!animation.is_object())return where+".animation：要是 {\"copy\": 武器} 或整条记录";
@@ -390,6 +475,11 @@ inline std::string parse(const json& document,const std::string& package,const N
         push16(-1);
         const auto& actors=animation.value("actors",json::array());
         if(!actors.is_array() || actors.empty() || actors.size()>24)return where+".animation.actors：要 1–24 个";
+        // A record with a routine that computes with scene numbers (battle_steps.hpp complex)
+        // keeps the original's pictures, a cut-in's (240) aside.
+        bool complex_record=false;
+        for(const auto& a:actors)
+            if(a.is_object() && integer(a.value("behavior",json()),3,382) && battle_steps::is_complex(a["behavior"].get<unsigned>()))complex_record=true;
         for(size_t k=0;k<actors.size();++k) {
             const auto& a=actors[k];
             const std::string here=where+".animation.actors["+std::to_string(k)+"]";
@@ -401,6 +491,21 @@ inline std::string parse(const json& document,const std::string& package,const N
             for(const char* f:{"h4","h5","h6"}){if(!integer(a.value(f,json(0)),0,0xFFFF))return here+"."+f+"：要是 0–65535";push16(a.value(f,0));}
             if(!integer(a.value("behavior",json()),3,382))return here+".behavior：要是行为例程号（3–382）";
             push16(a["behavior"].get<int>());
+            // A package picture on a routine that moves to the scene resources next to its own:
+            // its sprite has to have copies of the scene there (battle_steps.hpp).
+            if(const auto& v=a["scene"];v.is_string()) {
+                const auto text=v.get<std::string>();
+                const auto at=text.find('@');
+                const auto scene=t.scene_sprites.find((at==0?package:text.substr(0,at))+"@"+text.substr(at+1));
+                const auto sprite=scene==t.scene_sprites.end()?t.sprites.end():t.sprites.find(scene->second);
+                const unsigned behaviour=a["behavior"].get<unsigned>();
+                if(sprite!=t.sprites.end() && complex_record && behaviour!=240)
+                    return here+"：这条演出里有按场景号计算的行为例程，演员只能用原版的图（cut-in 除外）";
+                if(const auto* reach=battle_steps::of(behaviour);reach && sprite!=t.sprites.end() &&
+                   (sprite->second.before<reach->before || sprite->second.after<reach->after))
+                    return here+"：行为 "+std::to_string(reach->behaviour)+" 会切到场景前后的资源，图片 "+scene->second+
+                           " 要写 \"around\": ["+std::to_string(reach->before)+", "+std::to_string(reach->after)+"]";
+            }
         }
         push16(-1);
         if(data.size()>animation_window)return where+".animation：记录太长";
@@ -414,6 +519,8 @@ inline std::string parse(const json& document,const std::string& package,const N
     // Units.
     const auto& unit_part=document.value("units",json::object());
     if(!unit_part.is_object())return "units 要是对象";
+    std::map<unsigned,std::vector<unsigned>> unit_weapons;   // each new unit's own list, for its family's
+    std::vector<std::pair<std::string,std::vector<unsigned>>> families;   // where, the base form first
     for(const auto& [name,entry]:unit_part.items()) {
         const std::string where="units."+name;
         if(!valid_name(name))return where+"：名字只能用小写字母、数字和 - _ .";
@@ -422,9 +529,9 @@ inline std::string parse(const json& document,const std::string& package,const N
         const unsigned n=number->second;
         if(!entry.is_object())return where+"：要是对象";
         for(const auto& [field,_]:entry.items())
-            if(field!="copy" && field!="pose" && field!="icon" && field!="weapons" && field!="inherits_from" && field!="crew" && field!="combine" && field!="work")
-                return where+"：未知字段 "+field+"（copy、pose、icon、weapons、inherits_from、crew、combine、work）";
-        const auto source=resolve(entry.value("copy",json()),package,numbers,Of::unit);
+            if(field!="copy" && field!="pose" && field!="icon" && field!="weapons" && field!="inherits_from" && field!="crew" && field!="combine" && field!="work" && field!="forms")
+                return where+"：未知字段 "+field+"（copy、pose、icon、weapons、inherits_from、crew、combine、work、forms）";
+        const auto source=resolve(rooted(unit_part,entry.value("copy",json())),package,numbers,Of::unit);
         if(!source || *source==n || (*source<tw::rom_units && *source>=battle_units_with_rows))
             return where+".copy：要写照抄的机体（原版 0–353 或 @名字）";
         t.copies[n]=*source;
@@ -435,6 +542,10 @@ inline std::string parse(const json& document,const std::string& package,const N
         // stop naming them (Final Dancouga showed 分離, copied from 224).
         put8(unit+0x1E,at(unit+0x1E)&~0x01);
         put8(unit+0x1F,at(unit+0x1F)&~0x42);
+        // +4's 0x80 is the form that goes out (800A8CE8 copies it to the instance's +0xC): a
+        // family's base and every unit of its own have it, its other forms not (49, 229). A
+        // new unit stands alone unless its family says otherwise below.
+        put8(unit+4,at(unit+4)|0x80);
         for(const auto table:{tw::battle_units,tw::status_offsets,tw::unit_songs,tw::poses,tw::map_icons})
             copy(tw::row(table,n),tw::row(table,*source),tw::layouts[table].stride);
         {
@@ -470,6 +581,21 @@ inline std::string parse(const json& document,const std::string& package,const N
         }
         for(unsigned f=0;f<6;++f)put16(t.list_next+uint32_t(weapons.size())*list_row+f*2,0xFFFF);
         t.list_next+=size;
+        unit_weapons[n]=weapons;
+        // Other forms it changes into (変形): new units of this file, two at most, as the
+        // original's families have (ゲッター, ダイターン3); written once every unit is read.
+        if(entry.contains("forms")) {
+            const auto& f=entry["forms"];
+            if(!f.is_array() || f.empty() || f.size()>2)return where+".forms：要写 1–2 个别的形态（同一文件里的新机体 @名字）";
+            std::vector<unsigned> members{n};
+            for(const auto& other:f) {
+                const auto u=resolve(other,package,numbers,Of::unit);
+                if(!u || !tw::new_unit(*u) || std::find(members.begin(),members.end(),*u)!=members.end())
+                    return where+".forms：要写同一文件里别的新机体 @名字";
+                members.push_back(*u);
+            }
+            families.emplace_back(where,members);
+        }
         // The Library's work (the original's 25, text 60 + n); without it, the copied unit's.
         if(entry.contains("work")) {
             if(!integer(entry["work"],0,24))return where+".work：要是原版作品号 0–24";
@@ -484,7 +610,7 @@ inline std::string parse(const json& document,const std::string& package,const N
         }
         if(entry.contains("combine")) {
             const auto& c=entry["combine"];
-            const std::string why=where+".combine：要写 {\"parts\": [2–5 台部件], \"over\": [原版合体机]}";
+            const std::string why=where+".combine：要写 {\"parts\": [2–5 台部件，第一台领队], \"over\": [原版合体机，可不写]}";
             if(!c.is_object() || !c.contains("parts") || !c["parts"].is_array() || c["parts"].size()<2 || c["parts"].size()>5)return why;
             for(const auto& [k,_]:c.items())if(k!="parts" && k!="over")return why;
             Taken::Combine combine;
@@ -502,6 +628,8 @@ inline std::string parse(const json& document,const std::string& package,const N
                 }
             }
             t.combines[n]=combine;
+            // It is in the combined-unit table now (mod_combine.hpp): 分離 again on its pages.
+            put8(unit+0x1F,at(unit+0x1F)|0x40);
         }
         if(!entry.contains("inherits_from"))continue;
         const auto from=resolve(entry["inherits_from"],package,numbers,Of::unit);
@@ -516,6 +644,42 @@ inline std::string parse(const json& document,const std::string& package,const N
             const unsigned old=inherits!=weapon_inherits.end()?inherits->second:w;
             if(std::find(old_ones.begin(),old_ones.end(),old)!=old_ones.end() || weapon_inherits.count(w))pairs.push_back({w,old});
         }
+    }
+    // Form families: one weapon list the forms share, each row naming the forms that have the
+    // weapon (as the original's: ダイターン3's lists name 216, 217, 218 per row), every form's
+    // list pointing at it, and 変形 (+1C's 0x2) back on.
+    std::set<unsigned> in_family;
+    for(const auto& [where,members]:families) {
+        for(const unsigned m:members) {
+            if(!unit_weapons.count(m))return where+".forms：要写同一文件里别的新机体 @名字";
+            if(!in_family.insert(m).second)return where+".forms：一台机体只能在一个变形族里";
+        }
+        std::vector<unsigned> shared;
+        for(const unsigned m:members)
+            for(const unsigned w:unit_weapons[m])if(std::find(shared.begin(),shared.end(),w)==shared.end())shared.push_back(w);
+        if(shared.size()>63)return where+".forms：各形态的武器合起来最多 63 件";
+        const uint32_t lists=tw::base(tw::weapon_lists);
+        const uint32_t size=uint32_t(shared.size()+1)*list_row;
+        if(t.list_next+size>lists+tw::block)return where+".forms：武器表的空位用完了";
+        for(size_t k=0;k<shared.size();++k) {
+            const uint32_t row=t.list_next+uint32_t(k)*list_row;
+            put16(row,shared[k]);
+            unsigned slot=1;
+            for(const unsigned m:members)
+                if(const auto& own_list=unit_weapons[m];std::find(own_list.begin(),own_list.end(),shared[k])!=own_list.end())put16(row+slot++*2,m);
+            for(;slot<6;++slot)put16(row+slot*2,0xFFFF);
+        }
+        for(unsigned f=0;f<6;++f)put16(t.list_next+uint32_t(shared.size())*list_row+f*2,0xFFFF);
+        for(const unsigned m:members) {
+            put32(tw::row(tw::weapon_lists,m),t.list_next-lists);
+            const uint32_t unit=tw::row(tw::units,m);
+            put8(unit+0x1F,at(unit+0x1F)|0x02);
+            // Only the base form goes out; the others wait in the family (a copy of ZZ 47, a
+            // base in the original, went out as a unit of its own beside its family).
+            put8(unit+4,m==members[0]?at(unit+4)|0x80:at(unit+4)&~0x80);
+        }
+        t.list_next+=size;
+        t.forms[members[0]]=members;
     }
     // New characters: a copy of an original character's ability record, thresholds, spirit
     // learning, portrait, battle song and names at the character's own rows (its records are

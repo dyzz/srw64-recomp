@@ -419,18 +419,152 @@ def names_problem(document, languages: tuple[str, ...] = ()) -> str:
     return ""
 
 
-def voice_problem(rest: str) -> str | None:
+SONG_NAME = re.compile(r"(?![0-9]+$)[a-z0-9._-]{1,40}")
+
+
+def music_file_problem(name: str) -> str | None:
+    """audio/music/<song>.ogg (src/host/music.hpp collect): a song number 1-255 replaces that
+    song; a name (lowercase, not all digits) is the package's own song, "@name" in music.json."""
+    stem, _, ext = name.rpartition(".")
+    if "/" in name or ext != "ogg":
+        return "要是 audio/music/ 下的 .ogg"
+    if stem.isascii() and stem.isdigit():
+        return None if 1 <= int(stem) <= 255 and not stem.startswith("0") else "歌号要是 1–255"
+    return None if SONG_NAME.fullmatch(stem) else "文件名要是歌号，或自己的曲名（小写字母、数字和 - _ .）"
+
+
+def music_settings_problem(document, songs: set[str], pilots: set[str], units: set[str]) -> str:
+    """audio/music.json: the "@name" songs it names have their files (``songs``), the "@name"
+    characters and units are the package's (``pilots``, ``units``); another package's
+    ("other@name") is the host's to find."""
+    if not isinstance(document, dict) or document.get("schema") != "srw64.music.v1":
+        return "schema 要是 srw64.music.v1"
+    def song(value, where: str) -> str:
+        if isinstance(value, bool) or not (isinstance(value, int) and 1 <= value <= 255 or isinstance(value, str) and value.startswith("@")):
+            return f"{where}：要是歌号 1–255 或 @曲名"
+        if isinstance(value, str) and value[1:] not in songs:
+            return f"{where}：包里没有 audio/music/{value[1:]}.ogg"
+        return ""
+    for key in document.get("tracks", {}) or {}:
+        if key.startswith("@") and (why := song(key, f"tracks.{key}")):
+            return why
+    battle = document.get("battle", {}) or {}
+    for part, own in (("pilot", pilots), ("unit", units)):
+        for key, value in (battle.get(part, {}) or {}).items():
+            where = f"battle.{part}.{key}"
+            if key.startswith("@") and key[1:] not in own:
+                return f"{where}：包里没有这个新{'人物' if part == 'pilot' else '机体'}"
+            if why := song(value, where):
+                return why
+    return ""
+
+
+def voice_problem(rest: str, named: set[str] = frozenset()) -> str | None:
     """A battle voice (audio/voice/battle/<record>.ogg) by the host's rules (src/host/music.hpp
-    collect_voices): an Ogg file named by a battle quote's text record, 5799-17346."""
+    collect_voices): an Ogg file named by a battle quote's text record, 5799-17346, or one a
+    line of the package's dialogue/battle_quotes.json names (``named``)."""
     folder, _, name = rest.rpartition("/")
     if folder != "battle":
         return "暂不支持：战斗语音放在 audio/voice/battle/"
     stem, _, ext = name.rpartition(".")
     if ext.lower() != "ogg":
         return "要是 Ogg Vorbis（.ogg）"
+    if name in named:
+        return None
     if not (stem.isdigit() and stem.isascii() and not stem.startswith("0")) or not 5799 <= int(stem) <= 17346:
-        return "文件名要是战斗台词的记录号（5799–17346）"
+        return "文件名要是战斗台词的记录号（5799–17346），或 dialogue/battle_quotes.json 里写的文件名"
     return None
+
+
+# dialogue/battle_quotes.json (src/host/mod_quotes.hpp, docs/design/unit-mod-kit.md §7): a new
+# character's own battle quotes. The shape is checked here; numbers, weapons and the opponents'
+# voice parts are the host's to resolve.
+BATTLE_QUOTES_SCHEMA = "srw64.battle-quotes.v1"
+QUOTE_SITUATIONS = ("attack", "shot_down", "heavy", "medium", "light", "evade", "no_damage", "no_ammo", "out_of_range")
+
+
+def battle_quotes_problem(document) -> tuple[str, set[str]]:
+    """"" when it is good, and the voice files its lines name."""
+    voices: set[str] = set()
+
+    def line_problem(line, where: str) -> str:
+        if not isinstance(line, dict):
+            return f"{where}：要是对象（各语言的台词，可加 voice）"
+        for key, value in line.items():
+            if not isinstance(value, str):
+                return f"{where}.{key}：要是字符串"
+            if key == "voice":
+                if not value.lower().endswith(".ogg") or len(value) < 5 or "/" in value or "\\" in value or ".." in value:
+                    return f"{where}.voice：要写 audio/voice/battle/ 里的 .ogg 文件名"
+                voices.add(value)
+            elif not value or len(value) > 200:
+                return f"{where}.{key}：台词为空或太长"
+        if "ja" not in line:
+            return f"{where}：每句都要有 ja"
+        if len(line["ja"]) > 42:
+            return f"{where}.ja：战斗台词最多 42 字（一页三行）"
+        return ""
+
+    if not isinstance(document, dict) or document.get("schema") != BATTLE_QUOTES_SCHEMA:
+        return f"schema 要写 {BATTLE_QUOTES_SCHEMA}", voices
+    for key in document:
+        if key not in ("schema", "pilots"):
+            return f"未知字段 {key}（schema、pilots）", voices
+    pilots = document.get("pilots")
+    if not isinstance(pilots, dict):
+        return "pilots 要是对象", voices
+    for who, entry in pilots.items():
+        where = f"pilots.{who}"
+        if "@" not in who:
+            return f"{where}：要写包里的新人物（@名字）", voices
+        if not isinstance(entry, dict):
+            return f"{where}：要是对象", voices
+        specials = 0
+        for key, value in entry.items():
+            if key in QUOTE_SITUATIONS:
+                if not isinstance(value, list) or not 1 <= len(value) <= 255:
+                    return f"{where}.{key}：要是 1–255 句的数组", voices
+                for i, line in enumerate(value):
+                    if why := line_problem(line, f"{where}.{key}[{i}]"):
+                        return why, voices
+            elif key == "special":
+                if not isinstance(value, list):
+                    return f"{where}.special：要是数组", voices
+                for n, c in enumerate(value):
+                    at = f"{where}.special[{n}]"
+                    if not isinstance(c, dict):
+                        return f"{at}：要是对象", voices
+                    for k in c:
+                        if k not in ("weapon", "opponent", "situation", "sometimes", "lines"):
+                            return f"{at}：未知字段 {k}（weapon、opponent、situation、sometimes、lines）", voices
+                    if ("weapon" in c) == ("opponent" in c):
+                        return f"{at}：weapon 和 opponent 要写一个", voices
+                    if "weapon" in c:
+                        if "situation" in c:
+                            return f"{at}.situation：武器台词总是攻击时", voices
+                        if not _weapon_or_new(c["weapon"]):
+                            return f"{at}.weapon：没有这件武器", voices
+                        if "sometimes" in c and not isinstance(c["sometimes"], bool):
+                            return f"{at}.sometimes：要是 true 或 false", voices
+                    else:
+                        if "sometimes" in c:
+                            return f"{at}.sometimes：只有武器台词能写", voices
+                        if not _int_in(c["opponent"], 0, 359):
+                            return f"{at}.opponent：要写原版人物（0–359）", voices
+                        if c.get("situation", "attack") not in QUOTE_SITUATIONS:
+                            return f"{at}.situation：要写九种情境之一", voices
+                    lines = c.get("lines")
+                    if not isinstance(lines, list) or not lines:
+                        return f"{at}.lines：要是非空数组", voices
+                    for i, line in enumerate(lines):
+                        if why := line_problem(line, f"{at}.lines[{i}]"):
+                            return why, voices
+                    specials += len(lines)
+            else:
+                return f"{where}：未知字段 {key}（{'、'.join(QUOTE_SITUATIONS)}、special）", voices
+        if specials > 119:
+            return f"{where}.special：条件台词最多 119 句", voices
+    return "", voices
 
 
 def voice_settings_problem(data) -> str | None:
@@ -551,6 +685,43 @@ def _picture(value) -> bool:
     return _triple(value) or _reference(value)
 
 
+# Per behaviour, how far it moves its actor to the scene resources around its own, and the
+# behaviours that compute with scene numbers otherwise (src/host/battle_steps.hpp, from the
+# recompiled code; web/src/data/weapon-animations.json "steps" and "complex").
+def _steps() -> tuple[dict[int, tuple[int, int]], set[int]]:
+    text = (Path(__file__).resolve().parents[2] / "src/host/battle_steps.hpp").read_text(encoding="utf-8")
+    hard = text[text.index("complex[]={"):]
+    return ({int(b): (int(lo), int(hi)) for b, lo, hi in re.findall(r"\{(\d+),(\d+),(\d+)\}", text)},
+            {int(b) for b in re.findall(r"(\d+),", hard[:hard.index("};")])})
+
+
+def _reach_problem(document, actor, here: str, complex_record: bool = False) -> str:
+    """A picture of this package on an actor whose routine moves to the scene resources next to
+    its own needs "around" that far; in a record with a routine that computes with scene numbers
+    only a cut-in may have one (the host refuses the package otherwise)."""
+    scene = actor.get("scene")
+    if not isinstance(scene, str) or not scene.startswith("@"):
+        return ""
+    target = document.get("scenes", {}).get(scene[1:])
+    if not isinstance(target, str) or not target.startswith("@"):
+        return ""
+    sprite = document.get("sprites", {}).get(target[1:])
+    if not isinstance(sprite, dict):
+        return ""
+    if complex_record and actor.get("behavior") != 240:
+        return f"{here}：这条演出里有按场景号计算的行为例程，演员只能用原版的图（cut-in 除外）"
+    if actor.get("behavior") not in _STEPS:
+        return ""
+    before, after = _STEPS[actor["behavior"]]
+    has = sprite.get("around", [0, 0])
+    if has[0] < before or has[1] < after:
+        return f"{here}：行为 {actor['behavior']} 会切到场景前后的资源，图片 {target[1:]} 要写 \"around\": [{before}, {after}]"
+    return ""
+
+
+_STEPS, _COMPLEX = _steps()
+
+
 def sprites_problem(sprites, files: set[str] | None) -> str:
     """data/new_units.json "sprites" (src/host/mod_units.hpp sprites): PNGs the host turns into
     the game's resources; their colours and size are checked when the game loads them."""
@@ -558,9 +729,9 @@ def sprites_problem(sprites, files: set[str] | None) -> str:
         where = f"sprites.{name}"
         if not isinstance(entry, dict):
             return f"{where}：要是对象"
-        unknown = set(entry) - {"image", "frames", "origin", "mirror", "ticks", "loop", "hd"}
+        unknown = set(entry) - {"image", "frames", "origin", "mirror", "ticks", "loop", "hd", "around"}
         if unknown:
-            return f"{where}：未知字段 {sorted(unknown)[0]}（image、frames、origin、mirror、ticks、loop、hd）"
+            return f"{where}：未知字段 {sorted(unknown)[0]}（image、frames、origin、mirror、ticks、loop、hd、around）"
         if ("image" in entry) == ("frames" in entry):
             return f"{where}：image 和 frames 写一个"
         frames = entry["frames"] if "frames" in entry else [entry["image"]]
@@ -585,6 +756,9 @@ def sprites_problem(sprites, files: set[str] | None) -> str:
             return f"{where}.ticks：要每张图一个 1–255 的拍数"
         if not _int_in(entry.get("loop", 0), 0, len(frames) - 1):
             return f"{where}.loop：要是 0 到图数减 1"
+        around = entry.get("around", [0, 0])
+        if not isinstance(around, list) or len(around) != 2 or not all(_int_in(v, 0, 32) for v in around):
+            return f"{where}.around：要写 [前, 后]：自己的场景前后还要几份（0–32）"
     return ""
 
 
@@ -609,13 +783,31 @@ def new_units_problem(document, files: set[str] | None = None) -> str:
         where = f"weapons.{key}"
         if not isinstance(entry, dict):
             return f"{where}：要是对象"
-        unknown = set(entry) - {"copy", "animation", "inherits_from"}
+        unknown = set(entry) - {"copy", "animation", "inherits_from", "combination"}
         if unknown:
-            return f"{where}：未知字段 {sorted(unknown)[0]}（copy、animation、inherits_from）"
+            return f"{where}：未知字段 {sorted(unknown)[0]}（copy、animation、inherits_from、combination）"
         if not _weapon_or_new(entry.get("copy")):
             return f"{where}.copy：要写照抄的武器（原版武器号或 @名字）"
         if "inherits_from" in entry and not _weapon_or_new(entry["inherits_from"]):
             return f"{where}.inherits_from：要是武器号或 @名字"
+        # A combination attack (src/host/mod_units.hpp, mod_combos.hpp).
+        if "combination" in entry:
+            c = entry["combination"]
+            if not isinstance(c, dict) or set(c) - {"units", "parts", "multiplier", "pilots"}:
+                return f'{where}.combination：要写 {{"units": [2–5 台], "parts": [每台的组成武器], "multiplier": 倍率}}'
+            units, parts = c.get("units"), c.get("parts")
+            if not isinstance(units, list) or not 2 <= len(units) <= 5 or not all(_unit_or_new(u) for u in units) \
+                    or len({json.dumps(u) for u in units}) != len(units):
+                return f"{where}.combination.units：要是 2–5 台不重复的机体号或 @名字"
+            if not isinstance(parts, list) or len(parts) != len(units) or not all(_weapon_or_new(w) for w in parts):
+                return f"{where}.combination.parts：每台参加机体写一件组成武器，顺序和 units 一样"
+            m = c.get("multiplier", 1.5)
+            if isinstance(m, bool) or not isinstance(m, (int, float)) or not 0.5 <= m <= 5:
+                return f"{where}.combination.multiplier：要是 0.5–5 的数"
+            pilots = c.get("pilots", [[0]])
+            if not isinstance(pilots, list) or not pilots or not all(
+                    isinstance(row, list) and 1 <= len(row) <= 4 and all(_int_in(i, 0, 511) or _reference(i) for i in row) for row in pilots):
+                return f"{where}.combination.pilots：要写人物组合的数组，每组 1–4 个人物"
         animation = entry.get("animation", {"copy": entry["copy"]})
         if not isinstance(animation, dict):
             return f"{where}.animation：要是 {{\"copy\": 武器}} 或整条记录"
@@ -645,15 +837,17 @@ def new_units_problem(document, files: set[str] | None = None) -> str:
                 return f"{here}：h4、h5、h6 要是 0–65535"
             if not _int_in(a.get("behavior"), 3, 382):
                 return f"{here}.behavior：要是行为例程号（3–382）"
+            if why := _reach_problem(document, a, here, any(isinstance(x, dict) and x.get("behavior") in _COMPLEX for x in actors)):
+                return why
         if 8 + 2 * len(sounds) + 2 + 16 * len(actors) + 2 > 0x3C0:
             return f"{where}.animation：记录太长"
     for key, entry in document.get("units", {}).items():
         where = f"units.{key}"
         if not isinstance(entry, dict):
             return f"{where}：要是对象"
-        unknown = set(entry) - {"copy", "pose", "icon", "weapons", "inherits_from", "crew", "combine", "work"}
+        unknown = set(entry) - {"copy", "pose", "icon", "weapons", "inherits_from", "crew", "combine", "work", "forms"}
         if unknown:
-            return f"{where}：未知字段 {sorted(unknown)[0]}（copy、pose、icon、weapons、inherits_from、crew、combine、work）"
+            return f"{where}：未知字段 {sorted(unknown)[0]}（copy、pose、icon、weapons、inherits_from、crew、combine、work、forms）"
         if "work" in entry and not _int_in(entry["work"], 0, 24):
             return f"{where}.work：要是原版作品号 0–24"
         if not _unit_or_new(entry.get("copy"), 353):
@@ -682,6 +876,21 @@ def new_units_problem(document, files: set[str] | None = None) -> str:
             over = combine.get("over", [])
             if not isinstance(over, list) or not all(_int_in(o, 0, 362) for o in over):
                 return f"{where}.combine.over：要是原版合体机的机体号"
+        # Form families (src/host/mod_units.hpp, mod_forms.hpp): other new units of this file.
+        if "forms" in entry:
+            forms = entry["forms"]
+            units = document.get("units", {})
+            if not isinstance(forms, list) or not 1 <= len(forms) <= 2 or not all(
+                    isinstance(f, str) and f.startswith("@") and f[1:] in units and f[1:] != key for f in forms) \
+                    or len(set(forms)) != len(forms):
+                return f"{where}.forms：要写 1–2 个别的形态（同一文件里的新机体 @名字）"
+    seen_forms: set[str] = set()
+    for key, entry in document.get("units", {}).items():
+        if isinstance(entry, dict) and "forms" in entry:
+            for name in [key] + [f[1:] for f in entry["forms"]]:
+                if name in seen_forms:
+                    return f"units.{key}.forms：一台机体只能在一个变形族里"
+                seen_forms.add(name)
     # New characters (src/host/mod_units.hpp, docs/design/unit-mod-kit.md §5.4). Whether the
     # copied character has an ability record only the game knows.
     for key, entry in document.get("pilots", {}).items():
@@ -887,6 +1096,20 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
             problems.append(Problem("campaign", "not " + CAMPAIGN_IMAGE_SCHEMA))
         elif image.get("id") != m["id"]:
             problems.append(Problem("campaign", f"id {image.get('id')!r}, the package is {m['id']!r}"))
+    named_voices: set[str] = set()
+    for e in package.entries:
+        if e.name != "dialogue/battle_quotes.json":
+            continue
+        try:
+            why, named_voices = battle_quotes_problem(json.loads(e.read().decode("utf-8")))
+        except (ValueError, UnicodeDecodeError) as error:
+            why = f"JSON 无效：{error}"
+        if why:
+            problems.append(Problem("quotes", f"{e.name}: {why}"))
+        present = {x.name for x in package.entries}
+        for name in sorted(named_voices):
+            if f"audio/voice/battle/{name}" not in present:
+                problems.append(Problem("quotes", f"{e.name}: 没有 audio/voice/battle/{name}"))
     for e in package.entries:
         top, _, rest = e.name.partition("/")
         if top == "data" and rest in DATA_FIELDS:
@@ -910,9 +1133,23 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
             if ext.lower() != "png" or not _plain_number(stem) or int(stem) > 360:
                 problems.append(Problem("portrait", f"{e.name}: 文件名要是人物号.png"))
         elif e.name.startswith("audio/voice/"):
-            why = voice_problem(e.name[len("audio/voice/"):])
+            why = voice_problem(e.name[len("audio/voice/"):], named_voices)
             if why:
                 problems.append(Problem("voice", f"{e.name}: {why}"))
+        elif e.name.startswith("audio/music/"):
+            if why := music_file_problem(e.name[len("audio/music/"):]):
+                problems.append(Problem("music", f"{e.name}: {why}"))
+        elif e.name == "audio/music.json":
+            songs = {x.name[len("audio/music/"):-4] for x in package.entries if x.name.startswith("audio/music/") and x.name.endswith(".ogg")}
+            new_units = next((x for x in package.entries if x.name == "data/new_units.json"), None)
+            try:
+                units_doc = json.loads(new_units.read().decode("utf-8")) if new_units else {}
+                why = music_settings_problem(json.loads(e.read().decode("utf-8")), songs,
+                                             set((units_doc.get("pilots") or {})), set((units_doc.get("units") or {})))
+            except (ValueError, UnicodeDecodeError, AttributeError) as error:
+                why = f"JSON 无效：{error}"
+            if why:
+                problems.append(Problem("music", f"{e.name}: {why}"))
         elif e.name == "audio/voice.json":
             try:
                 why = voice_settings_problem(json.loads(e.read().decode("utf-8")))

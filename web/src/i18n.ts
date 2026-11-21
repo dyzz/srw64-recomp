@@ -68,6 +68,7 @@ export const UI = {
     modDataMaker: { zh: '数值', en: 'Numbers', ja: '数値', ko: '수치' },
     modNamesMaker: { zh: '名字与头像', en: 'Names and portraits', ja: '名前・顔グラ', ko: '이름과 얼굴 그래픽' },
     modIconsMaker: { zh: '地图图标', en: 'Map icons', ja: 'マップアイコン', ko: '맵 아이콘' },
+    modUnitsMaker: { zh: '机体与人物', en: 'Units & characters', ja: 'ユニットとキャラクター', ko: '기체와 인물' },
     // The sister project, the Chinese translation of Super Robot Wars Z (PS2).
     srwz: {
       label: { zh: '机战Z', en: 'SRW Z', ja: 'スパロボZ', ko: '슈로대 Z' },

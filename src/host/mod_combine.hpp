@@ -26,6 +26,7 @@
 #include <cstdio>
 #include <cstring>
 #include <deque>
+#include <map>
 #include <mutex>
 #include <optional>
 #include <vector>
@@ -78,6 +79,69 @@ inline void fill(uint8_t* ram) {
     for(size_t i=0;i<pointers.size();++i)if(read(ram,pointers_copy+uint32_t(i)*4,4)!=pointers[i])write32(ram,pointers_copy+uint32_t(i)*4,pointers[i]);
 }
 inline bool combined_unit(unsigned unit){return unit>=table_window::rom_units && mod_data::combines().count(unit);}
+
+// --- The combine recipes -------------------------------------------------------------------
+//
+// The map's 合体 looks up the chosen unit's recipe: 800A8A90 walks the parts list D_800CAFEC
+// (unit numbers, -1), D_800CB390 points at each part's 0x14-byte record (+0 match by unit 0 /
+// by main pilot 1, +1 recipe count, +4 recipe pointer, +0x10 the leader), a recipe is 0xC
+// bytes (+0 how many others, +2 four numbers, -1 past them, +0xA the combined unit). Both are
+// read at copies (generate_cpu.py RECIPE_*) so a package's combined unit with no `over` gets
+// a recipe on every part, matched by unit number, its first part the leader.
+inline constexpr uint32_t recipe_list_ram=0x800CAFEC, recipe_pointers_ram=0x800CB390;
+inline constexpr uint32_t recipe_list_copy=0x807D1400, recipe_pointers_copy=0x807D1480, recipe_records_copy=0x807D1580, recipe_records_end=0x807D2000;
+inline constexpr unsigned recipe_capacity=0x40, recipe_record_size=0x14, recipe_size=0xC;
+
+// The parts the packages give a recipe of their own: part -> its combined unit.
+using Combines=std::map<unsigned,mod_units::Taken::Combine>;
+inline std::map<unsigned,unsigned> recipe_parts(const uint8_t* ram,const Combines& all) {
+    std::vector<unsigned> taken;
+    for(unsigned i=0;i<recipe_capacity;++i) {
+        const uint16_t unit=uint16_t(read(ram,recipe_list_ram+i*2,2));
+        if(unit==0xFFFF)break;
+        taken.push_back(unit);
+    }
+    std::map<unsigned,unsigned> parts;
+    for(const auto& [unit,c]:all) {
+        if(!c.over.empty() || c.parts.size()<2 || c.parts.size()>5)continue;
+        if(std::any_of(c.parts.begin(),c.parts.end(),[&](unsigned p){return std::find(taken.begin(),taken.end(),p)!=taken.end() || parts.count(p);}))continue;
+        for(const auto p:c.parts)parts[p]=unit;
+    }
+    return parts;
+}
+inline bool recipe_part(const uint8_t* ram,unsigned unit){return recipe_parts(ram,mod_data::combines()).count(unit)!=0;}
+
+inline void fill_recipes(uint8_t* ram,const Combines& all=mod_data::combines()) {
+    std::vector<uint16_t> list;std::vector<uint32_t> pointers;
+    for(unsigned i=0;i<recipe_capacity-1;++i) {
+        const uint16_t unit=uint16_t(read(ram,recipe_list_ram+i*2,2));
+        if(unit==0xFFFF)break;
+        list.push_back(unit);pointers.push_back(read(ram,recipe_pointers_ram+i*4,4));
+    }
+    uint32_t at=recipe_records_copy;
+    const auto put=[&](uint32_t address,const uint8_t* bytes,unsigned size){
+        for(unsigned b=0;b<size;++b)if(read(ram,address+b,1)!=bytes[b])write8(ram,address+b,bytes[b]);};
+    for(const auto& [part,unit]:recipe_parts(ram,all)) {
+        if(list.size()>=recipe_capacity-1 || at+recipe_record_size+recipe_size>recipe_records_end)break;
+        const auto& c=all.at(unit);
+        const uint32_t recipe=at+recipe_record_size;
+        uint8_t record[recipe_record_size]{};
+        record[0]=0;record[1]=1;   // by unit number, one recipe
+        record[4]=uint8_t(recipe>>24);record[5]=uint8_t(recipe>>16);record[6]=uint8_t(recipe>>8);record[7]=uint8_t(recipe);
+        record[0x10]=uint8_t(c.parts[0]>>8);record[0x11]=uint8_t(c.parts[0]);
+        uint8_t body[recipe_size];std::memset(body,0xFF,sizeof body);
+        body[0]=uint8_t(c.parts.size()-1);body[1]=0;
+        unsigned k=0;
+        for(const auto p:c.parts)if(p!=part){body[2+k*2]=uint8_t(p>>8);body[3+k*2]=uint8_t(p);++k;}
+        body[0xA]=uint8_t(unit>>8);body[0xB]=uint8_t(unit);
+        put(at,record,recipe_record_size);put(recipe,body,recipe_size);
+        list.push_back(uint16_t(part));pointers.push_back(at);
+        at+=recipe_record_size+recipe_size;
+    }
+    list.push_back(0xFFFF);
+    for(size_t i=0;i<list.size();++i)if(read(ram,recipe_list_copy+uint32_t(i)*2,2)!=list[i])write16(ram,recipe_list_copy+uint32_t(i)*2,list[i]);
+    for(size_t i=0;i<pointers.size();++i)if(read(ram,recipe_pointers_copy+uint32_t(i)*4,4)!=pointers[i])write32(ram,recipe_pointers_copy+uint32_t(i)*4,pointers[i]);
+}
 
 // --- Instances -----------------------------------------------------------------------------
 
@@ -204,5 +268,92 @@ inline void checked(uint8_t* ram,recomp_context* ctx,unsigned check,bool ok,void
         log({{"action","combine"},{"over",result},{"unit",unit},{"participants",count},{"added",extra}});
         return;
     }
+}
+
+// --- Which side deploys --------------------------------------------------------------------
+//
+// Deploying takes the instances with +0xC 0x80 (800A8CE8 copies it from the unit record at
+// registration; 3D5D, 800AB5C0, sets it on Dancouga or the beast fighters between stages);
+// the map's 合体 and 分離 leave it as it is. A package's combined unit deploys combined, as
+// Dancouga does after 3D5D 1: it takes the bit while its parts are all on the roster with the
+// pilots it carries. With `over`, it follows those units: when 3D5D gives the bit to one of
+// them, the package's unit takes it (and its parts that are not theirs, Black Wing, lose it);
+// when it goes to their parts, it gives it back to them.
+inline void deploy_sync(uint8_t* ram,const Combines& all=mod_data::combines()) {
+    const auto bit=[&](uint32_t at){return (read(ram,at+unit_deploy,1)&deploy_bit)!=0;};
+    const auto set=[&](uint32_t at,bool on){
+        const uint8_t was=uint8_t(read(ram,at+unit_deploy,1)),now=uint8_t(on?was|deploy_bit:was&~deploy_bit);
+        if(was!=now)write8(ram,at+unit_deploy,now);};
+    for(const auto& [unit,c]:all) {
+        const auto own=instance(ram,0,unit);
+        if(!own)continue;
+        // Its parts as it carries them: part i with crew i as its main pilot.
+        std::vector<uint32_t> parts;bool whole=read(ram,*own+unit_crew,1)==c.parts.size();
+        for(size_t k=0;k<c.parts.size() && whole;++k) {
+            const auto at=instance(ram,0,c.parts[k],read(ram,*own+unit_crew_pilots+uint32_t(k)*4,4));
+            if(at)parts.push_back(*at);else whole=false;
+        }
+        if(c.over.empty()) {
+            if(whole){set(*own,true);for(const auto at:parts)set(at,false);}
+            else if(bit(*own)){set(*own,false);for(const auto at:parts)set(at,true);}
+            continue;
+        }
+        // The parts the `over` units have of their own (the beast fighters), and the others.
+        std::vector<uint32_t> overs;std::vector<unsigned> their;
+        for(const auto o:c.over) {
+            for(uint32_t i=0;i<pool_count;++i) {
+                const uint32_t at=pool+i*pool_size;
+                if(read(ram,at,1) && read(ram,at+unit_number,2)==o)overs.push_back(at);
+            }
+            for(unsigned i=0;i<capacity;++i) {
+                const uint16_t u=uint16_t(read(ram,list_ram+i*2,2));
+                if(u==0xFFFF)break;
+                if(u!=o)continue;
+                const uint32_t record=read(ram,pointers_ram+i*4,4);
+                const unsigned n=read(ram,record,1);
+                for(unsigned k=0;k<n && k<crew_most;++k)their.push_back(read(ram,record+2+k*4,2));
+            }
+        }
+        const auto theirs=[&](uint32_t at){return std::find(their.begin(),their.end(),read(ram,at+unit_number,2))!=their.end();};
+        const bool over_on=std::any_of(overs.begin(),overs.end(),bit);
+        const bool parts_on=std::any_of(parts.begin(),parts.end(),[&](uint32_t at){return theirs(at) && bit(at);});
+        if(whole && over_on) {
+            set(*own,true);
+            for(const auto at:overs)set(at,false);
+            for(const auto at:parts)if(!theirs(at))set(at,false);
+        } else if(bit(*own) && (!whole || parts_on)) {
+            set(*own,false);
+            for(const auto at:parts)if(!theirs(at))set(at,true);
+            // Its parts gone (Black Wing left): the original combined unit in use deploys again.
+            if(!whole && !parts_on)
+                for(auto it=overs.rbegin();it!=overs.rend();++it)if(read(ram,*it+unit_crew,1)){set(*it,true);break;}
+        }
+    }
+}
+
+// 800A5924 copies a combined unit's upgrade levels (+0x4C, five) or 強化パーツ (+0x22 count,
+// four) to its parts, as the original's parts are one machine. A package's combine without
+// `over` joins units that stand on their own (Earthgain and Virose): they keep theirs.
+inline constexpr uint32_t unit_parts_held=0x22;
+inline constexpr unsigned kept_size=5;
+struct Kept { uint32_t at; uint8_t levels[kept_size], held[kept_size]; };
+inline std::vector<Kept> keep_parts(const uint8_t* ram,uint32_t made) {
+    std::vector<Kept> kept;
+    if(!guest::valid(made,pool_size))return kept;
+    const auto all=mod_data::combines();
+    const auto found=all.find(read(ram,made+unit_number,2));
+    if(found==all.end() || !found->second.over.empty())return kept;
+    for(size_t k=0;k<found->second.parts.size();++k)
+        for(unsigned side=0;side<2;++side)
+            if(const auto at=instance(ram,side,found->second.parts[k],read(ram,made+unit_crew_pilots+uint32_t(k)*4,4))) {
+                Kept one{*at,{},{}};
+                for(unsigned b=0;b<kept_size;++b){one.levels[b]=uint8_t(read(ram,*at+unit_levels+b,1));one.held[b]=uint8_t(read(ram,*at+unit_parts_held+b,1));}
+                kept.push_back(one);break;
+            }
+    return kept;
+}
+inline void restore_parts(uint8_t* ram,const std::vector<Kept>& kept) {
+    for(const auto& one:kept)
+        for(unsigned b=0;b<kept_size;++b){write8(ram,one.at+unit_levels+b,one.levels[b]);write8(ram,one.at+unit_parts_held+b,one.held[b]);}
 }
 }

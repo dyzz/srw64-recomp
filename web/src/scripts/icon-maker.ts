@@ -2,7 +2,7 @@
 // 16-128 (native_icon.cpp) and art/icons.json for the pictures that do not look the way the
 // original icon does, made in the browser. Names, portraits and anything else in an opened
 // package are kept as they are.
-import { dataUrl, frame, framer, type Picture } from './framer';
+import { ICON, encodeIcon, framer, loadIcon, type Picture } from './framer';
 import { el, fill, jsonBytes, openPackage, packageForm, readJson, say, writePackage, type Text } from './mod-package';
 import { picker, type Pickable } from './picker';
 
@@ -12,7 +12,6 @@ type Unit = { id: number; name: Names3; icon: number; facing: Way; pose: string 
 // One replaced icon: the unit it was picked for, its picture and the way that picture looks.
 type Entry = { unit: number; pic: Picture | null; way: Way };
 
-const ICON = 128, ICON_SIZES = [16, 32, 64, 128];
 // The three ways the game draws an icon (unit_icon_art.hpp marked; the third party is left
 // out): the player's, looking left; the enemy's, looking right; acted, the player's grey at 60%.
 const SIDES = [{ left: true, palette: '' }, { left: false, palette: '-1011' }, { left: true, palette: '-1013' }];
@@ -40,31 +39,6 @@ export function initIconMaker() {
     (id) => { const u = unitById.get(id)!; if (!entries.has(u.icon)) entries.set(u.icon, { unit: id, pic: null, way: u.facing }); render(); },
     { badge: (id) => entries.get(unitById.get(id)?.icon ?? -1)?.pic ? '✓' : null });
   root.querySelector<HTMLElement>('[data-icon-pick]')!.replaceChildren(iconPicker.node);
-
-  // A picture of the sizes the game takes goes in as it is; anything else is framed first.
-  async function loadIcon(blob: Blob, bytes?: Uint8Array): Promise<Picture> {
-    const source = await createImageBitmap(blob);
-    const pic: Picture = { source, cx: source.width / 2, cy: source.height / 2, zoom: 1, png: new Uint8Array(), size: 0, url: '', framing: true };
-    if (blob.type === 'image/png' && source.width === source.height && ICON_SIZES.includes(source.width)) {
-      pic.png = bytes ?? new Uint8Array(await blob.arrayBuffer());
-      pic.size = source.width; pic.url = dataUrl(pic.png); pic.framing = false;
-    }
-    return pic;
-  }
-  // The framed square at 128: pixels repeated when enlarging, averaged when shrinking.
-  async function encodeIcon(pic: Picture) {
-    const { side, x, y } = frame(pic);
-    const canvas = document.createElement('canvas');
-    canvas.width = canvas.height = ICON;
-    const g = canvas.getContext('2d')!;
-    g.imageSmoothingEnabled = side > ICON;
-    g.imageSmoothingQuality = 'high';
-    g.drawImage(pic.source, x, y, side, side, 0, 0, ICON, ICON);
-    const blob: Blob = await new Promise((resolve, reject) => canvas.toBlob((b) => b ? resolve(b) : reject(new Error('png')), 'image/png'));
-    pic.png = new Uint8Array(await blob.arrayBuffer());
-    pic.size = ICON;
-    pic.url = dataUrl(pic.png);
-  }
 
   // One side's look of a picture: drawn at 128, marked when `mark` (the HD pack's and the
   // player's pictures; the original has a palette per side instead), and turned the way the

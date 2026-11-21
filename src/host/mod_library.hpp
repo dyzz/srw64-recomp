@@ -278,6 +278,7 @@ struct Package {
     Contents contents;
     bool enabled{true};
     bool active{};                      // enabled and every check passed
+    bool trial{};                       // the web maker's package to try (trial_directory)
     std::string id() const {return manifest?manifest->id:(folder.extension()==package_extension?folder.stem():folder.filename()).string();}
     bool archived() const {return folder.extension()==package_extension;}
 };
@@ -482,6 +483,13 @@ bool remove(const std::string& id);
 // Moves a file placed in the folder that did not install (one of loose_results' failures,
 // by its file name) to <mods>/.trash, so the MOD page stops reporting it.
 bool remove_failed(const std::string& file_name);
+// The web maker's package to try (web_link.cpp, docs/design/unit-mod-web-tool.md W3): kept as
+// <mods>/.web-link/<id>.srw64mod, listed with the player's packages and on, in place of an installed
+// package of the same id, never in mods.json; one at a time, the one before replaced. The
+// folder is emptied when the game starts (clear_trial).
+fs::path trial_directory();
+InstallResult install_trial(const fs::path& source);
+void clear_trial();
 // Moves on every install, switch and removal, so readers of the packages know to look again.
 unsigned revision();
 // The game's version, for the packages' "game" requirement (the window thread sets it).

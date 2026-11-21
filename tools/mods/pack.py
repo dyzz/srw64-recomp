@@ -95,6 +95,10 @@ def build_folder(source: Path, out_dir: Path) -> tuple[Path, dict]:
     for path in sorted((folder / "story").glob("*.json")) if (folder / "story").is_dir() else []:
         if story.is_source(path):
             story.compile_file(path, path)
+    # The lines files (story/<locale>/*.txt) are in the compiled stories now: not shipped.
+    for locale in story.LOCALES:
+        if (folder / "story" / locale).is_dir():
+            shutil.rmtree(folder / "story" / locale)
     return folder, manifest
 
 

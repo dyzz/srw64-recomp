@@ -79,8 +79,64 @@ def roster(value, name: str) -> dict:
             for kind in ("pilots", "units") if kind in value}
 
 
+# Lines a story file names ("@key") instead of writing them in place: the package's
+# story/<locale>/*.txt, in the shipped dialogue files' style (docs/guide/dialogue-text.md):
+# `@key note` opens one, the next line is its text, `#` a comment, a leading `\` escapes.
+KEY = re.compile(r"[a-z0-9][a-z0-9_.-]*")
+_LINES: dict[str, dict[str, str]] = {}
+
+
+def load_lines(folder: Path) -> dict[str, dict[str, str]]:
+    """Every story/<locale>/*.txt under `folder` (the package's story/): key -> {locale: text}."""
+    out: dict[str, dict[str, str]] = {}
+    if not folder.is_dir():
+        return out
+    for directory in sorted(d for d in folder.iterdir() if d.is_dir()):
+        if directory.name not in LOCALES:
+            raise StoryError(f"story/{directory.name}/：不认识的语言（{'、'.join(sorted(LOCALES))}）")
+        for path in sorted(directory.glob("*.txt")):
+            where = f"story/{directory.name}/{path.name}"
+            key, texts = None, []
+
+            def close():
+                if key is None:
+                    return
+                if len(texts) != 1 or not texts[0].strip():
+                    raise StoryError(f"{where}：@{key} 要有且只有一行台词（阅读器自己分页、折行）")
+                out.setdefault(key, {})[directory.name] = texts[0]
+            for number, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+                line = raw.rstrip("\r")
+                if not line.strip() or line.startswith("#"):
+                    continue
+                if line.startswith("@"):
+                    close()
+                    key = line[1:].split(maxsplit=1)[0] if line[1:].strip() else ""
+                    if not KEY.fullmatch(key):
+                        raise StoryError(f"{where}:{number}：@ 后面写这一条的名字（小写字母、数字、- _ .）")
+                    if directory.name in out.get(key, {}):
+                        raise StoryError(f"{where}:{number}：@{key} 在 {directory.name} 里写了两次")
+                    texts = []
+                    continue
+                if key is None:
+                    raise StoryError(f"{where}:{number}：台词前要先有一行 @名字")
+                texts.append(line[1:] if line.startswith("\\") else line)
+            close()
+    return out
+
+
+def _text(value, name: str):
+    """A text written in place ({locale: text}) or named ("@key", from the lines files)."""
+    if isinstance(value, str) and value.startswith("@"):
+        found = _LINES.get(value[1:])
+        if not found or "ja" not in found:
+            raise StoryError(f"{name}：story/ja/*.txt 里没有 {value}")
+        return dict(found)
+    return value
+
+
 def _by_locale(value, name: str) -> dict:
     """A text by locale for the stage information page, Japanese required."""
+    value = _text(value, name)
     if not isinstance(value, dict) or "ja" not in value:
         raise StoryError(f"{name} 写成 {{\"ja\": …, \"zh-Hans\": …, \"en\": …}}，至少有 ja")
     for locale, words in value.items():
@@ -91,21 +147,122 @@ def _by_locale(value, name: str) -> dict:
     return dict(value)
 
 
+# What a hidden element's grant in a later playthrough may do (src/host/legacy.cpp runs it
+# in the intermission, as the original's grants): joins and machines, no variables.
+INHERIT_ACTIONS = ("join", "replace", "unlock", "crew", "build")
+
+
+def inherit(value, where: str) -> dict:
+    """A stage information entry's grant in a later playthrough (docs/design/new-game-plus.md
+    §8): in the intermission after a stage of `after` (or before one of `before`), when the
+    record has the element and our roster lacks its `done`, these actions run."""
+    if not isinstance(value, dict) or set(value) - {"after", "before", "do"} or "do" not in value:
+        raise StoryError(f"{where} 写 {{\"after\": [关], \"before\": [关], \"do\": [动作]}}")
+    out: dict = {}
+    for key in ("after", "before"):
+        if key in value:
+            if not isinstance(value[key], list) or not value[key]:
+                raise StoryError(f"{where}.{key} 是场景号的数组")
+            out[key] = [_int(s, f"{where}.{key}", 0, 255) for s in value[key]]
+    if not out:
+        raise StoryError(f"{where}：after 或 before 至少写一个")
+    rows = value["do"]
+    if not isinstance(rows, list) or not rows:
+        raise StoryError(f"{where}.do 至少一个动作")
+    builder = Builder([])
+    for row in rows:
+        if not isinstance(row, dict) or len(row) != 1 or next(iter(row)) not in INHERIT_ACTIONS:
+            raise StoryError(f"{where}.do 只能用 {'、'.join(INHERIT_ACTIONS)}（不改剧情变量）")
+        builder.action(row)
+    # The grants' form (status.json "grants"): ["3D5A", pilot, level, unit, mode]; a new
+    # number stays its name and a level "like" a pilot {"like": n}, both settled by the host.
+    commands = []
+    for k, command in enumerate(builder.commands):
+        args = list(command["args"])
+        for at, operand, name, _kind in builder.named:
+            if at == k:
+                args[operand] = name
+        for at, pilot in builder.like:
+            if at == k:
+                args[1] = {"like": pilot}
+        if command["op"] == 0x3D5A and isinstance(args[1], int) and args[1] >= 0x8000:
+            args[1] -= 0x10000          # the level offset, signed
+        commands.append([f"{command['op']:04X}", *args])
+    out["commands"] = commands
+    if builder.crew:
+        out["crew"] = builder.crew
+    if builder.builds:
+        out["builds"] = builder.builds
+    return out
+
+
 def stage_info(rows) -> list[dict]:
     """Hidden elements the package adds to scenes' stage information pages (src/host/
-    stage_info.cpp): scene, title, text, and optionally `done`, a roster that marks it done."""
+    stage_info.cpp): scene, title, text, and optionally `done`, a roster that marks it done;
+    with an `id` the record across playthroughs keeps it, and `inherit` grants it again."""
     if not isinstance(rows, list):
         raise StoryError("stage_info 要是数组")
-    out = []
+    out, ids = [], set()
     for n, row in enumerate(rows):
         where = f"stage_info[{n}]"
-        if not isinstance(row, dict) or set(row) - {"scene", "title", "text", "done"}:
-            raise StoryError(f"{where} 只能写 scene、title、text、done")
+        if not isinstance(row, dict) or set(row) - {"id", "scene", "title", "text", "done", "inherit"}:
+            raise StoryError(f"{where} 只能写 id、scene、title、text、done、inherit")
         entry = {"scene": _int(row.get("scene"), f"{where}.scene", 0, 255),
                  "title": _by_locale(row.get("title"), f"{where}.title"), "text": _by_locale(row.get("text"), f"{where}.text")}
+        if "id" in row:
+            if not isinstance(row["id"], str) or not KEY.fullmatch(row["id"]) or len(row["id"]) > 40:
+                raise StoryError(f"{where}.id 只用小写字母、数字、- _ .，最多 40 个")
+            if row["id"] in ids:
+                raise StoryError(f"{where}.id {row['id']} 重复")
+            ids.add(row["id"])
+            entry["id"] = row["id"]
         if "done" in row:
             entry["done"] = roster(row["done"], f"{where}.done")
+        if "inherit" in row:
+            if "id" not in entry or "done" not in entry:
+                raise StoryError(f"{where}：写 inherit 要同时写 id 和 done（done 成立就不再补）")
+            entry["inherit"] = inherit(row["inherit"], f"{where}.inherit")
         out.append(entry)
+    return out
+
+
+# A deployment record's side (+0x14, 8020ABB4): 0 ours, 1 the enemy, 2 the third party, 4 a
+# third party that also attacks us (deployed with the slot's 0x20, docs/native/unit-icon-facing.md).
+DEPLOY_SIDES = {"player": 0, "enemy": 1, "third": 2, "third_hostile": 4}
+
+
+def deployments(rows) -> list[dict]:
+    """The package's own deployment groups (src/host/story_mod.hpp): records the host appends to
+    the scene's deployment block at its registration, under group numbers that scene leaves
+    free; events deploy them with {"deploy": "<id>"} and take them off with {"leave_group": ...}."""
+    if not isinstance(rows, list):
+        raise StoryError("deployments 要是数组")
+    out, ids = [], set()
+    for n, row in enumerate(rows):
+        where = f"deployments[{n}]"
+        if not isinstance(row, dict) or set(row) - {"id", "scene", "units", "note"}:
+            raise StoryError(f"{where} 只能写 id、scene、units")
+        if not isinstance(row.get("id"), str) or not KEY.fullmatch(row["id"]) or len(row["id"]) > 40:
+            raise StoryError(f"{where}.id 只用小写字母、数字、- _ .，最多 40 个")
+        if row["id"] in ids:
+            raise StoryError(f"{where}.id {row['id']} 重复")
+        ids.add(row["id"])
+        units = row.get("units")
+        if not isinstance(units, list) or not 1 <= len(units) <= 30:
+            raise StoryError(f"{where}.units 写 1–30 台")
+        records = []
+        for k, u in enumerate(units):
+            at = f"{where}.units[{k}]"
+            if not isinstance(u, dict) or set(u) - {"x", "y", "pilot", "unit", "side", "level", "upgrade", "note"}:
+                raise StoryError(f"{at} 只能写 x、y、pilot、unit、side、level、upgrade")
+            side = u.get("side", "enemy")
+            if side not in DEPLOY_SIDES:
+                raise StoryError(f"{at}.side 只能是 {'、'.join(DEPLOY_SIDES)}")
+            records.append({"x": _int(u.get("x"), f"{at}.x", 0, 63), "y": _int(u.get("y"), f"{at}.y", 0, 63),
+                            "pilot": _pilot(u.get("pilot"), f"{at}.pilot"), "unit": _unit(u.get("unit"), f"{at}.unit"),
+                            "side": DEPLOY_SIDES[side], "level": _int(u.get("level", 0), f"{at}.level", 0, 20),
+                            "upgrade": _int(u.get("upgrade", 0), f"{at}.upgrade", 0, 5)})
+        out.append({"id": row["id"], "scene": _int(row.get("scene"), f"{where}.scene", 0, 255), "records": records})
     return out
 
 
@@ -165,6 +322,7 @@ class Builder:
         self.crew: list[dict] = []              # a unit's crew, set by the host once the event has run
         self.builds: list = []                  # combined units the host builds when the event starts
         self.named: list[tuple[int, int, str, str]] = []   # (command, operand, name, "unit"|"weapon"|"pilot")
+        self.groups: list[tuple[int, str, bool]] = []       # (command, the package's group, leaving): numbered by the host
 
     def op(self, opcode: int, *args) -> None:
         """An instruction; an operand that names a new unit or weapon is numbered by the host."""
@@ -182,6 +340,7 @@ class Builder:
 
     def line(self, speaker, text) -> int:
         speaker = _pilot(speaker, "say")   # a new character by name: numbered by the host
+        text = _text(text, "text")
         if not isinstance(text, dict) or not text:
             raise StoryError("text 写成 {\"ja\": …, \"zh-Hans\": …, \"en\": …}")
         if "ja" not in text:
@@ -282,9 +441,17 @@ class Builder:
         elif kind == "leave":
             self.op(0x3D46, _int(value, "leave", 0, 360), 1)
         elif kind == "leave_group":
-            self.op(0x3D46, 500 + _int(value, "leave_group", 0, 99), 1)
+            if isinstance(value, str):             # the package's own group (deployments)
+                self.groups.append((len(self.commands), value, True))
+                self.op(0x3D46, NUMBER, 1)
+            else:
+                self.op(0x3D46, 500 + _int(value, "leave_group", 0, 99), 1)
         elif kind == "deploy":
-            self.op(0x3D45, _int(value, "deploy", 0, 99))
+            if isinstance(value, str):
+                self.groups.append((len(self.commands), value, False))
+                self.op(0x3D45, NUMBER)
+            else:
+                self.op(0x3D45, _int(value, "deploy", 0, 99))
         elif kind == "focus":
             self.op(0x3D55, _int(value, "focus", 0, 360), 30)
         elif kind == "bgm":
@@ -303,13 +470,16 @@ class Builder:
             raise StoryError(f"不认识的动作 {kind}")
 
 
-def compile_story(document: dict, spec: dict | None = None) -> dict:
+def compile_story(document: dict, spec: dict | None = None, lines: dict | None = None) -> dict:
+    global _LINES
+    _LINES = lines or {}
     if not isinstance(document, dict) or document.get("schema") != SCHEMA:
         raise StoryError(f"schema 要是 {SCHEMA}")
-    unknown = set(document) - {"schema", "events", "stage_info"}
+    unknown = set(document) - {"schema", "events", "stage_info", "deployments"}
     if unknown:
         raise StoryError(f"不认识的字段 {sorted(unknown)}")
     spec = spec or layout()
+    groups = {g["id"]: g for g in deployments(document.get("deployments", []))}
     texts: list[dict] = []
     events, ids = [], set()
     for row in document.get("events", []):
@@ -346,6 +516,13 @@ def compile_story(document: dict, spec: dict | None = None) -> dict:
             for command, operand, value, kind in builder.named:
                 at = offsets[command] + 1 + operand
                 numbers.append([at, value, kind])
+            group_refs = []
+            for command, group, leaving in builder.groups:
+                if group not in groups:
+                    raise StoryError(f"deploy／leave_group 的 {group} 不在 deployments 里")
+                if groups[group]["scene"] != row.get("scene"):
+                    raise StoryError(f"增援组 {group} 是第 {groups[group]['scene']} 关的，事件在第 {row.get('scene')} 关")
+                group_refs.append([offsets[command] + 1, group, leaving])
             refs = []
             for command in builder.refs:
                 at = offsets[command] + 1
@@ -358,7 +535,7 @@ def compile_story(document: dict, spec: dict | None = None) -> dict:
                            "set_flags": flags(row.get("set_flags", []), "set_flags"), "fired": list(cond.get("fired", [])),
                            "not_fired": list(cond.get("not_fired", [])), "repeat": repeat,
                            "words": words, "texts": refs, "levels": levels, "crew": builder.crew, **({"builds": builder.builds} if builder.builds else {}),
-                           **({"numbers": numbers} if numbers else {}),
+                           **({"numbers": numbers} if numbers else {}), **({"groups": group_refs} if group_refs else {}),
                            "listing": [f"{e['opcode']} {','.join(map(str, e['operands']))}".rstrip() for e in assembled["listing"]]})
         except (StoryError, ValueError, KeyError, TypeError) as error:
             raise StoryError(f"事件 {where}：{error}") from None
@@ -367,11 +544,12 @@ def compile_story(document: dict, spec: dict | None = None) -> dict:
             if other not in ids:
                 raise StoryError(f"事件 {event['id']}：fired／not_fired 引用了不存在的事件 {other}")
     info = stage_info(document["stage_info"]) if "stage_info" in document else []
-    return {"schema": IMAGE_SCHEMA, "events": events, "texts": texts, **({"stage_info": info} if info else {})}
+    return {"schema": IMAGE_SCHEMA, "events": events, "texts": texts, **({"stage_info": info} if info else {}),
+            **({"deployments": list(groups.values())} if groups else {})}
 
 
 def compile_file(source: Path, out: Path) -> dict:
-    image = compile_story(json.loads(source.read_text(encoding="utf-8")))
+    image = compile_story(json.loads(source.read_text(encoding="utf-8")), lines=load_lines(source.parent))
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(image, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     return image

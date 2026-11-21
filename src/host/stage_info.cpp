@@ -144,7 +144,7 @@ void sample(const uint8_t* ram) {
         // Before the name page (a mini stage entered from the title) there is no
         // protagonist: the stage's text without statuses or filtering.
         json status=json::object(),ever=json::array();
-        size_t ever_granted=0;
+        size_t ever_granted=0,grantable=legacy::grantable(*r);
         if(!state.protagonist.empty()) {
             const Evaluator evaluator(*r,state);
             // What this game finishes joins the cross-playthrough record (legacy.hpp).
@@ -159,6 +159,12 @@ void sample(const uint8_t* ram) {
                 status[rule.at("id").get<std::string>()]=std::move(result);
             }
             for(const auto& g:r->grants)if(record.contains(g.at("id").get<std::string>())){ever.push_back(g.at("id"));++ever_granted;}
+            // The packages' entries with an id; those with a grant count in "N/M" too.
+            for(const auto& p:legacy::packages()) {
+                const bool grants=!p.after.empty() || !p.before.empty();
+                if(grants)++grantable;
+                if(record.contains(p.key)){ever.push_back(p.ref);if(grants)++ever_granted;}
+            }
             // The story packages' own entries: done when our roster has what they name.
             const auto infos=story_mod::infos();
             for(size_t n=0;n<infos->size();++n) {
@@ -172,7 +178,7 @@ void sample(const uint8_t* ram) {
         }
         next={{"available",true},{"scene",state.scene},{"protagonist",state.protagonist},{"route",route(state)},
               {"map",!in_intermission(read(ram,mode,1))},{"status",std::move(status)},
-              {"legacy",{{"ever",std::move(ever)},{"count",ever_granted},{"of",legacy::grantable(*r)}}}};
+              {"legacy",{{"ever",std::move(ever)},{"count",ever_granted},{"of",grantable}}}};
     }
     next["opening"]=opening.load();
     std::lock_guard guard(lock);

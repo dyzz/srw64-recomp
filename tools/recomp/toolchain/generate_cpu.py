@@ -246,7 +246,23 @@ NATIVE_HOOKS = {
     "resident_func_80085CD4": "srw64_original_slot_headers",
     "load_000AB160_func_801E977C": "srw64_original_combine_check",
     "load_000AB160_func_8020178C": "srw64_original_combo_locks",
+    # EN and ammo after an attack: a package's combination attack lists its participants first (mod_combos.hpp).
+    "load_000AB160_func_801FC83C": "srw64_original_battle_spend",
+    # A battle quote shown, and the dialogue portrait: a new character speaking with a copied
+    # voice part shows its own name and face (battle_speaker.hpp).
+    "load_00121560_func_801C6F14": "srw64_original_battle_quote_show",
+    "resident_func_8008F970": "srw64_original_dialogue_portrait",
     "resident_func_800A74D4": "srw64_original_combine_parts",
+    # Registering a unit looks up the recipes of its parts (800A79EC: share the weapons of a part
+    # already there; 800A794C: build the combined unit). A package's recipe is for the map's 合体
+    # only (mod_combine.hpp recipe_parts), so its parts register on their own. 800AB5C0 is 3D5D.
+    "resident_func_800A79EC": "srw64_original_recipe_partner",
+    # A unit's upgrades or 強化パーツ changed (a0, a1 1 for the parts): the original copies them to
+    # its form family and its combine parts; a package's combine of units that are whole on
+    # their own (no `over`) keeps the parts' own (mod_combine.hpp keep_parts).
+    "resident_func_800A5924": "srw64_original_upgrade_spread",
+    "resident_func_800A794C": "srw64_original_recipe_build",
+    "resident_func_800AB5C0": "srw64_original_deploy_form",
     "load_0008F4B0_func_801D6FF4": "srw64_original_link_open",
     "load_0008F4B0_func_801D70FC": "srw64_original_link_step",
 }
@@ -343,6 +359,9 @@ TABLE_BLOCKS = {   # key: (block, ROM address)
     # New characters (docs/design/unit-mod-kit.md §5.4).
     "pilot_records": (13, 0x7A1A0), "thresholds": (14, 0x7B1B0), "spirit_records": (15, 0x7CFB0),
     "portraits": (16, 0x84220), "pilot_songs": (17, 0x7D6A0),
+    # Battle quotes by voice part (unit-mod-kit.md §7): a new character's own part reads its
+    # generic segments and the offset of its conditional list (mod_quotes.hpp).
+    "quote_segments": (18, 0x1161C0), "quote_index": (19, 0x121150),
 }
 # The map icons (ROM 0x100D78) live in the tactical map overlay at 80218218: their 23 readers
 # load from a copy the host keeps in free RDRAM.
@@ -371,6 +390,8 @@ TABLE_READERS = {   # (function, instruction): (table, the addiu's literal, lui'
     ("resident_func_8009C768", 0x8009C7A0): ("portraits", 0x4220, 0x80000),
     ("load_000AB160_func_801E085C", 0x801E08B4): ("pilot_songs", -0x2960, 0x80000),
     ("load_000AB160_func_801E085C", 0x801E0AAC): ("pilot_songs", -0x2960, 0x80000),
+    ("srw64_original_generic_quote_draw", 0x80222B98): ("quote_segments", 0x61C0, 0x110000),
+    ("load_00121560_func_80222CAC", 0x80222CBC): ("quote_index", 0x1150, 0x120000),
 }
 # The character -> record maps (D_800CA9C4 ability, D_800CA6F4 spirits; s16 × 360 in resident
 # RAM, built as 0x800D0000 plus a literal) are read at copies in free RDRAM with room for new
@@ -384,7 +405,7 @@ PILOT_MAP_READERS = {   # (function, instruction): (literal, copy)
     ("resident_func_800A6398", 0x800A63B0): ("-0X563C", PILOT_STATS_COPY),
     ("load_000AB160_func_801F3578", 0x801F3664): ("-0X563C", PILOT_VOICE_COPY),
     ("load_000AB160_func_801F3578", 0x801F3AB8): ("-0X563C", PILOT_VOICE_COPY),
-    ("load_00121560_func_801C6F14", 0x801C6F90): ("-0X563C", PILOT_VOICE_COPY),
+    ("srw64_original_battle_quote_show", 0x801C6F90): ("-0X563C", PILOT_VOICE_COPY),
     ("load_00121560_func_80222050", 0x80222318): ("-0X563C", PILOT_VOICE_COPY),
     ("srw64_original_generic_quote_draw", 0x80222B7C): ("-0X563C", PILOT_VOICE_COPY),
     ("load_00216730_func_801C2CAC", 0x801C2D18): ("-0X563C", PILOT_VOICE_COPY),
@@ -526,6 +547,10 @@ NAME_RECORDS = {   # (function, instruction): (U unit, W weapon, M weapon menu; 
 # raises it by exactly the packages' own resources (mod_tables.hpp), so a number none gives is
 # refused as before instead of reading a descriptor past the ROM's table.
 MAP_WIDTH_CONSTANTS[("resident_func_80089E9C", 0x80089EAC)] = ("0X1924", "srw64_resource_limit()")
+# A battle quote's weapon (8022241C, the quote picker's): field 0 of the weapon's battle record,
+# or -1 for a weapon number past the ROM's 1,329, so a package's new weapon (1400-2399,
+# table_window.hpp; its battle record is in the table window) never had its weapon lines.
+MAP_WIDTH_CONSTANTS[("load_00121560_func_8022241C", 0x80222424)] = ("0X531", "0X960")
 # The のりかえ candidates (801C5618) count roster units per class in eight u16s on its stack
 # (classes 0-7) and read them back by the pilot's class: a class above 7 would run past them.
 # The index is masked with 7, so class 8 (mod_data.hpp, the one a package may add) counts in
@@ -542,7 +567,7 @@ COMBINE_LIST_READERS = [("resident_func_800A8880", 0x800A8888), ("load_000AB160_
 COMBINE_POINTER_READERS = [
     ("load_0008F4B0_func_801D33F4", 0x801D350C), ("load_000AB160_func_801E1688", 0x801E16F4),
     ("load_000AB160_func_801E7EA8", 0x801E7F6C), ("load_000AB160_func_801E8344", 0x801E8548),
-    ("resident_func_800A5924", 0x800A5A80), ("srw64_original_combine_parts", 0x800A750C),
+    ("srw64_original_upgrade_spread", 0x800A5A80), ("srw64_original_combine_parts", 0x800A750C),
     ("resident_func_800A9DCC", 0x800A9F50), ("resident_func_800AA210", 0x800AA318),
     ("resident_func_800AAB5C", 0x800AABA8), ("resident_func_800AC220", 0x800AC468),
     ("resident_func_800AC50C", 0x800AC598), ("srw64_original_weapon_inherit", 0x800AA958)]
@@ -550,6 +575,34 @@ for function, address in COMBINE_LIST_READERS:
     MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X4BF4", literal(COMBINE_LIST_COPY - 0x800D0000))
 for function, address in COMBINE_POINTER_READERS:
     MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X4A5C", literal(COMBINE_POINTERS_COPY - 0x800D0000))
+# The combine recipes (the map's 合体, mod_combine.hpp fill_recipes): the parts list D_800CAFEC
+# has one walk (800A8A90), its record pointers D_800CB390 three readers indexed by its answer.
+RECIPE_LIST_COPY, RECIPE_POINTERS_COPY = 0x807D1400, 0x807D1480
+RECIPE_LIST_READERS = [("resident_func_800A8A90", 0x800A8A98)]
+RECIPE_POINTER_READERS = [("srw64_original_recipe_build", 0x800A79BC), ("srw64_original_recipe_partner", 0x800A7A68),
+                          ("srw64_original_combine_check", 0x801E98A8)]
+for function, address in RECIPE_LIST_READERS:
+    MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X5014", literal(RECIPE_LIST_COPY - 0x800D0000))
+for function, address in RECIPE_POINTER_READERS:
+    MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X4C70", literal(RECIPE_POINTERS_COPY - 0x800D0000))
+# The form families D_800CAC94 (unit numbers, -1) and their record pointers D_800CAEF0 move the
+# same way (unit-mod-kit.md §4.6; mod_forms.hpp fills the copies): 800A87FC is the one walk of the
+# list, and every user of a family's record indexes the pointers by what it answers. 801E174C
+# reads through 801E170C's base, moved with it.
+FORMS_LIST_COPY, FORMS_POINTERS_COPY = 0x807D4000, 0x807D4100
+FORMS_LIST_READERS = [("resident_func_800A87FC", 0x800A8804)]
+FORMS_POINTER_READERS = [
+    ("load_0008F4B0_func_801D33F4", 0x801D3470), ("load_000AB160_func_801E1688", 0x801E170C),
+    ("load_000AB160_func_801E1688", 0x801E17C8), ("load_000AB160_func_801E8B28", 0x801E8C80),
+    ("load_000AB160_func_801E8ED0", 0x801E8F38), ("srw64_original_upgrade_spread", 0x800A597C),
+    ("resident_func_800A7330", 0x800A7360), ("resident_func_800A81E0", 0x800A8274),
+    ("resident_func_800A9DCC", 0x800A9E4C), ("resident_func_800AA210", 0x800AA268),
+    ("resident_func_800AAB5C", 0x800AAC70), ("resident_func_800AC078", 0x800AC0AC),
+    ("srw64_original_weapon_inherit", 0x800AA9E4)]
+for function, address in FORMS_LIST_READERS:
+    MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X536C", literal(FORMS_LIST_COPY - 0x800D0000))
+for function, address in FORMS_POINTER_READERS:
+    MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X5110", literal(FORMS_POINTERS_COPY - 0x800D0000))
 # 801E7EA8 (where a separated unit's parts stand) looks for the unit in the first 11 entries
 # only, and takes index 11 for "not there" (two literals: the loop's end and its delay slot).
 for address in (0x801E7F44, 0x801E7F4C, 0x801E7F58):

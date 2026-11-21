@@ -40,15 +40,69 @@ struct Track {
     json title;                                         // a string or {locale: string}
 };
 
+// A package's own songs (a new character's battle theme): audio/music/<name>.ogg with a name
+// that is not a number, "@name" in music.json. They get song numbers of their own, from 128
+// up in the packages' order (bottom first) and their names' order, which the original never
+// plays: the play hook (music.cpp play) stops the original's music and plays the file, so the
+// number only has to be one no ROM song has (the original's are 1-49).
+inline constexpr int first_named_song=128,last_named_song=255;
+inline bool song_name(const std::string& s) {
+    if(s.empty() || s.size()>40 || std::all_of(s.begin(),s.end(),[](unsigned char c){return std::isdigit(c);}))return false;
+    return std::all_of(s.begin(),s.end(),[](unsigned char c){return std::islower(c) || std::isdigit(c) || c=='.' || c=='_' || c=='-';});
+}
+// "package@name" -> song number, for the active packages' named songs.
+inline std::map<std::string,int> named_songs(const std::vector<mods::Package>& packages) {
+    std::map<std::string,int> out;
+    int next=first_named_song;
+    for(const auto& p:packages) {
+        if(!p.active)continue;
+        std::vector<std::string> names;
+        for(const auto& file:mods::files_of(p)->list("audio/music")) {
+            const fs::path item(file);
+            if(item.extension()!=".ogg")continue;
+            if(const auto stem=item.stem().string();song_name(stem))names.push_back(stem);
+        }
+        std::sort(names.begin(),names.end());
+        for(const auto& name:names)if(next<=last_named_song)out[p.id()+"@"+name]=next++;
+    }
+    return out;
+}
+// A song in music.json: a number 1-255, or "@name" (this package's) / "package@name" as
+// `named` resolves it.
+using SongOf=std::function<std::optional<int>(const std::string&)>;
+inline std::optional<int> song_of(const json& v,const SongOf& named) {
+    if(v.is_number_integer()) {
+        const int song=v.get<int>();
+        return song>=1 && song<=255?std::optional<int>(song):std::nullopt;
+    }
+    if(v.is_string() && named)return named(v.get<std::string>());
+    return std::nullopt;
+}
+// `named` with a package's own: "@name" is the package's, "other@name" another's.
+inline SongOf named_in(const std::map<std::string,int>& names,const std::string& package) {
+    return [&names,package](const std::string& key)->std::optional<int>{
+        const auto at=key.find('@');
+        if(at==std::string::npos)return std::nullopt;
+        const auto found=names.find((at==0?package:key.substr(0,at))+"@"+key.substr(at+1));
+        return found==names.end()?std::nullopt:std::optional<int>(found->second);
+    };
+}
+
 // A package's audio/music.json (optional): {"schema": "srw64.music.v1", "tracks": {"7":
-// {"loop": [start, end], "loop": false, "gain": -2.0, "title": {...}}}}. Fields of the
-// wrong type are ignored rather than refusing the package's files.
-inline std::map<int,Track> settings(const json& data) {
+// {"loop": [start, end], "loop": false, "gain": -2.0, "title": {...}}, "@theme": {...}}}.
+// Fields of the wrong type are ignored rather than refusing the package's files.
+inline std::map<int,Track> settings(const json& data,const SongOf& named={}) {
     std::map<int,Track> out;
     if(!data.is_object() || data.value("schema","")!="srw64.music.v1" || !data.contains("tracks") || !data["tracks"].is_object())return out;
     for(const auto& [key,v]:data["tracks"].items()) {
         int song=0;
-        try{song=std::stoi(key);}catch(...){continue;}
+        if(key.find('@')!=std::string::npos) {
+            const auto found=named?named(key):std::nullopt;
+            if(!found)continue;
+            song=*found;
+        } else {
+            try{song=std::stoi(key);}catch(...){continue;}
+        }
         if(!v.is_object())continue;
         Track t;
         if(v.contains("loop")) {
@@ -71,20 +125,23 @@ inline std::map<int,Track> settings(const json& data) {
 // higher in the list wins. Files are audio/music/<decimal song>.ogg.
 inline std::map<int,Track> collect(const std::vector<mods::Package>& packages) {
     std::map<int,Track> out;
+    const auto names=named_songs(packages);
     for(const auto& p:packages) {
         if(!p.active)continue;
         const auto files=mods::files_of(p);
-        const auto names=files->list("audio/music");
-        if(names.empty())continue;
-        const auto extra=settings(files->read_json("audio/music.json"));
-        for(const auto& name:names) {
+        const auto names_here=files->list("audio/music");
+        if(names_here.empty())continue;
+        const auto extra=settings(files->read_json("audio/music.json"),named_in(names,p.id()));
+        for(const auto& name:names_here) {
             const fs::path item(name);
             auto ext=item.extension().string();
             std::transform(ext.begin(),ext.end(),ext.begin(),[](unsigned char c){return char(std::tolower(c));});
             if(ext!=".ogg")continue;
             const auto stem=item.stem().string();
-            if(stem.empty() || stem.size()>3 || !std::all_of(stem.begin(),stem.end(),[](unsigned char c){return std::isdigit(c);}))continue;
-            const int song=std::stoi(stem);
+            int song=0;
+            if(const auto named=names.find(p.id()+"@"+stem);named!=names.end() && item.extension()==".ogg")song=named->second;
+            else if(stem.empty() || stem.size()>3 || !std::all_of(stem.begin(),stem.end(),[](unsigned char c){return std::isdigit(c);}))continue;
+            else song=std::stoi(stem);
             if(song<1 || song>255)continue;
             Track t=extra.contains(song)?extra.at(song):Track{};
             t.files=files;t.path="audio/music/"+name;t.file=files->where()/t.path;t.package=p.id();
@@ -101,43 +158,47 @@ inline constexpr uint32_t pilot_songs=0x7D6A0,unit_songs=0x7DF30;
 inline constexpr unsigned pilot_count=361,unit_count=363;
 struct BattleSongs {std::map<int,int> pilot,unit;};
 
-// A unit key may name a package's new unit ("@final", "package@final"): `unit_of` gives its
-// number (mod_ids.hpp), when given.
-inline BattleSongs battle_settings(const json& data,const std::function<std::optional<unsigned>(const std::string&)>& unit_of={}) {
+// A key may name a package's new unit or character ("@final", "package@final"): `unit_of` and
+// `pilot_of` give its number (mod_ids.hpp), when given. A song is a number or a named song
+// ("@theme", `named`).
+using NumberOf=std::function<std::optional<unsigned>(const std::string&)>;
+inline BattleSongs battle_settings(const json& data,const NumberOf& unit_of={},const NumberOf& pilot_of={},const SongOf& named={}) {
     BattleSongs out;
     if(!data.is_object() || data.value("schema","")!="srw64.music.v1" || !data.contains("battle") || !data["battle"].is_object())return out;
-    const auto read=[&](const char* key,unsigned count,std::map<int,int>& into) {
+    const auto read=[&](const char* key,unsigned count,const NumberOf& new_of,std::map<int,int>& into) {
         if(!data["battle"].contains(key) || !data["battle"][key].is_object())return;
         for(const auto& [k,v]:data["battle"][key].items()) {
-            int index=-1;
+            const auto song=song_of(v,named);
+            if(!song)continue;
             if(k.find('@')!=std::string::npos) {
-                if(std::string(key)!="unit" || !unit_of)continue;
-                const auto found=unit_of(k);
-                if(!found || !v.is_number_integer())continue;
-                const int song=v.get<int>();
-                if(song>=1 && song<=255)into[int(*found)]=song;
+                const auto found=new_of?new_of(k):std::nullopt;
+                if(found)into[int(*found)]=*song;
                 continue;
             }
+            int index=-1;
             try{index=std::stoi(k);}catch(...){continue;}
-            if(index<0 || unsigned(index)>=count || !v.is_number_integer())continue;
-            const int song=v.get<int>();
-            if(song>=1 && song<=255)into[index]=song;
+            if(index<0 || unsigned(index)>=count)continue;
+            into[index]=*song;
         }
     };
-    read("pilot",pilot_count,out.pilot);
-    read("unit",unit_count,out.unit);
+    read("pilot",pilot_count,pilot_of,out.pilot);
+    read("unit",unit_count,unit_of,out.unit);
     return out;
 }
 
 // The active packages' battle tables, bottom first, so the package higher in the list wins.
-// `unit_of` (key, package id): a new unit's number, as mod_ids::unit.
+// `unit_of`, `pilot_of` (key, package id): a new unit's or character's number, as mod_ids.
+using PackageNumberOf=std::function<std::optional<unsigned>(const std::string&,const std::string&)>;
 inline BattleSongs collect_battle(const std::vector<mods::Package>& packages,
-                                  const std::function<std::optional<unsigned>(const std::string&,const std::string&)>& unit_of={}) {
+                                  const PackageNumberOf& unit_of={},const PackageNumberOf& pilot_of={}) {
     BattleSongs out;
+    const auto names=named_songs(packages);
     for(const auto& p:packages) {
         if(!p.active)continue;
-        const auto extra=battle_settings(mods::files_of(p)->read_json("audio/music.json"),[&](const std::string& key)->std::optional<unsigned>{
-            return unit_of?unit_of(key,p.id()):std::nullopt;});
+        const auto extra=battle_settings(mods::files_of(p)->read_json("audio/music.json"),
+            [&](const std::string& key)->std::optional<unsigned>{return unit_of?unit_of(key,p.id()):std::nullopt;},
+            [&](const std::string& key)->std::optional<unsigned>{return pilot_of?pilot_of(key,p.id()):std::nullopt;},
+            named_in(names,p.id()));
         for(const auto& [k,v]:extra.pilot)out.pilot[k]=v;
         for(const auto& [k,v]:extra.unit)out.unit[k]=v;
     }
@@ -202,8 +263,10 @@ inline std::optional<int> quote_record(const fs::path& file) {
 // The line for each quote record from the active packages, bottom first, so the package
 // higher in the list wins. A package file holds its lines in itself (read in place), a folder
 // as files; a folder from before 0.5.4 may hold them in voice.srw64mod, which its Files shows
-// as files too (mod_library.cpp).
-inline std::map<int,Line> collect_voices(const std::vector<mods::Package>& packages) {
+// as files too (mod_library.cpp). A package's own battle quotes (mod_quotes.hpp) name their
+// files: `named` gives the record of the line a package's file name speaks.
+using NamedVoice=std::function<std::optional<int>(const std::string& package,const std::string& file)>;
+inline std::map<int,Line> collect_voices(const std::vector<mods::Package>& packages,const NamedVoice& named={}) {
     std::map<int,Line> out;
     for(const auto& p:packages) {
         if(!p.active)continue;
@@ -211,11 +274,14 @@ inline std::map<int,Line> collect_voices(const std::vector<mods::Package>& packa
         const auto names=files->list("audio/voice/battle");
         if(names.empty())continue;
         const auto extra=voice_settings(files->read_json("audio/voice.json"));
-        for(const auto& name:names)
-            if(const auto record=quote_record(fs::path(name))) {
+        for(const auto& name:names) {
+            auto record=quote_record(fs::path(name));
+            if(!record && named)record=named(p.id(),name);
+            if(record) {
                 const auto path="audio/voice/battle/"+name;
                 out[*record]={files,path,files->where()/path,p.id(),extra.gain_db,extra.delay_ms};
             }
+        }
     }
     return out;
 }
@@ -347,6 +413,10 @@ bool playing(uint8_t* ram,recomp_context* ctx);
 // 801E07C4 (a0 the table entry's ROM address, a1 the super mode): true when a package
 // chose this fight's song and the host has played it in place of the original's.
 bool battle(uint8_t* ram,recomp_context* ctx);
+// The song a package chose for the entry at this ROM address of the battle song tables (the
+// original's pilot or unit table, or the table window's), while MOD music is on: what the
+// battle viewer plays for an attacker, as a map battle would (battle_viewer.cpp). Any thread.
+std::optional<int> package_battle_song(uint32_t rom);
 // The dialogue layer saw a battle quote's box open (native_dialogue.cpp): its line starts,
 // and the one before fades out in 20 ms. Game thread.
 bool has_battle_voice(unsigned record);

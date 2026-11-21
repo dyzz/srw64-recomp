@@ -59,9 +59,11 @@ export default defineConfig({
   security: {
     csp: {
       // bzrcdn/bzr.openai.com: the OpenAI ads pixel (src/components/Analytics.astro).
+      // 127.0.0.1:46464: the game's web maker link (src/host/web_link.cpp, off unless the player
+      // turns it on), which the unit maker talks to (src/lib/game-link.ts).
       scriptDirective: { resources: ["'self'", 'https://bzrcdn.openai.com'] },
       styleDirective: { resources: ["'self'", { resource: "'unsafe-inline'", kind: 'attribute' }] },
-      directives: ["default-src 'self'", "img-src 'self' data:", "font-src 'self'", "connect-src 'self' https://bzr.openai.com https://bzrcdn.openai.com",
+      directives: ["default-src 'self'", "img-src 'self' data:", "font-src 'self'", "connect-src 'self' https://bzr.openai.com https://bzrcdn.openai.com http://127.0.0.1:46464",
         "media-src 'self'", "frame-src https://www.youtube-nocookie.com", "object-src 'none'", "base-uri 'self'", "form-action 'self'"],
     },
   },

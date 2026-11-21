@@ -56,6 +56,28 @@ int main(int argc,char** argv) {
         try{parse(bad);}catch(const std::runtime_error&){threw=true;}
         assert(threw);
     }
+    {
+        // A deployment naming a package's new unit and character: settled by the resolver, a
+        // campaign's names against its own package; refused without one or for an unknown name.
+        auto named=image;
+        named["aux_hex"]="0000" "0003" "0004" "FFFD" "0002" "FFFD" "0000000000000000" "0001" "000000000000" "03E70000";
+        named["numbers"]=nlohmann::json::array({nlohmann::json::array({6,"@rival","pilot"}),nlohmann::json::array({10,"@zaku","unit"})});
+        bool threw=false;try{parse(named);}catch(const std::runtime_error&){threw=true;}
+        assert(threw);
+        std::string asked;
+        name_resolver()=[&](const nlohmann::json& name,const std::string& package,bool unit)->std::optional<unsigned> {
+            asked=package;
+            if(name=="@zaku" && unit)return 401;
+            if(name=="@rival" && !unit)return 430;
+            return std::nullopt;
+        };
+        const auto with=parse(named,"my.campaign");
+        assert(with.aux[6]==0x01 && with.aux[7]==0xAE && with.aux[10]==0x01 && with.aux[11]==0x91 && asked=="my.campaign");
+        named["numbers"][1][1]="@nope";threw=false;
+        try{parse(named);}catch(const std::runtime_error&){threw=true;}
+        assert(threw);
+        name_resolver()=nullptr;
+    }
     // Registration: buffers, pointer table and the deployment base argument.
     const auto path=dir/"image.json";std::ofstream(path)<<image.dump();
     setenv("SRW64_MINI_STAGE",path.c_str(),1);

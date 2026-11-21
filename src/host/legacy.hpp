@@ -8,6 +8,7 @@
 // This header reads only a State, so it is tested without a game (tests/native_stage_info.cpp);
 // legacy.cpp keeps the file and runs the commands on the game thread.
 #include "stage_info.hpp"
+#include <algorithm>
 #include <cstdint>
 #include <filesystem>
 #include <map>
@@ -147,8 +148,44 @@ inline bool inherited(const Record& record,const Rules& rules,const json& rule,c
 // The number of elements the grants cover (the page's "N/33").
 inline size_t grantable(const Rules& rules){return rules.grants.size();}
 
+// A story package's stage information entry with an id (story_mod::Info, §8 of the design):
+// the record keeps it as "mod:<package>/<id>" once our roster has its `done`; with a grant
+// (`after`/`before`) the intermission there runs it again when the roster lacks it.
+struct Package {
+    std::string key,ref;                 // the record's id; the page's status key
+    std::vector<int> pilots,units;       // done when our roster has all of them
+    std::vector<int> after,before;       // its grant's stages, both empty without one
+    size_t index{};                      // in story_mod::infos()
+};
+inline std::string package_key(const std::string& package,const std::string& id){return "mod:"+package+"/"+id;}
+inline bool done(const Package& p,const State& state) {
+    for(const int u:p.units)if(!state.units.contains(u))return false;
+    for(const int q:p.pilots)if(!state.pilots.contains(q))return false;
+    return true;
+}
+inline Record record(Record record,const std::vector<Package>& packages,const State& state) {
+    for(const auto& p:packages) {
+        if(!done(p,state))continue;
+        auto& have=record[p.key];
+        have.pilots.insert(p.pilots.begin(),p.pilots.end());
+        have.units.insert(p.units.begin(),p.units.end());
+    }
+    return record;
+}
+inline std::vector<const Package*> due(const Record& record,const std::vector<Package>& packages,const State& state) {
+    std::vector<const Package*> out;
+    const auto in=[](const std::vector<int>& scenes,int scene){return std::find(scenes.begin(),scenes.end(),scene)!=scenes.end();};
+    for(const auto& p:packages)
+        if(record.contains(p.key) && (in(p.after,state.cleared) || in(p.before,state.scene)) && !done(p,state))out.push_back(&p);
+    return out;
+}
+
 // legacy.cpp. The record as last read or written (any thread).
 Record current();
+// The story packages' entries with an id, of the enabled packages only (story_mod::infos()
+// leaves out the rest): an element recorded from a package since removed or turned off is
+// kept in the record but neither granted nor counted (any thread).
+std::vector<Package> packages();
 // Game thread: add what this state finishes to the record, writing the file when it grew.
 void observe(const uint8_t* ram,const Rules& rules,const State& state,const Evaluator& evaluator);
 void configure(const std::filesystem::path& run_directory);

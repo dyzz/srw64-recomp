@@ -36,6 +36,7 @@
 #include "rom_variants.hpp"
 #include "script_inject.hpp"
 #include "mini_stage.hpp"
+#include "mod_ids.hpp"
 #include "rule_fixes.hpp"
 #include "upgrade_refund.hpp"
 #include "mod_data.hpp"
@@ -175,6 +176,9 @@ void on_init(uint8_t* rdram, recomp_context*) {
     srw64_rdram = rdram;
     srw64::stall::start();
     srw64::state_probe::directory=output_dir;
+    srw64::mini_stage::name_resolver()=[](const nlohmann::json& name,const std::string& package,bool unit) {
+        return unit?srw64::mod_ids::unit(name,package):srw64::mod_ids::pilot(name,package);
+    };
     srw64::mini_stage::configure(output_dir);
     srw64::rules::configure(output_dir);
     const auto rom=recomp::get_rom();
@@ -182,15 +186,17 @@ void on_init(uint8_t* rdram, recomp_context*) {
     srw64::upgrades::configure(output_dir);
     srw64::mod_data::configure({rom.data(),rom.size()},output_dir);
     // A package sprite's HD frames (mod_units.hpp sprites, "hd"), drawn in place of its own
-    // resources' frames as the art pack's are, once per (resources, frame, file).
+    // resources' frames as the art pack's are, once per (resources, frame, file); the copies
+    // of its scene around it ("around") too.
     srw64::mod_data::state().sprites_changed=[](const std::map<std::string,srw64::mod_units::Sprite>& sprites) {
         static std::set<std::string> registered;
         for(const auto& [_,sprite]:sprites)
+            for(unsigned scene=unsigned(sprite.scene)-sprite.before;scene<=unsigned(sprite.scene)+sprite.after;++scene)
             for(size_t frame=0;frame<sprite.hd.size();++frame) {
                 const auto file=sprite.hd[frame];
-                const std::string key=std::to_string(sprite.scene)+"-"+std::to_string(sprite.atlas)+"-"+std::to_string(sprite.palette)+"-"+std::to_string(frame)+":"+file.string();
+                const std::string key=std::to_string(scene)+"-"+std::to_string(sprite.atlas)+"-"+std::to_string(sprite.palette)+"-"+std::to_string(frame)+":"+file.string();
                 if(!registered.insert(key).second)continue;
-                srw64::sprites::add_generated_image(sprite.scene,sprite.atlas,sprite.palette,{uint8_t(frame)},[file] {
+                srw64::sprites::add_generated_image(uint16_t(scene),sprite.atlas,sprite.palette,{uint8_t(frame)},[file] {
                     srw64::sprites::TextImage out;
                     std::string why;
                     auto image=srw64::mod_sprites::load(file,why);
@@ -604,6 +610,7 @@ static int run_host(int argc, char** argv) {
     cfg.project_version = {0, 0, 1, "cpu-probe"};
     srw64_set_capture_directory(output_dir);
     srw64::debug::start(output_dir, {{"interactive", interactive}, {"max_vis", max_vis}, {"variant", variant->key}});
+    srw64::mods::clear_trial();   // the web maker's package to try lasts one run (web_link.cpp)
     srw64::app::boot_step("dialogue load");
     // Packages placed in mods/ as files unpack on the first listing, here (the language
     // packages): minutes for a voice package on a Switch, which shows the percents.

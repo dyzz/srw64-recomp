@@ -3,6 +3,7 @@
 // an opened package's audio/voice.json, if it has one, is kept as it is. Files are decoded by the browser, encoded to Ogg Vorbis
 // in a worker unless they already are Vorbis, and zipped here; nothing leaves the machine.
 import { vorbisEncoder, vorbisInfo } from './audio-tools';
+import { FIRST_RECORD as FIRST, LAST_RECORD as LAST, recordOfFile as recordOf } from './audio-clip';
 import { el, fill, openPackage, packageForm, say, writePackage, type Text } from './mod-package';
 import { picker, type Pickable } from './picker';
 
@@ -11,7 +12,6 @@ type Line = [number, number, number, string, number];   // record, speaker, labe
 // One voiced line: the file that goes into the package once it is ready.
 type Voice = { fileName: string; ogg?: Uint8Array; seconds: number; state: 'waiting' | 'decoding' | 'encoding' | 'ready' | 'error'; progress?: number };
 
-const FIRST = 5799, LAST = 17346;      // battle quote records (src/host/music.hpp first_quote, last_quote)
 const RATE = 44100;
 const QUALITY = 4;                     // libvorbis quality, about 64 kbps for a mono voice
 const LONG = 4;                        // seconds: past this the next line cuts it off
@@ -26,8 +26,6 @@ function oggSeconds(b: Uint8Array, rate: number) {
   }
   return 0;
 }
-// "7018.ogg", "7018_attack.wav", "voice 7018.mp3" → 7018: the first run of digits.
-const recordOf = (name: string) => { const m = /^\D*?(\d{4,5})(?!\d)/.exec(name); return m ? Number(m[1]) : null; };
 
 export function initVoiceMaker() {
   const root = document.querySelector<HTMLElement>('[data-voices]');

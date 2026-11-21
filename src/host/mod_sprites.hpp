@@ -1,7 +1,8 @@
 #pragma once
 // A package's own battle pictures (docs/design/new-unit-ids.md §11): data/new_units.json's
 // "sprites" are PNGs the host turns into the three resources the game draws a scene from
-// (docs/data/battle-graphics.md): an atlas of 32x32 parts (CI8, kind 7, 32k+1 wide and tall),
+// (docs/data/battle-graphics.md): an atlas of 32x32 parts (CI8, kind 7, each frame on its own
+// 32x32 grid as the ROM's poses are, one texel more for the filter),
 // a palette (RGBA5551, 128 entries, entry 0 transparent) and a scene (steps, a frame table,
 // parts and their vertices). They get resource numbers past the ROM's 6,436 and are served
 // to the loader (80089E9C) as LZSS streams of literals only (mod_tables.hpp).
@@ -19,7 +20,7 @@ struct Frame { unsigned width=0, height=0; std::vector<uint8_t> rgba; };
 struct Step { unsigned frame=0, ticks=1; };
 struct Built { std::vector<uint8_t> scene, atlas, palette; unsigned frames=0, parts=0, colors=0; };
 
-inline constexpr unsigned tile=32, palette_entries=128, atlas_columns=8, largest=1024;
+inline constexpr unsigned tile=32, palette_entries=128, largest=1024;
 
 inline void put16(std::vector<uint8_t>& out,unsigned v){out.push_back(uint8_t(v>>8));out.push_back(uint8_t(v));}
 inline void put32(std::vector<uint8_t>& out,uint32_t v){put16(out,v>>16);put16(out,v&0xFFFF);}
@@ -61,35 +62,39 @@ inline std::string build(const std::vector<Frame>& frames,int origin_x,int origi
         const uint8_t* p=&f.rgba[(size_t(y)*f.width+size_t(x))*4];
         return p[3]<128?0:index.at(rgba5551(p));
     };
-    // Parts: every 32x32 tile of a frame with an opaque texel; tiles alike share atlas room.
-    struct Part { unsigned tile; int x, y; };
-    std::vector<std::vector<uint8_t>> tiles;
-    std::map<std::vector<uint8_t>,unsigned> tile_of;
+    // The atlas: each frame on its own 32x32 grid, the frames one under another. The game
+    // draws a part with the texels right of and under it as well (the filter), so a part's
+    // neighbours in the atlas must be its neighbours in the picture, as in the ROM's poses
+    // (32k+1 wide and tall: their picture laid out as it is). Packing the parts closer drew
+    // a one-texel line of another part along their edges. Under each frame a row of nothing,
+    // and a column of nothing right of the widest.
+    std::vector<unsigned> top(frames.size());
+    unsigned width=1,height=0;
+    for(size_t n=0;n<frames.size();++n) {
+        const unsigned columns=(frames[n].width+tile-1)/tile,rows=(frames[n].height+tile-1)/tile;
+        top[n]=height;
+        height+=rows*tile+1;
+        width=std::max(width,columns*tile+1);
+    }
+    out.atlas.clear();
+    put16(out.atlas,7);put16(out.atlas,width);put16(out.atlas,height);put16(out.atlas,0);
+    out.atlas.resize(8+size_t(width)*height,0);
+    // Parts: every 32x32 tile of a frame with an opaque texel, at its place in the atlas.
+    struct Part { unsigned s, t; int x, y; };
     std::vector<std::vector<Part>> parts(frames.size());
     for(size_t n=0;n<frames.size();++n) {
         const auto& f=frames[n];
         for(unsigned ty=0;ty<f.height;ty+=tile)for(unsigned tx=0;tx<f.width;tx+=tile) {
-            std::vector<uint8_t> t(tile*tile);
             bool any=false;
-            for(unsigned y=0;y<tile;++y)for(unsigned x=0;x<tile;++x)any|=(t[y*tile+x]=texel(f,int(tx+x),int(ty+y)))!=0;
-            if(!any)continue;
-            auto [at,added]=tile_of.emplace(t,unsigned(tiles.size()));
-            if(added)tiles.push_back(std::move(t));
-            parts[n].push_back({at->second,int(tx)-origin_x,int(ty)-origin_y});
+            for(unsigned y=0;y<tile;++y)for(unsigned x=0;x<tile;++x) {
+                const uint8_t c=texel(f,int(tx+x),int(ty+y));
+                out.atlas[8+size_t(top[n]+ty+y)*width+tx+x]=c;
+                any|=c!=0;
+            }
+            if(any)parts[n].push_back({tx,top[n]+ty,int(tx)-origin_x,int(ty)-origin_y});
         }
         if(parts[n].empty())return "第 "+std::to_string(n+1)+" 张图是全透明的";
         if(parts[n].size()>64)return "第 "+std::to_string(n+1)+" 张图太大（最多 64 块 32×32）";
-    }
-    // The atlas: tiles in rows of eight, one texel over on each side for the filter.
-    const unsigned columns=std::min<unsigned>(atlas_columns,unsigned(tiles.size()));
-    const unsigned rows=unsigned((tiles.size()+columns-1)/columns);
-    const unsigned width=columns*tile+1,height=rows*tile+1;
-    out.atlas.clear();
-    put16(out.atlas,7);put16(out.atlas,width);put16(out.atlas,height);put16(out.atlas,0);
-    out.atlas.resize(8+size_t(width)*height,0);
-    for(size_t k=0;k<tiles.size();++k) {
-        const unsigned s=unsigned(k%columns)*tile,t=unsigned(k/columns)*tile;
-        for(unsigned y=0;y<tile;++y)for(unsigned x=0;x<tile;++x)out.atlas[8+size_t(t+y)*width+s+x]=tiles[k][y*tile+x];
     }
     // The palette: kind 3, its byte count, four zero bytes, the colours.
     out.palette.clear();
@@ -113,7 +118,7 @@ inline std::string build(const std::vector<Frame>& frames,int origin_x,int origi
         set16(sc,table+n*2,unsigned(sc.size()));
         for(const auto& p:parts[n]) {
             slots.push_back({sc.size(),0});
-            put16(sc,0);put16(sc,unsigned(p.tile%columns)*tile);put16(sc,unsigned(p.tile/columns)*tile);
+            put16(sc,0);put16(sc,p.s);put16(sc,p.t);
             sc.push_back(tile);sc.push_back(tile);put16(sc,unsigned(p.x)&0xFFFF);put16(sc,unsigned(p.y)&0xFFFF);put32(sc,0);
         }
         ends[n]=sc.size();

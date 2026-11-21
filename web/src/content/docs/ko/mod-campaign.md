@@ -205,6 +205,8 @@ python3 tools/mods/pack.py my-campaign -o build/mods
 
 캠페인의 세이브는 본편과 별도로 사용자 폴더의 `campaigns/<id>/saves/`에 있습니다.
 
+출격 기록의 `actor`·`unit`에는 패키지의 새 인물·새 기체도 쓸 수 있습니다: `"@이름"`(이 전역 패키지 자체의 것) 또는 `"다른패키지id@이름"`(`requires`에 씀). 번호는 전역을 읽을 때 켜진 패키지로 정해지고, 이름을 찾지 못하면 전역을 읽지 않습니다.
+
 ## 공유하기
 
 `template`, `deployments_from`, `copy_from`은 여러분의 ROM에 있는 원작 데이터를 패키지에 복사합니다. 이렇게 만든 패키지는 자신이 플레이하는 용도로만 써야 합니다. 공개적으로 공유하려면 모든 출격 레코드를 필드별로 직접 쓰고 (`group`, `x`, `y`, `actor`, `unit`, `faction`, `level_offset`, `upgrade` 등) 모든 이벤트도 직접 쓰세요. 텍스트, 맵, 캐릭터, 기체 번호는 번호일 뿐이므로 괜찮습니다. 그 밖에는 [MOD 패키지 저작권 규칙](../mods/#저작권)을 따릅니다.

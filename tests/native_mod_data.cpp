@@ -7,6 +7,9 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb/stb_image_write.h"
 #include "mod_data.hpp"
+#include "mod_forms.hpp"
+#include "mod_combine.hpp"
+#include "battle_speaker.hpp"
 #include <cstdio>
 #include <cstdlib>
 #include <iterator>
@@ -269,6 +272,74 @@ int main(int argc,char** argv) {
                   (t5.combines.at(n5.units.at("pkg@final")).parts==std::vector<unsigned>{219,230,233,225,228}) &&
                   (t5.combines.at(n5.units.at("pkg@final")).over==std::vector<unsigned>{223,224}),"a unit combined from five parts");
             check(t5.works.at(n5.units.at("pkg@final"))==21,"a new unit's Library work");
+            // A form family (mod_forms.hpp): one shared weapon list naming the forms per row,
+            // 変形 back on for both, the records as the original's.
+            {
+                const json zeta=json::parse(R"({"schema":"srw64.new-units.v2","units":{
+                    "z":{"copy":48,"weapons":[193,195,196,198],"forms":["@wr"]},
+                    "wr":{"copy":49,"weapons":[199,196,198]}}})");
+                const auto nz=mod_units::assign({{"pkg",zeta}});
+                mod_units::Bytes bz;mod_units::Taken tz;
+                {const auto why=mod_units::parse(zeta,"pkg",nz,rom,{},bz,tz);if(!why.empty())std::fprintf(stderr,"%s\n",why.c_str());check(why.empty(),"a form family");}
+                const unsigned z=nz.units.at("pkg@z"),wr=nz.units.at("pkg@wr");
+                check(tz.forms.size()==1 && (tz.forms.at(z)==std::vector<unsigned>{z,wr}),"the family, its base first");
+                const auto w32=[&](uint32_t a){return uint32_t(bz.at(a))<<24|uint32_t(bz.at(a+1))<<16|uint32_t(bz.at(a+2))<<8|bz.at(a+3);};
+                check(w32(tw::row(tw::weapon_lists,z))==w32(tw::row(tw::weapon_lists,wr)),"both forms read one list");
+                const uint32_t list=tw::base(tw::weapon_lists)+w32(tw::row(tw::weapon_lists,z));
+                const auto u16=[&](uint32_t a){return unsigned(bz.at(a)<<8|bz.at(a+1));};
+                std::vector<std::vector<unsigned>> rows;
+                for(uint32_t r=list;u16(r)!=0xFFFF;r+=12){std::vector<unsigned> row{u16(r)};for(unsigned f=1;f<6;++f)if(u16(r+f*2)!=0xFFFF)row.push_back(u16(r+f*2));rows.push_back(row);}
+                check(rows==std::vector<std::vector<unsigned>>{{193,z},{195,z},{196,z,wr},{198,z,wr},{199,wr}},"each row names the forms that have the weapon");
+                check((bz.at(tw::row(tw::units,z)+0x1F)&0x02) && (bz.at(tw::row(tw::units,wr)+0x1F)&0x02),"変形 on for both");
+                check((bz.at(tw::row(tw::units,z)+4)&0x80) && !(bz.at(tw::row(tw::units,wr)+4)&0x80),"only the base form goes out");
+                const json alone=json::parse(R"({"schema":"srw64.new-units.v2","units":{"wr":{"copy":49,"weapons":[199]}}})");
+                const auto na=mod_units::assign({{"pkg",alone}});
+                mod_units::Bytes ba;mod_units::Taken ta;
+                check(mod_units::parse(alone,"pkg",na,rom,{},ba,ta).empty() && (ba.at(tw::row(tw::units,na.units.at("pkg@wr"))+4)&0x80),
+                      "a copy of a form that waits goes out on its own");
+                check((mod_forms::record({z,wr},wr)==std::vector<uint8_t>{1,0,uint8_t(z>>8),uint8_t(z),0xFF,0xFF,uint8_t(z>>8),uint8_t(z)}),"wr's record: one other form, z, base z");
+                json loop=zeta;loop["units"]["wr"]["forms"]={"@z"};
+                mod_units::Bytes bl;mod_units::Taken tl;
+                check(!mod_units::parse(loop,"pkg",mod_units::assign({{"pkg",loop}}),rom,{},bl,tl).empty(),"a unit in two families is refused");
+                json outside=zeta;outside["units"]["z"]["forms"]={49};
+                mod_units::Bytes bo;mod_units::Taken to;
+                check(!mod_units::parse(outside,"pkg",mod_units::assign({{"pkg",outside}}),rom,{},bo,to).empty(),"an original unit as a form is refused");
+            }
+            // A combination attack (mod_combos.hpp): the record's combination bit, the units,
+            // their component weapons and the multiplier.
+            {
+                const json duo=json::parse(R"({"schema":"srw64.new-units.v2",
+                    "weapons":{"duo":{"copy":878,"combination":{"units":["@z",228],"parts":[198,899],"multiplier":1.6,"pilots":[["@hero",166]]}}},
+                    "units":{"z":{"copy":48,"weapons":[193,"@duo"]}},"pilots":{"hero":{"copy":133}}})");
+                const auto nd=mod_units::assign({{"pkg",duo}});
+                mod_units::Bytes bd;mod_units::Taken td;
+                {const auto why=mod_units::parse(duo,"pkg",nd,rom,{},bd,td);if(!why.empty())std::fprintf(stderr,"%s\n",why.c_str());check(why.empty(),"a combination attack");}
+                const unsigned w=nd.weapons.at("pkg@duo"),z=nd.units.at("pkg@z");
+                check(bd.at(tw::row(tw::weapons,w)+0xF)&0x02,"its record's combination bit");
+                check(bd.at(tw::row(tw::weapons,w)+0xE)==0,"no upgrade type, as the original's");
+                const auto& c=td.combinations.at(w);
+                check((c.units==std::vector<unsigned>{z,228}) && (c.parts==std::vector<unsigned>{198,899}) && std::abs(c.multiplier-1.6f)<1e-6f &&
+                      (c.pilots==std::vector<std::vector<unsigned>>{{nd.pilots.at("pkg@hero"),166}}),"its units, parts, multiplier and pilots");
+                json short_parts=duo;short_parts["weapons"]["duo"]["combination"]["parts"]={198};
+                mod_units::Bytes bs;mod_units::Taken ts;
+                check(!mod_units::parse(short_parts,"pkg",mod_units::assign({{"pkg",short_parts}}),rom,{},bs,ts).empty(),"a part for each unit");
+            }
+            // A copy of a copy: "a" names "b", built after it in name order; both start from 878
+            // (and units: "a" from 48 through "b").
+            {
+                const json chain=json::parse(R"({"schema":"srw64.new-units.v2",
+                    "weapons":{"a":{"copy":"@b"},"b":{"copy":"pkg@c"},"c":{"copy":878}},
+                    "units":{"a":{"copy":"@b","weapons":["@a"]},"b":{"copy":48,"weapons":[193]}}})");
+                const auto nc=mod_units::assign({{"pkg",chain}});
+                mod_units::Bytes bc;mod_units::Taken tc;
+                {const auto why=mod_units::parse(chain,"pkg",nc,rom,{},bc,tc);if(!why.empty())std::fprintf(stderr,"%s\n",why.c_str());check(why.empty(),"copies of copies");}
+                const auto same=[&](uint32_t mine,uint32_t theirs,unsigned size){
+                    for(unsigned i=0;i<size;++i)if(mod_units::read_byte(bc,rom,mine+i)!=mod_units::read_byte(bc,rom,theirs+i))return false;
+                    return true;
+                };
+                check(same(tw::row(tw::weapons,nc.weapons.at("pkg@a")),tw::row(tw::weapons,878),16) && tc.weapon_copies.at(nc.weapons.at("pkg@a"))==878,"a weapon copying a later one starts from its original");
+                check(tc.copies.at(nc.units.at("pkg@a"))==48,"a unit copying another starts from its original");
+            }
             json far=five;far["units"]["final"]["work"]=25;
             mod_units::Bytes b7;mod_units::Taken t7;
             check(!mod_units::parse(far,"pkg",mod_units::assign({{"pkg",far}}),rom,{},b7,t7).empty(),"a work past the original's 25");
@@ -289,6 +360,37 @@ int main(int argc,char** argv) {
                 mod_data::Bytes stats=bp;
                 check(mod_data::parse(json::parse(R"({"@hero":{"melee":200,"spirits":[["focus",1]]}})"),mod_data::Kind::pilots,rom,stats,"pkg",np).empty(),"its stats by name");
                 check(stats.at(tw::row(tw::pilot_records,hero)+1)==200 && stats.at(tw::row(tw::spirit_records,hero)+1)==4,"melee and the first spirit at its rows");
+                // Its own battle quotes (mod_quotes.hpp): a voice part of its own, generic
+                // segments at the package's records, the rest the borrowed part's, and a
+                // conditional list in the window.
+                {
+                    namespace mq=mod_quotes;
+                    const json said=json::parse(R"({"schema":"srw64.battle-quotes.v1","pilots":{"@hero":{
+                        "attack":[{"ja":"「行くぞ!」","zh-Hans":"「上了！」","voice":"hero-attack.ogg"},{"ja":"「二つ目」"}],
+                        "evade":[{"ja":"「当たるか!」"}],
+                        "special":[{"weapon":870,"lines":[{"ja":"「必殺!」"}]},{"opponent":4,"situation":"evade","lines":[{"ja":"「ドモンか」"}]}]}}})");
+                    mod_units::Bytes bq=bp;mq::Taken tq;
+                    {const auto why=mq::parse(said,"pkg",np,rom,bq,tp.voices,tq);if(!why.empty())std::fprintf(stderr,"%s\n",why.c_str());check(why.empty(),"battle quotes");}
+                    const unsigned part=tw::voice_of(hero);
+                    check(part>=257 && tq.voices.at(hero)==part && tq.lines.size()==5 && tq.lines[0].speaker==hero && tq.lines[0].voice=="hero-attack.ogg","its own voice part and five lines");
+                    const auto u16=[&](uint32_t at){return unsigned(bq.at(at)<<8|bq.at(at+1));};
+                    const uint32_t seg=tw::row(tw::quote_segments,part);
+                    check(u16(seg)==unsigned(mq::text_first-mq::generic_first) && u16(seg+2)==2,"attack: two lines from the first record");
+                    check(u16(seg+5*4)==unsigned(mq::text_first+2-mq::generic_first) && u16(seg+5*4+2)==1,"evade: the third");
+                    const int borrowed=mq::rom_voice(rom,4);
+                    check(borrowed>=0 && u16(seg+4)==unsigned(rom[0x1161C0+borrowed*36+4]<<8|rom[0x1161C0+borrowed*36+5]),"shot down: the borrowed part's");
+                    const uint32_t list=tw::base(tw::quote_lists)+(part-tw::first_new_voice)*tw::quote_list,index=tw::row(tw::quote_index,part);
+                    check((u16(index)<<16|u16(index+2))==list-tw::quote_lists_rom,"the list's offset from 0x20F250");
+                    const unsigned field=unsigned(rom[tw::row(tw::battle_weapons,870)]<<8|rom[tw::row(tw::battle_weapons,870)+1]);
+                    check(u16(list)==2600+field && u16(list+2)==unsigned(mq::text_first+3-mq::special_first),"a weapon line: 2600 + its quote code");
+                    check(u16(list+4)==25000+400+unsigned(mq::rom_voice(rom,4)) && u16(list+8)==0xFFFF,"an opponent line when evading, then the end");
+                    const auto refused=[&](const char* text){mod_units::Bytes b=bp;mq::Taken t;return !mq::parse(json::parse(text),"pkg",np,rom,b,tp.voices,t).empty() && t.lines.empty() && b==bp;};
+                    check(refused(R"({"schema":"srw64.battle-quotes.v1","pilots":{"4":{"attack":[{"ja":"「あ」"}]}}})"),"an original character is refused");
+                    check(refused(R"({"schema":"srw64.battle-quotes.v1","pilots":{"@hero":{"attack":[{"zh-Hans":"上"}]}}})"),"a line without ja");
+                    check(refused(R"({"schema":"srw64.battle-quotes.v1","pilots":{"@hero":{"attack":[{"ja":"一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三"}]}}})"),"more than three rows");
+                    check(refused(R"({"schema":"srw64.battle-quotes.v1","pilots":{"@hero":{"taunt":[{"ja":"「あ」"}]}}})"),"an unknown situation");
+                    check(refused(R"({"schema":"srw64.battle-quotes.v1","pilots":{"@hero":{"attack":[{"ja":"「あ」","voice":"../x.ogg"}]}}})"),"a voice outside the folder");
+                }
                 // Love rows (the partner's too when mutual) and who it counts as in combination attacks.
                 json loving=people;loving["pilots"]["hero"]["love"]=json::parse(R"([{"with":166,"mutual":true}])");loving["pilots"]["hero"]["combo_as"]=4;
                 mod_units::Bytes bl;mod_units::Taken tl;
@@ -335,7 +437,18 @@ int main(int argc,char** argv) {
         std::ofstream(dir/"sprite.palette",std::ios::binary).write(reinterpret_cast<const char*>(b.palette.data()),std::streamsize(b.palette.size()));
         const auto u16=[](const std::vector<uint8_t>& d,size_t a){return unsigned(d[a])<<8|d[a+1];};
         const auto s16=[&](const std::vector<uint8_t>& d,size_t a){return int(int16_t(u16(d,a)));};
-        check(u16(b.atlas,0)==7 && u16(b.atlas,2)==4*32+1 && u16(b.atlas,4)==33 && b.atlas.size()==8+129*33,"its atlas: kind 7, 32k+1");
+        check(u16(b.atlas,0)==7 && u16(b.atlas,2)==2*32+1 && u16(b.atlas,4)==2*32+1 && b.atlas.size()==8+65*65,"its atlas: kind 7, the picture's 32k+1 grid");
+        // The texels under and right of a part are the picture's (the filter draws them): row
+        // 32 is the red-only quarter, column 32 the green-only one, not another part's.
+        const auto at=[&](unsigned x,unsigned y){return b.atlas[8+size_t(y)*65+x];};
+        check(at(0,32)==at(0,39) && at(0,32)!=at(0,0) && at(32,0)==at(39,0) && at(32,0)!=at(0,0) && at(64,0)==0 && at(0,64)==0,"each part's neighbours are the picture's");
+        {
+            ms::Frame small;small.width=20;small.height=20;small.rgba.assign(20*20*4,255);
+            ms::Built two;
+            check(ms::build({f,small},20,40,true,{{0,1},{1,1}},0,two).empty() && u16(two.atlas,2)==65 && u16(two.atlas,4)==65+33,"frames one under another, a row of nothing between");
+            const size_t second=u16(two.scene,10);   // two steps, FF and loop, then the frame table: frame 1's first part
+            check(u16(two.scene,second+2)==0 && u16(two.scene,second+4)==65,"the second frame's part is under the first frame");
+        }
         check(u16(b.palette,0)==3 && u16(b.palette,2)==256 && b.palette.size()==264 && u16(b.palette,8)==0 && b.colors==4,"its palette: 128 entries, 0 transparent");
         const auto& sc=b.scene;
         check(sc[0]==1 && sc[1]==0 && sc[2]==0 && sc[3]==1 && sc[4]==0xFF && sc[5]==0 && u16(sc,6)==8,"its steps and frame table");
@@ -373,6 +486,37 @@ int main(int argc,char** argv) {
         check(w16(added,tw::row(tw::poses,unit))==tw::rom_resources && w16(added,tw::row(tw::poses,unit)+4)==tw::rom_resources+2,"the pose names them");
         check(w16(added,tw::row(tw::scenes,tw::rom_scenes))==tw::rom_resources,"so does the scene");
         check(mod_units::art(sprite).value("width",0)==40 && mod_units::art(sprite).contains("hd"),"its picture for the pages");
+        // "around": copies of the scene before and after it, the atlas and palette after them.
+        const json beam=json::parse(R"({"schema":"srw64.new-units.v2","sprites":{"beam":{"image":"art/stand.png","origin":[20,40],"around":[1,2]}},"scenes":{"beam":"@beam"}})");
+        mod_units::Taken t2;mod_units::Bytes b2;
+        check(mod_units::parse(beam,"pkg",numbers,rom,{},b2,t2,pack).empty(),"a sprite with scenes around it");
+        const auto& around=t2.sprites.at("pkg@beam");
+        check(around.scene==tw::rom_resources+1 && around.atlas==tw::rom_resources+4 && around.palette==tw::rom_resources+5 && t2.resources.size()==6,"four scenes, then the atlas and palette");
+        check(t2.resources.at(tw::rom_resources)==t2.resources.at(around.scene) && t2.resources.at(tw::rom_resources+3)==t2.resources.at(around.scene),"the copies are its scene");
+        check(w16(b2,tw::row(tw::scenes,tw::rom_scenes))==around.scene,"the scene row names its own");
+        // An actor of the beam's routine (118: +1, +2) on a picture without them is refused.
+        const auto beam_on=[&](const char* reach){
+            json d=json::parse(R"({"schema":"srw64.new-units.v2","sprites":{"beam":{"image":"art/stand.png","origin":[20,40]}},"scenes":{"beam":"@beam"},
+                "weapons":{"w":{"copy":228,"animation":{"camera":1,"hit":6,"action":113,"defender":125,"sounds":[],"actors":[{"scene":"@beam","behavior":118}]}}}})");
+            if(reach)d["sprites"]["beam"]["around"]=json::parse(reach);
+            mod_units::Taken tb;mod_units::Bytes bb;
+            return mod_units::parse(d,"pkg",mod_units::assign({{"pkg",d}}),rom,{},bb,tb,pack);
+        };
+        check(beam_on(nullptr).find("around")!=std::string::npos && beam_on("[0,1]").find("around")!=std::string::npos && beam_on("[0,2]").empty(),
+              "a beam on a picture needs two scenes after it");
+        // In a record with a routine that computes with scene numbers (205), no package picture
+        // but a cut-in's.
+        const auto in_complex=[&](int behaviour){
+            json d=json::parse(R"({"schema":"srw64.new-units.v2","sprites":{"p":{"image":"art/stand.png","origin":[20,40]}},"scenes":{"p":"@p"},
+                "weapons":{"w":{"copy":57,"animation":{"camera":1,"hit":6,"action":113,"defender":125,"sounds":[],"actors":[{"scene":479,"behavior":205},{"scene":"@p","behavior":0}]}}}})");
+            d["weapons"]["w"]["animation"]["actors"][1]["behavior"]=behaviour;
+            mod_units::Taken tc;mod_units::Bytes bc;
+            return mod_units::parse(d,"pkg",mod_units::assign({{"pkg",d}}),rom,{},bc,tc,pack);
+        };
+        check(!in_complex(125).empty() && in_complex(240).empty(),"a record with a complex routine keeps its pictures, cut-ins aside");
+        const json far=json::parse(R"({"schema":"srw64.new-units.v2","sprites":{"beam":{"image":"art/stand.png","origin":[20,40],"around":[0,33]}}})");
+        mod_units::Taken t4;mod_units::Bytes b4;
+        check(!mod_units::parse(far,"pkg",numbers,rom,{},b4,t4,pack).empty(),"at most 32 around");
         const json escape=json::parse(R"({"schema":"srw64.new-units.v2","sprites":{"x":{"image":"../x.png","origin":[0,0]}}})");
         mod_units::Taken t3;mod_units::Bytes b3;
         check(!mod_units::parse(escape,"pkg",numbers,rom,{},b3,t3,pack).empty(),"a sprite's file stays inside the package");
@@ -400,6 +544,102 @@ int main(int argc,char** argv) {
         json big=people;big["pilots"]["kai"]["portrait"]["image"]="art/stand.png";
         mod_units::Bytes bb;mod_units::Taken bt;
         check(!mod_units::parse(big,"pkg",mod_units::assign({{"pkg",big}}),rom,{},bb,bt,pack).empty(),"a portrait must be 96x96");
+    }
+
+    {
+        // A package's combine with no `over` (mod_combine.hpp): a recipe on each part for the
+        // map's 合体, after the original's, and the combined unit deploying in their place.
+        namespace mc=srw64::mod_combine;
+        std::vector<uint8_t> ram(0x800000);
+        const auto w8=[&](uint32_t a,unsigned v){srw64::guest::write8(ram.data(),a,uint8_t(v));};
+        const auto w16=[&](uint32_t a,unsigned v){srw64::guest::write16(ram.data(),a,uint16_t(v));};
+        const auto w32=[&](uint32_t a,uint32_t v){srw64::guest::write32(ram.data(),a,v);};
+        const auto r=[&](uint32_t a,unsigned n){return srw64::guest::read(ram.data(),a,n);};
+        w16(mc::recipe_list_ram,219);w16(mc::recipe_list_ram+2,0xFFFF);w32(mc::recipe_pointers_ram,0x800CB2A0);
+        mc::Combines all;
+        all[450]={{34,35},{}};           // Super Earthgain: Earthgain leads, Virose
+        all[451]={{219,228},{}};         // 219 has the original's recipe: not taken
+        all[452]={{219,230,233,225,228},{223,224}};   // over Dancouga: no recipe of its own
+        mc::fill_recipes(ram.data(),all);
+        check(r(mc::recipe_list_copy,2)==219 && r(mc::recipe_list_copy+2,2)==34 && r(mc::recipe_list_copy+4,2)==35 &&
+              r(mc::recipe_list_copy+6,2)==0xFFFF,"the recipe parts: the original's, then 34 and 35");
+        check(r(mc::recipe_pointers_copy,4)==0x800CB2A0,"the original's record pointer kept");
+        const uint32_t rec34=r(mc::recipe_pointers_copy+4,4),rec35=r(mc::recipe_pointers_copy+8,4);
+        const uint32_t body34=r(rec34+4,4),body35=r(rec35+4,4);
+        check(r(rec34,1)==0 && r(rec34+1,1)==1 && r(rec34+0x10,2)==34 && r(rec35+0x10,2)==34,"by unit number, one recipe, Earthgain leads");
+        check(r(body34,1)==1 && r(body34+2,2)==35 && r(body34+4,2)==0xFFFF && r(body34+0xA,2)==450,"Earthgain's recipe: Virose makes 450");
+        check(r(body35,1)==1 && r(body35+2,2)==34 && r(body35+0xA,2)==450,"Virose's recipe: Earthgain makes 450");
+        // The roster: Earthgain (Brad), Virose (Kurtz) deployed, then the combined unit with both.
+        const uint32_t brad=0x80300000,kurtz=0x80300100;
+        const auto put=[&](unsigned i,unsigned unit,std::vector<uint32_t> crew,bool out){
+            const uint32_t at=mc::pool+i*mc::pool_size;
+            w8(at,1);w16(at+mc::unit_number,unit);w8(at+mc::unit_deploy,out?0x80:0);w8(at+mc::unit_crew,uint8_t(crew.size()));
+            for(size_t k=0;k<crew.size();++k)w32(at+mc::unit_crew_pilots+uint32_t(k)*4,crew[k]);
+            return at;};
+        const uint32_t earthgain=put(0,34,{brad},true),virose=put(1,35,{kurtz},true),super=put(2,450,{brad,kurtz},false);
+        mc::deploy_sync(ram.data(),all);
+        check((r(super+mc::unit_deploy,1)&0x80) && !(r(earthgain+mc::unit_deploy,1)&0x80) && !(r(virose+mc::unit_deploy,1)&0x80),
+              "the combined unit deploys, its parts not");
+        w8(virose,0);   // Virose gone: the parts deploy again
+        mc::deploy_sync(ram.data(),all);
+        check(!(r(super+mc::unit_deploy,1)&0x80) && (r(earthgain+mc::unit_deploy,1)&0x80),"without Virose, Earthgain deploys");
+        // Over Dancouga: it follows 224's bit, Black Wing with it; 3D5D 0 gives it back.
+        mc::Combines over;over[452]=all[452];
+        std::memset(ram.data()+(mc::pool&0x7FFFFF),0,mc::pool_side);
+        w16(mc::list_ram,224);w16(mc::list_ram+2,0xFFFF);w32(mc::pointers_ram,0x80310000);
+        w8(0x80310000,4);for(unsigned k=0;k<4;++k)w16(0x80310000+2+k*4,std::vector<unsigned>{219,230,233,225}[k]);
+        std::vector<uint32_t> five;for(unsigned k=0;k<5;++k)five.push_back(0x80300000+k*0x100);
+        std::vector<uint32_t> fighters;
+        for(unsigned k=0;k<5;++k)fighters.push_back(put(k,std::vector<unsigned>{219,230,233,225,228}[k],{five[k]},k==4));
+        const uint32_t dancouga=put(5,224,{five[0],five[1],five[2],five[3]},true),fin=put(6,452,five,false);
+        mc::deploy_sync(ram.data(),over);
+        check((r(fin+mc::unit_deploy,1)&0x80) && !(r(dancouga+mc::unit_deploy,1)&0x80) && !(r(fighters[4]+mc::unit_deploy,1)&0x80),
+              "Final Dancouga deploys for Dancouga, Black Wing with it");
+        mc::deploy_sync(ram.data(),over);
+        check((r(fin+mc::unit_deploy,1)&0x80),"and stays when nothing changes");
+        for(unsigned k=0;k<4;++k)w8(fighters[k]+mc::unit_deploy,0x80);   // 3D5D 0,0
+        mc::deploy_sync(ram.data(),over);
+        check(!(r(fin+mc::unit_deploy,1)&0x80) && (r(fighters[4]+mc::unit_deploy,1)&0x80),"3D5D 0: the beast fighters and Black Wing");
+        w8(dancouga+mc::unit_deploy,0x80);for(unsigned k=0;k<4;++k)w8(fighters[k]+mc::unit_deploy,0);w8(fighters[4]+mc::unit_deploy,0x80);   // 3D5D 1,0
+        mc::deploy_sync(ram.data(),over);
+        check((r(fin+mc::unit_deploy,1)&0x80) && !(r(dancouga+mc::unit_deploy,1)&0x80) && !(r(fighters[4]+mc::unit_deploy,1)&0x80),"3D5D 1: Final Dancouga again");
+    }
+
+    {
+        // Who says a battle quote (battle_speaker.hpp): the slot's participant, shown for the
+        // record's speaker when it is a new character with that speaker's voice part.
+        namespace bs=srw64::battle_speaker;
+        std::vector<uint8_t> ram(0x800000);
+        const auto w16=[&](uint32_t a,unsigned v){srw64::guest::write16(ram.data(),a,uint16_t(v));};
+        const auto w32=[&](uint32_t a,uint32_t v){srw64::guest::write32(ram.data(),a,v);};
+        w16(bs::attacker_index,1);w16(bs::defender_index,0);
+        w32(bs::attacker_pilot,0x80300000);w16(0x80300002,433);   // the rival attacks
+        w32(bs::defender_pilot,0x80300100);w16(0x80300102,166);   // Alan defends
+        w16(tw::pilot_voice_copy+2*298,120);w16(tw::pilot_voice_copy+2*433,120);w16(tw::pilot_voice_copy+2*166,30);
+        w16(tw::pilot_voice_copy+2*434,30);w16(tw::pilot_voice_copy+2*435,0xFFFF);
+        w16(bs::records+bs::record_size+2,120);w16(bs::records+2,30);   // each record's voice part
+        check(bs::character_of_slot(ram.data(),bs::records+bs::record_size+bs::attack_slot)==433,"the attacker's slot");
+        check(bs::character_of_slot(ram.data(),bs::records+bs::hit_slot)==166,"the defender's slot");
+        w16(bs::attacker_index,0);w16(bs::defender_index,1);   // Alan's counter: the indices swap, the pointers stay
+        check(bs::character_of_slot(ram.data(),bs::records+bs::record_size+bs::hit_slot)==433,"the rival hit by the counter: still the rival");
+        w16(tw::pilot_voice_copy+2*433,30);w16(bs::records+bs::record_size+2,30);   // both of one voice part: the indices decide
+        check(bs::character_of_slot(ram.data(),bs::records+bs::record_size+bs::hit_slot)==166,"one voice part: by the index words");
+        w16(tw::pilot_voice_copy+2*433,120);w16(bs::records+bs::record_size+2,120);w16(bs::attacker_index,1);w16(bs::defender_index,0);
+        check(!bs::character_of_slot(ram.data(),bs::records+0x30) && !bs::character_of_slot(ram.data(),0x80300000),"no participant's slot");
+        bs::viewer()={true,{423,298}};   // the battle viewer: no pilot pointers, record 0 the attacker
+        check(bs::character_of_slot(ram.data(),bs::records+bs::attack_slot)==423 && bs::character_of_slot(ram.data(),bs::records+bs::record_size+bs::hit_slot)==298,
+              "the battle viewer's participants by record");
+        bs::viewer()={};
+        const auto swap=bs::swap(ram.data(),298,433);
+        check(swap && swap->first==298 && swap->second==433,"the rival's quote, a ムゲ兵 record: shown as the rival");
+        check(!bs::swap(ram.data(),166,166) && !bs::swap(ram.data(),298,166),"Alan's own lines stay his");
+        check(!bs::swap(ram.data(),166,433),"another voice part's line (a two-person exchange) keeps its speaker");
+        check(!bs::swap(ram.data(),4,273),"the original's copies (Domon 273) stay as they are");
+        check(!bs::swap(ram.data(),435,435) && !bs::swap(ram.data(),166,435),"no voice part: nothing to borrow");
+        bs::active()={298,433};
+        check(bs::shown(298)==433 && bs::shown(166)==166,"during the call");
+        bs::active()={};
+        check(bs::shown(298)==298,"and not after it");
     }
 
     if(failures)std::fprintf(stderr,"%d failures\n",failures);

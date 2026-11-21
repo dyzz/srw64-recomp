@@ -48,6 +48,10 @@ TABLES = [
     # Combinations: 11 combined units and -1, then records; D_800CB5A4 points at them.
     ("combine",         "合体表 D_800CB40C",               "ram", 0x800CB40C, 0x800CB5A4 - 0x800CB40C),
     ("combine_pointers", "合体指针 D_800CB5A4",            "ram", 0x800CB5A4, 0x800CB5E8 - 0x800CB5A4),
+    # Combine recipes (the map's 合体, 801E977C): part unit numbers and -1, then 0x14-byte
+    # records and their recipes; D_800CB390 points at the records (unit-mod-kit.md §4.4).
+    ("recipes",         "合体配方部件 D_800CAFEC",          "ram", 0x800CAFEC, 0x800CB390 - 0x800CAFEC),
+    ("recipe_pointers", "合体配方指针 D_800CB390 21×4",     "ram", 0x800CB390, 21 * 4),
     ("weapon_map",      "武器继承映射 D_800CB5E8",         "ram", 0x800CB5E8, 115 * 4),
 ]
 
@@ -66,8 +70,8 @@ PILOT_TABLES = [
     ("portraits",         "头像 361×4",                       "rom", 0x84220, 361 * 4),
     ("love",              "恋爱补正 0x1012B4",                "rom", 0x1012B4, 0x400),
     ("love_ram",          "恋爱补正（战术地图 overlay RAM）", "ovl:load_000AB160", 0x1012B4 + 0x801174A0, 0x400),
-    ("quotes_a",          "战斗台词表 0x1161C0",              "rom", 0x1161C0, 0x118610 - 0x1161C0),
-    ("quotes_b",          "战斗台词表 0x121150",              "rom", 0x121150, 0x2000),
+    ("quote_segments",    "战斗台词表 0x1161C0",              "rom", 0x1161C0, 0x118610 - 0x1161C0),
+    ("quote_index",       "战斗台词表 0x121150",              "rom", 0x121150, 0x2000),
 ]
 PILOT_LIMITS = {0x168: "360 人物（映射）", 0x169: "361 人物", 0x101: "257 能力记录", 0x64: "100 我方驾驶员槽"}
 

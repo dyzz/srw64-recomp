@@ -15,7 +15,8 @@ inline constexpr uint32_t window=0x08000000, block=0x00100000;
 // fills from it (mod_tables.hpp), since the table lives in that overlay's data.
 enum Table : unsigned {units, weapons, status_offsets, unit_songs, weapon_lists, poses, battle_units, battle_weapons,
                        scenes, anim_offsets, anim_records, names, map_icons,
-                       pilot_records, thresholds, spirit_records, portraits, pilot_songs, table_count};
+                       pilot_records, thresholds, spirit_records, portraits, pilot_songs,
+                       quote_segments, quote_index, quote_lists, table_count};
 struct Layout { uint32_t rom, stride, rows; };
 // The ROM's tables. The unit battle records have 354 rows; 354-362 read on into the weapon
 // battle records, as in the original, so the block copies 363 of them.
@@ -27,6 +28,11 @@ inline constexpr Layout layouts[table_count]={
     // ability record, skill thresholds and spirit learning (its own numbers), its portrait's
     // two resource numbers and its battle song.
     {0x7A1A0,0x10,257},{0x7B1B0,30,257},{0x7CFB0,12,148},{0x84220,4,361},{0x7D6A0,2,361},
+    // Battle quotes by voice part (docs/data/battle-quotes.md; unit-mod-kit.md §7): the generic
+    // segments (nine (start, count) pairs), the offset of each part's conditional list from
+    // ROM 0x20F250, and the lists of the parts packages add (only package bytes, quote_list
+    // apart each), which a new part's offset points into.
+    {0x1161C0,36,257},{0x121150,4,257},{0,0,0},
 };
 // The character -> record maps the game keeps in resident RAM (s16 each, 360), moved to free
 // RDRAM with room for the new characters (generate_cpu.py PILOT_MAP_READERS; mod_pilots.hpp
@@ -64,6 +70,10 @@ inline constexpr unsigned first_new_unit=400, last_new_unit=998, first_new_weapo
 // it with 0x1FF; the suspend record's 0x200 and 0x400 are flags), so 400-511.
 inline constexpr unsigned rom_pilots=361, first_new_pilot=400, last_new_pilot=511;
 inline constexpr unsigned new_scene_limit=4096;
+// Voice parts: the ROM's 257, then one a new character with its own battle quotes speaks with
+// (mod_quotes.hpp): character n has part 257 + n - 400.
+inline constexpr unsigned rom_voices=257, first_new_voice=257, last_new_voice=first_new_voice+last_new_pilot-first_new_pilot;
+inline constexpr uint32_t quote_lists_rom=0x20F250, quote_list=0x200;
 // Resources (80089E9C): the ROM has 6,436; packages' own (mod_sprites.hpp) follow, served from
 // a window of their own as LZSS streams (decoded size, then the stream); the loader's cap
 // (sltiu 0x1924 at 80089EAC) is moved to resource_limit (generate_cpu.py).
@@ -121,6 +131,8 @@ inline constexpr std::optional<NameOf> name_of(uint16_t record) {
 inline constexpr bool new_unit(unsigned n){return n>=first_new_unit && n<=last_new_unit;}
 inline constexpr bool new_weapon(unsigned n){return n>=first_new_weapon && n<=last_new_weapon;}
 inline constexpr bool new_pilot(unsigned n){return n>=first_new_pilot && n<=last_new_pilot;}
+inline constexpr bool new_voice(unsigned n){return n>=first_new_voice && n<=last_new_voice;}
+inline constexpr unsigned voice_of(unsigned pilot){return first_new_voice+pilot-first_new_pilot;}
 
 // Where the game reads a table's row n: the ROM's own address for its rows (the copy
 // patches are keyed there), the window for a new number.
@@ -173,7 +185,7 @@ inline uint8_t window_byte(uint32_t at,const Byte& byte,const Source& source) {
         const unsigned n=off/l.stride;
         const bool fresh=t==pilot_records || t==thresholds || t==spirit_records || t==portraits || t==pilot_songs?new_pilot(n):
                          t==weapons || t==battle_weapons || t==anim_offsets?new_weapon(n):
-                         t==scenes?n<new_scene_limit:new_unit(n);
+                         t==scenes?n<new_scene_limit:t==quote_segments || t==quote_index?new_voice(n):new_unit(n);
         return fresh?byte(l.rom+off%l.stride):byte(l.rom+off);
     }
     return 0;

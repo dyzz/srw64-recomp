@@ -193,6 +193,21 @@ class PackageTests(unittest.TestCase):
                          ({"units": {"u": {"copy": 1, "weapons": [1], "combine": {"parts": [219, 228], "over": ["@x"]}}}}, "over")]:
             self.assertIn(why, validate.new_units_problem({**base, **bad}))
         self.assertIn("schema", validate.new_units_problem({"schema": "srw64.new-units.v1", "units": {}}))
+        # A combination attack: two to five units, one component weapon each.
+        combo = {"weapons": {"duo": {"copy": 1219, "combination": {"units": ["@z", 228], "parts": [198, 899], "multiplier": 1.5}}},
+                 "units": {"z": {"copy": 48, "weapons": [193, "@duo"]}}}
+        self.assertEqual(validate.new_units_problem({**base, **combo}), "")
+        for change, why in [({"units": ["@z"]}, "units"), ({"parts": [198]}, "parts"), ({"multiplier": 9}, "multiplier"),
+                            ({"pilots": [[]]}, "pilots"), ({"leader": 1}, "combination")]:
+            bad = json.loads(json.dumps(combo))
+            bad["weapons"]["duo"]["combination"].update(change)
+            self.assertIn(why, validate.new_units_problem({**base, **bad}))
+        # Form families: other new units of the same file, each in one family.
+        zeta = {"z": {"copy": 48, "weapons": [193], "forms": ["@wr"]}, "wr": {"copy": 49, "weapons": [199]}}
+        self.assertEqual(validate.new_units_problem({**base, "units": zeta}), "")
+        for forms, why in [(["@missing"], "forms"), ([49], "forms"), (["@wr", "@wr"], "forms"), (["@z"], "forms"), ([], "forms")]:
+            self.assertIn(why, validate.new_units_problem({**base, "units": {**zeta, "z": {**zeta["z"], "forms": forms}}}))
+        self.assertIn("一个变形族", validate.new_units_problem({**base, "units": {**zeta, "wr": {**zeta["wr"], "forms": ["@z"]}}}))
         # New characters (docs/design/unit-mod-kit.md §5.4).
         self.assertEqual(validate.new_units_problem({**base, "pilots": {"hero": {"copy": 133, "voice": 4, "portrait": [3000, 3001]}}}), "")
         for bad, why in [({"pilots": {"Hero": {"copy": 133}}}, "小写"), ({"pilots": {"hero": {"copy": 360}}}, "copy"),
@@ -225,6 +240,57 @@ class PackageTests(unittest.TestCase):
         self.assertIn("mute", validate.voice_settings_problem({"schema": "srw64.voice.v1", "mute": True}))
         files["audio/voice/battle/99999.ogg"] = b"OggS"
         self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["voice"])
+
+    def test_music(self):
+        # Replacements by song number, a package's own songs by name (src/host/music.hpp), and
+        # music.json naming them and its new characters and units.
+        self.assertIsNone(validate.music_file_problem("7.ogg"))
+        self.assertIsNone(validate.music_file_problem("kai-theme.ogg"))
+        self.assertIn("1–255", validate.music_file_problem("300.ogg"))
+        self.assertIn("小写", validate.music_file_problem("Kai.ogg"))
+        self.assertIn(".ogg", validate.music_file_problem("kai.mp3"))
+        settings = {"schema": "srw64.music.v1", "tracks": {"7": {"gain": -2}, "@kai-theme": {"loop": [0, 10]}},
+                    "battle": {"pilot": {"@kai": "@kai-theme", "36": 7}, "unit": {"@final": 21, "other@x": 3}}}
+        ok = lambda d: validate.music_settings_problem(d, {"kai-theme"}, {"kai"}, {"final"})
+        self.assertEqual(ok(settings), "")
+        self.assertIn("audio/music/gone.ogg", ok({**settings, "tracks": {"@gone": {}}}))
+        self.assertIn("新人物", ok({**settings, "battle": {"pilot": {"@nobody": 7}}}))
+        self.assertIn("歌号", ok({**settings, "battle": {"unit": {"@final": 0}}}))
+        files = self.good_files()
+        files["audio/music/kai-theme.ogg"] = b"OggS"
+        files["audio/music.json"] = json.dumps({"schema": "srw64.music.v1", "tracks": {"@kai-theme": {"gain": -3}}}).encode()
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], [])
+        files["audio/music/Bad.ogg"] = b"OggS"
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["music"])
+
+    def test_battle_quotes(self):
+        # A new character's own lines (src/host/mod_quotes.hpp); a voice file a line names may
+        # have any name in audio/voice/battle/.
+        quotes = {"schema": "srw64.battle-quotes.v1", "pilots": {"@hero": {
+            "attack": [{"ja": "「行くぞ!」", "zh-Hans": "「上了！」", "voice": "hero-attack.ogg"}],
+            "special": [{"weapon": "@cannon", "lines": [{"ja": "「必殺!」"}]},
+                        {"opponent": 4, "situation": "evade", "lines": [{"ja": "「ドモンか」"}]}]}}}
+        files = self.good_files()
+        files["dialogue/battle_quotes.json"] = json.dumps(quotes).encode()
+        files["audio/voice/battle/hero-attack.ogg"] = b"OggS"
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], [])
+        del files["audio/voice/battle/hero-attack.ogg"]
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["quotes"])
+        files["audio/voice/battle/other.ogg"] = b"OggS"
+        self.assertIn("voice", self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0])
+
+        def problem(change):
+            document = json.loads(json.dumps(quotes))
+            change(document["pilots"]["@hero"])
+            return validate.battle_quotes_problem(document)[0]
+        self.assertEqual(problem(lambda p: None), "")
+        self.assertIn("ja", problem(lambda p: p["attack"][0].pop("ja")))
+        self.assertIn("42", problem(lambda p: p["attack"][0].update(ja="あ" * 43)))
+        self.assertIn("taunt", problem(lambda p: p.update(taunt=[{"ja": "「あ」"}])))
+        self.assertIn("weapon 和 opponent", problem(lambda p: p["special"][0].update(opponent=4)))
+        self.assertIn("situation", problem(lambda p: p["special"][0].update(situation="evade")))
+        self.assertIn("voice", problem(lambda p: p["attack"][0].update(voice="../x.ogg")))
+        self.assertIn("新人物", validate.battle_quotes_problem({"schema": "srw64.battle-quotes.v1", "pilots": {"4": {}}})[0])
 
     def test_map_icons(self):
         def png(width, height):

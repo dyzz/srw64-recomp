@@ -2,9 +2,11 @@
 #include "guest_memory.hpp"
 #include "mod_ids.hpp"
 #include "mod_library.hpp"
+#include "mod_quotes.hpp"
 #include "json/json.hpp"
 #include "localization/locale_fallbacks.hpp"
 #include <algorithm>
+#include <array>
 #include <cstdio>
 #include <cstdlib>
 #include <filesystem>
@@ -23,7 +25,8 @@
 // place in the original's event table: the host decides when one fires, keeps what has
 // fired with the suspend records, and hands only its instructions to the original
 // script engine, started the way the original starts an event. Their new dialogue is
-// served as text records past the ROM's (0xC800 up), shown by the native reader.
+// served as text records past the ROM's (0xC800-0xDFFF), shown by the native reader; the
+// packages' battle quotes follow (mod_quotes.hpp, 0xE000 up) and are served the same way.
 namespace srw64::story_mod {
 namespace fs=std::filesystem;
 using json=nlohmann::json;
@@ -109,23 +112,51 @@ struct Event {
     // When the event starts, before its commands: a package's combined unit gets our
     // instance (mod_combine.hpp build), so the event's own steps (unlock) reach it.
     std::vector<unsigned> builds;
+    // The package's own groups its words deploy or take off (Deployment): the operand's index,
+    // the group's key (package/id), whether it is 3D46's 500 + group. Numbered at place().
+    struct Group {size_t at; std::string key; bool leaving;};
+    std::vector<Group> groups;
+    std::string key() const {return package+"/"+id;}
+};
+// A package's own deployment group (story file "deployments"): 28-byte records as the ROM's
+// (mini_stage.py RECORD_FIELDS) the host appends to the scene's deployment block when it is
+// registered, under a group number that block leaves free (assign_groups()).
+inline constexpr unsigned deploy_record=28, deploy_halfwords=14, deploy_terminator=999, deploy_groups=32;
+struct Deployment {
+    std::string package,id;
+    unsigned scene{};
+    std::vector<std::array<uint16_t,14>> records;   // group halfword 0 until placed
     std::string key() const {return package+"/"+id;}
 };
 struct Text {
     unsigned speaker{};
     std::map<std::string,std::string> lines;       // locale -> text
+    bool battle{};                                 // a battle quote (mod_quotes.hpp)
 };
 // A hidden element a package adds to a scene's stage information page (stage_info.cpp):
 // its title and text by locale, and when it shows as done (our roster has these).
 struct Info {
-    std::string package;
+    std::string package,id;            // with an id the record across playthroughs keeps it (legacy.hpp)
     unsigned scene{};
     json title,text;
     bool checks{};
     std::vector<unsigned> pilots,units;
+    // Its grant in a later playthrough (legacy.cpp): in the intermission after a stage of
+    // `after` or before one of `before`, the combined units built, then the commands as the
+    // original's grants write them (["3D5A", pilot, level, unit, mode], ["3D6F", weapon]),
+    // numbers settled, a level "like" a pilot by command index; then the crews.
+    struct Inherit {
+        std::vector<int> after,before;
+        json commands=json::array();
+        std::vector<std::pair<size_t,unsigned>> like;
+        std::vector<unsigned> builds;
+        std::vector<std::pair<unsigned,std::vector<unsigned>>> crew;
+    };
+    std::optional<Inherit> inherit;
 };
 struct Library {
     std::vector<Event> events;
+    std::vector<Deployment> deployments;
     std::vector<Info> infos;
     std::vector<Text> texts;                       // id text_first + index
     std::vector<std::string> problems;
@@ -139,8 +170,8 @@ inline void add_image(Library& library,const std::string& package,const json& im
     const auto& events=image.at("events");
     if(!texts.is_array() || !events.is_array())throw std::runtime_error("texts 与 events 必须是数组");
     const size_t base=library.texts.size();
-    // 0xE800 up are the names of new characters, units and weapons (table_window.hpp).
-    if(base+texts.size()>size_t(table_window::private_first-text_first))throw std::runtime_error("台词太多");
+    // 0xE000 up are the packages' battle quotes, then the names of new numbers (table_window.hpp).
+    if(base+texts.size()>size_t(mod_quotes::text_first-text_first))throw std::runtime_error("台词太多");
     std::vector<Text> new_texts;
     for(const auto& t:texts) {
         Text text;
@@ -158,6 +189,38 @@ inline void add_image(Library& library,const std::string& package,const json& im
         }
         if(!text.lines.count("ja"))throw std::runtime_error("每句台词都要有 ja");
         new_texts.push_back(std::move(text));
+    }
+    std::vector<Deployment> new_deployments;
+    for(const auto& d:image.value("deployments",json::array())) {
+        Deployment deployment;deployment.package=package;
+        deployment.id=d.at("id").get<std::string>();
+        deployment.scene=d.at("scene").get<unsigned>();
+        const auto where="deployments."+deployment.id;
+        if(deployment.id.empty() || deployment.scene>255)throw std::runtime_error(where+"：id 为空或场景号超出 0–255");
+        for(const auto& other:new_deployments)if(other.id==deployment.id)throw std::runtime_error(where+"：id 重复");
+        const auto& records=d.at("records");
+        if(!records.is_array() || records.empty() || records.size()>30)throw std::runtime_error(where+"：1–30 台");
+        for(const auto& r:records) {
+            const auto number=[&](const char* field,mod_units::Of of,unsigned top)->uint16_t {
+                const auto& n=r.at(field);
+                if(n.is_number_unsigned() && n.get<unsigned>()<=top)return uint16_t(n.get<unsigned>());
+                const auto found=n.is_string()?mod_units::resolve(n,package,*mod_ids::current(),of):std::nullopt;
+                if(!found)throw std::runtime_error(where+"."+field+"："+n.dump()+" 不是编号，也不是已启用的新"+(of==mod_units::Of::pilot?"人物":"机体"));
+                return uint16_t(*found);
+            };
+            const auto small=[&](const char* field,unsigned top) {
+                const unsigned v=r.value(field,0u);
+                if(v>top)throw std::runtime_error(where+"."+field+" 超出 0–"+std::to_string(top));
+                return uint16_t(v);
+            };
+            const unsigned side=r.value("side",1u);
+            if(side!=0 && side!=1 && side!=2 && side!=4)throw std::runtime_error(where+".side 只能是 0、1、2、4");
+            // group, x, y, actor, byte 8 | level offset, unit, upgrade index, three unknown
+            // halfwords as most of the ROM's enemy records (0, 0, FFFF), side, behaviour, extra.
+            deployment.records.push_back({0,small("x",63),small("y",63),number("pilot",mod_units::Of::pilot,359),small("level",20),
+                                          number("unit",mod_units::Of::unit,362),small("upgrade",5),0,0,0xFFFF,uint16_t(side),0,0,0});
+        }
+        new_deployments.push_back(std::move(deployment));
     }
     std::vector<Event> new_events;
     std::set<std::string> ids;
@@ -239,6 +302,14 @@ inline void add_image(Library& library,const std::string& package,const json& im
             event.levels.emplace_back(at,pilot);
         }
         for(const auto& b:e.value("builds",json::array()))event.builds.push_back(unit_of(b,"build"));
+        for(const auto& g:e.value("groups",json::array())) {
+            const size_t at=g.at(0).get<size_t>();
+            const auto name=g.at(1).get<std::string>();
+            const auto found=std::find_if(new_deployments.begin(),new_deployments.end(),[&](const Deployment& d){return d.id==name;});
+            if(at>=event.words.size() || event.words[at]!=0xFFFD || found==new_deployments.end() || found->scene!=event.scene)
+                throw std::runtime_error(event.id+"：增援组 "+name+" 的引用不对（要是同一关的 deployments）");
+            event.groups.push_back({at,found->key(),g.at(2).get<bool>()});
+        }
         for(const auto& c:e.value("crew",json::array())) {
             const unsigned unit=unit_of(c.at("unit"),"crew.unit");
             const auto pilots=c.at("pilots").get<std::vector<unsigned>>();
@@ -277,11 +348,62 @@ inline void add_image(Library& library,const std::string& package,const json& im
                 info.units.push_back(*found);
             }
         }
+        if(s.contains("id")) {
+            info.id=s["id"].get<std::string>();
+            if(info.id.empty() || info.id.size()>40 || info.id.find_first_not_of("abcdefghijklmnopqrstuvwxyz0123456789_.-")!=std::string::npos)
+                throw std::runtime_error("stage_info.id：只用小写字母、数字、- _ .，最多 40 个");
+            for(const auto& other:new_infos)if(other.id==info.id)throw std::runtime_error("stage_info.id 重复："+info.id);
+        }
+        if(s.contains("inherit")) {
+            if(info.id.empty() || !info.checks)throw std::runtime_error("stage_info.inherit：要同时有 id 和 done");
+            const auto& g=s["inherit"];
+            Info::Inherit grant;
+            const auto where="stage_info."+info.id+".inherit";
+            for(const auto& [key,into]:{std::pair{"after",&grant.after},{"before",&grant.before}})
+                for(const auto& n:g.value(key,json::array())) {
+                    if(!n.is_number_unsigned() || n.get<unsigned>()>255)throw std::runtime_error(where+"."+key+"：场景号 0–255");
+                    into->push_back(n.get<int>());
+                }
+            if(grant.after.empty() && grant.before.empty())throw std::runtime_error(where+"：after 或 before 至少一个");
+            const auto number=[&](const json& n,mod_units::Of of,unsigned top)->int {
+                if(n.is_number_unsigned() && n.get<unsigned>()<=top)return n.get<int>();
+                const auto found=n.is_string()?mod_units::resolve(n,package,*mod_ids::current(),of):std::nullopt;
+                if(!found)throw std::runtime_error(where+"："+n.dump()+" 不是编号，也不是已启用的新"+(of==mod_units::Of::pilot?"人物":of==mod_units::Of::weapon?"武器":"机体"));
+                return int(*found);
+            };
+            for(const auto& c:g.at("commands")) {
+                const auto op=c.at(0).get<std::string>();
+                if(op=="3D5A" && c.size()==5) {
+                    // The mode: 500 a join, otherwise (a replace) the old unit, new ones by name.
+                    const auto& m=c.at(4);
+                    const bool plain=m.is_number_integer() && (m.get<int>()>=2000 || m.get<int>()==500 || m.get<int>()==999);
+                    json row={op,number(c.at(1),mod_units::Of::pilot,359),0,number(c.at(3),mod_units::Of::unit,362),
+                              plain?m.get<int>():number(m,mod_units::Of::unit,362)};
+                    if(c.at(2).is_object()) {
+                        const unsigned like=c.at(2).value("like",1000u);
+                        if(like>360)throw std::runtime_error(where+"：level.like 人物 0–360");
+                        grant.like.emplace_back(grant.commands.size(),like);
+                    } else row[2]=c.at(2).get<int>();
+                    grant.commands.push_back(std::move(row));
+                } else if(op=="3D6F" && c.size()==2) {
+                    grant.commands.push_back(json{op,number(c.at(1),mod_units::Of::weapon,1328)});
+                } else throw std::runtime_error(where+"：只能有入队、换机、解锁武器（"+c.dump()+"）");
+            }
+            for(const auto& b:g.value("builds",json::array()))grant.builds.push_back(unsigned(number(b,mod_units::Of::unit,362)));
+            for(const auto& c:g.value("crew",json::array())) {
+                const auto pilots=c.at("pilots").get<std::vector<unsigned>>();
+                if(pilots.empty() || pilots.size()>5)throw std::runtime_error(where+"：crew 要写机体号和 1–5 名人物");
+                for(const auto pilot:pilots)if(pilot>360)throw std::runtime_error(where+"：crew 的人物号越界");
+                grant.crew.emplace_back(unsigned(number(c.at("unit"),mod_units::Of::unit,362)),pilots);
+            }
+            info.inherit=std::move(grant);
+        }
         new_infos.push_back(std::move(info));
     }
     for(auto& t:new_texts)library.texts.push_back(std::move(t));
     for(auto& e:new_events)library.events.push_back(std::move(e));
     for(auto& i:new_infos)library.infos.push_back(std::move(i));
+    for(auto& d:new_deployments)library.deployments.push_back(std::move(d));
 }
 // Every story file of the active packages, bottom first (a package above fires first
 // when two fit the same moment).
@@ -308,9 +430,10 @@ inline Library collect(const std::vector<mods::Package>& packages) {
 // A text record as table 0 holds one: an 8-byte ASCII header (speaker, mode, wait) and a
 // page of blanks (glyph 0) about as long as the Japanese line, up to three rows of 14, so
 // the original types and waits on it as on its own; the native reader shows the line
-// (native_dialogue.cpp, story_record()). An empty page passes without being read.
+// (native_dialogue.cpp, story_record()). An empty page passes without being read. A battle
+// quote has the mode and wait of the ROM's (20, 032): it closes on its own.
 inline std::vector<uint8_t> text_record(const Text& text) {
-    char header[9];std::snprintf(header,sizeof header,"%03u00004",text.speaker);
+    char header[9];std::snprintf(header,sizeof header,text.battle?"%03u20032":"%03u00004",text.speaker);
     std::vector<uint8_t> bytes(header,header+8);
     const auto& ja=text.lines.at("ja");
     size_t length=0;
@@ -452,6 +575,9 @@ struct State {
     std::set<std::string> fired;
     std::optional<size_t> running;                      // event index while its words run
     std::vector<unsigned> builds_due;                   // combined units to build (take_builds)
+    std::map<std::string,unsigned> groups;              // this scene's package groups: key -> group number
+    uint32_t appended_at{};                             // where our records went in the deployment block
+    std::vector<uint8_t> appended;                      // and those bytes with the 999, to know them again
     std::set<std::string> flags;                        // long-term: package/flag, kept with every save
     struct Saved {std::set<std::string> fired,flags;};
     std::map<uint64_t,Saved> snapshots;                 // save record hash -> what went with it
@@ -518,6 +644,11 @@ inline std::shared_ptr<const std::vector<Info>> infos() {
 inline std::string info_ref(const Info& info,size_t n){return "mod:"+info.package+":"+std::to_string(n);}
 // Any thread.
 inline std::optional<Text> text(uint16_t id) {
+    if(mod_quotes::ours(id)) {
+        const auto quote=mod_quotes::line(id);
+        if(!quote)return std::nullopt;
+        return Text{quote->speaker,quote->lines,true};
+    }
     auto& s=state();
     std::shared_ptr<const std::vector<Text>> texts;
     {std::lock_guard lock(s.texts_mutex);texts=s.texts;}
@@ -554,6 +685,8 @@ inline bool read_text(uint32_t rom,uint8_t* ram,uint32_t destination,uint32_t si
 
 inline bool eligible(const Event& e,const std::set<std::string>& fired,const View& v) {
     if(!e.repeat && fired.count(e.key()))return false;
+    // Its own groups must have found room in this scene's deployment block (assign_groups).
+    for(const auto& g:e.groups)if(!state().groups.count(g.key))return false;
     const auto& flags=state().flags;
     for(const auto& f:e.flags)if(!flags.count(e.package+"/"+f))return false;
     for(const auto& f:e.not_flags)if(flags.count(e.package+"/"+f))return false;
@@ -577,13 +710,64 @@ inline bool eligible(const Event& e,const std::set<std::string>& fired,const Vie
 
 // A scene's events registered (8009DE7C, after the original): mode 0 is a new stage,
 // anything else the same stage again after a suspend or a screen of its own.
-inline void registered(const uint8_t* ram,unsigned mode) {
+// The deployment block (its base the registration keeps at engine+0, the scene's copy at
+// 80199400, 0x2000 bytes) gets the packages' groups of this scene: their records appended
+// before its 999 under group numbers 0-31 the block does not use (3D46 500+n finds a group by
+// the map slot's five bits +0xB). 3D45 steps 14 halfwords from the base to the first record
+// of its group. When the block was not copied again since our last append, our records are
+// known by their bytes and replaced, so a scene registered again gets the same numbers.
+inline constexpr uint32_t deploy_limit=0x2000;
+inline void assign_groups(uint8_t* ram) {
+    auto& s=state();
+    s.groups.clear();
+    std::vector<const Deployment*> mine;
+    for(const auto& d:s.library.deployments)if(int(d.scene)==s.scene)mine.push_back(&d);
+    if(mine.empty())return;
+    const uint32_t base=read(ram,engine,4);
+    if(!guest::valid(base,deploy_limit)){log({{"action","deployments"},{"problem","no deployment block"},{"base",base}});return;}
+    const auto ours=[&](uint32_t at) {
+        if(at!=s.appended_at || s.appended.empty())return false;
+        for(size_t i=0;i<s.appended.size();++i)if(read(ram,at+uint32_t(i),1)!=s.appended[i])return false;
+        return true;
+    };
+    std::set<unsigned> used;
+    std::optional<uint32_t> end;
+    for(uint32_t offset=0;offset+2<=deploy_limit;offset+=deploy_record) {
+        const uint32_t at=base+offset;
+        if(ours(at) || read(ram,at,2)==deploy_terminator){end=offset;break;}
+        if(offset+deploy_record>deploy_limit)break;
+        used.insert(read(ram,at,2));
+    }
+    if(!end){log({{"action","deployments"},{"scene",s.scene},{"problem","the block has no 999 on a record"}});return;}
+    std::vector<uint8_t> bytes;
+    json numbered=json::object();
+    unsigned next=0;
+    for(const auto* d:mine) {
+        while(next<deploy_groups && used.count(next))++next;
+        if(next>=deploy_groups || *end+bytes.size()+d->records.size()*deploy_record+2>deploy_limit) {
+            log({{"action","deployments"},{"scene",s.scene},{"problem","no room"},{"group",d->key()}});
+            continue;
+        }
+        for(auto record:d->records) {
+            record[0]=uint16_t(next);
+            for(const auto h:record){bytes.push_back(uint8_t(h>>8));bytes.push_back(uint8_t(h));}
+        }
+        s.groups[d->key()]=next;numbered[d->key()]=next;used.insert(next);
+    }
+    bytes.push_back(uint8_t(deploy_terminator>>8));bytes.push_back(uint8_t(deploy_terminator&0xFF));
+    for(size_t i=0;i<bytes.size();++i)guest::write8(ram,base+*end+uint32_t(i),bytes[i]);
+    s.appended_at=base+*end;s.appended=std::move(bytes);
+    log({{"action","deployments"},{"scene",s.scene},{"groups",numbered},{"at",s.appended_at}});
+}
+
+inline void registered(uint8_t* ram,unsigned mode) {
     auto& s=state();
     if(disabled())return;
     refresh();
     s.scene=int(read(ram,scene_byte,1));
     s.running.reset();
     if(mode==0)s.fired.clear();
+    assign_groups(ram);
     log({{"action","registered"},{"scene",s.scene},{"mode",mode},{"fired",s.fired},{"flags",s.flags}});
     publish();
 }
@@ -595,6 +779,9 @@ inline void place(uint8_t* ram,const Event& e) {
     write16(ram,region,uint16_t(event_type(e.trigger)));
     for(size_t i=0;i<e.words.size();++i)write16(ram,region+uint32_t((header_words+i)*2),e.words[i]);
     for(const auto& [at,pilot]:e.levels)write16(ram,region+uint32_t((header_words+at)*2),level_offset(ram,pilot));
+    for(const auto& g:e.groups)
+        if(const auto n=state().groups.find(g.key);n!=state().groups.end())
+            write16(ram,region+uint32_t((header_words+g.at)*2),uint16_t(g.leaving?500+n->second:n->second));
 }
 // The event engine counts finished events off +0x98E (8009F020); one of ours was never
 // registered, so it is counted in before it runs.
