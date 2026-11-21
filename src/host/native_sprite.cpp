@@ -5,6 +5,7 @@
 #include "native_quads.hpp"
 #include "hd_texture.hpp"
 #include "battle_hud.hpp"
+#include "battle_spread.hpp"
 #include "wide_map.hpp"
 #include "presentation/image_mode.hpp"
 #include "presentation/rgba_file.hpp"
@@ -1134,6 +1135,12 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
         const float per_pixel = (record.uv[2] - record.uv[0]) / (x1 - x0);
         record.rect[0] -= side; record.rect[2] += side;
         record.uv[0] -= side * per_pixel; record.uv[2] += side * per_pixel;
+        record.wide = true;
+    }
+    const float backdrop_scale = draw.quads ? 1.f : battle_spread::screen_backdrop_scale(id.scene, id.palette);
+    if (backdrop_scale > 1.f) {
+        constexpr float center = frame::kWidth / 2.f;
+        for (int edge : {0, 2}) record.rect[edge] = center + (record.rect[edge] - center) * backdrop_scale;
         record.wide = true;
     }
     record.view_left = wide_map::view_offset();

@@ -568,7 +568,15 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
     }
     const float side = frame::wide ? (float(frame::picture_width) - frame::kWidth) / 2 : 0;
     const bool whole = x0 == 0 && x1 >= int32_t(frame::kWidth * 4) - 4;
-    if (sky || drift) {
+    const float scroll_scale = wide_map::scrolling_effect_scale(draw.slot);
+    if (scroll_scale > 1.f) {
+        // Match the ROM's stretched rectangles while keeping this frame's
+        // scrolled texture coordinates, including partial tiles at the wrap.
+        constexpr float center = frame::kWidth / 2.f;
+        for (Quad& q : record.quads)
+            for (int edge : {0, 2}) q.rect[edge] = center + (q.rect[edge] - center) * scroll_scale;
+        record.wide = true;
+    } else if (sky || drift) {
     } else if (side > 0 && whole && -extent[0] >= side - 0.5f && extent[2] - source_width >= side - 0.5f) {
         // A picture drawn out past 4:3: its own sides fill the picture's.
         const float top = y0 / 4.f, bottom = y1 / 4.f;

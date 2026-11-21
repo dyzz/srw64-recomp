@@ -61,6 +61,17 @@ inline bool enabled() {
 
 struct Saved { uint32_t address; uint32_t words[6]; };
 
+// Full-screen effects drawn by 80096CD8. The ROM tiles and their optional
+// whole HD frames need the same width, independent of the foreground actors.
+inline float screen_backdrop_scale(uint32_t scene, uint32_t palette) {
+    const bool backdrop = (scene == 3946 && (palette == 3417 || palette == 3423)) // blue/orange airflow
+                       || (scene == 3973 && palette == 3433) // Go Flasher's star field
+                       || (scene == 4426 && palette == 4425) // Juni Ohohai Daisharin's rays
+                       || (scene == 4635 && palette == 4634); // diagonal streaks over scrolling clouds
+    if (!backdrop || !frame::wide || !enabled()) return 1.f;
+    return frame::picture_width.load(std::memory_order_relaxed) / frame::kWidth;
+}
+
 // Strips drawn by 80096CD8 across the whole screen that the game clips to the original's
 // 320 columns: the Devil Gundam's tentacle under the defender (2756, マザーテンタクル) and
 // the Gundam Head's (2988, ガンダムヘッド), rows of one 32-pixel tile that cover the 320

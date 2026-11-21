@@ -725,7 +725,8 @@ void resident_func_80095974(uint8_t* rdram, recomp_context* ctx) {
     // The battle's sky wraps every 320 pixels: the periods either side fill a wider
     // picture (docs/design/deck-16x10.md). Each copy runs the drawer on a copy of the call.
     const bool whole = srw64_game_hooks.background_whole && srw64_game_hooks.background_whole(rdram, slot, sub);
-    const bool sides = !whole && srw64_game_hooks.background_sides && srw64_game_hooks.background_sides(rdram, slot, sub);
+    const bool stretch = srw64::wide_map::scrolling_effect_scale(slot) > 1.f;
+    const bool sides = !whole && !stretch && srw64_game_hooks.background_sides && srw64_game_hooks.background_sides(rdram, slot, sub);
     // It wraps every 240 rows too: placed a few rows down, its last rows (the ruins' black
     // and broken floors) show above it, where the original's top band hid them. Without
     // the bands those rows take a copy moved to the edge (its first rows, sky), and the
@@ -750,11 +751,13 @@ void resident_func_80095974(uint8_t* rdram, recomp_context* ctx) {
         copies(0);
         srw64::wide_map::offset_rects(rdram, cursor, 0);
     }
+    if (stretch) srw64::wide_map::stretch_rects(rdram, cursor, true);
     const uint32_t begin = MEM_W(0, cursor) & 0x1FFFFFFF;
     srw64_original_background_draw(rdram, ctx);
     const uint32_t end = MEM_W(0, cursor) & 0x1FFFFFFF;
+    if (stretch) srw64::wide_map::stretch_rects(rdram, cursor, false);
     if (sides || wrap != 0) srw64::wide_map::close_sides(rdram, cursor);
-    if (srw64_game_hooks.background_drawn) srw64_game_hooks.background_drawn(rdram, begin, end, slot, sub, sides);
+    if (srw64_game_hooks.background_drawn) srw64_game_hooks.background_drawn(rdram, begin, end, slot, sub, sides || stretch);
 }
 void resident_func_80096CD8(uint8_t* rdram, recomp_context* ctx) {
     const int32_t cursor = ctx->r4;
@@ -762,10 +765,16 @@ void resident_func_80096CD8(uint8_t* rdram, recomp_context* ctx) {
     namespace bs = srw64::battle_spread;
     const uint32_t part = bs::kSlots + slot * bs::kSlotSize + bs::kSubs + sub * bs::kSubSize;
     const uint32_t scene = slot < bs::kSlotCount && sub < 3 ? srw64::guest::read(rdram, part + 0xC, 2) : 0;
+    const bool stretch = scene && bs::screen_backdrop_scale(scene, srw64::guest::read(rdram, part + 0x10, 2)) > 1.f;
+    if (stretch) srw64::wide_map::stretch_rects(rdram, cursor, true);
     const uint32_t begin = MEM_W(0, cursor) & 0x1FFFFFFF;
     const recomp_context call = *ctx;
+    // Go Flasher's 352-column frame has 16 transparent columns on the right.
+    // Center its 336 painted columns before clipping the tiles to the viewport.
+    if (stretch && scene == 3973) ctx->r7 += 8;
     srw64_original_scene_rect_draw(rdram, ctx);
     const uint32_t end = MEM_W(0, cursor) & 0x1FFFFFFF;
+    if (stretch) srw64::wide_map::stretch_rects(rdram, cursor, false);
     if (srw64_game_hooks.scene_drawn) srw64_game_hooks.scene_drawn(rdram, begin, end, slot, sub, false);
     // The tentacles' strips (battle_spread.hpp): copies whole tiles to each side.
     if (const float extra = scene ? bs::screen_strip_extra(scene) : 0.f; extra > 0.5f) {

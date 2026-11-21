@@ -50,7 +50,9 @@ SWITCHED: set[int] = {
     4608, 4612, 4613, 4644, 4662, 4718, 4719, 4720, 4739, 4740, 4810, 4811, 4833, 4835,
     4836, 4839, 4841,
 }
-NOT_BEAMS: set[int] = set()
+# Rigid weapon sprites held by the unit (behaviour 359). Their long barrels
+# meet the geometric beam rule; the projectile has its own actor.
+NOT_BEAMS: set[int] = {2515, 2534, 2536, 2559, 2585, 2666}
 NOT_BACKDROPS: set[int] = set()
 
 
