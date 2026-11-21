@@ -251,7 +251,7 @@ if(SRW64_ENABLE_RT64)
     endif()
     # Banners and settings share the SDL/RmlUi surface.
     # Link Battler series page in front of the リンク screen.
-    target_sources(srw64-gfx-host PRIVATE link_page.cpp battle_page.cpp intermission_page.cpp upgrade_page.cpp parts_page.cpp ability_page.cpp swap_page.cpp cheats.cpp save_page.cpp save_store.cpp autosave.cpp quick_load.cpp rewind.cpp campaign_switch.cpp library.cpp map_movie.cpp stage_info.cpp legacy.cpp mod_library.cpp music.cpp)
+    target_sources(srw64-gfx-host PRIVATE link_page.cpp battle_page.cpp intermission_page.cpp upgrade_page.cpp parts_page.cpp ability_page.cpp swap_page.cpp cheats.cpp save_page.cpp save_store.cpp autosave.cpp quick_load.cpp campaign_switch.cpp library.cpp map_movie.cpp stage_info.cpp legacy.cpp mod_library.cpp music.cpp)
     target_compile_definitions(srw64-gfx-host PRIVATE SRW64_NATIVE_DIALOGUE)
     if(APPLE)
         target_link_libraries(srw64-gfx-host PRIVATE "-framework Cocoa" "-framework QuartzCore")
@@ -402,7 +402,7 @@ if(SRW64_GL_ONLY)
         debug_server.cpp debug_transport.cpp web_link.cpp gbi_stats.cpp
         link_page.cpp battle_page.cpp intermission_page.cpp upgrade_page.cpp parts_page.cpp ability_page.cpp swap_page.cpp
         cheats.cpp save_page.cpp save_store.cpp autosave.cpp campaign_switch.cpp library.cpp map_movie.cpp stage_info.cpp
-        rom_art.cpp legacy.cpp quick_load.cpp rewind.cpp mod_library.cpp music.cpp "${SRW64_ROOT}/src/native/ui/window_test_control.cpp"
+        rom_art.cpp legacy.cpp quick_load.cpp mod_library.cpp music.cpp "${SRW64_ROOT}/src/native/ui/window_test_control.cpp"
         native_map.cpp native_sprite.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp native_quads.cpp game_hooks.cpp
         native_portrait.cpp native_icon.cpp native_background.cpp hd_texture.cpp hd_replace.cpp native_marker.cpp
         "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp" dialogue_gl.cpp native_gl.cpp hd_replace.cpp

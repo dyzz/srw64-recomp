@@ -11,11 +11,11 @@ namespace srw64::touch_pad {
 
 // One per slot (touch_pad::Slot, in its order) and then the D-pad: a scene's buttons take a
 // slot's place, so one layout serves them all. touch_pad.hpp checks the count.
-inline constexpr size_t control_count = 15;
+inline constexpr size_t control_count = 14;
 inline constexpr size_t dpad_control = control_count - 1;
 // presentation.json's touch_layout, in Slot order and then the D-pad.
 inline constexpr std::array<std::string_view, control_count> control_ids = {
-    "ok", "back", "l1", "r1", "settings", "start", "l2", "r2", "skip", "speed", "info", "load", "shot", "rewind", "dpad"};
+    "ok", "back", "l1", "r1", "settings", "start", "l2", "r2", "skip", "speed", "info", "load", "shot", "dpad"};
 inline constexpr unsigned min_scale = 60, max_scale = 200, scale_step = 5;
 inline constexpr float grid_mm = 4;
 

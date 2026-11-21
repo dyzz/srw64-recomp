@@ -100,10 +100,6 @@ unsigned game_speed_level();
 unsigned game_speed_top();   // 4 at 120 Hz (the default), 2 at 60 Hz
 void set_game_speed_level(unsigned level);
 bool game_speed_double();    // any speed above 1
-// Rewind on the tactical map (rewind.hpp, docs/design/rewind.md). Off by default; saved
-// as rewind. The Rewind button (R, L4) goes back one state while it is on.
-bool rewind_on();
-void set_rewind_on(bool on);
 // The reading controls under the dialogue (dialogue_scene.cpp): hidden 5 s after the
 // dialogue appears and shown again 3 s by a direction key (the default), or always shown.
 // Saved as dialogue_hints, "auto" or "always".

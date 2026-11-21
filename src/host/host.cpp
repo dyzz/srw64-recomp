@@ -100,7 +100,6 @@
 #include "quick_load.hpp"
 #include "enemy_pilot_page.hpp"
 #include "map_combo.hpp"
-#include "rewind.hpp"
 #include "legacy.hpp"
 #include "music.hpp"
 #include "voice_wait.hpp"
@@ -343,7 +342,6 @@ bool get_input(int port, uint16_t* buttons, float* x, float* y) {
                                    srw64::intro::title_waiting()));
         story_running() = story(srw64::guest::read(srw64_rdram, mode_address, 1),
                                 srw64::guest::read(srw64_rdram, script_status_address, 2));
-        at_rewind_place() = rewind_place(srw64::guest::read(srw64_rdram, mode_address, 1));
         // The stage info page's snapshot while it is up (stage_info.hpp).
         srw64::stage_info::sample(srw64_rdram);
     }
@@ -795,7 +793,6 @@ static int run_host(int argc, char** argv) {
     if (srw64::save_store::enabled()) srw64_game_hooks.sram_transfer = srw64::save_store::transfer;
     srw64::autosave::configure(output_dir);
     srw64::quick_load::configure(output_dir);
-    srw64::rewind::configure(output_dir);
     srw64::legacy::configure(output_dir);
     srw64::music::configure();
     srw64::save_page::configure(output_dir);

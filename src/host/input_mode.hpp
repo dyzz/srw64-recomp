@@ -26,12 +26,11 @@ inline constexpr uint32_t pad_language = 1u << 24;
 inline constexpr uint32_t pad_images = 1u << 25;
 // 2x speed on / off (game_speed.hpp; Tab, the Deck's R4 back button).
 inline constexpr uint32_t pad_speed = 1u << 26;
-// Back to the map's suspend save, asked first (quick_load.hpp; F9).
+// Back to the map's suspend save, asked first (quick_load.hpp; F9). Bit 27 is the rewind
+// branch's.
 inline constexpr uint32_t pad_quick_load = 1u << 28;
 // Back to the title screen, asked first (quick_load.hpp; F10): the original's Z + START.
 inline constexpr uint32_t pad_title_return = 1u << 29;
 // A screenshot to screenshots/ in the user folder (graphics.cpp; F12 and Print Screen).
 inline constexpr uint32_t pad_screenshot = 1u << 30;
-// Rewind: the tactical map back one state (rewind.hpp; R, the Deck's L4 back button).
-inline constexpr uint32_t pad_rewind = 1u << 27;
 }

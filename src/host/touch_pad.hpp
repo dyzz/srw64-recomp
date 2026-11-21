@@ -30,9 +30,8 @@ inline constexpr uint32_t L2 = input::pad_l2, R2 = input::pad_r2, Option = input
 // the settings window), plus a dialogue skip button above R1, the 2x speed switch
 // in the top left (user, 2026-10-11), the stage info page beside it (docs/design/stage-info.md),
 // the quick load of the suspend save after that (asked first; user, 2026-10-17) and a
-// screenshot under the settings (user, 2026-10-26); Rewind after the quick load
-// (docs/design/rewind.md).
-enum class Slot : uint8_t { Primary, Back, Arc2, Arc3, Top1, Top2, Top3, Top4, Skip, Speed, Info, Load, Shot, Rewind, Count };
+// screenshot under the settings (user, 2026-10-26).
+enum class Slot : uint8_t { Primary, Back, Arc2, Arc3, Top1, Top2, Top3, Top4, Skip, Speed, Info, Load, Shot, Count };
 inline constexpr size_t slot_count = size_t(Slot::Count);
 
 struct Action {
@@ -109,9 +108,8 @@ struct Scene {
 
 enum class Reading : uint8_t { Inactive, Active, History, Skipping };
 
-// docs/design/touch-controls.md §3. `rewind`: the Rewind button is offered, the setting on
-// and the game where it can act (touch_scene.hpp rewind_place); the scene decides the rest.
-inline Scene scene(SceneId id, Reading reading = Reading::Active, bool rewind = false) {
+// docs/design/touch-controls.md §3.
+inline Scene scene(SceneId id, Reading reading = Reading::Active) {
     Scene s;
     auto set = [&](Slot slot, uint32_t b, std::string_view label) { s.slots[size_t(slot)] = {b, label, {}}; };
     auto open = [&](Slot slot, std::string_view command, std::string_view label) { s.slots[size_t(slot)] = {0, label, command}; };
@@ -239,16 +237,6 @@ inline Scene scene(SceneId id, Reading reading = Reading::Active, bool rewind = 
             for (const auto slot : {Slot::Arc2, Slot::Arc3, Slot::Skip, Slot::Top3, Slot::Top4})
                 s.slots[size_t(slot)] = {};
     }
-    // Rewind (rewind.hpp) on the map's own screens and in the battle animation. Not while a
-    // line is read, on our pages (the pre-battle page would wait for the battle) or at results.
-    if (rewind) switch (id) {
-    case SceneId::Other: case SceneId::MapIdle: case SceneId::MapMenu: case SceneId::MoveSelect:
-    case SceneId::TargetList: case SceneId::InfoWindow: case SceneId::GridList: case SceneId::BattleScene:
-        open(Slot::Rewind, "rewind", "touch_rewind");
-        break;
-    default:
-        break;
-    }
     return s;
 }
 
@@ -305,7 +293,6 @@ inline Layout layout(float width, float height, float px_per_mm, const Customs& 
     bar(Slot::Info, 44.5f, 3.5f, 9, 4);    // the stage info page, right of 2x
     bar(Slot::Load, 55.5f, 3.5f, 9, 4);    // the quick load, right of it
     bar(Slot::Shot, 6.5f, 9, 10, 4);       // the screenshot, under settings
-    bar(Slot::Rewind, 67.5f, 3.5f, 11, 4); // Rewind, right of the quick load
     out.stick_radius = 8.5f * m;
     out.rest_x = 14.5f * m; out.rest_y = (h - 13) * m;
     out.wide_right = width * .42f; out.wide_top = 10 * m;
@@ -459,13 +446,11 @@ public:
     }
 };
 
-// The layout screen shows every control at once: the whole set, the skip only dialogue has and
-// Rewind, which the map shows only with its setting on.
+// The layout screen shows every control at once: the whole set, and the skip only dialogue has.
 inline Scene edit_scene() {
     auto s = scene(SceneId::FixedDialogue, Reading::Inactive);
     s.slots[size_t(Slot::Arc2)] = scene(SceneId::Other)[Slot::Arc2];
     s.slots[size_t(Slot::Arc3)] = scene(SceneId::Other)[Slot::Arc3];
-    s.slots[size_t(Slot::Rewind)] = scene(SceneId::Other, Reading::Active, true)[Slot::Rewind];   // only on the map, its setting on
     s.stick = Stick::Wide; s.tap_primary = false;
     return s;
 }

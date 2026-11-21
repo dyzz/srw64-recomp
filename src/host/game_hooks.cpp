@@ -54,7 +54,6 @@
 #include "intermission_row.hpp"
 #include "pilot_kills.hpp"
 #include "quote_force.hpp"
-#include "rewind.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 bool srw64_sound_effects_muted{};
@@ -287,7 +286,6 @@ void load_00121560_func_801C9710(uint8_t* ram,recomp_context* ctx) {
     // X ends the presentation early; the settled result lives in the map
     // overlay's participant table and is applied when the map is back.
     srw64::battle_animation_probe::step(ram,ctx);
-    srw64::rewind::battle_frame(ram,ctx);   // the Rewind button: the original's abort, to mode 0x11
     if(srw64::guest::read(ram,srw64::voice_wait::state,1)<=1)impact_quote={};
     if(int8_t(srw64::guest::read(ram,srw64::voice_wait::state,1))<=1)voice_scenery_travel=0;
     const bool extended=hold_quote_for_voice(ram);
@@ -327,8 +325,6 @@ void load_000AB160_func_801DFBD0(uint8_t* ram,recomp_context* ctx) {
     // 4) and runs the animation-off branch of the fork instead, so the map
     // presents the result as it does with the animation switched off.
     srw64::battle_animation_probe::map_step(ram,ctx);
-    // The map's recent states, and going back to one (docs/design/rewind.md).
-    srw64::rewind::map_frame(ram,ctx);
     // With the animation off: a MISS for a missed attack, and a faster presentation.
     srw64::map_miss::map_step(ram,ctx);
     srw64_original_map_dispatch(ram,ctx);
@@ -483,7 +479,6 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     if(srw64_game_hooks.swap_frame)srw64_game_hooks.swap_frame(ram);
     if(srw64_game_hooks.save_frame)srw64_game_hooks.save_frame(ram);
     if(srw64_game_hooks.cheats_frame)srw64_game_hooks.cheats_frame(ram);
-    srw64::rewind::frame(ram);
     // The map's own return to the title (801DFDBC: 800836CC(0) and the dispatcher) runs the
     // same hand-over, so a stage loaded off the title (mini_stage::take_restart) enters the
     // way the armed title does; not while an overlay is still being copied in.
