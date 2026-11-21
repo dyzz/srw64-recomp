@@ -1295,7 +1295,7 @@
     {
       "hash": "2938d5907f16449b",
       "kind": "icon",
-      "sha256": "35dab272cb0b8b9260b8fd3f6b3a5f3c76a30725e46a82e70bf9c56ddcc5f390"
+      "sha256": "e234d92bfc5db5fd734fff67ed5b194bdc3fd70253b9a49d80009c469d4b954b"
     },
     {
       "hash": "2995c3f2e8b3c61c",
@@ -1775,7 +1775,7 @@
     {
       "hash": "3ce4a52f4f5518c2",
       "kind": "icon",
-      "sha256": "fa57b2459619df3ddba82fdcd971de76fe31cff877b762a8a6fadcea6e4164c1"
+      "sha256": "6a679fdb19c9da32465a2150e723996c1423cc5c5e31c4c72bac2125aa7c1cab"
     },
     {
       "hash": "3d01b9ae41a47a69",
@@ -3105,7 +3105,7 @@
     {
       "hash": "776f6e02b5e2efbe",
       "kind": "icon",
-      "sha256": "35dab272cb0b8b9260b8fd3f6b3a5f3c76a30725e46a82e70bf9c56ddcc5f390"
+      "sha256": "e234d92bfc5db5fd734fff67ed5b194bdc3fd70253b9a49d80009c469d4b954b"
     },
     {
       "hash": "778c888757d826e1",
@@ -4570,7 +4570,7 @@
     {
       "hash": "af57f8e82adec333",
       "kind": "icon",
-      "sha256": "35dab272cb0b8b9260b8fd3f6b3a5f3c76a30725e46a82e70bf9c56ddcc5f390"
+      "sha256": "e234d92bfc5db5fd734fff67ed5b194bdc3fd70253b9a49d80009c469d4b954b"
     },
     {
       "hash": "af6251798b570e4f",
@@ -15003,6 +15003,6 @@
   },
   "battle_sprites": {
     "path": "assets/hd-ai/cutins/pack-v21",
-    "manifest_sha256": "81948bcaec9204cff335c883b729dcb85bb147bac655cdac39064cba6ddd243d"
+    "manifest_sha256": "11a1740dfe5c8eca45be528aeff4eecdb9409827bbc3c04f3771a35dad5f0eb7"
   }
 }
