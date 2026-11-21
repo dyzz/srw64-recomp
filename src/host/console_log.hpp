@@ -9,6 +9,11 @@
 namespace srw64::console_log {
 void start();
 void attach(const std::filesystem::path& run);
+// A start that failed before attach (a refused setting, a ROM that cannot be read) leaves no
+// console.log. Under RecompLauncher, whose crash report takes the newest .log of <user>/logs,
+// what was held goes to <user>/logs/latest.log instead, or the report shows another program's
+// log (issue #29). Nothing once attached or without the launcher.
+void keep_unattached(const std::filesystem::path& user_dir);
 // For a crash handler (async-signal-safe): pass on what is still in the pipes now, the
 // open console.log (-1 before attach) and the original stderr, to write to directly
 // once the process is dying (Windows: flush_now gives the pumps a moment, as the pipes

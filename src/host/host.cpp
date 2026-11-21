@@ -911,6 +911,31 @@ void srw64_switch_error(const std::string& message, const std::string& details);
 std::string srw64_switch_language();
 #endif
 
+#if defined(_WIN32) || (defined(__linux__) && !defined(__ANDROID__))
+// A desktop start's boxes also into the log: one that ends the start before the run directory
+// exists leaves the reason nowhere else (console_log::keep_unattached, issue #29).
+static srw64::app::DesktopUi logged_ui(const srw64::app::DesktopUi& ui) {
+    auto copy = ui;
+    copy.show_error = [show = ui.show_error](const std::string& message) {
+        std::string line = message;
+        for (size_t at; (at = line.find('\n')) != std::string::npos;) line.replace(at, 1, " / ");
+        std::fprintf(stderr, "SRW64_START_ERROR %s\n", line.c_str());
+        show(message);
+    };
+    return copy;
+}
+#endif
+// A start that ends before the run directory: what it printed, into <user>/logs/latest.log
+// under RecompLauncher (console_log.hpp). The user folder the start would have used.
+static int failed_start(int code, std::filesystem::path user_dir) {
+    if (code == 0) return code;
+    try { if (user_dir.empty()) user_dir = srw64::app::default_user_dir(); } catch (const std::exception&) { return code; }
+    std::error_code error;
+    const auto absolute = std::filesystem::absolute(user_dir, error);
+    srw64::console_log::keep_unattached(error ? user_dir : absolute);
+    return code;
+}
+
 // Keep the diagnostic positional ABI untouched for play_native.py and all probes.
 int main(int argc, char** argv) {
 #ifdef __ANDROID__
@@ -982,7 +1007,7 @@ int main(int argc, char** argv) {
     // Explorer supplies no arguments: start as Marchwind64.cmd does, which stays for
     // its options. --play and the diagnostic ABI below keep their console.
     if (argc==1 || (argc==2 && std::string_view(argv[1])=="--choose-rom")) {
-        const auto& ui = native_ui;
+        const auto ui = logged_ui(native_ui);
         srw64::app::Options options;
         try {
             options = prepare_launcher(options,
@@ -990,19 +1015,19 @@ int main(int argc, char** argv) {
                 argc == 1 ? named_rom() : std::filesystem::path{});
         } catch (const std::exception& error) {
             ui.show_error(std::string("Unable to start Marchwind64.\n") + error.what());
-            return 2;
+            return failed_start(2, {});
         }
         srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
             native_rom_variants[0].save_file, srw64::rules::version, {}};
         for (const auto& rule : srw64::rules::catalog)
             game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
-        return srw64::app::run_desktop(options, game.rom_sha256, ui,
+        return failed_start(srw64::app::run_desktop(options, game.rom_sha256, ui,
             [&](const srw64::app::Options& selected, const srw64::app::DesktopReady& ready) {
                 return srw64::app::run_standalone(selected, game, [&](int count, char** values) {
                     ready(); // The standalone Session owns the lock until run_host returns.
                     return run_host(count, values);
                 });
-            }, argc == 2);
+            }, argc == 2), options.user_dir);
     }
 #endif
 #ifdef __SWITCH__
@@ -1147,13 +1172,13 @@ int main(int argc, char** argv) {
             for (const auto& rule : srw64::rules::catalog)
                 game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
 #if defined(_WIN32) || (defined(__linux__) && !defined(__ANDROID__))
-            return srw64::app::run_desktop(options, game.rom_sha256, native_ui,
+            return failed_start(srw64::app::run_desktop(options, game.rom_sha256, logged_ui(native_ui),
                 [&](const srw64::app::Options& selected, const srw64::app::DesktopReady& ready) {
                     return srw64::app::run_standalone(selected, game, [&](int count, char** values) {
                         ready();
                         return run_host(count, values);
                     });
-                });
+                }), options.user_dir);
 #else
             return srw64::app::run_standalone(options, game, run_host);
 #endif
@@ -1164,10 +1189,10 @@ int main(int argc, char** argv) {
             std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
             srw64::console_log::flush_now();
             srw64_error_box(srw64::app::rom_refused_message(error.problem, error.path, srw64::app::player_locale(options)));
-            return 2;
+            return failed_start(2, options.user_dir);
         } catch (const std::exception& error) {
             std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
-            return 2;
+            return failed_start(2, options.user_dir);
         }
     }
     return run_host(argc, argv);
