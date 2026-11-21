@@ -1,15 +1,15 @@
 {
  "schema": "srw64.text-update.v1",
- "revision": 3,
+ "revision": 5,
  "oldest": "0.5.3",
  "release": "0.5.3.1",
- "date": "2026-11-13",
- "commit": "31b2568fade5a0ba58ea38f1f7b3faf510ccc03b",
+ "date": "2026-11-21",
+ "commit": "30924568d17b6fb404bde4e893309d19392ce5c6",
  "notes": {
-  "zh": "按官网意见修正英文译名：Simurgh、Schuzrum-Dias；图鉴里四台同名机体改用区分名（量产型巴乌、猎犬（杰利德）、ν高达（无浮游炮）等）。",
-  "tw": "依官網意見修正英文譯名：Simurgh、Schuzrum-Dias；圖鑑裡四台同名機體改用區分名（量產型巴烏、獵犬（傑利特）、ν鋼彈（無感應砲）等）。",
-  "en": "English names from site suggestions: Simurgh and Schuzrum-Dias; four same-named Library units get names of their own (MP Bawoo, Baund Doc (Jerid), Nu Gundam (No Funnels)).",
-  "ja": "サイトへのご意見による英語名の修正：Simurgh、Schuzrum-Dias。図鑑の同名機体4機に区別できる名前（英語・中国語）を付けました。"
+  "zh": "英文改回原名：Gundam Spiegel、God／Devil 系招式、Devil Axis、Dokuga；图鉴里其余同名机体改用区分名（按驾驶员、形态，原版没出场的标「未实装」），中文机体名括号改半角；韩文的哪吒高达、阿普萨拉斯II 改用中英文同样的名字。",
+  "tw": "英文改回原名：Gundam Spiegel、God／Devil 系招式、Devil Axis、Dokuga；圖鑑裡其餘同名機體改用區分名（按駕駛員、形態，原版沒出場的標「未實裝」），中文機體名括號改半形；韓文的哪吒鋼彈、阿普薩拉斯II 改用中英文同樣的名字。",
+  "en": "English uses the original names: Gundam Spiegel, the God and Devil attacks, Devil Axis, Dokuga. The Library's other same-named units get names of their own (by pilot or form; \"Unused\" for those the game never uses).",
+  "ja": "英語名を原語に合わせました（Gundam Spiegel、God／Devil 系の技、Devil Axis、Dokuga）。図鑑の同名機体に英語・中国語・韓国語で区別できる名前を付けました（日本語は原作どおり）。"
  },
  "files": {
   "dialogue/en/battle/other.txt": {
@@ -21,8 +21,8 @@
    "bytes": 9926
   },
   "dialogue/en/battle/speaker-004.txt": {
-   "hash": "727939e3afa3",
-   "bytes": 37359
+   "hash": "c43c6a771bf6",
+   "bytes": 37331
   },
   "dialogue/en/battle/speaker-007.txt": {
    "hash": "92ddab01e302",
@@ -33,8 +33,8 @@
    "bytes": 6823
   },
   "dialogue/en/battle/speaker-009.txt": {
-   "hash": "64d58abdfa76",
-   "bytes": 10845
+   "hash": "d4e695c2b095",
+   "bytes": 10841
   },
   "dialogue/en/battle/speaker-010.txt": {
    "hash": "c61f7bd3ac60",
@@ -1217,8 +1217,8 @@
    "bytes": 62517
   },
   "dialogue/en/story/scene-0039.txt": {
-   "hash": "1a9b2916ece2",
-   "bytes": 64941
+   "hash": "ac241b1b58d3",
+   "bytes": 64943
   },
   "dialogue/en/story/scene-0040.txt": {
    "hash": "78c0cb36a64b",
@@ -1281,8 +1281,8 @@
    "bytes": 129772
   },
   "dialogue/en/story/scene-0055.txt": {
-   "hash": "ea14c275f1bd",
-   "bytes": 102654
+   "hash": "06c926ac16b1",
+   "bytes": 102657
   },
   "dialogue/en/story/scene-0056.txt": {
    "hash": "f067d581c6b3",
@@ -1473,12 +1473,12 @@
    "bytes": 118653
   },
   "dialogue/en/story/scene-0104.txt": {
-   "hash": "20bf72e85baa",
-   "bytes": 76003
+   "hash": "afbb1f40f0fb",
+   "bytes": 76013
   },
   "dialogue/en/story/scene-0105.txt": {
-   "hash": "cdc4f532ada6",
-   "bytes": 120463
+   "hash": "7c97e33e0211",
+   "bytes": 120465
   },
   "dialogue/en/story/scene-0106.txt": {
    "hash": "6d7887ffeeba",
@@ -1497,28 +1497,28 @@
    "bytes": 2847
   },
   "dialogue/en/story/scene-0111.txt": {
-   "hash": "0ece79a22342",
-   "bytes": 6105
+   "hash": "5e127b3aea2e",
+   "bytes": 6104
   },
   "dialogue/en/story/scene-0113.txt": {
    "hash": "6b928e9bd56c",
    "bytes": 5376
   },
   "dialogue/en/story/scene-0115.txt": {
-   "hash": "5aeedfcb9fa1",
-   "bytes": 5435
+   "hash": "0cba22c3e14f",
+   "bytes": 5434
   },
   "dialogue/en/story/scene-0117.txt": {
    "hash": "70d7cfd19357",
    "bytes": 5553
   },
   "dialogue/en/story/scene-0119.txt": {
-   "hash": "a6725e6a42b2",
-   "bytes": 5773
+   "hash": "18f8b94b5d97",
+   "bytes": 5772
   },
   "dialogue/en/story/scene-0121.txt": {
-   "hash": "e0c2cba592b1",
-   "bytes": 8087
+   "hash": "261651277937",
+   "bytes": 8086
   },
   "dialogue/en/story/scene-0123.txt": {
    "hash": "8b15def1eed8",
@@ -1533,8 +1533,8 @@
    "bytes": 37675
   },
   "dialogue/en/story/scene-0129.txt": {
-   "hash": "36d26e1183a4",
-   "bytes": 65154
+   "hash": "6c117207a977",
+   "bytes": 65155
   },
   "dialogue/en/story/scene-0130.txt": {
    "hash": "5ad3d59fa324",
@@ -1553,8 +1553,8 @@
    "bytes": 18992
   },
   "dialogue/en/story/scene-0134.txt": {
-   "hash": "06d9cf899cbe",
-   "bytes": 17354
+   "hash": "d7cf7961f6f3",
+   "bytes": 17356
   },
   "dialogue/en/story/scene-0135.txt": {
    "hash": "cb5935269e74",
@@ -3157,40 +3157,40 @@
    "bytes": 5817
   },
   "dialogue/zh-Hans/battle/speaker-003.txt": {
-   "hash": "79ba8b4b8610",
+   "hash": "dcbf57940271",
    "bytes": 8915
   },
   "dialogue/zh-Hans/battle/speaker-004.txt": {
-   "hash": "82c1ce914798",
-   "bytes": 36226
+   "hash": "a432f796f237",
+   "bytes": 36208
   },
   "dialogue/zh-Hans/battle/speaker-007.txt": {
-   "hash": "ce2f10c3a11a",
-   "bytes": 9363
+   "hash": "06ec7916cfc9",
+   "bytes": 9360
   },
   "dialogue/zh-Hans/battle/speaker-008.txt": {
-   "hash": "9d523d9442b9",
-   "bytes": 6216
+   "hash": "192dec37dc49",
+   "bytes": 6213
   },
   "dialogue/zh-Hans/battle/speaker-009.txt": {
-   "hash": "bd9987054a69",
-   "bytes": 10002
+   "hash": "0e76455af12e",
+   "bytes": 9999
   },
   "dialogue/zh-Hans/battle/speaker-010.txt": {
    "hash": "fbe030b8bcef",
    "bytes": 5995
   },
   "dialogue/zh-Hans/battle/speaker-011.txt": {
-   "hash": "cdfa99ea37b9",
-   "bytes": 12018
+   "hash": "0adb52653bf0",
+   "bytes": 12003
   },
   "dialogue/zh-Hans/battle/speaker-012.txt": {
-   "hash": "4b42005f0540",
-   "bytes": 12047
+   "hash": "d32487bc73e9",
+   "bytes": 12038
   },
   "dialogue/zh-Hans/battle/speaker-013.txt": {
-   "hash": "246020c44d89",
-   "bytes": 11699
+   "hash": "fffedd9743df",
+   "bytes": 11696
   },
   "dialogue/zh-Hans/battle/speaker-014.txt": {
    "hash": "a3b1b4566483",
@@ -3209,8 +3209,8 @@
    "bytes": 4876
   },
   "dialogue/zh-Hans/battle/speaker-018.txt": {
-   "hash": "444264914e85",
-   "bytes": 13185
+   "hash": "a6d5bb2f7c81",
+   "bytes": 13182
   },
   "dialogue/zh-Hans/battle/speaker-024.txt": {
    "hash": "8738b342cd8a",
@@ -3225,12 +3225,12 @@
    "bytes": 11775
   },
   "dialogue/zh-Hans/battle/speaker-027.txt": {
-   "hash": "5198c36a2ac5",
-   "bytes": 26443
+   "hash": "7c3f402a525a",
+   "bytes": 26302
   },
   "dialogue/zh-Hans/battle/speaker-028.txt": {
-   "hash": "7136b6fa226b",
-   "bytes": 31859
+   "hash": "e646a3301978",
+   "bytes": 31841
   },
   "dialogue/zh-Hans/battle/speaker-029.txt": {
    "hash": "a17c9387b118",
@@ -3241,8 +3241,8 @@
    "bytes": 11981
   },
   "dialogue/zh-Hans/battle/speaker-031.txt": {
-   "hash": "85f693b89518",
-   "bytes": 22297
+   "hash": "0ddec9f13c94",
+   "bytes": 22279
   },
   "dialogue/zh-Hans/battle/speaker-032.txt": {
    "hash": "2e340aa152d0",
@@ -3265,8 +3265,8 @@
    "bytes": 9992
   },
   "dialogue/zh-Hans/battle/speaker-037.txt": {
-   "hash": "392754739dbf",
-   "bytes": 3574
+   "hash": "e7121f1592da",
+   "bytes": 3571
   },
   "dialogue/zh-Hans/battle/speaker-038.txt": {
    "hash": "3464c6d1077e",
@@ -3293,8 +3293,8 @@
    "bytes": 10009
   },
   "dialogue/zh-Hans/battle/speaker-045.txt": {
-   "hash": "a829e51ac6aa",
-   "bytes": 5921
+   "hash": "3a4ed2b0687f",
+   "bytes": 5915
   },
   "dialogue/zh-Hans/battle/speaker-046.txt": {
    "hash": "d53940ce6b57",
@@ -3329,8 +3329,8 @@
    "bytes": 10427
   },
   "dialogue/zh-Hans/battle/speaker-056.txt": {
-   "hash": "32ac73aac013",
-   "bytes": 5823
+   "hash": "6389f3652af1",
+   "bytes": 5817
   },
   "dialogue/zh-Hans/battle/speaker-057.txt": {
    "hash": "8e76b641c22d",
@@ -3341,8 +3341,8 @@
    "bytes": 8500
   },
   "dialogue/zh-Hans/battle/speaker-059.txt": {
-   "hash": "910811a13998",
-   "bytes": 5500
+   "hash": "fba85035d8d6",
+   "bytes": 5497
   },
   "dialogue/zh-Hans/battle/speaker-060.txt": {
    "hash": "b805f4e9a7dd",
@@ -3361,12 +3361,12 @@
    "bytes": 4891
   },
   "dialogue/zh-Hans/battle/speaker-064.txt": {
-   "hash": "507abfa77622",
+   "hash": "2bdd075f7f37",
    "bytes": 5090
   },
   "dialogue/zh-Hans/battle/speaker-065.txt": {
-   "hash": "71c1161d66f1",
-   "bytes": 7627
+   "hash": "0bbe3b0e2d11",
+   "bytes": 7624
   },
   "dialogue/zh-Hans/battle/speaker-066.txt": {
    "hash": "cbbbab998321",
@@ -3401,7 +3401,7 @@
    "bytes": 7931
   },
   "dialogue/zh-Hans/battle/speaker-075.txt": {
-   "hash": "e9256a23d8eb",
+   "hash": "7f6e75a7fe80",
    "bytes": 5986
   },
   "dialogue/zh-Hans/battle/speaker-077.txt": {
@@ -3409,7 +3409,7 @@
    "bytes": 4977
   },
   "dialogue/zh-Hans/battle/speaker-078.txt": {
-   "hash": "d39d2ad1500e",
+   "hash": "5b63aafe9311",
    "bytes": 4909
   },
   "dialogue/zh-Hans/battle/speaker-079.txt": {
@@ -3433,8 +3433,8 @@
    "bytes": 5199
   },
   "dialogue/zh-Hans/battle/speaker-087.txt": {
-   "hash": "779540eb0f70",
-   "bytes": 3573
+   "hash": "cd1c62bc598c",
+   "bytes": 3564
   },
   "dialogue/zh-Hans/battle/speaker-089.txt": {
    "hash": "c144fe73debb",
@@ -3457,8 +3457,8 @@
    "bytes": 14642
   },
   "dialogue/zh-Hans/battle/speaker-096.txt": {
-   "hash": "66ca3167bedf",
-   "bytes": 8600
+   "hash": "852dfd93dc6c",
+   "bytes": 8597
   },
   "dialogue/zh-Hans/battle/speaker-097.txt": {
    "hash": "e873e91399a7",
@@ -3477,8 +3477,8 @@
    "bytes": 6443
   },
   "dialogue/zh-Hans/battle/speaker-101.txt": {
-   "hash": "dc2c8a3bd8e0",
-   "bytes": 12995
+   "hash": "7c03496887de",
+   "bytes": 12992
   },
   "dialogue/zh-Hans/battle/speaker-103.txt": {
    "hash": "726e2d41d089",
@@ -3497,8 +3497,8 @@
    "bytes": 3150
   },
   "dialogue/zh-Hans/battle/speaker-107.txt": {
-   "hash": "95f3984144ff",
-   "bytes": 30788
+   "hash": "15a19372b45b",
+   "bytes": 30785
   },
   "dialogue/zh-Hans/battle/speaker-108.txt": {
    "hash": "da208a2cf728",
@@ -3517,7 +3517,7 @@
    "bytes": 14004
   },
   "dialogue/zh-Hans/battle/speaker-112.txt": {
-   "hash": "dad7a3ba28b5",
+   "hash": "5a8ce1edaeeb",
    "bytes": 59067
   },
   "dialogue/zh-Hans/battle/speaker-113.txt": {
@@ -3549,7 +3549,7 @@
    "bytes": 9218
   },
   "dialogue/zh-Hans/battle/speaker-120.txt": {
-   "hash": "c3f4675cc9b2",
+   "hash": "c64daabc996a",
    "bytes": 9140
   },
   "dialogue/zh-Hans/battle/speaker-121.txt": {
@@ -3557,8 +3557,8 @@
    "bytes": 9092
   },
   "dialogue/zh-Hans/battle/speaker-123.txt": {
-   "hash": "b782a76d4b54",
-   "bytes": 5483
+   "hash": "37f87951166d",
+   "bytes": 5480
   },
   "dialogue/zh-Hans/battle/speaker-124.txt": {
    "hash": "c6bbd7d6c8c5",
@@ -3573,15 +3573,15 @@
    "bytes": 7985
   },
   "dialogue/zh-Hans/battle/speaker-127.txt": {
-   "hash": "84e938131c11",
-   "bytes": 3482
+   "hash": "b44187a1c070",
+   "bytes": 3470
   },
   "dialogue/zh-Hans/battle/speaker-128.txt": {
-   "hash": "27235173d75b",
+   "hash": "ce8ebf8f9318",
    "bytes": 4727
   },
   "dialogue/zh-Hans/battle/speaker-129.txt": {
-   "hash": "40bd319f08e1",
+   "hash": "0efddc78474c",
    "bytes": 11402
   },
   "dialogue/zh-Hans/battle/speaker-130.txt": {
@@ -3613,8 +3613,8 @@
    "bytes": 11690
   },
   "dialogue/zh-Hans/battle/speaker-138.txt": {
-   "hash": "eef6a63a42d8",
-   "bytes": 6989
+   "hash": "ae33dfbbe2c2",
+   "bytes": 6950
   },
   "dialogue/zh-Hans/battle/speaker-139.txt": {
    "hash": "799adfe8d4b0",
@@ -3629,8 +3629,8 @@
    "bytes": 8884
   },
   "dialogue/zh-Hans/battle/speaker-142.txt": {
-   "hash": "3e74bc9f6998",
-   "bytes": 5433
+   "hash": "78d3a17fd3fa",
+   "bytes": 5421
   },
   "dialogue/zh-Hans/battle/speaker-143.txt": {
    "hash": "7bfb03be0402",
@@ -3641,16 +3641,16 @@
    "bytes": 3993
   },
   "dialogue/zh-Hans/battle/speaker-145.txt": {
-   "hash": "56d612b352a3",
-   "bytes": 10001
+   "hash": "37a0c96675c0",
+   "bytes": 9998
   },
   "dialogue/zh-Hans/battle/speaker-146.txt": {
    "hash": "dfd68665c85d",
    "bytes": 4089
   },
   "dialogue/zh-Hans/battle/speaker-147.txt": {
-   "hash": "776dc4e6296b",
-   "bytes": 3859
+   "hash": "307853ca7dd3",
+   "bytes": 3853
   },
   "dialogue/zh-Hans/battle/speaker-148.txt": {
    "hash": "6565aa276542",
@@ -3677,12 +3677,12 @@
    "bytes": 3717
   },
   "dialogue/zh-Hans/battle/speaker-154.txt": {
-   "hash": "bebdccc5edc9",
-   "bytes": 5743
+   "hash": "c46861fa62b7",
+   "bytes": 5740
   },
   "dialogue/zh-Hans/battle/speaker-156.txt": {
-   "hash": "6e5e17a74501",
-   "bytes": 8361
+   "hash": "8e10fd5f08e9",
+   "bytes": 8346
   },
   "dialogue/zh-Hans/battle/speaker-157.txt": {
    "hash": "03a05588290e",
@@ -3721,8 +3721,8 @@
    "bytes": 8828
   },
   "dialogue/zh-Hans/battle/speaker-171.txt": {
-   "hash": "d67c1ec04b96",
-   "bytes": 26015
+   "hash": "0be36f00c045",
+   "bytes": 26012
   },
   "dialogue/zh-Hans/battle/speaker-173.txt": {
    "hash": "70619b1b0ab8",
@@ -3733,15 +3733,15 @@
    "bytes": 6170
   },
   "dialogue/zh-Hans/battle/speaker-175.txt": {
-   "hash": "9861251dd75d",
-   "bytes": 5477
+   "hash": "74d0094427d5",
+   "bytes": 5465
   },
   "dialogue/zh-Hans/battle/speaker-176.txt": {
    "hash": "5c3773d08bd0",
    "bytes": 6810
   },
   "dialogue/zh-Hans/battle/speaker-177.txt": {
-   "hash": "5f15861ccb92",
+   "hash": "13d3913d7d4c",
    "bytes": 5825
   },
   "dialogue/zh-Hans/battle/speaker-178.txt": {
@@ -3749,8 +3749,8 @@
    "bytes": 1204
   },
   "dialogue/zh-Hans/battle/speaker-179.txt": {
-   "hash": "62518a9a1bc2",
-   "bytes": 13255
+   "hash": "d298d9180421",
+   "bytes": 13249
   },
   "dialogue/zh-Hans/battle/speaker-180.txt": {
    "hash": "76114b15c85a",
@@ -3769,15 +3769,15 @@
    "bytes": 1213
   },
   "dialogue/zh-Hans/battle/speaker-184.txt": {
-   "hash": "5fd63f85449d",
-   "bytes": 16000
+   "hash": "e16d2b183bb8",
+   "bytes": 15991
   },
   "dialogue/zh-Hans/battle/speaker-185.txt": {
-   "hash": "fb9bc80c7c32",
+   "hash": "26463f373299",
    "bytes": 15072
   },
   "dialogue/zh-Hans/battle/speaker-186.txt": {
-   "hash": "f35a2defba6c",
+   "hash": "c045e566ae2d",
    "bytes": 15047
   },
   "dialogue/zh-Hans/battle/speaker-187.txt": {
@@ -3785,15 +3785,15 @@
    "bytes": 5961
   },
   "dialogue/zh-Hans/battle/speaker-188.txt": {
-   "hash": "57333883718c",
-   "bytes": 7041
+   "hash": "418542db8eb1",
+   "bytes": 7038
   },
   "dialogue/zh-Hans/battle/speaker-189.txt": {
    "hash": "85579d258b3e",
    "bytes": 4725
   },
   "dialogue/zh-Hans/battle/speaker-190.txt": {
-   "hash": "d5abbb5db3ea",
+   "hash": "2366fa8039fb",
    "bytes": 5936
   },
   "dialogue/zh-Hans/battle/speaker-191.txt": {
@@ -3801,7 +3801,7 @@
    "bytes": 5651
   },
   "dialogue/zh-Hans/battle/speaker-192.txt": {
-   "hash": "26b49010bbb7",
+   "hash": "51b7f12f7247",
    "bytes": 5962
   },
   "dialogue/zh-Hans/battle/speaker-193.txt": {
@@ -3825,28 +3825,28 @@
    "bytes": 27744
   },
   "dialogue/zh-Hans/battle/speaker-199.txt": {
-   "hash": "3cf320fc8804",
-   "bytes": 11585
+   "hash": "bc6de239886b",
+   "bytes": 11582
   },
   "dialogue/zh-Hans/battle/speaker-201.txt": {
    "hash": "211aabbc60f6",
    "bytes": 13305
   },
   "dialogue/zh-Hans/battle/speaker-204.txt": {
-   "hash": "0e92549f1277",
-   "bytes": 6444
+   "hash": "392a4030287f",
+   "bytes": 6441
   },
   "dialogue/zh-Hans/battle/speaker-205.txt": {
-   "hash": "bb96c4612b8b",
-   "bytes": 6116
+   "hash": "190e1803dd8e",
+   "bytes": 6113
   },
   "dialogue/zh-Hans/battle/speaker-206.txt": {
-   "hash": "746c46cb223f",
+   "hash": "04b30ce64099",
    "bytes": 4614
   },
   "dialogue/zh-Hans/battle/speaker-207.txt": {
-   "hash": "18824dc21322",
-   "bytes": 4276
+   "hash": "d3582acd319d",
+   "bytes": 4273
   },
   "dialogue/zh-Hans/battle/speaker-208.txt": {
    "hash": "de1b58f1142a",
@@ -3861,27 +3861,27 @@
    "bytes": 3075
   },
   "dialogue/zh-Hans/battle/speaker-213.txt": {
-   "hash": "660bf1ac8e9f",
-   "bytes": 4265
+   "hash": "1afad2c78dbc",
+   "bytes": 4262
   },
   "dialogue/zh-Hans/battle/speaker-214.txt": {
-   "hash": "aca894649945",
-   "bytes": 7069
+   "hash": "76be2cb7bbd4",
+   "bytes": 7057
   },
   "dialogue/zh-Hans/battle/speaker-215.txt": {
-   "hash": "e7aed4c7ff78",
-   "bytes": 4053
+   "hash": "9a1d63bf520c",
+   "bytes": 4044
   },
   "dialogue/zh-Hans/battle/speaker-216.txt": {
-   "hash": "6530a0e9516a",
-   "bytes": 4329
+   "hash": "f870dc7289c4",
+   "bytes": 4326
   },
   "dialogue/zh-Hans/battle/speaker-217.txt": {
    "hash": "48bc6eebb2bc",
    "bytes": 5644
   },
   "dialogue/zh-Hans/battle/speaker-218.txt": {
-   "hash": "d84a4dfa0ef5",
+   "hash": "7a72230c0d94",
    "bytes": 6257
   },
   "dialogue/zh-Hans/battle/speaker-220.txt": {
@@ -3889,8 +3889,8 @@
    "bytes": 4169
   },
   "dialogue/zh-Hans/battle/speaker-221.txt": {
-   "hash": "0d9a63e8c08b",
-   "bytes": 7126
+   "hash": "86d269c9545f",
+   "bytes": 7111
   },
   "dialogue/zh-Hans/battle/speaker-222.txt": {
    "hash": "00f359e73726",
@@ -3933,8 +3933,8 @@
    "bytes": 6402
   },
   "dialogue/zh-Hans/battle/speaker-234.txt": {
-   "hash": "55ab2f00b94f",
-   "bytes": 7714
+   "hash": "8ecd495b37e9",
+   "bytes": 7711
   },
   "dialogue/zh-Hans/battle/speaker-235.txt": {
    "hash": "c3e5163b9ce4",
@@ -3965,8 +3965,8 @@
    "bytes": 1204
   },
   "dialogue/zh-Hans/battle/speaker-246.txt": {
-   "hash": "54f8f83b0a77",
-   "bytes": 8366
+   "hash": "cdd1b5d88216",
+   "bytes": 8363
   },
   "dialogue/zh-Hans/battle/speaker-248.txt": {
    "hash": "77bd919b73f6",
@@ -3981,32 +3981,32 @@
    "bytes": 3125
   },
   "dialogue/zh-Hans/battle/speaker-251.txt": {
-   "hash": "ca0362dd2850",
-   "bytes": 3453
+   "hash": "1cdc3c3f2bb2",
+   "bytes": 3450
   },
   "dialogue/zh-Hans/battle/speaker-252.txt": {
-   "hash": "791eb4b927de",
-   "bytes": 4978
+   "hash": "b2ec9c98e452",
+   "bytes": 4975
   },
   "dialogue/zh-Hans/battle/speaker-253.txt": {
    "hash": "e3f1d946db25",
    "bytes": 4400
   },
   "dialogue/zh-Hans/battle/speaker-258.txt": {
-   "hash": "c296f93dbff7",
-   "bytes": 5070
+   "hash": "62e80d504699",
+   "bytes": 5067
   },
   "dialogue/zh-Hans/battle/speaker-259.txt": {
-   "hash": "a68beadfce72",
-   "bytes": 9033
+   "hash": "784f1d04e456",
+   "bytes": 9024
   },
   "dialogue/zh-Hans/battle/speaker-260.txt": {
-   "hash": "6eb59480bc12",
-   "bytes": 9153
+   "hash": "c57d6940af84",
+   "bytes": 9144
   },
   "dialogue/zh-Hans/battle/speaker-261.txt": {
-   "hash": "518e222e89bc",
-   "bytes": 8588
+   "hash": "87fe0a188af4",
+   "bytes": 8585
   },
   "dialogue/zh-Hans/battle/speaker-262.txt": {
    "hash": "2979089a4e8e",
@@ -4037,8 +4037,8 @@
    "bytes": 8911
   },
   "dialogue/zh-Hans/battle/speaker-270.txt": {
-   "hash": "e80ce41c2a72",
-   "bytes": 5812
+   "hash": "231c05ff36cd",
+   "bytes": 5809
   },
   "dialogue/zh-Hans/battle/speaker-271.txt": {
    "hash": "50a2f065282e",
@@ -4049,8 +4049,8 @@
    "bytes": 4052
   },
   "dialogue/zh-Hans/battle/speaker-279.txt": {
-   "hash": "07de5db418a3",
-   "bytes": 5609
+   "hash": "d2cde314c392",
+   "bytes": 5606
   },
   "dialogue/zh-Hans/battle/speaker-284.txt": {
    "hash": "700045ff7f7e",
@@ -4061,8 +4061,8 @@
    "bytes": 5339
   },
   "dialogue/zh-Hans/battle/speaker-286.txt": {
-   "hash": "cc194e5218e0",
-   "bytes": 13112
+   "hash": "93c81122b465",
+   "bytes": 13109
   },
   "dialogue/zh-Hans/battle/speaker-287.txt": {
    "hash": "ef8efa94a676",
@@ -4073,7 +4073,7 @@
    "bytes": 6474
   },
   "dialogue/zh-Hans/battle/speaker-289.txt": {
-   "hash": "82170d01b707",
+   "hash": "262e9760f459",
    "bytes": 6924
   },
   "dialogue/zh-Hans/battle/speaker-290.txt": {
@@ -4117,8 +4117,8 @@
    "bytes": 3143
   },
   "dialogue/zh-Hans/battle/speaker-300.txt": {
-   "hash": "f42cd203a052",
-   "bytes": 6955
+   "hash": "8bc293e508bb",
+   "bytes": 6952
   },
   "dialogue/zh-Hans/battle/speaker-301.txt": {
    "hash": "275b38f212bc",
@@ -4129,23 +4129,23 @@
    "bytes": 6243
   },
   "dialogue/zh-Hans/battle/speaker-303.txt": {
-   "hash": "d98b616d7ff6",
-   "bytes": 5094
+   "hash": "c6e7ed18ea4f",
+   "bytes": 5088
   },
   "dialogue/zh-Hans/battle/speaker-304.txt": {
    "hash": "da789ff95ece",
    "bytes": 6744
   },
   "dialogue/zh-Hans/battle/speaker-305.txt": {
-   "hash": "e219bbb88f7e",
-   "bytes": 6245
+   "hash": "8c80f006f9fb",
+   "bytes": 6239
   },
   "dialogue/zh-Hans/battle/speaker-306.txt": {
-   "hash": "46f993ea9017",
-   "bytes": 7237
+   "hash": "b0fd6692f3e0",
+   "bytes": 7234
   },
   "dialogue/zh-Hans/battle/speaker-307.txt": {
-   "hash": "d5eef5b6d182",
+   "hash": "6fc2812aedf2",
    "bytes": 7983
   },
   "dialogue/zh-Hans/battle/speaker-308.txt": {
@@ -4153,16 +4153,16 @@
    "bytes": 6789
   },
   "dialogue/zh-Hans/battle/speaker-309.txt": {
-   "hash": "41715ac832c5",
-   "bytes": 7108
+   "hash": "4324da9ef4df",
+   "bytes": 7105
   },
   "dialogue/zh-Hans/battle/speaker-310.txt": {
    "hash": "b6504629b90d",
    "bytes": 6899
   },
   "dialogue/zh-Hans/battle/speaker-311.txt": {
-   "hash": "6365cbfb3b1f",
-   "bytes": 7759
+   "hash": "2aa30b40d472",
+   "bytes": 7756
   },
   "dialogue/zh-Hans/battle/speaker-312.txt": {
    "hash": "9b02fe79e245",
@@ -4237,24 +4237,24 @@
    "bytes": 12857
   },
   "dialogue/zh-Hans/story/scene-0009.txt": {
-   "hash": "980933edc571",
-   "bytes": 29542
+   "hash": "056443ec7f62",
+   "bytes": 29527
   },
   "dialogue/zh-Hans/story/scene-0010.txt": {
    "hash": "c703227fcc21",
    "bytes": 43952
   },
   "dialogue/zh-Hans/story/scene-0011.txt": {
-   "hash": "8031b2e52b3f",
-   "bytes": 40434
+   "hash": "7b6c2d8d2840",
+   "bytes": 40422
   },
   "dialogue/zh-Hans/story/scene-0012.txt": {
    "hash": "a699efa43a0d",
    "bytes": 32120
   },
   "dialogue/zh-Hans/story/scene-0013.txt": {
-   "hash": "a70928456f42",
-   "bytes": 40478
+   "hash": "f2833426279c",
+   "bytes": 40466
   },
   "dialogue/zh-Hans/story/scene-0014.txt": {
    "hash": "5086052a491d",
@@ -4265,32 +4265,32 @@
    "bytes": 64355
   },
   "dialogue/zh-Hans/story/scene-0016.txt": {
-   "hash": "e03883daae53",
-   "bytes": 50921
+   "hash": "927be767903c",
+   "bytes": 50909
   },
   "dialogue/zh-Hans/story/scene-0017.txt": {
-   "hash": "91260c21709b",
-   "bytes": 42653
+   "hash": "c23f2e6f2211",
+   "bytes": 42650
   },
   "dialogue/zh-Hans/story/scene-0018.txt": {
    "hash": "4965b07273db",
    "bytes": 47217
   },
   "dialogue/zh-Hans/story/scene-0019.txt": {
-   "hash": "5f09b1a8711c",
-   "bytes": 38006
+   "hash": "19e0d479fc30",
+   "bytes": 37997
   },
   "dialogue/zh-Hans/story/scene-0020.txt": {
-   "hash": "7e589a96ad50",
-   "bytes": 64488
+   "hash": "eab2482e5a10",
+   "bytes": 64461
   },
   "dialogue/zh-Hans/story/scene-0021.txt": {
-   "hash": "a2ee0e5838f5",
-   "bytes": 32414
+   "hash": "070b07d65480",
+   "bytes": 32405
   },
   "dialogue/zh-Hans/story/scene-0022.txt": {
-   "hash": "6c1a66978d2c",
-   "bytes": 29841
+   "hash": "f5e4129c71e6",
+   "bytes": 29838
   },
   "dialogue/zh-Hans/story/scene-0023.txt": {
    "hash": "72175e1b35ea",
@@ -4301,20 +4301,20 @@
    "bytes": 48154
   },
   "dialogue/zh-Hans/story/scene-0025.txt": {
-   "hash": "ec1d6e48107c",
-   "bytes": 39835
+   "hash": "372e304dc361",
+   "bytes": 39829
   },
   "dialogue/zh-Hans/story/scene-0026.txt": {
-   "hash": "bdf4c5f4cc68",
-   "bytes": 53490
+   "hash": "ec57e70d4fef",
+   "bytes": 53472
   },
   "dialogue/zh-Hans/story/scene-0027.txt": {
-   "hash": "15f82c0df5c6",
-   "bytes": 54800
+   "hash": "eb8602a01e72",
+   "bytes": 54788
   },
   "dialogue/zh-Hans/story/scene-0028.txt": {
-   "hash": "3e197b967793",
-   "bytes": 49857
+   "hash": "9358d8807a2e",
+   "bytes": 49848
   },
   "dialogue/zh-Hans/story/scene-0029.txt": {
    "hash": "2191fd7a355d",
@@ -4325,60 +4325,60 @@
    "bytes": 136184
   },
   "dialogue/zh-Hans/story/scene-0031.txt": {
-   "hash": "b990f3c710f4",
-   "bytes": 64291
+   "hash": "20856043133d",
+   "bytes": 64261
   },
   "dialogue/zh-Hans/story/scene-0032.txt": {
-   "hash": "4efe4f247e12",
-   "bytes": 63297
+   "hash": "62e357baa57e",
+   "bytes": 63279
   },
   "dialogue/zh-Hans/story/scene-0033.txt": {
-   "hash": "6a301b1bb363",
-   "bytes": 68584
+   "hash": "0aabb2e9ddec",
+   "bytes": 68575
   },
   "dialogue/zh-Hans/story/scene-0034.txt": {
    "hash": "5cd9491d0d0d",
    "bytes": 37470
   },
   "dialogue/zh-Hans/story/scene-0035.txt": {
-   "hash": "10e9d3d7987a",
-   "bytes": 43764
+   "hash": "3d39a462f9d1",
+   "bytes": 43746
   },
   "dialogue/zh-Hans/story/scene-0036.txt": {
    "hash": "289e37b42b4c",
    "bytes": 54855
   },
   "dialogue/zh-Hans/story/scene-0037.txt": {
-   "hash": "9a5971245677",
-   "bytes": 54524
+   "hash": "a543f02f6879",
+   "bytes": 54521
   },
   "dialogue/zh-Hans/story/scene-0038.txt": {
-   "hash": "1f24b2bf2a3a",
-   "bytes": 53519
+   "hash": "1e766edb87ac",
+   "bytes": 53489
   },
   "dialogue/zh-Hans/story/scene-0039.txt": {
-   "hash": "9b171d87fda5",
-   "bytes": 60752
+   "hash": "9097f55be6a7",
+   "bytes": 60743
   },
   "dialogue/zh-Hans/story/scene-0040.txt": {
    "hash": "721d93b41842",
    "bytes": 75108
   },
   "dialogue/zh-Hans/story/scene-0041.txt": {
-   "hash": "9fb5e74898ba",
-   "bytes": 62364
+   "hash": "d896a9c6f9ae",
+   "bytes": 62352
   },
   "dialogue/zh-Hans/story/scene-0042.txt": {
-   "hash": "7462eca77928",
-   "bytes": 47596
+   "hash": "bf39d78d7d85",
+   "bytes": 47581
   },
   "dialogue/zh-Hans/story/scene-0043.txt": {
-   "hash": "9a4971f88e49",
-   "bytes": 104498
+   "hash": "469152477807",
+   "bytes": 104462
   },
   "dialogue/zh-Hans/story/scene-0044.txt": {
-   "hash": "c6247c020865",
-   "bytes": 79754
+   "hash": "671b3dbfcaff",
+   "bytes": 79742
   },
   "dialogue/zh-Hans/story/scene-0045.txt": {
    "hash": "c8914a85e0ea",
@@ -4389,12 +4389,12 @@
    "bytes": 86648
   },
   "dialogue/zh-Hans/story/scene-0047.txt": {
-   "hash": "85c25beb8cb1",
-   "bytes": 98208
+   "hash": "7ef566108b6b",
+   "bytes": 98199
   },
   "dialogue/zh-Hans/story/scene-0048.txt": {
-   "hash": "a0e05d84be5f",
-   "bytes": 82009
+   "hash": "48dfdb88b3b1",
+   "bytes": 81991
   },
   "dialogue/zh-Hans/story/scene-0049.txt": {
    "hash": "34ad7b707c92",
@@ -4413,44 +4413,44 @@
    "bytes": 43391
   },
   "dialogue/zh-Hans/story/scene-0053.txt": {
-   "hash": "2385917987c9",
-   "bytes": 64693
+   "hash": "6c3094a3bfe8",
+   "bytes": 64681
   },
   "dialogue/zh-Hans/story/scene-0054.txt": {
-   "hash": "fbe17e9057e4",
-   "bytes": 123136
+   "hash": "f61cf44ed2c5",
+   "bytes": 123085
   },
   "dialogue/zh-Hans/story/scene-0055.txt": {
-   "hash": "2359d4529b02",
-   "bytes": 91843
+   "hash": "c19bc6b26213",
+   "bytes": 91807
   },
   "dialogue/zh-Hans/story/scene-0056.txt": {
-   "hash": "87bd7d5aec49",
-   "bytes": 123013
+   "hash": "7745c9b9da63",
+   "bytes": 122995
   },
   "dialogue/zh-Hans/story/scene-0057.txt": {
-   "hash": "b63de438c168",
-   "bytes": 91382
+   "hash": "6f3855512474",
+   "bytes": 91358
   },
   "dialogue/zh-Hans/story/scene-0059.txt": {
-   "hash": "42ce90934817",
-   "bytes": 84789
+   "hash": "8049dd9c75bd",
+   "bytes": 84780
   },
   "dialogue/zh-Hans/story/scene-0060.txt": {
    "hash": "27477913d4c7",
    "bytes": 46173
   },
   "dialogue/zh-Hans/story/scene-0061.txt": {
-   "hash": "3c5988b82062",
-   "bytes": 88175
+   "hash": "3cbdc1e90c9a",
+   "bytes": 88139
   },
   "dialogue/zh-Hans/story/scene-0062.txt": {
    "hash": "c0e5408d851b",
    "bytes": 57797
   },
   "dialogue/zh-Hans/story/scene-0063.txt": {
-   "hash": "ebafefe9b778",
-   "bytes": 63774
+   "hash": "3ac13da8e34d",
+   "bytes": 63771
   },
   "dialogue/zh-Hans/story/scene-0064.txt": {
    "hash": "4a8484651eaa",
@@ -4469,7 +4469,7 @@
    "bytes": 38850
   },
   "dialogue/zh-Hans/story/scene-0068.txt": {
-   "hash": "8df3a12cc1fb",
+   "hash": "acf5549a18d9",
    "bytes": 28050
   },
   "dialogue/zh-Hans/story/scene-0069.txt": {
@@ -4477,48 +4477,48 @@
    "bytes": 84471
   },
   "dialogue/zh-Hans/story/scene-0070.txt": {
-   "hash": "b5913db4edb4",
+   "hash": "200878804b62",
    "bytes": 62725
   },
   "dialogue/zh-Hans/story/scene-0071.txt": {
-   "hash": "e9065f625059",
-   "bytes": 54772
+   "hash": "899c894debb9",
+   "bytes": 54757
   },
   "dialogue/zh-Hans/story/scene-0072.txt": {
-   "hash": "51825d32d178",
-   "bytes": 39252
+   "hash": "f9ce1b7158d3",
+   "bytes": 39234
   },
   "dialogue/zh-Hans/story/scene-0073.txt": {
    "hash": "4a16dc5e150f",
    "bytes": 29169
   },
   "dialogue/zh-Hans/story/scene-0074.txt": {
-   "hash": "b3d2acf3752f",
-   "bytes": 70179
+   "hash": "89970434ff73",
+   "bytes": 70164
   },
   "dialogue/zh-Hans/story/scene-0075.txt": {
    "hash": "f362aa2c296b",
    "bytes": 50694
   },
   "dialogue/zh-Hans/story/scene-0076.txt": {
-   "hash": "1a294d7dbc64",
-   "bytes": 72727
+   "hash": "55877b2083fc",
+   "bytes": 72706
   },
   "dialogue/zh-Hans/story/scene-0077.txt": {
-   "hash": "5a88ee3ca225",
-   "bytes": 109275
+   "hash": "dcc4a50b622a",
+   "bytes": 109257
   },
   "dialogue/zh-Hans/story/scene-0078.txt": {
-   "hash": "0c1c5c04836c",
-   "bytes": 81877
+   "hash": "5e34b566ce6a",
+   "bytes": 81853
   },
   "dialogue/zh-Hans/story/scene-0079.txt": {
-   "hash": "0962ec02d176",
-   "bytes": 28432
+   "hash": "27f76eeb26ab",
+   "bytes": 28426
   },
   "dialogue/zh-Hans/story/scene-0080.txt": {
-   "hash": "ec5ab37524c1",
-   "bytes": 31802
+   "hash": "9b749654625c",
+   "bytes": 31793
   },
   "dialogue/zh-Hans/story/scene-0081.txt": {
    "hash": "390cb4ea6f4f",
@@ -4537,12 +4537,12 @@
    "bytes": 106342
   },
   "dialogue/zh-Hans/story/scene-0085.txt": {
-   "hash": "56a1bad571c0",
-   "bytes": 53600
+   "hash": "4517c37f04ea",
+   "bytes": 53582
   },
   "dialogue/zh-Hans/story/scene-0086.txt": {
-   "hash": "b80ad9130000",
-   "bytes": 38923
+   "hash": "84561626aad4",
+   "bytes": 38911
   },
   "dialogue/zh-Hans/story/scene-0087.txt": {
    "hash": "b4f0569fb304",
@@ -4557,12 +4557,12 @@
    "bytes": 96475
   },
   "dialogue/zh-Hans/story/scene-0090.txt": {
-   "hash": "cabba1d7650e",
-   "bytes": 48078
+   "hash": "e2977a354c4d",
+   "bytes": 48063
   },
   "dialogue/zh-Hans/story/scene-0091.txt": {
-   "hash": "86fcb708ff5a",
-   "bytes": 128474
+   "hash": "5e20f81deded",
+   "bytes": 128465
   },
   "dialogue/zh-Hans/story/scene-0092.txt": {
    "hash": "4732d65f6098",
@@ -4581,12 +4581,12 @@
    "bytes": 35393
   },
   "dialogue/zh-Hans/story/scene-0096.txt": {
-   "hash": "9e79393b2dd2",
-   "bytes": 35114
+   "hash": "b178fbd4d3ab",
+   "bytes": 35102
   },
   "dialogue/zh-Hans/story/scene-0097.txt": {
-   "hash": "3907671bce1d",
-   "bytes": 70008
+   "hash": "59cd8ed6cdac",
+   "bytes": 69972
   },
   "dialogue/zh-Hans/story/scene-0098.txt": {
    "hash": "2ee94af317bc",
@@ -4605,20 +4605,20 @@
    "bytes": 80973
   },
   "dialogue/zh-Hans/story/scene-0102.txt": {
-   "hash": "de83b9910348",
-   "bytes": 47883
+   "hash": "93874531812e",
+   "bytes": 47868
   },
   "dialogue/zh-Hans/story/scene-0103.txt": {
-   "hash": "6e5cbab217d6",
-   "bytes": 110256
+   "hash": "edce02ffb877",
+   "bytes": 110244
   },
   "dialogue/zh-Hans/story/scene-0104.txt": {
    "hash": "3516983da44f",
    "bytes": 71288
   },
   "dialogue/zh-Hans/story/scene-0105.txt": {
-   "hash": "c4bc4627bf86",
-   "bytes": 109351
+   "hash": "0e00bd6a83fe",
+   "bytes": 109333
   },
   "dialogue/zh-Hans/story/scene-0106.txt": {
    "hash": "7442fdefd88c",
@@ -4629,8 +4629,8 @@
    "bytes": 88111
   },
   "dialogue/zh-Hans/story/scene-0108.txt": {
-   "hash": "7c5baa05e941",
-   "bytes": 90963
+   "hash": "89e8130eaeca",
+   "bytes": 90948
   },
   "dialogue/zh-Hans/story/scene-0109.txt": {
    "hash": "4c83ecf4792d",
@@ -4669,12 +4669,12 @@
    "bytes": 24324
   },
   "dialogue/zh-Hans/story/scene-0128.txt": {
-   "hash": "67a7adf6bf74",
-   "bytes": 37756
+   "hash": "f22838611871",
+   "bytes": 37735
   },
   "dialogue/zh-Hans/story/scene-0129.txt": {
-   "hash": "e1e6395d18e1",
-   "bytes": 60584
+   "hash": "f1c7f0d04366",
+   "bytes": 60500
   },
   "dialogue/zh-Hans/story/scene-0130.txt": {
    "hash": "c8d9b3eaed05",
@@ -4697,72 +4697,72 @@
    "bytes": 15786
   },
   "dialogue/zh-Hans/story/scene-0135.txt": {
-   "hash": "5542155b0e4b",
-   "bytes": 25301
+   "hash": "7c9a085b0894",
+   "bytes": 25292
   },
   "dialogue/zh-Hans/story/scene-0136.txt": {
    "hash": "d0c836e49a13",
    "bytes": 36062
   },
   "dialogue/zh-Hans/story/scene-0137.txt": {
-   "hash": "bed36b9022f1",
-   "bytes": 109628
+   "hash": "e4338e558a5e",
+   "bytes": 109550
   },
   "dialogue/zh-Hans/story/scene-0138.txt": {
-   "hash": "45b096a62cb6",
-   "bytes": 74015
+   "hash": "69a08b46fce8",
+   "bytes": 73976
   },
   "dialogue/zh-Hans/story/scene-0139.txt": {
    "hash": "10c4aa9a60d8",
    "bytes": 95979
   },
   "dialogue/zh-Hans/story/scene-0140.txt": {
-   "hash": "fc6ee5be9bb0",
-   "bytes": 85723
+   "hash": "05ed90576f84",
+   "bytes": 85684
   },
   "dialogue/zh-Hans/story/scene-0141.txt": {
-   "hash": "e8487b9e3eba",
-   "bytes": 34058
+   "hash": "768c08755bb8",
+   "bytes": 34046
   },
   "dialogue/zh-Hant/battle/other.txt": {
    "hash": "70d59947c787",
    "bytes": 5854
   },
   "dialogue/zh-Hant/battle/speaker-003.txt": {
-   "hash": "32a02be06751",
+   "hash": "2b222f500d60",
    "bytes": 8796
   },
   "dialogue/zh-Hant/battle/speaker-004.txt": {
-   "hash": "039b2d5fb707",
-   "bytes": 36269
+   "hash": "4053c21198d6",
+   "bytes": 36251
   },
   "dialogue/zh-Hant/battle/speaker-007.txt": {
-   "hash": "6401b6869793",
-   "bytes": 9400
+   "hash": "58fe15acc073",
+   "bytes": 9397
   },
   "dialogue/zh-Hant/battle/speaker-008.txt": {
-   "hash": "063c89b08134",
-   "bytes": 6265
+   "hash": "ec6cb509b33c",
+   "bytes": 6262
   },
   "dialogue/zh-Hant/battle/speaker-009.txt": {
-   "hash": "07484f299c18",
-   "bytes": 10042
+   "hash": "d729bf6e2b50",
+   "bytes": 10039
   },
   "dialogue/zh-Hant/battle/speaker-010.txt": {
    "hash": "12890433fa47",
    "bytes": 6032
   },
   "dialogue/zh-Hant/battle/speaker-011.txt": {
-   "hash": "2be5247235b1",
-   "bytes": 12055
+   "hash": "246cc2e1b80c",
+   "bytes": 12040
   },
   "dialogue/zh-Hant/battle/speaker-012.txt": {
-   "hash": "b2eca1a3c683",
-   "bytes": 12084
+   "hash": "82593e648b76",
+   "bytes": 12075
   },
   "dialogue/zh-Hant/battle/speaker-013.txt": {
-   "hash": "86759493943f",
-   "bytes": 11736
+   "hash": "e030cbca9935",
+   "bytes": 11733
   },
   "dialogue/zh-Hant/battle/speaker-014.txt": {
    "hash": "6f9953fc52f7",
@@ -4781,8 +4781,8 @@
    "bytes": 4913
   },
   "dialogue/zh-Hant/battle/speaker-018.txt": {
-   "hash": "7c91b9dc7816",
-   "bytes": 13222
+   "hash": "cabdbbd6dd22",
+   "bytes": 13219
   },
   "dialogue/zh-Hant/battle/speaker-024.txt": {
    "hash": "d18c26b37d99",
@@ -4797,12 +4797,12 @@
    "bytes": 11812
   },
   "dialogue/zh-Hant/battle/speaker-027.txt": {
-   "hash": "ee9658178951",
-   "bytes": 26480
+   "hash": "06bfbef501b9",
+   "bytes": 26339
   },
   "dialogue/zh-Hant/battle/speaker-028.txt": {
-   "hash": "5388a4a1534a",
-   "bytes": 31896
+   "hash": "2d8b9ae8f583",
+   "bytes": 31878
   },
   "dialogue/zh-Hant/battle/speaker-029.txt": {
    "hash": "30f3e458affc",
@@ -4813,8 +4813,8 @@
    "bytes": 12024
   },
   "dialogue/zh-Hant/battle/speaker-031.txt": {
-   "hash": "8a1f1ec6cf8d",
-   "bytes": 22334
+   "hash": "92f7d13c7d57",
+   "bytes": 22316
   },
   "dialogue/zh-Hant/battle/speaker-032.txt": {
    "hash": "3926953b1880",
@@ -4837,8 +4837,8 @@
    "bytes": 10029
   },
   "dialogue/zh-Hant/battle/speaker-037.txt": {
-   "hash": "8c8b752e42b2",
-   "bytes": 3611
+   "hash": "21c46b01dc8f",
+   "bytes": 3608
   },
   "dialogue/zh-Hant/battle/speaker-038.txt": {
    "hash": "c73ed3df2430",
@@ -4865,8 +4865,8 @@
    "bytes": 10046
   },
   "dialogue/zh-Hant/battle/speaker-045.txt": {
-   "hash": "df2f066bdad3",
-   "bytes": 5961
+   "hash": "0d9b87c57cec",
+   "bytes": 5955
   },
   "dialogue/zh-Hant/battle/speaker-046.txt": {
    "hash": "b529fb3735d3",
@@ -4901,8 +4901,8 @@
    "bytes": 10464
   },
   "dialogue/zh-Hant/battle/speaker-056.txt": {
-   "hash": "cf0c71642cc7",
-   "bytes": 5863
+   "hash": "dcb42f31319b",
+   "bytes": 5857
   },
   "dialogue/zh-Hant/battle/speaker-057.txt": {
    "hash": "84bbd8f62548",
@@ -4913,8 +4913,8 @@
    "bytes": 8537
   },
   "dialogue/zh-Hant/battle/speaker-059.txt": {
-   "hash": "77e709912346",
-   "bytes": 5537
+   "hash": "e3112e6df064",
+   "bytes": 5534
   },
   "dialogue/zh-Hant/battle/speaker-060.txt": {
    "hash": "851e6448dec0",
@@ -4933,12 +4933,12 @@
    "bytes": 4928
   },
   "dialogue/zh-Hant/battle/speaker-064.txt": {
-   "hash": "f340b02c899b",
+   "hash": "70ff5dd39acf",
    "bytes": 5127
   },
   "dialogue/zh-Hant/battle/speaker-065.txt": {
-   "hash": "fb92b3e64d55",
-   "bytes": 7664
+   "hash": "c2217718512b",
+   "bytes": 7661
   },
   "dialogue/zh-Hant/battle/speaker-066.txt": {
    "hash": "3cc75a8e6012",
@@ -4973,7 +4973,7 @@
    "bytes": 7968
   },
   "dialogue/zh-Hant/battle/speaker-075.txt": {
-   "hash": "80a3bd52b7dc",
+   "hash": "a65c85907b27",
    "bytes": 6035
   },
   "dialogue/zh-Hant/battle/speaker-077.txt": {
@@ -4981,7 +4981,7 @@
    "bytes": 5014
   },
   "dialogue/zh-Hant/battle/speaker-078.txt": {
-   "hash": "138aec2e3a74",
+   "hash": "e07fdbc2e943",
    "bytes": 4949
   },
   "dialogue/zh-Hant/battle/speaker-079.txt": {
@@ -5005,8 +5005,8 @@
    "bytes": 5236
   },
   "dialogue/zh-Hant/battle/speaker-087.txt": {
-   "hash": "9aa7f81a749c",
-   "bytes": 3622
+   "hash": "a375159b96ce",
+   "bytes": 3613
   },
   "dialogue/zh-Hant/battle/speaker-089.txt": {
    "hash": "e4b02f40e071",
@@ -5029,8 +5029,8 @@
    "bytes": 14679
   },
   "dialogue/zh-Hant/battle/speaker-096.txt": {
-   "hash": "cd779d440bb8",
-   "bytes": 8643
+   "hash": "f2bcc2459bc6",
+   "bytes": 8640
   },
   "dialogue/zh-Hant/battle/speaker-097.txt": {
    "hash": "e383187c91bf",
@@ -5049,8 +5049,8 @@
    "bytes": 6483
   },
   "dialogue/zh-Hant/battle/speaker-101.txt": {
-   "hash": "89f2ebba8b69",
-   "bytes": 13032
+   "hash": "329fd3123bfb",
+   "bytes": 13029
   },
   "dialogue/zh-Hant/battle/speaker-103.txt": {
    "hash": "964e7b822704",
@@ -5069,8 +5069,8 @@
    "bytes": 3187
   },
   "dialogue/zh-Hant/battle/speaker-107.txt": {
-   "hash": "a157b7f664df",
-   "bytes": 30813
+   "hash": "1c84dcf0743c",
+   "bytes": 30810
   },
   "dialogue/zh-Hant/battle/speaker-108.txt": {
    "hash": "69737e348590",
@@ -5089,7 +5089,7 @@
    "bytes": 14041
   },
   "dialogue/zh-Hant/battle/speaker-112.txt": {
-   "hash": "35b7e8fc41bc",
+   "hash": "877d99e07c38",
    "bytes": 59101
   },
   "dialogue/zh-Hant/battle/speaker-113.txt": {
@@ -5121,7 +5121,7 @@
    "bytes": 9276
   },
   "dialogue/zh-Hant/battle/speaker-120.txt": {
-   "hash": "f3fd8d60dc77",
+   "hash": "27403e6606e7",
    "bytes": 9195
   },
   "dialogue/zh-Hant/battle/speaker-121.txt": {
@@ -5129,8 +5129,8 @@
    "bytes": 9129
   },
   "dialogue/zh-Hant/battle/speaker-123.txt": {
-   "hash": "13b91bdb4b5b",
-   "bytes": 5526
+   "hash": "2a9f2ce956bb",
+   "bytes": 5523
   },
   "dialogue/zh-Hant/battle/speaker-124.txt": {
    "hash": "136d1bdc0a24",
@@ -5145,15 +5145,15 @@
    "bytes": 8022
   },
   "dialogue/zh-Hant/battle/speaker-127.txt": {
-   "hash": "1516616a3a67",
-   "bytes": 3519
+   "hash": "3c908f692351",
+   "bytes": 3507
   },
   "dialogue/zh-Hant/battle/speaker-128.txt": {
-   "hash": "5515de84992d",
+   "hash": "cbad6945ac9a",
    "bytes": 4764
   },
   "dialogue/zh-Hant/battle/speaker-129.txt": {
-   "hash": "a0fd3c683210",
+   "hash": "28465b4c3cd6",
    "bytes": 11439
   },
   "dialogue/zh-Hant/battle/speaker-130.txt": {
@@ -5185,8 +5185,8 @@
    "bytes": 11727
   },
   "dialogue/zh-Hant/battle/speaker-138.txt": {
-   "hash": "f8e9b4ca66e2",
-   "bytes": 7035
+   "hash": "15e101a8027d",
+   "bytes": 6996
   },
   "dialogue/zh-Hant/battle/speaker-139.txt": {
    "hash": "506112ee8d0c",
@@ -5201,8 +5201,8 @@
    "bytes": 8924
   },
   "dialogue/zh-Hant/battle/speaker-142.txt": {
-   "hash": "235c16561a0f",
-   "bytes": 5488
+   "hash": "54eed33e7f48",
+   "bytes": 5476
   },
   "dialogue/zh-Hant/battle/speaker-143.txt": {
    "hash": "f7e11268e7d4",
@@ -5213,16 +5213,16 @@
    "bytes": 4030
   },
   "dialogue/zh-Hant/battle/speaker-145.txt": {
-   "hash": "46ed6c01a2da",
-   "bytes": 10044
+   "hash": "524576126e64",
+   "bytes": 10041
   },
   "dialogue/zh-Hant/battle/speaker-146.txt": {
    "hash": "e6ae5f663238",
    "bytes": 4126
   },
   "dialogue/zh-Hant/battle/speaker-147.txt": {
-   "hash": "fc96a9921049",
-   "bytes": 3896
+   "hash": "2fa01c68ffa2",
+   "bytes": 3890
   },
   "dialogue/zh-Hant/battle/speaker-148.txt": {
    "hash": "6fe435e9c20d",
@@ -5249,12 +5249,12 @@
    "bytes": 3754
   },
   "dialogue/zh-Hant/battle/speaker-154.txt": {
-   "hash": "9ceccf19f9ed",
-   "bytes": 5780
+   "hash": "777d08e82bac",
+   "bytes": 5777
   },
   "dialogue/zh-Hant/battle/speaker-156.txt": {
-   "hash": "e68537e7505c",
-   "bytes": 8428
+   "hash": "095a9ae60c50",
+   "bytes": 8413
   },
   "dialogue/zh-Hant/battle/speaker-157.txt": {
    "hash": "1eeae5f600ea",
@@ -5293,8 +5293,8 @@
    "bytes": 8865
   },
   "dialogue/zh-Hant/battle/speaker-171.txt": {
-   "hash": "eae8d603c873",
-   "bytes": 26058
+   "hash": "b8ede008f931",
+   "bytes": 26055
   },
   "dialogue/zh-Hant/battle/speaker-173.txt": {
    "hash": "fb6035b40a33",
@@ -5305,15 +5305,15 @@
    "bytes": 6207
   },
   "dialogue/zh-Hant/battle/speaker-175.txt": {
-   "hash": "dbc59b22b03d",
-   "bytes": 5517
+   "hash": "415090e8ec41",
+   "bytes": 5505
   },
   "dialogue/zh-Hant/battle/speaker-176.txt": {
    "hash": "43537f904212",
    "bytes": 6856
   },
   "dialogue/zh-Hant/battle/speaker-177.txt": {
-   "hash": "2259d4c66935",
+   "hash": "2f638bfc590a",
    "bytes": 5862
   },
   "dialogue/zh-Hant/battle/speaker-178.txt": {
@@ -5321,8 +5321,8 @@
    "bytes": 1241
   },
   "dialogue/zh-Hant/battle/speaker-179.txt": {
-   "hash": "85c6a0d493df",
-   "bytes": 13304
+   "hash": "09d1d15feb1e",
+   "bytes": 13298
   },
   "dialogue/zh-Hant/battle/speaker-180.txt": {
    "hash": "4a4933feffa7",
@@ -5341,15 +5341,15 @@
    "bytes": 1250
   },
   "dialogue/zh-Hant/battle/speaker-184.txt": {
-   "hash": "dfb8a90bd7c7",
-   "bytes": 16064
+   "hash": "ddbe8a68800a",
+   "bytes": 16055
   },
   "dialogue/zh-Hant/battle/speaker-185.txt": {
-   "hash": "9946c121a250",
+   "hash": "f4742b2f48e2",
    "bytes": 15115
   },
   "dialogue/zh-Hant/battle/speaker-186.txt": {
-   "hash": "9dbdf00e4b53",
+   "hash": "7ebd873721d3",
    "bytes": 15087
   },
   "dialogue/zh-Hant/battle/speaker-187.txt": {
@@ -5357,15 +5357,15 @@
    "bytes": 5998
   },
   "dialogue/zh-Hant/battle/speaker-188.txt": {
-   "hash": "593d71022169",
-   "bytes": 7084
+   "hash": "5239db2584ba",
+   "bytes": 7081
   },
   "dialogue/zh-Hant/battle/speaker-189.txt": {
    "hash": "6b1304f67f09",
    "bytes": 4762
   },
   "dialogue/zh-Hant/battle/speaker-190.txt": {
-   "hash": "22f43c0a3acb",
+   "hash": "829c7c103240",
    "bytes": 5973
   },
   "dialogue/zh-Hant/battle/speaker-191.txt": {
@@ -5373,7 +5373,7 @@
    "bytes": 5688
   },
   "dialogue/zh-Hant/battle/speaker-192.txt": {
-   "hash": "b6a3d23d571b",
+   "hash": "2c182d6f0193",
    "bytes": 6005
   },
   "dialogue/zh-Hant/battle/speaker-193.txt": {
@@ -5397,28 +5397,28 @@
    "bytes": 27775
   },
   "dialogue/zh-Hant/battle/speaker-199.txt": {
-   "hash": "4dbaf303b527",
-   "bytes": 11601
+   "hash": "03ae22f5cc32",
+   "bytes": 11598
   },
   "dialogue/zh-Hant/battle/speaker-201.txt": {
    "hash": "0da8bcc87f8c",
    "bytes": 13342
   },
   "dialogue/zh-Hant/battle/speaker-204.txt": {
-   "hash": "4e3f4c4ab023",
-   "bytes": 6481
+   "hash": "83740123b8d2",
+   "bytes": 6478
   },
   "dialogue/zh-Hant/battle/speaker-205.txt": {
-   "hash": "7cfcfede492a",
-   "bytes": 6153
+   "hash": "3bdb4a007fa3",
+   "bytes": 6150
   },
   "dialogue/zh-Hant/battle/speaker-206.txt": {
-   "hash": "b1b6cc14dd86",
+   "hash": "0ac90e7a154b",
    "bytes": 4651
   },
   "dialogue/zh-Hant/battle/speaker-207.txt": {
-   "hash": "216d578f77ad",
-   "bytes": 4313
+   "hash": "d6b014071a97",
+   "bytes": 4310
   },
   "dialogue/zh-Hant/battle/speaker-208.txt": {
    "hash": "9dde92659869",
@@ -5433,27 +5433,27 @@
    "bytes": 3112
   },
   "dialogue/zh-Hant/battle/speaker-213.txt": {
-   "hash": "0f87d2f6f46e",
-   "bytes": 4302
+   "hash": "1e420a2e8191",
+   "bytes": 4299
   },
   "dialogue/zh-Hant/battle/speaker-214.txt": {
-   "hash": "c30129f99aed",
-   "bytes": 7106
+   "hash": "6406bdb34fbd",
+   "bytes": 7094
   },
   "dialogue/zh-Hant/battle/speaker-215.txt": {
-   "hash": "721484f95381",
-   "bytes": 4090
+   "hash": "9b4c88ee5c3a",
+   "bytes": 4081
   },
   "dialogue/zh-Hant/battle/speaker-216.txt": {
-   "hash": "939e7783538c",
-   "bytes": 4366
+   "hash": "90500934f870",
+   "bytes": 4363
   },
   "dialogue/zh-Hant/battle/speaker-217.txt": {
    "hash": "b3b4085002e2",
    "bytes": 5681
   },
   "dialogue/zh-Hant/battle/speaker-218.txt": {
-   "hash": "1bf04e53e1ef",
+   "hash": "8ea9e63549b2",
    "bytes": 6294
   },
   "dialogue/zh-Hant/battle/speaker-220.txt": {
@@ -5461,8 +5461,8 @@
    "bytes": 4206
   },
   "dialogue/zh-Hant/battle/speaker-221.txt": {
-   "hash": "5c7fcfd5e197",
-   "bytes": 7163
+   "hash": "504ffce1d44d",
+   "bytes": 7148
   },
   "dialogue/zh-Hant/battle/speaker-222.txt": {
    "hash": "6a9ce5575170",
@@ -5505,8 +5505,8 @@
    "bytes": 6439
   },
   "dialogue/zh-Hant/battle/speaker-234.txt": {
-   "hash": "7127a6894baf",
-   "bytes": 7751
+   "hash": "68107fe3b8ae",
+   "bytes": 7748
   },
   "dialogue/zh-Hant/battle/speaker-235.txt": {
    "hash": "0dbec3647a23",
@@ -5537,8 +5537,8 @@
    "bytes": 1241
   },
   "dialogue/zh-Hant/battle/speaker-246.txt": {
-   "hash": "8b6e98c961b0",
-   "bytes": 8403
+   "hash": "1e630ab2934b",
+   "bytes": 8400
   },
   "dialogue/zh-Hant/battle/speaker-248.txt": {
    "hash": "968935bb6ba7",
@@ -5553,32 +5553,32 @@
    "bytes": 3114
   },
   "dialogue/zh-Hant/battle/speaker-251.txt": {
-   "hash": "490581d7dc26",
-   "bytes": 3490
+   "hash": "9aedba145d22",
+   "bytes": 3487
   },
   "dialogue/zh-Hant/battle/speaker-252.txt": {
-   "hash": "1f8a22caae9c",
-   "bytes": 5015
+   "hash": "07212b40f001",
+   "bytes": 5012
   },
   "dialogue/zh-Hant/battle/speaker-253.txt": {
    "hash": "97d331297263",
    "bytes": 4437
   },
   "dialogue/zh-Hant/battle/speaker-258.txt": {
-   "hash": "d4c5c983bfe3",
-   "bytes": 5113
+   "hash": "ea4bd8568e8e",
+   "bytes": 5110
   },
   "dialogue/zh-Hant/battle/speaker-259.txt": {
-   "hash": "4458731743cc",
-   "bytes": 9070
+   "hash": "977e9d45e10c",
+   "bytes": 9061
   },
   "dialogue/zh-Hant/battle/speaker-260.txt": {
-   "hash": "143eee743dde",
-   "bytes": 9190
+   "hash": "a93f6a321437",
+   "bytes": 9181
   },
   "dialogue/zh-Hant/battle/speaker-261.txt": {
-   "hash": "ac7106bf2bb0",
-   "bytes": 8625
+   "hash": "c66f2f565132",
+   "bytes": 8622
   },
   "dialogue/zh-Hant/battle/speaker-262.txt": {
    "hash": "b30731603f91",
@@ -5609,8 +5609,8 @@
    "bytes": 8948
   },
   "dialogue/zh-Hant/battle/speaker-270.txt": {
-   "hash": "142bdb799281",
-   "bytes": 5849
+   "hash": "5ce18406d22c",
+   "bytes": 5846
   },
   "dialogue/zh-Hant/battle/speaker-271.txt": {
    "hash": "5530f74039ed",
@@ -5621,8 +5621,8 @@
    "bytes": 4089
   },
   "dialogue/zh-Hant/battle/speaker-279.txt": {
-   "hash": "39d3d7e5e8ac",
-   "bytes": 5646
+   "hash": "e05b8303a60b",
+   "bytes": 5643
   },
   "dialogue/zh-Hant/battle/speaker-284.txt": {
    "hash": "e4ad0e62b805",
@@ -5633,8 +5633,8 @@
    "bytes": 5376
   },
   "dialogue/zh-Hant/battle/speaker-286.txt": {
-   "hash": "a7d9dfcd1ed6",
-   "bytes": 13149
+   "hash": "f43c4250a4ae",
+   "bytes": 13146
   },
   "dialogue/zh-Hant/battle/speaker-287.txt": {
    "hash": "04a707ae62c1",
@@ -5645,7 +5645,7 @@
    "bytes": 6511
   },
   "dialogue/zh-Hant/battle/speaker-289.txt": {
-   "hash": "e26e2ab06061",
+   "hash": "56ea1872a4e9",
    "bytes": 6961
   },
   "dialogue/zh-Hant/battle/speaker-290.txt": {
@@ -5689,8 +5689,8 @@
    "bytes": 3180
   },
   "dialogue/zh-Hant/battle/speaker-300.txt": {
-   "hash": "ac549b065152",
-   "bytes": 7001
+   "hash": "ad1984f45bd6",
+   "bytes": 6998
   },
   "dialogue/zh-Hant/battle/speaker-301.txt": {
    "hash": "afbc757e4cb8",
@@ -5701,23 +5701,23 @@
    "bytes": 6283
   },
   "dialogue/zh-Hant/battle/speaker-303.txt": {
-   "hash": "6300f29044ff",
-   "bytes": 5131
+   "hash": "d35309bc508a",
+   "bytes": 5125
   },
   "dialogue/zh-Hant/battle/speaker-304.txt": {
    "hash": "e73a2d145d61",
    "bytes": 6784
   },
   "dialogue/zh-Hant/battle/speaker-305.txt": {
-   "hash": "ac4b9926ee0b",
-   "bytes": 6282
+   "hash": "dc409bf48b3d",
+   "bytes": 6276
   },
   "dialogue/zh-Hant/battle/speaker-306.txt": {
-   "hash": "9b9112c45567",
-   "bytes": 7274
+   "hash": "9c467dcf0d4c",
+   "bytes": 7271
   },
   "dialogue/zh-Hant/battle/speaker-307.txt": {
-   "hash": "9d322b3fb7c8",
+   "hash": "8eec43601627",
    "bytes": 8020
   },
   "dialogue/zh-Hant/battle/speaker-308.txt": {
@@ -5725,16 +5725,16 @@
    "bytes": 6829
   },
   "dialogue/zh-Hant/battle/speaker-309.txt": {
-   "hash": "abda5bc9107b",
-   "bytes": 7154
+   "hash": "9a9a4649b064",
+   "bytes": 7151
   },
   "dialogue/zh-Hant/battle/speaker-310.txt": {
    "hash": "ce44bc1319be",
    "bytes": 6942
   },
   "dialogue/zh-Hant/battle/speaker-311.txt": {
-   "hash": "9377ffa16b25",
-   "bytes": 7796
+   "hash": "c36b071d8971",
+   "bytes": 7793
   },
   "dialogue/zh-Hant/battle/speaker-312.txt": {
    "hash": "6279bb0d3bb7",
@@ -5809,24 +5809,24 @@
    "bytes": 12894
   },
   "dialogue/zh-Hant/story/scene-0009.txt": {
-   "hash": "89fd20012df9",
-   "bytes": 29585
+   "hash": "56ffdb1da47a",
+   "bytes": 29570
   },
   "dialogue/zh-Hant/story/scene-0010.txt": {
    "hash": "8798a2a78659",
    "bytes": 43989
   },
   "dialogue/zh-Hant/story/scene-0011.txt": {
-   "hash": "6493b91b0307",
-   "bytes": 40486
+   "hash": "dbb528531dcc",
+   "bytes": 40474
   },
   "dialogue/zh-Hant/story/scene-0012.txt": {
    "hash": "be185d97fd47",
    "bytes": 32181
   },
   "dialogue/zh-Hant/story/scene-0013.txt": {
-   "hash": "86cdefa0026c",
-   "bytes": 40653
+   "hash": "9c3ec16dd054",
+   "bytes": 40641
   },
   "dialogue/zh-Hant/story/scene-0014.txt": {
    "hash": "f92cfe4b718e",
@@ -5837,32 +5837,32 @@
    "bytes": 64470
   },
   "dialogue/zh-Hant/story/scene-0016.txt": {
-   "hash": "2ed57a18e547",
-   "bytes": 51027
+   "hash": "183170e0c378",
+   "bytes": 51015
   },
   "dialogue/zh-Hant/story/scene-0017.txt": {
-   "hash": "c5449dbb574a",
-   "bytes": 42705
+   "hash": "9d9d4d49b6fc",
+   "bytes": 42702
   },
   "dialogue/zh-Hant/story/scene-0018.txt": {
    "hash": "734491a4329b",
    "bytes": 47457
   },
   "dialogue/zh-Hant/story/scene-0019.txt": {
-   "hash": "fce6e3164759",
-   "bytes": 38077
+   "hash": "f83652e28bce",
+   "bytes": 38068
   },
   "dialogue/zh-Hant/story/scene-0020.txt": {
-   "hash": "ef7e16cf76ab",
-   "bytes": 64687
+   "hash": "64d7d75cb3d2",
+   "bytes": 64660
   },
   "dialogue/zh-Hant/story/scene-0021.txt": {
-   "hash": "7c606829f89e",
-   "bytes": 32478
+   "hash": "e3342c3e8de4",
+   "bytes": 32469
   },
   "dialogue/zh-Hant/story/scene-0022.txt": {
-   "hash": "f70e03e966e6",
-   "bytes": 29902
+   "hash": "f72ee47b9d04",
+   "bytes": 29899
   },
   "dialogue/zh-Hant/story/scene-0023.txt": {
    "hash": "e7b2cfa2adab",
@@ -5873,20 +5873,20 @@
    "bytes": 48248
   },
   "dialogue/zh-Hant/story/scene-0025.txt": {
-   "hash": "46a73e00a151",
-   "bytes": 39904
+   "hash": "51b623a33f0f",
+   "bytes": 39898
   },
   "dialogue/zh-Hant/story/scene-0026.txt": {
-   "hash": "618d8c34d2da",
-   "bytes": 53575
+   "hash": "d4386629643e",
+   "bytes": 53557
   },
   "dialogue/zh-Hant/story/scene-0027.txt": {
-   "hash": "e2977d66ae97",
-   "bytes": 54861
+   "hash": "e73cb1c1da8f",
+   "bytes": 54849
   },
   "dialogue/zh-Hant/story/scene-0028.txt": {
-   "hash": "7c54a3ac960f",
-   "bytes": 49900
+   "hash": "51c7e82cfc23",
+   "bytes": 49891
   },
   "dialogue/zh-Hant/story/scene-0029.txt": {
    "hash": "6c5725666686",
@@ -5897,60 +5897,60 @@
    "bytes": 136343
   },
   "dialogue/zh-Hant/story/scene-0031.txt": {
-   "hash": "d156f7f429ec",
-   "bytes": 64349
+   "hash": "fbe566af7c15",
+   "bytes": 64319
   },
   "dialogue/zh-Hant/story/scene-0032.txt": {
-   "hash": "937ce4f920f6",
-   "bytes": 63328
+   "hash": "ec5ceac8ad20",
+   "bytes": 63310
   },
   "dialogue/zh-Hant/story/scene-0033.txt": {
-   "hash": "9980e0239852",
-   "bytes": 68675
+   "hash": "144da3370ac7",
+   "bytes": 68666
   },
   "dialogue/zh-Hant/story/scene-0034.txt": {
    "hash": "c4109b48d17a",
    "bytes": 37537
   },
   "dialogue/zh-Hant/story/scene-0035.txt": {
-   "hash": "4d098f9de41e",
-   "bytes": 43813
+   "hash": "3bf00097840b",
+   "bytes": 43795
   },
   "dialogue/zh-Hant/story/scene-0036.txt": {
    "hash": "c6ab8b3a326c",
    "bytes": 54922
   },
   "dialogue/zh-Hant/story/scene-0037.txt": {
-   "hash": "646cd18e7483",
-   "bytes": 54705
+   "hash": "bbeef2eb1ecf",
+   "bytes": 54702
   },
   "dialogue/zh-Hant/story/scene-0038.txt": {
-   "hash": "0f137d2cced4",
-   "bytes": 53547
+   "hash": "6e941bdc938a",
+   "bytes": 53517
   },
   "dialogue/zh-Hant/story/scene-0039.txt": {
-   "hash": "473aeae59827",
-   "bytes": 60666
+   "hash": "f0d301f72389",
+   "bytes": 60657
   },
   "dialogue/zh-Hant/story/scene-0040.txt": {
    "hash": "74b6a353393d",
    "bytes": 75163
   },
   "dialogue/zh-Hant/story/scene-0041.txt": {
-   "hash": "c7c7350f278b",
-   "bytes": 62452
+   "hash": "efd5c860dc16",
+   "bytes": 62440
   },
   "dialogue/zh-Hant/story/scene-0042.txt": {
-   "hash": "9ac0ee3f89f1",
-   "bytes": 47723
+   "hash": "cb7a8a3768ef",
+   "bytes": 47708
   },
   "dialogue/zh-Hant/story/scene-0043.txt": {
-   "hash": "b21b259e0418",
-   "bytes": 104618
+   "hash": "6a10a51e1b19",
+   "bytes": 104582
   },
   "dialogue/zh-Hant/story/scene-0044.txt": {
-   "hash": "3e178d0cc4a4",
-   "bytes": 79871
+   "hash": "55c952b71783",
+   "bytes": 79859
   },
   "dialogue/zh-Hant/story/scene-0045.txt": {
    "hash": "80c737cd2a33",
@@ -5961,12 +5961,12 @@
    "bytes": 86766
   },
   "dialogue/zh-Hant/story/scene-0047.txt": {
-   "hash": "57d2c0625d82",
-   "bytes": 98251
+   "hash": "c84d04c94120",
+   "bytes": 98242
   },
   "dialogue/zh-Hant/story/scene-0048.txt": {
-   "hash": "21502a01c707",
-   "bytes": 82070
+   "hash": "c757be5be6ab",
+   "bytes": 82052
   },
   "dialogue/zh-Hant/story/scene-0049.txt": {
    "hash": "cda72f6b43ce",
@@ -5985,44 +5985,44 @@
    "bytes": 43527
   },
   "dialogue/zh-Hant/story/scene-0053.txt": {
-   "hash": "17a660b381b1",
-   "bytes": 64751
+   "hash": "13a3f364addf",
+   "bytes": 64739
   },
   "dialogue/zh-Hant/story/scene-0054.txt": {
-   "hash": "ffb3a10032c8",
-   "bytes": 123297
+   "hash": "b35bfefb9117",
+   "bytes": 123246
   },
   "dialogue/zh-Hant/story/scene-0055.txt": {
-   "hash": "44fb24dea67e",
-   "bytes": 91751
+   "hash": "f1b8590d0c7d",
+   "bytes": 91715
   },
   "dialogue/zh-Hant/story/scene-0056.txt": {
-   "hash": "31906160d727",
-   "bytes": 123194
+   "hash": "d7792a0e269a",
+   "bytes": 123176
   },
   "dialogue/zh-Hant/story/scene-0057.txt": {
-   "hash": "0a0143f6bb11",
-   "bytes": 91812
+   "hash": "f6123f21ef76",
+   "bytes": 91788
   },
   "dialogue/zh-Hant/story/scene-0059.txt": {
-   "hash": "e88cf6fe8cef",
-   "bytes": 84984
+   "hash": "bd31073d888e",
+   "bytes": 84975
   },
   "dialogue/zh-Hant/story/scene-0060.txt": {
    "hash": "59284facc3f8",
    "bytes": 46276
   },
   "dialogue/zh-Hant/story/scene-0061.txt": {
-   "hash": "bec0d3b5cfb8",
-   "bytes": 88425
+   "hash": "4bd58c3e509f",
+   "bytes": 88389
   },
   "dialogue/zh-Hant/story/scene-0062.txt": {
    "hash": "6b09dd3bd7ce",
    "bytes": 57852
   },
   "dialogue/zh-Hant/story/scene-0063.txt": {
-   "hash": "4cd0c8dc2aad",
-   "bytes": 63865
+   "hash": "83f935bca196",
+   "bytes": 63862
   },
   "dialogue/zh-Hant/story/scene-0064.txt": {
    "hash": "cbb757afc36c",
@@ -6041,7 +6041,7 @@
    "bytes": 38908
   },
   "dialogue/zh-Hant/story/scene-0068.txt": {
-   "hash": "1641dc60690f",
+   "hash": "0a9160a751cf",
    "bytes": 28098
   },
   "dialogue/zh-Hant/story/scene-0069.txt": {
@@ -6049,48 +6049,48 @@
    "bytes": 84598
   },
   "dialogue/zh-Hant/story/scene-0070.txt": {
-   "hash": "1885586345a7",
+   "hash": "7a521a17f16b",
    "bytes": 62840
   },
   "dialogue/zh-Hant/story/scene-0071.txt": {
-   "hash": "93196b951abf",
-   "bytes": 54860
+   "hash": "c14c975344c1",
+   "bytes": 54845
   },
   "dialogue/zh-Hant/story/scene-0072.txt": {
-   "hash": "c25d4a2747b0",
-   "bytes": 39376
+   "hash": "5eee90ed9fbb",
+   "bytes": 39358
   },
   "dialogue/zh-Hant/story/scene-0073.txt": {
    "hash": "71fcce861b37",
    "bytes": 29221
   },
   "dialogue/zh-Hant/story/scene-0074.txt": {
-   "hash": "89b394fbc0c2",
-   "bytes": 70275
+   "hash": "20850ad3e7bc",
+   "bytes": 70260
   },
   "dialogue/zh-Hant/story/scene-0075.txt": {
    "hash": "540f83c67b7b",
    "bytes": 50836
   },
   "dialogue/zh-Hant/story/scene-0076.txt": {
-   "hash": "949d03d28c67",
-   "bytes": 72980
+   "hash": "c1f2eabc3142",
+   "bytes": 72959
   },
   "dialogue/zh-Hant/story/scene-0077.txt": {
-   "hash": "5659e06a546f",
-   "bytes": 109597
+   "hash": "a6b4d6ecfdb0",
+   "bytes": 109579
   },
   "dialogue/zh-Hant/story/scene-0078.txt": {
-   "hash": "4fbf4448caad",
-   "bytes": 81932
+   "hash": "340ba76b00bc",
+   "bytes": 81908
   },
   "dialogue/zh-Hant/story/scene-0079.txt": {
-   "hash": "c7cf11dc3ff4",
-   "bytes": 28433
+   "hash": "ec4c679e9d99",
+   "bytes": 28427
   },
   "dialogue/zh-Hant/story/scene-0080.txt": {
-   "hash": "fcd564879c16",
-   "bytes": 31923
+   "hash": "de1c51585945",
+   "bytes": 31914
   },
   "dialogue/zh-Hant/story/scene-0081.txt": {
    "hash": "43957d7c841e",
@@ -6109,12 +6109,12 @@
    "bytes": 106484
   },
   "dialogue/zh-Hant/story/scene-0085.txt": {
-   "hash": "c570c6184844",
-   "bytes": 53691
+   "hash": "301f49d2932d",
+   "bytes": 53673
   },
   "dialogue/zh-Hant/story/scene-0086.txt": {
-   "hash": "758167ea1664",
-   "bytes": 39056
+   "hash": "f973f8704909",
+   "bytes": 39044
   },
   "dialogue/zh-Hant/story/scene-0087.txt": {
    "hash": "609dd32ab4c5",
@@ -6129,12 +6129,12 @@
    "bytes": 96506
   },
   "dialogue/zh-Hant/story/scene-0090.txt": {
-   "hash": "493f00cc396c",
-   "bytes": 48108
+   "hash": "53adc51d4c11",
+   "bytes": 48093
   },
   "dialogue/zh-Hant/story/scene-0091.txt": {
-   "hash": "1f376adecfdf",
-   "bytes": 128648
+   "hash": "97077776852c",
+   "bytes": 128639
   },
   "dialogue/zh-Hant/story/scene-0092.txt": {
    "hash": "8245b6be5735",
@@ -6153,12 +6153,12 @@
    "bytes": 35403
   },
   "dialogue/zh-Hant/story/scene-0096.txt": {
-   "hash": "415684d20d14",
-   "bytes": 35238
+   "hash": "fa79693a8b28",
+   "bytes": 35226
   },
   "dialogue/zh-Hant/story/scene-0097.txt": {
-   "hash": "9c626f057f04",
-   "bytes": 70080
+   "hash": "e0a50088494f",
+   "bytes": 70044
   },
   "dialogue/zh-Hant/story/scene-0098.txt": {
    "hash": "614d2b24a85c",
@@ -6177,20 +6177,20 @@
    "bytes": 81057
   },
   "dialogue/zh-Hant/story/scene-0102.txt": {
-   "hash": "fa0c7f166f76",
-   "bytes": 47916
+   "hash": "b7e53393427c",
+   "bytes": 47901
   },
   "dialogue/zh-Hant/story/scene-0103.txt": {
-   "hash": "0adf5a653305",
-   "bytes": 110344
+   "hash": "d95f27e53a7c",
+   "bytes": 110332
   },
   "dialogue/zh-Hant/story/scene-0104.txt": {
    "hash": "86f5438c3419",
    "bytes": 71367
   },
   "dialogue/zh-Hant/story/scene-0105.txt": {
-   "hash": "aa52381597cf",
-   "bytes": 109415
+   "hash": "38edd47cacf5",
+   "bytes": 109397
   },
   "dialogue/zh-Hant/story/scene-0106.txt": {
    "hash": "e36aa0ef2595",
@@ -6201,8 +6201,8 @@
    "bytes": 88253
   },
   "dialogue/zh-Hant/story/scene-0108.txt": {
-   "hash": "697964ff6115",
-   "bytes": 91000
+   "hash": "0a4a36d1e794",
+   "bytes": 90985
   },
   "dialogue/zh-Hant/story/scene-0109.txt": {
    "hash": "cd78d64f9821",
@@ -6241,12 +6241,12 @@
    "bytes": 24361
   },
   "dialogue/zh-Hant/story/scene-0128.txt": {
-   "hash": "e729795d336d",
-   "bytes": 38108
+   "hash": "ac8e44c0a67c",
+   "bytes": 38087
   },
   "dialogue/zh-Hant/story/scene-0129.txt": {
-   "hash": "30bf80e5af4d",
-   "bytes": 60507
+   "hash": "f3c3f72fe727",
+   "bytes": 60423
   },
   "dialogue/zh-Hant/story/scene-0130.txt": {
    "hash": "8707d4b08a02",
@@ -6269,56 +6269,56 @@
    "bytes": 15823
   },
   "dialogue/zh-Hant/story/scene-0135.txt": {
-   "hash": "7d6123c25e2a",
-   "bytes": 25350
+   "hash": "3fa35a805cb3",
+   "bytes": 25341
   },
   "dialogue/zh-Hant/story/scene-0136.txt": {
    "hash": "5e79c6048224",
    "bytes": 36153
   },
   "dialogue/zh-Hant/story/scene-0137.txt": {
-   "hash": "2d91357de4e5",
-   "bytes": 109559
+   "hash": "5b4cf8aad431",
+   "bytes": 109481
   },
   "dialogue/zh-Hant/story/scene-0138.txt": {
-   "hash": "591ff581be93",
-   "bytes": 74166
+   "hash": "8a5007559cef",
+   "bytes": 74127
   },
   "dialogue/zh-Hant/story/scene-0139.txt": {
    "hash": "ca12775306fe",
    "bytes": 95996
   },
   "dialogue/zh-Hant/story/scene-0140.txt": {
-   "hash": "d2bd295719f7",
-   "bytes": 85784
+   "hash": "5d99e663b925",
+   "bytes": 85745
   },
   "dialogue/zh-Hant/story/scene-0141.txt": {
-   "hash": "c7653413b6df",
-   "bytes": 34148
+   "hash": "10f5472878f5",
+   "bytes": 34136
   },
   "library-names.json": {
-   "hash": "e66129d8825e",
-   "bytes": 1811
+   "hash": "ce8900da76cb",
+   "bytes": 5521
   },
   "locales/en.json": {
-   "hash": "c0e7e81008bc",
-   "bytes": 260738
+   "hash": "50c8eac475ed",
+   "bytes": 261115
   },
   "locales/ja.json": {
-   "hash": "e4ebc5274642",
-   "bytes": 71103
+   "hash": "8fab4abcb605",
+   "bytes": 71663
   },
   "locales/ko.json": {
-   "hash": "61a59c908215",
-   "bytes": 280649
+   "hash": "1fe15c66ff2b",
+   "bytes": 281222
   },
   "locales/zh-Hans.json": {
-   "hash": "b4914dde98bc",
-   "bytes": 263382
+   "hash": "0ceb73633eb5",
+   "bytes": 263761
   },
   "locales/zh-Hant.json": {
-   "hash": "e8d748dd30b3",
-   "bytes": 263907
+   "hash": "4a4ce97a2d82",
+   "bytes": 264286
   }
  }
 }
