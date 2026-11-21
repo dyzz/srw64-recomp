@@ -28,4 +28,8 @@ bool title_screen_step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*or
 void title_screen_frame(uint8_t* ram);
 // The title overlay was replaced (the load itself, カラオケ, コンティニュー): close the page.
 void title_overlay_changed();
+// After 80085CD4(medium a0, table a1) read the two slot headers: a cartridge slot it left
+// unused only because its roster has no protagonist (pilots 25–28: a mini stage's save)
+// is a save all the same (docs/native/native-save-screens.md).
+void headers_read(uint8_t* ram,recomp_context* ctx,unsigned medium,uint32_t table);
 }

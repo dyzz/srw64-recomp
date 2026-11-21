@@ -1,4 +1,6 @@
 #include "battle_page.hpp"
+#include "table_window.hpp"
+#include "mod_portraits.hpp"
 #include "unit_pose_art.hpp"
 #include "dialogue_data.hpp"
 #include "run_files.hpp"
@@ -118,10 +120,10 @@ json spirit_options(uint8_t* copy,recomp_context* ctx,const rule_probe::Combatan
             const bool battle_usable=id!=0 && id!=29 && read(copy,0x80217D20+id,1)==15;
             const bool usable=battle_usable && invoke(copy,ctx,0x801F18A0,c.handle,id)!=0;
             result.push_back({{"crew",crew},{"slot",slot},{"id",id},{"name",dialogue::ui_text(copy,969+id)},
-                {"pilot_name",dialogue::ui_text(copy,4382+read(copy,pilot+2,2))},{"sp",sp},{"max_sp",read(copy,pilot+0x18,2)},
+                {"pilot_name",dialogue::ui_text(copy,table_window::pilot_name(read(copy,pilot+2,2)))},{"sp",sp},{"max_sp",read(copy,pilot+0x18,2)},
                 // The spirit list shows one pilot at a time: the face and level for its card, and
                 // the command's own description (text 5150 + id, the map menu's).
-                {"level",read(copy,pilot+5,1)},{"portrait",art["portraits"].value(std::to_string(read(copy,pilot+2,2)),json::object())},
+                {"level",read(copy,pilot+5,1)},{"portrait",mod_portraits::art(art["portraits"],read(copy,pilot+2,2))},
                 {"description",dialogue::ui_text(copy,5150+id)},
                 {"cost",cost},{"enabled",battle_usable && usable && sp>=cost},
                 {"reason",!battle_usable?"map":sp<cost?"sp":!usable?"unavailable":"ready"}});
@@ -144,7 +146,7 @@ void record(const char* kind) {
 json combatant(uint8_t* copy,recomp_context* ctx,const rule_probe::Combatant& a,const rule_probe::Combatant& d,unsigned slot) {
     const auto estimate=combat_preview::estimate(copy,ctx,a,d);
     const auto flags=read(copy,a.pilot+0x1C,4);
-    return {{"unit_name",dialogue::ui_text(copy,527+read(copy,a.unit+2,2))},{"pilot_name",dialogue::ui_text(copy,4382+read(copy,a.pilot+2,2))},{"weapon_name",a.weapon?dialogue::ui_text(copy,1370+read(copy,a.weapon+2,2)):std::string{}},{"side",a.side},{"handle",a.handle},{"unit",read(copy,a.unit+2,2)},{"pilot",read(copy,a.pilot+2,2)},
+    return {{"unit_name",dialogue::ui_text(copy,table_window::unit_name(read(copy,a.unit+2,2)))},{"pilot_name",dialogue::ui_text(copy,table_window::pilot_name(read(copy,a.pilot+2,2)))},{"weapon_name",a.weapon?dialogue::ui_text(copy,table_window::weapon_name(read(copy,a.weapon+2,2))):std::string{}},{"side",a.side},{"handle",a.handle},{"unit",read(copy,a.unit+2,2)},{"pilot",read(copy,a.pilot+2,2)},
         {"weapon",a.weapon?int(read(copy,a.weapon+2,2)):-1},{"level",read(copy,a.pilot+5,1)},
         {"sp",read(copy,a.pilot+0x16,2)},{"max_sp",read(copy,a.pilot+0x18,2)},{"hp",read(copy,a.unit+4,2)},{"max_hp",read(copy,a.unit+6,2)},{"en",read(copy,a.unit+8,2)},{"max_en",read(copy,a.unit+10,2)},
         {"unit_art",unit_pose_art::of(art,read(copy,a.unit+2,2))},
@@ -152,7 +154,7 @@ json combatant(uint8_t* copy,recomp_context* ctx,const rule_probe::Combatant& a,
         // What the original screen tells (801E7A28): an enemy's HP/EN and level only once known.
         {"known",[&]{const uint32_t lead=read(copy,a.unit+0x38,4);return a.side==0 || (valid(lead,0x4C) && (read(copy,lead,1)&0x40)!=0);}()},
         {"level_known",a.side==0 || (read(copy,a.pilot,1)&0x40)!=0},
-        {"portrait",art["portraits"].value(std::to_string(read(copy,a.pilot+2,2)),json::object())},
+        {"portrait",mod_portraits::art(art["portraits"],read(copy,a.pilot+2,2))},
         {"active_spirits",active_spirits(copy,flags)},{"pilot_effects",combat_preview::pilot_effects(copy,a)},
         {"morale",read(copy,a.pilot+0x20,2)},{"spirits",flags},{"abilities",read(copy,a.unit+0x28,4)},
         {"hit",std::clamp(int(int16_t(read(copy,rules::participants+slot*rules::participant_size+0x12,2))),0,100)},
@@ -239,9 +241,9 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
         for(const auto& pair:{std::pair{"attacker",a},std::pair{"defender",d}}) {
             auto& card=current[pair.first];const auto& c=pair.second;
             card["active_spirits"]=active_spirits(ram,card.at("spirits").get<uint32_t>());
-            card["unit_name"]=dialogue::ui_text(ram,527+read(ram,c.unit+2,2));
-            card["pilot_name"]=dialogue::ui_text(ram,4382+read(ram,c.pilot+2,2));
-            card["weapon_name"]=c.weapon?dialogue::ui_text(ram,1370+read(ram,c.weapon+2,2)):std::string{};
+            card["unit_name"]=dialogue::ui_text(ram,table_window::unit_name(read(ram,c.unit+2,2)));
+            card["pilot_name"]=dialogue::ui_text(ram,table_window::pilot_name(read(ram,c.pilot+2,2)));
+            card["weapon_name"]=c.weapon?dialogue::ui_text(ram,table_window::weapon_name(read(ram,c.weapon+2,2))):std::string{};
         }
         scratch.assign(ram,ram+0x800000);auto call=*ctx;
         current["spirit_options"]=spirit_options(scratch.data(),&call,a.side==0?a:d);
@@ -359,7 +361,7 @@ void read_map_art(const uint8_t* ram) {
         const uint32_t entry=roster+side*side_stride+slot*slot_stride,unit=read(ram,entry+0xC,4);
         if(read(ram,entry,1)!=1 || !valid(unit,0x54))continue;
         json row={{"unit_art",unit_pose_art::of(art,read(ram,unit+2,2))}};
-        if(const uint32_t pilot=read(ram,unit+0x38,4);valid(pilot,0x40))row["portrait"]=art["portraits"].value(std::to_string(read(ram,pilot+2,2)),json::object());
+        if(const uint32_t pilot=read(ram,unit+0x38,4);valid(pilot,0x40))row["portrait"]=mod_portraits::art(art["portraits"],read(ram,pilot+2,2));
         list.push_back(std::move(row));
     }
     std::lock_guard lock(map_art_mutex);

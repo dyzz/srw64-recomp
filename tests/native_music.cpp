@@ -55,7 +55,7 @@ int main(int argc,char** argv) {
         touch(root/"high"/"audio"/"music"/"7.OGG");
         touch(root/"high"/"audio"/"music.json",R"({"schema":"srw64.music.v1","tracks":{"7":{"title":"New main","loop":[1,9]}}})");
         touch(root/"off"/"audio"/"music"/"12.ogg");
-        const auto table=music::collect({package(root/"low"),package(root/"high"),package(root/"off",false)},read_json);
+        const auto table=music::collect({package(root/"low"),package(root/"high"),package(root/"off",false)});
         check(table.size()==2,"two songs: names that are not song numbers, other formats and turned-off packages are left out");
         check(table.at(7).package=="high" && table.at(7).title=="New main" && table.at(7).loop==std::pair<uint64_t,uint64_t>{1,9},"the higher package wins, with its settings");
         check(table.at(12).package=="low","a song only one package has");
@@ -68,13 +68,19 @@ int main(int argc,char** argv) {
             "pilot":{"36":7,"999":3,"4":0,"x":2,"70":"7"},"unit":{"50":12,"362":4}}})"));
         check(b.pilot.size()==1 && b.pilot.at(36)==7,"pilots: out of range, song 0, bad keys and strings are left out");
         check(b.unit.size()==2 && b.unit.at(50)==12 && b.unit.at(362)==4,"units, the last one included");
+        // A package's new unit by name (mod_ids.hpp gives its number); a name for a pilot is left out.
+        const auto named=music::battle_settings(json::parse(R"({"schema":"srw64.music.v1","battle":{
+            "pilot":{"@final":3},"unit":{"@final":21,"@gone":5}}})"),[](const std::string& key)->std::optional<unsigned>{
+                return key=="@final"?std::optional<unsigned>(995):std::nullopt;});
+        check(named.pilot.empty() && named.unit.size()==1 && named.unit.at(995)==21,"a new unit's song by its name");
+        check(music::battle_song(named,table_window::base(table_window::unit_songs)+2*995)==21,"its entry in the window's unit table");
         namespace fs=std::filesystem;
         const fs::path root=(argc>1?fs::path(argv[1]):fs::temp_directory_path()/"srw64-music-test")/"battle";
         fs::remove_all(root);
         touch(root/"low"/"audio"/"music.json",R"({"schema":"srw64.music.v1","battle":{"pilot":{"36":7,"4":5}}})");
         touch(root/"high"/"audio"/"music.json",R"({"schema":"srw64.music.v1","battle":{"pilot":{"36":9},"unit":{"97":20}}})");
         touch(root/"off"/"audio"/"music.json",R"({"schema":"srw64.music.v1","battle":{"pilot":{"4":1}}})");
-        const auto songs=music::collect_battle({package(root/"low"),package(root/"high"),package(root/"off",false)},read_json);
+        const auto songs=music::collect_battle({package(root/"low"),package(root/"high"),package(root/"off",false)});
         check(songs.pilot.at(36)==9 && songs.pilot.at(4)==5 && songs.unit.at(97)==20,"the higher package wins per pilot; a turned-off package counts for nothing");
         check(music::battle_song(songs,music::pilot_songs+2*36)==9,"Amuro's entry in the pilot table");
         check(music::battle_song(songs,music::unit_songs+2*97)==20,"the Zaku II's entry in the unit table");
@@ -160,26 +166,33 @@ int main(int argc,char** argv) {
         touch(root/"high"/"audio"/"voice.json",R"({"schema":"srw64.voice.v1","gain":-6,"delay":100})");
         touch(root/"high"/"audio"/"voice"/"story"/"100.ogg");
         battle("off","5799.ogg");
-        // A package's lines in its package file: under the same rules, its folder's on top.
-        battle("packed","9001.ogg");
-        const auto packed=[&](const fs::path& file)->std::vector<std::string> {
-            if(file==root/"packed"/mods::voice_archive)return {"p/audio/voice/battle/9000.ogg","p/audio/voice/battle/9001.ogg","p/audio/voice/battle/9002.ogg","p/audio/voice/battle/05813.ogg","p/audio/voice/story/9003.ogg"};
-            if(file==root/"low"/mods::voice_archive)return {"audio/voice/battle/9002.ogg"};
-            return {};
-        };
+        // A package's lines in its package file (read in place: its Files, here in memory), under
+        // the same rules as a folder's.
         {
-            const auto mixed=music::collect_voices({package(root/"low"),package(root/"packed")},read_json,packed);
-            check(mixed.at(9000).package=="packed" && mixed.at(9000).entry=="p/audio/voice/battle/9000.ogg" && mixed.at(9000).file==root/"packed"/mods::voice_archive,"a package file on top wins over a folder below");
-            check(mixed.at(9001).entry.empty() && mixed.at(9001).file==root/"packed"/"audio"/"voice"/"battle"/"9001.ogg","a package's own folder comes before its file");
+            struct Memory:mods::Files {
+                std::vector<std::string> names;
+                const std::vector<std::string>& all() const override {return names;}
+                std::optional<std::vector<unsigned char>> read(const std::string& path) const override {
+                    if(!exists(path))return std::nullopt;
+                    return std::vector<unsigned char>(path.begin(),path.end());
+                }
+                fs::path where() const override {return "/mods/packed.srw64mod";}
+            };
+            auto memory=std::make_shared<Memory>();
+            memory->names={"audio/voice/battle/05813.ogg","audio/voice/battle/9000.ogg","audio/voice/battle/9001.ogg","audio/voice/story/9003.ogg","mod.json"};
+            auto in_file=package(root/"packed");in_file.files=memory;
+            const auto mixed=music::collect_voices({package(root/"low"),in_file});
+            check(mixed.at(9000).package=="packed" && mixed.at(9000).path=="audio/voice/battle/9000.ogg" && mixed.at(9000).file=="/mods/packed.srw64mod/audio/voice/battle/9000.ogg",
+                  "a package file on top wins over a folder below");
+            check(mixed.at(9001).files==memory && mixed.at(9001).files->read(mixed.at(9001).path),"its line read from its files");
             check(!mixed.contains(5813) && !mixed.contains(9003),"the same names as a folder, battle lines only");
-            const auto flipped=music::collect_voices({package(root/"packed"),package(root/"low")},read_json,packed);
-            check(flipped.at(9000).package=="low" && flipped.at(9000).entry.empty(),"a folder on top wins over a package file below");
-            check(flipped.at(9002).package=="low" && flipped.at(9002).entry=="audio/voice/battle/9002.ogg","two package files: the higher");
-            const auto off=music::collect_voices({package(root/"low"),package(root/"packed",false)},read_json,packed);
-            check(off.at(9000).package=="low" && !off.contains(9001),"a package turned off falls back");
+            const auto flipped=music::collect_voices({in_file,package(root/"low")});
+            check(flipped.at(9000).package=="low" && flipped.at(9000).file==root/"low"/"audio/voice/battle/9000.ogg","a folder on top wins over a package file below");
+            auto off=in_file;off.active=false;
+            const auto fallen=music::collect_voices({package(root/"low"),off});
+            check(fallen.at(9000).package=="low" && !fallen.contains(9001),"a package turned off falls back");
         }
-        const auto no_file=[](const fs::path&){return std::vector<std::string>{};};
-        const auto lines=music::collect_voices({package(root/"low"),package(root/"high"),package(root/"off",false)},read_json,no_file);
+        const auto lines=music::collect_voices({package(root/"low"),package(root/"high"),package(root/"off",false)});
         check(lines.size()==3 && lines.contains(5799) && lines.contains(17346) && lines.contains(9000),"quote records 5799-17346 only, Ogg, no leading zero");
         check(lines.at(9000).package=="high" && lines.at(9000).gain_db==-6 && lines.at(9000).delay_ms==100,"the higher package wins, with its voice.json");
         check(lines.at(5799).package=="low" && lines.at(5799).delay_ms==0,"the turned-off package is left out");

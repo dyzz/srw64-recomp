@@ -3,6 +3,7 @@
 #include "app/runtime.hpp"
 #include "run_files.hpp"
 #include "native_quads.hpp"
+#include "renderer_mode.hpp"
 #include "hd_texture.hpp"
 #include "battle_hud.hpp"
 #include "battle_spread.hpp"
@@ -421,7 +422,8 @@ void work() {
         if (!ok) { asset.state = Asset::failed; ++failures; continue; }
         asset.width = w; asset.height = h;
         asset.gl_pixels = prepared.data; asset.gl_format = prepared.format; asset.gl_levels = prepared.data ? prepared.levels : 1;
-#ifdef SRW64_GL_ONLY
+#ifdef SRW64_GL_RENDERER
+        if (renderer_mode::gl()) {
         // The GL renderer has no upload step to release at: pictures idle long enough beyond
         // kResident go here, and are made again when next drawn.
         const auto now = Clock::now();
@@ -440,6 +442,7 @@ void work() {
                     other->gl_pixels.reset(); other->levels.clear(); other->state = Asset::idle; ++released;
                 }
         asset.used = now;
+        }
 #endif
         asset.units[0] = units[0]; asset.units[1] = units[1];
         asset.origin[0] = origin[0]; asset.origin[1] = origin[1];

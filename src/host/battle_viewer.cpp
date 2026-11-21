@@ -1,4 +1,6 @@
 #include "battle_viewer.hpp"
+#include "table_window.hpp"
+#include "mod_data.hpp"
 #include "upgrade_rules.hpp"
 #include "combo_attacks.hpp"
 #include "run_files.hpp"
@@ -176,7 +178,7 @@ int attacker_song(unsigned unit,unsigned actor) {
     if(unit==4 || unit==10 || unit==12 || unit==14 || unit==16)return 0xB;      // 燃え上がれ闘志
     if(unit==270 || unit==273 || unit==277 || unit==278)return 0xD;            // V-MAX
     const int pilot=actor<pilot_song_count?int16_t(rom16(pilot_songs+2*actor)):-1;
-    return pilot>0?pilot:unit<unit_song_count?int16_t(rom16(unit_songs+2*unit)):-1;
+    return pilot>0?pilot:int16_t(rom16(table_window::row(table_window::unit_songs,unit)));
 }
 
 int animation(unsigned unit,unsigned weapon) {
@@ -198,7 +200,7 @@ std::vector<Write> compute(const uint8_t* ram,const json& c) {
     std::vector<Write> out;
     const json* sides[2]={&c.at("attacker"),&c.at("defender")};
     unsigned hp[2]{};
-    for(unsigned s=0;s<2;++s)hp[s]=rom16(unit_records+sides[s]->at("unit").get<unsigned>()*unit_record_size);
+    for(unsigned s=0;s<2;++s)hp[s]=rom16(table_window::row(table_window::units,sides[s]->at("unit").get<unsigned>()));
     const int reaction=c.value("reaction",-1);
     const bool counter=c.value("counter",false);
     const auto dealt=[&](unsigned target,unsigned damage,bool destroy){
@@ -207,12 +209,14 @@ std::vector<Write> compute(const uint8_t* ram,const json& c) {
     for(unsigned s=0;s<2;++s) {
         const json& side=*sides[s];
         const unsigned unit=side.at("unit").get<unsigned>(),pilot=side.at("pilot").get<unsigned>();
-        const uint32_t record=unit_records+unit*unit_record_size;
+        const uint32_t record=table_window::row(table_window::units,unit);
         const unsigned en=rom16(record+2),size_bits=rom8(record+4);
         const auto& scene=scenes_table[std::min<size_t>(c.at("scene").at(s).get<size_t>(),std::size(scenes_table)-1)];
         const bool attacking=s==0;
         const int weapon=side.contains("weapon") && side.at("weapon").is_number()?animation(unit,side.at("weapon").get<unsigned>()):0;
-        put(out,s,0x2,2,int(read(ram,abilities+2*pilot,2)));
+        // The voice slot as the battle reads it: the quotes' copy of the map, where a new
+        // character has the one it borrows (table_window.hpp pilot_voice_copy).
+        put(out,s,0x2,2,int(read(ram,table_window::pilot_voice_copy+2*pilot,2)));
         put(out,s,0x4,2,int(unit));
         put(out,s,0x6,2,attacking || counter?weapon:0);
         // The defender's reaction to the attack; the attacker's to the counter.
@@ -352,7 +356,11 @@ json request(const json& params) {
             // story line opens as the quote, and the quote state (801C840C) waits for a close
             // that never comes. The page never offers such a one; a hand-written request did.
             const unsigned actor=picked.at(side).at("pilot").get<unsigned>();
-            if(actor>=voice_part_count || int16_t(rom16(voice_parts+2*actor))<0)
+            // A package's new character speaks as the one it borrows (mod_pilots.hpp).
+            const auto voices=mod_data::voices();
+            const auto voice=voices.find(actor);
+            const unsigned speaker=voice!=voices.end()?voice->second:actor;
+            if(speaker>=voice_part_count || int16_t(rom16(voice_parts+2*speaker))<0)
                 throw std::invalid_argument(std::string(side)+" pilot "+std::to_string(actor)+" has no battle quotes (D_800CA9C4 is -1), the quote would never close: use a pilot the original flies");
         }
         if(!picked.contains("scene") || picked.at("scene").size()!=2)throw std::invalid_argument("choice needs two scenes");

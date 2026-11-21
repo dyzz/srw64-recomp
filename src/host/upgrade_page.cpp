@@ -1,4 +1,5 @@
 #include "upgrade_page.hpp"
+#include "table_window.hpp"
 #include "intermission_mode.hpp"
 #include "unit_pose_art.hpp"
 #include "dialogue_data.hpp"
@@ -140,12 +141,12 @@ json unit_row(uint8_t* ram,recomp_context* ctx,uint32_t slot) {
     const uint32_t unit=up::unit_at(slot);
     refresh_display(ram,ctx,unit);
     const uint16_t number=uint16_t(read(ram,unit+up::unit_number,2));
-    json row={{"slot",slot},{"number",number},{"name",text(ram,text_unit_names+number)},
+    json row={{"slot",slot},{"number",number},{"name",text(ram,table_window::unit_name(number))},
         {"hp",read(ram,display_hp,2)},{"en",read(ram,unit+0x0A,2)},{"mobility",read(ram,display_mobility,2)},
         {"armor",read(ram,display_armor,2)},{"limit",read(ram,display_limit,2)}};
     // Pilot: the first crew pointer (+0x38); 801C6F80 prints -------- without one.
     const uint32_t pilot=read(ram,unit+0x38,4);
-    row["pilot"]=pilot && valid(pilot,4)?text(ram,text_pilot_names+read(ram,pilot+2,2)):std::string();
+    row["pilot"]=pilot && valid(pilot,4)?text(ram,table_window::pilot_name(read(ram,pilot+2,2))):std::string();
     return row;
 }
 // Gauge cells as the rule draws them: ▶▷ up to the original cap, ●☆ beyond; every
@@ -260,11 +261,11 @@ void relocalize(uint8_t* ram,recomp_context* ctx) {
     }
     const json next=screen=="list"?list_page_json(ram,ctx):screen=="stats"?stats_json(ram,ctx):screen=="weapons"?weapon_list_json(ram):json::object();
     for(const char* key:{"unit","rows"})if(next.contains(key))current[key]=next[key];
-    if(screen=="weapon"){current["weapon"]=chosen_weapon(ram);current["unit"]["name"]=text(ram,text_unit_names+current["unit"].value("number",0u));}
+    if(screen=="weapon"){current["weapon"]=chosen_weapon(ram);current["unit"]["name"]=text(ram,table_window::unit_name(current["unit"].value("number",0u)));}
     show_plans();
     if(current.contains("bonus")){const auto& ids=current["bonus"]["numbers"];current["bonus"]=bonus_json(ram,ids[0].get<unsigned>(),ids[1].get<unsigned>());}
     if(current.contains("refitted"))for(const auto& [key,n]:{std::pair{"from",0},std::pair{"to",1}})
-        current["refitted"][key]=text(ram,uint16_t(text_unit_names+current["refitted"]["numbers"][n].get<unsigned>()));
+        current["refitted"][key]=text(ram,uint16_t(table_window::unit_name(current["refitted"]["numbers"][n].get<unsigned>())));
     labels(ram);
 }
 
@@ -309,7 +310,7 @@ bool list_build(uint8_t* ram,recomp_context* ctx,bool weapons) {
     json page=list_page_json(ram,ctx);page["kind"]=weapons?"weapons":"stats";
     if(refitted && !weapons) {
         page["window"]="refitted";
-        page["refitted"]={{"from",text(ram,uint16_t(text_unit_names+refitted->first))},{"to",text(ram,uint16_t(text_unit_names+refitted->second))},
+        page["refitted"]={{"from",text(ram,uint16_t(table_window::unit_name(refitted->first)))},{"to",text(ram,uint16_t(table_window::unit_name(refitted->second)))},
             {"numbers",{refitted->first,refitted->second}}};
     }
     refitted.reset();
@@ -357,7 +358,7 @@ bool list_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_cont
 json stats_json(uint8_t* ram,recomp_context* ctx) {
     const uint32_t slot=read(ram,screen_unit,4),unit=up::unit_at(slot);
     const uint16_t number=uint16_t(read(ram,unit+up::unit_number,2));
-    return {{"screen","stats"},{"kind","stats"},{"unit",{{"slot",slot},{"number",number},{"name",text(ram,text_unit_names+number)},{"art",unit_pose_art::of(art,number)}}},
+    return {{"screen","stats"},{"kind","stats"},{"unit",{{"slot",slot},{"number",number},{"name",text(ram,table_window::unit_name(number))},{"art",unit_pose_art::of(art,number)}}},
         {"cap",up::allowed_cap(number)},{"cursor",read(ram,stat_cursor,2)},{"rows",stat_rows(ram,ctx,unit)},{"window",""}};
 }
 // 801CF680 without its drawing: dimmed background, fresh stats, the state resets.
@@ -533,7 +534,7 @@ json weapon_row(const uint8_t* ram,uint32_t unit,unsigned index) {
     const uint16_t number=uint16_t(read(ram,w+2,2));
     const unsigned original=up::original_cap(uint16_t(read(ram,unit+up::unit_number,2))),allowed=up::allowed_cap(uint16_t(read(ram,unit+up::unit_number,2)));
     const unsigned level=read(ram,w+0x16,1),type=read(ram,w+0x15,1);
-    json row={{"index",index},{"number",number},{"name",text(ram,text_weapon_names+number)},{"power",read(ram,w+6,2)},
+    json row={{"index",index},{"number",number},{"name",text(ram,table_window::weapon_menu(number))},{"power",read(ram,w+6,2)},
         {"range_min",read(ram,w+8,1)},{"range_max",read(ram,w+9,1)},{"hit",int8_t(read(ram,w+0xA,1))},{"critical",int8_t(read(ram,w+0x14,1))},
         {"en",read(ram,w+0xD,1)},{"morale",read(ram,w+0xE,1)},{"skill",read(ram,w+0xF,1)},{"level",level},{"type",type},{"cap",allowed},{"original_cap",original}};
     const int ammo=int8_t(read(ram,w+0xC,1));
@@ -554,12 +555,12 @@ json weapon_row(const uint8_t* ram,uint32_t unit,unsigned index) {
         }
         row["steps"]=steps;
     } else if(type==0)row["price"]=0;
-    weapon_markers(row,text(ram,uint16_t(text_weapon_pure_names+number)));
+    weapon_markers(row,text(ram,uint16_t(table_window::weapon_name(number))));
     return row;
 }
 // The full-upgrade message names both weapons without their markers.
 json bonus_json(const uint8_t* ram,unsigned upgraded,unsigned unlocked) {
-    return {{"upgraded",text(ram,uint16_t(text_weapon_pure_names+upgraded))},{"unlocked",text(ram,uint16_t(text_weapon_pure_names+unlocked))},
+    return {{"upgraded",text(ram,uint16_t(table_window::weapon_name(upgraded)))},{"unlocked",text(ram,uint16_t(table_window::weapon_name(unlocked)))},
         {"numbers",{upgraded,unlocked}}};
 }
 bool unified_on();
@@ -572,7 +573,7 @@ json weapon_list_json(uint8_t* ram) {
     json rows=json::array();
     for(unsigned n=page*weapon_rows_per_page;n<count && n<(page+1)*weapon_rows_per_page;++n)rows.push_back(weapon_row(ram,unit,read(ram,weapon_rows+n*2,2)));
     const uint16_t number=uint16_t(read(ram,unit+up::unit_number,2));
-    return {{"screen","weapons"},{"kind","weapons"},{"unit",{{"slot",slot},{"number",number},{"name",text(ram,text_unit_names+number)},
+    return {{"screen","weapons"},{"kind","weapons"},{"unit",{{"slot",slot},{"number",number},{"name",text(ram,table_window::unit_name(number))},
         {"en",read(ram,unit+0x08,2)},{"morale",pilot && valid(pilot,0x24)?int(read(ram,pilot+0x20,2)):-1}}},
         {"page",page},{"pages",(count+weapon_rows_per_page-1)/weapon_rows_per_page},{"cursor",read(ram,weapon_cursor,2)},{"rows",rows},{"window",""}};
 }
@@ -655,7 +656,7 @@ bool weapon_confirm_build(uint8_t* ram,recomp_context* ctx) {
     std::lock_guard lock(mutex);
     const bool maxed=!row.contains("preview");
     const uint32_t pilot=read(ram,unit+0x38,4);
-    open({{"screen","weapon"},{"kind","weapons"},{"unit",{{"slot",slot},{"number",number},{"name",text(ram,text_unit_names+number)},
+    open({{"screen","weapon"},{"kind","weapons"},{"unit",{{"slot",slot},{"number",number},{"name",text(ram,table_window::unit_name(number))},
         {"en",read(ram,unit+0x08,2)},{"morale",pilot && valid(pilot,0x24)?int(read(ram,pilot+0x20,2)):-1}}},
         {"weapon",row},{"cursor",0},{"window",maxed?"maxed":"confirm"}},ram);
     weapon_plan=maxed?0:1;show_plans();
@@ -849,7 +850,7 @@ json unified_json(uint8_t* ram) {
     const unsigned page=std::min(current.value("screen",std::string())=="unified"?current.value("page",0u):0u,pages-1);
     json shown_rows=json::array();
     for(unsigned n=page*unified_rows_per_page;n<rows.size() && n<(page+1)*unified_rows_per_page;++n)shown_rows.push_back(rows[n]);
-    json page_json={{"screen","unified"},{"kind","weapons"},{"unit",{{"slot",slot},{"number",number},{"name",text(ram,text_unit_names+number)}}},
+    json page_json={{"screen","unified"},{"kind","weapons"},{"unit",{{"slot",slot},{"number",number},{"name",text(ram,table_window::unit_name(number))}}},
         {"level",level},{"cap",allowed},{"original_cap",original},{"plan",plan},{"gauge",gauge_cells(original,allowed,level,plan)},
         {"weapons",rows.size()},{"rows",shown_rows},{"page",page},{"pages",pages},{"plan_cost",unified_cost(ram,slot,target).price}};
     if(level<allowed)page_json["next_price"]=unified_cost(ram,slot,level+1).price;

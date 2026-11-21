@@ -1,8 +1,12 @@
 #pragma once
 #include "mod_library.hpp"
+#include "mod_ids.hpp"
+#include "mod_tables.hpp"
 #include "mod_units.hpp"
 #include "upgrade_rules.hpp"
 #include <atomic>
+#include <functional>
+#include <optional>
 #include <cstdio>
 #include <map>
 #include <mutex>
@@ -52,11 +56,20 @@ struct Field {
 inline constexpr Field unit_fields[]={
     {"hp",0x00,2,false,1,65535},{"en",0x02,2,false,0,65535},{"move",0x06,1,false,1,30},
     {"mobility",0x08,2,false,0,65535},{"armor",0x0A,2,false,0,65535},{"limit",0x0C,2,false,0,65535},
-    {"repair_cost",0x14,2,false,0,65535},{"upgrade_cap",0x20,1,false,0,15}};
+    {"repair_cost",0x14,2,false,0,65535},{"upgrade_cap",0x20,1,false,0,15},
+    // Copied when an instance is built (800A6E68) or a save rebuilds it (800A8CE8), not at
+    // recompute: the のりかえ class (runtime +0x1A, 801C5618), the funds for shooting it
+    // down (+0x1E, 801F6588) and the experience it gives (+0x27, 801F60D4). Class 8 is the
+    // one the ROM leaves free: 801C5618 counts classes 0-7 in eight u16s, and the generator
+    // masks its index with 7 (generate_cpu.py), so 8 counts in class 0's, which no unit uses.
+    {"swap_class",0x12,1,false,0,8},{"funds",0x16,2,false,0,65535},{"exp",0x1A,1,false,0,255}};
 inline constexpr Field pilot_fields[]={
     {"melee",0x01,1,false,0,255},{"ranged",0x02,1,false,0,255},{"evade",0x03,1,false,0,255},
     {"hit",0x04,1,false,0,255},{"reaction",0x05,1,false,0,255},{"skill",0x06,1,false,0,255},
-    {"sp",0x0C,1,false,0,255},{"double_move",0x0E,1,false,0,99}};
+    {"sp",0x0C,1,false,0,255},{"double_move",0x0E,1,false,0,99},
+    // The のりかえ class (runtime +0x32): 800A7F8C copies it when a character is registered,
+    // levels up or a save is read; 0 never changes machines. 8 as the units' above.
+    {"swap_class",0x0B,1,false,0,8}};
 // ammo -1 is none (0xFF).
 inline constexpr Field weapon_fields[]={
     {"power",0x01,1,false,0,25500,100},{"range_min",0x02,1,false,0,30},{"range_max",0x03,1,false,1,30},
@@ -98,7 +111,9 @@ inline std::optional<uint8_t> rank(const json& value) {
     const auto at=letters.find(value.get<std::string>()[0]);
     return at==std::string_view::npos?std::nullopt:std::optional<uint8_t>(uint8_t(at));
 }
+// A character's ability record: a new character's is its own number (table_window.hpp).
 inline int pilot_record(std::span<const uint8_t> rom,unsigned pilot) {
+    if(table_window::new_pilot(pilot))return int(pilot);
     const uint32_t at=pilot_map+pilot*2;
     return at+1<rom.size()?int(int16_t(rom[at]<<8|rom[at+1])):-1;
 }
@@ -118,6 +133,9 @@ inline constexpr Named abilities[]={
     {"afterimage",0x10},{"mach_special",0x1000},{"true_mach_special",0x2000},{"god_shadow",0x1},
     {"getter_vision",0x20000},{"shungensoku",0x40000},{"hyper_jammer",0x100000},
     {"hp_regen_10",0x4},{"hp_regen_20",0x8}};
+// How it moves, +5's low five bits (the ability page's icons, 801DC8F0: 陸 空 海 宇 地中);
+// 800A5254 copies the byte to the instance's +D at every recompute.
+inline constexpr std::array<std::string_view,5> move_types={"land","air","sea","space","underground"};
 // Size, +4's low five bits (SS..LL); the two high bits are each unit's own state.
 inline constexpr std::array<std::string_view,5> sizes={"SS","S","M","L","LL"};
 // A pilot's +F skill bits and the row of the threshold table (0x7B1B0, 30 bytes a record,
@@ -136,30 +154,44 @@ inline constexpr std::array<std::string_view,30> spirits={
     "cover","valor","spirit","great_guts","luck","drain","effort","soul","stealth","awaken",
     "refuel","provoke","encourage","disrupt","friendship","love","reactivate","miracle","prayer","revive"};
 inline int spirit_record(std::span<const uint8_t> rom,unsigned pilot) {
+    if(table_window::new_pilot(pilot))return int(pilot);
     const uint32_t at=spirit_map+pilot*2;
     return at+1<rom.size()?int(int16_t(rom[at]<<8|rom[at+1])):-1;
 }
 template<class T,size_t N> std::string keys_of(const T (&list)[N]) {std::string out;for(const auto& x:list)out+=(out.empty()?"":"、")+std::string(x.key);return out;}
 
 // One file into bytes, all or nothing; an error names the entry and the field.
-inline std::string parse(const json& document,Kind kind,std::span<const uint8_t> rom,Bytes& out) {
+// A unit or weapon is the ROM's number, or a new one by name ("@final", "pkg@final"; the
+// numbers mod_units::assign gave): its record is then in the table window.
+inline std::string parse(const json& document,Kind kind,std::span<const uint8_t> rom,Bytes& out,
+                         const std::string& package={},const mod_units::Numbers& numbers={}) {
     if(!document.is_object())return "顶层要是对象";
     const unsigned count=kind==Kind::units?unit_count:kind==Kind::pilots?pilot_count:weapon_count;
     Bytes bytes;
+    std::map<std::string,uint32_t> records;   // key -> its record, for the checks after
     for(const auto& [key,entry]:document.items()) {
-        if(key.empty() || key.size()>4 || !std::all_of(key.begin(),key.end(),[](char c){return c>='0' && c<='9';}) || (key.size()>1 && key[0]=='0'))
-            return key+"：编号要是十进制整数";
-        const unsigned id=unsigned(std::stoul(key));
-        if(id>=count)return key+"：编号超出范围（0–"+std::to_string(count-1)+"）";
+        unsigned id;
+        if(key.find('@')!=std::string::npos) {
+            const auto of=kind==Kind::units?mod_units::Of::unit:kind==Kind::weapons?mod_units::Of::weapon:mod_units::Of::pilot;
+            const auto found=mod_units::resolve(json(key),package,numbers,of);
+            if(!found)return key+"：没有这个新"+(kind==Kind::units?"机体":kind==Kind::weapons?"武器":"人物")+"（data/new_units.json 里的名字）";
+            id=*found;
+        } else {
+            if(key.empty() || key.size()>4 || !std::all_of(key.begin(),key.end(),[](char c){return c>='0' && c<='9';}) || (key.size()>1 && key[0]=='0'))
+                return key+"：编号要是十进制整数，或新机体、新武器的 @名字";
+            id=unsigned(std::stoul(key));
+            if(id>=count)return key+"：编号超出范围（0–"+std::to_string(count-1)+"）";
+        }
         if(!entry.is_object())return key+"：要是对象";
-        uint32_t record=unit_records+id*unit_record_size,terrain=unit_terrain;
+        uint32_t record=table_window::row(table_window::units,id),terrain=unit_terrain;
         if(kind==Kind::pilots) {
             const int r=pilot_record(rom,id);
-            if(r<0 || r>=int(pilot_record_count))return key+"：这个人物没有能力记录";
-            record=pilot_records+uint32_t(r)*pilot_record_size;terrain=pilot_terrain;
+            if(r<0 || (r>=int(pilot_record_count) && !table_window::new_pilot(unsigned(r))))return key+"：这个人物没有能力记录";
+            record=table_window::row(table_window::pilot_records,unsigned(r));terrain=pilot_terrain;
         } else if(kind==Kind::weapons) {
-            record=weapon_records+id*weapon_record_size;terrain=weapon_terrain;
+            record=table_window::row(table_window::weapons,id);terrain=weapon_terrain;
         }
+        records[key]=record;
         for(const auto& [name,value]:entry.items()) {
             if(name=="terrain") {
                 if(!value.is_object())return key+".terrain：要是对象";
@@ -176,8 +208,7 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
             // then the ROM's.
             const auto here=[&](uint32_t at){
                 if(const auto f=bytes.find(at);f!=bytes.end())return f->second;
-                if(const auto f=out.find(at);f!=out.end())return f->second;
-                return at<rom.size()?rom[at]:uint8_t(0);
+                return mod_units::read_byte(out,rom,at);
             };
             const std::string where=key+"."+name;
             if(kind==Kind::units && name=="abilities") {
@@ -199,6 +230,17 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
                 if(!value.is_boolean())return where+"：要是 true 或 false";
                 const uint8_t bit=name=="sword"?1:2;
                 bytes[record+0x18]=uint8_t(value.get<bool>()?here(record+0x18)|bit:here(record+0x18)&~bit);
+                continue;
+            }
+            if(kind==Kind::units && name=="move_types") {
+                if(!value.is_array() || value.empty())return where+"：要是非空数组（land、air、sea、space、underground）";
+                uint8_t bits=0;
+                for(const auto& item:value) {
+                    const auto found=item.is_string()?std::find(move_types.begin(),move_types.end(),item.get<std::string>()):move_types.end();
+                    if(found==move_types.end())return where+"：未知移动类型 "+item.dump();
+                    bits|=uint8_t(1u<<(found-move_types.begin()));
+                }
+                bytes[record+0x05]=uint8_t((here(record+0x05)&0xE0)|bits);
                 continue;
             }
             if(kind==Kind::units && name=="size") {
@@ -237,7 +279,7 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
             if(kind==Kind::pilots && name=="skills") {
                 if(!value.is_object())return where+"：要是对象";
                 const int r=pilot_record(rom,id);
-                const uint32_t rows=threshold_records+uint32_t(r)*threshold_record_size;
+                const uint32_t rows=table_window::row(table_window::thresholds,unsigned(r));
                 uint8_t bits=here(record+0x0F);
                 bool first_row=false;
                 for(const auto& [skill,levels]:value.items()) {
@@ -266,7 +308,7 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
                 const int r=spirit_record(rom,id);
                 if(r<0)return where+"：这个人物没有精神记录";
                 if(!value.is_array() || value.size()>6)return where+"：要是最多 6 项的数组，每项 [精神, 等级]";
-                const uint32_t at=spirit_records+uint32_t(r)*spirit_record_size;
+                const uint32_t at=table_window::row(table_window::spirit_records,unsigned(r));
                 for(unsigned n=0;n<6;++n) {
                     // An unused pair: a level no pilot reaches (800A63E0 counts every pair at or
                     // below the pilot's level, a 0 included); the Library skips past 99 too.
@@ -287,7 +329,7 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
             if(field==list.end()) {
                 std::string known="terrain";
                 for(const auto& f:list)known+="、"+std::string(f.name);
-                if(kind==Kind::units)known+="、abilities、shield、sword、size、parts_slots";
+                if(kind==Kind::units)known+="、abilities、shield、sword、size、move_types、parts_slots";
                 if(kind==Kind::pilots)known+="、skills、spirits";
                 if(kind==Kind::weapons)known+="、attack、beam、post_move、parryable、terrain_at、requires、locked";
                 return key+"：未知字段 "+name+"（"+known+"）";
@@ -302,12 +344,11 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
         }
     }
     if(kind==Kind::weapons)
-        for(const auto& [key,entry]:document.items()) {
-            const uint32_t record=weapon_records+unsigned(std::stoul(key))*weapon_record_size;
-            const auto at=[&](uint32_t offset){
+        for(const auto& [key,record]:records) {
+            // Copied: before clang 16 (Ubuntu 22.04's) a lambda can't capture a structured binding.
+            const auto at=[&,record=record](uint32_t offset){
                 if(const auto f=bytes.find(record+offset);f!=bytes.end())return f->second;
-                if(const auto f=out.find(record+offset);f!=out.end())return f->second;
-                return record+offset<rom.size()?rom[record+offset]:uint8_t(0);
+                return mod_units::read_byte(out,rom,record+offset);
             };
             if(at(0x02)>at(0x03))return key+"：range_min 不能大于 range_max";
             // A map weapon's flow has its own 31x31 tables; only ordinary weapons go past 15 (move_range.cpp).
@@ -321,43 +362,62 @@ struct Collected {
     Bytes bytes;
     std::vector<std::string> problems;   // "<id> data/<file>: why"; such a file is left out
     std::map<unsigned,std::string> units;   // a new unit's number -> the package that adds it
+    std::map<unsigned,std::string> pilots;  // a new character's number -> the package that adds it
     std::map<unsigned,unsigned> copies;     // a new unit's number -> the unit it copies
+    std::map<unsigned,unsigned> weapon_copies;
     std::map<std::string,json> names;       // those packages' names (mod.json "name")
+    mod_units::Numbers numbers;             // every name's number, whether its file parsed or not
+    std::map<uint16_t,std::pair<uint32_t,uint32_t>> name_sources;   // private text id -> record copied
+    std::map<unsigned,std::vector<uint8_t>> resources;              // the packages' own (mod_sprites.hpp)
+    std::map<std::string,mod_units::Sprite> sprites;
+    std::map<unsigned,unsigned> predecessors;                       // new unit -> the unit it inherits from
+    std::map<unsigned,std::vector<std::pair<unsigned,unsigned>>> carries;
+    std::map<unsigned,std::vector<unsigned>> crews;
+    std::map<unsigned,mod_units::Taken::Combine> combines;
+    std::map<unsigned,int> works;                                   // new unit -> its Library work
+    std::map<unsigned,unsigned> pilot_copies,voices;                // new character -> the one it copies / speaks as
+    std::map<unsigned,mod_units::Taken::Portrait> portraits;        // new character -> its own portrait
+    std::vector<std::pair<unsigned,unsigned>> loves;                // love rows (holder, partner)
+    std::map<unsigned,unsigned> combo_as;                           // new character -> who it counts as in combination attacks
 };
 // The active packages, bottom first as mods::installed() returns them.
 inline Collected collect(const std::vector<mods::Package>& packages,std::span<const uint8_t> rom) {
     Collected c;
     mod_units::Taken taken;
     std::error_code error;
+    c.numbers=mod_ids::assign(packages);
     for(const auto& p:packages) {
-        if(!p.active || !fs::is_directory(p.folder/"data",error))continue;
-        for(const auto& item:fs::directory_iterator(p.folder/"data",error)) {
-            const auto name=item.path().filename().string();
-            if(item.is_regular_file(error) && item.path().extension()==".json" && name!="new_units.json" && std::find(files.begin(),files.end(),name)==files.end())
+        if(!p.active)continue;
+        const auto package=mods::files_of(p);   // its folder or its .srw64mod (mod_library.hpp)
+        if(!package->has_folder("data"))continue;
+        for(const auto& name:package->list("data"))
+            if(fs::path(name).extension()==".json" && name!="new_units.json" && std::find(files.begin(),files.end(),name)==files.end())
                 c.problems.push_back(p.id()+" data/"+name+"：暂不支持这个文件");
-        }
         // New units first: the number files may change the records they copy.
-        if(const auto path=p.folder/"data"/"new_units.json";fs::is_regular_file(path,error)) {
-            std::ifstream in(path,std::ios::binary);
-            const auto document=json::parse(in,nullptr,false);
+        if(const auto text=package->read_text("data/new_units.json")) {
+            const auto document=json::parse(*text,nullptr,false);
             const std::string where=p.id()+" data/new_units.json：";
             if(document.is_discarded())c.problems.push_back(where+"JSON 无效");
+            else if(auto why=mod_units::parse(document,p.id(),c.numbers,rom,c.bytes,c.bytes,taken,p.folder);!why.empty())c.problems.push_back(where+why);
             else {
-                const auto before=taken.units;
-                if(auto why=mod_units::parse(document,rom,c.bytes,c.bytes,taken);!why.empty())c.problems.push_back(where+why);
-                for(const auto unit:taken.units)if(!before.count(unit)){c.units[unit]=p.id();c.names[p.id()]=p.manifest?p.manifest->name:json(p.id());}
-                for(const auto& [unit,source]:taken.copies)if(c.units.count(unit))c.copies[unit]=source;
+                for(const auto& [key,unit]:c.numbers.units)
+                    if(key.compare(0,p.id().size()+1,p.id()+"@")==0){c.units[unit]=p.id();c.names[p.id()]=p.manifest?p.manifest->name:json(p.id());}
+                for(const auto& [key,pilot]:c.numbers.pilots)
+                    if(key.compare(0,p.id().size()+1,p.id()+"@")==0){c.pilots[pilot]=p.id();c.names[p.id()]=p.manifest?p.manifest->name:json(p.id());}
+                c.copies=taken.copies;c.weapon_copies=taken.weapon_copies;c.name_sources=taken.names;
+                c.resources=taken.resources;c.sprites=taken.sprites;
+                c.predecessors=taken.predecessors;c.carries=taken.carries;c.crews=taken.crews;c.combines=taken.combines;c.works=taken.works;
+                c.pilot_copies=taken.pilot_copies;c.voices=taken.voices;c.portraits=taken.portraits;c.loves=taken.loves;c.combo_as=taken.combo_as;
             }
         }
         for(const auto file:files) {
-            const auto path=p.folder/"data"/std::string(file);
-            if(!fs::is_regular_file(path,error))continue;
-            std::ifstream in(path,std::ios::binary);
-            const auto document=json::parse(in,nullptr,false);
+            const auto text=package->read_text("data/"+std::string(file));
+            if(!text)continue;
+            const auto document=json::parse(*text,nullptr,false);
             const std::string where=p.id()+" data/"+std::string(file)+"：";
             if(document.is_discarded()){c.problems.push_back(where+"JSON 无效");continue;}
             const auto kind=file=="units.json"?Kind::units:file=="pilots.json"?Kind::pilots:Kind::weapons;
-            if(auto why=parse(document,kind,rom,c.bytes);!why.empty())c.problems.push_back(where+why);
+            if(auto why=parse(document,kind,rom,c.bytes,p.id(),c.numbers);!why.empty())c.problems.push_back(where+why);
         }
     }
     return c;
@@ -374,7 +434,22 @@ struct State {
     std::atomic<bool> kinds_changed{false};   // some weapon's printed kind bits differ from the ROM's
     std::mutex owners_mutex;
     std::map<unsigned,std::string> owners;   // Collected::units of the active packages
+    std::map<unsigned,std::string> pilot_owners;   // Collected::pilots
     std::map<std::string,json> names;
+    std::map<unsigned,unsigned> copies,weapon_copies;   // Collected's
+    mod_units::Numbers numbers;
+    std::map<std::string,mod_units::Sprite> sprites;
+    std::map<unsigned,unsigned> predecessors;
+    std::map<unsigned,std::vector<std::pair<unsigned,unsigned>>> carries;
+    std::map<unsigned,std::vector<unsigned>> crews;
+    std::map<unsigned,mod_units::Taken::Combine> combines;
+    std::map<unsigned,unsigned> pilot_copies,voices;
+    std::map<unsigned,mod_units::Taken::Portrait> portraits;
+    std::vector<std::pair<unsigned,unsigned>> loves;
+    std::map<unsigned,unsigned> combo_as;
+    // The host draws a package sprite's HD frames (native_sprite.cpp); set at start-up, called
+    // on the game thread whenever the packages change.
+    std::function<void(const std::map<std::string,mod_units::Sprite>&)> sprites_changed;
 };
 inline State& state(){static State value;return value;}
 // The new units the active packages add, by number: the package id and its name. Any thread.
@@ -384,6 +459,95 @@ inline std::map<unsigned,Owner> unit_owners() {
     std::lock_guard lock(s.owners_mutex);
     std::map<unsigned,Owner> out;
     for(const auto& [unit,id]:s.owners)out[unit]={id,s.names.count(id)?s.names.at(id):json(id)};
+    return out;
+}
+inline std::map<unsigned,Owner> pilot_owners() {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    std::map<unsigned,Owner> out;
+    for(const auto& [pilot,id]:s.pilot_owners)out[pilot]={id,s.names.count(id)?s.names.at(id):json(id)};
+    return out;
+}
+// The unit or weapon a package's new one copies (its pictures, series and crew go with that
+// one's). Any thread.
+inline std::optional<unsigned> unit_copy(unsigned unit) {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    const auto found=s.copies.find(unit);
+    return found==s.copies.end()?std::nullopt:std::optional<unsigned>(found->second);
+}
+inline std::optional<unsigned> weapon_copy(unsigned weapon) {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    const auto found=s.weapon_copies.find(weapon);
+    return found==s.weapon_copies.end()?std::nullopt:std::optional<unsigned>(found->second);
+}
+// The new units of the active packages, by number. Any thread.
+// A package's new unit's upgrade inheritance: the unit it inherits from, and its weapons'
+// (new, old) pairs; and the crew it is registered with. Any thread.
+inline std::optional<unsigned> predecessor(unsigned unit) {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    const auto found=s.predecessors.find(unit);
+    return found==s.predecessors.end()?std::nullopt:std::optional<unsigned>(found->second);
+}
+inline std::vector<std::pair<unsigned,unsigned>> carries(unsigned unit) {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    const auto found=s.carries.find(unit);
+    return found==s.carries.end()?std::vector<std::pair<unsigned,unsigned>>{}:found->second;
+}
+// The new characters: the original each copies, and the one whose quotes it speaks. Any thread.
+inline std::map<unsigned,unsigned> pilot_copies() {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    return s.pilot_copies;
+}
+inline std::map<unsigned,mod_units::Taken::Portrait> portraits() {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    return s.portraits;
+}
+inline std::vector<std::pair<unsigned,unsigned>> loves() {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    return s.loves;
+}
+inline std::map<unsigned,unsigned> combo_as() {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    return s.combo_as;
+}
+inline std::map<unsigned,unsigned> voices() {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    return s.voices;
+}
+// The new units combined from parts (mod_combine.hpp). Any thread.
+inline std::map<unsigned,mod_units::Taken::Combine> combines() {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    return s.combines;
+}
+inline std::vector<unsigned> crew(unsigned unit) {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    const auto found=s.crews.find(unit);
+    return found==s.crews.end()?std::vector<unsigned>{}:found->second;
+}
+// A package's sprite by the resource numbers the game draws it from. Any thread.
+inline std::optional<mod_units::Sprite> sprite(unsigned scene,unsigned atlas,unsigned palette) {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    for(const auto& [_,sprite]:s.sprites)
+        if(sprite.scene==scene && sprite.atlas==atlas && sprite.palette==palette)return sprite;
+    return std::nullopt;
+}
+inline std::vector<unsigned> new_units() {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    std::vector<unsigned> out;
+    for(const auto& [unit,_]:s.copies)out.push_back(unit);
     return out;
 }
 // Whether any weapon's 格／射, P or B differs from the ROM's: the overlay then redraws those
@@ -431,15 +595,28 @@ inline void refresh(uint8_t* ram=nullptr) {
     Bytes merged(s.rules.begin(),s.rules.end());
     for(const auto& [at,value]:found.bytes)merged[at]=value;
     std::vector<std::pair<uint32_t,uint8_t>> list;
-    for(const auto& [at,value]:merged)if(at<s.rom.size() && s.rom[at]!=value)list.emplace_back(at,value);
+    // The ROM's bytes that differ, and every byte of the table window (the new rows).
+    for(const auto& [at,value]:merged)
+        if(table_window::inside(at) || (at<s.rom.size() && s.rom[at]!=value))list.emplace_back(at,value);
     if(ram)sync_resident(ram,upgrades::patches(),list,s.rom);
     bool kinds=false;
     for(const auto& [at,value]:list)
         if(at>=weapon_records && at<weapon_records+weapon_count*weapon_record_size && (at-weapon_records)%weapon_record_size==weapon_kind && ((value^s.rom[at])&weapon_printed))kinds=true;
+    // A new weapon prints the markers of the weapon it copies: changed when its kind is not that one's.
+    for(const auto& [weapon,source]:found.weapon_copies) {
+        const auto kind=[&](unsigned w){return mod_units::read_byte(merged,s.rom,table_window::row(table_window::weapons,w)+weapon_kind);};
+        if((kind(weapon)^kind(source))&weapon_printed)kinds=true;
+    }
     s.kinds_changed.store(kinds,std::memory_order_relaxed);
-    {std::lock_guard lock(s.owners_mutex);s.owners=found.units;s.names=found.names;}
+    {std::lock_guard lock(s.owners_mutex);s.owners=found.units;s.names=found.names;s.copies=found.copies;s.weapon_copies=found.weapon_copies;s.numbers=found.numbers;s.sprites=found.sprites;
+     s.predecessors=found.predecessors;s.carries=found.carries;s.crews=found.crews;s.combines=found.combines;
+     s.pilot_copies=found.pilot_copies;s.voices=found.voices;s.pilot_owners=found.pilots;s.portraits=found.portraits;s.loves=found.loves;s.combo_as=found.combo_as;}
+    mod_tables::publish_resources(found.resources);
+    if(s.sprites_changed)s.sprites_changed(found.sprites);
+    upgrades::name_sources()=found.name_sources;
     upgrades::patches()=std::move(list);
     upgrades::publish_patches();
+    if(ram)mod_tables::fill_map_icons(s.rom,ram);
     for(const auto& problem:found.problems)std::fprintf(stderr,"SRW64_MOD_DATA_PROBLEM %s\n",problem.c_str());
     std::fprintf(stderr,"SRW64_MOD_DATA bytes=%zu problems=%zu\n",found.bytes.size(),found.problems.size());
     if(!s.output.empty()) {

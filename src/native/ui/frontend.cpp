@@ -1576,7 +1576,9 @@ std::string capture_prompt() {
 // shortcuts and restore.
 bool touch_supported();
 std::string settings_row(const std::string& key,const std::string& choices,const std::string& more={},const std::string& note={});
-std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled=false);
+std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled=false,const std::string& more={});
+// Under a row the running renderer cannot honour (settings::renderer_features).
+std::string renderer_note(){return "<p class='set-note'>"+label("settings_renderer_unsupported")+"</p>";}
 std::string controls_page() {
     std::string body;
     if(touch_supported()) {
@@ -1859,7 +1861,8 @@ std::string look_rows() {
     const auto status=post_filter::status();
     const auto filter=settings::filter();
     std::string more;
-    if(!status.available)more+="<p class='set-note'>"+label("settings_filter_unavailable")+"</p>";
+    if(!settings::renderer_features().filters)more+=renderer_note();
+    else if(!status.available)more+="<p class='set-note'>"+label("settings_filter_unavailable")+"</p>";
     else if(status.loading)more+="<p class='set-note'>"+label("settings_filter_loading")+"</p>";
     else if(!status.error.empty())more+="<p class='set-note'>"+label("settings_filter_error")+" "+escape(status.error.substr(0,status.error.find('\n')).substr(0,200))+"</p>";
     if(status.available && browse_kind=="filter")more+=browser();
@@ -1921,10 +1924,10 @@ std::string settings_row(const std::string& key,const std::string& choices,const
     return "<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label(key)+"</div><div class='set-seg'>"+choices+"</div></div><p>"+label(note.empty()?key+"_note":note)+"</p>"+more+"</div>";
 }
 // A setting with one button per mode: ids prefix:mode, labels key_mode.
-std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled) {
+std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled,const std::string& more) {
     std::string choices;
     for(const std::string mode:modes)choices+=button(prefix+":"+mode,label(key+"_"+mode),mode==current,disabled);
-    return settings_row(key,choices);
+    return settings_row(key,choices,more);
 }
 // The button a row offers first: its selected one, else its first enabled one.
 Rml::Element* settings_choice_of(Rml::Element* row) {
@@ -2090,10 +2093,16 @@ std::string mod_installed_page() {
 #endif
     if(mod_installing)body+="<p class='dlc-meta'>"+label("mod_installing")+"</p>";
     const auto& list=installed_mods();
-    // Package files placed in the folder that did not install (still there, tried again).
-    for(const auto& r:srw64::mods::loose_results())if(!r.result.ok)
-        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(r.file.filename().string())+"</div></div><p class='dlc-meta'>"+
+    // Package files placed in the folder that did not install (still there, tried again), each
+    // with a removal asked twice: on a phone the inbox moved it into the private folder, which
+    // only the system's file manager reaches (Seeker, 2026-11-20).
+    unsigned failed=0;
+    for(const auto& r:srw64::mods::loose_results())if(!r.result.ok) {
+        const auto file=r.file.filename().string();
+        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(file)+"</div><div class='set-seg'>"+
+            button("mod-remove-file:"+std::to_string(failed++),label(mod_remove_pending=="file:"+file?"mod_remove_confirm":"mod_remove"))+"</div></div><p class='dlc-meta'>"+
             escape(filled("mod_install_failed",{{"{reason}",mod_problem_text(r.result.problem)}}))+"</p></div>";
+    }
     if(list.empty())body+="<p>"+label("mod_none")+"</p>";
     for(auto it=list.rbegin();it!=list.rend();++it) {
         const auto& p=*it;
@@ -2138,7 +2147,9 @@ void mod_install(const std::filesystem::path& path) {
         else if(result.replaced)text=filled("mod_updated",{{"{id}",result.id},{"{old}",srw64::mods::version_text(*result.replaced)},{"{version}",srw64::mods::version_text(result.version)}});
         else text=filled("mod_installed",{{"{id}",result.id},{"{version}",srw64::mods::version_text(result.version)}});
         // The reading languages are set at start-up (docs/design/mod-language-packs.md).
-        if(result.ok && !srw64::mods::summarize(srw64::mods::directory()/result.id).languages.empty())
+        const auto kept=[&]{std::error_code e;const auto folder=srw64::mods::directory()/result.id;
+            return std::filesystem::is_directory(folder,e)?folder:srw64::mods::directory()/(result.id+srw64::mods::package_extension);};
+        if(result.ok && !srw64::mods::summarize(*srw64::mods::open_files(kept())).languages.empty())
             text+=" "+localization::catalog().ui("mod_language_restart");
         notices::post("mod",text);
         mod_installing=false;
@@ -2147,7 +2158,7 @@ void mod_install(const std::filesystem::path& path) {
 }
 #ifdef __ANDROID__
 // The player's folder's mods/ into the private one (SRW64Activity.syncMods), then the
-// listing installs what arrived (mod_library unpack_loose); a notice per package that
+// listing installs what arrived (mod_library place_loose); a notice per package that
 // installed. The window thread, on opening the page and on its refresh button.
 void mod_inbox_sync() {
     android_call("syncMods");
@@ -2504,6 +2515,11 @@ std::string library_tiles(const json& L,const std::string& letters) {
 // The work, and a unit's model number, above the name.
 std::string library_work(const json& entry) {
     std::string line=entry.contains("work_name")?entry.at("work_name").get<std::string>():localization::catalog().ui("library_work_other");
+    // A package's addition (the MOD group): the package, and the work it goes with.
+    if(entry.contains("package")) {
+        line=entry.at("package").get<std::string>();
+        if(entry.contains("work_title"))line+="  ·  "+entry.at("work_title").get<std::string>();
+    }
     if(entry.contains("model"))line+="  ·  "+entry.at("model").get<std::string>();
     return escape(line);
 }
@@ -2982,11 +2998,20 @@ const ViewerCrew* viewer_crew(unsigned unit) {
     for(const auto& c:viewer_crews)if(c.unit==unit)return &c;
     return nullptr;
 }
+// A package's new character flies what the character it copies flies (its Library entry's copy_of).
+const json& viewer_pilots();
+unsigned viewer_as(unsigned actor) {
+    if(actor<400)return actor;
+    for(const auto& p:viewer_pilots())if(p.value("actor",~0u)==actor)return p.value("copy_of",actor);
+    return actor;
+}
 bool viewer_flies(unsigned actor,unsigned unit) {
     const auto* crew=viewer_crew(unit);
+    actor=viewer_as(actor);
     return crew && std::find(crew->actors.begin(),crew->actors.end(),actor)!=crew->actors.end();
 }
 bool viewer_flies_any(unsigned actor) {
+    actor=viewer_as(actor);
     for(const auto& c:viewer_crews)if(std::find(c.actors.begin(),c.actors.end(),actor)!=c.actors.end())return true;
     return false;
 }
@@ -3825,7 +3850,7 @@ void settings_sync() {
 #endif
     const auto stamp=localization::catalog().locale+localization::catalog().revision+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+std::to_string(settings::unified_weapon_upgrades())+
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_level())+std::to_string(settings::dialogue_hints_always())+std::to_string(settings::mod_music())+"/"+std::to_string(settings::mod_music_volume())+"/"+std::to_string(settings::mod_voice())+"/"+std::to_string(settings::mod_voice_volume())+"/"+settings::mod_voice_speed()+"/"+std::to_string(settings::mod_voice_wait())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
-        std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
+        std::to_string(presentation::image_mode.enabled())+[]{const auto f=settings::renderer_features();return std::to_string(f.interpolation)+std::to_string(f.msaa)+std::to_string(f.filters)+std::to_string(f.picture_scale)+std::to_string(settings::picture_scale());}()+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
         // The セーブ page: its choices, the import folder as last read and the last result.
@@ -3900,9 +3925,21 @@ void settings_sync() {
         body+=look_rows();
 #ifndef __ANDROID__
         // Android draws without MSAA either way. Taken at start: says so until a restart.
-        body+=settings_row("settings_msaa",button("msaa:on",label("settings_msaa_on"),settings::msaa())+button("msaa:off",label("settings_msaa_off"),!settings::msaa()),
+        // The GL renderer has none: shown off and disabled, the saved choice kept for RT64.
+        if(const bool can=settings::renderer_features().msaa;!can)
+            body+=settings_row("settings_msaa",button("msaa:on",label("settings_msaa_on"),false,true)+button("msaa:off",label("settings_msaa_off"),true,true),renderer_note());
+        else body+=settings_row("settings_msaa",button("msaa:on",label("settings_msaa_on"),settings::msaa())+button("msaa:off",label("settings_msaa_off"),!settings::msaa()),
             settings::msaa()!=settings::msaa_at_start()?"<p class='set-note'>"+label("settings_msaa_restart")+"</p>":std::string());
 #endif
+        // The GL renderer's picture (the fallback on Windows, the consoles): automatic, or the
+        // player's 1 to 3 times the original's lines, from the next launch.
+        if(settings::renderer_features().picture_scale) {
+            std::string scales;
+            for(const unsigned n:{0u,1u,2u,3u})
+                scales+=button("picture-scale:"+std::to_string(n),label("settings_picture_scale_"+std::to_string(n)),settings::picture_scale()==n);
+            body+=settings_row("settings_picture_scale",scales,
+                settings::picture_scale()!=settings::picture_scale_at_start()?"<p class='set-note'>"+label("settings_msaa_restart")+"</p>":std::string());
+        }
         // A handheld or a phone plays full screen and has no window to size.
         if(!handheld()) {
             const auto window_state=window_menu_state();
@@ -3926,7 +3963,10 @@ void settings_sync() {
         body+=settings_choice("settings_weapon_upgrade","weapon-upgrade",{"unified","single"},settings::unified_weapon_upgrades()?"unified":"single",!settings::native_intermission_ui());
         body+=settings_choice("settings_name_entry_ui","name-entry-ui",{"native","original"},settings::native_name_entry_ui()?"native":"original");
         body+=settings_choice("settings_title_ui","title-ui",{"native","original"},settings::native_title_ui()?"native":"original");
-        body+=settings_choice("settings_refresh","refresh",{"original","60","display"},settings::refresh_rate_name(settings::refresh_rate()));
+        // Without RT64's interpolation the picture stays at the original 30: shown so, disabled.
+        if(const bool can=settings::renderer_features().interpolation;!can)
+            body+=settings_choice("settings_refresh","refresh",{"original","60","display"},"original",true,renderer_note());
+        else body+=settings_choice("settings_refresh","refresh",{"original","60","display"},settings::refresh_rate_name(settings::refresh_rate()));
         body+=settings_choice("settings_fps","fps",{"off","on"},settings::show_fps()?"on":"off");
         body+=settings_choice("settings_dialogue_hints","dialogue-hints",{"auto","always"},settings::dialogue_hints_always()?"always":"auto");
     } else if(page=="rules") {
@@ -5414,8 +5454,10 @@ void mini_sync() {
 bool touch_active();
 void home_sync() {
     const bool settings_entry=pad_mode || !app_menu::available();
-    // Not while the opening's works fly past or the logo comes in, nor in a demo.
-    if(!intro::title_waiting() || settings_open){document_close(home_doc);document_close(home_chrome_doc);home_stamp.clear();return;}
+    // Not while the opening's works fly past or the logo comes in, nor in a demo, nor once a
+    // Battle Viewer battle is under way: the title is still waiting while the screen goes
+    // black, and the corner stayed on it for half a second (Seeker, 2026-11-20).
+    if(!intro::title_waiting() || settings_open || battle_viewer::busy()){document_close(home_doc);document_close(home_chrome_doc);home_stamp.clear();return;}
     // With touch controls the settings are a touch button along the top; the corner stays.
     const bool touch=touch_active();
     // The catalog's revision too: a text update or F5 changes labels within a language.
@@ -5924,6 +5966,18 @@ void choose(const std::string& id) {
         }
         mod_remove_pending.clear();++mod_revision;settings_focus=id;return;
     }
+    // A file that did not install: the n-th failure the page listed, removed on the second press.
+    if(mod_open && id.starts_with("mod-remove-file:")) {
+        const unsigned n=unsigned(std::strtoul(id.c_str()+16,nullptr,10));
+        std::string file;
+        unsigned i=0;
+        for(const auto& r:srw64::mods::loose_results())if(!r.result.ok && i++==n){file=r.file.filename().string();break;}
+        if(file.empty()){mod_remove_pending.clear();++mod_revision;return;}
+        if(mod_remove_pending!="file:"+file){mod_remove_pending="file:"+file;settings_focus=id;return;}
+        mod_remove_pending.clear();
+        notices::post("mod",filled(srw64::mods::remove_failed(file)?"mod_removed":"mod_remove_failed",{{"{id}",file}}));
+        ++mod_revision;settings_focus="first";return;
+    }
     if(mod_open && id.starts_with("mod-remove:")) {
         const auto pid=id.substr(11);
         if(mod_remove_pending!=pid){mod_remove_pending=pid;settings_focus=id;return;}
@@ -6095,6 +6149,7 @@ void choose(const std::string& id) {
         if(id.starts_with("battle-ui:"))settings::set_battle_ui(settings::battle_ui_from(id.substr(10)));
         if(id.starts_with("aspect:"))settings::set_wide_picture(id=="aspect:wide");
         if(id.starts_with("msaa:"))settings::set_msaa(id=="msaa:on");
+        if(id.starts_with("picture-scale:"))settings::set_picture_scale(unsigned(std::stoul(id.substr(14))));
         if(id.starts_with("window:") && (id=="window:fullscreen")!=bool(SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN))toggle_fullscreen();
         if(id.starts_with("window-size:"))scale_window(std::stoi(id.substr(12)));
         if(id.starts_with("ui-size:"))for(const auto size:{settings::UiSize::Standard,settings::UiSize::Large,settings::UiSize::Largest})
@@ -6429,6 +6484,18 @@ bool touch_owns_point(float x,float y) {
     const auto layout=touch_layout();const auto& scene=touch_controls;
     return touch_pad::hit(layout,scene,x,y) || touch_pad::in_stick_area(layout,scene,x,y) || scene.tap_primary;
 }
+// The title's entries (Library, the battle viewer, MOD; the campaign box) sit in the title
+// picture's corners, where on a wide phone the default controls overlap them: the B button
+// covered most of MOD at 16:9 (Seeker, 2026-11-20). A finger on one of them is the page's,
+// whatever control is drawn over it.
+bool title_entry_at(float x,float y) {
+    for(auto* doc:{home_doc,mini_doc}) {
+        if(!doc || !doc->IsVisible())continue;
+        for(auto* e=context->GetElementAtPoint({x,y},nullptr,doc);e && e!=doc;e=e->GetParentNode())
+            if(e->GetTagName()=="button")return true;
+    }
+    return false;
+}
 // Through sdl2-compat the back key has no scancode and SDL3's keycode (0x4000011A, SDL2's
 // SDLK_AC_BACK is 0x4000010E).
 bool touch_back_key(const SDL_Event& event) {
@@ -6476,7 +6543,7 @@ bool touch_event(const SDL_Event& event) {
     switch(event.type) {
     case SDL_FINGERDOWN: {
         touch_shown=true;touch_hints(true);
-        if(!touch_active() || !touch_fingers.down(touch_layout(),touch_controls,event.tfinger.fingerId,
+        if(!touch_active() || title_entry_at(event.tfinger.x*pixels_w,event.tfinger.y*pixels_h) || !touch_fingers.down(touch_layout(),touch_controls,event.tfinger.fingerId,
                                                   event.tfinger.x*pixels_w,event.tfinger.y*pixels_h))return false;
         touch_down_at[event.tfinger.fingerId]=SDL_GetTicks64();
         touch_publish();return true;
@@ -6503,7 +6570,8 @@ bool touch_event(const SDL_Event& event) {
     }
     // The mouse SDL makes from the first finger: not for the pages under the controls.
     case SDL_MOUSEBUTTONDOWN:
-        if(event.button.which!=SDL_TOUCH_MOUSEID || !touch_active() || !touch_owns_point(event.button.x*pixel_ratio,event.button.y*pixel_ratio))return false;
+        if(event.button.which!=SDL_TOUCH_MOUSEID || !touch_active() || !touch_owns_point(event.button.x*pixel_ratio,event.button.y*pixel_ratio) ||
+           title_entry_at(event.button.x*pixel_ratio,event.button.y*pixel_ratio))return false;
         touch_mouse_eaten=true;return true;
     case SDL_MOUSEMOTION:
         return event.motion.which==SDL_TOUCH_MOUSEID && touch_mouse_eaten;

@@ -140,15 +140,21 @@ class PackageTests(unittest.TestCase):
         self.assertIn("未知语言", validate.names_problem({"unit": {"fr": "Rafale"}}))
         self.assertEqual(validate.names_problem({"unit": {"fr": "Rafale"}}, ("fr",)), "")
         self.assertEqual(validate.names_problem({"unit": {"ko": "질풍"}}), "")
+        self.assertEqual(validate.names_problem({"models": {"@final": {"ja": "FDG-01", "en": "FDG-01"}}}), "")
+        self.assertIn("@名字", validate.names_problem({"models": {"224": {"ja": "X"}}}))
+        self.assertIn("非空", validate.names_problem({"models": {"@final": {"ja": ""}}}))
 
     def test_data_files_follow_the_host(self):
         files = self.good_files()
-        files["data/units.json"] = json.dumps({"184": {"hp": 5200, "abilities": ["i_field"], "size": "L", "terrain": {"sea": "A"}}}).encode()
+        files["data/units.json"] = json.dumps({"184": {"hp": 5200, "abilities": ["i_field"], "size": "L", "terrain": {"sea": "A"},
+                                                        "move_types": ["land", "air"], "swap_class": 2, "funds": 9000, "exp": 120}}).encode()
         files["data/pilots.json"] = json.dumps({"133": {"melee": 160, "skills": {"newtype": [1, 5], "parry": None}, "spirits": [["focus", 1], ["soul", 30]]}}).encode()
         files["data/weapons.json"] = json.dumps({"731": {"power": 3600, "ammo": -1}}).encode()
         files["art/portraits/133.png"] = b"png"
         self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], [])
         for name, bad, why in [("units.json", {"184": {"hp": 0}}, "超出范围"), ("units.json", {"184": {"abilities": ["transform"]}}, "abilities"),
+                               ("units.json", {"184": {"move_types": []}}, "非空"), ("units.json", {"184": {"move_types": ["fly"]}}, "underground"),
+                               ("units.json", {"184": {"swap_class": 9}}, "超出范围"), ("units.json", {"184": {"exp": 256}}, "超出范围"),
                                ("weapons.json", {"731": {"power": 3650}}, "100 的倍数"), ("weapons.json", {"731": {"range_min": 5, "range_max": 3}}, "range_min"),
                                ("pilots.json", {"133": {"skills": {"newtype": [1], "esp": [2]}}}, "只能有一个"),
                                ("pilots.json", {"133": {"spirits": [["focus", 5], ["soul", 1]]}}, "从小到大"), ("units.json", {"363": {}}, "编号")]:
@@ -161,20 +167,47 @@ class PackageTests(unittest.TestCase):
     def test_new_units(self):
         files = self.good_files()
         files["data/new_units.json"] = json.dumps({
-            "schema": "srw64.new-units.v1",
-            "units": {"314": {"copy": 224, "pose": [2324, 1724, 2016], "icon": 978, "weapons": [870, 881], "inherits_from": 224}},
-            "weapons": {"881": {"copy": 874, "inherits_from": 874, "animation": {"copy": 874}},
-                        "882": {"copy": 875, "animation": {"camera": 1, "hit": 59, "action": 84, "defender": 125, "sounds": [219],
-                                                           "actors": [{"scene": 1003, "h4": 1, "h5": 255, "behavior": 359}]}}},
-            "scenes": {"1003": [2560, 1716, 2118]}}).encode()
+            "schema": "srw64.new-units.v2",
+            "units": {"final": {"copy": 224, "pose": [2324, 1724, 2016], "icon": 978, "weapons": [870, "@kougaken"], "inherits_from": 224, "work": 21,
+                                "crew": [40, 41, 42, 43]}},
+            "weapons": {"kougaken": {"copy": 874, "inherits_from": 874, "animation": {"copy": 874}},
+                        "cannon": {"copy": 875, "animation": {"camera": 1, "hit": 59, "action": 84, "defender": 125, "sounds": [219],
+                                                              "actors": [{"scene": "@pose", "h4": 1, "h5": 255, "behavior": 359}]}}},
+            "scenes": {"pose": [2560, 1716, 2118]}}).encode()
+        files["data/units.json"] = json.dumps({"@final": {"hp": 8000}}).encode()
+        files["dialogue/names.json"] = json.dumps({"schema": "srw64.mod-names.v1", "units": {"@final": {"en": "Final"}}}).encode()
+        files["art/icons/@final.png"] = b"\x89PNG\r\n\x1a\n" + b"\0\0\0\rIHDR" + (32).to_bytes(4, "big") * 2 + b"\0" * 8
+        files["art/icons.json"] = json.dumps({"schema": "srw64.icons.v1", "facing": {"@final": "left"}}).encode()
         self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], [])
-        base = {"schema": "srw64.new-units.v1"}
-        for bad, why in [({"units": {"50": {"copy": 1, "weapons": [1]}}}, "314、325"), ({"weapons": {"700": {"copy": 1}}}, "881"),
-                         ({"scenes": {"5": [1, 2, 3]}}, "1051"), ({"units": {"314": {"copy": 360, "weapons": [1]}}}, "0–353"),
-                         ({"weapons": {"881": {"copy": 1, "animation": {"camera": 1, "hit": 1, "action": 1, "defender": 1, "actors": [{"scene": 1, "behavior": 2}]}}}}, "behavior"),
-                         ({"units": {"314": {"copy": 1, "weapons": []}}}, "weapons"), ({"extra": {}}, "未知分区")]:
+        base = {"schema": "srw64.new-units.v2"}
+        for bad, why in [({"units": {"Final": {"copy": 1, "weapons": [1]}}}, "小写"), ({"weapons": {"x": {"copy": "cannon"}}}, "copy"),
+                         ({"scenes": {"p": [1, 2]}}, "三个资源号"), ({"units": {"u": {"copy": 360, "weapons": [1]}}}, "0–353"),
+                         ({"weapons": {"w": {"copy": 1, "animation": {"camera": 1, "hit": 1, "action": 1, "defender": 1, "actors": [{"scene": 1, "behavior": 2}]}}}}, "behavior"),
+                         ({"weapons": {"w": {"copy": 1, "animation": {"camera": 1, "hit": 1, "action": 1, "defender": 1, "actors": [{"scene": "pose", "behavior": 3}]}}}}, "@场景名"),
+                         ({"units": {"u": {"copy": 1, "weapons": []}}}, "weapons"), ({"extra": {}}, "未知分区"),
+                         ({"units": {"u": {"copy": 1, "weapons": [1], "crew": []}}}, "crew"),
+                         ({"units": {"u": {"copy": 1, "weapons": [1], "work": 25}}}, "work"),
+                         ({"units": {"u": {"copy": 1, "weapons": [1], "crew": [1, 2, 3, 4, 5, 6]}}}, "crew"),
+                         ({"units": {"u": {"copy": 1, "weapons": [1], "crew": [361]}}}, "0–360"),
+                         ({"units": {"u": {"copy": 1, "weapons": [1], "combine": {"parts": [219]}}}}, "combine"),
+                         ({"units": {"u": {"copy": 1, "weapons": [1], "combine": {"parts": [219, 228], "over": ["@x"]}}}}, "over")]:
             self.assertIn(why, validate.new_units_problem({**base, **bad}))
-        self.assertIn("schema", validate.new_units_problem({"units": {}}))
+        self.assertIn("schema", validate.new_units_problem({"schema": "srw64.new-units.v1", "units": {}}))
+        # New characters (docs/design/unit-mod-kit.md §5.4).
+        self.assertEqual(validate.new_units_problem({**base, "pilots": {"hero": {"copy": 133, "voice": 4, "portrait": [3000, 3001]}}}), "")
+        for bad, why in [({"pilots": {"Hero": {"copy": 133}}}, "小写"), ({"pilots": {"hero": {"copy": 360}}}, "copy"),
+                         ({"pilots": {"hero": {"copy": 133, "voice": -1}}}, "voice"), ({"pilots": {"hero": {"copy": 133, "portrait": [1]}}}, "portrait"),
+                         ({"pilots": {"hero": {"copy": 133, "name": "x"}}}, "未知字段")]:
+            self.assertIn(why, validate.new_units_problem({**base, **bad}))
+        self.assertEqual(validate.data_problem("pilots.json", {"@hero": {"melee": 200}}), "")
+        self.assertEqual(validate.new_units_problem({**base, "pilots": {"hero": {"copy": 133, "love": [{"with": 166, "mutual": True}], "combo_as": 133}}}), "")
+        self.assertIn("love", validate.new_units_problem({**base, "pilots": {"hero": {"copy": 133, "love": [{"partner": 166}]}}}))
+        self.assertIn("combo_as", validate.new_units_problem({**base, "pilots": {"hero": {"copy": 133, "combo_as": 360}}}))
+        self.assertEqual(validate.new_units_problem({**base, "pilots": {"hero": {"copy": 133, "portrait": {"image": "art/h.png", "hd": "art/h-hd.png"}}}}), "")
+        self.assertIn("portrait", validate.new_units_problem({**base, "pilots": {"hero": {"copy": 133, "portrait": {"hd": "art/h.png"}}}}))
+        self.assertIn("没有", validate.new_units_problem({**base, "pilots": {"hero": {"copy": 133, "portrait": {"image": "art/h.png"}}}}, set()))
+        self.assertEqual(validate.names_problem({"pilots": {"@hero": {"ja": {"name": "ヒーロー"}}}}), "")
+        self.assertIn("@名字", validate.data_problem("units.json", {"final": {"hp": 1}}))
 
     def test_battle_voices(self):
         files = self.good_files()
@@ -211,6 +244,19 @@ class PackageTests(unittest.TestCase):
         self.assertIn("schema", validate.icon_facing_problem({"facing": {}}))
         files["art/icons/55.png"] = png(64, 32)
         self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["icon"])
+
+    def test_deflated_pictures_and_sound_only_warn(self):
+        # The game reads the file in place (mod_library.hpp ArchiveFiles); stored media read faster.
+        path = self.zip("a.b-1.0.0.srw64mod", self.good_files())   # zipfile's default: stored
+        self.assertNotIn("warnings", self.codes(path)[1])
+        path = self.dir / "a.b-1.0.0.srw64mod"
+        with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
+            for entry, data in self.good_files().items():
+                z.writestr(entry, data)
+        codes, summary = self.codes(path)
+        self.assertEqual(codes, [])
+        self.assertEqual(len(summary["warnings"]), 1)
+        self.assertIn("2 picture or sound", summary["warnings"][0])
 
     def test_everything_inside_one_top_folder_and_junk(self):
         files = {"a.b/" + name: data for name, data in self.good_files().items()}

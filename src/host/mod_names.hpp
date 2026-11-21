@@ -1,4 +1,5 @@
 #pragma once
+#include "mod_ids.hpp"
 #include "mod_library.hpp"
 #include "game_adapter/default_names.hpp"
 #include <cstdio>
@@ -82,7 +83,10 @@ inline Widest widest_defaults(const names::DefaultNames& table) {
 
 // One file, all or nothing; an error names the entry and the field. `locales` are the
 // reading languages a package may name.
-inline std::string parse(const json& document,const std::vector<std::string>& locales,const Widest& widest,Parsed& out) {
+// A unit or weapon may be named "@final" (the package's new one, mod_units.hpp): its name
+// goes on its private record (table_window.hpp name_record).
+inline std::string parse(const json& document,const std::vector<std::string>& locales,const Widest& widest,Parsed& out,
+                         const std::string& package={},const mod_units::Numbers& numbers={}) {
     if(!document.is_object())return "顶层要是对象";
     Parsed parsed;
     const auto name=[&](const json& value,const std::string& where,size_t limit,names::Field field,unsigned cells,std::string& text)->std::string {
@@ -152,10 +156,18 @@ inline std::string parse(const json& document,const std::vector<std::string>& lo
             const unsigned count=key=="pilots"?pilot_count:key=="units"?unit_count:weapon_count;
             for(const auto& [number,by_locale]:value.items()) {
                 const auto where=key+"."+number;
-                if(number.empty() || number.size()>4 || !std::all_of(number.begin(),number.end(),[](char c){return c>='0' && c<='9';}) || (number.size()>1 && number[0]=='0'))
-                    return where+"：编号要是十进制整数";
-                const unsigned n=unsigned(std::stoul(number));
-                if(n>=count)return where+"：编号超出范围（0–"+std::to_string(count-1)+"）";
+                unsigned n;
+                if(number.find('@')!=std::string::npos) {
+                    const auto of=key=="units"?mod_units::Of::unit:key=="weapons"?mod_units::Of::weapon:mod_units::Of::pilot;
+                    const auto found=mod_units::resolve(json(number),package,numbers,of);
+                    if(!found)return where+"：没有这个新"+(key=="units"?"机体":key=="weapons"?"武器":"人物")+"（data/new_units.json 里的名字）";
+                    n=*found;
+                } else {
+                    if(number.empty() || number.size()>4 || !std::all_of(number.begin(),number.end(),[](char c){return c>='0' && c<='9';}) || (number.size()>1 && number[0]=='0'))
+                        return where+"：编号要是十进制整数，或新机体、新武器的 @名字";
+                    n=unsigned(std::stoul(number));
+                    if(n>=count)return where+"：编号超出范围（0–"+std::to_string(count-1)+"）";
+                }
                 if(key=="pilots" && n>=first_hero && n<first_hero+heroes)return where+"：原创主角和搭档的名字写在 heroes 里";
                 if(!by_locale.is_object())return where+"：要是对象";
                 for(const auto& [locale,entry]:by_locale.items()) {
@@ -181,15 +193,33 @@ inline std::string parse(const json& document,const std::vector<std::string>& lo
                             else return at+"：未知字段 "+field+"（name、full）";
                             if(!why.empty())return why;
                         }
-                        parsed.records[uint16_t(text_pilot+n)][locale]=shown;
-                        parsed.records[uint16_t(text_pilot_full+n)][locale]=full.empty()?shown:full;
+                        parsed.records[table_window::name_record(table_window::NameKind::pilot,n)][locale]=shown;
+                        parsed.records[table_window::name_record(table_window::NameKind::pilot_full,n)][locale]=full.empty()?shown:full;
                     } else {
                         if(auto why=text(entry,at,shown);!why.empty())return why;
-                        parsed.records[uint16_t((key=="units"?text_unit:text_weapon)+n)][locale]=shown;
+                        parsed.records[table_window::name_record(key=="units"?table_window::NameKind::unit:table_window::NameKind::weapon,n)][locale]=shown;
                     }
                 }
             }
-        } else return "未知字段 "+key+"（schema、heroes、unit、pilots、units、weapons）";
+        } else if(key=="models") {
+            // A new unit's model line in the Library (table_window::model_record).
+            if(!value.is_object())return "models：要是对象";
+            for(const auto& [unit,by_locale]:value.items()) {
+                const auto where="models."+unit;
+                const auto found=mod_units::resolve(json(unit),package,numbers,mod_units::Of::unit);
+                if(!found || *found<table_window::first_new_unit)return where+"：要是新机体的 @名字（data/new_units.json 里的）";
+                if(!by_locale.is_object())return where+"：要是对象";
+                for(const auto& [locale,text]:by_locale.items()) {
+                    if(!known(locale))return where+"."+locale+"：未知语言（"+locale_list+"）";
+                    if(!text.is_string() || text.get<std::string>().empty())return where+"."+locale+"：要是非空字符串";
+                    const auto points=code_points(text.get<std::string>());
+                    if(!points)return where+"."+locale+"：不是有效的 UTF-8";
+                    if(points->size()>48)return where+"."+locale+"：太长（最多 48 个字符）";
+                    for(const auto cp:*points)if(cp<0x20 || cp=='<' || cp=='>' || cp=='{' || cp=='}')return where+"."+locale+"：不能有控制字符或 < > { }";
+                    parsed.records[table_window::model_record(*found)][locale]=text.get<std::string>();
+                }
+            }
+        } else return "未知字段 "+key+"（schema、heroes、unit、pilots、units、weapons、models）";
     }
     for(auto& [k,v]:parsed.names)out.names[k]=std::move(v);
     for(auto& [id,texts]:parsed.records)for(auto& [l,t]:texts)out.records[id][l]=std::move(t);
@@ -206,15 +236,16 @@ struct Collected {
 inline Collected collect(const std::vector<mods::Package>& packages,const std::vector<std::string>& locales,const Widest& widest) {
     Collected c;
     std::error_code error;
+    const auto numbers=mod_ids::assign(packages);
     for(const auto& p:packages) {
-        const auto path=p.folder/"dialogue"/file;
-        if(!p.active || !fs::is_regular_file(path,error))continue;
+        if(!p.active)continue;
+        const auto text=mods::files_of(p)->read_text(std::string("dialogue/")+file);   // its folder or its .srw64mod
+        if(!text)continue;
         const std::string where=p.id()+" dialogue/"+file+"：";
-        std::ifstream in(path,std::ios::binary);
-        const auto document=json::parse(in,nullptr,false);
+        const auto document=json::parse(*text,nullptr,false);
         if(document.is_discarded()){c.problems.push_back(where+"JSON 无效");continue;}
         Parsed parsed;
-        if(auto why=parse(document,locales,widest,parsed);!why.empty()){c.problems.push_back(where+why);continue;}
+        if(auto why=parse(document,locales,widest,parsed,p.id(),numbers);!why.empty()){c.problems.push_back(where+why);continue;}
         for(auto& [k,v]:parsed.names)c.names[k]=std::move(v);
         for(auto& [id,texts]:parsed.records)for(auto& [l,t]:texts)c.records[id][l]=std::move(t);
         for(auto& w:parsed.warnings)c.warnings.push_back(where+w);

@@ -1,0 +1,65 @@
+{
+  "schema": "srw64.story.v1",
+  "events": [
+    {
+      "id": "super-earthgain",
+      "note": "決着の時 (scene 124, Brad's route, Independence Army and OZ): its end event sets var21 = 2 and registers Kurtz with Virose (3D5A 31,0,35,500) when Brad has 100 kills. Then Brad also takes Super Earthgain the way the original's other branch does (3D5A 27,0,306,34), but with 500 as the old unit, so Earthgain stays in the roster unmanned. 800AAD28 finds 306's predecessor 34 still there and carries its five upgrade levels over. Brad and the two units share swap class 8 (data/), so the のりかえ menu moves him between them; in Earthgain next to Virose he has 招雷 天竜魔滅陣 (1219, found by unit, not by pilot).",
+      "scene": 124,
+      "when": {
+        "after": "end"
+      },
+      "if": {
+        "vars": {
+          "21": 2
+        },
+        "roster": {
+          "pilots": [
+            27,
+            31
+          ],
+          "units": [
+            34,
+            35
+          ]
+        },
+        "not_roster": {
+          "units": [
+            306
+          ]
+        }
+      },
+      "do": [
+        {
+          "join": {
+            "pilot": 27,
+            "unit": 306
+          }
+        }
+      ]
+    }
+  ],
+  "stage_info": [
+    {
+      "scene": 124,
+      "title": {
+        "ja": "スーパーアースゲイン",
+        "zh-Hans": "超级夺地者",
+        "zh-Hant": "超級奪地者",
+        "en": "Super Earthgain",
+        "ko": "슈퍼 어스게인"
+      },
+      "text": {
+        "ja": "カーツが仲間になれば、スーパーアースゲインも入手。ブラッドはのりかえでアースゲインと乗り換えられる",
+        "zh-Hans": "卡茨入队时也得到超级夺地者。布拉德可以在换乘里和夺地者互换",
+        "zh-Hant": "卡茨入隊時也得到超級奪地者。布拉德可以在換乘裡和奪地者互換",
+        "en": "When Kurtz joins, Super Earthgain comes too. Brad can swap between it and Earthgain",
+        "ko": "카츠가 동료가 되면 슈퍼 어스게인도 입수. 브래드는 갈아타기로 어스게인과 바꿔 탈 수 있다"
+      },
+      "done": {
+        "units": [
+          306
+        ]
+      }
+    }
+  ]
+}

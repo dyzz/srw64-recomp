@@ -238,6 +238,15 @@ NATIVE_HOOKS = {
     # Controller Pak presence (osPfsIsPlug caller): the runtime aborts in osPfsIsPlug, so
     # the host answers "no pak on any port" itself (game_hooks.cpp).
     "resident_func_80090778": "srw64_original_pfs_plug_check",
+    # A resource's descriptor (decoded size, offset from the table): a package's own resources
+    # past the ROM's 6,436 come from the host (mod_tables.hpp, docs/design/new-unit-ids.md §11).
+    "resident_func_80089BBC": "srw64_original_resource_descriptor",
+    # The predecessor row of a unit (D_800CA3A0): a package's new unit inherits through the host.
+    "resident_func_800AA814": "srw64_original_predecessor_row",
+    "resident_func_80085CD4": "srw64_original_slot_headers",
+    "load_000AB160_func_801E977C": "srw64_original_combine_check",
+    "load_000AB160_func_8020178C": "srw64_original_combo_locks",
+    "resident_func_800A74D4": "srw64_original_combine_parts",
     "load_0008F4B0_func_801D6FF4": "srw64_original_link_open",
     "load_0008F4B0_func_801D70FC": "srw64_original_link_step",
 }
@@ -320,6 +329,236 @@ MAP_WIDTH_CONSTANTS.update({
     ("srw64_original_battle_quote_pick", 0x802225D8): ("MEM_W(ctx->r2, 0X38)", "(srw64_quote_demo(rdram) ? 0 : MEM_W(ctx->r2, 0X38))"),
     ("srw64_original_battle_quote_pick", 0x802225DC): ("MEM_BU(ctx->r2, 0X4)", "(srw64_quote_demo(rdram) ? 0 : MEM_BU(ctx->r2, 0X4))"),
 })
+
+# New unit and weapon numbers (docs/design/new-unit-ids.md §3): the tables indexed by unit or
+# weapon number are read at a virtual ROM window the host serves (mod_tables.hpp), the ROM's
+# rows followed by the packages' new ones. Each reader builds the table's address with lui +
+# addiu; the addiu's literal moves to the window. The layout is mod_tables.hpp's, which
+# tests/test_table_window.py keeps in step with this one.
+TABLE_WINDOW, TABLE_BLOCK = 0x08000000, 0x00100000
+TABLE_BLOCKS = {   # key: (block, ROM address)
+    "units": (0, 0x71B80), "weapons": (1, 0x74E90), "status_offsets": (2, 0x7D980), "unit_songs": (3, 0x7DF30),
+    "weapon_lists": (4, 0x7E210), "poses": (5, 0x84E40), "battle_units": (6, 0x118610),
+    "battle_weapons": (7, 0x119970), "scenes": (8, 0x11E3D0), "anim_offsets": (9, 0x11FC80),
+    # New characters (docs/design/unit-mod-kit.md §5.4).
+    "pilot_records": (13, 0x7A1A0), "thresholds": (14, 0x7B1B0), "spirit_records": (15, 0x7CFB0),
+    "portraits": (16, 0x84220), "pilot_songs": (17, 0x7D6A0),
+}
+# The map icons (ROM 0x100D78) live in the tactical map overlay at 80218218: their 23 readers
+# load from a copy the host keeps in free RDRAM.
+MAP_ICONS_RAM, MAP_ICONS_COPY = 0x80218218, 0x807D0000
+TABLE_READERS = {   # (function, instruction): (table, the addiu's literal, lui's value)
+    ("srw64_original_demo_battle_fill", 0x8009C44C): ("units", 0x1B80, 0x70000),
+    ("srw64_original_unit_stats", 0x800A52B0): ("units", 0x1B80, 0x70000),
+    ("resident_func_800A6E68", 0x800A6F90): ("units", 0x1B80, 0x70000),
+    ("resident_func_800A8CE8", 0x800A8D2C): ("units", 0x1B80, 0x70000),
+    ("resident_func_800A642C", 0x800A6440): ("weapons", 0x4E90, 0x70000),
+    ("resident_func_8009C6E4", 0x8009C71C): ("status_offsets", -0x2680, 0x80000),
+    ("load_000AB160_func_801E085C", 0x801E0B70): ("unit_songs", -0x20D0, 0x80000),
+    ("resident_func_800A67C8", 0x800A680C): ("weapon_lists", -0x1DF0, 0x80000),
+    ("resident_func_8009C864", 0x8009C8A8): ("poses", 0x4E40, 0x80000),
+    ("load_00121560_func_801C30D0", 0x801C30F4): ("battle_units", -0x79F0, 0x120000),
+    ("load_00216730_func_801C2634", 0x801C2658): ("battle_units", -0x79F0, 0x120000),
+    ("load_00121560_func_801C3278", 0x801C329C): ("battle_weapons", -0x6690, 0x120000),
+    ("load_00216730_func_801C27DC", 0x801C2800): ("battle_weapons", -0x6690, 0x120000),
+    ("load_00121560_func_801C3170", 0x801C3190): ("scenes", -0x1C30, 0x120000),
+    ("load_00216730_func_801C26D4", 0x801C26F4): ("scenes", -0x1C30, 0x120000),
+    ("load_00121560_func_801C3128", 0x801C3138): ("anim_offsets", -0x380, 0x120000),
+    ("load_00216730_func_801C268C", 0x801C269C): ("anim_offsets", -0x380, 0x120000),
+    ("resident_func_800A6398", 0x800A63C4): ("pilot_records", -0x5E60, 0x80000),
+    ("resident_func_800A6340", 0x800A637C): ("thresholds", -0x4E50, 0x80000),
+    ("resident_func_800A63E0", 0x800A6410): ("spirit_records", -0x3050, 0x80000),
+    ("resident_func_8009C768", 0x8009C7A0): ("portraits", 0x4220, 0x80000),
+    ("load_000AB160_func_801E085C", 0x801E08B4): ("pilot_songs", -0x2960, 0x80000),
+    ("load_000AB160_func_801E085C", 0x801E0AAC): ("pilot_songs", -0x2960, 0x80000),
+}
+# The character -> record maps (D_800CA9C4 ability, D_800CA6F4 spirits; s16 × 360 in resident
+# RAM, built as 0x800D0000 plus a literal) are read at copies in free RDRAM with room for new
+# characters (table_window.hpp; mod_pilots.hpp fills them). The ability map has two kinds of
+# readers: the stats', and the battle quotes' (its value is the voice slot), which read a copy
+# where a new character has the voice of the character it borrows.
+PILOT_STATS_COPY, PILOT_VOICE_COPY, PILOT_SPIRIT_COPY = 0x807D2000, 0x807D2800, 0x807D3000
+PILOT_MAP_READERS = {   # (function, instruction): (literal, copy)
+    ("srw64_original_demo_battle_fill", 0x8009C414): ("-0X563C", PILOT_STATS_COPY),
+    ("resident_func_800A6340", 0x800A6358): ("-0X563C", PILOT_STATS_COPY),
+    ("resident_func_800A6398", 0x800A63B0): ("-0X563C", PILOT_STATS_COPY),
+    ("load_000AB160_func_801F3578", 0x801F3664): ("-0X563C", PILOT_VOICE_COPY),
+    ("load_000AB160_func_801F3578", 0x801F3AB8): ("-0X563C", PILOT_VOICE_COPY),
+    ("load_00121560_func_801C6F14", 0x801C6F90): ("-0X563C", PILOT_VOICE_COPY),
+    ("load_00121560_func_80222050", 0x80222318): ("-0X563C", PILOT_VOICE_COPY),
+    ("srw64_original_generic_quote_draw", 0x80222B7C): ("-0X563C", PILOT_VOICE_COPY),
+    ("load_00216730_func_801C2CAC", 0x801C2D18): ("-0X563C", PILOT_VOICE_COPY),
+    ("resident_func_800A2C18", 0x800A2C50): ("-0X590C", PILOT_SPIRIT_COPY),
+    ("resident_func_800A2C18", 0x800A2DB4): ("-0X590C", PILOT_SPIRIT_COPY),
+    ("resident_func_800A63E0", 0x800A63F8): ("-0X590C", PILOT_SPIRIT_COPY),
+    ("resident_func_800A7F8C", 0x800A8084): ("-0X590C", PILOT_SPIRIT_COPY),
+}
+MAP_ICON_READERS = [   # (function, instruction, the statement's literal)
+    ("load_000AB160_func_801C5DCC", 0x801C5F1C), ("load_000AB160_func_801C60A4", 0x801C60C0),
+    ("load_000AB160_func_801C835C", 0x801C84FC), ("load_000AB160_func_801CCAC4", 0x801CCD40),
+    ("load_000AB160_func_801CE510", 0x801CE820), ("load_000AB160_func_801CECF0", 0x801CEDB4),
+    ("load_000AB160_func_801CF9A0", 0x801CFD10), ("load_000AB160_func_801CFD9C", 0x801CFEA8),
+    ("load_000AB160_func_801D07B4", 0x801D0AC8), ("load_000AB160_func_801D4794", 0x801D4B04),
+    ("load_000AB160_func_801DC0AC", 0x801DC244), ("load_000AB160_func_801DCBD8", 0x801DCDC8),
+    ("load_000AB160_func_801DD9E8", 0x801DE044), ("load_000AB160_func_801ED864", 0x801EDA08),
+    ("load_000AB160_func_801FD99C", 0x801FDAF4), ("load_000AB160_func_801FD99C", 0x801FDC80),
+    ("load_000AB160_func_8020B324", 0x8020BAF8), ("load_000AB160_func_8020BE34", 0x8020C308),
+    ("load_000AB160_func_8020E860", 0x8020EA48), ("load_000AB160_func_80210758", 0x80210BEC),
+    ("load_000AB160_func_80210758", 0x8021136C), ("load_000AB160_func_802132C0", 0x802133D0),
+    ("load_000AB160_func_80213AAC", 0x80213C5C),
+]
+
+
+def literal(value: int) -> str:
+    return f"-0X{-value:X}" if value < 0 else f"0X{value:X}"
+
+
+for (function, address), (table, low, high) in TABLE_READERS.items():
+    block, rom = TABLE_BLOCKS[table]
+    MAP_WIDTH_CONSTANTS[(function, address)] = (literal(low), literal(low + TABLE_WINDOW + block * TABLE_BLOCK - rom))
+for function, address in MAP_ICON_READERS:
+    MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X7DE8", literal(-0x7DE8 + MAP_ICONS_COPY - MAP_ICONS_RAM))
+for (function, address), (low, copy) in PILOT_MAP_READERS.items():
+    MAP_WIDTH_CONSTANTS[(function, address)] = (low, literal(copy - 0x800D0000))
+# The love / friendship pairs (D_80218754 in the tactical map's overlay, 47 rows of 8 bytes:
+# +2 holder, +4/+6 partners) are read at a copy in free RDRAM with room for the packages'
+# rows (mod_pilots.hpp fills it): the reads move there, the row loops run over its capacity
+# (rows past the ROM's 47 are -1 holders, which no pilot matches).
+LOVE_RAM, LOVE_COPY, LOVE_ROWS = 0x80218754, 0x807D3800, 128
+LOVE_READERS = [   # (function, instruction, literal): every read is lui 0x8022 plus the literal
+    ("load_000AB160_func_801F4908", 0x801F4BE4, -0x78AA), ("load_000AB160_func_801F4908", 0x801F4C6C, -0x78A8),
+    ("load_000AB160_func_801F4908", 0x801F4C80, -0x78A6),
+    ("load_000AB160_func_801F4DF0", 0x801F4E08, -0x78AA), ("load_000AB160_func_801F4DF0", 0x801F4E1C, -0x78A8),
+    ("load_000AB160_func_801F4DF0", 0x801F4E30, -0x78A6),
+    ("load_000AB160_func_801F4E64", 0x801F51AC, -0x78A8), ("load_000AB160_func_801F4E64", 0x801F52E0, -0x78AA),
+    ("load_000AB160_func_801F4E64", 0x801F533C, -0x78A8), ("load_000AB160_func_801F4E64", 0x801F5358, -0x78A6),
+    ("load_000AB160_func_801F4E64", 0x801F5384, -0x78AA),
+]
+for function, address, low in LOVE_READERS:
+    MAP_WIDTH_CONSTANTS[(function, address)] = (literal(low), literal(low + LOVE_COPY - LOVE_RAM))
+for function, address, old in (("load_000AB160_func_801F4908", 0x801F4DAC, 0x2F), ("load_000AB160_func_801F4E64", 0x801F543C, 0x2F),
+                               ("load_000AB160_func_801F4DF0", 0x801F4E4C, 0x178)):
+    MAP_WIDTH_CONSTANTS[(function, address)] = (literal(old), literal(LOVE_ROWS if old == 0x2F else LOVE_ROWS * 8))
+# A unit's and a weapon's name are text records at 527 + unit, 1370 + weapon and 2699 +
+# weapon (its menu name); a new number takes a record of the host's (mod_tables.hpp
+# name_record), so the literal becomes srw64_name_record(kind, the number's register).
+NAME_RECORDS = {   # (function, instruction): (U unit, W weapon, M weapon menu; the number's register)
+    ("load_0008F4B0_func_801C6C78", 0x801C6DE4): ("U", "r5"),
+    ("load_0008F4B0_func_801C75C0", 0x801C77B4): ("M", "r5"),
+    ("load_0008F4B0_func_801C8854", 0x801C89B4): ("U", "r5"),
+    ("load_0008F4B0_func_801C8ED8", 0x801C90CC): ("U", "r5"),
+    ("load_0008F4B0_func_801CA8AC", 0x801CAA1C): ("U", "r5"),
+    ("load_0008F4B0_func_801CAC84", 0x801CAE60): ("U", "r5"),
+    ("load_0008F4B0_func_801CB230", 0x801CB404): ("U", "r5"),
+    ("load_0008F4B0_func_801CB5A0", 0x801CB70C): ("U", "r5"),
+    ("load_0008F4B0_func_801CBFAC", 0x801CC040): ("U", "r5"),
+    ("load_0008F4B0_func_801CCA80", 0x801CCC50): ("U", "r5"),
+    ("srw64_original_upgrade_open", 0x801CF78C): ("U", "r5"),
+    ("srw64_original_weapon_screen_open", 0x801D0668): ("M", "r5"),
+    ("srw64_original_weapon_screen_open", 0x801D06D0): ("M", "r5"),
+    ("srw64_original_upgrade_weapon_view", 0x801D0FE4): ("M", "r5"),
+    ("srw64_original_ability_unit_open", 0x801D17B8): ("U", "r5"),
+    ("srw64_original_swap_confirm_open", 0x801D2EFC): ("U", "r17"),
+    ("load_0008F4B0_func_801DBAD8", 0x801DBC04): ("U", "r5"),
+    ("load_000AB160_func_801CF2EC", 0x801CF5F8): ("U", "r5"),
+    ("load_000AB160_func_801E5C30", 0x801E5CFC): ("U", "r23"),
+    ("load_000AB160_func_801E5C30", 0x801E5E74): ("U", "r23"),
+    ("srw64_original_weapon_page", 0x801E66BC): ("M", "r5"),
+    ("srw64_original_status_pages", 0x801E753C): ("U", "r5"),
+    ("srw64_original_status_pages", 0x801E7778): ("U", "r5"),
+    ("load_000AB160_func_801E7A28", 0x801E7AD4): ("U", "r5"),
+    ("load_000AB160_func_801E7A28", 0x801E7B58): ("W", "r5"),
+    ("load_000AB160_func_801EC3A0", 0x801EC8F0): ("U", "r5"),
+    ("load_000AB160_func_801ECE88", 0x801ED304): ("U", "r5"),
+    ("load_000AB160_func_8020D754", 0x8020D884): ("U", "r5"),
+    ("load_00107BF0_func_801C2B18", 0x801C2EF8): ("U", "r5"),
+    ("load_0010DA50_func_801C9458", 0x801C9524): ("U", "r16"),
+    ("load_00216730_func_801C29A4", 0x801C2A30): ("W", "r5"),
+    ("load_00216730_func_801C3028", 0x801C31AC): ("U", "r5"),
+    ("load_00216730_func_801C3028", 0x801C32A0): ("W", "r5"),
+    # A character's name (P, 4382 + n) and full name (F, 4743 + n).
+    ("load_0008F4B0_func_801C6F80", 0x801C7230): ("P", "r5"),
+    ("load_0008F4B0_func_801C8854", 0x801C8A70): ("P", "r5"),
+    ("load_0008F4B0_func_801C8BAC", 0x801C8C84): ("P", "r5"),
+    ("load_0008F4B0_func_801C8ED8", 0x801C9040): ("P", "r5"),
+    ("load_0008F4B0_func_801C936C", 0x801C94C8): ("F", "r5"),
+    ("load_0008F4B0_func_801CA524", 0x801CA604): ("P", "r5"),
+    ("load_0008F4B0_func_801CA8AC", 0x801CAAC8): ("P", "r5"),
+    ("load_0008F4B0_func_801CAC84", 0x801CADE4): ("P", "r5"),
+    ("load_0008F4B0_func_801CAFE0", 0x801CB098): ("P", "r5"),
+    ("load_0008F4B0_func_801CB230", 0x801CB398): ("P", "r5"),
+    ("load_0008F4B0_func_801CB5A0", 0x801CB7D4): ("P", "r5"),
+    ("load_0008F4B0_func_801CCA80", 0x801CCC90): ("P", "r5"),
+    ("srw64_original_swap_targets_open", 0x801D2820): ("F", "r5"),
+    ("srw64_original_swap_targets_open", 0x801D2910): ("P", "r5"),
+    ("srw64_original_swap_confirm_open", 0x801D2C50): ("P", "r17"),
+    ("srw64_original_swap_confirm_open", 0x801D2CF0): ("P", "r5"),
+    ("srw64_original_swap_fairy_targets_open", 0x801D43C0): ("F", "r5"),
+    ("srw64_original_swap_fairy_targets_open", 0x801D448C): ("P", "r5"),
+    ("load_0008F4B0_func_801D5DE8", 0x801D5F64): ("P", "r5"),
+    ("load_0008F4B0_func_801D65B8", 0x801D6940): ("P", "r5"),
+    ("srw64_original_link_step", 0x801D7348): ("P", "r5"),
+    ("load_0008F4B0_func_801DB240", 0x801DB37C): ("P", "r3"),
+    ("load_0008F4B0_func_801DB7D8", 0x801DB8F4): ("P", "r3"),
+    ("load_000AB160_func_801E5C30", 0x801E5CC8): ("P", "r18"),
+    ("load_000AB160_func_801E5C30", 0x801E5E40): ("P", "r18"),
+    ("load_000AB160_func_801E5C30", 0x801E5FB8): ("P", "r5"),
+    ("srw64_original_pilot_page", 0x801E6DD4): ("F", "r5"),
+    ("srw64_original_status_pages", 0x801E7500): ("P", "r5"),
+    ("load_000AB160_func_801E7A28", 0x801E7AF8): ("P", "r5"),
+    ("resident_func_80081130", 0x8008116C): ("P", "r16"),
+    ("resident_func_80081130", 0x80081170): ("F", "r16"),
+    ("load_000AB160_func_801EC3A0", 0x801EC954): ("P", "r5"),
+    ("load_000AB160_func_801EC3A0", 0x801ECA08): ("P", "r5"),
+    ("load_000AB160_func_801EC3A0", 0x801ECAE4): ("P", "r5"),
+    ("load_000AB160_func_801ECE88", 0x801ED29C): ("P", "r5"),
+    ("load_000AB160_func_801EEED8", 0x801EF050): ("P", "r5"),
+    ("load_000AB160_func_801EF164", 0x801EF33C): ("P", "r5"),
+    ("load_000AB160_func_801F9EB4", 0x801FA16C): ("P", "r5"),
+    ("load_000AB160_func_8020D4FC", 0x8020D5B0): ("P", "r5"),
+    ("load_00107BF0_func_801C2B18", 0x801C2F6C): ("P", "r5"),
+    ("load_0010DA50_func_801C8C44", 0x801C8D1C): ("P", "r3"),
+    ("load_0010DA50_func_801C8D74", 0x801C8DC8): ("F", "r3"),
+    ("load_00216730_func_801C3028", 0x801C3158): ("P", "r5"),
+    ("resident_func_8008F648", 0x8008F8E4): ("P", "r5"),
+}
+# The loader's cap on resource numbers (80089E9C refuses 6,436 up, returning -2): the host
+# raises it by exactly the packages' own resources (mod_tables.hpp), so a number none gives is
+# refused as before instead of reading a descriptor past the ROM's table.
+MAP_WIDTH_CONSTANTS[("resident_func_80089E9C", 0x80089EAC)] = ("0X1924", "srw64_resource_limit()")
+# The のりかえ candidates (801C5618) count roster units per class in eight u16s on its stack
+# (classes 0-7) and read them back by the pilot's class: a class above 7 would run past them.
+# The index is masked with 7, so class 8 (mod_data.hpp, the one a package may add) counts in
+# class 0's slot, which no unit takes (class 0 is skipped before counting) and no pilot reads.
+for address, statement in ((0x801C56BC, "ctx->r3 << 1"), (0x801C57A8, "ctx->r3 << 1"), (0x801C5840, "ctx->r3 << 1")):
+    MAP_WIDTH_CONSTANTS[("load_0008F4B0_func_801C5618", address)] = (statement, "(ctx->r3 & 7) << 1")
+# The combined-unit table (src/host/mod_combine.hpp): its list of combined units D_800CB40C
+# and their record pointers D_800CB5A4 are read at copies in free RDRAM that have room for
+# a package's combined units (the originals are followed by other tables). Both are built
+# as 0x800D0000 plus a literal; the literal becomes the copy's.
+COMBINE_LIST, COMBINE_POINTERS = 0x800CB40C, 0x800CB5A4
+COMBINE_LIST_COPY, COMBINE_POINTERS_COPY, COMBINE_CAPACITY = 0x807D1000, 0x807D1080, 0x20
+COMBINE_LIST_READERS = [("resident_func_800A8880", 0x800A8888), ("load_000AB160_func_801E7EA8", 0x801E7F34)]
+COMBINE_POINTER_READERS = [
+    ("load_0008F4B0_func_801D33F4", 0x801D350C), ("load_000AB160_func_801E1688", 0x801E16F4),
+    ("load_000AB160_func_801E7EA8", 0x801E7F6C), ("load_000AB160_func_801E8344", 0x801E8548),
+    ("resident_func_800A5924", 0x800A5A80), ("srw64_original_combine_parts", 0x800A750C),
+    ("resident_func_800A9DCC", 0x800A9F50), ("resident_func_800AA210", 0x800AA318),
+    ("resident_func_800AAB5C", 0x800AABA8), ("resident_func_800AC220", 0x800AC468),
+    ("resident_func_800AC50C", 0x800AC598), ("srw64_original_weapon_inherit", 0x800AA958)]
+for function, address in COMBINE_LIST_READERS:
+    MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X4BF4", literal(COMBINE_LIST_COPY - 0x800D0000))
+for function, address in COMBINE_POINTER_READERS:
+    MAP_WIDTH_CONSTANTS[(function, address)] = ("-0X4A5C", literal(COMBINE_POINTERS_COPY - 0x800D0000))
+# 801E7EA8 (where a separated unit's parts stand) looks for the unit in the first 11 entries
+# only, and takes index 11 for "not there" (two literals: the loop's end and its delay slot).
+for address in (0x801E7F44, 0x801E7F4C, 0x801E7F58):
+    MAP_WIDTH_CONSTANTS[("load_000AB160_func_801E7EA8", address)] = ("0XB", literal(COMBINE_CAPACITY))
+NAME_BASES = {"U": (0, "0X20F"), "W": (1, "0X55A"), "M": (2, "0XA8B"), "P": (3, "0X111E"), "F": (4, "0X1287")}
+for (function, address), (kind, register) in NAME_RECORDS.items():
+    code, base = NAME_BASES[kind]
+    MAP_WIDTH_CONSTANTS[(function, address)] = (
+        base, f"(int32_t)(srw64_name_record({code}, (uint32_t)ctx->{register}) - (uint32_t)ctx->{register})")
 
 # 8008AE90 builds each frame's display list by calling every render node's function: sprites
 # at 8008B3FC (cursor, slot, sub), callbacks at 8008B3E0 (cursor). Both calls go through the
@@ -525,6 +764,8 @@ def main() -> int:
                               "int32_t srw64_damage_real(float damage, int32_t cap_bits);\n"
                               "uint32_t srw64_map_figure(uint8_t* rdram, uint32_t shown);\nuint32_t srw64_battle_figure(uint8_t* rdram, uint32_t shown);\n"
                               "int srw64_quote_demo(uint8_t* rdram);\n"
+                              "uint32_t srw64_name_record(uint32_t kind, uint32_t number);\n"
+                              "uint32_t srw64_resource_limit(void);\n"
                               "void srw64_render_node(uint8_t* rdram, recomp_context* ctx, int32_t function, int32_t sprite);\n#ifdef __cplusplus\n}\n#endif\n")
         trap = work / "generated/funcs_unsupported.c"
         trap.write_text('#include "recomp.h"\n#include <stdio.h>\n#include <stdlib.h>\n' + "\n".join(

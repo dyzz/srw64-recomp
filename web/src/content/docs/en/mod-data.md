@@ -53,6 +53,9 @@ The rules are strict: an unknown field, a value out of range or a number out of 
 | `size` | size | `SS`, `S`, `M`, `L`, `LL` |
 | `shield`, `sword` | carries a shield, a sword (for shield defense and parrying) | `true` or `false` |
 | `parts_slots` | part slots | 0–4 |
+| `move_types` | how it moves, **the whole list** | array: `land`, `air`, `sea`, `space`, `underground` |
+| `swap_class` | swap class: a pilot can change into it only with the same class; 0 never; 8 is unused by the original, free for a class of your own | 0–8 |
+| `funds`, `exp` | funds and experience for shooting it down (matters for enemy units) | funds 0–65535, exp 0–255 |
 | `abilities` | special abilities, **the whole list**: anything not in it is removed | see below |
 
 Ability keys:
@@ -75,6 +78,7 @@ Transform, Combine and Separate cannot be added or removed by a mod: they need t
 | `melee`, `ranged`, `evade`, `hit`, `reaction`, `skill` | the six stats at level 1 | 0–255 |
 | `sp` | max SP at level 1 | 0–255 |
 | `double_move` | the level from which the pilot acts twice a turn | 0–99 |
+| `swap_class` | swap class: the pilot can change into units of the same class; 0 never | 0–8 |
 | `terrain` | terrain ranks, see below | |
 | `skills` | skills, see below | |
 | `spirits` | spirits, see below | |

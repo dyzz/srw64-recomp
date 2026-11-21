@@ -77,6 +77,35 @@ class StoryTests(unittest.TestCase):
             with self.assertRaises(story.StoryError):
                 story.compile_story(source(event(do=[bad])))
 
+    def test_super_earthgain_package(self):
+        # config/recomp/mods/super-earthgain: Brad changes into 306 as the original's other branch
+        # does, but with 500 for the old unit, so Earthgain (34) stays in the roster.
+        document = json.loads((ROOT / "config/recomp/mods/super-earthgain/story/kurtz.json").read_text(encoding="utf-8"))
+        image = story.compile_story(document)
+        got = image["events"][0]
+        self.assertEqual(got["listing"][0], "3D5A 27,0,306,500")
+        self.assertEqual(got["vars"], {"21": 2})
+        self.assertEqual(image["stage_info"][0]["done"], {"units": [306]})
+
+    def test_stage_info(self):
+        # Hidden elements a package adds to a scene's stage information page (stage_info.cpp).
+        info = {"scene": 78, "title": {"ja": "ファイナルダンクーガ", "en": "Final Dancouga"}, "text": {"ja": "入手"},
+                "done": {"units": ["@final"], "pilots": [166]}}
+        image = story.compile_story({**source(event()), "stage_info": [info]})
+        self.assertEqual(image["stage_info"], [info])
+        self.assertNotIn("stage_info", story.compile_story(source(event())))
+        for bad in ({**info, "scene": 256}, {**info, "title": {"en": "X"}}, {**info, "text": {"ja": "", "en": "X"}},
+                    {**info, "done": {"units": [999]}}, {**info, "extra": 1}):
+            with self.assertRaises(story.StoryError):
+                story.compile_story({**source(event()), "stage_info": [bad]})
+
+    def test_new_speaker(self):
+        # A package's new character speaks by name; the host numbers it (story_mod.hpp add_image).
+        image = story.compile_story(source(event(do=[{"say": "@kai", "text": {"ja": "よろしく"}}])))
+        self.assertEqual(image["texts"][0]["speaker"], "@kai")
+        with self.assertRaises(story.StoryError):
+            story.compile_story(source(event(do=[{"say": 361, "text": {"ja": "x"}}])))
+
     def test_if_else_as_the_original(self):
         image = story.compile_story(source(event(do=[{"if": {"var": 128, "is": 2}, "then": [{"deploy": 12}], "else": [{"deploy": 11}]}])))
         self.assertEqual(image["events"][0]["words"],

@@ -8,6 +8,7 @@
 #endif
 #include "native_gpu.hpp"
 #include "native_quads.hpp"
+#include "renderer_mode.hpp"
 #include "hd_texture.hpp"
 #include "rom_art.hpp"
 #include "game_frame.hpp"
@@ -212,7 +213,7 @@ void decode(Asset& asset) {
     ++decoded;
 }
 
-#ifdef SRW64_GL_ONLY
+#ifdef SRW64_GL_RENDERER
 // The GL renderer's picture: the prepared, compressed copy where there is one (the Switch,
 // hd_texture.hpp), else the decoded level 0 (the original pictures from the ROM too).
 void gl_prepare(Asset& asset) {
@@ -264,7 +265,8 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
     ++rendered;
     return true;
 }
-#else
+#endif
+#ifndef SRW64_GL_ONLY
 uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     const RT64::DisplayList& tag = dl[-1];
     if (tag.w0 == kTagW0 && (tag.w1 & 0xFFFF0000u) == kTagW1) return kIdBase | (tag.w1 & 0xFFFF);
@@ -337,9 +339,11 @@ void initialize(const std::filesystem::path& directory) {
     output = directory;
     assets.reserve(kAssetCapacity);
     if (!source_width) { source_width = int(frame::kWidth); source_height = int(frame::kHeight); }
-#ifdef SRW64_GL_ONLY
+    // Both where the host has both renderers (renderer_mode.hpp): only the running one asks.
+#ifdef SRW64_GL_RENDERER
     native_quads::add(gl_quads);
-#else
+#endif
+#ifndef SRW64_GL_ONLY
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
     RT64::SetNativeMeshHooks(classify, render);
@@ -598,11 +602,11 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
         for (const int index : {record.asset, record.under}) {
             if (index < 0) continue;
             Asset& asset = assets[size_t(index)];
-#ifdef SRW64_GL_ONLY
-            if (!asset.gl_pixels) gl_prepare(asset);
-#else
-            if (!asset.textures && asset.levels.empty()) decode(asset);
+#ifdef SRW64_GL_RENDERER
+            if (renderer_mode::gl()) { if (!asset.gl_pixels) gl_prepare(asset); }
+            else
 #endif
+            if (!asset.textures && asset.levels.empty()) decode(asset);
         }
     }
     {

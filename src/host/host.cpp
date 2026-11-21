@@ -1,4 +1,5 @@
 #include "audio_hle.hpp"
+#include "renderer_fallback.hpp"
 #include "quote_force.hpp"
 #include "state_probe.hpp"
 #include "app/runtime.hpp"
@@ -38,6 +39,7 @@
 #include "rule_fixes.hpp"
 #include "upgrade_refund.hpp"
 #include "mod_data.hpp"
+#include "mod_tables.hpp"
 #include "mod_names.hpp"
 #include "mod_saves.hpp"
 #include "story_mod.hpp"
@@ -63,6 +65,7 @@
 #include <thread>
 #include <mutex>
 #include <iterator>
+#include <set>
 #include "native_portrait.hpp"
 #include "native_icon.hpp"
 #include "native_background.hpp"
@@ -178,6 +181,27 @@ void on_init(uint8_t* rdram, recomp_context*) {
     srw64::upgrades::initialize(rom.data(),rom.size());
     srw64::upgrades::configure(output_dir);
     srw64::mod_data::configure({rom.data(),rom.size()},output_dir);
+    // A package sprite's HD frames (mod_units.hpp sprites, "hd"), drawn in place of its own
+    // resources' frames as the art pack's are, once per (resources, frame, file).
+    srw64::mod_data::state().sprites_changed=[](const std::map<std::string,srw64::mod_units::Sprite>& sprites) {
+        static std::set<std::string> registered;
+        for(const auto& [_,sprite]:sprites)
+            for(size_t frame=0;frame<sprite.hd.size();++frame) {
+                const auto file=sprite.hd[frame];
+                const std::string key=std::to_string(sprite.scene)+"-"+std::to_string(sprite.atlas)+"-"+std::to_string(sprite.palette)+"-"+std::to_string(frame)+":"+file.string();
+                if(!registered.insert(key).second)continue;
+                srw64::sprites::add_generated_image(sprite.scene,sprite.atlas,sprite.palette,{uint8_t(frame)},[file] {
+                    srw64::sprites::TextImage out;
+                    std::string why;
+                    auto image=srw64::mod_sprites::load(file,why);
+                    out.width=image.width;out.height=image.height;
+                    for(size_t i=0;i+3<image.rgba.size();i+=4)
+                        for(int c=0;c<3;++c)image.rgba[i+c]=uint8_t((image.rgba[i+c]*image.rgba[i+3]+127)/255);
+                    out.rgba=std::move(image.rgba);
+                    return out;
+                });
+            }
+    };
     // Story MODs keep what has fired beside the suspend records: in the save library when
     // there is one, else in the run.
     srw64::story_mod::configure(output_dir,[] {
@@ -440,6 +464,9 @@ extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
     if(srw64::upgrades::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
     if(srw64::story_mod::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
     srw64::mod_data::refresh(rdram);   // number MODs join the copy patches (mod_data.hpp)
+    // The tables the game reads by unit or weapon number, moved to a window with the new
+    // numbers' rows (mod_tables.hpp).
+    if(srw64::mod_tables::read(recomp::get_rom(),rom,rdram,ram,size)) {ctx->r2=0;return;}
     overlay_loading = true;
     srw64_original_rom_read(rdram, ctx);
     overlay_loading = false;
@@ -469,6 +496,7 @@ extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
         load_overlays(rom, (int32_t)ram, size);
         loaded_sections.push_back(index);
         srw64::upgrades::patch_copy(rdram, rom, ram, size);
+        if(rom==0xAB160)srw64::mod_tables::fill_map_icons(recomp::get_rom(),rdram);   // the tactical map's
         srw64::intro::overlay_loaded(rom,ram,size);
         srw64::title_page::overlay_loaded(rom,ram,size);
         srw64::names::overlay_loaded(rom,ram,size);
@@ -479,9 +507,19 @@ extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
     srw64::upgrades::patch_copy(rdram, rom, ram, size);
 }
 
+// 80089BBC(resource, &decoded size, &offset from the table): a package's own resources past
+// the ROM's (mod_tables.hpp); the loader then reads their streams from the resource window.
+extern "C" void resident_func_80089BBC(uint8_t* rdram, recomp_context* ctx) {
+    srw64::mod_data::refresh(rdram);
+    uint32_t size,offset;
+    if(srw64::mod_tables::resource(uint16_t(ctx->r4),size,offset)) {MEM_W(0,ctx->r5)=size;MEM_W(0,ctx->r6)=offset;return;}
+    srw64_original_resource_descriptor(rdram,ctx);
+}
+
 extern "C" void resident_func_8008C510(uint8_t* rdram, recomp_context* ctx) {
     uint32_t offset,size;
     if(srw64::upgrades::descriptor(rdram,uint16_t(ctx->r4),uint16_t(ctx->r5),offset,size) ||
+       srw64::mod_tables::descriptor(recomp::get_rom(),uint16_t(ctx->r4),uint16_t(ctx->r5),offset,size) ||
        srw64::story_mod::descriptor(uint16_t(ctx->r4),uint16_t(ctx->r5),offset,size)) {
         MEM_W(0,ctx->r6)=offset;MEM_W(0,ctx->r7)=size;ctx->r2=size;return;
     }
@@ -867,6 +905,11 @@ int main(int argc, char** argv) {
 #ifdef __ANDROID__
     import_java_environment();
 #endif
+#if defined(_WIN32) && !defined(SRW64_GL_ONLY)
+    // A PC RT64 cannot draw on plays with the GL renderer over ANGLE (renderer_fallback.hpp),
+    // decided before anything else starts.
+    srw64::renderer_fallback::decide(argc, argv);
+#endif
 #if defined(_WIN32)
     // Streams first: console_log needs them, and they take descriptors 0 to 2 (desktop_windows.cpp).
     srw64::app::windows_connect_streams();
@@ -880,6 +923,8 @@ int main(int argc, char** argv) {
 #endif
     // Which release, on what: the first lines of every console.log (bug_report.hpp).
     srw64::bug_report::log_start();
+    // The GL renderer chosen in RT64's place (renderer_fallback.hpp): why, for a bug report.
+    if (const char* why = std::getenv("SRW64_RENDERER_FALLBACK"); why && *why) std::fprintf(stderr, "SRW64_RENDERER_FALLBACK %s\n", why);
 #if defined(__linux__) && !defined(__ANDROID__)
     // Android: bionic has backtrace() only from API 33, and debuggerd's tombstone needs
     // its own handlers, so crashes go to logcat as tombstones.

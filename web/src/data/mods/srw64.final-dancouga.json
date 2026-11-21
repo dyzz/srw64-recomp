@@ -1,6 +1,6 @@
 {
   "id": "srw64.final-dancouga",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "name": {
     "ja": "ファイナルダンクーガ",
     "zh-Hans": "终极断空我",
@@ -19,10 +19,8 @@
     "SRW64"
   ],
   "license": "CC0-1.0",
-  "game": ">=0.5.3",
-  "requires": {
-    "srw64.hd": ">=1.3"
-  },
+  "game": ">=0.5.4",
+  "requires": {},
   "optional": {},
   "conflicts": {},
   "contents": [
@@ -31,13 +29,13 @@
     "art",
     "dialogue"
   ],
-  "file": "srw64.final-dancouga-0.1.0.srw64mod",
-  "bytes": 25250,
-  "sha256": "4b377eab1ca78be14f019d893de69b7cb62afc57e6d2e6013fd1b313970000cd",
+  "file": "srw64.final-dancouga-0.2.0.srw64mod",
+  "bytes": 1507463,
+  "sha256": "4b8b0443ef61c395a64de2d37346766889e21335dc0b20887f8d3131093350e4",
   "languages": [],
-  "url": "/mods/srw64.final-dancouga-0.1.0.srw64mod",
+  "url": "/mods/srw64.final-dancouga-0.2.0.srw64mod",
   "page": "/mods/#srw64.final-dancouga",
   "source": "https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/final-dancouga",
-  "published": "2026-11-04",
+  "published": "2026-11-18",
   "yanked": null
 }

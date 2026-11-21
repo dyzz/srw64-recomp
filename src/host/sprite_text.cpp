@@ -1,4 +1,5 @@
 #include "sprite_text.hpp"
+#include "table_window.hpp"
 #include "native_dialogue.hpp"
 #include "story_cards.hpp"
 #include "campaign.hpp"
@@ -562,7 +563,7 @@ bool describe(const uint8_t* rdram, const sprites::SceneId& id, TextJob& job) {
         } else {
             const auto& entry = kDemoUnits[id.scene - kUnitFirst];
             pieces.push_back({demo_style(7.5, 200), entry.model});
-            pieces.push_back({demo_style(cjk ? 16 : 14, 230), record(rdram, uint16_t(kUnitNames + entry.unit))});
+            pieces.push_back({demo_style(cjk ? 16 : 14, 230), record(rdram, uint16_t(table_window::unit_name(entry.unit)))});
         }
         job.key = std::string(work ? "demo-work|" : "demo-unit|") + locale;
         for (const auto& piece : pieces) job.key += "|" + style_key(piece.style) + "|" + piece.text;

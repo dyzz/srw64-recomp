@@ -214,8 +214,8 @@ inline void apply(uint8_t* ram, std::vector<Saved>& saved) {
                     // Only while it is by the unit: a shot keeps the unit that fired it after
                     // the camera has gone to the other side, with that unit far off the screen.
                     const float h = across(host), apart = std::abs(d - h) / half;
-                    const float near = std::clamp(2 - 2 * apart, 0.f, 1.f);   // all within half a screen's half width, none at one
-                    if (std::isfinite(h)) moved += (h - placed(h)) * near * near * (3 - 2 * near);
+                    const float nearness = std::clamp(2 - 2 * apart, 0.f, 1.f);   // all within half a screen's half width, none at one
+                    if (std::isfinite(h)) moved += (h - placed(h)) * nearness * nearness * (3 - 2 * nearness);
                 }
                 float low, high, now_low, now_high;
                 if (mode != 0xE && listed(kBeamScenes, scene) && scene_reach(ram, sub, low, high, false) &&

@@ -51,6 +51,26 @@ TABLES = [
     ("weapon_map",      "武器继承映射 D_800CB5E8",         "ram", 0x800CB5E8, 115 * 4),
 ]
 
+# --pilots: the tables read by a character's number or by its ability record, for new
+# characters (docs/design/unit-mod-kit.md §5). Sizes past what is known are generous: a hit
+# just past a table is a lead to read, not a fact.
+PILOT_TABLES = [
+    ("pilot_records_map", "人物→能力记录 D_800CA9C4 s16×360", "ram", 0x800CA9C4, 360 * 2),
+    ("spirit_map",        "人物→精神记录 D_800CA6F4 s16×360", "ram", 0x800CA6F4, 360 * 2),
+    ("pilot_records",     "能力记录 257×0x10",               "rom", 0x7A1A0, 257 * 0x10),
+    ("thresholds",        "技能阈值 ×30（到精神表为止）",       "rom", 0x7B1B0, 0x7CFB0 - 0x7B1B0),
+    ("spirit_records",    "精神习得 ×12",                     "rom", 0x7CFB0, 0x7D6A0 - 0x7CFB0),
+    ("pilot_songs",       "人物战斗曲 361×2",                 "rom", 0x7D6A0, 361 * 2),
+    ("portraits_a",       "头像表 0x7C05C",                   "rom", 0x7C05C, 0x20),
+    ("portraits_b",       "头像表 0x7C07C",                   "rom", 0x7C07C, 0x20),
+    ("portraits",         "头像 361×4",                       "rom", 0x84220, 361 * 4),
+    ("love",              "恋爱补正 0x1012B4",                "rom", 0x1012B4, 0x400),
+    ("love_ram",          "恋爱补正（战术地图 overlay RAM）", "ovl:load_000AB160", 0x1012B4 + 0x801174A0, 0x400),
+    ("quotes_a",          "战斗台词表 0x1161C0",              "rom", 0x1161C0, 0x118610 - 0x1161C0),
+    ("quotes_b",          "战斗台词表 0x121150",              "rom", 0x121150, 0x2000),
+]
+PILOT_LIMITS = {0x168: "360 人物（映射）", 0x169: "361 人物", 0x101: "257 能力记录", 0x64: "100 我方驾驶员槽"}
+
 # Immediates worth a look in compares and loop bounds: the tables' sizes and the ID caps.
 LIMITS = {
     0x16B: "363 机体数", 0x16C: "364", 0x16D: "365 站姿槽", 0x162: "354 机体战斗记录行",
@@ -163,7 +183,12 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--generated", type=Path, default=ROOT / "build/recomp/cpu-bound/generated")
     parser.add_argument("--json", type=Path)
+    parser.add_argument("--pilots", action="store_true", help="the character tables instead (unit-mod-kit.md §5)")
     options = parser.parse_args()
+    if options.pilots:
+        TABLES[:] = PILOT_TABLES
+        LIMITS.clear()
+        LIMITS.update(PILOT_LIMITS)
     if not options.generated.is_dir():
         print(f"没有生成代码：{options.generated}（先跑 generate_cpu.py）", file=sys.stderr)
         return 1

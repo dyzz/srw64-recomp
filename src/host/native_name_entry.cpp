@@ -1,4 +1,5 @@
 #include "native_name_entry.hpp"
+#include "table_window.hpp"
 #include "dialogue_data.hpp"
 #include "run_files.hpp"
 #include "native_dialogue.hpp"
@@ -140,7 +141,7 @@ void fill_art(const uint8_t* ram) {
             unit.original=row->value("path",std::string());unit.hd=row->value("hd",std::string());
             unit.width=row->value("width",96u);unit.height=row->value("height",96u);
         }
-        choice.unit_names[p]=dialogue::ui_text(ram,uint16_t(text_unit_names+number));
+        choice.unit_names[p]=dialogue::ui_text(ram,uint16_t(table_window::unit_name(number)));
     }
 }
 void begin_selection(uint8_t* ram) {

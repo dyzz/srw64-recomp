@@ -53,6 +53,9 @@ yourname.balance/
 | `size` | 尺寸 | `SS`、`S`、`M`、`L`、`LL` |
 | `shield`、`sword` | 有没有盾、剑（盾防、切落用） | `true` 或 `false` |
 | `parts_slots` | 强化部件槽数 | 0–4 |
+| `move_types` | 移动类型，**写全** | 数组：`land` 陆、`air` 空、`sea` 海、`space` 宇、`underground` 地中 |
+| `swap_class` | 换乘类别：驾驶员与机体同类才能换乘，0 不能换乘；8 原版没用，可当专用类别 | 0–8 |
+| `funds`、`exp` | 被击坠时给的资金、经验（敌方机体用得到） | 资金 0–65535，经验 0–255 |
 | `abilities` | 特殊能力，**写全**：数组里没有的就去掉 | 见下表 |
 
 特殊能力的键：
@@ -75,6 +78,7 @@ yourname.balance/
 | `melee`、`ranged`、`evade`、`hit`、`reaction`、`skill` | 格斗、射击、回避、命中、反应、技量（1 级时的值） | 0–255 |
 | `sp` | 1 级时的 SP 上限 | 0–255 |
 | `double_move` | 到这个等级起可以再动 | 0–99 |
+| `swap_class` | 换乘类别，与机体的同类才能换乘，0 不能换乘 | 0–8 |
 | `terrain` | 地形适应，见下 | |
 | `skills` | 技能，见下 | |
 | `spirits` | 精神，见下 | |

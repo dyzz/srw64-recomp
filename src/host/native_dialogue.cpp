@@ -1,6 +1,8 @@
 #include "native_dialogue.hpp"
+#include "table_window.hpp"
 #include "mod_names.hpp"
 #include "mod_data.hpp"
+#include "librecomp/game.hpp"
 #include "dialogue_data.hpp"
 #include "run_files.hpp"
 #include "battle_hud.hpp"
@@ -167,7 +169,61 @@ const NameSlot* entered_name(uint16_t id) {
     if(uint16_t(id-0x12A4)<4)return &name_slots[5];
     return nullptr;
 }
+// A weapon menu name with its name at [at, end): the printed 格／射 in front and P, B (then
+// MAP) behind rewritten where the kind byte `now` differs from `was` in those bits.
+std::string rewrite_markers(std::string text,size_t at,size_t end,uint8_t was,uint8_t now) {
+    if((was^now)&mod_data::weapon_melee) {
+        const std::string prefix=text.substr(0,at);
+        if(prefix=="格" || prefix=="射") {
+            const std::string wanted=(now&mod_data::weapon_melee)?"格":"射";
+            text=wanted+text.substr(at);end+=wanted.size()-prefix.size();
+        }
+    }
+    // The suffix is P and B in that order, then MAP when the weapon is one.
+    std::string suffix=text.substr(end);
+    const bool map=suffix.size()>=3 && suffix.compare(suffix.size()-3,3,"MAP")==0;
+    const std::string body=map?suffix.substr(0,suffix.size()-3):suffix;
+    if(body.find_first_not_of("PB")==std::string::npos) {
+        bool p=body.find('P')!=std::string::npos,b=body.find('B')!=std::string::npos;
+        if((was^now)&mod_data::weapon_post_move)p=now&mod_data::weapon_post_move;
+        if((was^now)&mod_data::weapon_beam)b=now&mod_data::weapon_beam;
+        text=text.substr(0,end)+(p?"P":"")+(b?"B":"")+(map?"MAP":"");
+    }
+    return text;
+}
 std::string record_text(const uint8_t* ram,const localization::Catalog& catalog,uint16_t id) {
+    // A new unit's or weapon's name (a private record, table_window.hpp): the package's,
+    // else the one it copies, whose record bytes the guest draws. A menu name keeps the
+    // copied weapon's markers around the package's name.
+    if(const auto of=table_window::name_of(id)) {
+        const bool unit=of->kind==table_window::NameKind::unit;
+        const bool pilot=of->kind==table_window::NameKind::pilot || of->kind==table_window::NameKind::pilot_full;
+        std::optional<unsigned> source;
+        if(pilot) {   // a new character's: the character it copies (mod_units.hpp pilots)
+            const auto copies=mod_data::pilot_copies();
+            if(const auto c=copies.find(of->number);c!=copies.end())source=c->second;
+        } else source=unit?mod_data::unit_copy(of->number):mod_data::weapon_copy(of->number);
+        auto text=source?record_text(ram,catalog,table_window::name_record(of->kind,*source)):std::string();
+        if(catalog.locale=="ja" && names::guest_text_depth())return text;
+        names::default_names();   // refreshes the packages' names
+        if(of->kind!=table_window::NameKind::weapon_menu) {
+            if(auto modded=mod_names::record(catalog.locale,id))return *modded;
+            return text;
+        }
+        // The menu name the copied weapon shows, its name put in, and the markers set to the new
+        // weapon's own kind byte (a number MOD may change it: data/weapons.json "@name").
+        const auto modded=mod_names::record(catalog.locale,table_window::name_record(table_window::NameKind::weapon,of->number));
+        if(!source)return modded?*modded:text;
+        const auto plain=record_text(ram,catalog,table_window::name_record(table_window::NameKind::weapon,*source));
+        const auto at=plain.empty()?std::string::npos:text.find(plain);
+        if(at==std::string::npos)return modded?*modded:text;
+        size_t end=at+plain.size();
+        if(modded){text=text.substr(0,at)+*modded+text.substr(end);end=at+modded->size();}
+        const auto rom=recomp::get_rom();
+        const uint8_t was=upgrades::game_byte(rom,table_window::row(table_window::weapons,*source)+mod_data::weapon_kind);
+        const uint8_t now=upgrades::game_byte(rom,table_window::row(table_window::weapons,of->number)+mod_data::weapon_kind);
+        return (was^now)&mod_data::weapon_printed?rewrite_markers(text,at,end,was,now):text;
+    }
     if(const auto* slot=entered_name(id))
         if(auto name=decode(ram,slot->address,16);!name.empty())return shown_name(name,*slot,catalog.locale);
     const auto* value=catalog.resolve(localization::TextKey::base(0,id));
@@ -195,26 +251,7 @@ std::string record_text(const uint8_t* ram,const localization::Catalog& catalog,
             if(at==std::string::npos)return modded?*modded:text;
             size_t end=at+plain.size();
             if(modded){text=text.substr(0,at)+*modded+text.substr(end);end=at+modded->size();}
-            if(kind) {
-                const auto [was,now]=*kind;
-                if((was^now)&mod_data::weapon_melee) {
-                    const std::string prefix=text.substr(0,at);
-                    if(prefix=="格" || prefix=="射") {
-                        const std::string wanted=(now&mod_data::weapon_melee)?"格":"射";
-                        text=wanted+text.substr(at);end+=wanted.size()-prefix.size();
-                    }
-                }
-                // The suffix is P and B in that order, then MAP when the weapon is one.
-                std::string suffix=text.substr(end);
-                const bool map=suffix.size()>=3 && suffix.compare(suffix.size()-3,3,"MAP")==0;
-                const std::string body=map?suffix.substr(0,suffix.size()-3):suffix;
-                if(body.find_first_not_of("PB")==std::string::npos) {
-                    bool p=body.find('P')!=std::string::npos,b=body.find('B')!=std::string::npos;
-                    if((was^now)&mod_data::weapon_post_move)p=now&mod_data::weapon_post_move;
-                    if((was^now)&mod_data::weapon_beam)b=now&mod_data::weapon_beam;
-                    text=text.substr(0,end)+(p?"P":"")+(b?"B":"")+(map?"MAP":"");
-                }
-            }
+            if(kind)text=rewrite_markers(text,at,end,kind->first,kind->second);
         }
     }
     return text;
@@ -411,7 +448,7 @@ void refund_notice(const uint8_t* ram,uint16_t unit,uint32_t amount) {
     std::map<std::string,std::u16string> localized;
     for(const auto& [locale,catalog]:localization::registered()) {
         // The unit's name in each language; the ROM glyphs when a catalog lacks it.
-        auto local=record_text(ram,*catalog,uint16_t(refund::unit_name_base+unit));
+        auto local=record_text(ram,*catalog,table_window::unit_name(unit));
         localized[locale]=utf16(filled(filled(catalog->ui("refund_notice"),"{unit}",local.empty()?name:local),"{amount}",grouped(amount)));
     }
     const auto locale=localization::catalog().locale;
@@ -775,6 +812,10 @@ void register_languages() {
     std::vector<mod_languages::Language> added;
     for(auto& language:found.languages) {
         try {
+            // Faces open by path: a package file's come out of it into the MOD cache first
+            // (mods::local_file); a folder's are where they are.
+            for(auto& path:language.text_fonts)path=mods::local_file(path);
+            if(!language.title_font.empty())language.title_font=mods::local_file(language.title_font);
             // A face FreeType cannot open would fail every layout of the language: check
             // them here and leave the language out instead.
             for(const auto& path:language.text_fonts)text::FontSet({{path,0,0}});
@@ -868,7 +909,7 @@ void configure(const std::filesystem::path& directory) {
         Entry entry;entry.event=++event_serial;entry.text_id=text_id;
         for(const auto& [locale,catalog]:localization::registered()) {
             entry.localized[locale]=story_record(ram,*catalog,text_id,body_base).text;
-            entry.localized_speaker[locale]=utf16(record_text(ram,*catalog,uint16_t(0x111E + speaker)));
+            entry.localized_speaker[locale]=utf16(record_text(ram,*catalog,table_window::pilot_name(speaker)));
         }
         const auto& locale=localization::catalog().locale;
         entry.text=entry.localized[locale];entry.speaker=entry.localized_speaker[locale];

@@ -1,4 +1,5 @@
 #include "parts_page.hpp"
+#include "table_window.hpp"
 #include "intermission_mode.hpp"
 #include "run_files.hpp"
 #include "presentation_settings.hpp"
@@ -109,9 +110,9 @@ json unit_json(const uint8_t* ram,uint32_t slot) {
         const int part=int8_t(read(ram,unit+unit_parts+n,1));
         parts.push_back({{"part",part},{"name",part<0?std::string():part_name(ram,part)}});
     }
-    json row={{"slot",slot},{"number",number},{"name",text(ram,text_unit_names+number)},{"parts",parts},{"en",read(ram,unit+unit_en,2)}};
+    json row={{"slot",slot},{"number",number},{"name",text(ram,table_window::unit_name(number))},{"parts",parts},{"en",read(ram,unit+unit_en,2)}};
     const uint32_t pilot=read(ram,unit+unit_pilot,4);
-    if(read(ram,unit+unit_crew,1) && pilot && valid(pilot,8)){row["pilot"]=text(ram,uint16_t(text_pilot_names+read(ram,pilot+2,2)));row["level"]=read(ram,pilot+5,1);}
+    if(read(ram,unit+unit_crew,1) && pilot && valid(pilot,8)){row["pilot"]=text(ram,table_window::pilot_name(read(ram,pilot+2,2)));row["level"]=read(ram,pilot+5,1);}
     else row["pilot"]=std::string();
     return row;
 }

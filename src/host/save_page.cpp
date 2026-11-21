@@ -18,6 +18,7 @@
 #include <fstream>
 #include <map>
 #include <mutex>
+#include <optional>
 
 uint64_t srw64_current_vi();
 namespace srw64::save_page {
@@ -47,6 +48,14 @@ constexpr uint16_t text_rom=0xFD9,text_pak=0xFDA,text_save_to=0xFDC,text_checkin
 constexpr uint16_t glyph_blank=0x1549;
 constexpr unsigned sound_move=0xB9,sound_confirm=0xB7,sound_cancel=0xB8,sound_buzzer=0xBA;
 constexpr uint16_t button_b=0x4000;
+
+// The slots of the last header read without a protagonist (headers_read): no portrait.
+bool no_protagonist[2]{};
+// 80092744(slot) reads a cartridge slot record into the buffer at 801C2600 (nonzero when
+// it is good); its pilot records (12 bytes from 801C2FD0, +0 the pilot, -1 none, +2 the
+// experience) are what 80085CD4 searches for the protagonist, 800A630C the level.
+constexpr uint32_t read_record=0x80092744,record_pilots=0x801C2FD0,record_pilot_size=0xC;
+constexpr unsigned record_pilot_count=100,protagonist_first=25,protagonist_last=28;
 
 std::mutex mutex;
 json current={{"visible",false}};
@@ -282,13 +291,15 @@ json slot_json(const uint8_t* ram,unsigned n,uint32_t headers) {
     const uint32_t rec=headers+n*slot_size;
     json s={{"index",n},{"used",read(ram,rec,1)!=0}};
     if(!s["used"].get<bool>())return s;
+    const bool hero=!(n<2 && no_protagonist[n]);
     std::vector<uint16_t> codes;
     for(unsigned i=0;i<6;++i)codes.push_back(uint16_t(read(ram,rec+2+2*i,2)));
     const unsigned protagonist=read(ram,rec+0xE,1);
     s["name"]=name_of(codes);
-    s["protagonist"]=protagonist;
+    if(hero)s["protagonist"]=protagonist;
     s["level"]=read(ram,rec+0xF,1);s["episode"]=read(ram,rec+0x10,1);s["title"]=text(ram,uint16_t(text_titles+read(ram,rec+0x11,1)));
     s["turns"]=read(ram,rec+0x12,2);s["funds"]=read(ram,rec+0x14,4);
+    if(!hero)return s;
     const auto face=std::to_string(portrait_face+protagonist);
     // A MOD's portrait of the protagonist, in either image mode, like the other pages.
     if(auto modded=srw64::portraits::mod_picture_of(portrait_face+protagonist);!modded.empty())
@@ -653,6 +664,29 @@ void configure(const std::filesystem::path& directory) {
 bool title_screen_build(uint8_t* ram,recomp_context* ctx,unsigned screen){return title_build(ram,ctx,screen);}
 bool title_screen_step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*original)(uint8_t*,recomp_context*)){return title_step(ram,ctx,screen,original);}
 void title_screen_frame(uint8_t* ram){title_frame(ram);}
+void headers_read(uint8_t* ram,recomp_context* ctx,unsigned medium,uint32_t table) {
+    for(unsigned n=0;n<2;++n) {
+        no_protagonist[n]=false;
+        if(medium!=0 || read(ram,table+n*slot_size,1))continue;
+        if(!(call(ram,ctx,read_record,n)&0xFF))continue;   // empty or broken: stays unused
+        std::optional<unsigned> experience;
+        bool hero=false;
+        for(unsigned i=0;i<record_pilot_count;++i) {
+            const uint32_t at=record_pilots+i*record_pilot_size;
+            const auto pilot=int16_t(read(ram,at,2));
+            if(pilot<0)continue;
+            if(unsigned(pilot)>=protagonist_first && unsigned(pilot)<=protagonist_last)hero=true;
+            if(!experience)experience=read(ram,at+2,2);
+        }
+        if(hero || !experience)continue;
+        // The header's other fields are the record's already (80085CD4 fills them before the
+        // search); the level is the first pilot's, as 800A630C gives it.
+        write8(ram,table+n*slot_size,1);
+        write8(ram,table+n*slot_size+0xE,0);
+        write8(ram,table+n*slot_size+0xF,uint8_t(std::min(*experience/500+1,99u)));
+        no_protagonist[n]=true;
+    }
+}
 void title_overlay_changed(){std::lock_guard lock(mutex);if(title){hide("overlay");title=false;}}
 // The window thread's read every UI frame (and the debug thread's). A step holds the page's
 // lock across the original's own waits (game_hooks.cpp, 80085F30): the window, and the
