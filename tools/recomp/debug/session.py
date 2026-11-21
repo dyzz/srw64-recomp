@@ -291,12 +291,21 @@ class Session:
             environment["SRW64_MINI_STAGE"] = str(image)
         environment.pop("SRW64_CAMPAIGN", None)
         if campaign:
-            # A campaign source (srw64.campaign.v1) compiled here; it plays from its
-            # own save library in the run, as the launcher's --campaign does.
+            # A campaign source compiled here; it plays from its own save library in the
+            # run, as the launcher's --campaign does. One written stage by stage
+            # (srw64.campaign.v2, tools/mods/stage.py) becomes a folder: its image and,
+            # beside it, the story image the host reads its events from.
             sys.path.insert(0, str(ROOT / "tools"))
-            from recomp.script_lab.mini_stage import compile_campaign
-            image = run.parent / (run.name + ".campaign.json")
-            image.write_text(json.dumps(compile_campaign(Path(campaign)), ensure_ascii=False) + "\n")
+            sys.path.insert(0, str(ROOT / "tools" / "mods"))
+            import stage
+            if stage.is_source(Path(campaign).parent):
+                folder = run.parent / (run.name + ".campaign")
+                stage.compile_into(Path(campaign).parent, folder)
+                image = folder / "campaign.json"
+            else:
+                from recomp.script_lab.mini_stage import compile_campaign
+                image = run.parent / (run.name + ".campaign.json")
+                image.write_text(json.dumps(compile_campaign(Path(campaign)), ensure_ascii=False) + "\n")
             environment["SRW64_CAMPAIGN"] = str(image)
             environment["SRW64_SAVE_LIBRARY"] = str(run / "campaign-saves")
         for key in ("SRW64_CAMPAIGN_DIRS", "SRW64_CAMPAIGN_SAVES", "SRW64_MOD_ENTRY"):

@@ -76,6 +76,8 @@ elif WHY=$(history_stale); then
   (cd "$ROOT" && "$PY" web/scripts/export_history.py >/dev/null) || { echo "export_history.py failed" >&2; exit 1; }
 fi
 (cd "$ROOT" && "$PY" web/scripts/export_images.py >/dev/null)
+# The level editor's data, its compiler and the runtime that runs it (web/scripts/export_editor.py).
+(cd "$ROOT" && "$PY" web/scripts/export_editor.py >/dev/null) || { echo "export_editor.py failed" >&2; exit 1; }
 [ -e "$WEB/public/gen/portraits" ] || { echo "missing web/public/gen/portraits: web/scripts/export_images.py made none" >&2; exit 1; }
 
 if [ -z "${PUBLIC_UMAMI_WEBSITE_ID:-}" ] && [ -s ~/.config/srw64/site-analytics-id ]; then

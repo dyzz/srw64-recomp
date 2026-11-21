@@ -2,6 +2,7 @@
 #include "json/json.hpp"
 #include "localization/locale_fallbacks.hpp"
 #include <cstdint>
+#include <filesystem>
 #include <map>
 #include <mutex>
 #include <optional>
@@ -23,6 +24,9 @@ struct Info {
     // and the campaign's status rules (srw64.stage-status.v1), when it has them.
     std::map<uint32_t,nlohmann::json> meta;
     nlohmann::json status;
+    // The story image beside the campaign's image (campaign/story.json, tools/mods/stage.py):
+    // the events of its stages that the host triggers (story_mod.hpp); may not exist.
+    std::filesystem::path story;
 };
 struct State {std::mutex mutex;std::optional<Info> info;};
 inline State& state(){static State s;return s;}
@@ -44,6 +48,7 @@ inline nlohmann::json stage_meta(uint32_t scene) {
         if(const auto title=s.info->titles.find(scene);title!=s.info->titles.end())meta["title"]=title->second;
     return meta;
 }
+inline std::filesystem::path story(){auto& s=state();std::lock_guard lock(s.mutex);return s.info?s.info->story:std::filesystem::path();}
 inline nlohmann::json status(){auto& s=state();std::lock_guard lock(s.mutex);return s.info?s.info->status:nlohmann::json();}
 
 // The chapter title a stage gives its scene, in the given locale by

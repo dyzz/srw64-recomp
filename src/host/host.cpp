@@ -40,6 +40,7 @@
 #include "rule_fixes.hpp"
 #include "upgrade_refund.hpp"
 #include "mod_data.hpp"
+#include "map_mod.hpp"
 #include "mod_tables.hpp"
 #include "mod_names.hpp"
 #include "mod_saves.hpp"
@@ -469,6 +470,7 @@ extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t rom = ctx->r4, ram = ctx->r5, size = ctx->r6;
     if(srw64::upgrades::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
     if(srw64::story_mod::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
+    if(srw64::map_mod::read(rom,rdram,ram,size)) {ctx->r2=0;return;}
     srw64::mod_data::refresh(rdram);   // number MODs join the copy patches (mod_data.hpp)
     // The tables the game reads by unit or weapon number, moved to a window with the new
     // numbers' rows (mod_tables.hpp).
@@ -518,6 +520,8 @@ extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
 extern "C" void resident_func_80089BBC(uint8_t* rdram, recomp_context* ctx) {
     srw64::mod_data::refresh(rdram);
     uint32_t size,offset;
+    // A campaign stage's own map in place of the original map's three resources (map_mod.hpp).
+    if(srw64::map_mod::descriptor(uint16_t(ctx->r4),size,offset)) {MEM_W(0,ctx->r5)=size;MEM_W(0,ctx->r6)=offset;return;}
     if(srw64::mod_tables::resource(uint16_t(ctx->r4),size,offset)) {MEM_W(0,ctx->r5)=size;MEM_W(0,ctx->r6)=offset;return;}
     srw64_original_resource_descriptor(rdram,ctx);
 }

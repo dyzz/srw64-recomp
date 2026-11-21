@@ -107,7 +107,7 @@ for _ in range(20):
     keys('return', pause=.5)
 s.client.call('ui.click', id='mini-enter')
 wait_for(lambda st: st['mini_stage'].get('applied'), timeout=120)
-check('prologue-on-scene-1', applied() == [(1, 'sample-prologue')], applied())
+check('prologue-on-scene-1', applied() == [(1, 'prologue')], applied())
 
 page = play_to_intermission()
 shot('intermission-prologue.png')
@@ -137,10 +137,10 @@ check('link-blocked', st['intermission_page'].get('visible') and not st['link_pa
 
 next_stage()
 page = play_to_intermission()
-check('crossroads-on-scene-2', applied()[-1] == (2, 'sample-crossroads') and maps()[-1] == (2, 19) and
+check('crossroads-on-scene-2', applied()[-1] == (2, 'crossroads') and maps()[-1] == (2, 19) and
       (page['scene'], page['scene_title'], page['episode']) == (2, '第2话　岔路', 2), {'applied': applied(), 'page': page})
 next_stage()
-check('first-option-ending-a', applied()[-1] == (3, 'sample-ending-a'), applied())
+check('first-option-ending-a', applied()[-1] == (3, 'ending-a'), applied())
 play_to_title()
 check('ending-a-returns-to-title', maps()[-1] == (3, 0), maps())
 
@@ -162,9 +162,9 @@ page = wait_for(lambda st: st['intermission_page'].get('visible'), timeout=60)['
 check('save-loads-into-campaign', page.get('visible') and (page['scene'], page['scene_title']) == (1, '序章　启程'), page)
 next_stage()
 play_to_intermission(second=True)
-check('crossroads-after-load', applied()[-1] == (2, 'sample-crossroads'), applied())
+check('crossroads-after-load', applied()[-1] == (2, 'crossroads'), applied())
 next_stage()
-check('second-option-ending-b', applied()[-1] == (4, 'sample-ending-b'), applied())
+check('second-option-ending-b', applied()[-1] == (4, 'ending-b'), applied())
 play_to_title()
 check('ending-b-returns-to-title', maps()[-1] == (4, 21), maps())
 print('EXIT', s.quit().get('exit_code'), flush=True)

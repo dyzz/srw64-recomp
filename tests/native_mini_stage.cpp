@@ -117,6 +117,18 @@ int main(int argc,char** argv) {
     put(resource_unit+4,3000,2);put(resource_unit+6,3000,2);put(resource_unit+8,80,2);put(resource_unit+10,80,2);
     service(ram.data());assert(read(ram.data(),resource_unit+4,2)==1050 && read(ram.data(),resource_unit+8,2)==40);
     put(resource_unit+4,1000,2);service(ram.data());assert(read(ram.data(),resource_unit+4,2)==1000);
+    // A suspend record restored registers the scene again in mode 1: its units are the
+    // record's, so neither the resources nor the story set-up are applied again, and a unit
+    // the record no longer has is no error.
+    {
+        const auto kept=state().image;const auto bound=state().bound;const auto applied=state().applied;
+        state().image=parse(resource_image);state().bound.reset();
+        put(resource_slot,0,1);put(0x8015E818,0x0000,2);
+        ctx.r4=1;register_hook(ram.data(),&ctx);ctx.r4=0;
+        assert(state().active && state().ready);
+        service(ram.data());assert(read(ram.data(),resource_unit+4,2)==1000);
+        state().image=kept;state().bound=bound;state().applied=applied;put(resource_slot,1,1);
+    }
     auto invalid=resource_image;invalid["initial_resources"][0]["hp_percent"]=0;
     bool rejected=false;try{parse(invalid);}catch(const std::runtime_error&){rejected=true;}assert(rejected);
     state().image=parsed;

@@ -6,6 +6,7 @@
 #include "native_quads.hpp"
 #include "renderer_mode.hpp"
 #include "presentation/image_mode.hpp"
+#include "presentation/file_source.hpp"
 #ifndef SRW64_GL_ONLY
 #include "hle/rt64_state.h"
 #include "rhi/rt64_render_hooks.h"
@@ -65,6 +66,7 @@ struct Asset {
     // drawn for a while (lazy). Window frames (docs/native/native-ui-text.md §4) are made
     // from the ROM (rom_art.cpp) the same way and draw from the next frame on.
     bool from_rom = false, lazy = false, waited = false;
+    bool custom = false;                     // a campaign's own map: only drawn as an override (set_override)
     enum class State { waiting, queued, decoded, ready } state = State::waiting;
     std::vector<uint8_t> base, index;        // RGBA8 and one index per pixel, at width*scale
     std::vector<std::vector<uint8_t>> base_levels;   // base with its mip chain, from the decoder thread
@@ -141,7 +143,10 @@ uint32_t rgba5551(uint16_t v) {
 // A map's runtime description: its folder's meta.json, or that text as the combined index
 // gives it (`given`).
 Asset load_meta(const std::filesystem::path& folder, const json* given = nullptr) {
-    const json meta = given ? *given : json::parse(app::read_text(folder / "meta.json", 16u << 20));
+    // A campaign's own map may be in its package file, read in place (presentation/file_source.hpp).
+    const auto text = given ? std::nullopt : presentation::read_file(folder / "meta.json");
+    if (!given && (!text || text->size() > (16u << 20))) throw std::runtime_error("Cannot read " + (folder / "meta.json").string());
+    const json meta = given ? *given : json::parse(text->begin(), text->end());
     if (meta.at("schema") != "srw64.hd-map-runtime.v0") throw std::runtime_error("Unknown HD map schema in " + folder.string());
     Asset asset;
     asset.layout = meta.at("layout").get<uint16_t>();
@@ -227,7 +232,11 @@ void decode(Asset& asset) {
 #endif
     auto read = [&](const char* name, int channels, std::vector<uint8_t>& out) {
         int x = 0, y = 0, n = 0;
-        uint8_t* pixels = stbi_load((folder / name).string().c_str(), &x, &y, &n, channels);
+        uint8_t* pixels = nullptr;
+        if (asset.custom) {   // a campaign's own map: maybe in its package file
+            const auto bytes = presentation::read_file(folder / name);
+            if (bytes) pixels = stbi_load_from_memory(bytes->data(), int(bytes->size()), &x, &y, &n, channels);
+        } else pixels = stbi_load((folder / name).string().c_str(), &x, &y, &n, channels);
         if (!pixels) throw std::runtime_error("Cannot read HD map image " + (folder / name).string());
         if (x != w || y != h) { stbi_image_free(pixels); throw std::runtime_error("HD map image size differs from meta.json"); }
         out.assign(pixels, pixels + size_t(x) * y * channels);
@@ -304,8 +313,14 @@ void decode_loop() {
     }
 }
 
+// set_override: the layout a campaign's own map stands in for, and its asset (-1: no HD
+// picture, the cells stay as the game draws them).
+int override_layout = -1, override_asset = -1;
+std::map<std::string, int> custom_assets;    // by folder
+
 int find_asset(uint16_t layout) {
-    for (size_t i = 0; i < assets.size(); ++i) if (assets[i].layout == layout) return int(i);
+    if (override_layout >= 0 && layout == uint16_t(override_layout)) return override_asset;
+    for (size_t i = 0; i < assets.size(); ++i) if (assets[i].layout == layout && !assets[i].custom) return int(i);
     return -1;
 }
 
@@ -477,6 +492,36 @@ std::filesystem::path maps_root() {
     if (root.is_relative()) root = std::filesystem::path(art) / root;
     // A public pack may leave the maps out (tools/release/build_release.py): original maps then.
     return std::filesystem::is_directory(root) ? root : std::filesystem::path{};
+}
+
+void clear_override() {
+    if (override_layout >= 0) current_map = -1;
+    override_layout = override_asset = -1;
+}
+
+void set_override(uint16_t layout, const std::filesystem::path& folder) {
+    int asset = -1;
+    if (!folder.empty()) {
+        const auto key = folder.string();
+        if (const auto found = custom_assets.find(key); found != custom_assets.end()) asset = found->second;
+        else {
+            try {
+                Asset loaded = load_meta(folder);
+                if (loaded.layout != layout || !loaded.colonies.empty() || loaded.alpha) throw std::runtime_error("not this layout's opaque map");
+                loaded.lazy = loaded.custom = true;
+                std::lock_guard lock(asset_mutex);
+                if (assets.size() < assets.capacity()) {     // reserved at start: no reallocation under the renderer
+                    assets.push_back(std::move(loaded));
+                    asset = int(assets.size() - 1);
+                }
+            } catch (const std::exception& error) {
+                fprintf(stderr, "SRW64_HD_MAPS campaign map %s: %s\n", key.c_str(), error.what());
+            }
+            custom_assets[key] = asset;
+        }
+    }
+    override_layout = layout; override_asset = asset;
+    current_map = -1;
 }
 
 void configure(const std::filesystem::path& directory) {

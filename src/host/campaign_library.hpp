@@ -67,7 +67,7 @@ inline std::optional<Entry> read(const fs::path& path) {
     // A package's campaign is read in place from its .srw64mod (presentation/file_source.hpp).
     const auto bytes=srw64::presentation::read_file(path);
     const auto document=bytes?nlohmann::json::parse(bytes->begin(),bytes->end(),nullptr,false):nlohmann::json(nlohmann::json::value_t::discarded);
-    if(document.is_discarded() || document.value("schema","")!="srw64.campaign-image.v1" || !document.contains("id") || !document.at("id").is_string())return std::nullopt;
+    if(document.is_discarded() || (document.value("schema","")!="srw64.campaign-image.v1" && document.value("schema","")!="srw64.campaign-image.v2") || !document.contains("id") || !document.at("id").is_string())return std::nullopt;
     Entry entry;
     entry.id=document.at("id").get<std::string>();
     entry.path=path;entry.version=document.value("version","");entry.author=document.value("author","");

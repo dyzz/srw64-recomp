@@ -197,6 +197,13 @@ recomp-mod-data-test:
 		tests/native_mod_data.cpp src/host/mod_library.cpp build/recomp/mod-data-test/miniz*.o -o build/recomp/mod-data-test/test
 	build/recomp/mod-data-test/test build/recomp/mod-data-test/run $(ROM)
 
+.PHONY: recomp-map-mod-test
+recomp-map-mod-test:
+	mkdir -p build/recomp/map-mod-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host -I$(RECOMP_BUILD)/upstream/RT64/src/contrib -I$(RECOMP_BUILD)/upstream/N64Recomp/include \
+		tests/native_map_mod.cpp -o build/recomp/map-mod-test/test
+	build/recomp/map-mod-test/test build/recomp/map-mod-test/run
+
 .PHONY: recomp-story-mod-test
 recomp-story-mod-test:
 	mkdir -p build/recomp/story-mod-test
