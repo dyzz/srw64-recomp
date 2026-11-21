@@ -25,6 +25,7 @@
 #include <unistd.h>
 #include <vector>
 
+#include "../hd_pack.hpp"
 #include "ultramodern/ultramodern.hpp"
 #include "stb/stb_image.h"
 
@@ -189,6 +190,9 @@ extern char** __system_argv;
 // in hd/ (development: package.py --hd sends it once, the NRO stays small); "" for none.
 std::string srw64_switch_program_path();
 std::string srw64_switch_hd_art() {
+    // A packed HD folder (art.pack, version 2) is the device "hd:" (hd_pack.cpp): everything
+    // of the folder comes out of the one file. Else the folder's loose files, as before.
+    if (const auto packed = srw64::hd_pack::mount(); !packed.empty()) return packed;
     std::error_code missing;
     if (std::filesystem::exists("romfs:/hd/art/srw64-portraits-hd.json", missing)) return "romfs:/hd/art";
     const auto beside = std::filesystem::path(srw64_switch_program_path()).parent_path() / "hd" / "art";

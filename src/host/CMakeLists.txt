@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.20)
 project(srw64_native_probe LANGUAGES C CXX)
 # The audio microcode as native code (audio_hle.cpp): the Switch's, a trial elsewhere.
+# And the Switch's HD folder in one file (hd_pack.cpp), its reader built everywhere.
 set(SRW64_RSP_HLE "${CMAKE_CURRENT_LIST_DIR}/../thirdparty/mupen64plus-rsp-hle")
-set(SRW64_AUDIO_HLE audio_hle.cpp "${SRW64_RSP_HLE}/alist.c" "${SRW64_RSP_HLE}/alist_audio.c" "${SRW64_RSP_HLE}/audio.c" "${SRW64_RSP_HLE}/memory.c")
+set(SRW64_AUDIO_HLE audio_hle.cpp hd_pack.cpp "${SRW64_RSP_HLE}/alist.c" "${SRW64_RSP_HLE}/alist_audio.c" "${SRW64_RSP_HLE}/audio.c" "${SRW64_RSP_HLE}/memory.c")
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
