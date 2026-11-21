@@ -72,6 +72,8 @@ UI_KEYS |= {"settings_fps", "settings_fps_off", "settings_fps_on", "settings_fps
 UI_KEYS |= {"settings_refresh", "settings_refresh_display", "settings_refresh_original", "settings_refresh_60", "settings_refresh_note"}
 # 2x speed (frontend.cpp toggle_speed, game_speed.hpp).
 UI_KEYS |= {"settings_speed", "settings_speed_1x", "settings_speed_2x", "settings_speed_3x", "settings_speed_4x", "settings_speed_note", "speed_notice_1x", "speed_notice_2x", "speed_notice_3x", "speed_notice_4x", "touch_speed"}
+# Rewind on the tactical map (rewind.hpp, docs/design/rewind.md).
+UI_KEYS |= {"settings_rewind", "settings_rewind_off", "settings_rewind_on", "settings_rewind_note", "rewind_notice_done", "rewind_notice_none", "rewind_notice_off", "touch_rewind"}
 # The dialogue controls bar: auto-hidden or always shown (settings dialogue_hints).
 UI_KEYS |= {"settings_mod_music", "settings_mod_music_on", "settings_mod_music_off", "settings_mod_music_volume", "settings_mod_music_note"}
 UI_KEYS |= {"settings_mod_voice", "settings_mod_voice_on", "settings_mod_voice_off", "settings_mod_voice_volume", "settings_mod_voice_note",
@@ -133,7 +135,7 @@ UI_KEYS |= {f"cheat_{row}{part}" for row in ("exp", "money") for part in ("", "_
 UI_KEYS |= {"cheat_morale_cap", "cheat_morale_cap_note"} | {f"cheat_morale_cap_{cap}" for cap in ("150", "200", "300", "999")}
 # The Controls page's functions (frontend.cpp control_rows): controls_row_<id>.
 CONTROL_ROWS = ("a", "b", "start", "l", "r", "aux_left", "aux_right", "c_left", "c_up", "c_down", "c_right", "animation", "settings",
-                "language", "images", "speed", "quick_load", "title_return", "screenshot", "d_up", "d_down", "d_left", "d_right", "z")
+                "language", "images", "speed", "rewind", "quick_load", "title_return", "screenshot", "d_up", "d_down", "d_left", "d_right", "z")
 UI_KEYS |= {f"controls_row_{row}" for row in CONTROL_ROWS}
 UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_presets", "settings_about_version",
             "settings_about_font", "settings_about_prompts_title", "settings_about_prompts",

@@ -10,6 +10,7 @@
 #include "input_bindings.hpp"
 #include "cheats.hpp"
 #include "game_speed.hpp"
+#include "rewind.hpp"
 #include <atomic>
 #include <cstdlib>
 #include <filesystem>
@@ -88,7 +89,7 @@ void persist(const std::filesystem::path& path,const std::string& locale) {
     auto saved=nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
         {"battle_ui",battle_ui_name(battle)},{"intermission_ui",native_intermission?"native":"original"},{"weapon_upgrade",unified_weapons?"unified":"single"},{"name_entry_ui",native_name_entry?"native":"original"},
         {"map_unit_icons",map_icons_hd?"hd":"original"},{"msaa",msaa_on.load()},{"picture_scale",picture_scale_chosen.load()},{"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"},{"show_fps",fps_shown.load()},
-        {"game_speed",srw64::game_speed::level.load()},{"refresh_rate",refresh_rate_name(refresh_choice.load())},
+        {"game_speed",srw64::game_speed::level.load()},{"rewind",srw64::rewind::on.load()},{"refresh_rate",refresh_rate_name(refresh_choice.load())},
         {"debug_interface",debug_on.load()},{"web_link",web_link_on.load()},{"dialogue_hints",hints_always?"always":"auto"},
         {"mod_music",mod_music_on.load()},{"mod_music_volume",mod_music_percent.load()},
         {"mod_voice",mod_voice_on.load()},{"mod_voice_volume",mod_voice_percent.load()},{"mod_voice_speed",voice_speed_names[voice_speed_choice.load()]},{"mod_voice_wait",mod_voice_wait_on.load()},
@@ -210,7 +211,12 @@ void set_game_speed_level(unsigned level) {
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
-
+bool rewind_on(){return srw64::rewind::on.load();}
+void set_rewind_on(bool on) {
+    srw64::rewind::on=on;
+    if(destination.empty())return;
+    try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
+}
 bool dialogue_hints_always(){return hints_always.load();}
 void set_dialogue_hints_always(bool always) {
     hints_always=always;
@@ -440,6 +446,7 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         if(saved.is_object() && saved.contains("show_fps") && saved["show_fps"].is_boolean())fps_shown=saved["show_fps"].get<bool>();
         if(saved.is_object() && saved.contains("game_speed") && saved["game_speed"].is_number_unsigned())
             srw64::game_speed::level=std::clamp(saved["game_speed"].get<unsigned>(),1u,srw64::game_speed::top_level());
+        if(saved.is_object() && saved.contains("rewind") && saved["rewind"].is_boolean())srw64::rewind::on=saved["rewind"].get<bool>();
         if(saved.is_object())refresh_choice=refresh_rate_from(saved.value("refresh_rate","original"));
         if(saved.is_object() && saved.contains("debug_interface") && saved["debug_interface"].is_boolean())debug_on=saved["debug_interface"].get<bool>();
         if(saved.is_object() && saved.contains("web_link") && saved["web_link"].is_boolean())web_link_on=saved["web_link"].get<bool>();

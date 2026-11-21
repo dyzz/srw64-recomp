@@ -109,6 +109,7 @@ bool map_icons_hd=true; bool hd_map_unit_icons(){return map_icons_hd;} void set_
 bool msaa_on=true; bool msaa(){return msaa_on;} bool msaa_at_start(){return true;} void set_msaa(bool v){msaa_on=v;}
 bool fps_shown=false; bool show_fps(){return fps_shown;} void set_show_fps(bool v){fps_shown=v;}
 unsigned speed_level=1; unsigned game_speed_level(){return speed_level;} unsigned game_speed_top(){return 4;} void set_game_speed_level(unsigned v){speed_level=v;} bool game_speed_double(){return speed_level>1;}
+bool rewind_flag=false; bool rewind_on(){return rewind_flag;} void set_rewind_on(bool v){rewind_flag=v;}
 RefreshRate rate_choice=RefreshRate::Original; RefreshRate refresh_rate(){return rate_choice;} void set_refresh_rate(RefreshRate v){rate_choice=v;}
 const char* refresh_rate_name(RefreshRate r){return r==RefreshRate::Original?"original":r==RefreshRate::Sixty?"60":"display";}
 RefreshRate refresh_rate_from(const std::string& n){return n=="original"?RefreshRate::Original:n=="60"?RefreshRate::Sixty:RefreshRate::Display;}
@@ -129,6 +130,7 @@ unsigned filter_scale(){return 1;} void set_filter_scale(unsigned){} unsigned ch
 std::vector<LookFolder> bezel_roots(){return {};} std::vector<LookFolder> filter_roots(){return {};}
 }
 namespace srw64::cheats { std::vector<Pilot> pilots(){return {};} void request_level(unsigned,unsigned){} }
+namespace srw64::rewind { void request(){} }
 namespace srw64::post_filter { Status status(){return {};} }
 namespace srw64::app_menu {
 void update(const Labels&,const std::vector<Menu>&,bool){} bool available(){return false;} bool activate_settings(){return false;}
