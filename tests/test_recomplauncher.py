@@ -102,6 +102,26 @@ class RecompLauncherFileTest(unittest.TestCase):
             for choice in setting["choices"]:
                 self.assertEqual(set(choice["set"]), {setting["id"] if setting["id"] != "language" else "locale"})
 
+    def test_defaults_are_the_games(self):
+        """RecompLauncher shows "defaults" as the value the game uses while its file has no such
+        key, so each must be the game's own. 0.5.2 and 0.5.3 said display for the frame rate,
+        whose default has been original since 2026-10-15 (docs/design/60fps.md)."""
+        settings = source("src/native/ui/presentation_settings.cpp")
+        by_id = {setting["id"]: setting for setting in self.data["settings"]}
+        rates = {"Original": "original", "Sixty": "60", "Display": "display"}
+        game = {
+            # A file without the key, and no file at all.
+            "refresh_rate": {re.search(r'saved\.value\("refresh_rate","(\w+)"\)', settings)[1],
+                             rates[re.search(r"refresh_choice\{RefreshRate::(\w+)\}", settings)[1]]},
+            "map_unit_icons": {re.search(r'saved\.value\("map_unit_icons","(\w+)"\)', settings)[1],
+                               "hd" if re.search(r"map_icons_hd\{(\w+)\}", settings)[1] == "true" else "original"},
+            # On a computer; a Steam Deck's is largest, which one file cannot say.
+            "ui_size": {"standard"} if re.search(r"on_steam_deck\(\)\?UiSize::Largest:UiSize::Standard", settings) else set(),
+        }
+        for key, values in game.items():
+            self.assertEqual(values, {by_id[key]["defaults"][key]}, key)
+        self.assertNotIn("defaults", by_id["language"], "unset, the language follows the system")
+
     def test_exit_codes_are_the_programs(self):
         desktop = source("src/native/app/desktop.cpp")
         prepare = source("src/host/hd_prepare.cpp") + source("src/host/host.cpp")
