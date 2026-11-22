@@ -24,6 +24,7 @@
 
 extern uint8_t* srw64_rdram;  // host.cpp
 uint64_t srw64_current_vi();   // host.cpp
+extern std::atomic_bool srw64_game_initialized;   // host.cpp
 #ifdef __SWITCH__
 extern "C" void srw64_switch_background_thread();   // host/switch/switch_platform.cpp
 #endif
@@ -496,11 +497,16 @@ struct Prepared {json data;std::string locale;unsigned revision;};
 std::mutex building;
 std::optional<Prepared> prepared;
 std::atomic_bool preparing{};
-// Two seconds of the game: the ROM is read and the packages have settled by then.
+// Two seconds after the game is initialized (prepare_due): the packages have settled by then.
 constexpr uint64_t prepare_after_vi=120;
 }
 
 const json& contents() {
+    // Before the ROM is loaded there is nothing to read: empty lists, kept for no one.
+    if(!srw64_game_initialized) {
+        static const json none={{"units",json::array()},{"pilots",json::array()},{"labels",json::object()},{"upgrade_types",json::array()},{"weapon_labels",json::object()}};
+        return none;
+    }
     const auto& locale=localization::catalog().locale;
     if(cached_locale!=locale || cached_revision!=mods::revision() || cached.is_null()) {
         std::lock_guard lock(building);
@@ -516,7 +522,8 @@ const json& contents() {
 void prepare() {
     static std::string asked_locale;
     static unsigned asked_revision{};
-    if(preparing || srw64_current_vi()<prepare_after_vi)return;
+    static uint64_t ready_vi{};
+    if(preparing || !prepare_due(srw64_game_initialized,srw64_current_vi(),ready_vi,prepare_after_vi))return;
     const auto language=localization::snapshot();
     const unsigned revision=mods::revision();
     if(language->locale==asked_locale && revision==asked_revision)return;

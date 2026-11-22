@@ -11,6 +11,7 @@
 #include "mod_combine.hpp"
 #include "battle_speaker.hpp"
 #include "unit_pose_art.hpp"
+#include "library.hpp"
 #include <cstdio>
 #include <cstdlib>
 #include <iterator>
@@ -50,6 +51,18 @@ int main(int argc,char** argv) {
         const json python={{"poses",{{"2901-2905-2906",{{"path","p.png"}}}}},{"units",imported["units"]}};
         found=unit_pose_art::by_pose(python,2901,2905,2906);
         check(found && found->value("path","")=="p.png","battle_assets.py's poses first");
+    }
+    {
+        // The Library's background build waits for the game's initialization, then two seconds:
+        // a first start that took minutes reached VI 120 before the ROM was loaded and built
+        // it from nothing (library.hpp prepare_due).
+        uint64_t ready=0;
+        check(!library::prepare_due(false,5000,ready,120) && ready==0,"no build before the game is initialized, however many VIs");
+        check(!library::prepare_due(true,5000,ready,120) && ready==5001,"the count starts at initialization");
+        check(!library::prepare_due(true,5118,ready,120),"not before 120 VIs since");
+        check(library::prepare_due(true,5120,ready,120),"then it builds");
+        uint64_t early=0;
+        check(!library::prepare_due(true,0,early,120) && early==1 && library::prepare_due(true,120,early,120),"initialized at VI 0 too");
     }
 
     // ゴーショーグン (unit 184) is 空A 陸A 海B 宇A; 真吾 (pilot 133, record 110 alone) 空A 陸A 海B 宇B.

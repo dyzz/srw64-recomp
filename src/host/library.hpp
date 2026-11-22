@@ -20,4 +20,13 @@ const nlohmann::json& contents();
 // thread of its own, so the first opening of the Library or the Battle Viewer does not
 // (half a second on the Switch, 2026-11-07), and again when the language or the packages change.
 void prepare();
+// Whether prepare() may build: the game initialized (the ROM loaded and the packages' data
+// configured, host.cpp on_init) and `after` VIs since then. The VI count runs from the window's
+// start, before the ROM is loaded: counting from there built the Library from an empty ROM
+// (every stat 0, no works) on a first start that took minutes, and kept it (2026-11-22).
+inline bool prepare_due(bool initialized,uint64_t vi,uint64_t& ready_vi,uint64_t after) {
+    if(!initialized)return false;
+    if(!ready_vi)ready_vi=vi+1;   // 0 is "not yet"
+    return vi+1>=ready_vi+after;
+}
 }

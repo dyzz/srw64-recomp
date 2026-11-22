@@ -120,6 +120,10 @@ RspExitReason srw64_audio_probe(uint8_t*, uint32_t);
 void srw64_vita_perf_thread(const char* label);  // vita/vita_platform.cpp
 void srw64_vita_graphics_begin();                // graphics.cpp
 #endif
+// Set at the end of on_init: the ROM is loaded and what reads it is configured. The VI count
+// runs before that (the runtime's VI thread starts with the window), a minute and more on a
+// slow first start; readers of the ROM on other threads wait for this (library::prepare).
+std::atomic_bool srw64_game_initialized{false};
 namespace {
 std::atomic<uint64_t> vi_count{}, dl_count{}, audio_tasks{}, audio_samples{};
 std::atomic<uint32_t> frequency{};
@@ -236,6 +240,7 @@ void on_init(uint8_t* rdram, recomp_context*) {
     // section belongs at this entrypoint; the game's own loader owns overlays.
     unload_overlays((int32_t)0x80076610, 0x100000);
     load_overlays(0x1000, (int32_t)0x80076610, 0x5AC30);
+    srw64_game_initialized = true;
     srw64::app::boot_step("game entry");
     loaded_sections = {0};
     // The runtime has already copied the resident section; a rules file's table
