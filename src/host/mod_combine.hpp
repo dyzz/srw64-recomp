@@ -270,6 +270,32 @@ inline void checked(uint8_t* ram,recomp_context* ctx,unsigned check,bool ok,void
     }
 }
 
+// --- The map's 分離 -------------------------------------------------------------------------
+//
+// 801E8344(handle, kind) answers whether the unit at a map handle can separate. With kind 0 it
+// finds the unit in the combined-unit table and, for each part k of its record, compares the
+// main pilot of every pool unit with that part's number to the unit's crew k (+0x38 + 4k).
+// A package's combined unit carries its parts' pilots only when the story's build made it
+// (build above); one made any other way (a deployment record: a story MOD's group, a mini
+// stage, the enemy side) has fewer crew than parts, and the original read guest address 0
+// through the missing crew pointers: opening its unit menu crashed the host (Windows,
+// 2026-11-22, Final Dancouga placed by a deployment record). Such a unit does not separate.
+inline bool separable(const uint8_t* ram,int handle,const Combines& all=mod_data::combines()) {
+    if(handle<handle_bases[0])return true;   // not a map unit: as the original
+    unsigned side=0;
+    for(unsigned s=0;s<3;++s)if(handle>=handle_bases[s])side=s;
+    if(handle-handle_bases[side]>=int(roster_side/roster_entry))return true;
+    const uint32_t made=read(ram,roster_at(side,handle)+0x0C,4);
+    if(!guest::valid(made,pool_size))return true;
+    const auto found=all.find(read(ram,made+unit_number,2));
+    if(found==all.end())return true;   // the original's combined units, and everything else
+    const size_t parts=found->second.parts.size();
+    if(read(ram,made+unit_crew,1)<parts)return false;
+    for(size_t k=0;k<parts;++k)
+        if(!guest::valid(read(ram,made+unit_crew_pilots+uint32_t(k)*4,4),0x4C))return false;
+    return true;
+}
+
 // --- Which side deploys --------------------------------------------------------------------
 //
 // Deploying takes the instances with +0xC 0x80 (800A8CE8 copies it from the unit record at

@@ -670,6 +670,13 @@ void resident_func_800AB5C0(uint8_t* ram,recomp_context* ctx) {
     srw64_original_deploy_form(ram,ctx);
     srw64::mod_combine::deploy_sync(ram);
 }
+// 801E8344(handle, kind): whether the unit at a map handle can separate. A package's combined
+// unit made without its crew (a deployment record, not the story's build) does not
+// (mod_combine.hpp separable); the original would read through its missing crew pointers.
+void load_000AB160_func_801E8344(uint8_t* ram,recomp_context* ctx) {
+    if(!(ctx->r5&0xFF) && !srw64::mod_combine::separable(ram,int32_t(ctx->r4))){ctx->r2=0;return;}
+    srw64_original_separate_check(ram,ctx);
+}
 void load_000AB160_func_801E977C(uint8_t* ram,recomp_context* ctx) {
     // Whether the unit (a0) can combine, a1 1 for the map menu: a package's combined unit
     // may take the combine over, its other parts joining (mod_combine.hpp).

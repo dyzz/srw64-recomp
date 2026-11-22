@@ -244,6 +244,8 @@ NATIVE_HOOKS = {
     "resident_func_800AA814": "srw64_original_predecessor_row",
     "resident_func_80085CD4": "srw64_original_slot_headers",
     "load_000AB160_func_801E977C": "srw64_original_combine_check",
+    # Whether a map unit can separate: a package's combined unit without its crew cannot (mod_combine.hpp separable).
+    "load_000AB160_func_801E8344": "srw64_original_separate_check",
     "load_000AB160_func_8020178C": "srw64_original_combo_locks",
     # EN and ammo after an attack: a package's combination attack lists its participants first (mod_combos.hpp).
     "load_000AB160_func_801FC83C": "srw64_original_battle_spend",
@@ -565,7 +567,7 @@ COMBINE_LIST_COPY, COMBINE_POINTERS_COPY, COMBINE_CAPACITY = 0x807D1000, 0x807D1
 COMBINE_LIST_READERS = [("resident_func_800A8880", 0x800A8888), ("load_000AB160_func_801E7EA8", 0x801E7F34)]
 COMBINE_POINTER_READERS = [
     ("load_0008F4B0_func_801D33F4", 0x801D350C), ("load_000AB160_func_801E1688", 0x801E16F4),
-    ("load_000AB160_func_801E7EA8", 0x801E7F6C), ("load_000AB160_func_801E8344", 0x801E8548),
+    ("load_000AB160_func_801E7EA8", 0x801E7F6C), ("srw64_original_separate_check", 0x801E8548),
     ("srw64_original_upgrade_spread", 0x800A5A80), ("srw64_original_combine_parts", 0x800A750C),
     ("resident_func_800A9DCC", 0x800A9F50), ("resident_func_800AA210", 0x800AA318),
     ("resident_func_800AAB5C", 0x800AABA8), ("resident_func_800AC220", 0x800AC468),

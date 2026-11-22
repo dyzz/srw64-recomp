@@ -603,6 +603,19 @@ int main(int argc,char** argv) {
         w8(dancouga+mc::unit_deploy,0x80);for(unsigned k=0;k<4;++k)w8(fighters[k]+mc::unit_deploy,0);w8(fighters[4]+mc::unit_deploy,0x80);   // 3D5D 1,0
         mc::deploy_sync(ram.data(),over);
         check((r(fin+mc::unit_deploy,1)&0x80) && !(r(dancouga+mc::unit_deploy,1)&0x80) && !(r(fighters[4]+mc::unit_deploy,1)&0x80),"3D5D 1: Final Dancouga again");
+        // 分離 (801E8344): on the map at our handle 0x42 + slot; the story-built one separates,
+        // one a deployment record made (one crew, the others' pointers 0) does not.
+        const auto on_map=[&](int handle,uint32_t unit){w8(mc::roster_at(0,handle),1);w32(mc::roster_at(0,handle)+0x0C,unit);};
+        on_map(0x42,fin);
+        check(mc::separable(ram.data(),0x42,over),"the story's Final Dancouga separates");
+        const uint32_t placed=put(7,452,{five[0]},true);
+        on_map(0x43,placed);
+        check(!mc::separable(ram.data(),0x43,over),"a deployment record's Final Dancouga does not");
+        w8(placed+mc::unit_crew,5);
+        check(!mc::separable(ram.data(),0x43,over),"nor with a crew count but null pointers");
+        on_map(0x44,dancouga);
+        check(mc::separable(ram.data(),0x44,over),"the original's Dancouga: as the original");
+        check(mc::separable(ram.data(),0x10,over) && mc::separable(ram.data(),-1,over),"not a map handle: as the original");
     }
 
     {
