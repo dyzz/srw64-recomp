@@ -1,3 +1,4 @@
+#include "stall_watchdog.hpp"
 #include "native_dialogue.hpp"
 #include "table_window.hpp"
 #include "mod_names.hpp"
@@ -573,6 +574,9 @@ void service_locale(uint8_t* ram) {
     // thread's step holds this lock across the original's calls, so only when free; a
     // reload or a locale switch then waits for the next frame.
     std::unique_lock lock(mutex,std::try_to_lock);if(!lock)return;
+    if(!reload_requested.load() && language_status.request==language_status.completed)return;
+    // Loading every line again holds this thread: seconds on a phone, over ten on a Switch.
+    const stall::Busy long_work;
     if(reload_requested.exchange(false))reload_text(ram,reload_announce.exchange(false));
     if(language_status.request==language_status.completed)return;
     refresh(ram,true);

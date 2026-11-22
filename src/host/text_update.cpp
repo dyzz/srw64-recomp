@@ -445,7 +445,12 @@ void take(const json& latest, const std::string& user_agent) {
         }
         std::fprintf(stderr, "SRW64_TEXT_UPDATE_INSTALLED r%d (%zu files, %zu kept, %zu downloaded)\n", revision, files.size(), kept.size(), downloaded);
         if (!bypassed) {
+#ifndef __SWITCH__
+            // Not on the Switch: loading the text again there stops the game for over ten
+            // seconds (2026-11-22, in the middle of a save list), so the update that just
+            // arrived is read at the next start, as one found at start-up is.
             dialogue::request_reload(false);
+#endif
             notices::post("text-update", filled(localization::catalog().ui("update_text_notice"), "{revision}", std::to_string(revision)));
         }
     } catch (const std::exception& problem) {

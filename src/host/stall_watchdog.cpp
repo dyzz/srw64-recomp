@@ -24,6 +24,7 @@ uint64_t srw64_current_vi();
 namespace srw64::stall {
 namespace {
 std::atomic<uint64_t> frames{0}, presents{0};
+std::atomic<int> busy{0};          // Busy objects alive: the watchdog does not count
 std::atomic<bool> started{false};
 bool test_stall = false;    // SRW64_STALL_TEST=1 (development): the render thread stops at frame 120
 // SRW64_START_MARKER: the file GraphicsGuard.java writes before the game starts; gone after
@@ -136,6 +137,11 @@ void watch() {
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
         const uint64_t f = frames.load(), p = presents.load(), vi = srw64_current_vi();
         const auto now = std::chrono::steady_clock::now();
+        if (busy.load() > 0) {                  // long work that is no stall: both start over
+            last_presents = p; present_vi = vi; present_frames = f; present_since = now; present_dumped = false;
+            last_frames = f; last_vi = vi; since = now; dumped = false;
+            continue;
+        }
         if (p != last_presents) {               // presenting again: re-arm
             last_presents = p; present_vi = vi; present_frames = f; present_since = now; present_dumped = false;
         } else if (!present_dumped && dumps < 3 && p > 0 && f >= present_frames + 60 && vi >= present_vi + 120 &&
@@ -182,6 +188,8 @@ void frame_done() {
     }
 }
 void present_done() { presents.fetch_add(1, std::memory_order_relaxed); }
+Busy::Busy() { busy.fetch_add(1); }
+Busy::~Busy() { busy.fetch_sub(1); }
 }
 #elif defined(__SWITCH__)
 // The Switch (docs/design/switch-port.md, S1): no signals to sample a thread with. A stall
@@ -206,6 +214,7 @@ std::string srw64_switch_program_path();                    // switch/switch_pla
 namespace srw64::stall {
 namespace {
 std::atomic<uint64_t> frames{0};
+std::atomic<int> busy{0};   // Busy objects alive: the watchdog does not count
 void watch() {
     uint64_t last_frames = frames.load(), last_vi = srw64_current_vi();
     auto since = std::chrono::steady_clock::now();
@@ -213,7 +222,7 @@ void watch() {
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
         const uint64_t f = frames.load(), vi = srw64_current_vi();
         const auto now = std::chrono::steady_clock::now();
-        if (f != last_frames) { last_frames = f; last_vi = vi; since = now; continue; }
+        if (f != last_frames || busy.load() > 0) { last_frames = f; last_vi = vi; since = now; continue; }
         const double seconds = std::chrono::duration<double>(now - since).count();
         if (f > 0 && seconds >= 10 && vi >= last_vi + 300) {
             char report[256];
@@ -244,11 +253,15 @@ void frame_done() {
     }
 }
 void present_done() {}
+Busy::Busy() { busy.fetch_add(1); }
+Busy::~Busy() { busy.fetch_sub(1); }
 }
 #else
 namespace srw64::stall {
 void start() {}
 void frame_done() {}
 void present_done() {}
+Busy::Busy() {}
+Busy::~Busy() {}
 }
 #endif

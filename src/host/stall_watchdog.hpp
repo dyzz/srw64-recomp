@@ -13,4 +13,14 @@ namespace srw64::stall {
 void start();               // once, after the runtime's clock runs
 void frame_done();          // the render thread, after each display list
 void present_done();        // the present thread, after each screen
+// Work that keeps the game thread for longer than the watchdog waits and is no stall: the
+// dialogue text loaded again (a text update, a change of language) took over ten seconds on
+// a Switch, and the watchdog ended the game for it (2026-11-22). While one of these lives
+// the watchdog does not count.
+struct Busy {
+    Busy();
+    ~Busy();
+    Busy(const Busy&) = delete;
+    Busy& operator=(const Busy&) = delete;
+};
 }
