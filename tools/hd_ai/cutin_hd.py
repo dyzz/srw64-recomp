@@ -35,7 +35,7 @@ are in no triplet (FOLLOW_ON_REACH).
     .venv/bin/python tools/hd_ai/cutin_hd.py export
     build/esrgan-venv/bin/python tools/hd_ai/cutin_hd.py run [--models build/esrgan-models] [--only SET ...] [--fast [1|2]]
     build/esrgan-venv/bin/python tools/hd_ai/cutin_hd.py pack [--bind]
-    .venv/bin/python tools/hd_ai/cutin_hd.py extend --into assets/hd-ai/cutins/pack-vN [--only SET ...] [--replace] [--bind]
+    .venv/bin/python tools/hd_ai/cutin_hd.py extend --into DIR [--from-pack DIR] [--only SET ...] [--replace] [--bind]
     .venv/bin/python tools/hd_ai/cutin_hd.py scenes [--bind]
     .venv/bin/python tools/hd_ai/cutin_hd.py share --into assets/hd-ai/cutins/pack-vN [--bind]
     .venv/bin/python tools/hd_ai/cutin_hd.py rescale --into assets/hd-ai/cutins/pack-vN [--bind]
@@ -186,17 +186,27 @@ BRUSH_REGISTRY = (865, 881)
 # The kill explosions: the fireballs, the big flash, the warships' white ball and the sparks.
 EXPLOSION_REGISTRY = (1042, 1045)
 SETS = ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie', 'explosion', 'hit', 'weapon', 'unscripted',
-        'follow_on')
+        'follow_on', 'human')
 # Many actor behaviours step the sprite on to the next scenes of its atlas (the tracer 3555 ->
 # 3556, 3557; the comet run 3821 -> 3822 ... 3844), now and then the atlas and palette with it
 # (3878/3141/3404 -> 3880/3142/3405). A scene resource in no triplet is matched to the nearest
 # registered scene before it (within this many ids, over scenes only) whose atlas, as it is or
 # moved on by up to FOLLOW_ON_SHIFT with its palette, holds every part of it.
 FOLLOW_ON_REACH, FOLLOW_ON_SHIFT = 40, 3
+# On a miss, these actions replace the scene on the actor's existing atlas. The nearby
+# explosion (4966) also fits the parts, so the size heuristic picks the wrong atlas.
+HUMAN_EVADE_WRONG_ATLAS = (4964, 4965)
+HUMAN_EVADE_FOLLOW_ONS = {
+    4967: (4972, 4930, 4931),
+    4968: (4972, 4930, 4931),
+    4969: (4976, 4942, 4943),
+    4970: (4976, 4942, 4943),
+    4971: (4976, 4942, 4943),
+}
 # Follow-ons seen in the battle viewer that the fit guesses wrong: scene -> (the scene it comes
 # from, atlas, palette). The Rose Bits (4187, weapons 56-62) turn through 4174-4186, one
 # heading each, which the guess puts in the pink barrier's atlas (4171's 3238 holds them too).
-FOLLOW_ON_SEEN = {n: (4187, 3239, 3528) for n in range(4174, 4187)}
+FOLLOW_ON_SEEN = {n: (4187, 3239, 3528) for n in range(4174, 4187)} | HUMAN_EVADE_FOLLOW_ONS
 # The effects (no face, mostly soft glow) are packed at 3x instead of PACK_SCALE: side by side at
 # the largest scale a battle shows them (1080p) the two cannot be told apart, at a third of the size.
 EFFECT_SETS = frozenset({'weapon', 'hit', 'follow_on', 'unscripted', 'explosion', 'reaction', 'defence'})
@@ -297,8 +307,6 @@ def export() -> None:
     rom = (ROOT / 'rom.z64').read_bytes()
     table = ResourceTable(rom)
     scenes = read_triplets(rom, 'battle_scenes')
-    (OUT / 'inputs').mkdir(parents=True, exist_ok=True)
-    rows, seen = [], set()
     sets = ([('cutin', r, scenes[r]) for r in range(CUTIN_REGISTRY[0], CUTIN_REGISTRY[1] + 1)]
             + [('prop', r, scenes[r]) for r in prop_registries(rom)]
             + [('shield', unit, triplet) for unit, triplet in shield_triplets(rom)]
@@ -310,8 +318,25 @@ def export() -> None:
             + [('hit', r, scenes[r]) for r in hit_registries(rom)]
             + [('weapon', r, scenes[r]) for r in weapon_registries(rom)]
             + [('unscripted', r, scenes[r]) for r in unscripted_registries(rom)]
-            + [('follow_on', base, triplet) for base, triplet in follow_on_triplets(rom, table)])
+            + [('follow_on', base, triplet) for base, triplet in follow_on_triplets(rom, table)
+               if triplet[0] not in HUMAN_EVADE_FOLLOW_ONS]
+            + human_evade_triplets())
     any_palette = {triplet for _, triplet, recoloured in defence_triplets(rom) if recoloured}
+    rows = export_frames(table, sets, any_palette)
+    for kind in SETS:
+        own = [r for r in rows if r['set'] == kind]
+        print(kind, len(own), 'frames,', len({r['input'] for r in own}), 'distinct')
+
+
+def human_evade_triplets() -> list[tuple[str, int, tuple[int, int, int]]]:
+    return [('human', base, (scene, atlas, palette))
+            for scene, (base, atlas, palette) in HUMAN_EVADE_FOLLOW_ONS.items()]
+
+
+def export_frames(table: ResourceTable, sets: list[tuple[str, int, tuple[int, int, int]]],
+                  any_palette: set[tuple[int, int, int]]) -> list[dict]:
+    (OUT / 'inputs').mkdir(parents=True, exist_ok=True)
+    rows, seen = [], set()
     for kind, number, (s, a, p) in sets:
         if not s or (s, a, p) in seen:
             continue
@@ -330,14 +355,13 @@ def export() -> None:
             key = digest(image)
             if not (OUT / 'inputs' / f'{key}.png').exists():
                 image.save(OUT / 'inputs' / f'{key}.png')
-            field = {'shield': 'unit', 'defence': 'code', 'movie': 'movie', 'follow_on': 'base'}.get(kind, 'registry')
+            field = {'shield': 'unit', 'defence': 'code', 'movie': 'movie',
+                     'follow_on': 'base', 'human': 'base'}.get(kind, 'registry')
             rows.append({'set': kind, field: number, 'scene': s, 'atlas': a, 'palette': p,
                          'frame': frame, 'box': list(box), 'input': key}
                         | ({'any_palette': True, 'palette_indices': used[frame]} if used else {}))
     (OUT / 'frames.json').write_text(json.dumps({'schema': 'srw64.cutin-frames.v1', 'frames': rows}, indent=1) + '\n')
-    for kind in SETS:
-        own = [r for r in rows if r['set'] == kind]
-        print(kind, len(own), 'frames,', len({r['input'] for r in own}), 'distinct')
+    return rows
 
 
 def run_fast(models: list, source: Image.Image, device, passes: int = 2) -> Image.Image:
@@ -406,7 +430,8 @@ def pack_row(r: dict, folder: Path) -> dict:
              'brush': f"brush {r.get('registry')}", 'movie': f"map movie {r.get('movie')}",
              'explosion': f"explosion {r.get('registry')}", 'hit': f"hit {r.get('registry')}",
              'weapon': f"weapon effect {r.get('registry')}", 'unscripted': f"unscripted {r.get('registry')}",
-             'follow_on': f"follow-on of scene {r.get('base')}"}[kind]
+             'follow_on': f"follow-on of scene {r.get('base')}",
+             'human': f"human battle action, follow-on of scene {r.get('base')}"}[kind]
     return {'scene': r['scene'], 'atlas': r['atlas'], 'palette': r['palette'], 'frame': r['frame'], 'file': name,
             'sha256': hashlib.sha256((folder / name).read_bytes()).hexdigest(),
             'width': image.width, 'height': image.height, 'method': 'image_gen' if source == redrawn else 'esrgan', 'unit': label} \
@@ -429,12 +454,13 @@ def pack(bind: bool) -> None:
     scenes(bind)
 
 
-def extend(into: Path, bind: bool, only: list[str] | None = None, replace: bool = False) -> None:
+def extend(into: Path, bind: bool, only: list[str] | None = None, replace: bool = False,
+           from_pack: Path | None = None) -> None:
     """A new pack folder: the bound pack hard-linked as it is (its frames, scene thumbnails
     and index), plus the frames.json rows it has no picture for, packed the usual way, or
     with `replace` every row of the `only` sets."""
     into = into.absolute()                       # not resolved: assets/ may be a link into another checkout
-    current = ROOT / json.loads(MANIFEST.read_text())['battle_sprites']['path']
+    current = from_pack or ROOT / json.loads(MANIFEST.read_text())['battle_sprites']['path']
     into.mkdir(parents=True, exist_ok=False)
     for path in current.iterdir():
         if path.is_file() and path.name != 'battle-sprites.json':
@@ -448,8 +474,14 @@ def extend(into: Path, bind: bool, only: list[str] | None = None, replace: bool 
         (into / f"{r['scene']}-{r['atlas']}-{r['palette']}-f{r['frame']}.png").unlink(missing_ok=True)
     added = [pack_row(r, into) for r in rows]
     keys = {frame_key(r) for r in added}
+    keys.update((r['scene'], *HUMAN_EVADE_WRONG_ATLAS, r['frame'])
+                for r in rows if r['scene'] in HUMAN_EVADE_FOLLOW_ONS and r.get('set') == 'human')
     index['images'] = [r for r in index['images'] if frame_key(r) not in keys] + added
-    share_files(into, index)
+    if only == ['human']:
+        # Keep existing files pinned when replacing just the five misclassified scenes.
+        write_pack_index(into, index)
+    else:
+        share_files(into, index)
     print(len(added), 'frames added to', current.name, '->', into.name)
     if bind:
         bind_pack(into)
@@ -475,6 +507,10 @@ def share_files(folder: Path, index: dict) -> None:
             os.link(folder / rows[0]['file'], folder / name)
         for r in rows:
             r['file'] = name
+    write_pack_index(folder, index)
+
+
+def write_pack_index(folder: Path, index: dict) -> None:
     named = {r['file'] for r in index['images']} | {r['file'] for r in index.get('scenes', [])}
     for path in folder.glob('*.png'):
         if path.name not in named:
@@ -620,6 +656,7 @@ def main() -> None:
     parser.add_argument('--bind', action='store_true', help='point the art manifest at the pack')
     parser.add_argument('--shots', type=Path, help='scenes: HD captures (tools/hd_ai/viewer_scenes.py) instead of the catalogue renders')
     parser.add_argument('--into', type=Path, help='scenes, extend, share, rescale: a new pack folder, hard-linked from the current one')
+    parser.add_argument('--from-pack', type=Path, help='extend: base pack to use in place of the bound pack')
     args = parser.parse_args()
     if args.step == 'export':
         export()
@@ -632,7 +669,7 @@ def main() -> None:
             parser.error('extend needs --into')
         if args.replace and not args.only:
             parser.error('--replace needs --only')
-        extend(args.into, args.bind, args.only, args.replace)
+        extend(args.into, args.bind, args.only, args.replace, args.from_pack)
     elif args.step == 'scenes':
         scenes(args.bind, args.shots, args.into)
     elif args.step in ('share', 'rescale'):
