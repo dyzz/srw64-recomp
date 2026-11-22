@@ -1,4 +1,5 @@
 #include "library.hpp"
+#include "unit_pose_art.hpp"
 #include "table_window.hpp"
 #include "dialogue_data.hpp"
 #include "native_dialogue.hpp"
@@ -226,10 +227,9 @@ json unit(unsigned id,const std::vector<unsigned>& numbers) {
     // the number's old unit's: unit_pose_art.hpp); a MOD unit names the unit it copies, whose
     // crew the battle viewer offers.
     const auto& art=battle_assets();
-    const auto pose=[&](unsigned k){return std::to_string(u16(table_window::row(table_window::poses,id)+k*2));};
     const auto word=[&](unsigned k){return u16(table_window::row(table_window::poses,id)+k*2);};
     if(auto found=picture(word(0),word(1),word(2)))u["art"]=std::move(*found);
-    else if(const auto key=pose(0)+"-"+pose(1)+"-"+pose(2);art.contains("poses") && art.at("poses").contains(key))u["art"]=art.at("poses").at(key);
+    else if(const auto found=unit_pose_art::by_pose(art,word(0),word(1),word(2)))u["art"]=*found;
     else add_art(u,"units",id);
     if(const auto found=copied.find(id);found!=copied.end())u["copy_of"]=found->second;
     return u;

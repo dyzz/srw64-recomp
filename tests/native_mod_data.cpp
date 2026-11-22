@@ -10,6 +10,7 @@
 #include "mod_forms.hpp"
 #include "mod_combine.hpp"
 #include "battle_speaker.hpp"
+#include "unit_pose_art.hpp"
 #include <cstdio>
 #include <cstdlib>
 #include <iterator>
@@ -37,6 +38,19 @@ int main(int argc,char** argv) {
     const std::vector<uint8_t> image((std::istreambuf_iterator<char>(in)),std::istreambuf_iterator<char>());
     if(image.size()!=0x2000000){std::fprintf(stderr,"not the ROM\n");return 2;}
     const std::span<const uint8_t> rom(image);
+    {
+        // A pose's picture (unit_pose_art.hpp by_pose): by "poses" as battle_assets.py writes
+        // them, or through "units" and their "resources" as the ROM importer the players'
+        // builds use writes them (no "poses": Super Earthgain, a copy of 306, had no picture).
+        const json imported={{"units",{{"34",{{"path","a.png"},{"resources",{2896,2894,2895}}}},
+                                       {"306",{{"path","b.png"},{"resources",{2901,2905,2906}},{"hd","b-hd.png"}}}}}};
+        const auto* found=unit_pose_art::by_pose(imported,2901,2905,2906);
+        check(found && found->value("path","")=="b.png" && found->value("hd","")=="b-hd.png","the importer's units by their resources, HD with them");
+        check(!unit_pose_art::by_pose(imported,2901,2905,9) && !unit_pose_art::by_pose(imported,0,0,0),"no picture for another pose or none");
+        const json python={{"poses",{{"2901-2905-2906",{{"path","p.png"}}}}},{"units",imported["units"]}};
+        found=unit_pose_art::by_pose(python,2901,2905,2906);
+        check(found && found->value("path","")=="p.png","battle_assets.py's poses first");
+    }
 
     // ゴーショーグン (unit 184) is 空A 陸A 海B 宇A; 真吾 (pilot 133, record 110 alone) 空A 陸A 海B 宇B.
     const uint32_t unit=mod_data::unit_records+184*mod_data::unit_record_size+mod_data::unit_terrain;
