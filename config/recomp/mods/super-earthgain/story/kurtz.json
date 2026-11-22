@@ -2,16 +2,42 @@
   "schema": "srw64.story.v1",
   "events": [
     {
-      "id": "super-earthgain",
-      "note": "決着の時 (scene 124, Brad's route, Independence Army and OZ): its end event sets var21 = 2 and registers Kurtz with Virose (3D5A 31,0,35,500) when Brad has 100 kills. Then Super Earthgain @super is built for our roster (data/new_units.json combine: Earthgain 34 leading, Virose 35; the host builds the instance when the event starts, its crew Brad and Kurtz, its levels from 34). It deploys combined; on the map 分離 gives Earthgain and Virose back (招雷 天竜魔滅陣 between them), and Earthgain's 合体 next to Virose, neither acted, makes Super Earthgain again.",
+      "id": "kurtz-joins",
+      "note": "After scene 124, recruit Kurtz with Virose and the original three upgrade levels if the original ending has not recruited him.",
       "scene": 124,
       "when": {
         "after": "end"
       },
       "if": {
-        "vars": {
-          "21": 2
+        "roster": {
+          "pilots": [27],
+          "units": [34]
         },
+        "not_roster": {
+          "pilots": [31]
+        }
+      },
+      "do": [
+        {
+          "join": {
+            "pilot": 31,
+            "unit": 35
+          }
+        },
+        {
+          "op": "3D6C",
+          "args": [35, 3]
+        }
+      ]
+    },
+    {
+      "id": "super-earthgain",
+      "note": "Build Super Earthgain after scene 124 once both pilots and parts are present. Set the joined outcome for the following scenes so Brad stays with Earthgain.",
+      "scene": 124,
+      "when": {
+        "after": "end"
+      },
+      "if": {
         "roster": {
           "pilots": [
             27,
@@ -30,6 +56,11 @@
       },
       "do": [
         {
+          "set": {
+            "21": 2
+          }
+        },
+        {
           "build": "@super"
         }
       ]
@@ -46,11 +77,11 @@
         "ko": "슈퍼 어스게인"
       },
       "text": {
-        "ja": "カーツが仲間になれば、アースゲインとヴァイローズが合体したスーパーアースゲインで出撃。マップ上で分離・合体できる",
-        "zh-Hans": "卡茨入队后，夺地者与瓦伊罗斯合体为超级夺地者出击，地图上可以分离、再合体",
-        "zh-Hant": "卡茨入隊後，奪地者與瓦伊羅斯合體為超級奪地者出擊，地圖上可以分離、再合體",
-        "en": "When Kurtz joins, Earthgain and Virose combine into Super Earthgain and deploy as one; on the map they can separate and combine again",
-        "ko": "카츠가 동료가 되면 어스게인과 바이로즈가 합체한 슈퍼 어스게인으로 출격. 맵에서 분리·합체할 수 있다"
+        "ja": "このステージをクリアするとカーツが仲間になり、スーパーアースゲインで出撃できる。マップ上で分離・合体できる",
+        "zh-Hans": "通关本话后卡茨入队，超级夺地者可出击，地图上可以分离、再合体",
+        "zh-Hant": "通關本話後卡茨入隊，超級奪地者可出擊，地圖上可以分離、再合體",
+        "en": "Clear this stage to recruit Kurtz and deploy Super Earthgain. It can separate and combine again on the map",
+        "ko": "이 스테이지를 클리어하면 카츠가 합류하고 슈퍼 어스게인으로 출격할 수 있다. 맵에서 분리·합체할 수 있다"
       },
       "done": {
         "units": [

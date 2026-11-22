@@ -78,15 +78,20 @@ class StoryTests(unittest.TestCase):
                 story.compile_story(source(event(do=[bad])))
 
     def test_super_earthgain_package(self):
-        # config/recomp/mods/super-earthgain: when Kurtz joins, the package's Super Earthgain is
-        # built from Earthgain (34) and Virose (35) (mod_combine.hpp), not given as 306.
         document = json.loads((ROOT / "config/recomp/mods/super-earthgain/story/kurtz.json").read_text(encoding="utf-8"))
         image = story.compile_story(document)
-        got = image["events"][0]
-        self.assertEqual(got["builds"], ["@super"])
-        self.assertEqual(got["listing"], ["FFFF"])
-        self.assertEqual(got["vars"], {"21": 2})
-        self.assertEqual(got["roster"], {"pilots": [27, 31], "units": [34, 35]})
+        recruit, build = image["events"]
+        for event in (recruit, build):
+            self.assertEqual((event["scene"], event["trigger"]), (124, "after_end"))
+            self.assertFalse(event.get("vars"))
+            self.assertFalse(event.get("kills"))
+        self.assertEqual(recruit["roster"], {"pilots": [27], "units": [34]})
+        self.assertEqual(recruit["not_roster"], {"pilots": [31]})
+        self.assertEqual(recruit["listing"], ["3D5A 31,0,35,500", "3D6C 35,3", "FFFF"])
+        self.assertEqual(build["builds"], ["@super"])
+        self.assertEqual(build["listing"], ["3E13 21,2", "FFFF"])
+        self.assertEqual(build["roster"], {"pilots": [27, 31], "units": [34, 35]})
+        self.assertEqual(build["not_roster"], {"units": ["@super"]})
         self.assertEqual(image["stage_info"][0]["done"], {"units": ["@super"]})
 
     def test_stage_info(self):
