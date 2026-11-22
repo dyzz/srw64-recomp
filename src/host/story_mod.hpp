@@ -5,6 +5,7 @@
 #include "mod_quotes.hpp"
 #include "json/json.hpp"
 #include "localization/locale_fallbacks.hpp"
+#include "presentation/file_source.hpp"
 #include <algorithm>
 #include <array>
 #include <cstdio>
@@ -577,14 +578,15 @@ inline Library collect(const std::vector<mods::Package>& packages,const std::str
         // Top package first; within a package, its own order.
         std::rotate(library.events.begin(),library.events.begin()+first,library.events.end());
     }
-    std::error_code ec;
-    if(!campaign.empty() && !campaign_story.empty() && fs::is_regular_file(campaign_story,ec)) {
+    if(campaign.empty() || campaign_story.empty())return library;
+    if(const auto bytes=presentation::read_file(campaign_story)) {
         const auto where=campaign+"/campaign/story.json：";
-        std::ifstream in(campaign_story);
-        const auto document=json::parse(in,nullptr,false);
-        if(document.is_discarded())library.problems.push_back(where+"JSON 无效");
-        else if(document.value("campaign","")!=campaign)library.problems.push_back(where+"不是这个战役的");
-        else try {add_image(library,campaign,document,campaign);}
+        const auto document=json::parse(bytes->begin(),bytes->end(),nullptr,false);
+        if(!document.is_object())library.problems.push_back(where+"JSON 无效");
+        else try {
+            if(document.value("campaign","")!=campaign)library.problems.push_back(where+"不是这个战役的");
+            else add_image(library,campaign,document,campaign);
+        }
         catch(const std::exception& error){library.problems.push_back(where+error.what());}
     }
     return library;

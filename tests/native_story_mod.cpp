@@ -3,6 +3,7 @@
 // events after the end event, what has fired across suspend records, and the lines
 // served as text records.
 #include "story_mod.hpp"
+#include "miniz.h"
 #include <cstdio>
 #include <cstdlib>
 uint64_t srw64_current_vi(){return 0;}
@@ -318,6 +319,20 @@ int main(int argc,char** argv) {
               library.patches[0].text==story::text_first,"the campaign's story image: "+(library.problems.empty()?std::string():library.problems[0]));
         check(story::collect({},"c.two",dir/"story.json").events.empty(),"another campaign's story image is refused");
         check(story::collect({},"",dir/"story.json").events.empty(),"no campaign, no campaign events");
+        const auto archive=dir/"c.one.srw64mod";
+        const auto serialized=campaign_story.dump();
+        mz_zip_archive zip{};
+        const bool opened=mz_zip_writer_init_file(&zip,archive.string().c_str(),0);
+        check(opened,"open the campaign archive fixture");
+        if(opened) {
+            check(mz_zip_writer_add_mem(&zip,"mod.json","{}",2,MZ_DEFAULT_COMPRESSION) &&
+                  mz_zip_writer_add_mem(&zip,"campaign/story.json",serialized.data(),serialized.size(),MZ_DEFAULT_COMPRESSION) &&
+                  mz_zip_writer_finalize_archive(&zip),"write the campaign archive fixture");
+            mz_zip_writer_end(&zip);
+        }
+        const auto packed=story::collect({},"c.one",archive/"campaign"/"story.json");
+        check(packed.problems.empty() && packed.events.size()==1 && packed.events[0].id=="two.turn-1" &&
+              packed.patches.size()==1 && packed.patches[0].text==story::text_first,"the archived campaign reads its event and opening line");
         // A main story event of the scene the stage borrows, beside the campaign's.
         library.events.push_back(story::Event{.package="x",.id="main",.scene=2,.trigger=story::Trigger::turn,.a=0,.b=1,.words={0x3D4E,0xFFFF}});
         s.library=library;s.loaded=true;s.revision=mods::revision();s.game=mods::game_version();
