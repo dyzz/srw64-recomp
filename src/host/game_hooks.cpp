@@ -681,6 +681,7 @@ void load_000AB160_func_801E977C(uint8_t* ram,recomp_context* ctx) {
     // Whether the unit (a0) can combine, a1 1 for the map menu: a package's combined unit
     // may take the combine over, its other parts joining (mod_combine.hpp).
     const unsigned check=uint8_t(ctx->r5);
+    if(!srw64::mod_combine::combine_available(ram,int32_t(ctx->r4))){ctx->r2=0;return;}
     srw64_original_combine_check(ram,ctx);
     srw64::mod_combine::checked(ram,ctx,check,(ctx->r2&0xFF)!=0,LOOKUP_FUNC(srw64::mod_combine::find_on_map));
 }

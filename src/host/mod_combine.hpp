@@ -218,6 +218,48 @@ inline float position(const uint8_t* ram,int handle,unsigned axis) {
 }
 inline uint32_t roster_at(unsigned side,int handle){return roster+side*roster_side+uint32_t(handle-handle_bases[side])*roster_entry;}
 
+// 801E977C assumes its recipe's combined unit was already built. If its pool scan
+// finds no instance for the leader's pilot it can dereference a null or stale pointer.
+inline bool combine_available(const uint8_t* ram,int handle,const Combines& all=mod_data::combines()) {
+    if(all.empty() || handle<handle_bases[0])return true;
+    unsigned side=0;
+    for(unsigned s=1;s<3;++s)if(handle>=handle_bases[s])side=s;
+    constexpr unsigned slots=roster_side/roster_entry;
+    if(handle-handle_bases[side]>=int(slots))return true;
+    const uint32_t chosen=read(ram,roster_at(side,handle)+0xC,4);
+    if(!guest::valid(chosen,pool_size))return true;
+    const unsigned unit=read(ram,chosen+unit_number,2);
+    const auto parts=recipe_parts(ram,all);
+    const auto recipe=parts.find(unit);
+    if(recipe==parts.end())return true;
+
+    const unsigned lead=all.at(recipe->second).parts.front();
+    uint32_t lead_unit=chosen;
+    if(unit!=lead) {
+        lead_unit=0;
+        for(unsigned i=0;i<slots;++i) {
+            const uint32_t entry=roster_at(side,handle_bases[side]+int(i));
+            if(read(ram,entry,1)!=1)continue;
+            const uint32_t part=read(ram,entry+0xC,4);
+            if(!guest::valid(part,pool_size) || read(ram,part+unit_number,2)!=lead)continue;
+            lead_unit=part;
+            break;
+        }
+    }
+    if(!lead_unit)return false;
+    const uint32_t lead_pilot=read(ram,lead_unit+unit_crew_pilots,4);
+    if(!guest::valid(lead_pilot,pilot_number+2))return false;
+    const unsigned pilot=read(ram,lead_pilot+pilot_number,2);
+    for(unsigned i=0;i<pool_count;++i) {
+        const uint32_t at=pool+side*pool_side+i*pool_size;
+        if(!read(ram,at,1) || read(ram,at+unit_number,2)!=recipe->second)continue;
+        const uint32_t main=read(ram,at+unit_crew_pilots,4);
+        if(!guest::valid(main,pilot_number+2))return false;
+        if(read(ram,main+pilot_number,2)==pilot)return true;
+    }
+    return false;
+}
+
 // After 801E977C(handle, check) found a combine (`ok`): a package's unit that takes it over.
 inline void checked(uint8_t* ram,recomp_context* ctx,unsigned check,bool ok,void(*find)(uint8_t*,recomp_context*)) {
     if(!ok || check!=1)return;

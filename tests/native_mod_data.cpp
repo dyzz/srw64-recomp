@@ -604,6 +604,23 @@ int main(int argc,char** argv) {
             for(size_t k=0;k<crew.size();++k)w32(at+mc::unit_crew_pilots+uint32_t(k)*4,crew[k]);
             return at;};
         const uint32_t earthgain=put(0,34,{brad},true),virose=put(1,35,{kurtz},true),super=put(2,450,{brad,kurtz},false);
+        const auto on_map=[&](int handle,uint32_t unit){w8(mc::roster_at(0,handle),1);w32(mc::roster_at(0,handle)+0x0C,unit);};
+        on_map(0x42,earthgain);on_map(0x43,virose);
+        w16(brad+mc::pilot_number,27);w16(kurtz+mc::pilot_number,31);
+        const auto available=[&](int handle){return mc::combine_available(ram.data(),handle,all);};
+        w8(super,0);
+        check(!available(0x42) && !available(0x43),"both parts can open the menu before the story builds their combined unit");
+        w8(super,1);w32(super+mc::unit_crew_pilots,kurtz);
+        check(!available(0x42) && !available(0x43),"an instance with a different lead pilot cannot combine");
+        w32(super+mc::unit_crew_pilots,0);
+        check(!available(0x42),"an instance without a lead pilot cannot combine");
+        w32(super+mc::unit_crew_pilots,brad);
+        check(available(0x42) && available(0x43),"the matching combined unit is available to both parts");
+        w32(mc::roster_at(1,0x60)+0x0C,earthgain);
+        check(!available(0x60),"a combined unit on another side cannot be used");
+        const uint32_t original=put(3,219,{brad},true);
+        on_map(0x44,original);
+        check(available(0x44) && available(-1),"original recipes and non-map checks stay with the guest");
         mc::deploy_sync(ram.data(),all);
         check((r(super+mc::unit_deploy,1)&0x80) && !(r(earthgain+mc::unit_deploy,1)&0x80) && !(r(virose+mc::unit_deploy,1)&0x80),
               "the combined unit deploys, its parts not");
@@ -632,7 +649,6 @@ int main(int argc,char** argv) {
         check((r(fin+mc::unit_deploy,1)&0x80) && !(r(dancouga+mc::unit_deploy,1)&0x80) && !(r(fighters[4]+mc::unit_deploy,1)&0x80),"3D5D 1: Final Dancouga again");
         // 分離 (801E8344): on the map at our handle 0x42 + slot; the story-built one separates,
         // one a deployment record made (one crew, the others' pointers 0) does not.
-        const auto on_map=[&](int handle,uint32_t unit){w8(mc::roster_at(0,handle),1);w32(mc::roster_at(0,handle)+0x0C,unit);};
         on_map(0x42,fin);
         check(mc::separable(ram.data(),0x42,over),"the story's Final Dancouga separates");
         const uint32_t placed=put(7,452,{five[0]},true);
