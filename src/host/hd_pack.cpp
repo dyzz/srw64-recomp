@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cerrno>
+#include <chrono>
 #include <climits>
 #include <cstdio>
 #include <cstring>
@@ -41,7 +42,15 @@ std::string normal(std::string_view path) {
     return out;
 }
 
-Pack::~Pack() { if (file_ >= 0) ::close(file_); }
+#ifdef __SWITCH__
+void close_offset_file(void* file);   // below
+#endif
+Pack::~Pack() {
+    if (file_ >= 0) ::close(file_);
+#ifdef __SWITCH__
+    if (offset_file_) close_offset_file(offset_file_);
+#endif
+}
 
 bool Pack::open(const std::string& file) {
     const int handle = ::open(file.c_str(), SRW64_PACK_OPEN_FLAGS);
@@ -95,27 +104,73 @@ const std::vector<Pack::Child>* Pack::list(std::string_view path) const {
     return found == folders_.end() ? nullptr : &found->second;
 }
 
+#ifdef __SWITCH__
+bool read_at(void* file, uint64_t from, void* out, size_t size);   // below: fsFileRead
+#endif
+
+// A read that took 50 ms or more says whether it waited for another thread's read or for
+// the card (SRW64_HD_PACK_SLOW): reads of 44 KB to 830 KB took 330-536 ms on a Switch.
 bool Pack::read(const Entry& entry, uint64_t at, void* out, size_t size) const {
-    if (file_ < 0 || at > entry.size || size > entry.size - at) return false;
-    std::lock_guard lock(mutex_);
+    if ((file_ < 0 && !offset_file_) || at > entry.size || size > entry.size - at) return false;
+    using Clock = std::chrono::steady_clock;
+    const auto started = Clock::now();
     const int64_t from = int64_t(entry.offset + at);
-    if (int64_t(SRW64_PACK_SEEK(file_, from, SEEK_SET)) != from) return false;
-    for (size_t done = 0; done < size;) {
-        const ssize_t got = ::read(file_, static_cast<char*>(out) + done, size - done);
-        if (got <= 0) return false;
-        done += size_t(got);
+    bool good = true;
+    Clock::time_point locked = started;
+#ifdef __SWITCH__
+    if (offset_file_) good = read_at(offset_file_, uint64_t(from), out, size);
+    else
+#endif
+    {
+        std::lock_guard lock(mutex_);
+        locked = Clock::now();
+        good = int64_t(SRW64_PACK_SEEK(file_, from, SEEK_SET)) == from;
+        for (size_t done = 0; good && done < size;) {
+            const ssize_t got = ::read(file_, static_cast<char*>(out) + done, size - done);
+            if (got <= 0) good = false;
+            else done += size_t(got);
+        }
     }
-    return true;
+    const auto ms = [](Clock::time_point a, Clock::time_point b) { return std::chrono::duration<double, std::milli>(b - a).count(); };
+    if (const double total = ms(started, Clock::now()); total >= 50)
+        std::fprintf(stderr, "SRW64_HD_PACK_SLOW %.0f ms (waited %.0f, read %.0f) %zu bytes at %llu%s\n", total, ms(started, locked),
+                     total - ms(started, locked), size, (unsigned long long)from, offset_file_ ? " by offset" : "");
+    return good;
 }
 }  // namespace srw64::hd_pack
 
 #ifdef __SWITCH__
+#include <cstdlib>
 #include <filesystem>
+#include <switch.h>
 #include <sys/iosupport.h>
 #include <sys/stat.h>
 std::string srw64_switch_program_path();   // switch/switch_platform.cpp
 
 namespace srw64::hd_pack {
+bool read_at(void* file, uint64_t from, void* out, size_t size) {
+    u64 got = 0;
+    for (size_t done = 0; done < size; done += size_t(got)) {
+        if (R_FAILED(fsFileRead(static_cast<FsFile*>(file), s64(from + done), static_cast<char*>(out) + done, size - done, FsReadOption_None, &got)) || !got)
+            return false;
+    }
+    return true;
+}
+void close_offset_file(void* file) {
+    fsFileClose(static_cast<FsFile*>(file));
+    delete static_cast<FsFile*>(file);
+}
+// The pack's reads through the file system service at an offset: each a request of its own,
+// so threads read at once with no lock and no shared position (the descriptor needed both:
+// a seek and a read under one lock, and a long read held every other back).
+bool Pack::read_at_offsets(const std::string& path) {
+    FsFileSystem* card = fsdevGetDeviceFileSystem("sdmc");
+    if (!card || file_ < 0) return false;
+    auto* file = new FsFile;
+    if (R_FAILED(fsFsOpenFile(card, path.c_str(), FsOpenMode_Read, file))) { delete file; return false; }
+    offset_file_ = file;
+    return true;
+}
 namespace {
 Pack shared;
 std::string legacy_root;   // a version 1 pack's folder with its slash: its pictures, the rest loose
@@ -134,7 +189,11 @@ void fill(struct stat* st, bool directory, uint32_t size) {
     st->st_blksize = 512;
     st->st_blocks = (size + 511) / 512;
 }
-struct File { const Entry* entry; uint64_t at; };
+// An open file reads ahead: stdio and the C++ streams read 1 KB at a time here (newlib's
+// BUFSIZ), a request to the card each, for a 1 MB picture a thousand of them. A window of
+// the entry is read at once and the small reads are served from it.
+constexpr size_t kWindow = 256 * 1024;
+struct File { const Entry* entry; uint64_t at; char* window; uint64_t window_at; size_t window_size; };
 struct Dir { const std::vector<Pack::Child>* children; size_t at; };
 
 int open_r(struct _reent* r, void* file, const char* path, int flags, int) {
@@ -142,16 +201,31 @@ int open_r(struct _reent* r, void* file, const char* path, int flags, int) {
     const auto name = inside(path);
     const Entry* entry = shared.find(name);
     if (!entry) { r->_errno = shared.list(name) ? EISDIR : ENOENT; return -1; }
-    *static_cast<File*>(file) = {entry, 0};
+    *static_cast<File*>(file) = {entry, 0, nullptr, 0, 0};
     return 0;
 }
-int close_r(struct _reent*, void*) { return 0; }
+int close_r(struct _reent*, void* file) {
+    std::free(static_cast<File*>(file)->window);
+    static_cast<File*>(file)->window = nullptr;
+    return 0;
+}
 ssize_t read_r(struct _reent* r, void* file, char* out, size_t size) {
     auto* f = static_cast<File*>(file);
     const size_t left = f->entry->size - size_t(std::min<uint64_t>(f->at, f->entry->size));
     size = std::min(size, left);
     if (!size) return 0;
-    if (!shared.read(*f->entry, f->at, out, size)) { r->_errno = EIO; return -1; }
+    if (size >= kWindow / 2) {   // a large read goes straight through
+        if (!shared.read(*f->entry, f->at, out, size)) { r->_errno = EIO; return -1; }
+        f->at += size;
+        return ssize_t(size);
+    }
+    if (f->at < f->window_at || f->at + size > f->window_at + f->window_size) {
+        if (!f->window && !(f->window = static_cast<char*>(std::malloc(kWindow)))) { r->_errno = ENOMEM; return -1; }
+        f->window_at = f->at;
+        f->window_size = size_t(std::min<uint64_t>(kWindow, f->entry->size - f->at));
+        if (!shared.read(*f->entry, f->window_at, f->window, f->window_size)) { f->window_size = 0; r->_errno = EIO; return -1; }
+    }
+    std::memcpy(out, f->window + (f->at - f->window_at), size);
     f->at += size;
     return ssize_t(size);
 }
@@ -231,6 +305,8 @@ std::string mount() {
                 std::fprintf(stderr, "SRW64_HD_PACK_BAD %s\n", candidate.c_str());
                 continue;
             }
+            // On the card: reads at an offset with no lock (above); in the NRO's romfs, the descriptor.
+            const bool offsets = candidate.rfind("romfs:", 0) != 0 && shared.read_at_offsets(candidate);
             if (shared.version() == 1) {
                 // The pictures only; the folder's other files are read from the card as before.
                 legacy_root = std::filesystem::path(candidate).parent_path().string() + "/";
@@ -242,7 +318,7 @@ std::string mount() {
                 std::fprintf(stderr, "SRW64_HD_PACK_BAD %s: the device could not be added\n", candidate.c_str());
                 return std::string();
             }
-            std::fprintf(stderr, "SRW64_HD_PACK %zu files, mounted as %s:\n", shared.files(), kDevice);
+            std::fprintf(stderr, "SRW64_HD_PACK %zu files, mounted as %s:%s\n", shared.files(), kDevice, offsets ? ", read at offsets" : "");
             return std::string(kDevice) + ":/art";
         }
         return std::string();

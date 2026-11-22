@@ -35,13 +35,19 @@ public:
     const std::vector<Child>* list(std::string_view path) const;
     // `size` bytes at `at` of the entry; false when they are not all there.
     bool read(const Entry& entry, uint64_t at, void* out, size_t size) const;
+#ifdef __SWITCH__
+    // Reads at an offset through the SD card's file system service, no seek and no lock,
+    // in place of the descriptor (hd_pack.cpp). `path` without its device ("/switch/...").
+    bool read_at_offsets(const std::string& path);
+#endif
 
 private:
     int file_ = -1;
+    void* offset_file_ = nullptr;   // the Switch's FsFile, when read_at_offsets() opened one
     uint32_t version_ = 0;
     std::vector<Entry> entries_;   // sorted by hash
     std::map<std::string, std::vector<Child>, std::less<>> folders_;
-    mutable std::mutex mutex_;     // a read is a seek and a read
+    mutable std::mutex mutex_;     // a read on the descriptor is a seek and a read
 };
 
 #ifdef __SWITCH__

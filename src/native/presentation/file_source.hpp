@@ -23,11 +23,25 @@ inline std::atomic<const FileSource*>& file_source() {
     static std::atomic<const FileSource*> source{nullptr};
     return source;
 }
+// A whole file in one read where its size is known: a stream read character by character
+// asks the disk for its buffer's size at a time, 1 KB on the Switch (newlib's BUFSIZ), a
+// request to the card each.
+inline std::optional<std::vector<unsigned char>> read_whole(const std::filesystem::path& path) {
+    std::ifstream in(path, std::ios::binary | std::ios::ate);
+    if (!in) return std::nullopt;
+    const auto size = in.tellg();
+    if (size > 0) {
+        std::vector<unsigned char> bytes(static_cast<size_t>(size));
+        in.seekg(0);
+        if (in.read(reinterpret_cast<char*>(bytes.data()), size)) return bytes;
+        in.clear();
+    }
+    in.seekg(0);
+    return std::vector<unsigned char>(std::istreambuf_iterator<char>(in), {});
+}
 inline std::optional<std::vector<unsigned char>> read_file(const std::filesystem::path& path) {
     if (const auto* source = file_source().load()) return source->read(path);
-    std::ifstream in(path, std::ios::binary);
-    if (!in) return std::nullopt;
-    return std::vector<unsigned char>(std::istreambuf_iterator<char>(in), {});
+    return read_whole(path);
 }
 inline bool file_exists(const std::filesystem::path& path) {
     if (const auto* source = file_source().load()) return source->exists(path);

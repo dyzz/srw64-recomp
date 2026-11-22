@@ -213,9 +213,7 @@ std::optional<std::pair<fs::path,std::string>> split_package_path(const fs::path
 }
 std::optional<std::vector<unsigned char>> source_read(const fs::path& path) {
     if(const auto split=split_package_path(path))return archive_files(split->first)->read(split->second);
-    std::ifstream in(path,std::ios::binary);
-    if(!in)return std::nullopt;
-    return std::vector<unsigned char>(std::istreambuf_iterator<char>(in),{});
+    return presentation::read_whole(path);
 }
 bool source_exists(const fs::path& path) {
     if(const auto split=split_package_path(path))return archive_files(split->first)->exists(split->second);
