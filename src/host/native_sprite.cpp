@@ -62,6 +62,7 @@ struct Asset {
     std::string key;
     std::filesystem::path file;              // HD frame image
     std::function<TextImage()> render;       // native text
+    bool preload = false;                   // short frames that cannot wait for on-demand decoding
     // A palette effect (hit flash, a gold super mode: 80099C88 rewrites the sprite's palette
     // in place) seen on a whole HD frame: the frame recoloured from the original palette's 16
     // colours to the ones the game draws with now.
@@ -128,6 +129,7 @@ std::vector<OwnImage> own_images;
 std::mutex asset_mutex;                      // assets, levels and states cross threads
 std::deque<int> queue;
 std::condition_variable queue_ready;
+std::condition_variable preload_ready;
 std::thread worker;
 bool stopping = false;
 std::array<Draw, kRing> ring;
@@ -419,7 +421,12 @@ void work() {
         if (ok && !prepared.data) { levels.push_back(std::move(pixels)); add_mips(levels, w, h); }
         std::lock_guard lock(asset_mutex);
         Asset& asset = *assets[size_t(index)];
-        if (!ok) { asset.state = Asset::failed; ++failures; continue; }
+        if (!ok) {
+            asset.state = Asset::failed;
+            ++failures;
+            if (asset.preload) preload_ready.notify_all();
+            continue;
+        }
         asset.width = w; asset.height = h;
         asset.gl_pixels = prepared.data; asset.gl_format = prepared.format; asset.gl_levels = prepared.data ? prepared.levels : 1;
 #ifdef SRW64_GL_RENDERER
@@ -431,7 +438,7 @@ void work() {
         // it stays, or a battle's digits went blank for a few frames each time they returned.
         constexpr size_t kSmallText = 256 << 10;
         const auto evictable = [](const Asset& a) {
-            if (!a.gl_pixels && a.levels.empty()) return false;
+            if (a.preload || (!a.gl_pixels && a.levels.empty())) return false;
             return !a.render || (a.gl_pixels ? a.gl_pixels->size() : a.levels.front().size()) > kSmallText;
         };
         size_t resident = 0;
@@ -449,6 +456,7 @@ void work() {
         asset.levels = std::move(levels);
         asset.state = Asset::ready;
         ++decoded;
+        if (asset.preload) preload_ready.notify_all();
     }
 }
 
@@ -494,10 +502,10 @@ plume::RenderDescriptorSet* texture_for(Asset& asset, plume::RenderCommandList* 
     if (!asset.set) {
         if (asset.state != Asset::ready || asset.levels.empty()) return nullptr;
         size_t resident = 0;
-        for (auto& other : assets) resident += other->set != nullptr;
+        for (auto& other : assets) resident += !other->preload && other->set != nullptr;
         if (resident >= kResident)
             for (auto& other : assets)
-                if (other->set && now - other->used > kIdle) {
+                if (!other->preload && other->set && now - other->used > kIdle) {
                     other->set.reset(); other->texture.reset(); ++released;
                     // A released text or frame is drawn again from its source when needed.
                     other->state = Asset::idle;
@@ -766,6 +774,7 @@ void warm(const TextJob& job) { ready(text_asset(job)); }
 
 void configure(const std::filesystem::path& art_directory, const std::filesystem::path& directory) {
     output = directory;
+    std::vector<int> preloaded;
     if (!art_directory.empty() && std::filesystem::exists(art_directory / "srw64-scene-images.json")) {
         const json spec = json::parse(app::read_text(art_directory / "srw64-scene-images.json", 64u << 20));
         if (spec.at("schema") != "srw64.scene-images.v1") throw std::runtime_error("Unsupported scene image specification");
@@ -821,6 +830,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
             image.any_palette = row.value("any_palette", false);
             for (const auto& index : row.value("palette_indices", json::array())) image.indices.push_back(index.get<uint16_t>());
             auto asset = std::make_unique<Asset>();
+            asset->preload = row.value("preload", false);
             asset->file = art_directory / row.at("file").get<std::string>();
             if (!hd_texture::exists(asset->file)) throw std::runtime_error("Missing unit image " + asset->file.string());
             // Rows can share one file (identical pictures, tools/hd_ai/cutin_hd.py share); the key
@@ -830,6 +840,11 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
             {
                 std::lock_guard lock(asset_mutex);
                 image.asset = int(assets.size());
+                if (asset->preload) {
+                    asset->state = Asset::queued;
+                    queue.push_back(image.asset);
+                    preloaded.push_back(image.asset);
+                }
                 assets.push_back(std::move(asset));
             }
             std::lock_guard lock(image_mutex);
@@ -885,10 +900,26 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
         }
     }
 #endif
-    if (installed) return;
-    installed = true;
-    if (!output.empty()) srw64::open_run_log(log,output / "scene-sprites.jsonl");
-    worker = std::thread(work);
+    const bool first = !installed;
+    if (first) {
+        installed = true;
+        if (!output.empty()) srw64::open_run_log(log,output / "scene-sprites.jsonl");
+        worker = std::thread(work);
+    }
+    if (!preloaded.empty()) {
+        queue_ready.notify_one();
+        std::unique_lock lock(asset_mutex);
+        preload_ready.wait(lock, [&] {
+            return std::all_of(preloaded.begin(), preloaded.end(), [](int index) {
+                return assets[index]->state == Asset::ready || assets[index]->state == Asset::failed;
+            });
+        });
+        const auto count = std::count_if(preloaded.begin(), preloaded.end(), [](int index) {
+            return assets[index]->state == Asset::ready;
+        });
+        fprintf(stderr, "SRW64_SCENE_IMAGES preloaded %zu/%zu frame(s)\n", size_t(count), preloaded.size());
+    }
+    if (!first) return;
     // Chain after marker/hdmap/portraits, which install their hooks first.
 #ifndef SRW64_GL_ONLY
     previous_classify = RT64::GetNativeMeshClassify();

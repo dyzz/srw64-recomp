@@ -203,6 +203,13 @@ HUMAN_EVADE_FOLLOW_ONS = {
     4970: (4976, 4942, 4943),
     4971: (4976, 4942, 4943),
 }
+# These existing human action frames can finish before the on-demand decoder's first upload.
+HUMAN_SHORT_FIRST_FRAMES = {
+    (4937, 4930, 4931, 0), (4938, 4930, 4931, 0),
+    (4945, 4942, 4943, 0), (4948, 4942, 4943, 0), (4949, 4942, 4943, 0),
+    (4950, 4942, 4943, 0), (4979, 4942, 4943, 0),
+    (4957, 4954, 4955, 0),
+}
 # Follow-ons seen in the battle viewer that the fit guesses wrong: scene -> (the scene it comes
 # from, atlas, palette). The Rose Bits (4187, weapons 56-62) turn through 4174-4186, one
 # heading each, which the guess puts in the pink barrier's atlas (4171's 3238 holds them too).
@@ -436,6 +443,7 @@ def pack_row(r: dict, folder: Path) -> dict:
             'sha256': hashlib.sha256((folder / name).read_bytes()).hexdigest(),
             'width': image.width, 'height': image.height, 'method': 'image_gen' if source == redrawn else 'esrgan', 'unit': label} \
         | ({'scale': scale} if scale != PACK_SCALE else {}) \
+        | ({'preload': True} if kind == 'human' else {}) \
         | ({'any_palette': True, 'palette_indices': r['palette_indices']} if r.get('any_palette') else {})
 
 
@@ -477,6 +485,10 @@ def extend(into: Path, bind: bool, only: list[str] | None = None, replace: bool 
     keys.update((r['scene'], *HUMAN_EVADE_WRONG_ATLAS, r['frame'])
                 for r in rows if r['scene'] in HUMAN_EVADE_FOLLOW_ONS and r.get('set') == 'human')
     index['images'] = [r for r in index['images'] if frame_key(r) not in keys] + added
+    if any(r.get('set') == 'human' for r in rows):
+        for row in index['images']:
+            if frame_key(row) in HUMAN_SHORT_FIRST_FRAMES:
+                row['preload'] = True
     if only == ['human']:
         # Keep existing files pinned when replacing just the five misclassified scenes.
         write_pack_index(into, index)

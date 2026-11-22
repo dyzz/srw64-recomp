@@ -15002,7 +15002,7 @@
     "manifest_sha256": "6d94e8e4ddb693ce9d79c6eafa2b8b2b308b135116cfc08d2448604827607c55"
   },
   "battle_sprites": {
-    "path": "assets/hd-ai/cutins/pack-v22-frames",
-    "manifest_sha256": "b198d0549241dd2f34f4ae8f0d82de04f3da4641239f4924d73e89d6585a678d"
+    "path": "assets/hd-ai/cutins/pack-v23",
+    "manifest_sha256": "19166cec1492560215cf3db3ab6de9dfe2139a8d18cb6a09fef8dc3bac4e3ba2"
   }
 }
