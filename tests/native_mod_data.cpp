@@ -57,6 +57,18 @@ int main(int argc,char** argv) {
               "numeric references in the old pack name its new IDs");
         check(resolve(314,"other",numbers,Of::unit)==314 && resolve(314,id,modern,Of::unit)==314,
               "other packages and the new package still address the ROM's 314");
+        {
+            const auto scened=json::parse(R"({
+              "schema":"srw64.new-units.v1",
+              "units":{"314":{"copy":224}},
+              "weapons":{"1209":{"copy":880},"882":{"copy":875},
+                         "881":{"copy":874,"animation":{"actors":[{"scene":666},{"scene":1052},{"scene":1051}]}}},
+              "scenes":{"1051":[1399,1337,1381],"1052":[1425,1351,1369]}
+            })");
+            const auto actors=dancouga_definition(scened)["weapons"]["kougaken"]["animation"]["actors"];
+            check(actors[0]["scene"]==666 && actors[1]["scene"]=="@1052" && actors[2]["scene"]=="@1051",
+                  "the old pack's actors name its own scenes 1051 and 1052, not the ROM's");
+        }
         Bytes bytes;
         Taken taken;
         check(parse(old,id,numbers,rom,{},bytes,taken).empty() && !bytes.empty(),

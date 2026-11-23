@@ -68,6 +68,24 @@ inline json dancouga_definition(const json& source) {
         weapons[name]=std::move(weapons[number]);
         weapons.erase(number);
     }
+    // Its own scenes were numbers then free (1003, 1051, 1052), and its animations' actors name
+    // them by number. Here those numbers are the ROM's scenes (rom_scenes 1053): the 光牙剑 drew
+    // other scenes' pieces and a 1-pixel framebuffer at address 0, and crashed the Deck. They
+    // name the package's own scenes, which keep those numbers as their names.
+    const auto scenes=document.find("scenes");
+    for(auto& weapon:weapons) {
+        if(scenes==document.end() || !scenes->is_object() || !weapon.is_object())break;
+        const auto animation=weapon.find("animation");
+        if(animation==weapon.end() || !animation->is_object())continue;
+        const auto actors=animation->find("actors");
+        if(actors==animation->end() || !actors->is_array())continue;
+        for(auto& actor:*actors) {
+            const auto scene=actor.is_object()?actor.find("scene"):actor.end();
+            if(scene==actor.end() || !scene->is_number_integer())continue;
+            const auto number=std::to_string(scene->get<int64_t>());
+            if(scenes->contains(number))*scene="@"+number;
+        }
+    }
     return document;
 }
 inline constexpr uint32_t resident(uint32_t ram){return ram-0x80076610+0x1000;}
