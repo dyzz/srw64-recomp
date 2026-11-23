@@ -809,7 +809,7 @@ body.pointer button.vw-listen:focus {background-color:#3fd0ff;} body.pointer but
 /* Map movies: the original's 4:3 picture on the left, the controls under it */
 .mv-hero {display:flex; gap:14dp; pointer-events:auto;}   /* the details float in a document that takes no clicks */
 .mv-left {flex-shrink:0; display:flex; flex-direction:column; gap:6dp;}
-button.mv-stage {display:block; position:relative; overflow:hidden; margin:0; padding:0; background-color:#000000; border:1dp #3fd0ff59; border-radius:0;}
+button.mv-stage {display:block; position:relative; overflow:hidden; clip:always; margin:0; padding:0; background-color:#000000; border:1dp #3fd0ff59; border-radius:0;}
 button.mv-stage:focus, .pad button.mv-stage:focus {border-color:#ffd75e; background-color:#000000;}
 button.mv-stage img, button.mv-stage div {position:absolute; margin:0;}
 button.mv-stage div {background-color:#000000;}
@@ -2966,6 +2966,7 @@ void library_select(unsigned index,bool focus=true) {
 }
 // The playing map movie (map_movie.hpp): its pictures into the stage as they come, every
 // frame of the window while the Library shows the animations page.
+bool library_on_controls();
 unsigned library_movie_selected(){const auto& e=library_movie_entries();return e.empty()?0:e[std::min<size_t>(library_index[2],e.size()-1)].value("movie",0u);}
 void library_movie_sync() {
     if(!movie_active || !library_detail_doc)return;
@@ -2997,7 +2998,11 @@ void library_movie_control(const std::string& id) {
         if(movie_active){
             movie_serial=0;   // the next sync draws the stage again
             if(library_detail_doc)for(const char* b:{"mv-img:0","mv-img:1"})if(auto* e=library_detail_doc->GetElementById(b))e->SetClass("on",(b[7]=='1')==movie_hd());
-        } else if(auto* detail=library_detail_element()){detail->SetInnerRML(library_detail());library_detail_doc->UpdateDocument();fit_lines(library_detail_doc);wrap_paragraphs(library_detail_doc);}
+        } else if(auto* detail=library_detail_element()){
+            const bool focused=library_on_controls();
+            detail->SetInnerRML(library_detail());library_detail_doc->UpdateDocument();fit_lines(library_detail_doc);wrap_paragraphs(library_detail_doc);
+            if(focused)if(auto* again=library_detail_doc->GetElementById(id))again->Focus();   // made again: the controller stays on it
+        }
         return;
     }
     if(id=="mv-back" || id=="mv-fwd") {
@@ -3030,10 +3035,37 @@ unsigned library_work_step(int step) {
     while(previous>0 && work(previous-1)==work(first-1))--previous;
     return unsigned(previous);
 }
+// The animations page's controls under the stage (play, frame steps, replay, loop, Original /
+// HD), reached from the list by right on a controller or the keys: left and right go along
+// them, left from the first, up, down or B back to the list; A presses one.
+std::vector<Rml::Element*> library_movie_buttons() {
+    Rml::ElementList buttons;
+    if(library_detail_doc)library_detail_doc->QuerySelectorAll(buttons,".mv-ctl button");
+    return {buttons.begin(),buttons.end()};
+}
+bool library_on_controls() {
+    auto* focus=context?context->GetFocusElement():nullptr;
+    return library_open && library_tab==2 && focus && library_detail_doc && focus->GetOwnerDocument()==library_detail_doc;
+}
+void library_focus_list() {
+    if(auto* item=settings_doc?settings_doc->GetElementById("lib-item:"+std::to_string(library_index[library_tab])):nullptr)item->Focus();
+}
 void library_move(int dy,int dx) {
     if(!settings_doc)return;
     auto* focus=context->GetFocusElement();
     const bool on_tab=focus && focus->IsClassSet("set-tab");
+    if(library_on_controls()) {
+        const auto buttons=library_movie_buttons();
+        const auto at=std::find(buttons.begin(),buttons.end(),focus)-buttons.begin();
+        const auto next=at+dx;
+        if(dy || next<0 || at>=std::ssize(buttons))library_focus_list();
+        else if(next<std::ssize(buttons))buttons[size_t(next)]->Focus();
+        return;
+    }
+    if(dx>0 && library_tab==2 && !on_tab) {
+        if(const auto buttons=library_movie_buttons();!buttons.empty())buttons.front()->Focus();
+        return;
+    }
     if(dx) {
         if(on_tab){library_turn(dx);return;}
         library_select(library_work_step(dx));
@@ -6214,6 +6246,7 @@ void choose(const std::string& id) {
         return;
     }
     if(library_open && id.starts_with("mv-")){library_movie_control(id);return;}
+    if(id=="settings-close" && library_on_controls()){library_focus_list();return;}   // B on the controls: back to the list
     if(id=="viewer-open"){viewer_open=true;library_open=false;mod_open=false;stage_open=false;viewer_picker.clear();settings_open=true;settings_release.hold();input.clear();return;}
     if(viewer_open && id=="settings-close" && !viewer_picker.empty()){viewer_cancel_picker();return;}   // B in a box: back to the page as it was
     if(viewer_open && id.starts_with("vw-")){viewer_choose(id);return;}
@@ -7244,7 +7277,7 @@ void pad_keys(uint32_t now,uint32_t pressed) {
 // The focused settings control, pressed by A, START, Enter, Z or Space.
 void settings_press() {
     auto* focus=context->GetFocusElement();
-    if(focus && settings_doc && focus->GetOwnerDocument()==settings_doc && focus->GetTagName()=="button")focus->Click();
+    if(focus && settings_doc && (focus->GetOwnerDocument()==settings_doc || library_on_controls()) && focus->GetTagName()=="button")focus->Click();
 }
 // The settings window on a controller: L1/R1 turn the page, the directions move as in
 // settings_move, A presses the focused control, B (or View again) closes the window.
