@@ -338,9 +338,12 @@ inline void restored(const uint8_t* ram,story_mod::Record kind) {
     {std::lock_guard lock(s.mutex);moved.swap(s.moved);moved_pilots.swap(s.moved_pilots);
      missing_legacy=std::exchange(s.missing_legacy_dancouga,false);}
     // The sidecar's keys by the numbers the units have now.
+    // Held in locals: a range-for over value(...).items() iterates a temporary already gone.
+    const json saved_keys=saved.is_object()?saved.value("keys",json::object()):json::object();
+    const json saved_pilot_keys=saved.is_object()?saved.value("pilot_keys",json::object()):json::object();
     std::map<unsigned,std::string> keys;
-    if(saved.is_object())
-        for(const auto& [number,key]:saved.value("keys",json::object()).items()) {
+    if(saved_keys.is_object())
+        for(const auto& [number,key]:saved_keys.items()) {
             unsigned n=0;
             try{n=unsigned(std::stoul(number));}catch(...){continue;}
             if(!key.is_string())continue;
@@ -360,8 +363,8 @@ inline void restored(const uint8_t* ram,story_mod::Record kind) {
     }
     // And a new character no active package adds, or whose name has another number now.
     std::map<unsigned,std::string> pilot_keys;
-    if(saved.is_object())
-        for(const auto& [number,key]:saved.value("pilot_keys",json::object()).items()) {
+    if(saved_pilot_keys.is_object())
+        for(const auto& [number,key]:saved_pilot_keys.items()) {
             unsigned n=0;
             try{n=unsigned(std::stoul(number));}catch(...){continue;}
             if(!key.is_string())continue;
