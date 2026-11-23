@@ -244,11 +244,15 @@ void watch() {
 }
 }
 // Development: a file named stall-test beside the NRO stops the render thread at frame 120,
-// as SRW64_STALL_TEST does elsewhere (the Switch starts with the environment cleared).
-bool test_stall = false;
+// as SRW64_STALL_TEST does elsewhere (the Switch starts with the environment cleared); one
+// named fault-test writes to an unmapped address there instead, which goes through the
+// exception handler (switch_platform.cpp) that a stall's svcBreak does not.
+bool test_stall = false, test_fault = false;
 void start() {
     std::error_code missing;
-    test_stall = std::filesystem::exists(std::filesystem::path(srw64_switch_program_path()).parent_path() / "stall-test", missing);
+    const auto beside = std::filesystem::path(srw64_switch_program_path()).parent_path();
+    test_stall = std::filesystem::exists(beside / "stall-test", missing);
+    test_fault = std::filesystem::exists(beside / "fault-test", missing);
     watcher = new std::thread(watch);
 }
 void stop() {
@@ -259,6 +263,10 @@ void stop() {
     watcher = nullptr;
 }
 void frame_done() {
+    if (frames.load(std::memory_order_relaxed) + 1 == 120 && test_fault) {
+        std::fprintf(stderr, "SRW64_FAULT_TEST: the render thread writes to an unmapped address\n");
+        *reinterpret_cast<volatile uint32_t*>(uintptr_t(0x10)) = 1;
+    }
     if (frames.fetch_add(1, std::memory_order_relaxed) + 1 == 120 && test_stall) {
         std::fprintf(stderr, "SRW64_STALL_TEST: the render thread stops here\n");
         for (;;) std::this_thread::sleep_for(std::chrono::seconds(1));

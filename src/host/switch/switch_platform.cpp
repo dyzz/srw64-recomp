@@ -541,6 +541,67 @@ void __wrap_abort() {
     __builtin_unreachable();
 }
 
+// Before creport: what the faulting address is. Two starts on 2026-11-23 ended in a memset of
+// a fresh allocation (4 and 10 MB) that met pages of the heap no longer accessible part way
+// through: memory given back to the heap while still borrowed (a thread's stack mapped with
+// svcMapMemory, a transfer memory), which creport does not show. Each fault writes the
+// address's region and those on either side (type, attributes, permission) into console.log,
+// then returns, so creport reports it as before.
+extern "C" {
+alignas(16) u8 __nx_exception_stack[0x10000];
+u64 __nx_exception_stack_size = sizeof(__nx_exception_stack);
+void __libnx_exception_handler(ThreadExceptionDump* ctx);
+}
+namespace {
+void exception_write(const char* text, size_t size) {
+    // The faulting thread may hold the log's lock: then straight to the file, unordered.
+    if (std::unique_lock lock(log_mutex, std::try_to_lock); lock) {
+        log_tail.append(text, size);
+        if (log_file >= 0) {
+            if (!log_pending.empty()) (void)!::write(log_file, log_pending.data(), log_pending.size());
+            log_pending.clear();
+            (void)!::write(log_file, text, size);
+        }
+    } else if (log_file >= 0) {
+        (void)!::write(log_file, text, size);
+    }
+    if (nxlink_socket >= 0) ::send(nxlink_socket, text, size, MSG_DONTWAIT);
+}
+void exception_region(const char* which, u64 address) {
+    MemoryInfo info{};
+    u32 page = 0;
+    char line[256];
+    int n;
+    if (R_FAILED(svcQueryMemory(&info, &page, address)))
+        n = std::snprintf(line, sizeof line, "SRW64_EXCEPTION_MEMORY %s 0x%llx: query failed\n", which, (unsigned long long)address);
+    else
+        n = std::snprintf(line, sizeof line, "SRW64_EXCEPTION_MEMORY %s 0x%llx in 0x%llx+0x%llx type=0x%x attr=0x%x perm=%u ipc=%u device=%u\n", which,
+                          (unsigned long long)address, (unsigned long long)info.addr, (unsigned long long)info.size, info.type & 0xFF, info.attr,
+                          info.perm, info.ipc_refcount, info.device_refcount);
+    if (n > 0) exception_write(line, std::min<size_t>(size_t(n), sizeof line - 1));
+}
+}
+void __libnx_exception_handler(ThreadExceptionDump* ctx) {
+    const u64 base = module_base(), far = ctx->far.x;
+    u64 thread = 0;
+    svcGetThreadId(&thread, CUR_THREAD_HANDLE);
+    char line[256];
+    const int n = std::snprintf(line, sizeof line, "SRW64_EXCEPTION desc=0x%x pc=+0x%llx lr=+0x%llx far=0x%llx sp=0x%llx thread=%llu\n",
+                                ctx->error_desc, (unsigned long long)(ctx->pc.x - base), (unsigned long long)(ctx->lr.x - base),
+                                (unsigned long long)far, (unsigned long long)ctx->sp.x, (unsigned long long)thread);
+    if (n > 0) exception_write(line, std::min<size_t>(size_t(n), sizeof line - 1));
+    MemoryInfo info{};
+    u32 page = 0;
+    exception_region("fault", far);
+    if (R_SUCCEEDED(svcQueryMemory(&info, &page, far))) {
+        if (info.addr) exception_region("before", info.addr - 1);
+        exception_region("after", info.addr + info.size);
+    }
+    // Returning is enough: libnx then breaks (__libnx_exception_returnentry calls svcBreak) with
+    // the thread's frame pointer as it was, so creport walks the original stack. Calling
+    // svcReturnFromException here instead was a bad SVC that came back into this handler.
+}
+
 // Before main and after it (libnx's weak hooks): the sockets, and stdout and stderr to
 // nxlink on the Mac that pushed the NRO (tools/release/switch/README.txt).
 namespace {
