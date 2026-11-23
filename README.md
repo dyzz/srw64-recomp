@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="web/public/brand/title-en.webp" alt="MARCHWIND64" width="640">
+  <a href="https://youtu.be/F9cq5RtVZ8I">
+    <img src="web/public/brand/readme-video-en.webp" alt="MARCHWIND64 — Watch the feature video" width="640">
+  </a>
 </p>
 
 <p align="center"><b>Super Robot Wars 64 — a native recompilation of the 1999 N64 game.</b></p>
@@ -24,14 +26,6 @@
       <img src="https://recomplauncher.com/assets/press/launcher/badge-dark.svg" alt="Get it on RecompLauncher" height="56">
     </picture>
   </a>
-</p>
-
-<p align="center">
-  <a href="https://youtu.be/F9cq5RtVZ8I">
-    <img src="https://i.ytimg.com/vi/F9cq5RtVZ8I/maxresdefault.jpg" alt="Marchwind 64 – Feature Overview" width="640">
-  </a>
-  <br>
-  <sub>Feature overview video by <a href="https://www.youtube.com/@RelicFrameWorks">RelicFrame</a> (YouTube)</sub>
 </p>
 
 Marchwind 64 is an unofficial native recompilation project for Super Robot Wars 64.

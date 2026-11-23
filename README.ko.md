@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="web/public/brand/title-ko.webp" alt="MARCHWIND64" width="640">
+  <a href="https://youtu.be/F9cq5RtVZ8I">
+    <img src="web/public/brand/readme-video-ko.webp" alt="MARCHWIND64 — 기능 소개 영상 보기" width="640">
+  </a>
 </p>
 
 <p align="center"><b>슈퍼로봇대전64 — 1999년 N64 게임의 네이티브 리컴파일 버전.</b></p>
@@ -24,14 +26,6 @@
       <img src="https://recomplauncher.com/assets/press/launcher/badge-dark.svg" alt="Get it on RecompLauncher" height="56">
     </picture>
   </a>
-</p>
-
-<p align="center">
-  <a href="https://youtu.be/F9cq5RtVZ8I">
-    <img src="https://i.ytimg.com/vi/F9cq5RtVZ8I/maxresdefault.jpg" alt="Marchwind 64 – Feature Overview" width="640">
-  </a>
-  <br>
-  <sub>기능 소개 영상 (YouTube, 제작 <a href="https://www.youtube.com/@RelicFrameWorks">RelicFrame</a>)</sub>
 </p>
 
 Marchwind 64는 『슈퍼로봇대전64』의 비공식 네이티브 리컴파일 프로젝트입니다.

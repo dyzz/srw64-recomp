@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="web/public/brand/title-zh.webp" alt="三月风64" width="640">
+  <a href="https://youtu.be/F9cq5RtVZ8I">
+    <img src="web/public/brand/readme-video-zh-Hans.webp" alt="三月风64 — 观看功能介绍视频" width="640">
+  </a>
 </p>
 
 <p align="center"><b>超级机器人大战64 —— 1999 年 N64 游戏的原生重编译版。</b></p>
@@ -24,14 +26,6 @@
       <img src="https://recomplauncher.com/assets/press/launcher/badge-dark.svg" alt="Get it on RecompLauncher" height="56">
     </picture>
   </a>
-</p>
-
-<p align="center">
-  <a href="https://youtu.be/F9cq5RtVZ8I">
-    <img src="https://i.ytimg.com/vi/F9cq5RtVZ8I/maxresdefault.jpg" alt="Marchwind 64 – Feature Overview" width="640">
-  </a>
-  <br>
-  <sub>功能介绍视频（YouTube，作者 <a href="https://www.youtube.com/@RelicFrameWorks">RelicFrame</a>）</sub>
 </p>
 
 Marchwind 64（“三月风”）是《超级机器人大战64》的非官方原生重编译项目。支持电脑、Steam Deck、

@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="web/public/brand/title-ja.webp" alt="マーチウィンド64" width="640">
+  <a href="https://youtu.be/F9cq5RtVZ8I">
+    <img src="web/public/brand/readme-video-ja.webp" alt="マーチウィンド64 — 機能紹介動画を見る" width="640">
+  </a>
 </p>
 
 <p align="center"><b>スーパーロボット大戦64 —— 1999 年に発売された N64 用ゲームのネイティブ再コンパイル版。</b></p>
@@ -24,14 +26,6 @@
       <img src="https://recomplauncher.com/assets/press/launcher/badge-dark.svg" alt="Get it on RecompLauncher" height="56">
     </picture>
   </a>
-</p>
-
-<p align="center">
-  <a href="https://youtu.be/F9cq5RtVZ8I">
-    <img src="https://i.ytimg.com/vi/F9cq5RtVZ8I/maxresdefault.jpg" alt="Marchwind 64 – Feature Overview" width="640">
-  </a>
-  <br>
-  <sub>機能紹介動画（YouTube、作者 <a href="https://www.youtube.com/@RelicFrameWorks">RelicFrame</a>）</sub>
 </p>
 
 マーチウィンド64 は『スーパーロボット大戦64』の非公式ネイティブ再コンパイルプロジェクトです。
