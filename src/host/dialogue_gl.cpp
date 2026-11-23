@@ -4,6 +4,7 @@
 // texture drawn over the picture, premultiplied, inside the rectangle the frame draws.
 // OpenGL 2.1 / ES 2.0 only, like src/gl.
 #include "dialogue_raster.hpp"
+#include "present_trace.hpp"
 #include "game_frame.hpp"
 #include "../gl/gl_api.hpp"
 #include "../gl/program_cache.hpp"
@@ -79,8 +80,16 @@ void gl_draw(uint64_t workload, uint32_t width, uint32_t height) {
     auto frame = presented_frame(workload);
     if (!frame || std::none_of(frame->boxes.begin(), frame->boxes.end(), [](const auto& b) { return b.visible; })) return;
     localization::Scope locale(frame->catalog);
-    if (!program) make_program();
+    if (!program) {
+#ifdef __SWITCH__
+        PresentStage timing("dialogue_program", workload);
+#endif
+        make_program();
+    }
     if (!canvases[0].id || canvas_width != width || canvas_height != height) {
+#ifdef __SWITCH__
+        PresentStage timing("dialogue_canvas_init", workload);
+#endif
         for (auto& c : canvases) {
             if (!c.id) glGenTextures(1, &c.id);
             glBindTexture(GL_TEXTURE_2D, c.id);
@@ -99,7 +108,11 @@ void gl_draw(uint64_t workload, uint32_t width, uint32_t height) {
     context << localization::catalog().locale << ',' << localization::catalog().font << ',' << localization::catalog().revision;
     const auto rastered = std::chrono::steady_clock::now();
     auto update = raster.update(*frame, width, height, srw64::frame::width(float(width), float(height)), context.str());
-    n64gl::gl_stats().raster_ms += n64gl::gl_ms_since(rastered);
+    const double raster_ms = n64gl::gl_ms_since(rastered);
+    n64gl::gl_stats().raster_ms += raster_ms;
+#ifdef __SWITCH__
+    if (raster_ms >= 20.0) std::fprintf(stderr, "SRW64_DIALOGUE_RASTER workload=%llu %.1f ms\n", (unsigned long long)workload, raster_ms);
+#endif
     const auto patched = std::chrono::steady_clock::now();
     bool touched = false;
     for (const auto& patch : update.patches) {
@@ -125,6 +138,9 @@ void gl_draw(uint64_t workload, uint32_t width, uint32_t height) {
         n64gl::gl_stats().patch_bytes += source.size();
     }
     if (touched) {
+#ifdef __SWITCH__
+        PresentStage timing("dialogue_patch_upload", workload);
+#endif
         size_t next = current;
         for (size_t i = 0; i < kCanvasCopies; ++i)
             if (i != current && (next == current || canvases[i].current_at < canvases[next].current_at)) next = i;
@@ -141,6 +157,9 @@ void gl_draw(uint64_t workload, uint32_t width, uint32_t height) {
     }
     n64gl::gl_stats().patch_ms += n64gl::gl_ms_since(patched);
     if (update.drawn.empty()) return;
+#ifdef __SWITCH__
+    PresentStage timing("dialogue_quad", workload);
+#endif
     // Premultiplied: the raster has applied alpha already.
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);

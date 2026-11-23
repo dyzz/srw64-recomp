@@ -4237,7 +4237,7 @@ void settings_sync() {
     // A controller has no window to close (Big Picture, the Deck, the couch): on every page, as
     // the button in Zelda64Recomp's menu bar is. A row of its own for the keys (settings_move).
     std::string quit;
-#if !defined(__ANDROID__) && !defined(__SWITCH__) && !defined(__vita__)
+#if !defined(__ANDROID__) && !defined(__vita__)
     quit=button("quit-ask",label("quit_open"),false,false,"nav foot-quit");
 #endif
     body+="<div class='set-foot'><div class='set-hint'>"+label("settings_hint")+"</div>"+quit+button("settings-close",label("settings_close"))+"</div></div>"+capture_prompt()+"</div>";

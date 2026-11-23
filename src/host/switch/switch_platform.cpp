@@ -382,6 +382,24 @@ std::string srw64_switch_perf_system() {
     return line;
 }
 
+// libnx's normal AM termination commands for an application and a library applet
+// (_appletSelfExit / _appletExitProcessAndReturn). Invoke them after the runtime
+// has joined the guest threads, before SDL's EGL teardown waits on nv transfer memory.
+void srw64_switch_finish_session() {
+    const bool library = appletGetAppletType() == AppletType_LibraryApplet;
+    Service* session = library ? appletGetServiceSession_LibraryAppletSelfAccessor()
+                               : appletGetServiceSession_SelfController();
+    std::fprintf(stderr, "SRW64_SWITCH_EXIT requesting %s exit\n", library ? "library applet" : "application");
+    srw64_switch_log_flush(500);
+    Result rc = serviceDispatch(session, library ? 10 : 0);
+    if (R_SUCCEEDED(rc)) {
+        // AM terminates the process. libnx also sleeps after a successful exit request.
+        for (;;) svcSleepThread(1000000000);
+    }
+    std::fprintf(stderr, "SRW64_SWITCH_EXIT rejected result=0x%x\n", rc);
+    srw64_switch_log_flush(500);
+}
+
 // Started as an application (a game held R on, or the title override) and not from the
 // album, where a library applet gets about 370 MiB in all (switch-port.md, the smoke run).
 bool srw64_switch_application() {

@@ -842,12 +842,18 @@ static int run_host(int argc, char** argv) {
     srw64::mods::set_unpack_progress(nullptr);   // later installs are the MOD page's
     srw64::app::boot_step("game start");
     recomp::start(cfg);
+#ifndef __SWITCH__
     srw64_destroy_window();
+#endif
     std::ofstream report(output_dir / "native-counters.json");
     report << "{\"schema\":\"srw64.native-cpu-probe-counters.v1\",\"vis\":" << vi_count
            << ",\"graphics_tasks\":" << dl_count << ",\"audio_tasks\":" << audio_tasks
            << ",\"audio_samples\":" << audio_samples << ",\"frequency\":" << frequency
            << ",\"control_quit\":" << (control_quit ? "true" : "false") << "}\n";
+#ifdef __SWITCH__
+    report.close();  // a confirmed in-game exit hands control to the system during window shutdown
+    srw64_destroy_window();
+#endif
     return dl_count > 0 && audio_tasks > 0 ? 0 : 3;
 }
 

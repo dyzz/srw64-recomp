@@ -1,3 +1,4 @@
+#include "present_trace.hpp"
 #include "stall_watchdog.hpp"
 #include "native_dialogue.hpp"
 #include "table_window.hpp"
@@ -369,13 +370,21 @@ void refresh(uint8_t* ram,bool create_events) {
         const std::pair<uint64_t,unsigned> identity{loads[slot],display_only?box.segment:0};
         if(identity!=identities[slot]) {
             // A battle quote's next page keeps its load; a new load is the next quote.
-            if(display_only && identity.first!=identities[slot].first && battle_quote_opened)battle_quote_opened(box.text_id);
+            if(display_only && identity.first!=identities[slot].first && battle_quote_opened) {
+#ifdef __SWITCH__
+                PresentStage timing("quote_open", box.text_id);
+#endif
+                battle_quote_opened(box.text_id);
+            }
             identities[slot]=identity;events[slot]=++event_serial;
         }
         box.event=events[slot];
         if(current[slot].event==box.event && current[slot].layout.text==body &&
            reader.font_size==reader_font_size && current[slot].width==box.width)box.layout=current[slot].layout;
         else {
+#ifdef __SWITCH__
+            PresentStage timing("dialogue_layout", box.text_id);
+#endif
             box.layout=display_only?fitted(body,body_size(reader.font_size),box.width):typeset_body(body,body_size(reader.font_size),source.stops);
             if(display_only && box.layout.pages.size()>1)record("battle_overflow",{{"text_id",box.text_id},{"segment",box.segment},{"pages",box.layout.pages.size()}});
         }
@@ -645,6 +654,9 @@ void read_keys() {
 }
 bool step(uint8_t* ram,recomp_context* ctx) {
     std::lock_guard lock(mutex);
+#ifdef __SWITCH__
+    PresentStage timing("dialogue_step_locked", 0);
+#endif
     service_locale(ram);
     const auto font=settings::dialogue_font_size();
     if(reader.font_size!=font) {
@@ -747,6 +759,9 @@ void loaded(uint8_t*,unsigned slot) {
 }
 void drawn(uint8_t* ram,uint32_t begin,uint32_t end) {
     std::lock_guard lock(mutex);
+#ifdef __SWITCH__
+    PresentStage timing("dialogue_drawn_locked", 0);
+#endif
     if(!scene_supported || end<begin || end>0x800000)return;
     refresh(ram,false);
     auto frame=std::make_shared<Frame>();
@@ -1016,7 +1031,16 @@ void queue_frame(uint64_t workload,std::shared_ptr<const Frame> frame) {
     while(frames.size()>64)frames.erase(frames.begin());
 }
 std::shared_ptr<const Frame> presented_frame(uint64_t workload) {
-    std::lock_guard lock(mutex);auto it=frames.find(workload);return it==frames.end()?nullptr:it->second;
+#ifdef __SWITCH__
+    std::unique_lock lock(mutex, std::defer_lock);
+    {
+        PresentStage timing("frame_lock", workload);
+        lock.lock();
+    }
+#else
+    std::lock_guard lock(mutex);
+#endif
+    auto it=frames.find(workload);return it==frames.end()?nullptr:it->second;
 }
 }
 
