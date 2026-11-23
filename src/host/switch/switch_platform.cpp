@@ -26,6 +26,7 @@
 #include <vector>
 
 #include "../hd_pack.hpp"
+#include "../stall_watchdog.hpp"
 #include "ultramodern/ultramodern.hpp"
 #include "stb/stb_image.h"
 
@@ -114,6 +115,10 @@ std::condition_variable log_wake;
 std::string log_tail, log_pending;
 int log_file = -1;
 bool log_writer = false;
+// Joined at exit (userAppExit): a thread still running once main has returned wakes in code
+// hbloader has already unloaded (2168-0001 after the settings page's exit, 2026-11-23).
+bool log_stop = false;
+std::thread* log_thread = nullptr;
 constexpr size_t log_keep = 512 * 1024;
 ssize_t log_write(struct _reent*, void*, const char* data, size_t size) {
     std::lock_guard lock(log_mutex);
@@ -127,7 +132,7 @@ extern "C" void srw64_switch_background_thread();
 void write_log_file() {
     srw64_switch_background_thread();
     std::unique_lock lock(log_mutex);
-    for (;;) {
+    while (!log_stop) {
         log_wake.wait_for(lock, std::chrono::milliseconds(250));
         if (log_pending.empty() || log_file < 0) continue;
         std::string chunk;
@@ -151,7 +156,7 @@ void srw64_switch_log_to(const char* path) {
     if (log_file >= 0) (void)!::write(log_file, log_tail.data(), log_tail.size());
     if (!log_writer) {
         log_writer = true;
-        std::thread(write_log_file).detach();   // lives as long as the program
+        log_thread = new std::thread(write_log_file);   // until userAppExit
     }
 }
 // What is pending into console.log now, for the stall watchdog before it breaks: written by a
@@ -531,6 +536,7 @@ int __wrap_chmod(const char*, mode_t) { return 0; }
 void __wrap_abort() {
     std::fputs("SRW64_ABORT\n", stderr);
     std::fflush(stderr);
+    srw64_switch_log_flush(500);   // console.log is written a quarter second at a time
     svcBreak(BreakReason_Panic, 0, 0);
     __builtin_unreachable();
 }
@@ -582,6 +588,24 @@ void userAppInit() {
 }
 
 void userAppExit() {
+    // Our threads that live as long as the program, ended before hbloader unloads the code
+    // they run (main has returned, the statics are destroyed).
+    srw64::stall::stop();
+    if (log_thread) {
+        {
+            std::lock_guard lock(log_mutex);
+            log_stop = true;
+        }
+        log_wake.notify_all();
+        log_thread->join();
+        std::lock_guard lock(log_mutex);
+        if (log_file >= 0) {
+            if (!log_pending.empty()) (void)!::write(log_file, log_pending.data(), log_pending.size());
+            log_pending.clear();
+            ::close(log_file);
+            log_file = -1;
+        }
+    }
     appletUnhook(&focus_cookie);
     romfsExit();
     restore_gpu();

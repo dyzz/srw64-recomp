@@ -723,6 +723,10 @@ void start(const std::filesystem::path& directory,json host) {
     if(settings::debug_interface_forced())listen_now(false);
 }
 
+void stop() {
+    if(running)stop_now();
+}
+
 void service_main() {
     if(prepared) {
         const bool forced=settings::debug_interface_forced(),wanted=forced || settings::debug_interface();

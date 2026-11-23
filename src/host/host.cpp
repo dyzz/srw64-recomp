@@ -852,6 +852,7 @@ static int run_host(int argc, char** argv) {
            << ",\"control_quit\":" << (control_quit ? "true" : "false") << "}\n";
 #ifdef __SWITCH__
     report.close();  // a confirmed in-game exit hands control to the system during window shutdown
+    srw64::debug::stop();   // libnx closes the sockets after main, under a connection's thread
     srw64_destroy_window();
 #endif
     return dl_count > 0 && audio_tasks > 0 ? 0 : 3;

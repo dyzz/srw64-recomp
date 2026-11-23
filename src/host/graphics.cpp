@@ -151,6 +151,7 @@ std::vector<std::string> gpu_names;  // gpu_report's adapters, for the failure m
 std::string srw64_switch_perf_system();   // switch/switch_platform.cpp: memory and core loads
 extern "C" void srw64_switch_background_thread();   // the same: the lowest priority for a helper thread
 void srw64_switch_finish_session();
+bool srw64_switch_log_flush(int wait_ms);   // the same: what is pending into console.log, now
 static bool switch_window_close_requested = false;
 std::string srw64_switch_hd_art();   // the same: the HD pack's art folder, "" for none
 const std::vector<uint32_t>& srw64_switch_splash();   // the same: the loading screen's last step
@@ -236,29 +237,50 @@ static void register_hd_requirement(const char* art, bool hd) {
 
 // Work the GL render thread hands off, in order on one thread of its own: a debug screenshot's
 // PNG took a second on the Switch, a second the game stood still.
+// Started by the first job. Never destroyed (a joinable std::thread at exit() is
+// std::terminate); on the Switch an empty job ends it at exit, as a thread still running once
+// main has returned wakes in code hbloader has already unloaded (2026-11-23).
+static std::mutex background_mutex;
+static std::condition_variable background_wake;
+static std::deque<std::function<void()>> background_jobs;
+static std::thread* background_worker = nullptr;
 void run_in_background(std::function<void()> job) {
-static std::mutex mutex;
-    static std::condition_variable wake;
-    static std::deque<std::function<void()>> jobs;
-    static std::thread* worker = new std::thread([] {   // never joined: it lives as long as the program
+    std::lock_guard lock(background_mutex);
+    if (!background_worker) {
+        background_worker = new std::thread([] {
 #ifdef __SWITCH__
-        srw64_switch_background_thread();
+            srw64_switch_background_thread();
 #endif
-        for (;;) {
-            std::function<void()> next;
-            {
-                std::unique_lock lock(mutex);
-                wake.wait(lock, [] { return !jobs.empty(); });
-                next = std::move(jobs.front());
-                jobs.pop_front();
+            for (;;) {
+                std::function<void()> next;
+                {
+                    std::unique_lock lock(background_mutex);
+                    background_wake.wait(lock, [] { return !background_jobs.empty(); });
+                    next = std::move(background_jobs.front());
+                    background_jobs.pop_front();
+                }
+                if (!next) return;
+                next();
             }
-            next();
-        }
-    });
-    (void)worker;
-    { std::lock_guard lock(mutex); jobs.push_back(std::move(job)); }
-    wake.notify_one();
+        });
+    }
+    if (job) background_jobs.push_back(std::move(job));
+    background_wake.notify_one();
 }
+#ifdef __SWITCH__
+// The jobs already handed over done, then the thread ended and joined.
+static void stop_background() {
+    {
+        std::lock_guard lock(background_mutex);
+        if (!background_worker) return;
+        background_jobs.push_back({});
+    }
+    background_wake.notify_one();
+    background_worker->join();
+    delete background_worker;
+    background_worker = nullptr;
+}
+#endif
 // The Enter of an Alt + Enter (full screen, frontend.cpp) is not START until it is let go,
 // whichever key comes up first.
 SDL_Scancode alt_enter_key = SDL_SCANCODE_UNKNOWN;
@@ -2263,13 +2285,15 @@ void srw64_destroy_window() {
     // shutdown), the system is asked to end the application after three seconds instead.
     static std::atomic<bool> torn_down{false};
     const auto teardown_start = std::chrono::steady_clock::now();
+    stop_background();
+    std::thread fallback;   // joined below: no thread of ours may outlive main (stop_background)
     if (switch_window_close_requested) {
-        std::thread([] {
-            for (int i = 0; i < 30 && !torn_down.load(); ++i) std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        fallback = std::thread([] {
+            for (int i = 0; i < 300 && !torn_down.load(); ++i) std::this_thread::sleep_for(std::chrono::milliseconds(10));
             if (torn_down.load()) return;
             std::fprintf(stderr, "SRW64_SWITCH_TEARDOWN still not done after 3 s: asking the system to end the application\n");
             srw64_switch_finish_session();
-        }).detach();
+        });
     }
 #endif
 #ifdef SRW64_GL_RENDERER
@@ -2282,8 +2306,10 @@ void srw64_destroy_window() {
     SDL_Quit();
 #ifdef __SWITCH__
     torn_down = true;
+    if (fallback.joinable()) fallback.join();
     std::fprintf(stderr, "SRW64_SWITCH_TEARDOWN window and EGL closed in %.0f ms\n",
                  std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - teardown_start).count());
+    srw64_switch_log_flush(500);   // the writer thread's quarter second would not come again
 #endif
 }
 

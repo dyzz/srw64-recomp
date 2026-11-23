@@ -13,6 +13,9 @@ void start(const std::filesystem::path& output, nlohmann::json host);
 // Window thread, every frame: runs queued window-thread work.
 void service_main();
 bool enabled();
+// At exit, once the game has stopped: no new connections and the open ones ended, so no
+// thread of ours is in the sockets when the platform closes them after main (the Switch).
+void stop();
 }
 
 // Provided by host.cpp: an immediate N64 button pulse and a quit that is
