@@ -26,6 +26,14 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://youtu.be/F9cq5RtVZ8I">
+    <img src="https://i.ytimg.com/vi/F9cq5RtVZ8I/maxresdefault.jpg" alt="Marchwind 64 – Feature Overview" width="640">
+  </a>
+  <br>
+  <sub>기능 소개 영상 (YouTube, 제작 <a href="https://www.youtube.com/@RelicFrameWorks">RelicFrame</a>)</sub>
+</p>
+
 Marchwind 64는 『슈퍼로봇대전64』의 비공식 네이티브 리컴파일 프로젝트입니다.
 Windows, macOS, Linux, Steam Deck, Android, Nintendo Switch에서 네이티브로 실행되며,
 한국어, 영어, 중국어 전문 번역과 와이드 화면을 지원합니다. 별도의 HD 팩도 선택해서 쓸 수 있습니다.

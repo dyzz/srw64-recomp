@@ -26,6 +26,14 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://youtu.be/F9cq5RtVZ8I">
+    <img src="https://i.ytimg.com/vi/F9cq5RtVZ8I/maxresdefault.jpg" alt="Marchwind 64 – Feature Overview" width="640">
+  </a>
+  <br>
+  <sub>功能介绍视频（YouTube，作者 <a href="https://www.youtube.com/@RelicFrameWorks">RelicFrame</a>）</sub>
+</p>
+
 Marchwind 64（“三月风”）是《超级机器人大战64》的非官方原生重编译项目。支持电脑、Steam Deck、
 安卓手机和 Nintendo Switch，提供简繁中文、英文和韩文全文翻译与宽屏显示，另有可选的 HD 美术包。
 

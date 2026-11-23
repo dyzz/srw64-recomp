@@ -26,6 +26,14 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://youtu.be/F9cq5RtVZ8I">
+    <img src="https://i.ytimg.com/vi/F9cq5RtVZ8I/maxresdefault.jpg" alt="Marchwind 64 – Feature Overview" width="640">
+  </a>
+  <br>
+  <sub>Feature overview video by <a href="https://www.youtube.com/@RelicFrameWorks">RelicFrame</a> (YouTube)</sub>
+</p>
+
 Marchwind 64 is an unofficial native recompilation project for Super Robot Wars 64.
 It runs natively on Windows, macOS, Linux, Steam Deck, Android and Nintendo Switch, with full English,
 Chinese (Simplified and Traditional) and Korean translations and widescreen support, plus an

@@ -26,6 +26,14 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://youtu.be/F9cq5RtVZ8I">
+    <img src="https://i.ytimg.com/vi/F9cq5RtVZ8I/maxresdefault.jpg" alt="Marchwind 64 – Feature Overview" width="640">
+  </a>
+  <br>
+  <sub>機能紹介動画（YouTube、作者 <a href="https://www.youtube.com/@RelicFrameWorks">RelicFrame</a>）</sub>
+</p>
+
 マーチウィンド64 は『スーパーロボット大戦64』の非公式ネイティブ再コンパイルプロジェクトです。
 Windows・macOS・Linux・Steam Deck・Android・Nintendo Switch でネイティブに動作し、英語・中国語（簡体字・繁体字）・韓国語の
 全文翻訳とワイド画面に対応し、別配布の HD アートパックも利用できます。
