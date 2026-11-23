@@ -264,6 +264,8 @@ std::string battle_stamp,original_stamp;
 // and the row the cursor was on, kept when the pilot changes.
 int battle_spirit_crew=0,battle_spirit_row=-1;
 json intermission_request,upgrade_request,parts_request,ability_request,swap_request,save_request,title_request;
+// The revision of each page's state last copied into its request (page_snapshot.hpp).
+uint64_t intermission_seen=~0ull,upgrade_seen=~0ull,parts_seen=~0ull,ability_seen=~0ull,swap_seen=~0ull,save_seen=~0ull;
 Rml::ElementDocument* title_doc{};
 std::string title_stamp;
 // "intermission" or "upgrade" while the player types a new 資金 figure into that page.
@@ -1291,6 +1293,22 @@ struct PageCost {
             if(to!=std::string::npos && to>from){name=source.substr(from,std::min<size_t>(to-from,40));break;}
         }
         std::fprintf(stderr,"SRW64_PAGE_SLOW %.1fms %s %s changed=%zu rml=%.1f update=%.1f fit=%.1f\n",total,name.c_str(),how,changed,rml,update,fit);
+    }
+};
+// An intermission page's sync that took 8 ms or more (SRW64_PAGE_SLOW_MS sets it too), by
+// part: reading the page's state and comparing it with the last (every UI frame, changed or
+// not), making the RML, and refresh() (whose own parts PageCost gives). The pages took 20-30
+// ms a change on a Switch with refresh() under 15 (2026-11-21); this says where the rest goes.
+//   SRW64_SYNC_SLOW 24.0ms upgrade state=3.1 build=9.8 refresh=11.1
+struct SyncCost {
+    const char* page;
+    UiClock::time_point start=UiClock::now(),last=start;
+    double state=0,build=0,refreshed=0;
+    void mark(double& part){const auto now=UiClock::now();part+=ui_ms(last,now);last=now;}
+    ~SyncCost() {
+        static const double limit=[]{const char* asked=std::getenv("SRW64_PAGE_SLOW_MS");return asked?std::atof(asked):8.0;}();
+        const double total=ui_ms(start,UiClock::now());
+        if(total>=limit)std::fprintf(stderr,"SRW64_SYNC_SLOW %.1fms %s state=%.1f build=%.1f refresh=%.1f\n",total,page,state,build,refreshed);
     }
 };
 Rml::ElementDocument* refresh(Rml::ElementDocument*& doc,const std::string& body,bool modal,bool chrome=false) {
@@ -4670,11 +4688,14 @@ float text_units(const std::string& text) {
     return units;
 }
 void intermission_sync() {
-    const auto next=intermission_page::state();intermission_request=next;
+    SyncCost cost{"intermission"};
+    const auto [shared,revision]=intermission_page::shared_state();const json& next=*shared;
+    if(revision!=intermission_seen){intermission_request=next;intermission_seen=revision;}
     if(!next.value("visible",false)){document_close(intermission_doc);intermission_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+funds_editing;
+    const auto stamp=std::to_string(revision)+"/"+localization::catalog().locale+frame_stamp()+funds_editing;
     if(intermission_doc && intermission_stamp==stamp)return;
     intermission_stamp=stamp;
+    cost.mark(cost.state);
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;   // the border, one original pixel
@@ -4717,7 +4738,7 @@ void intermission_sync() {
     }
     const auto hint=label(next.value("swap_refused",false)?"intermission_swap_refused":submenu?"intermission_swap_hint":funds_editing=="intermission"?"funds_edit_hint":"intermission_hint");
     body+="<div class='im-hint"+std::string(next.value("swap_refused",false)?" im-refused":"")+"' style='left:0; top:"+px(restricted?222:228)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+hint+"</div></div>";
-    refresh(intermission_doc,body,true);intermission_doc->SetClass("modal",false);focus_funds(intermission_doc,"intermission");
+    cost.mark(cost.build);refresh(intermission_doc,body,true);cost.mark(cost.refreshed);intermission_doc->SetClass("modal",false);focus_funds(intermission_doc,"intermission");
 }
 // ユニット改造 / 武器改造: the machine list (layout 0x6B) and the five-stat screen
 // (0x75), in the original's 320x240 coordinates like the intermission menu.
@@ -4872,11 +4893,14 @@ std::string gauge_html(const std::string& cells,bool plan_shown=true) {
     return gauge;
 }
 void upgrade_sync() {
-    const auto next=upgrade_page::state();upgrade_request=next;
+    SyncCost cost{"upgrade"};
+    const auto [shared,revision]=upgrade_page::shared_state();const json& next=*shared;
+    if(revision!=upgrade_seen){upgrade_request=next;upgrade_seen=revision;}
     if(!next.value("visible",false)){document_close(upgrade_doc);upgrade_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+funds_editing+"#"+std::to_string(pictures::serial);
+    const auto stamp=std::to_string(revision)+"/"+localization::catalog().locale+frame_stamp()+funds_editing+"#"+std::to_string(pictures::serial);
     if(upgrade_doc && upgrade_stamp==stamp)return;
     upgrade_stamp=stamp;
+    cost.mark(cost.state);
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -5076,7 +5100,7 @@ void upgrade_sync() {
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(window.empty()?"upgrade_stats_hint":window=="confirm"?"upgrade_confirm_hint":"upgrade_message_hint")+"</div>";
     }
     body+="</div>";
-    refresh(upgrade_doc,body,true);upgrade_doc->SetClass("modal",false);focus_funds(upgrade_doc,"upgrade");
+    cost.mark(cost.build);refresh(upgrade_doc,body,true);cost.mark(cost.refreshed);upgrade_doc->SetClass("modal",false);focus_funds(upgrade_doc,"upgrade");
 }
 
 // 強化パーツ (parts_page.cpp): the machine list (layout 0x70), the slots with the
@@ -5084,11 +5108,14 @@ void upgrade_sync() {
 // on the original panel rectangles.
 unsigned parts_holders_first=0;   // the holders list's first shown row
 void parts_sync() {
-    const auto next=parts_page::state();parts_request=next;
+    SyncCost cost{"parts"};
+    const auto [shared,revision]=parts_page::shared_state();const json& next=*shared;
+    if(revision!=parts_seen){parts_request=next;parts_seen=revision;}
     if(!next.value("visible",false)){document_close(parts_doc);parts_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+"#"+std::to_string(pictures::serial);
+    const auto stamp=std::to_string(revision)+"/"+localization::catalog().locale+frame_stamp()+"#"+std::to_string(pictures::serial);
     if(parts_doc && parts_stamp==stamp)return;
     parts_stamp=stamp;
+    cost.mark(cost.state);
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -5190,18 +5217,21 @@ void parts_sync() {
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label("parts_holders_hint")+"</div>";
     }
     body+="</div>";
-    refresh(parts_doc,body,true);parts_doc->SetClass("modal",false);
+    cost.mark(cost.build);refresh(parts_doc,body,true);cost.mark(cost.refreshed);parts_doc->SetClass("modal",false);
 }
 
 // のりかえ (swap_page.cpp): the pilot / fairy lists (layouts 0x6F / 0x88), the target
 // lists with the pilot header (0x7C / 0x89, with the 乗せますか window 0x8A) and the
 // confirm page (0x7D), on the original rectangles.
 void swap_sync() {
-    const auto next=swap_page::state();swap_request=next;
+    SyncCost cost{"swap"};
+    const auto [shared,revision]=swap_page::shared_state();const json& next=*shared;
+    if(revision!=swap_seen){swap_request=next;swap_seen=revision;}
     if(!next.value("visible",false)){document_close(swap_doc);swap_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
+    const auto stamp=std::to_string(revision)+"/"+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
     if(swap_doc && swap_stamp==stamp)return;
     swap_stamp=stamp;
+    cost.mark(cost.state);
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -5300,7 +5330,7 @@ void swap_sync() {
         body+=hint("swap_confirm_hint");
     }
     body+="</div>";
-    refresh(swap_doc,body,true);swap_doc->SetClass("modal",false);
+    cost.mark(cost.build);refresh(swap_doc,body,true);cost.mark(cost.refreshed);swap_doc->SetClass("modal",false);
 }
 
 // データセーブ (save_page.cpp): the medium choice (layout 0x6A with the 0x72 pause box)
@@ -5308,12 +5338,15 @@ void swap_sync() {
 // message box (0x8C), at the original positions. With extended slots the list runs on
 // in pages of two; page 1 is the cartridge's own slots.
 void save_sync() {
-    const auto next=save_page::state();save_request=next;
+    SyncCost cost{"save"};
+    const auto [shared,revision]=save_page::shared_state();const json& next=*shared;
+    if(revision!=save_seen){save_request=next;save_seen=revision;}
     if(!next.value("visible",false)){document_close(save_doc);save_stamp.clear();return;}
     // The pictures' arrival too (image_async): a slot's portrait comes after the page is made.
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
+    const auto stamp=std::to_string(revision)+"/"+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
     if(save_doc && save_stamp==stamp)return;
     save_stamp=stamp;
+    cost.mark(cost.state);
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -5427,7 +5460,7 @@ void save_sync() {
                    erase?"save_slots_hint_delete":count>2?"save_slots_hint_pages":"save_slots_hint");
     }
     body+="</div>";
-    refresh(save_doc,body,true);save_doc->SetClass("modal",false);
+    cost.mark(cost.build);refresh(save_doc,body,true);cost.mark(cost.refreshed);save_doc->SetClass("modal",false);
 }
 
 // Title screen pages (title_page.cpp): オプション (layout 0x5A) and the サウンドセレクト /
@@ -5496,11 +5529,14 @@ void title_sync() {
 // ユニット能力／パイロット能力 (ability_page.cpp): the two nine-row lists (layouts
 // 0x6D / 0x6E), the unit page (0x79), its weapon list (0x7A) and the pilot page (0x7B).
 void ability_sync() {
-    const auto next=ability_page::state();ability_request=next;
+    SyncCost cost{"ability"};
+    const auto [shared,revision]=ability_page::shared_state();const json& next=*shared;
+    if(revision!=ability_seen){ability_request=next;ability_seen=revision;}
     if(!next.value("visible",false)){document_close(ability_doc);ability_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
+    const auto stamp=std::to_string(revision)+"/"+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
     if(ability_doc && ability_stamp==stamp)return;
     ability_stamp=stamp;
+    cost.mark(cost.state);
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -5649,7 +5685,7 @@ void ability_sync() {
         body+=hint("ability_pilot_hint");
     }
     body+="</div>";
-    refresh(ability_doc,body,true);ability_doc->SetClass("modal",false);
+    cost.mark(cost.build);refresh(ability_doc,body,true);cost.mark(cost.refreshed);ability_doc->SetClass("modal",false);
 }
 void mini_sync() {
     // Off the title menu and with no stage being entered there is nothing to show: no snapshot

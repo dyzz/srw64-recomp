@@ -1,5 +1,7 @@
 #pragma once
 #include "json/json.hpp"
+#include <utility>
+#include <memory>
 #include "recomp.h"
 #include <cstdint>
 #include <filesystem>
@@ -13,6 +15,9 @@
 namespace srw64::save_page {
 void configure(const std::filesystem::path& directory);
 nlohmann::json state();
+// The same without copying it, and a revision that moves only when it changed (the UI's
+// frames, page_snapshot.hpp).
+std::pair<std::shared_ptr<const nlohmann::json>,uint64_t> shared_state();
 // Window thread, for page `serial`: choice "move:N" (0 ROM / 1 pak), "choose", "back";
 // slots "move:N", "choose", "back"; overwrite window "move:N" (0 はい / 1 いいえ),
 // "choose", "cancel"; error "choose" (recheck / repair), "back".
