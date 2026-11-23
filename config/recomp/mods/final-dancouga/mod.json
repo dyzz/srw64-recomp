@@ -1,7 +1,7 @@
 {
   "schema": "srw64.mod.v1",
   "id": "srw64.final-dancouga",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "name": {
     "ja": "ファイナルダンクーガ",
     "zh-Hans": "终极断空我",
