@@ -62,6 +62,58 @@ def patch(checkout: Path, relative: str, old: str | None = None, new: str | None
             "after_sha256": hashlib.sha256(expected.encode()).hexdigest()}
 
 
+# A framebuffer with no bytes in RAM (no rows yet, or one 4-bit pixel per row) has a native
+# copy of no bytes. Vulkan refuses a buffer of no bytes (vmaCreateBuffer 0xFFFFFFFD, the size
+# check); a fresh history slot then keeps no buffer, and copyFromRAM calls into it: the Deck
+# crashed so (SIGSEGV right after that line) on the Ultimate Dancouga MOD's 光牙剑 attack,
+# 3 runs in 4 (2026-11-23). There is nothing to compare or write back, so those are skipped,
+# and logged once.
+EMPTY_FRAMEBUFFER_UPLOAD = [
+    ("#include <cassert>\n", "#include <cassert>\n#include <cstdio>\n"),
+    ("            Framebuffer *fb = differentFbs[i];\n"
+     "            const uint8_t *fbRAM = &RDRAM[fb->addressStart];\n",
+     "            Framebuffer *fb = differentFbs[i];\n"
+     "            if (NativeTarget::getNativeSize(fb->width, fb->height, fb->siz) == 0) {\n"
+     "                static bool logged = false;\n"
+     "                if (!logged) {\n"
+     "                    logged = true;\n"
+     "                    fprintf(stderr, \"RT64: skipped an empty framebuffer upload (%08X, %u x %u, siz %u)\\n\", fb->addressStart, fb->width, fb->height, fb->siz);\n"
+     "                }\n"
+     "                continue;\n"
+     "            }\n"
+     "\n"
+     "            const uint8_t *fbRAM = &RDRAM[fb->addressStart];\n"),
+]
+EMPTY_NATIVE_TARGET = [
+    ("#include <cstring>\n", "#include <cstdio>\n#include <cstring>\n"),
+    ("        const uint32_t bufferSize = getNativeSize(width, height, siz);\n",
+     "        const uint32_t bufferSize = getNativeSize(width, height, siz);\n"
+     "        if (bufferSize == 0) {\n"
+     "            static bool logged = false;\n"
+     "            if (!logged) {\n"
+     "                logged = true;\n"
+     "                fprintf(stderr, \"RT64: skipped an empty framebuffer read (%u x %u, siz %u)\\n\", width, height, siz);\n"
+     "            }\n"
+     "\n"
+     "            return 0;\n"
+     "        }\n"
+     "\n"),
+    ("        const uint32_t bufferSize = getNativeSize(rowWidth, rowEnd, siz);\n",
+     "        const uint32_t bufferSize = getNativeSize(rowWidth, rowEnd, siz);\n"
+     "        if (bufferSize == 0) {\n"
+     "            return;\n"
+     "        }\n"
+     "\n"),
+    ("        RenderRange readRange = { bufferOffset, bufferOffset + bufferSize };\n",
+     "        if ((bufferSize == 0) || (writeBuffer.nativeReadbackBuffer == nullptr)) {\n"
+     "            writeBufferHistoryIndex++;\n"
+     "            return;\n"
+     "        }\n"
+     "\n"
+     "        RenderRange readRange = { bufferOffset, bufferOffset + bufferSize };\n"),
+]
+
+
 def main() -> int:
     checkout = ROOT / "build/recomp/upstream/RT64"
     lock = json.loads((ROOT / "config/recomp/toolchain.json").read_text())
@@ -413,7 +465,8 @@ def main() -> int:
                          [("        tileCopy.left = std::clamp<long>(lround(fbTile.left * resolutionScale.x), 0, RenderTarget::MaxDimension);\n"
                            "        tileCopy.top = std::clamp<long>(lround(fbTile.top * resolutionScale.y), 0, RenderTarget::MaxDimension);\n",
                            "        tileCopy.left = std::clamp<long>(scaledLeft, 0, RenderTarget::MaxDimension);\n"
-                           "        tileCopy.top = std::clamp<long>(scaledTop, 0, RenderTarget::MaxDimension);\n")]))
+                           "        tileCopy.top = std::clamp<long>(scaledTop, 0, RenderTarget::MaxDimension);\n"),
+                          *EMPTY_FRAMEBUFFER_UPLOAD]))
     # 2) A 1:1 texture rectangle stretched across the picture samples its copies at its own
     # scale, the pixels it covers over its texels, so a copy drawn back where it was taken
     # lands pixel for pixel, as at 4:3. Collected per framebuffer pair (each has its scale),
@@ -534,6 +587,7 @@ def main() -> int:
                          "                return vi && std::string_view(vi) == \"60\" ? 60u : 120u;\n"
                          "            }();\n",
                          [('#include "rt64_vi.h"\n', '#include "rt64_vi.h"\n\n#include <cstdlib>\n#include <string_view>\n')]))
+    records.append(patch(checkout, "src/render/rt64_native_target.cpp", additional=EMPTY_NATIVE_TARGET))
     recorded = {r['path'] for r in records}
     for relative in [*NATIVE_MODEL_PATCHES, *TEXTURE_FILTER_PATCHES, *(r for r in ANDROID_PATCHES if not r.startswith("src/contrib/plume/"))]:
         if str((checkout/relative).relative_to(ROOT)) not in recorded:
