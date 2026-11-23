@@ -70,6 +70,15 @@ void refresh_locked() {
         forget_decoded();   // an updated package's files keep their names
     }
 }
+// The tables brought up to date where waiting costs nothing that shows: the game thread as a
+// battle's theme is chosen (not every song: the title's comes while the packages still load). Only the first quote of a battle with voices but
+// no package music did it otherwise, on the render thread under the dialogue lock: 148 ms
+// on a Switch (the first line after a start, 2026-11-23).
+void warm_tables() {
+    if(!settings::mod_music() && !settings::mod_voice())return;
+    std::lock_guard lock(table_mutex);
+    refresh_locked();
+}
 std::optional<Track> lookup(int song) {
     std::lock_guard lock(table_mutex);
     refresh_locked();
@@ -253,6 +262,7 @@ std::optional<int> package_battle_song(uint32_t rom) {
 }
 
 bool battle(uint8_t* ram,recomp_context* ctx) {
+    warm_tables();
     if(ctx->r5&0xFF || !settings::mod_music())return false;   // a super mode's fixed song stays the original's
     std::optional<int> song;
     {
