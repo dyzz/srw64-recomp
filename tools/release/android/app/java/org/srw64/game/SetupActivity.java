@@ -229,7 +229,10 @@ public class SetupActivity extends Activity {
             if (uri == null) {
                 // Not now: carry on to the game if there is a ROM, else stop here.
                 if (romFile(this).isFile()) next();
-                else show("没有选择 HD 包。\nNo HD pack chosen.");
+                else {
+                    show("没有选择 HD 包。\nNo HD pack chosen.");
+                    button("继续\nContinue", this::next);
+                }
                 return;
             }
             importHd(uri);
@@ -261,7 +264,7 @@ public class SetupActivity extends Activity {
             }
             if (!partial.renameTo(target)) {
                 partial.delete();
-                runOnUiThread(() -> show("无法保存 ROM\nCould not save the ROM"));
+                runOnUiThread(() -> refuseRom("无法保存 ROM\nCould not save the ROM"));
                 return;
             }
             try {
@@ -281,19 +284,20 @@ public class SetupActivity extends Activity {
         if (SRW64Activity.running) {
             show("游戏正在运行。请先关闭游戏（在最近任务里划掉），再导入 HD 包。\n"
                     + "The game is running. Close it first (swipe it away in recent apps), then import the HD pack.");
+            button("关闭\nClose", this::finish);
             return;
         }
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         long size = sizeOf(uri);
         File user = userDir(this), staging = new File(user, "hd.new"), target = hdDir(this);
         if (size > 0 && user.getParentFile().getUsableSpace() < size * 11 / 10) {
-            show("存储空间不够：HD 包约 " + size / (1 << 20) + " MB，请先腾出空间。\n"
-                    + "Not enough storage: the HD pack needs about " + size / (1 << 20) + " MB.");
+            refuseHd("存储空间不够：HD 包约 " + size / (1 << 20) + " MB，请先腾出空间。\n"
+                    + "Not enough storage: the HD pack needs about " + size / (1 << 20) + " MB.", null);
             return;
         }
         show("正在导入 HD 包…\nImporting the HD pack…");
         new Thread(() -> {
-            String failure = null;
+            String failure = null, detail = null;
             try {
                 if (!user.mkdirs() && !user.isDirectory()) throw new IOException("cannot create " + user);
                 delete(staging);
@@ -328,18 +332,45 @@ public class SetupActivity extends Activity {
                     if (!staging.renameTo(target)) throw new IOException("cannot install " + target);
                     delete(old);
                 }
-            } catch (IOException error) {
-                failure = "导入失败：" + error + "\nImport failed.";
+            } catch (IOException | RuntimeException error) {
+                failure = explainImport(error, user);
+                detail = String.valueOf(error);
             }
             if (failure != null) delete(staging);
-            String result = failure;
+            String result = failure, why = detail;
             runOnUiThread(() -> {
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                if (result != null) { show(result); return; }
+                if (result != null) { refuseHd(result, why); return; }
                 show("HD 包已导入。游戏的设置里可以切换原版／HD。\nHD pack imported. Switch between original and HD in the game's settings.");
                 button("开始游戏\nPlay", this::next);
             });
         }).start();
+    }
+
+    // A pack that did not install: what happened, whether the pack installed before is still
+    // there, and a way on (choose again, or play) instead of a page with no buttons. The
+    // exception's own words stay below for a bug report.
+    private void refuseHd(String why, String detail) {
+        boolean kept = new File(hdDir(this), "hd.json").isFile();
+        show(why + "\n\n"
+                + (kept ? "原来的 HD 包没有改动。\nThe HD pack installed before is unchanged."
+                        : "游戏会用原版画面。\nThe game will use the original graphics.")
+                + (detail == null ? "" : "\n\n（" + detail + "）"));
+        button("重新选择 HD 包\nChoose the HD pack again", this::pickHd);
+        button(romFile(this).isFile() ? "开始游戏\nPlay" : "继续\nContinue", this::next);
+    }
+
+    // The import's exception in the player's words: a cut-off or damaged zip (most often a
+    // download that did not finish), a full storage, or anything else unread.
+    private static String explainImport(Exception error, File user) {
+        String text = String.valueOf(error);
+        if (error instanceof java.io.EOFException || error instanceof java.util.zip.ZipException
+                || text.contains("ZLIB") || text.contains("invalid") || text.contains("CRC"))
+            return "导入失败：压缩包不完整或已损坏（可能没下载完）。请重新下载 HD 包后再导入。\n"
+                    + "Import failed: the zip is incomplete or damaged (perhaps the download did not finish). Download the HD pack again and import it.";
+        if (text.contains("ENOSPC") || text.contains("No space") || user.getUsableSpace() < (64L << 20))
+            return "导入失败：存储空间不够，请先腾出空间。\nImport failed: not enough storage. Free some space first.";
+        return "导入失败：无法读取这个文件。\nImport failed: this file could not be read.";
     }
 
     private long sizeOf(Uri uri) {
