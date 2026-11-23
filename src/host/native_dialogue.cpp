@@ -205,7 +205,17 @@ std::string record_text(const uint8_t* ram,const localization::Catalog& catalog,
             const auto copies=mod_data::pilot_copies();
             if(const auto c=copies.find(of->number);c!=copies.end())source=c->second;
         } else source=unit?mod_data::unit_copy(of->number):mod_data::weapon_copy(of->number);
-        auto text=source?record_text(ram,catalog,table_window::name_record(of->kind,*source)):std::string();
+        // The guest draws the copied record's own bytes: the original fetcher (8008CF14) swaps
+        // only the protagonists' own ids for their name fields, so a copy of one shows the
+        // record as written (ブラッド), not the field holding this route's protagonist.
+        std::string text;
+        if(source) {
+            const auto copied=table_window::name_record(of->kind,*source);
+            if(pilot && entered_name(copied)) {
+                const auto* value=catalog.resolve(localization::TextKey::base(0,copied));
+                text=value?expand(ram,*value,catalog.locale):std::string();
+            } else text=record_text(ram,catalog,copied);
+        }
         if(catalog.locale=="ja" && names::guest_text_depth())return text;
         names::default_names();   // refreshes the packages' names
         if(of->kind!=table_window::NameKind::weapon_menu) {

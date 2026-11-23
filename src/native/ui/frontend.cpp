@@ -3695,6 +3695,14 @@ std::string viewer_popup() {
             list+=viewer_li(int(actor),"",viewer_icon(e,30),viewer_name(e),escape(viewer_skills(e)),now?label("viewer_badge_now"):actor==crew->pilot?label("viewer_badge_default"):std::string(),actor==viewer_side[s].pilot);
             ++rows;
         }
+        // A package's new characters (400 up) are in no ROM crew: each follows the one it copies.
+        if(crew)
+            for(const auto& e:viewer_pilots()) {
+                const unsigned actor=e.value("actor",~0u);
+                if(actor<400 || actor==~0u || !viewer_flies(actor,crew->unit))continue;
+                list+=viewer_li(int(actor),"",viewer_icon(e,30),viewer_name(e),escape(viewer_skills(e)),actor==viewer_saved.side[s].pilot?label("viewer_badge_now"):std::string(),actor==viewer_side[s].pilot);
+                ++rows;
+            }
         title=viewer_fill(label("viewer_choose_pilot_crew"),viewer_name(viewer_unit(s)),std::to_string(rows));
     } else if(kind=="weapon") {
         title=label(s?"viewer_choose_counter_weapon":"viewer_choose_weapon");
