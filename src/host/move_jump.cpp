@@ -4,6 +4,7 @@
 #include "game_hooks.hpp"
 #include "graphics.hpp"
 #include "guest_memory.hpp"
+#include "wide_map.hpp"
 #include "funcs.h"
 #include "json/json.hpp"
 #include <algorithm>
@@ -164,14 +165,18 @@ int along_ray(int from) {
 
 // What the original does when it puts the cursor somewhere (801C8E20 cycling units):
 // cursor and target together, the camera re-centred (801FFCB0) only if it left the screen.
+// Across the wide view (wide_map.hpp: `extra` more pixels to the right of the original's
+// 320): with the original's 4:3 numbers a jump to the right put the camera past the map's
+// edge, and the view stood moved by the extra width until wide_map::frame clamped it back
+// a few frames later (on a Switch and a Mac, 2026-11-23).
 void warp(uint8_t* ram, recomp_context* ctx, int cell) {
     const int32_t px = anchor[0] + (cell % size - centre) * 16, py = anchor[1] + (cell / size - centre) * 16;
     put_f32(ram, kCursorX, float(px)); put_f32(ram, kTargetX, float(px));
     put_f32(ram, kCursorY, float(py)); put_f32(ram, kTargetY, float(py));
     write32(ram, kVelocityX, 0); write32(ram, kVelocityY, 0);
-    const int32_t sx = s32(ram, kScrollX), sy = s32(ram, kScrollY);
-    if (px + sx < 32 || px + sx > 288 || py + sy < 32 || py + sy > 208) {
-        write32(ram, kScrollX, uint32_t(std::clamp(152 - px, std::min(0, 320 - s32(ram, kMapWidth)), 0)));
+    const int32_t sx = s32(ram, kScrollX), sy = s32(ram, kScrollY), view = 320 + std::max(0, wide_map::extra());
+    if (px + sx < 32 || px + sx > view - 32 || py + sy < 32 || py + sy > 208) {
+        write32(ram, kScrollX, uint32_t(std::clamp(view / 2 - 8 - px, std::min(0, view - s32(ram, kMapWidth)), 0)));
         write32(ram, kScrollY, uint32_t(std::clamp(112 - py, std::min(0, 240 - s32(ram, kMapHeight)), 0)));
     }
     auto call = *ctx;
