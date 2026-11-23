@@ -120,7 +120,10 @@ std::optional<unsigned> icon_unit(const std::string& key, const std::string& pac
     const bool number = !key.empty() && key.size() <= 3 && std::all_of(key.begin(), key.end(), [](char c) { return c >= '0' && c <= '9'; }) &&
                         !(key.size() > 1 && key[0] == '0');
     if (!number || std::stoul(key) >= unit_icon_art::kUnits) return std::nullopt;
-    return unsigned(std::stoul(key));
+    const auto unit=unsigned(std::stoul(key));
+    if(unit==mod_units::old_dancouga && package==mod_units::dancouga_package)
+        return mod_ids::unit(nlohmann::json(unit),package);
+    return unit;
 }
 std::map<unsigned, char> facings(const mods::Files& files, const std::string& id, std::vector<std::string>& problems) {
     std::map<unsigned, char> out;

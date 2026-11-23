@@ -20,7 +20,8 @@ inline std::vector<std::pair<std::string,json>> documents(const std::vector<mods
         const auto text=mods::files_of(p)->read_text("data/new_units.json");   // its folder or its .srw64mod
         if(!text)continue;
         auto document=json::parse(*text,nullptr,false);
-        if(!document.is_discarded() && document.is_object() && document.value("schema","")==mod_units::schema)
+        if(document.is_object() && (document.value("schema",json())==mod_units::schema ||
+                                    mod_units::legacy_dancouga(p.id(),document)))
             out.emplace_back(p.id(),std::move(document));
     }
     return out;

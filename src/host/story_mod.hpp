@@ -389,6 +389,13 @@ inline void add_image(Library& library,const std::string& package,const json& im
         event.repeat=e.value("repeat",false);
         if(event.repeat && event_type(event.trigger)>=12)throw std::runtime_error(event.id+"：开场／配置／结束之后的事件不能重复");
         for(const auto& w:e.at("words"))event.words.push_back(uint16_t(w.get<unsigned>()));
+        // The two installed 0.1 events have already been compiled with the borrowed
+        // numbers. Translate their known command sequence before giving it to the game.
+        if(package==mod_units::dancouga_package && mod_ids::current()->legacy_dancouga &&
+            event.words==std::vector<uint16_t>{0x3D5A,171,0,314,224,0x3D5A,166,0,228,3000,0x3D6F,881,0xFFFF}) {
+            event.words[3]=uint16_t(unit_of(314,"replace"));
+            event.words[11]=uint16_t(mod_ids::weapon(881,package).value());
+        }
         if(event.words.empty() || event.words.back()!=0xFFFF)throw std::runtime_error(event.id+"：指令要以 FFFF 结束");
         if((header_words+event.words.size())*2>region_size)throw std::runtime_error(event.id+"：指令太长");
         for(const auto& ref:e.value("texts",json::array())) {

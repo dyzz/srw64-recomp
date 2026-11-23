@@ -154,11 +154,11 @@ inline std::string parse(const json& document,const std::vector<std::string>& lo
         } else if(key=="pilots" || key=="units" || key=="weapons") {
             if(!value.is_object())return key+"：要是对象";
             const unsigned count=key=="pilots"?pilot_count:key=="units"?unit_count:weapon_count;
+            const auto of=key=="units"?mod_units::Of::unit:key=="weapons"?mod_units::Of::weapon:mod_units::Of::pilot;
             for(const auto& [number,by_locale]:value.items()) {
                 const auto where=key+"."+number;
                 unsigned n;
                 if(number.find('@')!=std::string::npos) {
-                    const auto of=key=="units"?mod_units::Of::unit:key=="weapons"?mod_units::Of::weapon:mod_units::Of::pilot;
                     const auto found=mod_units::resolve(json(number),package,numbers,of);
                     if(!found)return where+"：没有这个新"+(key=="units"?"机体":key=="weapons"?"武器":"人物")+"（data/new_units.json 里的名字）";
                     n=*found;
@@ -167,6 +167,8 @@ inline std::string parse(const json& document,const std::vector<std::string>& lo
                         return where+"：编号要是十进制整数，或新机体、新武器的 @名字";
                     n=unsigned(std::stoul(number));
                     if(n>=count)return where+"：编号超出范围（0–"+std::to_string(count-1)+"）";
+                    if(numbers.legacy_dancouga && package==mod_units::dancouga_package)
+                        if(const auto alias=mod_units::resolve(json(n),package,numbers,of))n=*alias;
                 }
                 if(key=="pilots" && n>=first_hero && n<first_hero+heroes)return where+"：原创主角和搭档的名字写在 heroes 里";
                 if(!by_locale.is_object())return where+"：要是对象";

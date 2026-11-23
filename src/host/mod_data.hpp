@@ -168,12 +168,12 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
                          const std::string& package={},const mod_units::Numbers& numbers={}) {
     if(!document.is_object())return "顶层要是对象";
     const unsigned count=kind==Kind::units?unit_count:kind==Kind::pilots?pilot_count:weapon_count;
+    const auto of=kind==Kind::units?mod_units::Of::unit:kind==Kind::weapons?mod_units::Of::weapon:mod_units::Of::pilot;
     Bytes bytes;
     std::map<std::string,uint32_t> records;   // key -> its record, for the checks after
     for(const auto& [key,entry]:document.items()) {
         unsigned id;
         if(key.find('@')!=std::string::npos) {
-            const auto of=kind==Kind::units?mod_units::Of::unit:kind==Kind::weapons?mod_units::Of::weapon:mod_units::Of::pilot;
             const auto found=mod_units::resolve(json(key),package,numbers,of);
             if(!found)return key+"：没有这个新"+(kind==Kind::units?"机体":kind==Kind::weapons?"武器":"人物")+"（data/new_units.json 里的名字）";
             id=*found;
@@ -182,6 +182,8 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
                 return key+"：编号要是十进制整数，或新机体、新武器的 @名字";
             id=unsigned(std::stoul(key));
             if(id>=count)return key+"：编号超出范围（0–"+std::to_string(count-1)+"）";
+            if(numbers.legacy_dancouga && package==mod_units::dancouga_package)
+                if(const auto alias=mod_units::resolve(json(id),package,numbers,of))id=*alias;
         }
         if(!entry.is_object())return key+"：要是对象";
         uint32_t record=table_window::row(table_window::units,id),terrain=unit_terrain;

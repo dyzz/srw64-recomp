@@ -7,6 +7,7 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb/stb_image_write.h"
 #include "mod_data.hpp"
+#include "mod_saves.hpp"
 #include "mod_forms.hpp"
 #include "mod_combine.hpp"
 #include "battle_speaker.hpp"
@@ -39,6 +40,58 @@ int main(int argc,char** argv) {
     const std::vector<uint8_t> image((std::istreambuf_iterator<char>(in)),std::istreambuf_iterator<char>());
     if(image.size()!=0x2000000){std::fprintf(stderr,"not the ROM\n");return 2;}
     const std::span<const uint8_t> rom(image);
+    {
+        using namespace mod_units;
+        const std::string id=dancouga_package;
+        const auto old=json::parse(R"({
+          "schema":"srw64.new-units.v1",
+          "units":{"314":{"copy":224,"weapons":[870,871,872,879,1209,882,881]}},
+          "weapons":{"1209":{"copy":880},"882":{"copy":875},"881":{"copy":874}}
+        })");
+        const auto numbers=assign({{id,old}});
+        const auto modern=assign({{id,dancouga_definition(old)}});
+        check(numbers.legacy_dancouga && numbers.units==modern.units && numbers.weapons==modern.weapons,
+              "the old package takes the same IDs as the update");
+        check(resolve(314,id,numbers,Of::unit)==resolve("@final",id,numbers,Of::unit) &&
+              resolve("1209",id,numbers,Of::weapon)==resolve("@sword",id,numbers,Of::weapon),
+              "numeric references in the old pack name its new IDs");
+        check(resolve(314,"other",numbers,Of::unit)==314 && resolve(314,id,modern,Of::unit)==314,
+              "other packages and the new package still address the ROM's 314");
+        Bytes bytes;
+        Taken taken;
+        check(parse(old,id,numbers,rom,{},bytes,taken).empty() && !bytes.empty(),
+              "the old package's definitions generate the new table records");
+        const unsigned final=numbers.units.at(id+"@final");
+        const unsigned cannon=numbers.weapons.at(id+"@cannon");
+        const auto hp=table_window::row(table_window::units,final);
+        check(mod_data::parse(json{{"314",{{"hp",8000}}}},mod_data::Kind::units,rom,bytes,id,numbers).empty() &&
+              (unsigned(bytes.at(hp))<<8|bytes.at(hp+1))==8000,
+              "the old unit's data overrides reach the new record");
+        check(mod_data::parse(json{{"882",{{"power",3500}}}},mod_data::Kind::weapons,rom,bytes,id,numbers).empty() &&
+              bytes.at(table_window::row(table_window::weapons,cannon)+1)==35,
+              "the old weapons' power overrides reach the new record");
+
+        std::vector<uint8_t> ram(0x800000);
+        const auto bank=mod_saves::banks(story_mod::Record::slot).front();
+        guest::write16(ram.data(),bank.units,314<<6 | 3);
+        guest::write8(ram.data(),bank.units+9,1);
+        guest::write16(ram.data(),bank.pilots+bank.pilot_stride,171);
+        check(!mod_saves::old_dancouga_at(ram.data(),bank,bank.units,false),
+              "unit 314 alone is not a legacy save");
+        check(mod_saves::old_dancouga_at(ram.data(),bank,bank.units,true),
+              "the old ownership sidecar identifies Shinobu's 314");
+        unsigned i=0;
+        for(const auto& [old_weapon,_]:old_dancouga_weapons) {
+            const auto at=bank.weapons+(i++)*mod_saves::weapon_stride;
+            guest::write16(ram.data(),at,old_weapon);
+            guest::write16(ram.data(),at+2,314);
+        }
+        check(mod_saves::old_dancouga_at(ram.data(),bank,bank.units,false),
+              "the borrowed weapon range identifies a cartridge without its sidecar");
+        guest::write16(ram.data(),bank.units+0xE,bank.weapon_count);
+        check(!mod_saves::old_dancouga_at(ram.data(),bank,bank.units,true),
+              "an out-of-range weapon slice cannot be migrated");
+    }
     {
         // A pose's picture (unit_pose_art.hpp by_pose): by "poses" as battle_assets.py writes
         // them, or through "units" and their "resources" as the ROM importer the players'
