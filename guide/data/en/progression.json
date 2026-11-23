@@ -1782,6 +1782,11 @@
    ],
    "secrets": [
     {
+     "ref": "secret-todd-silky",
+     "text": "If Show has already persuaded Tod twice, you can shoot him down after he goes Hyper. He will still join later, so you can fight him or let him retreat.",
+     "short": "After both persuasions, shooting down Hyper Tod does not affect recruitment"
+    },
+    {
      "ref": "secret-garalia",
      "text": "If Garalia has been recruited, she deploys with the Aura Battler, becomes temporarily unable to deploy along with them from the end of the stage, and returns at the end of the next stage",
      "short": "No action needed: Garalia is benched until the end of the next stage"
@@ -4534,8 +4539,8 @@
    "secrets": [
     {
      "ref": "secret-todd-silky",
-     "text": "If both persuasion steps for Tod are done, he joins as reinforcements in the Zwauth on the player phase of turn 3. If at that moment Garalia has been recruited and Marvel has ≥ 30 kills (kills on turns 1 and 2 count), Silky also joins riding with him. If Tod is shot down in this stage, both are lost permanently {≠}",
-     "short": "Keep Tod alive (joins turn 3); Silky too if Marvel has ≥ 30 kills"
+     "text": "If both persuasion steps for Tod are done, he joins as reinforcements in the Zwauth on the player phase of turn 3. If at that moment Garalia has been recruited and Marvel has ≥ 30 kills (kills on turns 1 and 2 count), Silky also joins riding with him. Keep Tod alive until you clear the stage. If Tod is shot down in this stage, both are lost permanently {≠}",
+     "short": "Keep Tod alive from turn 3, when he joins, until you clear the stage. If shot down here, he leaves permanently."
     },
     {
      "ref": "secret-kirika",

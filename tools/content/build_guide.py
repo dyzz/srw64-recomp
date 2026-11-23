@@ -26,6 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "guide" / "data"
 GUIDE = ROOT / "guide"
+STEP_LAYOUT = json.loads((DATA / "hidden-step-layout.json").read_text(encoding="utf-8"))
 LANGS = ("zh-Hans", "ja", "en")
 
 CSS = r"""
@@ -302,6 +303,34 @@ class Page:
         out.append("</section>")
         return "".join(out)
 
+    def hidden_steps(self, entry: dict) -> str:
+        steps = entry["steps"]
+        groups = STEP_LAYOUT["entries"].get(entry["id"], {"": range(1, len(steps) + 1)})
+        language = STEP_LAYOUT["languages"].index(self.lang)
+        labels = STEP_LAYOUT["labels"]
+        out = []
+        for heading, rows in groups.items():
+            if heading and heading != "paths":
+                out.append(f'<div class="step-head"><span class="step-stage">{esc(labels[heading][language])}</span></div>')
+            out.append('<ol class="secret-steps">')
+            for row in rows:
+                out.append("<li>")
+                if isinstance(row, list):
+                    out.append(f'<span class="step-route">{esc(labels["either"][language])}</span>')
+                for number in row if isinstance(row, list) else [row]:
+                    step = steps[number - 1]
+                    stage = step.get("stage", "")
+                    when = self.ui["step"].format(stage) if any(ch.isdigit() for ch in stage) else stage
+                    head = "".join(f'<span class="{css}">{esc(value)}</span>' for css, value in
+                                   (("when", when), ("step-stage", step.get("stage_title")),
+                                    ("step-route", step.get("route"))) if value)
+                    body = (f'<ul class="secret-notes">{self.items(step["choices"])}</ul>' if "choices" in step else
+                            f'<p>{self.inline(step["text"])}</p>')
+                    out.append(f'<div class="step-option"><div class="step-head">{head}</div>{body}</div>')
+                out.append("</li>")
+            out.append("</ol>")
+        return "".join(out)
+
     def hidden(self, hidden: dict) -> str:
         ui = self.ui
         out = ['<section class="guide-panel" id="hidden-elements" data-panel-content="hidden-elements" hidden>',
@@ -326,17 +355,7 @@ class Page:
             if e.get("summary"):
                 out.append(f'<p class="secret-summary">{self.inline(e["summary"])}</p>')
             if e.get("steps"):
-                out.append('<ol class="secret-steps">')
-                for s in e["steps"]:
-                    stage = s.get("stage") or ""
-                    label = ui["step"].format(stage) if any(ch.isdigit() for ch in stage) else stage
-                    head = f'<span class="when">{esc(label)}</span>' if stage else ""
-                    if s.get("stage_title"):
-                        head += f'<span class="step-stage">{esc(s["stage_title"])}</span>'
-                    if s.get("route"):
-                        head += f'<span class="step-route">{esc(s["route"])}</span>'
-                    out.append(f'<li><div class="step-head">{head}</div><p>{self.inline(s["text"])}</p></li>')
-                out.append("</ol>")
+                out.append(self.hidden_steps(e))
             if e.get("result"):
                 out.append(f'<p class="secret-result">{self.inline(e["result"])}</p>')
             if e.get("notes"):

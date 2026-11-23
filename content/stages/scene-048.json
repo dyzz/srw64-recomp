@@ -23,6 +23,23 @@
    },
    "secrets": [
     {
+     "ref": "secret-todd-silky",
+     "title": {
+      "zh-Hans": "陶德（＋希露奇）",
+      "zh-Hant": "陶德（＋希露奇）",
+      "ja": "トッド（＋シルキー）",
+      "en": "Tod (+ Silky)",
+      "ko": "토드(+ 실키)"
+     },
+     "text": {
+      "zh-Hans": "已用翔说服两次即可击坠巨大化的陶德，不影响后续加入",
+      "zh-Hant": "已用翔說服兩次即可擊墜巨大化的陶德，不影響後續加入",
+      "ja": "ショウで2回説得済みなら、ハイパー化したトッドを撃墜しても加入可能",
+      "en": "After both persuasions, shooting down Hyper Tod does not affect recruitment",
+      "ko": "쇼우로 두 번 설득했다면 하이퍼화한 토드를 격추해도 나중에 합류합니다"
+     }
+    },
+    {
      "ref": "secret-garalia",
      "title": {
       "zh-Hans": "卡拉利亚＋巴斯托尔",

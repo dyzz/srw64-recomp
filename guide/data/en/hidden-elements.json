@@ -449,11 +449,15 @@
      "stage": "15／16",
      "stage_title": "The Bloodstained Road",
      "route": "Common",
-     "text": "At the start, pick “Head to Ciela” → Ciela + Gran-Garan; pick “Head to Elle” → Elle + Goraon. The two sides fight on different maps against the same enemy lineup {+}"
+     "choices": [
+      "At the start, pick “Head to Ciela” → Ciela + Gran-Garan",
+      "pick “Head to Elle” → Elle + Goraon"
+     ]
     }
    ],
    "result": "The side you pick stays with the team long-term",
    "notes": [
+    "The two sides fight on different maps against the same enemy lineup {+}",
     "The side you didn't pick: on the Independence Army route appears as an ally partway through “The Call of Space” and leaves at the end of the same stage; on the Complete Pacifism route joins at the start of “Spreading Malice” and leaves at the end of “Purification”; on the OZ route appears in “Humanity's Victory, and Then... (Part 1)” and leaves at the end of the same stage {+}",
     "In later stages the only difference is dialogue"
    ],
@@ -1081,7 +1085,7 @@
    "title": "Tod (+ Silky)",
    "kicker": "Character + unit",
    "applies": "Two lines: on the Independence Army line (including fighting alone) pilots the Sirbine, on the OZ line (including with Treize) pilots the Zwauth",
-   "summary": "Show persuades Tod three times, and Tod joins as reinforcements on turn 3 later on; if at that moment Marvel has 30 kills and Garalia is on the team, Silky also rides along {≠}",
+   "summary": "Have Show persuade Tod twice: once in “Shapiro, Reborn!” and once on your chosen route. Tod then joins as reinforcements on turn 3 later on; if at that moment Marvel has 30 kills and Garalia is on the team, Silky also rides along {≠}",
    "steps": [
     {
      "stage": "14／15",
@@ -1111,7 +1115,7 @@
      "stage": "36／37／38",
      "stage_title": "An Unseen Tomorrow",
      "route": "OZ route (incl. the Treize branch)",
-     "text": "On the turn 3 player phase, Tod joins as reinforcements piloting the Zwauth {≠}"
+     "text": "Stage 36 on Real or 37 on Super. For Ark it is stage 37 after “Together from Here On”. For Brad it is stage 38 after “Time to Settle It”. Tod joins in the Zwauth on the player phase of turn 3. Keep him alive until you clear the stage. If shot down here, he leaves permanently. {≠}"
     }
    ],
    "result": "Tod joins; if at the check Marvel has 30 or more kills and Garalia has joined, Silky rides along as sub-pilot",
@@ -1387,7 +1391,10 @@
      "stage": "40／41／42",
      "stage_title": "Fist of Despair and Sorrow (Part 2)",
      "route": "OZ route",
-     "text": "After the stage, choose “Funnel type” → MP Nu Gundam F; choose “Incom type” → MP Nu Gundam I"
+     "choices": [
+      "After the stage, choose “Funnel type” → MP Nu Gundam F",
+      "choose “Incom type” → MP Nu Gundam I"
+     ]
     }
    ],
    "result": "Obtain the MP Nu Gundam F or I (no pilot)",
@@ -1666,7 +1673,10 @@
      "stage": "19／20",
      "stage_title": "Operation Daybreak",
      "route": "Common",
-     "text": "After the stage, choose “Join OZ and work to restore order” → OZ route (next stage “A New Path”); choose “We cannot accept what OZ has done” → Independence Army route (next stage “Farewell, Warrior”)"
+     "choices": [
+      "After the stage, choose “Join OZ and work to restore order” → OZ route (next stage “A New Path”)",
+      "choose “We cannot accept what OZ has done” → Independence Army route (next stage “Farewell, Warrior”)"
+     ]
     }
    ],
    "result": "The OZ route runs straight through to the end; the Independence Army route also splits off the Complete Pacifism route at “The Battle of Ryozanpaku”",
@@ -1690,7 +1700,10 @@
      "stage": "21／22",
      "stage_title": "The Battle of Ryozanpaku",
      "route": "Independence Army route",
-     "text": "Pick option 3 at the start (the trusting, agreeing answer, e.g. Ark's “I want to believe it can come true”), then option 2 after the stage (the answer wanting to help, e.g. Ark's “I wish there were something we could do to help”) → Complete Pacifism route (next stage “Spreading Malice”); any other combination → “The Call of Space”"
+     "choices": [
+      "Pick option 3 at the start (the trusting, agreeing answer, e.g. Ark's “I want to believe it can come true”), then option 2 after the stage (the answer wanting to help, e.g. Ark's “I wish there were something we could do to help”) → Complete Pacifism route (next stage “Spreading Malice”)",
+      "any other combination → “The Call of Space”"
+     ]
     }
    ],
    "result": "Enters the Complete Pacifism route; it splits once more when “Return to the Battlefield” is cleared",
@@ -1715,13 +1728,13 @@
     {
      "stage": "31／32",
      "stage_title": "Return to the Battlefield",
-     "route": "Complete Pacifism route",
+     "route": "Complete Pacifism route · Side with Treize",
      "text": "After the stage, choose “Side with Treize” → Treize branch: Fierce Fighting in Space → The Man Back from Jupiter → Brothers → merges into the OZ route at “Prelude to Ruin”"
     },
     {
      "stage": "31／32",
      "stage_title": "Return to the Battlefield",
-     "route": "Complete Pacifism route",
+     "route": "Complete Pacifism route · Fight alone",
      "text": "Pick “We'll fight on our own” → The Galactic Empire's Threat → White Fang → In a World of Endless Strife (Part 1) and Part 2 → merges into the Independence Army route at “Galactic Empire Vanguard Fleet”"
     }
    ],
@@ -1746,7 +1759,10 @@
      "stage": "24／25",
      "stage_title": "Tallgeese Destroyed",
      "route": "OZ route",
-     "text": "After the stage, choose “I can't obey Romefeller” → The Moon Is Hell! (Romefeller side); choose “We act as OZ to the very end” → Moon Attack (Moon Attack side)"
+     "choices": [
+      "After the stage, choose “I can't obey Romefeller” → The Moon Is Hell! (Romefeller side)",
+      "choose “We act as OZ to the very end” → Moon Attack (Moon Attack side)"
+     ]
     }
    ],
    "result": "The Moon Attack side continues to “The Man Who Could Not Become God” → “The Chaos Never Ends”; on the Romefeller side it depends on whether you hold the base (see “The Moon Is Hell!: holding the base”); the two sides merge at “Because of That Purity”",
@@ -1770,7 +1786,10 @@
      "stage": "25／26",
      "stage_title": "The Moon Is Hell!",
      "route": "OZ route (Romefeller side)",
-     "text": "Your flagship enters the base first, or wipe out the Muge forces (including Shapiro's reinforcements) and then the Yellow third party in order → Gato joins, next stages “Where Ambition Leads” → “The Nightmare Returns”; Scirocco or Bask himself enters the base first → “The Man Who Could Not Become God” → “The Chaos Never Ends” {≠}{?}"
+     "choices": [
+      "Your flagship enters the base first, or wipe out the Muge forces (including Shapiro's reinforcements) and then the Yellow third party in order → Gato joins, next stages “Where Ambition Leads” → “The Nightmare Returns”",
+      "Scirocco or Bask himself enters the base first → “The Man Who Could Not Become God” → “The Chaos Never Ends” {≠}{?}"
+     ]
     }
    ],
    "result": "The two lines merge at “Because of That Purity”",
@@ -1864,7 +1883,11 @@
      "stage": "36／37／38",
      "stage_title": "All-Out Attack on the Cyber Beast Force Base",
      "route": "Independence Army route (incl. fighting alone)",
-     "text": "After the stage, choose “Go with the main force” → straight to “Desperate Breakthrough (Part 1)”; choose “Go with Domon and the others” → Death Match! Showdown on Lantau Island (Part 1) / (Part 2); choose “Go with Hyoma and the others” → Empress Janera's Human Hunt"
+     "choices": [
+      "After the stage, choose “Go with the main force” → straight to “Desperate Breakthrough (Part 1)”",
+      "choose “Go with Domon and the others” → Death Match! Showdown on Lantau Island (Part 1) / (Part 2)",
+      "choose “Go with Hyoma and the others” → Empress Janera's Human Hunt"
+     ]
     }
    ],
    "result": "All three lines merge at “Desperate Breakthrough (Part 1)”",
@@ -1921,13 +1944,19 @@
      "stage": "48–53",
      "stage_title": "Nightmare, Once More",
      "route": "Independence Army route (incl. fighting alone)",
-     "text": "After the stage, choose “Go to the Muge universe” → The Last Roar; choose “Remain in the Earth Sphere” → Char's Rebellion"
+     "choices": [
+      "After the stage, choose “Go to the Muge universe” → The Last Roar",
+      "choose “Remain in the Earth Sphere” → Char's Rebellion"
+     ]
     },
     {
      "stage": "48／49／50",
      "stage_title": "A Nightmare with No Waking",
      "route": "OZ route (incl. the Treize branch)",
-     "text": "After the stage, choose “Go to the Muge universe” → A Distant Gamble; choose “Remain in the Earth Sphere” → Char's Rebellion"
+     "choices": [
+      "After the stage, choose “Go to the Muge universe” → A Distant Gamble",
+      "choose “Remain in the Earth Sphere” → Char's Rebellion"
+     ]
     }
    ],
    "result": "Both sides merge at “Terror! Devil Axis Activates! (Part 1)”, where everyone can deploy again",

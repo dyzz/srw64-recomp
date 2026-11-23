@@ -32,11 +32,11 @@
       "ko": "토드(+ 실키)"
      },
      "text": {
-      "zh-Hans": "保住第 3 回合加入的陶德（玛蓓儿击坠 ≥ 30 时希露奇同乘）",
-      "zh-Hant": "保住第 3 回合加入的陶德（瑪蓓兒擊墜 ≥ 30 時希露奇同乘）",
-      "ja": "第3ターン加入のトッドを守る（マーベル30機撃墜でシルキーも）",
-      "en": "Keep Tod alive (joins turn 3); Silky too if Marvel has ≥ 30 kills",
-      "ko": "토드를 격추당하지 않게(3턴째 합류); 마벨의 격추 수가 30 이상이면 실키도"
+      "zh-Hans": "第 3 回合加入后，保住陶德直到过关。本关被击坠就会永久离队。",
+      "zh-Hant": "第 3 回合加入後，保住陶德直到過關。本關被擊墜就會永久離隊。",
+      "ja": "第3ターンに加入するトッドをクリアまで守ろう。撃墜されると永久離脱する。",
+      "en": "Keep Tod alive from turn 3, when he joins, until you clear the stage. If shot down here, he leaves permanently.",
+      "ko": "3턴에 합류한 토드를 클리어할 때까지 지켜 주세요. 여기서 격추되면 영구 이탈합니다."
      }
     },
     {
