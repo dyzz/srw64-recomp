@@ -71,7 +71,7 @@ The largest change in this version: a package can now add units, weapons and cha
 ### Android
 
 - **A game the system closes in the background comes back where it was left**: once you switch to another app, the game saves at its next save point (the map waiting for orders, or the intermission's menu), apart from your saves and autosaves. If Android then closes it, the next start offers to go back to that map or intermission.
-- In the background the game stops running and gives back memory. With the HD pack it takes 703 MB instead of 1118 MB at the title and 887 MB instead of 1450 MB in the background on our test phone, so the system closes it less often.
+- In the background the game stops running and gives back memory. With the HD pack it takes about a third less memory at the title (under 0.8 GB instead of about 1.1 GB) and about 0.5 GB less in the background (under 1 GB instead of about 1.45 GB) on our test phone, so the system closes it less often.
 
 ### Controls, touch and launchers
 
@@ -220,7 +220,7 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 #### 安卓
 
 - **切到后台被系统关闭后能回到原处**：切到其他应用后，游戏在下一个存档点（地图上等待指令时，或场间主菜单）另存一份，不占存档栏，也不影响自动存档。之后如果系统把游戏关掉，下次启动会问要不要回到当时的地图或场间画面。
-- 在后台时游戏停止运行，并交还内存。带 HD 包时，测试手机上标题画面占用的内存从 1118 MB 降到 703 MB，后台从 1450 MB 降到 887 MB，被系统关掉的情况会少一些。
+- 在后台时游戏停止运行，并交还内存。带 HD 包时，测试手机上标题画面占用的内存少了约三分之一（约 1.1 GB 降到 0.8 GB 以下），后台少了约 0.5 GB（约 1.45 GB 降到 1 GB 以下），被系统关掉的情况会少一些。
 
 #### 操作、触屏与启动器
 
