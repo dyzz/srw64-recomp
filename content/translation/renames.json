@@ -1388,6 +1388,10 @@
     "old": "Razgriz",
     "new": "Razgreez"
    },
+   "zh-Hans": {
+    "old": "拉兹格里兹",
+    "new": "拉兹格瑞丝"
+   },
    "gate": false,
    "sections": [
     "units"
@@ -6822,6 +6826,10 @@
    "en": {
     "old": "Sigrun",
     "new": "Sigroon"
+   },
+   "zh-Hans": {
+    "old": "西格露恩",
+    "new": "希格露恩"
    },
    "gate": false,
    "sections": [

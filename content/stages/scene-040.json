@@ -45,15 +45,15 @@
     {
      "ref": "secret-reese",
      "title": {
-      "zh-Hans": "利修＋西格露恩",
-      "zh-Hant": "利修＋西格露恩",
+      "zh-Hans": "利修＋希格露恩",
+      "zh-Hant": "利修＋希格露恩",
       "ja": "リッシュ＋シグルーン",
       "en": "Rish + Sigroon",
       "ko": "릿슈 + 시그룬"
      },
      "text": {
-      "zh-Hans": "无需操作：前两步完成则利修＋西格露恩开场加入",
-      "zh-Hant": "無需操作：前兩步完成則利修＋西格露恩開場加入",
+      "zh-Hans": "无需操作：前两步完成则利修＋希格露恩开场加入",
+      "zh-Hant": "無需操作：前兩步完成則利修＋希格露恩開場加入",
       "ja": "操作不要：前2段階済みならリッシュ＋シグルーンが開始時に加入",
       "en": "No action needed: Rish + Sigroon join at start if steps 1–2 done",
       "ko": "할 일 없음: 1~2단계를 마쳤다면 시작 시 릿슈 + 시그룬 가입"

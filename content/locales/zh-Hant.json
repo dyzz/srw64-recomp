@@ -3814,7 +3814,7 @@
     {
       "key": "base:t00_00560",
       "source_sha256": "a56dd8f90d157995dc8f31843a157951da8724e4241a5142fb0464093e550294",
-      "target": "拉茲格里茲<END>",
+      "target": "拉茲格瑞絲<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5872,7 +5872,7 @@
     {
       "key": "base:t00_00855",
       "source_sha256": "41cc4e09809d9223cc6192ee263c72767e78f8805b840d53bbb9070a4fdbc3fa",
-      "target": "西格露恩<END>",
+      "target": "希格露恩<END>",
       "review_status": "draft",
       "origin": "terms"
     },
