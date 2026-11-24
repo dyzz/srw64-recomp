@@ -685,7 +685,7 @@
     "mod_turn_off": "停用",
     "mod_remove": "刪除",
     "mod_remove_confirm": "確認刪除",
-    "mod_not_applied": "目前生效的有：音樂替換、戰鬥語音、名字、頭像與地圖圖示、機體／駕駛員／武器的數值、追加劇本；單關挑戰、改主線關卡、其餘美術和臺詞還不會生效。",
+    "mod_not_applied": "目前生效的有：音樂替換、戰鬥語音、名字、頭像、地圖圖示、戰鬥圖、新機體／人物／武器、機體／駕駛員／武器的數值、語言包、追加劇本、改主線關卡；單關挑戰和其餘美術還不會生效。",
     "mod_install_busy": "正在安裝另一個 MOD，請稍候",
     "mod_install_failed": "安裝失敗：{reason}",
     "mod_installed": "已安裝 MOD：{id} {version}",

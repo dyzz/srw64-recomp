@@ -2195,7 +2195,7 @@ std::string mod_installed_page() {
         body+="<p class='dlc-meta'>"+escape(mod_contents_text(p.contents))+"</p>";
         body+="<p class='dlc-meta'>"+escape(status)+"</p></div>";
     }
-    // Nothing in a package takes effect yet; this version installs and keeps them.
+    // What of a package takes effect in this version, and what is only installed and kept.
     if(!list.empty())body+=wrap_label("mod_not_applied","dlc-meta");
     return body;
 }

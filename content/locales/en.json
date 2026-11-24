@@ -685,7 +685,7 @@
     "mod_turn_off": "Turn off",
     "mod_remove": "Remove",
     "mod_remove_confirm": "Confirm removal",
-    "mod_not_applied": "Music replacements, battle voices, names, portraits and map icons, and unit, pilot and weapon numbers, and extra scenarios take effect; challenge stages, story changes, other art and dialogue do not yet.",
+    "mod_not_applied": "In effect: music replacements, battle voices, names, portraits, map icons, battle pictures, new units, characters and weapons, unit, pilot and weapon numbers, languages, campaigns and story changes; challenges and other art do not take effect yet.",
     "mod_install_busy": "Another MOD is being installed; please wait",
     "mod_install_failed": "Could not install: {reason}",
     "mod_installed": "MOD installed: {id} {version}",

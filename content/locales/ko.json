@@ -686,7 +686,7 @@
     "mod_turn_off": "비활성화",
     "mod_remove": "제거",
     "mod_remove_confirm": "제거 확인",
-    "mod_not_applied": "음악 교체, 전투음성, 이름, 초상화, 맵 아이콘, 유닛·파일럿·무기의 능력치는 적용됩니다. 스토리·기타 이미지·대사 변경 MOD는 아직 적용되지 않습니다.",
+    "mod_not_applied": "적용되는 것: 음악 교체, 전투음성, 이름, 초상화, 맵 아이콘, 전투 그림, 새 기체·인물·무기, 유닛·파일럿·무기의 능력치, 언어, 캠페인, 스토리 변경. 도전 과제와 기타 그림은 아직 적용되지 않습니다.",
     "mod_install_busy": "다른 MOD를 설치 중입니다. 잠시만 기다려 주세요.",
     "mod_install_failed": "설치 실패: {reason}",
     "mod_installed": "MOD 설치 완료: {id} {version}",
