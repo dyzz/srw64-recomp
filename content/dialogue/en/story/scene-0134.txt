@@ -170,7 +170,7 @@ The main body of the Devil Gundam should be there.
 ---
 >  そいつを叩けば、
 >  デビルアクシズもまた亡びる」
-Take it out, and Dark Axis goes down with it.”
+Take it out, and Devil Axis goes down with it.”
 
 @50570 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -253,7 +253,7 @@ with my own eyes!”
 # 检查提示：未用必用译名：デビルアクシズ→Dark Axis
 > 「デビルアクシズが崩壊する……
 >  ドモンたちはまだ出てこないのか?」
-“Dark Axis is collapsing... Aren’t Domon and the others out yet?”
+“Devil Axis is collapsing... Aren’t Domon and the others out yet?”
 
 @50582 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号

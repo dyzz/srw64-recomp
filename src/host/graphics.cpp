@@ -1,6 +1,9 @@
+#include "../native/presentation/frame_cost.hpp"
 #define HLSL_CPU
-#ifndef SRW64_GL_ONLY
 #include "launcher_env.hpp"
+#include "renderer_fallback.hpp"
+#include "renderer_mode.hpp"
+#ifndef SRW64_GL_ONLY
 #include "hle/rt64_application.h"
 #endif
 #include "graphics.hpp"
@@ -147,6 +150,9 @@ std::vector<std::string> gpu_names;  // gpu_report's adapters, for the failure m
 #ifdef __SWITCH__
 std::string srw64_switch_perf_system();   // switch/switch_platform.cpp: memory and core loads
 extern "C" void srw64_switch_background_thread();   // the same: the lowest priority for a helper thread
+void srw64_switch_finish_session();
+bool srw64_switch_log_flush(int wait_ms);   // the same: what is pending into console.log, now
+static bool switch_window_close_requested = false;
 std::string srw64_switch_hd_art();   // the same: the HD pack's art folder, "" for none
 const std::vector<uint32_t>& srw64_switch_splash();   // the same: the loading screen's last step
 void srw64_switch_drop_splash();
@@ -173,6 +179,14 @@ namespace {
 [[noreturn]] void graphics_failure(const std::string& detail) {
     const char* interactive = std::getenv("SRW64_INTERACTIVE");
     if (!interactive || std::string(interactive) != "1") std::abort();
+#if defined(_WIN32) && !defined(SRW64_GL_ONLY)
+    // RT64 passed the check at the start (renderer_fallback.hpp) and failed anyway: the game
+    // starts again with the GL renderer, with the same command line, once this process has left.
+    if (!srw64::renderer_mode::gl() && srw64::renderer_fallback::hand_over(detail.empty() ? std::string("setup") : detail)) {
+        srw64::console_log::flush_now();
+        std::_Exit(0);
+    }
+#endif
     std::string locale = "zh-Hans";
     if (const char* path = std::getenv("SRW64_PRESENTATION_SETTINGS")) {
         std::ifstream file(std::filesystem::path(reinterpret_cast<const char8_t*>(path)));
@@ -223,29 +237,50 @@ static void register_hd_requirement(const char* art, bool hd) {
 
 // Work the GL render thread hands off, in order on one thread of its own: a debug screenshot's
 // PNG took a second on the Switch, a second the game stood still.
+// Started by the first job. Never destroyed (a joinable std::thread at exit() is
+// std::terminate); on the Switch an empty job ends it at exit, as a thread still running once
+// main has returned wakes in code hbloader has already unloaded (2026-11-23).
+static std::mutex background_mutex;
+static std::condition_variable background_wake;
+static std::deque<std::function<void()>> background_jobs;
+static std::thread* background_worker = nullptr;
 void run_in_background(std::function<void()> job) {
-static std::mutex mutex;
-    static std::condition_variable wake;
-    static std::deque<std::function<void()>> jobs;
-    static std::thread* worker = new std::thread([] {   // never joined: it lives as long as the program
+    std::lock_guard lock(background_mutex);
+    if (!background_worker) {
+        background_worker = new std::thread([] {
 #ifdef __SWITCH__
-        srw64_switch_background_thread();
+            srw64_switch_background_thread();
 #endif
-        for (;;) {
-            std::function<void()> next;
-            {
-                std::unique_lock lock(mutex);
-                wake.wait(lock, [] { return !jobs.empty(); });
-                next = std::move(jobs.front());
-                jobs.pop_front();
+            for (;;) {
+                std::function<void()> next;
+                {
+                    std::unique_lock lock(background_mutex);
+                    background_wake.wait(lock, [] { return !background_jobs.empty(); });
+                    next = std::move(background_jobs.front());
+                    background_jobs.pop_front();
+                }
+                if (!next) return;
+                next();
             }
-            next();
-        }
-    });
-    (void)worker;
-    { std::lock_guard lock(mutex); jobs.push_back(std::move(job)); }
-    wake.notify_one();
+        });
+    }
+    if (job) background_jobs.push_back(std::move(job));
+    background_wake.notify_one();
 }
+#ifdef __SWITCH__
+// The jobs already handed over done, then the thread ended and joined.
+static void stop_background() {
+    {
+        std::lock_guard lock(background_mutex);
+        if (!background_worker) return;
+        background_jobs.push_back({});
+    }
+    background_wake.notify_one();
+    background_worker->join();
+    delete background_worker;
+    background_worker = nullptr;
+}
+#endif
 // The Enter of an Alt + Enter (full screen, frontend.cpp) is not START until it is let go,
 // whichever key comes up first.
 SDL_Scancode alt_enter_key = SDL_SCANCODE_UNKNOWN;
@@ -1099,7 +1134,13 @@ bool gl_mode() {
 #ifdef SRW64_GL_ONLY
     return true;
 #else
-    static const bool value = std::getenv("SRW64_RENDERER") && std::string(std::getenv("SRW64_RENDERER")) == "gl";
+    // SRW64_RENDERER=gl (development), SRW64_GRAPHICS_API=gl (the player's choice, kept by
+    // launch.cpp), or Windows' check at the start (renderer_fallback.hpp). Decided once,
+    // before the window: the window, the UI's renderer and the HD layers follow it.
+    static const bool value = [] {
+        const auto gl = [](const char* name) { const char* v = std::getenv(name); return v && std::string(v) == "gl"; };
+        return gl("SRW64_RENDERER") || gl("SRW64_GRAPHICS_API") || srw64::renderer_fallback::gl_chosen();
+    }();
     return value;
 #endif
 }
@@ -1255,7 +1296,30 @@ public:
         // thread's from here on, the graphics thread's, which also presents.
         if (SDL_GL_MakeCurrent(window, gl_context) != 0) graphics_failure(SDL_GetError());
         SDL_GL_SetSwapInterval(0);
+        // The picture at three times the original's lines on the consoles. On Windows this host
+        // is the fallback for PCs RT64 cannot use (renderer_fallback.hpp), old or without a GPU
+        // driver, and draws at two; at one on a renderer that draws on the CPU (Microsoft's WARP,
+        // SwiftShader, llvmpipe). A battle on WARP with four cores: 25-27 of the game's 30 frames
+        // at three, all 30 at two (1.25 cores) and one (0.9) (docs/design/windows-gl-fallback.md).
+        // The host's own layers (text, portraits, pages) keep the window's resolution.
+#ifdef _WIN32
+        int scale = 2;
+#else
         int scale = 3;
+#endif
+        {
+            const std::string device = (const char*)glGetString(GL_RENDERER);
+            for (const char* cpu : {"Basic Render Driver", "SwiftShader", "llvmpipe", "softpipe", "WARP"})
+                if (device.find(cpu) != std::string::npos) {
+                    scale = 1;
+                    std::fprintf(stderr, "SRW64_GL_QUALITY software renderer (%s): scale 1\n", cpu);
+                    break;
+                }
+        }
+#ifdef SRW64_NATIVE_DIALOGUE
+        // The player's choice in the settings window (画面精细度), over the automatic one.
+        if (const unsigned chosen = srw64::settings::picture_scale_at_start()) scale = int(chosen);
+#endif
         if (const char* value = std::getenv("SRW64_GL_SCALE")) scale = std::clamp(std::atoi(value), 1, 8);
         renderer = std::make_unique<srw64::n64gl::Renderer>(srw64::n64gl::kPictureWidth * scale, srw64::n64gl::kPictureHeight * scale);
         interpreter = std::make_unique<srw64::n64gl::Interpreter>([this](uint64_t key) { return renderer->known(key); });
@@ -1354,6 +1418,9 @@ public:
             }
             srw64::presentation::image_mode.configure(hd);
             register_hd_requirement(hd ? hd_art.string().c_str() : nullptr, srw64::presentation::image_mode.requested());
+#ifdef __SWITCH__
+            preload_battles = hd;
+#endif
         }
         // The host's tagged draws (window frames, story and title text) from the modules that
         // tag them, as SRW64Renderer configures them; the sprite layer's HD frames (title, units,
@@ -1412,10 +1479,21 @@ public:
             srw64::frame::picture_width = picture;
             interpreter->picture_width(picture);
         }
+        const auto cost_start = std::chrono::steady_clock::now();
         const auto shape = srw64::wide_map::take_shape();
         interpreter->run(rdram, start, frame, native_text ? display_copy.data() : nullptr, native_text ? task->t.data_size : 0);
 #ifdef __SWITCH__
         const auto t2 = SwitchPerf::clock::now();
+#endif
+        const auto cost_run = std::chrono::steady_clock::now();
+#ifdef __SWITCH__
+        if (preload_battles && srw64::presentation::image_mode.current() == 1) {
+            if (!preload_started) {
+                srw64::hd_replace::warm(capture_directory / "battle-textures.txt");
+                preload_started = true;
+            }
+            srw64::hd_replace::prepare(frame);
+        }
 #endif
         renderer->draw(frame);
         srw64::hd_replace::end_frame();
@@ -1426,7 +1504,14 @@ public:
 #ifdef __SWITCH__
         const auto t2b = SwitchPerf::clock::now();
 #endif
+        const auto cost_drawn = std::chrono::steady_clock::now();
         srw64::native_gl::end_frame();
+        {
+            // A list that held the screen up says what it met for the first time (frame_cost.hpp).
+            const auto cost_end = std::chrono::steady_clock::now();
+            const auto span = [](auto from, auto to) { return std::chrono::duration<double, std::milli>(to - from).count(); };
+            srw64::frame_cost::end_list(span(cost_start, cost_end), span(cost_start, cost_run), span(cost_run, cost_drawn), span(cost_drawn, cost_end));
+        }
 #ifdef __SWITCH__
         const auto t3 = SwitchPerf::clock::now();
         perf.gl_draw += SwitchPerf::ms(t2, t2a);
@@ -1454,29 +1539,60 @@ public:
     void send_dummy_workload(uint32_t) override {}
     void update_screen() override {
         int width = 0, height = 0;
-#ifdef __SWITCH__
+        // osViBlack (800B6620) blanks the VI: ultramodern writes an H_START of 0, which RT64
+        // presents as black (VI::visible). The game draws behind it, e.g. each battle animation
+        // lays out both units with the camera on the attacker before its fade-in.
+        const bool vi_black = ultramodern::renderer::get_vi_regs()->VI_H_START_REG == 0;
+        SDL_GL_GetDrawableSize(window, &width, &height);
         // The game shows a new picture every second or third VI; the rest of the time the
         // screen would be drawn again as it is (as on the PS Vita, where that was 9 ms a VI).
-        // The same colour image not drawn since, the same dialogue frame, no page of the shared
-        // UI up (the frame-rate readout aside, unless it changed) and no capture wanted: the
-        // screen keeps the last swap.
-        {
+        // The same colour image not drawn since, the same dialogue frame, the shared UI's
+        // pages and readout asking for the same draws as the last time (probe_gl) and no
+        // capture wanted: the screen keeps the last swap. On the Switch and Windows; elsewhere
+        // with SRW64_GL_KEEP=1, to try it (which also prints the counts).
+        if (keep_swaps) {
             const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
-            const uint32_t image = renderer->image_at(origin);
+            const uint32_t image = vi_black ? 0 : renderer->image_at(origin);
             const auto found = image_workloads.find(image);
-            const ScreenKey key{image, renderer->drawn_at(image), found != image_workloads.end() ? found->second : 0,
-                                srw64::ui::readout_changes()};
-            if (key == last_screen && !srw64::ui::shown() && !srw64::debug::screenshots().wanted() &&
-                !srw64::debug::recording().active() && !player_shot_armed.load()) {
+            // The window's size counts too, so a resized window is drawn again at once.
+            ScreenKey key{image, renderer->drawn_at(image), found != image_workloads.end() ? found->second : 0, 0, width, height};
+            const bool captured = srw64::debug::screenshots().wanted() || srw64::debug::recording().active() ||
+                                  player_shot_armed.load();
+            // Asking the UI costs a walk of its documents (2-4 ms with the Library open, a
+            // Switch, 2026-11-20). While the game shows 30 pictures a second the next one
+            // comes within 33 ms and draws the UI with it: the UI is asked only once the
+            // picture has stood that long.
+            const auto now = std::chrono::steady_clock::now();
+            const bool same_picture = key.image == last_screen.image && key.drawn == last_screen.drawn &&
+                                      key.workload == last_screen.workload;
+            const bool recent = now - last_swap < std::chrono::milliseconds(30);
+            key.ui = last_screen.ui;
+#ifdef SRW64_NATIVE_DIALOGUE
+            if (!(same_picture && recent && !captured))
+                key.ui = srw64::ui::probe_gl(width, height, key.workload && srw64::names::frame_cover(key.workload));
+#endif
+            if (key == last_screen && !captured) {
+#ifdef __SWITCH__
                 ++perf.kept;
                 perf.report(renderer->programs_held());
+#else
+                ++kept_swaps;
+#endif
                 return;
             }
             last_screen = key;
+            last_swap = now;
+#ifndef __SWITCH__
+            // The trial's count, where there are no performance lines.
+            if (++drawn_swaps + kept_swaps >= 300 && report_swaps) {
+                std::fprintf(stderr, "SRW64_GL_KEEP kept=%u drawn=%u ui=%016llx\n", kept_swaps, drawn_swaps, (unsigned long long)key.ui);
+                kept_swaps = drawn_swaps = 0;
+            }
+#endif
         }
+#ifdef __SWITCH__
         const auto p0 = SwitchPerf::clock::now();
 #endif
-        SDL_GL_GetDrawableSize(window, &width, &height);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glViewport(0, 0, width, height);
         glDisable(GL_SCISSOR_TEST);
@@ -1488,7 +1604,7 @@ public:
         const int picture_height = int(std::lround(picture_width * srw64::n64gl::kPictureHeight / picture));
         const int picture_x = (width - picture_width) / 2, picture_y = (height - picture_height) / 2;
         const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
-        renderer->present(origin, picture_x, picture_y, picture_width, picture_height);
+        if (!vi_black) renderer->present(origin, picture_x, picture_y, picture_width, picture_height);
 #ifdef __SWITCH__
         // Until the game's picture is more than black, the splash instead of it.
         if (!splash_done && (splash_done = shows_picture(width, height))) { splash.release(); srw64_switch_drop_splash(); }
@@ -1579,6 +1695,15 @@ public:
         SDL_GL_SwapWindow(window);
 #ifdef __SWITCH__
         const auto p5 = SwitchPerf::clock::now();
+        if (SwitchPerf::ms(p0, p5) >= 40.0) {
+            std::fprintf(stderr, "SRW64_PRESENT_SLOW frame=%llu vi=%llu workload=%llu start_us=%lld total=%.1f "
+                         "picture=%.1f dialogue=%.1f ui=%.1f capture=%.1f swap=%.1f ms\n",
+                         (unsigned long long)frame_number, (unsigned long long)srw64_current_vi(),
+                         (unsigned long long)last_screen.workload,
+                         (long long)std::chrono::duration_cast<std::chrono::microseconds>(p0.time_since_epoch()).count(),
+                         SwitchPerf::ms(p0, p5), SwitchPerf::ms(p0, p1), SwitchPerf::ms(p1, p2),
+                         SwitchPerf::ms(p2, p3), SwitchPerf::ms(p3, p4), SwitchPerf::ms(p4, p5));
+        }
         perf.picture += SwitchPerf::ms(p0, p1);
         perf.overlays += SwitchPerf::ms(p1, p2);
         perf.ui += SwitchPerf::ms(p2, p3);
@@ -1596,16 +1721,33 @@ public:
         srw64::ui::render_shutdown_gl();
         srw64::dialogue::gl_shutdown();
 #endif
+#ifdef __SWITCH__
+        srw64::hd_replace::stop();
+#endif
         srw64::native_gl::shutdown();
         srw64::sprites::shutdown();
         srw64::hdmap::shutdown();
         renderer.reset();
         interpreter.reset();
+        // The context goes back before this thread ends (ultramodern's graphics thread calls
+        // this last). A context still current on a thread that is gone is never destroyed: on
+        // the Switch its window surface kept the display layer's buffers and the GPU channel,
+        // so nvdrv never gave back its transfer memory and the exit's eglTerminate waited
+        // forever in libnx's _nvCleanup (tmemWaitForPermission). Single-threaded homebrew
+        // release it on the thread that tears down, which is why they exit.
+        glFinish();
+        SDL_GL_MakeCurrent(window, nullptr);
+#ifdef __SWITCH__
+        std::fprintf(stderr, "SRW64_SWITCH_TEARDOWN the graphics thread released its context\n");
+#endif
     }
     uint32_t get_display_framerate() const override { return 60; }
     float get_resolution_scale() const override { return 1.0f; }
 private:
     uint8_t* rdram;
+#ifdef __SWITCH__
+    bool preload_battles = false, preload_started = false;
+#endif
     std::unique_ptr<srw64::n64gl::Renderer> renderer;
 #ifdef __SWITCH__
     // The loading screen's last step (switch_platform.cpp), on the window from its first swap
@@ -1620,15 +1762,29 @@ private:
     uint64_t workload = 0;
     std::map<uint32_t, uint64_t> image_workloads;
     std::map<uint32_t, srw64::wide_map::Shape> image_shapes;
-#ifdef __SWITCH__
     // What the last swap showed (update_screen): the colour image, the frame that drew it,
-    // the dialogue frame over it and the readout's version.
+    // the dialogue frame over it, what the shared UI drew (its pages and the readout) and the
+    // window's size.
     struct ScreenKey {
         uint32_t image = 0, drawn = 0;
-        uint64_t workload = 0, readout = 0;
+        uint64_t workload = 0, ui = 0;
+        int width = 0, height = 0;
         bool operator==(const ScreenKey&) const = default;
     };
     ScreenKey last_screen{};
+    std::chrono::steady_clock::time_point last_swap{};
+#if defined(__SWITCH__) || defined(_WIN32)
+    // On Windows a 120 Hz VI asked for four swaps a picture, each a full redraw: three of
+    // them the same, the most of a battle's cost on a CPU renderer.
+    const bool keep_swaps = true;
+#else
+    const bool keep_swaps = std::getenv("SRW64_GL_KEEP") != nullptr;
+#endif
+#ifndef __SWITCH__
+    const bool report_swaps = std::getenv("SRW64_GL_KEEP") != nullptr;
+    unsigned kept_swaps = 0, drawn_swaps = 0;
+#endif
+#ifdef __SWITCH__
     SwitchPerf perf;
     std::vector<uint32_t> combiner_keys;
 #endif
@@ -1637,12 +1793,21 @@ private:
 #ifdef __vita__
 void srw64_vita_graphics_begin() { vita_graphics = std::thread(vita_graphics_init); }
 #endif
+#ifndef SRW64_GL_ONLY
+// renderer_mode.hpp: the HD layers prepare their pictures for the renderer chosen here.
+bool srw64::renderer_mode::gl() { return gl_mode(); }
+#endif
 #endif
 
 std::unique_ptr<ultramodern::renderer::RendererContext> srw64_create_renderer(
     uint8_t* rdram, ultramodern::renderer::WindowHandle handle) {
 #ifdef SRW64_GL_RENDERER
-    if (gl_mode()) return std::make_unique<GLRenderer>(rdram);
+    if (gl_mode()) {
+#ifdef SRW64_NATIVE_DIALOGUE
+        srw64::settings::set_renderer_features({false, false, false, true});   // the settings window says so
+#endif
+        return std::make_unique<GLRenderer>(rdram);
+    }
 #endif
 #ifdef SRW64_GL_ONLY
     (void)handle;
@@ -1705,8 +1870,12 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     Uint32 surface_flags = surface;
 #ifdef SRW64_GL_RENDERER
     if (gl_mode()) {
-#ifdef __SWITCH__
-        // OpenGL ES 2 on the Switch's Mesa (src/gl/gl_api.hpp); it gives ES 3.2.
+#if defined(__SWITCH__) || defined(_WIN32)
+        // OpenGL ES 2 on the Switch's Mesa (src/gl/gl_api.hpp); it gives ES 3.2. On Windows
+        // through EGL, ANGLE's libEGL.dll beside the game, not WGL's opengl32.dll.
+#ifdef _WIN32
+        SDL_SetHint(SDL_HINT_OPENGL_ES_DRIVER, "1");
+#endif
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
@@ -1907,6 +2076,10 @@ void srw64_update_window(void*) {
             srw64::dialogue::request_reload();
 #endif
         if (event.type == SDL_QUIT || (event.type==SDL_WINDOWEVENT && event.window.event==SDL_WINDOWEVENT_CLOSE && event.window.windowID==SDL_GetWindowID(window)) || (!editing_name && event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE && SDL_GetKeyboardFocus() == window)) {
+#ifdef __SWITCH__
+            if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE)
+                switch_window_close_requested = true;
+#endif
             fprintf(stderr, "SRW64_WINDOW_QUIT event=%u vi=%llu\n", event.type, (unsigned long long)srw64_current_vi());
             ultramodern::quit();
         }
@@ -2105,6 +2278,24 @@ void srw64_destroy_window() {
     keyboard_state = 0;
     if (pad) { SDL_GameControllerClose(pad); pad = nullptr; }
     srw64_close_audio();
+#ifdef __SWITCH__
+    // The ordinary way out, as other homebrew: the context, the window and EGL torn down, main
+    // returns and libnx hands back to hbloader. Should that teardown hang again (it waited
+    // forever in _nvCleanup while the graphics thread kept the context, see GLRenderer::
+    // shutdown), the system is asked to end the application after three seconds instead.
+    static std::atomic<bool> torn_down{false};
+    const auto teardown_start = std::chrono::steady_clock::now();
+    stop_background();
+    std::thread fallback;   // joined below: no thread of ours may outlive main (stop_background)
+    if (switch_window_close_requested) {
+        fallback = std::thread([] {
+            for (int i = 0; i < 300 && !torn_down.load(); ++i) std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            if (torn_down.load()) return;
+            std::fprintf(stderr, "SRW64_SWITCH_TEARDOWN still not done after 3 s: asking the system to end the application\n");
+            srw64_switch_finish_session();
+        });
+    }
+#endif
 #ifdef SRW64_GL_RENDERER
     if (gl_context) { SDL_GL_DeleteContext(gl_context); gl_context = nullptr; }
 #endif
@@ -2113,6 +2304,13 @@ void srw64_destroy_window() {
 #endif
     SDL_DestroyWindow(window);
     SDL_Quit();
+#ifdef __SWITCH__
+    torn_down = true;
+    if (fallback.joinable()) fallback.join();
+    std::fprintf(stderr, "SRW64_SWITCH_TEARDOWN window and EGL closed in %.0f ms\n",
+                 std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - teardown_start).count());
+    srw64_switch_log_flush(500);   // the writer thread's quarter second would not come again
+#endif
 }
 
 void srw64_set_capture_directory(const std::filesystem::path& path) { capture_directory = path; }

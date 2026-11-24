@@ -35,6 +35,15 @@ class MiniStageCompilerTests(unittest.TestCase):
             with self.subTest(bad=bad), self.assertRaises(ValueError):
                 compile_stage({**base, "initial_resources": bad})
 
+    def test_episode_uses_the_original_number_card_range(self):
+        base = {"schema": SCHEMA, "events": [{"type": 12, "commands": []}]}
+        self.assertIsNone(compile_stage(base)["episode"])
+        for episode in (1, 24, 99):
+            self.assertEqual(compile_stage({**base, "episode": episode})["episode"], episode)
+        for episode in (0, 100, True, 2.5, "2"):
+            with self.subTest(episode=episode), self.assertRaises(ValueError):
+                compile_stage({**base, "episode": episode})
+
     def test_named_deployments(self):
         # A package's new unit or character by name: NUMBER in the record, its place in "numbers".
         base = {"schema": SCHEMA, "events": [{"type": 12, "commands": []}]}
@@ -157,8 +166,6 @@ class ShippedStagesTests(unittest.TestCase):
 
 
 class CampaignTests(unittest.TestCase):
-    SAMPLE = ROOT / "config/recomp/campaigns/sample/campaign.json"
-
     def write(self, directory: Path, stages: dict, start: str) -> Path:
         stage = {"schema": SCHEMA, "events": [{"type": 12, "commands": [{"op": "3D48"}]},
                                               {"type": 14, "commands": [{"op": "3D4B", "args": [2]}]}]}
@@ -169,21 +176,11 @@ class CampaignTests(unittest.TestCase):
         return path
 
     @unittest.skipUnless(RECORDS.exists(), "original data not extracted")
-    def test_the_sample_compiles_with_every_stage_on_its_own_scene(self):
-        image = compile_campaign(self.SAMPLE)
-        self.assertEqual(image["schema"], "srw64.campaign-image.v1")
-        self.assertEqual(image["start_scene"], 1)
-        self.assertEqual([(s["key"], s["scene"], s["image"]["slot"]) for s in image["stages"]],
-                         [("prologue", 1, 1), ("crossroads", 2, 2), ("ending-a", 3, 3), ("ending-b", 4, 4)])
-        self.assertEqual([next_scenes(s["image"]) for s in image["stages"]], [[2], [3, 4], [], []])
-        self.assertEqual(image["stages"][1]["title"]["zh-Hans"], "第2话　岔路")
-        # The stage info page's metadata rides with its stage, and the status rules get the
-        # scene graph the stages' 3D4B draw.
-        self.assertEqual(image["stages"][1]["meta"]["schema"], "srw64.stage-meta.v1")
-        self.assertEqual(image["stages"][1]["meta"]["scene"], 2)
-        self.assertNotIn("meta", image["stages"][0])
-        self.assertEqual(image["status"]["graph"]["brad"], {"1": [2], "2": [3, 4], "3": [], "4": []})
-        self.assertEqual(image["status"]["starts"]["ark"], 1)
+    def test_the_retry_campaign_compiles(self):
+        # The sample campaign is written stage by stage now (tests/test_stage.py); this one
+        # keeps the earlier source format in use.
+        image = compile_campaign(ROOT / "config/recomp/campaigns/retry/campaign.json")
+        self.assertEqual((image["schema"], image["start_scene"], [s["scene"] for s in image["stages"]]), ("srw64.campaign-image.v1", 5, [5]))
 
     def test_scenes_the_game_treats_specially_cannot_be_borrowed(self):
         self.assertTrue(borrowable(1) and borrowable(142))

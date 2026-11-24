@@ -12,6 +12,7 @@
   border-radius: var(--radius); padding: 7px 9px; min-width: 0;
 }
 .maker .import { margin-top: 14px; cursor: pointer; }
+.maker .import-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .maker .status { min-height: 1.5em; margin-top: 8px; color: var(--muted); font-size: 14px; }
 .maker .status.err { color: var(--pink); }
 .maker .kinds { display: flex; gap: 8px; margin-bottom: 10px; }

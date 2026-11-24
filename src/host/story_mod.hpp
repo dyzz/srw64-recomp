@@ -5,6 +5,7 @@
 #include "mod_quotes.hpp"
 #include "json/json.hpp"
 #include "localization/locale_fallbacks.hpp"
+#include "presentation/file_source.hpp"
 #include <algorithm>
 #include <array>
 #include <cstdio>
@@ -43,7 +44,7 @@ inline constexpr uint32_t header_words=5;   // an event's type and four paramete
 // engine fields: status (0x80 idle, 0x2000+ an event started), poll phase, turn and side,
 // unit counts, the persuader, the persuasion picked, the registered-event count.
 inline constexpr uint32_t f_mode=0x4, f_status=0x97C, f_count=0x98E, f_persuade=0x992, f_phase=0x9AA,
-    f_turn=0x9AC, f_side=0x9AE, f_enemies=0x9B1, f_third=0x9B2, f_battle_a=0x9A0, f_battle_b=0x9A4, f_persuader=0x9A8;
+    f_turn=0x9AC, f_side=0x9AE, f_enemies=0x9B1, f_third=0x9B2, f_battle_a=0x9A0, f_battle_b=0x9A4, f_persuader=0x9A8, f_struck=0x9B6;
 // A host persuasion in +0x992: never a slot number (0..15) nor -1.
 inline constexpr uint16_t persuade_mark=0x7000;
 // Text records of the packages: ids past table 0's 50,975, served from a virtual ROM
@@ -52,12 +53,14 @@ inline constexpr uint16_t text_first=0xC800;
 inline constexpr uint32_t text_table=0x01A34980, text_virtual=0x03400000, text_slot=0x400;
 inline constexpr size_t longest_text=200;   // code points; the native reader pages it
 
-enum class Trigger {turn,defeated,hp_below,battle_after,battle_before,enemies_gone,remaining,persuade,after_opening,after_setup,after_end};
+enum class Trigger {turn,defeated,hp_below,battle_after,battle_before,enemies_gone,remaining,persuade,after_opening,after_setup,after_end,
+    downed,group_gone,reach,turns_after};
 inline std::optional<Trigger> trigger_of(const std::string& name) {
     static const std::map<std::string,Trigger> names{{"turn",Trigger::turn},{"defeated",Trigger::defeated},
         {"hp_below",Trigger::hp_below},{"battle_after",Trigger::battle_after},{"battle_before",Trigger::battle_before},
         {"enemies_gone",Trigger::enemies_gone},{"remaining",Trigger::remaining},{"persuade",Trigger::persuade},
-        {"after_opening",Trigger::after_opening},{"after_setup",Trigger::after_setup},{"after_end",Trigger::after_end}};
+        {"after_opening",Trigger::after_opening},{"after_setup",Trigger::after_setup},{"after_end",Trigger::after_end},
+        {"downed",Trigger::downed},{"group_gone",Trigger::group_gone},{"reach",Trigger::reach},{"turns_after",Trigger::turns_after}};
     const auto found=names.find(name);
     return found==names.end()?std::nullopt:std::optional(found->second);
 }
@@ -65,12 +68,14 @@ inline std::optional<Trigger> trigger_of(const std::string& name) {
 inline int event_type(Trigger t) {
     switch(t) {
         case Trigger::turn: return 0;
-        case Trigger::defeated: return 2;
+        case Trigger::turns_after: return 1;   // the original's delayed count (3D52)
+        case Trigger::defeated: case Trigger::downed: case Trigger::group_gone: return 2;
         case Trigger::hp_below: return 3;
         case Trigger::battle_after: return 4;
         case Trigger::battle_before: return 5;
         case Trigger::enemies_gone: return 6;
         case Trigger::remaining: return 7;
+        case Trigger::reach: return 8;
         case Trigger::persuade: return 9;
         case Trigger::after_opening: return 12;
         case Trigger::after_setup: return 13;
@@ -81,20 +86,42 @@ inline int event_type(Trigger t) {
 // The status the original's handler of that type writes when it starts the event.
 inline uint16_t start_status(Trigger t) {
     switch(t) {
-        case Trigger::defeated: case Trigger::hp_below: case Trigger::battle_after: return 0x2002;
+        case Trigger::defeated: case Trigger::hp_below: case Trigger::battle_after:
+        case Trigger::downed: case Trigger::group_gone: return 0x2002;
         case Trigger::battle_before: return 0x2001;
         default: return 0x2000;
     }
 }
 
+// A condition the compiler wrote as a tree (web/src/lib/compiler/conditions.ts): an event's
+// `if` beyond its older fields, or a step's `if` (Event::checks), decided by the host.
+struct Test {
+    enum class Kind {all,any,not_,var,kills,turn,status,hp,count,in_area,route,choice,funds,downed,roster,flag,fired,level,opponent,we_struck};
+    Kind kind{};
+    std::vector<int> n;               // the numbers, as the compiler lists them
+    std::string name;                 // flag, fired: package-relative
+    std::vector<Test> sub;            // all, any, not
+    std::vector<unsigned> pilots,units;   // roster
+};
+enum Status {on_map,defeated,absent};
+// A unit on the map as the roster (8015E100) has it: side 0 ours, 1 enemy, 2 third.
+struct MapUnit {unsigned side{},slot{},pilot{},unit{},x{},y{};};
+
 struct Event {
     std::string package,id;          // key(): package/id
+    // The custom campaign the event belongs to ("" the main story's): a campaign's stages
+    // borrow the main story's scene numbers, so an event runs in its own of the two only.
+    std::string campaign;
     unsigned scene{};
     Trigger trigger{};
     // turn: turn (0-based, at least), side; defeated, hp_below: who, percent; battle_*: a, b
     // (0 any); enemies_gone: side (4 any), last turn; remaining: third (1) or enemy, at most,
     // side (4 any); persuade: by, target.
     int a{},b{},c{};
+    std::vector<int> params;                       // all of them (downed: 4, reach: 6)
+    std::string after;                             // turns_after: the event (package-relative id) counted from
+    std::optional<Test> test;                      // the `if` keys an older game does not know
+    std::vector<std::pair<size_t,Test>> checks;    // a step's condition: its word, 0 or 1 before each step
     std::map<unsigned,unsigned> vars;              // all must hold (story variables 0..199)
     std::map<unsigned,unsigned> kills;             // pilot -> at least this many kills (our side)
     std::map<unsigned,unsigned> kills_below;       // pilot -> fewer kills than this (our side)
@@ -128,11 +155,16 @@ struct Deployment {
     std::vector<std::array<uint16_t,14>> records;   // group halfword 0 until placed
     std::string key() const {return package+"/"+id;}
 };
+// A line, a choice's options (one per row, "<BR>" between them, 3D44) or a stage's own
+// objective (the map menu's 作戦目的, in place of text 5694 / 5720 there).
+enum class TextKind {line,choice,objective,battle};
 struct Text {
     unsigned speaker{};
     std::map<std::string,std::string> lines;       // locale -> text
-    bool battle{};                                 // a battle quote (mod_quotes.hpp)
+    TextKind kind{};
 };
+// A campaign stage's own winning and losing text (3D65 127,127 in its opening).
+inline constexpr uint16_t objective_win=5567+127, objective_lose=5593+127;
 // A hidden element a package adds to a scene's stage information page (stage_info.cpp):
 // its title and text by locale, and when it shows as done (our roster has these).
 struct Info {
@@ -159,12 +191,75 @@ struct Library {
     std::vector<Deployment> deployments;
     std::vector<Info> infos;
     std::vector<Text> texts;                       // id text_first + index
+    // A campaign's new lines in its stages' opening, set-up and end events, which the
+    // original runs from the scene's own event block (mini_stage.hpp): the line's number
+    // goes at this offset of the block when the scene registers (tools/mods/stage.py).
+    struct Patch {unsigned scene{};uint32_t at{};uint16_t text{};};
+    std::vector<Patch> patches;
+    // A step's condition in those events: its place in the block, 0 or 1 before each step.
+    struct Check {std::string package;unsigned scene{};uint32_t at{};Test test;};
+    std::vector<Check> checks;
+    struct Objective {std::string campaign;unsigned scene{};uint16_t win{},lose{};};
+    std::vector<Objective> objectives;
+    // A battle line (story.ts battleLines): `who` says `text` in a battle of the scene at
+    // these moments (80222B14's contexts, a bit each), against `against` (0 anyone).
+    struct Quote {std::string package,campaign,id;unsigned scene{},who{},against{},moments{};uint16_t text{};bool once{};std::optional<Test> test;};
+    std::vector<Quote> quotes;
     std::vector<std::string> problems;
 };
+inline constexpr uint32_t event_block=0x8019B400,event_block_size=0x1A00;
+inline constexpr uint16_t text_placeholder=0xFFFE;   // story.py TEXT
+inline constexpr uint16_t check_placeholder=0xFFFC;  // story.ts CHECK
+
+// A test as the compiler writes it. Units may be a package's new ones by name.
+inline Test parse_test(const json& j,const std::string& package,unsigned depth=0) {
+    if(depth>16 || !j.is_object() || j.size()!=1)throw std::runtime_error("条件要是只有一个键的对象");
+    const std::string key=j.begin().key();
+    const json& value=j.begin().value();
+    static const std::map<std::string,Test::Kind> kinds{{"all",Test::Kind::all},{"any",Test::Kind::any},{"not",Test::Kind::not_},
+        {"var",Test::Kind::var},{"kills",Test::Kind::kills},{"turn",Test::Kind::turn},{"status",Test::Kind::status},{"hp",Test::Kind::hp},
+        {"count",Test::Kind::count},{"in_area",Test::Kind::in_area},{"route",Test::Kind::route},{"choice",Test::Kind::choice},
+        {"funds",Test::Kind::funds},{"downed",Test::Kind::downed},{"roster",Test::Kind::roster},{"flag",Test::Kind::flag},{"fired",Test::Kind::fired},
+        {"level",Test::Kind::level},{"opponent",Test::Kind::opponent},{"we_struck",Test::Kind::we_struck}};
+    const auto found=kinds.find(key);
+    if(found==kinds.end())throw std::runtime_error("不认识的条件 "+key);
+    Test t;t.kind=found->second;
+    static const std::map<Test::Kind,size_t> sizes{{Test::Kind::var,2},{Test::Kind::kills,3},{Test::Kind::turn,2},{Test::Kind::hp,2},
+        {Test::Kind::count,3},{Test::Kind::in_area,6},{Test::Kind::funds,2},{Test::Kind::downed,4},{Test::Kind::level,2},{Test::Kind::opponent,2}};
+    switch(t.kind) {
+        case Test::Kind::all: case Test::Kind::any:
+            if(!value.is_array() || value.empty())throw std::runtime_error(key+" 要是条件的数组");
+            for(const auto& v:value)t.sub.push_back(parse_test(v,package,depth+1));
+            break;
+        case Test::Kind::not_: t.sub.push_back(parse_test(value,package,depth+1));break;
+        case Test::Kind::status: {
+            static const std::map<std::string,int> states{{"on_map",on_map},{"defeated",defeated},{"absent",absent}};
+            const auto st=states.find(value.at(1).get<std::string>());
+            if(st==states.end())throw std::runtime_error("status 只能是 on_map、defeated、absent");
+            t.n={value.at(0).get<int>(),st->second};
+            break;
+        }
+        case Test::Kind::route: t.n=value.get<std::vector<int>>();break;
+        case Test::Kind::choice: case Test::Kind::we_struck: t.n={value.get<int>()};break;
+        case Test::Kind::flag: case Test::Kind::fired: t.name=value.get<std::string>();break;
+        case Test::Kind::roster:
+            t.pilots=value.value("pilots",std::vector<unsigned>{});
+            for(const auto& u:value.value("units",json::array())) {
+                const auto unit=mod_ids::unit(u,package);
+                if(!unit)throw std::runtime_error("roster.units："+u.dump()+" 不是机体号，也不是已启用的新机体");
+                t.units.push_back(*unit);
+            }
+            break;
+        default:
+            t.n=value.get<std::vector<int>>();
+            if(t.n.size()!=sizes.at(t.kind))throw std::runtime_error(key+" 的数字个数不对");
+    }
+    return t;
+}
 
 // One compiled story file of a package, appended to the library: its text references
 // become the library's text ids. Throws with what is wrong; nothing is added then.
-inline void add_image(Library& library,const std::string& package,const json& image) {
+inline void add_image(Library& library,const std::string& package,const json& image,const std::string& campaign="") {
     if(!image.is_object() || image.value("schema","")!=image_schema)throw std::runtime_error("schema 不是 "+std::string(image_schema));
     const auto& texts=image.at("texts");
     const auto& events=image.at("events");
@@ -188,6 +283,11 @@ inline void add_image(Library& library,const std::string& package,const json& im
             text.lines[locale]=s;
         }
         if(!text.lines.count("ja"))throw std::runtime_error("每句台词都要有 ja");
+        const auto kind=t.value("kind","line");
+        if(kind=="choice")text.kind=TextKind::choice;
+        else if(kind=="objective")text.kind=TextKind::objective;
+        else if(kind=="battle")text.kind=TextKind::battle;
+        else if(kind!="line")throw std::runtime_error("文字种类只能是 line、choice、objective、battle");
         new_texts.push_back(std::move(text));
     }
     std::vector<Deployment> new_deployments;
@@ -225,7 +325,7 @@ inline void add_image(Library& library,const std::string& package,const json& im
     std::vector<Event> new_events;
     std::set<std::string> ids;
     for(const auto& e:events) {
-        Event event;event.package=package;
+        Event event;event.package=package;event.campaign=campaign;
         event.id=e.at("id").get<std::string>();
         if(event.id.empty() || !ids.insert(event.id).second)throw std::runtime_error("事件 id 为空或重复："+event.id);
         event.scene=e.at("scene").get<unsigned>();
@@ -234,9 +334,17 @@ inline void add_image(Library& library,const std::string& package,const json& im
         if(!trigger)throw std::runtime_error(event.id+"：不认识的触发 "+e.at("trigger").get<std::string>());
         event.trigger=*trigger;
         const auto params=e.value("params",json::array());
-        if(params.size()>3)throw std::runtime_error(event.id+"：params 最多三个");
+        if(params.size()>6)throw std::runtime_error(event.id+"：params 最多六个");
         int* slots[]={&event.a,&event.b,&event.c};
-        for(size_t i=0;i<params.size();++i)*slots[i]=params[i].get<int>();
+        for(size_t i=0;i<params.size();++i){event.params.push_back(params[i].get<int>());if(i<3)*slots[i]=event.params.back();}
+        if(event.trigger==Trigger::reach && params.size()!=6)throw std::runtime_error(event.id+"：reach 要六个参数");
+        if(event.trigger==Trigger::downed && params.size()!=4)throw std::runtime_error(event.id+"：downed 要四个参数");
+        event.after=e.value("after",std::string());
+        if(event.trigger==Trigger::turns_after && (params.size()!=2 || event.after.empty()))throw std::runtime_error(event.id+"：turns_after 要回合数、阶段和 after");
+        try {
+            if(e.contains("test"))event.test=parse_test(e["test"],package);
+            for(const auto& c:e.value("checks",json::array()))event.checks.emplace_back(c.at(0).get<size_t>(),parse_test(c.at(1),package));
+        } catch(const std::exception& error){throw std::runtime_error(event.id+"："+error.what());}
         const auto vars=e.value("vars",json::object());
         for(const auto& [var,value]:vars.items()) {
             const unsigned v=unsigned(std::stoul(var)),x=value.get<unsigned>();
@@ -281,6 +389,13 @@ inline void add_image(Library& library,const std::string& package,const json& im
         event.repeat=e.value("repeat",false);
         if(event.repeat && event_type(event.trigger)>=12)throw std::runtime_error(event.id+"：开场／配置／结束之后的事件不能重复");
         for(const auto& w:e.at("words"))event.words.push_back(uint16_t(w.get<unsigned>()));
+        // The two installed 0.1 events have already been compiled with the borrowed
+        // numbers. Translate their known command sequence before giving it to the game.
+        if(package==mod_units::dancouga_package && mod_ids::current()->legacy_dancouga &&
+            event.words==std::vector<uint16_t>{0x3D5A,171,0,314,224,0x3D5A,166,0,228,3000,0x3D6F,881,0xFFFF}) {
+            event.words[3]=uint16_t(unit_of(314,"replace"));
+            event.words[11]=uint16_t(mod_ids::weapon(881,package).value());
+        }
         if(event.words.empty() || event.words.back()!=0xFFFF)throw std::runtime_error(event.id+"：指令要以 FFFF 结束");
         if((header_words+event.words.size())*2>region_size)throw std::runtime_error(event.id+"：指令太长");
         for(const auto& ref:e.value("texts",json::array())) {
@@ -296,6 +411,9 @@ inline void add_image(Library& library,const std::string& package,const json& im
             if(!found)throw std::runtime_error(event.id+"：没有启用的新"+(kind=="weapon"?"武器 ":kind=="pilot"?"人物 ":"机体 ")+ref.at(1).dump());
             event.words[at]=uint16_t(*found);
         }
+        for(const auto& [at,test]:event.checks)
+            if(at<1 || at>=event.words.size() || event.words[at]!=check_placeholder || event.words[at-1]!=0x3E14)
+                throw std::runtime_error(event.id+"：条件的位置不是 3E14 的操作数");
         for(const auto& ref:e.value("levels",json::array())) {
             const size_t at=ref.at(0).get<size_t>();const unsigned pilot=ref.at(1).get<unsigned>();
             if(at<2 || at>=event.words.size() || event.words[at-2]!=0x3D5A || pilot>360)throw std::runtime_error(event.id+"：等级引用不是 3D5A 的第二个操作数");
@@ -400,28 +518,66 @@ inline void add_image(Library& library,const std::string& package,const json& im
         }
         new_infos.push_back(std::move(info));
     }
+    std::vector<Library::Patch> new_patches;
+    std::vector<Library::Check> new_checks;
+    for(const auto& p:image.value("patches",json::array())) {
+        if(p.contains("test")) {
+            Library::Check check{campaign,p.at("scene").get<unsigned>(),p.at("at").get<uint32_t>(),{}};
+            if(campaign.empty() || check.scene>255 || check.at%2 || check.at<2 || check.at+2>event_block_size)
+                throw std::runtime_error("patches：条件只有战役的开场／配置／结束事件能用，或位置越界");
+            check.test=parse_test(p.at("test"),campaign);
+            new_checks.push_back(std::move(check));
+            continue;
+        }
+        Library::Patch patch;
+        patch.scene=p.at("scene").get<unsigned>();patch.at=p.at("at").get<uint32_t>();
+        const size_t index=p.at("text").get<size_t>();
+        if(campaign.empty() || patch.scene>255 || patch.at%2 || patch.at+2>event_block_size || index>=new_texts.size())
+            throw std::runtime_error("patches：只有战役的开场／配置／结束事件能用，或引用越界");
+        patch.text=uint16_t(text_first+base+index);
+        new_patches.push_back(patch);
+    }
     for(auto& t:new_texts)library.texts.push_back(std::move(t));
+    std::vector<Library::Quote> new_quotes;
+    for(const auto& q:image.value("quotes",json::array())) {
+        Library::Quote quote{package,campaign,q.at("id").get<std::string>(),q.at("scene").get<unsigned>(),q.at("who").get<unsigned>(),q.value("against",0u),0,0,
+            q.value("once",false),std::nullopt};
+        const size_t text=q.at("text").get<size_t>();
+        if(quote.scene>255 || quote.who>360 || quote.against>360 || text>=new_texts.size() || new_texts[text].kind!=TextKind::battle)
+            throw std::runtime_error("quotes "+quote.id+"：场景、人物或台词引用越界");
+        for(const auto& m:q.at("moments")){const unsigned n=m.get<unsigned>();if(n>8)throw std::runtime_error("quotes "+quote.id+"：时机 0–8");quote.moments|=1u<<n;}
+        quote.text=uint16_t(text_first+base+text);
+        if(q.contains("test"))quote.test=parse_test(q["test"],package);
+        new_quotes.push_back(std::move(quote));
+    }
+    for(auto& q:new_quotes)library.quotes.push_back(std::move(q));
+    std::vector<Library::Objective> new_objectives;
+    for(const auto& o:image.value("objectives",json::array())) {
+        const size_t win=o.at("win").get<size_t>(),lose=o.at("lose").get<size_t>();
+        if(campaign.empty() || win>=new_texts.size() || lose>=new_texts.size())throw std::runtime_error("objectives：只有战役关卡能写，或文字引用越界");
+        new_objectives.push_back({campaign,o.at("scene").get<unsigned>(),uint16_t(text_first+base+win),uint16_t(text_first+base+lose)});
+    }
+    for(auto& o:new_objectives)library.objectives.push_back(std::move(o));
+    for(const auto& p:new_patches)library.patches.push_back(p);
+    for(auto& c:new_checks)library.checks.push_back(std::move(c));
     for(auto& e:new_events)library.events.push_back(std::move(e));
     for(auto& i:new_infos)library.infos.push_back(std::move(i));
     for(auto& d:new_deployments)library.deployments.push_back(std::move(d));
 }
 // Every story file of the active packages, bottom first (a package above fires first
 // when two fit the same moment).
-inline Library collect(const std::vector<mods::Package>& packages) {
+// With a custom campaign running, the story image beside its campaign image as well
+// (campaign/story.json, tools/mods/stage.py): the events of its stages.
+inline Library collect(const std::vector<mods::Package>& packages,const std::string& campaign="",const fs::path& campaign_story={}) {
     Library library;
     for(const auto& package:packages) {
         if(!package.active)continue;
         const size_t first=library.events.size();
-        const auto folder=package.folder/"story";
-        std::error_code ec;
-        if(!fs::is_directory(folder,ec))continue;
-        std::vector<fs::path> files;
-        for(const auto& entry:fs::directory_iterator(folder,ec))if(entry.path().extension()==".json")files.push_back(entry.path());
-        std::sort(files.begin(),files.end());
-        for(const auto& file:files) {
-            const auto where=package.id()+"/story/"+file.filename().string()+"：";
-            std::ifstream in(file);
-            const auto document=json::parse(in,nullptr,false);
+        const auto package_files=mods::files_of(package);   // its folder or its .srw64mod
+        for(const auto& name:package_files->list("story")) {
+            if(fs::path(name).extension()!=".json")continue;
+            const auto where=package.id()+"/story/"+name+"：";
+            const auto document=json::parse(package_files->read_text("story/"+name).value_or(std::string()),nullptr,false);
             if(document.is_discarded()){library.problems.push_back(where+"JSON 无效");continue;}
             try {add_image(library,package.id(),document);}
             catch(const std::exception& error){library.problems.push_back(where+error.what());}
@@ -429,16 +585,59 @@ inline Library collect(const std::vector<mods::Package>& packages) {
         // Top package first; within a package, its own order.
         std::rotate(library.events.begin(),library.events.begin()+first,library.events.end());
     }
+    if(campaign.empty() || campaign_story.empty())return library;
+    if(const auto bytes=presentation::read_file(campaign_story)) {
+        const auto where=campaign+"/campaign/story.json：";
+        const auto document=json::parse(bytes->begin(),bytes->end(),nullptr,false);
+        if(!document.is_object())library.problems.push_back(where+"JSON 无效");
+        else try {
+            if(document.value("campaign","")!=campaign)library.problems.push_back(where+"不是这个战役的");
+            else add_image(library,campaign,document,campaign);
+        }
+        catch(const std::exception& error){library.problems.push_back(where+error.what());}
+    }
     return library;
 }
 
 // A text record as table 0 holds one: an 8-byte ASCII header (speaker, mode, wait) and a
 // page of blanks (glyph 0) about as long as the Japanese line, up to three rows of 14, so
 // the original types and waits on it as on its own; the native reader shows the line
-// (native_dialogue.cpp, story_record()). An empty page passes without being read. A battle
-// quote has the mode and wait of the ROM's (20, 032): it closes on its own.
+// (native_dialogue.cpp, story_record()). An empty page passes without being read.
+// The ROM font's glyph of one character (native_dialogue.cpp fills it from its glyph table),
+// for the records a choice and an objective need: the original draws their glyphs itself
+// in the Japanese original image mode, and the text overlay counts their ink elsewhere.
+inline std::function<std::optional<uint16_t>(const std::string&)>& glyph_of(){static std::function<std::optional<uint16_t>(const std::string&)> f;return f;}
+inline void encode_japanese(std::vector<uint8_t>& bytes,const std::string& text) {
+    const auto push=[&](uint16_t code){bytes.push_back(uint8_t(code>>8));bytes.push_back(uint8_t(code));};
+    const uint16_t fallback=glyph_of()?glyph_of()("・").value_or(0x0001):0x0001;
+    for(size_t i=0;i<text.size();) {
+        size_t n=1;const auto c=uint8_t(text[i]);
+        if(c>=0xF0)n=4;else if(c>=0xE0)n=3;else if(c>=0xC0)n=2;
+        const auto one=text.substr(i,n);i+=n;
+        push(glyph_of()?glyph_of()(one).value_or(fallback):fallback);
+    }
+}
 inline std::vector<uint8_t> text_record(const Text& text) {
-    char header[9];std::snprintf(header,sizeof header,text.battle?"%03u20032":"%03u00004",text.speaker);
+    if(text.kind==TextKind::choice || text.kind==TextKind::objective) {
+        // As the original's own: a choice is its options a row each, each after a blank (the
+        // cursor bar's room), header 02500004; an objective one row, header 00040000.
+        const char* header=text.kind==TextKind::choice?"02500004":"00040000";
+        std::vector<uint8_t> bytes(header,header+8);
+        const auto& ja=text.lines.at("ja");
+        size_t from=0;
+        for(bool first=true;;first=false) {
+            const auto at=ja.find("<BR>",from);
+            if(!first){bytes.push_back(0xFF);bytes.push_back(0xFE);}
+            if(text.kind==TextKind::choice){bytes.push_back(0);bytes.push_back(0);}
+            encode_japanese(bytes,ja.substr(from,at==std::string::npos?std::string::npos:at-from));
+            if(at==std::string::npos)break;
+            from=at+4;
+        }
+        bytes.push_back(0xFF);bytes.push_back(0xFF);
+        return bytes;
+    }
+    // A battle quote's header is the original's 20032 kind (record 5813 on).
+    char header[9];std::snprintf(header,sizeof header,text.kind==TextKind::battle?"%03u20032":"%03u00004",text.speaker);
     std::vector<uint8_t> bytes(header,header+8);
     const auto& ja=text.lines.at("ja");
     size_t length=0;
@@ -536,17 +735,54 @@ inline uint16_t level_offset(const uint8_t* ram,unsigned pilot) {
 struct View {
     unsigned phase{},turn{},side{},enemies{},third{};
     unsigned battle_a{},battle_b{};                   // the combatants' pilots, 0 when none
+    // engine+0x9B6 (3E17): we struck in this battle, attacking or countering (not defending
+    // or evading when attacked); a MAP weapon of ours too. 801F3F88 / 801FE794 write it.
+    bool we_struck{};
     std::function<unsigned(unsigned)> variable;       // 800A496C
     std::function<double(unsigned)> hp;               // 800A293C: percent, 0 defeated, 103 gone
     std::function<std::optional<unsigned>(unsigned)> kills;   // our pilot's kills; none when not ours
     std::function<bool(unsigned)> has_pilot,has_unit;          // on our roster
+    std::vector<MapUnit> units;                       // on the map now
+    // The group of a unit as the scene's deployment records (engine+0) place it, -1 none.
+    std::function<int(const MapUnit&)> group_of;
+    std::function<std::optional<unsigned>(unsigned)> level;   // a pilot's level (record +5), on the map or ours
+    unsigned funds{};                                 // 8010F5F4
+    int route=-1;                                     // 801602EE: 0 Brad, 1 Manami, 2 Ark, 3 Selain
+    int choice=0;                                     // 801602E4: the last option picked, 1..3
 };
+// Defeats the host has seen this stage (observe(), after State): of a side, a group, a
+// pilot (-1 any of each); whether a unit of a group stands on the map now.
+inline unsigned downs(int side,int group,int pilot);
+inline bool group_on_map(int group);
+// The turn (0-based) an event of this package started in, if it has (began() keeps it).
+inline std::optional<unsigned> started_turn(const std::string& key);
+inline bool inside(const MapUnit& u,int pilot,int side,const int* area) {
+    return (pilot<0 || int(u.pilot)==pilot) && (side<0 || int(u.side)==side) &&
+           int(u.x)>=area[0] && int(u.y)>=area[1] && int(u.x)<=area[2] && int(u.y)<=area[3];
+}
+inline bool on_the_map(const View& v,unsigned pilot) {
+    return std::any_of(v.units.begin(),v.units.end(),[&](const MapUnit& u){return u.pilot==pilot;});
+}
+inline unsigned side_count(const View& v,unsigned side) {
+    return unsigned(std::count_if(v.units.begin(),v.units.end(),[&](const MapUnit& u){return u.side==side;}));
+}
 // Mirrors of the original handlers (8009E598, 8009E604, 8009E6E4, 8009EA88, 8009E9B4,
-// 8009E834, 8009E8B4) without their slot bookkeeping.
+// 8009E834, 8009E8B4) without their slot bookkeeping; downed, group_gone and reach are the
+// host's own (level-editor.md §5.3).
 inline bool holds(const Event& e,const View& v) {
     switch(e.trigger) {
         case Trigger::turn: return unsigned(e.b)==v.side && v.turn>=unsigned(e.a);
-        case Trigger::defeated: return v.hp && int(v.hp(unsigned(e.a)))==0;
+        case Trigger::defeated:
+            // by: the other side of the battle (+0x9A0/+0x9A4, as 3E16 reads it).
+            return v.hp && int(v.hp(unsigned(e.a)))==0 && (e.b<=0 || unsigned(e.b)==v.battle_a || unsigned(e.b)==v.battle_b);
+        case Trigger::downed: return e.params.size()==4 && downs(e.params[0],e.params[1],e.params[2])>=unsigned(e.params[3]);
+        case Trigger::group_gone: return downs(-1,e.a,-1)>0 && !group_on_map(e.a);
+        case Trigger::turns_after: {
+            const auto from=started_turn(e.package+"/"+e.after);
+            return from && unsigned(e.b)==v.side && v.turn>=*from+unsigned(e.a);
+        }
+        case Trigger::reach:
+            return e.params.size()==6 && std::any_of(v.units.begin(),v.units.end(),[&](const MapUnit& u){return inside(u,e.params[0],e.params[1],&e.params[2]);});
         case Trigger::hp_below: {
             if(!v.hp)return false;
             const double hp=v.hp(unsigned(e.a));
@@ -558,7 +794,7 @@ inline bool holds(const Event& e,const View& v) {
             return in(e.a) && in(e.b);
         }
         case Trigger::enemies_gone: return (unsigned(e.a)==v.side || e.a==4) && v.turn<=unsigned(e.b) && v.enemies==0;
-        case Trigger::remaining: return (unsigned(e.c)==v.side || e.c==4) && (e.a==1?v.third:v.enemies)<=unsigned(e.b);
+        case Trigger::remaining: return (unsigned(e.c)==v.side || e.c==4) && (e.a==2?side_count(v,0):e.a==1?v.third:v.enemies)<=unsigned(e.b);
         default: return false;
     }
 }
@@ -577,6 +813,8 @@ struct State {
     fs::path output;                                    // run directory: the log
     std::function<fs::path()> keep;                     // where suspend sidecars go (empty: nowhere)
     int scene=-1;
+    std::string campaign;                               // the custom campaign running ("" none)
+    fs::path campaign_story,loaded_story;               // its story image; the one the library holds
     std::set<std::string> fired;
     std::optional<size_t> running;                      // event index while its words run
     std::vector<unsigned> builds_due;                   // combined units to build (take_builds)
@@ -584,6 +822,10 @@ struct State {
     uint32_t appended_at{};                             // where our records went in the deployment block
     std::vector<uint8_t> appended;                      // and those bytes with the 999, to know them again
     std::set<std::string> flags;                        // long-term: package/flag, kept with every save
+    // The map as the last look saw it (observe()): each roster slot's unit and its group.
+    struct Seen {bool used{};unsigned pilot{},unit{};int group=-1;};
+    std::array<Seen,90> seen{};
+    bool primed{};                                      // false: the next look only records
     struct Saved {std::set<std::string> fired,flags;};
     std::map<uint64_t,Saved> snapshots;                 // save record hash -> what went with it
     bool loaded{};
@@ -598,13 +840,34 @@ struct State {
     std::shared_ptr<const std::vector<Info>> infos=std::make_shared<std::vector<Info>>();
 };
 inline State& state(){static State value;return value;}
-inline bool& disabled(){static bool value{};return value;}   // a custom campaign runs
+// A custom campaign runs: the main story's stage information entries are not its own.
+inline bool& disabled(){static bool value{};return value;}
+// Game thread, before a scene's registration: the campaign running and its story image.
+inline void set_campaign(const std::string& id,const fs::path& story) {
+    auto& s=state();
+    s.campaign=id;s.campaign_story=id.empty()?fs::path():story;
+    disabled()=!id.empty();
+}
+inline bool here(const Event& e){const auto& s=state();return int(e.scene)==s.scene && e.campaign==s.campaign;}
+
+// Game thread, 8008C9C0 (a text into a body slot): the map menu's 作戦目的 asks for 5694 /
+// 5720 when the stage's opening wrote 3D65 127,127; a campaign stage with its own objective
+// gets its text there instead. Otherwise the id as it is.
+inline uint16_t objective_text(const uint8_t* ram,uint16_t id) {
+    if(id!=objective_win && id!=objective_lose)return id;
+    const auto& s=state();
+    if(s.campaign.empty())return id;
+    const unsigned scene=read(ram,scene_byte,1);
+    for(const auto& o:s.library.objectives)
+        if(o.campaign==s.campaign && o.scene==scene)return id==objective_win?o.win:o.lose;
+    return id;
+}
 
 // Game thread, after a change: the copy the debug interface reads.
 inline void publish() {
     auto& s=state();
     json events=json::array();
-    for(const auto& e:s.library.events)if(int(e.scene)==s.scene)events.push_back(e.key());
+    for(const auto& e:s.library.events)if(here(e))events.push_back(e.key());
     json status={{"scene",s.scene},{"events",s.library.events.size()},{"texts",s.library.texts.size()},
         {"problems",s.library.problems},{"this_scene",events},{"fired",s.fired},{"flags",s.flags},
         {"running",s.running?json(s.library.events[*s.running].key()):json()}};
@@ -630,9 +893,9 @@ inline void refresh() {
     auto& s=state();
     const auto now=mods::revision();
     const auto game=mods::game_version();
-    if(s.loaded && now==s.revision && game==s.game)return;
-    s.revision=now;s.game=game;s.loaded=true;
-    s.library=collect(mods::installed(game));
+    if(s.loaded && now==s.revision && game==s.game && s.campaign_story==s.loaded_story)return;
+    s.revision=now;s.game=game;s.loaded=true;s.loaded_story=s.campaign_story;
+    s.library=collect(mods::installed(game),s.campaign,s.campaign_story);
     {std::lock_guard lock(s.texts_mutex);s.texts=std::make_shared<std::vector<Text>>(s.library.texts);}
     {std::lock_guard lock(s.infos_mutex);s.infos=std::make_shared<std::vector<Info>>(s.library.infos);}
     for(const auto& problem:s.library.problems)std::fprintf(stderr,"SRW64_STORY_MOD_PROBLEM %s\n",problem.c_str());
@@ -652,7 +915,7 @@ inline std::optional<Text> text(uint16_t id) {
     if(mod_quotes::ours(id)) {
         const auto quote=mod_quotes::line(id);
         if(!quote)return std::nullopt;
-        return Text{quote->speaker,quote->lines,true};
+        return Text{quote->speaker,quote->lines,TextKind::battle};
     }
     auto& s=state();
     std::shared_ptr<const std::vector<Text>> texts;
@@ -688,7 +951,135 @@ inline bool read_text(uint32_t rom,uint8_t* ram,uint32_t destination,uint32_t si
     return true;
 }
 
+// --- Defeats and conditions ------------------------------------------------------------
+
+// A unit that leaves the map while no event runs was defeated (an event's 3D46 takes them
+// off while it runs). Each defeat is kept in the fired set as "#down/side/group/pilot/n", so
+// it goes with the suspend records as the fired events do and clears with a new stage.
+inline constexpr const char* down_prefix="#down/";
+inline unsigned downs(int side,int group,int pilot) {
+    unsigned n=0;
+    for(const auto& key:state().fired) {
+        if(key.rfind(down_prefix,0))continue;
+        int s=-1,g=-1,p=-1,k=0;
+        if(std::sscanf(key.c_str()+6,"%d/%d/%d/%d",&s,&g,&p,&k)!=4)continue;
+        if((side<0 || s==side) && (group<0 || g==group) && (pilot<0 || p==pilot))++n;
+    }
+    return n;
+}
+inline std::optional<unsigned> started_turn(const std::string& key) {
+    const auto prefix="#at/"+key+"/";
+    for(const auto& k:state().fired)
+        if(!k.rfind(prefix,0))return unsigned(std::strtoul(k.c_str()+prefix.size(),nullptr,10));
+    return std::nullopt;
+}
+inline bool group_on_map(int group) {
+    return std::any_of(state().seen.begin(),state().seen.end(),[&](const State::Seen& u){return u.used && u.group==group;});
+}
+// Game thread, while no event runs (in_event false: before the poll's scans) and after each
+// step of one (true): who is on the map now; what left it since.
+inline void observe(const View& v,bool in_event) {
+    auto& s=state();
+    std::array<State::Seen,90> now{};
+    for(const auto& u:v.units)if(u.side<3 && u.slot<30)now[u.side*30+u.slot]={true,u.pilot,u.unit,-1};
+    for(size_t i=0;i<now.size();++i) {
+        const auto& was=s.seen[i];
+        auto& is=now[i];
+        const bool same=was.used && is.used && was.pilot==is.pilot && was.unit==is.unit;
+        if(same){is.group=was.group;continue;}
+        if(was.used && s.primed && !in_event) {
+            const auto key=std::string(down_prefix)+std::to_string(i/30)+"/"+std::to_string(was.group)+"/"+std::to_string(was.pilot)+"/"+
+                std::to_string(downs(-1,-1,-1));
+            s.fired.insert(key);
+            log({{"action","down"},{"side",i/30},{"group",was.group},{"pilot",was.pilot}});
+        }
+        if(is.used && v.group_of)
+            for(const auto& m:v.units)if(m.side==i/30 && m.slot==i%30)is.group=v.group_of(m);
+    }
+    s.seen=now;s.primed=true;
+}
+inline bool evaluate(const Test& t,const std::string& package,const View& v) {
+    using K=Test::Kind;
+    const auto& n=t.n;
+    switch(t.kind) {
+        case K::all: return std::all_of(t.sub.begin(),t.sub.end(),[&](const Test& x){return evaluate(x,package,v);});
+        case K::any: return std::any_of(t.sub.begin(),t.sub.end(),[&](const Test& x){return evaluate(x,package,v);});
+        case K::not_: return !evaluate(t.sub.at(0),package,v);
+        case K::var: return v.variable && int(v.variable(unsigned(n[0])))==n[1];
+        case K::kills: {
+            const auto has=v.kills?v.kills(unsigned(n[0])):std::nullopt;
+            return has && int(*has)>=n[1] && int(*has)<=n[2];
+        }
+        case K::turn: return int(v.turn)>=n[0] && int(v.turn)<=n[1];
+        case K::status: {
+            const bool here=on_the_map(v,unsigned(n[0]));
+            return n[1]==on_map?here:n[1]==absent?!here:downs(-1,-1,n[0])>0 && !here;
+        }
+        case K::hp: {
+            if(!v.hp || !on_the_map(v,unsigned(n[0])))return false;
+            const double hp=v.hp(unsigned(n[0]));
+            return hp>0 && hp<double(n[1]);
+        }
+        case K::count: {const int c=int(side_count(v,unsigned(n[0])));return c>=n[1] && c<=n[2];}
+        case K::in_area:
+            return std::any_of(v.units.begin(),v.units.end(),[&](const MapUnit& u){return inside(u,n[0],n[1],&n[2]);});
+        case K::route: return std::find(n.begin(),n.end(),v.route)!=n.end();
+        case K::choice: return v.choice==n[0];
+        case K::funds: return int64_t(v.funds)>=n[0] && int64_t(v.funds)<=n[1];
+        case K::downed: return downs(n[0],n[1],n[2])>=unsigned(n[3]);
+        case K::roster:
+            return std::all_of(t.pilots.begin(),t.pilots.end(),[&](unsigned p){return v.has_pilot && v.has_pilot(p);}) &&
+                   std::all_of(t.units.begin(),t.units.end(),[&](unsigned u){return v.has_unit && v.has_unit(u);});
+        case K::level: {
+            const auto a=v.level?v.level(unsigned(n[0])):std::nullopt,b=v.level?v.level(unsigned(n[1])):std::nullopt;
+            return a && b && *a>=*b;
+        }
+        case K::opponent:
+            return (v.battle_a==unsigned(n[0]) && v.battle_b==unsigned(n[1])) || (v.battle_b==unsigned(n[0]) && v.battle_a==unsigned(n[1]));
+        case K::we_struck: return v.we_struck==(n[0]!=0);
+        case K::flag: return state().flags.count(package+"/"+t.name)>0;
+        case K::fired: return state().fired.count(package+"/"+t.name)>0;
+    }
+    return false;
+}
+// A step's conditions, written where its 3E14 reads them: the running event's in the
+// region, a campaign stage's three events' in the scene's block. Called when an event
+// starts and after each step, so a condition is decided at most a step before it is read.
+inline void decide(uint8_t* ram,const View& v) {
+    auto& s=state();
+    if(s.running)for(const auto& [at,test]:s.library.events[*s.running].checks)
+        write16(ram,region+uint32_t((header_words+at)*2),evaluate(test,s.library.events[*s.running].package,v)?1:0);
+    if(!s.campaign.empty())for(const auto& c:s.library.checks)
+        if(int(c.scene)==s.scene && c.package==s.campaign)write16(ram,event_block+c.at,evaluate(c.test,c.package,v)?1:0);
+}
+
+// Battle overlay, 80222B14 (a generic quote drawn into a slot): the voice part of the
+// speaking side (combatant record +2) and the context. A battle line of this scene whose
+// speaker has that voice (D_800CA9C4[pilot]) and whose opponent, if it names one, is the
+// other side of the battle (engine+0x9A0 / +0x9A4) takes the slot's place.
+inline constexpr uint32_t voice_table=0x800CA9C4;
+inline std::optional<uint16_t> battle_quote(const uint8_t* ram,unsigned voice,unsigned context,const View& v) {
+    auto& s=state();
+    if(s.scene<0 || context>8)return std::nullopt;
+    for(const auto& q:s.library.quotes) {
+        if(int(q.scene)!=s.scene || q.campaign!=s.campaign || !(q.moments&(1u<<context)))continue;
+        if(int16_t(read(ram,voice_table+q.who*2,2))!=int(voice))continue;
+        if(q.against) {
+            const unsigned other=v.battle_a==q.who?v.battle_b:v.battle_b==q.who?v.battle_a:0;
+            if(other!=q.against)continue;
+        }
+        const auto key="#quote/"+q.package+"/"+q.id;
+        if(q.once && s.fired.count(key))continue;
+        if(q.test && !evaluate(*q.test,q.package,v))continue;
+        if(q.once)s.fired.insert(key);
+        log({{"action","quote"},{"quote",q.package+"/"+q.id},{"text",q.text},{"context",context}});
+        return q.text;
+    }
+    return std::nullopt;
+}
+
 inline bool eligible(const Event& e,const std::set<std::string>& fired,const View& v) {
+    if(e.test && !evaluate(*e.test,e.package,v))return false;
     if(!e.repeat && fired.count(e.key()))return false;
     // Its own groups must have found room in this scene's deployment block (assign_groups).
     for(const auto& g:e.groups)if(!state().groups.count(g.key))return false;
@@ -765,15 +1156,21 @@ inline void assign_groups(uint8_t* ram) {
     log({{"action","deployments"},{"scene",s.scene},{"groups",numbered},{"at",s.appended_at}});
 }
 
-inline void registered(uint8_t* ram,unsigned mode) {
+inline void registered(uint8_t* ram,unsigned mode,const View* v=nullptr) {
     auto& s=state();
-    if(disabled())return;
     refresh();
     s.scene=int(read(ram,scene_byte,1));
     s.running.reset();
+    s.seen={};s.primed=false;
     if(mode==0)s.fired.clear();
     assign_groups(ram);
-    log({{"action","registered"},{"scene",s.scene},{"mode",mode},{"fired",s.fired},{"flags",s.flags}});
+    // A campaign stage's event block was just written (mini_stage.hpp register_hook): its
+    // new lines get their numbers before any of its events runs.
+    unsigned patched=0;
+    if(!s.campaign.empty())for(const auto& p:s.library.patches)
+        if(int(p.scene)==s.scene && read(ram,event_block+p.at,2)==text_placeholder){write16(ram,event_block+p.at,p.text);++patched;}
+    if(v)decide(ram,*v);
+    log({{"action","registered"},{"scene",s.scene},{"campaign",s.campaign},{"mode",mode},{"patched",patched},{"fired",s.fired},{"flags",s.flags}});
     publish();
 }
 
@@ -797,11 +1194,14 @@ inline std::vector<unsigned> take_builds() {
     std::vector<unsigned> out;out.swap(s.builds_due);
     return out;
 }
-inline void began(uint8_t* ram,size_t index) {
+inline void began(uint8_t* ram,size_t index,const View* v) {
     auto& s=state();
     const auto& e=s.library.events[index];
     write16(ram,engine+f_count,uint16_t(read(ram,engine+f_count,2)+1));
     s.fired.insert(e.key());s.running=index;
+    // When it started, for turns_after (kept with the suspend records as the rest of fired).
+    if(!started_turn(e.key()))s.fired.insert("#at/"+e.key()+"/"+std::to_string(read(ram,engine+f_turn,2)));
+    if(v)decide(ram,*v);
     for(const auto unit:e.builds)s.builds_due.push_back(unit);
     log({{"action","started"},{"event",e.key()},{"scene",s.scene},{"trigger",event_type(e.trigger)}});
     publish();
@@ -812,7 +1212,7 @@ inline std::optional<size_t> choose(const View& v,Wanted&& wanted) {
     auto& s=state();
     for(size_t i=0;i<s.library.events.size();++i) {
         const auto& e=s.library.events[i];
-        if(int(e.scene)!=s.scene || !wanted(e))continue;
+        if(!here(e) || !wanted(e))continue;
         if(eligible(e,s.fired,v))return i;
     }
     return std::nullopt;
@@ -822,14 +1222,14 @@ inline std::optional<size_t> choose(const View& v,Wanted&& wanted) {
 // starts ours the way the original's handler would (`start` calls 8009EE98).
 inline bool scan(uint8_t* ram,unsigned from,unsigned to,const View& v,const std::function<void(uint32_t)>& start) {
     auto& s=state();
-    if(disabled() || s.scene<0 || read(ram,engine+f_status,2)>=0x2000)return false;
+    if(s.scene<0 || read(ram,engine+f_status,2)>=0x2000)return false;
     const auto index=choose(v,[&](const Event& e){return scanned(e.trigger,from,to) && holds(e,v);});
     if(!index)return false;
     const auto& e=s.library.events[*index];
     place(ram,e);
     write16(ram,engine+f_status,start_status(e.trigger));
     start(owner);
-    began(ram,*index);
+    began(ram,*index,&v);
     return true;
 }
 
@@ -839,7 +1239,7 @@ inline bool scan(uint8_t* ram,unsigned from,unsigned to,const View& v,const std:
 // `unit` is 800A2BF4: the map unit of a pilot, 0 when not on the map.
 inline int persuasion(uint8_t* ram,const View& v,const std::function<uint32_t(unsigned)>& unit) {
     auto& s=state();
-    if(disabled() || s.scene<0 || read(ram,engine+f_status,2)>=0x2000)return -1;
+    if(s.scene<0 || read(ram,engine+f_status,2)>=0x2000)return -1;
     const unsigned by=read(ram,engine+f_persuader,2);
     const auto index=choose(v,[&](const Event& e) {
         if(e.trigger!=Trigger::persuade || unsigned(e.a)!=by)return false;
@@ -856,7 +1256,7 @@ inline int persuasion(uint8_t* ram,const View& v,const std::function<uint32_t(un
 // 8009E3B0 wrapper, before the original: in the persuasion phase our mark in +0x992 is
 // started here, as 8009EC3C starts a slot's; the original then sees an event running
 // and returns. Its handler would read the mark as a slot number.
-inline bool persuaded(uint8_t* ram,const std::function<void(uint32_t)>& start) {
+inline bool persuaded(uint8_t* ram,const std::function<void(uint32_t)>& start,const View* v=nullptr) {
     auto& s=state();
     const unsigned mark=read(ram,engine+f_persuade,2);
     if(mark<persuade_mark || mark>=persuade_mark+s.library.events.size())return false;
@@ -866,7 +1266,7 @@ inline bool persuaded(uint8_t* ram,const std::function<void(uint32_t)>& start) {
     write16(ram,engine+f_status,0x2000);
     start(owner);
     write16(ram,engine+f_persuade,0xFFFF);
-    began(ram,index);
+    began(ram,index,v);
     return true;
 }
 // 8009EDB8 wrapper, before the original: in the opening, set-up or end phase (+4 = C1..C3),
@@ -874,7 +1274,7 @@ inline bool persuaded(uint8_t* ram,const std::function<void(uint32_t)>& start) {
 // for that phase go into the pointer one by one; the original starts each as its own.
 inline bool special(uint8_t* ram,const View& v) {
     auto& s=state();
-    if(disabled() || s.scene<0)return false;
+    if(s.scene<0)return false;
     const unsigned mode=read(ram,engine+f_mode,2);
     if(mode<0xC1 || mode>0xC3)return false;
     const uint32_t pointer=engine+8+(mode-0xC1)*4;
@@ -884,13 +1284,15 @@ inline bool special(uint8_t* ram,const View& v) {
     if(!index)return false;
     place(ram,s.library.events[*index]);
     write32(ram,pointer,region);
-    began(ram,*index);
+    began(ram,*index,&v);
     return true;
 }
 // 8009EFDC wrapper, after each step, with the status it returns (8009E180 stores it in
 // +0x97C afterwards): an event of ours that ran to its end.
-inline void stepped(uint16_t status,uint8_t* ram=nullptr) {
+inline void stepped(uint16_t status,uint8_t* ram=nullptr,const View* v=nullptr) {
     auto& s=state();
+    if(v)observe(*v,true);
+    if(ram && v)decide(ram,*v);
     if(!s.running || status!=0x80)return;
     const auto& e=s.library.events[*s.running];
     for(const auto& [unit,pilots]:e.crew) {
@@ -927,7 +1329,6 @@ inline fs::path sidecar(uint64_t hash) {
 }
 inline void serialized(const uint8_t* ram,bool to_sram,Record kind=Record::suspend) {
     auto& s=state();
-    if(disabled())return;
     State::Saved saved{kind==Record::slot?std::set<std::string>{}:s.fired,s.flags};
     const auto hash=record_hash(ram,kind);
     s.snapshots[hash]=saved;
@@ -942,7 +1343,6 @@ inline void serialized(const uint8_t* ram,bool to_sram,Record kind=Record::suspe
 }
 inline void restored(const uint8_t* ram,bool from_sram,Record kind=Record::suspend) {
     auto& s=state();
-    if(disabled())return;
     const auto hash=record_hash(ram,kind);
     std::string from="none";
     s.fired.clear();s.flags.clear();
@@ -957,6 +1357,7 @@ inline void restored(const uint8_t* ram,bool from_sram,Record kind=Record::suspe
         from="file";
     }
     if(kind==Record::slot)s.fired.clear();
+    s.primed=false;
     log({{"action","restored"},{"record",kind==Record::slot?"slot":"suspend"},{"from_sram",from_sram},{"found",from},
          {"fired",s.fired},{"flags",s.flags}});
     publish();

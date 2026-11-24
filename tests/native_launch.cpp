@@ -249,6 +249,20 @@ void launcher_partial_settings() {
     check(run_standalone(f.options,f.game,[](int,char**){return 0;})==0,"language choice over launcher-written settings failed");
     check(load(file).value("ui_size","")=="large" && load(file).value("locale","")=="en","language choice lost the launcher's setting");
     f.options.language.clear();
+    // Its language choice, written before the game ever started (issue #29: 0.5.3 refused it):
+    // that language, the file kept as the launcher wrote it.
+    const auto launcher_language=[&](const std::string& written,const std::string& locale) {
+        atomic_write(file,written);
+        check(run_standalone(f.options,f.game,[&](int,char**) {
+            check(load(env("SRW64_DIALOGUE_DATA")).at("config").at("locale")==locale,"the launcher's language not used");
+            return 0;
+        })==0,"launcher-written language refused");
+        check(load(file)==json::parse(written),"launcher-written language rewritten");
+    };
+    launcher_language("{\"locale\":\"en\"}","en");
+    launcher_language("{\"locale\":\"zh-Hans\",\"ui_size\":\"standard\",\"refresh_rate\":\"display\",\"map_unit_icons\":\"hd\"}","zh-Hans");
+    atomic_write(file,"{\"locale\":5}");
+    rejects([&]{run_standalone(f.options,f.game,[](int,char**){return 0;});},"a locale that is not a name accepted");
     atomic_write(file,"broken json");
     rejects([&]{run_standalone(f.options,f.game,[](int,char**){return 0;});},"unreadable settings accepted without --language");
 }

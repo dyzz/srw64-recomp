@@ -1,4 +1,5 @@
 ---
+import layout from '../../../../../guide/data/hidden-step-layout.json';
 import GuideShell from '../../../components/GuideShell.astro';
 import { GUIDE_UI } from '../../../copy/guide';
 import { hiddenElements, inline, progression, SECRET_ART } from '../../../lib/guide';
@@ -12,6 +13,25 @@ const data = hiddenElements(lang);
 const labels = Object.fromEntries(data.categories.map((c: any) => [c.id, c.label]));
 const I = (x: unknown) => inline(x, ui.tags);
 const stepLabel = (stage: string) => (/\d/.test(stage) ? ui.step.replace('{}', stage) : stage);
+type Step = { stage: string; stage_title?: string; route?: string; text?: string; choices?: string[] };
+type StepGroups = Record<string, (number | number[])[]>;
+const layouts: Record<string, StepGroups> = layout.entries;
+const language = layout.languages.indexOf(tl(lang) === 'zh' ? 'zh-Hans' : tl(lang));
+const label = (key: string) => layout.labels[key as keyof typeof layout.labels][language];
+function stepGroups(entry: { id: string; steps: Step[] }) {
+  return Object.entries(layouts[entry.id] ?? { '': entry.steps.map((_, i) => i + 1) })
+    .map(([heading, rows]) => ({
+      heading: heading && heading !== 'paths' && label(heading),
+      rows: rows.map(row => (Array.isArray(row) ? row : [row]).map(n => entry.steps[n - 1])),
+    }));
+}
+const or = { zh: '或', ja: 'または', en: 'or', ko: '또는' }[tl(lang)];
+const toddPhases = {
+  zh: ['第一次说服', '第二次说服', '加入关卡'],
+  ja: ['1回目の説得', '2回目の説得', '加入ステージ'],
+  en: ['First persuasion', 'Second persuasion', 'Recruitment stage'],
+  ko: ['첫 번째 설득', '두 번째 설득', '합류 스테이지'],
+}[tl(lang)];
 const sources = progression(lang).sources ?? [];
 const lib = library();
 const people = new Map(lib.people.map((p) => [p.id, p]));
@@ -39,18 +59,24 @@ const art = (id: string) => [
           {art(e.id).map((a) => <li class={a.kind}><a href={a.href} title={a.name}><img src={a.src} alt="" loading="lazy" width={a.kind === 'face' ? 80 : 96} height={a.kind === 'face' ? 80 : 96} /><span>{a.name}</span></a></li>)}
         </ul>}
         {e.summary && <p class="summary" set:html={I(e.summary)} />}
-        {e.steps?.length > 0 && <ol class="steps">
-          {e.steps.map((s: any) => (
-            <li>
-              <div class="step-head">
-                {s.stage && <span class="when">{stepLabel(s.stage)}</span>}
-                {s.stage_title && <span class="st">{s.stage_title}</span>}
-                {s.route && <span class="rt">{s.route}</span>}
-              </div>
-              <p set:html={I(s.text)} />
-            </li>
-          ))}
-        </ol>}
+        {e.steps?.length > 0 && stepGroups(e).map(group => <section>
+          {group.heading && <h4 class="route-heading">{group.heading}</h4>}
+          <ol class="steps">{group.rows.map((options, i) => <li>
+            {e.id === 'secret-todd-silky' && <div class="st">{toddPhases[i]}</div>}
+            {options.length > 1 && <div class="rt">{label('either')}</div>}
+            <div class:list={[options.length > 1 && 'parallel-routes']}>
+              {options.map((s, k) => <div class="step-option">
+                {options.length > 1 && <div class="branch-name">{k > 0 && <span class="or">{or} </span>}{s.route}</div>}
+                <div class="step-head">
+                  {s.stage && <span class="when">{stepLabel(s.stage)}</span>}
+                  {s.stage_title && <span class="st">{s.stage_title}</span>}
+                  {options.length === 1 && s.route && <span class="rt">{s.route}</span>}
+                </div>
+                {s.choices ? <ul class="dots notes">{s.choices.map(c => <li set:html={I(c)} />)}</ul> : <p set:html={I(s.text)} />}
+              </div>)}
+            </div>
+          </li>)}</ol>
+        </section>)}
         {e.result && <p class="result" set:html={I(e.result)} />}
         {e.notes?.length > 0 && <ul class="dots notes">{e.notes.map((x: string) => <li set:html={I(x)} />)}</ul>}
         {e.akurasu_notes?.length > 0 && <div class="correction"><p class="ct">{ui.akurasu_box}</p><ul class="dots">{e.akurasu_notes.map((x: string) => <li set:html={I(x)} />)}</ul></div>}
@@ -97,6 +123,11 @@ const art = (id: string) => [
   .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
   .steps > li { position: relative; padding: 10px 0 10px 38px; border-top: 1px solid var(--g-line); counter-increment: s; }
   .steps > li::before { content: counter(s); position: absolute; left: 0; top: 10px; display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid var(--g-line); border-radius: 5px; color: var(--muted); font-size: 12px; font-weight: 700; }
+  .route-heading { margin: 14px 0 4px; color: var(--text); font-size: 14px; }
+  .parallel-routes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: 10px 14px; margin-top: 6px; }
+  .parallel-routes > .step-option { min-width: 0; border-top: 1px solid var(--g-line); padding-top: 6px; }
+  .branch-name { margin-bottom: 4px; color: var(--text); font-size: 13px; font-weight: 600; }
+  .or { color: var(--muted); font-weight: 400; }
   .steps p { margin: 4px 0 0; font-size: 14px; }
   .step-head { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
   .when { padding: 0 8px; border-radius: 999px; background: rgba(63, 208, 255, 0.14); color: #8fe4ff; font-size: 12px; font-weight: 700; }

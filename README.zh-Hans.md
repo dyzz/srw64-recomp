@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="web/public/brand/title-zh.webp" alt="三月风64" width="640">
+  <a href="https://youtu.be/F9cq5RtVZ8I">
+    <img src="web/public/brand/readme-video-zh-Hans.webp" alt="三月风64 — 观看功能介绍视频" width="640">
+  </a>
 </p>
 
 <p align="center"><b>超级机器人大战64 —— 1999 年 N64 游戏的原生重编译版。</b></p>

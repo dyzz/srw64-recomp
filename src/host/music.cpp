@@ -34,12 +34,6 @@ constexpr uint32_t settings_byte=0x8015DDA8;  // bit 0: mono (title オプショ
 constexpr uint32_t game_mode=0x8015DA02;      // 0x1A: カラオケ, which keeps the original
 constexpr unsigned karaoke_mode=0x1A;
 
-json read_json(const fs::path& path) {
-    std::ifstream in(path,std::ios::binary);
-    if(!in)return json();
-    auto data=json::parse(in,nullptr,false);
-    return data.is_discarded()?json():data;
-}
 
 void forget_decoded();
 // The table of replacements, read again when the packages change.
@@ -68,13 +62,22 @@ void refresh_locked() {
     if(const unsigned quotes=mod_quotes::revision();quotes!=quotes_revision){quotes_revision=quotes;table_revision=~0u;}
     if(const unsigned now=mods::revision();now!=table_revision) {
         const auto packages=mods::installed(mods::game_version());
-        table=collect(packages,read_json);
-        battle_table=collect_battle(packages,read_json,[](const std::string& key,const std::string& package){return mod_ids::unit(json(key),package);},
+        table=collect(packages);
+        battle_table=collect_battle(packages,[](const std::string& key,const std::string& package){return mod_ids::unit(json(key),package);},
                                     [](const std::string& key,const std::string& package){return mod_ids::pilot(json(key),package);});
-        voice_table=collect_voices(packages,read_json,mods::archive_voices,named_voice);
+        voice_table=collect_voices(packages,named_voice);
         table_revision=now;
         forget_decoded();   // an updated package's files keep their names
     }
+}
+// The tables brought up to date where waiting costs nothing that shows: the game thread as a
+// battle's theme is chosen (not every song: the title's comes while the packages still load). Only the first quote of a battle with voices but
+// no package music did it otherwise, on the render thread under the dialogue lock: 148 ms
+// on a Switch (the first line after a start, 2026-11-23).
+void warm_tables() {
+    if(!settings::mod_music() && !settings::mod_voice())return;
+    std::lock_guard lock(table_mutex);
+    refresh_locked();
 }
 std::optional<Track> lookup(int song) {
     std::lock_guard lock(table_mutex);
@@ -87,7 +90,7 @@ std::optional<Track> lookup(int song) {
 // Decoding: a whole track at a time on its own thread, the last two kept, so switching
 // between a stage's music and a battle theme does not decode again. Voice lines keep their
 // own last few, as a pilot says the same lines again and again.
-struct Decoded {fs::path file;std::string entry;std::shared_ptr<const Pcm> pcm;std::optional<std::pair<uint64_t,uint64_t>> tag_loop;};
+struct Decoded {fs::path file;std::shared_ptr<const Pcm> pcm;std::optional<std::pair<uint64_t,uint64_t>> tag_loop;};
 struct Cache {std::list<Decoded> list;size_t keep;};
 std::mutex decode_mutex;
 Cache songs_decoded{{},2},lines_decoded{{},16};
@@ -97,26 +100,20 @@ void forget_decoded() {
     songs_decoded.list.clear();lines_decoded.list.clear();
     ++decoded_round;
 }
-// A file's bytes, or the entry's in the package file `file` when there is one.
-std::optional<std::vector<unsigned char>> read_source(const fs::path& file,const std::string& entry) {
-    if(!entry.empty())return mods::read_archive(file,entry);
-    std::ifstream in(file,std::ios::binary);
-    if(!in)return std::nullopt;
-    return std::vector<unsigned char>((std::istreambuf_iterator<char>(in)),std::istreambuf_iterator<char>());
-}
-std::optional<Decoded> decode(const fs::path& file,const std::string& entry={},Cache& cache=songs_decoded) {
+// `path` in a package's files (mod_library.hpp), `file` where that is (the cache's key).
+std::optional<Decoded> decode(const std::shared_ptr<const mods::Files>& files,const std::string& path,const fs::path& file,Cache& cache=songs_decoded) {
     unsigned round;
     {
         std::lock_guard lock(decode_mutex);
         round=decoded_round;
         auto& decoded=cache.list;
-        for(auto it=decoded.begin();it!=decoded.end();++it)if(it->file==file && it->entry==entry){decoded.splice(decoded.begin(),decoded,it);return decoded.front();}
+        for(auto it=decoded.begin();it!=decoded.end();++it)if(it->file==file){decoded.splice(decoded.begin(),decoded,it);return decoded.front();}
     }
-    const auto bytes=read_source(file,entry);
+    const auto bytes=files?files->read(path):std::nullopt;
     if(!bytes)return std::nullopt;
     int error=0;
     stb_vorbis* v=stb_vorbis_open_memory(bytes->data(),int(bytes->size()),&error,nullptr);
-    if(!v){std::fprintf(stderr,"SRW64_MUSIC_DECODE_FAILED %s %s error=%d\n",file.string().c_str(),entry.c_str(),error);return std::nullopt;}
+    if(!v){std::fprintf(stderr,"SRW64_MUSIC_DECODE_FAILED %s error=%d\n",file.string().c_str(),error);return std::nullopt;}
     const auto info=stb_vorbis_get_info(v);
     // LOOPSTART / LOOPLENGTH in the file's comments, as many game music packs carry them.
     std::optional<std::pair<uint64_t,uint64_t>> tag_loop;
@@ -145,7 +142,7 @@ std::optional<Decoded> decode(const fs::path& file,const std::string& entry={},C
         pcm->samples.insert(pcm->samples.end(),chunk.begin(),chunk.begin()+got*2);
     }
     stb_vorbis_close(v);
-    Decoded d{file,entry,std::move(pcm),tag_loop};
+    Decoded d{file,std::move(pcm),tag_loop};
     std::lock_guard lock(decode_mutex);
     if(round==decoded_round)cache.list.push_front(d);
     while(cache.list.size()>cache.keep)cache.list.pop_back();
@@ -187,7 +184,7 @@ void start(int song,const Track& track) {
         voice=v;voice_song=song;mine=++generation;
     }
     std::thread([track,mine]{
-        const auto d=decode(track.file);
+        const auto d=decode(track.files,track.path,track.file);
         std::lock_guard lock(engine_mutex);
         if(generation!=mine || !voice)return;   // replaced or stopped meanwhile
         if(!d){voice->finished=true;return;}
@@ -265,6 +262,7 @@ std::optional<int> package_battle_song(uint32_t rom) {
 }
 
 bool battle(uint8_t* ram,recomp_context* ctx) {
+    warm_tables();
     if(ctx->r5&0xFF || !settings::mod_music())return false;   // a super mode's fixed song stays the original's
     std::optional<int> song;
     {
@@ -291,6 +289,12 @@ double voice_speed() {
     return level>=3 ? 2.0 : level==2 ? 1.75 : 1.0;
 }
 
+bool has_battle_voice(unsigned record) {
+    std::lock_guard lock(table_mutex);
+    refresh_locked();
+    return voice_table.count(int(record))!=0;
+}
+
 void battle_quote(unsigned record) {
     if(!settings::mod_voice())return;
     std::optional<Line> line;
@@ -312,8 +316,8 @@ void battle_quote(unsigned record) {
         v.delay=uint64_t(line->delay_ms)*last_rate/1000;
         speech=v;speech_line=int(record);speech_speed=speed;mine=speech_generation;
     }
-    std::thread([file=line->file,entry=line->entry,mine,speed]{
-        const auto d=decode(file,entry,lines_decoded);
+    std::thread([files=line->files,path=line->path,file=line->file,mine,speed]{
+        const auto d=decode(files,path,file,lines_decoded);
         std::shared_ptr<const Pcm> pcm;
         if(d)pcm=speed>1.01 ? std::shared_ptr<const Pcm>(stretch(*d->pcm,speed)) : d->pcm;
         std::lock_guard lock(engine_mutex);
@@ -321,7 +325,7 @@ void battle_quote(unsigned record) {
         if(!pcm){speech->finished=true;return;}
         speech->pcm=pcm;
     }).detach();
-    std::fprintf(stderr,"SRW64_VOICE line=%u file=%s entry=%s package=%s speed=%.2f\n",record,line->file.string().c_str(),line->entry.c_str(),line->package.c_str(),speed);
+    std::fprintf(stderr,"SRW64_VOICE line=%u file=%s package=%s speed=%.2f\n",record,line->file.string().c_str(),line->package.c_str(),speed);
 }
 
 int speaking_line() {
@@ -329,9 +333,10 @@ int speaking_line() {
     return speech && !speech->finished ? speech_line : -1;
 }
 
-bool speaking(unsigned record) {
+std::optional<double> speech_remaining(unsigned record) {
     std::lock_guard lock(engine_mutex);
-    return speech && speech_line==int(record) && !speech->finished;
+    if(!speech || speech_line!=int(record))return 0.0;
+    return remaining(*speech,last_rate);
 }
 
 void battle_aborted() {

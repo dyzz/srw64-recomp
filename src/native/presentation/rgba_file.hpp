@@ -1,4 +1,5 @@
 #pragma once
+#include "frame_cost.hpp"
 #include <cstdint>
 #include <filesystem>
 #include <fstream>
@@ -6,6 +7,7 @@
 #include <string>
 #include <vector>
 #include "stb/stb_image.h"
+#include "file_source.hpp"
 
 namespace srw64::presentation {
 // Straight RGBA8 from an image file. The released HD pack stores opaque colour
@@ -22,7 +24,7 @@ inline std::filesystem::path alpha_beside(const std::filesystem::path& file) {
     if (file.extension() != ".jpg") return {};
     auto alpha = file;
     alpha.replace_extension(".alpha.png");
-    return std::filesystem::exists(alpha) ? alpha : std::filesystem::path();
+    return file_exists(alpha) ? alpha : std::filesystem::path();
 }
 
 // An image file's bytes, or a range of one: "<file>#<offset>:<size>", the ROM import's
@@ -48,6 +50,7 @@ inline std::vector<char> read_image_bytes(const std::string& path) {
 }
 
 inline RgbaFile load_rgba(const std::filesystem::path& file) {
+    const frame_cost::Timer cost("picture file", file.filename().string());   // read and decoded where it is asked for
     RgbaFile image;
     int n = 0;
     if (const auto name = file.string(); name.find('#') != std::string::npos) {
@@ -59,14 +62,17 @@ inline RgbaFile load_rgba(const std::filesystem::path& file) {
         stbi_image_free(colour);
         return image;
     }
-    uint8_t* colour = stbi_load(file.string().c_str(), &image.width, &image.height, &n, 4);
+    // read_file: a MOD package's picture is read from its package file (file_source.hpp).
+    const auto bytes = read_file(file);
+    uint8_t* colour = bytes ? stbi_load_from_memory(bytes->data(), int(bytes->size()), &image.width, &image.height, &n, 4) : nullptr;
     if (!colour) throw std::runtime_error("Cannot read image " + file.string());
     image.pixels.assign(colour, colour + size_t(image.width) * image.height * 4);
     stbi_image_free(colour);
     const auto alpha_file = alpha_beside(file);
     if (alpha_file.empty()) return image;
     int w = 0, h = 0;
-    uint8_t* alpha = stbi_load(alpha_file.string().c_str(), &w, &h, &n, 2);
+    const auto alpha_bytes = read_file(alpha_file);
+    uint8_t* alpha = alpha_bytes ? stbi_load_from_memory(alpha_bytes->data(), int(alpha_bytes->size()), &w, &h, &n, 2) : nullptr;
     if (!alpha) throw std::runtime_error("Cannot read image " + alpha_file.string());
     if (w != image.width || h != image.height) {
         stbi_image_free(alpha);

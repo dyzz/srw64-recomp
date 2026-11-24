@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="web/public/brand/title-ja.webp" alt="マーチウィンド64" width="640">
+  <a href="https://youtu.be/F9cq5RtVZ8I">
+    <img src="web/public/brand/readme-video-ja.webp" alt="マーチウィンド64 — 機能紹介動画を見る" width="640">
+  </a>
 </p>
 
 <p align="center"><b>スーパーロボット大戦64 —— 1999 年に発売された N64 用ゲームのネイティブ再コンパイル版。</b></p>

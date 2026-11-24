@@ -1,5 +1,7 @@
 #pragma once
 #include "json/json.hpp"
+#include <utility>
+#include <memory>
 #include <cstdint>
 #include <filesystem>
 #include <string>
@@ -12,6 +14,9 @@
 namespace srw64::ability_page {
 void configure(const std::filesystem::path& directory);
 nlohmann::json state();
+// The same without copying it, and a revision that moves only when it changed (the UI's
+// frames, page_snapshot.hpp).
+std::pair<std::shared_ptr<const nlohmann::json>,uint64_t> shared_state();
 // Window thread, for page `serial`: lists "move:R", "page:P", "choose", "back";
 // unit / pilot pages "prev", "next", "choose" (unit: the weapons), "back";
 // weapons "move:R", "page:P", "back".

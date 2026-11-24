@@ -50,6 +50,10 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
 // The battle viewer's thumbnail of a scene (its key, battle_viewer::scenes()) from the art
 // pack's battle sprites (tools/hd_ai/cutin_hd.py scenes); empty without one.
 std::string viewer_scene_image(const std::string& key);
+// The art pack's HD picture of one scene frame (srw64-battle-sprites-hd.json and the other
+// frame lists), its file; empty without one. It covers the union of the frame's parts at the
+// pack's scale. The Library's map movies (map_movie.hpp) draw with it in HD image mode.
+std::string frame_file(uint16_t scene, uint16_t atlas, uint16_t palette, uint8_t frame);
 // A scene image the host makes at run time (rom_art.cpp: BANPRESTO, GAME OVER) instead of
 // an art-pack file, drawn the same way and before any file for the same scene. `render`
 // runs on the worker, returns premultiplied RGBA8 (units unused), and runs again when the

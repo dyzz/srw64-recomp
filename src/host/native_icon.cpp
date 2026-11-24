@@ -9,6 +9,7 @@
 #include "mod_library.hpp"
 #include "native_gpu.hpp"
 #include "native_quads.hpp"
+#include "renderer_mode.hpp"
 #include "presentation/image_mode.hpp"
 #include "unit_icon_art.hpp"
 #include "unit_icon_facing.hpp"
@@ -17,6 +18,7 @@
 #include "wide_map.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
+#include "presentation/file_source.hpp"
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -118,15 +120,16 @@ std::optional<unsigned> icon_unit(const std::string& key, const std::string& pac
     const bool number = !key.empty() && key.size() <= 3 && std::all_of(key.begin(), key.end(), [](char c) { return c >= '0' && c <= '9'; }) &&
                         !(key.size() > 1 && key[0] == '0');
     if (!number || std::stoul(key) >= unit_icon_art::kUnits) return std::nullopt;
-    return unsigned(std::stoul(key));
+    const auto unit=unsigned(std::stoul(key));
+    if(unit==mod_units::old_dancouga && package==mod_units::dancouga_package)
+        return mod_ids::unit(nlohmann::json(unit),package);
+    return unit;
 }
-std::map<unsigned, char> facings(const std::filesystem::path& folder, const std::string& id, std::vector<std::string>& problems) {
+std::map<unsigned, char> facings(const mods::Files& files, const std::string& id, std::vector<std::string>& problems) {
     std::map<unsigned, char> out;
-    std::error_code error;
-    const auto path = folder / "art" / "icons.json";
-    if (!std::filesystem::is_regular_file(path, error)) return out;
-    std::ifstream in(path, std::ios::binary);
-    const auto doc = nlohmann::json::parse(in, nullptr, false);
+    const auto text = files.read_text("art/icons.json");
+    if (!text) return out;
+    const auto doc = nlohmann::json::parse(*text, nullptr, false);
     const std::string name = id + " art/icons.json";
     if (doc.is_discarded() || !doc.is_object() || doc.value("schema", "") != "srw64.icons.v1" || !doc.contains("facing") || !doc["facing"].is_object()) {
         problems.push_back(name + "：要是 {\"schema\": \"srw64.icons.v1\", \"facing\": {…}}");
@@ -156,11 +159,16 @@ void refresh() {
     std::vector<std::string> problems;
     std::error_code error;
     for (const auto& p : mods::installed(game)) {
+        if (!p.active) continue;
+        // Its folder or its .srw64mod: a path into the file reads in place (file_source.hpp).
         const auto dir = p.folder / "art" / "icons";
-        if (!p.active || !std::filesystem::is_directory(dir, error)) continue;
+        const auto package = mods::files_of(p);
+        const auto names = package->list("art/icons");
+        if (names.empty()) continue;
         std::map<unsigned, unsigned> mine;      // icon -> the unit this package gave it for
-        const auto ways = facings(p.folder, p.id(), problems);
-        for (const auto& item : std::filesystem::directory_iterator(dir, error)) {
+        const auto ways = facings(*package, p.id(), problems);
+        for (const auto& listed : names) {
+            const std::filesystem::directory_entry item(dir / listed);
             const auto stem = item.path().stem().string(), name = p.id() + " art/icons/" + item.path().filename().string();
             auto ext = item.path().extension().string();
             std::transform(ext.begin(), ext.end(), ext.begin(), [](unsigned char c) { return char(std::tolower(c)); });
@@ -172,7 +180,8 @@ void refresh() {
             const unsigned icon = found ? upgrades::game_read(srw64::table_window::row(srw64::table_window::map_icons, unit), 2) : 0;
             if (icon < unit_icon_facing::kFirstIcon || icon > unit_icon_facing::kLastIcon) { problems.push_back(name + "：文件名要是有地图图标的机体号"); continue; }
             int w = 0, h = 0, n = 0;
-            if (!stbi_info(item.path().string().c_str(), &w, &h, &n) || !unit_icon_art::size_ok(w, h)) {
+            const auto bytes = presentation::read_file(item.path());
+            if (!bytes || !stbi_info_from_memory(bytes->data(), int(bytes->size()), &w, &h, &n) || !unit_icon_art::size_ok(w, h)) {
                 problems.push_back(name + "：要是 16、32、64 或 128 像素的正方形 PNG");
                 continue;
             }
@@ -190,7 +199,7 @@ void refresh() {
     {
         std::lock_guard lock(asset_mutex);
         for (const auto& [icon, file] : files) {
-            Icon entry{file, std::filesystem::last_write_time(file, error)};
+            Icon entry{file, mods::file_time(file)};
             entry.facing = facing.count(icon) ? facing[icon] : 0;
             // A picture already made (same file and time) is used again.
             if (const auto old = icons.find(icon); old != icons.end() && old->second.file == file && old->second.stamp == entry.stamp) {
@@ -200,7 +209,8 @@ void refresh() {
             }
             if (assets.size() + 4 > kCapacity) { problems.push_back("too many MOD icons"); break; }
             int w = 0, h = 0, n = 0;
-            stbi_uc* pixels = stbi_load(file.string().c_str(), &w, &h, &n, 4);
+            const auto bytes = presentation::read_file(file);
+            stbi_uc* pixels = bytes ? stbi_load_from_memory(bytes->data(), int(bytes->size()), &w, &h, &n, 4) : nullptr;
             if (!pixels || !unit_icon_art::size_ok(w, h)) {
                 if (pixels) stbi_image_free(pixels);
                 problems.push_back(file.filename().string() + "：读不出来");
@@ -225,16 +235,20 @@ void refresh() {
 
 // Game thread, asset_mutex held: the variant's pixels for a draw whose texture is not there.
 void prepare(Asset& asset) {
-#ifdef SRW64_GL_ONLY
-    if (asset.gl_pixels) return;
-    asset.gl_pixels = std::make_shared<const std::vector<uint8_t>>(std::move(unit_icon_art::levels(unit_icon_art::marked(*asset.master, asset.variant)).front()));
-#else
+#ifdef SRW64_GL_RENDERER
+    if (renderer_mode::gl()) {
+        if (asset.gl_pixels) return;
+        asset.gl_pixels = std::make_shared<const std::vector<uint8_t>>(std::move(unit_icon_art::levels(unit_icon_art::marked(*asset.master, asset.variant)).front()));
+        return;
+    }
+#endif
+#ifndef SRW64_GL_ONLY
     if (asset.set || !asset.levels.empty()) return;
     asset.levels = unit_icon_art::levels(unit_icon_art::marked(*asset.master, asset.variant));
 #endif
 }
 
-#ifdef SRW64_GL_ONLY
+#ifdef SRW64_GL_RENDERER
 bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
     if ((id & 0xFFFF0000u) != kIdBase) return false;
     Draw draw;
@@ -259,8 +273,9 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
     ++rendered;
     return true;
 }
+#endif
 
-#else
+#ifndef SRW64_GL_ONLY
 uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     const RT64::DisplayList& tag = dl[-1];
     if (tag.w0 == kTagW0 && (tag.w1 & 0xFFFF0000u) == kTagW1) return kIdBase | (tag.w1 & 0xFFFF);
@@ -320,9 +335,11 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
 void install() {
     if (hooks_installed) return;
     hooks_installed = true;
-#ifdef SRW64_GL_ONLY
+    // Both where the host has both renderers (renderer_mode.hpp): only the running one asks.
+#ifdef SRW64_GL_RENDERER
     native_quads::add(gl_quads);
-#else
+#endif
+#ifndef SRW64_GL_ONLY
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
     RT64::SetNativeMeshHooks(classify, render);

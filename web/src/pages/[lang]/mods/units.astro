@@ -450,7 +450,7 @@ const scenes = sceneRows.slice(1).map((row) => { const cells = row.split(','); r
       <p class="note"><a href={`/${lang}/mods/ids/units/`}>{L({ zh: 'ID 表', en: 'ID tables', ja: 'ID 表', ko: 'ID 표' })}</a> · {L({ zh: '所有处理都在浏览器里完成；没导出的进度存在这个浏览器里（图片除外）。', en: 'Everything happens in your browser; work not exported yet is kept in this browser (pictures aside).', ja: '処理はすべてブラウザー内で行われます。書き出していない作業はこのブラウザーに保存されます（画像を除く）。', ko: '모든 처리는 브라우저 안에서 이루어집니다. 내보내지 않은 작업은 이 브라우저에 저장됩니다 (그림 제외).' })}</p>
     </header>
 
-    <ModPackageForm lang={lang} placeholder="yourname.units" />
+    <ModPackageForm lang={lang} placeholder="yourname.units" template />
 
     <section class="block">
       <div class="kinds" role="tablist">

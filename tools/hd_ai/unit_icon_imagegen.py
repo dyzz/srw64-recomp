@@ -491,6 +491,70 @@ def unacted(master: Image.Image, rid: int) -> Image.Image:
     return image
 
 
+def original_box(ci4: bytes) -> tuple[int, int, int, int] | None:
+    """The opaque part of a 16x16 CI4 icon (colour 0 is clear), as (x0, y0, x1, y1) in its pixels."""
+    rows = [[(ci4[y * 8 + x // 2] >> (4 if x % 2 == 0 else 0)) & 0xF for x in range(16)] for y in range(16)]
+    xs = [x for y in range(16) for x in range(16) if rows[y][x]]
+    ys = [y for y in range(16) for x in range(16) if rows[y][x]]
+    return (min(xs), min(ys), max(xs) + 1, max(ys) + 1) if xs else None
+
+
+def fill_frame(master: Image.Image, box: tuple[int, int, int, int] | None) -> Image.Image:
+    """The master's sprite enlarged to the original icon's frame (2026-11-23 user: the HD icons
+    looked smaller than the original's). The model left a margin of about 8% on every side
+    where the original fills its 16 pixels edge to edge, so the sprite covered 60% of what the
+    original did. The sprite's bounding box is scaled evenly until it meets the original's
+    (`box`, in original pixels) on one axis, centred on it, and kept on the canvas; it never
+    shrinks. Pixels are copied, not blended (each takes the master pixel under its centre),
+    so it stays pixel art; a model block of 2-2.6 master pixels becomes 2-3."""
+    rgba = np.asarray(master.convert("RGBA"))
+    opaque = rgba[:, :, 3] > 0
+    if box is None or not opaque.any():
+        return master.convert("RGBA")
+    ys, xs = np.nonzero(opaque)
+    sx0, sy0, sx1, sy1 = xs.min(), ys.min(), xs.max() + 1, ys.max() + 1
+    unit = GRID / 16
+    tx0, ty0, tx1, ty1 = (v * unit for v in box)
+    scale = max(1.0, min((tx1 - tx0) / (sx1 - sx0), (ty1 - ty0) / (sy1 - sy0)))
+    w, h = (sx1 - sx0) * scale, (sy1 - sy0) * scale
+    left = min(max((tx0 + tx1 - w) / 2, 0.0), GRID - w)
+    top = min(max((ty0 + ty1 - h) / 2, 0.0), GRID - h)
+    centres = np.arange(GRID) + 0.5
+    src_x = np.floor(sx0 + (centres - left) / scale).astype(int)
+    src_y = np.floor(sy0 + (centres - top) / scale).astype(int)
+    inside_x = (src_x >= sx0) & (src_x < sx1)
+    inside_y = (src_y >= sy0) & (src_y < sy1)
+    out = rgba[np.clip(src_y, 0, GRID - 1)][:, np.clip(src_x, 0, GRID - 1)].copy()
+    out[~(inside_y[:, None] & inside_x[None, :])] = 0
+    return Image.fromarray(out, "RGBA")
+
+
+def fill(args: argparse.Namespace) -> None:
+    """Every master in results/ refitted to its original icon's frame (fill_frame). The masters
+    as collected or repainted move to results-unframed/ the first time and are always read
+    from there, so running it again gives the same pictures."""
+    from srw64_rom.resources import ResourceTable
+
+    results, source = args.output / "results", args.output / "results-unframed"
+    resources = ResourceTable(args.rom.read_bytes())
+    if not source.exists():
+        source.mkdir()
+        for path in results.glob("*.png"):
+            if path.stem.isdigit():
+                shutil.copy2(path, source / path.name)
+    rows = []
+    for path in sorted(source.glob("*.png")):
+        rid = int(path.stem)
+        master = Image.open(path).convert("RGBA")
+        framed = fill_frame(master, original_box(resources.extract(rid)[0][8:8 + 128]))
+        framed.save(results / path.name)
+        nearest(framed, 4).save(results / f"{rid}-x4.png")
+        before = int((np.asarray(master)[:, :, 3] > 0).sum())
+        rows.append((rid, int((np.asarray(framed)[:, :, 3] > 0).sum()) / max(before, 1)))
+    grown = sorted(r for _, r in rows)
+    print(f"{len(rows)} masters framed -> {results}; area x{grown[len(grown) // 2]:.2f} (median), x{grown[0]:.2f}-x{grown[-1]:.2f}")
+
+
 def faction_mark(master: Image.Image, palette: int, rid: int = 0) -> Image.Image:
     """The sprite as the palette draws it: in its own colours for every side, grey when acted."""
     if palette != ACTED:
@@ -556,8 +620,14 @@ def pack(args: argparse.Namespace) -> None:
     if args.bind:
         path = ROOT / "content/art/stage1-hd.json"
         manifest = json.loads(path.read_text())
-        rows = [r for r in manifest["textures"] if r["kind"] != "icon"]
-        rows += [{"hash": h, "kind": "icon", "sha256": v} for h, v in sorted(added.items())]
+        # Icon rows are updated where they stand (the manifest is ordered by hash, the other
+        # kinds among them), dropped when gone and added at the end when new.
+        rows = [r for r in manifest["textures"] if r["kind"] != "icon" or r["hash"] in added]
+        for r in rows:
+            if r["kind"] == "icon":
+                r["sha256"] = added[r["hash"]]
+        known = {r["hash"] for r in rows if r["kind"] == "icon"}
+        rows += [{"hash": h, "kind": "icon", "sha256": v} for h, v in sorted(added.items()) if h not in known]
         manifest["textures"] = rows
         manifest["source"] = {"path": str(target.resolve().relative_to(ROOT)), "manifest_sha256": sha((target / "rt64.json").read_bytes())}
         path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
@@ -578,6 +648,10 @@ def main(argv: list[str] | None = None) -> int:
     c.add_argument("--round", default="", help="a subfolder holding this round's outputs/ (e.g. v2); results and review.jpg go there")
     c.add_argument("--raw", action="store_true", help="read raw-generated/<key>.png off the model's own pixel grid (measured) instead of the resized 1024 output")
     c.set_defaults(run=collect)
+    f = sub.add_parser("fill", help="refit every master in results/ to its original icon's frame")
+    f.add_argument("--output", type=Path, required=True, help="the kit, with results/ from collect")
+    f.add_argument("--rom", type=Path, default=ROOT / "rom.z64")
+    f.set_defaults(run=fill)
     k = sub.add_parser("pack", help="key the collected masters by RT64 hash into a copy of the pack")
     k.add_argument("--output", type=Path, required=True, help="the kit, with results/ from collect")
     k.add_argument("--rom", type=Path, default=ROOT / "rom.z64")

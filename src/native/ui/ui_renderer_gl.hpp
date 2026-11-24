@@ -4,6 +4,7 @@
 // RmlUi may make or release textures on the window thread; every GL call waits for the
 // graphics thread's next start() .. end(), where the context is current.
 #pragma once
+#include <cstdint>
 #include <memory>
 #include <string>
 #include <vector>
@@ -16,9 +17,13 @@ public:
     RmlRenderInterface_GL();
     ~RmlRenderInterface_GL();
     Rml::RenderInterface* get_rml_interface();
-    // Graphics thread, GL context current: draw into the bound framebuffer of this size.
-    void start(int width, int height);
-    void end();
+    // Graphics thread, GL context current. begin() .. finish() gathers what RmlUi's Render()
+    // asks for, for a target of this size, and finish() gives its hash: 0 for nothing, else
+    // the same value for the same picture. draw() paints the last gathered into the bound
+    // framebuffer; a frame whose hash is the last one drawn need not be drawn again.
+    void begin(int width, int height);
+    uint64_t finish();
+    void draw();
     // Graphics thread: the GL objects go (the context is about to).
     void release_gl();
     void queue_image_from_bytes_file(const std::string& src, const std::vector<char>& bytes);

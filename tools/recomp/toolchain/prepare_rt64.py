@@ -62,6 +62,91 @@ def patch(checkout: Path, relative: str, old: str | None = None, new: str | None
             "after_sha256": hashlib.sha256(expected.encode()).hexdigest()}
 
 
+# A framebuffer with no bytes in RAM (no rows yet, or one 4-bit pixel per row) has a native
+# copy of no bytes. Vulkan refuses a buffer of no bytes (vmaCreateBuffer 0xFFFFFFFD, the size
+# check); a fresh history slot then keeps no buffer, and copyFromRAM calls into it: the Deck
+# crashed so (SIGSEGV right after that line) on Final Dancouga 0.1.0's 光牙剑 as 0.5.4 first
+# misread it (a 1 x 165 4-bit image at address 0; acef0eb6), 3 runs in 4 (2026-11-23). There is nothing to compare or write back, so those are skipped,
+# and logged once.
+EMPTY_FRAMEBUFFER_UPLOAD = [
+    ("#include <cassert>\n", "#include <cassert>\n#include <cstdio>\n"),
+    ("            Framebuffer *fb = differentFbs[i];\n"
+     "            const uint8_t *fbRAM = &RDRAM[fb->addressStart];\n",
+     "            Framebuffer *fb = differentFbs[i];\n"
+     "            if (NativeTarget::getNativeSize(fb->width, fb->height, fb->siz) == 0) {\n"
+     "                static bool logged = false;\n"
+     "                if (!logged) {\n"
+     "                    logged = true;\n"
+     "                    fprintf(stderr, \"RT64: skipped an empty framebuffer upload (%08X, %u x %u, siz %u)\\n\", fb->addressStart, fb->width, fb->height, fb->siz);\n"
+     "                }\n"
+     "                continue;\n"
+     "            }\n"
+     "\n"
+     "            const uint8_t *fbRAM = &RDRAM[fb->addressStart];\n"),
+]
+EMPTY_NATIVE_TARGET = [
+    ("#include <cstring>\n", "#include <cstdio>\n#include <cstring>\n"),
+    ("        const uint32_t bufferSize = getNativeSize(width, height, siz);\n",
+     "        const uint32_t bufferSize = getNativeSize(width, height, siz);\n"
+     "        if (bufferSize == 0) {\n"
+     "            static bool logged = false;\n"
+     "            if (!logged) {\n"
+     "                logged = true;\n"
+     "                fprintf(stderr, \"RT64: skipped an empty framebuffer read (%u x %u, siz %u)\\n\", width, height, siz);\n"
+     "            }\n"
+     "\n"
+     "            return 0;\n"
+     "        }\n"
+     "\n"),
+    ("        const uint32_t bufferSize = getNativeSize(rowWidth, rowEnd, siz);\n",
+     "        const uint32_t bufferSize = getNativeSize(rowWidth, rowEnd, siz);\n"
+     "        if (bufferSize == 0) {\n"
+     "            return;\n"
+     "        }\n"
+     "\n"),
+    ("        RenderRange readRange = { bufferOffset, bufferOffset + bufferSize };\n",
+     "        if ((bufferSize == 0) || (writeBuffer.nativeReadbackBuffer == nullptr)) {\n"
+     "            writeBufferHistoryIndex++;\n"
+     "            return;\n"
+     "        }\n"
+     "\n"
+     "        RenderRange readRange = { bufferOffset, bufferOffset + bufferSize };\n"),
+]
+
+
+# The RSP keeps its current projection, world transform, light, fog and look-at as indices
+# into the workload being written, and adds a new one only when its matrix or state changes.
+# A new workload starts with only the identity entries, but those flags stay as they were: a
+# frame whose first draws change none of them (a rectangle, say) gets projections and vertices
+# that index the previous workload's arrays, past the new one's. (The extended GBI's group
+# indices are already reset there.) Frame interpolation and the wide picture's projection pass
+# then read and write out of bounds: AddressSanitizer caught GameFrame::matchScene on the Deck
+# (2026-11-23) under Final Dancouga 0.1.0's 光牙剑 as 0.5.4 first misread it (other scenes'
+# pieces, about 10 frames a second there; the reading is fixed in acef0eb6), which corrupted the
+# heap: crashes in TextureMap::use, ProjectionProcessor::processScene, the driver's malloc, or
+# "double free" at exit. Each new workload now marks them changed, so the next draw adds its
+# own. An MVP the game wrote itself (modelViewProjInserted) is kept: told apart from a computed
+# one by value.
+RSP_WORKLOAD_STATE = [
+    ("#include <cinttypes>\n", "#include <cinttypes>\n#include <cstring>\n"),
+    ("        nextWorkload.begin(workloadCounter++);\n",
+     "        nextWorkload.begin(workloadCounter++);\n"
+     "        rsp->projectionMatrixChanged = true;\n"
+     "        if (!rsp->modelViewProjChanged && !rsp->modelViewProjInserted) {\n"
+     "            const hlslpp::float4x4 computed = hlslpp::mul(rsp->modelMatrixStack[rsp->modelMatrixStackSize - 1], rsp->viewProjMatrixStack[rsp->projectionMatrixStackSize - 1]);\n"
+     "            if (memcmp(&computed, &rsp->modelViewProjMatrix, sizeof(computed)) == 0) {\n"
+     "                rsp->modelViewProjChanged = true;\n"
+     "            }\n"
+     "            else {\n"
+     "                rsp->modelViewProjInserted = true;\n"
+     "            }\n"
+     "        }\n\n"
+     "        rsp->lightsChanged = true;\n"
+     "        rsp->fogChanged = true;\n"
+     "        rsp->lookAtChanged = true;\n"),
+]
+
+
 def main() -> int:
     checkout = ROOT / "build/recomp/upstream/RT64"
     lock = json.loads((ROOT / "config/recomp/toolchain.json").read_text())
@@ -91,7 +176,7 @@ def main() -> int:
                                            "src/hle/rt64_present_queue.cpp", "src/rhi/rt64_render_hooks.h",
                                            "src/rhi/rt64_render_hooks.cpp", "src/gui/rt64_file_dialog.cpp",
                                            "src/hle/rt64_framebuffer_manager.cpp", "src/hle/rt64_workload_queue.cpp",
-                                           "src/hle/rt64_rdp.cpp", "src/hle/rt64_vi.cpp"}
+                                           "src/hle/rt64_rdp.cpp", "src/hle/rt64_vi.cpp", "src/hle/rt64_state.cpp"}
                                            | set(NATIVE_MODEL_PATCHES) | set(ANDROID_PATCHES) | set(TEXTURE_FILTER_PATCHES)),
                                 (plume, {"plume_metal.cpp", "plume_vulkan.cpp", "plume_d3d12.cpp", "plume_apple.h", "plume_apple.mm"})):
         changed = set(subprocess.check_output(["git", "diff", "--name-only", "HEAD"], cwd=repository, text=True).splitlines())
@@ -413,7 +498,8 @@ def main() -> int:
                          [("        tileCopy.left = std::clamp<long>(lround(fbTile.left * resolutionScale.x), 0, RenderTarget::MaxDimension);\n"
                            "        tileCopy.top = std::clamp<long>(lround(fbTile.top * resolutionScale.y), 0, RenderTarget::MaxDimension);\n",
                            "        tileCopy.left = std::clamp<long>(scaledLeft, 0, RenderTarget::MaxDimension);\n"
-                           "        tileCopy.top = std::clamp<long>(scaledTop, 0, RenderTarget::MaxDimension);\n")]))
+                           "        tileCopy.top = std::clamp<long>(scaledTop, 0, RenderTarget::MaxDimension);\n"),
+                          *EMPTY_FRAMEBUFFER_UPLOAD]))
     # 2) A 1:1 texture rectangle stretched across the picture samples its copies at its own
     # scale, the pixels it covers over its texels, so a copy drawn back where it was taken
     # lands pixel for pixel, as at 4:3. Collected per framebuffer pair (each has its scale),
@@ -534,6 +620,8 @@ def main() -> int:
                          "                return vi && std::string_view(vi) == \"60\" ? 60u : 120u;\n"
                          "            }();\n",
                          [('#include "rt64_vi.h"\n', '#include "rt64_vi.h"\n\n#include <cstdlib>\n#include <string_view>\n')]))
+    records.append(patch(checkout, "src/render/rt64_native_target.cpp", additional=EMPTY_NATIVE_TARGET))
+    records.append(patch(checkout, "src/hle/rt64_state.cpp", additional=RSP_WORKLOAD_STATE))
     recorded = {r['path'] for r in records}
     for relative in [*NATIVE_MODEL_PATCHES, *TEXTURE_FILTER_PATCHES, *(r for r in ANDROID_PATCHES if not r.startswith("src/contrib/plume/"))]:
         if str((checkout/relative).relative_to(ROOT)) not in recorded:

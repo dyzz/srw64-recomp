@@ -103,6 +103,12 @@
     "settings_msaa_off": "關",
     "settings_msaa_note": "遊戲畫面的 4 倍多重取樣抗鋸齒。 關掉能減輕顯示卡負擔。 重啟遊戲後生效。",
     "settings_msaa_restart": "重啟遊戲後生效。",
+    "settings_picture_scale": "畫面精細度",
+    "settings_picture_scale_note": "相容渲染模式下游戲畫面的內部解析度。自動會按這臺電腦選：沒有顯示卡驅動時 1×，其他 2×。調高更清晰，也更吃性能。重啟遊戲後生效。",
+    "settings_picture_scale_0": "自動",
+    "settings_picture_scale_1": "1×",
+    "settings_picture_scale_2": "2×",
+    "settings_picture_scale_3": "3×",
     "settings_aspect": "畫面比例",
     "settings_aspect_wide": "自動",
     "settings_aspect_original": "4:3（原版）",
@@ -129,6 +135,7 @@
     "settings_filter_loading": "正在編譯濾鏡……",
     "settings_filter_error": "濾鏡載入失敗：",
     "settings_filter_unavailable": "這裡不能用濾鏡：缺少 librashader，或這個平臺（安卓）還不支援。",
+    "settings_renderer_unsupported": "當前渲染方式不支援此項（這臺裝置沒有使用 RT64）。",
     "settings_window": "顯示方式",
     "settings_window_windowed": "視窗",
     "settings_window_fullscreen": "全屏",
@@ -420,14 +427,14 @@
     "settings_update_auto_on": "開",
     "settings_update_auto_off": "關",
     "settings_update_auto_note": "每天最多一次。 讀取官網上的版本號，並下載最新的文本修正。 請求只附帶本程式的版本和平臺，不含你的任何資訊。 新版程式和 HD 包不會自動下載。",
-    "settings_web_link": "網頁工具連接",
+    "settings_web_link": "網頁工具連線",
     "settings_web_link_on": "開",
     "settings_web_link_off": "關",
-    "settings_web_link_note": "讓官網的「機體與人物」製作頁把正在做的 MOD 裝進遊戲試玩，並在戰鬥鑑賞裡播出來。只接受這台電腦上官網頁面的連接，第一次要在遊戲裡確認。試玩的包不進 MOD 列表，關掉遊戲就沒了。",
-    "settings_web_link_status": "正在 {address} 等待網頁連接",
-    "settings_web_link_failed": "沒能開始等待連接：{why}",
-    "web_link_ask_title": "網頁工具連接",
-    "web_link_ask_text": "{origin} 的網頁要連接遊戲。",
+    "settings_web_link_note": "讓官網的「機體與人物」製作頁把正在做的 MOD 裝進遊戲試玩，並在戰鬥鑑賞裡播出來。只接受這臺電腦上官網頁面的連線，第一次要在遊戲裡確認。試玩的包不進 MOD 列表，關掉遊戲就沒了。",
+    "settings_web_link_status": "正在 {address} 等待網頁連線",
+    "settings_web_link_failed": "沒能開始等待連線：{why}",
+    "web_link_ask_title": "網頁工具連線",
+    "web_link_ask_text": "{origin} 的網頁要連線遊戲。",
     "web_link_ask_note": "允許後它能把包裝進遊戲試玩、開戰鬥鑑賞和截圖，直到關掉遊戲。不是你剛在瀏覽器裡點的就拒絕。",
     "web_link_ask_yes": "允許",
     "web_link_ask_no": "拒絕",
@@ -678,7 +685,7 @@
     "mod_turn_off": "停用",
     "mod_remove": "刪除",
     "mod_remove_confirm": "確認刪除",
-    "mod_not_applied": "目前生效的有：音樂替換、戰鬥語音、名字、頭像與地圖圖示、機體／駕駛員／武器的數值、追加劇本；單關挑戰、改主線關卡、其餘美術和臺詞還不會生效。",
+    "mod_not_applied": "目前生效的有：音樂替換、戰鬥語音、名字、頭像、地圖圖示、戰鬥圖、新機體／人物／武器、機體／駕駛員／武器的數值、語言包、追加劇本、改主線關卡；單關挑戰和其餘美術還不會生效。",
     "mod_install_busy": "正在安裝另一個 MOD，請稍候",
     "mod_install_failed": "安裝失敗：{reason}",
     "mod_installed": "已安裝 MOD：{id} {version}",
@@ -752,6 +759,44 @@
     "library_slots": "強化零件槽",
     "library_cap_value": "{n} 段",
     "library_cap": "改造上限",
+    "library_tab_movies": "動畫",
+    "library_movie_title_0": "孔巴德拉V 合體",
+    "library_movie_title_1": "奧拉之路（茲瓦斯）",
+    "library_movie_title_2": "奧拉之路",
+    "library_movie_title_3": "奧拉之路（陶德）",
+    "library_movie_title_4": "奧拉之路（潔麗露）",
+    "library_movie_title_5": "變形：蓋特飛龍",
+    "library_movie_title_6": "變形：蓋特獅虎",
+    "library_movie_title_7": "變形：蓋特波賽頓",
+    "library_movie_title_8": "變形：蓋特1",
+    "library_movie_title_9": "變形：蓋特2",
+    "library_movie_title_10": "變形：蓋特3",
+    "library_movie_title_11": "雷霆王 合體",
+    "library_movie_kind_combine": "合體",
+    "library_movie_kind_aura_road": "奧拉之路",
+    "library_movie_kind_change": "變形",
+    "library_movie_unused": "未使用",
+    "library_movie_scenes": "{n} 段",
+    "library_movie_seconds": "約 {n} 秒",
+    "library_movie_when": "出現場合",
+    "library_movie_units": "相關機體",
+    "library_movie_when_combattler": "孔巴德拉V在地圖上合體時（劇情與合體指令）。",
+    "library_movie_when_aura_road": "劇情中敵人經奧拉之路登場時。",
+    "library_movie_when_unused": "原版裡沒有播放它的地方。",
+    "library_movie_when_change": "駕駛員第一次變形成該形態時（每名駕駛員只播一次）。",
+    "library_movie_when_godmars": "劇情中雷霆王合體時。",
+    "library_movie_play": "播放",
+    "library_movie_pause": "暫停",
+    "library_movie_replay": "從頭播放",
+    "library_movie_back": "後退一幀",
+    "library_movie_forward": "前進一幀",
+    "library_movie_loop": "循環",
+    "library_movie_original": "原版",
+    "library_movie_hd": "高畫質",
+    "library_movie_note": "用原版地圖演出的代碼播放；背後的地圖不顯示。暫停後音樂會停下。",
+    "library_movie_failed": "這段動畫沒能播放。",
+    "library_movie_hint": "{L} / {R} 機體 / 人物 / 動畫   ·   {KeyUp}{KeyDown} 選擇   ·   {KeyRight} 播放控制   ·   {Enter} 播放 / 暫停   ·   {Esc} / {B} 關閉",
+    "library_movie_hint_pad": "{L} / {R} 機體 / 人物 / 動畫   ·   {DUpDown} 選擇   ·   {DRight} 播放控制   ·   {A} 播放 / 暫停   ·   {B} 關閉",
     "library_row": "Library · 圖鑑",
     "library_row_note": "全部機體與人物的資料：能力、武器、精神指令、特殊技能",
     "stage_info_open": "本關情報",
@@ -3769,7 +3814,7 @@
     {
       "key": "base:t00_00560",
       "source_sha256": "a56dd8f90d157995dc8f31843a157951da8724e4241a5142fb0464093e550294",
-      "target": "拉茲格里茲<END>",
+      "target": "拉茲格瑞絲<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3783,7 +3828,7 @@
     {
       "key": "base:t00_00562",
       "source_sha256": "b5556d27fdfc8aed58c6d9c41c93212f086ac98fbda7db51c5bb3599e6b9772b",
-      "target": "瓦伊羅斯<END>",
+      "target": "斬空者<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3993,7 +4038,7 @@
     {
       "key": "base:t00_00593",
       "source_sha256": "72510b6c483364568d524f4b721d4191805ae1cc1c532f11b187dde702f2e649",
-      "target": "梅塔斯（MA）<END>",
+      "target": "梅塔斯(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4007,7 +4052,7 @@
     {
       "key": "base:t00_00595",
       "source_sha256": "09888d58856fcf6f2b15113bf7527b998cd265d30b5344e2e3a081c534e7d749",
-      "target": "梅塔斯改（MA）<END>",
+      "target": "梅塔斯改(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4035,7 +4080,7 @@
     {
       "key": "base:t00_00599",
       "source_sha256": "4f200f5993fa9d0145131f53bf30f61604b6c0e6ad78203741f90f59f5257e8c",
-      "target": "靈格斯（BWS）<END>",
+      "target": "靈格斯(BWS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4357,7 +4402,7 @@
     {
       "key": "base:t00_00645",
       "source_sha256": "8253289b023bddb4cbb390b07dada31b92ae40c90f3c27d606dcb5d91b0a84eb",
-      "target": "飛翼鋼彈（鳥型態）<END>",
+      "target": "飛翼鋼彈(鳥型態)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4371,7 +4416,7 @@
     {
       "key": "base:t00_00647",
       "source_sha256": "efac91e9c586051791ab24f13f26d30e31f892dba169d86b64fad1101cdef4be",
-      "target": "飛翼零式（鳥型態）<END>",
+      "target": "飛翼零式(鳥型態)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4644,21 +4689,21 @@
     {
       "key": "base:t00_00686",
       "source_sha256": "90bdebb2059274ce66bc02d4785c25c6c8e087f313495df81be3151e9ef721e3",
-      "target": "克雷飛天神（WS）<END>",
+      "target": "克雷飛天神(WS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00687",
       "source_sha256": "c6bddd06b3641195afb83a292776e518e26f888c21583eddd6bbf48213abce2b",
-      "target": "克雷飛天神（DS）<END>",
+      "target": "克雷飛天神(DS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00688",
       "source_sha256": "a9c633ad069f0ab177b8de93a34e8b9200423b9e9d19769c11ab2cd79b2b5a61",
-      "target": "克雷飛天神（MS）<END>",
+      "target": "克雷飛天神(MS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5372,7 +5417,7 @@
     {
       "key": "base:t00_00790",
       "source_sha256": "8ad85c28fb97b94c18b812f0e829c2a6d418cb970519b446a891b811b4bffea8",
-      "target": "無敵鐵金剛（JS）<END>",
+      "target": "無敵鐵金剛(JS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5568,14 +5613,14 @@
     {
       "key": "base:t00_00818",
       "source_sha256": "1f55eaa857fbff855b0af5e0c15b3a6e7f7d32bbdda84f66657438f271f669c1",
-      "target": "陶拉斯（MA）<END>",
+      "target": "陶拉斯(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00819",
       "source_sha256": "40de6f6b478d5789b9185600037a9c183643ef26e2a8924440707bb51355020b",
-      "target": "次代鋼彈（MA）<END>",
+      "target": "次代鋼彈(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5645,7 +5690,7 @@
     {
       "key": "base:t00_00829",
       "source_sha256": "fccf7ea2c3820f2d5cc78e290595f99d50b44bb22c7df10cfe5a3750fb3e2bf8",
-      "target": "多爾（飛行）<END>",
+      "target": "多爾(飛行)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5827,7 +5872,7 @@
     {
       "key": "base:t00_00855",
       "source_sha256": "41cc4e09809d9223cc6192ee263c72767e78f8805b840d53bbb9070a4fdbc3fa",
-      "target": "西格露恩<END>",
+      "target": "希格露恩<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5911,14 +5956,14 @@
     {
       "key": "base:t00_00867",
       "source_sha256": "fccf7ea2c3820f2d5cc78e290595f99d50b44bb22c7df10cfe5a3750fb3e2bf8",
-      "target": "多爾（飛行）<END>",
+      "target": "多爾(飛行)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00868",
       "source_sha256": "4f200f5993fa9d0145131f53bf30f61604b6c0e6ad78203741f90f59f5257e8c",
-      "target": "靈格斯（BWS）<END>",
+      "target": "靈格斯(BWS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -6002,7 +6047,7 @@
     {
       "key": "base:t00_00880",
       "source_sha256": "1f55eaa857fbff855b0af5e0c15b3a6e7f7d32bbdda84f66657438f271f669c1",
-      "target": "陶拉斯（MA）<END>",
+      "target": "陶拉斯(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },

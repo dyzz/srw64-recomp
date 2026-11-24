@@ -403,7 +403,7 @@
     "If you never persuaded her, the Persuade command won't appear later, and only the Devil Gundam path remains",
     "When rescued, Devil Gundam's core is replaced by Wong {+}",
     "The Lantau stage is only reached by picking “Go with Domon and the others” in “All-Out Attack on the Cyber Beast Force Base”",
-    "For the God Gundam and Noble Gundam combination attack “Double Burning Finger”, see “Story-unlocked finishers and combination attacks”"
+    "For the God Gundam and Noble Gundam combination attack “Double God Finger”, see “Story-unlocked finishers and combination attacks”"
    ],
    "akurasu_notes": [
     "Akurasu says she must be persuaded within the same turn in the two later stages; the script has no per-turn reset check, so Domon first and then Rain is enough",
@@ -449,11 +449,15 @@
      "stage": "15／16",
      "stage_title": "The Bloodstained Road",
      "route": "Common",
-     "text": "At the start, pick “Head to Ciela” → Ciela + Gran-Garan; pick “Head to Elle” → Elle + Goraon. The two sides fight on different maps against the same enemy lineup {+}"
+     "choices": [
+      "At the start, pick “Head to Ciela” → Ciela + Gran-Garan",
+      "pick “Head to Elle” → Elle + Goraon"
+     ]
     }
    ],
    "result": "The side you pick stays with the team long-term",
    "notes": [
+    "The two sides fight on different maps against the same enemy lineup {+}",
     "The side you didn't pick: on the Independence Army route appears as an ally partway through “The Call of Space” and leaves at the end of the same stage; on the Complete Pacifism route joins at the start of “Spreading Malice” and leaves at the end of “Purification”; on the OZ route appears in “Humanity's Victory, and Then... (Part 1)” and leaves at the end of the same stage {+}",
     "In later stages the only difference is dialogue"
    ],
@@ -1081,7 +1085,7 @@
    "title": "Tod (+ Silky)",
    "kicker": "Character + unit",
    "applies": "Two lines: on the Independence Army line (including fighting alone) pilots the Sirbine, on the OZ line (including with Treize) pilots the Zwauth",
-   "summary": "Show persuades Tod three times, and Tod joins as reinforcements on turn 3 later on; if at that moment Marvel has 30 kills and Garalia is on the team, Silky also rides along {≠}",
+   "summary": "Have Show persuade Tod twice: once in “Shapiro, Reborn!” and once on your chosen route. Tod then joins as reinforcements on turn 3 later on; if at that moment Marvel has 30 kills and Garalia is on the team, Silky also rides along {≠}",
    "steps": [
     {
      "stage": "14／15",
@@ -1111,7 +1115,7 @@
      "stage": "36／37／38",
      "stage_title": "An Unseen Tomorrow",
      "route": "OZ route (incl. the Treize branch)",
-     "text": "On the turn 3 player phase, Tod joins as reinforcements piloting the Zwauth {≠}"
+     "text": "Stage 36 on Real or 37 on Super. For Ark it is stage 37 after “Together from Here On”. For Brad it is stage 38 after “Time to Settle It”. Tod joins in the Zwauth on the player phase of turn 3. Keep him alive until you clear the stage. If shot down here, he leaves permanently. {≠}"
     }
    ],
    "result": "Tod joins; if at the check Marvel has 30 or more kills and Garalia has joined, Silky rides along as sub-pilot",
@@ -1366,9 +1370,9 @@
      "text": "Deploy Ryoma at the start (in any unit) {≠}"
     }
    ],
-   "result": "The sacrifice scene still plays, but Schwarz and the Shadow Gundam are not removed from the team; the end of the stage switches to dialogue in which he survives via the Getter path {≠}{?}",
+   "result": "The sacrifice scene still plays, but Schwarz and the Gundam Spiegel are not removed from the team; the end of the stage switches to dialogue in which he survives via the Getter path {≠}{?}",
    "notes": [
-    "If Ryoma isn't deployed, Schwarz leaves permanently along with the Shadow Gundam when the stage is cleared"
+    "If Ryoma isn't deployed, Schwarz leaves permanently along with the Gundam Spiegel when the stage is cleared"
    ],
    "akurasu_notes": [
     "Akurasu says deploy Shin Getter; the script checks whether the pilot Ryoma is on the map at the start",
@@ -1387,7 +1391,10 @@
      "stage": "40／41／42",
      "stage_title": "Fist of Despair and Sorrow (Part 2)",
      "route": "OZ route",
-     "text": "After the stage, choose “Funnel type” → MP Nu Gundam F; choose “Incom type” → MP Nu Gundam I"
+     "choices": [
+      "After the stage, choose “Funnel type” → MP Nu Gundam F",
+      "choose “Incom type” → MP Nu Gundam I"
+     ]
     }
    ],
    "result": "Obtain the MP Nu Gundam F or I (no pilot)",
@@ -1453,7 +1460,7 @@
    "title": "Kyral + Mandala Gundam",
    "kicker": "Character + unit",
    "applies": "Independence Army / OZ routes (the Complete Pacifism route doesn't pass through the deciding stage)",
-   "summary": "Shoot down Kyral with Domon; in “Terror! Dark Axis Activates! (Part 1)” keep him alive until the last enemy wave is wiped out {≠}",
+   "summary": "Shoot down Kyral with Domon; in “Terror! Devil Axis Activates! (Part 1)” keep him alive until the last enemy wave is wiped out {≠}",
    "steps": [
     {
      "stage": "31／32",
@@ -1469,7 +1476,7 @@
     },
     {
      "stage": "50–55",
-     "stage_title": "Terror! Dark Axis Activates! (Part 1)",
+     "stage_title": "Terror! Devil Axis Activates! (Part 1)",
      "route": "Common",
      "text": "When the first enemy wave is wiped out, Kyral appears as an ally together with Rasid's Maganac Corps; if he is still on the map when the last enemy wave is wiped out, he switches to your side and joins. If he is shot down along the way you don't get him {+}"
     }
@@ -1642,7 +1649,7 @@
    "result": "The weapon is added automatically; nothing to do",
    "notes": [
     "Combination attacks are re-checked every time the weapon list opens: they appear when the participants are connected (diagonal adjacency counts) and each meets its EN and Will requirements; each use costs every participant EN once, with no ammo used {+}",
-    "Double Burning Finger: the God Gundam H (Domon enters Super Mode automatically at 130+ Will) and your Allenby's Noble Gundam, each needing 130 Will and 60 EN. No story unlock needed; also usable on the OZ route once Allenby is recruited {≠}{?}",
+    "Double God Finger: the God Gundam H (Domon enters Super Mode automatically at 130+ Will) and your Allenby's Noble Gundam, each needing 130 Will and 60 EN. No story unlock needed; also usable on the OZ route once Allenby is recruited {≠}{?}",
     "Shuffle Alliance Fist: 130 Will, 100 EN; likewise needs no story unlock, and doesn't require the four members' finishers above to be unlocked {≠}{?}",
     "Sekiha Love Love Tenkyoken: besides the combination conditions it requires Sekiha Tenkyoken to be unlocked, so it becomes usable when Sekiha Tenkyoken does {≠}",
     "“Empress Janera's Human Hunt” itself unlocks no weapons {≠}"
@@ -1651,7 +1658,7 @@
     "Akurasu says the Janera branch adds Combattler V's four weapons; the script unlocks them for all three branches at the start of “Desperate Breakthrough (Part 1)”, and on the OZ route at “Cusco Absolute Defense Line (Part 1)”",
     "Akurasu says the Lantau branch adds Sekiha Tenkyoken; the other routes get it too, just one stage later — on the OZ route at the end of “Fist of Despair and Sorrow (Part 1)”",
     "Akurasu gives Sekiha Love Love Tenkyoken and Shuffle Alliance Fist their own unlock stages; the former follows Sekiha Tenkyoken, the latter is usable as soon as its conditions are met",
-    "Akurasu lists Double Burning Finger at EN 80; the ROM data says 60"
+    "Akurasu lists Double God Finger at EN 80; the ROM data says 60"
    ]
   },
   {
@@ -1666,7 +1673,10 @@
      "stage": "19／20",
      "stage_title": "Operation Daybreak",
      "route": "Common",
-     "text": "After the stage, choose “Join OZ and work to restore order” → OZ route (next stage “A New Path”); choose “We cannot accept what OZ has done” → Independence Army route (next stage “Farewell, Warrior”)"
+     "choices": [
+      "After the stage, choose “Join OZ and work to restore order” → OZ route (next stage “A New Path”)",
+      "choose “We cannot accept what OZ has done” → Independence Army route (next stage “Farewell, Warrior”)"
+     ]
     }
    ],
    "result": "The OZ route runs straight through to the end; the Independence Army route also splits off the Complete Pacifism route at “The Battle of Ryozanpaku”",
@@ -1690,7 +1700,10 @@
      "stage": "21／22",
      "stage_title": "The Battle of Ryozanpaku",
      "route": "Independence Army route",
-     "text": "Pick option 3 at the start (the trusting, agreeing answer, e.g. Ark's “I want to believe it can come true”), then option 2 after the stage (the answer wanting to help, e.g. Ark's “I wish there were something we could do to help”) → Complete Pacifism route (next stage “Spreading Malice”); any other combination → “The Call of Space”"
+     "choices": [
+      "Pick option 3 at the start (the trusting, agreeing answer, e.g. Ark's “I want to believe it can come true”), then option 2 after the stage (the answer wanting to help, e.g. Ark's “I wish there were something we could do to help”) → Complete Pacifism route (next stage “Spreading Malice”)",
+      "any other combination → “The Call of Space”"
+     ]
     }
    ],
    "result": "Enters the Complete Pacifism route; it splits once more when “Return to the Battlefield” is cleared",
@@ -1715,13 +1728,13 @@
     {
      "stage": "31／32",
      "stage_title": "Return to the Battlefield",
-     "route": "Complete Pacifism route",
+     "route": "Complete Pacifism route · Side with Treize",
      "text": "After the stage, choose “Side with Treize” → Treize branch: Fierce Fighting in Space → The Man Back from Jupiter → Brothers → merges into the OZ route at “Prelude to Ruin”"
     },
     {
      "stage": "31／32",
      "stage_title": "Return to the Battlefield",
-     "route": "Complete Pacifism route",
+     "route": "Complete Pacifism route · Fight alone",
      "text": "Pick “We'll fight on our own” → The Galactic Empire's Threat → White Fang → In a World of Endless Strife (Part 1) and Part 2 → merges into the Independence Army route at “Galactic Empire Vanguard Fleet”"
     }
    ],
@@ -1746,7 +1759,10 @@
      "stage": "24／25",
      "stage_title": "Tallgeese Destroyed",
      "route": "OZ route",
-     "text": "After the stage, choose “I can't obey Romefeller” → The Moon Is Hell! (Romefeller side); choose “We act as OZ to the very end” → Moon Attack (Moon Attack side)"
+     "choices": [
+      "After the stage, choose “I can't obey Romefeller” → The Moon Is Hell! (Romefeller side)",
+      "choose “We act as OZ to the very end” → Moon Attack (Moon Attack side)"
+     ]
     }
    ],
    "result": "The Moon Attack side continues to “The Man Who Could Not Become God” → “The Chaos Never Ends”; on the Romefeller side it depends on whether you hold the base (see “The Moon Is Hell!: holding the base”); the two sides merge at “Because of That Purity”",
@@ -1770,7 +1786,10 @@
      "stage": "25／26",
      "stage_title": "The Moon Is Hell!",
      "route": "OZ route (Romefeller side)",
-     "text": "Your flagship enters the base first, or wipe out the Muge forces (including Shapiro's reinforcements) and then the Yellow third party in order → Gato joins, next stages “Where Ambition Leads” → “The Nightmare Returns”; Scirocco or Bask himself enters the base first → “The Man Who Could Not Become God” → “The Chaos Never Ends” {≠}{?}"
+     "choices": [
+      "Your flagship enters the base first, or wipe out the Muge forces (including Shapiro's reinforcements) and then the Yellow third party in order → Gato joins, next stages “Where Ambition Leads” → “The Nightmare Returns”",
+      "Scirocco or Bask himself enters the base first → “The Man Who Could Not Become God” → “The Chaos Never Ends” {≠}{?}"
+     ]
     }
    ],
    "result": "The two lines merge at “Because of That Purity”",
@@ -1864,7 +1883,11 @@
      "stage": "36／37／38",
      "stage_title": "All-Out Attack on the Cyber Beast Force Base",
      "route": "Independence Army route (incl. fighting alone)",
-     "text": "After the stage, choose “Go with the main force” → straight to “Desperate Breakthrough (Part 1)”; choose “Go with Domon and the others” → Death Match! Showdown on Lantau Island (Part 1) / (Part 2); choose “Go with Hyoma and the others” → Empress Janera's Human Hunt"
+     "choices": [
+      "After the stage, choose “Go with the main force” → straight to “Desperate Breakthrough (Part 1)”",
+      "choose “Go with Domon and the others” → Death Match! Showdown on Lantau Island (Part 1) / (Part 2)",
+      "choose “Go with Hyoma and the others” → Empress Janera's Human Hunt"
+     ]
     }
    ],
    "result": "All three lines merge at “Desperate Breakthrough (Part 1)”",
@@ -1921,16 +1944,22 @@
      "stage": "48–53",
      "stage_title": "Nightmare, Once More",
      "route": "Independence Army route (incl. fighting alone)",
-     "text": "After the stage, choose “Go to the Muge universe” → The Last Roar; choose “Remain in the Earth Sphere” → Char's Rebellion"
+     "choices": [
+      "After the stage, choose “Go to the Muge universe” → The Last Roar",
+      "choose “Remain in the Earth Sphere” → Char's Rebellion"
+     ]
     },
     {
      "stage": "48／49／50",
      "stage_title": "A Nightmare with No Waking",
      "route": "OZ route (incl. the Treize branch)",
-     "text": "After the stage, choose “Go to the Muge universe” → A Distant Gamble; choose “Remain in the Earth Sphere” → Char's Rebellion"
+     "choices": [
+      "After the stage, choose “Go to the Muge universe” → A Distant Gamble",
+      "choose “Remain in the Earth Sphere” → Char's Rebellion"
+     ]
     }
    ],
-   "result": "Both sides merge at “Terror! Dark Axis Activates! (Part 1)”, where everyone can deploy again",
+   "result": "Both sides merge at “Terror! Devil Axis Activates! (Part 1)”, where everyone can deploy again",
    "notes": [
     "Obtainable only if you stay on Earth: Mashymre or Chara (Independence Army), Neue Ziel (Independence Army), Qubeley Mk-II recolor",
     "Available when going to the Muge universe, unable to deploy when remaining in the Earth Sphere: Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Roze, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone {+}",

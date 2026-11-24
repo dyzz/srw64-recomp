@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="web/public/brand/title-en.webp" alt="MARCHWIND64" width="640">
+  <a href="https://youtu.be/F9cq5RtVZ8I">
+    <img src="web/public/brand/readme-video-en.webp" alt="MARCHWIND64 — Watch the feature video" width="640">
+  </a>
 </p>
 
 <p align="center"><b>Super Robot Wars 64 — a native recompilation of the 1999 N64 game.</b></p>

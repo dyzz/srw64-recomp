@@ -2,6 +2,7 @@
 // in the frame where the tag was, into the frame's render target. Premultiplied pictures,
 // tinted and faded as HdSprite draws them; a model-space quad goes through the triangles'
 // own transform; the game's depth test is kept (its second, depth-writing pass is not yet).
+#include "../native/presentation/frame_cost.hpp"
 #include "native_quads.hpp"
 #include "native_gl.hpp"
 #include "hd_texture.hpp"
@@ -132,6 +133,7 @@ GLuint texture_for(const native_quads::Quad& q) {
         stats.quad_bytes += bytes;
         const double ms = n64gl::gl_ms_since(start);
         stats.quad_ms += ms;
+        srw64::frame_cost::add("upload", q.label, ms);
         if (ms > 10)
             std::fprintf(stderr, "SRW64_GL_SLOW_UPLOAD %s format=%04X %ux%u levels=%u %.1f ms\n", q.label.c_str(), q.format, q.width,
                          q.height, q.levels, ms);

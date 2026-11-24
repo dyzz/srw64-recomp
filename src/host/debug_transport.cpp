@@ -71,6 +71,14 @@ std::set<Socket> clients;       // open connections, ended by stop()
 // The accept loop runs detached (a joinable std::thread left at exit would terminate the
 // process); stop() waits for it through `looping`.
 std::atomic_bool stopping{false},accepting{false},looping{false};
+#ifdef __SWITCH__
+// libnx never frees a detached thread (its stack, its handle): each connection left one
+// behind, and after enough of them the next std::thread failed and ended the game (creport,
+// 2026-10-24). So the connections' threads are kept here, joined by the accept loop once they
+// have served and by stop() at exit. Never destroyed: at exit() a joinable std::thread's
+// destructor is std::terminate (the settings page's exit ended in 2168-0006, 2026-11-23).
+auto& served=*new std::vector<std::pair<std::thread,std::shared_ptr<std::atomic<bool>>>>;
+#endif
 
 // 256 random bits as hex. std::random_device reads the system's CSPRNG with every
 // toolchain we build with (MSVC STL rand_s, libc++ arc4random/getentropy, libstdc++ getrandom).
@@ -248,10 +256,6 @@ void accept_loop(Socket listener) {
         if(client==invalid)continue;
         {std::lock_guard lock(clients_mutex);clients.insert(client);}
 #ifdef __SWITCH__
-        // libnx never frees a detached thread (its stack, its handle): each connection left
-        // one behind, and after enough of them the next std::thread failed and ended the game
-        // (creport, 2026-10-24). Joined here once they have served.
-        static std::vector<std::pair<std::thread,std::shared_ptr<std::atomic<bool>>>> served;
         std::erase_if(served,[](auto& entry){
             if(!entry.second->load())return false;
             entry.first.join();return true;
@@ -340,6 +344,20 @@ void stop() {
     stopping=true;
     while(looping)std::this_thread::sleep_for(std::chrono::milliseconds(10));  // one poll, at most 200 ms
     {std::lock_guard lock(clients_mutex);for(const auto client:clients)end_connection(client);}
+#ifdef __SWITCH__
+    // At exit libnx closes its sockets and files after main: a connection's thread still in
+    // them then faults (2168-0002 in _close_r, 2026-11-23). Their sockets are shut down above,
+    // so they end; one that does not within a second is left (it may wait on the game).
+    for(int waited=0;waited<1000;waited+=10) {
+        if(std::all_of(served.begin(),served.end(),[](auto& entry){return entry.second->load();}))break;
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    }
+    std::erase_if(served,[](auto& entry){
+        if(!entry.second->load())return false;
+        entry.first.join();return true;
+    });
+    if(!served.empty())std::fprintf(stderr,"SRW64_DEBUG %zu connection(s) still serving at stop\n",served.size());
+#endif
     remove_endpoint();
     endpoint_file.clear();
     accepting=false;

@@ -1,3 +1,5 @@
+#include "present_trace.hpp"
+#include "stall_watchdog.hpp"
 #include "native_dialogue.hpp"
 #include "table_window.hpp"
 #include "mod_names.hpp"
@@ -203,7 +205,17 @@ std::string record_text(const uint8_t* ram,const localization::Catalog& catalog,
             const auto copies=mod_data::pilot_copies();
             if(const auto c=copies.find(of->number);c!=copies.end())source=c->second;
         } else source=unit?mod_data::unit_copy(of->number):mod_data::weapon_copy(of->number);
-        auto text=source?record_text(ram,catalog,table_window::name_record(of->kind,*source)):std::string();
+        // The guest draws the copied record's own bytes: the original fetcher (8008CF14) swaps
+        // only the protagonists' own ids for their name fields, so a copy of one shows the
+        // record as written (ブラッド), not the field holding this route's protagonist.
+        std::string text;
+        if(source) {
+            const auto copied=table_window::name_record(of->kind,*source);
+            if(pilot && entered_name(copied)) {
+                const auto* value=catalog.resolve(localization::TextKey::base(0,copied));
+                text=value?expand(ram,*value,catalog.locale):std::string();
+            } else text=record_text(ram,catalog,copied);
+        }
         if(catalog.locale=="ja" && names::guest_text_depth())return text;
         names::default_names();   // refreshes the packages' names
         if(of->kind!=table_window::NameKind::weapon_menu) {
@@ -368,13 +380,21 @@ void refresh(uint8_t* ram,bool create_events) {
         const std::pair<uint64_t,unsigned> identity{loads[slot],display_only?box.segment:0};
         if(identity!=identities[slot]) {
             // A battle quote's next page keeps its load; a new load is the next quote.
-            if(display_only && identity.first!=identities[slot].first && battle_quote_opened)battle_quote_opened(box.text_id);
+            if(display_only && identity.first!=identities[slot].first && battle_quote_opened) {
+#ifdef __SWITCH__
+                PresentStage timing("quote_open", box.text_id);
+#endif
+                battle_quote_opened(box.text_id);
+            }
             identities[slot]=identity;events[slot]=++event_serial;
         }
         box.event=events[slot];
         if(current[slot].event==box.event && current[slot].layout.text==body &&
            reader.font_size==reader_font_size && current[slot].width==box.width)box.layout=current[slot].layout;
         else {
+#ifdef __SWITCH__
+            PresentStage timing("dialogue_layout", box.text_id);
+#endif
             box.layout=display_only?fitted(body,body_size(reader.font_size),box.width):typeset_body(body,body_size(reader.font_size),source.stops);
             if(display_only && box.layout.pages.size()>1)record("battle_overflow",{{"text_id",box.text_id},{"segment",box.segment},{"pages",box.layout.pages.size()}});
         }
@@ -573,6 +593,9 @@ void service_locale(uint8_t* ram) {
     // thread's step holds this lock across the original's calls, so only when free; a
     // reload or a locale switch then waits for the next frame.
     std::unique_lock lock(mutex,std::try_to_lock);if(!lock)return;
+    if(!reload_requested.load() && language_status.request==language_status.completed)return;
+    // Loading every line again holds this thread: seconds on a phone, over ten on a Switch.
+    const stall::Busy long_work;
     if(reload_requested.exchange(false))reload_text(ram,reload_announce.exchange(false));
     if(language_status.request==language_status.completed)return;
     refresh(ram,true);
@@ -641,6 +664,9 @@ void read_keys() {
 }
 bool step(uint8_t* ram,recomp_context* ctx) {
     std::lock_guard lock(mutex);
+#ifdef __SWITCH__
+    PresentStage timing("dialogue_step_locked", 0);
+#endif
     service_locale(ram);
     const auto font=settings::dialogue_font_size();
     if(reader.font_size!=font) {
@@ -743,6 +769,9 @@ void loaded(uint8_t*,unsigned slot) {
 }
 void drawn(uint8_t* ram,uint32_t begin,uint32_t end) {
     std::lock_guard lock(mutex);
+#ifdef __SWITCH__
+    PresentStage timing("dialogue_drawn_locked", 0);
+#endif
     if(!scene_supported || end<begin || end>0x800000)return;
     refresh(ram,false);
     auto frame=std::make_shared<Frame>();
@@ -815,6 +844,10 @@ void register_languages() {
     std::vector<mod_languages::Language> added;
     for(auto& language:found.languages) {
         try {
+            // Faces open by path: a package file's come out of it into the MOD cache first
+            // (mods::local_file); a folder's are where they are.
+            for(auto& path:language.text_fonts)path=mods::local_file(path);
+            if(!language.title_font.empty())language.title_font=mods::local_file(language.title_font);
             // A face FreeType cannot open would fail every layout of the language: check
             // them here and leave the language out instead.
             for(const auto& path:language.text_fonts)text::FontSet({{path,0,0}});
@@ -850,6 +883,15 @@ void configure(const std::filesystem::path& directory) {
     if(reader.font_size<10 || reader.font_size>18)throw std::runtime_error("Native font size outside 10..18");
     settings::set_dialogue_font_size(reader.font_size,false);
     for(const auto& [key,value]:data.at("glyphs").items())glyphs.emplace(std::stoul(key),value.get<std::string>());
+    {
+        // The other way round, for the records of a story MOD's choices and objectives.
+        auto codes=std::make_shared<std::map<std::string,uint16_t>>();
+        for(const auto& [code,text]:glyphs)if(!text.empty() && !codes->count(text))codes->emplace(text,code);
+        story_mod::glyph_of()=[codes](const std::string& c)->std::optional<uint16_t> {
+            const auto found=codes->find(c);
+            return found==codes->end()?std::nullopt:std::optional<uint16_t>(found->second);
+        };
+    }
     enabled=true;observe=data.at("config").value("mode","replace")=="observe";
     output=directory;srw64::open_run_log(log,directory/"dialogue-events.jsonl");
     {
@@ -999,7 +1041,16 @@ void queue_frame(uint64_t workload,std::shared_ptr<const Frame> frame) {
     while(frames.size()>64)frames.erase(frames.begin());
 }
 std::shared_ptr<const Frame> presented_frame(uint64_t workload) {
-    std::lock_guard lock(mutex);auto it=frames.find(workload);return it==frames.end()?nullptr:it->second;
+#ifdef __SWITCH__
+    std::unique_lock lock(mutex, std::defer_lock);
+    {
+        PresentStage timing("frame_lock", workload);
+        lock.lock();
+    }
+#else
+    std::lock_guard lock(mutex);
+#endif
+    auto it=frames.find(workload);return it==frames.end()?nullptr:it->second;
 }
 }
 
@@ -1040,6 +1091,9 @@ std::string body_page(const uint8_t* ram,uint32_t body) {
     const unsigned page=byte(ram,body+0x214) && byte(ram,body+0x215)?byte(ram,body+0x215):0;
     const auto shown=segment(decode(ram,body+12,256),page);
     const uint16_t id=half(ram,body);
+    // A story MOD's choice or objective (0xC800 up): its own text in the reading language.
+    if(id>=story_mod::text_first)
+        if(const auto line=story_mod::line(id,localization::catalog().locale))return segment(*line,page);
     const auto japanese=localization::find("ja");
     if(!id || !japanese || segment(guest_record_text(ram,*japanese,id),page)!=shown)return shown;
     const auto translated=segment(record_text(ram,localization::catalog(),id),page);

@@ -1,4 +1,5 @@
 #include "save_page.hpp"
+#include "page_snapshot.hpp"
 #include "intermission_mode.hpp"
 #include "dialogue_data.hpp"
 #include "run_files.hpp"
@@ -691,11 +692,12 @@ void title_overlay_changed(){std::lock_guard lock(mutex);if(title){hide("overlay
 // The window thread's read every UI frame (and the debug thread's). A step holds the page's
 // lock across the original's own waits (game_hooks.cpp, 80085F30): the window, and the
 // present waiting behind its UI lock, get the last snapshot then rather than wait.
-std::mutex snapshot_mutex;json snapshot;
-json state() {
-    if(std::unique_lock lock(mutex,std::try_to_lock);lock){std::lock_guard s(snapshot_mutex);snapshot=current;}
-    std::lock_guard s(snapshot_mutex);return snapshot;
+PageSnapshot snapshot;   // page_snapshot.hpp
+std::pair<PageSnapshot::Shared,uint64_t> shared_state() {
+    if(std::unique_lock lock(mutex,std::try_to_lock);lock)snapshot.take(current);
+    return snapshot.get();
 }
+json state(){return *shared_state().first;}
 void answer(uint64_t id,const std::string& action) {
     std::lock_guard lock(mutex);
     if(current.value("visible",false) && current.value("serial",uint64_t{})==id && pending.empty())pending=action;

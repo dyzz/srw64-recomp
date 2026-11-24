@@ -60,6 +60,7 @@ input::Bindings load_bindings(const nlohmann::json& saved) {
 std::atomic<BattleUi> battle{BattleUi::Native};
 std::atomic_bool map_icons_hd{true};
 std::atomic_bool msaa_on{true},msaa_started{true};
+std::atomic<unsigned> picture_scale_chosen{0},picture_scale_started{0};
 #if defined(__ANDROID__)
 // Android is being tuned on the phone (docs/design/android-port.md): the readout starts on.
 // The Switch's starts off as the desktop's: it covered the pages' top right corner there.
@@ -86,7 +87,7 @@ std::atomic_bool dialogue_size_changed{};
 void persist(const std::filesystem::path& path,const std::string& locale) {
     auto saved=nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
         {"battle_ui",battle_ui_name(battle)},{"intermission_ui",native_intermission?"native":"original"},{"weapon_upgrade",unified_weapons?"unified":"single"},{"name_entry_ui",native_name_entry?"native":"original"},
-        {"map_unit_icons",map_icons_hd?"hd":"original"},{"msaa",msaa_on.load()},{"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"},{"show_fps",fps_shown.load()},
+        {"map_unit_icons",map_icons_hd?"hd":"original"},{"msaa",msaa_on.load()},{"picture_scale",picture_scale_chosen.load()},{"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"},{"show_fps",fps_shown.load()},
         {"game_speed",srw64::game_speed::level.load()},{"refresh_rate",refresh_rate_name(refresh_choice.load())},
         {"debug_interface",debug_on.load()},{"web_link",web_link_on.load()},{"dialogue_hints",hints_always?"always":"auto"},
         {"mod_music",mod_music_on.load()},{"mod_music_volume",mod_music_percent.load()},
@@ -177,6 +178,25 @@ void set_show_fps(bool show) {
 const char* refresh_rate_name(RefreshRate rate){return rate==RefreshRate::Original?"original":rate==RefreshRate::Sixty?"60":"display";}
 RefreshRate refresh_rate_from(const std::string& name){return name=="original"?RefreshRate::Original:name=="60"?RefreshRate::Sixty:RefreshRate::Display;}
 RefreshRate refresh_rate(){return refresh_choice.load();}
+namespace {
+#ifdef SRW64_GL_ONLY
+std::atomic<uint8_t> features_bits{8};
+#else
+std::atomic<uint8_t> features_bits{7};
+#endif
+}
+RendererFeatures renderer_features() {
+    const uint8_t bits=features_bits.load();
+    return {bool(bits&1),bool(bits&2),bool(bits&4),bool(bits&8)};
+}
+void set_renderer_features(RendererFeatures f){features_bits=uint8_t((f.interpolation?1:0)|(f.msaa?2:0)|(f.filters?4:0)|(f.picture_scale?8:0));}
+unsigned picture_scale(){return picture_scale_chosen.load();}
+unsigned picture_scale_at_start(){return picture_scale_started.load();}
+void set_picture_scale(unsigned scale) {
+    picture_scale_chosen=std::min(scale,3u);
+    if(destination.empty())return;
+    try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
+}
 void set_refresh_rate(RefreshRate rate) {
     refresh_choice=rate;
     if(destination.empty())return;
@@ -413,6 +433,8 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         if(saved.is_object())map_icons_hd=saved.value("map_unit_icons","hd")!="original";
         if(saved.is_object())unified_weapons=saved.value("weapon_upgrade","unified")!="single";
         if(saved.is_object() && saved.contains("msaa") && saved["msaa"].is_boolean())msaa_on=msaa_started=saved["msaa"].get<bool>();
+        if(saved.is_object() && saved.contains("picture_scale") && saved["picture_scale"].is_number_unsigned() && saved["picture_scale"].get<unsigned>()<=3)
+            picture_scale_chosen=picture_scale_started=saved["picture_scale"].get<unsigned>();
         if(saved.is_object() && saved.contains("settings_page") && saved["settings_page"].is_string())page=saved["settings_page"].get<std::string>();
         if(saved.is_object() && saved.contains("aspect") && saved["aspect"].is_string())frame::wide=saved["aspect"].get<std::string>()!="4:3";
         if(saved.is_object() && saved.contains("show_fps") && saved["show_fps"].is_boolean())fps_shown=saved["show_fps"].get<bool>();

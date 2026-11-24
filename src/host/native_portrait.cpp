@@ -11,6 +11,7 @@
 #endif
 #include "native_gpu.hpp"
 #include "native_quads.hpp"
+#include "renderer_mode.hpp"
 #include "hd_texture.hpp"
 #include "mod_library.hpp"
 #include "portrait_identities_table.hpp"
@@ -149,7 +150,7 @@ void decode(Asset& asset) {
     ++decoded;
 }
 
-#ifdef SRW64_GL_ONLY
+#ifdef SRW64_GL_RENDERER
 // The GL renderer's picture: the prepared, compressed copy where there is one (the Switch,
 // hd_texture.hpp), else the decoded level 0. Idle ones beyond kResident go again.
 void gl_prepare(Asset& asset) {
@@ -196,8 +197,9 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
     ++rendered;
     return true;
 }
+#endif
 
-#else
+#ifndef SRW64_GL_ONLY
 uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     const RT64::DisplayList& tag = dl[-1];
     if (tag.w0 == kTagW0 && (tag.w1 & 0xFFFF0000u) == kTagW1) return kIdBase | (tag.w1 & 0xFFFF);
@@ -258,9 +260,11 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
 void install() {
     if (hooks_installed) return;
     hooks_installed = true;
-#ifdef SRW64_GL_ONLY
+    // Both where the host has both renderers (renderer_mode.hpp): only the running one asks.
+#ifdef SRW64_GL_RENDERER
     native_quads::add(gl_quads);
-#else
+#endif
+#ifndef SRW64_GL_ONLY
     // Chain after marker/hdmap, which install their hooks first.
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
@@ -322,9 +326,11 @@ void refresh_mods() {
     std::vector<std::string> problems;
     std::error_code error;
     for (const auto& p : mods::installed(game)) {
+        if (!p.active) continue;
+        // Its folder or its .srw64mod: a path into the file reads in place (file_source.hpp).
         const auto dir = p.folder / "art" / "portraits";
-        if (!p.active || !std::filesystem::is_directory(dir, error)) continue;
-        for (const auto& item : std::filesystem::directory_iterator(dir, error)) {
+        for (const auto& name : mods::files_of(p)->list("art/portraits")) {
+            const std::filesystem::directory_entry item(dir / name);
             const auto stem = item.path().stem().string();
             auto ext = item.path().extension().string();
             std::transform(ext.begin(), ext.end(), ext.begin(), [](unsigned char c) { return char(std::tolower(c)); });
@@ -334,7 +340,7 @@ void refresh_mods() {
             const unsigned pilot = number ? unsigned(std::stoul(stem)) : 0;
             if (!number || !pilot_images.contains(pilot)) { problems.push_back(p.id() + " art/portraits/" + item.path().filename().string() + "：文件名要是有头像的人物号"); continue; }
             int w = 0, h = 0, n = 0;
-            if (!stbi_info(item.path().string().c_str(), &w, &h, &n) || w != h || w < 96 || w > 2048 || w % 96) {
+            if (!mod_sprites::image_info(item.path(), w, h, n) || w != h || w < 96 || w > 2048 || w % 96) {
                 problems.push_back(p.id() + " art/portraits/" + item.path().filename().string() + "：要是 96–2048 像素、96 的倍数的正方形 PNG");
                 continue;
             }
@@ -352,8 +358,8 @@ void refresh_mods() {
                                                [&](const Identity& i) { return i.image == image && i.palette == palette; });
             if (identity == std::end(kIdentities)) { problems.push_back("art/portraits/" + std::to_string(pilot) + ".png：这个人物的头像认不出来"); continue; }
             int w = 0, h = 0, n = 0;
-            stbi_info(file.string().c_str(), &w, &h, &n);
-            const auto stamp = std::filesystem::last_write_time(file, error);
+            mod_sprites::image_info(file, w, h, n);
+            const auto stamp = mods::file_time(file);
             // A picture already loaded (same file, size and time) is used again.
             int index = -1;
             for (size_t i = 0; i < assets.size(); ++i)
@@ -376,12 +382,11 @@ void refresh_mods() {
         for (const auto& [pilot, p] : own) {
             if (p.hd.empty()) continue;
             int w = 0, h = 0, n = 0;
-            if (!stbi_info(p.hd.string().c_str(), &w, &h, &n) || w != h || w < 96 || w > 2048 || w % 96) {
+            if (!mod_sprites::image_info(p.hd, w, h, n) || w != h || w < 96 || w > 2048 || w % 96) {
                 problems.push_back("pilot " + std::to_string(pilot) + " " + p.hd.filename().string() + "：要是 96–2048 像素、96 的倍数的正方形 PNG");
                 continue;
             }
-            std::error_code stamp_error;
-            const auto stamp = std::filesystem::last_write_time(p.hd, stamp_error);
+            const auto stamp = mods::file_time(p.hd);
             int index = -1;
             for (size_t i = 0; i < assets.size(); ++i)
                 if (assets[i].file == p.hd && assets[i].size == w && assets[i].stamp == stamp) index = int(i);
@@ -479,11 +484,11 @@ void rewrite(uint8_t* rdram, const PortraitDraw& draw) {
     Asset& asset = assets[size_t(found.second.first)];
     {
         std::lock_guard lock(asset_mutex);
-#ifdef SRW64_GL_ONLY
-        if (!asset.gl_pixels) gl_prepare(asset);
-#else
-        if (!asset.set && asset.levels.empty()) decode(asset);
+#ifdef SRW64_GL_RENDERER
+        if (renderer_mode::gl()) { if (!asset.gl_pixels) gl_prepare(asset); }
+        else
 #endif
+        if (!asset.set && asset.levels.empty()) decode(asset);
     }
     Draw record;
     record.asset = found.second.first;

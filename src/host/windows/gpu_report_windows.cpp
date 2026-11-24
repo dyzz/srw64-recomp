@@ -1,6 +1,7 @@
 // What each display adapter offers D3D12, and what the Vulkan loader offers (gpu_report.hpp).
 // The DLLs are loaded here rather than linked, so a PC without them still gets its lines.
 #include "../gpu_report.hpp"
+#include "gpu_rules.hpp"
 #include <cstdint>
 #include <cstdio>
 #include <iterator>
@@ -79,13 +80,19 @@ void log_d3d12(std::vector<std::string>& names) {
                 const bool has8 = SUCCEEDED(device->QueryInterface(__uuidof(ID3D12Device8), reinterpret_cast<void**>(&device8)));
                 if (device8) device8->Release();
                 device->Release();
+                // Microsoft's Basic Render Driver (WARP, vendor 1414) passes, but RT64 crashes on it
+                // (renderer_fallback_windows.cpp), so it counts as no.
                 std::snprintf(d3d, sizeof d3d, "fl=%s sm=%s device8=%s rt64=%s", level_name(level.MaxSupportedFeatureLevel), sm,
-                              has8 ? "yes" : "no", sm6 && has8 ? "yes" : "no");
+                              has8 ? "yes" : "no", sm6 && has8 && desc.VendorId != 0x1414 ? "yes" : desc.VendorId == 0x1414 ? "no(warp)" : "no");
             }
         }
-        std::fprintf(stderr, "SRW64_GPU adapter=%u name=\"%s\" vendor=%04X device=%04X driver=%s vram_mb=%llu%s d3d12 %s\n",
+        // A GPU the start-up check treats by name (gpu_rules.hpp): which rule, and what it does.
+        char listed[64] = "";
+        if (const auto* rule = gpu_rules::find(desc.VendorId, desc.DeviceId))
+            std::snprintf(listed, sizeof listed, " listed=%s(%s)", rule->name, rule->action == gpu_rules::Action::gl ? "gl" : "vulkan");
+        std::fprintf(stderr, "SRW64_GPU adapter=%u name=\"%s\" vendor=%04X device=%04X driver=%s vram_mb=%llu%s d3d12 %s%s\n",
                      index, name.c_str(), unsigned(desc.VendorId), unsigned(desc.DeviceId), driver,
-                     static_cast<unsigned long long>(desc.DedicatedVideoMemory >> 20), software ? " software" : "", d3d);
+                     static_cast<unsigned long long>(desc.DedicatedVideoMemory >> 20), software ? " software" : "", d3d, listed);
         adapter->Release();
     }
     factory->Release();

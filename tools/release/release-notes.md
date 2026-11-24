@@ -10,51 +10,114 @@ An unofficial native port of **Super Robot Wars 64** with full English, Chinese 
 | [`{hd_name}`]({hd_download}) | {hd_size} | Optional HD images (HD {hd_version}) for macOS, Windows, Linux and Android. |
 {switch_hd_row_en}
 
-## What's new in 0.5.3
+## What's new in 0.5.4
 
-### Korean
+### MOD packages: new units, characters and campaigns
 
-- **Korean is the fifth language**, translated by 테오 ([jung5441](https://github.com/jung5441)), the author of the Korean patch for the N64 game, who contributed the whole translation under CC BY 4.0: the story and the battle lines, the interface and the names, with a Korean title logo and Korean faces for the chapter title cards and the battle banners. The first launch picks it on a Korean system, and it is in the language menu; what is not translated yet shows in English.
-- **Language packages**: a MOD package can add a reading language over English or another built-in one, with its own fonts and pictures. The website has a template tool and a guide.
+The largest change in this version: a package can now add units, weapons and characters of its own and write whole campaigns, instead of only changing what the original has.
 
-### MOD packages
+- **New units, weapons and characters have numbers of their own** instead of taking an original's place, so they join next to the whole original cast. A package can add:
+  - units that **transform**, each form with its own weapons and map icon;
+  - units that **combine on the map** by a recipe of their own, separate again and sortie combined. Upgrading the combined unit keeps the parts' own upgrades;
+  - new weapons, **combination attacks** among them. The partners, their EN and morale are checked as in the original's, and the weapon pages, the Library and the Battle Viewer list the partners;
+  - new characters with **their own battle quotes and voices**, for the usual battle moments and for a given weapon or opponent, and **battle songs** of their own;
+  - new units and characters **on the enemy side**, deployed by the story;
+  - **songs of its own** that replace none of the original's, and **a picture of its own** for an actor in a weapon's effect;
+  - story lines in a text file for each language, and hidden elements that carry over to the next playthrough as the original's do.
 
-- **Story MODs change what happens in the original stages.** A package adds events to a stage: a persuasion, a unit leaving or joining at a chosen level, a replaced or removed unit, new lines, long-term flags, and conditions on the roster or a pilot's kills. The game triggers and tracks them itself; their state is kept in suspend and intermission saves and cleared by a new game. The first one is on the MOD page: **Master Asia Lives**. On the Independence Army and OZ routes, once Domon has talked with Master Asia in battle he can persuade him; with 50 kills or more Master Asia withdraws instead of falling and joins after the stage at Domon's level, in the Master Gundam, with little time left; with fewer the persuasion fails once and the story goes as the original's.
-- **Data MODs can add new units**, with their weapons, battle scenes, icon and pose on a free number. The example is **Final Dancouga**: after the stage where Dancouga learns the Dancou Kougaken, Dancouga and Black Wing combine into Final Dancouga, Alan rides along as the fifth pilot and the upgrades carry over. Its pictures need HD 1.3. A save made with a package's new unit and loaded without the package goes back to the title with a banner naming the package, instead of breaking.
-- **Number MODs reach a weapon's kind**: melee or ranged, usable after moving (P), beam (B), parryable, the terrain the attacker and the target need, the skill it requires, its upgrade type and whether it is locked. The 格/射, P and B markers in the weapon lists follow in every language. Map weapons and combination attacks cannot be made.
-- **MOD battle voices follow the game speed**: at 2× and above a line is time-stretched with its pitch kept, or, by a new setting, stays at the original speed or is muted while accelerated. A line cut off by the next one, or by aborting the animation, fades out instead of clicking.
-- The save slots show a name MOD's portrait of the protagonist; the MOD manager breaks Chinese and Japanese paragraphs into lines; the MOD page no longer says extra scenarios do not take effect (they have since 0.5.1). The original characters' AI battle voices are on the website as a voice package.
+  New units show their own picture and series in the Library and the Battle Viewer.
+- **The website's unit maker** writes such a package in the browser:
+  - copy an original character, unit or weapon, then change its names in four languages, its numbers, weapons, forms, crew and combination attack;
+  - frame a portrait from a picture of your own; give a unit its stand pose, battle pictures with cut-ins and map icon, reduced to the game's colours in the browser;
+  - battle quotes in four languages, each with a voice trimmed on its waveform, and battle songs;
+  - weapon animations put together from the game's own effects: move each actor, borrow actors from any original weapon, add cut-ins;
+  - when the unit joins and the package's own reinforcements; export as a Thunderstore package too;
+  - a ready template to start from.
 
-### Text updates between releases
+  A switch on the About page (off by default) lets the maker send a package to a running game and try it in the Battle Viewer. The game asks before it accepts a page.
+- **The website's level editor** writes campaigns stage by stage:
+  - maps painted for the campaign, deployments on either side, and enemy behaviour: when a unit starts moving, its target, what it leaves when shot down, its HP and EN on arrival;
+  - conditions: reaching an area, units shot down by side, group or pilot, units remaining, turns, HP, route, the last choice and funds, alone or combined;
+  - choices with their own options, stage objectives, options in the middle of a story, 「???」 speakers in silhouette, and a pilot's new lines at chosen moments of a battle;
+  - the original's stage instructions in plain forms: camera, effects, moving and destroying units, changing sides, sorties, upgrades, funds, world map places, green target areas and scripted battles;
+  - project files that keep unfinished work, undo and redo of every edit, songs, sounds, weapons and maps chosen by name, and a two-stage template to start from.
+- **New package, Kurtz and Super Earthgain**: after "Time to Settle It" on Brad's route, Kurtz joins and Earthgain and Virose combine into Super Earthgain, with Brad as the main pilot and Kurtz as the sub pilot; it keeps Earthgain's upgrades. It sorties combined, separates on the map into Earthgain and Virose, who have the combination attack Shorai Tenryu Mametsujin, and combines again when the two stand side by side.
+- **Final Dancouga** now sorties combined and separates and combines on the map the same way, and its map icon fills its square. Saves made with its 0.1.0 load in 0.5.4.
+- The idea of combining and separating on the map and of sortieing combined came from w6408004 and 柯博文2016 on Bilibili.
+- **Packages are read in place**: installing only puts the `.srw64mod` file in the mods folder, without unpacking it, so a voice package installs in seconds. **Thunderstore packages install** as ours do, and so does a zip that holds `.srw64mod` files. A file that does not install is reported instead of listed as a broken package, and the MOD page can delete it.
+- **A move or a weapon range above 15 works**: the original's tables stop at 15, and beyond it the game works the range out itself.
+- **MOD battle voices are not cut off**: at the original speed a quote's box stays until its voice has been spoken, and the next quote waits for the previous line. A line longer than its box holds the pose and camera until it ends, and a defender's quote waits for the hit.
 
-- **Text fixes arrive without a new program.** The update check (the title prompt and the About page) now also fetches the newest text from the website: the dialogue, names and interface labels fixed since this release, only the files that changed, each checked by hash before it is installed. The About page shows the text in use and can go back to the bundled text; a player's own dialogue files still win.
-- **The update check works on Android and the Switch** too: the title prompt, the About page's check and the new-version notice. Only the Vita has none.
+### Battle
 
-### Map and screens
+- **Battles fill a wide screen**: shots flying in and out, beams, special moves' backdrops, the scrolling clouds, the Earth's still sky and the Devil Gundam's tentacles spread across 16:9, instead of showing mid-screen with black sides. Dragon Claw reaches its target. The units and the ground stay where the original puts them, and the battle's results do not change.
+- **The pre-battle spirit list shows one pilot at a time**: a tab per pilot with the face and SP, that pilot's commands, and the focused command's description with the SP left after casting. With a controller the focused command is always in view.
+- **Battle Viewer**: the cursor is easier to follow with keys or a controller, the scene cards load together, and the title no longer shows through as a battle starts.
 
-- **Ground units cast a shadow**: their own silhouette under the icon, as in the later games; a flying unit's shadow sits closer to its icon. With the HD images every shadow is soft.
-- **A pilot who acts twice a phase shows the crown on the pilot pages**, not only in the map's unit window: the map's pilot page and the intermission pages, drawn from the ROM's glyph with the original images and from a redrawn W mark with the HD images.
-- **HD map icons** (in HD 1.3): the enemy's and the third party's rings are gone, now that each side faces its own way; acted units grey at 60% instead of 85%, so a white or grey unit visibly changes; the GP03 Dendrobium and the Qubeley are brighter before they act.
-- **Translated labels stay inside their window frames**: a value the original draws against a panel's right edge, like the weapon list's required skill, now starts further left instead of running out of the frame; split sentences end at their own full stop; a label the original draws twice at one place is drawn once.
-- **The title demo's units fade in correctly with the HD images**: the palette animation recoloured the whole sprite, so highlights and eyes went dark and the picture jumped between HD and original; it now recolours only the entries the frame shows.
-- The Start Campaign box sits bottom left, clear of the ring's START and of the Library and MOD row; the Extra Scenarios page sees a campaign's first save at once; the stage info page's text is a readable size on phones; the whole-map view (C-right; H on the keyboard) is back on the Controls page and can be rebound.
+### Library
 
-### Touch controls
+- **An Animations tab** plays the twelve combining, transformation and Aura Road movies of the tactical map, with the game's own sound and music, in the original pictures or HD.
+- The Japanese Library keeps the game's own names, and records the game never uses are marked as such in Chinese and Korean. The weapon tables' headings fit their numbers.
 
-- **Hold Back for the whole-map view** on the tactical map, since phones have no C button. A short press is still B.
-- **The title's Library, Battle Viewer and MOD corner show with touch controls** and are tapped where they are, so a phone has the MOD entry on the title; the first tap of a run is no longer lost.
+### Windows
+
+- **PCs whose GPU RT64 cannot use now run the game**: with neither Direct3D 12 shader model 6.0 nor Vulkan 1.2 (Intel before the 6th generation, older NVIDIA and AMD cards), the game draws with a compatible OpenGL renderer instead of failing to start. The same happens when RT64 fails to start after all.
+  - This renderer has no frame interpolation, MSAA or RetroArch filters, so those settings are greyed out.
+  - It draws at a lower resolution by default; **Picture detail** in the settings raises it.
+- AMD Vega integrated graphics use Vulkan, since Direct3D 12 reset their driver.
+- A PC with no GPU driver no longer crashes at start.
+- No console window flashes open when the game starts.
+
+### Controls, touch and launchers
+
+- **Phone controls can be moved and resized**: Settings → Controls → Button layout. Drag the D-pad or any button, size each one or all together, then save, cancel or go back to the defaults.
+- **Quit game** at the foot of the settings window, reached by Up from the tab bar. Left and Right move between a question's answers.
+- A controller reaches the title's corner entries at PRESS START. The language list shows 한국어 instead of boxes.
+- The title's Library, Battle Viewer and MOD entries take a tap even under a touch button. A failed HD import on Android says what went wrong.
+- **RecompLauncher**:
+  - its setup asks for the ROM and installs the HD pack;
+  - under it the game starts full screen in Big Picture and leaves the update check to the launcher;
+  - a language chosen in it before the game's first start no longer stops the game from starting, and a start that fails leaves its log for the launcher's crash report.
+
+### Performance
+
+- The Library and the Battle Viewer open faster: their data is made in the background.
+- The intermission pages (upgrades, parts, pilots and the rest) no longer rebuild themselves every frame when nothing changed, so moving between them stutters less.
+- A battle's scene transition redraws only the parts of the screen its lines cross, not the whole picture.
+- The first battle quote after starting the game no longer hitches when voices are on.
+- The protagonist selection shows at once; the portraits appear as they finish loading.
+
+### Switch
+
+- **Smoother overall.** Measured on a docked Switch:
+  - The audio takes about 5% of a CPU core instead of 27% (41% at its worst).
+  - The interface is no longer redrawn when nothing on it changed; presenting a frame takes a quarter of the time it did, and the render thread half its CPU.
+  - All HD pictures are read from one file instead of thousands of small ones, and no longer a small piece at a time. The first battle had 14 reads that stalled and now has none.
+  - Battle textures used last time are read ahead, and new pictures are decoded on helper threads.
+  - The first opening: the Library 0.96 s → 0.3 s, the Battle Viewer 0.8 s → 0.18 s, the protagonist selection 1.8 s → under 0.1 s. The upgrade screen and the Battle Viewer's unit list stall far less.
+  - A voice package installs in under a second; it took minutes to unpack on the SD card.
+- The Switch version still stutters in places.
+- **With a voice MOD the game no longer aborts after about 20 minutes of play.** This came with 0.5.3.1.
+- **Quit game** returns to the Homebrew Menu. A text update that arrives mid-game no longer ends the game.
+
+### Text
+
+- Chinese battle cries and drawn-out shouts read as Chinese instead of kana spelled out.
+- English names follow the Japanese originals instead of the dub: Gundam Spiegel, Dokuga, and God Gundam's and Devil Gundam's attacks.
+- Names from the website's suggestions, among them English Simurgh and Chinese 斩空者, 拉兹格瑞丝, 希格露恩, 龙蜥海兽 and 大扎姆. 0.5.3 has already received these as text updates; 0.5.4 carries them.
 
 ### Fixes
 
-- **Banjo and Daitarn 3 join on the real-robot OZ route** as in the original: they were missing from the join event of the stage where they arrive. An old save that should have them is repaired when it is loaded.
-- **Battle viewer**: each Getter form has its own pilot (Hayato in the 2-forms, Musashi or Benkei in the 3-forms), and a viewer battle shows every protagonist's own face and name instead of an empty label.
-- **Text**: the 13 original characters' lines were reviewed against their profiles for tone and forms of address, in Chinese and English; in Chinese Aisha calls Manami {{HeroName}}小姐 throughout, Dancouga's ground units are 豹战车, 狮战车 and 象战车, ダイガン is 断空步枪 and ムゲ is 穆格 in every line; Traditional Chinese writes 週目 and 龍捲風 throughout.
-- **The map's figures sit on their unit in the widened view**: a spirit's +10, the damage and MISS were drawn offset at 16:9.
-- The title's press and a quick load wait for every button to be released, so a held key no longer repeats; the intermission pages close when the game leaves the intermission; labels the original centres are centred in translation too.
+- **A mirrored map icon sits on its square** again instead of one texel over.
+- Holding R to jump no longer swings the wide view off the map.
+- Battles with Final Dancouga 0.1.0 no longer show wrong scenes or crash on the Steam Deck.
+- A new character that copies a protagonist shows its own name.
+- The Saves page brings an import's result into view.
 
-### HD 1.3
+### HD 1.4
 
-- **The battle animations are in HD** for the first time: weapon effects, beams (the original shapes kept strictly, Super Robot Wars Z's look inside), hits, follow-on frames including Gundam Rose's bits in their turning angles, shields, barriers and the other defence effects, kill explosions, the map's combination and transformation movies, the special moves' brush characters and their scrolling backdrops. 29 unit poses are fixed or redrawn (seven whole redraws, Master Asia, Dancouga's body and icon), Giant Robo's frames are added, and the map icon changes above are in it. **HD 1.3 needs 0.5.3**: identical pictures now share one file and the program recolours them per row; on 0.5.2 several colour variants would come out alike.
+- **Map icons fill the original's square**: the HD icons left about 8% empty around them and looked smaller than the original's. The Gundam Mk-II's icon is redrawn.
+- The 15 battle sky colourings still missing are added, and Domon's, Master Asia's and Albert's battle actions on foot use their own pictures. The Battle Viewer's Earth scene has its picture.
 
 Earlier changes are on the [website blog](https://srw64.dreamquest.club/en/blog/).
 
@@ -91,51 +154,114 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 | [`{hd_name}`]({hd_download}) | {hd_size} | 可选的 HD 图片包（HD {hd_version}），macOS、Windows、Linux、安卓通用。 |
 {switch_hd_row}
 
-### 本版更新（0.5.3）
+### 本版更新（0.5.4）
 
-#### 韩文
+#### MOD 包：新机体、新人物和新战役
 
-- **新增韩文**，由 N64 版韩文补丁作者 테오（[jung5441](https://github.com/jung5441)）翻译并以 CC BY 4.0 授权收录：剧情与战斗台词、界面和各类名字，配韩文 logo，章节标题卡和战斗横幅用韩文字体。韩文系统首次启动会选它，语言菜单里也能切；还没译到的部分显示英文。
-- **语言包**：MOD 包可以在英文或其他内置语言之上加一种阅读语言，自带字体和图片；官网有模板工具和制作说明。
+这是本版最大的改动：MOD 包不再只能改原版已有的内容，可以加自己的机体、武器和人物，也可以写完整的战役。
 
-#### MOD 包
+- **新机体、新武器和新人物有了自己的编号**，不用再占原版的位置，和原版全部角色并存。包里可以加：
+  - 能**变形**的机体，每种形态有自己的武器和地图图标；
+  - 按自己的配方**在地图上合体**、能再分离、以合体状态出击的机体。改造合体机体时，各部分自己的改造保留；
+  - 新武器，包括**合体技**。搭档、EN 和气力按原版的规则判断，武器页、图鉴和战斗查看器都会列出搭档；
+  - 新人物，带**自己的战斗台词和语音**（常规战斗时机，以及针对某件武器或某个对手的台词）和自己的**战斗曲**；
+  - **敌方**的新机体和新人物，由剧情安排登场；
+  - 包**自己的曲子**（不替换原版任何一首），以及武器特效里演员**自己的图**；
+  - 每种语言一个文本文件的剧情台词；像原版一样带到下一周目的隐藏要素。
 
-- **剧情 MOD 可以改原版关卡里发生的事。** 包给关卡加事件：说服、人物离队或以指定等级加入、替换或移除机体、新台词、跨关卡的旗标，以及按名册或驾驶员击坠数判定的条件。触发和记录都由游戏自己做，状态随中断存档和场间存档保存，开新游戏时清空。第一个剧情 MOD 已在 MOD 页：**东方不败存活**。独立军和 OZ 两条路线上，多蒙在战斗里与东方不败交谈过之后可以说服他；击坠数 50 以上时东方不败撤退而不是战死，过关后以与多蒙相同的等级驾驶尊者高达加入，但时日无多；不够则说服失败一次，之后与原作相同。
-- **数值 MOD 可以新增机体**，连武器、战斗场景、图标和立绘一起放在空闲编号上。示例是**终极断空我**：学会断空光牙剑的那一关通关后，断空我与黑翼合体为终极断空我，阿兰作为第五名驾驶员同乘，改造段数继承。它的图片需要 HD 1.3。带着包里新机体的存档，在没装这个包时读取，会回到标题并提示缺哪个包，而不是出错。
-- **数值 MOD 能改武器的种类**：格斗或射击、移动后可用（P）、光束（B）、能否被切り払い、攻守双方要求的地形、需要的技能、改造类型，以及是否锁定。武器列表里的 格/射、P、B 标记各语言都跟着变。MAP 武器和合体技不能新造。
-- **MOD 战斗语音跟随游戏速度**：2 倍速及以上时台词按比例加快而音调不变；新设置可以改成保持原速或加速时静音。被下一句打断或中止演出时，语音淡出而不是戛然而止。
-- 存档栏显示名字 MOD 给主角换的头像；MOD 管理页的中日文段落会按行折行；MOD 页不再写「追加剧本不生效」（0.5.1 起就生效了）。原创人物的 AI 战斗语音作为语音包放在官网。
+  新机体在图鉴和战斗查看器里显示自己的图和所属作品。
+- **官网的机体制作工具**在浏览器里直接做这样的包：
+  - 复制一个原版人物、机体或武器，再改四种语言的名字、数值、武器、形态、乘员和合体技；
+  - 用自己的图裁出头像；给机体配站姿、带 cut-in 的战斗图和地图图标，在浏览器里减到游戏的色数；
+  - 四种语言的战斗台词，每句可配语音，在波形上剪裁；战斗曲；
+  - 用游戏自带的特效拼武器演出：拖动每个演员，从任意原版武器借演员，加 cut-in；
+  - 加入时机和包自己的增援；也能导出成 Thunderstore 包；
+  - 有现成的模板可以直接改。
 
-#### 版本之间的文本更新
+  「关于」页有一个开关（默认关），打开后制作工具能把包直接发给正在运行的游戏，在战斗查看器里试。游戏会先问是否接受这个网页。
+- **官网的关卡编辑器**一关一关地写战役：
+  - 为战役自己画的地图、敌我双方的部署，以及敌人的行动方式：几回合后开始行动、攻击目标、被击坠时掉落的部件、登场时的 HP 和 EN；
+  - 条件：到达区域，按阵营、部队或驾驶员计的击坠数，剩余机体数，回合，HP，路线，上一次的选项，资金，可以单独用也可以组合；
+  - 带自己选项文字的选择、作战目的、剧情中途的选项、显示为剪影的「???」说话人，以及驾驶员在战斗中指定时机说的新台词；
+  - 原版的关卡指令都有易写的形式：镜头、特效、移动和消灭机体、改变阵营、出击、改造、资金、世界地图地点、绿色目标区域、剧情战斗；
+  - 工程文件能保存没做完的工作，每一步都能撤销和重做，曲子、音效、武器和地图都按名字选，还有两关的模板可以直接改。
+- **新 MOD「卡茨与超级夺地者」**：通关布拉德篇「了断之时」后，卡茨入队，夺地者与瓦伊罗斯合体为超级夺地者，布拉德主驾驶、卡茨副驾驶，改造段数从夺地者继承。出击时是合体状态，在地图上分离后回到夺地者和瓦伊罗斯，可以使用合体技「招雷 天龙魔灭阵」，两台相邻时可以再合体。
+- **终极断空我**也改为合体状态出击，在地图上同样可以分离、合体，地图图标顶满格子。用它 0.1.0 做的存档能在 0.5.4 读取。
+- 地图上合体分离和合体状态出击的思路来自 B 站用户 w6408004 和 柯博文2016。
+- **MOD 包不再解压**：安装时只把 `.srw64mod` 文件放进 mods 文件夹，游戏直接从包里读，语音包几秒就装好。**Thunderstore 的包**也能照样安装，装着 `.srw64mod` 的 zip 也能直接装。装不上的文件会报告出来，不再列成一个坏掉的包，并且可以在 MOD 页删掉。
+- **移动力和射程超过 15 也能用了**：原版的表只到 15，超过时由游戏自己算范围。
+- **MOD 战斗语音不再被截断**：原速时台词框等语音说完才关，下一句等上一句说完。比台词框长的语音会让姿势和镜头停住等它说完，被击中一方的台词等命中那一下再出。
 
-- **文本修正不用等新版程序。** 更新检查（标题提示和「关于」页）现在还会从官网取最新文本：这一版发布之后修过的台词、名字和界面词条，只下载有变化的文件，每个文件装前都按哈希核对。「关于」页显示正在用的文本，可以退回随包的文本；玩家自己的台词文件仍然优先。
-- **安卓和 Switch 也有更新检查了**：标题提示、「关于」页的检查和新版本提醒。只有 Vita 还没有。
+#### 战斗
 
-#### 地图与画面
+- **战斗画面铺满宽屏**：飞进飞出的射击、光束、必杀技的背景、滚动的云层、地球的静止天空和恶魔高达的触手都铺满 16:9，不再只在画面中间、两边留黑。龙爪能够到对手。机体和地面仍在原版的位置，战斗结果不变。
+- **战前的精神指令一次只显示一名驾驶员**：每名驾驶员一个页签，带头像和 SP；下面是这名驾驶员的指令，以及选中指令的说明和施放后剩余的 SP。用手柄时选中的指令总在视野里。
+- **战斗查看器**：用键盘和手柄时光标更容易看清，场景卡片一起载入，开战时不再透出标题画面。
 
-- **地面机体有影子了**：图标下方是自己的剪影，像后来的机战；飞行机体的影子离图标更近。HD 画面下影子都是柔边的。
-- **能二回行动的驾驶员在驾驶员页也显示皇冠**，不再只在地图的机体窗口里：地图的驾驶员页和场间的驾驶员页都有，原版画面用 ROM 里的字形，HD 画面用重画的 W 标记。
-- **HD 地图图标**（在 HD 1.3 里）：敌方和第三方的描边去掉了，因为各阵营已经朝向不同；已行动的灰化从 85% 改为 60%，白色和灰色机体行动前后看得出区别；GP03石斛兰和卡碧尼行动前更亮。
-- **翻译文字不再超出窗口框线**：原版贴着面板右边画的数值（比如武器列表的必要技能），现在往左挪而不是冲出框线；被拆开的句子在自己的句号处结束；原版在同一位置画两遍的文字只画一遍。
-- **HD 画面下标题演示的机体正常渐显**：调色板动画原来把整张精灵重新着色，高光和眼睛变暗，画面还在 HD 和原版之间跳；现在只按这一帧用到的调色板项换色。
-- 开始战役的框放到左下角，不再压着转盘的 START 和图鉴、MOD 那一行；追加剧本页能立刻看到战役的第一个存档；本关情报页的文字在手机上是能看清的大小；全图视图（C→，键盘 H）回到操作页，可以改键。
+#### 图鉴
 
-#### 触屏
+- **新增「动画」页**，播放战术地图上的 12 段合体、变形和灵光之路动画，带游戏原有的音效和音乐，可以切换原版画面和 HD。
+- 日文图鉴用游戏原有的名字，游戏里没用到的记录在中文和韩文里标为未实装。武器表的表头和数字一样宽。
 
-- **长按返回键看全图**：手机没有 C 键，战术地图上按住返回 0.5 秒打开全图视图。短按仍是 B。
-- **标题画面右下角的图鉴、战斗查看器和 MOD 在触屏下也显示**，点哪个就是哪个，手机上标题画面也有 MOD 入口了；一局里的第一次点击不再被吞掉。
+#### Windows
+
+- **RT64 用不了的显卡也能玩了**：既没有 Direct3D 12 着色器模型 6.0、也没有 Vulkan 1.2 时（6 代以前的 Intel 核显、较老的 NVIDIA 和 AMD 显卡），游戏改用兼容的 OpenGL 渲染方式，不再打不开。RT64 启动失败时也会这样切换。
+  - 这种方式没有插帧、MSAA 和 RetroArch 滤镜，这几项设置会变灰。
+  - 默认分辨率较低，设置里的**画面精细度**可以调高。
+- AMD Vega 核显改用 Vulkan，因为 Direct3D 12 会让它的驱动重置。
+- 没有显卡驱动的电脑启动时不再闪退。
+- 启动时不再闪出控制台窗口。
+
+#### 操作、触屏与启动器
+
+- **手机触屏按键可以移动和调大小**：设置 → 操作 → 按键布局。拖动方向键或任意按钮，单独或整体调大小，然后保存、取消或恢复默认。
+- **设置窗口底部有「退出游戏」**，从页签栏按上即可选到。问答框里可以用左右键切换选项。
+- 在 PRESS START 画面，手柄也能选到标题画面角落的入口。语言列表里的「한국어」不再显示成方块。
+- 标题画面的图鉴、战斗查看器和 MOD 被触屏按键盖住时也能点到。安卓导入 HD 包失败时会说明原因。
+- **RecompLauncher**：
+  - 在设置步骤里选 ROM 并装好 HD 包；
+  - 从它启动时游戏以 Big Picture 全屏启动，更新检查交给启动器；
+  - 在游戏第一次启动前就在启动器里选了语言，不再导致游戏无法启动；启动失败时会留下日志，供启动器的崩溃报告使用。
+
+#### 性能
+
+- 图鉴和战斗查看器打开更快：资料在后台准备。
+- 场间画面（改造、强化部件、驾驶员等）内容没变时不再每帧重建，切换画面时卡顿减少。
+- 战斗的转场只重画线条经过的部分，不再整屏重画。
+- 开启语音时，开游戏后第一句战斗台词不再卡一下。
+- 主角选择页立即显示，头像载入完成后逐个出现。
+
+#### Switch
+
+- **整体更流畅。** 在 Switch 底座模式下实测：
+  - 音频约占一个 CPU 核心的 5%，原来是 27%（最高 41%）。
+  - 界面内容没变时不再重画；呈现一帧的时间降到原来的四分之一，渲染线程的 CPU 占用减半。
+  - HD 图片从一个文件里读取，不再打开成千上万个小文件，也不再一小块一小块地读。第一场战斗原来有 14 次读图卡顿，现在没有了。
+  - 上次用过的战斗贴图会提前读入，新图片在辅助线程上解码。
+  - 第一次打开：图鉴 0.96 秒 → 0.3 秒，战斗查看器 0.8 秒 → 0.18 秒，主角选择页 1.8 秒 → 不到 0.1 秒。改造画面和战斗查看器的机体列表卡顿大大减少。
+  - 语音包不到一秒就装好，原来在 SD 卡上解压要几分钟。
+- Switch 版仍有卡顿。
+- **装了语音 MOD 时，玩二十分钟左右游戏中止的问题修好了。** 这个问题从 0.5.3.1 开始出现。
+- **「退出游戏」回到 Homebrew 菜单**。游戏中途收到文本更新不再导致游戏退出。
+
+#### 文本
+
+- 中文的战斗喊声和拖长的叫声改成中文写法，不再是假名的音译。
+- 英文名照日文原名而不是英语配音版：Gundam Spiegel、Dokuga，以及神高达、恶魔高达的招式名。
+- 采纳了官网的译名意见，其中有英文 Simurgh，中文斩空者、拉兹格瑞丝、希格露恩、龙蜥海兽、大扎姆。这些已经以文本更新的方式发给了 0.5.3，0.5.4 随包带上。
 
 #### 修复
 
-- **万丈和泰坦3 在真实系 OZ 路线正常加入**，和原版一样：原来登场那一关的加入事件里漏了这两人。本该有他们的旧存档读取时会补上。
-- **战斗查看器**：盖塔各形态用各自的驾驶员（2 形态是隼人，3 形态是武藏或弁庆）；从标题进的战斗显示每位主角自己的头像和名字，不再是空标签。
-- **文本**：13 位原创人物的台词按人物设定逐句核对了口吻和称呼（中英文）；中文里艾夏对玛娜米一律称「{{HeroName}}小姐」，断空我的地面机体是豹战车、狮战车、象战车，ダイガン 是断空步枪，ムゲ 每一句都是穆格；繁体中文的「週目」「龍捲風」全文统一。
-- **宽屏下地图上的数字回到机体上**：気合的 +10、伤害和 MISS 在 16:9 时画偏了。
-- 标题的按键和快速读档会等所有按键松开再接着响应，按住的键不再连按；离开场间时场间页面会一起关掉；原版居中画的文字翻译后也居中。
+- **镜像显示的地图图标回到格子上**，不再偏一个像素。
+- 按住 R 跳格时宽屏视野不再晃出地图。
+- 用终极断空我 0.1.0 时，战斗画面不再错乱，Steam Deck 上也不再闪退。
+- 复制主角的新人物显示自己的名字。
+- 「存档」页导入存档后，结果会滚到看得见的地方。
 
-#### HD 1.3
+#### HD 1.4
 
-- **战斗演出第一次有了 HD**：武器特效、光束（严格保持原版外形，内部照第二次机战 Z 的画法）、命中、招式的后续画面（含玫瑰高达浮游炮的各个转向角度）、盾牌、护罩和其他防御特效、击坠爆炸、地图上的合体和变形动画、必杀技的毛笔字和它背后的滚动背景。机体立绘修了或重画了 29 张（7 张整张重画、东方不败、断空我的身体和头像），补上大铁人的帧，上面说的地图图标改动也在里面。**HD 1.3 要配 0.5.3**：相同的图现在只存一份、由程序按行分别换色，在 0.5.2 上几种换色会混成一种。
+- **地图机体图标顶满原版的格子**：HD 图标原来四周各空出约 8%，看起来比原版小。高达 Mk-II 的图标重画。
+- 补齐还缺的 15 种战斗天空配色；多蒙、东方不败和阿尔伯特的生身战斗动作换成各自的图。战斗查看器的「地球」场景有了图。
 
 更早版本的更新见[官网博客](https://srw64.dreamquest.club/zh/blog/)。
 

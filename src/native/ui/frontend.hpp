@@ -26,6 +26,9 @@ void render_shutdown();
 // current, into the bound window framebuffer of width x height pixels.
 void render_init_gl();
 bool draw_gl(int width, int height, bool name_cover);
+// What draw_gl would paint, as a hash (0: nothing), gathered for the draw_gl that follows:
+// the graphics thread's question before it draws a frame the screen may already show.
+uint64_t probe_gl(int width, int height, bool name_cover);
 // The window thread's updates and the render thread's draws since the last call: their waits
 // for the UI lock and their work (SRW64_PERF), and the counters start again.
 std::string perf_line();

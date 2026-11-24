@@ -11,6 +11,7 @@
 //   dialogue/ko/**/*.txt       the dialogue text files (localization/dialogue_text.hpp)
 //   art/ko/scene-images/<file>, art/ko/plates/<resource>.png (5590.png, 5599.6.png)
 #include "mod_library.hpp"
+#include "../native/presentation/file_source.hpp"
 #include "localization/catalog.hpp"
 #include "localization/signature.hpp"
 #include <algorithm>
@@ -65,13 +66,12 @@ struct Found {
     std::vector<std::string> problems;                     // "<id> dialogue/<locale>/…: why"
 };
 
+// Paths here may go into a package file, read in place (presentation/file_source.hpp).
 inline json read_json(const fs::path& path,uintmax_t limit,std::string& why) {
-    std::error_code error;
-    const auto size=fs::file_size(path,error);
-    if(error){why="读不到";return nullptr;}
-    if(size>limit){why="太大";return nullptr;}
-    std::ifstream in(path,std::ios::binary);
-    auto value=json::parse(in,nullptr,false);
+    const auto bytes=presentation::read_file(path);
+    if(!bytes){why="读不到";return nullptr;}
+    if(bytes->size()>limit){why="太大";return nullptr;}
+    auto value=json::parse(bytes->begin(),bytes->end(),nullptr,false);
     if(value.is_discarded()){why="JSON 无效";return nullptr;}
     return value;
 }
@@ -84,10 +84,10 @@ inline std::string font_problem(const fs::path& folder,const json& value,fs::pat
     auto ext=fs::path(*safe).extension().string();
     std::transform(ext.begin(),ext.end(),ext.begin(),[](unsigned char c){return char(std::tolower(c));});
     if(ext!=".ttf" && ext!=".otf")return text+"：只能是 .ttf 或 .otf";
-    std::error_code error;
     const auto path=folder/fs::path(*safe);
-    if(!fs::is_regular_file(path,error))return text+"：没有这个文件";
-    if(fs::file_size(path,error)>largest_font)return text+"：超过 32 MB";
+    const auto bytes=presentation::file_exists(path)?presentation::read_file(path):std::nullopt;
+    if(!bytes)return text+"：没有这个文件";
+    if(bytes->size()>largest_font)return text+"：超过 32 MB";
     out=path;
     return {};
 }
@@ -175,16 +175,13 @@ inline Found collect(const std::vector<mods::Package>& packages,const localizati
     std::error_code error;
     for(const auto& p:packages) {
         if(!p.active)continue;
-        const auto root=p.folder/"dialogue";
-        if(!fs::is_directory(root,error))continue;
-        std::vector<fs::path> folders;
-        for(const auto& entry:fs::directory_iterator(root,error))if(entry.is_directory(error))folders.push_back(entry.path());
-        std::sort(folders.begin(),folders.end());
-        for(const auto& folder:folders) {
-            const auto locale=folder.filename().string();
+        // Its folder or its .srw64mod, read in place: the paths below go into the file then.
+        const auto files=mods::files_of(p);
+        for(const auto& locale:files->folders("dialogue")) {
+            const auto folder=p.folder/"dialogue"/locale;
             const auto where=p.id()+" dialogue/"+locale+"/";
             const auto declaration=folder/"language.json";
-            const bool new_language=fs::is_regular_file(declaration,error);
+            const bool new_language=files->exists("dialogue/"+locale+"/language.json");
             // A declaration of one of ours is left unread (the Korean demo package of 0.5.3
             // declared ko before it was ours): its files lie over ours as any package's do.
             if(is_built_in(locale)) {
@@ -205,7 +202,7 @@ inline Found collect(const std::vector<mods::Package>& packages,const localizati
             }
             Layer layer;
             layer.package=p.id();layer.folder=folder;layer.art=p.folder/"art"/locale;
-            if(const auto terms=folder/"terms.json";fs::is_regular_file(terms,error)) {
+            if(const auto terms=folder/"terms.json";files->exists("dialogue/"+locale+"/terms.json")) {
                 std::string why;
                 const auto data=read_json(terms,largest_terms,why);
                 if(!why.empty())found.problems.push_back(where+"terms.json："+why);
@@ -261,9 +258,8 @@ inline bool layers_empty() {
 inline fs::path art(const std::string& locale,const std::string& relative) {
     const auto safe=mods::safe_entry(relative);
     if(!safe)return {};
-    std::error_code error;
     for(const auto& layer:[&]{auto l=layers(locale);std::reverse(l.begin(),l.end());return l;}())
-        if(const auto path=layer.art/fs::path(*safe);fs::is_regular_file(path,error))return path;
+        if(const auto path=layer.art/fs::path(*safe);presentation::file_exists(path))return path;
     return {};
 }
 }

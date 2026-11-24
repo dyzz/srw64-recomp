@@ -21,6 +21,30 @@ class GuideTests(unittest.TestCase):
             with self.subTest(lang=lang):
                 self.assertEqual(MODULE.check_data(lang), [])
 
+    def test_branch_layout_covers_each_step_once_in_every_language(self):
+        layout = MODULE.STEP_LAYOUT
+        for lang in layout["languages"]:
+            entries = {e["id"]: e for e in MODULE.load(lang, "hidden-elements.json")["entries"]}
+            for entry_id, groups in layout["entries"].items():
+                with self.subTest(lang=lang, entry=entry_id):
+                    steps = entries[entry_id]["steps"]
+                    numbers = []
+                    for heading, rows in groups.items():
+                        self.assertTrue(layout["labels"][heading][layout["languages"].index(lang)])
+                        for row in rows:
+                            if isinstance(row, list):
+                                self.assertGreaterEqual(len(row), 2)
+                                numbers.extend(row)
+                            else:
+                                numbers.append(row)
+                    self.assertEqual(sorted(numbers), list(range(1, len(steps) + 1)))
+            for entry in entries.values():
+                for step in entry.get("steps", []):
+                    if "choices" in step:
+                        self.assertNotIn("text", step)
+                        self.assertGreaterEqual(len(step["choices"]), 2)
+                        self.assertTrue(all(step["choices"]))
+
     def test_ids_are_unique(self):
         for lang in MODULE.languages():
             ids = [c["id"] for c in MODULE.load(lang, "progression.json")["cards"]]

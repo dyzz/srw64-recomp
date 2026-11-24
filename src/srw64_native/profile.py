@@ -41,6 +41,13 @@ UI_KEYS |= {"dlc_leave", "dlc_start", "dlc_note", "dlc_empty", "dlc_enter", "dlc
 UI_KEYS |= {"library_open", "library_title", "library_tab_units", "library_tab_pilots", "library_hint", "library_hint_pad",
             "library_growth_note", "library_no_stats", "library_no_weapons", "library_work_other", "library_work_mod", "library_double_move", "library_spirit_note",
             "library_cap", "library_cap_value", "library_slots", "library_full", "library_type", "library_critical", "library_morale", "library_unlock", "library_combo", "library_full_note", "library_type_line", "library_ally", "library_enemy", "library_sub_pilot", "library_fairy", "library_love", "library_love_mutual", "library_love_one_way", "library_spirit_cost", "library_skill_note", "library_row", "library_row_note", "viewer_row", "viewer_row_note"}
+# The Library's map movies (動画 / 动画 tab, src/host/map_movie.hpp).
+UI_KEYS |= {"library_tab_movies", "library_movie_kind_combine", "library_movie_kind_aura_road", "library_movie_kind_change",
+            "library_movie_unused", "library_movie_scenes", "library_movie_seconds", "library_movie_when", "library_movie_units",
+            "library_movie_when_combattler", "library_movie_when_aura_road", "library_movie_when_unused", "library_movie_when_change",
+            "library_movie_when_godmars", "library_movie_play", "library_movie_pause", "library_movie_replay", "library_movie_back",
+            "library_movie_forward", "library_movie_loop", "library_movie_original", "library_movie_hd", "library_movie_note", "library_movie_failed", "library_movie_hint",
+            "library_movie_hint_pad"} | {f"library_movie_title_{n}" for n in range(12)}
 # The stage info page (src/native/ui/frontend.cpp, docs/design/stage-info.md).
 UI_KEYS |= {"quit_open", "quit_title", "quit_text", "quit_yes", "title_return_open", "title_return_title", "title_return_text", "title_return_note", "title_return_yes", "title_return_no", "title_return_unavailable", "title_return_failed", "menu_title_return"}
 UI_KEYS |= {"touch_quick_load", "touch_screenshot", "quick_load_open", "quick_load_title", "quick_load_text", "quick_load_note", "quick_load_yes", "quick_load_no", "quick_load_none", "quick_load_other_stage", "quick_load_unavailable", "quick_load_done", "quick_load_failed"}
@@ -113,6 +120,9 @@ UI_KEYS |= {"settings_bezel", "settings_bezel_note", "settings_filter", "setting
             "settings_filter_scale_note", "settings_look_off", "settings_look_choose", "settings_bezel_mine", "settings_filter_mine",
             "settings_browse_retroarch", "settings_browse_builtin", "settings_browse_open", "settings_browse_up", "settings_browse_empty", "settings_filter_loading",
             "settings_filter_error", "settings_filter_unavailable", "settings_about_librashader"}
+# A row the running renderer cannot honour (frontend.cpp renderer_note: the GL renderer).
+UI_KEYS |= {"settings_renderer_unsupported", "settings_picture_scale", "settings_picture_scale_note"}
+UI_KEYS |= {f"settings_picture_scale_{n}" for n in (0, 1, 2, 3)}
 UI_KEYS |= {f"settings_filter_scale_{n}" for n in (1, 2, 4, 0)}
 # The Cheats page (frontend.cpp cheats_page; the switch ids are cheats.hpp catalog).
 UI_KEYS |= {"cheats_note", "cheat_levels", "cheat_levels_note", "cheat_levels_open", "cheat_levels_close", "cheat_levels_away"}

@@ -8,6 +8,7 @@
 // HUD windows keep the original's 320 and stay centred. At 4:3, Wv is 320 and nothing
 // changes. Game thread, except the shape functions (see there).
 #include <cstdint>
+#include "game_frame.hpp"
 
 namespace srw64::wide_map {
 // Frame boundary: this frame's view from the picture's width and the map's; a camera out
@@ -46,6 +47,12 @@ void mark_original();
 void mark_battle();
 // The battle animation ran within the last fifth of a second (its step runs every frame).
 bool battle_shown();
+// 801C3610 installs scrolling attack effects in slot 0x19. Fill the wide
+// picture with one scrolling viewport; the cloud art need not tile at x=320.
+inline float scrolling_effect_scale(uint32_t slot) {
+    if (slot != 0x19 || !srw64::frame::wide || !battle_shown()) return 1.f;
+    return float(srw64::frame::picture_width) / srw64::frame::kWidth;
+}
 // The battle's sky (80095974, a 320-pixel picture that wraps) is drawn again one period to
 // each side, in the whole picture's scissor: open_sides before the copies, offset_rects
 // before each (original pixels; 0 for the original itself), close_sides after.

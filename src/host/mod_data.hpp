@@ -168,12 +168,12 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
                          const std::string& package={},const mod_units::Numbers& numbers={}) {
     if(!document.is_object())return "顶层要是对象";
     const unsigned count=kind==Kind::units?unit_count:kind==Kind::pilots?pilot_count:weapon_count;
+    const auto of=kind==Kind::units?mod_units::Of::unit:kind==Kind::weapons?mod_units::Of::weapon:mod_units::Of::pilot;
     Bytes bytes;
     std::map<std::string,uint32_t> records;   // key -> its record, for the checks after
     for(const auto& [key,entry]:document.items()) {
         unsigned id;
         if(key.find('@')!=std::string::npos) {
-            const auto of=kind==Kind::units?mod_units::Of::unit:kind==Kind::weapons?mod_units::Of::weapon:mod_units::Of::pilot;
             const auto found=mod_units::resolve(json(key),package,numbers,of);
             if(!found)return key+"：没有这个新"+(kind==Kind::units?"机体":kind==Kind::weapons?"武器":"人物")+"（data/new_units.json 里的名字）";
             id=*found;
@@ -182,6 +182,8 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
                 return key+"：编号要是十进制整数，或新机体、新武器的 @名字";
             id=unsigned(std::stoul(key));
             if(id>=count)return key+"：编号超出范围（0–"+std::to_string(count-1)+"）";
+            if(numbers.legacy_dancouga && package==mod_units::dancouga_package)
+                if(const auto alias=mod_units::resolve(json(id),package,numbers,of))id=*alias;
         }
         if(!entry.is_object())return key+"：要是对象";
         uint32_t record=table_window::row(table_window::units,id),terrain=unit_terrain;
@@ -388,19 +390,17 @@ struct Collected {
 inline Collected collect(const std::vector<mods::Package>& packages,std::span<const uint8_t> rom) {
     Collected c;
     mod_units::Taken taken;
-    std::error_code error;
     c.numbers=mod_ids::assign(packages);
     for(const auto& p:packages) {
-        if(!p.active || !fs::is_directory(p.folder/"data",error))continue;
-        for(const auto& item:fs::directory_iterator(p.folder/"data",error)) {
-            const auto name=item.path().filename().string();
-            if(item.is_regular_file(error) && item.path().extension()==".json" && name!="new_units.json" && std::find(files.begin(),files.end(),name)==files.end())
+        if(!p.active)continue;
+        const auto package=mods::files_of(p);   // its folder or its .srw64mod (mod_library.hpp)
+        if(!package->has_folder("data"))continue;
+        for(const auto& name:package->list("data"))
+            if(fs::path(name).extension()==".json" && name!="new_units.json" && std::find(files.begin(),files.end(),name)==files.end())
                 c.problems.push_back(p.id()+" data/"+name+"：暂不支持这个文件");
-        }
         // New units first: the number files may change the records they copy.
-        if(const auto path=p.folder/"data"/"new_units.json";fs::is_regular_file(path,error)) {
-            std::ifstream in(path,std::ios::binary);
-            const auto document=json::parse(in,nullptr,false);
+        if(const auto text=package->read_text("data/new_units.json")) {
+            const auto document=json::parse(*text,nullptr,false);
             const std::string where=p.id()+" data/new_units.json：";
             if(document.is_discarded())c.problems.push_back(where+"JSON 无效");
             else if(auto why=mod_units::parse(document,p.id(),c.numbers,rom,c.bytes,c.bytes,taken,p.folder);!why.empty())c.problems.push_back(where+why);
@@ -416,10 +416,9 @@ inline Collected collect(const std::vector<mods::Package>& packages,std::span<co
             }
         }
         for(const auto file:files) {
-            const auto path=p.folder/"data"/std::string(file);
-            if(!fs::is_regular_file(path,error))continue;
-            std::ifstream in(path,std::ios::binary);
-            const auto document=json::parse(in,nullptr,false);
+            const auto text=package->read_text("data/"+std::string(file));
+            if(!text)continue;
+            const auto document=json::parse(*text,nullptr,false);
             const std::string where=p.id()+" data/"+std::string(file)+"：";
             if(document.is_discarded()){c.problems.push_back(where+"JSON 无效");continue;}
             const auto kind=file=="units.json"?Kind::units:file=="pilots.json"?Kind::pilots:Kind::weapons;
@@ -427,9 +426,8 @@ inline Collected collect(const std::vector<mods::Package>& packages,std::span<co
         }
         // A new character's own battle quotes, after the number files (a weapon's quote code
         // is in its battle record).
-        if(const auto path=p.folder/"dialogue"/"battle_quotes.json";fs::is_regular_file(path,error)) {
-            std::ifstream in(path,std::ios::binary);
-            const auto document=json::parse(in,nullptr,false);
+        if(const auto text=package->read_text("dialogue/battle_quotes.json")) {
+            const auto document=json::parse(*text,nullptr,false);
             const std::string where=p.id()+" dialogue/battle_quotes.json：";
             if(document.is_discarded())c.problems.push_back(where+"JSON 无效");
             else if(auto why=mod_quotes::parse(document,p.id(),c.numbers,rom,c.bytes,taken.voices,c.quotes);!why.empty())c.problems.push_back(where+why);

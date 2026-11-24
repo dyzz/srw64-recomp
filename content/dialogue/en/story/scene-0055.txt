@@ -1025,7 +1025,7 @@ you haven’t mastered that blade yet.”
 
 @36382 Domon · ドモン
 > 「ガンダムシュピーゲル……シュバルツか」
-“Shadow Gundam... So it’s you, Schwarz.”
+“Gundam Spiegel... So it’s you, Schwarz.”
 
 @36383 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
@@ -1618,7 +1618,7 @@ full of openings like that could defeat me?!”
 
 @36480 Domon · ドモン
 > 「ガンダムシュピーゲル……シュバルツ!?」
-“Shadow Gundam... Schwarz?!”
+“Gundam Spiegel... Schwarz?!”
 
 @36481 Schwarz · シュバルツ
 > 「愚か者が……あれほど忠告したのに
@@ -1667,7 +1667,7 @@ a little more calmly...”
 ---
 >  ガンダムシュピーゲルに救われ、怒りも
 >  おさまったというのに、スキだらけで
-Saved by Shadow Gundam, your anger quelled, and still you are full of openings.
+Saved by Gundam Spiegel, your anger quelled, and still you are full of openings.
 ---
 >  このザマだ。さぁ、首をへし折って
 >  くれるわ!!」

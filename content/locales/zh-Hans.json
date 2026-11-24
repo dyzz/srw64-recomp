@@ -103,6 +103,12 @@
     "settings_msaa_off": "关",
     "settings_msaa_note": "游戏画面的 4 倍多重采样抗锯齿。 关掉能减轻显卡负担。 重启游戏后生效。",
     "settings_msaa_restart": "重启游戏后生效。",
+    "settings_picture_scale": "画面精细度",
+    "settings_picture_scale_note": "兼容渲染模式下游戏画面的内部分辨率。自动会按这台电脑选：没有显卡驱动时 1×，其他 2×。调高更清晰，也更吃性能。重启游戏后生效。",
+    "settings_picture_scale_0": "自动",
+    "settings_picture_scale_1": "1×",
+    "settings_picture_scale_2": "2×",
+    "settings_picture_scale_3": "3×",
     "settings_aspect": "画面比例",
     "settings_aspect_wide": "自动",
     "settings_aspect_original": "4:3（原版）",
@@ -129,6 +135,7 @@
     "settings_filter_loading": "正在编译滤镜……",
     "settings_filter_error": "滤镜载入失败：",
     "settings_filter_unavailable": "这里不能用滤镜：缺少 librashader，或这个平台（安卓）还不支持。",
+    "settings_renderer_unsupported": "当前渲染方式不支持此项（这台设备没有使用 RT64）。",
     "settings_window": "显示方式",
     "settings_window_windowed": "窗口",
     "settings_window_fullscreen": "全屏",
@@ -678,7 +685,7 @@
     "mod_turn_off": "停用",
     "mod_remove": "删除",
     "mod_remove_confirm": "确认删除",
-    "mod_not_applied": "目前生效的有：音乐替换、战斗语音、名字、头像与地图图标、机体／驾驶员／武器的数值、追加剧本；单关挑战、改主线关卡、其余美术和台词还不会生效。",
+    "mod_not_applied": "目前生效的有：音乐替换、战斗语音、名字、头像、地图图标、战斗图、新机体／人物／武器、机体／驾驶员／武器的数值、语言包、追加剧本、改主线关卡；单关挑战和其余美术还不会生效。",
     "mod_install_busy": "正在安装另一个 MOD，请稍候",
     "mod_install_failed": "安装失败：{reason}",
     "mod_installed": "已安装 MOD：{id} {version}",
@@ -752,6 +759,44 @@
     "library_slots": "强化零件槽",
     "library_cap_value": "{n} 段",
     "library_cap": "改造上限",
+    "library_tab_movies": "动画",
+    "library_movie_title_0": "孔巴特拉V 合体",
+    "library_movie_title_1": "奥拉之路（兹瓦斯）",
+    "library_movie_title_2": "奥拉之路",
+    "library_movie_title_3": "奥拉之路（陶德）",
+    "library_movie_title_4": "奥拉之路（洁丽露）",
+    "library_movie_title_5": "变形：盖塔龙",
+    "library_movie_title_6": "变形：盖塔狮虎",
+    "library_movie_title_7": "变形：盖塔波塞冬",
+    "library_movie_title_8": "变形：盖塔1",
+    "library_movie_title_9": "变形：盖塔2",
+    "library_movie_title_10": "变形：盖塔3",
+    "library_movie_title_11": "雷霆王 合体",
+    "library_movie_kind_combine": "合体",
+    "library_movie_kind_aura_road": "奥拉之路",
+    "library_movie_kind_change": "变形",
+    "library_movie_unused": "未使用",
+    "library_movie_scenes": "{n} 段",
+    "library_movie_seconds": "约 {n} 秒",
+    "library_movie_when": "出现场合",
+    "library_movie_units": "相关机体",
+    "library_movie_when_combattler": "孔巴特拉V在地图上合体时（剧情与合体指令）。",
+    "library_movie_when_aura_road": "剧情中敌人经奥拉之路登场时。",
+    "library_movie_when_unused": "原版里没有播放它的地方。",
+    "library_movie_when_change": "驾驶员第一次变形成该形态时（每名驾驶员只播一次）。",
+    "library_movie_when_godmars": "剧情中雷霆王合体时。",
+    "library_movie_play": "播放",
+    "library_movie_pause": "暂停",
+    "library_movie_replay": "从头播放",
+    "library_movie_back": "后退一帧",
+    "library_movie_forward": "前进一帧",
+    "library_movie_loop": "循环",
+    "library_movie_original": "原版",
+    "library_movie_hd": "高清",
+    "library_movie_note": "用原版地图演出的代码播放；背后的地图不显示。暂停后音乐会停下。",
+    "library_movie_failed": "这段动画没能播放。",
+    "library_movie_hint": "{L} / {R} 机体 / 人物 / 动画   ·   {KeyUp}{KeyDown} 选择   ·   {KeyRight} 播放控制   ·   {Enter} 播放 / 暂停   ·   {Esc} / {B} 关闭",
+    "library_movie_hint_pad": "{L} / {R} 机体 / 人物 / 动画   ·   {DUpDown} 选择   ·   {DRight} 播放控制   ·   {A} 播放 / 暂停   ·   {B} 关闭",
     "library_row": "Library · 图鉴",
     "library_row_note": "全部机体与人物的资料：能力、武器、精神指令、特殊技能",
     "stage_info_open": "本关情报",
@@ -3769,7 +3814,7 @@
     {
       "key": "base:t00_00560",
       "source_sha256": "a56dd8f90d157995dc8f31843a157951da8724e4241a5142fb0464093e550294",
-      "target": "拉兹格里兹<END>",
+      "target": "拉兹格瑞丝<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3783,7 +3828,7 @@
     {
       "key": "base:t00_00562",
       "source_sha256": "b5556d27fdfc8aed58c6d9c41c93212f086ac98fbda7db51c5bb3599e6b9772b",
-      "target": "瓦伊罗斯<END>",
+      "target": "斩空者<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3993,7 +4038,7 @@
     {
       "key": "base:t00_00593",
       "source_sha256": "72510b6c483364568d524f4b721d4191805ae1cc1c532f11b187dde702f2e649",
-      "target": "梅塔斯（MA）<END>",
+      "target": "梅塔斯(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4007,7 +4052,7 @@
     {
       "key": "base:t00_00595",
       "source_sha256": "09888d58856fcf6f2b15113bf7527b998cd265d30b5344e2e3a081c534e7d749",
-      "target": "梅塔斯改（MA）<END>",
+      "target": "梅塔斯改(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4035,7 +4080,7 @@
     {
       "key": "base:t00_00599",
       "source_sha256": "4f200f5993fa9d0145131f53bf30f61604b6c0e6ad78203741f90f59f5257e8c",
-      "target": "灵·格斯（BWS）<END>",
+      "target": "灵·格斯(BWS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4357,7 +4402,7 @@
     {
       "key": "base:t00_00645",
       "source_sha256": "8253289b023bddb4cbb390b07dada31b92ae40c90f3c27d606dcb5d91b0a84eb",
-      "target": "飞翼高达（鸟形态）<END>",
+      "target": "飞翼高达(鸟形态)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4371,7 +4416,7 @@
     {
       "key": "base:t00_00647",
       "source_sha256": "efac91e9c586051791ab24f13f26d30e31f892dba169d86b64fad1101cdef4be",
-      "target": "飞翼零式（鸟形态）<END>",
+      "target": "飞翼零式(鸟形态)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4644,21 +4689,21 @@
     {
       "key": "base:t00_00686",
       "source_sha256": "90bdebb2059274ce66bc02d4785c25c6c8e087f313495df81be3151e9ef721e3",
-      "target": "古连泰沙（WS）<END>",
+      "target": "古连泰沙(WS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00687",
       "source_sha256": "c6bddd06b3641195afb83a292776e518e26f888c21583eddd6bbf48213abce2b",
-      "target": "古连泰沙（DS）<END>",
+      "target": "古连泰沙(DS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00688",
       "source_sha256": "a9c633ad069f0ab177b8de93a34e8b9200423b9e9d19769c11ab2cd79b2b5a61",
-      "target": "古连泰沙（MS）<END>",
+      "target": "古连泰沙(MS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5372,7 +5417,7 @@
     {
       "key": "base:t00_00790",
       "source_sha256": "8ad85c28fb97b94c18b812f0e829c2a6d418cb970519b446a891b811b4bffea8",
-      "target": "魔神Z（JS）<END>",
+      "target": "魔神Z(JS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5568,14 +5613,14 @@
     {
       "key": "base:t00_00818",
       "source_sha256": "1f55eaa857fbff855b0af5e0c15b3a6e7f7d32bbdda84f66657438f271f669c1",
-      "target": "陶拉斯（MA）<END>",
+      "target": "陶拉斯(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00819",
       "source_sha256": "40de6f6b478d5789b9185600037a9c183643ef26e2a8924440707bb51355020b",
-      "target": "艾比安高达（MA）<END>",
+      "target": "艾比安高达(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5645,7 +5690,7 @@
     {
       "key": "base:t00_00829",
       "source_sha256": "fccf7ea2c3820f2d5cc78e290595f99d50b44bb22c7df10cfe5a3750fb3e2bf8",
-      "target": "多尔（飞行）<END>",
+      "target": "多尔(飞行)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5827,7 +5872,7 @@
     {
       "key": "base:t00_00855",
       "source_sha256": "41cc4e09809d9223cc6192ee263c72767e78f8805b840d53bbb9070a4fdbc3fa",
-      "target": "西格露恩<END>",
+      "target": "希格露恩<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5911,14 +5956,14 @@
     {
       "key": "base:t00_00867",
       "source_sha256": "fccf7ea2c3820f2d5cc78e290595f99d50b44bb22c7df10cfe5a3750fb3e2bf8",
-      "target": "多尔（飞行）<END>",
+      "target": "多尔(飞行)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00868",
       "source_sha256": "4f200f5993fa9d0145131f53bf30f61604b6c0e6ad78203741f90f59f5257e8c",
-      "target": "灵·格斯（BWS）<END>",
+      "target": "灵·格斯(BWS)<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -6002,7 +6047,7 @@
     {
       "key": "base:t00_00880",
       "source_sha256": "1f55eaa857fbff855b0af5e0c15b3a6e7f7d32bbdda84f66657438f271f669c1",
-      "target": "陶拉斯（MA）<END>",
+      "target": "陶拉斯(MA)<END>",
       "review_status": "draft",
       "origin": "terms"
     },

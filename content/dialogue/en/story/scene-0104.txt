@@ -515,14 +515,14 @@ not with the forces we have now.”
 @49401 Marvel · マーベル
 > 「さしずめデビルアクシズと
 >  いったところね……」
-“I suppose you could call it Dark Axis...”
+“I suppose you could call it Devil Axis...”
 
 @49402 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルアクシズ→Dark Axis、デビルガンダム→Dark Gundam
 > 「シャアだろうがデビルアクシズだろうが、
 >  かまわん! デビルガンダムに
-“Char or Dark Axis, I don’t care! As long as the Devil Gundam is
+“Char or Devil Axis, I don’t care! As long as the Devil Gundam is
 ---
 >  関わりのある限り、この俺が
 >  まとめて叩きつぶしてやるッ!!」
@@ -615,7 +615,7 @@ We’re already one step behind, don’t you see?!”
 ---
 >  本艦隊はこれより、デビルアクシズに
 >  対し艦隊特攻をかける!」
-This fleet will now make a full charge on Dark Axis!”
+This fleet will now make a full charge on Devil Axis!”
 
 @49415 Kignan · キグナン
 # 审校：全局：弯撇号／弯引号
@@ -1579,7 +1579,7 @@ but is that Axis?! What on earth is going on?!”
 @49570 Amuro · アムロ
 > 「もう、クワトロ大尉はいないという
 >  ことさ。あのデビルアクシズにいるのは
-“It means there is no Captain Quattro anymore. The man on that Dark Axis is
+“It means there is no Captain Quattro anymore. The man on that Devil Axis is
 ---
 >  シャア・アズナブル、かつて俺が戦い、
 >  そして今も敵である男だ」
@@ -1599,7 +1599,7 @@ Char Aznable, the man I fought long ago, and my enemy still.”
 @49573 Amuro · アムロ
 > 「もう、クワトロ・バジーナはいないというこ
 >  とさ。あのデビルアクシズにいるのは
-“It means there is no Quattro Bajeena anymore. The man on that Dark Axis is
+“It means there is no Quattro Bajeena anymore. The man on that Devil Axis is
 ---
 >  シャア・アズナブル、かつて俺たちが
 >  戦い、そして今も敵である男だ」
@@ -1608,12 +1608,12 @@ Char Aznable, the man we fought long ago, and our enemy still.”
 @49574 Bright · ブライト
 > 「デビルアクシズ……
 >  やはりデビルガンダムなのか?」
-“Dark Axis... so it really is the Devil Gundam?”
+“Devil Axis... so it really is the Devil Gundam?”
 
 @49575 Henken · ヘンケン
 > 「説明はあとだ。とにかく今はあの
 >  デビルアクシズが地球に落ちるのを
-“Explanations can wait. Right now we have to stop that Dark Axis from
+“Explanations can wait. Right now we have to stop that Devil Axis from
 ---
 >  とめにゃならん。そっちはやれるのか?」
 falling to Earth. Are you up for it?”
@@ -1919,7 +1919,7 @@ vain! And for humanity’s new era!”
 “That’s what he says. Even if we wipe out the enemies outside,
 ---
 >  デビルアクシズ自体がいるから……」
-Dark Axis itself is still there...”
+Devil Axis itself is still there...”
 
 @49621 Bunny · バニー
 # 审校：全局：弯撇号／弯引号
@@ -1950,7 +1950,7 @@ Dark Axis itself is still there...”
 @49627 Bunny · バニー
 > 「『デビルアクシズ内部への
 >  突破口は必ず開く
-“‘A breach into Dark Axis will surely be opened.
+“‘A breach into Devil Axis will surely be opened.
 ---
 >  よろしく処理されたし。
 >  村雨』です」
@@ -2133,7 +2133,7 @@ Men, no one dies until we’ve seen Master Quatre!”
 ---
 >  残りの者はデビルアクシズからの
 >  攻撃に注意しつつ
-The rest of you, watch out for attacks from Dark Axis
+The rest of you, watch out for attacks from Devil Axis
 ---
 >  敵を近づけるな!
 >  ドモン、聞こえているな!?」

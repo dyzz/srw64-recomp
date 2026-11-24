@@ -312,6 +312,19 @@ class PackageTests(unittest.TestCase):
         files["art/icons/55.png"] = png(64, 32)
         self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["icon"])
 
+    def test_deflated_pictures_and_sound_only_warn(self):
+        # The game reads the file in place (mod_library.hpp ArchiveFiles); stored media read faster.
+        path = self.zip("a.b-1.0.0.srw64mod", self.good_files())   # zipfile's default: stored
+        self.assertNotIn("warnings", self.codes(path)[1])
+        path = self.dir / "a.b-1.0.0.srw64mod"
+        with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
+            for entry, data in self.good_files().items():
+                z.writestr(entry, data)
+        codes, summary = self.codes(path)
+        self.assertEqual(codes, [])
+        self.assertEqual(len(summary["warnings"]), 1)
+        self.assertIn("2 picture or sound", summary["warnings"][0])
+
     def test_everything_inside_one_top_folder_and_junk(self):
         files = {"a.b/" + name: data for name, data in self.good_files().items()}
         files["__MACOSX/a.b/._mod.json"] = b"junk"

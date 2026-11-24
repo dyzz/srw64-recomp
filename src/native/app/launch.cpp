@@ -47,8 +47,8 @@ std::vector<std::string> selected_rules(const Options& options,const GameIdentit
 static std::string read_campaign_id(const fs::path& campaign) {
     // Stage images make a compiled campaign a few hundred KB; 64 MiB is only a sanity bound.
     const auto document=json::parse(read_text(campaign,64u<<20),nullptr,false);
-    if(document.is_discarded() || document.value("schema","")!="srw64.campaign-image.v1")
-        throw std::runtime_error("Not a compiled campaign (srw64.campaign-image.v1): "+campaign.string());
+    if(document.is_discarded() || (document.value("schema","")!="srw64.campaign-image.v1" && document.value("schema","")!="srw64.campaign-image.v2"))
+        throw std::runtime_error("Not a compiled campaign (srw64.campaign-image.v1 / v2): "+campaign.string());
     auto id=document.value("id",std::string());
     if(!valid_campaign_id(id))throw std::runtime_error("A campaign id is 1-64 letters, digits, '.', '_' or '-': "+campaign.string());
     return id;
@@ -185,15 +185,17 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
         json saved=json::object();bool readable=false;
         try{saved=read_json(language_file,65536);readable=true;}catch(const std::exception&){}
         // A launcher (RecompLauncher's recomplauncher.json) may write a setting or two before
-        // the first start: an object with neither schema nor locale is kept as such a part,
-        // and the language stays the system's until the player picks one.
+        // the first start: an object with no schema is kept as such a part. Its locale, the
+        // launcher's language choice, is the language; without one it stays the system's
+        // until the player picks one. 0.5.3 refused a part with a locale (issue #29).
         const bool ours=readable && saved.value("schema","")=="srw64.presentation-settings.v1";
-        const bool partial=readable && !ours && saved.is_object() && !saved.contains("schema") && !saved.contains("locale");
+        const bool partial=readable && !ours && saved.is_object() && !saved.contains("schema") &&
+                           (!saved.contains("locale") || saved["locale"].is_string());
         if(!ours && !partial) {
             if(locale.empty())throw std::runtime_error("Invalid language settings; pass --language to replace them explicitly");
         } else {
             kept=saved;
-            if(locale.empty() && ours)locale=saved.at("locale").get<std::string>();
+            if(locale.empty() && (ours || saved.contains("locale")))locale=saved.at("locale").get<std::string>();
             battle_ui=saved.value("battle_ui","native");
             intermission_ui=saved.value("intermission_ui","native");
             name_entry_ui=saved.value("name_entry_ui","native");
@@ -262,6 +264,10 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
                          // The 120 Hz scheduler's fallback and comparisons (src/host/sched_rate.hpp).
                          "SRW64_VI_RATE","SRW64_VI_AUDIO","SRW64_FORCE_FAST","SRW64_RT64_BASE","SRW64_PRESENT_PACE","SRW64_RT64_RATE_HINT",
                          "SRW64_FFMPEG",
+                         // The GL host's picture scale, to compare on slow renderers (graphics.cpp).
+                         "SRW64_GL_SCALE",
+                         // A GPU listed for the start-up check's test (windows/gpu_rules.hpp).
+                         "SRW64_GPU_RULE_TEST",
                          // The battle animation as the original places it, to compare (src/host/battle_spread.hpp).
                          "SRW64_BATTLE_SPREAD"})
         if(const char* value=std::getenv(key);value && *value)inherited[key]=value;

@@ -82,15 +82,15 @@
     {
      "ref": "secret-katz",
      "title": {
-      "zh-Hans": "卡茨＋瓦伊罗斯（含超级夺地者）",
-      "zh-Hant": "卡茨＋瓦伊羅斯（含超級奪地者）",
+      "zh-Hans": "卡茨＋斩空者（含超级夺地者）",
+      "zh-Hant": "卡茨＋斬空者（含超級奪地者）",
       "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
       "en": "Kurtz + Virose (including Super Earthgain)",
       "ko": "카츠 + 바이로즈(슈퍼 어스게인 포함)"
      },
      "text": {
-      "zh-Hans": "用布拉德击坠卡茨，累计满两次则交出瓦伊罗斯",
-      "zh-Hant": "用布拉德擊墜卡茨，累計滿兩次則交出瓦伊羅斯",
+      "zh-Hans": "用布拉德击坠卡茨，累计满两次则交出斩空者",
+      "zh-Hant": "用布拉德擊墜卡茨，累計滿兩次則交出斬空者",
       "ja": "ブラッドでカーツを撃墜、累計2回でヴァイローズを譲り受ける",
       "en": "Shoot down Kurtz with Brad; at two total he hands over the Virose",
       "ko": "브래드로 카츠 격추, 합계 2회면 바이로즈를 넘겨줌"

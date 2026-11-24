@@ -36,6 +36,58 @@ using Bytes=std::map<uint32_t,uint8_t>;
 namespace tw=table_window;
 
 inline constexpr const char* schema="srw64.new-units.v2";
+inline constexpr const char* dancouga_package="srw64.final-dancouga";
+inline constexpr unsigned old_dancouga=314;
+inline constexpr std::array<std::pair<unsigned,const char*>,3> old_dancouga_weapons{{
+    {1209,"sword"},{882,"cannon"},{881,"kougaken"},
+}};
+
+// Only Final Dancouga 0.1 used the shipped v1 format. Its folder and original ZIP
+// feed the same definitions into the v2 tables, with the keys the new package uses.
+inline bool legacy_dancouga(const std::string& package,const json& document) {
+    if(package!=dancouga_package || !document.is_object() ||
+        document.value("schema",json())!="srw64.new-units.v1")return false;
+    const auto units=document.find("units"),weapons=document.find("weapons");
+    if(units==document.end() || !units->is_object() || units->size()!=1 || !units->contains("314") ||
+        weapons==document.end() || !weapons->is_object() || weapons->size()!=old_dancouga_weapons.size())return false;
+    for(const auto& [old,_]:old_dancouga_weapons)
+        if(!weapons->contains(std::to_string(old)))return false;
+    return true;
+}
+
+inline json dancouga_definition(const json& source) {
+    json document=source;
+    document["schema"]=schema;
+    auto& units=document["units"];
+    units["final"]=std::move(units["314"]);
+    units.erase("314");
+    // The original ordered list includes the numeric weapon aliases resolved below.
+    auto& weapons=document["weapons"];
+    for(const auto& [old,name]:old_dancouga_weapons) {
+        const auto number=std::to_string(old);
+        weapons[name]=std::move(weapons[number]);
+        weapons.erase(number);
+    }
+    // Its own scenes were numbers then free (1003, 1051, 1052), and its animations' actors name
+    // them by number. Here those numbers are the ROM's scenes (rom_scenes 1053): the 光牙剑 drew
+    // other scenes' pieces and a 1-pixel framebuffer at address 0, and crashed the Deck. They
+    // name the package's own scenes, which keep those numbers as their names.
+    const auto scenes=document.find("scenes");
+    for(auto& weapon:weapons) {
+        if(scenes==document.end() || !scenes->is_object() || !weapon.is_object())break;
+        const auto animation=weapon.find("animation");
+        if(animation==weapon.end() || !animation->is_object())continue;
+        const auto actors=animation->find("actors");
+        if(actors==animation->end() || !actors->is_array())continue;
+        for(auto& actor:*actors) {
+            const auto scene=actor.is_object()?actor.find("scene"):actor.end();
+            if(scene==actor.end() || !scene->is_number_integer())continue;
+            const auto number=std::to_string(scene->get<int64_t>());
+            if(scenes->contains(number))*scene="@"+number;
+        }
+    }
+    return document;
+}
 inline constexpr uint32_t resident(uint32_t ram){return ram-0x80076610+0x1000;}
 inline constexpr uint32_t unit_record_size=0x24, weapon_record_size=0x10, battle_row=14, list_row=12;
 inline constexpr unsigned battle_units_with_rows=354;   // the units whose battle record is their own
@@ -63,6 +115,7 @@ inline uint32_t fnv1a(const std::string& text) {
 struct Numbers {
     std::map<std::string,unsigned> units,weapons,pilots;
     std::map<unsigned,std::string> unit_keys,weapon_keys,pilot_keys;   // the reverse
+    bool legacy_dancouga{};
 };
 // Each name's number comes from its key's hash, the next free one on a clash, the keys taken
 // in the order of their hashes: the same packages give the same numbers on any machine, in
@@ -85,15 +138,21 @@ inline void place(const std::vector<std::string>& keys,unsigned first,unsigned l
 // The packages' new_units.json documents (package id, document), bottom first.
 inline Numbers assign(const std::vector<std::pair<std::string,json>>& documents) {
     std::vector<std::string> units,weapons,pilots;
+    Numbers n;
     for(const auto& [id,document]:documents) {
         if(!document.is_object())continue;
+        if(legacy_dancouga(id,document)) {
+            n.legacy_dancouga=true;
+            units.push_back(id+"@final");
+            for(const auto& [_,name]:old_dancouga_weapons)weapons.push_back(id+"@"+name);
+            continue;
+        }
         for(const auto& [part,list]:{std::pair<const char*,std::vector<std::string>*>{"units",&units},{"weapons",&weapons},{"pilots",&pilots}}) {
             const auto found=document.find(part);
             if(found==document.end() || !found->is_object())continue;
             for(const auto& [name,_]:found->items())if(valid_name(name))list->push_back(id+"@"+name);
         }
     }
-    Numbers n;
     place(units,tw::first_new_unit,tw::last_new_unit,n.units,n.unit_keys);
     place(weapons,tw::first_new_weapon,tw::last_new_weapon,n.weapons,n.weapon_keys);
     place(pilots,tw::first_new_pilot,tw::last_new_pilot,n.pilots,n.pilot_keys);
@@ -104,20 +163,32 @@ inline Numbers assign(const std::vector<std::pair<std::string,json>>& documents)
 enum class Of { unit, weapon, pilot };
 inline std::optional<unsigned> resolve(const json& value,const std::string& package,const Numbers& numbers,Of of) {
     const unsigned rom=of==Of::unit?tw::rom_units:of==Of::weapon?tw::rom_weapons:tw::rom_pilots;
-    if(value.is_number_integer()) {
-        const auto v=value.get<int64_t>();
+    const auto& table=of==Of::unit?numbers.units:of==Of::weapon?numbers.weapons:numbers.pilots;
+    const auto numeric=[&](int64_t v)->std::optional<unsigned> {
+        const char* alias=nullptr;
+        if(numbers.legacy_dancouga && package==dancouga_package) {
+            if(of==Of::unit && v==old_dancouga)alias="final";
+            if(of==Of::weapon)
+                for(const auto& [old,name]:old_dancouga_weapons)
+                    if(v==old)alias=name;
+        }
+        if(alias) {
+            const auto found=table.find(package+"@"+alias);
+            return found==table.end()?std::nullopt:std::optional<unsigned>(found->second);
+        }
         return v>=0 && v<int64_t(rom)?std::optional<unsigned>(unsigned(v)):std::nullopt;
+    };
+    if(value.is_number_integer()) {
+        return numeric(value.get<int64_t>());
     }
     if(!value.is_string())return std::nullopt;
     const auto text=value.get<std::string>();
     const auto at=text.find('@');
     if(at==std::string::npos) {   // a number written as a string, as JSON keys are
         if(text.empty() || text.size()>4 || !std::all_of(text.begin(),text.end(),[](char c){return c>='0' && c<='9';}) || (text.size()>1 && text[0]=='0'))return std::nullopt;
-        const unsigned v=unsigned(std::stoul(text));
-        return v<rom?std::optional<unsigned>(v):std::nullopt;
+        return numeric(std::stoul(text));
     }
     const std::string key=(at==0?package:text.substr(0,at))+"@"+text.substr(at+1);
-    const auto& table=of==Of::unit?numbers.units:of==Of::weapon?numbers.weapons:numbers.pilots;
     const auto found=table.find(key);
     return found==table.end()?std::nullopt:std::optional<unsigned>(found->second);
 }
@@ -207,7 +278,7 @@ inline bool integer(const json& v,int64_t low,int64_t high) {
     return v.is_number_integer() && v.get<int64_t>()>=low && v.get<int64_t>()<=high;
 }
 
-// A sprite's file, inside the package's folder.
+// A sprite's file, inside the package's folder (or its .srw64mod, read as a folder: file_source.hpp).
 inline std::optional<std::filesystem::path> inside(const std::filesystem::path& folder,const json& value) {
     if(!value.is_string())return std::nullopt;
     const std::filesystem::path relative=value.get<std::string>();
@@ -274,7 +345,7 @@ inline std::string sprites(const json& part,const std::string& package,const std
             if(hd.size()!=frames.size())return where+".hd：要每张图一张 HD 图";
             for(const auto& h:hd) {
                 const auto file=inside(folder,h);
-                if(!file || !std::filesystem::is_regular_file(*file))return where+".hd：找不到 "+h.dump();
+                if(!file || !presentation::file_exists(*file))return where+".hd：找不到 "+h.dump();
                 sprite.hd.push_back(*file);
             }
         }
@@ -285,9 +356,11 @@ inline std::string sprites(const json& part,const std::string& package,const std
 
 // One package's file into bytes, all or nothing; `below` is what earlier files and packages
 // wrote; `folder` is the package's, where its sprites' PNGs are.
-inline std::string parse(const json& document,const std::string& package,const Numbers& numbers,
+inline std::string parse(const json& source,const std::string& package,const Numbers& numbers,
                          std::span<const uint8_t> rom,const Bytes& below,Bytes& out,Taken& taken,
                          const std::filesystem::path& folder={}) {
+    const auto converted=legacy_dancouga(package,source)?dancouga_definition(source):json();
+    const auto& document=converted.is_null()?source:converted;
     if(!document.is_object())return "顶层要是对象";
     if(document.value("schema","")!=schema)return std::string("schema 要是 ")+schema;
     for(const auto& [key,_]:document.items())
@@ -730,7 +803,7 @@ inline std::string parse(const json& document,const std::string& package,const N
                 own.pixels=*image;
                 if(p.contains("hd")) {
                     const auto hd=inside(folder,p["hd"]);
-                    if(!hd || !std::filesystem::is_regular_file(*hd))return where+".portrait.hd：包里没有这张图";
+                    if(!hd || !presentation::file_exists(*hd))return where+".portrait.hd：包里没有这张图";
                     own.hd=*hd;
                 }
                 std::vector<uint16_t> colors{0};

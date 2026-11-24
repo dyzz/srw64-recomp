@@ -63,7 +63,8 @@ inline void after_draw(uint8_t* ram, uint32_t function, int32_t slot, int32_t su
     const uint32_t record = kSubRecords + uint32_t(slot) * kSlotSize;
     const uint32_t icon = resource(ram, record + 0x14);
     if(icon < kFirstIcon || icon > kLastIcon)return;
-    const char facing = kFacing[icon - kFirstIcon];
+    const bool hd = replaced.load();
+    const char facing = (hd ? kHdFacing : kFacing)[icon - kFirstIcon];
     if(facing == 'F')return;
     if((facing == 'L') == looks_left(ram, uint32_t(slot), resource(ram, record + 0x16)))return;
     for(uint32_t p = begin; p + 24 <= end; p += 8) {
@@ -76,7 +77,7 @@ inline void after_draw(uint8_t* ram, uint32_t function, int32_t slot, int32_t su
         // S (s10.5) to the far edge (above).
         const int32_t span = width * dsdx / (4 * 1024);
         if(span < 1)return;
-        const uint32_t s = ((st >> 16) + uint32_t(replaced ? span * 32 - 1 : (span - 1) * 32)) & 0xFFFF;
+        const uint32_t s = ((st >> 16) + uint32_t(hd ? span * 32 - 1 : (span - 1) * 32)) & 0xFFFF;
         guest::write32(ram, p + 12, (s << 16) | (st & 0xFFFF));
         guest::write32(ram, p + 20, (uint32_t(uint16_t(int16_t(-dsdx))) << 16) | (steps & 0xFFFF));
         return;

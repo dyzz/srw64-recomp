@@ -1075,7 +1075,7 @@ could defeat me?!”
 
 @25890 Domon · ドモン
 > 「ガンダムシュピーゲル……シュバルツ!?」
-“Shadow Gundam... Schwarz?!”
+“Gundam Spiegel... Schwarz?!”
 
 @25891 Schwarz · シュバルツ
 > 「愚か者が……あれほど忠告したのに
@@ -1125,7 +1125,7 @@ if you had no one to lean on...”
 ---
 >  ガンダムシュピーゲルに救われ、怒りも
 >  おさまったというのに、スキだらけで
-Shadow Gundam saves you, your anger subsides, and yet you are still riddled with openings
+Gundam Spiegel saves you, your anger subsides, and yet you are still riddled with openings
 ---
 >  このザマだ。さぁ、首をへし折って
 >  くれるわ!!」

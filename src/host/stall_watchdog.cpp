@@ -24,6 +24,7 @@ uint64_t srw64_current_vi();
 namespace srw64::stall {
 namespace {
 std::atomic<uint64_t> frames{0}, presents{0};
+std::atomic<int> busy{0};          // Busy objects alive: the watchdog does not count
 std::atomic<bool> started{false};
 bool test_stall = false;    // SRW64_STALL_TEST=1 (development): the render thread stops at frame 120
 // SRW64_START_MARKER: the file GraphicsGuard.java writes before the game starts; gone after
@@ -136,6 +137,11 @@ void watch() {
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
         const uint64_t f = frames.load(), p = presents.load(), vi = srw64_current_vi();
         const auto now = std::chrono::steady_clock::now();
+        if (busy.load() > 0) {                  // long work that is no stall: both start over
+            last_presents = p; present_vi = vi; present_frames = f; present_since = now; present_dumped = false;
+            last_frames = f; last_vi = vi; since = now; dumped = false;
+            continue;
+        }
         if (p != last_presents) {               // presenting again: re-arm
             last_presents = p; present_vi = vi; present_frames = f; present_since = now; present_dumped = false;
         } else if (!present_dumped && dumps < 3 && p > 0 && f >= present_frames + 60 && vi >= present_vi + 120 &&
@@ -182,6 +188,9 @@ void frame_done() {
     }
 }
 void present_done() { presents.fetch_add(1, std::memory_order_relaxed); }
+void stop() {}
+Busy::Busy() { busy.fetch_add(1); }
+Busy::~Busy() { busy.fetch_sub(1); }
 }
 #elif defined(__SWITCH__)
 // The Switch (docs/design/switch-port.md, S1): no signals to sample a thread with. A stall
@@ -206,14 +215,19 @@ std::string srw64_switch_program_path();                    // switch/switch_pla
 namespace srw64::stall {
 namespace {
 std::atomic<uint64_t> frames{0};
+std::atomic<int> busy{0};   // Busy objects alive: the watchdog does not count
+// Joined by stop() at exit: a thread still running once main has returned wakes in code
+// hbloader has already unloaded (2168-0001 after the settings page's exit, 2026-11-23).
+std::atomic<bool> stopping{false};
+std::thread* watcher = nullptr;
 void watch() {
     uint64_t last_frames = frames.load(), last_vi = srw64_current_vi();
     auto since = std::chrono::steady_clock::now();
-    for (;;) {
+    while (!stopping.load()) {
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
         const uint64_t f = frames.load(), vi = srw64_current_vi();
         const auto now = std::chrono::steady_clock::now();
-        if (f != last_frames) { last_frames = f; last_vi = vi; since = now; continue; }
+        if (f != last_frames || busy.load() > 0) { last_frames = f; last_vi = vi; since = now; continue; }
         const double seconds = std::chrono::duration<double>(now - since).count();
         if (f > 0 && seconds >= 10 && vi >= last_vi + 300) {
             char report[256];
@@ -230,25 +244,45 @@ void watch() {
 }
 }
 // Development: a file named stall-test beside the NRO stops the render thread at frame 120,
-// as SRW64_STALL_TEST does elsewhere (the Switch starts with the environment cleared).
-bool test_stall = false;
+// as SRW64_STALL_TEST does elsewhere (the Switch starts with the environment cleared); one
+// named fault-test writes to an unmapped address there instead, which goes through the
+// exception handler (switch_platform.cpp) that a stall's svcBreak does not.
+bool test_stall = false, test_fault = false;
 void start() {
     std::error_code missing;
-    test_stall = std::filesystem::exists(std::filesystem::path(srw64_switch_program_path()).parent_path() / "stall-test", missing);
-    std::thread(watch).detach();
+    const auto beside = std::filesystem::path(srw64_switch_program_path()).parent_path();
+    test_stall = std::filesystem::exists(beside / "stall-test", missing);
+    test_fault = std::filesystem::exists(beside / "fault-test", missing);
+    watcher = new std::thread(watch);
+}
+void stop() {
+    if (!watcher) return;
+    stopping = true;
+    watcher->join();   // one sleep, at most half a second
+    delete watcher;
+    watcher = nullptr;
 }
 void frame_done() {
+    if (frames.load(std::memory_order_relaxed) + 1 == 120 && test_fault) {
+        std::fprintf(stderr, "SRW64_FAULT_TEST: the render thread writes to an unmapped address\n");
+        *reinterpret_cast<volatile uint32_t*>(uintptr_t(0x10)) = 1;
+    }
     if (frames.fetch_add(1, std::memory_order_relaxed) + 1 == 120 && test_stall) {
         std::fprintf(stderr, "SRW64_STALL_TEST: the render thread stops here\n");
         for (;;) std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 }
 void present_done() {}
+Busy::Busy() { busy.fetch_add(1); }
+Busy::~Busy() { busy.fetch_sub(1); }
 }
 #else
 namespace srw64::stall {
 void start() {}
 void frame_done() {}
 void present_done() {}
+void stop() {}
+Busy::Busy() {}
+Busy::~Busy() {}
 }
 #endif

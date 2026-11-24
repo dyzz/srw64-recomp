@@ -606,7 +606,7 @@ SPT追赶……我……”
 @21688 布拉德 · ブラッド（按段落 3DD3）
 > 「あれは……ヴァイローズ!?
 >  {PartnerNick}か!!
-“那是……瓦伊罗斯！？是{PartnerNick}吗！！
+“那是……斩空者！？是{PartnerNick}吗！！
 ---
 >  待て、{PartnerNick}!!」
 等等，{PartnerNick}！！”

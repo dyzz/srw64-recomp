@@ -32,18 +32,19 @@ int main(int argc,char** argv) {
         {"events",nlohmann::json::array({{{"offset",0},{"size",18}},{{"offset",20},{"size",14}}})}};
     auto parsed=parse(image);
     assert(parsed.pointers.size()==2 && parsed.pointers[1]==event_block+20 && parsed.map && *parsed.map==20 && !parsed.slot);
-    assert(!parsed.route && parsed.story_vars.empty() && !parsed.last_choice);
+    assert(!parsed.episode && !parsed.route && parsed.story_vars.empty() && !parsed.last_choice);
     {
         // The story set-up of a direct entry: the route, variables as an object or pairs, the last choice.
-        auto setup=image;setup["route"]=2;setup["story_vars"]={{"9",0},{"17",3}};setup["last_choice"]=2;
+        auto setup=image;setup["episode"]=24;setup["route"]=2;setup["story_vars"]={{"9",0},{"17",3}};setup["last_choice"]=2;
         auto with=parse(setup);
+        assert(with.episode==24);
         std::sort(with.story_vars.begin(),with.story_vars.end());
         assert((with.route && *with.route==2 && with.story_vars==std::vector<std::pair<unsigned,unsigned>>{{9,0},{17,3}} && with.last_choice && *with.last_choice==2));
         setup["story_vars"]=nlohmann::json::array({{9,1}});
         assert((parse(setup).story_vars==std::vector<std::pair<unsigned,unsigned>>{{9,1}}));
         setup["route"]=nullptr;
         assert(!parse(setup).route);
-        for(auto [key,value]:std::vector<std::pair<std::string,nlohmann::json>>{{"route",4},{"route",-1},{"route","2"},{"story_vars",{{"200",0}}},{"story_vars",{{"9",4}}},{"last_choice",0},{"last_choice",9}}) {
+        for(auto [key,value]:std::vector<std::pair<std::string,nlohmann::json>>{{"episode",0},{"episode",100},{"episode",true},{"route",4},{"route",-1},{"route","2"},{"story_vars",{{"200",0}}},{"story_vars",{{"9",4}}},{"last_choice",0},{"last_choice",9}}) {
             auto bad=image;bad[key]=value;bool threw=false;
             try{parse(bad);}catch(const std::runtime_error&){threw=true;}
             assert(threw);
@@ -116,6 +117,18 @@ int main(int argc,char** argv) {
     put(resource_unit+4,3000,2);put(resource_unit+6,3000,2);put(resource_unit+8,80,2);put(resource_unit+10,80,2);
     service(ram.data());assert(read(ram.data(),resource_unit+4,2)==1050 && read(ram.data(),resource_unit+8,2)==40);
     put(resource_unit+4,1000,2);service(ram.data());assert(read(ram.data(),resource_unit+4,2)==1000);
+    // A suspend record restored registers the scene again in mode 1: its units are the
+    // record's, so neither the resources nor the story set-up are applied again, and a unit
+    // the record no longer has is no error.
+    {
+        const auto kept=state().image;const auto bound=state().bound;const auto applied=state().applied;
+        state().image=parse(resource_image);state().bound.reset();
+        put(resource_slot,0,1);put(0x8015E818,0x0000,2);
+        ctx.r4=1;register_hook(ram.data(),&ctx);ctx.r4=0;
+        assert(state().active && state().ready);
+        service(ram.data());assert(read(ram.data(),resource_unit+4,2)==1000);
+        state().image=kept;state().bound=bound;state().applied=applied;put(resource_slot,1,1);
+    }
     auto invalid=resource_image;invalid["initial_resources"][0]["hp_percent"]=0;
     bool rejected=false;try{parse(invalid);}catch(const std::runtime_error&){rejected=true;}assert(rejected);
     state().image=parsed;
@@ -194,6 +207,8 @@ int main(int argc,char** argv) {
     put(0x8010F5EE,5,1);map_hook(ram.data());assert(read(ram.data(),0x8010F5EE,1)==20);
     put(0x8010F5EF,1,1);put(0x8010F5F0,2,1);register_hook(ram.data(),&ctx);
     assert(state().active && *state().bound==2 && state().image->name=="two" && read(ram.data(),0x8010F5EF,1)==1);
+    state().stages.at(2).episode=24;register_hook(ram.data(),&ctx);
+    assert(read(ram.data(),0x8010F5EF,1)==23);
     put(0x8010F5EE,5,1);map_hook(ram.data());assert(read(ram.data(),0x8010F5EE,1)==19);
     put(0x8010F5F0,9,1);register_hook(ram.data(),&ctx);
     assert(!state().active && notices_posted==1);

@@ -119,6 +119,16 @@ class Text:
                 break
         return out
 
+    def widest(self, locale, names, count=7):
+        """The widest distinct strings of a list in the page font."""
+        font = self.fonts[locale]
+        return sorted(dict.fromkeys(n for n in names if n.strip()), key=lambda t: -font.getlength(t))[:count]
+
+
+# content/locales/library-names.json: the Library's own names (a pilot, a form), often
+# longer than any name the game's records hold.
+LIBRARY_NAMES = json.loads((ROOT / 'content/locales/library-names.json').read_text(encoding='utf-8'))
+
 
 def marked(row):
     """upgrade_page.cpp weapon_markers: a list name's 格／射 prefix and P／B／MAP suffix become icons."""
@@ -330,13 +340,48 @@ def add_viewer(add, text, loc, units, pilots, menus):
     weapons[1]['combo'] = True
     weapons[2]['unlock'] = text.longest(loc, 1370, 2698, 1)[0]
     weapons.append({**weapons[0], 'markers': ['格', 'MAP'], 'number': 99, 'flags': 0})   # a map weapon: left out of the boxes
+    # The widest names, the Library's own (a pilot or form after the name) among them.
+    named = lambda kind: [v[loc] for v in LIBRARY_NAMES[kind].values() if loc in v]
+    units, pilots = text.widest(loc, named('units') + units), text.widest(loc, named('pilots') + pilots)
     unit_rows = [{'id': uid, 'name': units[i % 7], 'model': models[i % 7], 'work': 5, 'work_name': work, 'hp': 65535,
                   'equipment_bits': 3, 'ability_bits': 0x20, 'weapons': weapons} for i, uid in enumerate(VIEWER_UNITS)]
     pilot_rows = [{'actor': actor, 'name': pilots[i % 7], 'work': 5, 'work_name': work, 'skill_bits': 0x23,
                    'skills': [{'levels': [{'name': name, 'level': 1}]} for _, name in families[:4]]} for i, actor in enumerate(VIEWER_PILOTS)]
+    # What the Library's own pages read besides (library.cpp unit() / pilot()): the movement
+    # types, abilities and figures of the largest machine, a pilot's level-1 stats.
+    for row in unit_rows:
+        row.update(types=[r(n) for n in (919, 920, 921, 922)], abilities=[], size='LL', slots=4, repair=65535, cap=15,
+                   en=999, move=10, mobility=200, armor=4500, limit=430)
+    for row in pilot_rows:
+        row.update(full_name=row['name'], enemy=True, double_move=99, spirits=[],
+                   stats={k: 255 for k in ('melee', 'ranged', 'skill', 'reaction', 'hit', 'evade', 'sp')})
     pages = {'library': {'units': unit_rows, 'pilots': pilot_rows},
              'battle_viewer': {'songs': [{'song': n - 232, 'text': r(n)} for n in range(232, 281)], 'default_song': 3}}
     add('viewer', pages, settings='general', clicks=['viewer-open'])
+    # The Library (frontend.cpp library_panel), opened from the settings' 一般 page: the list and
+    # the first entry's page, units then characters. The units list holds every name of
+    # library-names.json, widest first, each beside its own model number (the list's other
+    # column) when web/.data/library.json is there (web/scripts/export_library.py), else
+    # beside the widest ones.
+    exported = ROOT / 'web/.data/library.json'
+    font = text.fonts[loc]
+    if exported.exists():
+        # The whole list as the game shows it: every unit, named for this language (the
+        # export has no Traditional Chinese unit names: Simplified, or this file's own).
+        key = {'zh-Hans': 'zh', 'zh-Hant': 'zh'}.get(loc, loc)
+        own = [(e['id'], LIBRARY_NAMES['units'].get(str(e['id']), {}).get(loc) or e['name'][key], e.get('model'))
+               for e in json.loads(exported.read_text())['units']]
+    else:
+        own = [(int(uid), v[loc], None) for uid, v in LIBRARY_NAMES['units'].items() if loc in v]
+    own.sort(key=lambda x: -font.getlength(x[1]))
+    listed = [{**unit_rows[0], 'id': uid, 'name': name, 'model': model if exported.exists() else models[i % 7]}
+              for i, (uid, name, model) in enumerate(own)]
+    for row in listed:
+        if not row['model']:
+            del row['model']
+    library = {**pages, 'library': {'units': listed, 'pilots': pilot_rows}}
+    add('library-units', library, settings='general', clicks=['library-open', 'lib-tab:0'])
+    add('library-pilots', library, settings='general', clicks=['library-open', 'lib-tab:1'])
     for box in ('unit:0', 'pilot:0', 'weapon:0', 'counter_weapon:1', 'result:0', 'result:1', 'scenes:1', 'songs'):
         add('viewer-' + box.replace(':', '').replace('_', '-'), pages, settings='general', clicks=['viewer-open', 'vw-' + box])
 

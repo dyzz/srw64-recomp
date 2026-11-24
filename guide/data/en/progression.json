@@ -25,7 +25,7 @@
     "items": [
      "The choice at the end of “Operation Daybreak” (Super stage 20, Real stage 19) decides between the OZ route and the Independence Army route; once you join OZ there's no going back",
      "On the Independence Army route, meeting the conditions in “The Battle of Ryozanpaku” switches you to the Complete Pacifism route; the Complete Pacifism route chooses again in “Return to the Battlefield”: following Treize merges into the second half of OZ from “Prelude to Ruin”, fighting alone merges into the second half of the Independence Army route from “Galactic Empire Vanguard Fleet”",
-     "At the end of “Nightmare, Once More” / “A Nightmare with No Waking”, choose to go to Muge space or stay in the Earth Sphere; while the team is split, the other group's members temporarily can't deploy (they stay in the team), and from “Terror! Dark Axis Activates! (Part 1)” both sides reunite for the final chapter"
+     "At the end of “Nightmare, Once More” / “A Nightmare with No Waking”, choose to go to Muge space or stay in the Earth Sphere; while the team is split, the other group's members temporarily can't deploy (they stay in the team), and from “Terror! Devil Axis Activates! (Part 1)” both sides reunite for the final chapter"
     ]
    },
    {
@@ -1228,7 +1228,7 @@
    ],
    "temporary": [
     "Black Joker (Joker) — appears after all enemies are destroyed, as a guest {+}",
-    "Shadow Gundam (Schwarz) — temporary ally"
+    "Gundam Spiegel (Schwarz) — temporary ally"
    ],
    "parts": [
     {
@@ -1450,7 +1450,7 @@
    "victory": "① defeat all enemies ② (once the enemy is down to 15 or fewer) defeat all enemies within 5 turns",
    "defeat": "① ally battleship destroyed ② ally battleship destroyed, 5 turns pass",
    "joins": [
-    "Shadow Gundam (Schwarz)",
+    "Gundam Spiegel (Schwarz)",
     "Cosmo Crusher (Kenji, Naoto, Takeru, Mika, Akira)",
     "Black Wing (Alan)",
     "Roanne (pilot only)"
@@ -1519,7 +1519,7 @@
    "victory": "Defeat all enemies",
    "defeat": "Enemy enters the base area; ally battleship destroyed",
    "joins": [
-    "Shadow Gundam (Schwarz)",
+    "Gundam Spiegel (Schwarz)",
     "Roanne (pilot only)"
    ],
    "joins_after": [
@@ -1607,7 +1607,7 @@
     "Whichever of Gran-Garan (Ciela) or Goraon (Elle) you didn't pick earlier — joins at the start, leaves at the end of “Purification”"
    ],
    "leaves": [
-    "Shadow Gundam (Schwarz) — leaves at the end of the stage",
+    "Gundam Spiegel (Schwarz) — leaves at the end of the stage",
     "Temporarily unable to deploy from the end of the stage: Hyaku-Shiki (Quattro, back in “The Shooting Star That Never Burns Out”); Great Mazinger (Tetsuya) and Venus A (Jun) (back in “Charge! Destroy the Mobile Fortress! (Part 1)”); Dancouga, Shining Gundam and the four Shuffle Alliance units (back in “Return to the Battlefield”) {≠}"
    ],
    "upgrades": [
@@ -1781,6 +1781,11 @@
     }
    ],
    "secrets": [
+    {
+     "ref": "secret-todd-silky",
+     "text": "If Show has already persuaded Tod twice, you can shoot him down after he goes Hyper. He will still join later, so you can fight him or let him retreat.",
+     "short": "After both persuasions, shooting down Hyper Tod does not affect recruitment"
+    },
     {
      "ref": "secret-garalia",
      "text": "If Garalia has been recruited, she deploys with the Aura Battler, becomes temporarily unable to deploy along with them from the end of the stage, and returns at the end of the next stage",
@@ -2945,11 +2950,11 @@
     "Rising Gundam (Rain)"
    ],
    "temporary": [
-    "Shadow Gundam (Schwarz) (temporary ally)",
+    "Gundam Spiegel (Schwarz) (temporary ally)",
     "Alberto, Ivan, Q Boss, etc. (third party) {+}"
    ],
    "leaves": [
-    "Shadow Gundam (Schwarz) — leaves at the start and appears in this stage as a temporary ally"
+    "Gundam Spiegel (Schwarz) — leaves at the start and appears in this stage as a temporary ally"
    ],
    "upgrades": [
     "Unlocked at the start: Gundam Maxter “Burning Machine Gun Punch”, Dragon Gundam “Shin Ryusei Kochoken”, Gundam Rose “Rose Hurricane”, Bolt Gundam “Gaia Crusher”",
@@ -3045,10 +3050,10 @@
     "Rising Gundam (Rain)"
    ],
    "temporary": [
-    "Shadow Gundam (Schwarz) (temporary ally)"
+    "Gundam Spiegel (Schwarz) (temporary ally)"
    ],
    "leaves": [
-    "Shadow Gundam (Schwarz) — leaves at the start and appears in this stage as a temporary ally"
+    "Gundam Spiegel (Schwarz) — leaves at the start and appears in this stage as a temporary ally"
    ],
    "upgrades": [
     "Unlocked at the start: Gundam Maxter “Burning Machine Gun Punch”, Dragon Gundam “Shin Ryusei Kochoken”, Gundam Rose “Rose Hurricane”, Bolt Gundam “Gaia Crusher”",
@@ -3154,13 +3159,13 @@
     },
     {
      "ref": "secret-kyral",
-     "text": "Shoot down Kyral with Domon (he appears on the player phase after the first enemy wave is wiped out) → he appears as an ally in “Terror! Dark Axis Activates! (Part 1)” and joins only if he is still on the map when the last enemy wave is wiped out {≠}",
+     "text": "Shoot down Kyral with Domon (he appears on the player phase after the first enemy wave is wiped out) → he appears as an ally in “Terror! Devil Axis Activates! (Part 1)” and joins only if he is still on the map when the last enemy wave is wiped out {≠}",
      "short": "Shoot down Kyral with Domon (appears after the first wave)"
     },
     {
      "ref": "secret-story-attacks",
-     "text": "Double Burning Finger needs no story unlock: combination attacks are checked fresh every time, so once Allenby is recruited it's usable whenever the God Gundam and Noble Gundam are adjacent with enough Will and EN {≠}{?}",
-     "short": "No action needed: Double Burning Finger works once Allenby joins"
+     "text": "Double God Finger needs no story unlock: combination attacks are checked fresh every time, so once Allenby is recruited it's usable whenever the God Gundam and Noble Gundam are adjacent with enough Will and EN {≠}{?}",
+     "short": "No action needed: Double God Finger works once Allenby joins"
     }
    ],
    "notes": [
@@ -3417,13 +3422,13 @@
     },
     {
      "ref": "secret-kyral",
-     "text": "Shoot down Kyral with Domon (he appears on the enemy phase of the 4th turn after Baren is destroyed) → he appears as an ally in “Terror! Dark Axis Activates! (Part 1)” and joins only if he is still on the map when the last enemy wave is wiped out {≠}",
+     "text": "Shoot down Kyral with Domon (he appears on the enemy phase of the 4th turn after Baren is destroyed) → he appears as an ally in “Terror! Devil Axis Activates! (Part 1)” and joins only if he is still on the map when the last enemy wave is wiped out {≠}",
      "short": "Shoot down Kyral with Domon (appears 4 turns after Baren falls)"
     },
     {
      "ref": "secret-story-attacks",
-     "text": "Double Burning Finger needs no story unlock: combination attacks are checked fresh every time, so once Allenby is recruited it's usable whenever the God Gundam and Noble Gundam are adjacent with enough Will and EN {≠}{?}",
-     "short": "No action needed: Double Burning Finger works once Allenby joins"
+     "text": "Double God Finger needs no story unlock: combination attacks are checked fresh every time, so once Allenby is recruited it's usable whenever the God Gundam and Noble Gundam are adjacent with enough Will and EN {≠}{?}",
+     "short": "No action needed: Double God Finger works once Allenby joins"
     }
    ],
    "notes": [
@@ -4498,7 +4503,7 @@
    "victory": "Defeat all enemies",
    "defeat": "Ally battleship destroyed",
    "joins": [
-    "Gandor (Dr. Hazuki), Shadow Gundam (Schwarz) — appear mid-battle",
+    "Gandor (Dr. Hazuki), Gundam Spiegel (Schwarz) — appear mid-battle",
     "Zwauth (Tod) — appears in the turn 3 player phase if conditions are met; Silky can ride along {≠}"
    ],
    "joins_after": [
@@ -4534,8 +4539,8 @@
    "secrets": [
     {
      "ref": "secret-todd-silky",
-     "text": "If both persuasion steps for Tod are done, he joins as reinforcements in the Zwauth on the player phase of turn 3. If at that moment Garalia has been recruited and Marvel has ≥ 30 kills (kills on turns 1 and 2 count), Silky also joins riding with him. If Tod is shot down in this stage, both are lost permanently {≠}",
-     "short": "Keep Tod alive (joins turn 3); Silky too if Marvel has ≥ 30 kills"
+     "text": "If both persuasion steps for Tod are done, he joins as reinforcements in the Zwauth on the player phase of turn 3. If at that moment Garalia has been recruited and Marvel has ≥ 30 kills (kills on turns 1 and 2 count), Silky also joins riding with him. Keep Tod alive until you clear the stage. If Tod is shot down in this stage, both are lost permanently {≠}",
+     "short": "Keep Tod alive from turn 3, when he joins, until you clear the stage. If shot down here, he leaves permanently."
     },
     {
      "ref": "secret-kirika",
@@ -4762,7 +4767,7 @@
     "Noble Gundam (Allenby) — if saved {≠}"
    ],
    "temporary": [
-    "Shadow Gundam (Schwarz) (temporary ally)"
+    "Gundam Spiegel (Schwarz) (temporary ally)"
    ],
    "leaves": [
     "Noble Gundam (Allenby) — if not saved, she appears in the Devil Gundam after Master Asia is shot down, and is lost for good once destroyed {+}"
@@ -5096,7 +5101,7 @@
    ],
    "leaves": [
     "Noble Gundam (Allenby) — if Allenby is in the party and deployed in this stage, she leaves at the start and appears as an enemy; if not won back, she's lost for good",
-    "Shadow Gundam (Schwarz) — if Ryoma isn't on the map at the start, he leaves along with his unit when the stage is cleared; if Ryoma is, he stays on the roster {≠}{?}"
+    "Gundam Spiegel (Schwarz) — if Ryoma isn't on the map at the start, he leaves along with his unit when the stage is cleared; if Ryoma is, he stays on the roster {≠}{?}"
    ],
    "parts": [
     {
@@ -5144,7 +5149,7 @@
     },
     {
      "ref": "secret-schwarz",
-     "text": "Deploy Ryoma at the start (any unit): Schwarz's sacrifice scene still plays, but at stage clear the script no longer removes him and the Shadow Gundam from the roster, so he stays with the team {≠}{?}",
+     "text": "Deploy Ryoma at the start (any unit): Schwarz's sacrifice scene still plays, but at stage clear the script no longer removes him and the Gundam Spiegel from the roster, so he stays with the team {≠}{?}",
      "short": "Deploy Ryoma at the start (any unit) to keep Schwarz"
     },
     {
@@ -5962,7 +5967,7 @@
    "secrets": [
     {
      "ref": "secret-route-muge",
-     "text": "Two-way choice at the end of the stage: “Go to the Muge universe” → “A Distant Gamble”; “Remain in the Earth Sphere” → “Char's Rebellion”. After the split, the other side's members just temporarily can't deploy (they stay in the team) and return at the start of “Terror! Dark Axis Activates! (Part 1)” {≠}",
+     "text": "Two-way choice at the end of the stage: “Go to the Muge universe” → “A Distant Gamble”; “Remain in the Earth Sphere” → “Char's Rebellion”. After the split, the other side's members just temporarily can't deploy (they stay in the team) and return at the start of “Terror! Devil Axis Activates! (Part 1)” {≠}",
      "short": "“Go to the Muge universe” → A Distant Gamble; stay → Char's Rebellion"
     },
     {
@@ -6022,7 +6027,7 @@
    "secrets": [
     {
      "ref": "secret-route-muge",
-     "text": "Two-way choice at the end of the stage: “Go to the Muge universe” → “The Last Roar”; “Remain in the Earth Sphere” → “Char's Rebellion”. After the split, the other side's members just temporarily can't deploy (they stay in the team) and return at the start of “Terror! Dark Axis Activates! (Part 1)” {≠}",
+     "text": "Two-way choice at the end of the stage: “Go to the Muge universe” → “The Last Roar”; “Remain in the Earth Sphere” → “Char's Rebellion”. After the split, the other side's members just temporarily can't deploy (they stay in the team) and return at the start of “Terror! Devil Axis Activates! (Part 1)” {≠}",
      "short": "“Go to the Muge universe” → The Last Roar; stay → Char's Rebellion"
     },
     {
@@ -6079,9 +6084,9 @@
    ],
    "notes": [
     "Stage 49 on Real, stage 50 on Super; 1 more after Ark plays “Together from Here On” or Brad plays “Time to Settle It” {≠}",
-    "Available when going to the Muge universe: Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Roze, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone. The Earth Sphere group (Schwarz, Domon, Rain, Argo, Allenby, Sai Saici, George, Chibodee, Amuro, Kamille, Quattro, Kou, Judau, Shiro, Fa, Roux, Aina, Emma, Ple, Four, Ple-Two, Rosamia, Quatre, Milliardo, Noin, Jun, Tetsuya, Naoto, Mika, Kenji, Akira, Hyoma, Daisaku, Chizuru, Kosuke, Juzo, Ginrei, Elle, Ciela, Show, Silky, Chum, Marvel, Garalia, Tod, Julia, Beecha, Iino, Elle, Mondo, Apolly, Roberto, Kayra, Chara, Howard, Hilde, Roanne, Zechs) temporarily can't deploy but stays in the team, returning at the start of “Terror! Dark Axis Activates! (Part 1)”. Those on neither list (the protagonist, Lawrence, etc., plus the three series that join via the Link Battler link) can deploy on both sides; Gale is on both lists and can't deploy on either side while the team is split {?}{≠}",
+    "Available when going to the Muge universe: Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Roze, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone. The Earth Sphere group (Schwarz, Domon, Rain, Argo, Allenby, Sai Saici, George, Chibodee, Amuro, Kamille, Quattro, Kou, Judau, Shiro, Fa, Roux, Aina, Emma, Ple, Four, Ple-Two, Rosamia, Quatre, Milliardo, Noin, Jun, Tetsuya, Naoto, Mika, Kenji, Akira, Hyoma, Daisaku, Chizuru, Kosuke, Juzo, Ginrei, Elle, Ciela, Show, Silky, Chum, Marvel, Garalia, Tod, Julia, Beecha, Iino, Elle, Mondo, Apolly, Roberto, Kayra, Chara, Howard, Hilde, Roanne, Zechs) temporarily can't deploy but stays in the team, returning at the start of “Terror! Devil Axis Activates! (Part 1)”. Those on neither list (the protagonist, Lawrence, etc., plus the three series that join via the Link Battler link) can deploy on both sides; Gale is on both lists and can't deploy on either side while the team is split {?}{≠}",
     "Real on the OZ route never gets Banjo at all, and this stage is no exception {≠}{?}",
-    "Then continues to “Terror! Dark Axis Activates! (Part 1)”"
+    "Then continues to “Terror! Devil Axis Activates! (Part 1)”"
    ]
   },
   {
@@ -6159,8 +6164,8 @@
     "Actually stage 49–54: stage 50 for Super, Independence Army or OZ route, option 1 in “All-Out Attack on the Cyber Beast Force Base”, Desperate Breakthrough completed within 10 turns, no exclusive side branch; 1 fewer for Real; 1 more each for Complete Pacifism → fighting alone, Ark having played “Together from Here On” or Brad having played “Time to Settle It”, option 3 in “All-Out Attack on the Cyber Beast Force Base”, Desperate Breakthrough not completed within 10 turns; 2 more for option 2 in “All-Out Attack on the Cyber Beast Force Base” {+}",
     "Quatre and Ginrei can't deploy in this stage; on the OZ route side Noin can't deploy either; Gandor (Dr. Hazuki) can't deploy {≠}",
     "On the Independence Army route Noin can persuade Milliardo; dialogue only",
-    "Deployable if you stay on Earth: Schwarz, Domon, Rain, Argo, Allenby, Sai Saici, George, Chibodee, Amuro, Kamille, Quattro, Kou, Judau, Shiro, Fa, Roux, Aina, Emma, Ple, Four, Ple-Two, Rosamia, Quatre, Milliardo, Noin, Jun, Tetsuya, Naoto, Mika, Kenji, Akira, Hyoma, Daisaku, Chizuru, Kosuke, Juzo, Ginrei, Elle, Ciela, Show, Silky, Chum, Marvel, Garalia, Tod, Julia, Beecha, Iino, Elle, Mondo, Apolly, Roberto, Kayra, Chara, Howard, Hilde, Roanne, Zechs. The Muge space group (Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Roze, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone) temporarily cannot deploy but stays on the team, returning at the start of “Terror! Dark Axis Activates! (Part 1)”. Anyone on neither list (the protagonist, Lawrence, etc., plus the three series added via Link Battler) can deploy on either side; Gale is on both lists, so he cannot deploy on either side while the team is split {?}{≠}",
-    "Then continues to “Terror! Dark Axis Activates! (Part 1)”"
+    "Deployable if you stay on Earth: Schwarz, Domon, Rain, Argo, Allenby, Sai Saici, George, Chibodee, Amuro, Kamille, Quattro, Kou, Judau, Shiro, Fa, Roux, Aina, Emma, Ple, Four, Ple-Two, Rosamia, Quatre, Milliardo, Noin, Jun, Tetsuya, Naoto, Mika, Kenji, Akira, Hyoma, Daisaku, Chizuru, Kosuke, Juzo, Ginrei, Elle, Ciela, Show, Silky, Chum, Marvel, Garalia, Tod, Julia, Beecha, Iino, Elle, Mondo, Apolly, Roberto, Kayra, Chara, Howard, Hilde, Roanne, Zechs. The Muge space group (Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Roze, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone) temporarily cannot deploy but stays on the team, returning at the start of “Terror! Devil Axis Activates! (Part 1)”. Anyone on neither list (the protagonist, Lawrence, etc., plus the three series added via Link Battler) can deploy on either side; Gale is on both lists, so he cannot deploy on either side while the team is split {?}{≠}",
+    "Then continues to “Terror! Devil Axis Activates! (Part 1)”"
    ]
   },
   {
@@ -6197,8 +6202,8 @@
    ],
    "notes": [
     "Actually stage 49–54: stage 50 for Super, Independence Army route, option 1 in “All-Out Attack on the Cyber Beast Force Base”, Desperate Breakthrough completed within 10 turns, no exclusive side branch; 1 fewer for Real; 1 more each for Complete Pacifism → fighting alone, Ark having played “Together from Here On” or Brad having played “Time to Settle It”, option 3 in “All-Out Attack on the Cyber Beast Force Base”, Desperate Breakthrough not completed within 10 turns; 2 more for option 2 in “All-Out Attack on the Cyber Beast Force Base” {≠}",
-    "Available when going to the Muge universe: Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Roze, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone. The Earth Sphere group (Schwarz, Domon, Rain, Argo, Allenby, Sai Saici, George, Chibodee, Amuro, Kamille, Quattro, Kou, Judau, Shiro, Fa, Roux, Aina, Emma, Ple, Four, Ple-Two, Rosamia, Quatre, Milliardo, Noin, Jun, Tetsuya, Naoto, Mika, Kenji, Akira, Hyoma, Daisaku, Chizuru, Kosuke, Juzo, Ginrei, Elle, Ciela, Show, Silky, Chum, Marvel, Garalia, Tod, Julia, Beecha, Iino, Elle, Mondo, Apolly, Roberto, Kayra, Chara, Howard, Hilde, Roanne, Zechs) temporarily can't deploy but stays in the team, returning at the start of “Terror! Dark Axis Activates! (Part 1)”. Those on neither list (the protagonist, Lawrence, etc., plus the three series that join via the Link Battler link) can deploy on both sides; Gale is on both lists and can't deploy on either side while the team is split {?}{≠}",
-    "Then continues to “Terror! Dark Axis Activates! (Part 1)”"
+    "Available when going to the Muge universe: Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Roze, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone. The Earth Sphere group (Schwarz, Domon, Rain, Argo, Allenby, Sai Saici, George, Chibodee, Amuro, Kamille, Quattro, Kou, Judau, Shiro, Fa, Roux, Aina, Emma, Ple, Four, Ple-Two, Rosamia, Quatre, Milliardo, Noin, Jun, Tetsuya, Naoto, Mika, Kenji, Akira, Hyoma, Daisaku, Chizuru, Kosuke, Juzo, Ginrei, Elle, Ciela, Show, Silky, Chum, Marvel, Garalia, Tod, Julia, Beecha, Iino, Elle, Mondo, Apolly, Roberto, Kayra, Chara, Howard, Hilde, Roanne, Zechs) temporarily can't deploy but stays in the team, returning at the start of “Terror! Devil Axis Activates! (Part 1)”. Those on neither list (the protagonist, Lawrence, etc., plus the three series that join via the Link Battler link) can deploy on both sides; Gale is on both lists and can't deploy on either side while the team is split {?}{≠}",
+    "Then continues to “Terror! Devil Axis Activates! (Part 1)”"
    ]
   },
   {
@@ -6208,7 +6213,7 @@
    "section": "Finale: Muge space, Earth and the final battle",
    "lane": "Common",
    "route": "common",
-   "title": "Terror! Dark Axis Activates! (Part 1)",
+   "title": "Terror! Devil Axis Activates! (Part 1)",
    "title_ja": "恐怖!デビルアクシズ始動! （前）",
    "victory": "Defeat all enemies",
    "defeat": "Ally battleship destroyed",
@@ -6278,7 +6283,7 @@
    "section": "Finale: Muge space, Earth and the final battle",
    "lane": "Common",
    "route": "common",
-   "title": "Terror! Dark Axis Activates! (Part 2)",
+   "title": "Terror! Devil Axis Activates! (Part 2)",
    "title_ja": "恐怖!デビルアクシズ始動! （後）",
    "victory": "Devil Gundam destroyed",
    "defeat": "All allies defeated",

@@ -4,9 +4,14 @@
 // texture drawn over the picture, premultiplied, inside the rectangle the frame draws.
 // OpenGL 2.1 / ES 2.0 only, like src/gl.
 #include "dialogue_raster.hpp"
+#include "present_trace.hpp"
 #include "game_frame.hpp"
 #include "../gl/gl_api.hpp"
 #include "../gl/program_cache.hpp"
+#include <cstdlib>
+#include <cstddef>
+#include <vector>
+#include <utility>
 #include <algorithm>
 #include <cstring>
 #include <sstream>
@@ -23,20 +28,32 @@ std::vector<uint8_t> canvas_pixels;   // the canvas in GL's order (RGBA), rows t
 // The canvas is drawn every frame, and the Switch's Mesa waits for the GPU to finish with a
 // texture before writing it: a frame's patches went into one of three textures taken in turn,
 // the one drawn with longest ago, as the atlas pages do (gl_renderer.cpp). Each keeps the rows
-// written since it was last brought up to date.
+// written since it was last brought up to date, as bands: the HP numbers at the top and a
+// quote's box at the bottom are two bands, not the window between them.
 #ifdef __SWITCH__
 constexpr size_t kCanvasCopies = 3;
 #else
 constexpr size_t kCanvasCopies = 1;
 #endif
-struct Canvas { GLuint id = 0; int pending_top = 0, pending_bottom = 0; uint64_t current_at = 0; };
+struct Canvas { GLuint id = 0; std::vector<std::pair<int, int>> pending; uint64_t current_at = 0; };
 Canvas canvases[kCanvasCopies];
 size_t current = 0;
 uint64_t uploads = 0;
 
+// Rows [top, bottom) join the bands; bands that meet or lie within 32 rows become one (an
+// upload has a cost of its own).
 void widen(Canvas& c, int top, int bottom) {
-    if (c.pending_bottom <= c.pending_top) { c.pending_top = top; c.pending_bottom = bottom; }
-    else { c.pending_top = std::min(c.pending_top, top); c.pending_bottom = std::max(c.pending_bottom, bottom); }
+    // With SRW64_DIALOGUE_COVER_WHOLE=1 one band, as before.
+    static const int kGap = std::getenv("SRW64_DIALOGUE_COVER_WHOLE") ? 1 << 20 : 32;
+    for (size_t i = 0; i < c.pending.size();) {
+        const auto [a, b] = c.pending[i];
+        if (top <= b + kGap && a <= bottom + kGap) {
+            top = std::min(top, a); bottom = std::max(bottom, b);
+            c.pending.erase(c.pending.begin() + ptrdiff_t(i));
+            i = 0;   // the wider band may now reach one passed over
+        } else ++i;
+    }
+    c.pending.emplace_back(top, bottom);
 }
 
 #ifdef SRW64_GLES
@@ -63,8 +80,16 @@ void gl_draw(uint64_t workload, uint32_t width, uint32_t height) {
     auto frame = presented_frame(workload);
     if (!frame || std::none_of(frame->boxes.begin(), frame->boxes.end(), [](const auto& b) { return b.visible; })) return;
     localization::Scope locale(frame->catalog);
-    if (!program) make_program();
+    if (!program) {
+#ifdef __SWITCH__
+        PresentStage timing("dialogue_program", workload);
+#endif
+        make_program();
+    }
     if (!canvases[0].id || canvas_width != width || canvas_height != height) {
+#ifdef __SWITCH__
+        PresentStage timing("dialogue_canvas_init", workload);
+#endif
         for (auto& c : canvases) {
             if (!c.id) glGenTextures(1, &c.id);
             glBindTexture(GL_TEXTURE_2D, c.id);
@@ -73,7 +98,7 @@ void gl_draw(uint64_t workload, uint32_t width, uint32_t height) {
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-            c.pending_top = c.pending_bottom = 0;
+            c.pending.clear();
         }
         canvas_width = width; canvas_height = height;
         canvas_pixels.assign(size_t(width) * height * 4, 0);
@@ -83,9 +108,13 @@ void gl_draw(uint64_t workload, uint32_t width, uint32_t height) {
     context << localization::catalog().locale << ',' << localization::catalog().font << ',' << localization::catalog().revision;
     const auto rastered = std::chrono::steady_clock::now();
     auto update = raster.update(*frame, width, height, srw64::frame::width(float(width), float(height)), context.str());
-    n64gl::gl_stats().raster_ms += n64gl::gl_ms_since(rastered);
+    const double raster_ms = n64gl::gl_ms_since(rastered);
+    n64gl::gl_stats().raster_ms += raster_ms;
+#ifdef __SWITCH__
+    if (raster_ms >= 20.0) std::fprintf(stderr, "SRW64_DIALOGUE_RASTER workload=%llu %.1f ms\n", (unsigned long long)workload, raster_ms);
+#endif
     const auto patched = std::chrono::steady_clock::now();
-    int top = int(height), bottom = 0;
+    bool touched = false;
     for (const auto& patch : update.patches) {
         // BGRA as the raster keeps it; GL ES has no BGRA upload of its own.
         const auto& source = patch.pixels.pixels;
@@ -104,27 +133,33 @@ void gl_draw(uint64_t workload, uint32_t width, uint32_t height) {
                 std::memcpy(out + x * 4, &v, 4);
             }
         }
-        if (first < last) { top = std::min(top, first); bottom = std::max(bottom, last); }
+        if (first < last && left < right) { touched = true; for (auto& c : canvases) widen(c, first, last); }
         ++n64gl::gl_stats().patches;
         n64gl::gl_stats().patch_bytes += source.size();
     }
-    if (top < bottom) {
-        for (auto& c : canvases) widen(c, top, bottom);
+    if (touched) {
+#ifdef __SWITCH__
+        PresentStage timing("dialogue_patch_upload", workload);
+#endif
         size_t next = current;
         for (size_t i = 0; i < kCanvasCopies; ++i)
             if (i != current && (next == current || canvases[i].current_at < canvases[next].current_at)) next = i;
         Canvas& c = canvases[next];
         glBindTexture(GL_TEXTURE_2D, c.id);
         glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
-        // Whole rows: one contiguous run of the copy.
-        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, c.pending_top, GLsizei(width), c.pending_bottom - c.pending_top, GL_RGBA, GL_UNSIGNED_BYTE,
-                        canvas_pixels.data() + size_t(c.pending_top) * width * 4);
-        c.pending_top = c.pending_bottom = 0;
+        // Whole rows: each band one contiguous run of the copy.
+        for (const auto& [band_top, band_bottom] : c.pending)
+            glTexSubImage2D(GL_TEXTURE_2D, 0, 0, band_top, GLsizei(width), band_bottom - band_top, GL_RGBA, GL_UNSIGNED_BYTE,
+                            canvas_pixels.data() + size_t(band_top) * width * 4);
+        c.pending.clear();
         c.current_at = ++uploads;
         current = next;
     }
     n64gl::gl_stats().patch_ms += n64gl::gl_ms_since(patched);
     if (update.drawn.empty()) return;
+#ifdef __SWITCH__
+    PresentStage timing("dialogue_quad", workload);
+#endif
     // Premultiplied: the raster has applied alpha already.
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);

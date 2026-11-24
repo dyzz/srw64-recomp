@@ -144,6 +144,8 @@
 | [战斗 cut-in 总表](data/battle-cutins.md) | 55 个特写场景按招式列出：画的是什么、尺寸帧数、哪件武器怎样引用、没有引用的 9 项、做 HD 时的图集分组 |
 | [战斗台词选择表](data/battle-quotes.md) | 哪句台词在什么时候说：声部号、通用台词段九个情境、条件台词表与原版读不到的台词；导出里的 `# 触发：` 注释由此而来 |
 | [战斗动画与自定义机体](data/battle-animation.md) | 战斗动画脚本的处理逻辑，加入自定义机体与武器的可行性 |
+| [战斗动画的收招与受击语音](data/battle-finishing-impacts.md) | 守方受击台词等命中或收招那一拍才开框：ROM 清点的收招行为、触发依据与 `battle_impact.hpp` |
+| [战斗美术整理与 HD 重绘优先级](data/battle-art-review.md) | 2026-11-05 从 ROM 与当前 HD 包重新核对的战斗美术清单、审阅入口与重绘优先级 |
 | [3D 资源分析](data/3d-model-replacement-analysis.md) | 原始 3D 资源与模型替换可行性 |
 | [战术地图清单](data/tactical-maps.md) | 158 张战术地图逐张的尺寸、图集、初始场景与动态效果（水面等调色板循环、殖民地、3D34 换图） |
 | [HD 资产盘点](data/hd-asset-inventory.md) | 全 ROM 逐资源分类与各类现状、战术地图水面等动态效果、每类的阿里云模型选择与费用粗估 |
@@ -166,14 +168,17 @@
 | [安卓移植方案](design/android-port.md) | 调研：社区 N64Recomp 安卓移植先例、固定版本 RT64／plume／运行库的安卓缺口与 GPU 门槛、ROM 派生代码与侧载分发、宿主改动清单（构建、入口、生命周期与存档、触屏与手机界面）、A0–A4 阶段与待定事项 |
 | [PS Vita 移植方案](design/psv-port.md) | 调研：Vita 只有 GLES2 级 GPU、RT64/plume 不可用，整条渲染路径要换成 vitaGL 上的 GL2 实现（Fast3D 解释器、宿主自绘层、对白合成器、RmlUi GL2）；运行库 32 位阻塞项与补丁、依赖与内存预算、社区 libultraship 系移植的实机经验、Mac 上的 Vita3K 与 VitaSDK 开发环境、V0–V4 阶段、风险与待定 |
 | [Nintendo Switch 移植方案](design/switch-port.md) | 调研：自制系统没有 Vulkan（devkitPro 只有 Mesa 20.1 GL 4.3/GLES 3.2 与 deko3d），RT64/plume 不可用，`vita` 分支的 GL 路径与 `srw64-gl-host` 几乎原样复用；libnx 上的运行库缺口、应用/小程序模式内存与 HD 包的 GL 4.3 做法、N64Recomp 与 libultraship 系的 Switch 先例、模拟器冒烟与 Erista＋RCM＋离线 emuMMC 的实机环境、NRO 侧载、S0–S5 阶段、风险与待定 |
+| [Windows 老机器：GL（ANGLE）回退渲染器](design/windows-gl-fallback.md) | RT64 用不了的 Windows 电脑改用 Switch 那套 GL 渲染器（ANGLE 走 D3D11）：同一个 exe 两种都编进去、启动时按显卡与显卡名单自动回退、回退时降画质与画质选项、CI 与发布包、云主机与无显卡实例的测试、Win7/8 要什么 |
 | [手机触屏操作](design/touch-controls.md) | 按场景显示功能名按钮：MOBA 式左侧任意位置方向区、右下固定的确定／返回、各场景的按钮与识别依据、三语词条、实施顺序 |
 | [触屏界面复盘（2026-10-10）](design/touch-ui-review-20261010.md) | 安卓对白回看入口消失的原因、各版按键布局的离线对照与复用返回键的方案 |
 | [周目继承](design/new-game-plus.md) | 上周目完成的隐藏要素在原入队关之后补登记（33 项、不改变量）与历代记录；规则 `inherit-hidden`；为何不继承击坠数（已实现，Windows 实机过） |
 | [周目继承：下一步](design/new-game-plus-next.md) | 设计目标与现实困境：变量跨路线共用、决定路线的三个变量、按人物号的身份冲突与 `3D59` 冲突关、现阶段能落地的组合与待定项（未实现） |
+| [周目继承：33 项要素的事实总表](design/new-game-plus-elements.md) | 下一步方案需要的事实：每项要素在哪些路线能招、原入队关的话数与条件 |
 | [本关情报页](design/stage-info.md) | 游戏内查看当前关的隐藏要素与完成进度、敌人掉落零件与撤退；数据来源、按键、每关 metadata 与完成状态规则 |
 | [快速读档与统一武器改造](design/quick-load-and-unified-weapons.md) | 地图上读手动中断存档（触屏键、本关情报页按钮、F9）、返回标题画面（系统菜单、场间菜单、地图空格菜单、F10、情报页按钮）与一台机体的武器统一改造：原版事实、方案与实机核对 |
 | [宽屏画面](design/deck-16x10.md) | 以 Steam Deck 1280×800 为基准、随屏幕 4:3–16:9：RT64 按画面宽度渲染加扩展指令、宿主绘制层映射、两侧清黑、各场景做法、战术地图放宽的改动点、阶段、实机验收与未知项 |
 | [战斗演出渲染机制](design/battle-animation-rendering.md) | 战斗演出怎样画出来：背景、3D 地面与模型、机体精灵、特效、cut-in 与遮框；HD 路线（机体姿势、烘焙光照城市、实时水面）与实机验收 |
+| [宽屏战斗演出的「展开」](design/battle-spread-unit-actors.md) | 宽屏下战斗演员向两侧展开的由来、提交、现在的问题与困难（技术正文在战斗演出渲染机制 §17） |
 | [漩涡天空宽图](design/battle-vortex-wide.md) | 6107/6106 外扩试验（未采用）；最终改为宽屏下静止天空整张放大、上下裁切 |
 | [剧情视频录制支持](design/video-capture.md) | 为剧情解析视频截图录像加的调试接口：直接进关写路线／剧情变量／上次选项、地图上就地换关与回标题、随时调出选项框、指定战斗台词、只录演出的鉴赏录像、按 VI 计时的 ffmpeg 录像；Win 实机结果与踩过的坑 |
 | [战斗鉴赏](design/battle-viewer.md) | 标题上的 Battle Viewer：原版演示战斗（模式 0x1C、8009C2DC）直接播一场演出，选攻守双方机体与驾驶员、武器、反击、防御反应、伤害、击坠、背景与 BGM |
@@ -187,9 +192,11 @@
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |
 | [扩展架构方案](design/native-extensibility-architecture.md) | 内容分层与语义接口，暂缓的外部 MOD 扩展 |
 | [自定义战役](design/custom-campaign.md) | 多关串联（借场景号、开局结局、存档附加文件）、新台词的虚拟记录、整张绘制的新地图（地形表、资源替换、原版降级版原型）与分阶段 |
-| [MOD 包](design/mod-packages.md) | 包格式与依赖、外观／数值／规则／剧情分类、按键叠加、挑战奖励带回主线、存档记录、分发与投稿（§13：只读索引、GitHub Release 正本、网盘镜像、PR 投稿与校验） |
+| [MOD 包](design/mod-packages.md) | 包格式与依赖、包文件不解压直接读（§10.1）、外观／数值／规则／剧情分类、按键叠加、挑战奖励带回主线、存档记录、分发与投稿（§13：只读索引、GitHub Release 正本、网盘镜像、PR 投稿与校验） |
+| [MOD 上架](design/mod-platforms.md) | Thunderstore、GameBanana 与 RecompLauncher 各自要求什么、我们的包能不能用、怎么上 |
 | [语言包 MOD](design/mod-language-packs.md) | MOD 增加阅读语言或改现有语言：包格式、退回链与排版跟退回语言、宿主登记与重启生效、字体与按语言换图、韩文断行、测试记录 |
 | [新机体、新武器用真正的新编号](design/new-unit-ids.md) | 按机体号、武器号读的表挪进宿主的虚拟窗口：读取点审计、名字记录、号码分配、存档校验；终极断空我已迁移 |
+| [关卡编辑器](design/level-editor.md) | 改主线与追加剧本并成一套按关写的源格式（§3.1，编译器 `tools/mods/stage.py`）、自绘新地图（§4，`tools/mods/map_tool.py` 与 `map_mod.hpp`，顶替一张原版地图）、官网网页编辑器与试玩回路、场景号 143–255 的静态结论（先不做）、分步顺序 |
 | [完整机体 MOD 规划](design/unit-mod-kit.md) | 一个包加入完整的新机体与驾驶员：机体数据、形态与合体、新人物、技能、台词与语音、动画编辑器、合体技、入队与周目、敌方使用、工具与分发的分期与待拍板事项 |
 | [机体 MOD 网页工具](design/unit-mod-web-tool.md) | 官网一页添加人物、机体、武器并编辑武器动画：已定的形态与顺序、复用的现有工具、W1–W5 分期、本机游戏连接做预览 |
 | [武器动画：现有格式与能做到的事](design/weapon-animation-survey.md) | W4 开工前的梳理：动画记录与相位、原版用法统计、常用行为积木、cut-in 与合体技等特殊演出、包能做与不能做、编辑器先做套路 |

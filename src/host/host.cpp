@@ -1,3 +1,5 @@
+#include "audio_hle.hpp"
+#include "renderer_fallback.hpp"
 #include "quote_force.hpp"
 #include "state_probe.hpp"
 #include "app/runtime.hpp"
@@ -38,6 +40,7 @@
 #include "rule_fixes.hpp"
 #include "upgrade_refund.hpp"
 #include "mod_data.hpp"
+#include "map_mod.hpp"
 #include "mod_tables.hpp"
 #include "mod_names.hpp"
 #include "mod_saves.hpp"
@@ -117,6 +120,10 @@ RspExitReason srw64_audio_probe(uint8_t*, uint32_t);
 void srw64_vita_perf_thread(const char* label);  // vita/vita_platform.cpp
 void srw64_vita_graphics_begin();                // graphics.cpp
 #endif
+// Set at the end of on_init: the ROM is loaded and what reads it is configured. The VI count
+// runs before that (the runtime's VI thread starts with the window), a minute and more on a
+// slow first start; readers of the ROM on other threads wait for this (library::prepare).
+std::atomic_bool srw64_game_initialized{false};
 namespace {
 std::atomic<uint64_t> vi_count{}, dl_count{}, audio_tasks{}, audio_samples{};
 std::atomic<uint32_t> frequency{};
@@ -233,6 +240,7 @@ void on_init(uint8_t* rdram, recomp_context*) {
     // section belongs at this entrypoint; the game's own loader owns overlays.
     unload_overlays((int32_t)0x80076610, 0x100000);
     load_overlays(0x1000, (int32_t)0x80076610, 0x5AC30);
+    srw64_game_initialized = true;
     srw64::app::boot_step("game entry");
     loaded_sections = {0};
     // The runtime has already copied the resident section; a rules file's table
@@ -357,7 +365,7 @@ RspUcodeFunc* get_microcode(const OSTask* task) {
 #ifdef __vita__
     srw64_vita_perf_thread("rsp");
 #endif
-    return srw64_audio_probe;
+    return srw64::audio_hle::microcode(task);
 }
 }
 
@@ -467,6 +475,7 @@ extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t rom = ctx->r4, ram = ctx->r5, size = ctx->r6;
     if(srw64::upgrades::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
     if(srw64::story_mod::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
+    if(srw64::map_mod::read(rom,rdram,ram,size)) {ctx->r2=0;return;}
     srw64::mod_data::refresh(rdram);   // number MODs join the copy patches (mod_data.hpp)
     // The tables the game reads by unit or weapon number, moved to a window with the new
     // numbers' rows (mod_tables.hpp).
@@ -516,6 +525,8 @@ extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
 extern "C" void resident_func_80089BBC(uint8_t* rdram, recomp_context* ctx) {
     srw64::mod_data::refresh(rdram);
     uint32_t size,offset;
+    // A campaign stage's own map in place of the original map's three resources (map_mod.hpp).
+    if(srw64::map_mod::descriptor(uint16_t(ctx->r4),size,offset)) {MEM_W(0,ctx->r5)=size;MEM_W(0,ctx->r6)=offset;return;}
     if(srw64::mod_tables::resource(uint16_t(ctx->r4),size,offset)) {MEM_W(0,ctx->r5)=size;MEM_W(0,ctx->r6)=offset;return;}
     srw64_original_resource_descriptor(rdram,ctx);
 }
@@ -831,12 +842,19 @@ static int run_host(int argc, char** argv) {
     srw64::mods::set_unpack_progress(nullptr);   // later installs are the MOD page's
     srw64::app::boot_step("game start");
     recomp::start(cfg);
+#ifndef __SWITCH__
     srw64_destroy_window();
+#endif
     std::ofstream report(output_dir / "native-counters.json");
     report << "{\"schema\":\"srw64.native-cpu-probe-counters.v1\",\"vis\":" << vi_count
            << ",\"graphics_tasks\":" << dl_count << ",\"audio_tasks\":" << audio_tasks
            << ",\"audio_samples\":" << audio_samples << ",\"frequency\":" << frequency
            << ",\"control_quit\":" << (control_quit ? "true" : "false") << "}\n";
+#ifdef __SWITCH__
+    report.close();  // a confirmed in-game exit hands control to the system during window shutdown
+    srw64::debug::stop();   // libnx closes the sockets after main, under a connection's thread
+    srw64_destroy_window();
+#endif
     return dl_count > 0 && audio_tasks > 0 ? 0 : 3;
 }
 
@@ -905,10 +923,40 @@ void srw64_switch_error(const std::string& message, const std::string& details);
 std::string srw64_switch_language();
 #endif
 
+#if defined(_WIN32) || (defined(__linux__) && !defined(__ANDROID__))
+// A desktop start's boxes also into the log: one that ends the start before the run directory
+// exists leaves the reason nowhere else (console_log::keep_unattached, issue #29).
+static srw64::app::DesktopUi logged_ui(const srw64::app::DesktopUi& ui) {
+    auto copy = ui;
+    copy.show_error = [show = ui.show_error](const std::string& message) {
+        std::string line = message;
+        for (size_t at; (at = line.find('\n')) != std::string::npos;) line.replace(at, 1, " / ");
+        std::fprintf(stderr, "SRW64_START_ERROR %s\n", line.c_str());
+        show(message);
+    };
+    return copy;
+}
+#endif
+// A start that ends before the run directory: what it printed, into <user>/logs/latest.log
+// under RecompLauncher (console_log.hpp). The user folder the start would have used.
+static int failed_start(int code, std::filesystem::path user_dir) {
+    if (code == 0) return code;
+    try { if (user_dir.empty()) user_dir = srw64::app::default_user_dir(); } catch (const std::exception&) { return code; }
+    std::error_code error;
+    const auto absolute = std::filesystem::absolute(user_dir, error);
+    srw64::console_log::keep_unattached(error ? user_dir : absolute);
+    return code;
+}
+
 // Keep the diagnostic positional ABI untouched for play_native.py and all probes.
 int main(int argc, char** argv) {
 #ifdef __ANDROID__
     import_java_environment();
+#endif
+#if defined(_WIN32) && !defined(SRW64_GL_ONLY)
+    // A PC RT64 cannot draw on plays with the GL renderer over ANGLE (renderer_fallback.hpp),
+    // decided before anything else starts.
+    srw64::renderer_fallback::decide(argc, argv);
 #endif
 #if defined(_WIN32)
     // Streams first: console_log needs them, and they take descriptors 0 to 2 (desktop_windows.cpp).
@@ -923,6 +971,8 @@ int main(int argc, char** argv) {
 #endif
     // Which release, on what: the first lines of every console.log (bug_report.hpp).
     srw64::bug_report::log_start();
+    // The GL renderer chosen in RT64's place (renderer_fallback.hpp): why, for a bug report.
+    if (const char* why = std::getenv("SRW64_RENDERER_FALLBACK"); why && *why) std::fprintf(stderr, "SRW64_RENDERER_FALLBACK %s\n", why);
 #if defined(__linux__) && !defined(__ANDROID__)
     // Android: bionic has backtrace() only from API 33, and debuggerd's tombstone needs
     // its own handlers, so crashes go to logcat as tombstones.
@@ -969,7 +1019,7 @@ int main(int argc, char** argv) {
     // Explorer supplies no arguments: start as Marchwind64.cmd does, which stays for
     // its options. --play and the diagnostic ABI below keep their console.
     if (argc==1 || (argc==2 && std::string_view(argv[1])=="--choose-rom")) {
-        const auto& ui = native_ui;
+        const auto ui = logged_ui(native_ui);
         srw64::app::Options options;
         try {
             options = prepare_launcher(options,
@@ -977,19 +1027,19 @@ int main(int argc, char** argv) {
                 argc == 1 ? named_rom() : std::filesystem::path{});
         } catch (const std::exception& error) {
             ui.show_error(std::string("Unable to start Marchwind64.\n") + error.what());
-            return 2;
+            return failed_start(2, {});
         }
         srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
             native_rom_variants[0].save_file, srw64::rules::version, {}};
         for (const auto& rule : srw64::rules::catalog)
             game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
-        return srw64::app::run_desktop(options, game.rom_sha256, ui,
+        return failed_start(srw64::app::run_desktop(options, game.rom_sha256, ui,
             [&](const srw64::app::Options& selected, const srw64::app::DesktopReady& ready) {
                 return srw64::app::run_standalone(selected, game, [&](int count, char** values) {
                     ready(); // The standalone Session owns the lock until run_host returns.
                     return run_host(count, values);
                 });
-            }, argc == 2);
+            }, argc == 2), options.user_dir);
     }
 #endif
 #ifdef __SWITCH__
@@ -1134,13 +1184,13 @@ int main(int argc, char** argv) {
             for (const auto& rule : srw64::rules::catalog)
                 game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
 #if defined(_WIN32) || (defined(__linux__) && !defined(__ANDROID__))
-            return srw64::app::run_desktop(options, game.rom_sha256, native_ui,
+            return failed_start(srw64::app::run_desktop(options, game.rom_sha256, logged_ui(native_ui),
                 [&](const srw64::app::Options& selected, const srw64::app::DesktopReady& ready) {
                     return srw64::app::run_standalone(selected, game, [&](int count, char** values) {
                         ready();
                         return run_host(count, values);
                     });
-                });
+                }), options.user_dir);
 #else
             return srw64::app::run_standalone(options, game, run_host);
 #endif
@@ -1151,10 +1201,10 @@ int main(int argc, char** argv) {
             std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
             srw64::console_log::flush_now();
             srw64_error_box(srw64::app::rom_refused_message(error.problem, error.path, srw64::app::player_locale(options)));
-            return 2;
+            return failed_start(2, options.user_dir);
         } catch (const std::exception& error) {
             std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
-            return 2;
+            return failed_start(2, options.user_dir);
         }
     }
     return run_host(argc, argv);

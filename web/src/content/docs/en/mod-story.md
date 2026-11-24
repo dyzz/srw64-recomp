@@ -221,6 +221,8 @@ When there is a lot of dialogue, or someone else translates it, `text` (and a st
 
 ## Checking and packing
 
+The compiler is the same one the site's level editor runs (TypeScript): the command line needs [Node.js](https://nodejs.org/) 23 or later, which `python3` calls for you.
+
 ```bash
 python3 tools/mods/story.py compile story/master.json -o out.json
 ```

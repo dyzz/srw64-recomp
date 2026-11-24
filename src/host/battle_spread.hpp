@@ -61,6 +61,30 @@ inline bool enabled() {
 
 struct Saved { uint32_t address; uint32_t words[6]; };
 
+// Full-screen effects drawn by 80096CD8. The ROM tiles and their optional
+// whole HD frames need the same width, independent of the foreground actors.
+inline float screen_backdrop_scale(uint32_t scene, uint32_t palette) {
+    const bool backdrop = (scene == 3946 && (palette == 3417 || palette == 3423)) // blue/orange airflow
+                       || (scene == 3973 && palette == 3433) // Go Flasher's star field
+                       || (scene == 4426 && palette == 4425) // Juni Ohohai Daisharin's rays
+                       || (scene == 4635 && palette == 4634); // diagonal streaks over scrolling clouds
+    if (!backdrop || !frame::wide || !enabled()) return 1.f;
+    return frame::picture_width.load(std::memory_order_relaxed) / frame::kWidth;
+}
+
+// Strips drawn by 80096CD8 across the whole screen that the game clips to the original's
+// 320 columns: the Devil Gundam's tentacle under the defender (2756, マザーテンタクル) and
+// the Gundam Head's (2988, ガンダムヘッド), rows of one 32-pixel tile that cover the 320
+// columns in all three frames. Copies a whole number of tiles to each side continue them
+// to a wider picture's edges without a seam (the title flames' way). The pixels of the
+// original's screen the picture reaches beyond it on each side, 0 when there is nothing
+// to copy.
+inline float screen_strip_extra(uint32_t scene) {
+    if ((scene != 2756 && scene != 2988) || !frame::wide || !enabled()) return 0.f;
+    return (frame::picture_width.load(std::memory_order_relaxed) - frame::kWidth) / 2;
+}
+inline constexpr float kStripPeriod = 64;   // two tiles: a copy this far over covers the 53 columns of 16:9
+
 inline float real(const uint8_t* ram, uint32_t p) {
     const uint32_t bits = guest::read(ram, p, 4);
     float value;
@@ -79,10 +103,14 @@ inline float place(float u, float edge) {
     if (a <= kInner) return u;
     return std::copysign(kInner + (a - kInner) * (edge - kInner) / (1 - kInner), u);
 }
-// How far a sub-record's scene reaches to each side of where it stands, over all its frames,
-// in the sprite's own coordinates as 8009761C draws them: the mirrored vertex set when the
-// sub-record's mirror byte is set (vertex mode 0).
-inline bool scene_reach(const uint8_t* ram, uint32_t sub, float& low, float& high) {
+// How far a sub-record's scene reaches to each side of where it stands, in the sprite's own
+// coordinates as 8009761C draws them: the mirrored vertex set when the sub-record's mirror byte
+// is set (vertex mode 0). The frame of the step it shows (+0x19, native_sprite.cpp reads it at
+// its own +0x11), or all frames when that step shows none. A beam's far end then lands where its
+// frame's end goes: measured over all frames, a beam that grows or pulses was stretched for its
+// longest frame, and its shorter frames fell short of the picture's edge (more so at 16:9) or put
+// an incoming head off its mark.
+inline bool scene_reach(const uint8_t* ram, uint32_t sub, float& low, float& high, bool shown_only) {
     const int16_t handle = int16_t(guest::read(ram, sub + 0x12, 2));
     if (handle < 0 || uint32_t(handle) >= kHandleCount) return false;
     const uint32_t record = kHandles + uint32_t(handle) * kHandleSize;
@@ -95,7 +123,9 @@ inline bool scene_reach(const uint8_t* ram, uint32_t sub, float& low, float& hig
     if (mode > 1 || !steps || !guest::valid(data, 4 + 2 * steps)) return false;
     const bool mirrored = mode == 0 && guest::read(ram, sub + 0x1C, 1) != 0;
     bool any = false;
-    for (uint32_t step = 0; step < steps; ++step) {
+    const uint32_t shown = guest::read(ram, sub + 0x19, 1);
+    const bool one = shown_only && shown < steps && guest::read(ram, data + 2 + 2 * shown, 1) != 0xFF;
+    for (uint32_t step = one ? shown : 0; step < (one ? shown + 1 : steps); ++step) {
         const uint32_t frame = guest::read(ram, data + 2 + 2 * step, 1);
         if (frame == 0xFF) continue;
         uint32_t part = data + guest::read(ram, data + 2 + 2 * steps + 2 + 2 * frame, 2);
@@ -187,10 +217,13 @@ inline void apply(uint8_t* ram, std::vector<Saved>& saved) {
                     const float nearness = std::clamp(2 - 2 * apart, 0.f, 1.f);   // all within half a screen's half width, none at one
                     if (std::isfinite(h)) moved += (h - placed(h)) * nearness * nearness * (3 - 2 * nearness);
                 }
-                float low, high;
-                if (mode != 0xE && listed(kBeamScenes, scene) && scene_reach(ram, sub, low, high)) {
-                    // Its far end, the side it reaches further to, goes where that point goes.
-                    const float reach = (high > -low ? high : low) * scale[0];
+                float low, high, now_low, now_high;
+                if (mode != 0xE && listed(kBeamScenes, scene) && scene_reach(ram, sub, low, high, false) &&
+                    scene_reach(ram, sub, now_low, now_high, true)) {
+                    // Its far end, on the side it reaches further to over all its frames (a side
+                    // that changes from frame to frame would leave the other unstretched), goes
+                    // where the shown frame's end on that side goes.
+                    const float reach = (high > -low ? std::max(now_high, 0.f) : std::min(now_low, 0.f)) * scale[0];
                     if (std::abs(reach) > 1) wide = std::clamp((placed(d + reach) + (moved - placed(d)) - moved) / reach, 1.f, 2.f);
                 }
             }

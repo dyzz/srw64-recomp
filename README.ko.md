@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="web/public/brand/title-ko.webp" alt="MARCHWIND64" width="640">
+  <a href="https://youtu.be/F9cq5RtVZ8I">
+    <img src="web/public/brand/readme-video-ko.webp" alt="MARCHWIND64 — 기능 소개 영상 보기" width="640">
+  </a>
 </p>
 
 <p align="center"><b>슈퍼로봇대전64 — 1999년 N64 게임의 네이티브 리컴파일 버전.</b></p>

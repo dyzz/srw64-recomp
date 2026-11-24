@@ -25,6 +25,8 @@
 #include <unistd.h>
 #include <vector>
 
+#include "../hd_pack.hpp"
+#include "../stall_watchdog.hpp"
 #include "ultramodern/ultramodern.hpp"
 #include "stb/stb_image.h"
 
@@ -60,6 +62,10 @@ void watch_thread(Handle handle, const char* name, const uintptr_t* made) {
     if (name) std::snprintf(entry.name, sizeof entry.name, "%s", name);
     if (made) std::memcpy(entry.made, made, sizeof entry.made);
     watched.push_back(entry);
+}
+void unwatch_thread(Handle handle) {
+    std::lock_guard lock(watched_mutex);
+    std::erase_if(watched, [&](const Watched& entry) { return entry.handle == handle; });
 }
 }
 
@@ -109,6 +115,10 @@ std::condition_variable log_wake;
 std::string log_tail, log_pending;
 int log_file = -1;
 bool log_writer = false;
+// Joined at exit (userAppExit): a thread still running once main has returned wakes in code
+// hbloader has already unloaded (2168-0001 after the settings page's exit, 2026-11-23).
+bool log_stop = false;
+std::thread* log_thread = nullptr;
 constexpr size_t log_keep = 512 * 1024;
 ssize_t log_write(struct _reent*, void*, const char* data, size_t size) {
     std::lock_guard lock(log_mutex);
@@ -122,7 +132,7 @@ extern "C" void srw64_switch_background_thread();
 void write_log_file() {
     srw64_switch_background_thread();
     std::unique_lock lock(log_mutex);
-    for (;;) {
+    while (!log_stop) {
         log_wake.wait_for(lock, std::chrono::milliseconds(250));
         if (log_pending.empty() || log_file < 0) continue;
         std::string chunk;
@@ -146,7 +156,7 @@ void srw64_switch_log_to(const char* path) {
     if (log_file >= 0) (void)!::write(log_file, log_tail.data(), log_tail.size());
     if (!log_writer) {
         log_writer = true;
-        std::thread(write_log_file).detach();   // lives as long as the program
+        log_thread = new std::thread(write_log_file);   // until userAppExit
     }
 }
 // What is pending into console.log now, for the stall watchdog before it breaks: written by a
@@ -185,6 +195,9 @@ extern char** __system_argv;
 // in hd/ (development: package.py --hd sends it once, the NRO stays small); "" for none.
 std::string srw64_switch_program_path();
 std::string srw64_switch_hd_art() {
+    // A packed HD folder (art.pack, version 2) is the device "hd:" (hd_pack.cpp): everything
+    // of the folder comes out of the one file. Else the folder's loose files, as before.
+    if (const auto packed = srw64::hd_pack::mount(); !packed.empty()) return packed;
     std::error_code missing;
     if (std::filesystem::exists("romfs:/hd/art/srw64-portraits-hd.json", missing)) return "romfs:/hd/art";
     const auto beside = std::filesystem::path(srw64_switch_program_path()).parent_path() / "hd" / "art";
@@ -374,6 +387,24 @@ std::string srw64_switch_perf_system() {
     return line;
 }
 
+// libnx's normal AM termination commands for an application and a library applet
+// (_appletSelfExit / _appletExitProcessAndReturn). Invoke them after the runtime
+// has joined the guest threads, before SDL's EGL teardown waits on nv transfer memory.
+void srw64_switch_finish_session() {
+    const bool library = appletGetAppletType() == AppletType_LibraryApplet;
+    Service* session = library ? appletGetServiceSession_LibraryAppletSelfAccessor()
+                               : appletGetServiceSession_SelfController();
+    std::fprintf(stderr, "SRW64_SWITCH_EXIT requesting %s exit\n", library ? "library applet" : "application");
+    srw64_switch_log_flush(500);
+    Result rc = serviceDispatch(session, library ? 10 : 0);
+    if (R_SUCCEEDED(rc)) {
+        // AM terminates the process. libnx also sleeps after a successful exit request.
+        for (;;) svcSleepThread(1000000000);
+    }
+    std::fprintf(stderr, "SRW64_SWITCH_EXIT rejected result=0x%x\n", rc);
+    srw64_switch_log_flush(500);
+}
+
 // Started as an application (a game held R on, or the title override) and not from the
 // album, where a library applet gets about 370 MiB in all (switch-port.md, the smoke run).
 bool srw64_switch_application() {
@@ -421,11 +452,38 @@ u32 __nx_nv_transfermem_size = 32 * 1024 * 1024;
 
 // Threads: libnx gives a thread made without a stack 128 KiB, too little for the
 // recompiled code's frames; 1 MiB, as on the desktop's smallest. And it cannot detach a
-// thread (std::thread::detach threw ENOSYS): a detached thread here lives until the
-// program ends anyway, so detaching succeeds without freeing anything.
+// thread (std::thread::detach threw ENOSYS). Detaching succeeds here and the thread is
+// kept in a list: once it has ended (its handle is signalled) the next thread made joins
+// it, which closes its handle and frees its stack. Left alone they stayed until the
+// program ended, each against the process's limit of threads: a battle line spoken from a
+// voice MOD is a thread of its own (music.cpp battle_quote), and the 73rd line of a demo
+// loop could not make one (std::system_error, abort; a Switch, 2026-11-20).
+struct __pthread_t;
+extern "C" void* __syscall_thread_join(struct __pthread_t* thread);
+namespace {
+std::mutex detached_mutex;
+std::vector<struct __pthread_t*> detached;
+void join_ended_threads() {
+    std::vector<struct __pthread_t*> ended;
+    {
+        std::lock_guard lock(detached_mutex);
+        std::erase_if(detached, [&](struct __pthread_t* thread) {
+            // libnx's struct __pthread_t starts with its Thread, whose first member is the handle.
+            if (R_FAILED(svcWaitSynchronizationSingle(*reinterpret_cast<const Handle*>(thread), 0))) return false;
+            ended.push_back(thread);
+            return true;
+        });
+    }
+    for (auto* thread : ended) {
+        unwatch_thread(*reinterpret_cast<const Handle*>(thread));
+        __syscall_thread_join(thread);
+    }
+}
+}
 int __real___syscall_thread_create(struct __pthread_t** thread, void* (*function)(void*), void* argument, void* stack, size_t size);
 int __wrap___syscall_thread_create(struct __pthread_t** thread, void* (*function)(void*), void* argument, void* stack, size_t size) {
     if (!stack && !size) size = 1024 * 1024;
+    join_ended_threads();
     const int result = __real___syscall_thread_create(thread, function, argument, stack, size);
     if (result == 0 && thread && *thread) {
         // Where it was made: the frame records' return addresses above this call, as offsets.
@@ -444,7 +502,11 @@ int __wrap___syscall_thread_create(struct __pthread_t** thread, void* (*function
     }
     return result;
 }
-int __syscall_thread_detach(struct __pthread_t*) { return 0; }
+int __syscall_thread_detach(struct __pthread_t* thread) {
+    std::lock_guard lock(detached_mutex);
+    detached.push_back(thread);
+    return 0;
+}
 
 // The save files and the run's state are written to a temporary name and renamed over
 // the old file; FAT on the SD card refuses to rename onto an existing file
@@ -474,8 +536,70 @@ int __wrap_chmod(const char*, mode_t) { return 0; }
 void __wrap_abort() {
     std::fputs("SRW64_ABORT\n", stderr);
     std::fflush(stderr);
+    srw64_switch_log_flush(500);   // console.log is written a quarter second at a time
     svcBreak(BreakReason_Panic, 0, 0);
     __builtin_unreachable();
+}
+
+// Before creport: what the faulting address is. Two starts on 2026-11-23 ended in a memset of
+// a fresh allocation (4 and 10 MB) that met pages of the heap no longer accessible part way
+// through: memory given back to the heap while still borrowed (a thread's stack mapped with
+// svcMapMemory, a transfer memory), which creport does not show. Each fault writes the
+// address's region and those on either side (type, attributes, permission) into console.log,
+// then returns, so creport reports it as before.
+extern "C" {
+alignas(16) u8 __nx_exception_stack[0x10000];
+u64 __nx_exception_stack_size = sizeof(__nx_exception_stack);
+void __libnx_exception_handler(ThreadExceptionDump* ctx);
+}
+namespace {
+void exception_write(const char* text, size_t size) {
+    // The faulting thread may hold the log's lock: then straight to the file, unordered.
+    if (std::unique_lock lock(log_mutex, std::try_to_lock); lock) {
+        log_tail.append(text, size);
+        if (log_file >= 0) {
+            if (!log_pending.empty()) (void)!::write(log_file, log_pending.data(), log_pending.size());
+            log_pending.clear();
+            (void)!::write(log_file, text, size);
+        }
+    } else if (log_file >= 0) {
+        (void)!::write(log_file, text, size);
+    }
+    if (nxlink_socket >= 0) ::send(nxlink_socket, text, size, MSG_DONTWAIT);
+}
+void exception_region(const char* which, u64 address) {
+    MemoryInfo info{};
+    u32 page = 0;
+    char line[256];
+    int n;
+    if (R_FAILED(svcQueryMemory(&info, &page, address)))
+        n = std::snprintf(line, sizeof line, "SRW64_EXCEPTION_MEMORY %s 0x%llx: query failed\n", which, (unsigned long long)address);
+    else
+        n = std::snprintf(line, sizeof line, "SRW64_EXCEPTION_MEMORY %s 0x%llx in 0x%llx+0x%llx type=0x%x attr=0x%x perm=%u ipc=%u device=%u\n", which,
+                          (unsigned long long)address, (unsigned long long)info.addr, (unsigned long long)info.size, info.type & 0xFF, info.attr,
+                          info.perm, info.ipc_refcount, info.device_refcount);
+    if (n > 0) exception_write(line, std::min<size_t>(size_t(n), sizeof line - 1));
+}
+}
+void __libnx_exception_handler(ThreadExceptionDump* ctx) {
+    const u64 base = module_base(), far = ctx->far.x;
+    u64 thread = 0;
+    svcGetThreadId(&thread, CUR_THREAD_HANDLE);
+    char line[256];
+    const int n = std::snprintf(line, sizeof line, "SRW64_EXCEPTION desc=0x%x pc=+0x%llx lr=+0x%llx far=0x%llx sp=0x%llx thread=%llu\n",
+                                ctx->error_desc, (unsigned long long)(ctx->pc.x - base), (unsigned long long)(ctx->lr.x - base),
+                                (unsigned long long)far, (unsigned long long)ctx->sp.x, (unsigned long long)thread);
+    if (n > 0) exception_write(line, std::min<size_t>(size_t(n), sizeof line - 1));
+    MemoryInfo info{};
+    u32 page = 0;
+    exception_region("fault", far);
+    if (R_SUCCEEDED(svcQueryMemory(&info, &page, far))) {
+        if (info.addr) exception_region("before", info.addr - 1);
+        exception_region("after", info.addr + info.size);
+    }
+    // Returning is enough: libnx then breaks (__libnx_exception_returnentry calls svcBreak) with
+    // the thread's frame pointer as it was, so creport walks the original stack. Calling
+    // svcReturnFromException here instead was a bad SVC that came back into this handler.
 }
 
 // Before main and after it (libnx's weak hooks): the sockets, and stdout and stderr to
@@ -525,6 +649,24 @@ void userAppInit() {
 }
 
 void userAppExit() {
+    // Our threads that live as long as the program, ended before hbloader unloads the code
+    // they run (main has returned, the statics are destroyed).
+    srw64::stall::stop();
+    if (log_thread) {
+        {
+            std::lock_guard lock(log_mutex);
+            log_stop = true;
+        }
+        log_wake.notify_all();
+        log_thread->join();
+        std::lock_guard lock(log_mutex);
+        if (log_file >= 0) {
+            if (!log_pending.empty()) (void)!::write(log_file, log_pending.data(), log_pending.size());
+            log_pending.clear();
+            ::close(log_file);
+            log_file = -1;
+        }
+    }
     appletUnhook(&focus_cookie);
     romfsExit();
     restore_gpu();

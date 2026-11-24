@@ -7,6 +7,10 @@
 #include <cstdint>
 #include <filesystem>
 
+#ifdef __SWITCH__
+namespace srw64::n64gl { struct Frame; }
+
+#endif
 namespace srw64::hd_replace {
 // Reads <art>/rt64.json. Without it nothing is replaced.
 void configure(const std::filesystem::path& art);
@@ -18,4 +22,11 @@ bool has(uint64_t key);
 uint32_t texture(uint64_t key, uint8_t wrap_s, uint8_t wrap_t, bool linear, uint16_t& width, uint16_t& height);
 // Textures not drawn for a while go when the held ones pass their budget (render thread).
 void end_frame();
+#ifdef __SWITCH__
+// Decode this list's new battle and frame pictures before drawing. All GL uploads stay on the render thread.
+void prepare(const n64gl::Frame& list);
+// Preload interface frames and previously drawn battle pictures, using a bounded on-disk history.
+void warm(const std::filesystem::path& file);
+void stop();
+#endif
 }  // namespace srw64::hd_replace

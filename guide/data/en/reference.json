@@ -1489,7 +1489,7 @@
       [
        "Parry",
        "When the unit carries a sword-type weapon, blocks an attack completely by chance",
-       "Player side level÷16 (actually 57% at L9), enemy side level÷32 (actually 29% at L9); works only on weapons marked “parryable”: Missile, Torpedo, grenades and other solid-ammo weapons, plus about two thirds of Melee weapons; Beam weapons, vulcan-type shooting, and some Melee finishers such as Sekiha Tenkyoken and Burning Finger cannot be parried; does not trigger when the attacker uses Bullseye {≠}",
+       "Player side level÷16 (actually 57% at L9), enemy side level÷32 (actually 29% at L9); works only on weapons marked “parryable”: Missile, Torpedo, grenades and other solid-ammo weapons, plus about two thirds of Melee weapons; Beam weapons, vulcan-type shooting, and some Melee finishers such as Sekiha Tenkyoken and God Finger cannot be parried; does not trigger when the attacker uses Bullseye {≠}",
        "Same as the original"
       ],
       [
@@ -1589,7 +1589,7 @@
       ]
      ],
      "notes": [
-      "Applies only to 10 exclusive finishers: Shining Finger Sword, Burning Field Dash, Chokyu Hao Den'eidan, Erupting Burning Slash, Erupting Burning Finger, Sekiha Tenkyoken, Burning Machine Gun Punch, Rose Hurricane, Shin Ryusei Kochoken, Gaia Crusher {+}",
+      "Applies only to 10 exclusive finishers: Shining Finger Sword, God Field Dash, Chokyu Hao Den'eidan, Erupting God Slash, Erupting God Finger, Sekiha Tenkyoken, Burning Machine Gun Punch, Rose Hurricane, Shin Ryusei Kochoken, Gaia Crusher {+}",
       "When triggered, these weapons' power is rewritten to base attack + the value in this table, ignoring upgrade levels; of the 10, only Shining Finger Sword can be upgraded {+}",
       "The enemy Allenby (Berserk) does not get this bonus; level 80 falls in the +2500 band (Akurasu lists 80 in the +2000 band) {≠}"
      ]
@@ -1620,7 +1620,7 @@
       ],
       [
        "While Meikyo Shisui is active",
-       "Burning Field Dash, Chokyu Hao Den'eidan, Erupting Burning Slash, Erupting Burning Finger, Sekiha Tenkyoken"
+       "God Field Dash, Chokyu Hao Den'eidan, Erupting God Slash, Erupting God Finger, Sekiha Tenkyoken"
       ],
       [
        "While Super Mode is active",
@@ -2454,7 +2454,7 @@
        "Afterimage",
        "At Will 130 or higher, evades completely 50% of the time",
        "Fixed chance, independent of level and Skill, costs no EN; no effect when the attacker uses Bullseye",
-       "Shadow Gundam, Dragon Gundam, Dragon Gundam S, F91, Ginrei Robo TYPE2, Wing Caliber, Sirbine, Zwauth, Dunbine, Billbine, Botune, Bastole, New Layzner, Layzner; enemy: Gallaba, Zwarth, Drumlo, Vierres, Wryneck, Leprechaun, Hyper Gallaba, Hyper Zwarth, Hyper Wryneck, Hyper Leprechaun"
+       "Gundam Spiegel, Dragon Gundam, Dragon Gundam S, F91, Ginrei Robo TYPE2, Wing Caliber, Sirbine, Zwauth, Dunbine, Billbine, Botune, Bastole, New Layzner, Layzner; enemy: Gallaba, Zwarth, Drumlo, Vierres, Wryneck, Leprechaun, Hyper Gallaba, Hyper Zwarth, Hyper Wryneck, Hyper Leprechaun"
       ],
       [
        "Mach Special",
@@ -2496,7 +2496,7 @@
        "HP Regen",
        "Recovers 10% or 20% of max HP at the start of each turn",
        "The rate depends on the unit; resolved for every unit on the map, friend and foe, at the start of each turn, not just the player phase; fractions dropped, capped at the maximum {≠}",
-       "10%: Shin Getter-1, Shin Getter-2, Shin Getter-3, Sirbine, Zwauth; enemy: Devil Gundam, Dark Axis, Dragonosaurus; 20%: enemy only: Devil Gundam, Valdiscuse, Avieslelm, JClaps"
+       "10%: Shin Getter-1, Shin Getter-2, Shin Getter-3, Sirbine, Zwauth; enemy: Devil Gundam, Devil Axis, Dragonosaurus; 20%: enemy only: Devil Gundam, Valdiscuse, Avieslelm, JClaps"
       ],
       [
        "V-MAX",
@@ -3378,7 +3378,7 @@
       ],
       [
        "11",
-       "Zeta Gundam, Super Gundam, Dijeh SE-R, Methuss Kai, Re-GZ (BWS), MP Nu Gundam I, GP03 Dendrobium, Neue Ziel, Tallgeese, Peacemillion, Great Mazinger, MP Great Mazinger, Shadow Gundam, Noble Gundam, Rising Gundam, Zeron, Virose, Super Earthgain, Simurgh S, Buldy, Baybull"
+       "Zeta Gundam, Super Gundam, Dijeh SE-R, Methuss Kai, Re-GZ (BWS), MP Nu Gundam I, GP03 Dendrobium, Neue Ziel, Tallgeese, Peacemillion, Great Mazinger, MP Great Mazinger, Gundam Spiegel, Noble Gundam, Rising Gundam, Zeron, Virose, Super Earthgain, Simurgh S, Buldy, Baybull"
       ],
       [
        "12",
@@ -3446,7 +3446,7 @@
       [
        "Nahel Argama",
        "Ra Cailum",
-       "Start of stage 52 “Terror! Dark Axis Activates! (Part 1)”",
+       "Start of stage 52 “Terror! Devil Axis Activates! (Part 1)”",
        "The five stats and weapons carry over"
       ],
       [
@@ -3483,7 +3483,7 @@
        "Shining Gundam",
        "God Gundam",
        "OZ and Independence Army routes: when all enemies are wiped out in stage 30; Complete Pacifism route: mid-stage in stage 32",
-       "The five stats carry over; Vulcan, Beam Sword → Burning Slash and Shining Strike → Burning Strike carry over; upgrades to Shining Shot, Shining Finger and Shining Finger Sword don't carry over; Machine Cannon and Burning Slash Typhoon start from level 0"
+       "The five stats carry over; Vulcan, Beam Sword → God Slash and Shining Strike → God Strike carry over; upgrades to Shining Shot, Shining Finger and Shining Finger Sword don't carry over; Machine Cannon and God Slash Typhoon start from level 0"
       ],
       [
        "Earthgain",
@@ -3647,7 +3647,7 @@
        "Same as above"
       ],
       [
-       "Shadow Gundam (Schwarz)",
+       "Gundam Spiegel (Schwarz)",
        "Start of stage 30 on the Independence Army route; start of stage 30 on the OZ route; end of stage 23 on the Complete Pacifism route",
        "OZ route: rejoins mid-stage in stage 38 (0 levels), and leaves again if Ryoma isn't on the map at the start of stage 42",
        "Same as above, with upgrades reset to zero"
@@ -4226,7 +4226,7 @@
      ],
      "notes": [
       "Before unlocking, these weapons aren't in the weapon list; the Complete Pacifism route merges into the OZ or Independence Army route at stage 37 and afterward unlocks them as that route does",
-      "The script also has a command that unlocks Double Burning Finger (at the end of Independence Army route stage 32, “Earth Sphere in Chaos”, if Allenby has joined), but combination attacks are re-evaluated by the program every time the weapon list is built, so this command has no actual effect; see the “Combination attacks” page {+}"
+      "The script also has a command that unlocks Double God Finger (at the end of Independence Army route stage 32, “Earth Sphere in Chaos”, if Allenby has joined), but combination attacks are re-evaluated by the program every time the weapon list is built, so this command has no actual effect; see the “Combination attacks” page {+}"
      ]
     },
     {
@@ -4259,7 +4259,7 @@
       ],
       [
        "Super Mode (entered automatically by Domon, Argo, Sai Saici, George and Chibodee at Will 130 or higher; the unit becomes God Gundam H / Shining Gundam S / the respective S forms)",
-       "Burning Field Dash, Chokyu Hao Den'eidan, Erupting Burning Slash, Erupting Burning Finger, Sekiha Tenkyoken, Shining Finger Sword, and the finishers of the four Shuffle Alliance units"
+       "God Field Dash, Chokyu Hao Den'eidan, Erupting God Slash, Erupting God Finger, Sekiha Tenkyoken, Shining Finger Sword, and the finishers of the four Shuffle Alliance units"
       ]
      ],
      "notes": [
@@ -4395,8 +4395,8 @@
      "rows": [
       [
        "God Gundam H + Noble Gundam",
-       "Double Burning Finger",
-       "Erupting Burning Finger + Beam Ribbon",
+       "Double God Finger",
+       "Erupting God Finger + Beam Ribbon",
        "Average ×1.6 (4400)",
        "1",
        "130",
@@ -4422,10 +4422,10 @@
       ]
      ],
      "notes": [
-      "God Gundam H and the S forms: your Domon, Argo, Sai Saici, George and Chibodee transform automatically on reaching 130 Will (checked after battle); your Allenby doesn't transform, and the Noble Gundam is exactly the form Double Burning Finger requires {+}",
-      "Double Burning Finger and Shuffle Alliance Fist need no story unlock: they appear once the participants are present and the conditions are met, the same on every route {+}",
+      "God Gundam H and the S forms: your Domon, Argo, Sai Saici, George and Chibodee transform automatically on reaching 130 Will (checked after battle); your Allenby doesn't transform, and the Noble Gundam is exactly the form Double God Finger requires {+}",
+      "Double God Finger and Shuffle Alliance Fist need no story unlock: they appear once the participants are present and the conditions are met, the same on every route {+}",
       "Sekiha Love Love Tenkyoken also requires God Gundam's Sekiha Tenkyoken to have been unlocked by the story: on the Independence Army route, if you go with Domon in stage 38, at the end of stage 38A “Death Match! Showdown on Lantau Island (Part 1)”; with the other two options, at the start of stage 39 “Desperate Breakthrough (Part 1)”; on the OZ route, at the end of stage 41 “Fist of Despair and Sorrow (Part 1)” {≠}",
-      "Double Burning Finger's EN is 60 in the game data; Akurasu says 80 {≠}"
+      "Double God Finger's EN is 60 in the game data; Akurasu says 80 {≠}"
      ]
     },
     {

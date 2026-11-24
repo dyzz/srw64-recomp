@@ -1,16 +1,21 @@
 #pragma once
 // MOD packages (docs/design/mod-packages.md §2–§3): the manifest, version requirements,
-// dependencies and the load order. A package is a folder <mods>/<id>/ holding mod.json
-// and the content folders; a .srw64mod file is that folder zipped (mod_library.cpp
-// installs it). This header reads nothing from disk except through `summarize`, so the
-// rules are tested without a game (tests/native_mod_library.cpp).
+// dependencies and the load order. A package is a .srw64mod file, a zip of mod.json and the
+// content folders, which an install keeps as <mods>/<id>.srw64mod and the game reads in
+// place; or a folder <mods>/<id>/ of the same files, as an author works on it (and as the
+// releases before 0.5.4 unpacked every package). Files reads either. This header reads
+// nothing from disk but through Files, so the rules are tested without a game
+// (tests/native_mod_library.cpp).
 #include "campaign_library.hpp"
 #include "json/json.hpp"
 #include <algorithm>
 #include <cctype>
 #include <filesystem>
 #include <functional>
+#include <iterator>
+#include <fstream>
 #include <map>
+#include <memory>
 #include <optional>
 #include <set>
 #include <string>
@@ -187,16 +192,101 @@ inline std::variant<Manifest,Problem> parse_manifest(const json& data) {
 }
 
 // One installed package as the manager shows it.
+// A package's files wherever they are: its folder, or its .srw64mod read in place. Paths
+// are relative to the package, '/' separated: "audio/music/12.ogg". Thread-safe.
+struct Files {
+    virtual ~Files()=default;
+    // Every file the package holds, by its relative path, sorted.
+    virtual const std::vector<std::string>& all() const=0;
+    // One file's bytes; nullopt when it is not there or cannot be read.
+    virtual std::optional<std::vector<unsigned char>> read(const std::string& path) const=0;
+    // Where the package is (its folder or its file), for messages.
+    virtual fs::path where() const=0;
+    bool exists(const std::string& path) const {
+        const auto& files=all();
+        return std::binary_search(files.begin(),files.end(),path);
+    }
+    // The files directly in `folder` ("audio/music"), by name ("12.ogg"), sorted.
+    std::vector<std::string> list(const std::string& folder) const {
+        std::vector<std::string> out;
+        const auto prefix=folder.empty()?std::string():folder+"/";
+        const auto& files=all();
+        for(auto it=std::lower_bound(files.begin(),files.end(),prefix);it!=files.end() && it->starts_with(prefix);++it)
+            if(it->find('/',prefix.size())==std::string::npos)out.push_back(it->substr(prefix.size()));
+        return out;
+    }
+    // The folders directly in `folder`, by name, sorted.
+    std::vector<std::string> folders(const std::string& folder) const {
+        std::set<std::string> out;
+        const auto prefix=folder.empty()?std::string():folder+"/";
+        const auto& files=all();
+        for(auto it=std::lower_bound(files.begin(),files.end(),prefix);it!=files.end() && it->starts_with(prefix);++it)
+            if(const auto slash=it->find('/',prefix.size());slash!=std::string::npos)out.insert(it->substr(prefix.size(),slash-prefix.size()));
+        return {out.begin(),out.end()};
+    }
+    // Whether anything is under `folder`.
+    bool has_folder(const std::string& folder) const {
+        const auto prefix=folder+"/";
+        const auto& files=all();
+        const auto it=std::lower_bound(files.begin(),files.end(),prefix);
+        return it!=files.end() && it->starts_with(prefix);
+    }
+    std::optional<std::string> read_text(const std::string& path) const {
+        auto bytes=read(path);
+        if(!bytes)return std::nullopt;
+        return std::string(bytes->begin(),bytes->end());
+    }
+    // The JSON in a file; null when it is missing or not JSON.
+    json read_json(const std::string& path) const {
+        const auto text=read_text(path);
+        if(!text)return json();
+        auto data=json::parse(*text,nullptr,false);
+        return data.is_discarded()?json():data;
+    }
+};
+// A package folder's files, read from the disk as asked.
+class FolderFiles:public Files {
+public:
+    explicit FolderFiles(fs::path folder):folder_(std::move(folder)) {
+        std::error_code error;
+        if(fs::is_directory(folder_,error))
+            for(auto it=fs::recursive_directory_iterator(folder_,error);!error && it!=fs::recursive_directory_iterator();it.increment(error))
+                if(it->is_regular_file(error)) {
+                    auto name=fs::relative(it->path(),folder_,error).generic_string();
+                    if(!error && !name.empty())files_.push_back(std::move(name));
+                }
+        std::sort(files_.begin(),files_.end());
+    }
+    const std::vector<std::string>& all() const override {return files_;}
+    std::optional<std::vector<unsigned char>> read(const std::string& path) const override {
+        if(path.empty() || path.find("..")!=std::string::npos)return std::nullopt;
+        std::ifstream in(folder_/fs::path(path),std::ios::binary);
+        if(!in)return std::nullopt;
+        return std::vector<unsigned char>(std::istreambuf_iterator<char>(in),{});
+    }
+    fs::path where() const override {return folder_;}
+protected:
+    fs::path folder_;
+    std::vector<std::string> files_;
+};
+
 struct Package {
-    fs::path folder;
+    fs::path folder;                    // the package's folder or its .srw64mod file
+    std::shared_ptr<const Files> files; // set by installed(); files_of() for a Package made by hand
     std::optional<Manifest> manifest;   // empty when mod.json is missing or wrong
     Problem problem;                    // why it is not usable (code empty when it is)
     Contents contents;
     bool enabled{true};
     bool active{};                      // enabled and every check passed
     bool trial{};                       // the web maker's package to try (trial_directory)
-    std::string id() const {return manifest?manifest->id:folder.filename().string();}
+    std::string id() const {return manifest?manifest->id:(folder.extension()==package_extension?folder.stem():folder.filename()).string();}
+    bool archived() const {return folder.extension()==package_extension;}
 };
+// A package's files: the ones the listing found, or its folder's for a Package made by hand
+// (tests, and the packages a campaign folder holds).
+inline std::shared_ptr<const Files> files_of(const Package& p) {
+    return p.files?p.files:std::make_shared<FolderFiles>(p.folder);
+}
 
 // What the player chose, kept in <mods>/mods.json: the order (bottom first) and the
 // packages turned off. Packages not listed go on top in id order.
@@ -298,50 +388,45 @@ inline std::vector<Package> resolve(std::vector<Package> packages,const State& s
     return out;
 }
 
-// A package's audio/voice stays in its package file: a voice package is thousands of small
-// files, which a Switch's SD card creates at 37 ms each and then walks entry by entry to open.
-// install keeps a file with entries under audio/voice/ as <package>/voice.srw64mod and unpacks
-// the rest; a package folder put in by hand holds them as files. Both work, side by side.
+// A package's files on the disk: a .srw64mod read in place (mod_library.cpp), or a folder.
+// A folder the releases before 0.5.4 unpacked may hold its voices in voice.srw64mod
+// (voice_archive): they show as its audio/voice/ files.
 inline constexpr const char* voice_archive="voice.srw64mod";
-// The entries under audio/voice/ of that file, as the file names them; none when it is not there.
-std::vector<std::string> archive_voices(const fs::path& archive);
-// One entry alone, into memory; nullopt when it cannot be read. The file stays open between
-// calls, its directory in memory, until the package moves (to_trash closes it).
-std::optional<std::vector<unsigned char>> read_archive(const fs::path& archive,const std::string& entry);
+std::shared_ptr<const Files> open_files(const fs::path& where);
+// A path the code hands to something that opens files itself (a font face): a path into a
+// package file comes out of it once, into <mods>/.cache/<package>-<size>-<time>/ (the folder of
+// an older copy of that package goes then); any other path is itself. Empty when it cannot.
+fs::path local_file(const fs::path& path);
+// When a file was written: for a path into a package file, the package file's time (a picture
+// loaded once is used again until its package changes).
+fs::file_time_type file_time(const fs::path& path);
 
-// What a package folder holds, by its known folders.
-inline Contents summarize(const fs::path& folder) {
+// What a package holds, by its known folders.
+inline Contents summarize(const Files& files) {
     Contents c;
-    std::error_code error;
-    const auto known=[](const fs::path& file,std::initializer_list<const char*> extensions) {
-        auto ext=file.extension().string();
+    const auto known=[](const std::string& file,std::initializer_list<const char*> extensions) {
+        auto ext=fs::path(file).extension().string();
         std::transform(ext.begin(),ext.end(),ext.begin(),[](unsigned char ch){return char(std::tolower(ch));});
         return extensions.size()==0 || std::find(extensions.begin(),extensions.end(),ext)!=extensions.end();
     };
-    const auto count=[&](const fs::path& dir,std::initializer_list<const char*> extensions) {
+    const auto count=[&](const std::string& folder,std::initializer_list<const char*> extensions) {
         unsigned n=0;
-        if(!fs::is_directory(dir,error))return n;
-        for(auto it=fs::recursive_directory_iterator(dir,error);it!=fs::recursive_directory_iterator();it.increment(error)) {
-            if(error)break;
-            if(it->is_regular_file(error) && known(it->path(),extensions))++n;
-        }
+        const auto prefix=folder+"/";
+        for(const auto& file:files.all())if(file.starts_with(prefix) && known(file,extensions))++n;
         return n;
     };
-    c.music=count(folder/"audio"/"music",{".ogg"});
-    c.voices=count(folder/"audio"/"voice",{".ogg",".mp3",".flac",".wav"});
-    for(const auto& entry:archive_voices(folder/voice_archive))if(known(entry,{".ogg",".mp3",".flac",".wav"}))++c.voices;
-    c.art=count(folder/"art",{".png",".webp",".dds",".json"});
-    c.dialogue=count(folder/"dialogue",{".txt"});
-    c.names=fs::is_regular_file(folder/"dialogue"/"names.json",error);
-    if(fs::is_directory(folder/"dialogue",error))
-        for(const auto& entry:fs::directory_iterator(folder/"dialogue",error))
-            if(entry.is_directory(error) && fs::is_regular_file(entry.path()/"language.json",error))c.languages.push_back(entry.path().filename().string());
-    std::sort(c.languages.begin(),c.languages.end());
-    c.data=count(folder/"data",{".json"});
-    c.campaign=fs::is_regular_file(folder/"campaign"/"campaign.json",error);
-    c.challenge=fs::is_directory(folder/"challenge",error);
-    c.story=fs::is_directory(folder/"story",error);
-    c.rules=fs::is_regular_file(folder/"rules.json",error);
+    c.music=count("audio/music",{".ogg"});
+    c.voices=count("audio/voice",{".ogg",".mp3",".flac",".wav"});
+    c.art=count("art",{".png",".webp",".dds",".json"});
+    c.dialogue=count("dialogue",{".txt"});
+    c.names=files.exists("dialogue/names.json");
+    for(const auto& locale:files.folders("dialogue"))
+        if(files.exists("dialogue/"+locale+"/language.json"))c.languages.push_back(locale);
+    c.data=count("data",{".json"});
+    c.campaign=files.exists("campaign/campaign.json");
+    c.challenge=files.has_folder("challenge");
+    c.story=files.has_folder("story");
+    c.rules=files.exists("rules.json");
     return c;
 }
 
@@ -369,34 +454,37 @@ struct InstallResult {
     Version version;
     std::optional<Version> replaced;    // the version an update took the place of
     Problem problem;
-    bool voices{};                      // the package file has audio/voice: it is kept (voice_archive)
 };
 fs::path directory();
-// Every installed package, resolved against the game version (bottom first). Packages
-// dropped into the folder as .srw64mod files are unpacked first, and a package folder put
-// there under another name (a package extracted by hand: "srw64.space-a-1.0.2/") takes
-// its id's name, replacing an installed one of that id as an install does.
+// Every installed package, resolved against the game version (bottom first): each
+// <id>.srw64mod and <id>/ in the folder, the folder taking the place of a file of the same id
+// (an author's working copy). Package files placed in the folder under another name, or as a
+// .zip, are installed first (renamed into place), and a package folder put there under another
+// name (a package extracted by hand: "srw64.space-a-1.0.2/") takes its id's name, replacing an
+// installed one of that id as an install does.
 std::vector<Package> installed(const Version& game);
-// Told 0 to 100 as the files placed in the folder unpack, by their bytes: a voice package
-// of thousands of files takes minutes on a Switch's SD card (the loading screen shows it).
+// Told 0 to 100 as the files placed in the folder install, by their bytes (the loading screen
+// shows it: a Thunderstore zip's package is copied out of it).
 void set_unpack_progress(void (*report)(unsigned percent));
-// What the last listing found placed in the folder as files: the ones installed (moved to
-// .trash, or into the package for its voices) and the ones that did not (still there, tried
-// again next time).
+// What the last listing found placed in the folder as files: the ones installed and the ones
+// that did not (still there, tried again next time).
 struct LooseResult {
     fs::path file;
     InstallResult result;
 };
 std::vector<LooseResult> loose_results();
-// A .srw64mod (or .zip) file or a package folder, unpacked or copied into the folder and
-// turned on. An installed package with the same id is replaced (the old one is kept in
-// <mods>/.trash).
+// A .srw64mod (or .zip) file, checked and kept as <mods>/<id>.srw64mod, or a package folder,
+// copied in as <mods>/<id>/; turned on. An installed package with the same id is replaced (the
+// old one is kept in <mods>/.trash).
 InstallResult install(const fs::path& source);
 bool set_enabled(const std::string& id,bool on);
-// Moves the package to <mods>/.trash.
+// Moves the package (its folder and its file) to <mods>/.trash.
 bool remove(const std::string& id);
-// The web maker's package to try (web_link.cpp, docs/design/unit-mod-web-tool.md W3): kept in
-// <mods>/.web-link/<id>/, listed with the player's packages and on, in place of an installed
+// Moves a file placed in the folder that did not install (one of loose_results' failures,
+// by its file name) to <mods>/.trash, so the MOD page stops reporting it.
+bool remove_failed(const std::string& file_name);
+// The web maker's package to try (web_link.cpp, docs/design/unit-mod-web-tool.md W3): kept as
+// <mods>/.web-link/<id>.srw64mod, listed with the player's packages and on, in place of an installed
 // package of the same id, never in mods.json; one at a time, the one before replaced. The
 // folder is emptied when the game starts (clear_trial).
 fs::path trial_directory();

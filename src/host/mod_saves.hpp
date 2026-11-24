@@ -36,6 +36,7 @@ namespace fs=std::filesystem;
 inline constexpr uint32_t pool=0x8016A210, pool_size=0x54, pool_count=140;   // the player's unit instances
 inline constexpr uint32_t game_mode=0x8015DA02;   // as quick_load.cpp reads it
 inline constexpr const char* schema="srw64.mod-units-state.v2";
+inline constexpr const char* legacy_schema="srw64.mod-units-state.v1";
 
 // Where a record keeps the player's units and weapons (new-unit-ids.md §3.6): 140 unit
 // records, +0 the unit number << 6 | 6 bits (0xFFFF empty), and 700 weapon slots of 6 bytes,
@@ -143,6 +144,7 @@ struct State {
     bool asked{},posted{};
     std::string text;                  // the banner, under mutex
     std::map<unsigned,unsigned> moved,moved_pilots; // the record's unit numbers `remap` changed, old -> new, under mutex
+    bool missing_legacy_dancouga{};
 };
 // Frame boundaries (two to a VI at 120 Hz): the map settled before asking, and the time the
 // press gets before a new one when it ended without the title.
@@ -190,22 +192,47 @@ inline json saved_state(const uint8_t* ram,story_mod::Record kind) {
         if(const auto file=sidecar(hash);!file.empty() && fs::exists(file)) {
             std::ifstream in(file);
             const auto document=json::parse(in,nullptr,false);
-            if(!document.is_discarded() && document.value("schema","")==schema)saved=document;
+            if(document.is_object() && (document.value("schema",json())==schema ||
+                                        document.value("schema",json())==legacy_schema))saved=document;
         }
     return saved;
 }
 
 // The words `remap` changed, to put back.
 using Undo=std::vector<std::pair<uint32_t,uint16_t>>;
+
+// The old package borrowed a real ROM number. Restrict its migration to the player's
+// instance, and only rewrite weapons in that instance's saved range. If the sidecar
+// was lost (e.g. a cartridge export), the three borrowed weapons identify the old unit.
+inline bool old_dancouga_at(const uint8_t* ram,const Bank& bank,uint32_t at,bool owned) {
+    const auto word=guest::read(ram,at,2);
+    if(word>>6!=mod_units::old_dancouga)return false;
+    const unsigned count=word&0x3F,first=guest::read(ram,at+bank.unit_stride-2,2);
+    if(first>bank.weapon_count || count>bank.weapon_count-first)return false;
+    const unsigned pilot_index=guest::read(ram,at+bank.unit_stride-7,1);
+    if(owned && pilot_index<bank.pilot_count &&
+        (guest::read(ram,bank.pilots+pilot_index*bank.pilot_stride,2)&pilot_bits)==171)return true;
+    for(const auto& [old,_]:mod_units::old_dancouga_weapons) {
+        bool found=false;
+        for(unsigned i=first;i<first+count;++i) {
+            const auto weapon=bank.weapons+i*weapon_stride;
+            if(guest::read(ram,weapon,2)==old && guest::read(ram,weapon+2,2)==mod_units::old_dancouga)
+                {found=true;break;}
+        }
+        if(!found)return false;
+    }
+    return true;
+}
+
 // Before the game reads a record (the buffer filled): every new unit and weapon whose name
 // the sidecar knows and an active package gives another number now takes that number.
 // A name no package gives now stays as it was (`restored` turns the load back).
 inline Undo remap(uint8_t* ram,story_mod::Record kind) {
     Undo undo;
     auto& s=state();
-    {std::lock_guard lock(s.mutex);s.moved.clear();}
-    const json saved=saved_state(ram,kind);
-    if(!saved.is_object())return undo;
+    {std::lock_guard lock(s.mutex);s.moved.clear();s.moved_pilots.clear();s.missing_legacy_dancouga=false;}
+    const auto source=saved_state(ram,kind);
+    const json saved=source.is_object()?source:json::object();
     const auto numbers=mod_ids::current();
     const auto moves=[](const json& keys,const std::map<std::string,unsigned>& now) {
         std::map<unsigned,unsigned> out;
@@ -222,30 +249,69 @@ inline Undo remap(uint8_t* ram,story_mod::Record kind) {
     const auto units=moves(saved.value("keys",json::object()),numbers->units);
     const auto weapons=moves(saved.value("weapon_keys",json::object()),numbers->weapons);
     const auto people=moves(saved.value("pilot_keys",json::object()),numbers->pilots);
-    if(units.empty() && weapons.empty() && people.empty())return undo;
+    const auto replace=[&](uint32_t at,unsigned value) {
+        undo.emplace_back(at,uint16_t(guest::read(ram,at,2)));
+        guest::write16(ram,at,uint16_t(value));
+    };
     unsigned changed_units=0,changed_weapons=0,changed_pilots=0;
-    for(const auto& [at,pilot]:record_pilots(ram,kind))
+    bool missing_legacy=false, moved_legacy=false;
+    unsigned legacy_unit=0;
+    std::map<unsigned,unsigned> legacy_weapons;
+    const auto package=std::string(mod_units::dancouga_package);
+    const auto legacy_packages=saved.value("packages",json::object());
+    const auto legacy_units=saved.value("units",json::array());
+    const bool owned=saved.value("schema",json())==legacy_schema && legacy_packages.contains(package) &&
+        legacy_units.is_array() && std::find(legacy_units.begin(),legacy_units.end(),mod_units::old_dancouga)!=legacy_units.end();
+    const auto player_bank=banks(kind).front();
+    for(unsigned i=0;i<player_bank.unit_count;++i) {
+        const auto at=player_bank.units+i*player_bank.unit_stride;
+        if(!old_dancouga_at(ram,player_bank,at,owned))continue;
+        const auto target=numbers->units.find(package+"@final");
+        if(target==numbers->units.end() || !mod_data::unit_copy(target->second)) {missing_legacy=true;continue;}
+        legacy_unit=target->second;
+        for(const auto& [old,name]:mod_units::old_dancouga_weapons)
+            if(const auto w=numbers->weapons.find(package+"@"+name);w!=numbers->weapons.end())legacy_weapons.emplace(old,w->second);
+        if(legacy_weapons.size()!=mod_units::old_dancouga_weapons.size()) {missing_legacy=true;continue;}
+        const unsigned word=guest::read(ram,at,2), first=guest::read(ram,at+player_bank.unit_stride-2,2);
+        replace(at,legacy_unit<<6 | (word&0x3F));
+        ++changed_units;
+        moved_legacy=true;
+        for(unsigned n=first;n<first+(word&0x3F);++n) {
+            const auto weapon=player_bank.weapons+n*weapon_stride;
+            if(const auto found=legacy_weapons.find(guest::read(ram,weapon,2));found!=legacy_weapons.end()) {
+                replace(weapon,found->second);
+                ++changed_weapons;
+            }
+            if(guest::read(ram,weapon+2,2)==mod_units::old_dancouga)replace(weapon+2,legacy_unit);
+        }
+    }
+    if(!people.empty())for(const auto& [at,pilot]:record_pilots(ram,kind))
         if(const auto m=people.find(pilot);m!=people.end()) {
-            const uint16_t word=uint16_t(guest::read(ram,at,2));
-            undo.emplace_back(at,word);
-            guest::write16(ram,at,uint16_t((word&~pilot_bits)|(m->second&pilot_bits)));++changed_pilots;
+            replace(at,(guest::read(ram,at,2)&~pilot_bits)|(m->second&pilot_bits));
+            ++changed_pilots;
         }
-    for(const auto& [at,unit]:record_units(ram,kind))
+    if(!units.empty())for(const auto& [at,unit]:record_units(ram,kind))
         if(const auto m=units.find(unit);m!=units.end()) {
-            const uint16_t word=uint16_t(guest::read(ram,at,2));
-            undo.emplace_back(at,word);
-            guest::write16(ram,at,uint16_t(m->second<<6 | (word&0x3F)));++changed_units;
+            replace(at,m->second<<6 | (guest::read(ram,at,2)&0x3F));
+            ++changed_units;
         }
-    for(const auto& [at,weapon]:record_weapons(ram,kind))
+    if(!units.empty() || !weapons.empty())for(const auto& [at,weapon]:record_weapons(ram,kind)) {
         if(const auto m=weapons.find(weapon);m!=weapons.end()) {
-            undo.emplace_back(at,uint16_t(weapon));
-            guest::write16(ram,at,uint16_t(m->second));++changed_weapons;
+            replace(at,m->second);
+            ++changed_weapons;
         }
-    {std::lock_guard lock(s.mutex);s.moved=units;s.moved_pilots=people;}
+        if(const auto m=units.find(guest::read(ram,at+2,2));m!=units.end())replace(at+2,m->second);
+    }
+    {std::lock_guard lock(s.mutex);s.moved=units;s.moved_pilots=people;s.missing_legacy_dancouga=missing_legacy;}
+    if(undo.empty())return undo;
     json from=json::object();
     for(const auto& [a,b]:units)from[std::to_string(a)]=b;
     json weapon_from=json::object();
     for(const auto& [a,b]:weapons)weapon_from[std::to_string(a)]=b;
+    if(moved_legacy) {
+        from[std::to_string(mod_units::old_dancouga)]=legacy_unit;
+        for(const auto& [a,b]:legacy_weapons)weapon_from[std::to_string(a)]=b;
+    }
     json pilot_from=json::object();
     for(const auto& [a,b]:people)pilot_from[std::to_string(a)]=b;
     std::fprintf(stderr,"SRW64_MOD_SAVE %s\n",json({{"action","remapped"},{"record",kind==story_mod::Record::slot?"slot":"suspend"},
@@ -268,11 +334,16 @@ inline void restored(const uint8_t* ram,story_mod::Record kind) {
     auto& s=state();
     const json saved=saved_state(ram,kind);
     std::map<unsigned,unsigned> moved,moved_pilots;
-    {std::lock_guard lock(s.mutex);moved.swap(s.moved);moved_pilots.swap(s.moved_pilots);}
+    bool missing_legacy;
+    {std::lock_guard lock(s.mutex);moved.swap(s.moved);moved_pilots.swap(s.moved_pilots);
+     missing_legacy=std::exchange(s.missing_legacy_dancouga,false);}
     // The sidecar's keys by the numbers the units have now.
+    // Held in locals: a range-for over value(...).items() iterates a temporary already gone.
+    const json saved_keys=saved.is_object()?saved.value("keys",json::object()):json::object();
+    const json saved_pilot_keys=saved.is_object()?saved.value("pilot_keys",json::object()):json::object();
     std::map<unsigned,std::string> keys;
-    if(saved.is_object())
-        for(const auto& [number,key]:saved.value("keys",json::object()).items()) {
+    if(saved_keys.is_object())
+        for(const auto& [number,key]:saved_keys.items()) {
             unsigned n=0;
             try{n=unsigned(std::stoul(number));}catch(...){continue;}
             if(!key.is_string())continue;
@@ -280,6 +351,7 @@ inline void restored(const uint8_t* ram,story_mod::Record kind) {
             keys[n]=key.get<std::string>();
         }
     json missing=json::array();
+    if(missing_legacy)missing.push_back(mod_units::old_dancouga);
     for(const auto unit:units(ram,sides(kind))) {
         if(!new_unit(unit))continue;
         bool fine=owners.count(unit);
@@ -291,8 +363,8 @@ inline void restored(const uint8_t* ram,story_mod::Record kind) {
     }
     // And a new character no active package adds, or whose name has another number now.
     std::map<unsigned,std::string> pilot_keys;
-    if(saved.is_object())
-        for(const auto& [number,key]:saved.value("pilot_keys",json::object()).items()) {
+    if(saved_pilot_keys.is_object())
+        for(const auto& [number,key]:saved_pilot_keys.items()) {
             unsigned n=0;
             try{n=unsigned(std::stoul(number));}catch(...){continue;}
             if(!key.is_string())continue;
@@ -311,7 +383,9 @@ inline void restored(const uint8_t* ram,story_mod::Record kind) {
         if(!fine)missing_pilots.push_back(pilot);
     }
     if(missing.empty() && missing_pilots.empty())return;
-    const json packages=saved.is_object()?saved.value("packages",json::object()):json::object();
+    json packages=saved.is_object()?saved.value("packages",json::object()):json::object();
+    if(missing_legacy && !packages.contains(mod_units::dancouga_package))
+        packages[mod_units::dancouga_package]="Final Dancouga";
     const auto& catalog=localization::catalog();
     std::string names;
     for(const auto& [id,name]:packages.items()) {

@@ -204,7 +204,8 @@
   },
   "738": {
    "facing": "front",
-   "name": "ガンダムmkⅡ"
+   "name": "ガンダムmkⅡ",
+   "hd_facing": "left"
   },
   "739": {
    "facing": "left",
@@ -332,7 +333,8 @@
   },
   "770": {
    "facing": "front",
-   "name": "ガンダムmkⅡ"
+   "name": "ガンダムmkⅡ",
+   "hd_facing": "left"
   },
   "771": {
    "facing": "left",

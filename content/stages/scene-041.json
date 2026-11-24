@@ -42,8 +42,8 @@
     {
      "ref": "secret-katz",
      "title": {
-      "zh-Hans": "卡茨＋瓦伊罗斯（含超级夺地者）",
-      "zh-Hant": "卡茨＋瓦伊羅斯（含超級奪地者）",
+      "zh-Hans": "卡茨＋斩空者（含超级夺地者）",
+      "zh-Hant": "卡茨＋斬空者（含超級奪地者）",
       "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
       "en": "Kurtz + Virose (including Super Earthgain)",
       "ko": "카츠 + 바이로즈(슈퍼 어스게인 포함)"
@@ -126,7 +126,7 @@
       "zh-Hans": "无需操作：招到阿莲比后即可使用双重神之指",
       "zh-Hant": "無需操作：招到阿蓮比後即可使用雙重神威掌",
       "ja": "操作不要：アレンビー加入後にダブルゴッドフィンガーが使える",
-      "en": "No action needed: Double Burning Finger works once Allenby joins",
+      "en": "No action needed: Double God Finger works once Allenby joins",
       "ko": "할 일 없음: 아렌비가 합류하면 더블 갓 핑거 사용 가능"
      }
     }

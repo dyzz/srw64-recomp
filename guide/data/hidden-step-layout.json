@@ -1,0 +1,38 @@
+{
+  "labels": {
+    "paths": ["按所走路线查看", "自分のルートを確認", "Follow your route", "진행 중인 루트를 확인하세요"],
+    "either": ["按当前情况择一", "該当するものを1つ", "Use the applicable option", "해당하는 항목 하나"],
+    "ind": ["独立军路线", "独立軍ルート", "Independence Army route", "독립군 루트"],
+    "oz": ["OZ 路线", "OZルート", "OZ route", "OZ 루트"],
+    "peace": ["完全和平路线", "完全平和ルート", "Complete Pacifism route", "완전평화 루트"],
+    "indMerge": ["独立军线（含独自作战）", "独立軍ルート（単独で戦う場合も含む）", "Independence Army (including fighting alone)", "독립군 루트(단독 항전 포함)"],
+    "ozMerge": ["OZ 线（含随特列斯）", "OZルート（トレーズにつく場合も含む）", "OZ (including siding with Treize)", "OZ 루트(트레즈 편 포함)"],
+    "ark": ["独立军／OZ 的阿克支线", "独立軍・OZのアーク専用分岐", "Ark’s side stage on Independence Army or OZ", "독립군·OZ 루트의 아크 전용 분기"]
+  },
+  "languages": ["zh-Hans", "ja", "en", "ko"],
+  "entries": {
+    "secret-katz": {"paths": [1,[2,3,4],[5,6],7]},
+    "secret-aisha": {"ind": [1,2,3], "peace": [4,5,6], "oz": [[7,8],9,10]},
+    "secret-elrich": {"ind": [1,2,3], "peace": [4], "oz": [5,6], "ark": [7]},
+    "secret-reese": {"ind": [1,2], "peace": [3,4], "oz": [[5,6]]},
+    "secret-allenby": {"paths": [1,[2,3],[4,5]]},
+    "secret-naida": {"ind": [1,2], "ozMerge": [[3,4],5]},
+    "secret-kirika": {"paths": [[1,2]]},
+    "secret-gale": {"paths": [1,[2,3,4]]},
+    "secret-gale-escort": {"indMerge": [1,2], "ozMerge": [3,4]},
+    "secret-four": {"paths": [1,2,[3,4]]},
+    "secret-ginrei": {"paths": [[1,2]]},
+    "secret-hilde": {"paths": [[1,2,3]]},
+    "secret-zechs-epyon": {"paths": [[1,2]]},
+    "secret-todd-silky": {"paths": [1,[2,3],[4,5]]},
+    "secret-rose": {"indMerge": [[1,2],3,4], "ozMerge": [[5,6],[7,8],9]},
+    "secret-puru": {"indMerge": [1,2], "ozMerge": [3]},
+    "secret-puru-two": {"indMerge": [1,2,3], "ozMerge": [4,5,6]},
+    "secret-qubeley-color": {"paths": [[1,2]]},
+    "secret-kyral": {"paths": [[1,2],3]},
+    "secret-story-attacks": {"paths": [[1,2,3],[4,5]], "indMerge": [6,7], "ozMerge": [8,9]},
+    "secret-route-treize": {"paths": [[1,2]]},
+    "secret-route-ark-brad": {"paths": [[1,2]]},
+    "secret-route-muge": {"paths": [[1,2]]}
+  }
+}

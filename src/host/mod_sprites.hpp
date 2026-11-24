@@ -7,6 +7,7 @@
 // parts and their vertices). They get resource numbers past the ROM's 6,436 and are served
 // to the loader (80089E9C) as LZSS streams of literals only (mod_tables.hpp).
 #include "stb/stb_image.h"
+#include "../native/presentation/file_source.hpp"
 #include <algorithm>
 #include <cstdint>
 #include <filesystem>
@@ -157,11 +158,17 @@ inline std::vector<uint8_t> stream(const std::vector<uint8_t>& data) {
     return out;
 }
 
+// A picture's size without decoding it, from wherever it is (file_source.hpp).
+inline bool image_info(const std::filesystem::path& file,int& w,int& h,int& n) {
+    const auto bytes=presentation::read_file(file);
+    return bytes && stbi_info_from_memory(bytes->data(),int(bytes->size()),&w,&h,&n);
+}
 // A PNG as RGBA8; empty with `why` set when it cannot be read.
 inline Frame load(const std::filesystem::path& file,std::string& why) {
     Frame f;
     int w=0,h=0,n=0;
-    stbi_uc* pixels=stbi_load(file.string().c_str(),&w,&h,&n,4);
+    const auto bytes=presentation::read_file(file);   // in its package file (file_source.hpp)
+    stbi_uc* pixels=bytes?stbi_load_from_memory(bytes->data(),int(bytes->size()),&w,&h,&n,4):nullptr;
     if(!pixels){why=file.filename().string()+" 不是能读的 PNG";return f;}
     f.width=unsigned(w);f.height=unsigned(h);f.rgba.assign(pixels,pixels+size_t(w)*h*4);
     stbi_image_free(pixels);

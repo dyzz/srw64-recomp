@@ -1,3 +1,4 @@
+#include "../native/presentation/frame_cost.hpp"
 #include "program_cache.hpp"
 
 #include <algorithm>
@@ -123,6 +124,7 @@ GLuint link_program(const std::string& vertex, const std::string& fragment,
 #endif
     ++stats.linked;
     stats.link_ms += since(start);
+    srw64::frame_cost::add("shader", "", since(start));
     return program;
 }
 }

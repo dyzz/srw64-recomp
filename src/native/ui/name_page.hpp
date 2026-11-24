@@ -11,7 +11,8 @@ std::u16string utf16(const std::string& value);
 struct NameActions {
     std::function<void(uint64_t,unsigned)> select, choose;
     std::function<void(uint64_t,bool)> review;
-    // An image file as an RmlUi resource, resampled for the given width in dp.
+    // An image file as an RmlUi resource, resampled for the given width in dp; "" while
+    // the file is still being read (the page asks again every frame until it has it).
     std::function<std::string(const std::string&,int)> image;
     // Shrinks the page's one-line texts marked 'fit' that run past their box (frontend.cpp fit_lines).
     std::function<void(Rml::ElementDocument*)> fit;
@@ -30,6 +31,8 @@ class NamePage final : public Rml::EventListener {
     float area_x{},area_y{},area_w{},area_h{};   // that room in screen pixels (set_area)
     int inset_x{},inset_y{};
     bool waiting{}, hd{}, art_changed{};
+    struct Picture { std::string id, path; int width; std::string style; };
+    std::vector<Picture> pictures;   // the pictures still being read, by their holders' ids
     void build();
     std::string label(const std::string& key) const;
     void advance();

@@ -28,6 +28,7 @@
 #include "save_page.hpp"
 #include "save_store.hpp"
 #include "library.hpp"
+#include "map_movie.hpp"
 #include "stage_info.hpp"
 #include "quick_load.hpp"
 #include "title_row.hpp"
@@ -230,7 +231,10 @@ std::string web_link_ask_origin;
 // The intermission menu's own last row, 返回标题画面 (not one of the original's items):
 // selected below the original's cursor, confirmed as the title question.
 unsigned library_tab{};
-std::array<unsigned,2> library_index{};
+std::array<unsigned,3> library_index{};   // units, characters, map movies
+bool movie_active{};           // a map movie plays on the Library's animations page (map_movie.hpp)
+uint64_t movie_serial{};       // the last of its pictures shown
+int movie_images=-1;           // the animations page's own Original (0) / HD (1); -1 follows the image mode
 bool library_tab_focus{};
 // The stage info page (stage_info.hpp), in the same frame: which column the controller
 // scrolls.
@@ -260,6 +264,8 @@ std::string battle_stamp,original_stamp;
 // and the row the cursor was on, kept when the pilot changes.
 int battle_spirit_crew=0,battle_spirit_row=-1;
 json intermission_request,upgrade_request,parts_request,ability_request,swap_request,save_request,title_request;
+// The revision of each page's state last copied into its request (page_snapshot.hpp).
+uint64_t intermission_seen=~0ull,upgrade_seen=~0ull,parts_seen=~0ull,ability_seen=~0ull,swap_seen=~0ull,save_seen=~0ull;
 Rml::ElementDocument* title_doc{};
 std::string title_stamp;
 // "intermission" or "upgrade" while the player types a new 資金 figure into that page.
@@ -679,13 +685,15 @@ button.vw-cell .gates {flex-shrink:0; display:flex; gap:3dp;}
 button.vw-cell .gates span {width:16dp; height:16dp; line-height:16dp; text-align:center; font-size:9dp; font-weight:bold; color:#4f5b80; border:1dp #2a3b66;}
 button.vw-cell .gates span.lit {color:#8fe4ff; border-color:#3fd0ff;}
 button.vw-cell.on {border-color:#ffd75e; background-color:#1d1a2e;}
-button.vw-cell:focus, .pad button.vw-cell:focus {color:#ffd75e; border-color:#ffd75e;}
-body.pointer button.vw-cell:focus {color:#e8eefc; border-color:#2a3b66;} body.pointer button.vw-cell.on:focus {border-color:#ffd75e;} body.pointer button.vw-cell:hover {border-color:#3fd0ff;}
+/* The keys' and the controller's cursor: a tinted row with a bar on its left, read from across a room (the 1dp outline alone was not). */
+button.vw-cell:focus, .pad button.vw-cell:focus {color:#ffd75e; border-color:#ffd75e; border-left-width:4dp; padding-left:7dp; background-color:#ffd75e2e;}
+body.pointer button.vw-cell:focus {color:#e8eefc; border-color:#2a3b66; border-left-width:1dp; padding-left:10dp; background-color:#0d1430;} body.pointer button.vw-cell.on:focus {border-color:#ffd75e; background-color:#1d1a2e;} body.pointer button.vw-cell:hover {border-color:#3fd0ff;}
 button.vw-bgm {flex-shrink:0; display:flex; align-items:center; justify-content:center; gap:10dp; height:30dp; margin:0; padding:0 12dp; color:#e8eefc; background-color:#11112a; border:1dp #ffb54766; border-radius:0;}
 button.vw-bgm .k {font-size:10dp; color:#ffb547;}
 button.vw-bgm .t {font-size:13dp; letter-spacing:1dp; white-space:nowrap;}
 button.vw-bgm.on, button.vw-bgm:focus {border-color:#ffd75e;}
-body.pointer button.vw-bgm:focus {border-color:#ffb54766;} body.pointer button.vw-bgm.on:focus {border-color:#ffd75e;} body.pointer button.vw-bgm:hover {border-color:#3fd0ff;}
+button.vw-bgm:focus {background-color:#ffd75e2e;}
+body.pointer button.vw-bgm:focus {border-color:#ffb54766; background-color:#11112a;} body.pointer button.vw-bgm.on:focus {border-color:#ffd75e;} body.pointer button.vw-bgm:hover {border-color:#3fd0ff;}
 .vw-help {flex:1 1 0; min-width:0; font-size:12dp; color:#c8d4ee; white-space:nowrap;}
 button.vw-start {margin:0; height:32dp; line-height:32dp; text-align:center; padding:0 34dp 0 38dp; font-size:16dp; font-weight:bold; letter-spacing:3dp; color:#0b1230; border:0; border-radius:0; background-color:transparent; decorator:slant(#ffd75e #ffd75e 0dp 0dp 12dp 0dp 0dp 12dp);}
 button.vw-start:focus {decorator:slant(#ffffff #ffffff 0dp 0dp 12dp 0dp 0dp 12dp);}
@@ -693,6 +701,8 @@ body.pointer button.vw-start:focus {decorator:slant(#ffd75e #ffd75e 0dp 0dp 12dp
 /* The slanted button is only its slant: none of the footers' or the controller's rectangle when focused. */
 .set-panel.vw-panel button.vw-start, .set-panel.vw-panel button.vw-start:focus, .set-panel.vw-panel button.vw-start:hover, .pad .set-panel.vw-panel button.vw-start:focus,
 body.pointer .set-panel.vw-panel button.vw-start:focus, body.pointer .set-panel.vw-panel button.vw-start:hover {background-color:transparent; border-width:0;}
+/* Beside the yellow start button a focused close button goes white, as a focused start does, not yellow. */
+.vw-panel .set-foot button:focus, .pad .vw-panel .set-foot button:focus {color:#0b1230; background-color:#ffffff; border-color:#ffffff;}
 .vw-list {flex:1 1 0; min-height:0; width:auto; border-right:0;}
 /* The box a choice opens, over the other side */
 .vw-pop {position:absolute; top:44dp; bottom:50dp; display:flex; flex-direction:column; background-color:#090e26fa; border:2dp #3fd0ff;}
@@ -729,12 +739,12 @@ button.vw-li .t {flex-shrink:0; padding:0 4dp; font-size:10dp; font-weight:bold;
 button.vw-li .t.melee {background-color:#ffb547;}
 button.vw-li .badge {flex-shrink:0; padding:0 5dp; font-size:9dp; line-height:15dp; font-weight:bold; color:#0b1230; background-color:#3fd0ff;}
 button.vw-li.on {background-color:#2a1d3a; border-left-color:#ffd75e; color:#ffd75e; font-weight:bold;}
-button.vw-li:focus {background-color:#3fd0ff26;} button.vw-li.on:focus {background-color:#3a2a4e;}
-body.pointer button.vw-li:focus {background-color:transparent;} body.pointer button.vw-li.on:focus {background-color:#2a1d3a;} body.pointer button.vw-li:hover {background-color:#3fd0ff1a;}
+button.vw-li:focus {background-color:#3fd0ff33; border-left-color:#3fd0ff;} button.vw-li.on:focus {background-color:#3a2a4e; border-left-color:#ffd75e;}
+body.pointer button.vw-li:focus {background-color:transparent; border-left-color:transparent;} body.pointer button.vw-li.on:focus {background-color:#2a1d3a; border-left-color:#ffd75e;} body.pointer button.vw-li:hover {background-color:#3fd0ff1a;}
 .vw-pop-foot {flex-shrink:0; display:flex; align-items:center; gap:8dp; height:42dp; padding:0 8dp; border-top:1dp #2a3b66;}
 .vw-pop-foot .set-hint {flex:1 1 0; min-width:0; white-space:nowrap;}
 .vw-pop-foot button {margin:0; height:28dp; line-height:28dp; padding:0 14dp; font-size:13dp; color:#0b1230; background-color:#3fd0ff; border:0; border-radius:0;}
-.vw-pop-foot button:focus {background-color:#ffd75e;}
+.vw-pop-foot button:focus {background-color:#ffffff;}
 body.pointer .vw-pop-foot button:focus {background-color:#3fd0ff;} body.pointer .vw-pop-foot button:hover {background-color:#8fe4ff;}
 .vw-pop-foot button.vw-start {height:28dp; line-height:28dp; padding:0 26dp 0 30dp; font-size:14dp; background-color:transparent;}
 .vw-resbox {flex:1 1 0; min-height:0; display:flex; gap:8dp; box-sizing:border-box; width:100%; padding:8dp;}
@@ -796,6 +806,22 @@ body.pointer button.vw-listen:focus {background-color:#3fd0ff;} body.pointer but
 .lx-terrain .t.none {border-color:#2c3a66;} .lx-terrain .t.none .r {color:#5d6890;}
 .lx-head {margin:12dp 0 5dp; padding-bottom:4dp; font-size:13dp; font-weight:bold; color:#3fd0ff; border-bottom:1dp #3fd0ff59;}
 .lx-head span {margin-left:10dp; font-size:11dp; font-weight:normal; color:#8f9bbd;}
+/* Map movies: the original's 4:3 picture on the left, the controls under it */
+.mv-hero {display:flex; gap:14dp; pointer-events:auto;}   /* the details float in a document that takes no clicks */
+.mv-left {flex-shrink:0; display:flex; flex-direction:column; gap:6dp;}
+button.mv-stage {display:block; position:relative; overflow:hidden; clip:always; margin:0; padding:0; background-color:#000000; border:1dp #3fd0ff59; border-radius:0;}
+button.mv-stage:focus, .pad button.mv-stage:focus {border-color:#ffd75e; background-color:#000000;}
+button.mv-stage img, button.mv-stage div {position:absolute; margin:0;}
+button.mv-stage div {background-color:#000000;}
+button.mv-stage .mv-fail {position:absolute; left:0; top:45%; width:100%; text-align:center; font-size:12dp; color:#ffb0a6; background-color:transparent;}
+.mv-ctl {display:flex; align-items:center; gap:5dp; font-size:12dp; color:#a4b0d2;}
+.mv-ctl button {margin:0; padding:2dp 8dp; font-size:12dp; white-space:nowrap; color:#e8eefc; background-color:#0c122c; border:1dp #3fd0ff; border-radius:0;}
+.mv-ctl button.on {color:#0b1230; background-color:#3fd0ff;}
+.mv-ctl button:focus, .pad .mv-ctl button:focus {color:#ffd75e; border-color:#ffd75e;}
+.mv-bar {flex:1 1 0; min-width:20dp; height:5dp; background-color:#1a2448;}
+.mv-bar div {height:5dp; background-color:#3fd0ff;}
+.mv-time {white-space:nowrap; font-size:11dp;}
+.mv-side p {font-size:12dp; color:#c8d4ee; margin:0;}
 /* Units: the weapon table */
 .lib-wrow {display:flex; align-items:center; padding:4dp 0; font-size:13dp; border-bottom:1dp #3fd0ff1f;}
 .lib-wrow.head {color:#a4b0d2; font-size:11dp; padding:0 0 5dp;}
@@ -803,6 +829,7 @@ body.pointer button.vw-listen:focus {background-color:#3fd0ff;} body.pointer but
 .lib-wrow .n .name {white-space:nowrap;}
 .lib-wrow .c {width:40dp; flex-shrink:0; text-align:right; white-space:nowrap;}
 .lib-wrow .c.big {width:48dp; font-size:15dp; font-weight:bold;}
+.lib-wrow .c.wide {width:48dp;}
 .lib-wrow .c.full {color:#8fe4ff;} .lib-wrow .c.ty {width:34dp;}
 .lu-flag {display:inline-block; white-space:nowrap; margin-left:2dp; padding:0 5dp; font-size:10dp; font-weight:bold; color:#e8eefc; background-color:#2c3a66;}
 .lu-flag.unlock {color:#0b1230; background-color:#ffd75e;}
@@ -1041,9 +1068,20 @@ struct Actions : Rml::EventListener {
             if(el->GetTagName()=="button"){choose(el->GetId());break;}
     }
 } actions;
+void unfit(Rml::Element* e,bool descendants);
 // One-line text marked 'fit' that runs past its box after layout gets a smaller face,
 // in proportion, down to 60 % (or its data-fit-min): names and notes whose length the page cannot know.
+// Text that also has the class fit-group shares one face with the rest of its group on the
+// page (data-fit-group): the smallest any of them needs, so a page's weapon names are one
+// size, not a long one smaller than the others (user, 2026-11-24). The group starts again
+// from its own faces each time, so a part patched in place cannot keep an old page's size.
 void fit_lines(Rml::ElementDocument* doc) {
+    Rml::ElementList grouped;doc->QuerySelectorAll(grouped,".fit-group");
+    if(!grouped.empty()) {
+        bool reset=false;
+        for(auto* e:grouped)if(e->GetAttribute("data-fit-from")){unfit(e,false);reset=true;}
+        if(reset)doc->UpdateDocument();
+    }
     Rml::ElementList lines;doc->QuerySelectorAll(lines,".fit");
     // A flex row gives a shrinking item back some room, so a second look settles it.
     for(int pass=0;pass<3;++pass) {
@@ -1061,6 +1099,20 @@ void fit_lines(Rml::ElementDocument* doc) {
         if(!changed)break;
         doc->UpdateDocument();
     }
+    if(grouped.empty())return;
+    std::map<std::string,float> smallest;
+    for(auto* e:grouped) {
+        const auto group=e->GetAttribute<Rml::String>("data-fit-group","");
+        const float size=e->GetComputedValues().font_size();
+        if(const auto at=smallest.find(group);at==smallest.end() || size<at->second)smallest[group]=size;
+    }
+    bool changed=false;
+    for(auto* e:grouped) {
+        const float size=e->GetComputedValues().font_size(),to=smallest[e->GetAttribute<Rml::String>("data-fit-group","")];
+        if(to>=size-.01f)continue;
+        e->SetProperty("font-size",std::to_string(to)+"px");e->SetAttribute("data-fit-from",e->GetAttribute<float>("data-fit-from",size));changed=true;
+    }
+    if(changed)doc->UpdateDocument();
 }
 // chrome: drawn over a RetroArch filter instead of under it (LayerMark above).
 // A page (not chrome) keeps to page_area() by a transparent border on its body: the body's
@@ -1245,12 +1297,55 @@ void unfit(Rml::Element* e,bool descendants) {
 }
 // `doc` again with `body`, in place where it can be (above), else a new document.
 // SRW64_PAGE_REBUILD=1 builds every page again as before, to compare with.
+// A page that took 15 ms or more to bring up to date says where (SRW64_UI_SLOW has only
+// "pages"): which page (the first id or class in its RML), whether it was built again or
+// patched and how many elements changed, and the parts: making and comparing the RML,
+// RmlUi's update of the document (styles and layout), the fit class's second pass.
+//   SRW64_PAGE_SLOW 31.2ms ability-top patched changed=14 rml=2.1 update=24.0 fit=5.1
+struct PageCost {
+    UiClock::time_point start=UiClock::now(),last=start;
+    double rml=0,update=0,fit=0;
+    void mark(double& part){const auto now=UiClock::now();part+=ui_ms(last,now);last=now;}
+    void report(const std::string& source,const char* how,size_t changed) const {
+        // SRW64_PAGE_SLOW_MS: another threshold, to see the lines on a fast machine.
+        static const double limit=[]{const char* asked=std::getenv("SRW64_PAGE_SLOW_MS");return asked?std::atof(asked):15.0;}();
+        const double total=ui_ms(start,UiClock::now());
+        if(total<limit)return;
+        std::string name="?";
+        for(const char* key:{" id='"," class='"}) {
+            const size_t body=source.find("<layer-mark"),at=source.find(key,body==std::string::npos?0:body+12);
+            if(at==std::string::npos)continue;
+            const size_t from=at+std::strlen(key),to=source.find('\'',from);
+            if(to!=std::string::npos && to>from){name=source.substr(from,std::min<size_t>(to-from,40));break;}
+        }
+        std::fprintf(stderr,"SRW64_PAGE_SLOW %.1fms %s %s changed=%zu rml=%.1f update=%.1f fit=%.1f\n",total,name.c_str(),how,changed,rml,update,fit);
+    }
+};
+// An intermission page's sync that took 8 ms or more (SRW64_PAGE_SLOW_MS sets it too), by
+// part: reading the page's state and comparing it with the last (every UI frame, changed or
+// not), making the RML, and refresh() (whose own parts PageCost gives). The pages took 20-30
+// ms a change on a Switch with refresh() under 15 (2026-11-21); this says where the rest goes.
+//   SRW64_SYNC_SLOW 24.0ms upgrade state=3.1 build=9.8 refresh=11.1
+struct SyncCost {
+    const char* page;
+    UiClock::time_point start=UiClock::now(),last=start;
+    double state=0,build=0,refreshed=0;
+    void mark(double& part){const auto now=UiClock::now();part+=ui_ms(last,now);last=now;}
+    ~SyncCost() {
+        static const double limit=[]{const char* asked=std::getenv("SRW64_PAGE_SLOW_MS");return asked?std::atof(asked):8.0;}();
+        const double total=ui_ms(start,UiClock::now());
+        if(total>=limit)std::fprintf(stderr,"SRW64_SYNC_SLOW %.1fms %s state=%.1f build=%.1f refresh=%.1f\n",total,page,state,build,refreshed);
+    }
+};
 Rml::ElementDocument* refresh(Rml::ElementDocument*& doc,const std::string& body,bool modal,bool chrome=false) {
     static const bool rebuild=[]{const char* v=std::getenv("SRW64_PAGE_REBUILD");return v && *v=='1';}();
+    PageCost cost;
     update_sheet();
     const auto found=doc?document_sources.find(doc):document_sources.end();
     if(rebuild || found==document_sources.end() || doc->GetStyleSheetContainer()!=sheet.get() || !!doc->GetAttribute("data-chrome")!=chrome) {
-        document_close(doc);return doc=document(body,modal,chrome);
+        document_close(doc);doc=document(body,modal,chrome);
+        cost.mark(cost.update);cost.report(document_sources[doc],"built",0);
+        return doc;
     }
     auto source=document_source(body,modal,chrome);
     if(source==found->second)return doc;
@@ -1260,10 +1355,15 @@ Rml::ElementDocument* refresh(Rml::ElementDocument*& doc,const std::string& body
     RmlPatch patch{found->second,source};
     const auto attributes=[](const RmlNode* n){return std::map<std::string,std::string>(n->attributes.begin(),n->attributes.end());};
     if(!old_body || !new_body || attributes(old_body).at("style")!=attributes(new_body).at("style") || !patch.element(doc,*old_body,*new_body)) {
-        document_close(doc);return doc=document(body,modal,chrome);
+        document_close(doc);doc=document(body,modal,chrome);
+        cost.mark(cost.update);cost.report(document_sources[doc],"built again",0);
+        return doc;
     }
     for(auto* e:patch.changed){unfit(e,true);for(auto* up=e->GetParentNode();up;up=up->GetParentNode())unfit(up,false);}
-    doc->UpdateDocument();fit_lines(doc);
+    cost.mark(cost.rml);
+    doc->UpdateDocument();cost.mark(cost.update);
+    fit_lines(doc);cost.mark(cost.fit);
+    cost.report(source,"patched",patch.changed.size());
     found->second=std::move(source);
     return doc;
 }
@@ -1546,7 +1646,9 @@ std::string capture_prompt() {
 // shortcuts and restore.
 bool touch_supported();
 std::string settings_row(const std::string& key,const std::string& choices,const std::string& more={},const std::string& note={});
-std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled=false);
+std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled=false,const std::string& more={});
+// Under a row the running renderer cannot honour (settings::renderer_features).
+std::string renderer_note(){return "<p class='set-note'>"+label("settings_renderer_unsupported")+"</p>";}
 std::string controls_page() {
     std::string body;
     if(touch_supported()) {
@@ -1829,7 +1931,8 @@ std::string look_rows() {
     const auto status=post_filter::status();
     const auto filter=settings::filter();
     std::string more;
-    if(!status.available)more+="<p class='set-note'>"+label("settings_filter_unavailable")+"</p>";
+    if(!settings::renderer_features().filters)more+=renderer_note();
+    else if(!status.available)more+="<p class='set-note'>"+label("settings_filter_unavailable")+"</p>";
     else if(status.loading)more+="<p class='set-note'>"+label("settings_filter_loading")+"</p>";
     else if(!status.error.empty())more+="<p class='set-note'>"+label("settings_filter_error")+" "+escape(status.error.substr(0,status.error.find('\n')).substr(0,200))+"</p>";
     if(status.available && browse_kind=="filter")more+=browser();
@@ -1891,10 +1994,10 @@ std::string settings_row(const std::string& key,const std::string& choices,const
     return "<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label(key)+"</div><div class='set-seg'>"+choices+"</div></div><p>"+label(note.empty()?key+"_note":note)+"</p>"+more+"</div>";
 }
 // A setting with one button per mode: ids prefix:mode, labels key_mode.
-std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled) {
+std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled,const std::string& more) {
     std::string choices;
     for(const std::string mode:modes)choices+=button(prefix+":"+mode,label(key+"_"+mode),mode==current,disabled);
-    return settings_row(key,choices);
+    return settings_row(key,choices,more);
 }
 // The button a row offers first: its selected one, else its first enabled one.
 Rml::Element* settings_choice_of(Rml::Element* row) {
@@ -2060,10 +2163,16 @@ std::string mod_installed_page() {
 #endif
     if(mod_installing)body+="<p class='dlc-meta'>"+label("mod_installing")+"</p>";
     const auto& list=installed_mods();
-    // Package files placed in the folder that did not install (still there, tried again).
-    for(const auto& r:srw64::mods::loose_results())if(!r.result.ok)
-        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(r.file.filename().string())+"</div></div><p class='dlc-meta'>"+
+    // Package files placed in the folder that did not install (still there, tried again), each
+    // with a removal asked twice: on a phone the inbox moved it into the private folder, which
+    // only the system's file manager reaches (Seeker, 2026-11-20).
+    unsigned failed=0;
+    for(const auto& r:srw64::mods::loose_results())if(!r.result.ok) {
+        const auto file=r.file.filename().string();
+        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(file)+"</div><div class='set-seg'>"+
+            button("mod-remove-file:"+std::to_string(failed++),label(mod_remove_pending=="file:"+file?"mod_remove_confirm":"mod_remove"))+"</div></div><p class='dlc-meta'>"+
             escape(filled("mod_install_failed",{{"{reason}",mod_problem_text(r.result.problem)}}))+"</p></div>";
+    }
     if(list.empty())body+="<p>"+label("mod_none")+"</p>";
     for(auto it=list.rbegin();it!=list.rend();++it) {
         const auto& p=*it;
@@ -2086,7 +2195,7 @@ std::string mod_installed_page() {
         body+="<p class='dlc-meta'>"+escape(mod_contents_text(p.contents))+"</p>";
         body+="<p class='dlc-meta'>"+escape(status)+"</p></div>";
     }
-    // Nothing in a package takes effect yet; this version installs and keeps them.
+    // What of a package takes effect in this version, and what is only installed and kept.
     if(!list.empty())body+=wrap_label("mod_not_applied","dlc-meta");
     return body;
 }
@@ -2108,7 +2217,9 @@ void mod_install(const std::filesystem::path& path) {
         else if(result.replaced)text=filled("mod_updated",{{"{id}",result.id},{"{old}",srw64::mods::version_text(*result.replaced)},{"{version}",srw64::mods::version_text(result.version)}});
         else text=filled("mod_installed",{{"{id}",result.id},{"{version}",srw64::mods::version_text(result.version)}});
         // The reading languages are set at start-up (docs/design/mod-language-packs.md).
-        if(result.ok && !srw64::mods::summarize(srw64::mods::directory()/result.id).languages.empty())
+        const auto kept=[&]{std::error_code e;const auto folder=srw64::mods::directory()/result.id;
+            return std::filesystem::is_directory(folder,e)?folder:srw64::mods::directory()/(result.id+srw64::mods::package_extension);};
+        if(result.ok && !srw64::mods::summarize(*srw64::mods::open_files(kept())).languages.empty())
             text+=" "+localization::catalog().ui("mod_language_restart");
         notices::post("mod",text);
         mod_installing=false;
@@ -2117,7 +2228,7 @@ void mod_install(const std::filesystem::path& path) {
 }
 #ifdef __ANDROID__
 // The player's folder's mods/ into the private one (SRW64Activity.syncMods), then the
-// listing installs what arrived (mod_library unpack_loose); a notice per package that
+// listing installs what arrived (mod_library place_loose); a notice per package that
 // installed. The window thread, on opening the page and on its refresh button.
 void mod_inbox_sync() {
     android_call("syncMods");
@@ -2433,7 +2544,8 @@ std::string mod_panel() {
 // C-down scroll the details, L / R switch between units and characters.
 const char* marker_glyph(const std::string& token);
 void library_turn(int step);
-const nlohmann::json& library_entries(){return library::contents().at(library_tab?"pilots":"units");}
+const nlohmann::json& library_movie_entries();
+const nlohmann::json& library_entries(){return library_tab==2?library_movie_entries():library::contents().at(library_tab?"pilots":"units");}
 std::string library_number(const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("-");}
 std::string library_signed(const json& v){const int n=v.is_number()?v.get<int>():0;return n>0?"+"+std::to_string(n):std::to_string(n);}
 // A label with a number filled in for "{n}".
@@ -2552,7 +2664,9 @@ std::string library_unit(const json& u,const json& L,const json& W,const json& t
     const auto w=[&](const char* key){return escape(W.value(key,std::string()));};
     const json icons=W.value("icons",json::object());
     const auto& weapons=u.at("weapons");
-    body+=library_section(w("weapon"),"")+"<div class='lib-wrow head'><span class='n'></span><span class='c'>"+w("power")+"</span><span class='c full'>"+label("library_full")+
+    // The power and full-upgrade headings as wide as their columns' numbers (.big): at 40dp
+    // the Japanese フル改造 ran into 攻撃力 (Steam Deck, Largest, 2026-11-24).
+    body+=library_section(w("weapon"),"")+"<div class='lib-wrow head'><span class='n'></span><span class='c wide'>"+w("power")+"</span><span class='c wide full fit'>"+label("library_full")+
         "</span><span class='c ty'>"+label("library_type")+"</span><span class='c'>"+w("range")+"</span><span class='c'>"+w("hit")+"</span><span class='c fit'>"+label("library_critical")+
         "</span><span class='c'>"+w("ammo")+"</span><span class='c'>EN</span><span class='c'>"+label("library_morale")+"</span></div>";
     if(weapons.empty())body+="<p class='lib-note'>"+label("library_no_weapons")+"</p>";
@@ -2657,20 +2771,142 @@ std::string library_pilot(const json& p,const json& L) {
     }
     return body;
 }
+// The map movies (map_movie.hpp): grouped under the work of the unit each shows, in the
+// order the units list has the works; a movie's entry keeps its number.
+const nlohmann::json& library_movie_entries() {
+    static json cached;
+    static std::string made_for;
+    const auto& all=library::contents();
+    const auto key=localization::catalog().locale+"/"+std::to_string(reinterpret_cast<uintptr_t>(&all))+"/"+std::to_string(all.at("units").size());
+    if(key==made_for && cached.is_array())return cached;
+    made_for=key;
+    const auto& units=all.at("units");
+    std::map<int,size_t> work_first;   // a work -> its first unit's place
+    for(size_t i=0;i<units.size();++i)work_first.emplace(units[i].value("work",-1),i);
+    struct Row{size_t order;unsigned movie;json entry;};
+    std::vector<Row> rows;
+    for(unsigned m=0;m<map_movie::count;++m) {
+        const auto& in=map_movie::info(m);
+        json e={{"movie",m},{"name",label_text("library_movie_title_"+std::to_string(m))},{"work",-1}};
+        if(!in.used)e["model"]=label_text("library_movie_unused");
+        size_t order=units.size();
+        for(const auto& u:units)
+            if(u.value("id",-1)==in.unit) {
+                e["work"]=u.value("work",-1);
+                if(u.contains("work_name"))e["work_name"]=u.at("work_name");
+                order=work_first[e["work"].get<int>()];
+                break;
+            }
+        rows.push_back({order,m,std::move(e)});
+    }
+    std::stable_sort(rows.begin(),rows.end(),[](const Row& a,const Row& b){return a.order<b.order;});
+    cached=json::array();
+    for(auto& r:rows)cached.push_back(std::move(r.entry));
+    return cached;
+}
+// The picture's sprites and bars over the black 4:3 stage, placed in percent of it. A frame's
+// image is the art pack's HD one in HD image mode, else the ROM's pixels (made once).
+bool movie_hd(){return movie_images<0?hd_portraits():movie_images==1;}
+std::string movie_image(const map_movie::Draw& d) {
+    if(movie_hd())
+        if(const auto path=srw64::sprites::frame_file(d.scene,d.atlas,d.palette,d.frame);!path.empty())
+            if(auto src=image_async(path,0,true,true);!src.empty())return src;
+    const auto key="movie:"+std::to_string(d.scene)+"-"+std::to_string(d.atlas)+"-"+std::to_string(d.palette)+"-"+std::to_string(d.frame);
+    if(const auto found=images.find(key);found!=images.end())return found->second;
+    const auto image=map_movie::frame_image(d.scene,d.atlas,d.palette,d.frame);
+    if(!image)return images[key]=std::string();
+    const auto name="portrait-"+std::to_string(images.size());
+    queue_rgba(name,std::vector<char>(image->rgba.begin(),image->rgba.end()),uint32_t(image->width),uint32_t(image->height));
+    return images[key]=name;
+}
+// The stage is the window the movies play in, 112 x 96 in the middle of the map (every
+// movie's backdrop fills it); the wipe's bars cover the rows above and below it, so they are
+// not drawn. Parts reaching past its sides (over the map in the original) are cut.
+std::string movie_stage(const map_movie::Picture& pic) {
+    const auto pc=[](float v,float whole){char b[32];std::snprintf(b,sizeof b,"%.3f%%",v/whole*100);return std::string(b);};
+    const auto& W=map_movie::window;
+    const auto place=[&](const float* r){return "left:"+pc(r[0]-W[0],W[2]-W[0])+"; top:"+pc(r[1]-W[1],W[3]-W[1])+"; width:"+pc(r[2]-r[0],W[2]-W[0])+"; height:"+pc(r[3]-r[1],W[3]-W[1])+";";};
+    std::string body;
+    for(const auto& d:pic.draws) {
+        const auto src=movie_image(d);
+        if(src.empty())continue;
+        std::string style=place(d.rect);
+        if(d.alpha<.999f)style+=" opacity:"+std::to_string(std::max(0.f,d.alpha))+";";
+        std::string transform;
+        if(d.rotation!=0)transform+=" rotate("+std::to_string(d.rotation)+"deg)";
+        if(d.flip_x || d.flip_y)transform+=std::string(" scale(")+(d.flip_x?"-1":"1")+","+(d.flip_y?"-1":"1")+")";
+        if(!transform.empty()) {
+            if(d.rotation!=0)style+=" transform-origin:"+pc(d.pivot[0]-d.rect[0],std::max(1.f,d.rect[2]-d.rect[0]))+" "+pc(d.pivot[1]-d.rect[1],std::max(1.f,d.rect[3]-d.rect[1]))+";";
+            style+=" transform:"+transform+";";
+        }
+        body+="<img src='"+escape(src)+"' style='"+style+"'/>";
+    }
+    if(pic.failed)body+="<span class='mv-fail'>"+label("library_movie_failed")+"</span>";
+    return body;
+}
+std::string movie_clock(unsigned ticks){const unsigned s=(ticks+15)/30;return std::to_string(s/60)+":"+(s%60<10?"0":"")+std::to_string(s%60);}
+// The stage as large as the page allows (the HD pack has every frame of the movies): up to
+// 68 % of the details' width (the panel less its list and gaps, as library_hero reckons it)
+// and the panel's height less its title row, footer and the controls under the stage; its
+// height keeps the window's 7:6. About 370 x 320 dp on a Steam Deck at the Largest size.
+float movie_stage_width() {
+    const float window=float(pixels_w)/std::max(.1f,ui_density),panel=std::min(window*.96f,1180.f)-36;
+    const float tall=std::min(float(pixels_h)/std::max(.1f,ui_density)*.94f,760.f)-18-38-36-34;
+    const auto& W=map_movie::window;
+    return std::max(200.f,std::min((panel-246)*.68f,tall*(W[2]-W[0])/(W[3]-W[1])));
+}
+std::string library_movie(const json& e) {
+    const unsigned movie=e.value("movie",0u);
+    const auto& in=map_movie::info(movie);
+    const unsigned length=map_movie::length(movie);
+    const auto& W=map_movie::window;
+    const float w=movie_stage_width(),h=w*(W[3]-W[1])/(W[2]-W[0]);
+    // Before it plays: a still from a little before its middle.
+    const auto still=map_movie::preview(movie,length*9/20);
+    const char* kinds[]={"library_movie_kind_combine","library_movie_kind_aura_road","library_movie_kind_change"};
+    std::string tags="<span>"+library_with("library_movie_scenes",std::to_string(map_movie::scenes(movie)))+"</span>";
+    if(length)tags+="<span>"+library_with("library_movie_seconds",std::to_string((length+15)/30))+"</span>";
+    if(!in.used)tags+="<span class='on'>"+label("library_movie_unused")+"</span>";
+    const char* when=movie==0?"library_movie_when_combattler":movie==11?"library_movie_when_godmars":!in.used?"library_movie_when_unused":
+                     in.kind==map_movie::Kind::aura_road?"library_movie_when_aura_road":"library_movie_when_change";
+    std::string units;
+    for(const int id:in.units) {
+        if(id<0)continue;
+        for(const auto& u:library::contents().at("units"))
+            if(u.value("id",-1)==id){units+="<span>"+escape(u.value("name",std::string()))+"</span>";break;}
+    }
+    const auto ws=std::to_string(int(w)),hs=std::to_string(int(h));
+    // Original / HD on this page alone, when the art pack has the movie's frames.
+    bool hd_frames=false;
+    for(const auto& d:still.draws)hd_frames=hd_frames || !srw64::sprites::frame_file(d.scene,d.atlas,d.palette,d.frame).empty();
+    const std::string images=hd_frames?button("mv-img:0",label("library_movie_original"),!movie_hd())+button("mv-img:1",label("library_movie_hd"),movie_hd()):std::string();
+    wrap_texts.clear();   // the paragraphs below, broken into lines by wrap_paragraphs(library_detail_doc)
+    return "<div class='mv-hero'><div class='mv-left' style='width:"+ws+"dp;'>"
+        "<button id='mv-stage' class='mv-stage' style='width:"+ws+"dp; height:"+hs+"dp;'>"+movie_stage(still)+"</button>"
+        "<div class='mv-ctl'>"+button("mv-play",label("library_movie_play"))+button("mv-back","◀")+button("mv-fwd","▶")+button("mv-replay",label("library_movie_replay"))+
+        button("mv-loop",label("library_movie_loop"),map_movie::picture().looping)+images+
+        "<div class='mv-bar'><div id='mv-fill' style='width:0%;'></div></div><span id='mv-time' class='mv-time'>0:00 / "+movie_clock(length)+"</span></div></div>"
+        "<div class='lx-side mv-side'><div class='lib-sub'>"+library_work(e)+"</div>"
+        "<div class='lx-name'><span class='lib-name fit'>"+escape(e.value("name",std::string()))+"</span><span class='gold'>"+label(kinds[int(in.kind)])+"</span></div>"
+        "<div class='lx-tags'>"+tags+"</div>"+library_section(label("library_movie_when"),"")+wrap_label(when)+
+        (units.empty()?std::string():library_section(label("library_movie_units"),"")+"<div class='lx-tags'>"+units+"</div>")+
+        wrap_label("library_movie_note","lib-note")+"</div></div>";
+}
 std::string library_detail() {
     const auto& entries=library_entries();
     if(entries.empty())return {};
     const auto& entry=entries[std::min<size_t>(library_index[library_tab],entries.size()-1)];
     const auto& all=library::contents();
+    if(library_tab==2)return library_movie(entry);
     return library_tab?library_pilot(entry,all.at("labels")):library_unit(entry,all.at("labels"),all.at("weapon_labels"),all.at("upgrade_types"));
 }
 std::string library_panel() {
     // Laid out for a Steam Deck at the Largest size (865 x 540 dp): nearly the whole window,
     // the title and tabs on one row, a fixed-width list.
     std::string body="<div class='set-shade solid'><div class='set-panel lib-panel'><div class='lib-top'><h1>"+label("library_title")+"</h1><div class='set-tabs nav'>";
-    const char* tabs[]={"units","pilots"};
-    for(unsigned i=0;i<2;++i)
-        body+=button("lib-tab:"+std::to_string(i),label("library_tab_"+std::string(tabs[i]))+"  ("+std::to_string(library::contents().at(tabs[i]).size())+")",i==library_tab,false,"set-tab");
+    const char* tabs[]={"units","pilots","movies"};
+    for(unsigned i=0;i<3;++i)
+        body+=button("lib-tab:"+std::to_string(i),label("library_tab_"+std::string(tabs[i]))+"  ("+std::to_string(i<2?library::contents().at(tabs[i]).size():size_t(map_movie::count))+")",i==library_tab,false,"set-tab");
     body+="</div></div><div class='lib-main'><div id='lib-list' class='lib-list'>";
     const auto& entries=library_entries();
     // A heading over each work's entries.
@@ -2682,12 +2918,12 @@ std::string library_panel() {
         }
         // Units carry their model number; characters who first appear as enemies a red dot.
         const auto& e=entries[i];
-        std::string text=library_tab?"<span class='dot"+std::string(e.value("enemy",false)?" enemy":"")+"'></span><span class='n fit'>"+escape(e.value("name",std::string()))+"</span>"
+        std::string text=library_tab==1?"<span class='dot"+std::string(e.value("enemy",false)?" enemy":"")+"'></span><span class='n fit'>"+escape(e.value("name",std::string()))+"</span>"
                                     :"<span class='n fit'>"+escape(e.value("name",std::string()))+"</span>"+(e.contains("model")?"<span class='m'>"+escape(e.at("model").get<std::string>())+"</span>":std::string());
         body+=button("lib-item:"+std::to_string(i),text,i==library_index[library_tab],false,"lib-item");
     }
     body+="</div><div id='lib-detail' class='lib-detail'></div></div>"
-        "<div class='set-foot'><div class='set-hint'>"+label("library_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
+        "<div class='set-foot'><div class='set-hint'>"+label(library_tab==2?"library_movie_hint":"library_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
     return body;
 }
 // Pictures that arrived since a page was made: only their places are filled. Making the page
@@ -2710,6 +2946,7 @@ uint64_t library_pictures=0;   // pictures::serial when the Library's details we
 // document lays out the details alone.
 Rml::ElementDocument* library_detail_doc{};
 Rml::Element* library_detail_element(){return library_detail_doc?library_detail_doc->GetElementById("lib-detail-float"):nullptr;}
+void wrap_paragraphs(Rml::ElementDocument* doc);
 void library_detail_open() {
     document_close(library_detail_doc);
     auto* place=settings_doc?settings_doc->GetElementById("lib-detail"):nullptr;
@@ -2718,6 +2955,7 @@ void library_detail_open() {
     const auto px=[](float v){return std::to_string(int(v+.5f))+"px";};
     library_detail_doc=document("<div id='lib-detail-float' class='lib-detail' style='position:absolute; flex:none; left:"+px(at.x)+"; top:"+px(at.y)+
         "; width:"+px(size.x)+"; height:"+px(size.y)+";'>"+library_detail()+"</div>",false,true);
+    if(library_tab==2)wrap_paragraphs(library_detail_doc);
     library_detail_doc->PullToFront();
 }
 void library_select(unsigned index,bool focus=true) {
@@ -2728,6 +2966,7 @@ void library_select(unsigned index,bool focus=true) {
     if(auto* old=settings_doc->GetElementById("lib-item:"+std::to_string(library_index[library_tab])))old->SetClass("on",false);
     const bool changed=index!=library_index[library_tab];
     library_index[library_tab]=index;
+    if(changed && library_tab==2 && movie_active){map_movie::stop();movie_active=false;}
     if(auto* item=settings_doc->GetElementById("lib-item:"+std::to_string(index))) {
         item->SetClass("on",true);
         if(focus) {
@@ -2748,9 +2987,58 @@ void library_select(unsigned index,bool focus=true) {
     if(library_detail_doc)library_detail_doc->UpdateDocument();
     const auto t3=Clock::now();
     if(library_detail_doc)fit_lines(library_detail_doc);
+    if(library_tab==2)wrap_paragraphs(library_detail_doc);
     const auto t4=Clock::now();
     const auto ms=[](Clock::time_point a,Clock::time_point b){return std::chrono::duration<double,std::milli>(b-a).count();};
     if(ms(t0,t4)>20)std::fprintf(stderr,"SRW64_LIBRARY_STEP %.1fms build=%.1f parse=%.1f layout=%.1f fit=%.1f\n",ms(t0,t4),ms(t0,t1),ms(t1,t2),ms(t2,t3),ms(t3,t4));
+}
+// The playing map movie (map_movie.hpp): its pictures into the stage as they come, every
+// frame of the window while the Library shows the animations page.
+bool library_on_controls();
+unsigned library_movie_selected(){const auto& e=library_movie_entries();return e.empty()?0:e[std::min<size_t>(library_index[2],e.size()-1)].value("movie",0u);}
+void library_movie_sync() {
+    if(!movie_active || !library_detail_doc)return;
+    const auto pic=map_movie::picture();
+    if(pic.serial==movie_serial || pic.movie!=int(library_movie_selected()))return;
+    movie_serial=pic.serial;
+    if(auto* stage=library_detail_doc->GetElementById("mv-stage"))stage->SetInnerRML(movie_stage(pic));
+    const unsigned length=pic.length?pic.length:map_movie::length(unsigned(pic.movie));
+    if(auto* fill=library_detail_doc->GetElementById("mv-fill"))
+        fill->SetProperty("width",std::to_string(length?std::min(100.f,100.f*float(pic.tick)/float(length)):0.f)+"%");
+    if(auto* time=library_detail_doc->GetElementById("mv-time"))time->SetInnerRML(movie_clock(pic.tick)+" / "+movie_clock(length));
+    if(auto* play=library_detail_doc->GetElementById("mv-play"))
+        play->SetInnerRML(label(pic.playing && !pic.paused?"library_movie_pause":"library_movie_play"));
+    if(auto* loop=library_detail_doc->GetElementById("mv-loop"))loop->SetClass("on",pic.looping);
+}
+// Play from the start, or pause and go on.
+void library_movie_toggle() {
+    const unsigned movie=library_movie_selected();
+    const auto pic=map_movie::picture();
+    if(!movie_active || pic.movie!=int(movie) || pic.finished || pic.failed){map_movie::play(movie);movie_active=true;movie_serial=0;return;}
+    map_movie::pause(!pic.paused);
+}
+void library_movie_control(const std::string& id) {
+    if(id=="mv-stage" || id=="mv-play"){library_movie_toggle();return;}
+    if(id=="mv-replay"){map_movie::play(library_movie_selected());movie_active=true;movie_serial=0;return;}
+    if(id=="mv-loop"){map_movie::set_loop(!map_movie::picture().looping);return;}
+    if(id.starts_with("mv-img:")) {
+        movie_images=id.back()=='1';
+        if(movie_active){
+            movie_serial=0;   // the next sync draws the stage again
+            if(library_detail_doc)for(const char* b:{"mv-img:0","mv-img:1"})if(auto* e=library_detail_doc->GetElementById(b))e->SetClass("on",(b[7]=='1')==movie_hd());
+        } else if(auto* detail=library_detail_element()){
+            const bool focused=library_on_controls();
+            detail->SetInnerRML(library_detail());library_detail_doc->UpdateDocument();fit_lines(library_detail_doc);wrap_paragraphs(library_detail_doc);
+            if(focused)if(auto* again=library_detail_doc->GetElementById(id))again->Focus();   // made again: the controller stays on it
+        }
+        return;
+    }
+    if(id=="mv-back" || id=="mv-fwd") {
+        // A frame at a time holds the movie still first.
+        if(!movie_active){map_movie::play(library_movie_selected());movie_active=true;movie_serial=0;}
+        map_movie::pause(true);
+        map_movie::step(id=="mv-fwd"?1:-1);
+    }
 }
 // Scrolls the details by `dp` (C-up / C-down, held: a little every frame).
 void library_scroll(float dp) {
@@ -2775,10 +3063,37 @@ unsigned library_work_step(int step) {
     while(previous>0 && work(previous-1)==work(first-1))--previous;
     return unsigned(previous);
 }
+// The animations page's controls under the stage (play, frame steps, replay, loop, Original /
+// HD), reached from the list by right on a controller or the keys: left and right go along
+// them, left from the first, up, down or B back to the list; A presses one.
+std::vector<Rml::Element*> library_movie_buttons() {
+    Rml::ElementList buttons;
+    if(library_detail_doc)library_detail_doc->QuerySelectorAll(buttons,".mv-ctl button");
+    return {buttons.begin(),buttons.end()};
+}
+bool library_on_controls() {
+    auto* focus=context?context->GetFocusElement():nullptr;
+    return library_open && library_tab==2 && focus && library_detail_doc && focus->GetOwnerDocument()==library_detail_doc;
+}
+void library_focus_list() {
+    if(auto* item=settings_doc?settings_doc->GetElementById("lib-item:"+std::to_string(library_index[library_tab])):nullptr)item->Focus();
+}
 void library_move(int dy,int dx) {
     if(!settings_doc)return;
     auto* focus=context->GetFocusElement();
     const bool on_tab=focus && focus->IsClassSet("set-tab");
+    if(library_on_controls()) {
+        const auto buttons=library_movie_buttons();
+        const auto at=std::find(buttons.begin(),buttons.end(),focus)-buttons.begin();
+        const auto next=at+dx;
+        if(dy || next<0 || at>=std::ssize(buttons))library_focus_list();
+        else if(next<std::ssize(buttons))buttons[size_t(next)]->Focus();
+        return;
+    }
+    if(dx>0 && library_tab==2 && !on_tab) {
+        if(const auto buttons=library_movie_buttons();!buttons.empty())buttons.front()->Focus();
+        return;
+    }
     if(dx) {
         if(on_tab){library_turn(dx);return;}
         library_select(library_work_step(dx));
@@ -2903,13 +3218,13 @@ std::string stage_panel(const json& snap) {
     return body+foot;
 }
 // After layout: each paragraph broken into lines that fit its column, in its own font.
-void wrap_paragraphs() {
-    if(!settings_doc)return;
+void wrap_paragraphs(Rml::ElementDocument* doc) {
+    if(!doc)return;
     auto* engine=Rml::GetFontEngineInterface();
     const Rml::String language;
     const Rml::TextShapingContext shaping{language};
     for(size_t i=0;i<wrap_texts.size();++i) {
-        auto* e=settings_doc->GetElementById("wrap:"+std::to_string(i));
+        auto* e=doc->GetElementById("wrap:"+std::to_string(i));
         if(!e)continue;
         const auto handle=e->GetFontFaceHandle();
         const float width=e->GetClientWidth();
@@ -2919,8 +3234,9 @@ void wrap_paragraphs() {
             rml+=(rml.empty()?"":"<br/>")+escape(line);
         e->SetInnerRML(rml);
     }
-    settings_doc->UpdateDocument();
+    doc->UpdateDocument();
 }
+void wrap_paragraphs(){wrap_paragraphs(settings_doc);}
 void stage_mark_column() {
     for(unsigned i=0;i<2;++i)if(auto* c=settings_doc?settings_doc->GetElementById("si-col:"+std::to_string(i)):nullptr)c->SetClass("focus",i==stage_column);
 }
@@ -3407,6 +3723,14 @@ std::string viewer_popup() {
             list+=viewer_li(int(actor),"",viewer_icon(e,30),viewer_name(e),escape(viewer_skills(e)),now?label("viewer_badge_now"):actor==crew->pilot?label("viewer_badge_default"):std::string(),actor==viewer_side[s].pilot);
             ++rows;
         }
+        // A package's new characters (400 up) are in no ROM crew: each follows the one it copies.
+        if(crew)
+            for(const auto& e:viewer_pilots()) {
+                const unsigned actor=e.value("actor",~0u);
+                if(actor<400 || actor==~0u || !viewer_flies(actor,crew->unit))continue;
+                list+=viewer_li(int(actor),"",viewer_icon(e,30),viewer_name(e),escape(viewer_skills(e)),actor==viewer_saved.side[s].pilot?label("viewer_badge_now"):std::string(),actor==viewer_side[s].pilot);
+                ++rows;
+            }
         title=viewer_fill(label("viewer_choose_pilot_crew"),viewer_name(viewer_unit(s)),std::to_string(rows));
     } else if(kind=="weapon") {
         title=label(s?"viewer_choose_counter_weapon":"viewer_choose_weapon");
@@ -3721,6 +4045,8 @@ void viewer_sync() {
 void settings_sync() {
     const auto stage_opening=stage_info::want(settings_open && stage_open);
     if(!settings_open || !library_open)document_close(library_detail_doc);
+    // A map movie stops (and the title's song comes back) when its page goes.
+    if(movie_active && !(settings_open && library_open && library_tab==2)){map_movie::stop();movie_active=false;}
 #ifdef __ANDROID__
     if(!settings_open)hd_import_confirm=false;
 #endif
@@ -3780,6 +4106,7 @@ void settings_sync() {
         const auto stamp="library"+std::to_string(library_tab)+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
         if(settings_doc && stamp==settings_stamp) {
             if(library_pictures!=pictures::serial){library_pictures=pictures::serial;fill_pending(library_detail_doc);}
+            if(library_tab==2)library_movie_sync();
             settings_doc->PullToFront();
             if(library_detail_doc)library_detail_doc->PullToFront();
             return;
@@ -3842,7 +4169,7 @@ void settings_sync() {
 #endif
     const auto stamp=localization::catalog().locale+localization::catalog().revision+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+std::to_string(settings::unified_weapon_upgrades())+
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_level())+std::to_string(settings::dialogue_hints_always())+std::to_string(settings::mod_music())+"/"+std::to_string(settings::mod_music_volume())+"/"+std::to_string(settings::mod_voice())+"/"+std::to_string(settings::mod_voice_volume())+"/"+settings::mod_voice_speed()+"/"+std::to_string(settings::mod_voice_wait())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
-        std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
+        std::to_string(presentation::image_mode.enabled())+[]{const auto f=settings::renderer_features();return std::to_string(f.interpolation)+std::to_string(f.msaa)+std::to_string(f.filters)+std::to_string(f.picture_scale)+std::to_string(settings::picture_scale());}()+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
         // The セーブ page: its choices, the import folder as last read and the last result.
@@ -3917,9 +4244,21 @@ void settings_sync() {
         body+=look_rows();
 #ifndef __ANDROID__
         // Android draws without MSAA either way. Taken at start: says so until a restart.
-        body+=settings_row("settings_msaa",button("msaa:on",label("settings_msaa_on"),settings::msaa())+button("msaa:off",label("settings_msaa_off"),!settings::msaa()),
+        // The GL renderer has none: shown off and disabled, the saved choice kept for RT64.
+        if(const bool can=settings::renderer_features().msaa;!can)
+            body+=settings_row("settings_msaa",button("msaa:on",label("settings_msaa_on"),false,true)+button("msaa:off",label("settings_msaa_off"),true,true),renderer_note());
+        else body+=settings_row("settings_msaa",button("msaa:on",label("settings_msaa_on"),settings::msaa())+button("msaa:off",label("settings_msaa_off"),!settings::msaa()),
             settings::msaa()!=settings::msaa_at_start()?"<p class='set-note'>"+label("settings_msaa_restart")+"</p>":std::string());
 #endif
+        // The GL renderer's picture (the fallback on Windows, the consoles): automatic, or the
+        // player's 1 to 3 times the original's lines, from the next launch.
+        if(settings::renderer_features().picture_scale) {
+            std::string scales;
+            for(const unsigned n:{0u,1u,2u,3u})
+                scales+=button("picture-scale:"+std::to_string(n),label("settings_picture_scale_"+std::to_string(n)),settings::picture_scale()==n);
+            body+=settings_row("settings_picture_scale",scales,
+                settings::picture_scale()!=settings::picture_scale_at_start()?"<p class='set-note'>"+label("settings_msaa_restart")+"</p>":std::string());
+        }
         // A handheld or a phone plays full screen and has no window to size.
         if(!handheld()) {
             const auto window_state=window_menu_state();
@@ -3943,7 +4282,10 @@ void settings_sync() {
         body+=settings_choice("settings_weapon_upgrade","weapon-upgrade",{"unified","single"},settings::unified_weapon_upgrades()?"unified":"single",!settings::native_intermission_ui());
         body+=settings_choice("settings_name_entry_ui","name-entry-ui",{"native","original"},settings::native_name_entry_ui()?"native":"original");
         body+=settings_choice("settings_title_ui","title-ui",{"native","original"},settings::native_title_ui()?"native":"original");
-        body+=settings_choice("settings_refresh","refresh",{"original","60","display"},settings::refresh_rate_name(settings::refresh_rate()));
+        // Without RT64's interpolation the picture stays at the original 30: shown so, disabled.
+        if(const bool can=settings::renderer_features().interpolation;!can)
+            body+=settings_choice("settings_refresh","refresh",{"original","60","display"},"original",true,renderer_note());
+        else body+=settings_choice("settings_refresh","refresh",{"original","60","display"},settings::refresh_rate_name(settings::refresh_rate()));
         body+=settings_choice("settings_fps","fps",{"off","on"},settings::show_fps()?"on":"off");
         body+=settings_choice("settings_dialogue_hints","dialogue-hints",{"auto","always"},settings::dialogue_hints_always()?"always":"auto");
     } else if(page=="rules") {
@@ -3981,7 +4323,7 @@ void settings_sync() {
     // A controller has no window to close (Big Picture, the Deck, the couch): on every page, as
     // the button in Zelda64Recomp's menu bar is. A row of its own for the keys (settings_move).
     std::string quit;
-#if !defined(__ANDROID__) && !defined(__SWITCH__) && !defined(__vita__)
+#if !defined(__ANDROID__) && !defined(__vita__)
     quit=button("quit-ask",label("quit_open"),false,false,"nav foot-quit");
 #endif
     body+="<div class='set-foot'><div class='set-hint'>"+label("settings_hint")+"</div>"+quit+button("settings-close",label("settings_close"))+"</div></div>"+capture_prompt()+"</div>";
@@ -4022,7 +4364,7 @@ void open_about(const std::string& focus) {
 void library_turn(int step) {
     auto* focus=context->GetFocusElement();
     library_tab_focus=focus && focus->IsClassSet("set-tab");
-    library_tab=(library_tab+2+step)%2;
+    library_tab=(library_tab+3+step)%3;
 }
 void settings_turn(int step) {
     if(viewer_open) {   // L/R: the unit box's work, the scene box's category
@@ -4414,11 +4756,14 @@ float text_units(const std::string& text) {
     return units;
 }
 void intermission_sync() {
-    const auto next=intermission_page::state();intermission_request=next;
+    SyncCost cost{"intermission"};
+    const auto [shared,revision]=intermission_page::shared_state();const json& next=*shared;
+    if(revision!=intermission_seen){intermission_request=next;intermission_seen=revision;}
     if(!next.value("visible",false)){document_close(intermission_doc);intermission_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+funds_editing;
+    const auto stamp=std::to_string(revision)+"/"+localization::catalog().locale+frame_stamp()+funds_editing;
     if(intermission_doc && intermission_stamp==stamp)return;
     intermission_stamp=stamp;
+    cost.mark(cost.state);
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;   // the border, one original pixel
@@ -4461,7 +4806,7 @@ void intermission_sync() {
     }
     const auto hint=label(next.value("swap_refused",false)?"intermission_swap_refused":submenu?"intermission_swap_hint":funds_editing=="intermission"?"funds_edit_hint":"intermission_hint");
     body+="<div class='im-hint"+std::string(next.value("swap_refused",false)?" im-refused":"")+"' style='left:0; top:"+px(restricted?222:228)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+hint+"</div></div>";
-    refresh(intermission_doc,body,true);intermission_doc->SetClass("modal",false);focus_funds(intermission_doc,"intermission");
+    cost.mark(cost.build);refresh(intermission_doc,body,true);cost.mark(cost.refreshed);intermission_doc->SetClass("modal",false);focus_funds(intermission_doc,"intermission");
 }
 // ユニット改造 / 武器改造: the machine list (layout 0x6B) and the five-stat screen
 // (0x75), in the original's 320x240 coordinates like the intermission menu.
@@ -4524,7 +4869,7 @@ std::string weapon_name_html(const json& r,const json& W,float u,float width) {
     // The name keeps to the room its marker icons leave and shrinks there (fit_lines), rather than the
     // column clipping the P／B／MAP icon.
     float room=width;for(const auto& m:markers)room-=m=="MAP"?26:15;
-    name+="<span class='fit' data-fit-min='0.5' style='max-width:"+px(room)+"; vertical-align:middle;'>"+escape(r.value("display_name",r.value("name",std::string())))+"</span>";
+    name+="<span class='fit fit-group' data-fit-group='weapon-name' data-fit-min='0.5' style='max-width:"+px(room)+"; vertical-align:middle;'>"+escape(r.value("display_name",r.value("name",std::string())))+"</span>";
     for(const auto& m:markers)if(m!="格" && m!="射")name+=badge(m.get<std::string>());
     return name;
 }
@@ -4534,7 +4879,9 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
     // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
     const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
         const bool name=cls.empty();
-        return "<span class='fit "+cls+"' style='width:"+px(name?width-4:width)+";"+(name?" margin-right:"+px(4)+";":"")+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+        // The labels (dim, not a value dimmed with its row) share one face, as the weapon names do (fit_lines).
+        const std::string group=cls=="im-dim"?" fit-group' data-fit-group='weapon-label":"";
+        return "<span class='fit "+cls+group+"' style='width:"+px(name?width-4:width)+";"+(name?" margin-right:"+px(4)+";":"")+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
     const auto cell=[&](float x0,float x1,float y0,float y1,const std::string& content,const std::string& extra=""){
         return "<div style='position:absolute; left:"+px(x0-21)+"; top:"+px(y0-21)+"; width:"+px(x1-x0)+"; height:"+px(y1-y0)+"; border-width:"+px(line)+"; border-color:#3a78e0; box-sizing:border-box; line-height:"+px(y1-y0-2*line)+"; white-space:nowrap; overflow:hidden;"+extra+"'>"+content+"</div>";
     };
@@ -4544,10 +4891,10 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
     const auto range=[](const json& r){const unsigned a=r.value("range_min",0u),b=r.value("range_max",0u);return a==b?std::to_string(a):std::to_string(a)+"\uff5e"+std::to_string(b);};
     const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
     std::string body=cell(21,68,21,44,"<div style='text-align:right; padding-right:"+px(4)+";'>"+escape(page_text)+"</div>")+
-        cell(68,164,21,44,"<div style='text-align:center;' class='im-dim fit'>"+escape(wl("weapon"))+"</div>")+
-        cell(164,220,21,44,"<div style='text-align:center;' class='im-dim fit'>"+escape(wl("power"))+"</div>")+
-        cell(220,260,21,44,"<div style='text-align:center;' class='im-dim fit'>"+escape(wl("range"))+"</div>")+
-        cell(260,299,21,44,"<div style='text-align:center;' class='im-dim fit'>"+escape(wl("hit"))+"</div>");
+        cell(68,164,21,44,"<div style='text-align:center;' class='im-dim fit fit-group' data-fit-group='weapon-label'>"+escape(wl("weapon"))+"</div>")+
+        cell(164,220,21,44,"<div style='text-align:center;' class='im-dim fit fit-group' data-fit-group='weapon-label'>"+escape(wl("power"))+"</div>")+
+        cell(220,260,21,44,"<div style='text-align:center;' class='im-dim fit fit-group' data-fit-group='weapon-label'>"+escape(wl("range"))+"</div>")+
+        cell(260,299,21,44,"<div style='text-align:center;' class='im-dim fit fit-group' data-fit-group='weapon-label'>"+escape(wl("hit"))+"</div>");
     std::string list;
     for(unsigned n=0;n<rows.size();++n) {
         const auto& r=rows[n];
@@ -4587,14 +4934,14 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
     const std::string ammo=sel.contains("ammo")?std::to_string(sel.value("ammo",0u))+"/"+std::to_string(sel.value("ammo_max",0u)):std::string("--/--");
     const std::string terrain=sel.value("terrain",std::string("----"));
     const bool low_morale=sel.value("morale",0)>0 && unit.value("morale",-1)>=0 && sel.value("morale",0)>unit.value("morale",-1),low_en=sel.value("en",0)>0 && sel.value("en",0)>unit.value("en",0);
-    const auto letter=[&](float x0,float x1,const char* key,const std::string& v){return cell(x0,x1,160,180,"<div class='im-row' style='padding:0 "+px(3)+";'>"+span(wl(key),16,"im-dim",std::min(10.5f,15.f/std::max(1.f,text_units(wl(key)))))+span(v,x1-x0-24,"im-right")+"</div>");};
+    const auto letter=[&](float x0,float x1,const char* key,const std::string& v){return cell(x0,x1,160,180,"<div class='im-row' style='padding:0 "+px(3)+";'>"+span(wl(key),16,"im-dim")+span(v,x1-x0-24,"im-right")+"</div>");};
     body+=cell(21,100,160,180,"<div class='im-row' style='padding:0 "+px(3)+";'>"+span(wl("ammo"),30,"im-dim")+span(ammo,42,"im-right")+"</div>")+
-        cell(100,140,160,180,"<div style='text-align:center; font-size:"+px(std::min(10.5f,36.f/std::max(1.f,text_units(wl("terrain")))))+";' class='im-dim'>"+escape(wl("terrain"))+"</div>")+
+        cell(100,140,160,180,"<div style='text-align:center;' class='im-dim fit fit-group' data-fit-group='weapon-label'>"+escape(wl("terrain"))+"</div>")+
         letter(140,180,"air",terrain.substr(0,1))+letter(180,220,"land",terrain.substr(1,1))+letter(220,260,"sea",terrain.substr(2,1))+letter(260,299,"space",terrain.substr(3,1))+
         cell(21,164,180,220,"<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("morale"),60,"im-dim")+span(need(sel.value("morale",json()),unit.value("morale",-1)),76,low_morale?"im-right im-down":"im-right")+"</div>"
             "<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("en"),60,"im-dim")+span(need(sel.value("en",json()),unit.value("en",-1)),76,low_en?"im-right im-down":"im-right")+"</div>","line-height:"+px(19)+";")+
         cell(164,299,180,220,"<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("skill"),56,"im-dim")+span(sel.contains("skill_name")?sel.value("skill_name",std::string()):sel.contains("combo")?localization::catalog().ui("ability_combo"):std::string(),72)+"</div>"
-            "<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("critical"),80,"im-dim",std::min(10.5f,78/std::max(1.f,text_units(wl("critical")))))+span(signed_number(sel.value("critical",json()))+"%",48,"im-right")+"</div>","line-height:"+px(19)+";");
+            "<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("critical"),80,"im-dim")+span(signed_number(sel.value("critical",json()))+"%",48,"im-right")+"</div>","line-height:"+px(19)+";");
     return body;
 }
 
@@ -4616,11 +4963,14 @@ std::string gauge_html(const std::string& cells,bool plan_shown=true) {
     return gauge;
 }
 void upgrade_sync() {
-    const auto next=upgrade_page::state();upgrade_request=next;
+    SyncCost cost{"upgrade"};
+    const auto [shared,revision]=upgrade_page::shared_state();const json& next=*shared;
+    if(revision!=upgrade_seen){upgrade_request=next;upgrade_seen=revision;}
     if(!next.value("visible",false)){document_close(upgrade_doc);upgrade_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+funds_editing+"#"+std::to_string(pictures::serial);
+    const auto stamp=std::to_string(revision)+"/"+localization::catalog().locale+frame_stamp()+funds_editing+"#"+std::to_string(pictures::serial);
     if(upgrade_doc && upgrade_stamp==stamp)return;
     upgrade_stamp=stamp;
+    cost.mark(cost.state);
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -4820,7 +5170,7 @@ void upgrade_sync() {
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(window.empty()?"upgrade_stats_hint":window=="confirm"?"upgrade_confirm_hint":"upgrade_message_hint")+"</div>";
     }
     body+="</div>";
-    refresh(upgrade_doc,body,true);upgrade_doc->SetClass("modal",false);focus_funds(upgrade_doc,"upgrade");
+    cost.mark(cost.build);refresh(upgrade_doc,body,true);cost.mark(cost.refreshed);upgrade_doc->SetClass("modal",false);focus_funds(upgrade_doc,"upgrade");
 }
 
 // 強化パーツ (parts_page.cpp): the machine list (layout 0x70), the slots with the
@@ -4828,11 +5178,14 @@ void upgrade_sync() {
 // on the original panel rectangles.
 unsigned parts_holders_first=0;   // the holders list's first shown row
 void parts_sync() {
-    const auto next=parts_page::state();parts_request=next;
+    SyncCost cost{"parts"};
+    const auto [shared,revision]=parts_page::shared_state();const json& next=*shared;
+    if(revision!=parts_seen){parts_request=next;parts_seen=revision;}
     if(!next.value("visible",false)){document_close(parts_doc);parts_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+"#"+std::to_string(pictures::serial);
+    const auto stamp=std::to_string(revision)+"/"+localization::catalog().locale+frame_stamp()+"#"+std::to_string(pictures::serial);
     if(parts_doc && parts_stamp==stamp)return;
     parts_stamp=stamp;
+    cost.mark(cost.state);
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -4934,18 +5287,21 @@ void parts_sync() {
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label("parts_holders_hint")+"</div>";
     }
     body+="</div>";
-    refresh(parts_doc,body,true);parts_doc->SetClass("modal",false);
+    cost.mark(cost.build);refresh(parts_doc,body,true);cost.mark(cost.refreshed);parts_doc->SetClass("modal",false);
 }
 
 // のりかえ (swap_page.cpp): the pilot / fairy lists (layouts 0x6F / 0x88), the target
 // lists with the pilot header (0x7C / 0x89, with the 乗せますか window 0x8A) and the
 // confirm page (0x7D), on the original rectangles.
 void swap_sync() {
-    const auto next=swap_page::state();swap_request=next;
+    SyncCost cost{"swap"};
+    const auto [shared,revision]=swap_page::shared_state();const json& next=*shared;
+    if(revision!=swap_seen){swap_request=next;swap_seen=revision;}
     if(!next.value("visible",false)){document_close(swap_doc);swap_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
+    const auto stamp=std::to_string(revision)+"/"+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
     if(swap_doc && swap_stamp==stamp)return;
     swap_stamp=stamp;
+    cost.mark(cost.state);
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -5044,7 +5400,7 @@ void swap_sync() {
         body+=hint("swap_confirm_hint");
     }
     body+="</div>";
-    refresh(swap_doc,body,true);swap_doc->SetClass("modal",false);
+    cost.mark(cost.build);refresh(swap_doc,body,true);cost.mark(cost.refreshed);swap_doc->SetClass("modal",false);
 }
 
 // データセーブ (save_page.cpp): the medium choice (layout 0x6A with the 0x72 pause box)
@@ -5052,12 +5408,15 @@ void swap_sync() {
 // message box (0x8C), at the original positions. With extended slots the list runs on
 // in pages of two; page 1 is the cartridge's own slots.
 void save_sync() {
-    const auto next=save_page::state();save_request=next;
+    SyncCost cost{"save"};
+    const auto [shared,revision]=save_page::shared_state();const json& next=*shared;
+    if(revision!=save_seen){save_request=next;save_seen=revision;}
     if(!next.value("visible",false)){document_close(save_doc);save_stamp.clear();return;}
     // The pictures' arrival too (image_async): a slot's portrait comes after the page is made.
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
+    const auto stamp=std::to_string(revision)+"/"+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
     if(save_doc && save_stamp==stamp)return;
     save_stamp=stamp;
+    cost.mark(cost.state);
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -5171,7 +5530,7 @@ void save_sync() {
                    erase?"save_slots_hint_delete":count>2?"save_slots_hint_pages":"save_slots_hint");
     }
     body+="</div>";
-    refresh(save_doc,body,true);save_doc->SetClass("modal",false);
+    cost.mark(cost.build);refresh(save_doc,body,true);cost.mark(cost.refreshed);save_doc->SetClass("modal",false);
 }
 
 // Title screen pages (title_page.cpp): オプション (layout 0x5A) and the サウンドセレクト /
@@ -5240,11 +5599,14 @@ void title_sync() {
 // ユニット能力／パイロット能力 (ability_page.cpp): the two nine-row lists (layouts
 // 0x6D / 0x6E), the unit page (0x79), its weapon list (0x7A) and the pilot page (0x7B).
 void ability_sync() {
-    const auto next=ability_page::state();ability_request=next;
+    SyncCost cost{"ability"};
+    const auto [shared,revision]=ability_page::shared_state();const json& next=*shared;
+    if(revision!=ability_seen){ability_request=next;ability_seen=revision;}
     if(!next.value("visible",false)){document_close(ability_doc);ability_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
+    const auto stamp=std::to_string(revision)+"/"+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
     if(ability_doc && ability_stamp==stamp)return;
     ability_stamp=stamp;
+    cost.mark(cost.state);
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -5393,7 +5755,7 @@ void ability_sync() {
         body+=hint("ability_pilot_hint");
     }
     body+="</div>";
-    refresh(ability_doc,body,true);ability_doc->SetClass("modal",false);
+    cost.mark(cost.build);refresh(ability_doc,body,true);cost.mark(cost.refreshed);ability_doc->SetClass("modal",false);
 }
 void mini_sync() {
     // Off the title menu and with no stage being entered there is nothing to show: no snapshot
@@ -5431,8 +5793,10 @@ void mini_sync() {
 bool touch_active();
 void home_sync() {
     const bool settings_entry=pad_mode || !app_menu::available();
-    // Not while the opening's works fly past or the logo comes in, nor in a demo.
-    if(!intro::title_waiting() || settings_open){document_close(home_doc);document_close(home_chrome_doc);home_stamp.clear();return;}
+    // Not while the opening's works fly past or the logo comes in, nor in a demo, nor once a
+    // Battle Viewer battle is under way: the title is still waiting while the screen goes
+    // black, and the corner stayed on it for half a second (Seeker, 2026-11-20).
+    if(!intro::title_waiting() || settings_open || battle_viewer::busy()){document_close(home_doc);document_close(home_chrome_doc);home_stamp.clear();return;}
     // With touch controls the settings are a touch button along the top; the corner stays.
     const bool touch=touch_active();
     // The catalog's revision too: a text update or F5 changes labels within a language.
@@ -5911,8 +6275,16 @@ void choose(const std::string& id) {
     // The stage info page: Y / I on the map or in the intermission, the touch controls' button, the General page.
     if(id=="stage-info-open"){viewer_open=false;library_open=false;mod_open=false;update_ask_open=false;stage_open=true;stage_column=0;
         settings_open=true;settings_stamp.clear();settings_release.hold();input.clear();return;}
-    if(library_open && id.starts_with("lib-tab:")){library_tab=id.back()=='1';library_tab_focus=true;return;}
-    if(library_open && id.starts_with("lib-item:")){library_select(unsigned(std::stoul(id.substr(9))),true);return;}
+    if(library_open && id.starts_with("lib-tab:")){library_tab=std::min(2u,unsigned(id.back()-'0'));library_tab_focus=true;return;}
+    // A map movie plays (or pauses) when its entry is chosen again (A, Enter, a click).
+    if(library_open && id.starts_with("lib-item:")) {
+        const auto index=unsigned(std::stoul(id.substr(9)));
+        if(library_tab==2 && index==library_index[2])library_movie_toggle();
+        else {library_select(index,true);if(library_tab==2 && pointer_mode)library_movie_toggle();}
+        return;
+    }
+    if(library_open && id.starts_with("mv-")){library_movie_control(id);return;}
+    if(id=="settings-close" && library_on_controls()){library_focus_list();return;}   // B on the controls: back to the list
     if(id=="viewer-open"){viewer_open=true;library_open=false;mod_open=false;stage_open=false;viewer_picker.clear();settings_open=true;settings_release.hold();input.clear();return;}
     if(viewer_open && id=="settings-close" && !viewer_picker.empty()){viewer_cancel_picker();return;}   // B in a box: back to the page as it was
     if(viewer_open && id.starts_with("vw-")){viewer_choose(id);return;}
@@ -5944,6 +6316,18 @@ void choose(const std::string& id) {
             if(!p.contents.languages.empty())notices::post("mod",localization::catalog().ui("mod_language_restart"));
         }
         mod_remove_pending.clear();++mod_revision;settings_focus=id;return;
+    }
+    // A file that did not install: the n-th failure the page listed, removed on the second press.
+    if(mod_open && id.starts_with("mod-remove-file:")) {
+        const unsigned n=unsigned(std::strtoul(id.c_str()+16,nullptr,10));
+        std::string file;
+        unsigned i=0;
+        for(const auto& r:srw64::mods::loose_results())if(!r.result.ok && i++==n){file=r.file.filename().string();break;}
+        if(file.empty()){mod_remove_pending.clear();++mod_revision;return;}
+        if(mod_remove_pending!="file:"+file){mod_remove_pending="file:"+file;settings_focus=id;return;}
+        mod_remove_pending.clear();
+        notices::post("mod",filled(srw64::mods::remove_failed(file)?"mod_removed":"mod_remove_failed",{{"{id}",file}}));
+        ++mod_revision;settings_focus="first";return;
     }
     if(mod_open && id.starts_with("mod-remove:")) {
         const auto pid=id.substr(11);
@@ -6116,6 +6500,7 @@ void choose(const std::string& id) {
         if(id.starts_with("battle-ui:"))settings::set_battle_ui(settings::battle_ui_from(id.substr(10)));
         if(id.starts_with("aspect:"))settings::set_wide_picture(id=="aspect:wide");
         if(id.starts_with("msaa:"))settings::set_msaa(id=="msaa:on");
+        if(id.starts_with("picture-scale:"))settings::set_picture_scale(unsigned(std::stoul(id.substr(14))));
         if(id.starts_with("window:") && (id=="window:fullscreen")!=bool(SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN))toggle_fullscreen();
         if(id.starts_with("window-size:"))scale_window(std::stoi(id.substr(12)));
         if(id.starts_with("ui-size:"))for(const auto size:{settings::UiSize::Standard,settings::UiSize::Large,settings::UiSize::Largest})
@@ -6451,6 +6836,18 @@ bool touch_owns_point(float x,float y) {
     const auto layout=touch_layout();const auto& scene=touch_controls;
     return touch_pad::hit(layout,scene,x,y) || touch_pad::in_stick_area(layout,scene,x,y) || scene.tap_primary;
 }
+// The title's entries (Library, the battle viewer, MOD; the campaign box) sit in the title
+// picture's corners, where on a wide phone the default controls overlap them: the B button
+// covered most of MOD at 16:9 (Seeker, 2026-11-20). A finger on one of them is the page's,
+// whatever control is drawn over it.
+bool title_entry_at(float x,float y) {
+    for(auto* doc:{home_doc,mini_doc}) {
+        if(!doc || !doc->IsVisible())continue;
+        for(auto* e=context->GetElementAtPoint({x,y},nullptr,doc);e && e!=doc;e=e->GetParentNode())
+            if(e->GetTagName()=="button")return true;
+    }
+    return false;
+}
 // Through sdl2-compat the back key has no scancode and SDL3's keycode (0x4000011A, SDL2's
 // SDLK_AC_BACK is 0x4000010E).
 bool touch_back_key(const SDL_Event& event) {
@@ -6498,7 +6895,7 @@ bool touch_event(const SDL_Event& event) {
     switch(event.type) {
     case SDL_FINGERDOWN: {
         touch_shown=true;touch_hints(true);
-        if(!touch_active() || !touch_fingers.down(touch_layout(),touch_controls,event.tfinger.fingerId,
+        if(!touch_active() || title_entry_at(event.tfinger.x*pixels_w,event.tfinger.y*pixels_h) || !touch_fingers.down(touch_layout(),touch_controls,event.tfinger.fingerId,
                                                   event.tfinger.x*pixels_w,event.tfinger.y*pixels_h))return false;
         touch_down_at[event.tfinger.fingerId]=SDL_GetTicks64();
         touch_publish();return true;
@@ -6525,7 +6922,8 @@ bool touch_event(const SDL_Event& event) {
     }
     // The mouse SDL makes from the first finger: not for the pages under the controls.
     case SDL_MOUSEBUTTONDOWN:
-        if(event.button.which!=SDL_TOUCH_MOUSEID || !touch_active() || !touch_owns_point(event.button.x*pixel_ratio,event.button.y*pixel_ratio))return false;
+        if(event.button.which!=SDL_TOUCH_MOUSEID || !touch_active() || !touch_owns_point(event.button.x*pixel_ratio,event.button.y*pixel_ratio) ||
+           title_entry_at(event.button.x*pixel_ratio,event.button.y*pixel_ratio))return false;
         touch_mouse_eaten=true;return true;
     case SDL_MOUSEMOTION:
         return event.motion.which==SDL_TOUCH_MOUSEID && touch_mouse_eaten;
@@ -6826,7 +7224,7 @@ void initialize() {
     context=Rml::CreateContext("game-ui",{pixels_w,pixels_h},nullptr,&input);
     if(!context)throw std::runtime_error("Cannot create shared UI context");input.bind(*context);
     name_page=std::make_unique<NamePage>(*context,NameActions{names::select,names::choose,names::review,
-        [](const std::string& path,int dp){return image(path,dp_pixels(dp));},fit_lines});
+        [](const std::string& path,int dp){return image_async(path,dp_pixels(dp),true);},fit_lines});
     std::ofstream(output/"shared-ui.json")<<json({{"schema","srw64.shared-ui.v1"},{"backend","SDL2/RmlUi/RT64"},{"font",path.string()},{"chinese_font",chinese_font_family()},{"traditional_font",traditional_font_family()},{"english_font",english_font_family()}}).dump(2)<<'\n';
 }
 bool held() {
@@ -6917,7 +7315,7 @@ void pad_keys(uint32_t now,uint32_t pressed) {
 // The focused settings control, pressed by A, START, Enter, Z or Space.
 void settings_press() {
     auto* focus=context->GetFocusElement();
-    if(focus && settings_doc && focus->GetOwnerDocument()==settings_doc && focus->GetTagName()=="button")focus->Click();
+    if(focus && settings_doc && (focus->GetOwnerDocument()==settings_doc || library_on_controls()) && focus->GetTagName()=="button")focus->Click();
 }
 // The settings window on a controller: L1/R1 turn the page, the directions move as in
 // settings_move, A presses the focused control, B (or View again) closes the window.
@@ -7639,22 +8037,52 @@ bool shown(){
     return false;
 }
 uint64_t readout_changes(){return fps_changes.load();}
-bool draw_gl(int width,int height,bool name_cover){
-    ++ui_draws;
-    const auto asked=UiClock::now();
-    auto lock=lock_ui();
-    const auto locked=UiClock::now();
-    if(!context || !gl_renderer || width!=pixels_w || height!=pixels_h)return false;
-    if(names::request().visible && !name_cover)return false;
+// The pages are gathered (RmlUi's Render into the renderer's list) and then painted, so the
+// graphics thread can ask first whether they changed: probe_gl gathers and gives the hash, 0
+// when nothing of the UI is to be drawn, and a draw_gl for the same window right after paints
+// what the probe gathered. The Switch keeps its last swap while the game's picture and this
+// hash stay (graphics.cpp): a page left alone cost 7-15 ms every VI before.
+bool gl_gathered=false;int gl_gathered_w=0,gl_gathered_h=0;bool gl_gathered_cover=false;uint64_t gl_gathered_hash=0;
+uint64_t gather_gl(int width,int height,bool name_cover){
+    gl_gathered=false;
+    if(!context || !gl_renderer || width!=pixels_w || height!=pixels_h)return 0;
+    if(names::request().visible && !name_cover)return 0;
     bool shown=false;
     for(int i=0;i<context->GetNumDocuments() && !shown;++i)shown=context->GetDocument(i)->IsVisible();
-    if(!shown)return false;
+    if(!shown)return 0;
     layer_pass=-1;layer_now=0;
-    gl_renderer->start(width,height);context->Render();gl_renderer->end();
+    gl_renderer->begin(width,height);context->Render();
+    // A page up with nothing to paint still counts as drawn (1), as it did.
+    const uint64_t hash=gl_renderer->finish();
+    gl_gathered=true;gl_gathered_w=width;gl_gathered_h=height;gl_gathered_cover=name_cover;
+    return gl_gathered_hash=(hash?hash:1)^(name_cover?0x9E3779B97F4A7C15ull:0);
+}
+void count_gl(UiClock::time_point asked,UiClock::time_point locked){
     const auto done=UiClock::now();
     std::lock_guard times(ui_times_mutex);
     ui_times.draw_wait+=ui_ms(asked,locked);ui_times.draw_work+=ui_ms(locked,done);
     ui_times.draw_max=std::max(ui_times.draw_max,ui_ms(asked,done));++ui_times.draws;
+}
+uint64_t probe_gl(int width,int height,bool name_cover){
+    ++ui_draws;   // a frame of the UI has passed, painted again or kept (the screenshot's steps count them)
+    const auto asked=UiClock::now();
+    auto lock=lock_ui();
+    const auto locked=UiClock::now();
+    const uint64_t hash=gather_gl(width,height,name_cover);
+    if(hash)count_gl(asked,locked);
+    return hash;
+}
+bool draw_gl(int width,int height,bool name_cover){
+    const auto asked=UiClock::now();
+    auto lock=lock_ui();
+    const auto locked=UiClock::now();
+    if(!gl_gathered)++ui_draws;
+    const bool probed=gl_gathered && gl_gathered_w==width && gl_gathered_h==height && gl_gathered_cover==name_cover;
+    const uint64_t hash=probed?gl_gathered_hash:gather_gl(width,height,name_cover);
+    gl_gathered=false;
+    if(!hash)return false;
+    gl_renderer->draw();
+    count_gl(asked,locked);
     return true;
 }
 void render_shutdown_gl(){

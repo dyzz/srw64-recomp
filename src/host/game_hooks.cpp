@@ -1,6 +1,7 @@
 #include <cstdio>
 #include "game_hooks.hpp"
 #include "battle_viewer.hpp"
+#include "map_movie.hpp"
 #include "battle_speaker.hpp"
 #include "music.hpp"
 #include "save_page.hpp"
@@ -10,12 +11,15 @@
 #include "mod_pilots.hpp"
 #include "battle_hud.hpp"
 #include "battle_spread.hpp"
+#include "battle_impact.hpp"
 #include "guest_memory.hpp"
 #include "funcs.h"
 #include "script_trace.hpp"
 #include "script_inject.hpp"
 #include "forced_game_over.hpp"
+#include "map_mod.hpp"
 #include "mini_stage.hpp"
+#include "native_map.hpp"
 #include "mod_saves.hpp"
 #include "story_mod.hpp"
 #include "script_move_probe.hpp"
@@ -90,6 +94,7 @@ static story::View story_view(uint8_t* ram,const recomp_context* ctx) {
     v.side=read(ram,e+story::f_side,2);v.enemies=read(ram,e+story::f_enemies,1);v.third=read(ram,e+story::f_third,1);
     if(const auto a=read(ram,e+story::f_battle_a,4))v.battle_a=read(ram,a+2,2);
     if(const auto b=read(ram,e+story::f_battle_b,4))v.battle_b=read(ram,b+2,2);
+    v.we_struck=int8_t(read(ram,e+story::f_struck,1))==1;
     v.variable=[ram](unsigned n){return story::variable(ram,n);};
     v.kills=[ram](unsigned pilot){return story::kills(ram,pilot);};
     v.has_pilot=[ram](unsigned pilot){return story::pilot_record(ram,pilot).has_value();};
@@ -97,6 +102,44 @@ static story::View story_view(uint8_t* ram,const recomp_context* ctx) {
     v.hp=[ram,ctx](unsigned who) {   // 800A293C
         auto c=story_call(ctx);c.r4=int32_t(who);resident_func_800A293C(ram,&c);return double(c.f0.fl);
     };
+    // The map's roster: 30 slots a side at 8015E100 + side*0x258 + slot*0x14; +0 1 on the
+    // map, +4/+5 its tile, +0xC the unit (+4 HP, +0x38 the pilot record, whose +2 is the pilot).
+    for(uint32_t side=0;side<3;++side)for(uint32_t slot=0;slot<30;++slot) {
+        const uint32_t entry=0x8015E100+side*0x258+slot*0x14,unit=read(ram,entry+0xC,4);
+        if(read(ram,entry,1)!=1 || !srw64::guest::valid(unit,0x54) || !read(ram,unit+4,2))continue;
+        const uint32_t pilot=read(ram,unit+0x38,4);
+        if(!srw64::guest::valid(pilot,0x4C))continue;
+        v.units.push_back({side,slot,read(ram,pilot+2,2),read(ram,unit+2,2),read(ram,entry+4,1),read(ram,entry+5,1)});
+    }
+    // The scene's deployment records (28 bytes from engine+0, to group 999): +0 group, +2/+4
+    // the tile, +6 the pilot, +10 the unit, +20 the side. Where it stands decides a tie.
+    v.group_of=[ram](const story::MapUnit& u) {
+        const uint32_t base=read(ram,story::engine,4);
+        int found=-1;
+        if(!srw64::guest::valid(base,28))return found;
+        for(uint32_t r=base;r<base+28*512 && srw64::guest::valid(r,28);r+=28) {
+            const unsigned group=read(ram,r,2);
+            if(group==999)break;
+            if(read(ram,r+6,2)!=u.pilot || read(ram,r+10,2)!=u.unit || read(ram,r+20,2)!=u.side)continue;
+            if(read(ram,r+2,2)==u.x && read(ram,r+4,2)==u.y)return int(group);
+            if(found<0)found=int(group);
+        }
+        return found;
+    };
+    // A pilot's level: on the map (the unit's pilot record +5), else on our roster.
+    v.level=[ram](unsigned pilot)->std::optional<unsigned> {
+        for(uint32_t side=0;side<3;++side)for(uint32_t slot=0;slot<30;++slot) {
+            const uint32_t entry=0x8015E100+side*0x258+slot*0x14,unit=read(ram,entry+0xC,4);
+            if(read(ram,entry,1)!=1 || !srw64::guest::valid(unit,0x54))continue;
+            const uint32_t p=read(ram,unit+0x38,4);
+            if(srw64::guest::valid(p,0x4C) && read(ram,p+2,2)==pilot)return read(ram,p+5,1);
+        }
+        if(const auto r=story::pilot_record(ram,pilot))return read(ram,*r+5,1);
+        return std::nullopt;
+    };
+    v.funds=read(ram,0x8010F5F4,4);
+    v.route=int((read(ram,0x801602EE,2)-0x3DD1+2)&3);
+    if(const unsigned last=read(ram,0x801602E4,2);last>=0x3DD9 && last<0x3DD9+8)v.choice=int(last-0x3DD9+1);
     return v;
 }
 static void story_start(uint8_t* ram,const recomp_context* ctx,uint32_t owner) {   // 8009EE98
@@ -109,17 +152,23 @@ void resident_func_800A158C(uint8_t* ram,recomp_context* ctx) {
     srw64_original_party_pair_flag(ram,ctx);
 }
 // A battle quote's box stays open while its MOD voice is still speaking (voice_wait.hpp).
-static void hold_quote_for_voice(uint8_t* ram) {
+static bool hold_quote_for_voice(uint8_t* ram) {
     auto& wait=srw64::voice_wait::wait;
-    if(!srw64::settings::mod_voice() || !srw64::settings::mod_voice_wait())return;
+    if(!srw64::settings::mod_voice() || !srw64::settings::mod_voice_wait())return false;
+    bool held=false;
     const bool hurried=srw64::game_speed::running.load();
     const bool a=srw64::guest::read(ram,srw64::voice_wait::pressed,2)&srw64::voice_wait::a_button;
     for(unsigned slot=0;slot<2;++slot) {
         const auto box=srw64::voice_wait::read_box(ram,slot);
-        if(!srw64::voice_wait::closing(box))continue;
-        if(srw64::voice_wait::hold(wait,box,srw64::music::speaking(box.record),hurried,a))
-            srw64::guest::write16(ram,srw64::voice_wait::slots+slot*srw64::voice_wait::stride+0x210,1);
+        if(!srw64::voice_wait::timed_last(box))continue;
+        if(srw64::voice_wait::hold(wait,box,srw64::music::speech_remaining(box.record),hurried,a)) {
+            // A defender can finish speaking while the hit effects play. Keep
+            // its box open without freezing the impact flash or the recoil.
+            if(!srw64::battle_impact::defender_slot(ram,slot))held=true;
+            srw64::guest::write16(ram,srw64::voice_wait::slots+slot*srw64::voice_wait::stride+0x210,uint16_t(std::max(0,int(box.timer))+1));
+        }
     }
+    return held;
 }
 // A quote that opened while the previous line is still being spoken waits for it
 // (voice_wait.hpp Pending): true while the animation is to stay where it is this frame.
@@ -144,33 +193,121 @@ static bool wait_for_previous_line(uint8_t* ram) {
     srw64::music::battle_quote(record);
     return false;
 }
-static bool battle_step_stopped=false;
+// 801C7960 requests the defender's quote on contact. Some attacks still have
+// a finishing sequence to show. Schedule the original quote call, so the box,
+// portrait, MOD speech and its normal wait all start together.
+static void show_battle_quote(uint8_t* rdram, recomp_context* ctx);   // the speaker swap (below)
+struct ImpactQuote { uint32_t block{}, speaker{}, round{}; };
+static ImpactQuote impact_quote;
+
+void load_00121560_func_801C6F14(uint8_t* ram,recomp_context* ctx) {
+    const auto block=uint32_t(ctx->r4);
+    if(srw64::settings::mod_voice() && srw64::battle_impact::waiting(ram,block)) {
+        const auto index=srw64::guest::read(ram,block+0x22,1);
+        if(index<0x22/2 && srw64::music::has_battle_voice(srw64::guest::read(ram,block+2*index,2))) {
+            impact_quote={block,uint32_t(ctx->r5),srw64::guest::read(ram,srw64::voice_wait::state,1)};
+            ctx->r2=0; // quote in progress: keep running the attack's actors
+            return;
+        }
+    }
+    if(impact_quote.block==block)impact_quote={};
+    show_battle_quote(ram,ctx);
+}
+
+static void advance_impact_quote(uint8_t* ram,const recomp_context* ctx) {
+    if(!impact_quote.block)return;
+    if(srw64::guest::read(ram,srw64::voice_wait::state,1)!=impact_quote.round) {
+        impact_quote={};
+        return;
+    }
+    if(srw64::battle_impact::waiting(ram,impact_quote.block))return;
+    auto call=*ctx;
+    call.r4=int32_t(impact_quote.block);
+    call.r5=int32_t(impact_quote.speaker);
+    impact_quote={};
+    show_battle_quote(ram,&call);
+}
+
+// Camera travel that the scenery would have seen during added voice time.
+static float voice_scenery_travel=0;
+static void step_voice_scenery(uint8_t* ram,const recomp_context* ctx) {
+    namespace bs=srw64::battle_spread;
+    auto c=*ctx;
+    // 8008422C owns scenery slots 0..22. 801C3610 owns the tiled effect in 25.
+    // Run their animation and velocity only, in the order used by 801C9710.
+    for(unsigned slot=0;slot<=25;++slot) {
+        if(slot==23 || slot==24)continue;
+        const auto record=bs::kSlots+slot*bs::kSlotSize;
+        if(!srw64::guest::read(ram,record+1,1))continue;
+        c.r4=slot;
+        resident_func_80098738(ram,&c);
+        c.r4=slot;
+        resident_func_80081B6C(ram,&c);
+    }
+    // 801C9AE0: scroll the skies at their own parallax and wrap moving terrain.
+    const float pan=bs::real(ram,0x80250240);
+    c.f12.fl=(pan-bs::real(ram,0x80178D44)*0.5f)*bs::real(ram,0x80178D48);
+    c.f14.fl=bs::real(ram,0x8015DE08);
+    resident_func_80085740(ram,&c);
+    voice_scenery_travel+=pan;
+}
+
+// 8008422C lays repeating terrain in three columns, 1000 model units apart.
+// Continue its pan relative to the held camera. Keep the phase when speech ends
+// so the first normal frame joins the last waiting frame.
+static void pan_voice_terrain(uint8_t* ram) {
+    namespace bs=srw64::battle_spread;
+    if(voice_scenery_travel==0)return;
+    const float camera=bs::real(ram,bs::kAt);
+    for(unsigned bank : {5u,14u}) {
+        for(unsigned layer=0;layer<3;++layer) {
+            const auto first=bs::kSlots+(bank+layer)*bs::kSlotSize;
+            constexpr unsigned column=3*bs::kSlotSize;
+            if(!srw64::guest::read(ram,first+1,1) || !srw64::guest::read(ram,first+column+1,1)
+               || !srw64::guest::read(ram,first+2*column+1,1))continue;
+            const float period=3000.f*bs::real(ram,first+0x10);
+            if(!(period>0))continue;
+            for(unsigned i=0;i<3;++i) {
+                const auto record=first+i*column;
+                if(srw64::guest::read(ram,record,1)!=0xF)continue;
+                for(unsigned sub=0;sub<3;++sub) {
+                    const auto part=record+bs::kSubs+sub*bs::kSubSize;
+                    const auto node=srw64::guest::read(ram,part+4,4);
+                    if(srw64::guest::read(ram,part,1)!=1 || !srw64::guest::valid(node,0x6C))continue;
+                    const auto matrix_x=node+0x14+12*sizeof(float);
+                    const float relative=bs::real(ram,matrix_x)-voice_scenery_travel-camera;
+                    bs::put(ram,matrix_x,camera+std::remainder(relative,period));
+                }
+            }
+        }
+    }
+}
 void load_00121560_func_801C9710(uint8_t* ram,recomp_context* ctx) {
-    // The stopped state's handler (below): the main loop calls this address in its place.
-    if(battle_step_stopped)return;
     // X ends the presentation early; the settled result lives in the map
     // overlay's participant table and is applied when the map is back.
     srw64::battle_animation_probe::step(ram,ctx);
-    hold_quote_for_voice(ram);
+    if(srw64::guest::read(ram,srw64::voice_wait::state,1)<=1)impact_quote={};
+    if(int8_t(srw64::guest::read(ram,srw64::voice_wait::state,1))<=1)voice_scenery_travel=0;
+    const bool extended=hold_quote_for_voice(ram);
     const bool stop=wait_for_previous_line(ram);
     srw64::wide_map::mark_battle();   // the sky is drawn to each side (background_sides)
     srw64::battle_viewer::animation_frame();   // a viewer recording starts with the animation's first frame
+    if(stop || extended) {
+        // 801C96F4 draws separately. Keep the last pose and camera during added
+        // voice time. Even without its state handler, 801C9710 would integrate
+        // sprite velocity (80081BFC) and advance the actors on every extra tick.
+        resident_func_8008D748(ram,ctx);
+        if(int8_t(srw64::guest::read(ram,srw64::voice_wait::state,1))>1) {
+            step_voice_scenery(ram,ctx);
+            srw64::battle_spread::in_step=true;
+            resident_func_8008261C(ram,ctx);
+            srw64::battle_spread::in_step=false;
+        }
+        return;
+    }
     srw64::battle_spread::in_step = true;
-    if(stop) {
-        // The main loop runs as usual (drawing, the text engine) but calls this function
-        // instead of the state's handler (the table at D_80222DD4, by D_80250000), and the
-        // state's frame count (D_8025020C) is put back: the animation stays where it is.
-        namespace vw=srw64::voice_wait;
-        const uint32_t entry=vw::handlers+uint32_t(int8_t(srw64::guest::read(ram,vw::state,1)))*4;
-        const uint32_t handler=srw64::guest::read(ram,entry,4);
-        const uint32_t frames=srw64::guest::read(ram,vw::state_frames,2);
-        srw64::guest::write32(ram,entry,vw::battle_step);
-        battle_step_stopped=true;
-        srw64_original_battle_animation_step(ram,ctx);
-        battle_step_stopped=false;
-        srw64::guest::write32(ram,entry,handler);
-        srw64::guest::write16(ram,vw::state_frames,uint16_t(frames));
-    } else srw64_original_battle_animation_step(ram,ctx);
+    srw64_original_battle_animation_step(ram,ctx);
+    advance_impact_quote(ram,ctx);
     srw64::battle_spread::in_step = false;
 }
 // 8008261C: every sprite's matrix from its slot. In the battle's step the slots are spread
@@ -181,6 +318,7 @@ void resident_func_8008261C(uint8_t* ram,recomp_context* ctx) {
     if(srw64::wide_map::battle_shown())srw64::battle_spread::apply(ram,saved);
     srw64_original_sprite_matrices(ram,ctx);
     srw64::battle_spread::restore(ram,saved);
+    if(srw64::battle_spread::in_step)pan_voice_terrain(ram);
 }
 void load_000AB160_func_801DFBD0(uint8_t* ram,recomp_context* ctx) {
     // After an aborted battle, takes over the resume frame (state 24 sub-state
@@ -303,7 +441,8 @@ extern "C" void load_000AB160_func_801FC83C(uint8_t* rdram, recomp_context* ctx)
 // id). Its speaker digits name the voice part's character; a package's new character that
 // borrows that voice is shown in its place for this call (battle_speaker.hpp): the name
 // through srw64_name_record, the face through 8008F970.
-extern "C" void load_00121560_func_801C6F14(uint8_t* rdram, recomp_context* ctx) {
+// The voice wrapper below (load_00121560_func_801C6F14) calls this for every quote it opens.
+static void show_battle_quote(uint8_t* rdram, recomp_context* ctx) {
     namespace speaker = srw64::battle_speaker;
     const uint32_t slot = uint32_t(ctx->r4);
     std::optional<std::pair<unsigned, unsigned>> swap;
@@ -350,6 +489,9 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
             auto c=*ctx;c.r29=int32_t(uint32_t(ctx->r29)-0x200);c.r4=int32_t(a0);c.r5=int32_t(a1);c.r6=int32_t(a2);function(ram,&c);
         };
         call(resident_func_800836CC,0);call(resident_func_800A5138);
+        // A campaign started from its first stage: nothing has fired, no flag is set (the
+        // main story's new game clears them in 800A4790, which this entry does not pass).
+        if(srw64::campaign::active())story::new_game();
         srw64::mini_stage::direct_scene(ram);
         call(resident_func_80080188,0xC);call(resident_func_8007F510,0x800801A4,0,1);
     }
@@ -384,6 +526,8 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
             call(resident_func_80099814,5,1,2);
         }
     }
+    // The Library's map movies: their ticks, music and sound effects (map_movie.hpp).
+    srw64::map_movie::game_frame(ram,ctx);
     srw64::mini_stage::service(ram);
     srw64::script_inject::service(ram);
     // State captures bracket each injected script when the state probe is on.
@@ -526,10 +670,18 @@ void resident_func_800AB5C0(uint8_t* ram,recomp_context* ctx) {
     srw64_original_deploy_form(ram,ctx);
     srw64::mod_combine::deploy_sync(ram);
 }
+// 801E8344(handle, kind): whether the unit at a map handle can separate. A package's combined
+// unit made without its crew (a deployment record, not the story's build) does not
+// (mod_combine.hpp separable); the original would read through its missing crew pointers.
+void load_000AB160_func_801E8344(uint8_t* ram,recomp_context* ctx) {
+    if(!(ctx->r5&0xFF) && !srw64::mod_combine::separable(ram,int32_t(ctx->r4))){ctx->r2=0;return;}
+    srw64_original_separate_check(ram,ctx);
+}
 void load_000AB160_func_801E977C(uint8_t* ram,recomp_context* ctx) {
     // Whether the unit (a0) can combine, a1 1 for the map menu: a package's combined unit
     // may take the combine over, its other parts joining (mod_combine.hpp).
     const unsigned check=uint8_t(ctx->r5);
+    if(!srw64::mod_combine::combine_available(ram,int32_t(ctx->r4))){ctx->r2=0;return;}
     srw64_original_combine_check(ram,ctx);
     srw64::mod_combine::checked(ram,ctx,check,(ctx->r2&0xFF)!=0,LOOKUP_FUNC(srw64::mod_combine::find_on_map));
 }
@@ -645,6 +797,8 @@ void resident_func_8008D748(uint8_t* rdram, recomp_context* ctx) {
 }
 void resident_func_8008C9C0(uint8_t* rdram, recomp_context* ctx) {
     const unsigned slot = uint8_t(ctx->r4);
+    // A campaign stage's own 作戦目的 (story_mod.hpp objective_text): a2 is the text's id.
+    ctx->r6 = int32_t(story::objective_text(rdram, uint16_t(ctx->r6)));
     srw64_original_dialogue_load(rdram, ctx);
     if (srw64_game_hooks.text_loaded) srw64_game_hooks.text_loaded(rdram, slot);
 }
@@ -763,7 +917,8 @@ void resident_func_80095974(uint8_t* rdram, recomp_context* ctx) {
     // The battle's sky wraps every 320 pixels: the periods either side fill a wider
     // picture (docs/design/deck-16x10.md). Each copy runs the drawer on a copy of the call.
     const bool whole = srw64_game_hooks.background_whole && srw64_game_hooks.background_whole(rdram, slot, sub);
-    const bool sides = !whole && srw64_game_hooks.background_sides && srw64_game_hooks.background_sides(rdram, slot, sub);
+    const bool stretch = srw64::wide_map::scrolling_effect_scale(slot) > 1.f;
+    const bool sides = !whole && !stretch && srw64_game_hooks.background_sides && srw64_game_hooks.background_sides(rdram, slot, sub);
     // It wraps every 240 rows too: placed a few rows down, its last rows (the ruins' black
     // and broken floors) show above it, where the original's top band hid them. Without
     // the bands those rows take a copy moved to the edge (its first rows, sky), and the
@@ -788,20 +943,43 @@ void resident_func_80095974(uint8_t* rdram, recomp_context* ctx) {
         copies(0);
         srw64::wide_map::offset_rects(rdram, cursor, 0);
     }
+    if (stretch) srw64::wide_map::stretch_rects(rdram, cursor, true);
     const uint32_t begin = MEM_W(0, cursor) & 0x1FFFFFFF;
     srw64_original_background_draw(rdram, ctx);
     const uint32_t end = MEM_W(0, cursor) & 0x1FFFFFFF;
+    if (stretch) srw64::wide_map::stretch_rects(rdram, cursor, false);
     if (sides || wrap != 0) srw64::wide_map::close_sides(rdram, cursor);
-    if (srw64_game_hooks.background_drawn) srw64_game_hooks.background_drawn(rdram, begin, end, slot, sub, sides);
+    if (srw64_game_hooks.background_drawn) srw64_game_hooks.background_drawn(rdram, begin, end, slot, sub, sides || stretch);
 }
 void resident_func_80096CD8(uint8_t* rdram, recomp_context* ctx) {
     const int32_t cursor = ctx->r4;
     const uint32_t slot = ctx->r5, sub = ctx->r6;
+    namespace bs = srw64::battle_spread;
+    const uint32_t part = bs::kSlots + slot * bs::kSlotSize + bs::kSubs + sub * bs::kSubSize;
+    const uint32_t scene = slot < bs::kSlotCount && sub < 3 ? srw64::guest::read(rdram, part + 0xC, 2) : 0;
+    const bool stretch = scene && bs::screen_backdrop_scale(scene, srw64::guest::read(rdram, part + 0x10, 2)) > 1.f;
+    if (stretch) srw64::wide_map::stretch_rects(rdram, cursor, true);
     const uint32_t begin = MEM_W(0, cursor) & 0x1FFFFFFF;
     const recomp_context call = *ctx;
+    // Go Flasher's 352-column frame has 16 transparent columns on the right.
+    // Center its 336 painted columns before clipping the tiles to the viewport.
+    if (stretch && scene == 3973) ctx->r7 += 8;
     srw64_original_scene_rect_draw(rdram, ctx);
     const uint32_t end = MEM_W(0, cursor) & 0x1FFFFFFF;
+    if (stretch) srw64::wide_map::stretch_rects(rdram, cursor, false);
     if (srw64_game_hooks.scene_drawn) srw64_game_hooks.scene_drawn(rdram, begin, end, slot, sub, false);
+    // The tentacles' strips (battle_spread.hpp): copies whole tiles to each side.
+    if (const float extra = scene ? bs::screen_strip_extra(scene) : 0.f; extra > 0.5f) {
+        srw64::wide_map::open_sides(rdram, cursor);
+        for (float offset = bs::kStripPeriod; offset - bs::kStripPeriod < extra; offset += bs::kStripPeriod)
+            for (const float side : {-offset, offset}) {
+                srw64::wide_map::offset_rects(rdram, cursor, side);
+                recomp_context copy = call;
+                srw64_original_scene_rect_draw(rdram, &copy);
+            }
+        srw64::wide_map::offset_rects(rdram, cursor, 0);
+        srw64::wide_map::close_sides(rdram, cursor);
+    }
     // The title's flames in the original's tiles repeat every 256 pixels (half their
     // 512-wide atlas): a copy a period to each side fills a wider picture.
     if (srw64_game_hooks.scene_sides && srw64_game_hooks.scene_sides(rdram, begin, end, slot, sub)) {
@@ -901,6 +1079,15 @@ void load_00121560_func_80222B14(uint8_t* rdram, recomp_context* ctx) {
     last_voice = voice; last_context = context;
     last_drawn = int16_t(srw64::guest::read(rdram, slot, 2));
     if (!srw64::guest::valid(slot, 4)) return;
+    // A story MOD's battle line (story_mod.hpp battle_quote), unless a debug quote is forced.
+    bool forcing = false;
+    for (auto& p : pending) forcing = forcing || p.load() >= 0;
+    if (!forcing)
+        if (const auto line = story::battle_quote(rdram, unsigned(voice), unsigned(context), story_view(rdram, ctx))) {
+            srw64::guest::write16(rdram, slot, *line);
+            srw64::guest::write16(rdram, slot + 2, 0xFFFF);
+            return;
+        }
     for (auto& p : pending) {
         const int forced = p.load();
         if (forced < 0 || !in_segment(voice, context, forced)) continue;
@@ -1077,7 +1264,7 @@ void resident_func_8009EFDC(uint8_t* rdram, recomp_context* ctx) {
         if(now!=completed){completed=now;srw64::state_probe::capture(rdram,"script-inject-complete",uint32_t(sequence));}
     }
     srw64::mini_stage::poll_hook(rdram,owner);
-    story::stepped(uint16_t(ctx->r2),rdram);
+    {const auto view=story_view(rdram,ctx);story::stepped(uint16_t(ctx->r2),rdram,&view);}
     srw64::rule_probe::poll(rdram,ctx,owner);
     srw64::battle_ui_probe::poll(rdram,ctx,owner);
     move_probe.after(rdram,owner);
@@ -1111,9 +1298,28 @@ void resident_func_8009DE7C(uint8_t* rdram, recomp_context* ctx) {
     // Scene registration: a mini stage image replaces the pointer table and buffers first.
     srw64::mini_stage::register_hook(rdram, ctx);
     const unsigned mode = uint16_t(ctx->r4);
+    {
+        // The stage's own map, if it has one, stands in for the original map it names: its
+        // resources (map_mod.hpp) and, in the HD mode, its picture (native_map.cpp).
+        const auto name = srw64::mini_stage::custom_map();
+        const auto beside = srw64::campaign::story();
+        std::shared_ptr<const srw64::map_mod::Map> map;
+        try {
+            map = srw64::map_mod::activate(name.empty() || beside.empty() ? std::filesystem::path() : beside.parent_path() / "maps" / name);
+        } catch (const std::exception& error) {
+            std::fprintf(stderr, "SRW64_MAP_MOD_PROBLEM %s\n", error.what());
+        }
+        if (map) {
+            srw64::hdmap::set_override(map->numbers[0], map->hd ? map->folder : std::filesystem::path());
+            std::fprintf(stderr, "SRW64_MAP_MOD %s in place of resources %u/%u/%u%s\n", name.c_str(), map->numbers[0], map->numbers[1], map->numbers[2], map->hd ? ", HD" : "");
+        } else srw64::hdmap::clear_override();
+    }
     srw64_original_script_register(rdram, ctx);
-    story::disabled() = srw64::campaign::active();
-    story::registered(rdram, mode);
+    // A campaign's stages have their own events (campaign/story.json); the main story's
+    // packages' events stay out of the scenes it borrows.
+    story::set_campaign(srw64::campaign::id(), srw64::campaign::story());
+    const auto view = story_view(rdram, ctx);
+    story::registered(rdram, mode, &view);
 }
 void resident_func_800A4790(uint8_t* rdram, recomp_context* ctx) {
     // Every story variable set to 3: a new game (the protagonist select, 801C69E4).
@@ -1132,7 +1338,9 @@ void resident_func_8009E3B0(uint8_t* rdram, recomp_context* ctx) {
     const unsigned from = uint16_t(ctx->r5), to = uint16_t(ctx->r6);
     const auto saved = *ctx;
     auto start = [&](uint32_t owner) { story_start(rdram, &saved, owner); };
-    if (story::persuaded(rdram, start)) { story_builds(rdram, &saved); ctx->r2 = -1; return; }
+    const auto view = story_view(rdram, &saved);
+    if (srw64::guest::read(rdram, story::engine + story::f_status, 2) < 0x2000) story::observe(view, false);
+    if (story::persuaded(rdram, start, &view)) { story_builds(rdram, &saved); ctx->r2 = -1; return; }
     srw64_original_event_scan(rdram, ctx);
     story::scan(rdram, from, to, story_view(rdram, &saved), start);
     story_builds(rdram, &saved);

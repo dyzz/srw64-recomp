@@ -4,8 +4,9 @@
 import { type Lang } from '../i18n';
 import { LICENSES, packageText } from '../lib/mod-maker-text';
 
-interface Props { lang: Lang; placeholder: string }
-const { lang, placeholder } = Astro.props;
+// `template`: the maker has a ready example package to start from (data-template).
+interface Props { lang: Lang; placeholder: string; template?: boolean }
+const { lang, placeholder, template = false } = Astro.props;
 const text = packageText(lang);
 ---
 <section class="block">
@@ -20,6 +21,9 @@ const text = packageText(lang);
     <label>{text.license}<select data-f="license"><option value="">—</option>{LICENSES.map((l) => <option value={l}>{l}</option>)}</select></label>
     <label class="wide">{text.description}<textarea data-f="description" rows="2"></textarea></label>
   </div>
-  <label class="btn ghost import">{text.import}<input type="file" accept=".srw64mod,.zip" data-import hidden /></label>
+  <div class="import-row">
+    <label class="btn ghost import">{text.import}<input type="file" accept=".srw64mod,.zip" data-import hidden /></label>
+    {template && <button type="button" class="btn ghost import" data-template title={text.templateHint}>{text.template}</button>}
+  </div>
   <p class="status" data-import-status></p>
 </section>

@@ -38,6 +38,7 @@ void start() {
 void attach(const std::filesystem::path& run) {
     srw64_switch_log_to((run / "console.log").string().c_str());
 }
+void keep_unattached(const std::filesystem::path&) {}
 void flush_now() { std::fflush(stdout); std::fflush(stderr); }
 int crash_fd() { return -1; }
 int crash_copy_fd() { return -1; }
@@ -264,6 +265,32 @@ void attach(const std::filesystem::path& run) {
     held.shrink_to_fit();
     latest = copy;
     file = fd;
+}
+
+void keep_unattached(const std::filesystem::path& user_dir) {
+    if (!launcher_env::active() || user_dir.empty()) return;
+    // The pumps pass on what was printed last (the reason, just before) into held.
+    std::fflush(stdout);
+    std::fflush(stderr);
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    std::lock_guard lock(mutex);
+    if (file.load() >= 0) return;
+    const auto folder = user_dir / "logs";
+    std::error_code error;
+    std::filesystem::create_directories(folder, error);
+    const auto path = folder / "latest.log";
+#ifdef _WIN32
+    const int fd = _wopen(path.c_str(), _O_WRONLY | _O_CREAT | _O_TRUNC | _O_BINARY, _S_IREAD | _S_IWRITE);
+#else
+    const int fd = ::open(path.c_str(), O_WRONLY | O_CREAT | O_TRUNC | O_CLOEXEC, 0644);
+#endif
+    if (fd < 0) return;
+    if (!held.empty()) (void)sys_write(fd, held.data(), held.size());
+#ifdef _WIN32
+    _close(fd);
+#else
+    ::close(fd);
+#endif
 }
 
 int crash_fd() { return file.load(); }

@@ -239,6 +239,9 @@ std::vector<Write> compute(const uint8_t* ram,const json& c) {
                                         dealt(0,c.value("counter_damage",0u),c.value("counter_destroy",false));
         put(out,s,0x1A,2,int(damage));
         put(out,s,0x20,2,int(hp[s]));put(out,s,0x22,2,int(hp[s]));put(out,s,0x24,2,int(en));put(out,s,0x26,2,int(en));
+        // A co-pilot (character number: ローレンス 24, アイシャ 32, チャム 183 ...), read by
+        // 801C4A08 for the quotes conditioned on it (codes 880-889); the demo leaves it 0.
+        if(side.contains("copilot") && side.at("copilot").is_number())put(out,s,0x1068,2,side.at("copilot").get<int>());
     }
     return out;
 }

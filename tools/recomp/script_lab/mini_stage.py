@@ -189,6 +189,9 @@ def compile_stage(document: dict, spec: dict | None = None) -> dict:
     # protagonist route (0 Brad, 1 Manami, 2 Ark, 3 Selain: the route variable and both
     # default names, which set the protagonist group's portraits), story variables
     # {"9": 0} (two bits each, 200 of them) and the last choice (1 = the first option).
+    episode = document.get("episode")
+    if episode is not None and (type(episode) is not int or not 1 <= episode <= 99):
+        raise ValueError("episode must be a chapter card number from 1 to 99")
     route = document.get("route")
     if route is not None and (type(route) is not int or not 0 <= route <= 3):
         raise ValueError("route must be 0 (Brad), 1 (Manami), 2 (Ark) or 3 (Selain)")
@@ -202,7 +205,7 @@ def compile_stage(document: dict, spec: dict | None = None) -> dict:
     return {"schema": IMAGE_SCHEMA, "name": document.get("name", "mini-stage"),
             "map": None if map_id is None else int(map_id), "slot": None if slot is None else int(slot),
             "event_block": EVENT_BLOCK, "aux_block": AUX_BLOCK,
-            "route": route, "story_vars": {str(int(k)): v for k, v in story_vars.items()}, "last_choice": last_choice,
+            "route": route, "episode": episode, "story_vars": {str(int(k)): v for k, v in story_vars.items()}, "last_choice": last_choice,
             "initial_resources": initial_resources, "events": events, "events_hex": blob.hex().upper(), "aux_hex": aux.hex().upper(),
             **({"numbers": numbers} if numbers else {}),
             "deployments": [decode_record(r) for r in records], "source": document,

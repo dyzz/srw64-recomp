@@ -1,4 +1,5 @@
 #include "ui_text.hpp"
+#include "story_mod.hpp"
 #include "native_name_entry.hpp"
 #include "mod_names.hpp"
 #include "mod_data.hpp"
@@ -278,6 +279,9 @@ std::string number_text(unsigned type, unsigned value) {
     return buffer;
 }
 
+// The room a 作戦目的 line has: the window's inner width (measured: x 22-298 of 320).
+constexpr double kObjectiveWidth = 270;
+
 bool active() {
     if (disabled || !dialogue::reader_configured()) return false;
     // Japanese in original image mode is the original screen; any translation always draws.
@@ -456,6 +460,16 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
             style.max_width = body.x + kChoiceBarEnd - body_x;
             style.min_size = style.size;
             style.condense_min = .55;
+        }
+        // A story MOD's own 作戦目的 line (story_mod.hpp, 0xC800 up): one line on the centre
+        // the original gave its glyphs (8008CE14 centres the line in the window), squeezed
+        // rather than wrapped; the glyphs are Japanese, the text may be longer.
+        else if (half(ram, body.address) >= story_mod::text_first && shown_text.find("<BR>") == std::string::npos) {
+            style.width = 0;
+            style.origin = Style::Origin::center;
+            style.max_width = kObjectiveWidth;
+            style.condense_min = .55;
+            body_x = float(body.x) + float(widest) / 2;
         }
         // A label the original prints after a one-line body on the same line (発進！スイームルグ
         // クリア, 二大勢力 クリア: the original puts クリア after the title wherever it ends) joins

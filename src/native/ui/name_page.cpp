@@ -1,6 +1,7 @@
 #include "name_page.hpp"
 #include "ui_fonts.hpp"
 #include "game_adapter/default_names.hpp"
+#include <tuple>
 #include <algorithm>
 #include <stdexcept>
 
@@ -51,6 +52,13 @@ void NamePage::sync(const names::Request& next,const std::map<std::string,std::s
     request=next;locale=next_locale;art_changed=false;page_w=w;page_h=h;inset_x=ix;inset_y=iy;
     if(!request.visible){if(document && document->IsVisible())document->Hide();return;}
     if(rebuild)build();
+    // The pictures that have arrived since, each into its holder.
+    for(auto at=pictures.begin();at!=pictures.end();) {
+        const auto src=actions.image(at->path,at->width);
+        if(src.empty()){++at;continue;}
+        if(auto* holder=document->GetElementById(at->id))holder->SetInnerRML("<img src='"+Rml::StringUtilities::EncodeRml(src)+"' style='"+at->style+"'/>");
+        at=pictures.erase(at);
+    }
     for(unsigned i=0;i<4;++i)if(auto* card=document->GetElementById("route"+std::to_string(i))){
         card->SetClass("selected",i==request.route);
         if(!request.active || waiting)card->SetAttribute("disabled","");else card->RemoveAttribute("disabled");
@@ -75,21 +83,34 @@ void NamePage::build() {
         return "<div class='tagrow'><div class='tag' style='decorator: slant("+std::string(fill)+" "+fill+" 0dp 0dp 0dp 0dp 0dp 10dp);'><span class='bar' style='decorator: slant("+
             std::string(route_colour(route))+" "+route_colour(route)+" 0dp 0dp 3dp 0dp 0dp 3dp);'></span><span style='color:"+route_colour(route)+";'>"+t(route<2?"select_super":"select_real")+"</span></div></div>";
     };
+    // A picture for its holder (a frame or a pose): the <img>, or while the file is still
+    // being read (actions.image gives "") nothing, and the holder gets an id by which
+    // sync() puts the <img> in when the picture arrives. Decoding the eight HD pictures of
+    // the selection before showing the page held the UI for 1.8 s on a Switch.
+    pictures.clear();
+    const auto picture=[&](const std::string& path,int width,const std::string& style)->std::pair<std::string,std::string>{
+        if(path.empty())return {};
+        const auto src=actions.image(path,width);
+        if(!src.empty())return {"","<img src='"+escape(src)+"' style='"+style+"'/>"};
+        const auto id="np-picture-"+std::to_string(pictures.size());
+        pictures.push_back({id,path,width,style});
+        return {" id='"+id+"'",""};
+    };
     // A square portrait frame; the image is resampled for its size.
     const auto portrait=[&](const std::array<std::string,2>& art,float size,const char* frame){
         const auto& path=art[hd && !art[1].empty()?1:0];
-        std::string img=path.empty()?"":"<img src='"+escape(actions.image(path,int(size+.5f)))+"' style='width:"+dp(size)+"; height:"+dp(size)+";'/>";
-        return "<div class='frame' style='width:"+dp(size)+"; height:"+dp(size)+"; border-color:"+frame+";'>"+img+"</div>";
+        const auto [id,img]=picture(path,int(size+.5f),"width:"+dp(size)+"; height:"+dp(size)+";");
+        return "<div class='frame'"+id+" style='width:"+dp(size)+"; height:"+dp(size)+"; border-color:"+frame+";'>"+img+"</div>";
     };
     // A unit pose fitted into a square box, keeping its 96 x 96 or 128 x 96 proportions.
     const auto unit_pose=[&](const names::Art& art,float box){
         const auto& path=hd && !art.hd.empty()?art.hd:art.original;
-        std::string img;
+        std::string id,img;
         if(!path.empty() && art.width && art.height) {
             const float scale=std::min(box/float(art.width),box/float(art.height)),w=art.width*scale,h=art.height*scale;
-            img="<img src='"+escape(actions.image(path,int(w+.5f)))+"' style='width:"+dp(w)+"; height:"+dp(h)+";'/>";
+            std::tie(id,img)=picture(path,int(w+.5f),"width:"+dp(w)+"; height:"+dp(h)+";");
         }
-        return "<div class='pose' style='width:"+dp(box)+"; height:"+dp(box)+";'>"+img+"</div>";
+        return "<div class='pose'"+id+" style='width:"+dp(box)+"; height:"+dp(box)+";'>"+img+"</div>";
     };
     const float margin=std::clamp(page_w*0.0375f,24.f,48.f),gap=12,header=44,footer=64;
     std::string body="<div id='page' style='padding: 0 "+dp(margin)+";'><div id='top'><div id='brand'><span class='logo'>SRW64</span><span class='rule'></span>";

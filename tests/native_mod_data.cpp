@@ -7,9 +7,12 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb/stb_image_write.h"
 #include "mod_data.hpp"
+#include "mod_saves.hpp"
 #include "mod_forms.hpp"
 #include "mod_combine.hpp"
 #include "battle_speaker.hpp"
+#include "unit_pose_art.hpp"
+#include "library.hpp"
 #include <cstdio>
 #include <cstdlib>
 #include <iterator>
@@ -37,6 +40,95 @@ int main(int argc,char** argv) {
     const std::vector<uint8_t> image((std::istreambuf_iterator<char>(in)),std::istreambuf_iterator<char>());
     if(image.size()!=0x2000000){std::fprintf(stderr,"not the ROM\n");return 2;}
     const std::span<const uint8_t> rom(image);
+    {
+        using namespace mod_units;
+        const std::string id=dancouga_package;
+        const auto old=json::parse(R"({
+          "schema":"srw64.new-units.v1",
+          "units":{"314":{"copy":224,"weapons":[870,871,872,879,1209,882,881]}},
+          "weapons":{"1209":{"copy":880},"882":{"copy":875},"881":{"copy":874}}
+        })");
+        const auto numbers=assign({{id,old}});
+        const auto modern=assign({{id,dancouga_definition(old)}});
+        check(numbers.legacy_dancouga && numbers.units==modern.units && numbers.weapons==modern.weapons,
+              "the old package takes the same IDs as the update");
+        check(resolve(314,id,numbers,Of::unit)==resolve("@final",id,numbers,Of::unit) &&
+              resolve("1209",id,numbers,Of::weapon)==resolve("@sword",id,numbers,Of::weapon),
+              "numeric references in the old pack name its new IDs");
+        check(resolve(314,"other",numbers,Of::unit)==314 && resolve(314,id,modern,Of::unit)==314,
+              "other packages and the new package still address the ROM's 314");
+        {
+            const auto scened=json::parse(R"({
+              "schema":"srw64.new-units.v1",
+              "units":{"314":{"copy":224}},
+              "weapons":{"1209":{"copy":880},"882":{"copy":875},
+                         "881":{"copy":874,"animation":{"actors":[{"scene":666},{"scene":1052},{"scene":1051}]}}},
+              "scenes":{"1051":[1399,1337,1381],"1052":[1425,1351,1369]}
+            })");
+            const auto actors=dancouga_definition(scened)["weapons"]["kougaken"]["animation"]["actors"];
+            check(actors[0]["scene"]==666 && actors[1]["scene"]=="@1052" && actors[2]["scene"]=="@1051",
+                  "the old pack's actors name its own scenes 1051 and 1052, not the ROM's");
+        }
+        Bytes bytes;
+        Taken taken;
+        check(parse(old,id,numbers,rom,{},bytes,taken).empty() && !bytes.empty(),
+              "the old package's definitions generate the new table records");
+        const unsigned final=numbers.units.at(id+"@final");
+        const unsigned cannon=numbers.weapons.at(id+"@cannon");
+        const auto hp=table_window::row(table_window::units,final);
+        check(mod_data::parse(json{{"314",{{"hp",8000}}}},mod_data::Kind::units,rom,bytes,id,numbers).empty() &&
+              (unsigned(bytes.at(hp))<<8|bytes.at(hp+1))==8000,
+              "the old unit's data overrides reach the new record");
+        check(mod_data::parse(json{{"882",{{"power",3500}}}},mod_data::Kind::weapons,rom,bytes,id,numbers).empty() &&
+              bytes.at(table_window::row(table_window::weapons,cannon)+1)==35,
+              "the old weapons' power overrides reach the new record");
+
+        std::vector<uint8_t> ram(0x800000);
+        const auto bank=mod_saves::banks(story_mod::Record::slot).front();
+        guest::write16(ram.data(),bank.units,314<<6 | 3);
+        guest::write8(ram.data(),bank.units+9,1);
+        guest::write16(ram.data(),bank.pilots+bank.pilot_stride,171);
+        check(!mod_saves::old_dancouga_at(ram.data(),bank,bank.units,false),
+              "unit 314 alone is not a legacy save");
+        check(mod_saves::old_dancouga_at(ram.data(),bank,bank.units,true),
+              "the old ownership sidecar identifies Shinobu's 314");
+        unsigned i=0;
+        for(const auto& [old_weapon,_]:old_dancouga_weapons) {
+            const auto at=bank.weapons+(i++)*mod_saves::weapon_stride;
+            guest::write16(ram.data(),at,old_weapon);
+            guest::write16(ram.data(),at+2,314);
+        }
+        check(mod_saves::old_dancouga_at(ram.data(),bank,bank.units,false),
+              "the borrowed weapon range identifies a cartridge without its sidecar");
+        guest::write16(ram.data(),bank.units+0xE,bank.weapon_count);
+        check(!mod_saves::old_dancouga_at(ram.data(),bank,bank.units,true),
+              "an out-of-range weapon slice cannot be migrated");
+    }
+    {
+        // A pose's picture (unit_pose_art.hpp by_pose): by "poses" as battle_assets.py writes
+        // them, or through "units" and their "resources" as the ROM importer the players'
+        // builds use writes them (no "poses": Super Earthgain, a copy of 306, had no picture).
+        const json imported={{"units",{{"34",{{"path","a.png"},{"resources",{2896,2894,2895}}}},
+                                       {"306",{{"path","b.png"},{"resources",{2901,2905,2906}},{"hd","b-hd.png"}}}}}};
+        const auto* found=unit_pose_art::by_pose(imported,2901,2905,2906);
+        check(found && found->value("path","")=="b.png" && found->value("hd","")=="b-hd.png","the importer's units by their resources, HD with them");
+        check(!unit_pose_art::by_pose(imported,2901,2905,9) && !unit_pose_art::by_pose(imported,0,0,0),"no picture for another pose or none");
+        const json python={{"poses",{{"2901-2905-2906",{{"path","p.png"}}}}},{"units",imported["units"]}};
+        found=unit_pose_art::by_pose(python,2901,2905,2906);
+        check(found && found->value("path","")=="p.png","battle_assets.py's poses first");
+    }
+    {
+        // The Library's background build waits for the game's initialization, then two seconds:
+        // a first start that took minutes reached VI 120 before the ROM was loaded and built
+        // it from nothing (library.hpp prepare_due).
+        uint64_t ready=0;
+        check(!library::prepare_due(false,5000,ready,120) && ready==0,"no build before the game is initialized, however many VIs");
+        check(!library::prepare_due(true,5000,ready,120) && ready==5001,"the count starts at initialization");
+        check(!library::prepare_due(true,5118,ready,120),"not before 120 VIs since");
+        check(library::prepare_due(true,5120,ready,120),"then it builds");
+        uint64_t early=0;
+        check(!library::prepare_due(true,0,early,120) && early==1 && library::prepare_due(true,120,early,120),"initialized at VI 0 too");
+    }
 
     // ゴーショーグン (unit 184) is 空A 陸A 海B 宇A; 真吾 (pilot 133, record 110 alone) 空A 陸A 海B 宇B.
     const uint32_t unit=mod_data::unit_records+184*mod_data::unit_record_size+mod_data::unit_terrain;
@@ -577,6 +669,23 @@ int main(int argc,char** argv) {
             for(size_t k=0;k<crew.size();++k)w32(at+mc::unit_crew_pilots+uint32_t(k)*4,crew[k]);
             return at;};
         const uint32_t earthgain=put(0,34,{brad},true),virose=put(1,35,{kurtz},true),super=put(2,450,{brad,kurtz},false);
+        const auto on_map=[&](int handle,uint32_t unit){w8(mc::roster_at(0,handle),1);w32(mc::roster_at(0,handle)+0x0C,unit);};
+        on_map(0x42,earthgain);on_map(0x43,virose);
+        w16(brad+mc::pilot_number,27);w16(kurtz+mc::pilot_number,31);
+        const auto available=[&](int handle){return mc::combine_available(ram.data(),handle,all);};
+        w8(super,0);
+        check(!available(0x42) && !available(0x43),"both parts can open the menu before the story builds their combined unit");
+        w8(super,1);w32(super+mc::unit_crew_pilots,kurtz);
+        check(!available(0x42) && !available(0x43),"an instance with a different lead pilot cannot combine");
+        w32(super+mc::unit_crew_pilots,0);
+        check(!available(0x42),"an instance without a lead pilot cannot combine");
+        w32(super+mc::unit_crew_pilots,brad);
+        check(available(0x42) && available(0x43),"the matching combined unit is available to both parts");
+        w32(mc::roster_at(1,0x60)+0x0C,earthgain);
+        check(!available(0x60),"a combined unit on another side cannot be used");
+        const uint32_t original=put(3,219,{brad},true);
+        on_map(0x44,original);
+        check(available(0x44) && available(-1),"original recipes and non-map checks stay with the guest");
         mc::deploy_sync(ram.data(),all);
         check((r(super+mc::unit_deploy,1)&0x80) && !(r(earthgain+mc::unit_deploy,1)&0x80) && !(r(virose+mc::unit_deploy,1)&0x80),
               "the combined unit deploys, its parts not");
@@ -603,6 +712,18 @@ int main(int argc,char** argv) {
         w8(dancouga+mc::unit_deploy,0x80);for(unsigned k=0;k<4;++k)w8(fighters[k]+mc::unit_deploy,0);w8(fighters[4]+mc::unit_deploy,0x80);   // 3D5D 1,0
         mc::deploy_sync(ram.data(),over);
         check((r(fin+mc::unit_deploy,1)&0x80) && !(r(dancouga+mc::unit_deploy,1)&0x80) && !(r(fighters[4]+mc::unit_deploy,1)&0x80),"3D5D 1: Final Dancouga again");
+        // 分離 (801E8344): on the map at our handle 0x42 + slot; the story-built one separates,
+        // one a deployment record made (one crew, the others' pointers 0) does not.
+        on_map(0x42,fin);
+        check(mc::separable(ram.data(),0x42,over),"the story's Final Dancouga separates");
+        const uint32_t placed=put(7,452,{five[0]},true);
+        on_map(0x43,placed);
+        check(!mc::separable(ram.data(),0x43,over),"a deployment record's Final Dancouga does not");
+        w8(placed+mc::unit_crew,5);
+        check(!mc::separable(ram.data(),0x43,over),"nor with a crew count but null pointers");
+        on_map(0x44,dancouga);
+        check(mc::separable(ram.data(),0x44,over),"the original's Dancouga: as the original");
+        check(mc::separable(ram.data(),0x10,over) && mc::separable(ram.data(),-1,over),"not a map handle: as the original");
     }
 
     {

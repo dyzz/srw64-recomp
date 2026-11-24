@@ -1,6 +1,8 @@
 #pragma once
 #include "intermission_menu.hpp"
 #include "json/json.hpp"
+#include <utility>
+#include <memory>
 #include <cstdint>
 #include <filesystem>
 #include <string>
@@ -13,6 +15,9 @@
 namespace srw64::intermission_page {
 void configure(const std::filesystem::path& directory);
 nlohmann::json state();
+// The same without copying it, and a revision that moves only when it changed (the UI's
+// frames, page_snapshot.hpp).
+std::pair<std::shared_ptr<const nlohmann::json>,uint64_t> shared_state();
 // Window thread: "move:N", "choose:N", "swap-move:N", "swap:N", "swap-close" for page `serial`.
 void answer(uint64_t serial,const std::string& action);
 // While the page is up, and until the keys that closed it are released, the game
