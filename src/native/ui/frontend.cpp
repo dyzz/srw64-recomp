@@ -829,6 +829,7 @@ button.mv-stage .mv-fail {position:absolute; left:0; top:45%; width:100%; text-a
 .lib-wrow .n .name {white-space:nowrap;}
 .lib-wrow .c {width:40dp; flex-shrink:0; text-align:right; white-space:nowrap;}
 .lib-wrow .c.big {width:48dp; font-size:15dp; font-weight:bold;}
+.lib-wrow .c.wide {width:48dp;}
 .lib-wrow .c.full {color:#8fe4ff;} .lib-wrow .c.ty {width:34dp;}
 .lu-flag {display:inline-block; white-space:nowrap; margin-left:2dp; padding:0 5dp; font-size:10dp; font-weight:bold; color:#e8eefc; background-color:#2c3a66;}
 .lu-flag.unlock {color:#0b1230; background-color:#ffd75e;}
@@ -2638,7 +2639,9 @@ std::string library_unit(const json& u,const json& L,const json& W,const json& t
     const auto w=[&](const char* key){return escape(W.value(key,std::string()));};
     const json icons=W.value("icons",json::object());
     const auto& weapons=u.at("weapons");
-    body+=library_section(w("weapon"),"")+"<div class='lib-wrow head'><span class='n'></span><span class='c'>"+w("power")+"</span><span class='c full'>"+label("library_full")+
+    // The power and full-upgrade headings as wide as their columns' numbers (.big): at 40dp
+    // the Japanese フル改造 ran into 攻撃力 (Steam Deck, Largest, 2026-11-24).
+    body+=library_section(w("weapon"),"")+"<div class='lib-wrow head'><span class='n'></span><span class='c wide'>"+w("power")+"</span><span class='c wide full fit'>"+label("library_full")+
         "</span><span class='c ty'>"+label("library_type")+"</span><span class='c'>"+w("range")+"</span><span class='c'>"+w("hit")+"</span><span class='c fit'>"+label("library_critical")+
         "</span><span class='c'>"+w("ammo")+"</span><span class='c'>EN</span><span class='c'>"+label("library_morale")+"</span></div>";
     if(weapons.empty())body+="<p class='lib-note'>"+label("library_no_weapons")+"</p>";
