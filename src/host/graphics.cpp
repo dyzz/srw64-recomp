@@ -92,6 +92,7 @@ namespace RT64 { extern bool AndroidGpuDriverTooOld; }
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb/stb_image_write.h"
 #include <SDL.h>
+#include "autosave.hpp"
 #include <SDL_syswm.h>
 #ifdef __APPLE__
 #include <SDL_metal.h>
@@ -904,6 +905,7 @@ public:
 #endif
         apply_images();
 #ifdef __ANDROID__
+        trim_for_background();
         const auto t1 = Timing::clock::now();
 #endif
         apply_aspect();
@@ -1028,6 +1030,55 @@ private:
     float aspect_width = 0;
     std::vector<uint64_t> map_icon_hashes;
     int applied_map_icons = -1;
+#ifdef __ANDROID__
+    // Out of sight the system may end the process for its memory (autosave.hpp): once the
+    // background save is written, the replacements no picture uses and the pool of spare
+    // textures go, before the game is held. Replacements load again as they are drawn.
+    bool trimmed_for_background = false;
+    void trim_for_background() {
+        if (!srw64::autosave::trim_wanted()) { trimmed_for_background = false; return; }
+        if (trimmed_for_background) return;
+        trimmed_for_background = true;
+        auto& cache = *app->textureCache;
+        // The drain apply_images() does: nothing in flight uses what goes.
+        app->workloadQueue->waitForWorkloadId(app->state->workloadId);
+        app->presentQueue->waitForPresentId(app->state->presentId);
+        app->workloadQueue->waitForIdle(); app->presentQueue->waitForIdle();
+        size_t evicted = 0, pooled = 0;
+        uint64_t cached_before = 0, cached_after = 0;
+        {
+            std::unique_lock lock(cache.textureMapMutex);
+            auto& replacements = cache.textureMap.replacementMap;
+            cached_before = replacements.cachedTexturePoolSize;
+            const auto limit = replacements.maxTexturePoolSize;
+            const auto first = cache.textureMap.evictedTextures.size();
+            replacements.maxTexturePoolSize = 0;
+            replacements.evict(cache.textureMap.evictedTextures);
+            replacements.maxTexturePoolSize = limit;
+            evicted = cache.textureMap.evictedTextures.size() - first;
+            cached_after = replacements.cachedTexturePoolSize;
+            // As decrementLock() does at zero, without keeping them in the pool.
+            if (cache.lockCounter == 0) {
+                for (auto* texture : cache.textureMap.evictedTextures) delete texture;
+                cache.textureMap.evictedTextures.clear();
+            }
+        }
+        {
+            std::unique_lock lock(cache.texturePoolMutex);
+            for (const auto& [key, textures] : cache.texturePool) pooled += textures.size();
+            cache.texturePool.clear();
+        }
+        // The HD layers' pictures, then everything they retired, while nothing in flight reads them.
+        srw64::sprites::trim_background();
+        srw64::portraits::trim_background();
+        srw64::backgrounds::trim_background();
+        srw64::hdmap::trim_background();
+        srw64::gpu::flush_retired();
+        srw64::autosave::trimmed();
+        fprintf(stderr, "SRW64_BACKGROUND_TRIM replacements=%zu cached=%llu->%llu pooled=%zu\n", evicted,
+                (unsigned long long)cached_before, (unsigned long long)cached_after, pooled);
+    }
+#endif
     void apply_images() {
         auto& mode=srw64::presentation::image_mode;
         bool hd_icons=true;

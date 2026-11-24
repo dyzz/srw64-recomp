@@ -381,3 +381,31 @@ HD 包、设置、运行日志、ROM 仍只在私有目录。
 
 JNI（`SRW64Activity`）：`playerFolder()`、`choosePlayerFolder()`、`syncImport()`、`syncLooks()`、`syncMods()`（后三个阻塞等同步完成，最多 20 秒），`exportSaves`／`exportReport` 有文件夹时直接写进文件夹；`pickMod()`／`modPickStatus()` 是 MOD 页的文件选择器（mod-packages.md §10）。
 
+
+## 12. 切到后台被系统关闭（安卓，2026-11-24）
+
+玩家反馈「切换其他应用时游戏会完全退出」。Seeker 上复现：手动切走 30 秒、3 分钟都不会退出（进程被系统冻结，回来照常）；但后台进程被系统按内存回收（`am kill` 模拟）后，从最近任务回来是新进程，从 BANPRESTO 开机画面重新开始。游戏后台时约 1.4 GB PSS（带 HD 包；原生堆约 760 MB、显存约 560 MB），内存小的手机切去相机、游戏等应用时首先被回收。
+
+**后台存档**（`src/host/autosave.cpp`）：`SRW64Activity.onStop` 经 JNI `nativeBackground(true)` 调 `autosave::set_background`，`onStart` 收回。游戏线程每帧（`80085F30` 末尾 `autosave::frame`）看到进入后台时：
+
+- 先写 `saves/auto/resume.json`（`srw64.resume.v1`），指向本次运行最新写下的自动存档（没有就不写）；
+- 下一个存档点再单独存一份：地图空闲（`801C8B04`，与回合自动存档同一判定，不受「自动存档」开关和每回合一次的限制）存 `auto/background-map.sus`（中断格式，旁边 .json 带随机数和摘要，读回时照回合存档恢复随机数）；场间主菜单（`intermission_after_step`）存 `auto/background-inter.rec`（栏格式）。存完把 resume.json 改指向它。这两个文件名不是 `inter-`／`turn-` 开头，不进存档列表、不参与轮转；
+- 回到前台删除 resume.json（只删本次写的）。
+- 只在主线游戏里做：自定义战役的存档库、迷你关卡都不写。
+
+**启动时继续**：`autosave::configure` 读到 resume.json 且记录还在，就在标题环（主状态 3）弹「继续上次的进度」（`frontend.cpp` `resume_ask_panel`，词条 `resume_*`）。期间把标题空闲计数清零，不进演示和开场剧情。「继续」：地图存档照 ロード 页读回合存档的办法（`arm_suspend`＋`prepare_turn_load`＋主状态 6 子状态 0，即 コンティニュー）；场间存档照 ロード 确认窗 はい（`801C7A48`：音效 0xB7、`80080188(0x12)`、`80099814(5,1,2)`、主状态 7 子状态 0xF），`arm_load` 让游戏的栏 1 读这个文件。「不用」删除 resume.json；直接关掉窗口不算回答，下次启动再问。
+
+事件记在运行目录 `autosave-events.jsonl`：`background-start`、`background`、`note`、`foreground`、`offer`、`resume`、`declined`。
+
+**后台暂停与降内存**：
+
+- **暂停**：存完（或 20 帧内没遇到存档点，或 2 秒兜底）后 `on_vi` 停住 VI，游戏不再跑帧，后台 CPU 0%；回到前台继续。
+- **测量**（Seeker、带 HD 1.4，`dumpsys meminfo`）：刚启动到标题环 1118 MB，原生堆 720 MB；其中 8 份 20 MB 的简中字体（每个 FontSet 各读一份）约 160 MB。另有 96 张 1600×240 的作品名文字图解码后没上传（约 140 MB，未处理）。显存 300 MB，打一场战斗后涨到 552 MB：VMA 在手机唯一的大堆上按 256 MB 一块分配，块里有一点在用就不还。
+- **字体**：`portable_text.cpp` 按路径共用一份字节（`shared_font`，weak_ptr，最后一个面释放时释放）；FreeType 内存面只读。
+- **VMA 块**：安卓 `preferredLargeHeapBlockSize` 改 32 MB（`rt64_android_patches.py`）。
+- **后台裁剪**：存完后在 Gfx 线程 `send_dl` 里等工作负载和呈现空闲，然后：
+  - 逐出 RT64 未用的替换贴图，清空安卓贴图池；
+  - 四个 HD 图层（精灵、头像、背景、地图）交还贴图和已解码像素（`trim_background`，预载精灵和正在解码的不动，回来按需重新解码）；
+  - `gpu::flush_retired` 立即释放。
+- **结果**：标题 844 MB（原 1118），战斗后约 1233 MB（原约 1430），后台 1038 MB（原 1450，显存 520→300）。回前台标题、场间、战斗的 HD 图都正常重画。
+- **未做**：作品名文字图常驻、RmlUi 自己的字体副本和页面图片缓存。

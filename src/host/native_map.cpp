@@ -388,6 +388,18 @@ void evict_stale(size_t keep) {
     }
 }
 
+void trim_layer() {
+    std::lock_guard lock(asset_mutex);
+    for (auto& old : assets) {
+        if (!old.lazy || old.state != Asset::State::ready) continue;
+        struct Held { std::unique_ptr<gpu::Texture> base, index; std::unique_ptr<plume::RenderDescriptorSet> set; };
+        gpu::retire(std::make_shared<Held>(Held{std::move(old.base_texture), std::move(old.index_texture), std::move(old.textures)}));
+        old.state = Asset::State::waiting;
+        old.waited = false;
+        ++evicted;
+    }
+}
+
 bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, const RT64::NativeMeshDraw& call) {
     if ((call.id & 0xFFFF0000u) != kIdBase) return previous_render ? previous_render(list, framebuffer, call) : false;
     Draw draw;
@@ -796,6 +808,11 @@ void rewrite_panel(uint8_t* rdram, const PanelDraw& draw) {
     ++panel_rewritten;
 }
 
+void trim_background() {
+#ifndef SRW64_GL_ONLY
+    trim_layer();
+#endif
+}
 void shutdown() {
     {
         std::lock_guard lock(asset_mutex);

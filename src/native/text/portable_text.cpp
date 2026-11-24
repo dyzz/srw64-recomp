@@ -14,6 +14,7 @@
 #include <cmath>
 #include <fstream>
 #include <map>
+#include <memory>
 #include <set>
 #include <tuple>
 #include <mutex>
@@ -117,14 +118,27 @@ std::vector<uint8_t> read_font(const std::filesystem::path& path) {
     require(bool(file.read(reinterpret_cast<char*>(bytes.data()),size)),"Could not read complete font file");
     return bytes;
 }
+// One copy of each font file for every FontSet that uses it (the dialogue's, the HD lettering's
+// per locale, weight and style: eight sets held the 20 MB Chinese font eight times). FreeType
+// only reads a memory face's bytes, so faces share them; the copy goes with the last face.
+std::shared_ptr<const std::vector<uint8_t>> shared_font(const std::filesystem::path& path) {
+    static std::mutex mutex;
+    static std::map<std::filesystem::path,std::weak_ptr<const std::vector<uint8_t>>> loaded;
+    std::lock_guard lock(mutex);
+    auto& slot=loaded[path];
+    if(auto bytes=slot.lock())return bytes;
+    auto bytes=std::make_shared<const std::vector<uint8_t>>(read_font(path));
+    slot=bytes;
+    return bytes;
+}
 struct Face {
-    std::vector<uint8_t> bytes;
+    std::shared_ptr<const std::vector<uint8_t>> bytes;
     std::unique_ptr<std::remove_pointer_t<FT_Face>,decltype(&FT_Done_Face)> ft{nullptr,FT_Done_Face};
     std::unique_ptr<hb_font_t,decltype(&hb_font_destroy)> hb{nullptr,hb_font_destroy};
-    Face(FT_Library lib,const FontSource& source):bytes(read_font(source.path)) {
+    Face(FT_Library lib,const FontSource& source):bytes(shared_font(source.path)) {
         require(source.face_index>=0 && source.face_index<=65535,"Invalid font face index");
         FT_Face raw=nullptr;
-        require(FT_New_Memory_Face(lib,bytes.data(),static_cast<FT_Long>(bytes.size()),source.face_index,&raw)==0,
+        require(FT_New_Memory_Face(lib,bytes->data(),static_cast<FT_Long>(bytes->size()),source.face_index,&raw)==0,
                 "FreeType could not open font face");
         ft.reset(raw);
         if(source.weight>0)instance(lib,raw,source.weight);
@@ -168,7 +182,7 @@ struct FontSet::State {
         FT_Library raw=nullptr;require(FT_Init_FreeType(&raw)==0,"FreeType initialization failed");lib.reset(raw);
         size_t total=0;
         for(const auto& source:sources) {
-            auto face=std::make_unique<Face>(lib.get(),source);total+=face->bytes.size();
+            auto face=std::make_unique<Face>(lib.get(),source);total+=face->bytes->size();
             require(total<=2*max_font_bytes,"Portable font set exceeds memory budget");
             faces.push_back(std::move(face));
         }

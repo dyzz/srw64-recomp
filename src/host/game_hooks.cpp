@@ -1,5 +1,6 @@
 #include <cstdio>
 #include "game_hooks.hpp"
+#include "autosave.hpp"
 #include "battle_viewer.hpp"
 #include "map_movie.hpp"
 #include "battle_speaker.hpp"
@@ -509,6 +510,9 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     // refresh): a package the web maker link just put in (web_link.cpp) is read here, before
     // the viewer starts with it.
     if(const int major=srw64::intro::title_major();major==2 || major==3)srw64::mod_data::refresh(ram);
+    // Going to the background (Android): the background save's note, and on the title the
+    // offer to go back to a game the system closed there (autosave.hpp).
+    if(!srw64_overlay_loading())srw64::autosave::frame(ram,ctx);
     if(srw64_game_hooks.viewer_start) {
         // The battle viewer: a song to listen to (or the title's back), or a battle with
         // its song through the title overlay's own demo start (801CA230..801CA250): mode

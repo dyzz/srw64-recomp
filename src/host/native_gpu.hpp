@@ -66,6 +66,8 @@ std::vector<std::vector<uint8_t>> rgba_mips(std::vector<uint8_t> level0, uint32_
 
 // Keeps a GPU object alive until the work recorded with it has finished.
 void retire(std::shared_ptr<void> object);
+// With the GPU idle (graphics.cpp's background trim): what was retired goes now.
+void flush_retired();
 
 // A texture in shader-read layout, filled on first use from CPU levels.
 class Texture {

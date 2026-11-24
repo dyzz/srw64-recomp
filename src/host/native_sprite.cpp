@@ -460,6 +460,23 @@ void work() {
     }
 }
 
+#ifndef SRW64_GL_ONLY
+void trim_layer() {
+    std::lock_guard lock(asset_mutex);
+    for (auto& asset : assets) {
+        // Preloads are made once for frames that cannot wait; a decode under way finishes.
+        if (asset->preload || asset->state != Asset::ready) continue;
+        if (asset->set || asset->texture) {
+            struct Held { std::unique_ptr<gpu::Texture> texture; std::unique_ptr<plume::RenderDescriptorSet> set; };
+            gpu::retire(std::make_shared<Held>(Held{std::move(asset->texture), std::move(asset->set)}));
+        }
+        asset->levels.clear(); asset->levels.shrink_to_fit();
+        asset->gl_pixels.reset();
+        asset->state = Asset::idle;
+    }
+}
+#endif
+
 // Any thread: drawable now, without queueing it.
 bool is_ready(int index) {
     std::lock_guard lock(asset_mutex);
@@ -1315,6 +1332,11 @@ bool place_texts(uint8_t* rdram, uint32_t marker, const float bounds[4], const s
 }
 TextCounts text_counts() { return {text_placed.load(), text_waiting.load()}; }
 
+void trim_background() {
+#ifndef SRW64_GL_ONLY
+    trim_layer();
+#endif
+}
 void shutdown() {
     if (!installed) return;
     {
