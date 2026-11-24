@@ -1,27 +1,26 @@
 ---
-// The big download button. Every platform's button is rendered; a small script
+// The home page's download box. Every platform's button is rendered; a small script
 // shows the one for the reader's system (all of them stay visible without it).
 // A platform the current release has no file for links to its install steps. The HD
-// pack, one download for the computers and Android, has its own button beside them. The
-// Switch is downloaded from another device, so its package and its own HD pack are a row
-// of their own that the script never hides.
+// pack, one download for the computers and Android, has its own button beside them.
+// Under them, always shown, a grid of all six platforms, each leading to its install steps,
+// the reader's own marked: no platform gets a row of its own on the home page, the Switch
+// included (user, 2026-11-24). The slot is the box's last line.
 import { fileFor, hd, mb, release, PLATFORM_LABEL, type Platform } from '../data/release';
 import Mirrors from './Mirrors.astro';
+import PlatformIcon from './PlatformIcon.astro';
+import { HOME } from '../copy/home';
 import { UI, tl, type Lang } from '../i18n';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const t = {
-  other: { zh: '其他平台', en: 'Other platforms', ja: 'ほかのプラットフォーム', ko: '다른 플랫폼' },
   steps: { zh: '查看安装方法', en: 'Installation instructions', ja: 'インストール方法を見る', ko: '설치 방법 보기' },
   hd: { zh: '下载 HD 美术包', en: 'Download the HD art pack', ja: 'HD アートパックをダウンロード', ko: 'HD 아트 팩 다운로드' },
   hdNote: { zh: '可选，电脑与 Android 通用', en: 'optional, computers and Android', ja: '任意・パソコンと Android 共通', ko: '선택 사항, PC와 Android 공용' },
   hdHow: { zh: 'HD 包怎么装', en: 'Installing the HD pack', ja: 'HD パックの入れ方', ko: 'HD 팩 설치 방법' },
-  switchHd: { zh: '下载 Switch HD 美术包', en: 'Download the Switch HD art pack', ja: 'Switch 用 HD アートパックをダウンロード', ko: 'Switch용 HD 아트 팩 다운로드' },
-  switchHdNote: { zh: '可选，Switch 专用', en: 'optional, Switch only', ja: '任意・Switch 専用', ko: '선택 사항, Switch 전용' },
 };
+const c = HOME[tl(lang)];
 const hdFile = fileFor('hd');
-const switchFile = fileFor('switch');
-const switchHdFile = fileFor('switch-hd');
 const platforms: Platform[] = ['windows', 'macos', 'linux', 'android'];
 const label = (p: Platform) =>
   lang === 'en' ? `Download for ${PLATFORM_LABEL[p]}` : lang === 'ja' ? `${PLATFORM_LABEL[p]} 版をダウンロード` : lang === 'ko' ? `${PLATFORM_LABEL[p]}용 다운로드` : `下载 ${PLATFORM_LABEL[p]} 版`;
@@ -32,6 +31,7 @@ const items = platforms.map((p) => {
     : { p, href: `/${lang}/install/#${p}`, text: `${PLATFORM_LABEL[p]}`, small: t.steps[tl(lang)], file: false };
 });
 ---
+<div class="dl-box panel">
 <div class="dl" data-dl>
   {items.map((it) => (
     <a class={`btn big ${it.file ? '' : 'ghost'}`} href={it.href} data-platform={it.p} data-file={it.file ? '1' : undefined}
@@ -40,33 +40,35 @@ const items = platforms.map((p) => {
       <span>{it.text}<small>{it.small}</small></span>
     </a>
   ))}
-</div>
-{hdFile && (
-  <a class="btn cyan hd" href={hdFile.url} data-umami-event="download" data-umami-event-platform="hd" data-umami-event-language={lang} data-umami-event-source="home">
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M11 3h2v10.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17V3Zm-7 16h16v2H4v-2Z"/></svg>
-    <span>{t.hd[tl(lang)]}<small>{hd.version && `HD ${hd.version} · `}{mb(hdFile.bytes)} · {t.hdNote[tl(lang)]}</small></span>
-  </a>
-)}
-{switchFile && (
-  <div class="switch">
-    <a class="btn ghost" href={switchFile.url} data-umami-event="download" data-umami-event-platform="switch" data-umami-event-language={lang} data-umami-event-source="home">
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M11 3h2v10.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17V3Zm-7 16h16v2H4v-2Z"/></svg>
-      <span>{label('switch')}<small>v{(switchFile as { version?: string }).version ?? release.version} · {mb(switchFile.bytes)}</small></span>
+  {hdFile && (
+    <a class="btn ghost hd" href={hdFile.url} data-umami-event="download" data-umami-event-platform="hd" data-umami-event-language={lang} data-umami-event-source="home">
+      <PlatformIcon id="hd" />
+      <span>{t.hd[tl(lang)]}<small>{hd.version && `HD ${hd.version} · `}{mb(hdFile.bytes)} · {t.hdNote[tl(lang)]}</small></span>
     </a>
-    {switchHdFile && (
-      <a class="btn ghost" href={switchHdFile.url} data-umami-event="download" data-umami-event-platform="switch-hd" data-umami-event-language={lang} data-umami-event-source="home">
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M11 3h2v10.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17V3Zm-7 16h16v2H4v-2Z"/></svg>
-        <span>{t.switchHd[tl(lang)]}<small>{hd.version && `HD ${hd.version} · `}{mb(switchHdFile.bytes)} · {t.switchHdNote[tl(lang)]}</small></span>
-      </a>
-    )}
-  </div>
-)}
+  )}
+</div>
 <Mirrors lang={lang} />
-<p class="more">
-  <a class="other" href={`/${lang}/install/#downloads`} data-other hidden>{t.other[tl(lang)]} →</a>
-  {hdFile && <a href={`/${lang}/install/#hd`}>{t.hdHow[tl(lang)]} →</a>}
-  <a href={`/${lang}/releases/`}>{UI.nav.releases[tl(lang)]} →</a>
-</p>
+<div class="pf-head">
+  <h2>{c.platformsTitle} <span>{c.platformsHint}</span></h2>
+  <a href={`/${lang}/install/#downloads`}>{c.allPlatforms} →</a>
+</div>
+<ul class="pfs">
+  {c.platforms.map((p) => (
+    <li><a href={`/${lang}/install/#${p.id}`} data-pf={p.id}>
+      <span class="pf-top"><PlatformIcon id={p.id} /><span class="cur" hidden>{c.platformsCurrent}</span></span>
+      <strong class="latin">{p.id === 'switch' ? 'Switch' : p.name}</strong>
+      <span class="note">{p.note}{p.experimental && <span class="exp">{c.experimental}</span>}</span>
+    </a></li>
+  ))}
+</ul>
+<div class="foot">
+  <slot />
+  <p class="more">
+    {hdFile && <a href={`/${lang}/install/#hd`}>{t.hdHow[tl(lang)]} →</a>}
+    <a href={`/${lang}/releases/`}>{UI.nav.releases[tl(lang)]} →</a>
+  </p>
+</div>
+</div>
 
 <script>
   const root = document.querySelector<HTMLElement>('[data-dl]');
@@ -80,7 +82,9 @@ const items = platforms.map((p) => {
     if (p) {
       root.querySelectorAll<HTMLElement>('[data-platform]').forEach((a) => { a.hidden = a.dataset.platform !== p; });
       root.classList.add('one');
-      document.querySelector<HTMLElement>('[data-other]')!.hidden = false;
+      // The reader's own system in the grid (a Steam Deck reads as Linux).
+      const tile = document.querySelector<HTMLElement>(`[data-pf="${p}"]`);
+      if (tile) { tile.classList.add('current'); tile.querySelector<HTMLElement>('.cur')!.hidden = false; }
     } else {
       // Desktop-less or unknown systems see the platforms that have a download.
       root.querySelectorAll<HTMLElement>('[data-platform]:not([data-file])').forEach((a) => { a.hidden = true; });
@@ -89,13 +93,44 @@ const items = platforms.map((p) => {
 </script>
 
 <style>
-  .dl { display: flex; flex-wrap: wrap; gap: 10px; }
+  .dl-box { width: 100%; max-width: 1080px; margin-top: 10px; padding: 26px 28px 22px; display: grid; gap: 18px; background: linear-gradient(180deg, rgba(16, 24, 56, 0.92), rgba(12, 18, 44, 0.92)); }
+  .dl { display: flex; flex-wrap: wrap; gap: 12px; }
   .dl .btn { text-align: left; }
   .dl .btn[hidden] { display: none; }
   .dl:not(.one) .btn { min-height: 56px; font-size: 15px; }
-  .hd { margin-top: 10px; text-align: left; min-height: 50px; }
-  .switch { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
-  .switch .btn { text-align: left; min-height: 50px; }
-  .more { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 10px 0 0; font-size: 14px; }
-  .other[hidden] { display: none; }
+  .dl .hd { min-height: 60px; box-shadow: inset 0 0 0 1px rgba(63, 208, 255, 0.4); }
+  .dl .hd small { color: var(--muted); opacity: 1; }
+  .dl .hd :global(svg) { width: 22px; height: 22px; flex-shrink: 0; color: var(--cyan); }
+  .dl-box :global(.mirrors) { margin: 0; }
+  .pf-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 16px; padding-top: 18px; border-top: 1px solid var(--line-soft); }
+  .pf-head h2 { font-size: 16px; font-weight: 700; letter-spacing: 0; }
+  .pf-head h2 span { margin-left: 6px; font-size: 14px; font-weight: 500; color: var(--muted); }
+  .pf-head a { font-size: 14px; }
+  .pfs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+  .pfs a { display: grid; gap: 6px; align-content: start; height: 100%; box-sizing: border-box; padding: 14px 14px 12px; color: var(--text); text-decoration: none; background: rgba(63, 208, 255, 0.06); box-shadow: inset 0 0 0 1px var(--line-soft); transition: background-color 0.15s; }
+  .pfs a:hover { background: rgba(63, 208, 255, 0.16); }
+  .pfs a.current { background: rgba(255, 215, 94, 0.12); box-shadow: inset 0 0 0 1px rgba(255, 215, 94, 0.55); }
+  .pf-top { display: flex; align-items: center; justify-content: space-between; gap: 6px; min-height: 20px; }
+  .pf-top :global(svg) { width: 20px; height: 20px; color: var(--cyan); }
+  .current .pf-top :global(svg) { color: var(--gold); }
+  .cur { padding: 0 6px; font-size: 11.5px; font-weight: 700; color: var(--ink); background: var(--gold); white-space: nowrap; }
+  .cur[hidden] { display: none; }
+  .pfs strong { font-size: 17px; }
+  .pfs .note { font-size: 12.5px; line-height: 1.5; color: var(--muted); }
+  .pfs .exp { display: inline-block; margin-left: 6px; padding: 0 6px; font-size: 11px; line-height: 1.5; color: var(--orange); border: 1px solid rgba(255, 181, 71, 0.6); border-radius: 3px; white-space: nowrap; }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; }
+  .more { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0; font-size: 14px; }
+  @media (max-width: 1000px) { .pfs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 640px) {
+    .dl-box { padding: 18px 16px; gap: 14px; }
+    .dl .btn { width: 100%; justify-content: flex-start; }
+    .pfs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .pfs a { display: flex; align-items: center; gap: 10px; padding: 8px 12px; min-height: 52px; }
+    .pf-top { display: contents; }
+    .pf-top :global(svg) { flex-shrink: 0; }
+    .cur, .cur[hidden] { display: none; }   /* the gold frame marks the reader's system */
+    .pfs strong { font-size: 15px; }
+    .pfs .note { display: none; }
+    .pf-head h2 span { display: block; margin: 2px 0 0; }
+  }
 </style>
