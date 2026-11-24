@@ -1561,6 +1561,10 @@
     "old": "Vairose",
     "new": "Virose"
    },
+   "zh-Hans": {
+    "old": "瓦伊罗斯",
+    "new": "斩空者"
+   },
    "gate": false,
    "sections": [
     "units"
