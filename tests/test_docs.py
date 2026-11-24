@@ -28,7 +28,8 @@ ELSEWHERE = {
 
 
 def local_evidence(path: Path) -> bool:
-    return path.is_relative_to(ROOT / "build") or (path.is_relative_to(ROOT / "assets") and path.name != "README.md")
+    # build/ and output/ (both ignored) hold a machine's own evidence, absent from a clean checkout.
+    return path.is_relative_to(ROOT / "build") or path.is_relative_to(ROOT / "output") or (path.is_relative_to(ROOT / "assets") and path.name != "README.md")
 
 
 class DocsTests(unittest.TestCase):
