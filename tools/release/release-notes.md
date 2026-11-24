@@ -62,16 +62,21 @@ The largest change in this version: a package can now add units, weapons and cha
 ### Windows
 
 - **PCs whose GPU RT64 cannot use now run the game**: with neither Direct3D 12 shader model 6.0 nor Vulkan 1.2 (Intel before the 6th generation, older NVIDIA and AMD cards), the game draws with a compatible OpenGL renderer instead of failing to start. The same happens when RT64 fails to start after all.
-  - This renderer has no frame interpolation, MSAA or RetroArch filters, so those settings are greyed out.
+  - This renderer has no frame interpolation, MSAA or RetroArch filters, so those settings cannot be chosen.
   - It draws at a lower resolution by default; **Picture detail** in the settings raises it.
 - AMD Vega integrated graphics use Vulkan, since Direct3D 12 reset their driver.
 - A PC with no GPU driver no longer crashes at start.
 - No console window flashes open when the game starts.
 
+### Android
+
+- **A game the system closes in the background comes back where it was left**: once you switch to another app, the game saves at its next save point (the map waiting for orders, or the intermission's menu), apart from your saves and autosaves. If Android then closes it, the next start offers to go back to that map or intermission.
+- In the background the game stops running and gives back memory. With the HD pack it takes 703 MB instead of 1118 MB at the title and 887 MB instead of 1450 MB in the background on our test phone, so the system closes it less often.
+
 ### Controls, touch and launchers
 
 - **Phone controls can be moved and resized**: Settings → Input → Button layout. Drag the D-pad or any button, size each one or all together, then save, cancel or go back to the defaults.
-- **Quit game** at the foot of the settings window, reached by Up from the tab bar. Left and Right move between a question's answers.
+- **Quit game** at the foot of the settings window (not on Android), reached by Up from the tab bar. Left and Right move between a question's answers.
 - A controller reaches the title's corner entries at PRESS START. The language list shows 한국어 instead of boxes.
 - The title's Library, Battle Viewer and MOD entries take a tap even under a touch button. A failed HD import on Android says what went wrong.
 - **RecompLauncher**:
@@ -206,16 +211,21 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 #### Windows
 
 - **RT64 用不了的显卡也能玩了**：既没有 Direct3D 12 着色器模型 6.0、也没有 Vulkan 1.2 时（6 代以前的 Intel 核显、较老的 NVIDIA 和 AMD 显卡），游戏改用兼容的 OpenGL 渲染方式，不再打不开。RT64 启动失败时也会这样切换。
-  - 这种方式没有插帧、MSAA 和 RetroArch 滤镜，这几项设置会变灰。
+  - 这种方式没有插帧、MSAA 和 RetroArch 滤镜，这几项设置不能选。
   - 默认分辨率较低，设置里的**画面精细度**可以调高。
 - AMD Vega 核显改用 Vulkan，因为 Direct3D 12 会让它的驱动重置。
 - 没有显卡驱动的电脑启动时不再闪退。
 - 启动时不再闪出控制台窗口。
 
+#### 安卓
+
+- **切到后台被系统关闭后能回到原处**：切到其他应用后，游戏在下一个存档点（地图上等待指令时，或场间主菜单）另存一份，不占存档栏，也不影响自动存档。之后如果系统把游戏关掉，下次启动会问要不要回到当时的地图或场间画面。
+- 在后台时游戏停止运行，并交还内存。带 HD 包时，测试手机上标题画面占用的内存从 1118 MB 降到 703 MB，后台从 1450 MB 降到 887 MB，被系统关掉的情况会少一些。
+
 #### 操作、触屏与启动器
 
 - **手机触屏按键可以移动和调大小**：设置 → 操作 → 按键布局。拖动方向键或任意按钮，单独或整体调大小，然后保存、取消或恢复默认。
-- **设置窗口底部有「退出游戏」**，从页签栏按上即可选到。问答框里可以用左右键切换选项。
+- **设置窗口底部有「退出游戏」**（安卓没有），从页签栏按上即可选到。问答框里可以用左右键切换选项。
 - 在 PRESS START 画面，手柄也能选到标题画面角落的入口。语言列表里的「한국어」不再显示成方块。
 - 标题画面的图鉴、战斗查看器和 MOD 被触屏按键盖住时也能点到。安卓导入 HD 包失败时会说明原因。
 - **RecompLauncher**：
