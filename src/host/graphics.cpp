@@ -1372,13 +1372,15 @@ public:
         // The original pictures: the Vita carries no HD art (docs/design/psv-port.md). Not
         // original_only(), which the HD layers read as "no switch", that is HD where they can.
         // The Switch's NRO carries the HD pack, prepared for its GPU (tools/release/switch/prepare-hd): HD by
-        // default, the settings' switch back to the originals; SRW64_HD_ART elsewhere.
+        // default, the settings' switch back to the originals; elsewhere the pack the launcher
+        // gives RT64 (SRW64_ART_PACK, launch.cpp), or SRW64_HD_ART when set by hand.
         std::filesystem::path hd_art;
         {
 #ifdef __SWITCH__
             hd_art = srw64_switch_hd_art();
 #else
             const char* hd_env = std::getenv("SRW64_HD_ART");
+            if (!hd_env || !*hd_env) hd_env = std::getenv("SRW64_ART_PACK");
             hd_art = hd_env ? hd_env : "";
 #endif
             std::error_code missing;
