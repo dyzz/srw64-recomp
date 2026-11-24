@@ -1068,9 +1068,20 @@ struct Actions : Rml::EventListener {
             if(el->GetTagName()=="button"){choose(el->GetId());break;}
     }
 } actions;
+void unfit(Rml::Element* e,bool descendants);
 // One-line text marked 'fit' that runs past its box after layout gets a smaller face,
 // in proportion, down to 60 % (or its data-fit-min): names and notes whose length the page cannot know.
+// Text that also has the class fit-group shares one face with the rest of its group on the
+// page (data-fit-group): the smallest any of them needs, so a page's weapon names are one
+// size, not a long one smaller than the others (user, 2026-11-24). The group starts again
+// from its own faces each time, so a part patched in place cannot keep an old page's size.
 void fit_lines(Rml::ElementDocument* doc) {
+    Rml::ElementList grouped;doc->QuerySelectorAll(grouped,".fit-group");
+    if(!grouped.empty()) {
+        bool reset=false;
+        for(auto* e:grouped)if(e->GetAttribute("data-fit-from")){unfit(e,false);reset=true;}
+        if(reset)doc->UpdateDocument();
+    }
     Rml::ElementList lines;doc->QuerySelectorAll(lines,".fit");
     // A flex row gives a shrinking item back some room, so a second look settles it.
     for(int pass=0;pass<3;++pass) {
@@ -1088,6 +1099,20 @@ void fit_lines(Rml::ElementDocument* doc) {
         if(!changed)break;
         doc->UpdateDocument();
     }
+    if(grouped.empty())return;
+    std::map<std::string,float> smallest;
+    for(auto* e:grouped) {
+        const auto group=e->GetAttribute<Rml::String>("data-fit-group","");
+        const float size=e->GetComputedValues().font_size();
+        if(const auto at=smallest.find(group);at==smallest.end() || size<at->second)smallest[group]=size;
+    }
+    bool changed=false;
+    for(auto* e:grouped) {
+        const float size=e->GetComputedValues().font_size(),to=smallest[e->GetAttribute<Rml::String>("data-fit-group","")];
+        if(to>=size-.01f)continue;
+        e->SetProperty("font-size",std::to_string(to)+"px");e->SetAttribute("data-fit-from",e->GetAttribute<float>("data-fit-from",size));changed=true;
+    }
+    if(changed)doc->UpdateDocument();
 }
 // chrome: drawn over a RetroArch filter instead of under it (LayerMark above).
 // A page (not chrome) keeps to page_area() by a transparent border on its body: the body's
@@ -4844,7 +4869,7 @@ std::string weapon_name_html(const json& r,const json& W,float u,float width) {
     // The name keeps to the room its marker icons leave and shrinks there (fit_lines), rather than the
     // column clipping the P／B／MAP icon.
     float room=width;for(const auto& m:markers)room-=m=="MAP"?26:15;
-    name+="<span class='fit' data-fit-min='0.5' style='max-width:"+px(room)+"; vertical-align:middle;'>"+escape(r.value("display_name",r.value("name",std::string())))+"</span>";
+    name+="<span class='fit fit-group' data-fit-group='weapon-name' data-fit-min='0.5' style='max-width:"+px(room)+"; vertical-align:middle;'>"+escape(r.value("display_name",r.value("name",std::string())))+"</span>";
     for(const auto& m:markers)if(m!="格" && m!="射")name+=badge(m.get<std::string>());
     return name;
 }
@@ -4854,7 +4879,9 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
     // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
     const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
         const bool name=cls.empty();
-        return "<span class='fit "+cls+"' style='width:"+px(name?width-4:width)+";"+(name?" margin-right:"+px(4)+";":"")+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+        // The labels (dim, not a value dimmed with its row) share one face, as the weapon names do (fit_lines).
+        const std::string group=cls=="im-dim"?" fit-group' data-fit-group='weapon-label":"";
+        return "<span class='fit "+cls+group+"' style='width:"+px(name?width-4:width)+";"+(name?" margin-right:"+px(4)+";":"")+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
     const auto cell=[&](float x0,float x1,float y0,float y1,const std::string& content,const std::string& extra=""){
         return "<div style='position:absolute; left:"+px(x0-21)+"; top:"+px(y0-21)+"; width:"+px(x1-x0)+"; height:"+px(y1-y0)+"; border-width:"+px(line)+"; border-color:#3a78e0; box-sizing:border-box; line-height:"+px(y1-y0-2*line)+"; white-space:nowrap; overflow:hidden;"+extra+"'>"+content+"</div>";
     };
@@ -4864,10 +4891,10 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
     const auto range=[](const json& r){const unsigned a=r.value("range_min",0u),b=r.value("range_max",0u);return a==b?std::to_string(a):std::to_string(a)+"\uff5e"+std::to_string(b);};
     const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
     std::string body=cell(21,68,21,44,"<div style='text-align:right; padding-right:"+px(4)+";'>"+escape(page_text)+"</div>")+
-        cell(68,164,21,44,"<div style='text-align:center;' class='im-dim fit'>"+escape(wl("weapon"))+"</div>")+
-        cell(164,220,21,44,"<div style='text-align:center;' class='im-dim fit'>"+escape(wl("power"))+"</div>")+
-        cell(220,260,21,44,"<div style='text-align:center;' class='im-dim fit'>"+escape(wl("range"))+"</div>")+
-        cell(260,299,21,44,"<div style='text-align:center;' class='im-dim fit'>"+escape(wl("hit"))+"</div>");
+        cell(68,164,21,44,"<div style='text-align:center;' class='im-dim fit fit-group' data-fit-group='weapon-label'>"+escape(wl("weapon"))+"</div>")+
+        cell(164,220,21,44,"<div style='text-align:center;' class='im-dim fit fit-group' data-fit-group='weapon-label'>"+escape(wl("power"))+"</div>")+
+        cell(220,260,21,44,"<div style='text-align:center;' class='im-dim fit fit-group' data-fit-group='weapon-label'>"+escape(wl("range"))+"</div>")+
+        cell(260,299,21,44,"<div style='text-align:center;' class='im-dim fit fit-group' data-fit-group='weapon-label'>"+escape(wl("hit"))+"</div>");
     std::string list;
     for(unsigned n=0;n<rows.size();++n) {
         const auto& r=rows[n];
@@ -4907,14 +4934,14 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
     const std::string ammo=sel.contains("ammo")?std::to_string(sel.value("ammo",0u))+"/"+std::to_string(sel.value("ammo_max",0u)):std::string("--/--");
     const std::string terrain=sel.value("terrain",std::string("----"));
     const bool low_morale=sel.value("morale",0)>0 && unit.value("morale",-1)>=0 && sel.value("morale",0)>unit.value("morale",-1),low_en=sel.value("en",0)>0 && sel.value("en",0)>unit.value("en",0);
-    const auto letter=[&](float x0,float x1,const char* key,const std::string& v){return cell(x0,x1,160,180,"<div class='im-row' style='padding:0 "+px(3)+";'>"+span(wl(key),16,"im-dim",std::min(10.5f,15.f/std::max(1.f,text_units(wl(key)))))+span(v,x1-x0-24,"im-right")+"</div>");};
+    const auto letter=[&](float x0,float x1,const char* key,const std::string& v){return cell(x0,x1,160,180,"<div class='im-row' style='padding:0 "+px(3)+";'>"+span(wl(key),16,"im-dim")+span(v,x1-x0-24,"im-right")+"</div>");};
     body+=cell(21,100,160,180,"<div class='im-row' style='padding:0 "+px(3)+";'>"+span(wl("ammo"),30,"im-dim")+span(ammo,42,"im-right")+"</div>")+
-        cell(100,140,160,180,"<div style='text-align:center; font-size:"+px(std::min(10.5f,36.f/std::max(1.f,text_units(wl("terrain")))))+";' class='im-dim'>"+escape(wl("terrain"))+"</div>")+
+        cell(100,140,160,180,"<div style='text-align:center;' class='im-dim fit fit-group' data-fit-group='weapon-label'>"+escape(wl("terrain"))+"</div>")+
         letter(140,180,"air",terrain.substr(0,1))+letter(180,220,"land",terrain.substr(1,1))+letter(220,260,"sea",terrain.substr(2,1))+letter(260,299,"space",terrain.substr(3,1))+
         cell(21,164,180,220,"<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("morale"),60,"im-dim")+span(need(sel.value("morale",json()),unit.value("morale",-1)),76,low_morale?"im-right im-down":"im-right")+"</div>"
             "<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("en"),60,"im-dim")+span(need(sel.value("en",json()),unit.value("en",-1)),76,low_en?"im-right im-down":"im-right")+"</div>","line-height:"+px(19)+";")+
         cell(164,299,180,220,"<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("skill"),56,"im-dim")+span(sel.contains("skill_name")?sel.value("skill_name",std::string()):sel.contains("combo")?localization::catalog().ui("ability_combo"):std::string(),72)+"</div>"
-            "<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("critical"),80,"im-dim",std::min(10.5f,78/std::max(1.f,text_units(wl("critical")))))+span(signed_number(sel.value("critical",json()))+"%",48,"im-right")+"</div>","line-height:"+px(19)+";");
+            "<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("critical"),80,"im-dim")+span(signed_number(sel.value("critical",json()))+"%",48,"im-right")+"</div>","line-height:"+px(19)+";");
     return body;
 }
 

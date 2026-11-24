@@ -34,6 +34,9 @@
 #include "stage_info.hpp"
 #include "text_update.hpp"
 #include "mod_library.hpp"
+#include "map_movie.hpp"
+#include "web_link.hpp"
+#include "native_sprite.hpp"
 #include "native_portrait.hpp"
 #include "ui_renderer_gl.hpp"
 #include "native_dialogue.hpp"
@@ -58,7 +61,8 @@ unsigned generation=0;   // bumped when a fixture's states are put in
 json get(const std::string& page){auto it=states.find(page);return it==states.end()?json{{"visible",false}}:it->second;}
 }
 #define PAGE(ns) namespace srw64::ns { json state(){return fixture::get(#ns);} void answer(uint64_t,const std::string&){} \
-    bool owns_input(){return false;} void window_claim_input(bool){} }
+    bool owns_input(){return false;} void window_claim_input(bool){} \
+    std::pair<std::shared_ptr<const json>,uint64_t> shared_state(){return {std::make_shared<const json>(fixture::get(#ns)),fixture::generation};} }
 PAGE(battle_page) PAGE(intermission_page) PAGE(upgrade_page) PAGE(parts_page) PAGE(ability_page) PAGE(swap_page) PAGE(save_page) PAGE(title_page)
 // The セーブ settings page: the library is on, with the fixture's import folder.
 namespace srw64::save_store {
@@ -127,6 +131,21 @@ std::filesystem::path data_folder(){return "/home/a-rather-long-user-name/.local
 std::string bezel(){return {};} void set_bezel(const std::string&){} std::string filter(){return {};} void set_filter(const std::string&){}
 unsigned filter_scale(){return 1;} void set_filter_scale(unsigned){} unsigned cheats(){return 0;} void set_cheats(unsigned){}
 std::vector<LookFolder> bezel_roots(){return {};} std::vector<LookFolder> filter_roots(){return {};}
+// The RT64 renderer's features; the web link off.
+RendererFeatures renderer_features(){return {};} unsigned picture_scale(){return 1;} unsigned picture_scale_at_start(){return 1;} void set_picture_scale(unsigned){}
+bool web_link(){return false;} void set_web_link(bool){}
+}
+// No map movie, sprite frame or web page link in the audit.
+namespace srw64::map_movie {
+const Info& info(unsigned){static const Info none{};return none;}
+void play(unsigned){} void pause(bool){} void step(int){} void set_loop(bool){} void stop(){}
+Picture picture(){return {};} Picture preview(unsigned,unsigned){return {};} unsigned length(unsigned){return 0;} unsigned scenes(unsigned){return 0;}
+std::optional<Image> frame_image(uint16_t,uint16_t,uint16_t,uint8_t){return std::nullopt;}
+}
+namespace srw64::sprites { std::string frame_file(uint16_t,uint16_t,uint16_t,uint8_t){return {};} }
+namespace srw64::web_link {
+bool listening(){return false;} std::string failure(){return {};} std::optional<Prompt> prompt(){return std::nullopt;} void answer(unsigned,bool){}
+void run_view(const std::function<std::string(const nlohmann::json&)>&){}
 }
 namespace srw64::cheats { std::vector<Pilot> pilots(){return {};} void request_level(unsigned,unsigned){} }
 namespace srw64::post_filter { Status status(){return {};} }
@@ -150,6 +169,7 @@ std::vector<Package> installed(const Version&){return {};} std::vector<LooseResu
 InstallResult install(const fs::path&){return {};} bool set_enabled(const std::string&,bool){return true;} bool remove(const std::string&){return true;}
 void set_game_version(const Version&){} fs::path directory(){return {};}
 std::vector<std::string> archive_voices(const fs::path&){return {};}
+std::shared_ptr<const Files> open_files(const fs::path&){return nullptr;} bool remove_failed(const std::string&){return true;}
 }
 // No language package brings faces of its own, and no game runs (mini_stage.hpp).
 namespace srw64::text { std::vector<std::filesystem::path> locale_fonts(const std::string&){return {};} }
