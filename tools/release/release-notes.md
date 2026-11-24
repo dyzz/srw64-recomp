@@ -70,7 +70,7 @@ The largest change in this version: a package can now add units, weapons and cha
 
 ### Controls, touch and launchers
 
-- **Phone controls can be moved and resized**: Settings → Controls → Button layout. Drag the D-pad or any button, size each one or all together, then save, cancel or go back to the defaults.
+- **Phone controls can be moved and resized**: Settings → Input → Button layout. Drag the D-pad or any button, size each one or all together, then save, cancel or go back to the defaults.
 - **Quit game** at the foot of the settings window, reached by Up from the tab bar. Left and Right move between a question's answers.
 - A controller reaches the title's corner entries at PRESS START. The language list shows 한국어 instead of boxes.
 - The title's Library, Battle Viewer and MOD entries take a tap even under a touch button. A failed HD import on Android says what went wrong.
