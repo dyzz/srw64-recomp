@@ -15,6 +15,8 @@ import * as storyImage from '../lib/story-image';
 import * as anim from '../lib/weapon-animation';
 import type { Join, Wave, WaveUnit, DeploySide } from '../lib/story-image';
 import { foot, reduce } from '../lib/pixels';
+import { commitRedraw } from '../lib/commit-redraw';
+import TEMPLATE from '../data/templates/unit-maker.json';
 
 type Kind = 'pilots' | 'units' | 'weapons';
 type Tab = Kind | 'sprites' | 'story' | 'voices';
@@ -1388,6 +1390,11 @@ export function initUnitMaker() {
     const list = allProblems();
     problemBox.replaceChildren(...(list.length ? [el('ul', { class: 'problems' }, ...list.map((t) => el('li', {}, t)))] : [el('p', { class: 'hint' }, T('noProblems'))]));
   }
+  // An edit committed by a field's `change` redraws the editor once the focus has moved on
+  // (lib/commit-redraw.ts), so the click or Tab that moved it is not lost.
+  let committing = false;
+  editor.addEventListener('change', () => { committing = true; setTimeout(() => { committing = false; }); }, true);
+  const redrawAfterCommit = commitRedraw(editor, () => render());
   function render() {
     for (const o of root!.querySelectorAll<HTMLElement>('[data-kind]')) {
       o.classList.toggle('on', o.dataset.kind === kind);
@@ -1399,7 +1406,8 @@ export function initUnitMaker() {
   let problemTimer = 0;
   function changed(redraw = true) {
     refreshLists();
-    if (redraw) render();
+    if (redraw && committing) redrawAfterCommit();
+    else if (redraw) render();
     else { clearTimeout(problemTimer); problemTimer = window.setTimeout(renderProblems, 200); renderList(); }
     try { localStorage.setItem('unit-maker-draft', JSON.stringify({ model: { ...model, sprites: undefined } })); } catch { /* private window */ }
   }
@@ -1528,114 +1536,131 @@ export function initUnitMaker() {
     setTimeout(() => offer(zip, file), 400);   // a second download, after the first
     say(status, `${status.textContent} ${T('tsExported', { file, size: size(zip.length) })}`);
   });
+  const importStatus = root.querySelector<HTMLElement>('[data-import-status]')!;
   root.querySelector<HTMLInputElement>('[data-import]')!.addEventListener('change', async (ev) => {
     const input = ev.target as HTMLInputElement, file = input.files?.[0];
-    const status = root.querySelector<HTMLElement>('[data-import-status]')!;
     input.value = '';
     if (!file) return;
     try {
       const { mod, files } = await openPackage(file);
-      form.fill(mod);
-      const json: Record<string, unknown> = {};
-      const owned = ['data/new_units.json', 'data/pilots.json', 'data/units.json', 'data/weapons.json', 'dialogue/names.json', 'dialogue/battle_quotes.json'];
-      keptFiles = {};
-      for (const [path, bytes] of Object.entries(files)) {
-        if (path === 'mod.json') continue;
-        if (owned.includes(path)) json[path] = readJson(bytes); else keptFiles[path] = bytes;
-      }
-      const read = fromFiles(json);
-      model = read.model; keptJson = read.kept;
-      portraits.clear();
-      for (const p of model.pilots) {
-        const portrait = p.portrait;
-        if (!portrait || Array.isArray(portrait)) continue;
-        const image = keptFiles[portrait.image], hd = portrait.hd ? keptFiles[portrait.hd] : undefined;
-        if (!image) continue;
-        portraits.set(p.slug, { pic: null, image, hd: hd ?? image, url: dataUrl(image) });
-        delete keptFiles[portrait.image]; if (portrait.hd) delete keptFiles[portrait.hd];
-      }
-      kit.stop(); art.clear(); icons.clear(); keptFacing = {}; voices.clear(); recordVoices.clear(); songs.clear(); keptMusic = null; openClips.clear();
-      if (keptFiles[storyImage.STORY_FILE]) {
-        (model as Model & { story?: unknown }).story = storyImage.read(readJson(keptFiles[storyImage.STORY_FILE]));
-        delete keptFiles[storyImage.STORY_FILE];
-      }
-      for (const name of voicesOf(model)) {
-        const bytes = keptFiles[`audio/voice/battle/${name}`];
-        if (bytes) {
-          const clip = newClip(`voice:${name}`, 'voice', new Blob([bytes as BlobPart]), name);
-          voices.set(name, clip); loadClip(clip, VOICE_QUALITY);
-          delete keptFiles[`audio/voice/battle/${name}`];
-        }
-      }
-      for (const [name, s] of Object.entries(model.sprites ?? {})) {
-        const { frames, hd } = spriteFiles(s);
-        if (!frames.length || frames.some((f) => !keptFiles[f]) || hd.some((f) => !keptFiles[f])) continue;
-        const a: Art = { sources: frames.map(() => null), hds: hd.map((f) => keptFiles[f]), images: frames.map((f) => keptFiles[f]), urls: [], rgba: [], colors: 0 };
-        a.urls = a.images.map(dataUrl);
-        a.rgba = await Promise.all(a.images.map(imageData));
-        const seen = new Set<number>();
-        for (const r of a.rgba) for (let i = 0; i < r.data.length; i += 4) if (r.data[i + 3]) seen.add((r.data[i] << 16) | (r.data[i + 1] << 8) | r.data[i + 2]);
-        a.colors = seen.size;
-        art.set(name, a);
-        for (const f of [...frames, ...hd]) delete keptFiles[f];
-      }
-      // Original lines' voices; the new characters' and units' songs and the package's own songs
-      // they name (the rest of music.json kept as it is).
-      for (const path of Object.keys(keptFiles)) {
-        const m = /^audio\/voice\/battle\/(\d{4,5})\.ogg$/.exec(path);
-        if (!m) continue;
-        const clip = newClip(`rec:${m[1]}`, 'voice', new Blob([keptFiles[path] as BlobPart]), path.split('/').pop()!);
-        recordVoices.set(Number(m[1]), clip); loadClip(clip, VOICE_QUALITY);
-        delete keptFiles[path];
-      }
-      if (keptFiles['audio/music.json']) {
-        const music = readJson(keptFiles['audio/music.json']);
-        delete keptFiles['audio/music.json'];
-        for (const [who, list] of [['pilot', model.pilots], ['unit', model.units]] as const)
-          for (const e of list) {
-            const v = music?.battle?.[who]?.[`@${e.slug}`];
-            if (v === undefined) continue;
-            delete music.battle[who][`@${e.slug}`];
-            if (typeof v === 'number') { e.battle_song = v; continue; }
-            if (typeof v !== 'string' || !v.startsWith('@')) continue;
-            const name = v.slice(1), bytes = keptFiles[`audio/music/${name}.ogg`];
-            e.battle_song = v;
-            if (!bytes || songs.has(name)) continue;
-            const s = music.tracks?.[v] ?? {}, titles = typeof s.title === 'string' ? { en: s.title } : s.title ?? {};
-            const song: Song = { ...newClip(`song:${name}`, 'music', new Blob([bytes as BlobPart]), `${name}.ogg`, { gain: typeof s.gain === 'number' ? s.gain : 0 }),
-              titles: { 'zh-Hans': titles['zh-Hans'] ?? '', en: titles.en ?? '', ja: titles.ja ?? '' } };
-            if (s.loop === false) song.loop = 'once';
-            else if (Array.isArray(s.loop) && s.loop.length === 2) { song.loop = 'range'; [song.start, song.end] = s.loop; }
-            songs.set(name, song); loadClip(song, SONG_QUALITY, s.loop !== undefined);
-            delete keptFiles[`audio/music/${name}.ogg`];
-            if (music.tracks) delete music.tracks[v];
-          }
-        for (const part of ['battle', 'tracks']) {
-          for (const k of Object.keys(music?.[part] ?? {})) if (part === 'battle' && !Object.keys(music.battle[k] ?? {}).length) delete music.battle[k];
-          if (music && !Object.keys(music[part] ?? {}).length) delete music[part];
-        }
-        keptMusic = music && (music.battle || music.tracks) ? music : null;
-      }
-      const said: Record<string, string> = keptFiles['art/icons.json'] ? readJson(keptFiles['art/icons.json'])?.facing ?? {} : {};
-      for (const u of model.units) {
-        const bytes = keptFiles[`art/icons/@${u.slug}.png`];
-        if (!bytes) continue;
-        const way = (['left', 'right', 'front'] as Way[]).find((w) => w === said[`@${u.slug}`]) ?? 'left';
-        icons.set(u.slug, { pic: await loadIcon(new Blob([bytes as BlobPart], { type: 'image/png' }), bytes), way });
-        delete keptFiles[`art/icons/@${u.slug}.png`];
-      }
-      if (keptFiles['art/icons.json']) {
-        for (const [key, way] of Object.entries(said)) if (!(key.startsWith('@') && icons.has(key.slice(1)))) keptFacing[key] = way;
-        delete keptFiles['art/icons.json'];
-      }
-      kind = model.pilots.length ? 'pilots' : model.units.length ? 'units' : model.weapons.length ? 'weapons' : count('sprites') ? 'sprites' : 'story';
-      current = first(kind); adding = false;
-      changed();
-      say(status, fill(text.imported, { id: mod.id ?? file.name }));
+      await adopt(mod, files);
+      say(importStatus, fill(text.imported, { id: mod.id ?? file.name }));
     } catch (error) {
-      say(status, fill(text.errImport, { detail: String((error as Error).message ?? error) }), true);
+      say(importStatus, fill(text.errImport, { detail: String((error as Error).message ?? error) }), true);
     }
   });
+  // The example package (data/templates/unit-maker.json, made with this page): opened as a
+  // package is, after asking when there is work here to lose.
+  root.querySelector<HTMLButtonElement>('[data-template]')?.addEventListener('click', async () => {
+    const working = model.pilots.length || model.units.length || model.weapons.length || count('sprites') || count('story') || recordVoices.size;
+    if (working && !window.confirm(text.templateConfirm)) return;
+    const files = Object.fromEntries(Object.entries(TEMPLATE.files).map(([path, doc]) => [path, jsonBytes(doc)]));
+    try {
+      await adopt(TEMPLATE.files['mod.json'] as Record<string, any>, files);
+      say(importStatus, text.templateLoaded);
+    } catch (error) {
+      say(importStatus, fill(text.errImport, { detail: String((error as Error).message ?? error) }), true);
+    }
+  });
+  // A package's files into the page: its form, the model, and the pictures, voices and songs.
+  async function adopt(mod: Record<string, any>, files: Record<string, Uint8Array>) {
+    form.fill(mod);
+    const json: Record<string, unknown> = {};
+    const owned = ['data/new_units.json', 'data/pilots.json', 'data/units.json', 'data/weapons.json', 'dialogue/names.json', 'dialogue/battle_quotes.json'];
+    keptFiles = {};
+    for (const [path, bytes] of Object.entries(files)) {
+      if (path === 'mod.json') continue;
+      if (owned.includes(path)) json[path] = readJson(bytes); else keptFiles[path] = bytes;
+    }
+    const read = fromFiles(json);
+    model = read.model; keptJson = read.kept;
+    portraits.clear();
+    for (const p of model.pilots) {
+      const portrait = p.portrait;
+      if (!portrait || Array.isArray(portrait)) continue;
+      const image = keptFiles[portrait.image], hd = portrait.hd ? keptFiles[portrait.hd] : undefined;
+      if (!image) continue;
+      portraits.set(p.slug, { pic: null, image, hd: hd ?? image, url: dataUrl(image) });
+      delete keptFiles[portrait.image]; if (portrait.hd) delete keptFiles[portrait.hd];
+    }
+    kit.stop(); art.clear(); icons.clear(); keptFacing = {}; voices.clear(); recordVoices.clear(); songs.clear(); keptMusic = null; openClips.clear();
+    if (keptFiles[storyImage.STORY_FILE]) {
+      (model as Model & { story?: unknown }).story = storyImage.read(readJson(keptFiles[storyImage.STORY_FILE]));
+      delete keptFiles[storyImage.STORY_FILE];
+    }
+    for (const name of voicesOf(model)) {
+      const bytes = keptFiles[`audio/voice/battle/${name}`];
+      if (bytes) {
+        const clip = newClip(`voice:${name}`, 'voice', new Blob([bytes as BlobPart]), name);
+        voices.set(name, clip); loadClip(clip, VOICE_QUALITY);
+        delete keptFiles[`audio/voice/battle/${name}`];
+      }
+    }
+    for (const [name, s] of Object.entries(model.sprites ?? {})) {
+      const { frames, hd } = spriteFiles(s);
+      if (!frames.length || frames.some((f) => !keptFiles[f]) || hd.some((f) => !keptFiles[f])) continue;
+      const a: Art = { sources: frames.map(() => null), hds: hd.map((f) => keptFiles[f]), images: frames.map((f) => keptFiles[f]), urls: [], rgba: [], colors: 0 };
+      a.urls = a.images.map(dataUrl);
+      a.rgba = await Promise.all(a.images.map(imageData));
+      const seen = new Set<number>();
+      for (const r of a.rgba) for (let i = 0; i < r.data.length; i += 4) if (r.data[i + 3]) seen.add((r.data[i] << 16) | (r.data[i + 1] << 8) | r.data[i + 2]);
+      a.colors = seen.size;
+      art.set(name, a);
+      for (const f of [...frames, ...hd]) delete keptFiles[f];
+    }
+    // Original lines' voices; the new characters' and units' songs and the package's own songs
+    // they name (the rest of music.json kept as it is).
+    for (const path of Object.keys(keptFiles)) {
+      const m = /^audio\/voice\/battle\/(\d{4,5})\.ogg$/.exec(path);
+      if (!m) continue;
+      const clip = newClip(`rec:${m[1]}`, 'voice', new Blob([keptFiles[path] as BlobPart]), path.split('/').pop()!);
+      recordVoices.set(Number(m[1]), clip); loadClip(clip, VOICE_QUALITY);
+      delete keptFiles[path];
+    }
+    if (keptFiles['audio/music.json']) {
+      const music = readJson(keptFiles['audio/music.json']);
+      delete keptFiles['audio/music.json'];
+      for (const [who, list] of [['pilot', model.pilots], ['unit', model.units]] as const)
+        for (const e of list) {
+          const v = music?.battle?.[who]?.[`@${e.slug}`];
+          if (v === undefined) continue;
+          delete music.battle[who][`@${e.slug}`];
+          if (typeof v === 'number') { e.battle_song = v; continue; }
+          if (typeof v !== 'string' || !v.startsWith('@')) continue;
+          const name = v.slice(1), bytes = keptFiles[`audio/music/${name}.ogg`];
+          e.battle_song = v;
+          if (!bytes || songs.has(name)) continue;
+          const s = music.tracks?.[v] ?? {}, titles = typeof s.title === 'string' ? { en: s.title } : s.title ?? {};
+          const song: Song = { ...newClip(`song:${name}`, 'music', new Blob([bytes as BlobPart]), `${name}.ogg`, { gain: typeof s.gain === 'number' ? s.gain : 0 }),
+            titles: { 'zh-Hans': titles['zh-Hans'] ?? '', en: titles.en ?? '', ja: titles.ja ?? '' } };
+          if (s.loop === false) song.loop = 'once';
+          else if (Array.isArray(s.loop) && s.loop.length === 2) { song.loop = 'range'; [song.start, song.end] = s.loop; }
+          songs.set(name, song); loadClip(song, SONG_QUALITY, s.loop !== undefined);
+          delete keptFiles[`audio/music/${name}.ogg`];
+          if (music.tracks) delete music.tracks[v];
+        }
+      for (const part of ['battle', 'tracks']) {
+        for (const k of Object.keys(music?.[part] ?? {})) if (part === 'battle' && !Object.keys(music.battle[k] ?? {}).length) delete music.battle[k];
+        if (music && !Object.keys(music[part] ?? {}).length) delete music[part];
+      }
+      keptMusic = music && (music.battle || music.tracks) ? music : null;
+    }
+    const said: Record<string, string> = keptFiles['art/icons.json'] ? readJson(keptFiles['art/icons.json'])?.facing ?? {} : {};
+    for (const u of model.units) {
+      const bytes = keptFiles[`art/icons/@${u.slug}.png`];
+      if (!bytes) continue;
+      const way = (['left', 'right', 'front'] as Way[]).find((w) => w === said[`@${u.slug}`]) ?? 'left';
+      icons.set(u.slug, { pic: await loadIcon(new Blob([bytes as BlobPart], { type: 'image/png' }), bytes), way });
+      delete keptFiles[`art/icons/@${u.slug}.png`];
+    }
+    if (keptFiles['art/icons.json']) {
+      for (const [key, way] of Object.entries(said)) if (!(key.startsWith('@') && icons.has(key.slice(1)))) keptFacing[key] = way;
+      delete keptFiles['art/icons.json'];
+    }
+    kind = model.pilots.length ? 'pilots' : model.units.length ? 'units' : model.weapons.length ? 'weapons' : count('sprites') ? 'sprites' : 'story';
+    current = first(kind); adding = false;
+    changed();
+  }
 
   // --- In the game (lib/game-link.ts, W3) -----------------------------------------------------------
   // The package goes to the game on this computer as a package to try, then the battle viewer

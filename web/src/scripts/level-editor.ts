@@ -15,6 +15,8 @@ import { QUOTE_MOMENTS, SILHOUETTES } from '../lib/compiler/story.ts';
 import { COMMANDS, commandOf, defaults, type Field, type Pos } from '../lib/editor-commands.ts';
 import { compileCampaign } from '../lib/compiler/campaign.ts';
 import { buildMap, type Template } from '../lib/compiler/map.ts';
+import { commitRedraw } from '../lib/commit-redraw';
+import TEMPLATE from '../data/templates/level-editor.json';
 import { campaignSource, FRAME, freeName, leadsTo, newStage, objectiveOf, problems, stageSource, type Area, type Cond, type Conds, type GameEvent, type Group, type GroupWhen,
   type OwnMapInfo, type Project, type Side, type Stage, type Step, type When, type BattleLine } from '../lib/editor-model.ts';
 
@@ -124,7 +126,7 @@ export async function initLevelEditor() {
 
   // --- Small builders ----------------------------------------------------------------------------
   const input = (value: string | number, change: (v: string) => void, props: Record<string, unknown> = {}) =>
-    el('input', { value, ...props, onchange: (e: Event) => { change((e.target as HTMLInputElement).value); update(); } });
+    el('input', { value, ...props, onchange: (e: Event) => { change((e.target as HTMLInputElement).value); updateAfterCommit(); } });
   const number = (value: number, change: (v: number) => void, low: number, high: number, props: Record<string, unknown> = {}) =>
     input(value, (v) => change(Math.max(low, Math.min(high, Math.trunc(Number(v)) || 0))), { type: 'number', min: low, max: high, class: 'num-in', ...props });
   const select = (options: [string, string][], value: string, change: (v: string) => void, props: Record<string, unknown> = {}) => {
@@ -983,6 +985,9 @@ export async function initLevelEditor() {
 
   // --- The frame: tabs, the stage, export ----------------------------------------------------
   const body = $('[data-body]'), tabsBox = $('[data-tabs]'), stageBox = $('[data-stage]'), overviewOnly = $('[data-overview-only]');
+  // A field's edit redraws once the focus has moved on, so the click or Tab that moved it is kept
+  // (lib/commit-redraw.ts).
+  const updateAfterCommit = commitRedraw(body, () => update());
   // Undo: the project as it was before each change update() sees (the page's state, like the
   // tab, is not part of it). Kept in memory for this visit.
   const past: string[] = [], future: string[] = [];
@@ -1122,20 +1127,32 @@ export async function initLevelEditor() {
     try {
       if (/\.srw64mod$/i.test(file.name)) { await openMod(file); return; }
       const files = unzipSync(new Uint8Array(await file.arrayBuffer()));
-      const kept = readJson(files['editor.json']);
-      if (kept?.schema !== PROJECT) throw new Error(T.errNotProject);
-      for (const m of kept.project.maps as OwnMapInfo[]) {
-        const bytes = files[`maps/${m.name}/picture.png`];
-        if (bytes) { const blob = new Blob([bytes as BlobPart]); pictures.set(m.name, { bitmap: await createImageBitmap(blob), blob }); }
-      }
-      for (const k of Object.keys(project)) delete (project as Record<string, unknown>)[k];
-      Object.assign(project, kept.project);
-      project.maps = project.maps.filter((m) => pictures.has(m.name));
-      for (const [k, v] of Object.entries<string>(kept.form ?? {})) if (fieldOf(k)) fieldOf(k).value = v;
-      route.value = String(project.route);
-      current = 0; picked = -1; tab = 'overview';
+      await loadProject(readJson(files['editor.json']), (name) => files[`maps/${name}/picture.png`]);
       say(status, fill(T.projectOpened, { file: file.name }));
-      update();
+    } catch (error) { say(status, fill(T.errImport, { detail: String((error as Error).message ?? error) }), true); }
+  });
+  // A project file's editor.json (with its pictures) in place of this project.
+  async function loadProject(kept: any, picture: (name: string) => Uint8Array | undefined) {
+    if (kept?.schema !== PROJECT) throw new Error(T.errNotProject);
+    for (const m of kept.project.maps as OwnMapInfo[]) {
+      const bytes = picture(m.name);
+      if (bytes) { const blob = new Blob([bytes as BlobPart]); pictures.set(m.name, { bitmap: await createImageBitmap(blob), blob }); }
+    }
+    for (const k of Object.keys(project)) delete (project as Record<string, unknown>)[k];
+    Object.assign(project, structuredClone(kept.project));
+    project.maps = project.maps.filter((m) => pictures.has(m.name));
+    for (const [k, v] of Object.entries<string>(kept.form ?? {})) if (fieldOf(k)) fieldOf(k).value = v;
+    route.value = String(project.route);
+    current = 0; picked = -1; tab = 'overview';
+    update();
+  }
+  // The example campaign (data/templates/level-editor.json, a project file's editor.json on the
+  // original maps, so no pictures), opened as a project file is; Undo brings back what was here.
+  $('[data-template]').addEventListener('click', async () => {
+    if (!window.confirm(T.confirmTemplate)) return;
+    try {
+      await loadProject(TEMPLATE, () => undefined);
+      say(status, T.templateLoaded);
     } catch (error) { say(status, fill(T.errImport, { detail: String((error as Error).message ?? error) }), true); }
   });
 

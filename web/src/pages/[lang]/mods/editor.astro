@@ -23,7 +23,10 @@ const lead = t('做自己的追加剧本：导入一张地图图片切成格子�
 const text = {
   ...packageText(lang),
   tab_overview: t('总览', 'Overview'), tab_map: t('地图', 'Map'), tab_units: t('单位', 'Units'), tab_story: t('剧情', 'Story'), tab_rules: t('胜败与增援', 'Rules'),
-  saved: t('已自动保存', 'Saved in this browser'), newProject: t('新建', 'New'), confirmNew: t('清空现在的战役，重新开始？（点「撤销」可以找回；要留一份就先「保存工程」）', 'Clear this campaign and start over? (Undo brings it back; “Save project” keeps a copy first.)'),
+  saved: t('已自动保存', 'Saved in this browser'), newProject: t('新建', 'New'),
+  template: t('模板', 'Template'), templateHint: t('载入一份做好的两关示例战役（原版地图、台词、撤退事件、增援、出击选择、结局），在它上面改', 'Load a finished two-stage example campaign (original maps, lines, a retreat, reinforcements, a sortie choice, the ending) and change it'),
+  templateLoaded: t('已载入模板。换成自己的地图、单位和台词，改好包信息再导出。', 'The template is loaded. Swap in your own maps, units and lines, and fill in the package before exporting.'),
+  confirmTemplate: t('用模板替换现在的战役？（点「撤销」可以找回；要留一份就先「保存工程」）', 'Replace this campaign with the template? (Undo brings it back; “Save project” keeps a copy first.)'), confirmNew: t('清空现在的战役，重新开始？（点「撤销」可以找回；要留一份就先「保存工程」）', 'Clear this campaign and start over? (Undo brings it back; “Save project” keeps a copy first.)'),
   saveProject: t('保存工程', 'Save project'), openProject: t('打开工程', 'Open project'),
   saveProjectHint: t('把整个工程（所有地图和原图、包信息）存成 .srw64edit 文件，没做完、有错误也能存；换电脑或给别人接着做用。', 'Saves the whole project (every map and its picture, the package details) as a .srw64edit file, finished or not; to move it to another computer or hand it on.'),
   openProjectHint: t('打开 .srw64edit 工程文件，或用这个编辑器导出的 .srw64mod', 'Open a .srw64edit project file, or a .srw64mod exported by this editor'),
@@ -246,6 +249,7 @@ const routes = text.routes.split('|');
         <button type="button" class="mini" data-undo title={text.undoHint} aria-label={text.undoHint} disabled>{text.undo}</button>
         <button type="button" class="mini" data-redo title={text.redoHint} aria-label={text.redoHint} disabled>{text.redo}</button>
         <button type="button" class="mini" data-new>{text.newProject}</button>
+        <button type="button" class="mini" data-template title={text.templateHint}>{text.template}</button>
         <label class="mini file" title={text.openProjectHint}>{text.openProject}<input type="file" accept=".srw64edit,.srw64mod,.zip" data-open-project hidden /></label>
         <button type="button" class="mini" data-save-project title={text.saveProjectHint}>{text.saveProject}</button>
         <button type="button" class="btn" data-export>{text.exportButton}</button>

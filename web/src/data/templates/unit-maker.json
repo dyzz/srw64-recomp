@@ -1,0 +1,235 @@
+{
+  "schema": "srw64.maker-template.v1",
+  "files": {
+    "data/new_units.json": {
+      "schema": "srw64.new-units.v2",
+      "weapons": {
+        "kai-rifle": {
+          "copy": 228
+        }
+      },
+      "units": {
+        "gundam-kai": {
+          "copy": 55,
+          "weapons": [
+            226,
+            227,
+            "@kai-rifle",
+            229,
+            230
+          ]
+        }
+      },
+      "pilots": {
+        "kei": {
+          "copy": 41
+        }
+      }
+    },
+    "data/pilots.json": {
+      "@kei": {
+        "melee": 150,
+        "ranged": 175
+      }
+    },
+    "data/units.json": {
+      "@gundam-kai": {
+        "hp": 3600,
+        "en": 120
+      }
+    },
+    "data/weapons.json": {
+      "@kai-rifle": {
+        "power": 1600,
+        "range_max": 6
+      }
+    },
+    "dialogue/battle_quotes.json": {
+      "schema": "srw64.battle-quotes.v1",
+      "pilots": {
+        "@kei": {
+          "attack": [
+            {
+              "ja": "「行けっ、ガンダム改！」",
+              "zh-Hans": "“上吧，高达改！”",
+              "en": "\"Go, Gundam Kai!\"",
+              "ko": "「가라, 건담 개!」"
+            },
+            {
+              "ja": "「この距離なら外さない！」",
+              "zh-Hans": "“这个距离不会打偏！”",
+              "en": "\"I won't miss from here!\"",
+              "ko": "「이 거리라면 빗나가지 않아!」"
+            }
+          ],
+          "shot_down": [
+            {
+              "ja": "「ごめん……みんな……！」",
+              "zh-Hans": "“对不起……大家……！”",
+              "en": "\"Sorry... everyone...!\"",
+              "ko": "「미안해…… 모두……!」"
+            }
+          ],
+          "heavy": [
+            {
+              "ja": "「くっ……まだ動けるか！？」",
+              "zh-Hans": "“呜……还能动吗！？”",
+              "en": "\"Ngh... can it still move!?\"",
+              "ko": "「큭…… 아직 움직일 수 있나!?」"
+            }
+          ],
+          "evade": [
+            {
+              "ja": "「見えてるよ！」",
+              "zh-Hans": "“看得一清二楚！”",
+              "en": "\"I can see it coming!\"",
+              "ko": "「다 보여!」"
+            }
+          ]
+        }
+      }
+    },
+    "dialogue/names.json": {
+      "schema": "srw64.mod-names.v1",
+      "pilots": {
+        "@kei": {
+          "ja": {
+            "name": "ケイ",
+            "full": "ケイ・アマギ"
+          },
+          "zh-Hans": {
+            "name": "圭",
+            "full": "天城圭"
+          },
+          "en": {
+            "name": "Kei",
+            "full": "Kei Amagi"
+          },
+          "ko": {
+            "name": "케이",
+            "full": "케이 아마기"
+          }
+        }
+      },
+      "units": {
+        "@gundam-kai": {
+          "ja": "ガンダム改",
+          "zh-Hans": "高达改",
+          "en": "Gundam Kai",
+          "ko": "건담 개"
+        }
+      },
+      "weapons": {
+        "@kai-rifle": {
+          "ja": "強化ビームライフル",
+          "zh-Hans": "强化光束步枪",
+          "en": "Enhanced Beam Rifle",
+          "ko": "강화 빔 라이플"
+        }
+      }
+    },
+    "mod.json": {
+      "schema": "srw64.mod.v1",
+      "id": "yourname.units",
+      "version": "1.0.0",
+      "name": {
+        "zh-Hans": "机体 MOD 模板",
+        "en": "Unit mod template",
+        "ja": "ユニット MOD テンプレート"
+      },
+      "license": "CC-BY-4.0",
+      "authors": [
+        "yourname"
+      ],
+      "game": ">=0.5.4",
+      "description": {
+        "zh-Hans": "模板：新人物天城圭（照抄西布克）驾驶新机体高达改（照抄高达），带一件新武器强化光束步枪；第 7 话「苦痛之刃」过关后加入。改名字、数值、台词和入队的关卡，就是你自己的包。",
+        "en": "Template: a new character, Kei Amagi (a copy of Seabook), in a new unit, the Gundam Kai (a copy of the Gundam), with a new Enhanced Beam Rifle; joins after episode 7, \"Blade of Anguish\". Change the names, numbers, lines and the joining stage to make it yours.",
+        "ja": "テンプレート：新キャラクター「ケイ・アマギ」（シーブックのコピー）が新ユニット「ガンダム改」（ガンダムのコピー）と新武器「強化ビームライフル」で、第7話「苦しみの刃」クリア後に加入します。名前・数値・台詞・加入ステージを変えれば自分のパッケージになります。"
+      }
+    },
+    "story/unit-maker.json": {
+      "schema": "srw64.story-image.v1",
+      "events": [
+        {
+          "id": "join-kei",
+          "scene": 15,
+          "trigger": "after_end",
+          "params": [],
+          "vars": {},
+          "kills": {},
+          "kills_below": {},
+          "set_flags": [],
+          "fired": [],
+          "not_fired": [],
+          "repeat": false,
+          "words": [
+            15706,
+            65533,
+            0,
+            65533,
+            500,
+            65535
+          ],
+          "texts": [],
+          "levels": [],
+          "crew": [],
+          "numbers": [
+            [
+              1,
+              "@kei",
+              "pilot"
+            ],
+            [
+              3,
+              "@gundam-kai",
+              "unit"
+            ]
+          ],
+          "listing": [
+            "3D5A 65533,0,65533,500",
+            "FFFF"
+          ]
+        }
+      ],
+      "texts": [],
+      "stage_info": [
+        {
+          "scene": 15,
+          "title": {
+            "ja": "ケイ・アマギ参戦",
+            "zh-Hans": "天城圭加入",
+            "en": "Kei Amagi joins",
+            "ko": "케이 아마기 합류"
+          },
+          "text": {
+            "ja": "ケイがガンダム改で仲間になる",
+            "zh-Hans": "天城圭驾驶高达改成为同伴",
+            "en": "Kei joins with the Gundam Kai",
+            "ko": "케이가 건담 개로 동료가 된다"
+          },
+          "id": "join-kei",
+          "done": {
+            "units": [
+              "@gundam-kai"
+            ]
+          },
+          "inherit": {
+            "after": [
+              15
+            ],
+            "commands": [
+              [
+                "3D5A",
+                "@kei",
+                0,
+                "@gundam-kai",
+                500
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,395 @@
+{
+ "schema": "srw64.web-editor-project.v1",
+ "project": {
+  "route": 1,
+  "stages": [
+   {
+    "key": "valley",
+    "title": "山谷的伏兵",
+    "map": 20,
+    "bgm": 27,
+    "groups": [
+     {
+      "id": 0,
+      "name": "杰利德队",
+      "side": 1,
+      "when": {
+       "kind": "opening"
+      }
+     },
+     {
+      "id": 1,
+      "name": "我方",
+      "side": 0,
+      "when": {
+       "kind": "opening"
+      }
+     },
+     {
+      "id": 2,
+      "name": "增援",
+      "side": 1,
+      "when": {
+       "kind": "turn",
+       "turn": 3,
+       "side": "enemy"
+      }
+     }
+    ],
+    "units": [
+     {
+      "group": 1,
+      "x": 17,
+      "y": 24,
+      "pilot": 36,
+      "unit": 55,
+      "level": 0,
+      "upgrade": 0
+     },
+     {
+      "group": 1,
+      "x": 19,
+      "y": 24,
+      "pilot": 38,
+      "unit": 48,
+      "level": 0,
+      "upgrade": 0
+     },
+     {
+      "group": 0,
+      "x": 13,
+      "y": 1,
+      "pilot": 69,
+      "unit": 317,
+      "level": 1,
+      "upgrade": 0
+     },
+     {
+      "group": 0,
+      "x": 11,
+      "y": 2,
+      "pilot": 293,
+      "unit": 97,
+      "level": 0,
+      "upgrade": 0
+     },
+     {
+      "group": 0,
+      "x": 15,
+      "y": 2,
+      "pilot": 293,
+      "unit": 97,
+      "level": 0,
+      "upgrade": 0
+     },
+     {
+      "group": 0,
+      "x": 14,
+      "y": 3,
+      "pilot": 293,
+      "unit": 97,
+      "level": 0,
+      "upgrade": 0
+     },
+     {
+      "group": 2,
+      "x": 10,
+      "y": 0,
+      "pilot": 293,
+      "unit": 97,
+      "level": 0,
+      "upgrade": 0
+     },
+     {
+      "group": 2,
+      "x": 12,
+      "y": 0,
+      "pilot": 293,
+      "unit": 97,
+      "level": 0,
+      "upgrade": 0
+     }
+    ],
+    "before": [
+     {
+      "kind": "say",
+      "speaker": 36,
+      "mode": 0,
+      "text": {
+       "zh-Hans": "“前面的山谷里有敌人的踪迹。卡缪，准备出击。”",
+       "ja": "「前方の谷に敵の気配がある。カミーユ、出撃準備だ」",
+       "en": "\"There's an enemy in the valley ahead. Kamille, get ready to launch.\""
+      }
+     },
+     {
+      "kind": "say",
+      "speaker": 38,
+      "mode": 0,
+      "text": {
+       "zh-Hans": "“明白！”",
+       "ja": "「了解！」",
+       "en": "\"Roger!\""
+      }
+     }
+    ],
+    "enter": [
+     {
+      "kind": "say",
+      "speaker": 69,
+      "mode": 0,
+      "text": {
+       "zh-Hans": "“来了啊……这次一定把你们打下来！”",
+       "ja": "「来やがったな……今度こそ落としてやる！」",
+       "en": "\"So you came... this time I'll shoot you down!\""
+      }
+     },
+     {
+      "kind": "say",
+      "speaker": 36,
+      "mode": 0,
+      "text": {
+       "zh-Hans": "“杰利德……别大意，卡缪。”",
+       "ja": "「ジェリドか……油断するなよ、カミーユ」",
+       "en": "\"Jerid... stay sharp, Kamille.\""
+      }
+     }
+    ],
+    "events": [
+     {
+      "id": "jerid-retreats",
+      "name": "杰利德撤退",
+      "when": {
+       "kind": "hp_below",
+       "who": 69,
+       "percent": 50
+      },
+      "once": true,
+      "fired": [],
+      "notFired": [],
+      "steps": [
+       {
+        "kind": "say",
+        "speaker": 69,
+        "mode": 0,
+        "text": {
+         "zh-Hans": "“可恶……撤退！给我记住！”",
+         "ja": "「くそっ……撤退だ！覚えていろ！」",
+         "en": "\"Damn it... fall back! I'll remember this!\""
+        }
+       },
+       {
+        "kind": "leave",
+        "who": 69
+       }
+      ]
+     },
+     {
+      "id": "reinforcements",
+      "name": "增援的台词",
+      "when": {
+       "kind": "turn",
+       "turn": 3,
+       "side": "enemy"
+      },
+      "once": true,
+      "fired": [],
+      "notFired": [],
+      "steps": [
+       {
+        "kind": "say",
+        "speaker": 293,
+        "mode": 0,
+        "text": {
+         "zh-Hans": "“增援到了！包围他们！”",
+         "ja": "「増援が到着した！包囲しろ！」",
+         "en": "\"Reinforcements are here! Surround them!\""
+        }
+       }
+      ]
+     }
+    ],
+    "battleLines": [],
+    "end": [
+     {
+      "kind": "say",
+      "speaker": 38,
+      "mode": 0,
+      "text": {
+       "zh-Hans": "“总算打退了……”",
+       "ja": "「なんとか退けたか……」",
+       "en": "\"We drove them off...\""
+      }
+     },
+     {
+      "kind": "say",
+      "speaker": 36,
+      "mode": 0,
+      "text": {
+       "zh-Hans": "“还没完。泰坦斯的主力在前面等着我们。”",
+       "ja": "「まだだ。ティターンズの本隊がこの先で待っている」",
+       "en": "\"Not yet. The Titans' main force is waiting ahead.\""
+      }
+     }
+    ],
+    "win": [
+     {
+      "kind": "enemies_gone"
+     }
+    ],
+    "lose": [
+     {
+      "kind": "defeated",
+      "who": 36
+     }
+    ],
+    "after": {
+     "kind": "next",
+     "stage": "showdown"
+    }
+   },
+   {
+    "key": "showdown",
+    "title": "决战",
+    "map": 21,
+    "bgm": 27,
+    "groups": [
+     {
+      "id": 0,
+      "name": "亚赞队",
+      "side": 1,
+      "when": {
+       "kind": "opening"
+      }
+     },
+     {
+      "id": 1,
+      "name": "出击位置",
+      "side": 0,
+      "when": {
+       "kind": "spot"
+      }
+     }
+    ],
+    "units": [
+     {
+      "group": 1,
+      "x": 14,
+      "y": 16,
+      "pilot": 36,
+      "unit": 55,
+      "level": 0,
+      "upgrade": 0
+     },
+     {
+      "group": 0,
+      "x": 24,
+      "y": 3,
+      "pilot": 79,
+      "unit": 106,
+      "level": 2,
+      "upgrade": 0
+     },
+     {
+      "group": 0,
+      "x": 22,
+      "y": 4,
+      "pilot": 288,
+      "unit": 109,
+      "level": 0,
+      "upgrade": 0
+     },
+     {
+      "group": 0,
+      "x": 25,
+      "y": 5,
+      "pilot": 288,
+      "unit": 109,
+      "level": 0,
+      "upgrade": 0
+     },
+     {
+      "group": 0,
+      "x": 23,
+      "y": 6,
+      "pilot": 288,
+      "unit": 109,
+      "level": 0,
+      "upgrade": 0
+     }
+    ],
+    "before": [],
+    "enter": [
+     {
+      "kind": "cmd",
+      "name": "sortie",
+      "args": {
+       "group": 1,
+       "max": 2
+      }
+     },
+     {
+      "kind": "say",
+      "speaker": 79,
+      "mode": 0,
+      "text": {
+       "zh-Hans": "“哈哈哈，猎物自己送上门来了！”",
+       "ja": "「ハハハ、獲物の方からやって来たか！」",
+       "en": "\"Ha ha ha! The prey comes to me!\""
+      }
+     },
+     {
+      "kind": "say",
+      "speaker": 36,
+      "mode": 0,
+      "text": {
+       "zh-Hans": "“是亚赞……打倒他，这一战就结束了！”",
+       "ja": "「ヤザンか……奴を倒せば、この戦いは終わる！」",
+       "en": "\"Yazan... beat him and this fight is over!\""
+      }
+     }
+    ],
+    "events": [],
+    "battleLines": [],
+    "end": [
+     {
+      "kind": "say",
+      "speaker": 38,
+      "mode": 0,
+      "text": {
+       "zh-Hans": "“结束了……”",
+       "ja": "「終わった……」",
+       "en": "\"It's over...\""
+      }
+     }
+    ],
+    "win": [
+     {
+      "kind": "defeated",
+      "who": 79
+     }
+    ],
+    "lose": [
+     {
+      "kind": "defeated",
+      "who": 36
+     }
+    ],
+    "after": {
+     "kind": "ending"
+    }
+   }
+  ],
+  "maps": [],
+  "vars": []
+ },
+ "form": {
+  "id": "yourname.campaign",
+  "version": "1.0.0",
+  "name-zh-Hans": "追加剧本模板",
+  "name-en": "Campaign template",
+  "name-ja": "追加シナリオ テンプレート",
+  "authors": "yourname",
+  "license": "CC-BY-4.0",
+  "description": "模板：两关的追加剧本，用原版地图。第一关有开场台词、敌将 HP 低于一半撤退、第 3 回合增援，过关去第二关；第二关由玩家选出击，击破亚赞进结局。换成自己的地图、单位和台词就是你自己的战役。"
+ }
+}
