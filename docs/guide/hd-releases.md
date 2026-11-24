@@ -2,9 +2,11 @@
 
 HD 包有自己的版本号，内容变了才发新版（构建与安装见 [发布构建](release.md)）。这里按版本记下每一版相对上一版改了什么，写发布说明、博文和更新视频时照这里取。数字都是拿两版的美术清单 `content/art/stage1-hd.json` 绑定的包逐行比出来的，不是估算。
 
-## 下一版（未锁定）
+## HD 1.4（2026-11-24 锁定，未发布）
 
-| 清单项 | HD 1.3 | 下一版 |
+`build_release --commit 392b759d --version 0.5.4 --switch-hd` → `build/release/hd-1.4-392b759`：`Marchwind64-HD-1.4.zip` 667 MB（content_sha256 `7dda94ba…`），Switch 版 1641 MB。基准是 HD 1.3 发布时的 `cc96d943`。
+
+| 清单项 | HD 1.3 | HD 1.4 |
 | --- | --- | --- |
 | `backgrounds`（场间背景＋战斗天空与滚动背景） | `whole-v7`，114 张 | `whole-v8`，129 张 |
 | `battle_sprites`（地球缩略图与生身战斗动作） | `pack-v20` | `pack-v23` |
