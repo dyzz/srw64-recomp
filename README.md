@@ -285,6 +285,10 @@ AppData behavior is unchanged. See [desktop portable data](docs/guide/desktop-po
 | CPU | An x86-64-v2 processor (1st-gen Intel Core i, AMD FX or newer) |
 | Drivers | Up-to-date graphics drivers |
 
+From 0.5.4, a PC whose GPU supports neither Direct3D 12 (Shader Model 6.0) nor Vulkan 1.2 runs the game in
+a compatibility mode built on Direct3D 11: no frame interpolation, MSAA or RetroArch filters, and a lower
+resolution by default, which Picture detail in the settings raises.
+
 ### macOS
 
 | | Requirement |

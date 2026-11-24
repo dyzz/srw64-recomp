@@ -37,6 +37,12 @@ const MINIMUM = {
   ja: '最低構成です。GPU の条件は RT64 を使うほかのリコンパイル作品と同じで、より古い機種は未確認です。',
   ko: '최소 사양입니다. GPU 조건은 RT64를 쓰는 다른 리컴파일 작품과 같으며, 더 오래된 기기는 테스트하지 않았습니다.',
 };
+const COMPAT = {
+  zh: '兼容模式（0.5.4 起）没有插帧、MSAA 和 RetroArch 滤镜，默认分辨率较低，可以在设置的「画面精细度」里调高。',
+  en: 'The compatibility mode (from 0.5.4) has no frame interpolation, MSAA or RetroArch filters, and draws at a lower resolution by default; Picture detail in the settings raises it.',
+  ja: '互換モード（0.5.4 以降）にはフレーム補間、MSAA、RetroArch フィルターがなく、標準の解像度は低めです。設定の「画面の精細さ」で上げられます。',
+  ko: '호환 모드(0.5.4부터)에는 프레임 보간, MSAA, RetroArch 필터가 없고 기본 해상도가 낮습니다. 설정의 「화면 정밀도」에서 높일 수 있습니다.',
+};
 const DRIVERS = {
   zh: '闪退、卡住或画面异常时，先更新显卡驱动，见<a href="/zh/faq/#gpu">常见问题</a>。',
   en: 'If it crashes, freezes or draws wrongly, update your graphics drivers first; see the <a href="/en/faq/#gpu">FAQ</a>.',
@@ -83,12 +89,12 @@ export const INSTALL: Record<TextLang, Install> = {
         req: {
           rows: [
             ['系统', 'Windows 10 / 11，64 位'],
-            ['图形接口', 'Direct3D 12（SM 6.0）或 Vulkan 1.2'],
-            ['显卡', 'GeForce GT 630、Radeon HD 7750、Intel HD Graphics 510 及以上'],
+            ['图形接口', 'Direct3D 12（SM 6.0）或 Vulkan 1.2；都没有时用 Direct3D 11 兼容模式'],
+            ['显卡', 'GeForce GT 630、Radeon HD 7750、Intel HD Graphics 510 及以上；更老的显卡用兼容模式'],
             ['CPU', 'x86-64-v2（酷睿 i 第 1 代、AMD FX 及以后）'],
             ['空间', '约 165 MB，HD 美术包另需约 700 MB'],
           ],
-          notes: [MINIMUM.zh, DRIVERS.zh],
+          notes: [MINIMUM.zh, COMPAT.zh, DRIVERS.zh],
         },
         steps: [
           { title: '下载并解压', file: 'windows', body: '右键选「全部解压缩」，不要在压缩包里直接运行。' },
@@ -241,12 +247,12 @@ export const INSTALL: Record<TextLang, Install> = {
         req: {
           rows: [
             ['OS', 'Windows 10 / 11, 64-bit'],
-            ['Graphics', 'Direct3D 12 (SM 6.0) or Vulkan 1.2'],
-            ['GPU', 'GeForce GT 630, Radeon HD 7750, Intel HD Graphics 510 or newer'],
+            ['Graphics', 'Direct3D 12 (SM 6.0) or Vulkan 1.2; with neither, a Direct3D 11 compatibility mode'],
+            ['GPU', 'GeForce GT 630, Radeon HD 7750, Intel HD Graphics 510 or newer; older GPUs use the compatibility mode'],
             ['CPU', 'x86-64-v2 (1st-gen Intel Core i, AMD FX or newer)'],
             ['Space', 'About 165 MB, plus about 700 MB for the HD art pack'],
           ],
-          notes: [MINIMUM.en, DRIVERS.en],
+          notes: [MINIMUM.en, COMPAT.en, DRIVERS.en],
         },
         steps: [
           { title: 'Download and extract', file: 'windows', body: 'Right-click it and choose “Extract All”. Don’t run the game from inside the zip.' },
@@ -399,12 +405,12 @@ export const INSTALL: Record<TextLang, Install> = {
         req: {
           rows: [
             ['OS', 'Windows 10 / 11（64 ビット）'],
-            ['グラフィックス', 'Direct3D 12（SM 6.0）または Vulkan 1.2'],
-            ['GPU', 'GeForce GT 630、Radeon HD 7750、Intel HD Graphics 510 以降'],
+            ['グラフィックス', 'Direct3D 12（SM 6.0）または Vulkan 1.2。どちらもない場合は Direct3D 11 の互換モード'],
+            ['GPU', 'GeForce GT 630、Radeon HD 7750、Intel HD Graphics 510 以降。より古い GPU は互換モード'],
             ['CPU', 'x86-64-v2（第 1 世代 Intel Core i、AMD FX 以降）'],
             ['容量', '約 165 MB、HD アートパックは別に約 700 MB'],
           ],
-          notes: [MINIMUM.ja, DRIVERS.ja],
+          notes: [MINIMUM.ja, COMPAT.ja, DRIVERS.ja],
         },
         steps: [
           { title: 'ダウンロードして展開', file: 'windows', body: '右クリックして「すべて展開」を選びます。ZIP の中から直接起動しないでください。' },
@@ -557,12 +563,12 @@ export const INSTALL: Record<TextLang, Install> = {
         req: {
           rows: [
             ['OS', 'Windows 10 / 11, 64비트'],
-            ['그래픽', 'Direct3D 12(SM 6.0) 또는 Vulkan 1.2'],
-            ['GPU', 'GeForce GT 630, Radeon HD 7750, Intel HD Graphics 510 이상'],
+            ['그래픽', 'Direct3D 12(SM 6.0) 또는 Vulkan 1.2, 둘 다 없으면 Direct3D 11 호환 모드'],
+            ['GPU', 'GeForce GT 630, Radeon HD 7750, Intel HD Graphics 510 이상, 더 오래된 GPU는 호환 모드'],
             ['CPU', 'x86-64-v2(1세대 Intel Core i, AMD FX 이상)'],
             ['용량', '약 165 MB, HD 팩은 약 700 MB 추가'],
           ],
-          notes: [MINIMUM.ko, DRIVERS.ko],
+          notes: [MINIMUM.ko, COMPAT.ko, DRIVERS.ko],
         },
         steps: [
           { title: '내려받아 압축 풀기', file: 'windows', body: '마우스 오른쪽 버튼으로 “모두 압축 풀기”를 선택하세요. 압축 파일 안에서 바로 실행하지 마세요.' },

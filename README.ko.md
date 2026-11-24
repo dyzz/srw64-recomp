@@ -271,6 +271,9 @@ Windows, Steam Deck, Android, Switch는 실험적입니다. 컴퓨터의 그래�
 | CPU | x86-64-v2 프로세서(1세대 Intel Core i, AMD FX 이상) |
 | 드라이버 | 최신 그래픽 드라이버 |
 
+0.5.4부터는 GPU가 Direct3D 12(Shader Model 6.0)도 Vulkan 1.2도 지원하지 않는 PC에서도 Direct3D 11 기반
+호환 모드로 실행됩니다. 프레임 보간, MSAA, RetroArch 필터가 없고 기본 해상도가 낮으며, 설정의 「화면 정밀도」에서 높일 수 있습니다.
+
 ### macOS
 
 | | 요구 사항 |

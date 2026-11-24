@@ -12,7 +12,6 @@ class HostedModsTests(unittest.TestCase):
     # tools/mods/pack.py now stores pictures and sound (validate.STORED), so packing the Final
     # Dancouga source gives other bytes than the hosted 0.2.0. The site's packages and pages stay
     # as they are until the next release (user, 2026-11-20): run export_mods.py then, and drop this.
-    @unittest.skip("hosted packages are repacked at the next release")
     def test_hosted_packages_match_their_sources(self):
         result = subprocess.run([sys.executable, str(ROOT / "web/scripts/export_mods.py"), "--check"],
                                 cwd=ROOT, capture_output=True, text=True)

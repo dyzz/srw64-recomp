@@ -7,7 +7,7 @@ lead: 关于安装、操作和存档的常见问题。没有找到答案，可�
 
 ### 这是模拟器吗？
 
-本项目是通过静态重编译制作的原生移植：先将 N64 的 MIPS 程序翻译成 C，再编译成 Windows、macOS、Linux、Android、Switch 的本机程序，图形由 [RT64](https://github.com/rt64/rt64) 渲染（Switch 上用自己的 OpenGL 渲染器）。运行时无需配置 BIOS、插件或模拟器，也可以在原版的基础上调整界面、增加功能。
+本项目是通过静态重编译制作的原生移植：先将 N64 的 MIPS 程序翻译成 C，再编译成 Windows、macOS、Linux、Android、Switch 的本机程序，图形由 [RT64](https://github.com/rt64/rt64) 渲染（Switch 和 RT64 用不了的 Windows 电脑上用自己的 OpenGL 渲染器）。运行时无需配置 BIOS、插件或模拟器，也可以在原版的基础上调整界面、增加功能。
 
 <span id="rom"></span>
 
@@ -152,6 +152,10 @@ HD 包有自己的版本号，内容变了才发新版，不必每次更新应�
 ## 遇到问题
 
 <span id="gpu"></span>
+
+### 显卡太老能玩吗？
+
+Windows 版从 0.5.4 起可以：显卡既不支持 Direct3D 12（着色器模型 6.0）也不支持 Vulkan 1.2 时（6 代以前的 Intel 核显、较老的 NVIDIA 和 AMD 显卡），游戏自动改用基于 Direct3D 11 的兼容模式。这种模式没有插帧、MSAA 和 RetroArch 滤镜，设置里这几项会变灰；默认分辨率较低，可以在设置的「画面精细度」里调高。
 
 ### 游戏卡在某个画面不动，或窗口「未响应」？
 

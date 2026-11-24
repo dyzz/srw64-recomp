@@ -7,7 +7,7 @@ lead: Common questions about installation, controls and saves. If you cannot fin
 
 ### Is this an emulator?
 
-It is a native port built using static recompilation. The N64's MIPS program is translated into C, then compiled into a native Windows, macOS, Linux, Android or Switch application, with graphics rendered by [RT64](https://github.com/rt64/rt64) (by an OpenGL renderer of its own on the Switch). No BIOS, plugins or emulator configuration are needed. This approach also allows changes to the interface and additional features.
+It is a native port built using static recompilation. The N64's MIPS program is translated into C, then compiled into a native Windows, macOS, Linux, Android or Switch application, with graphics rendered by [RT64](https://github.com/rt64/rt64) (by an OpenGL renderer of its own on the Switch, and on Windows PCs whose GPU RT64 cannot use). No BIOS, plugins or emulator configuration are needed. This approach also allows changes to the interface and additional features.
 
 <span id="rom"></span>
 
@@ -152,6 +152,10 @@ Quitting through the Steam menu saves the game before exiting.
 ## When something goes wrong
 
 <span id="gpu"></span>
+
+### Does it run on an old GPU?
+
+On Windows, from 0.5.4: when the GPU supports neither Direct3D 12 (shader model 6.0) nor Vulkan 1.2 (Intel before the 6th generation, older NVIDIA and AMD cards), the game switches to a compatibility mode built on Direct3D 11. It has no frame interpolation, MSAA or RetroArch filters, so those settings are greyed out, and it draws at a lower resolution by default; Picture detail in the settings raises it.
 
 ### The game stops on one screen, or the window is "Not responding"?
 

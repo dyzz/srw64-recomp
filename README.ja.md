@@ -241,6 +241,9 @@ Windows、Steam Deck、Android、Switch 版は試験的です。パソコンの�
 | CPU | x86-64-v2 対応のプロセッサー（第 1 世代 Intel Core i、AMD FX 以降） |
 | ドライバー | 最新のグラフィックスドライバー |
 
+0.5.4 からは、GPU が Direct3D 12（Shader Model 6.0）にも Vulkan 1.2 にも対応していない PC でも、Direct3D 11
+による互換モードで動きます。フレーム補間、MSAA、RetroArch フィルターはなく、標準の解像度は低めで、設定の「画面の精細さ」で上げられます。
+
 ### macOS
 
 | 項目 | 条件 |

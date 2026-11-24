@@ -16,7 +16,7 @@ Mods need version 0.5.1 or later; everything beyond music and terrain ranks need
 
 1. Open the mod manager: click “MOD” in the bottom-right corner of the title screen, or open the settings and click “MOD” on the General page.
 2. **Drag the `.srw64mod` file** (a `.zip` or a package folder works too) **into the game window**. The game installs it in the background, says so at the top of the screen and opens the Installed page.
-3. Or click “Open folder” and put the package file straight into the MOD folder; it is installed the next time you open the mod manager. From 0.5.4 (on the Switch, 0.5.3.1), a package file’s extracted folder can go there too, under any name.
+3. Or click “Open folder” and put the package file straight into the MOD folder; it is installed the next time you open the mod manager. From 0.5.4 the game reads package files as they are, without extracting them, so installing only puts the file in place and even a large package installs at once. Also from 0.5.4 (on the Switch, 0.5.3.1), a package file’s extracted folder can go there too, under any name.
 
 Installing a new version of a package replaces the old one. The old version, and any package you remove, goes into `.trash` inside the MOD folder rather than being deleted.
 
@@ -24,7 +24,7 @@ On Android, put the package file in `mods/` inside the Marchwind64 folder under 
 
 ![Installing a MOD on Android: Settings › General › MOD, then Install from file, or put the file in Documents/Marchwind64/mods](/media/android-mod-install-en.webp)
 
-On the Switch, put the package file (or its extracted folder) in `/switch/Marchwind64/mods/` on the SD card with a card reader or FTP: it installs when the game starts or the MOD page opens. A large voice package shows its progress on the loading screen and can take a few minutes.
+On the Switch, put the package file (or its extracted folder) in `/switch/Marchwind64/mods/` on the SD card with a card reader or FTP: it installs when the game starts or the MOD page opens. Before 0.5.4, a large voice package shows its progress on the loading screen and can take a few minutes; from 0.5.4 there is no wait.
 
 ## Managing
 
@@ -49,7 +49,7 @@ dialogue/       dialogue and languages
 data/           numbers
 ```
 
-Include only the folders you use. To publish, zip the whole folder and change the extension to `.srw64mod`. `mod.json` can sit at the top of the archive or inside its single top-level folder.
+Include only the folders you use. To publish, zip the whole folder and change the extension to `.srw64mod`. `mod.json` can sit at the top of the archive or inside its single top-level folder. The game reads files straight out of the package, so store pictures (`.png`) and sound (`.ogg`) without compression (`zip -0`, or “Store” in 7-Zip): they are compressed already, so compressing them again saves nothing and only makes every read decompress them. The web mod tools and the repository’s `tools/mods/pack.py` already do this.
 
 ### mod.json
 

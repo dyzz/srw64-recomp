@@ -226,6 +226,9 @@ Windows、Steam Deck、Android 和 Switch 版为实验性。电脑的显卡门�
 | CPU | 支持 x86-64-v2 的处理器（Intel 酷睿 i 系列第 1 代、AMD FX 及以后） |
 | 驱动 | 最新的显卡驱动 |
 
+从 0.5.4 起，显卡既不支持 Direct3D 12（Shader Model 6.0）也不支持 Vulkan 1.2 的电脑，会用基于 Direct3D 11
+的兼容模式运行：没有插帧、MSAA 和 RetroArch 滤镜，默认分辨率较低，可以在设置的「画面精细度」里调高。
+
 ### macOS
 
 | 项目 | 要求 |
