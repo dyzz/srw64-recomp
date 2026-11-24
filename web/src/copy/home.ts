@@ -34,7 +34,7 @@ type Home = {
   platformsTitle: string;   // the grid under the download buttons
   platformsHint: string;
   platformsCurrent: string;   // the mark on the reader's own system
-  platforms: { id: string; name: string; note: string; experimental?: boolean }[];   // id: the install page's section
+  platforms: { id: string; name: string; note: string; experimental?: boolean }[];   // id: the install page's section; Linux and the Steam Deck share one (user, 2026-11-24)
   experimental: string;
   communityTitle: string;
   communityBody: string;
@@ -99,14 +99,13 @@ export const HOME: Record<TextLang, Home> = {
       { title: '掌机、手机与手柄', body: '自动识别 Steam Deck，并默认使用对应键位和大号界面。Android 提供触屏操作，仅显示当前画面需要的按键，并标注「确定」「快进」「下个单位」等功能。', accent: 'cyan' },
       { title: '可选 HD 美术包', body: 'HD 美术包单独下载，电脑与 Android 通用，Switch 另有一份；未安装时使用原版像素画面，安装后可在游戏中随时切换。', accent: 'gold' },
     ],
-    platformsTitle: '六个平台都能玩',
+    platformsTitle: '支持的平台',
     platformsHint: '点选查看下载与安装方法',
     platformsCurrent: '当前系统',
     platforms: [
       { id: 'windows', name: 'Windows', note: '64 位 Windows', experimental: true },
       { id: 'macos', name: 'macOS', note: 'Apple 芯片，macOS 14 及以上' },
-      { id: 'linux', name: 'Linux', note: 'x86-64，glibc 2.35 及以上，需要 Vulkan' },
-      { id: 'steam-deck', name: 'Steam Deck', note: '运行脚本加入 Steam 库，在游戏模式启动', experimental: true },
+      { id: 'linux', name: 'Linux / Steam Deck', note: 'x86-64，需要 Vulkan；Steam Deck 在游戏模式启动' },
       { id: 'android', name: 'Android', note: 'arm64，Android 9 及以上，触屏操作', experimental: true },
       { id: 'switch', name: 'Nintendo Switch', note: 'Atmosphère 自制系统，从 hbmenu 启动', experimental: true },
     ],
@@ -172,14 +171,13 @@ export const HOME: Record<TextLang, Home> = {
       { title: 'Handhelds, phones, controllers', body: 'Automatically detects Steam Deck and uses its button layout with a large interface by default. On Android, touch controls show the buttons needed for the current screen, labelled with their functions, such as “OK”, “Fast” and “Next unit”.', accent: 'cyan' },
       { title: 'Optional HD art pack', body: 'The HD art pack is a separate download for computers and Android, with one of its own for the Switch. The game uses the original pixel art without it; once installed, you can switch between the two at any time in game.', accent: 'gold' },
     ],
-    platformsTitle: 'Plays on six platforms',
+    platformsTitle: 'Platforms',
     platformsHint: 'Pick one for its download and setup',
     platformsCurrent: 'Your system',
     platforms: [
       { id: 'windows', name: 'Windows', note: '64-bit Windows', experimental: true },
       { id: 'macos', name: 'macOS', note: 'Apple silicon, macOS 14 or later' },
-      { id: 'linux', name: 'Linux', note: 'x86-64, glibc 2.35 or later, Vulkan' },
-      { id: 'steam-deck', name: 'Steam Deck', note: 'Add it to Steam with the script, then launch from Game Mode', experimental: true },
+      { id: 'linux', name: 'Linux / Steam Deck', note: 'x86-64 with Vulkan; on the Steam Deck, launch from Game Mode' },
       { id: 'android', name: 'Android', note: 'arm64, Android 9 or later, touch controls', experimental: true },
       { id: 'switch', name: 'Nintendo Switch', note: 'Atmosphère custom firmware, launched from hbmenu', experimental: true },
     ],
@@ -245,14 +243,13 @@ export const HOME: Record<TextLang, Home> = {
       { title: '携帯機・スマホ・コントローラー', body: 'Steam Deck を自動認識し、対応するボタン配置と大きめの UI を初期設定にします。Android では、現在の画面で使うタッチボタンだけを「決定」「早送り」「次の味方」などの機能名付きで表示します。', accent: 'cyan' },
       { title: '追加の HD アートパック', body: 'HD アートパックは別配布で、パソコンと Android で共通、Switch には専用のものがあります。未導入時はオリジナルのドット絵で表示され、導入後はゲーム中いつでも切り替えられます。', accent: 'gold' },
     ],
-    platformsTitle: '6 つのプラットフォームに対応',
+    platformsTitle: '対応プラットフォーム',
     platformsHint: '選ぶとダウンロードとインストール方法へ',
     platformsCurrent: 'お使いのシステム',
     platforms: [
       { id: 'windows', name: 'Windows', note: '64 ビット版 Windows', experimental: true },
       { id: 'macos', name: 'macOS', note: 'Apple シリコン、macOS 14 以降' },
-      { id: 'linux', name: 'Linux', note: 'x86-64、glibc 2.35 以降、Vulkan が必要' },
-      { id: 'steam-deck', name: 'Steam Deck', note: 'スクリプトで Steam に追加し、ゲームモードで起動', experimental: true },
+      { id: 'linux', name: 'Linux / Steam Deck', note: 'x86-64、Vulkan が必要。Steam Deck はゲームモードで起動' },
       { id: 'android', name: 'Android', note: 'arm64、Android 9 以降、タッチ操作', experimental: true },
       { id: 'switch', name: 'Nintendo Switch', note: 'Atmosphère（カスタムファームウェア）、hbmenu から起動', experimental: true },
     ],
@@ -318,14 +315,13 @@ export const HOME: Record<TextLang, Home> = {
       { title: '휴대용 기기, 스마트폰, 게임패드', body: 'Steam Deck을 자동으로 인식해 Deck에 맞는 버튼 배치와 큰 인터페이스를 기본으로 씁니다. Android에서는 현재 화면에 필요한 터치 버튼만 “확인”, “빨리 넘기기”, “다음 아군”처럼 기능 이름을 붙여 표시합니다.', accent: 'cyan' },
       { title: 'HD 팩(선택)', body: 'HD 팩은 따로 내려받으며, 컴퓨터와 Android용 하나와 Switch 전용 팩이 있습니다. 설치하지 않으면 원본 도트 그래픽으로 표시되고, 설치한 뒤에는 게임 중 언제든 둘을 전환할 수 있습니다.', accent: 'gold' },
     ],
-    platformsTitle: '6개 플랫폼 지원',
+    platformsTitle: '지원 플랫폼',
     platformsHint: '선택하면 다운로드와 설치 방법으로 이동합니다',
     platformsCurrent: '사용 중인 시스템',
     platforms: [
       { id: 'windows', name: 'Windows', note: '64비트 Windows', experimental: true },
       { id: 'macos', name: 'macOS', note: 'Apple 실리콘, macOS 14 이상' },
-      { id: 'linux', name: 'Linux', note: 'x86-64, glibc 2.35 이상, Vulkan' },
-      { id: 'steam-deck', name: 'Steam Deck', note: '스크립트로 Steam에 추가한 뒤 게임 모드에서 실행', experimental: true },
+      { id: 'linux', name: 'Linux / Steam Deck', note: 'x86-64, Vulkan 필요. Steam Deck은 게임 모드에서 실행' },
       { id: 'android', name: 'Android', note: 'arm64, Android 9 이상, 터치 조작', experimental: true },
       { id: 'switch', name: 'Nintendo Switch', note: 'Atmosphère 커스텀 펌웨어, hbmenu에서 실행', experimental: true },
     ],
