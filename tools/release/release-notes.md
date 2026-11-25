@@ -1,6 +1,6 @@
 An unofficial native port of **Super Robot Wars 64** with full English, Chinese and Korean translations. No ROM included: you need your own original Japanese ROM. 中文说明见下方。
 
-> **HD pack {hd_version}** (optional): **[Download {hd_name} ({hd_size})]({hd_download})**. {hd_status_en} How to install it and where its images come from: [the HD {hd_version} release]({hd_url}).
+> **HD pack {hd_version}** (optional; the Switch has a pack of its own, in the same release): **[Download {hd_name} ({hd_size})]({hd_download})**. {hd_status_en} How to install it and where its images come from: [the HD {hd_version} release]({hd_url}).
 
 ## Downloads
 
@@ -94,7 +94,16 @@ The largest change in this version: a package can now add units, weapons and cha
 
 ### Switch
 
-- **The Switch version of 0.5.4 comes later.** It still crashes early on some starts, and I am fixing that first. Until then, keep 0.5.3.1 and its HD pack on the Switch.
+- **Smoother overall.** Measured on a docked Switch:
+  - The audio takes about 5% of a CPU core instead of 27% (41% at its worst).
+  - The interface is no longer redrawn when nothing on it changed; presenting a frame takes a quarter of the time it did, and the render thread half its CPU.
+  - All HD pictures are read from one file instead of thousands of small ones, and no longer a small piece at a time. The first battle had 14 reads that stalled and now has none.
+  - Battle textures used last time are read ahead, and new pictures are decoded on helper threads.
+  - The first opening: the Library 0.96 s → 0.3 s, the Battle Viewer 0.8 s → 0.18 s, the protagonist selection 1.8 s → under 0.1 s. The upgrade screen and the Battle Viewer's unit list stall far less.
+  - A voice package installs in under a second; it took minutes to unpack on the SD card.
+- The Switch version still stutters in places.
+- **With a voice MOD the game no longer aborts after about 20 minutes of play.** This came with 0.5.3.1.
+- **Quit game** returns to the Homebrew Menu. A text update that arrives mid-game no longer ends the game.
 
 ### Text
 
@@ -140,7 +149,7 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 
 非官方的《超级机器人大战64》原生移植，附全游戏中文、英文与韩文翻译。不含 ROM：需要自备日版原版 ROM。
 
-> **HD 包 {hd_version}**（可选）：**[下载 {hd_name}（{hd_size}）]({hd_download})**。{hd_status}安装方法和图片来源见 [HD {hd_version} 发布页]({hd_url})。以后 HD 包出新版本时，游戏的更新检查会提示。
+> **HD 包 {hd_version}**（可选；Switch 用单独的一份，在同一个发布页）：**[下载 {hd_name}（{hd_size}）]({hd_download})**。{hd_status}安装方法和图片来源见 [HD {hd_version} 发布页]({hd_url})。以后 HD 包出新版本时，游戏的更新检查会提示。
 
 ### 下载
 
@@ -234,7 +243,16 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 
 #### Switch
 
-- **Switch 版的 0.5.4 稍后发布。** 它在部分启动时仍会在开机早期崩溃，我先修好这个问题。在那之前，Switch 上请继续用 0.5.3.1 和它的 HD 包。
+- **整体更流畅。** 在 Switch 底座模式下实测：
+  - 音频约占一个 CPU 核心的 5%，原来是 27%（最高 41%）。
+  - 界面内容没变时不再重画；呈现一帧的时间降到原来的四分之一，渲染线程的 CPU 占用减半。
+  - HD 图片从一个文件里读取，不再打开成千上万个小文件，也不再一小块一小块地读。第一场战斗原来有 14 次读图卡顿，现在没有了。
+  - 上次用过的战斗贴图会提前读入，新图片在辅助线程上解码。
+  - 第一次打开：图鉴 0.96 秒 → 0.3 秒，战斗查看器 0.8 秒 → 0.18 秒，主角选择页 1.8 秒 → 不到 0.1 秒。改造画面和战斗查看器的机体列表卡顿大大减少。
+  - 语音包不到一秒就装好，原来在 SD 卡上解压要几分钟。
+- Switch 版仍有卡顿。
+- **装了语音 MOD 时，玩二十分钟左右游戏中止的问题修好了。** 这个问题从 0.5.3.1 开始出现。
+- **「退出游戏」回到 Homebrew 菜单**。游戏中途收到文本更新不再导致游戏退出。
 
 #### 文本
 
