@@ -4,7 +4,7 @@ HD 包有自己的版本号，内容变了才发新版（构建与安装见 [发
 
 ## HD 1.4（2026-11-24 锁定，未发布）
 
-`build_release --commit 392b759d --version 0.5.4 --switch-hd` → `build/release/hd-1.4-392b759`：`Marchwind64-HD-1.4.zip` 667 MB（content_sha256 `7dda94ba…`），Switch 版 1641 MB。基准是 HD 1.3 发布时的 `cc96d943`。
+`build_release --commit 95186dd1 --version 0.5.4 --switch-hd` → `build/release/0.5.4-95186dd`：`Marchwind64-HD-1.4.zip` 667 MB（content_sha256 `8861aa4d…`，zip sha256 `bd91e846…`），Switch 版 1641 MB（同一 content_sha256）。2026-11-25 为超级夺地者的新立绘和图标重打，取代 11-24 从 `392b759d` 打的那份（`7dda94ba…`，旧图）。基准是 HD 1.3 发布时的 `cc96d943`。
 
 | 清单项 | HD 1.3 | HD 1.4 |
 | --- | --- | --- |
