@@ -335,6 +335,10 @@ inline bool separable(const uint8_t* ram,int handle,const Combines& all=mod_data
     if(read(ram,made+unit_crew,1)<parts)return false;
     for(size_t k=0;k<parts;++k)
         if(!guest::valid(read(ram,made+unit_crew_pilots+uint32_t(k)*4,4),0x4C))return false;
+    // Its parts on the roster, part k with crew k as its main pilot, as the story's build left
+    // them: Final Dancouga 0.1.0's unit carries the five but its parts are gone (deploy_sync).
+    for(size_t k=0;k<parts;++k)
+        if(!instance(ram,side,found->second.parts[k],read(ram,made+unit_crew_pilots+uint32_t(k)*4,4)))return false;
     return true;
 }
 
@@ -360,6 +364,15 @@ inline void deploy_sync(uint8_t* ram,const Combines& all=mod_data::combines()) {
         for(size_t k=0;k<c.parts.size() && whole;++k) {
             const auto at=instance(ram,0,c.parts[k],read(ram,*own+unit_crew_pilots+uint32_t(k)*4,4));
             if(at)parts.push_back(*at);else whole=false;
+        }
+        // None of its parts and none of the units it takes over on the roster: a save of Final
+        // Dancouga 0.1.0, whose story turned Dancouga into it and took Black Wing away (the
+        // record's 314 loads as this unit, mod_saves.hpp remap). Nothing else can deploy in its
+        // place, so it deploys on its own as it did then, and does not separate (separable).
+        const auto on_roster=[&](unsigned u){return instance(ram,0,u).has_value();};
+        if(std::none_of(c.parts.begin(),c.parts.end(),on_roster) && std::none_of(c.over.begin(),c.over.end(),on_roster)) {
+            set(*own,true);
+            continue;
         }
         if(c.over.empty()) {
             if(whole){set(*own,true);for(const auto at:parts)set(at,false);}
@@ -423,5 +436,212 @@ inline std::vector<Kept> keep_parts(const uint8_t* ram,uint32_t made) {
 inline void restore_parts(uint8_t* ram,const std::vector<Kept>& kept) {
     for(const auto& one:kept)
         for(unsigned b=0;b<kept_size;++b){write8(ram,one.at+unit_levels+b,one.levels[b]);write8(ram,one.at+unit_parts_held+b,one.held[b]);}
+}
+
+// --- Saves of Final Dancouga 0.1.0 ----------------------------------------------------------
+//
+// 0.1.0 had no combine: its story turned Shinobu's Dancouga (224) into the unit in place (the
+// pool slot, the crew grown to five) and deleted the four beast fighters' base forms and Black
+// Wing (228, 229). Its weapons took the first seven rows of the family's shared list and left
+// the other 21 empty, so the fighters' other forms (220/221, 231/232, 234/235, 226/227) remain
+// with that list and no weapons of their own. Such a save loads as this unit (mod_saves.hpp
+// remap) with none of its parts and none of the units it takes over on the roster.
+//
+// In the intermission the family is registered again as the original registers Dancouga and
+// Black Wing, and the unit is built over it as its story does (build), so the save stands where
+// a game that ran the package's story would: separating, combining and deploying as theirs.
+// The unit's upgrade levels, its weapons' levels and its 強化パーツ go on with it.
+struct Legacy { unsigned unit; uint32_t at; unsigned from; };
+// The package's unit standing alone: a combined unit with `over`, built from (inherits_from)
+// one of the units it takes over, with a crew for every part, and none of its parts and none of
+// those units on our roster.
+inline std::optional<Legacy> legacy(const uint8_t* ram,const Combines& all=mod_data::combines(),
+                                    std::optional<unsigned>(*from_of)(unsigned)=mod_data::predecessor) {
+    for(const auto& [unit,c]:all) {
+        if(c.over.empty())continue;
+        const auto own=instance(ram,0,unit);
+        if(!own || read(ram,*own+unit_crew,1)!=c.parts.size())continue;
+        const auto on_roster=[&](unsigned u){return instance(ram,0,u).has_value();};
+        if(std::any_of(c.parts.begin(),c.parts.end(),on_roster) || std::any_of(c.over.begin(),c.over.end(),on_roster))continue;
+        const auto from=from_of(unit);
+        if(!from || std::find(c.over.begin(),c.over.end(),*from)==c.over.end())continue;
+        bool crewed=true;
+        for(size_t k=0;k<c.parts.size();++k)crewed=crewed && guest::valid(read(ram,*own+unit_crew_pilots+uint32_t(k)*4,4),0x4C);
+        if(crewed)return Legacy{unit,*own,*from};
+    }
+    return std::nullopt;
+}
+// The original's parts of a combined unit (D_800CB40C's record, as 800A74D4 reads it).
+inline std::vector<unsigned> original_parts(const uint8_t* ram,unsigned unit) {
+    std::vector<unsigned> parts;
+    for(unsigned i=0;i<capacity;++i) {
+        const uint16_t u=uint16_t(read(ram,list_ram+i*2,2));
+        if(u==0xFFFF)break;
+        if(u!=unit)continue;
+        const uint32_t record=read(ram,pointers_ram+i*4,4);
+        for(unsigned k=0;k<read(ram,record,1) && k<crew_most;++k)parts.push_back(read(ram,record+2+k*4,2));
+        break;
+    }
+    return parts;
+}
+// The original routines the rebuild runs (game_hooks.cpp passes them).
+struct LegacyCalls {
+    void(*allocate)(uint8_t*,recomp_context*);       // 800A6E68(unit, pilot, 0, side; 0, own weapons)
+    void(*combine_parts)(uint8_t*,recomp_context*);  // 800A74D4(index, instance, side)
+    void(*combined_index)(uint8_t*,recomp_context*); // 800A8880(unit)
+    void(*forms_index)(uint8_t*,recomp_context*);    // 800A87FC(unit)
+    void(*forms)(uint8_t*,recomp_context*);          // 800A7330(index, instance, side)
+    void(*remove)(uint8_t*,recomp_context*);         // 800AA3C4(instance)
+    void(*recompute)(uint8_t*,recomp_context*);      // 800A5254(instance)
+    void(*spread)(uint8_t*,recomp_context*);         // 800A5924(instance, kind)
+    void(*deploy_form)(uint8_t*,recomp_context*);    // 800AB5C0(combined, family): 3D5D
+};
+inline constexpr uint32_t pilot_has_unit=0x37, pilot_unit=0x38, unit_slot_count=0x21, unit_equipped=0x22, unit_held=0x23;
+inline constexpr uint32_t inventory=0x8015E990, part_count=18, weapon_flags_at=0x22;
+inline constexpr uint8_t weapon_unrevealed=0x04;
+inline bool rebuild_legacy(uint8_t* ram,recomp_context* ctx,const Legacy& old,const LegacyCalls& f) {
+    const auto all=mod_data::combines();
+    const auto& c=all.at(old.unit);
+    // The inventory (one u16 a part: owned, fitted) as it stands: the unit's parts only move.
+    uint8_t stock[part_count*2];
+    for(unsigned i=0;i<part_count*2;++i)stock[i]=uint8_t(read(ram,inventory+i,1));
+    // What the unit carries: its crew, levels, weapons' levels and parts.
+    std::vector<uint32_t> crew;
+    for(size_t k=0;k<c.parts.size();++k)crew.push_back(read(ram,old.at+unit_crew_pilots+uint32_t(k)*4,4));
+    uint8_t levels[stat_count];
+    for(unsigned k=0;k<stat_count;++k)levels[k]=uint8_t(read(ram,old.at+unit_levels+k,1));
+    std::map<unsigned,uint8_t> weapon_levels,weapon_flags;
+    const uint32_t list=read(ram,old.at+rules::unit_weapon_list,4),count=read(ram,old.at+rules::unit_weapon_count,1);
+    for(uint32_t i=0;i<count && guest::valid(list,count*rules::weapon_size);++i) {
+        const uint32_t w=list+i*rules::weapon_size;
+        const unsigned number=read(ram,w+rules::weapon_number,2);
+        if(number==0xFFFF)continue;
+        weapon_levels[number]=uint8_t(read(ram,w+rules::weapon_level,1));
+        weapon_flags[number]=uint8_t(read(ram,w+weapon_flags_at,1));
+    }
+    std::vector<uint8_t> held;
+    for(unsigned i=0;i<std::min(read(ram,old.at+unit_slot_count,1),4u);++i) {
+        const int8_t part=int8_t(read(ram,old.at+unit_held+i,1));
+        if(part>=0)held.push_back(uint8_t(part));
+    }
+    const auto ours=original_parts(ram,old.from);
+    if(ours.empty())return false;
+    // Everything that could stop it is asked before anything is deleted: the original's index
+    // of the unit it was made from, and room in the pool (the family is 13 instances, Black
+    // Wing two, the unit one; what goes frees at least the unit's slot).
+    uint32_t index=0;
+    call(ram,ctx,f.combined_index,old.from,0,0,0,&index);
+    if(int16_t(index)<0)return false;
+    unsigned free_slots=0;
+    for(uint32_t i=0;i<pool_count;++i)free_slots+=read(ram,pool+i*pool_size,1)==0;
+    if(free_slots<20)return false;
+    // The leftovers go. The forms still on the old list have no weapons, parts or pilots of
+    // their own: their slots are cleared (800AA3C4 would take every instance of their family
+    // numbers with them, 800A9DCC). The unit itself is deleted as the original deletes one:
+    // 800AA3C4(unit, our side, 1) frees its weapons and its pilot links. Whatever that does to
+    // the inventory, its parts are carried over below, so the inventory is kept as it is.
+    nlohmann::json removed=nlohmann::json::array();
+    for(uint32_t i=0;i<pool_count;++i) {
+        const uint32_t at=pool+i*pool_size;
+        if(at==old.at || !read(ram,at,1) || read(ram,at+rules::unit_weapon_list,4)!=list)continue;
+        removed.push_back(read(ram,at+unit_number,2));
+        for(uint32_t b=0;b<pool_size;b+=4)write32(ram,at+b,0);
+    }
+    removed.push_back(read(ram,old.at+unit_number,2));
+    call(ram,ctx,f.remove,old.at,0,1);
+    // The unit it was made from, as a registration makes it: its weapons, its crew the parts'
+    // pilots in the original's order, the levels it had; then its parts and their forms.
+    uint32_t base=0;
+    call(ram,ctx,f.allocate,old.from,0xFFFFFFFF,0,0,&base,1);
+    if(!guest::valid(base,pool_size))return false;
+    const auto crew_of=[&](unsigned part)->uint32_t{
+        for(size_t k=0;k<c.parts.size();++k)if(c.parts[k]==part)return crew[k];
+        return 0;};
+    unsigned n=0;
+    for(const auto part:ours)if(const auto p=crew_of(part))write32(ram,base+unit_crew_pilots+(n++)*4,p);
+    write8(ram,base+unit_crew,uint8_t(n));
+    for(unsigned k=0;k<stat_count;++k)write8(ram,base+unit_levels+k,levels[k]);
+    for(const auto& [to,was]:mod_data::carries(old.unit))
+        if(const auto l=weapon_levels.find(to);l!=weapon_levels.end())rules::write_weapon_level(ram,base,uint16_t(was),l->second);
+    call(ram,ctx,f.combine_parts,uint32_t(int16_t(index)),base,0);
+    // The parts the original's unit does not have (Black Wing), with weapons and forms of their own.
+    std::vector<uint32_t> extra;
+    for(size_t k=0;k<c.parts.size();++k) {
+        if(std::find(ours.begin(),ours.end(),c.parts[k])!=ours.end())continue;
+        uint32_t made=0;
+        call(ram,ctx,f.allocate,c.parts[k],0xFFFFFFFF,0,0,&made,1);
+        if(!guest::valid(made,pool_size))return false;
+        write32(ram,made+unit_crew_pilots,crew[k]);write8(ram,made+unit_crew,1);
+        uint32_t family=0;
+        call(ram,ctx,f.forms_index,c.parts[k],0,0,0,&family);
+        if(int16_t(family)>=0)call(ram,ctx,f.forms,uint32_t(int16_t(family)),made,0);
+        extra.push_back(made);
+    }
+    // Each pilot in the machine the registration would put them in: the first in the unit
+    // itself, the others in their part, the extra parts' in theirs.
+    const auto link=[&](uint32_t pilot,uint32_t unit){write8(ram,pilot+pilot_has_unit,1);write32(ram,pilot+pilot_unit,unit);};
+    if(n)link(read(ram,base+unit_crew_pilots,4),base);
+    for(size_t k=1;k<ours.size();++k)if(const auto p=crew_of(ours[k]))if(const auto at=instance(ram,0,ours[k],p))link(p,*at);
+    for(size_t j=0,k=0;k<c.parts.size();++k)
+        if(std::find(ours.begin(),ours.end(),c.parts[k])==ours.end())link(crew[k],extra[j++]);
+    // The levels on the family (as upgrading it spreads them), the numbers worked out again.
+    call(ram,ctx,f.spread,base,0);
+    for(uint32_t i=0;i<pool_count;++i) {
+        const uint32_t at=pool+i*pool_size;
+        if(!read(ram,at,1))continue;
+        const uint32_t l=read(ram,at+rules::unit_weapon_list,4);
+        const bool family=l==read(ram,base+rules::unit_weapon_list,4) ||
+            std::any_of(extra.begin(),extra.end(),[&](uint32_t e){return l==read(ram,e+rules::unit_weapon_list,4);});
+        if(!family)continue;
+        // Empty part slots (-1): the instances 800A74D4 and 800A7330 make leave them 0, which
+        // reads as a fitted part 0; the registration's path leaves them empty.
+        if(!read(ram,at+unit_equipped,1))for(uint32_t b=0;b<4;++b)write8(ram,at+unit_held+b,0xFF);
+        call(ram,ctx,f.recompute,at);
+        write16(ram,at+unit_hp,uint16_t(read(ram,at+unit_hp_max,2)));
+        write16(ram,at+unit_en,uint16_t(read(ram,at+unit_en_max,2)));
+    }
+    // Combined, as 0.1.0's unit always deployed (3D5D 1); then the unit over it, as its story builds it.
+    call(ram,ctx,f.deploy_form,1,0);
+    if(!build(ram,ctx,old.unit,f.allocate,f.recompute))return false;
+    const auto made=instance(ram,0,old.unit);
+    nlohmann::json fitted=nlohmann::json::array();
+    if(made) {
+        const unsigned slots=std::min(read(ram,*made+unit_slot_count,1),4u);
+        for(const auto part:held) {
+            const uint32_t record=inventory+uint32_t(part)*2;
+            const unsigned owned=read(ram,record,1),equipped=read(ram,record+1,1);
+            unsigned free_slot=slots;
+            for(unsigned s=0;s<slots;++s)if(int8_t(read(ram,*made+unit_held+s,1))<0){free_slot=s;break;}
+            if(part>=part_count || free_slot==slots || equipped>=owned)continue;
+            write8(ram,*made+unit_held+free_slot,part);
+            write8(ram,*made+unit_equipped,uint8_t(read(ram,*made+unit_equipped,1)+1));
+            fitted.push_back(part);
+        }
+        // On the unit only, as 0.1.0's unit had them: a story-built unit's parts start bare.
+        call(ram,ctx,f.recompute,*made);
+        // Its weapons revealed as they were (+0x22 0x04, cleared by 3D6F): 0.1.0's story had
+        // revealed 断空光牙剣, which the package's own story reveals only when it runs.
+        const uint32_t now=read(ram,*made+rules::unit_weapon_list,4),many=read(ram,*made+rules::unit_weapon_count,1);
+        for(uint32_t i=0;i<many && guest::valid(now,many*rules::weapon_size);++i) {
+            const uint32_t w=now+i*rules::weapon_size;
+            const auto was=weapon_flags.find(read(ram,w+rules::weapon_number,2));
+            if(was==weapon_flags.end())continue;
+            const uint8_t flags=uint8_t(read(ram,w+weapon_flags_at,1));
+            write8(ram,w+weapon_flags_at,uint8_t((flags&~weapon_unrevealed)|(was->second&weapon_unrevealed)));
+        }
+    }
+    // As many fitted as before, whatever deleting and spreading counted on the way.
+    for(const auto part:held)if(part<part_count)write8(ram,inventory+uint32_t(part)*2+1,stock[part*2+1]);
+    deploy_sync(ram,all);
+    nlohmann::json built=nlohmann::json::array();
+    for(uint32_t i=0;i<pool_count;++i)if(read(ram,pool+i*pool_size,1))built.push_back(read(ram,pool+i*pool_size+unit_number,2));
+    nlohmann::json inventory_now=nlohmann::json::array(),inventory_was=nlohmann::json::array();
+    for(const auto part:held)if(part<part_count) {
+        inventory_was.push_back({stock[part*2],stock[part*2+1]});
+        inventory_now.push_back({read(ram,inventory+uint32_t(part)*2,1),read(ram,inventory+uint32_t(part)*2+1,1)});
+    }
+    log({{"action","legacy_rebuild"},{"unit",old.unit},{"from",old.from},{"removed",removed},{"pool",built},{"parts_fitted",fitted},
+         {"inventory_was",inventory_was},{"inventory_now",inventory_now}});
+    return true;
 }
 }

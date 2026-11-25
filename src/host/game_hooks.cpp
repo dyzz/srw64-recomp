@@ -1,5 +1,6 @@
 #include <cstdio>
 #include "game_hooks.hpp"
+#include "autosave.hpp"
 #include "battle_viewer.hpp"
 #include "map_movie.hpp"
 #include "battle_speaker.hpp"
@@ -79,6 +80,19 @@ static void repair_daitarn(uint8_t* ram,recomp_context* ctx,srw64::base_fixes::D
     });
     if(repaired)std::fprintf(stderr,"SRW64_BASE_FIX BUG06 scene=%u hidden=%u\n",
         srw64::guest::read(ram,0x8010F5F0,1),unsigned(repair.hidden));
+}
+// A save of Final Dancouga 0.1.0 in the intermission: its family registered again and the
+// unit built over it (mod_combine.hpp rebuild_legacy). Tried once for an instance it failed on.
+static void repair_legacy_combine(uint8_t* ram,recomp_context* ctx) {
+    static uint32_t failed=0;
+    const auto old=srw64::mod_combine::legacy(ram);
+    if(!old || old->at==failed)return;
+    const srw64::mod_combine::LegacyCalls calls{resident_func_800A6E68,resident_func_800A74D4,resident_func_800A8880,
+        resident_func_800A87FC,resident_func_800A7330,resident_func_800AA3C4,resident_func_800A5254,resident_func_800A5924,
+        resident_func_800AB5C0};
+    if(srw64::mod_combine::rebuild_legacy(ram,ctx,*old,calls))return;
+    failed=old->at;
+    std::fprintf(stderr,"SRW64_MOD_COMBINE {\"action\":\"legacy_rebuild\",\"unit\":%u,\"done\":false}\n",old->unit);
 }
 // Story MODs (story_mod.hpp): what their triggers read, and the original routines they call
 // (on a stack frame below the caller's, as repair_daitarn does).
@@ -509,6 +523,9 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     // refresh): a package the web maker link just put in (web_link.cpp) is read here, before
     // the viewer starts with it.
     if(const int major=srw64::intro::title_major();major==2 || major==3)srw64::mod_data::refresh(ram);
+    // Going to the background (Android): the background save's note, and on the title the
+    // offer to go back to a game the system closed there (autosave.hpp).
+    if(!srw64_overlay_loading())srw64::autosave::frame(ram,ctx);
     if(srw64_game_hooks.viewer_start) {
         // The battle viewer: a song to listen to (or the title's back), or a battle with
         // its song through the title overlay's own demo start (801CA230..801CA250): mode
@@ -1879,6 +1896,7 @@ void load_0008F4B0_func_801CDFB0(uint8_t* rdram, recomp_context* ctx) {
 void load_0008F4B0_func_801CE19C(uint8_t* rdram, recomp_context* ctx) {
     quiet_latch(rdram);
     repair_daitarn(rdram,ctx,srw64::base_fixes::daitarn_old_save(rdram));
+    repair_legacy_combine(rdram,ctx);
     if (srw64_game_hooks.cheats_intermission) srw64_game_hooks.cheats_intermission(rdram, ctx);
     if (srw64_game_hooks.legacy_intermission) srw64_game_hooks.legacy_intermission(rdram, ctx);
     // A on the row of ours asks for the title instead (intermission_row.hpp).

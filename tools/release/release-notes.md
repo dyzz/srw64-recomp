@@ -10,6 +10,16 @@ An unofficial native port of **Super Robot Wars 64** with full English, Chinese 
 | [`{hd_name}`]({hd_download}) | {hd_size} | Optional HD images (HD {hd_version}) for macOS, Windows, Linux and Android. |
 {switch_hd_row_en}
 
+## Upgrading from 0.5.3
+
+- **Install over the old version**: on Windows and Linux extract over the old folder, on Android install over it, on the Switch replace the NRO. Saves, settings and installed MODs stay.
+- **Replace the whole `hd` folder with HD 1.4** (the Switch has a pack of its own). With HD 1.3 left in place the game shows no error, but none of the new pictures.
+- **MODs installed in 0.5.3 keep working** as they are, unpacked folders included. To update one, put its new `.srw64mod` in the mods folder: the old folder moves to `.trash`, which you can empty afterwards (old voice packages take most of it).
+- **Final Dancouga 0.1.0 saves move to the new version**: install 0.3.1 and load. At the next intermission the unit is rebuilt with its upgrades, weapon levels and parts, and from then on it sorties, separates and combines as in a new game. Loaded from a 0.5.3 suspend or turn save, it sorties alone for that stage.
+- **Kurtz joins when "Time to Settle It" on Brad's route ends**: a save past that stage does not get him or Super Earthgain, so use one from before it.
+- **If you installed "Korean (stage 1 demo)", disable or delete it**: 0.5.4 has the whole game in Korean, and the demo would cover parts of it.
+- **A save that uses a MOD needs that MOD enabled**: otherwise the game says which one and goes back to the title. The save is not harmed.
+
 ## What's new in 0.5.4
 
 ### MOD packages: new units, characters and campaigns
@@ -42,7 +52,7 @@ The largest change in this version: a package can now add units, weapons and cha
   - the original's stage instructions in plain forms: camera, effects, moving and destroying units, changing sides, sorties, upgrades, funds, world map places, green target areas and scripted battles;
   - project files that keep unfinished work, undo and redo of every edit, songs, sounds, weapons and maps chosen by name, and a two-stage template to start from.
 - **New package, Kurtz and Super Earthgain**: after "Time to Settle It" on Brad's route, Kurtz joins and Earthgain and Virose combine into Super Earthgain, with Brad as the main pilot and Kurtz as the sub pilot; it keeps Earthgain's upgrades. It sorties combined, separates on the map into Earthgain and Virose, who have the combination attack Shorai Tenryu Mametsujin, and combines again when the two stand side by side.
-- **Final Dancouga** now sorties combined and separates and combines on the map the same way, and its map icon fills its square. Saves made with its 0.1.0 load in 0.5.4.
+- **Final Dancouga** now sorties combined and separates and combines on the map the same way, and its map icon fills its square. A game saved with its 0.1.0 can move to the new version: the unit is rebuilt at the next intermission, and from then on it sorties, separates and combines as in a new game.
 - The idea of combining and separating on the map and of sortieing combined came from w6408004 and 柯博文2016 on Bilibili.
 - **Packages are read in place**: installing only puts the `.srw64mod` file in the mods folder, without unpacking it, so a voice package installs in seconds. **Thunderstore packages install** as ours do, and so does a zip that holds `.srw64mod` files. A file that does not install is reported instead of listed as a broken package, and the MOD page can delete it.
 - **A move or a weapon range above 15 works**: the original's tables stop at 15, and beyond it the game works the range out itself.
@@ -62,16 +72,21 @@ The largest change in this version: a package can now add units, weapons and cha
 ### Windows
 
 - **PCs whose GPU RT64 cannot use now run the game**: with neither Direct3D 12 shader model 6.0 nor Vulkan 1.2 (Intel before the 6th generation, older NVIDIA and AMD cards), the game draws with a compatible OpenGL renderer instead of failing to start. The same happens when RT64 fails to start after all.
-  - This renderer has no frame interpolation, MSAA or RetroArch filters, so those settings are greyed out.
+  - This renderer has no frame interpolation, MSAA or RetroArch filters, so those settings cannot be chosen.
   - It draws at a lower resolution by default; **Picture detail** in the settings raises it.
 - AMD Vega integrated graphics use Vulkan, since Direct3D 12 reset their driver.
 - A PC with no GPU driver no longer crashes at start.
 - No console window flashes open when the game starts.
 
+### Android
+
+- **A game the system closes in the background comes back where it was left**: once you switch to another app, the game saves at its next save point (the map waiting for orders, or the intermission's menu), apart from your saves and autosaves. If Android then closes it, the next start offers to go back to that map or intermission.
+- In the background the game stops running and gives back memory. With the HD pack it takes about a third less memory at the title (under 0.8 GB instead of about 1.1 GB) and about 0.5 GB less in the background (under 1 GB instead of about 1.45 GB) on our test phone, so the system closes it less often.
+
 ### Controls, touch and launchers
 
-- **Phone controls can be moved and resized**: Settings → Controls → Button layout. Drag the D-pad or any button, size each one or all together, then save, cancel or go back to the defaults.
-- **Quit game** at the foot of the settings window, reached by Up from the tab bar. Left and Right move between a question's answers.
+- **Phone controls can be moved and resized**: Settings → Input → Button layout. Drag the D-pad or any button, size each one or all together, then save, cancel or go back to the defaults.
+- **Quit game** at the foot of the settings window (not on Android), reached by Up from the tab bar. Left and Right move between a question's answers.
 - A controller reaches the title's corner entries at PRESS START. The language list shows 한국어 instead of boxes.
 - The title's Library, Battle Viewer and MOD entries take a tap even under a touch button. A failed HD import on Android says what went wrong.
 - **RecompLauncher**:
@@ -116,7 +131,7 @@ The largest change in this version: a package can now add units, weapons and cha
 
 ### HD 1.4
 
-- **Map icons fill the original's square**: the HD icons left about 8% empty around them and looked smaller than the original's. The Gundam Mk-II's icon is redrawn.
+- **Map icons fill the original's square**: the HD icons left about 8% empty around them and looked smaller than the original's. The Gundam Mk-II's and Super Earthgain's icons are redrawn, and so is Super Earthgain's unit pose.
 - The 15 battle sky colourings still missing are added, and Domon's, Master Asia's and Albert's battle actions on foot use their own pictures. The Battle Viewer's Earth scene has its picture.
 
 Earlier changes are on the [website blog](https://srw64.dreamquest.club/en/blog/).
@@ -154,6 +169,16 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 | [`{hd_name}`]({hd_download}) | {hd_size} | 可选的 HD 图片包（HD {hd_version}），macOS、Windows、Linux、安卓通用。 |
 {switch_hd_row}
 
+### 从 0.5.3 升级
+
+- **覆盖安装即可**：Windows、Linux 解压后覆盖旧文件夹，安卓直接覆盖安装，Switch 替换 NRO。存档、设置和已装的 MOD 都会保留。
+- **HD 包要整个换成 1.4**：替换整个 `hd` 文件夹（Switch 用单独的一份）。HD 1.3 留在原处时游戏不会报错，但新加的图都不会显示。
+- **0.5.3 装的 MOD 照常能用**，解压出来的文件夹也能用。要更新某个 MOD，把新的 `.srw64mod` 放进 mods 文件夹，旧文件夹会移进 `.trash`，之后可以清空（大头是旧语音包）。
+- **终极断空我 0.1.0 的存档可以换成新版**：装上 0.3.1 再读档。到下一个场间画面时，机体会带着改造段数、武器段数和零件自动重建，之后同样能合体出击、分离、合体。从 0.5.3 的中断存档或回合存档读进来时，这一关里它先单独出击。
+- **卡茨在布拉德篇「了断之时」结束时入队**：已经打过这一关的存档拿不到卡茨和超级夺地者，要用这一关之前的存档。
+- **装过「韩文（第一关演示）」的，请停用或删除它**：0.5.4 自带完整韩文，演示包会盖掉其中一部分。
+- **用了 MOD 的存档，要先启用那个 MOD 再读**：没启用时游戏会说明缺哪个 MOD，然后回到标题，存档不会坏。
+
 ### 本版更新（0.5.4）
 
 #### MOD 包：新机体、新人物和新战役
@@ -185,8 +210,8 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
   - 带自己选项文字的选择、作战目的、剧情中途的选项、显示为剪影的「???」说话人，以及驾驶员在战斗中指定时机说的新台词；
   - 原版的关卡指令都有易写的形式：镜头、特效、移动和消灭机体、改变阵营、出击、改造、资金、世界地图地点、绿色目标区域、剧情战斗；
   - 工程文件能保存没做完的工作，每一步都能撤销和重做，曲子、音效、武器和地图都按名字选，还有两关的模板可以直接改。
-- **新 MOD「卡茨与超级夺地者」**：通关布拉德篇「了断之时」后，卡茨入队，夺地者与瓦伊罗斯合体为超级夺地者，布拉德主驾驶、卡茨副驾驶，改造段数从夺地者继承。出击时是合体状态，在地图上分离后回到夺地者和瓦伊罗斯，可以使用合体技「招雷 天龙魔灭阵」，两台相邻时可以再合体。
-- **终极断空我**也改为合体状态出击，在地图上同样可以分离、合体，地图图标顶满格子。用它 0.1.0 做的存档能在 0.5.4 读取。
+- **新 MOD「卡茨与超级夺地者」**：通关布拉德篇「了断之时」后，卡茨入队，夺地者与斩空者合体为超级夺地者，布拉德主驾驶、卡茨副驾驶，改造段数从夺地者继承。出击时是合体状态，在地图上分离后回到夺地者和斩空者，可以使用合体技「招雷 天龙魔灭阵」，两台相邻时可以再合体。
+- **终极断空我**也改为合体状态出击，在地图上同样可以分离、合体，地图图标顶满格子。用它 0.1.0 存的档可以直接换成新版：到下一个场间画面时机体会自动重建，之后同样能合体出击、分离、合体。
 - 地图上合体分离和合体状态出击的思路来自 B 站用户 w6408004 和 柯博文2016。
 - **MOD 包不再解压**：安装时只把 `.srw64mod` 文件放进 mods 文件夹，游戏直接从包里读，语音包几秒就装好。**Thunderstore 的包**也能照样安装，装着 `.srw64mod` 的 zip 也能直接装。装不上的文件会报告出来，不再列成一个坏掉的包，并且可以在 MOD 页删掉。
 - **移动力和射程超过 15 也能用了**：原版的表只到 15，超过时由游戏自己算范围。
@@ -200,22 +225,27 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 
 #### 图鉴
 
-- **新增「动画」页**，播放战术地图上的 12 段合体、变形和灵光之路动画，带游戏原有的音效和音乐，可以切换原版画面和 HD。
+- **新增「动画」页**，播放战术地图上的 12 段合体、变形和奥拉之路动画，带游戏原有的音效和音乐，可以切换原版画面和 HD。
 - 日文图鉴用游戏原有的名字，游戏里没用到的记录在中文和韩文里标为未实装。武器表的表头和数字一样宽。
 
 #### Windows
 
 - **RT64 用不了的显卡也能玩了**：既没有 Direct3D 12 着色器模型 6.0、也没有 Vulkan 1.2 时（6 代以前的 Intel 核显、较老的 NVIDIA 和 AMD 显卡），游戏改用兼容的 OpenGL 渲染方式，不再打不开。RT64 启动失败时也会这样切换。
-  - 这种方式没有插帧、MSAA 和 RetroArch 滤镜，这几项设置会变灰。
+  - 这种方式没有插帧、MSAA 和 RetroArch 滤镜，这几项设置不能选。
   - 默认分辨率较低，设置里的**画面精细度**可以调高。
 - AMD Vega 核显改用 Vulkan，因为 Direct3D 12 会让它的驱动重置。
 - 没有显卡驱动的电脑启动时不再闪退。
 - 启动时不再闪出控制台窗口。
 
+#### 安卓
+
+- **切到后台被系统关闭后能回到原处**：切到其他应用后，游戏在下一个存档点（地图上等待指令时，或场间主菜单）另存一份，不占存档栏，也不影响自动存档。之后如果系统把游戏关掉，下次启动会问要不要回到当时的地图或场间画面。
+- 在后台时游戏停止运行，并交还内存。带 HD 包时，测试手机上标题画面占用的内存少了约三分之一（约 1.1 GB 降到 0.8 GB 以下），后台少了约 0.5 GB（约 1.45 GB 降到 1 GB 以下），被系统关掉的情况会少一些。
+
 #### 操作、触屏与启动器
 
 - **手机触屏按键可以移动和调大小**：设置 → 操作 → 按键布局。拖动方向键或任意按钮，单独或整体调大小，然后保存、取消或恢复默认。
-- **设置窗口底部有「退出游戏」**，从页签栏按上即可选到。问答框里可以用左右键切换选项。
+- **设置窗口底部有「退出游戏」**（安卓没有），从页签栏按上即可选到。问答框里可以用左右键切换选项。
 - 在 PRESS START 画面，手柄也能选到标题画面角落的入口。语言列表里的「한국어」不再显示成方块。
 - 标题画面的图鉴、战斗查看器和 MOD 被触屏按键盖住时也能点到。安卓导入 HD 包失败时会说明原因。
 - **RecompLauncher**：
@@ -260,7 +290,7 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 
 #### HD 1.4
 
-- **地图机体图标顶满原版的格子**：HD 图标原来四周各空出约 8%，看起来比原版小。高达 Mk-II 的图标重画。
+- **地图机体图标顶满原版的格子**：HD 图标原来四周各空出约 8%，看起来比原版小。高达Mk-Ⅱ和超级夺地者的图标重画，超级夺地者的立绘也重画了。
 - 补齐还缺的 15 种战斗天空配色；多蒙、东方不败和阿尔伯特的生身战斗动作换成各自的图。战斗查看器的「地球」场景有了图。
 
 更早版本的更新见[官网博客](https://srw64.dreamquest.club/zh/blog/)。

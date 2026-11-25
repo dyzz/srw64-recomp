@@ -118,7 +118,11 @@ struct Model {
     // Name plate (type-5 billboard, 200 x 30 units above the origin), redrawn per locale.
     std::vector<uint32_t> plateCommands;
     uint32_t plateDraw = 0;
-    std::array<std::vector<uint8_t>, 8> platePixels;  // RGBA8 per plate slot; a package's may be empty
+    // Each plate slot's picture file (empty: none; a package's is read from its .srw64mod).
+    // Read when that language's plate is first drawn: holding every language's pixels and
+    // mips at once kept 48 plates twice over, about 190 MB on the Seeker.
+    std::array<std::filesystem::path, 8> plateFiles;
+    std::array<bool, 8> plateFromPackage{};
     int plateWidth = 0, plateHeight = 0;
 #ifndef SRW64_GL_ONLY
     std::array<std::unique_ptr<gpu::Texture>, 8> plateTextures;
@@ -160,7 +164,26 @@ uint32_t plate_locale() {
 // fallback's.
 size_t plate_slot(const Model& m, size_t slot) {
     slot = std::min(slot, kPlateSlots - 1);
-    return m.platePixels[slot].empty() && slot >= kPlateLocales.size() ? plateSlotFallback[slot] : slot;
+    return m.plateFiles[slot].empty() && slot >= kPlateLocales.size() ? plateSlotFallback[slot] : slot;
+}
+// A slot's plate as RGBA8, read now; empty when it cannot be.
+std::vector<uint8_t> plate_pixels(const Model& m, size_t slot) {
+    const auto& file = m.plateFiles[slot];
+    if (file.empty()) return {};
+    int width = 0, height = 0, channels = 0;
+    uint8_t *pixels = nullptr;
+#ifdef SRW64_NATIVE_DIALOGUE
+    if (m.plateFromPackage[slot]) {
+        const auto bytes = srw64::presentation::read_file(file);
+        if (bytes) pixels = stbi_load_from_memory(bytes->data(), int(bytes->size()), &width, &height, &channels, 4);
+    } else
+#endif
+    pixels = stbi_load(file.string().c_str(), &width, &height, &channels, 4);
+    std::vector<uint8_t> out;
+    if (pixels && width == m.plateWidth && height == m.plateHeight) out.assign(pixels, pixels + size_t(width) * height * 4);
+    if (pixels) stbi_image_free(pixels);
+    if (out.empty()) std::fprintf(stderr, "SRW64_NATIVE_PLATE_UNREADABLE %s\n", file.string().c_str());
+    return out;
 }
 
 // World-map travel trail (3D33). load_000A7EC0 801C4960 emits one step per quad:
@@ -539,7 +562,13 @@ bool render_plate(plume::RenderCommandList *list, plume::RenderFramebuffer *fram
     if (!plateProgram || !call.workload) throw std::runtime_error("Native plate missing immutable draw context");
     const size_t locale = plate_slot(m, (call.id >> 1) & 7);
     auto& texture = m.plateTextures[locale];
-    if (!texture) return false;
+    if (!texture) {
+        // Another language's plate, first drawn: its picture is read here, once.
+        auto pixels = plate_pixels(m, locale);
+        if (pixels.empty()) return false;
+        texture = std::make_unique<gpu::Texture>(m.plateWidth, m.plateHeight, plume::RenderFormat::R8G8B8A8_UNORM,
+                                                 gpu::rgba_mips(std::move(pixels), m.plateWidth, m.plateHeight));
+    }
     if (!m.plateSets[locale]) {
         if (!texture->upload(list)) return false;
         m.plateSets[locale] = plateProgram->bind({texture.get()});
@@ -865,8 +894,12 @@ bool gl_plate_draw(const n64gl::Command& command) {
     if (index >= models.size()) return false;
     Model& m = *models[index];
     const size_t locale = plate_slot(m, (command.native_id >> 1) & 7);
-    if (m.platePixels[locale].empty()) return true;
-    if (!m.glPlates[locale]) m.glPlates[locale] = gl_picture(m.platePixels[locale], m.plateWidth, m.plateHeight);
+    if (m.plateFiles[locale].empty()) return true;
+    if (!m.glPlates[locale]) {
+        const auto pixels = plate_pixels(m, locale);
+        if (pixels.empty()) return true;
+        m.glPlates[locale] = gl_picture(pixels, m.plateWidth, m.plateHeight);
+    }
     const GlProgram *p = gl_begin(gl_plate, command);
     if (!p) return true;
     glActiveTexture(GL_TEXTURE0);
@@ -953,10 +986,8 @@ void load_plate(Model& m, const std::filesystem::path& pack, const json& plate) 
     for (size_t l = 0; l < kPlateLocales.size(); ++l) {
         const auto file = pack / plate.at("textures").at(kPlateLocales[l]).get<std::string>();
         int width = 0, height = 0, channels = 0;
-        uint8_t *pixels = stbi_load(file.string().c_str(), &width, &height, &channels, 4);
-        if (!pixels) throw std::runtime_error("Cannot read native plate " + file.string());
-        m.platePixels[l].assign(pixels, pixels + size_t(width) * height * 4);
-        stbi_image_free(pixels);
+        if (!stbi_info(file.string().c_str(), &width, &height, &channels)) throw std::runtime_error("Cannot read native plate " + file.string());
+        m.plateFiles[l] = file;
         if (l && (width != m.plateWidth || height != m.plateHeight)) throw std::runtime_error("Native plate sizes differ");
         m.plateWidth = width; m.plateHeight = height;
     }
@@ -975,15 +1006,14 @@ void load_plate(Model& m, const std::filesystem::path& pack, const json& plate) 
         int width = 0, height = 0, channels = 0;
         // A package's plate is read in place from its .srw64mod (presentation/file_source.hpp).
         const auto bytes = srw64::presentation::read_file(file);
-        uint8_t *pixels = bytes ? stbi_load_from_memory(bytes->data(), int(bytes->size()), &width, &height, &channels, 4) : nullptr;
-        if (!pixels || width != m.plateWidth || height != m.plateHeight) {
+        const bool known = bytes && stbi_info_from_memory(bytes->data(), int(bytes->size()), &width, &height, &channels);
+        if (!known || width != m.plateWidth || height != m.plateHeight) {
             std::fprintf(stderr, "SRW64_MOD_LANGUAGE_PROBLEM %s: %s must be a %dx%d PNG\n", plateSlotLocales[l].c_str(),
                          file.string().c_str(), m.plateWidth, m.plateHeight);
-            if (pixels) stbi_image_free(pixels);
             continue;
         }
-        m.platePixels[l].assign(pixels, pixels + size_t(width) * height * 4);
-        stbi_image_free(pixels);
+        m.plateFiles[l] = file;
+        m.plateFromPackage[l] = true;
     }
 #endif
 }
@@ -1184,15 +1214,17 @@ void gpu_init() {
     }
     if (trail.enabled) trailProgram = std::make_unique<gpu::Program>("HdTrail", std::vector<gpu::Slot>{});
     // Plate textures with mipmaps: the board shrinks to a few hundred pixels on screen.
-    // They upload on first draw, on RT64's workload command list.
+    // The reading language's are made here and upload on first draw, on RT64's workload
+    // command list; another language's are read when first drawn (render_plate).
     for (auto& m : models) {
         if (m->plateCommands.empty()) continue;
         if (!plateProgram)
             plateProgram = std::make_unique<gpu::Program>("HdPlate", std::vector<gpu::Slot>{{gpu::Slot::texture},
                 {gpu::Slot::sampler, {.linear = true, .mipmaps = true}}});
-        for (size_t l = 0; l < kPlateSlots; ++l)
-            if (!m->platePixels[l].empty()) m->plateTextures[l] = std::make_unique<gpu::Texture>(m->plateWidth, m->plateHeight, plume::RenderFormat::R8G8B8A8_UNORM,
-                gpu::rgba_mips(m->platePixels[l], m->plateWidth, m->plateHeight));
+        const size_t l = plate_slot(*m, plate_locale());
+        if (auto pixels = plate_pixels(*m, l); !pixels.empty())
+            m->plateTextures[l] = std::make_unique<gpu::Texture>(m->plateWidth, m->plateHeight, plume::RenderFormat::R8G8B8A8_UNORM,
+                gpu::rgba_mips(std::move(pixels), m->plateWidth, m->plateHeight));
     }
 #endif
 }

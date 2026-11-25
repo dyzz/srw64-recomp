@@ -288,6 +288,27 @@ public class SRW64Activity extends SDLActivity {
         super.onPause();
     }
 
+    // Out of sight the system may end the process to free memory: the game saves at its next
+    // save point, notes it for the next start and then holds (autosave.hpp); the saves go out
+    // to the player's folder once that is written.
+    private static native void nativeBackground(boolean background);
+    private final Runnable backgroundSaves = this::queueSaves;
+
+    @Override
+    protected void onStop() {
+        try { nativeBackground(true); } catch (UnsatisfiedLinkError ignored) { }
+        handler.removeCallbacks(backgroundSaves);
+        handler.postDelayed(backgroundSaves, 2000);
+        super.onStop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        handler.removeCallbacks(backgroundSaves);
+        try { nativeBackground(false); } catch (UnsatisfiedLinkError ignored) { }
+    }
+
     private void startExport(Export job) {
         if (Build.VERSION.SDK_INT >= 29) {
             new Thread(() -> {

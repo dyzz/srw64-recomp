@@ -18,6 +18,9 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
 // Render-hook init, after gpu::init (native_gpu.hpp).
 void gpu_init();
 void shutdown();
+// Out of sight (graphics.cpp, Android), with the GPU idle: every texture and decoded picture
+// this layer can make again goes; each comes back when next drawn.
+void trim_background();
 // The battle's sky layers that follow the camera's pitch (kinds 2, 3 and 9, 80084D90; the
 // still ones, 10 and 11, too, at their own size, so no seam shows between side copies),
 // without the bands (automatic aspect; at 4:3 they are drawn as the game draws them), in

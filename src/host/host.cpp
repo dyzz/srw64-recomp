@@ -112,6 +112,7 @@
 #include "settings_window.hpp"
 #include "debug_server.hpp"
 #include "debug_protocol.hpp"
+extern std::atomic_bool exited;   // librecomp (recomp.cpp): the game is closing
 extern uint8_t* srw64_rdram;  // defined below, for debug_server.cpp
 
 RspExitReason srw64_audio_probe(uint8_t*, uint32_t);
@@ -271,6 +272,9 @@ void on_vi() {
     const uint64_t vi = ++vi_count;
     // A recording in lockstep (debug_protocol.hpp): the game's clock waits for its encoder.
     while (srw64::debug::recording().behind()) std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    // Out of sight (SRW64Activity.onStop): once the background save is written, or no save point
+    // came in time, the game's clock stops until the app is seen again (autosave.hpp).
+    while (srw64::autosave::hold() && !::exited) std::this_thread::sleep_for(std::chrono::milliseconds(10));
 #if defined(__vita__) || defined(__SWITCH__)
     // The PS Vita and the Switch are driven through the debug interface only: no control.txt
     // to read (its absence, ten times a second, would be ten lookups of a missing file on a
@@ -859,6 +863,11 @@ static int run_host(int argc, char** argv) {
 }
 
 #ifdef __ANDROID__
+// SRW64Activity.onStop / onStart (UI thread): out of sight, the game saves at its next save
+// point and is then held until it is seen again (autosave.hpp, graphics.cpp).
+extern "C" JNIEXPORT void JNICALL Java_org_srw64_game_SRW64Activity_nativeBackground(JNIEnv*, jclass, jboolean background) {
+    srw64::autosave::set_background(background == JNI_TRUE);
+}
 namespace {
 // The variables SRW64Activity set (its resource folder, HOME, the debug switch...) into
 // this C library too: the arm64 game run by ARM translation on an x86 device or emulator

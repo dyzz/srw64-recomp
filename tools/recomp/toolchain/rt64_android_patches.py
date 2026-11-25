@@ -747,6 +747,15 @@ endif()'''),
         std::vector<VkSurfaceFormatKHR> surfaceFormats(surfaceFormatCount);
         vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, &surfaceFormatCount, surfaceFormats.data());
 #   endif'''),
+    # Vulkan memory comes in VMA blocks of 256 MB on a phone's one large heap, and a block goes
+    # back only once nothing in it is used: one battle grew the game by a whole block (295 ->
+    # 552 MB in dumpsys meminfo's GL mtrack on the Seeker) that never came back, and the
+    # process the system closes first in the background is the largest. Smaller blocks follow
+    # what is used more closely (docs/design/save-slots-autosave.md §12).
+    ('src/contrib/plume/plume_vulkan.cpp', '''        allocatorInfo.vulkanApiVersion = renderInterface->appInfo.apiVersion;''', '''        allocatorInfo.vulkanApiVersion = renderInterface->appInfo.apiVersion;
+#   ifdef __ANDROID__
+        allocatorInfo.preferredLargeHeapBlockSize = VkDeviceSize(32) << 20;
+#   endif'''),
 ]
 
 # prepare_rt64.py applies a file's replacements in this order, after its own.

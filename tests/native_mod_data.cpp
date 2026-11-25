@@ -103,6 +103,26 @@ int main(int argc,char** argv) {
         guest::write16(ram.data(),bank.units+0xE,bank.weapon_count);
         check(!mod_saves::old_dancouga_at(ram.data(),bank,bank.units,true),
               "an out-of-range weapon slice cannot be migrated");
+        // The suspend's weapon slot is (weapon, levels and ammo, unit): a 0.5.3 turn autosave
+        // has the Dai Gun at one level as 036F 0618 013A. The unit is at +4, not +2.
+        const auto suspend=mod_saves::banks(story_mod::Record::suspend);
+        check(bank.weapon_owner==2 && suspend.size()==3 &&
+              std::all_of(suspend.begin(),suspend.end(),[](const auto& b){return b.weapon_owner==4;}),
+              "the intermission's slots name their unit at +2, the suspend's at +4");
+        const auto sus=suspend.front();
+        guest::write16(ram.data(),sus.units,314<<6 | 3);
+        i=0;
+        for(const auto& [old_weapon,_]:old_dancouga_weapons) {
+            const auto at=sus.weapons+(i++)*mod_saves::weapon_stride;
+            guest::write16(ram.data(),at,old_weapon);
+            guest::write16(ram.data(),at+2,0x0618);
+            guest::write16(ram.data(),at+4,314);
+        }
+        check(mod_saves::old_dancouga_at(ram.data(),sus,sus.units,false),
+              "a suspend's borrowed weapons identify the old unit by the unit at +4");
+        const auto listed=mod_saves::record_weapons(ram.data(),story_mod::Record::suspend);
+        check(!listed.empty() && listed.front().at==sus.weapons && listed.front().owner==sus.weapons+4,
+              "record_weapons gives the suspend's unit word");
     }
     {
         // A pose's picture (unit_pose_art.hpp by_pose): by "poses" as battle_assets.py writes
@@ -724,6 +744,33 @@ int main(int argc,char** argv) {
         on_map(0x44,dancouga);
         check(mc::separable(ram.data(),0x44,over),"the original's Dancouga: as the original");
         check(mc::separable(ram.data(),0x10,over) && mc::separable(ram.data(),-1,over),"not a map handle: as the original");
+        // A save of Final Dancouga 0.1.0 (mod_saves.hpp remap): the unit with its five crew, its
+        // story having turned Dancouga into it and taken Black Wing away, so none of the parts
+        // and no Dancouga on the roster, only the beast fighters' other forms.
+        std::memset(ram.data()+(mc::pool&0x7FFFFF),0,mc::pool_side);
+        const uint32_t legacy=put(0,452,five,false);
+        put(1,220,{five[0]},false);put(2,231,{five[1]},false);
+        mc::deploy_sync(ram.data(),over);
+        check((r(legacy+mc::unit_deploy,1)&0x80),"a 0.1.0 save's Final Dancouga deploys with none of its parts on the roster");
+        mc::deploy_sync(ram.data(),over);
+        check((r(legacy+mc::unit_deploy,1)&0x80),"and keeps deploying");
+        on_map(0x42,legacy);
+        check(!mc::separable(ram.data(),0x42,over),"but does not separate: no parts to separate into");
+        // In the intermission it is rebuilt (rebuild_legacy): found by its crew and what it comes from.
+        const auto from_dancouga=[](unsigned u)->std::optional<unsigned>{return u==452?std::optional<unsigned>(224):std::nullopt;};
+        const auto old=mc::legacy(ram.data(),over,+from_dancouga);
+        check(old && old->unit==452 && old->at==legacy && old->from==224,"the 0.1.0 save's unit is found, made from Dancouga");
+        check(!mc::legacy(ram.data(),over,+[](unsigned)->std::optional<unsigned>{return std::nullopt;}),"not without what it comes from");
+        check((mc::original_parts(ram.data(),224)==std::vector<unsigned>{219,230,233,225}) && mc::original_parts(ram.data(),223).empty(),
+              "Dancouga's parts as the original registers them");
+        w8(legacy+mc::unit_crew,4);
+        check(!mc::legacy(ram.data(),over,+from_dancouga),"not with a crew short of its parts");
+        w8(legacy+mc::unit_crew,5);
+        put(3,224,{five[0],five[1],five[2],five[3]},false);
+        check(!mc::legacy(ram.data(),over,+from_dancouga),"nor with Dancouga on the roster");
+        mc::deploy_sync(ram.data(),over);
+        check(!(r(legacy+mc::unit_deploy,1)&0x80) && (r(mc::pool+3*mc::pool_size+mc::unit_deploy,1)&0x80),
+              "with Dancouga on the roster the usual rule again: its parts are gone, Dancouga deploys");
     }
 
     {

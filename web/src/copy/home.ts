@@ -14,7 +14,7 @@ type Home = {
   lead: string;
   rom: string;
   romMore: string;
-  allPlatforms: string;
+  allPlatforms: string;   // the link under the platform grid: every download and its steps
   optional: string;
   strip: { title: string; body: string; accent: 'cyan' | 'gold' | 'pink' | 'green' }[];
   compareTitle: string;
@@ -31,8 +31,10 @@ type Home = {
   galleryBody: string;
   moreTitle: string;
   more: Card[];
-  platformsTitle: string;
-  platforms: { name: string; note: string; experimental?: boolean }[];
+  platformsTitle: string;   // the grid under the download buttons
+  platformsHint: string;
+  platformsCurrent: string;   // the mark on the reader's own system
+  platforms: { id: string; name: string; note: string; experimental?: boolean }[];   // id: the install page's section; Linux and the Steam Deck share one (user, 2026-11-24)
   experimental: string;
   communityTitle: string;
   communityBody: string;
@@ -51,10 +53,10 @@ export const HOME: Record<TextLang, Home> = {
     title: '超级机器人大战64',
     tagline: '1999 年 N64 游戏的原生重编译版。',
     intro: 'Marchwind 64（“三月风”）是《超级机器人大战64》的非官方原生重编译项目。',
-    lead: '支持电脑、Steam Deck、安卓手机和 Nintendo Switch，提供简繁中文、英文和韩文全文翻译与宽屏显示，另有可选的 HD 美术包。',
+    lead: '提供简繁中文、英文和韩文全文翻译与宽屏显示，另有可选的 HD 美术包。',
     rom: '需要自备日版 ROM',
     romMore: 'ROM 说明',
-    allPlatforms: '其他平台与安装说明',
+    allPlatforms: '全部下载与安装说明',
     optional: '在设置中逐项选择修正和界面模式',
     strip: [
       { title: '原生运行', body: '安装后添加 ROM 即可开始', accent: 'cyan' },
@@ -97,14 +99,15 @@ export const HOME: Record<TextLang, Home> = {
       { title: '掌机、手机与手柄', body: '自动识别 Steam Deck，并默认使用对应键位和大号界面。Android 提供触屏操作，仅显示当前画面需要的按键，并标注「确定」「快进」「下个单位」等功能。', accent: 'cyan' },
       { title: '可选 HD 美术包', body: 'HD 美术包单独下载，电脑与 Android 通用，Switch 另有一份；未安装时使用原版像素画面，安装后可在游戏中随时切换。', accent: 'gold' },
     ],
-    platformsTitle: '支持平台',
+    platformsTitle: '支持的平台',
+    platformsHint: '点选查看下载与安装方法',
+    platformsCurrent: '当前系统',
     platforms: [
-      { name: 'Windows', note: '64 位 Windows', experimental: true },
-      { name: 'macOS', note: 'Apple 芯片，macOS 14 及以上' },
-      { name: 'Linux', note: 'x86-64，glibc 2.35 及以上，需要 Vulkan' },
-      { name: 'Steam Deck', note: '运行脚本加入 Steam 库，在游戏模式启动', experimental: true },
-      { name: 'Android', note: 'arm64，Android 9 及以上，触屏操作', experimental: true },
-      { name: 'Nintendo Switch', note: 'Atmosphère 自制系统，从 hbmenu 启动', experimental: true },
+      { id: 'windows', name: 'Windows', note: '64 位 Windows', experimental: true },
+      { id: 'macos', name: 'macOS', note: 'Apple 芯片，macOS 14 及以上' },
+      { id: 'linux', name: 'Linux / Steam Deck', note: 'x86-64，需要 Vulkan；Steam Deck 在游戏模式启动' },
+      { id: 'android', name: 'Android', note: 'arm64，Android 9 及以上，触屏操作', experimental: true },
+      { id: 'switch', name: 'Nintendo Switch', note: 'Atmosphère 自制系统，从 hbmenu 启动', experimental: true },
     ],
     experimental: '实验性',
     communityTitle: '一起改进译文',
@@ -122,10 +125,10 @@ export const HOME: Record<TextLang, Home> = {
     title: 'Super Robot Wars 64',
     tagline: 'A native recompilation of the 1999 N64 game.',
     intro: 'Marchwind 64 is an unofficial native recompilation project for Super Robot Wars 64.',
-    lead: 'Runs natively on Windows, macOS, Linux, Steam Deck, Android and Nintendo Switch, with full English, Chinese (Simplified and Traditional) and Korean translations and widescreen support, plus an optional HD art pack.',
+    lead: 'Full English, Chinese (Simplified and Traditional) and Korean translations, widescreen support, and an optional HD art pack.',
     rom: 'Requires your own Japanese ROM',
     romMore: 'About ROMs',
-    allPlatforms: 'Other platforms and installation',
+    allPlatforms: 'All downloads and installation',
     optional: 'Choose fixes and screen layouts individually in settings',
     strip: [
       { title: 'Native', body: 'Install, add your ROM and play', accent: 'cyan' },
@@ -169,13 +172,14 @@ export const HOME: Record<TextLang, Home> = {
       { title: 'Optional HD art pack', body: 'The HD art pack is a separate download for computers and Android, with one of its own for the Switch. The game uses the original pixel art without it; once installed, you can switch between the two at any time in game.', accent: 'gold' },
     ],
     platformsTitle: 'Platforms',
+    platformsHint: 'Pick one for its download and setup',
+    platformsCurrent: 'Your system',
     platforms: [
-      { name: 'Windows', note: '64-bit Windows', experimental: true },
-      { name: 'macOS', note: 'Apple silicon, macOS 14 or later' },
-      { name: 'Linux', note: 'x86-64, glibc 2.35 or later, Vulkan' },
-      { name: 'Steam Deck', note: 'Add it to Steam with the script, then launch from Game Mode', experimental: true },
-      { name: 'Android', note: 'arm64, Android 9 or later, touch controls', experimental: true },
-      { name: 'Nintendo Switch', note: 'Atmosphère custom firmware, launched from hbmenu', experimental: true },
+      { id: 'windows', name: 'Windows', note: '64-bit Windows', experimental: true },
+      { id: 'macos', name: 'macOS', note: 'Apple silicon, macOS 14 or later' },
+      { id: 'linux', name: 'Linux / Steam Deck', note: 'x86-64 with Vulkan; on the Steam Deck, launch from Game Mode' },
+      { id: 'android', name: 'Android', note: 'arm64, Android 9 or later, touch controls', experimental: true },
+      { id: 'switch', name: 'Nintendo Switch', note: 'Atmosphère custom firmware, launched from hbmenu', experimental: true },
     ],
     experimental: 'Experimental',
     communityTitle: 'Help improve the translation',
@@ -193,10 +197,10 @@ export const HOME: Record<TextLang, Home> = {
     title: 'スーパーロボット大戦64',
     tagline: '1999 年に発売された N64 用ゲームのネイティブ再コンパイル版。',
     intro: 'マーチウィンド64 は『スーパーロボット大戦64』の非公式ネイティブ再コンパイルプロジェクトです。',
-    lead: 'Windows・macOS・Linux・Steam Deck・Android・Nintendo Switch でネイティブに動作し、英語・中国語（簡体字・繁体字）・韓国語の全文翻訳とワイド画面に対応し、別配布の HD アートパックも利用できます。',
+    lead: '英語・中国語（簡体字・繁体字）・韓国語の全文翻訳とワイド画面に対応し、別配布の HD アートパックも利用できます。',
     rom: '日本版の ROM をご用意ください',
     romMore: 'ROM について',
-    allPlatforms: 'ほかのプラットフォームとインストール方法',
+    allPlatforms: 'すべてのダウンロードとインストール方法',
     optional: '修正や画面の種類は、設定で個別に選べます',
     strip: [
       { title: 'ネイティブ動作', body: 'インストールして ROM を追加すればプレイ可能', accent: 'cyan' },
@@ -240,13 +244,14 @@ export const HOME: Record<TextLang, Home> = {
       { title: '追加の HD アートパック', body: 'HD アートパックは別配布で、パソコンと Android で共通、Switch には専用のものがあります。未導入時はオリジナルのドット絵で表示され、導入後はゲーム中いつでも切り替えられます。', accent: 'gold' },
     ],
     platformsTitle: '対応プラットフォーム',
+    platformsHint: '選ぶとダウンロードとインストール方法へ',
+    platformsCurrent: 'お使いのシステム',
     platforms: [
-      { name: 'Windows', note: '64 ビット版 Windows', experimental: true },
-      { name: 'macOS', note: 'Apple シリコン、macOS 14 以降' },
-      { name: 'Linux', note: 'x86-64、glibc 2.35 以降、Vulkan が必要' },
-      { name: 'Steam Deck', note: 'スクリプトで Steam に追加し、ゲームモードで起動', experimental: true },
-      { name: 'Android', note: 'arm64、Android 9 以降、タッチ操作', experimental: true },
-      { name: 'Nintendo Switch', note: 'Atmosphère（カスタムファームウェア）、hbmenu から起動', experimental: true },
+      { id: 'windows', name: 'Windows', note: '64 ビット版 Windows', experimental: true },
+      { id: 'macos', name: 'macOS', note: 'Apple シリコン、macOS 14 以降' },
+      { id: 'linux', name: 'Linux / Steam Deck', note: 'x86-64、Vulkan が必要。Steam Deck はゲームモードで起動' },
+      { id: 'android', name: 'Android', note: 'arm64、Android 9 以降、タッチ操作', experimental: true },
+      { id: 'switch', name: 'Nintendo Switch', note: 'Atmosphère（カスタムファームウェア）、hbmenu から起動', experimental: true },
     ],
     experimental: '試験的',
     communityTitle: 'シナリオ・図鑑・攻略',
@@ -264,10 +269,10 @@ export const HOME: Record<TextLang, Home> = {
     title: '슈퍼로봇대전64',
     tagline: '1999년 N64 게임의 네이티브 리컴파일 버전.',
     intro: 'Marchwind 64는 『슈퍼로봇대전64』의 비공식 네이티브 리컴파일 프로젝트입니다.',
-    lead: 'Windows, macOS, Linux, Steam Deck, Android, Nintendo Switch에서 네이티브로 실행되며, 한국어, 영어, 중국어(간체, 번체) 전문 번역과 와이드 화면을 지원합니다. 별도의 HD 팩도 선택해서 쓸 수 있습니다.',
+    lead: '한국어, 영어, 중국어(간체, 번체) 전문 번역과 와이드 화면을 지원합니다. 별도의 HD 팩도 선택해서 쓸 수 있습니다.',
     rom: '일본판 ROM을 직접 준비해야 합니다',
     romMore: 'ROM 안내',
-    allPlatforms: '다른 플랫폼과 설치 방법',
+    allPlatforms: '전체 다운로드와 설치 방법',
     optional: '수정 사항과 화면 방식은 설정에서 항목별로 고를 수 있습니다',
     strip: [
       { title: '네이티브 실행', body: '설치하고 ROM을 추가하면 바로 플레이', accent: 'cyan' },
@@ -311,13 +316,14 @@ export const HOME: Record<TextLang, Home> = {
       { title: 'HD 팩(선택)', body: 'HD 팩은 따로 내려받으며, 컴퓨터와 Android용 하나와 Switch 전용 팩이 있습니다. 설치하지 않으면 원본 도트 그래픽으로 표시되고, 설치한 뒤에는 게임 중 언제든 둘을 전환할 수 있습니다.', accent: 'gold' },
     ],
     platformsTitle: '지원 플랫폼',
+    platformsHint: '선택하면 다운로드와 설치 방법으로 이동합니다',
+    platformsCurrent: '사용 중인 시스템',
     platforms: [
-      { name: 'Windows', note: '64비트 Windows', experimental: true },
-      { name: 'macOS', note: 'Apple 실리콘, macOS 14 이상' },
-      { name: 'Linux', note: 'x86-64, glibc 2.35 이상, Vulkan' },
-      { name: 'Steam Deck', note: '스크립트로 Steam에 추가한 뒤 게임 모드에서 실행', experimental: true },
-      { name: 'Android', note: 'arm64, Android 9 이상, 터치 조작', experimental: true },
-      { name: 'Nintendo Switch', note: 'Atmosphère 커스텀 펌웨어, hbmenu에서 실행', experimental: true },
+      { id: 'windows', name: 'Windows', note: '64비트 Windows', experimental: true },
+      { id: 'macos', name: 'macOS', note: 'Apple 실리콘, macOS 14 이상' },
+      { id: 'linux', name: 'Linux / Steam Deck', note: 'x86-64, Vulkan 필요. Steam Deck은 게임 모드에서 실행' },
+      { id: 'android', name: 'Android', note: 'arm64, Android 9 이상, 터치 조작', experimental: true },
+      { id: 'switch', name: 'Nintendo Switch', note: 'Atmosphère 커스텀 펌웨어, hbmenu에서 실행', experimental: true },
     ],
     experimental: '실험적',
     communityTitle: '시나리오, 도감, 공략',

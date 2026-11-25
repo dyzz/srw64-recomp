@@ -9,7 +9,11 @@ Marchwind64 的可选 HD 图片包，版本 HD {hd_version}，macOS、Windows、
 ### 地图机体图标
 
 - **图标顶满原版的格子**：HD 图标原来四周各空出约 8%，看起来比原版小；现在按原版图标的外框等比放大，面积大多大了约两成，像素不混色。
-- 高达 Mk-II 的图标重画。
+- 高达Mk-Ⅱ和超级夺地者的图标重画。
+
+### 机体立绘
+
+- 超级夺地者的立绘重画。
 
 ### 战斗
 
@@ -17,7 +21,7 @@ Marchwind64 的可选 HD 图片包，版本 HD {hd_version}，macOS、Windows、
 - 多蒙、东方不败和阿尔伯特的生身战斗动作换成各自的图和配色；多蒙和东方不败的未命中动作原来配错成爆炸的图。
 - 战斗查看器的「地球」场景有了缩略图和预览背景。
 
-没变的：人物头像、机体立绘、场间背景、剧情世界地图和战术地图的底图。
+没变的：人物头像、其余机体立绘、场间背景、剧情世界地图和战术地图的底图。
 
 **HD {hd_version} 要配 Marchwind64 {version} 或更新的版本**：生身战斗动作的第一帧由 {version} 的程序提前准备，「地球」场景也是 {version} 才有的。
 
@@ -48,11 +52,12 @@ HD 包里的头像、场间背景、宇宙物件和标题图，由阿里云百�
 
 ### What's new in HD {hd_version}
 
-- **Map icons fill the original's square**: the HD icons left about 8% empty on each side and looked smaller than the original's; they are now scaled up to the original icon's outline, typically about a fifth larger, without blending pixels. The Gundam Mk-II's icon is redrawn.
+- **Map icons fill the original's square**: the HD icons left about 8% empty on each side and looked smaller than the original's; they are now scaled up to the original icon's outline, typically about a fifth larger, without blending pixels. The Gundam Mk-II's and Super Earthgain's icons are redrawn.
+- Super Earthgain's unit pose is redrawn.
 - The 15 battle sky colourings still missing are added: the Earth's and the Moon's second layer, and recolourings of 13 skies that had HD pictures.
 - Domon's, Master Asia's and Albert's battle actions on foot use their own pictures and palettes; Domon's and Master Asia's evades had an explosion's pictures.
 - The Battle Viewer's Earth scene has its thumbnail and preview.
-- Unchanged: portraits, unit poses, intermission backgrounds, and the world and tactical map bases.
+- Unchanged: portraits, the other unit poses, intermission backgrounds, and the world and tactical map bases.
 - **HD {hd_version} needs Marchwind64 {version} or later**: the {version} program prepares the first frames of the actions on foot, and the Earth scene is new in {version}.
 
 The optional HD image pack for Marchwind64, version HD {hd_version}, for macOS, Windows, Linux and Android and Marchwind64 {version} or later; the Switch takes `{switch_hd_zip}`, extracted to the SD card's root (`/switch/Marchwind64/hd/`), in the formats its GPU reads. The pack has versions of its own and only gets a new one when its contents change; the game's update check says when there is. Unzip `{hd_zip}` and put the `hd` folder in the user directory (`~/Library/Application Support/SRW64Recomp/` on macOS, `~/.local/share/srw64-recomp/` on Linux, `%LOCALAPPDATA%\SRW64Recomp\` on Windows), or in the game's own folder next to `Marchwind64.app`, `marchwind64.sh` or `Marchwind64.exe` (on macOS once the app has been moved in Finder), replacing an older `hd` folder. On Android, import the zip in the app. F6 switches between HD and the original images. The HD images are AI-generated (Alibaba Cloud Qwen and Wanx image models; the world map, tactical maps, map unit icons, some battle cut-ins and extra unit images, some redrawn unit poses and touch-ups to unit poses and portraits with OpenAI's image model) from the original graphics, and the unit poses, battle cut-ins, props, battle effects and the special moves' scrolling backdrops, ground textures and skies and the tactical maps' palette-index maps are upscaled from the original pixel art; the insides of the beams and the landing shadow are drawn by a program in the original shapes. This is an unofficial fan work, and the original characters, art and trademarks belong to their owners.

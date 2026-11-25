@@ -31,6 +31,7 @@
 #include "map_movie.hpp"
 #include "stage_info.hpp"
 #include "quick_load.hpp"
+#include "autosave.hpp"
 #include "title_row.hpp"
 #include "text_wrap.hpp"
 #include "battle_viewer.hpp"
@@ -218,6 +219,8 @@ std::atomic_bool library_open{};
 // The question, once, whether to check for updates on start-up (update_check.hpp), in the
 // settings window's frame on the title; asked: put this run.
 bool update_ask_open{},update_asked{};
+// The offer to go back to a game the system closed in the background (autosave.hpp), asked once.
+bool resume_ask_open{},resume_asked{};
 // The question before a quick load of the suspend save (quick_load.hpp): the touch key and the stage info page ask it.
 bool quick_load_ask_open{};
 // The question before a return to the title screen (quick_load.hpp): the same entries ask it.
@@ -2482,6 +2485,17 @@ std::string update_ask_panel() {
         button("update-ask:on",label("update_ask_on"),true)+button("update-ask:off",label("update_ask_off"))+"</div></div></div>"
         "<div class='set-foot'><div class='set-hint'></div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
 }
+// A game closed by the system in the background: whether to go back to where it was left.
+std::string resume_ask_panel() {
+    const auto offer=autosave::offer();
+    auto text=localization::catalog().ui(offer && offer->map?"resume_text_map":"resume_text_intermission");
+    for(const auto& [key,value]:{std::pair<std::string,std::string>{"{n}",std::to_string(offer?offer->turn:0)},{"{funds}",std::to_string(offer?offer->funds:0)}})
+        if(const auto at=text.find(key);at!=std::string::npos)text.replace(at,key.size(),value);
+    return "<div class='set-shade'><div class='set-panel set-ask'><h1>"+label("resume_title")+"</h1><div id='set-body' class='set-body'>"
+        "<div class='set-row nav'><div class='set-name'>"+escape(text)+"</div><p>"+label("resume_note")+"</p><div class='set-seg'>"+
+        button("resume:yes",label("resume_yes"),true)+button("resume:no",label("resume_no"))+"</div></div></div>"
+        "<div class='set-foot'><div class='set-hint'></div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
+}
 // Whether to go back to the suspend save: its turn and funds, and that the map as it is now is lost.
 std::string quick_load_ask_panel() {
     const auto saved=quick_load::saved();
@@ -4050,7 +4064,7 @@ void settings_sync() {
 #ifdef __ANDROID__
     if(!settings_open)hd_import_confirm=false;
 #endif
-    if(!settings_open){update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;quit_ask_open=false;mod_open=false;library_open=false;stage_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
+    if(!settings_open){update_ask_open=false;resume_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;quit_ask_open=false;mod_open=false;library_open=false;stage_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
     // The touch layout screen takes the settings' place, and they come back behind it.
     if(touch_edit_on()){document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
 #ifdef __ANDROID__
@@ -4080,6 +4094,15 @@ void settings_sync() {
         if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
         document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
         settings_doc=document(title_return_ask_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+        settings_doc->UpdateDocument();
+        if(!pointer_mode)settings_focus_first();
+        return;
+    }
+    if(resume_ask_open) {
+        const auto stamp="resume"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
+        if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
+        document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
+        settings_doc=document(resume_ask_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
         settings_doc->UpdateDocument();
         if(!pointer_mode)settings_focus_first();
         return;
@@ -4350,13 +4373,13 @@ void settings_show(unsigned page,const std::string& focus) {
 // The settings window on its About page (the application menu, the title's update hint).
 void open_about(const std::string& focus) {
     const unsigned about=unsigned(std::size(settings_pages)-1);
-    if(settings_open && !library_open && !mod_open && !viewer_open && !update_ask_open && !quick_load_ask_open && !title_return_ask_open && !quit_ask_open) {
+    if(settings_open && !library_open && !mod_open && !viewer_open && !update_ask_open && !resume_ask_open && !quick_load_ask_open && !title_return_ask_open && !quit_ask_open) {
         if(settings_page!=about)settings_show(about,focus);
         else settings_focus=focus;
         return;
     }
     settings::set_settings_page(settings_pages[about]);
-    update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;quit_ask_open=false;library_open=false;mod_open=false;viewer_open=false;
+    update_ask_open=false;resume_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;quit_ask_open=false;library_open=false;mod_open=false;viewer_open=false;
     settings_open=true;settings_built=-1;settings_focus=focus;settings_release.hold();input.clear();
 }
 // L1/R1, Q/E and the page keys: the next or previous page, wrapping round. The focus
@@ -4400,7 +4423,7 @@ void settings_move(int dy,int dx) {
     if(at<0){settings_focus_first();return;}
     if(dx) {
         // Row 0 is the tab bar, but a question's only row holds its answers.
-        if(at==0 && !quit_ask_open && !title_return_ask_open && !quick_load_ask_open && !update_ask_open){settings_turn(dx);return;}
+        if(at==0 && !quit_ask_open && !title_return_ask_open && !quick_load_ask_open && !update_ask_open && !resume_ask_open){settings_turn(dx);return;}
         Rml::ElementList buttons;rows[at]->QuerySelectorAll(buttons,"button");
         std::erase_if(buttons,[](Rml::Element* b){return b->HasAttribute("disabled");});
         const auto current=std::find(buttons.begin(),buttons.end(),focus);
@@ -6226,6 +6249,11 @@ void choose(const std::string& id) {
         if(id=="quick-load:yes")quick_load::request();
         quick_load_ask_open=false;physical_held=held();settings_open=false;return;
     }
+    if(id.starts_with("resume:") || (resume_ask_open && id=="settings-close")) {
+        // Closed without an answer, it is asked again at the next start.
+        if(id!="settings-close")autosave::answer(id=="resume:yes");
+        resume_ask_open=false;physical_held=held();settings_open=false;return;
+    }
     if(id.starts_with("update-ask:") || (update_ask_open && id=="settings-close")) {
         update::set_automatic(id=="update-ask:on");
         update_ask_open=false;physical_held=held();settings_open=false;return;
@@ -7533,6 +7561,10 @@ void sync() {
     if(app_menu::take_settings_request())choose("settings-open");
     if(app_menu::take_about_request())open_about("");
     if(app_menu::take_update_request()){open_about("update-check");update::check(true);}
+    // A game the system closed in the background: offered once the title's ring is up.
+    if(!resume_asked && !settings_open && intro::title_major()==3 && autosave::offer()) {
+        resume_asked=true;resume_ask_open=true;settings_open=true;settings_release.hold();input.clear();
+    }
     // The first time the title waits, the question whether to check for updates on start-up.
     if(!update_asked && !settings_open && intro::title_waiting() && update::should_ask()) {
         update_asked=true;update_ask_open=true;settings_open=true;settings_release.hold();input.clear();

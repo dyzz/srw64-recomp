@@ -229,6 +229,17 @@ plume::RenderDescriptorSet* texture_for(Asset& asset, plume::RenderCommandList* 
     return asset.set.get();
 }
 
+void trim_layer() {
+    std::lock_guard lock(asset_mutex);
+    for (auto& asset : assets) {
+        if (asset.set || asset.texture) {
+            struct Held { std::unique_ptr<gpu::Texture> texture; std::unique_ptr<plume::RenderDescriptorSet> set; };
+            gpu::retire(std::make_shared<Held>(Held{std::move(asset.texture), std::move(asset.set)}));
+        }
+        asset.levels.clear(); asset.levels.shrink_to_fit();
+    }
+}
+
 bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, const RT64::NativeMeshDraw& call) {
     if ((call.id & 0xFFFF0000u) != kIdBase) return previous_render ? previous_render(list, framebuffer, call) : false;
     Draw draw;
@@ -524,6 +535,11 @@ void rewrite(uint8_t* rdram, const PortraitDraw& draw) {
     ++rewritten;
 }
 
+void trim_background() {
+#ifndef SRW64_GL_ONLY
+    trim_layer();
+#endif
+}
 void shutdown() {
     if (!output.empty() && !assets.empty()) {
         size_t resident = 0;

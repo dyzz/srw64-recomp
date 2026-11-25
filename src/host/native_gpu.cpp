@@ -191,6 +191,19 @@ uint32_t push_data(const void* data, size_t bytes) {
     return index;
 }
 
+void flush_retired() {
+    if (!context) return;
+    // As shutdown(): dropping one can retire more, so in rounds, each dropped after unlocking.
+    for (;;) {
+        Retired dropped;
+        {
+            std::lock_guard lock(context->mutex);
+            dropped.swap(context->retired);
+        }
+        if (dropped.empty()) return;
+    }
+}
+
 void retire(std::shared_ptr<void> object) {
     if (!context || !object) return;
     Retired expired;   // destroyed after the lock is released

@@ -288,6 +288,17 @@ plume::RenderDescriptorSet* textures_for(Asset& asset, plume::RenderCommandList*
     return asset.textures.get();
 }
 
+void trim_layer() {
+    std::lock_guard lock(asset_mutex);
+    for (auto& asset : assets) {
+        if (asset.textures || asset.texture) {
+            struct Held { std::unique_ptr<gpu::Texture> texture; std::unique_ptr<plume::RenderDescriptorSet> set; };
+            gpu::retire(std::make_shared<Held>(Held{std::move(asset.texture), std::move(asset.textures)}));
+        }
+        asset.levels.clear(); asset.levels.shrink_to_fit(); asset.sizes.clear();
+    }
+}
+
 bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, const RT64::NativeMeshDraw& call) {
     if ((call.id & 0xFFFF0000u) != kIdBase) return previous_render ? previous_render(list, framebuffer, call) : false;
     Draw draw;
@@ -502,7 +513,11 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
     for (uint32_t p = draw.dl_begin; p + 8 <= draw.dl_end; p += 8) {
         const uint32_t w0 = word(rdram, p), w1 = word(rdram, p + 4), op = w0 >> 24;
         if (op == 0xFD && ((w0 >> 19) & 3) == 1) {
-            columns = float(source_width) / float((w0 & 0xFFF) + 1);  // 8-bit SETTIMG: its row width
+            // 8-bit SETTIMG: 2 pixels a texel for a CI4 picture loaded as 8-bit (its row is
+            // half its width), 1 for a CI8 one. Whole numbers: the scrolling nebula 3186 is
+            // 352 wide (row 176), and 320 / 176 squeezed its HD tiles by 320/352, which
+            // showed as a break at x 29 that the wide stretch took outside 4:3 (2026-11-25).
+            columns = std::max(1.f, std::round(float(source_width) / float((w0 & 0xFFF) + 1)));
         } else if (op == 0xFA) {
             for (int c = 0; c < 4; ++c) record.prim[c] = float((w1 >> (24 - 8 * c)) & 0xFF) / 255.f;
         } else if (op == 0xF4) {
@@ -638,6 +653,11 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
     return record.wide;
 }
 
+void trim_background() {
+#ifndef SRW64_GL_ONLY
+    trim_layer();
+#endif
+}
 void shutdown() {
     if (!output.empty() && !assets.empty()) {
         size_t resident = 0;

@@ -17,6 +17,9 @@ void configure(const std::filesystem::path& output);
 // Render-hook init, after gpu::init (native_gpu.hpp).
 void gpu_init();
 void shutdown();
+// Out of sight (graphics.cpp, Android), with the GPU idle: every texture and decoded picture
+// this layer can make again goes; each comes back when next drawn.
+void trim_background();
 // Game thread, right after the original drawer returned.
 void rewrite(uint8_t* rdram, const MapDraw& draw);
 // Set once at start (battle_page.cpp): true for a window frame that keeps its original
