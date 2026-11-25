@@ -42,19 +42,24 @@ inline constexpr const char* legacy_schema="srw64.mod-units-state.v1";
 // records, +0 the unit number << 6 | 6 bits (0xFFFF empty), and 700 weapon slots of 6 bytes,
 // +0 the weapon number (0xFFFF empty). The intermission's (800927A4 reads it) and the
 // suspend's player bank (800936A0's first pass).
+// A weapon slot also names the unit whose upgrade rows its power is worked out by, at
+// `weapon_owner`: the intermission's slot is (weapon, unit, levels), the suspend's (weapon,
+// levels and ammo, unit). Final Dancouga 0.1.0's Dai Gun at one level, in a 0.5.3 turn
+// autosave: 036F 0618 013A (879, 6 ammo and the level, unit 314); in its cartridge slot:
+// 036F 013A 1800. Left at 314 (Nu Gundam) the suspend's unit lost the level's power.
 // And 100 pilot records, +0 the character (0xFFFF none): the intermission's 12 bytes each
 // (80092498's), the suspend's player bank 0x14 each (80092E78 writes them after the units).
 // The suspend has two more banks, the enemy's and the third party's: 80093278 runs three
 // passes, side k reading its own pools (units 8016A210 + k x 0x2DF0, pilots 80172F40 +
 // k x 0x1DB0, weapons 80178F80 + k x 0x6270) and writing 30 units, 30 pilots and 150 weapon
 // slots of each other side in the same formats (new-unit-ids.md §10.7).
-struct Bank { uint32_t units; unsigned unit_count; uint32_t unit_stride,pilots; unsigned pilot_count; uint32_t pilot_stride,weapons; unsigned weapon_count; };
+struct Bank { uint32_t units; unsigned unit_count; uint32_t unit_stride,pilots; unsigned pilot_count; uint32_t pilot_stride,weapons; unsigned weapon_count; uint32_t weapon_owner; };
 inline constexpr unsigned unit_records=140, weapon_slots=700, weapon_stride=6, pilot_records=100;
 inline std::vector<Bank> banks(story_mod::Record kind) {
-    if(kind==story_mod::Record::slot)return {{0x801C2710,unit_records,0x10,0x801C2FD0,pilot_records,0xC,0x801C3480,weapon_slots}};
-    return {{0x800FC2A0,unit_records,0x14,0x800FCD90,pilot_records,0x14,0x800FD560,weapon_slots},
-            {0x800FE6F4,30,0x14,0x800FEBA4,30,0x14,0x800FF054,150},     // the enemy's
-            {0x800FE94C,30,0x14,0x800FEDFC,30,0x14,0x800FF3D8,150}};    // the third party's
+    if(kind==story_mod::Record::slot)return {{0x801C2710,unit_records,0x10,0x801C2FD0,pilot_records,0xC,0x801C3480,weapon_slots,2}};
+    return {{0x800FC2A0,unit_records,0x14,0x800FCD90,pilot_records,0x14,0x800FD560,weapon_slots,4},
+            {0x800FE6F4,30,0x14,0x800FEBA4,30,0x14,0x800FF054,150,4},     // the enemy's
+            {0x800FE94C,30,0x14,0x800FEDFC,30,0x14,0x800FF3D8,150,4}};    // the third party's
 }
 // A pilot record keeps the character in nine bits (800923B4, 80092E78 mask & 0x1FF) and flags
 // above them (0x200, 0x400: the suspend's enemy bank has 0x200 on every one): the character
@@ -93,13 +98,15 @@ inline std::vector<std::pair<uint32_t,unsigned>> record_units(const uint8_t* ram
         }
     return out;
 }
-inline std::vector<std::pair<uint32_t,unsigned>> record_weapons(const uint8_t* ram,story_mod::Record kind) {
-    std::vector<std::pair<uint32_t,unsigned>> out;
+// Weapons: the slot's address, its weapon and the address of the unit it names.
+struct RecordWeapon { uint32_t at; unsigned number; uint32_t owner; };
+inline std::vector<RecordWeapon> record_weapons(const uint8_t* ram,story_mod::Record kind) {
+    std::vector<RecordWeapon> out;
     for(const auto& b:banks(kind))
         for(unsigned i=0;i<b.weapon_count;++i) {
             const uint32_t at=b.weapons+i*weapon_stride;
             const unsigned number=guest::read(ram,at,2);
-            if(number!=0xFFFF)out.emplace_back(at,number);
+            if(number!=0xFFFF)out.push_back({at,number,at+b.weapon_owner});
         }
     return out;
 }
@@ -162,7 +169,7 @@ inline void serialized(const uint8_t* ram,bool lasting,story_mod::Record kind) {
             packages[o->second.package]=o->second.name;added.push_back(unit);
             if(const auto k=numbers->unit_keys.find(unit);k!=numbers->unit_keys.end())keys[std::to_string(unit)]=k->second;
         }
-    for(const auto& [_,weapon]:record_weapons(ram,kind))
+    for(const auto& [_,weapon,__]:record_weapons(ram,kind))
         if(const auto k=numbers->weapon_keys.find(weapon);k!=numbers->weapon_keys.end())weapon_keys[std::to_string(weapon)]=k->second;
     // New characters: their package and name, by the numbers the record has.
     const auto pilot_owners=mod_data::pilot_owners();
@@ -216,7 +223,7 @@ inline bool old_dancouga_at(const uint8_t* ram,const Bank& bank,uint32_t at,bool
         bool found=false;
         for(unsigned i=first;i<first+count;++i) {
             const auto weapon=bank.weapons+i*weapon_stride;
-            if(guest::read(ram,weapon,2)==old && guest::read(ram,weapon+2,2)==mod_units::old_dancouga)
+            if(guest::read(ram,weapon,2)==old && guest::read(ram,weapon+bank.weapon_owner,2)==mod_units::old_dancouga)
                 {found=true;break;}
         }
         if(!found)return false;
@@ -282,7 +289,7 @@ inline Undo remap(uint8_t* ram,story_mod::Record kind) {
                 replace(weapon,found->second);
                 ++changed_weapons;
             }
-            if(guest::read(ram,weapon+2,2)==mod_units::old_dancouga)replace(weapon+2,legacy_unit);
+            if(guest::read(ram,weapon+player_bank.weapon_owner,2)==mod_units::old_dancouga)replace(weapon+player_bank.weapon_owner,legacy_unit);
         }
     }
     if(!people.empty())for(const auto& [at,pilot]:record_pilots(ram,kind))
@@ -295,12 +302,12 @@ inline Undo remap(uint8_t* ram,story_mod::Record kind) {
             replace(at,m->second<<6 | (guest::read(ram,at,2)&0x3F));
             ++changed_units;
         }
-    if(!units.empty() || !weapons.empty())for(const auto& [at,weapon]:record_weapons(ram,kind)) {
+    if(!units.empty() || !weapons.empty())for(const auto& [at,weapon,owner]:record_weapons(ram,kind)) {
         if(const auto m=weapons.find(weapon);m!=weapons.end()) {
             replace(at,m->second);
             ++changed_weapons;
         }
-        if(const auto m=units.find(guest::read(ram,at+2,2));m!=units.end())replace(at+2,m->second);
+        if(const auto m=units.find(guest::read(ram,owner,2));m!=units.end())replace(owner,m->second);
     }
     {std::lock_guard lock(s.mutex);s.moved=units;s.moved_pilots=people;s.missing_legacy_dancouga=missing_legacy;}
     if(undo.empty())return undo;
