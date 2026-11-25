@@ -6,7 +6,7 @@ import Base from '../../../layouts/Base.astro';
 import SubmitHint from '../../../components/SubmitHint.astro';
 import ModPackageForm from '../../../components/ModPackageForm.astro';
 import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
-import { packageText, versionNotice } from '../../../lib/mod-maker-text';
+import { aiHint, packageText, versionNotice } from '../../../lib/mod-maker-text';
 import { pickables } from '../../../lib/mod-picker';
 import { dataFields } from '../../../lib/data-fields';
 import data from '../../../data/data-mods.json';
@@ -434,6 +434,7 @@ const text = {
 const pick = pickables(lang, data.units.map((u) => u.id), data.pilots.map((p) => p.id));
 const works = pick.series.filter((s) => s.id !== null && s.id <= 24).map((s) => ({ id: s.id as number, name: s.name }));
 const notice = versionNotice(lang, '0.5.4');
+const ai = aiHint(lang, 'units');
 // The stages by scene number (docs/guide/story-mods/scenes.csv, export_story_tables.py).
 const sceneColumn = { zh: 'title_zh-Hans', en: 'title_en', ja: 'title_ja', ko: 'title_en' }[tl(lang)];
 const sceneRows = readFileSync(resolve(process.cwd(), '../docs/guide/story-mods/scenes.csv'), 'utf8').trim().split(/\r?\n/);
@@ -447,6 +448,7 @@ const scenes = sceneRows.slice(1).map((row) => { const cells = row.split(','); r
       <h1>{title[tl(lang)]}</h1>
       {notice && <p class="version-notice">{notice}</p>}
       <p>{lead[tl(lang)]}</p>
+      <p class="version-notice">{ai.text} <a href={ai.href}>{ai.link}</a></p>
       <p class="note"><a href={`/${lang}/mods/ids/units/`}>{L({ zh: 'ID 表', en: 'ID tables', ja: 'ID 表', ko: 'ID 표' })}</a> · {L({ zh: '所有处理都在浏览器里完成；没导出的进度存在这个浏览器里（图片除外）。', en: 'Everything happens in your browser; work not exported yet is kept in this browser (pictures aside).', ja: '処理はすべてブラウザー内で行われます。書き出していない作業はこのブラウザーに保存されます（画像を除く）。', ko: '모든 처리는 브라우저 안에서 이루어집니다. 내보내지 않은 작업은 이 브라우저에 저장됩니다 (그림 제외).' })}</p>
     </header>
 

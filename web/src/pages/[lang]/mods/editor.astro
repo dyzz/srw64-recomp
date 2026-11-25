@@ -9,7 +9,7 @@ import Base from '../../../layouts/Base.astro';
 import SubmitHint from '../../../components/SubmitHint.astro';
 import ModPackageForm from '../../../components/ModPackageForm.astro';
 import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
-import { packageText, versionNotice } from '../../../lib/mod-maker-text';
+import { aiHint, packageText, versionNotice } from '../../../lib/mod-maker-text';
 import { pickables } from '../../../lib/mod-picker';
 import '../../../styles/mod-maker.css';
 import data from '../../../data/data-mods.json';
@@ -233,6 +233,7 @@ const pick = pickables(lang, data.units.map((u) => u.id), data.pilots.map((p) =>
 const iconOf = new Map(data.units.map((u) => [u.id, u.icon]));
 const units = pick.units.map((u) => ({ ...u, icon: iconOf.get(u.id) }));
 const notice = versionNotice(lang, text.game);
+const ai = aiHint(lang, 'campaign');
 const routes = text.routes.split('|');
 ---
 <Base lang={lang} title={title} description={lead}>
@@ -260,6 +261,7 @@ const routes = text.routes.split('|');
 
     <div class="overview-only" data-overview-only>
       <p class="lead">{lead}</p>
+      <p class="version-notice">{ai.text} <a href={ai.href}>{ai.link}</a></p>
       {notice && <p class="version-notice">{notice}</p>}
       <ModPackageForm lang={lang} placeholder="yourname.campaign" />
       <section class="block">

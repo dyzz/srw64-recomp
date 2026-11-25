@@ -54,3 +54,22 @@ export const versionNotice = (lang: Lang, need: string) =>
     ja: `このツールで作ったパッケージには、ゲームのバージョン ${need} 以降が必要です。${need} はまだ公開されていません（現在の最新は ${release.version}）。パッケージは今作っておき、${need} の公開後にインストールしてください。`,
     ko: `이 도구로 만든 패키지는 게임 ${need} 이상 버전이 필요합니다. ${need}은(는) 아직 공개되지 않았습니다 (현재 최신 버전은 ${release.version}). 패키지는 지금 만들어 두고 ${need}이(가) 공개된 뒤에 설치하세요.`,
   });
+
+// The unit maker and the level editor cover the common cases; a big package (many units, a
+// campaign of many stages, whole sets of lines) is easier written as files by an AI agent that
+// follows the docs, which say how in their "Let an AI make it" sections.
+export const aiHint = (lang: Lang, kind: 'units' | 'campaign') => ({
+  text: L(lang, kind === 'units' ? {
+    zh: '网页工具适合简单的包和起步，很难满足复杂的需求。机体多、形态和合体技复杂、台词成套时，建议用能读写文件的 AI 工具（Claude Code、Codex 等）照文档直接写包的文件，再打包成 .srw64mod。',
+    en: 'This web tool suits simple packages and getting started; it can hardly meet complex needs. For many units, involved forms and combination attacks, or whole sets of lines, an AI tool that reads and writes files (Claude Code, Codex and the like) writing the package\'s files from the docs, then packing them as a .srw64mod, is the better way.',
+    ja: 'このウェブツールは簡単なパッケージや最初の一歩に向いていて、複雑な要求にはなかなか応えられません。ユニットが多い、形態や合体攻撃が複雑、台詞を一式そろえるといった場合は、ファイルを読み書きできる AI ツール（Claude Code、Codex など）にドキュメントどおりパッケージのファイルを書かせ、.srw64mod にまとめる方法をおすすめします。',
+    ko: '이 웹 도구는 간단한 패키지와 시작용으로 알맞고, 복잡한 요구는 채우기 어렵습니다. 기체가 많거나 형태와 합체기가 복잡하거나 대사를 한 벌로 갖출 때는, 파일을 읽고 쓸 수 있는 AI 도구(Claude Code, Codex 등)가 문서대로 패키지 파일을 쓰고 .srw64mod로 묶는 방법을 권합니다.',
+  } : {
+    zh: '网页编辑器适合简单的关卡和起步，很难满足复杂的需求。关卡多、事件和分支复杂、剧情台词多时，建议用能读写文件的 AI 工具（Claude Code、Codex 等）照文档直接写战役的文件，再打包成 .srw64mod。',
+    en: 'This web editor suits simple stages and getting started; it can hardly meet complex needs. For many stages, involved events and branches, or a lot of story, an AI tool that reads and writes files (Claude Code, Codex and the like) writing the campaign\'s files from the docs, then packing them as a .srw64mod, is the better way.',
+    ja: 'このウェブエディターは簡単なステージや最初の一歩に向いていて、複雑な要求にはなかなか応えられません。ステージが多い、イベントや分岐が複雑、ストーリーの台詞が多いといった場合は、ファイルを読み書きできる AI ツール（Claude Code、Codex など）にドキュメントどおりキャンペーンのファイルを書かせ、.srw64mod にまとめる方法をおすすめします。',
+    ko: '이 웹 편집기는 간단한 스테이지와 시작용으로 알맞고, 복잡한 요구는 채우기 어렵습니다. 스테이지가 많거나 이벤트와 분기가 복잡하거나 스토리 대사가 많을 때는, 파일을 읽고 쓸 수 있는 AI 도구(Claude Code, Codex 등)가 문서대로 캠페인 파일을 쓰고 .srw64mod로 묶는 방법을 권합니다.',
+  }),
+  link: L(lang, { zh: '交给 AI 做的方法', en: 'How to let an AI make it', ja: 'AI に任せる方法', ko: 'AI에게 맡기는 방법' }),
+  href: `/${lang}/docs/${kind === 'units' ? 'mod-data' : 'mod-campaign'}/`,
+});
