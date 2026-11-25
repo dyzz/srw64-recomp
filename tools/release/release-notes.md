@@ -10,6 +10,16 @@ An unofficial native port of **Super Robot Wars 64** with full English, Chinese 
 | [`{hd_name}`]({hd_download}) | {hd_size} | Optional HD images (HD {hd_version}) for macOS, Windows, Linux and Android. |
 {switch_hd_row_en}
 
+## Upgrading from 0.5.3
+
+- **Install over the old version**: on Windows and Linux extract over the old folder, on Android install over it, on the Switch replace the NRO. Saves, settings and installed MODs stay.
+- **Replace the whole `hd` folder with HD 1.4** (the Switch has a pack of its own). With HD 1.3 left in place the game shows no error, but none of the new pictures.
+- **MODs installed in 0.5.3 keep working** as they are, unpacked folders included. To update one, put its new `.srw64mod` in the mods folder: the old folder moves to `.trash`, which you can empty afterwards (old voice packages take most of it).
+- **Final Dancouga 0.1.0 saves move to the new version**: install 0.3.1 and load. At the next intermission the unit is rebuilt with its upgrades, weapon levels and parts, and from then on it sorties, separates and combines as in a new game. Loaded from a 0.5.3 suspend or turn save, it sorties alone for that stage.
+- **Kurtz joins when "Time to Settle It" on Brad's route ends**: a save past that stage does not get him or Super Earthgain, so use one from before it.
+- **If you installed "Korean (stage 1 demo)", disable or delete it**: 0.5.4 has the whole game in Korean, and the demo would cover parts of it.
+- **A save that uses a MOD needs that MOD enabled**: otherwise the game says which one and goes back to the title. The save is not harmed.
+
 ## What's new in 0.5.4
 
 ### MOD packages: new units, characters and campaigns
@@ -158,6 +168,16 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 {package_rows}
 | [`{hd_name}`]({hd_download}) | {hd_size} | 可选的 HD 图片包（HD {hd_version}），macOS、Windows、Linux、安卓通用。 |
 {switch_hd_row}
+
+### 从 0.5.3 升级
+
+- **覆盖安装即可**：Windows、Linux 解压后覆盖旧文件夹，安卓直接覆盖安装，Switch 替换 NRO。存档、设置和已装的 MOD 都会保留。
+- **HD 包要整个换成 1.4**：替换整个 `hd` 文件夹（Switch 用单独的一份）。HD 1.3 留在原处时游戏不会报错，但新加的图都不会显示。
+- **0.5.3 装的 MOD 照常能用**，解压出来的文件夹也能用。要更新某个 MOD，把新的 `.srw64mod` 放进 mods 文件夹，旧文件夹会移进 `.trash`，之后可以清空（大头是旧语音包）。
+- **终极断空我 0.1.0 的存档可以换成新版**：装上 0.3.1 再读档。到下一个场间画面时，机体会带着改造段数、武器段数和零件自动重建，之后同样能合体出击、分离、合体。从 0.5.3 的中断存档或回合存档读进来时，这一关里它先单独出击。
+- **卡茨在布拉德篇「了断之时」结束时入队**：已经打过这一关的存档拿不到卡茨和超级夺地者，要用这一关之前的存档。
+- **装过「韩文（第一关演示）」的，请停用或删除它**：0.5.4 自带完整韩文，演示包会盖掉其中一部分。
+- **用了 MOD 的存档，要先启用那个 MOD 再读**：没启用时游戏会说明缺哪个 MOD，然后回到标题，存档不会坏。
 
 ### 本版更新（0.5.4）
 
