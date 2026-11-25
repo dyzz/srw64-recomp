@@ -1,6 +1,6 @@
 An unofficial native port of **Super Robot Wars 64** with full English, Chinese and Korean translations. No ROM included: you need your own original Japanese ROM. 中文说明见下方。
 
-> **HD pack {hd_version}** (optional; the Switch has a pack of its own, in the same release): **[Download {hd_name} ({hd_size})]({hd_download})**. {hd_status_en} How to install it and where its images come from: [the HD {hd_version} release]({hd_url}).
+> **HD pack {hd_version}** (optional): **[Download {hd_name} ({hd_size})]({hd_download})**. {hd_status_en} How to install it and where its images come from: [the HD {hd_version} release]({hd_url}).
 
 ## Downloads
 
@@ -42,7 +42,7 @@ The largest change in this version: a package can now add units, weapons and cha
   - the original's stage instructions in plain forms: camera, effects, moving and destroying units, changing sides, sorties, upgrades, funds, world map places, green target areas and scripted battles;
   - project files that keep unfinished work, undo and redo of every edit, songs, sounds, weapons and maps chosen by name, and a two-stage template to start from.
 - **New package, Kurtz and Super Earthgain**: after "Time to Settle It" on Brad's route, Kurtz joins and Earthgain and Virose combine into Super Earthgain, with Brad as the main pilot and Kurtz as the sub pilot; it keeps Earthgain's upgrades. It sorties combined, separates on the map into Earthgain and Virose, who have the combination attack Shorai Tenryu Mametsujin, and combines again when the two stand side by side.
-- **Final Dancouga** now sorties combined and separates and combines on the map the same way, and its map icon fills its square. Saves made with its 0.1.0 load in 0.5.4.
+- **Final Dancouga** now sorties combined and separates and combines on the map the same way, and its map icon fills its square. A game saved with its 0.1.0 can move to the new version: the unit is rebuilt at the next intermission, and from then on it sorties, separates and combines as in a new game.
 - The idea of combining and separating on the map and of sortieing combined came from w6408004 and 柯博文2016 on Bilibili.
 - **Packages are read in place**: installing only puts the `.srw64mod` file in the mods folder, without unpacking it, so a voice package installs in seconds. **Thunderstore packages install** as ours do, and so does a zip that holds `.srw64mod` files. A file that does not install is reported instead of listed as a broken package, and the MOD page can delete it.
 - **A move or a weapon range above 15 works**: the original's tables stop at 15, and beyond it the game works the range out itself.
@@ -94,16 +94,7 @@ The largest change in this version: a package can now add units, weapons and cha
 
 ### Switch
 
-- **Smoother overall.** Measured on a docked Switch:
-  - The audio takes about 5% of a CPU core instead of 27% (41% at its worst).
-  - The interface is no longer redrawn when nothing on it changed; presenting a frame takes a quarter of the time it did, and the render thread half its CPU.
-  - All HD pictures are read from one file instead of thousands of small ones, and no longer a small piece at a time. The first battle had 14 reads that stalled and now has none.
-  - Battle textures used last time are read ahead, and new pictures are decoded on helper threads.
-  - The first opening: the Library 0.96 s → 0.3 s, the Battle Viewer 0.8 s → 0.18 s, the protagonist selection 1.8 s → under 0.1 s. The upgrade screen and the Battle Viewer's unit list stall far less.
-  - A voice package installs in under a second; it took minutes to unpack on the SD card.
-- The Switch version still stutters in places.
-- **With a voice MOD the game no longer aborts after about 20 minutes of play.** This came with 0.5.3.1.
-- **Quit game** returns to the Homebrew Menu. A text update that arrives mid-game no longer ends the game.
+- **The Switch version of 0.5.4 comes later.** It still crashes early on some starts, and I am fixing that first. Until then, keep 0.5.3.1 and its HD pack on the Switch.
 
 ### Text
 
@@ -149,7 +140,7 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 
 非官方的《超级机器人大战64》原生移植，附全游戏中文、英文与韩文翻译。不含 ROM：需要自备日版原版 ROM。
 
-> **HD 包 {hd_version}**（可选；Switch 用单独的一份，在同一个发布页）：**[下载 {hd_name}（{hd_size}）]({hd_download})**。{hd_status}安装方法和图片来源见 [HD {hd_version} 发布页]({hd_url})。以后 HD 包出新版本时，游戏的更新检查会提示。
+> **HD 包 {hd_version}**（可选）：**[下载 {hd_name}（{hd_size}）]({hd_download})**。{hd_status}安装方法和图片来源见 [HD {hd_version} 发布页]({hd_url})。以后 HD 包出新版本时，游戏的更新检查会提示。
 
 ### 下载
 
@@ -191,7 +182,7 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
   - 原版的关卡指令都有易写的形式：镜头、特效、移动和消灭机体、改变阵营、出击、改造、资金、世界地图地点、绿色目标区域、剧情战斗；
   - 工程文件能保存没做完的工作，每一步都能撤销和重做，曲子、音效、武器和地图都按名字选，还有两关的模板可以直接改。
 - **新 MOD「卡茨与超级夺地者」**：通关布拉德篇「了断之时」后，卡茨入队，夺地者与斩空者合体为超级夺地者，布拉德主驾驶、卡茨副驾驶，改造段数从夺地者继承。出击时是合体状态，在地图上分离后回到夺地者和斩空者，可以使用合体技「招雷 天龙魔灭阵」，两台相邻时可以再合体。
-- **终极断空我**也改为合体状态出击，在地图上同样可以分离、合体，地图图标顶满格子。用它 0.1.0 做的存档能在 0.5.4 读取。
+- **终极断空我**也改为合体状态出击，在地图上同样可以分离、合体，地图图标顶满格子。用它 0.1.0 存的档可以直接换成新版：到下一个场间画面时机体会自动重建，之后同样能合体出击、分离、合体。
 - 地图上合体分离和合体状态出击的思路来自 B 站用户 w6408004 和 柯博文2016。
 - **MOD 包不再解压**：安装时只把 `.srw64mod` 文件放进 mods 文件夹，游戏直接从包里读，语音包几秒就装好。**Thunderstore 的包**也能照样安装，装着 `.srw64mod` 的 zip 也能直接装。装不上的文件会报告出来，不再列成一个坏掉的包，并且可以在 MOD 页删掉。
 - **移动力和射程超过 15 也能用了**：原版的表只到 15，超过时由游戏自己算范围。
@@ -243,16 +234,7 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 
 #### Switch
 
-- **整体更流畅。** 在 Switch 底座模式下实测：
-  - 音频约占一个 CPU 核心的 5%，原来是 27%（最高 41%）。
-  - 界面内容没变时不再重画；呈现一帧的时间降到原来的四分之一，渲染线程的 CPU 占用减半。
-  - HD 图片从一个文件里读取，不再打开成千上万个小文件，也不再一小块一小块地读。第一场战斗原来有 14 次读图卡顿，现在没有了。
-  - 上次用过的战斗贴图会提前读入，新图片在辅助线程上解码。
-  - 第一次打开：图鉴 0.96 秒 → 0.3 秒，战斗查看器 0.8 秒 → 0.18 秒，主角选择页 1.8 秒 → 不到 0.1 秒。改造画面和战斗查看器的机体列表卡顿大大减少。
-  - 语音包不到一秒就装好，原来在 SD 卡上解压要几分钟。
-- Switch 版仍有卡顿。
-- **装了语音 MOD 时，玩二十分钟左右游戏中止的问题修好了。** 这个问题从 0.5.3.1 开始出现。
-- **「退出游戏」回到 Homebrew 菜单**。游戏中途收到文本更新不再导致游戏退出。
+- **Switch 版的 0.5.4 稍后发布。** 它在部分启动时仍会在开机早期崩溃，我先修好这个问题。在那之前，Switch 上请继续用 0.5.3.1 和它的 HD 包。
 
 #### 文本
 
