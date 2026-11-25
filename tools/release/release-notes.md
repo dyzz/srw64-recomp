@@ -131,7 +131,7 @@ The largest change in this version: a package can now add units, weapons and cha
 
 ### HD 1.4
 
-- **Map icons fill the original's square**: the HD icons left about 8% empty around them and looked smaller than the original's. The Gundam Mk-II's icon is redrawn.
+- **Map icons fill the original's square**: the HD icons left about 8% empty around them and looked smaller than the original's. The Gundam Mk-II's and Super Earthgain's icons are redrawn, and so is Super Earthgain's unit pose.
 - The 15 battle sky colourings still missing are added, and Domon's, Master Asia's and Albert's battle actions on foot use their own pictures. The Battle Viewer's Earth scene has its picture.
 
 Earlier changes are on the [website blog](https://srw64.dreamquest.club/en/blog/).
@@ -290,7 +290,7 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 
 #### HD 1.4
 
-- **地图机体图标顶满原版的格子**：HD 图标原来四周各空出约 8%，看起来比原版小。高达 Mk-II 的图标重画。
+- **地图机体图标顶满原版的格子**：HD 图标原来四周各空出约 8%，看起来比原版小。高达 Mk-II 和超级夺地者的图标重画，超级夺地者的立绘也重画了。
 - 补齐还缺的 15 种战斗天空配色；多蒙、东方不败和阿尔伯特的生身战斗动作换成各自的图。战斗查看器的「地球」场景有了图。
 
 更早版本的更新见[官网博客](https://srw64.dreamquest.club/zh/blog/)。
