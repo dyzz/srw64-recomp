@@ -2,6 +2,7 @@
 import importlib.util
 from pathlib import Path
 import plistlib
+import shutil
 import subprocess
 import tempfile
 import unittest
@@ -58,6 +59,7 @@ class MacOSPackageTests(unittest.TestCase):
         self.assertEqual(info["CFBundleIdentifier"], "io.github.dyzz.srw64-recomp")
         self.assertTrue(info["NSHighResolutionCapable"])
         self.assertEqual(info["CFBundleIconFile"], "Marchwind64")
+
         files = {p.relative_to(result).as_posix() for p in result.rglob("*") if p.is_file()}
         self.assertEqual(files, {"Contents/MacOS/srw64-gfx-host", "Contents/Info.plist",
                                  "Contents/Resources/Distribution.txt", "Contents/Resources/Marchwind64.icns",
@@ -66,6 +68,16 @@ class MacOSPackageTests(unittest.TestCase):
         self.assertEqual(signing[-2][-1].endswith(".app"), True)
         self.assertIn("--verify", signing[-1])
         self.assertFalse(any("--deep" in c for c in signing if "--sign" in c))
+
+    def test_fix_release_version(self):
+        # 0.5.4.1: the build number keeps the fourth number, the short version has three.
+        shutil.rmtree(self.output, ignore_errors=True)
+        info = plistlib.loads((self.stage(version="0.5.4.1") / "Contents/Info.plist").read_bytes())
+        self.assertEqual((info["CFBundleVersion"], info["CFBundleShortVersionString"]), ("0.5.4.1", "0.5.4"))
+        for bad in ("0.5.4.1.2", "0.5.x"):
+            shutil.rmtree(self.output, ignore_errors=True)
+            with self.assertRaises(ValueError):
+                self.stage(version=bad)
 
     def test_dialogue_text_is_copied_as_text_only(self):
         dialogue = self.root / "dialogue"

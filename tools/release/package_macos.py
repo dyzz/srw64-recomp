@@ -130,7 +130,11 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.5", minimum:
                  rom: Path | None = None, icu_data: Path | None = None) -> Path:
     if sys.platform != "darwin":
         raise ValueError("macOS packaging must run on macOS")
-    version_tuple(version)
+    # A fix release has a fourth number (0.5.4.1): CFBundleVersion takes it whole, as other
+    # apps' build numbers do, and CFBundleShortVersionString, at most three, the first three.
+    if not re.fullmatch(r"[0-9]+(?:\.[0-9]+){0,3}", version):
+        raise ValueError(f"Invalid numeric version: {version}")
+    short_version = ".".join(version.split(".")[:3])
     version_tuple(minimum)
     binary = binary.resolve(strict=True)
     output = output.absolute()
@@ -175,7 +179,7 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.5", minimum:
         info = {
             "CFBundleExecutable": EXECUTABLE, "CFBundleName": "Marchwind64",
             "CFBundleDisplayName": "Marchwind64", "CFBundleIdentifier": "io.github.dyzz.srw64-recomp",
-            "CFBundlePackageType": "APPL", "CFBundleVersion": version, "CFBundleShortVersionString": version,
+            "CFBundlePackageType": "APPL", "CFBundleVersion": version, "CFBundleShortVersionString": short_version,
             "LSMinimumSystemVersion": minimum, "NSHighResolutionCapable": True,
             "NSPrincipalClass": "NSApplication", "CFBundleIconFile": "Marchwind64",
         }
