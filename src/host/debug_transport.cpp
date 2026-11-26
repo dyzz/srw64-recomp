@@ -41,6 +41,10 @@
 #endif
 #include <unistd.h>
 #endif
+#ifdef __SWITCH__
+#include <cstdio>
+#include <switch.h>
+#endif
 
 namespace srw64::debug::transport {
 namespace {
@@ -241,18 +245,55 @@ void remove_endpoint() {
     if(!endpoint_file.empty())fs::remove(endpoint_file,ignored);
 }
 
+#ifdef __SWITCH__
+Socket listen_loopback(int& port);
+// A Switch asleep loses its network and the listening socket with it: the port refused every
+// connection after the console woke (2026-11-23). The socket is opened again once the network
+// is back, on the same port when it is free.
+Socket relisten(Socket broken) {
+    close_socket(broken);
+    std::fprintf(stderr,"SRW64_DEBUG_RELISTEN the listening socket failed (%s)\n",std::strerror(errno));
+    while(!stopping) {
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        try {
+            int port=0;
+            const Socket listener=listen_loopback(port);
+            std::fprintf(stderr,"SRW64_DEBUG_RELISTEN listening again on port %d\n",port);
+            return listener;
+        } catch(const std::exception&) {}
+    }
+    return invalid;
+}
+#endif
+
 // Accepts until stop(): polls so it can see the request, then lets go of the socket.
 void accept_loop(Socket listener) {
+#ifdef __SWITCH__
+    int failures=0;  // accept failing over and over is a broken socket too, not a busy client
+#endif
     while(!stopping) {
         const int ready=wait_readable(listener,200);
         if(ready<0) {
 #ifndef _WIN32
             if(errno==EINTR)continue;
 #endif
+#ifdef __SWITCH__
+            if((listener=relisten(listener))!=invalid){failures=0;continue;}
+            looping=false;return;
+#else
             break;
+#endif
         }
         if(ready==0)continue;
         const Socket client=::accept(listener,nullptr,nullptr);
+#ifdef __SWITCH__
+        if(client==invalid) {
+            if(++failures<20)continue;
+            if((listener=relisten(listener))==invalid){looping=false;return;}
+            failures=0;continue;
+        }
+        failures=0;
+#endif
         if(client==invalid)continue;
         {std::lock_guard lock(clients_mutex);clients.insert(client);}
 #ifdef __SWITCH__
@@ -332,6 +373,8 @@ Endpoint listen(const fs::path& run,Handler handle) {
     // The Mac reads it from the log nxlink brings back (tools/release/switch/attach.py):
     // the SD card is out of reach while the game runs.
     std::fprintf(stderr,"SRW64_DEBUG_ENDPOINT %s\n",endpoint.dump().c_str());
+    // Keys from the Mac are not the player's: the console slept in the middle of a long run.
+    appletSetAutoSleepDisabled(true);
 #endif
     endpoint_file=run/"debug.json";
     stopping=false;accepting=true;looping=true;

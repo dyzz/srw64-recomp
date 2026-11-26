@@ -420,7 +420,7 @@ if(SRW64_GL_ONLY)
         # console_data.cpp: the game data made from the player's ROM on the first launch.
         target_sources(srw64-gl-host PRIVATE switch/switch_platform.cpp "${SRW64_ROOT}/src/native/app/console_data.cpp")
         set_property(SOURCE "${SRW64_ROOT}/src/native/app/console_data.cpp" APPEND PROPERTY COMPILE_DEFINITIONS "SRW64_VERSION=\"${SRW64_VERSION}\"")
-        target_link_options(srw64-gl-host PRIVATE -Wl,--wrap=abort,--wrap=rename,--wrap=__syscall_thread_create,--wrap=fchmod,--wrap=chmod)
+        target_link_options(srw64-gl-host PRIVATE -Wl,--wrap=abort,--wrap=rename,--wrap=__syscall_thread_create,--wrap=__syscall_thread_join,--wrap=fchmod,--wrap=chmod)
         target_link_libraries(srw64-gl-host PRIVATE zstd)   # the NRO's HD pictures (hd_texture.cpp)
         # The update check (update_http.cpp): devkitPro's libcurl, over libnx's SSL service.
         target_link_libraries(srw64-gl-host PRIVATE curl z)
