@@ -3,14 +3,14 @@ title: 数值 MOD
 summary: 改机体、驾驶员和武器的数值：HP、装甲、能力值、地形适应、特殊能力、技能、精神、武器威力和射程等，按编号写。附实战怎么合算、什么时候生效。
 section: mods
 order: 3
-updated: 2026-10-27
+updated: 2026-11-26
 ---
 
 数值 MOD 改的是机体、驾驶员和武器本身的数值。游戏读到这些数值的地方都会跟着变：实战结算、状态页、图鉴。
 
 不想手写可以用 [数值 MOD 制作工具](/zh/mods/data/)：在网页上挑机体、人物、武器改数值，直接导出 .srw64mod。编号查 [机体](/zh/mods/ids/units/)、[人物](/zh/mods/ids/pilots/)、[武器](/zh/mods/ids/weapons/) ID 表。
 
-包的安装和管理见 [MOD 包：安装与制作](../mods/)。地形适应 0.5.1 起就能用，其余字段需要 0.5.2 或更新的版本，武器的属性类字段（`attack`、`post_move`、`beam` 等，见武器一节）需要 0.5.3 或更新的版本。
+包的安装和管理见 [MOD 包：安装与制作](../mods/)。地形适应 0.5.1 起就能用，其余字段需要 0.5.2 或更新的版本，武器的属性类字段（`attack`、`post_move`、`beam` 等，见武器一节）需要 0.5.3 或更新的版本。移动力和射程超过 15 要 0.5.4 或更新的版本才算得对（原版的范围表只到 15，0.5.4 起超过的部分由游戏自己算）。
 
 ## 包里放什么
 
@@ -35,6 +35,7 @@ yourname.balance/
 ```
 
 - 最外层的键是**编号**，十进制、不补零：`units.json` 写机体号，`pilots.json` 写人物号，`weapons.json` 写武器号。编号和原版数值查 [ID 表](/zh/mods/ids/)。
+- 改包里自己加的新机体、新人物、新武器时，键写 `"@名字"`（例如 `"@final": {"hp": 8000}`），改的是照抄过来之后的数值，见[新机体、新人物与新武器 MOD](../mod-units/)。
 - 每个编号下只写要改的字段，没写的保持原版。
 - 几个包改了同一项时，MOD 管理列表上面的包优先。
 
@@ -69,7 +70,7 @@ yourname.balance/
 | `afterimage` | 分身 | `shungensoku` | 瞬幻足 |
 | `hyper_jammer` | 超级干扰器 | `hp_regen_10`、`hp_regen_20` | HP 回复 10%、20% |
 
-变形、合体、分离不能用 MOD 加减，它们要有对应的形态数据，原版有的照样保留。
+原版机体的变形、合体、分离不能用数值 MOD 加减，它们要有对应的形态数据，原版有的照样保留。想要会变形、会在地图上合体的机体，就做一台新机体，见[新机体、新人物与新武器 MOD](../mod-units/)。
 
 ### 驾驶员（pilots.json）
 
@@ -129,7 +130,7 @@ NT、强化人、圣战士、超能力、底力在原版里用的是同一行等
 | `upgrade_type` | 改造类型：0 不可改造，1–4 各是一条威力增量曲线（2、3 曲线相同只差价格） | 0–4 |
 | `locked` | 剧情解禁前不出现在列表里（原版的 石破天驚拳、断空光牙剣 等；解禁靠剧情 MOD 的 `unlock`，或原版的满改追加表） | `true` 或 `false` |
 
-`attack`、`post_move`、`beam`、`parryable`、`terrain_at`、`requires`、`upgrade_type`、`locked` 需要 0.5.3 或更新的版本。MAP 武器不能加减：它的范围形状另有一张只有 51 件武器的表。合体技也不能加减。
+`attack`、`post_move`、`beam`、`parryable`、`terrain_at`、`requires`、`upgrade_type`、`locked` 需要 0.5.3 或更新的版本。MAP 武器不能加减：它的范围形状另有一张只有 51 件武器的表。原版武器不能改成合体技，新武器可以，见[新机体、新人物与新武器 MOD](../mod-units/)。
 
 把不可 P 的武器改成可 P，写 `post_move: true`。例如 ν 高达（50）的翼状浮游炮（209）原版只能站着用，这样改之后移动后也能用，武器列表里名字后面会跟着出现 P；把 `true` 换成 `false` 就是反过来，P 也会去掉。名字前后的 格／射、P、B 都跟着这些字段走，不用自己改名：
 
@@ -191,8 +192,8 @@ NT、强化人、圣战士、超能力、底力在原版里用的是同一行等
 
 示例包「浮游炮移动后可用」是武器属性的例子，同样在 [MOD 下载](/zh/mods/#srw64.funnels-p)页，源文件在 [`config/recomp/mods/funnels-p`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/funnels-p)：九件浮游炮、比特类武器各写一行 `post_move: true`，需要 0.5.3 或更新的版本。
 
-改名字和头像见 [名字与头像 MOD](../mod-names/)。
+改名字和头像见 [名字与头像 MOD](../mod-names/)。示例包「终极断空我」和「卡茨与超级夺地者」加的是新机体，见[新机体、新人物与新武器 MOD](../mod-units/)。
 
 ### 交给 AI 做
 
-仓库的 [`docs/guide/data-mods/`](https://github.com/dyzz/srw64-recomp/tree/main/docs/guide/data-mods) 文件夹里有格式说明和 CSV 版的机体表、人物表、武器表，可以整个交给 AI 助手，让它按你的要求写 `units.json`、`pilots.json` 和 `weapons.json`。
+仓库的 [`docs/guide/data-mods/`](https://github.com/dyzz/srw64-recomp/tree/main/docs/guide/data-mods) 文件夹里有格式说明和 CSV 版的机体表、人物表、武器表，可以整个交给 AI 助手，让它按你的要求写 `units.json`、`pilots.json` 和 `weapons.json`；同一份说明里也有新机体的 `new_units.json`。

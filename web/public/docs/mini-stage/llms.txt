@@ -87,16 +87,20 @@ Events run when their type's trigger holds (see "Event types"); a stage needs at
 that switches to the battlefield (`3D4D`), deploys groups (`3D45`) and hands over to the player (`3D48` closes the
 dialogue window), and usually an ending event (type 14) with `3D4B 4`.
 
-## Campaigns: stages chained into a mod package
+## Campaigns in the older v1 format: mini stages chained into a mod package
 
-A campaign (an "extra scenario") is several mini stages played in a row, with the intermission between them,
-under saves of its own. It ships as a mod package (`.srw64mod`) and the player starts it from the title: MOD →
-Extra Scenarios → Play → Start Campaign (game 0.5.1 or later). Human-readable page:
-https://srw64.dreamquest.club/en/docs/mod-campaign/. Working example to copy: `config/recomp/campaigns/sample/` (four stages, a choice in
-stage two, two endings).
+A campaign (an "extra scenario") is several stages played in a row, with the intermission between them, under
+saves of its own. It ships as a mod package (`.srw64mod`) and the player starts it from the title: MOD → Extra
+Scenarios → Play → Start Campaign.
 
-What exists today: original maps, characters, units, music and text only. Dialogue and choices reference existing
-entries of text table 0; new lines, new maps, new characters and new portraits are not supported yet.
+**For a new campaign, use the format of game 0.5.4 and later instead** (`srw64.campaign.v2` with `srw64.stage.v1`
+stages: new lines, maps of its own, the story mods' events and conditions, new characters and units). It is
+described in https://srw64.dreamquest.club/en/docs/mod-campaign.md, the example is `config/recomp/campaigns/sample/`, and the website's
+level editor (https://srw64.dreamquest.club/en/mods/editor/) writes it.
+
+This section is the older format (`srw64.campaign.v1`, game 0.5.1 or later): one mini stage per stage, original
+maps, characters, units, music and text only (dialogue and choices reference existing entries of text table 0).
+It still loads; `config/recomp/campaigns/retry` is written in it.
 
 Source folder (packed by `tools/mods/pack.py`, which compiles `campaign.json` into the package's
 `campaign/campaign.json`):
@@ -155,7 +159,7 @@ Rules nothing checks, learned in the game:
   `3D4B`. The last stage's ending event runs `3D71` (the ending sequence, then the title); never run `3D71` on the
   battlefield.
 - Choices: `3D44 0, <count>, <text>` where the text is a choice entry with exactly `count` options, then
-  `3E10` / `3E11` / `3E12` … `3E1D` per option (see the sample's crossroads stage).
+  `3E10` / `3E11` / `3E12` … `3E1D` per option.
 - Known crashes: `3D49` when a character is not on the map; `3D5A …, 4000` on a unit still on the map (`3D46` it
   first). The Link menu is blocked inside a campaign.
 

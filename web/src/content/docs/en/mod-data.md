@@ -3,14 +3,14 @@ title: Number mods
 summary: Change the values of units, pilots and weapons — HP, armor, stats, terrain ranks, special abilities, skills, spirits, weapon power and range — by number. With how battles combine terrain and when changes take effect.
 section: mods
 order: 3
-updated: 2026-10-27
+updated: 2026-11-26
 ---
 
 A number mod changes values of the units, pilots and weapons themselves. Everything that reads them follows: battle results, the status screens, the library.
 
 To skip writing JSON by hand, use the [Number mod maker](/en/mods/data/): pick units, pilots and weapons on the page, change their values and export a .srw64mod. Numbers are in the [unit](/en/mods/ids/units/), [pilot](/en/mods/ids/pilots/) and [weapon](/en/mods/ids/weapons/) ID tables.
 
-Installing and managing packages: [MOD packages](../mods/). Terrain ranks work from 0.5.1; the other fields need 0.5.2 or later.
+Installing and managing packages: [MOD packages](../mods/). Terrain ranks work from 0.5.1; the other fields need 0.5.2 or later, and the weapon attribute fields (`attack`, `post_move`, `beam` and so on, see Weapons) need 0.5.3 or later. Movement and range above 15 are worked out right only from 0.5.4 (the original's range tables go up to 15; from 0.5.4 the game works out the rest itself).
 
 ## What goes in the package
 
@@ -35,6 +35,7 @@ Any of the three files will do. `mod.json` is written as for any package.
 ```
 
 - The top-level keys are **numbers**, plain decimals without leading zeros: unit numbers in `units.json`, pilot numbers in `pilots.json`, weapon numbers in `weapons.json`. Look numbers and original values up in the [ID table](/en/mods/ids/).
+- To change a package's own new units, characters and weapons, the key is `"@name"` (for example `"@final": {"hp": 8000}`); it changes the values after they are copied. See [New unit, character and weapon mods](../mod-units/).
 - Under each number write only the fields you change; the rest stay as they are.
 - When several packages change the same thing, the one higher in the MOD list wins.
 
@@ -69,7 +70,7 @@ Ability keys:
 | `afterimage` | Afterimage | `shungensoku` | Phantom Step |
 | `hyper_jammer` | Hyper Jammer | `hp_regen_10`, `hp_regen_20` | HP Regen 10%, 20% |
 
-Transform, Combine and Separate cannot be added or removed by a mod: they need the forms behind them. A unit that has them keeps them.
+An original unit's Transform, Combine and Separate cannot be added or removed by a number mod: they need the forms behind them. A unit that has them keeps them. For a unit that transforms or combines on the map, make a new unit; see [New unit, character and weapon mods](../mod-units/).
 
 ### Pilots (pilots.json)
 
@@ -129,7 +130,7 @@ Spirit keys: `self_destruct` Self-Destruct, `scout` Scan, `accel` Accel, `mercy`
 | `upgrade_type` | upgrade type: 0 cannot be upgraded, 1–4 are the power growth rows (2 and 3 share a row and differ only in price) | 0–4 |
 | `locked` | hidden from the list until a story unlock (the original's Sekiha Tenkyoken, Dankuu Kougaken and so on; a story mod's `unlock`, or the original's full-upgrade table, unlocks it) | `true` or `false` |
 
-`attack`, `post_move`, `beam`, `parryable`, `terrain_at`, `requires`, `upgrade_type` and `locked` need 0.5.3 or later. A map weapon cannot be made or unmade: its shape sits in a table of only 51 weapons. Neither can a combination attack.
+`attack`, `post_move`, `beam`, `parryable`, `terrain_at`, `requires`, `upgrade_type` and `locked` need 0.5.3 or later. A map weapon cannot be made or unmade: its shape sits in a table of only 51 weapons. An original weapon cannot be made a combination attack; a new weapon can, see [New unit, character and weapon mods](../mod-units/).
 
 To make a weapon usable after moving, write `post_move: true`. The Nu Gundam's (50) Fin Funnels (209), for example, can only be fired from a standstill in the original; with this they fire after a move too, and a P appears after the name in the weapon list. `false` does the reverse and takes the P away. The 格／射, P and B around the name follow these fields, so there is no name to edit:
 
@@ -191,8 +192,8 @@ The example package "Main Cast: Space A" can be downloaded from the [MOD page](/
 
 The example package "Funnels Usable After Moving" shows the weapon attributes, on the same [MOD page](/en/mods/#srw64.funnels-p) with its source in [`config/recomp/mods/funnels-p`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/funnels-p): one line of `post_move: true` for each of nine funnel and bit weapons; it needs 0.5.3 or newer.
 
-Names and portraits: [Name and portrait mods](../mod-names/).
+Names and portraits: [Name and portrait mods](../mod-names/). The example packages "Final Dancouga" and "Kurtz and Super Earthgain" add new units; see [New unit, character and weapon mods](../mod-units/).
 
 ### Let an AI write it
 
-The repository's [`docs/guide/data-mods/`](https://github.com/dyzz/srw64-recomp/tree/main/docs/guide/data-mods) folder has the format and the unit, pilot and weapon tables as CSV. Hand the whole folder to an AI assistant and ask it for the `units.json`, `pilots.json` and `weapons.json` you want.
+The repository's [`docs/guide/data-mods/`](https://github.com/dyzz/srw64-recomp/tree/main/docs/guide/data-mods) folder has the format and the unit, pilot and weapon tables as CSV. Hand the whole folder to an AI assistant and ask it for the `units.json`, `pilots.json` and `weapons.json` you want; the same guide covers the `new_units.json` of new units too.

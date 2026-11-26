@@ -3,7 +3,7 @@ title: Name, portrait and map icon mods
 summary: Rename the original protagonists, partners and unit, rename any pilot, unit or weapon, replace pilot portraits and the units' map icons. Only what is shown changes; nothing is written to saves.
 section: mods
 order: 4
-updated: 2026-10-28
+updated: 2026-11-26
 ---
 
 These mods change only the names and portraits the game **shows**: dialogue, speakers, status screens, the battle confirmation, the library and map labels follow. Saves keep the original names, so disabling the package brings everything back, and a save still loads anywhere, including in the original game.
@@ -24,6 +24,8 @@ yourname.heroes/
 ```
 
 Any of them alone is fine.
+
+A package's own new units, characters and weapons ([New unit, character and weapon mods](../mod-units/)) are named here too, with the key `"@name"`; a new unit's map icon is `art/icons/@name.png`, and its facing is written under `"@name"` as well. This needs 0.5.4 or later.
 
 ## Names (dialogue/names.json)
 

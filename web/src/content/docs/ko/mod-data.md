@@ -3,14 +3,14 @@ title: 수치 MOD
 summary: 기체, 파일럿, 무기의 수치(HP, 장갑, 능력치, 지형 적응, 특수능력, 특수기능, 정신기, 무기 공격력과 사거리)를 번호로 지정해 바꿉니다. 전투에서 지형 적응을 합산하는 방법과 변경이 적용되는 시점도 설명합니다.
 section: mods
 order: 3
-updated: 2026-10-27
+updated: 2026-11-26
 ---
 
 수치 MOD는 기체, 파일럿, 무기 자체의 수치를 바꿉니다. 그 수치를 읽는 모든 곳, 즉 전투 결과, 상태 화면, 도감이 이를 따릅니다.
 
 JSON을 직접 쓰지 않으려면 [수치 MOD 제작 도구](/ko/mods/data/)를 사용하세요. 페이지에서 기체, 파일럿, 무기를 골라 수치를 바꾸고 .srw64mod로 내보낼 수 있습니다. 번호는 [기체](/ko/mods/ids/units/), [파일럿](/ko/mods/ids/pilots/), [무기](/ko/mods/ids/weapons/) ID 표에 있습니다.
 
-패키지 설치와 관리: [MOD 패키지](../mods/). 지형 적응은 0.5.1부터, 그 밖의 필드는 0.5.2 이상에서 동작합니다.
+패키지 설치와 관리: [MOD 패키지](../mods/). 지형 적응은 0.5.1부터, 그 밖의 필드는 0.5.2 이상에서 동작하며, 무기의 속성 필드(`attack`, `post_move`, `beam` 등, 무기 절 참고)는 0.5.3 이상이 필요합니다. 이동력과 사거리가 15를 넘을 때 올바르게 계산되려면 0.5.4 이상이 필요합니다(원작의 범위 표는 15까지이며, 0.5.4부터는 그보다 넓은 부분을 게임이 직접 계산합니다).
 
 ## 패키지에 들어가는 것
 
@@ -35,6 +35,7 @@ yourname.balance/
 ```
 
 - 최상위 키는 **번호**이며, 앞에 0을 붙이지 않은 일반 10진수입니다. `units.json`에는 기체 번호, `pilots.json`에는 파일럿 번호, `weapons.json`에는 무기 번호를 씁니다. 번호와 원작 수치는 [ID 표](/ko/mods/ids/)에서 찾을 수 있습니다.
+- 패키지가 직접 추가한 새 기체, 새 인물, 새 무기를 바꿀 때는 키를 `"@이름"`으로 씁니다(예: `"@final": {"hp": 8000}`). 원작에서 복사해 온 뒤의 수치를 바꾸는 것입니다. [새 기체·새 인물·새 무기 MOD](../mod-units/)를 참고하세요.
 - 각 번호 아래에는 바꾸는 필드만 씁니다. 나머지는 그대로 유지됩니다.
 - 여러 패키지가 같은 대상을 바꾸면 MOD 목록에서 위에 있는 패키지가 우선합니다.
 
@@ -69,7 +70,7 @@ yourname.balance/
 | `afterimage` | 분신 | `shungensoku` | 순환족 |
 | `hyper_jammer` | 하이퍼 재머 | `hp_regen_10`, `hp_regen_20` | HP 회복 10%, 20% |
 
-변형, 합체, 분리는 그 뒤에 있는 형태가 필요하므로 MOD로 추가하거나 제거할 수 없습니다. 원래 가진 기체는 그대로 유지합니다.
+원작 기체의 변형, 합체, 분리는 그 뒤에 있는 형태가 필요하므로 수치 MOD로 추가하거나 제거할 수 없습니다. 원래 가진 기체는 그대로 유지합니다. 변형하거나 맵에서 합체하는 기체를 원한다면 새 기체를 만드세요. [새 기체·새 인물·새 무기 MOD](../mod-units/)를 참고하세요.
 
 ### 파일럿(pilots.json)
 
@@ -129,7 +130,7 @@ yourname.balance/
 | `upgrade_type` | 개조 유형: 0은 개조 불가, 1–4는 공격력 증가 줄(2와 3은 같은 줄을 쓰고 가격만 다릅니다) | 0–4 |
 | `locked` | 스토리에서 해금될 때까지 목록에서 숨김(원작의 석파천경권, 단공광아검 등. 스토리 MOD의 `unlock`이나 원작의 풀개조 표가 해금합니다) | `true` 또는 `false` |
 
-`attack`, `post_move`, `beam`, `parryable`, `terrain_at`, `requires`, `upgrade_type`, `locked`는 0.5.3 이상이 필요합니다. MAP 무기는 새로 만들거나 일반 무기로 바꿀 수 없습니다. 그 형태가 무기 51개분밖에 없는 표에 들어 있기 때문입니다. 합체 공격도 마찬가지입니다.
+`attack`, `post_move`, `beam`, `parryable`, `terrain_at`, `requires`, `upgrade_type`, `locked`는 0.5.3 이상이 필요합니다. MAP 무기는 새로 만들거나 일반 무기로 바꿀 수 없습니다. 그 형태가 무기 51개분밖에 없는 표에 들어 있기 때문입니다. 원작 무기를 합체 공격으로 바꿀 수는 없지만, 새 무기는 합체 공격으로 만들 수 있습니다. [새 기체·새 인물·새 무기 MOD](../mod-units/)를 참고하세요.
 
 무기를 이동 후에 쓸 수 있게 하려면 `post_move: true`를 씁니다. 예를 들어 뉴 건담(50)의 핀 판넬(209)은 원작에서는 이동하지 않았을 때만 쓸 수 있지만, 이렇게 하면 이동한 뒤에도 쓸 수 있고 무기 목록의 이름 뒤에 P가 붙습니다. `false`는 그 반대로 P를 없앱니다. 이름 앞뒤의 格／射, P, B는 이 필드들을 따르므로 이름을 고칠 필요는 없습니다.
 
@@ -191,8 +192,8 @@ yourname.balance/
 
 무기 속성의 예시는 패키지 “판넬 이동 후 사용 가능”입니다. 같은 [MOD 페이지](/ko/mods/#srw64.funnels-p)에 있고 소스는 [`config/recomp/mods/funnels-p`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/funnels-p)입니다. 판넬과 비트 계열 무기 9개에 각각 `post_move: true` 한 줄씩이며, 0.5.3 이상이 필요합니다.
 
-이름과 초상화: [이름·초상화 MOD](../mod-names/).
+이름과 초상화: [이름·초상화 MOD](../mod-names/). 예시 패키지 “파이널 단쿠가”와 “카츠와 슈퍼 어스게인”은 새 기체를 추가합니다. [새 기체·새 인물·새 무기 MOD](../mod-units/)를 참고하세요.
 
 ### AI에게 맡기기
 
-저장소의 [`docs/guide/data-mods/`](https://github.com/dyzz/srw64-recomp/tree/main/docs/guide/data-mods) 폴더에는 형식 설명과 기체, 파일럿, 무기 표가 CSV로 들어 있습니다. 폴더 전체를 AI 어시스턴트에게 건네고 원하는 `units.json`, `pilots.json`, `weapons.json`을 만들어 달라고 하세요.
+저장소의 [`docs/guide/data-mods/`](https://github.com/dyzz/srw64-recomp/tree/main/docs/guide/data-mods) 폴더에는 형식 설명과 기체, 파일럿, 무기 표가 CSV로 들어 있습니다. 폴더 전체를 AI 어시스턴트에게 건네고 원하는 `units.json`, `pilots.json`, `weapons.json`을 만들어 달라고 하세요. 같은 설명에 새 기체용 `new_units.json`도 들어 있습니다.

@@ -3,12 +3,12 @@ title: Story mods
 summary: Add events to the original stages, saying when they fire, what must hold, what they do and the new lines they speak. Characters can join or stay and story branches can change, without taking any of the original event slots or touching an original event.
 section: mods
 order: 5
-updated: 2026-11-03
+updated: 2026-11-26
 ---
 
 A story mod adds events to the original stages. On a given turn, when someone is shot down, when two characters fight, when Persuade is chosen and so on, it plays the lines you wrote, has characters join or leave, or sets story variables so that the original story afterwards takes another branch. The game decides when an event fires. You write only the conditions and what happens, and you need not know the original event tables. No original event is changed or pushed out.
 
-Installing and managing packages is in [Mod packages: installing and making them](../mods/). Version 0.5.3 or later is needed.
+Installing and managing packages is in [Mod packages: installing and making them](../mods/). Version 0.5.3 or later is needed; the conditions and actions marked “0.5.4” below need 0.5.4 or later.
 
 The complete example is "Master Asia Lives", with its source in [`config/recomp/mods/master-asia`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/master-asia). On the Independence Army route's "Death Match! Showdown on Lantau Island (Part 2)" and the OZ route's "Fist of Despair and Sorrow (Part 2)", once Domon has talked with Master Asia in battle he can persuade him. With 50 kills or more Master Asia withdraws and joins after the stage.
 
@@ -82,6 +82,11 @@ Pilot and unit numbers are in the [pilot and unit tables of Number mods](../mod-
 | `{"enemies_gone": true}` | Every enemy is gone; `{"by_turn": 5}` limits it to turn 5 or earlier |
 | `{"remaining": {"side": "enemy", "at_most": 3}}` | Three or fewer enemy (or `third`-party) units remain |
 | `{"persuade": {"by": 4, "target": 18}}` | With 4 next to 18, the command menu offers Persuade; choosing it fires the event |
+| `{"defeated": {"who": 18, "by": 4}}` | 18 is shot down by 4 (4 is the other side of the fight). 0.5.4 |
+| `{"downed": {"side": "player", "group": 2, "who": 18, "at_least": 2}}` | Enough units have been shot down in this stage so far (write at least one of `side`, `group` and `who`; `at_least` defaults to 1). Only units shot down in battle count, not ones that left. 0.5.4 |
+| `{"group_gone": 3}` | The stage's original group 3 has been shot down (at least one of it was shot down and none is left on the map). 0.5.4 |
+| `{"reach": {"who": 18, "area": [10, 4, 12, 6]}}` | 18 enters this area (the squares of two corners, edges included); with `"side": "player"` in place of `who`, any unit of that side. A unit already standing inside counts. 0.5.4 |
+| `{"remaining": {"side": "player", "at_most": 2}}` | `side` can be `player` too: two or fewer player units remain. 0.5.4 |
 | `{"after": "opening"}`, `"setup"`, `"end"` | Right after the stage's original opening, setup or ending event |
 
 When an original event is due at the same moment it runs first, and yours is looked at on the next check. Events after the opening, setup or ending cannot `repeat`.
@@ -99,6 +104,16 @@ When an original event is due at the same moment it runs first, and yours is loo
 | `"not_roster": {...}` | None of them is on the roster |
 | `"flags": ["persuaded"]` | These flags of the package are set |
 | `"not_flags": [...]` | None of them is set |
+| `"turn": {"from": 3, "to": 5}` | The current turn is in this range (either end can be left out). 0.5.4 |
+| `"on_map": [18]`, `"defeated": [18]`, `"absent": [18]` | These characters are on the map / have been shot down in this stage / are not on the map. 0.5.4 |
+| `"hp": {"who": 18, "below": 50}` | On the map, with HP below 50%. 0.5.4 |
+| `"count": {"side": "enemy", "at_most": 3, "at_least": 1}` | How many units of this side are on the map. 0.5.4 |
+| `"in_area": {"who": 18, "area": [x0, y0, x1, y1]}` | In this area right now (`side` works too, as for `reach`). 0.5.4 |
+| `"downed": {…}` | As `downed` under when. 0.5.4 |
+| `"route": [0, 1]` | The protagonist route (0 Brad, 1 Manami, 2 Ark, 3 Selain). 0.5.4 |
+| `"choice": 2` | The last choice was the second option. 0.5.4 |
+| `"funds": {"at_least": 50000}` | Funds (`below` works too). 0.5.4 |
+| `"any": [{…}, {…}]`, `"all": [...]`, `"not": {…}` | One of them holds / all hold / it does not hold. Inside go the same conditions, nested as deep as you like. 0.5.4 |
 
 When the character is not on the player's roster, neither `kills` nor `kills_below` holds.
 
@@ -130,14 +145,22 @@ The roster is checked as well because the original story or another event may ta
 
 | Action | Meaning |
 | --- | --- |
-| `{"say": 18, "text": {...}, "mode": 0}` | One line (below) |
+| `{"say": 18, "text": {...}, "mode": 0}` | One line (below). The speaker can also be a package's new character, `"@name"`, with its own name plate and portrait (0.5.4) |
+| `{"say": 36, "silhouette": true, "text": {...}}` | Speak as the original's silhouette (named “???”, with a black portrait). Only the 33 characters the original has a silhouette for can (Banjo, Daisaku, Amuro, Chibodee and others); anyone else is a compile error. 0.5.4 |
 | `{"join": {"pilot": 18, "unit": 27}}` | The character and unit join the player |
 | `{"remove": {"pilot": 18, "unit": 27}}` | Take them off the roster (the unit must have left the map first) |
+| `{"remove_unit": {"pilot": 166, "unit": 228}}` | Take only the unit off; the character stays on the roster. The character must be in that unit. 0.5.4 |
+| `{"replace": {"pilot": 171, "unit": 224, "with": "@final"}}` | Change units: the old unit on the roster becomes the new one, the character gets in, and upgrade steps move over by the original's carry-over table. The new unit is written `@name` (see [New unit, character and weapon mods](../mod-units/)); for upgrades to carry over, give the new unit `inherits_from`. 0.5.4 |
+| `{"unlock": 881}` | Unlock a weapon the story unlocks (`@new weapon` works too). Changing units does not carry the old weapon's unlock over; unlock the new weapon again. 0.5.4 |
+| `{"build": "@final"}` | When the event starts, build a combined unit (a new unit with `combine`) for the player: the crew is each part's main pilot, the upgrade steps follow `inherits_from`, and it does not deploy. A later `unlock` in the same event can unlock its weapons; when there is one already, none is built. 0.5.4 |
+| `{"crew": {"unit": "@final", "pilots": [171, 168, 170, 169, 166]}}` | When the event has run, make these characters the unit's crew (up to 5; the first is the main pilot and must already be in it). For a package's new unit, `crew` in `new_units.json` suits better: it is put on when the units change. 0.5.4 |
 | `{"leave": 18}` | The character's unit leaves the map (not shot down) |
 | `{"leave_group": 11}`, `{"deploy": 11}` | One of the stage's original deployment groups leaves or arrives |
 | `{"deploy": "rival"}`, `{"leave_group": "rival"}` | The package's own reinforcement group (`deployments`, below) arrives or leaves |
 | `{"set": {"131": 3}}` | Set story variables |
 | `{"if": {"var": 128, "is": 2}, "then": [...], "else": [...]}` | Branch on a story variable |
+| `{"if": {…conditions…}, "then": [...], "else": [...]}` | Branch on any of the conditions under “if”, written as in an event's `if`. They are judged before the run reaches this step, so the step just before it (a `join`, say) may not count yet. 0.5.4 |
+| `{"choose": {"text": {"ja": ["はい", "いいえ"], "en": ["Yes", "No"]}, "options": [[...], [...]]}}` | Let the player choose (2–3 options); `options` lists, in order, what each option does. `text` can also be the text number of an original choice. Options you write take up to 24 characters each and need `ja`. Ask the question with a `say` before it. 0.5.4 |
 | `{"focus": 18}` | Move the camera to the character |
 | `{"bgm": 11}`, `{"sound": 124}` | Change the music, play a sound |
 | `{"fade": "out"}`, `{"fade": "in"}`, `{"wait": 30}` | Fade out, fade in, wait (frames) |
@@ -167,7 +190,23 @@ A story file's top level can have `deployments`: deployment groups of the packag
 
 - `id` uses lowercase letters, digits and `- _ .`; the events using it must be in the same stage (`scene`). 1 to 30 units a group.
 - Each unit has `x`, `y`, `pilot` (a number or `@new character`) and `unit` (a number or `@new unit`); optionally `side` (`enemy`, the default; `third`, a third party; `third_hostile`, a third party that also attacks you; `player`), `level` (0 to 20 over the stage's base level) and `upgrade` (upgrade step 0 to 5).
+- Characters numbered 287 and up (and a package's new characters) are made as generic pilots; a character below 287 who is already on the player's roster is that same character from the roster.
 - The game picks the group number from those the stage leaves unused; when there is no room the group is left out and the events naming it do not fire.
+
+## Battle lines
+
+Beside `events`, `battle_lines` adds new lines to battle animations (0.5.4):
+
+```json
+"battle_lines": [
+  { "id": "see", "scene": 129, "who": 36, "against": 287, "when": ["attack", "evade"],
+    "text": { "ja": "「見える！」", "en": "“I can see it!”" }, "once": true }
+]
+```
+
+- `when` is attacking `attack`, shot down `defeated`, heavy damage `heavy`, medium damage `damaged`, light damage `light`, evading `evade`, no effect `no_effect`, out of ammo or EN `no_ammo` and out of range `out_of_range`: one, or a list.
+- `against` is the opponent; without it the line is for anyone. `if` (the same conditions as an event's) works too, and `once` has it said only once in the stage. A line holds up to 60 characters.
+- At those moments this line takes the place of the one the original would say. Only characters the original gives battle lines say them; where the original picks a special line, such as a combination attack's talk, it may still be the original's. A package's new characters have their own battle lines, written another way; see [New unit, character and weapon mods](../mod-units/#battle-lines-for-new-characters).
 
 ## Hidden elements on the stage information page
 

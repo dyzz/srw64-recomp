@@ -1,6 +1,6 @@
 ---
 title: Language package MODs
-summary: Add a new reading language to the game (Korean, French…), or replace an existing language's UI text, names and dialogue. Anything left untranslated shows a fallback language you choose.
+summary: Add a new reading language to the game (French, Spanish…), or replace an existing language's UI text, names and dialogue. Anything left untranslated shows a fallback language you choose.
 section: mods
 order: 7
 updated: 2026-11-03

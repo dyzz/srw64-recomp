@@ -71,5 +71,5 @@ export const aiHint = (lang: Lang, kind: 'units' | 'campaign') => ({
     ko: '이 웹 편집기는 간단한 스테이지와 시작용으로 알맞고, 복잡한 요구는 채우기 어렵습니다. 스테이지가 많거나 이벤트와 분기가 복잡하거나 스토리 대사가 많을 때는, 파일을 읽고 쓸 수 있는 AI 도구(Claude Code, Codex 등)가 문서대로 캠페인 파일을 쓰고 .srw64mod로 묶는 방법을 권합니다.',
   }),
   link: L(lang, { zh: '交给 AI 做的方法', en: 'How to let an AI make it', ja: 'AI に任せる方法', ko: 'AI에게 맡기는 방법' }),
-  href: `/${lang}/docs/${kind === 'units' ? 'mod-data' : 'mod-campaign'}/`,
+  href: `/${lang}/docs/${kind === 'units' ? 'mod-units' : 'mod-campaign'}/`,
 });

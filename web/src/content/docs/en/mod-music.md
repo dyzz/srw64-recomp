@@ -3,7 +3,7 @@ title: Music mods
 summary: Replace any of the game's 49 songs with your own music, set loops, volume and titles, choose a pilot's or unit's battle theme, and voice the battle lines. Made with the web tool or by hand.
 section: mods
 order: 2
-updated: 2026-10-28
+updated: 2026-11-26
 ---
 
 A music mod replaces one of the original’s songs with an audio file. Everywhere the game plays that song follows: battle themes, stage music, story scenes, the title and the Sound Test. You can also choose which song a pilot or unit fights to.
@@ -82,6 +82,10 @@ yourname.bgm/
 | `tracks.<song>.title` | The title shown in the Sound Test, per language |
 | `battle.pilot.<pilot>` | The song (by number) this pilot fights to as a player unit’s main pilot |
 | `battle.unit.<unit>` | The song this unit fights to as the attacker when no player unit takes part |
+| `battle.pilot.@name`, `battle.unit.@name` | The battle song of a package's new character or unit (`@name` for this package's own, `package-id@name` for another package's), from 0.5.4 |
+| `@title` | The package's own song `audio/music/<title>.ogg`, usable as a value in `battle` and as a key in `tracks`. It replaces no original song and plays only where `battle` names it. Titles use lowercase letters, digits and `- _ .`, and cannot be all digits. From 0.5.4 |
+
+For example, to give a new character a battle song of its own: `"battle": {"pilot": {"@kai": "@kai-theme"}}`, `"tracks": {"@kai-theme": {"loop": [0, 1323000]}}`.
 
 Pilot and unit numbers are in the [pilot table](https://github.com/dyzz/srw64-recomp/blob/main/docs/guide/audio-mods/pilots.csv) and the [unit table](https://github.com/dyzz/srw64-recomp/blob/main/docs/guide/audio-mods/units.csv), which also list each one’s original battle theme. When several packages set the same song or the same pilot, the package higher in the list wins.
 
@@ -112,11 +116,12 @@ yourname.voices/
 
 - The file is named by the line's **record number** (5799-17346); the [battle line table](https://github.com/dyzz/srw64-recomp/blob/main/docs/guide/audio-mods/battle-voices.csv) lists all 11,548 with their speaker, when they appear and the text in three languages. Ogg Vorbis only, as for music.
 - A line of several pages plays on its first. The voice playing stops when the next line starts, when the battle ends or when it is cut short.
-- The boxes keep the original's pace and do not wait for a voice; keep each line to two or three seconds.
+- From 0.5.4, at normal speed the box waits for the voice to finish: a long voice first plays the part that runs past the original box's time, then the approach, the shot and so on play with the rest of the voice (press A not to wait; a line waits 10 seconds at most). The reaction line on a hit waits too, and a line waits for the one before it to finish. “Quotes wait for voices” on the settings' General page turns this off. Sped up, nothing waits, so keeping each line under 3 seconds is safest.
 - With battle animations off there are no lines and so no voices. Voices are the same whatever the reading language.
 - Random lines need all of them voiced to always have sound: "Attack (general, 3/14)" is one of 14 picked at random.
 - `voice.json` is optional: `{"schema": "srw64.voice.v1", "gain": -3.0, "delay": 150}`; `gain` adjusts the volume (dB, -30 to 12) and `delay` waits that many milliseconds after the box opens (0 to 2000).
 - The settings' General page has a MOD battle voices switch and volume.
+- A package's new character has no fixed record numbers for its own battle lines; the voice file is named in the line's `voice` instead. See [New unit, character and weapon mods](../mod-units/#battle-lines-for-new-characters).
 
 ## Copyright
 

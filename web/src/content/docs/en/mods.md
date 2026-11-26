@@ -1,24 +1,24 @@
 ---
 title: "Mod packages: installing and making them"
-summary: What a mod package is, how to install and manage one, and how to write mod.json when you make your own. Music and battle voices, numbers, names, portraits, map icons, campaigns, story events and language packages take effect.
+summary: What a mod package is, how to install and manage one, and how to write mod.json when you make your own. Music and battle voices, numbers, names, portraits, map icons, new units and characters, campaigns, story events and language packages take effect.
 section: mods
 order: 1
-updated: 2026-11-06
+updated: 2026-11-26
 ---
 
 A mod package is a folder, or that folder zipped into one `.srw64mod` file. It holds data only, never code. When a package is enabled, the game uses its contents in place of the matching parts of the original; wherever no package says otherwise, everything is the original.
 
-**Music and battle voices, numbers, names, portraits, map icons, campaigns, story events and language packages take effect**: replacing songs, choosing which song a pilot or unit fights to and voicing the battle lines, as described in [Music mods](../mod-music/); changing the numbers of units, pilots and weapons, as described in [Number mods](../mod-data/); and renaming, new portraits and map icons, as described in [Name, portrait and map icon mods](../mod-names/); events added to the original stages, characters joining and story branches changing, as described in [Story mods](../mod-story/); and campaigns chained from stages you arrange, as described in [Campaign mods](../mod-campaign/); and adding a reading language or replacing an existing one's text, as described in [Language package mods](../mod-language/). Other art will follow; the package format already has a place for them.
+**Music and battle voices, numbers, names, portraits, map icons, new units and characters, campaigns, story events and language packages take effect**: replacing songs, choosing which song a pilot or unit fights to and voicing the battle lines, as described in [Music mods](../mod-music/); changing the numbers of units, pilots and weapons, as described in [Number mods](../mod-data/); and renaming, new portraits and map icons, as described in [Name, portrait and map icon mods](../mod-names/); units, weapons and characters the original does not have (units that transform or combine on the map, combination attacks, art, battle pictures, battle lines and voices of their own), as described in [New unit, character and weapon mods](../mod-units/); events added to the original stages, characters joining and story branches changing, as described in [Story mods](../mod-story/); and campaigns chained from stages you arrange (with maps you draw and new lines, if you like), as described in [Campaign mods](../mod-campaign/); and adding a reading language or replacing an existing one's text, as described in [Language package mods](../mod-language/). Replacing the rest of the original art will follow; the package format already has a place for it.
 
-Mods need version 0.5.1 or later; everything beyond music and terrain ranks needs 0.5.2, story mods and language packages need 0.5.3, and the Switch needs 0.5.3.1.
+Mods need version 0.5.1 or later; everything beyond music and terrain ranks needs 0.5.2, story mods and language packages need 0.5.3, and the Switch needs 0.5.3.1; new units, characters and weapons, and campaigns in the new format the level editor makes, need 0.5.4.
 
 ## Installing
 
 1. Open the mod manager: click “MOD” in the bottom-right corner of the title screen, or open the settings and click “MOD” on the General page.
-2. **Drag the `.srw64mod` file** (a `.zip` or a package folder works too) **into the game window**. The game installs it in the background, says so at the top of the screen and opens the Installed page.
+2. **Drag the `.srw64mod` file** (a `.zip`, a package folder, a package downloaded from Thunderstore or a zip holding several `.srw64mod` files works too) **into the game window**. The game installs it in the background, says so at the top of the screen and opens the Installed page.
 3. Or click “Open folder” and put the package file straight into the MOD folder; it is installed the next time you open the mod manager. From 0.5.4 the game reads package files as they are, without extracting them, so installing only puts the file in place and even a large package installs at once. Also from 0.5.4 (on the Switch, 0.5.3.1), a package file’s extracted folder can go there too, under any name.
 
-Installing a new version of a package replaces the old one. The old version, and any package you remove, goes into `.trash` inside the MOD folder rather than being deleted.
+Installing a new version of a package replaces the old one. The old version, and any package you remove, goes into `.trash` inside the MOD folder rather than being deleted (old voice packages take the most room; you can empty `.trash` yourself). A file that cannot be installed is listed on the MOD page with the reason, rather than taken for a broken package, and can be removed there.
 
 On Android, put the package file in `mods/` inside the Marchwind64 folder under Documents (the Files app): it installs when the game starts or the MOD page opens. Or press Install from file on the MOD page and pick it.
 
@@ -33,10 +33,11 @@ The Installed page lists each package’s name, version, authors, contents and s
 - **A package higher in the list overrides the ones below it**: if two packages replace the same song, the upper one’s is used.
 - A package that depends on another is placed above it automatically. If a dependency is missing, too old or turned off, the page says so and the package stays off for now.
 - If a package needs a newer version of the game, the page says that too.
+- **A save made with a mod loads only with that mod enabled**: without it the game says which package is needed and goes back to the title screen; the save itself is left as it is. The numbers of a package’s new units and characters are kept beside the save, and when a package installed later changes them, loading puts them right.
 
 ## Making a package
 
-The easiest way to make a music package is the website’s [BGM MOD maker](/en/mods/bgm/), which writes the files below for you. Read on if you want to make one by hand, or to know what is inside.
+Most packages can be made with the website’s tools, entirely in the browser, exporting a `.srw64mod` directly: [BGM](/en/mods/bgm/), [battle voices](/en/mods/voices/), [numbers](/en/mods/data/), [names and portraits](/en/mods/names/), [map icons](/en/mods/icons/), the [unit maker](/en/mods/units/) (new units, characters and weapons) and the [level editor](/en/mods/editor/) (campaigns). Read on if you want to make one by hand, or to know what is inside.
 
 ### What a package holds
 
@@ -44,9 +45,10 @@ The easiest way to make a music package is the website’s [BGM MOD maker](/en/m
 mod.json        the package's details (required)
 audio/          music and voices
 campaign/       additional campaigns
+story/          story events (story mods)
 art/            art
-dialogue/       dialogue and languages
-data/           numbers
+dialogue/       names, dialogue and languages
+data/           numbers, new units and characters
 ```
 
 Include only the folders you use. To publish, zip the whole folder and change the extension to `.srw64mod`. `mod.json` can sit at the top of the archive or inside its single top-level folder. The game reads files straight out of the package, so store pictures (`.png`) and sound (`.ogg`) without compression (`zip -0`, or “Store” in 7-Zip): they are compressed already, so compressing them again saves nothing and only makes every read decompress them. The web mod tools and the repository’s `tools/mods/pack.py` already do this.
