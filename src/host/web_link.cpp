@@ -181,7 +181,7 @@ std::string response(int status,const std::string& origin,const std::string& typ
 }
 std::string reply(int status,const std::string& origin,const json& value){return response(status,origin,"application/json",value.dump());}
 
-std::string dotted(const mods::Version& v){return std::to_string(v.major)+"."+std::to_string(v.minor)+"."+std::to_string(v.patch);}
+std::string dotted(const mods::Version& v){return mods::version_text(v);}
 
 bool paired(const Request& r) {
     if(!r.authorization.starts_with("Bearer "))return false;

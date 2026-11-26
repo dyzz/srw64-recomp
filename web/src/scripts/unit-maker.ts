@@ -49,8 +49,8 @@ const PORTRAIT = 96, PORTRAIT_COLORS = 63, PORTRAIT_HD = 768;
 // original's poses are about 130×96).
 const SPRITE_COLORS = 127, SPRITE_LARGEST = 1024, SPRITE_FIT = 128, SPRITE_VIEW = 3;
 const LOCALE_LABEL: Record<Locale, string> = { ja: '日本語', 'zh-Hans': '中文', en: 'English', ko: '한국어' };
-// New units need 0.5.4; a recoloured original scene (scenes {"recolor"}) the game after it.
-const GAME = '0.5.4', GAME_RECOLOR = '0.5.5';
+// New units need 0.5.4; a recoloured original scene (scenes {"recolor"}) 0.5.4.1.
+const GAME = '0.5.4', GAME_RECOLOR = '0.5.4.1';
 
 export function initUnitMaker() {
   const root = document.querySelector<HTMLElement>('[data-unit-maker]');

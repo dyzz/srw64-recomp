@@ -753,9 +753,11 @@ std::optional<Version> builtin(const std::string& id) {
     const auto f=builtins.find(id);
     return f==builtins.end()?std::nullopt:std::optional<Version>(f->second);
 }
-void set_game_version(const Version& v){game_packed=(uint64_t(v.major)<<40)|(uint64_t(v.minor)<<20)|uint64_t(v.patch);}
+void set_game_version(const Version& v){
+    game_packed=(uint64_t(v.major&0xFFFF)<<48)|(uint64_t(v.minor&0xFFFF)<<32)|(uint64_t(v.patch&0xFFFF)<<16)|uint64_t(v.build&0xFFFF);
+}
 Version game_version() {
     const uint64_t p=game_packed.load();
-    return {int(p>>40),int((p>>20)&0xFFFFF),int(p&0xFFFFF)};
+    return {int(p>>48),int((p>>32)&0xFFFF),int((p>>16)&0xFFFF),int(p&0xFFFF)};
 }
 }

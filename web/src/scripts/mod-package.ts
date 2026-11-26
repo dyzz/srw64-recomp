@@ -57,10 +57,12 @@ export function packageForm(root: HTMLElement, text: Text, locale: string, needs
       if (description) out.description = { ...(typeof kept.description === 'object' ? kept.description : {}), [locale]: description };
       else delete out.description;
       const game = typeof needs === 'function' ? needs() : needs;
-      const wanted = /^>=\s*(\d+)\.(\d+)(?:\.(\d+))?$/.exec(String(kept.game ?? ''));
-      const need = game.split('.').map(Number);
-      const theirs = wanted ? [Number(wanted[1]), Number(wanted[2]), Number(wanted[3] ?? 0)] : null;
-      const newer = theirs && (theirs[0] - need[0] || theirs[1] - need[1] || theirs[2] - need[2]) > 0;
+      // Up to four numbers: the game's fix releases have a fourth (0.5.4.1).
+      const wanted = /^>=\s*(\d+(?:\.\d+){0,3})$/.exec(String(kept.game ?? ''));
+      const numbers = (text: string) => [...text.split('.').map(Number), 0, 0, 0].slice(0, 4);
+      const need = numbers(game);
+      const theirs = wanted ? numbers(wanted[1]) : null;
+      const newer = theirs && (theirs[0] - need[0] || theirs[1] - need[1] || theirs[2] - need[2] || theirs[3] - need[3]) > 0;
       out.game = newer ? kept.game : `>=${game}`;
       return { manifest: out, version };
     },

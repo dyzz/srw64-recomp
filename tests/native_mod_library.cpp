@@ -57,9 +57,14 @@ int main(int argc,char** argv) {
     const mods::Version game{0,4,9};
     // Versions and requirements.
     check(mods::parse_version("1.2.3")==mods::Version{1,2,3} && mods::parse_version("2")==mods::Version{2,0,0},"versions parse");
-    check(!mods::parse_version("1.x") && !mods::parse_version("") && !mods::parse_version("1.2.3.4"),"bad versions refused");
+    check(!mods::parse_version("1.x") && !mods::parse_version("") && !mods::parse_version("1.2.3.4.5"),"bad versions refused");
+    check(mods::parse_version("0.5.4.1")==mods::Version{0,5,4,1} && mods::version_text(mods::Version{0,5,4,1})=="0.5.4.1" &&
+          mods::version_text(mods::Version{1,2,0})=="1.2.0","a fix release's fourth number");
     check(mods::leading_version("0.4.9-dirty")==mods::Version{0,4,9},"the game's release name");
-    check(mods::leading_version("0.5.3.1")==mods::Version{0,5,3},"a one-platform release's fourth number left out");
+    check(mods::leading_version("0.5.4.1")==mods::Version{0,5,4,1} && mods::leading_version("0.5.4.1-dirty")==mods::Version{0,5,4,1},
+          "a fix release's fourth number counts");
+    check(mods::satisfies(mods::Version{0,5,4,1},">=0.5.4.1") && !mods::satisfies(mods::Version{0,5,4},">=0.5.4.1") &&
+          mods::satisfies(mods::Version{0,5,4,1},">=0.5.4") && !mods::satisfies(mods::Version{0,5,4,1},">=0.5.5"),"a fix release against requirements");
     check(mods::satisfies({1,2,0},">=1.0 <2") && !mods::satisfies({2,0,0},">=1.0 <2") && mods::satisfies({0,1,0},"*"),"requirements");
     check(!mods::valid_requirement("~1.0") && !mods::valid_requirement("") && mods::valid_requirement("=1.2.3"),"requirement syntax");
     // The manifest, strictly.

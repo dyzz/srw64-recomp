@@ -48,7 +48,14 @@ class ManifestFixtureTests(unittest.TestCase):
         self.assertFalse(validate.satisfies((2, 0, 0), ">=1.0 <2"))
         self.assertTrue(validate.satisfies((0, 1, 0), "*"))
         self.assertTrue(validate.valid_requirement("=1.2.3"))
-        for bad in ("~1.0", "", ">= 1"):
+        # The game's fix releases have a fourth number, which a requirement may name.
+        self.assertTrue(validate.valid_requirement(">=0.5.4.1"))
+        self.assertTrue(validate.satisfies((0, 5, 4, 1), ">=0.5.4.1"))
+        self.assertFalse(validate.satisfies((0, 5, 4), ">=0.5.4.1"))
+        self.assertFalse(validate.satisfies((0, 5, 4, 1), ">=0.5.5"))
+        self.assertEqual(validate.version_text((0, 5, 4, 1)), "0.5.4.1")
+        self.assertEqual(validate.version_text((1, 2, 0)), "1.2.0")
+        for bad in ("~1.0", "", ">= 1", ">=0.5.4.1.2"):
             self.assertFalse(validate.valid_requirement(bad), bad)
 
     def test_safe_entries(self):

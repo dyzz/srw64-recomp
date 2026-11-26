@@ -35,9 +35,10 @@ inline constexpr const char* package_extension=".srw64mod";
 inline constexpr const char* licenses[]={"CC-BY-4.0","CC-BY-SA-4.0","CC-BY-NC-4.0","CC-BY-NC-SA-4.0","CC0-1.0","MIT","GPL-3.0-or-later"};
 inline bool valid_license(const std::string& text){return std::find(std::begin(licenses),std::end(licenses),text)!=std::end(licenses);}
 
-// A version: up to three numbers, "1", "1.2" or "1.2.3" (missing parts are 0).
+// A version: up to four numbers, "1", "1.2", "1.2.3" or "0.5.4.1" (missing parts are 0). The
+// fourth is the game's fix releases (0.5.3.1, 0.5.4.1), which a package's "game" may ask for.
 struct Version {
-    int major{},minor{},patch{};
+    int major{},minor{},patch{},build{};
     auto operator<=>(const Version&) const=default;
 };
 // Built-in requirements a package's "requires" may name besides packages: "srw64.hd", the HD
@@ -48,10 +49,11 @@ inline constexpr const char* builtin_hd="srw64.hd";
 inline bool is_builtin(const std::string& id){return id==builtin_hd;}
 void set_builtin(const std::string& id,std::optional<Version> version);
 std::optional<Version> builtin(const std::string& id);
-inline std::optional<Version> parse_version(const std::string& text) {
-    Version v;int* parts[]={&v.major,&v.minor,&v.patch};
+// A package's own version has at most three (Thunderstore's x.y.z): most=3.
+inline std::optional<Version> parse_version(const std::string& text,unsigned most=4) {
+    Version v;int* parts[]={&v.major,&v.minor,&v.patch,&v.build};
     size_t at=0;unsigned n=0;
-    while(n<3) {
+    while(n<most) {
         size_t end=at;
         while(end<text.size() && text[end]>='0' && text[end]<='9')++end;
         if(end==at || end-at>6)return std::nullopt;
@@ -63,14 +65,13 @@ inline std::optional<Version> parse_version(const std::string& text) {
     return std::nullopt;
 }
 inline std::string version_text(const Version& v) {
-    return std::to_string(v.major)+"."+std::to_string(v.minor)+"."+std::to_string(v.patch);
+    return std::to_string(v.major)+"."+std::to_string(v.minor)+"."+std::to_string(v.patch)+
+        (v.build?"."+std::to_string(v.build):std::string());
 }
-// The leading x.y.z of a release name such as "0.4.9" or "0.4.9-dirty".
+// The leading numbers of a release name such as "0.4.9", "0.5.4.1" or "0.4.9-dirty".
 inline std::optional<Version> leading_version(const std::string& text) {
-    // At most three numbers: a release for one platform has a fourth ("0.5.3.1"), which
-    // packages' requirements do not see.
     size_t end=0;
-    for(int dots=0;end<text.size() && ((text[end]>='0' && text[end]<='9') || (text[end]=='.' && ++dots<3));)++end;
+    for(int dots=0;end<text.size() && ((text[end]>='0' && text[end]<='9') || (text[end]=='.' && ++dots<4));)++end;
     while(end>0 && text[end-1]=='.')--end;
     return parse_version(text.substr(0,end));
 }
@@ -150,7 +151,7 @@ inline std::variant<Manifest,Problem> parse_manifest(const json& data) {
     if(!data.contains("id") || !data["id"].is_string() || !campaign_library::valid_id(data["id"].get<std::string>()))return Problem{"id",""};
     m.id=data["id"].get<std::string>();
     if(!data.contains("version") || !data["version"].is_string())return Problem{"version",""};
-    const auto version=parse_version(data["version"].get<std::string>());
+    const auto version=parse_version(data["version"].get<std::string>(),3);
     if(!version)return Problem{"version",data["version"].get<std::string>()};
     m.version=*version;
     const auto text_field=[](const json& v){

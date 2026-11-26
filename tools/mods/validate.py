@@ -86,22 +86,23 @@ STORED = (".png", ".ogg")
 
 # --- The host's rules (mod_library.hpp) ---------------------------------------------------
 
-def parse_version(text: str) -> tuple[int, int, int] | None:
-    """Up to three numbers, "1", "1.2" or "1.2.3" (missing parts are 0); each at most six digits."""
+def parse_version(text: str, most: int = 3) -> tuple[int, ...] | None:
+    """Up to three numbers, "1", "1.2" or "1.2.3" (missing parts are 0); each at most six digits.
+    A requirement's version may have a fourth (most=4), the game's fix releases ("0.5.4.1"):
+    then four numbers come back. A package's own version keeps three (Thunderstore's x.y.z)."""
     if not isinstance(text, str):
         return None
     parts = text.split(".")
-    if not 1 <= len(parts) <= 3 or any(not p.isdigit() or not p.isascii() or len(p) > 6 for p in parts):
+    if not 1 <= len(parts) <= most or any(not p.isdigit() or not p.isascii() or len(p) > 6 for p in parts):
         return None
-    numbers = [int(p) for p in parts] + [0] * (3 - len(parts))
-    return numbers[0], numbers[1], numbers[2]
+    return tuple([int(p) for p in parts] + [0] * (most - len(parts)))
 
 
-def version_text(v: tuple[int, int, int]) -> str:
-    return f"{v[0]}.{v[1]}.{v[2]}"
+def version_text(v: tuple[int, ...]) -> str:
+    return ".".join(str(n) for n in v[:3]) + (f".{v[3]}" if len(v) > 3 and v[3] else "")
 
 
-def _clauses(text: str) -> list[tuple[str, tuple[int, int, int]]] | None:
+def _clauses(text: str) -> list[tuple[str, tuple[int, ...]]] | None:
     out = []
     for clause in text.split(" "):
         if not clause:
@@ -109,7 +110,7 @@ def _clauses(text: str) -> list[tuple[str, tuple[int, int, int]]] | None:
         op = 0
         while op < len(clause) and clause[op] in "<>=":
             op += 1
-        oper, version = clause[:op], parse_version(clause[op:])
+        oper, version = clause[:op], parse_version(clause[op:], 4)
         if oper not in (">=", ">", "<=", "<", "=") or version is None:
             return None
         out.append((oper, version))
@@ -121,9 +122,10 @@ def valid_requirement(text: str) -> bool:
     return isinstance(text, str) and (text == "*" or _clauses(text) is not None)
 
 
-def satisfies(v: tuple[int, int, int], requirement: str) -> bool:
+def satisfies(v: tuple[int, ...], requirement: str) -> bool:
     if requirement == "*":
         return True
+    v = tuple(v) + (0,) * (4 - len(v))
     clauses = _clauses(requirement)
     if clauses is None:
         return False
