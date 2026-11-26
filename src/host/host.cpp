@@ -195,6 +195,14 @@ void on_init(uint8_t* rdram, recomp_context*) {
     // resources' frames as the art pack's are, once per (resources, frame, file); the copies
     // of its scene around it ("around") too.
     srw64::mod_data::state().sprites_changed=[](const std::map<std::string,srw64::mod_units::Sprite>& sprites) {
+        // Recoloured original scenes (mod_units.hpp recolor) draw the original's HD picture.
+        std::map<uint16_t,uint16_t> sources;
+        {
+            auto& s=srw64::mod_data::state();
+            std::lock_guard lock(s.owners_mutex);
+            for(const auto& [own,rom]:s.palette_sources)sources[uint16_t(own)]=uint16_t(rom);
+        }
+        srw64::sprites::set_palette_sources(std::move(sources));
         static std::set<std::string> registered;
         for(const auto& [_,sprite]:sprites)
             for(unsigned scene=unsigned(sprite.scene)-sprite.before;scene<=unsigned(sprite.scene)+sprite.after;++scene)

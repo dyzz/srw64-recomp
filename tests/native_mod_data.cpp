@@ -340,6 +340,34 @@ int main(int argc,char** argv) {
         check(abilities(added,numbers.units.at("pkg@final"))==expected,"a new unit copying "+std::to_string(source)+" has no form abilities");
     }
     {
+        // A recoloured original scene (mod_units.hpp recolor): the beam's (56: 3558, 3023, 3271)
+        // with a palette of its own, the ROM's with two entries changed.
+        const json document=json::parse(R"({"schema":"srw64.new-units.v2",
+            "scenes":{"green":{"recolor":56,"colors":{"1":"#20e060","2":"#ffffff"}}}})");
+        const auto numbers=mod_units::assign({{"pkg",document}});
+        mod_units::Bytes added;
+        mod_units::Taken taken;
+        check(mod_units::parse(document,"pkg",numbers,rom,{},added,taken).empty(),"a recoloured scene");
+        const uint32_t row=tw::row(tw::scenes,taken.scenes.at("pkg@green"));
+        const unsigned own=w16(added,row+4);
+        check(w16(added,row)==3558 && w16(added,row+2)==3023 && own==tw::rom_resources,"the beam's scene and atlas, a palette past the ROM's");
+        check(taken.palette_sources.at(own)==3271,"made from the beam's palette");
+        const auto original=srw64::app::rom_import::resource(rom,mod_units::rom_resource_table,3271).bytes;
+        const auto& made=taken.resources.at(own);
+        check(made.size()==original.size() && std::equal(made.begin(),made.begin()+10,original.begin()) &&
+              std::equal(made.begin()+14,made.end(),original.begin()+14),"the same palette but entries 1 and 2");
+        check((made[10]<<8|made[11])==((4u<<11|28u<<6|12u<<1)|(original[11]&1u)) && (made[12]<<8|made[13])==(0xFFFEu|(original[13]&1u)),
+              "#20e060 and #ffffff in RGBA5551, the transparency bit kept");
+        const auto refuse=[&](const char* scenes){
+            const json d=json::parse(std::string(R"({"schema":"srw64.new-units.v2","scenes":)")+scenes+"}");
+            mod_units::Bytes b;mod_units::Taken t;
+            return !mod_units::parse(d,"pkg",mod_units::assign({{"pkg",d}}),rom,{},b,t).empty();
+        };
+        check(refuse(R"({"x":{"recolor":56,"colors":{"999":"#000000"}}})") && refuse(R"({"x":{"recolor":56,"colors":{"1":"green"}}})") &&
+              refuse(R"({"x":{"recolor":5000,"colors":{"1":"#000000"}}})") && refuse(R"({"x":{"recolor":56,"colors":{}}})") &&
+              refuse(R"({"x":{"recolor":56,"colors":{"1":"#000000"},"tint":1}})"),"a recolour outside the palette, not a colour, not a scene, empty, unknown field");
+    }
+    {
         // A Final Dancouga: a scene, a weapon with its own animation, a unit carrying it.
         const json document=json::parse(R"({"schema":"srw64.new-units.v2",
             "scenes":{"pose":[2560,1716,2118]},

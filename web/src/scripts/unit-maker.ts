@@ -13,6 +13,7 @@ import { LOCALES, KINDS, SLUG, QUOTE_SITUATIONS, emptyModel, fromFiles, placeSpr
 import { audioKit, newClip, recordOfFile, FIRST_RECORD, LAST_RECORD, type Clip, type ClipText } from './audio-clip';
 import * as storyImage from '../lib/story-image';
 import * as anim from '../lib/weapon-animation';
+import * as romArt from '../lib/rom-art';
 import type { Join, Wave, WaveUnit, DeploySide } from '../lib/story-image';
 import { foot, reduce } from '../lib/pixels';
 import { commitRedraw } from '../lib/commit-redraw';
@@ -48,7 +49,8 @@ const PORTRAIT = 96, PORTRAIT_COLORS = 63, PORTRAIT_HD = 768;
 // original's poses are about 130×96).
 const SPRITE_COLORS = 127, SPRITE_LARGEST = 1024, SPRITE_FIT = 128, SPRITE_VIEW = 3;
 const LOCALE_LABEL: Record<Locale, string> = { ja: '日本語', 'zh-Hans': '中文', en: 'English', ko: '한국어' };
-const GAME = '0.5.4';
+// New units need 0.5.4; a recoloured original scene (scenes {"recolor"}) the game after it.
+const GAME = '0.5.4', GAME_RECOLOR = '0.5.5';
 
 export function initUnitMaker() {
   const root = document.querySelector<HTMLElement>('[data-unit-maker]');
@@ -63,7 +65,8 @@ export function initUnitMaker() {
   const byId = Object.fromEntries(KINDS.map((k) => [k, new Map(lists[k].map((e) => [e.id, e]))])) as Record<Kind, Map<number, Entry>>;
   const nameOf = (e: Entry) => e.name[lang] || (lang === 'ko' ? e.name.en : '') || e.name.ja;
   const sep = lang === 'en' || lang === 'ko' ? ', ' : '、';
-  const form = packageForm(root, text, locale, GAME);
+  const form = packageForm(root, text, locale, () =>
+    Object.values(model.scenes ?? {}).some((v) => anim.isRecolor(v)) ? GAME_RECOLOR : GAME);
   const unitWeapons = new Map<number, number[]>();
   for (const w of lists.weapons) for (const u of w.units as number[]) unitWeapons.set(u, [...(unitWeapons.get(u) ?? []), w.id]);
 
@@ -841,9 +844,89 @@ export function initUnitMaker() {
     if (unit === undefined || !bank) return null;
     return { image: `/gen/units/${unit}.webp`, canvas: bank.poses[unit] };
   }
-  // An actor's canvas: the original scene's, or the package picture's.
+  // --- The player's ROM (lib/rom-art.ts): read here only, kept in this browser's storage -------
+  // so the stage draws the original's effects and their palettes can be recoloured. The site
+  // carries none of its pictures.
+  let rom: romArt.RomArt | null = null, romState: 'none' | 'asked' | 'loading' | 'bad' | 'ok' = 'none';
+  const romDb = () => new Promise<IDBDatabase>((ok, no) => {
+    const r = indexedDB.open('srw64-maker-rom', 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('rom');
+    r.onsuccess = () => ok(r.result); r.onerror = () => no(r.error);
+  });
+  const romKept = async (bytes?: Uint8Array | null): Promise<Uint8Array | null> => {
+    try {
+      const db = await romDb();
+      return await new Promise((ok) => {
+        const store = db.transaction('rom', bytes === undefined ? 'readonly' : 'readwrite').objectStore('rom');
+        const r = bytes === undefined ? store.get('z64') : bytes === null ? store.delete('z64') : store.put(bytes, 'z64');
+        r.onsuccess = () => ok(bytes === undefined && r.result instanceof Uint8Array ? r.result : null);
+        r.onerror = () => ok(null);
+      });
+    } catch { return null; }
+  };
+  const romTake = async (bytes: Uint8Array) => {
+    const z64 = romArt.toZ64(bytes);
+    if (!z64 || z64.length !== romArt.ROM_SIZE) return false;
+    const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', z64 as BufferSource));
+    if ([...digest].map((b) => b.toString(16).padStart(2, '0')).join('') !== romArt.ROM_SHA256) return false;
+    rom = new romArt.RomArt(z64); pictures.clear(); romState = 'ok';
+    return true;
+  };
+  const needRom = () => {
+    if (romState !== 'none') return;
+    romState = 'asked';
+    romKept().then(async (kept) => { if (kept && await romTake(kept)) render(); });
+  };
+  function romBar(): Node {
+    const input = el('input', { type: 'file', accept: '.z64,.n64,.v64,.bin,application/octet-stream', hidden: true }) as HTMLInputElement;
+    input.addEventListener('change', async () => {
+      const file = input.files?.[0];
+      input.value = '';
+      if (!file) return;
+      romState = 'loading'; render();
+      const bytes = new Uint8Array(await file.arrayBuffer());
+      if (await romTake(bytes)) { await romKept(rom!.rom); say(statusLine, T('romOk')); }
+      else { romState = 'bad'; say(statusLine, T('romBad'), true); }
+      render();
+    });
+    const pick = el('label', { class: 'mini' }, T(rom ? 'romAgain' : 'romPick'), input);
+    const forget = rom ? el('button', { type: 'button', class: 'mini', onclick: async () => { rom = null; romState = 'asked'; pictures.clear(); await romKept(null); render(); } }, T('romForget')) : null;
+    const state = romState === 'ok' ? T('romOk') : romState === 'loading' ? T('romLoading') : romState === 'bad' ? T('romBad') : T('romNone');
+    return el('div', { class: 'rom-bar' }, el('span', { class: romState === 'bad' ? 'warn' : 'was' }, state), ' ', pick, ' ', forget, el('p', { class: 'hint' }, T('romHint')));
+  }
+  // A battle scene row's first frame from the ROM, recoloured, as a data URL (cached).
+  const pictures = new Map<string, string>();
+  function romPicture(row: number, colors?: Record<string, string>): string | undefined {
+    if (!rom) return undefined;
+    const key = `${row}|${JSON.stringify(colors ?? {})}`;
+    const hit = pictures.get(key);
+    if (hit !== undefined) return hit || undefined;
+    let url = '';
+    try {
+      const [s, a, p] = rom.triple(row), scene = rom.scene(s);
+      const frame = romArt.renderFrame(scene, rom.atlas(a), romArt.recoloured(rom.palette(p), colors), romArt.firstFrame(scene));
+      const canvas = document.createElement('canvas');
+      canvas.width = frame.width; canvas.height = frame.height;
+      canvas.getContext('2d')!.putImageData(new ImageData(frame.rgba, frame.width, frame.height), 0, 0);
+      url = canvas.toDataURL();
+    } catch { url = ''; }
+    if (pictures.size > 600) pictures.clear();
+    pictures.set(key, url);
+    return url || undefined;
+  }
+  // A scene of the package that recolours an original one ("scenes": {"recolor", "colors"}).
+  const recolorOf = (scene: Ref): anim.Recolor | null => {
+    if (typeof scene !== 'string' || !scene.startsWith('@')) return null;
+    const v = (model.scenes ?? {})[scene.slice(1)];
+    return anim.isRecolor(v) ? v : null;
+  };
+  // The original row an actor draws, recoloured or not; none for a picture of the package.
+  const actorRow = (actor: anim.Actor): number | undefined => typeof actor.scene === 'number' ? actor.scene : recolorOf(actor.scene)?.recolor;
+  // An actor's canvas: the original scene's (drawn from the ROM when there is one), or the package picture's.
   function actorCanvas(a: anim.Actor): { canvas: number[]; image?: string } | undefined {
-    if (typeof a.scene === 'number') return bank ? { canvas: bank.scenes[a.scene] } : undefined;
+    const row = actorRow(a);
+    if (row !== undefined) return bank ? { canvas: bank.scenes[row], image: romPicture(row, recolorOf(a.scene)?.colors) } : undefined;
+    if (typeof a.scene !== 'string') return undefined;
     const sceneName = a.scene.startsWith('@') ? a.scene.slice(1) : '';
     const target = (model.scenes ?? {})[sceneName];
     const spriteName = typeof target === 'string' && target.startsWith('@') ? target.slice(1) : '';
@@ -858,8 +941,10 @@ export function initUnitMaker() {
     return node;
   };
   // The stage: the attacker's pose at its origin (facing left, as the attacking side draws it),
-  // each actor's box where it starts; drag a box to move it.
-  function stage(w: Weapon, a: anim.Animation): Node {
+  // each actor's box where it starts (its first frame, from the ROM, when there is one); drag a
+  // box to move it, or the fire point to move every effect. `commit` keeps a change: the
+  // record shown may be a copy's, which becomes the weapon's own when changed.
+  function stage(w: Weapon, a: anim.Animation, commit: () => void, movable = true): Node {
     const view = { x0: -320, y0: -200, x1: 160, y1: 80 };
     const root2 = svg('svg', { viewBox: `${view.x0} ${view.y0} ${view.x1 - view.x0} ${view.y1 - view.y0}`, class: 'anim-stage' });
     root2.append(svg('line', { x1: view.x0, y1: 0, x2: view.x1, y2: 0, class: 'ground' }), svg('line', { x1: 0, y1: view.y0, x2: 0, y2: view.y1, class: 'axis' }));
@@ -869,36 +954,190 @@ export function initUnitMaker() {
       root2.append(svg('image', { href: unit.image, x: x0, y: y0, width: x1 - x0, height: y1 - y0, preserveAspectRatio: 'none', class: 'pose' }));
     }
     const chosen = selectedActor.get(w.slug) ?? -1;
+    const scale = () => (view.x1 - view.x0) / Math.max(1, (root2 as SVGSVGElement).clientWidth);
+    const placed: (() => void)[] = [];
     a.actors.forEach((actor, i) => {
       const c = actorCanvas(actor);
       const box = anim.actorBox(actor, c?.canvas);
       if (!box) return;
-      const g = svg('g', { class: `actor${i === chosen ? ' on' : ''}`, 'data-index': i });
+      const g = svg('g', { class: `actor${i === chosen ? ' on' : ''}${c?.image ? ' drawn' : ''}${movable ? '' : ' fixed'}`, 'data-index': i });
       if (c?.image) g.append(svg('image', { href: c.image, x: box.x0, y: box.y0, width: box.x1 - box.x0, height: box.y1 - box.y0, preserveAspectRatio: 'none' }));
       g.append(svg('rect', { x: box.x0, y: box.y0, width: Math.max(1, box.x1 - box.x0), height: Math.max(1, box.y1 - box.y0) }));
       const label = svg('text', { x: box.x0 + 2, y: box.y0 + 9 });
       label.textContent = String(i + 1);
       g.append(label);
-      let drag: { x: number; y: number; ax: number; ay: number } | null = null;
-      g.addEventListener('pointerdown', (e) => {
-        const p = (e as PointerEvent);
-        drag = { x: p.clientX, y: p.clientY, ax: actor.x, ay: actor.y };
-        (g as Element).setPointerCapture(p.pointerId);
-        selectedActor.set(w.slug, i);
-        for (const other of root2.querySelectorAll('.actor')) other.classList.toggle('on', other === g);
-      });
-      g.addEventListener('pointermove', (e) => {
-        if (!drag) return;
-        const p = e as PointerEvent, scale = (view.x1 - view.x0) / (root2 as SVGSVGElement).clientWidth;
-        actor.x = Math.round(drag.ax + (p.clientX - drag.x) * scale);
-        actor.y = Math.round(drag.ay - (p.clientY - drag.y) * scale);
+      const place = () => {
         const moved = anim.actorBox(actor, c?.canvas)!;
         for (const child of g.children) { child.setAttribute('x', String(moved.x0 + (child.tagName === 'text' ? 2 : 0))); child.setAttribute('y', String(moved.y0 + (child.tagName === 'text' ? 9 : 0))); }
-      });
-      g.addEventListener('pointerup', () => { if (drag) { drag = null; changed(); } });
+      };
+      placed.push(place);
+      if (movable) {
+        let drag: { x: number; y: number; ax: number; ay: number } | null = null;
+        g.addEventListener('pointerdown', (e) => {
+          const p = (e as PointerEvent);
+          drag = { x: p.clientX, y: p.clientY, ax: actor.x, ay: actor.y };
+          (g as Element).setPointerCapture(p.pointerId);
+          selectedActor.set(w.slug, i);
+          for (const other of root2.querySelectorAll('.actor')) other.classList.toggle('on', other === g);
+        });
+        g.addEventListener('pointermove', (e) => {
+          if (!drag) return;
+          const p = e as PointerEvent;
+          actor.x = Math.round(drag.ax + (p.clientX - drag.x) * scale());
+          actor.y = Math.round(drag.ay - (p.clientY - drag.y) * scale());
+          place(); placeFire();
+        });
+        g.addEventListener('pointerup', () => { if (drag) { drag = null; commit(); } });
+      }
       root2.append(g);
     });
-    return el('div', { class: 'anim-stage-box' }, root2 as unknown as Node, el('p', { class: 'hint' }, T('animStageHint')));
+    // The fire point: a cross on the first effect; dragging it moves every effect with it.
+    const fire = svg('g', { class: 'fire-point' });
+    fire.append(svg('circle', { cx: 0, cy: 0, r: 5 }), svg('line', { x1: -9, y1: 0, x2: 9, y2: 0 }), svg('line', { x1: 0, y1: -9, x2: 0, y2: 9 }));
+    const placeFire = () => {
+      const at = anim.firePoint(a);
+      fire.setAttribute('visibility', at ? 'visible' : 'hidden');
+      if (at) fire.setAttribute('transform', `translate(${at.x} ${-at.y})`);
+    };
+    placeFire();
+    let drag: { x: number; y: number; fx: number; fy: number } | null = null;
+    fire.addEventListener('pointerdown', (e) => {
+      const p = e as PointerEvent, at = anim.firePoint(a);
+      if (!at) return;
+      drag = { x: p.clientX, y: p.clientY, fx: at.x, fy: at.y };
+      (fire as Element).setPointerCapture(p.pointerId);
+    });
+    fire.addEventListener('pointermove', (e) => {
+      if (!drag) return;
+      const p = e as PointerEvent;
+      anim.moveFirePoint(a, drag.fx + (p.clientX - drag.x) * scale(), drag.fy - (p.clientY - drag.y) * scale());
+      for (const place of placed) place();
+      placeFire();
+    });
+    fire.addEventListener('pointerup', () => { if (drag) { drag = null; commit(); } });
+    root2.append(fire);
+    return el('div', { class: 'anim-stage-box' }, root2 as unknown as Node, el('p', { class: 'hint' }, T(movable ? 'animStageHint' : 'animStageCopyHint')));
+  }
+  // The fire point as two numbers.
+  function fireRow(a: anim.Animation, commit: () => void): Node {
+    const at = anim.firePoint(a);
+    if (!at) return el('p', { class: 'hint' }, T('fireNone'));
+    const cell = (v: number, set: (v: number) => void) => {
+      const i = el('input', { value: String(v), class: 'num-cell', spellcheck: 'false' }) as HTMLInputElement;
+      i.addEventListener('change', () => { const n = Number(i.value.trim()); if (Number.isFinite(n)) { set(n); commit(); } });
+      return i;
+    };
+    return el('div', {}, el('div', { class: 'sub' }, T('fireTitle')), el('p', { class: 'hint' }, T('fireHint')),
+      el('div', { class: 'list-row' },
+        el('label', { class: 'field inline' }, 'x', cell(at.x, (v) => anim.moveFirePoint(a, v, at.y))),
+        el('label', { class: 'field inline' }, 'y', cell(at.y, (v) => anim.moveFirePoint(a, at.x, v))),
+        el('span', { class: 'hint' }, T('fireMoves', { n: a.actors.filter(anim.movesWithFirePoint).length }))));
+  }
+  // Recolouring: an actor's original scene with palette entries of the package's
+  // (lib/weapon-animation.ts Recolor). Actors whose scenes share the palette change together
+  // unless the author says otherwise.
+  const colorActor = new Map<string, number>();   // by weapon slug: the actor being recoloured
+  let colorTogether = true;
+  function colorEditor(w: Weapon, a: anim.Animation, commit: () => void): Node {
+    const head = [el('div', { class: 'sub' }, T('colorTitle')), el('p', { class: 'hint' }, T('colorHint'))];
+    if (!rom) return el('div', {}, ...head, el('p', { class: 'hint' }, T('colorNeedsRom')));
+    const paletteOf = (row: number) => { try { return rom!.triple(row)[2]; } catch { return -1; } };
+    const rows = a.actors.map((actor, i) => ({ actor, i, row: actorRow(actor) })).filter((x) => x.row !== undefined && !anim.isCutin(x.actor) && x.actor.behavior !== 124);
+    if (!rows.length) return el('div', {}, ...head, el('p', { class: 'hint' }, T('colorNoActors')));
+    const open = colorActor.get(w.slug);
+    const list = el('div', { class: 'color-actors' }, ...rows.map(({ actor, i, row }) => {
+      const picture = romPicture(row!, recolorOf(actor.scene)?.colors);
+      const changedHere = !!recolorOf(actor.scene);
+      return el('button', { type: 'button', class: `color-actor${open === i ? ' on' : ''}`, onclick: () => { colorActor.set(w.slug, open === i ? -1 : i); render(); } },
+        picture ? el('img', { src: picture, alt: '' }) : el('span', { class: 'none' }, '—'),
+        el('span', {}, T('colorActor', { n: i + 1, scene: row! }), changedHere ? el('b', {}, ' ●') : null));
+    }));
+    const parts: Node[] = [...head, list];
+    const pick = rows.find((x) => x.i === open);
+    if (pick) {
+      const row = pick.row!, recolor = recolorOf(pick.actor.scene);
+      let scene: romArt.Scene, palette: romArt.Palette, used: Map<number, number>;
+      try {
+        const [s, at, p] = rom.triple(row);
+        scene = rom.scene(s); palette = rom.palette(p); used = romArt.usedEntries(scene, rom.atlas(at));
+      } catch { return el('div', {}, ...parts, el('p', { class: 'warn' }, T('colorUnreadable'))); }
+      const colors: Record<string, string> = { ...(recolor?.colors ?? {}) };
+      const preview = el('img', { class: 'color-preview', src: romPicture(row, colors) ?? '', alt: '' }) as HTMLImageElement;
+      // Which actors this change goes to: this one, and those sharing its palette when together.
+      const targets = () => colorTogether ? rows.filter((x) => paletteOf(x.row!) === paletteOf(row)) : [pick];
+      const apply = () => {
+        for (const { actor, row: r } of targets()) {
+          const was = recolorOf(actor.scene);
+          if (!Object.keys(colors).length) { actor.scene = r!; continue; }
+          const name = was && typeof actor.scene === 'string' ? actor.scene.slice(1) : `${w.slug}-color-${r}`;
+          model.scenes ??= {};
+          model.scenes[name] = { recolor: r!, colors: { ...colors } };
+          actor.scene = `@${name}`;
+        }
+        pruneRecolors();
+        commit();
+      };
+      const entries = [...used.keys()].filter((k) => k < palette.length && romArt.opaque(palette[k])).sort((x, y) => x - y);
+      const swatches = entries.map((k) => {
+        const now = colors[k] ?? romArt.toHex(palette[k]);
+        const input = el('input', { type: 'color', value: now, title: `${k}` }) as HTMLInputElement;
+        input.addEventListener('input', () => {
+          const c = { ...colors, [k]: input.value };
+          preview.src = romPicture(row, c) ?? '';
+        });
+        input.addEventListener('change', () => {
+          if (input.value.toLowerCase() === romArt.toHex(palette[k])) delete colors[k];
+          else colors[k] = input.value.toLowerCase();
+          apply();
+        });
+        return el('label', { class: `swatch${k in colors ? ' changed' : ''}`, title: T('colorEntry', { k, texels: used.get(k) ?? 0 }) }, input, el('span', {}, String(k)));
+      });
+      const together = el('input', { type: 'checkbox', checked: colorTogether }) as HTMLInputElement;
+      together.addEventListener('change', () => { colorTogether = together.checked; });
+      // A quick hue turn of every entry shown, the way most recolours start.
+      const hue = el('input', { type: 'range', min: -180, max: 180, value: 0, step: 5, class: 'hue' }) as HTMLInputElement;
+      const turned = () => {
+        const c: Record<string, string> = { ...colors };
+        for (const k of entries) c[k] = turnHue(colors[k] ?? romArt.toHex(palette[k]), Number(hue.value));
+        return c;
+      };
+      hue.addEventListener('input', () => { preview.src = romPicture(row, turned()) ?? ''; });
+      hue.addEventListener('change', () => {
+        const c = turned();
+        for (const k of entries) { if (c[k] === romArt.toHex(palette[k])) delete colors[k]; else colors[k] = c[k]; }
+        apply();
+      });
+      parts.push(el('div', { class: 'color-box' },
+        el('div', { class: 'color-head' }, preview, el('div', {},
+          el('p', {}, T('colorActor', { n: pick.i + 1, scene: row }), ' · ', T('colorCount', { n: entries.length, changed: Object.keys(colors).length })),
+          el('label', { class: 'check' }, together, T('colorTogether', { n: targets().length })),
+          el('label', { class: 'field inline' }, T('colorHue'), hue),
+          el('button', { type: 'button', class: 'mini', disabled: !Object.keys(colors).length, onclick: () => { for (const k of Object.keys(colors)) delete colors[k]; apply(); } }, T('colorReset')))),
+        el('div', { class: 'swatches' }, ...swatches),
+        el('p', { class: 'hint' }, T('colorSwatchHint'))));
+    }
+    return el('div', {}, ...parts);
+  }
+  // A colour with its hue turned by `degrees`.
+  function turnHue(hex: string, degrees: number): string {
+    const v = parseInt(hex.slice(1), 16), r = (v >> 16 & 255) / 255, g = (v >> 8 & 255) / 255, b = (v & 255) / 255;
+    const max = Math.max(r, g, b), min = Math.min(r, g, b), d = max - min, l = (max + min) / 2;
+    if (!d || !degrees) return hex.toLowerCase();
+    const sat = d / (1 - Math.abs(2 * l - 1));
+    let h = max === r ? ((g - b) / d) % 6 : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+    h = ((h * 60 + degrees) % 360 + 360) % 360;
+    const c = (1 - Math.abs(2 * l - 1)) * sat, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = l - c / 2;
+    const [r1, g1, b1] = h < 60 ? [c, x, 0] : h < 120 ? [x, c, 0] : h < 180 ? [0, c, x] : h < 240 ? [0, x, c] : h < 300 ? [x, 0, c] : [c, 0, x];
+    return `#${[r1, g1, b1].map((v) => Math.round((v + m) * 255).toString(16).padStart(2, '0')).join('')}`;
+  }
+  // Recolour scenes no actor names any more go (each takes a scene row and a palette in the game).
+  function pruneRecolors() {
+    const named = new Set<string>();
+    for (const w of model.weapons) {
+      const a = w.animation as anim.AnimationField | undefined;
+      if (a && !anim.isCopy(a)) for (const actor of a.actors) if (typeof actor.scene === 'string') named.add(actor.scene.slice(1));
+    }
+    for (const [k, v] of Object.entries(model.scenes ?? {})) if (anim.isRecolor(v) && !named.has(k)) delete model.scenes![k];
   }
   const numberCell = (value: number, set: (v: number) => void, hex = false) => {
     const i = el('input', { value: hex ? `0x${value.toString(16).toUpperCase()}` : String(value), class: 'num-cell', spellcheck: 'false' }) as HTMLInputElement;
@@ -1009,9 +1248,20 @@ export function initUnitMaker() {
     const parts: Node[] = [el('div', { class: 'sub' }, T('animTitle')), el('p', { class: 'hint' }, T('animHint')),
       el('label', { class: 'field' }, T('animMode'), select, el('span', { class: 'was' }, source !== undefined ? `${T('animFrom')} ${refName('weapons', source)}` : ''))];
     if (mode === 'other') parts.push(el('label', { class: 'field' }, T('animOtherPick'), genericSelect((field as { copy: Ref }).copy, (v) => { w.animation = { copy: v }; changed(); })));
-    if (mode !== 'own') return parts;
+    needRom();
+    parts.push(romBar());
     if (!bank) return [...parts, el('p', { class: 'hint' }, T('animLoading'))];
+    if (mode !== 'own') {
+      // A copy: its source's record shown; moving the fire point or recolouring makes it the
+      // weapon's own.
+      if (source === undefined || bank.weapons[source] === undefined) return parts;
+      const preview = anim.original(bank, source);
+      const own = () => { w.animation = preview; pruneRecolors(); changed(); };
+      parts.push(stage(w, preview, own, false), fireRow(preview, own), colorEditor(w, preview, own));
+      return parts;
+    }
     const a = field as anim.Animation;
+    const commit = () => { pruneRecolors(); changed(); };
     const header = el('details', {}, el('summary', {}, T('animHeader')),
       el('div', { class: 'grid' },
         el('label', { class: 'field' }, T('animCamera'), numberCell(a.camera, (v) => (a.camera = v))),
@@ -1019,7 +1269,7 @@ export function initUnitMaker() {
         el('label', { class: 'field' }, T('animAction'), numberCell(a.action, (v) => (a.action = v))),
         el('label', { class: 'field' }, T('animDefender'), numberCell(a.defender, (v) => (a.defender = v)))),
       el('label', { class: 'field' }, T('animSounds'), textInput(a.sounds.join(', '), (v) => { a.sounds = v.split(/[\s,，、]+/).filter(Boolean).map(Number).filter(Number.isFinite); changed(); }), el('span', { class: 'was' }, T('animSoundsHint'))));
-    parts.push(stage(w, a), actorRows(w, a), cutinAdder(w, a), borrower(w, a), header,
+    parts.push(stage(w, a, commit), fireRow(a, commit), colorEditor(w, a, commit), actorRows(w, a), cutinAdder(w, a), borrower(w, a), header,
       el('p', { class: 'hint' }, T('animSize', { actors: a.actors.length, bytes: anim.recordSize(a), most: anim.WINDOW })),
       el('div', {}, el('button', { type: 'button', class: 'mini', onclick: () => { if (bank && source !== undefined) { w.animation = anim.original(bank, source); changed(); } } }, T('animReset'))));
     return parts;

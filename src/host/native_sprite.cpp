@@ -163,6 +163,9 @@ uint16_t half(const uint8_t* rdram, uint32_t address) {
 }
 uint8_t byte(const uint8_t* rdram, uint32_t address) { return rdram[(address & 0x1FFFFFFF) ^ 3]; }
 
+std::mutex palette_sources_mutex;
+std::map<uint16_t, uint16_t> palette_sources;   // set_palette_sources
+
 bool hd_enabled() { return !presentation::image_mode.enabled() || presentation::image_mode.current() == 1; }
 // The game's own picture of this sprite in the reading language, unless a language package
 // gives one (drawn by the HD pack's picture in HD image mode): the picture and its asset.
@@ -967,6 +970,10 @@ void add_generated_image(uint16_t scene, uint16_t atlas, uint16_t palette, std::
 }
 
 void set_text(Describe value) { describe = value; }
+void set_palette_sources(std::map<uint16_t, uint16_t> sources) {
+    std::lock_guard lock(palette_sources_mutex);
+    palette_sources = std::move(sources);
+}
 
 #ifndef SRW64_GL_ONLY
 void gpu_init() {
@@ -1027,10 +1034,16 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
     } else {
         if (!hd_enabled()) return;
         std::lock_guard lock(image_mutex);
+        // A package's recoloured original scene: the original's picture, recoloured below.
+        uint16_t palette = id.palette;
+        {
+            std::lock_guard sources_lock(palette_sources_mutex);
+            if (const auto at = palette_sources.find(id.palette); at != palette_sources.end()) palette = at->second;
+        }
         const auto match = [&](bool any) {
             return std::find_if(images.begin(), images.end(), [&](const Image& image) {
                 return image.scene == id.scene && image.atlas == id.atlas && image.frames.count(id.frame) &&
-                       (any ? image.any_palette : image.palette == id.palette);
+                       (any ? image.any_palette : image.palette == palette);
             });
         };
         auto found = match(false);

@@ -687,6 +687,25 @@ def _picture(value) -> bool:
     return _triple(value) or _reference(value)
 
 
+def _recolor_problem(value) -> str:
+    """A recoloured original scene (src/host/mod_units.hpp recolor): {"recolor": battle scene,
+    "colors": {"index": "#rrggbb"}}. Whether each index is in the scene's palette the game
+    checks when it loads the package (it reads the palette from the ROM)."""
+    if set(value) - {"recolor", "colors"}:
+        return f"未知字段 {sorted(set(value) - {'recolor', 'colors'})[0]}（recolor、colors）"
+    if not _int_in(value.get("recolor"), 0, 1052):
+        return ".recolor：要是原版战斗场景号（0–1052）"
+    colors = value.get("colors")
+    if not isinstance(colors, dict) or not colors:
+        return '.colors：要写 {"格号": "#rrggbb"}，至少一格'
+    for key, color in colors.items():
+        if not re.fullmatch(r"\d{1,3}", key) or int(key) > 255:
+            return f".colors：{key} 不是调色板的格号（0–255）"
+        if not isinstance(color, str) or not re.fullmatch(r"#[0-9a-fA-F]{6}", color):
+            return f".colors.{key}：颜色要写 #rrggbb"
+    return ""
+
+
 # Per behaviour, how far it moves its actor to the scene resources around its own, and the
 # behaviours that compute with scene numbers otherwise (src/host/battle_steps.hpp, from the
 # recompiled code; web/src/data/weapon-animations.json "steps" and "complex").
@@ -779,8 +798,12 @@ def new_units_problem(document, files: set[str] | None = None) -> str:
     if why := sprites_problem(document.get("sprites", {}), files):
         return why
     for key, triple in document.get("scenes", {}).items():
-        if not _picture(triple):
-            return f"scenes.{key}：要是 [场景, 图集, 调色板] 三个资源号，或 @图片名"
+        if isinstance(triple, dict):
+            if why := _recolor_problem(triple):
+                return f"scenes.{key}{why if why.startswith('.') else '：' + why}"
+        elif not _picture(triple):
+            return f'scenes.{key}：要是 [场景, 图集, 调色板] 三个资源号、@图片名，或 {{"recolor": 场景号, "colors": {{…}}}}'
+
     for key, entry in document.get("weapons", {}).items():
         where = f"weapons.{key}"
         if not isinstance(entry, dict):

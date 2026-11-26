@@ -339,6 +339,45 @@ class AnimationTests(unittest.TestCase):
         beam["weapons"]["w"]["animation"]["actors"][1]["behavior"] = 240
         self.assertEqual(validate.new_units_problem(beam, {"b.png"}), "")
 
+    def test_fire_point_and_recolour(self):
+        # The fire point moves the effects placed somewhere (the beam), not the aiming pose or
+        # the timer; melee with every effect at 0, 0 has none. A recoloured scene is one the
+        # page, the validator and the host (tests/native_mod_data.cpp) all take.
+        module = (ROOT / "web/src/lib/weapon-animation.ts").as_uri()
+        bank = ROOT / "web/src/data/weapon-animations.json"
+        got = run(f"import * as a from {json.dumps(module)}; import fs from 'node:fs';"
+                  f"const bank = JSON.parse(fs.readFileSync({json.dumps(str(bank))}, 'utf8'));"
+                  "const beam = a.original(bank, 228), missile = a.original(bank, 327), axe = a.original(bank, 391);"
+                  "const before = a.firePoint(beam); const moved = a.moveFirePoint(beam, -47, 58);"
+                  "const m0 = a.firePoint(missile); a.moveFirePoint(missile, m0.x - 10, m0.y + 5);"
+                  "console.log(JSON.stringify({ before, moved, after: beam.actors.map((x) => [x.x, x.y]), missile: missile.actors.map((x) => [x.x, x.y]),"
+                  " axe: [a.firePoint(axe), a.moveFirePoint(axe, 1, 1)],"
+                  " ok: a.recolorProblem({ recolor: 56, colors: { '2': '#20e060' } }), empty: a.recolorProblem({ recolor: 56, colors: {} }),"
+                  " bad: [a.recolorProblem({ recolor: 56, colors: { '2': 'green' } }), a.recolorProblem({ recolor: 9999, colors: { '2': '#000000' } }), a.recolorProblem({ recolor: 1, colors: { '2': '#000000' }, x: 1 })],"
+                  " is: [a.isRecolor({ recolor: 56, colors: {} }), a.isRecolor('@x'), a.isRecolor([1, 2, 3])] }));")
+        self.assertEqual(got["before"], {"x": -65, "y": 28})
+        self.assertTrue(got["moved"])
+        self.assertEqual(got["after"], [[0, 0], [0, 0], [-47, 58]])
+        original = run(f"import * as a from {json.dumps(module)}; import fs from 'node:fs';"
+                       f"const bank = JSON.parse(fs.readFileSync({json.dumps(str(bank))}, 'utf8'));"
+                       "console.log(JSON.stringify(a.original(bank, 327).actors.map((x) => [x.x, x.y])));")
+        self.assertEqual(got["missile"], [[x - 10, y + 5] for x, y in original])
+        self.assertEqual(got["axe"], [None, False])
+        self.assertEqual((got["ok"], got["empty"], got["bad"], got["is"]), (None, "recolor_empty", ["recolor_color", "recolor_scene", "recolor_field"], [True, False, False]))
+        doc = {"schema": "srw64.new-units.v2", "scenes": {"green": {"recolor": 56, "colors": {"2": "#20e060", "11": "#02ff00"}}},
+               "weapons": {"w": {"copy": 228, "animation": {"camera": 1, "hit": 6, "action": 113, "defender": 125, "sounds": [-2, 1, 5, 8],
+                                                           "actors": [{"scene": "@green", "x": -47, "y": 58, "h5": 255, "behavior": 118}]}}},
+               "units": {"u": {"copy": 55, "weapons": ["@w"]}}}
+        self.assertEqual(validate.new_units_problem(doc), "")
+        for bad in ({"recolor": 56, "colors": {}}, {"recolor": 56, "colors": {"2": "green"}}, {"recolor": 1053, "colors": {"2": "#000000"}},
+                    {"recolor": 56, "colors": {"256": "#000000"}}, {"recolor": 56, "colors": {"2": "#000000"}, "tint": 1}):
+            doc["scenes"]["green"] = bad
+            self.assertNotEqual(validate.new_units_problem(doc), "", bad)
+        # The page's own problem list (lib/unit-package.ts) agrees.
+        model = {"pilots": [], "units": [], "weapons": [], "scenes": {"ok": {"recolor": 56, "colors": {"2": "#20e060"}}, "bad": {"recolor": 56, "colors": {}}}}
+        codes = [p["code"] for p in call("problems", model)]
+        self.assertEqual(codes.count("scene_recolor"), 1)
+
 
 @unittest.skipUnless(NODE, "node is not installed")
 class PixelsTests(unittest.TestCase):

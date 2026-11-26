@@ -142,3 +142,40 @@ export function actorBox(actor: Actor, canvas: number[] | undefined) {
   const [x0, y0, x1, y1] = canvas;
   return { x0: actor.x + x0, y0: -actor.y + y0, x1: actor.x + x1, y1: -actor.y + y1 };
 }
+
+// The fire point: where the weapon's effects start, as one point to move. The actors it moves
+// are the effects placed somewhere (not the attacker's own pose, 359; its melee body, 43; the
+// timer, 124; the cut-in control, 373; cut-ins; nor an effect at 0, 0, which its routine
+// places itself); the point shown is the first of them.
+export const BODY = new Set([359, 43, 124, 373]);
+export const movesWithFirePoint = (actor: Actor) => !BODY.has(actor.behavior) && !isCutin(actor) && (actor.x !== 0 || actor.y !== 0);
+export function firePoint(a: Animation): { x: number; y: number } | null {
+  const first = a.actors.find(movesWithFirePoint);
+  return first ? { x: first.x, y: first.y } : null;
+}
+// Every actor that moves with it, by the same amount; false when there is no fire point.
+export function moveFirePoint(a: Animation, x: number, y: number): boolean {
+  const at = firePoint(a);
+  if (!at) return false;
+  const dx = Math.round(x) - at.x, dy = Math.round(y) - at.y;
+  for (const actor of a.actors) if (movesWithFirePoint(actor)) {
+    actor.x = Math.max(-32768, Math.min(32767, actor.x + dx));
+    actor.y = Math.max(-32768, Math.min(32767, actor.y + dy));
+  }
+  return true;
+}
+
+// A recoloured original scene (data/new_units.json "scenes": {"recolor": row, "colors":
+// {"index": "#rrggbb"}}, src/host/mod_units.hpp recolor): the row's picture with some palette
+// entries changed. An actor names it as "@name", like a picture of the package.
+export interface Recolor { recolor: number; colors: Record<string, string> }
+export const isRecolor = (v: unknown): v is Recolor => !!v && typeof v === 'object' && Number.isInteger((v as Recolor).recolor)
+  && !!(v as Recolor).colors && typeof (v as Recolor).colors === 'object';
+export function recolorProblem(v: Recolor): string | null {
+  if (Object.keys(v).some((k) => k !== 'recolor' && k !== 'colors')) return 'recolor_field';
+  if (!(v.recolor >= 0 && v.recolor <= SCENES)) return 'recolor_scene';
+  const entries = Object.entries(v.colors);
+  if (!entries.length) return 'recolor_empty';
+  if (entries.some(([k, c]) => !/^\d{1,3}$/.test(k) || Number(k) > 255 || typeof c !== 'string' || !/^#[0-9a-f]{6}$/i.test(c))) return 'recolor_color';
+  return null;
+}

@@ -28,7 +28,7 @@ The website's [unit maker](/en/mods/units/) writes such a package in the browser
 1. Copy an original character, unit or weapon, and change its names in four languages, its numbers, weapons, forms, crew and combination attack.
 2. Frame a portrait from a picture of your own; give the unit a pose, battle pictures with cut-ins and a map icon, and the browser reduces them to the colours the game uses.
 3. Write battle lines in four languages, each with a voice you can trim on its waveform; add battle songs if you like.
-4. Put weapon animations together from the game's own effects: move each actor, borrow actors from any original weapon, add cut-ins.
+4. Put weapon animations together from the game's own effects: move each actor or the whole fire point, borrow actors from any original weapon, add cut-ins, give original effects new colours. With your own ROM chosen, the stage draws the original effects (the ROM is read in the browser only, never uploaded).
 5. Write when the unit joins and the package's own reinforcements; export a `.srw64mod`, or a Thunderstore package.
 
 The maker has ready templates to start from. A switch on the About page (off by default) lets the maker send the package straight to a running game to try in the Battle Viewer; the game asks you before it takes it.
@@ -172,6 +172,7 @@ A new unit's pose, the scenes in its attacks and its cut-ins can be PNGs in the 
 - For several frames write `"frames": [...]`, with `"ticks"` (beats per frame) and `"loop"` (the frame to go back to at the end).
 - `"around": [before, after]`: some weapon effects change to "the next scene" (a beam, for example, changes to the beam's body and then its tail); put your picture on such an actor and you need this. The unit maker's “Picture” writes it for you. A few weapons (about 95, such as attacks several characters make together) work out their animation from scene numbers, so their actors cannot take a picture of your own (a cut-in can be added). The maker locks “Picture” for them, and the game does not load a package that does it.
 - The pose `pose` and the scene table `scenes` take `@picture`, or the original's three resource numbers as before.
+- Recolouring: in `scenes`, `{"recolor": 56, "colors": {"2": "#20e060"}}` is the original battle scene 56 (a beam), its picture and motion, with only the listed palette entries changed (entries 0–255; a transparent entry stays transparent). The original and HD images both follow. **This needs the game version after 0.5.4**: set `game` in `mod.json` to `">=0.5.5"`. In the unit maker, change colours under Animation → Colours; the export writes this for you.
 
 A package that borrows original pictures and relies on the HD pack to replace them writes `"requires": {"srw64.hd": ">=1.3"}` in `mod.json`. Without the HD pack, or with the images set to original, the whole package is not loaded and the MOD page shows “Needs the HD images”; switching the images in the game takes a restart to count.
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "json/json.hpp"
+#include "../native/app/rom_import_codec.hpp"   // relative: the tests build without -Isrc/native
 #include "battle_steps.hpp"
 #include "mod_sprites.hpp"
 #include "table_window.hpp"
@@ -10,6 +11,7 @@
 #include <optional>
 #include <map>
 #include <set>
+#include <functional>
 #include <span>
 #include <string>
 #include <utility>
@@ -265,6 +267,9 @@ struct Taken {
     std::map<unsigned,unsigned> combo_as;
     std::map<std::string,unsigned> scenes;   // "package@name" -> battle scene registry number
     std::map<std::string,std::string> scene_sprites;   // "package@name" scene -> its "package@sprite"
+    // A recoloured original scene's own palette resource -> the ROM palette it was made from,
+    // by which the HD picture of the original is found and recoloured (native_sprite.cpp).
+    std::map<unsigned,unsigned> palette_sources;
     std::map<unsigned,unsigned> copies;      // a new unit -> the unit it copies
     std::map<unsigned,unsigned> weapon_copies;
     std::map<uint16_t,std::pair<uint32_t,uint32_t>> names;   // private text id -> source record (ROM address, size)
@@ -354,6 +359,48 @@ inline std::string sprites(const json& part,const std::string& package,const std
     return {};
 }
 
+// A recoloured original scene ("scenes.<name>": {"recolor": row, "colors": {"index": "#rrggbb"}}):
+// the ROM row's scene and atlas with a palette of the package's own, the ROM palette with those
+// entries changed (each keeps its transparency bit). Same length as the original, so whatever
+// a routine does with the scene (the steps to the resources next to it included) still holds.
+inline constexpr uint32_t rom_resource_table=0x00A20BD0;
+inline std::string recolor(const json& value,const std::string& where,std::span<const uint8_t> rom,
+                           const std::function<uint8_t(uint32_t)>& at,Taken& t,std::optional<std::array<unsigned,3>>& picture) {
+    for(const auto& [field,_]:value.items())
+        if(field!="recolor" && field!="colors")return where+"：未知字段 "+field+"（recolor、colors）";
+    if(!integer(value.value("recolor",json()),0,tw::rom_scenes-1))return where+".recolor：要是原版战斗场景号（0–"+std::to_string(tw::rom_scenes-1)+"）";
+    const unsigned row=value["recolor"].get<unsigned>();
+    const uint32_t r=tw::row(tw::scenes,row);
+    const auto u16=[&](uint32_t a){return unsigned(at(a))<<8|at(a+1);};
+    const unsigned scene=u16(r),atlas=u16(r+2),palette=u16(r+4);
+    if(!palette || palette>=tw::rom_resources)return where+".recolor：这个场景没有原版调色板";
+    std::vector<uint8_t> bytes;
+    try{bytes=srw64::app::rom_import::resource(rom,rom_resource_table,palette).bytes;}
+    catch(const std::exception&){return where+".recolor：读不出原版调色板 "+std::to_string(palette);}
+    if(bytes.size()<10 || (bytes[0]<<8|bytes[1])!=3)return where+".recolor：原版调色板 "+std::to_string(palette)+" 不是调色板";
+    const size_t count=std::min<size_t>({256,size_t(bytes[2]<<8|bytes[3])/2,(bytes.size()-8)/2});
+    const json& colors=value.value("colors",json::object());
+    if(!colors.is_object() || colors.empty())return where+".colors：要写 {\"格号\": \"#rrggbb\"}，至少一格";
+    for(const auto& [key,c]:colors.items()) {
+        size_t index=0;
+        if(key.empty() || key.size()>3 || key.find_first_not_of("0123456789")!=std::string::npos || (index=std::stoul(key))>=count)
+            return where+".colors："+key+" 不是这张调色板的格号（0–"+std::to_string(count-1)+"）";
+        const std::string text=c.is_string()?c.get<std::string>():"";
+        if(text.size()!=7 || text[0]!='#' || text.find_first_not_of("0123456789abcdefABCDEF",1)!=std::string::npos)
+            return where+".colors."+key+"：颜色要写 #rrggbb";
+        const unsigned rgb=unsigned(std::stoul(text.substr(1),nullptr,16));
+        const uint8_t* old=bytes.data()+8+2*index;
+        const unsigned v=((rgb>>19&31)<<11)|((rgb>>11&31)<<6)|((rgb>>3&31)<<1)|(old[1]&1u);
+        bytes[8+2*index]=uint8_t(v>>8);bytes[9+2*index]=uint8_t(v);
+    }
+    if(t.resource_next+1>tw::resource_limit)return where+"：资源号用完了";
+    const unsigned own=t.resource_next++;
+    t.resources[own]=std::move(bytes);
+    t.palette_sources[own]=palette;
+    picture=std::array<unsigned,3>{scene,atlas,own};
+    return {};
+}
+
 // One package's file into bytes, all or nothing; `below` is what earlier files and packages
 // wrote; `folder` is the package's, where its sprites' PNGs are.
 inline std::string parse(const json& source,const std::string& package,const Numbers& numbers,
@@ -429,8 +476,11 @@ inline std::string parse(const json& source,const std::string& package,const Num
     for(const auto& [name,value]:scene_part.items()) {
         const std::string where="scenes."+name;
         if(!valid_name(name))return where+"：名字只能用小写字母、数字和 - _ .";
-        const auto picture=triple(value);
-        if(!picture)return where+"：要是 [场景, 图集, 调色板] 三个资源号，或 @图片名（sprites 里的）";
+        auto picture=triple(value);
+        if(value.is_object()) {
+            if(auto why=recolor(value,where,rom,at,t,picture);!why.empty())return why;
+        }
+        if(!picture)return where+"：要是 [场景, 图集, 调色板] 三个资源号、@图片名（sprites 里的），或 {\"recolor\": 场景号, \"colors\": {…}}";
         if(t.scene_next>=tw::new_scene_limit)return where+"：战斗场景总表的空位用完了";
         const unsigned n=t.scene_next++;
         t.scenes[own(name)]=n;

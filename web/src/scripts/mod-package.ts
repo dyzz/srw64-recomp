@@ -35,9 +35,9 @@ const parseVersion = (s: string) => {
   return [...parts.map(Number), 0, 0].slice(0, 3).join('.');
 };
 
-// The form's mod.json. `game` is the version the package's content needs; a package that
-// already asked for more keeps its own.
-export function packageForm(root: HTMLElement, text: Text, locale: string, game: string) {
+// The form's mod.json. `game` is the version the package's content needs (asked again each
+// time when it depends on the content); a package that already asked for more keeps its own.
+export function packageForm(root: HTMLElement, text: Text, locale: string, needs: string | (() => string)) {
   const field = (k: string) => root.querySelector<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(`[data-f="${k}"]`)!;
   let kept: Record<string, any> = {};
   return {
@@ -56,6 +56,7 @@ export function packageForm(root: HTMLElement, text: Text, locale: string, game:
       const description = field('description').value.trim();
       if (description) out.description = { ...(typeof kept.description === 'object' ? kept.description : {}), [locale]: description };
       else delete out.description;
+      const game = typeof needs === 'function' ? needs() : needs;
       const wanted = /^>=\s*(\d+)\.(\d+)(?:\.(\d+))?$/.exec(String(kept.game ?? ''));
       const need = game.split('.').map(Number);
       const theirs = wanted ? [Number(wanted[1]), Number(wanted[2]), Number(wanted[3] ?? 0)] : null;

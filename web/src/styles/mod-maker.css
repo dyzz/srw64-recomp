@@ -201,3 +201,24 @@
 .maker .faces img.icon-look { width: 64px; height: 64px; background: var(--bg-2); }
 .maker .faces select { max-width: 260px; }
 @media (max-width: 640px) { .maker .name-row .loc { width: 100%; } .maker .ref-name { min-width: 0; } }
+.maker .rom-bar { margin: 8px 0; }
+.maker .anim-stage .actor.fixed { cursor: default; }
+.maker .anim-stage .actor.drawn rect { fill: none; stroke-dasharray: 2 2; stroke-width: 0.4; }
+.maker .anim-stage .actor.drawn.on rect { stroke-dasharray: none; stroke-width: 0.8; }
+.maker .anim-stage .actor image { image-rendering: pixelated; }
+.maker .anim-stage .fire-point { cursor: move; }
+.maker .anim-stage .fire-point circle { fill: rgba(255, 80, 80, 0.18); stroke: #ff5050; stroke-width: 1; }
+.maker .anim-stage .fire-point line { stroke: #ff5050; stroke-width: 1; }
+.maker .color-actors { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+.maker .color-actor { display: flex; align-items: center; gap: 6px; padding: 4px 8px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-2); color: inherit; cursor: pointer; }
+.maker .color-actor.on { border-color: var(--gold); }
+.maker .color-actor img { height: 32px; max-width: 64px; object-fit: contain; image-rendering: pixelated; }
+.maker .color-actor b { color: var(--gold); }
+.maker .color-box { border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; margin: 6px 0; }
+.maker .color-head { display: flex; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
+.maker .color-preview { width: 160px; height: 120px; object-fit: contain; image-rendering: pixelated; background: repeating-conic-gradient(#2a2a2a 0 25%, #1e1e1e 0 50%) 0 0 / 16px 16px; border-radius: var(--radius); }
+.maker .swatches { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.maker .swatch { display: flex; flex-direction: column; align-items: center; font-size: 11px; padding: 2px; border: 1px solid transparent; border-radius: 4px; }
+.maker .swatch.changed { border-color: var(--gold); }
+.maker .swatch input[type=color] { width: 28px; height: 22px; padding: 0; border: none; background: none; cursor: pointer; }
+.maker .hue { width: 160px; vertical-align: middle; }

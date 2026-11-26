@@ -373,6 +373,7 @@ struct Collected {
     std::map<uint16_t,std::pair<uint32_t,uint32_t>> name_sources;   // private text id -> record copied
     std::map<unsigned,std::vector<uint8_t>> resources;              // the packages' own (mod_sprites.hpp)
     std::map<std::string,mod_units::Sprite> sprites;
+    std::map<unsigned,unsigned> palette_sources;                    // a recoloured scene's palette -> the ROM's
     std::map<unsigned,unsigned> predecessors;                       // new unit -> the unit it inherits from
     std::map<unsigned,std::vector<std::pair<unsigned,unsigned>>> carries;
     std::map<unsigned,std::vector<unsigned>> crews;
@@ -410,7 +411,7 @@ inline Collected collect(const std::vector<mods::Package>& packages,std::span<co
                 for(const auto& [key,pilot]:c.numbers.pilots)
                     if(key.compare(0,p.id().size()+1,p.id()+"@")==0){c.pilots[pilot]=p.id();c.names[p.id()]=p.manifest?p.manifest->name:json(p.id());}
                 c.copies=taken.copies;c.weapon_copies=taken.weapon_copies;c.name_sources=taken.names;
-                c.resources=taken.resources;c.sprites=taken.sprites;
+                c.resources=taken.resources;c.sprites=taken.sprites;c.palette_sources=taken.palette_sources;
                 c.predecessors=taken.predecessors;c.carries=taken.carries;c.crews=taken.crews;c.combines=taken.combines;c.forms=taken.forms;c.combinations=taken.combinations;c.works=taken.works;
                 c.pilot_copies=taken.pilot_copies;c.voices=taken.voices;c.portraits=taken.portraits;c.loves=taken.loves;c.combo_as=taken.combo_as;
             }
@@ -452,6 +453,7 @@ struct State {
     std::map<unsigned,unsigned> copies,weapon_copies;   // Collected's
     mod_units::Numbers numbers;
     std::map<std::string,mod_units::Sprite> sprites;
+    std::map<unsigned,unsigned> palette_sources;
     std::map<unsigned,unsigned> predecessors;
     std::map<unsigned,std::vector<std::pair<unsigned,unsigned>>> carries;
     std::map<unsigned,std::vector<unsigned>> crews;
@@ -578,6 +580,14 @@ inline std::optional<mod_units::Sprite> sprite(unsigned scene,unsigned atlas,uns
         if(scene+sprite.before>=sprite.scene && scene<=unsigned(sprite.scene)+sprite.after && sprite.atlas==atlas && sprite.palette==palette)return sprite;
     return std::nullopt;
 }
+// The ROM palette a package's recoloured scene was made from (mod_units::recolor), so the HD
+// picture of the original scene draws it, recoloured to the package's colours. Any thread.
+inline std::optional<unsigned> palette_source(unsigned palette) {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    const auto found=s.palette_sources.find(palette);
+    return found==s.palette_sources.end()?std::nullopt:std::optional<unsigned>(found->second);
+}
 inline std::vector<unsigned> new_units() {
     auto& s=state();
     std::lock_guard lock(s.owners_mutex);
@@ -648,7 +658,7 @@ inline void refresh(uint8_t* ram=nullptr) {
         if((kind(weapon)^kind(source))&weapon_printed)kinds=true;
     }
     s.kinds_changed.store(kinds,std::memory_order_relaxed);
-    {std::lock_guard lock(s.owners_mutex);s.owners=found.units;s.names=found.names;s.copies=found.copies;s.weapon_copies=found.weapon_copies;s.numbers=found.numbers;s.sprites=found.sprites;
+    {std::lock_guard lock(s.owners_mutex);s.owners=found.units;s.names=found.names;s.copies=found.copies;s.weapon_copies=found.weapon_copies;s.numbers=found.numbers;s.sprites=found.sprites;s.palette_sources=found.palette_sources;
      s.predecessors=found.predecessors;s.carries=found.carries;s.crews=found.crews;s.combines=found.combines;s.forms=found.forms;s.combinations=found.combinations;
      s.pilot_copies=found.pilot_copies;s.voices=found.voices;s.pilot_owners=found.pilots;s.portraits=found.portraits;s.loves=found.loves;s.combo_as=found.combo_as;
      s.own_voices=found.quotes.voices;}

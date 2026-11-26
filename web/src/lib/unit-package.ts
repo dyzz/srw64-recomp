@@ -288,7 +288,16 @@ export function problems(model: Model, packages: Set<string> = new Set()): Probl
   // A pose or scene naming this package's picture must name one it has.
   const ownPicture = (v: unknown) => typeof v !== 'string' || !v.startsWith('@') || v.slice(1) in sprites;
   for (const u of model.units) if (u.pose !== undefined && !ownPicture(u.pose)) add(`units.${u.slug}`, 'pose_missing', { sprite: String(u.pose) });
-  for (const [name, v] of Object.entries(model.scenes ?? {})) if (!ownPicture(v)) add(`scenes.${name}`, 'scene_missing', { sprite: String(v) });
+  for (const [name, v] of Object.entries(model.scenes ?? {})) {
+    // A recoloured original scene (src/host/mod_units.hpp recolor): {"recolor": row, "colors": {"index": "#rrggbb"}}.
+    if (v && typeof v === 'object' && !Array.isArray(v)) {
+      const r = v as { recolor?: unknown; colors?: unknown };
+      const colors = r.colors && typeof r.colors === 'object' ? Object.entries(r.colors as Record<string, unknown>) : [];
+      if (Object.keys(r).some((k) => k !== 'recolor' && k !== 'colors') || !Number.isInteger(r.recolor) || (r.recolor as number) < 0 || (r.recolor as number) > 1052
+        || !colors.length || colors.some(([k, c]) => !/^\d{1,3}$/.test(k) || Number(k) > 255 || typeof c !== 'string' || !/^#[0-9a-f]{6}$/i.test(c)))
+        add(`scenes.${name}`, 'scene_recolor');
+    } else if (!ownPicture(v)) add(`scenes.${name}`, 'scene_missing', { sprite: String(v) });
+  }
   for (const w of model.weapons) {
     const where = `weapons.${w.slug}`;
     if (!Object.values(w.names).some((v) => v?.trim())) add(where, 'needs_name');

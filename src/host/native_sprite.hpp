@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <filesystem>
 #include <functional>
+#include <map>
 #include <memory>
 #include <string>
 #include <vector>
@@ -61,6 +62,10 @@ std::string frame_file(uint16_t scene, uint16_t atlas, uint16_t palette, uint8_t
 void add_generated_image(uint16_t scene, uint16_t atlas, uint16_t palette, std::vector<uint8_t> frames,
                          std::function<TextImage()> render);
 void set_text(Describe describe);
+// Packages' recoloured original scenes (mod_units.hpp recolor): their own palette resource ->
+// the ROM palette it was made from. The original's HD picture draws them, recoloured to the
+// colours the game draws with (as for a palette the game changes itself). Any thread.
+void set_palette_sources(std::map<uint16_t, uint16_t> sources);
 // Render-hook init, after gpu::init (native_gpu.hpp).
 void gpu_init();
 void shutdown();
