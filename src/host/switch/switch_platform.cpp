@@ -27,6 +27,7 @@
 
 #include "../hd_pack.hpp"
 #include "../stall_watchdog.hpp"
+#include "heap_layout.hpp"
 #include "ultramodern/ultramodern.hpp"
 #include "stb/stb_image.h"
 
@@ -492,6 +493,7 @@ struct StackRecord {
 };
 constexpr size_t kStackRecords = 8192;   // a battle's HD batches make two helpers each
 std::atomic<u64> threads_made{0};
+std::atomic<u64> threads_unrecorded{0};   // made while every record belonged to a live thread
 StackRecord stack_records[kStackRecords];
 std::atomic<size_t> stack_next{0};
 std::mutex stack_mutex;
@@ -506,14 +508,19 @@ void record_stack(struct __pthread_t* thread) {
     const auto* words = reinterpret_cast<const uintptr_t*>(thread);
     const uintptr_t tls = (uintptr_t(__tls_end - __tls_start) + 0xF) & ~uintptr_t(0xF);
     std::lock_guard lock(stack_mutex);
-    // The oldest record of a thread no longer running (a live one keeps its record).
-    StackRecord* slot = &stack_records[stack_next % kStackRecords];
-    for (size_t tries = 0; tries < kStackRecords; ++tries) {
-        slot = &stack_records[stack_next++ % kStackRecords];
-        const u32 state = slot->state.load();
-        if (state != 1 && state != 2) break;
+    ++threads_made;
+    // The oldest record of a thread that has ended. One still running, detached or in its
+    // join keeps its record: a join waiting on its thread writes the record once it returns,
+    // and a slot taken meanwhile was a new thread's record marked joined, with a stack that
+    // still ran said to be left mapped. Every record live: this thread goes unrecorded.
+    size_t next = stack_next.load();
+    const size_t index = srw64::switch_heap::pick_slot(next, kStackRecords, [](size_t i) { return stack_records[i].state.load(); });
+    stack_next = next;
+    if (index == kStackRecords) {
+        if (threads_unrecorded++ == 0) std::fprintf(stderr, "SRW64_THREAD_RECORDS_FULL %zu threads live, later ones go unrecorded\n", kStackRecords);
+        return;
     }
-    auto& r = *slot;
+    auto& r = stack_records[index];
     r.state = 0;
     r.pthread = uintptr_t(thread);
     r.handle = *reinterpret_cast<const u32*>(thread);
@@ -524,7 +531,6 @@ void record_stack(struct __pthread_t* thread) {
     callers(r.made, 3);
     r.made_tick = armGetSystemTick(); r.joined_tick = 0;
     r.state = 1;
-    ++threads_made;
 }
 std::mutex detached_mutex;
 std::vector<struct __pthread_t*> detached;
@@ -573,28 +579,37 @@ int __syscall_thread_detach(struct __pthread_t* thread) {
 void* __real___syscall_thread_join(struct __pthread_t* thread);
 void* __wrap___syscall_thread_join(struct __pthread_t* thread) {
     StackRecord* r;
+    const char* seen = "never seen";
     {
         std::lock_guard lock(stack_mutex);
         r = stack_record(uintptr_t(thread), true);
-        if (r) { callers(r->joined_by, 1); r->state = 3; }
+        if (r) { callers(r->joined_by, 1); r->state = 3; }   // kept: record_stack skips a join
+        else if (stack_record(uintptr_t(thread), false)) seen = "joined before";
+        else if (threads_unrecorded.load()) seen = "never seen, records were full";
     }
     if (!r) {
         uintptr_t by[4] = {};
         callers(by, 1);
-        const StackRecord* old = stack_record(uintptr_t(thread), false);
         std::fprintf(stderr, "SRW64_THREAD_JOIN_UNKNOWN %p (%s) by +0x%lx +0x%lx +0x%lx +0x%lx\n", static_cast<void*>(thread),
-                     old ? "joined before" : "never seen", by[0], by[1], by[2], by[3]);
+                     seen, by[0], by[1], by[2], by[3]);
     }
     void* value = __real___syscall_thread_join(thread);
     if (r) {
-        r->joined_tick = armGetSystemTick(); r->state = 4;
+        // Copied out before the record is let go: once it says joined, a new thread may take it.
+        uintptr_t stack, size, made[4], joined_by[4];
+        {
+            std::lock_guard lock(stack_mutex);
+            stack = r->stack; size = r->size;
+            std::memcpy(made, r->made, sizeof made); std::memcpy(joined_by, r->joined_by, sizeof joined_by);
+            r->joined_tick = armGetSystemTick(); r->state = 4;
+        }
         // libnx's join ignores threadClose's result: a stack it could not unmap stays mapped
         // (borrowed) for good. Said at once, with where the thread came from.
         MemoryInfo info{};
         u32 page = 0;
-        if (R_SUCCEEDED(svcQueryMemory(&info, &page, r->stack)) && (info.attr & MemAttr_IsBorrowed))
+        if (stack && R_SUCCEEDED(svcQueryMemory(&info, &page, stack)) && (info.attr & MemAttr_IsBorrowed))
             std::fprintf(stderr, "SRW64_THREAD_STACK_STILL_MAPPED stack=0x%lx+0x%lx made=+0x%lx,+0x%lx,+0x%lx,+0x%lx joined_by=+0x%lx,+0x%lx,+0x%lx\n",
-                         r->stack, r->size, r->made[0], r->made[1], r->made[2], r->made[3], r->joined_by[0], r->joined_by[1], r->joined_by[2]);
+                         stack, size, made[0], made[1], made[2], made[3], joined_by[0], joined_by[1], joined_by[2]);
     }
     return value;
 }
@@ -705,8 +720,8 @@ void __libnx_exception_handler(ThreadExceptionDump* ctx) {
         }
         if (!found) {
             char none[160];
-            const int m = std::snprintf(none, sizeof none, "SRW64_EXCEPTION_STACK none recorded there (%llu threads made, the last %zu kept)\n",
-                                        (unsigned long long)threads_made.load(), kStackRecords);
+            const int m = std::snprintf(none, sizeof none, "SRW64_EXCEPTION_STACK none recorded there (%llu threads made, the last %zu kept, %llu unrecorded)\n",
+                                        (unsigned long long)threads_made.load(), kStackRecords, (unsigned long long)threads_unrecorded.load());
             if (m > 0) exception_write(none, std::min<size_t>(size_t(m), sizeof none - 1));
         }
     }
@@ -722,15 +737,18 @@ void __libnx_exception_handler(ThreadExceptionDump* ctx) {
 // pages out: a fresh 4 or 10 MB allocation faulted part way through (two starts and a
 // screenshot, 2026-11-23: a 0x101000 borrowed region, the size of a 1 MiB thread stack, that
 // none of this program's threads had made). Each region that is not read-write heap without
-// attributes is noted (logged by userAppInit once stdout is up) and left out.
+// attributes is noted (logged by userAppInit once stdout is up) and left out, and so is all
+// that follows a query the kernel failed or answered with a region not holding the address
+// (heap_layout.hpp, tested on a computer). With nothing usable left the program stops here,
+// with libnx's heap error, rather than give newlib memory that faults later.
 extern "C" char* fake_heap_start;
 extern "C" char* fake_heap_end;
 extern "C" __attribute__((weak)) size_t __nx_heap_size;
+static_assert(srw64::switch_heap::kTypeHeap == MemType_Heap && srw64::switch_heap::kPermRw == Perm_Rw);
 namespace {
-struct HeapHole { u64 addr, size; u32 type, attr, perm; };
-HeapHole heap_holes[16];
-size_t heap_hole_count = 0;
-u64 heap_given_start = 0, heap_given_size = 0;
+// Written before main's constructors run (init.c calls the heap first): constinit keeps it
+// out of them, or the layout would be wiped once they did.
+constinit srw64::switch_heap::Layout heap_layout{};
 }
 void __libnx_initheap(void) {
     void* addr = nullptr;
@@ -749,27 +767,16 @@ void __libnx_initheap(void) {
         }
         if (R_FAILED(svcSetHeapSize(&addr, size))) diagAbortWithResult(MAKERESULT(Module_Libnx, LibnxError_HeapAllocFailed));
     }
-    const u64 start = reinterpret_cast<u64>(addr), end = start + size;
-    heap_given_start = start; heap_given_size = size;
-    u64 best_start = start, best_size = 0, run_start = start;
-    for (u64 at = start; at < end;) {
+    heap_layout = srw64::switch_heap::choose(reinterpret_cast<u64>(addr), size, [](u64 at, srw64::switch_heap::Region& region) {
         MemoryInfo info{};
         u32 page = 0;
-        if (R_FAILED(svcQueryMemory(&info, &page, at)) || info.size == 0) break;
-        const u64 next = std::min<u64>(info.addr + info.size, end);
-        const bool plain = (info.type & 0xFF) == MemType_Heap && info.attr == 0 && info.perm == Perm_Rw;
-        if (!plain) {
-            if (at - run_start > best_size) { best_start = run_start; best_size = at - run_start; }
-            if (heap_hole_count < std::size(heap_holes))
-                heap_holes[heap_hole_count] = {at, next - at, info.type & 0xFF, info.attr, info.perm};
-            ++heap_hole_count;
-            run_start = next;
-        }
-        at = next;
-    }
-    if (end - run_start > best_size) { best_start = run_start; best_size = end - run_start; }
-    fake_heap_start = reinterpret_cast<char*>(best_start);
-    fake_heap_end = reinterpret_cast<char*>(best_start + best_size);
+        if (R_FAILED(svcQueryMemory(&info, &page, at))) return false;
+        region = {info.addr, info.size, info.type, info.attr, info.perm};
+        return true;
+    });
+    if (!heap_layout.usable()) diagAbortWithResult(MAKERESULT(Module_Libnx, LibnxError_HeapAllocFailed));
+    fake_heap_start = reinterpret_cast<char*>(heap_layout.start);
+    fake_heap_end = reinterpret_cast<char*>(heap_layout.start + heap_layout.size);
 }
 
 // Before main and after it (libnx's weak hooks): the sockets, and stdout and stderr to
@@ -812,12 +819,17 @@ void userAppInit() {
     // MegaMan64Recomp-NX). A line may be lost instead.
     if (R_SUCCEEDED(socketInitializeDefault())) nxlink_socket = nxlinkConnectToHost(false, false);
     install_log();
-    std::printf("SRW64_HEAP given 0x%llx+0x%llx, using 0x%llx+0x%llx, %zu region(s) left out\n",
-                (unsigned long long)heap_given_start, (unsigned long long)heap_given_size,
-                (unsigned long long)uintptr_t(fake_heap_start), (unsigned long long)(fake_heap_end - fake_heap_start), heap_hole_count);
-    for (size_t i = 0; i < std::min(heap_hole_count, std::size(heap_holes)); ++i)
-        std::printf("SRW64_HEAP_HOLE 0x%llx+0x%llx type=0x%x attr=0x%x perm=%u\n", (unsigned long long)heap_holes[i].addr,
-                    (unsigned long long)heap_holes[i].size, heap_holes[i].type, heap_holes[i].attr, heap_holes[i].perm);
+    std::printf("SRW64_HEAP given 0x%llx+0x%llx, using 0x%llx+0x%llx, %zu region(s) left out%s\n",
+                (unsigned long long)heap_layout.given_start, (unsigned long long)heap_layout.given_size,
+                (unsigned long long)heap_layout.start, (unsigned long long)heap_layout.size, heap_layout.holes,
+                heap_layout.walk_stopped ? ", the walk stopped early" : "");
+    for (size_t i = 0; i < std::min(heap_layout.holes, srw64::switch_heap::kHolesKept); ++i) {
+        const auto& hole = heap_layout.hole[i];
+        std::printf("SRW64_HEAP_HOLE 0x%llx+0x%llx %s type=0x%x attr=0x%x perm=%u\n", (unsigned long long)hole.addr,
+                    (unsigned long long)hole.size, srw64::switch_heap::kind_name(hole.kind), hole.type, hole.attr, hole.perm);
+    }
+    if (heap_layout.holes > srw64::switch_heap::kHolesKept)
+        std::printf("SRW64_HEAP_HOLE %zu more not listed\n", heap_layout.holes - srw64::switch_heap::kHolesKept);
     romfsInit();   // the HD pack the NRO carries (hd_texture.hpp), when it does
     apm_open = R_SUCCEEDED(apmInitialize());
     raise_gpu();
