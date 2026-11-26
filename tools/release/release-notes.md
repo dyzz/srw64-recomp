@@ -10,6 +10,14 @@ An unofficial native port of **Super Robot Wars 64** with full English, Chinese 
 | [`{hd_name}`]({hd_download}) | {hd_size} | Optional HD images (HD {hd_version}) for macOS, Windows, Linux and Android. |
 {switch_hd_row_en}
 
+## What's new in 0.5.4.1
+
+A fix release for every platform. **From 0.5.4, install over it**; the HD pack stays 1.4, with nothing to replace.
+
+- **The HP gauge stays in its window.** With the battle animation off on a screen wider than 4:3, the gauge of the map's HP window sat to the right of the window, outside its frame (since 0.5.3). The same went for the windows of healing spirits such as Faith, Love and Miracle. The damage figure and "Miss" stay where they were, on the target.
+- **MOD packages can recolour the original's weapon effects** (the unit maker's Animation → Colours) and move a weapon's fire point. The maker can draw the original effects from your own ROM in the browser to preview them; the ROM is never uploaded. A package with changed colours needs 0.5.4.1 or later, and 0.5.4 does not load it. A package's version requirement can now name a fix release such as 0.5.4.1.
+- **Switch**: one cause of the occasional crash (error 2168-0006) in the first minute after starting is fixed: the game no longer hands out memory that hbmenu still holds.
+
 ## Upgrading from 0.5.3
 
 - **Install over the old version**: on Windows and Linux extract over the old folder, on Android install over it, on the Switch replace the NRO. Saves, settings and installed MODs stay.
@@ -168,6 +176,14 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 {package_rows}
 | [`{hd_name}`]({hd_download}) | {hd_size} | 可选的 HD 图片包（HD {hd_version}），macOS、Windows、Linux、安卓通用。 |
 {switch_hd_row}
+
+### 0.5.4.1 更新
+
+全平台的修正版。**从 0.5.4 升级直接覆盖安装**；HD 包仍是 1.4，不用换。
+
+- **地图上 HP 窗的血条不再跑到窗外。** 关掉战斗动画、画面比 4:3 宽时，地图 HP 窗的血条画在了窗的右边框外（0.5.3 起）；友情、爱、奇迹等回复类精神的 HP 窗也一样。伤害数字和「未命中」的位置不变，仍在目标上。
+- **MOD 可以给原版武器特效换颜色**（机体制作器「战斗演出 → 颜色」），也可以移动武器的发射点；制作器可以在浏览器里读你自己的 ROM，画出原版特效来预览，ROM 不会上传。换了颜色的包要 0.5.4.1 或更新的游戏，0.5.4 不加载。MOD 的版本要求现在可以写 0.5.4.1 这样的修正版。
+- **Switch**：修正了启动后一分钟内偶尔崩溃（错误 2168-0006）的一个原因：游戏不再把 hbmenu 还占着的内存分出去。
 
 ### 从 0.5.3 升级
 
