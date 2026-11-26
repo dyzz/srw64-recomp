@@ -293,16 +293,22 @@ MAP_WIDTH_CONSTANTS = {
     ("load_000AB160_func_801CABAC", 0x801CAC6C): ("0XBD", 1),          # terrain panel: which side of x = 189
     ("load_000AB160_func_801CABAC", 0x801CAC74): ("-0X22", -1),        # ...then 34 to the left
     ("load_000AB160_func_801C9D08", 0x801C9D44): ("-0X20", -1),        # a unit's window: 32 to its left
-    # The map battle's HP window (801E3AE4, f2 the unit's x; its gauge and damage figure follow
-    # it on the centred 320): the anchor never goes below 0, which 801E3BEC's unsigned compare
+    # The map battle's HP window (801E3AE4, f2 the unit's x; its gauge follows it on the
+    # centred 320): the anchor never goes below 0, which 801E3BEC's unsigned compare
     # (x < 257) took for past the right edge, moving the window to 240 (wide_map.cpp).
     ("load_000AB160_func_801E3AE4", 0x801E3B1C): ("MEM_W(ctx->r1, -0XA2C)", "srw64_map_anchor_scroll(MEM_W(ctx->r1, -0XA2C), ctx->f2.fl)"),
-    # The figure the window's place sets (80101DAC = anchor + 17; the map battle's damage, map_miss)
-    # is drawn by 80209900 in the widened view, like a spirit's +10 (801D92E4: unit x + the raw
-    # scroll), so it takes the half back that the anchor gave up: the three mode paths.
-    ("load_000AB160_func_801E3AE4", 0x801E3C30): ("0X11", 1),
-    ("load_000AB160_func_801E3AE4", 0x801E3C40): ("0X11", 1),
-    ("load_000AB160_func_801E3AE4", 0x801E3CFC): ("0X11", 1),
+    # 80101DAC (anchor + 17) is the x of render slot 0x2E, the gauge's node (801E38FC and its
+    # two siblings draw at their slot's x), so it stays on the centred 320. The damage figure
+    # starts there too, but 80209900 draws it in the widened view, like a spirit's +10
+    # (801D92E4: unit x + the raw scroll): the six reads that hand it to 801FCC6C take the half
+    # back that the anchor gave up (and map_miss.hpp's own call). Moving the store instead
+    # moved the gauge out of its window (2026-10-12 and again 11-04 to 11-26).
+    ("load_000AB160_func_801D7490", 0x801D75EC): ("MEM_W(ctx->r1, 0X1DAC)", "srw64_map_x_float(MEM_W(ctx->r1, 0X1DAC), 1)"),
+    ("load_000AB160_func_801D7778", 0x801D7ABC): ("MEM_W(ctx->r1, 0X1DAC)", "srw64_map_x_float(MEM_W(ctx->r1, 0X1DAC), 1)"),
+    ("load_000AB160_func_801D8BB0", 0x801D8C98): ("MEM_W(ctx->r1, 0X1DAC)", "srw64_map_x_float(MEM_W(ctx->r1, 0X1DAC), 1)"),
+    ("load_000AB160_func_801D95B8", 0x801D98E4): ("MEM_W(ctx->r1, 0X1DAC)", "srw64_map_x_float(MEM_W(ctx->r1, 0X1DAC), 1)"),
+    ("load_000AB160_func_801DA478", 0x801DA714): ("MEM_W(ctx->r1, 0X1DAC)", "srw64_map_x_float(MEM_W(ctx->r1, 0X1DAC), 1)"),
+    ("load_000AB160_func_801DBBAC", 0x801DBCE4): ("MEM_W(ctx->r1, 0X1DAC)", "srw64_map_x_float(MEM_W(ctx->r1, 0X1DAC), 1)"),
 }
 
 # The cheats ride on the same rewrite. Morale stops at 150 in eight places, all reading

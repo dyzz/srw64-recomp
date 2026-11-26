@@ -22,6 +22,7 @@
 // (not the presentation that replays an aborted animation) and with the native text on:
 // the original's own digits would read 0000.
 #include "guest_memory.hpp"
+#include "wide_map.hpp"
 #include "funcs.h"
 #include <array>
 #include <atomic>
@@ -112,7 +113,10 @@ inline void map_step(uint8_t* ram, recomp_context* ctx) {
         const int32_t x = int32_t(read_float(ram, cell)), y = int32_t(read_float(ram, cell + 4));
         if (!(call(ram, ctx, 0x801FFE34, uint32_t(x), uint32_t(y)) & 0xFF)) call(ram, ctx, 0x801FFCB0, uint32_t(x), uint32_t(y));
         call(ram, ctx, 0x801E3AE4, 3, handle);   // the figure's place only (0 would open the HP window)
-        call(ram, ctx, 0x801FCC6C, uint32_t(-1000), to_word(read_float(ram, figure_x)), to_word(read_float(ram, figure_y)), 0);
+        // The place is the gauge's, on the centred 320; the figure is drawn in the widened
+        // view (generate_cpu.py's reads of 80101DAC add the same half).
+        const float figure_left = read_float(ram, figure_x) + float(wide_map::extra()) / 2;
+        call(ram, ctx, 0x801FCC6C, uint32_t(-1000), to_word(figure_left), to_word(read_float(ram, figure_y)), 0);
         // Six cells: the shown ones carry the letters ui_text draws, digit 0 (3) where a
         // letter goes so the original still draws its cell, blank (0) between.
         for (uint32_t k = 0; k < 6; ++k) {

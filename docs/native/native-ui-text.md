@@ -136,7 +136,7 @@ PYTHONPATH=src:. .venv/bin/python -B tools/hd_ai/hud_frame_asset.py \
   - x、y 在 `80228548`。
 - 显示列表与文字引擎同一种形状：一次调色板，然后每格一个矩形。
 - `80209900` 在 `NATIVE_HOOKS` 里改名为 `srw64_original_map_damage_draw`，包装后调用 `damage_drawn`。`ui_text.cpp` 核对格数和位置以后，逐格画成高清数字。
-- 宽屏下这个回调在放宽的地图视野里画（`wide_map`），格子坐标一律是宽视野坐标：精神的「+10」本来就是（机体 x＋原始滚动量），关动画的伤害数字与 MISS 由 `801E3AE4` 的锚点＋17 得来，`generate_cpu.py` 给它补回半个加宽量；高清数字由 `native_sprite` 画，记录里的 `view_left` 让它按同一视野定位（2026-11-04 修，见 [deck-16x10.md](../design/deck-16x10.md) §2）。
+- 宽屏下这个回调在放宽的地图视野里画（`wide_map`），格子坐标一律是宽视野坐标：精神的「+10」本来就是（机体 x＋原始滚动量），关动画的伤害数字与 MISS 由 `801E3AE4` 的锚点＋17（`80101DAC`）得来，`generate_cpu.py` 在六处把它读给 `801FCC6C` 的地方补回半个加宽量（`map_miss.hpp` 自己的调用也补）；`80101DAC` 本身是血条节点（槽 0x2E）的 x，不能在写入处改（2026-11-26 修）；高清数字由 `native_sprite` 画，记录里的 `view_left` 让它按同一视野定位（2026-11-04 修，见 [deck-16x10.md](../design/deck-16x10.md) §2）。
 
 ## 6. 加宽的原版菜单
 
