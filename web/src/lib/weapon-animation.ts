@@ -153,15 +153,25 @@ export function firePoint(a: Animation): { x: number; y: number } | null {
   const first = a.actors.find(movesWithFirePoint);
   return first ? { x: first.x, y: first.y } : null;
 }
-// Every actor that moves with it, by the same amount; false when there is no fire point.
+// Every actor that moves with it, by the same amount; false when there is no fire point (or
+// the point asked for is no number). They move as one: the move is cut short where any of
+// them would leave the record's range, and none lands on 0, 0 (its routine would place it
+// itself, and it would no longer move with the others), the move going a step further.
+export const COORD_MIN = -32768, COORD_MAX = 32767;
 export function moveFirePoint(a: Animation, x: number, y: number): boolean {
   const at = firePoint(a);
-  if (!at) return false;
-  const dx = Math.round(x) - at.x, dy = Math.round(y) - at.y;
-  for (const actor of a.actors) if (movesWithFirePoint(actor)) {
-    actor.x = Math.max(-32768, Math.min(32767, actor.x + dx));
-    actor.y = Math.max(-32768, Math.min(32767, actor.y + dy));
-  }
+  if (!at || !Number.isFinite(x) || !Number.isFinite(y)) return false;
+  const moving = a.actors.filter(movesWithFirePoint);
+  const xs = moving.map((m) => m.x), ys = moving.map((m) => m.y);
+  const lowX = COORD_MIN - Math.min(...xs), highX = COORD_MAX - Math.max(...xs);
+  const lowY = COORD_MIN - Math.min(...ys), highY = COORD_MAX - Math.max(...ys);
+  const within = (d: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, d));
+  const dx0 = within(Math.round(x) - at.x, lowX, highX), dy = within(Math.round(y) - at.y, lowY, highY);
+  const clear = (dx: number) => dx >= lowX && dx <= highX && !moving.some((m) => m.x + dx === 0 && m.y + dy === 0);
+  let dx = dx0;
+  for (let k = 1; !clear(dx) && k <= 2 * moving.length + 2; k++) dx = dx0 + (k % 2 ? 1 : -1) * Math.ceil(k / 2);
+  if (!clear(dx)) return false;
+  for (const actor of moving) { actor.x += dx; actor.y += dy; }
   return true;
 }
 
@@ -178,4 +188,56 @@ export function recolorProblem(v: Recolor): string | null {
   if (!entries.length) return 'recolor_empty';
   if (entries.some(([k, c]) => !/^\d{1,3}$/.test(k) || Number(k) > 255 || typeof c !== 'string' || !/^#[0-9a-f]{6}$/i.test(c))) return 'recolor_color';
   return null;
+}
+
+// The original row an actor draws: its scene number, or the row a recolour of the package's names.
+export function recolorRow(scenes: Record<string, unknown>, actor: Actor): number | undefined {
+  if (typeof actor.scene === 'number') return actor.scene;
+  const v = actor.scene.startsWith('@') ? scenes[actor.scene.slice(1)] : undefined;
+  return isRecolor(v) ? v.recolor : undefined;
+}
+const recolorNameOf = (scenes: Record<string, unknown>, actor: Actor) =>
+  typeof actor.scene === 'string' && actor.scene.startsWith('@') && isRecolor(scenes[actor.scene.slice(1)]) ? actor.scene.slice(1) : undefined;
+// A name for a weapon's new recolour of `row`: "<slug>-color-<row>", the slug shortened so the
+// name keeps to the 40 characters a name may have (src/host/mod_units.hpp valid_name), and
+// numbered when that one is taken.
+export const NAME_MOST = 40;
+export function recolorName(slug: string, row: number, taken: (name: string) => boolean): string {
+  for (let n = 1; ; n++) {
+    const tail = `-color-${row}${n > 1 ? `-${n}` : ''}`;
+    const name = `${slug.slice(0, NAME_MOST - tail.length)}${tail}`;
+    if (!taken(name)) return name;
+  }
+}
+// Gives `targets` (actors of one weapon's record) these colours, or their original scenes back
+// when there are none. The targets drawing one row share one recolour scene: one of theirs
+// when no other actor (`everyone`: every actor of every record, these included) names it,
+// else a new one, so actors left out keep their colours. Scenes no one names any more stay
+// until pruneRecolors.
+export function applyRecolor(scenes: Record<string, unknown>, everyone: Actor[], targets: Actor[], colors: Record<string, string>, slug: string) {
+  const byRow = new Map<number, Actor[]>();
+  for (const t of targets) {
+    const row = recolorRow(scenes, t);
+    if (row !== undefined) byRow.set(row, [...(byRow.get(row) ?? []), t]);
+  }
+  const outside = new Set(everyone.filter((x) => !targets.includes(x)).map((x) => recolorNameOf(scenes, x)));
+  for (const [row, group] of byRow) {
+    if (!Object.keys(colors).length) { for (const t of group) t.scene = row; continue; }
+    const name = group.map((t) => recolorNameOf(scenes, t)).find((n) => n !== undefined && !outside.has(n))
+      ?? recolorName(slug, row, (n) => n in scenes);
+    scenes[name] = { recolor: row, colors: { ...colors } };
+    for (const t of group) t.scene = `@${name}`;
+  }
+}
+// Recolour scenes no record names any more go (each takes a scene row and a palette in the game).
+export function pruneRecolors(scenes: Record<string, unknown>, animations: unknown[]) {
+  const named = new Set<string>();
+  for (const a of animations) if (a && typeof a === 'object' && !isCopy(a) && Array.isArray((a as Animation).actors))
+    for (const actor of (a as Animation).actors) if (typeof actor.scene === 'string') named.add(actor.scene.slice(1));
+  for (const [k, v] of Object.entries(scenes)) if (isRecolor(v) && !named.has(k)) delete scenes[k];
+}
+// Whether two colours are one to the game, which keeps 5 bits a channel (mod_units.hpp recolor).
+export function sameColor(a: string, b: string): boolean {
+  const five = (hex: string) => { const v = parseInt(hex.slice(1), 16); return (v >> 19 & 31) << 10 | (v >> 11 & 31) << 5 | (v >> 3 & 31); };
+  return /^#[0-9a-f]{6}$/i.test(a) && /^#[0-9a-f]{6}$/i.test(b) && five(a) === five(b);
 }

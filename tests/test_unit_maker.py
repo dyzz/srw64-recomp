@@ -378,6 +378,97 @@ class AnimationTests(unittest.TestCase):
         codes = [p["code"] for p in call("problems", model)]
         self.assertEqual(codes.count("scene_recolor"), 1)
 
+    def test_fire_point_edges(self):
+        # The effects move as one: never apart where one would leave the record's range, never
+        # onto 0, 0 (their routine would place them, and they would stop following), and an
+        # unreadable point is no move.
+        module = (ROOT / "web/src/lib/weapon-animation.ts").as_uri()
+        bank = ROOT / "web/src/data/weapon-animations.json"
+        got = run(f"import * as a from {json.dumps(module)}; import fs from 'node:fs';"
+                  f"const bank = JSON.parse(fs.readFileSync({json.dumps(str(bank))}, 'utf8'));"
+                  "const pos = (r) => r.actors.map((x) => [x.x, x.y]);"
+                  "const missile = a.original(bank, 327), m0 = pos(missile);"
+                  "const far = a.moveFirePoint(missile, 99999, -99999), m1 = pos(missile);"
+                  "const back = a.moveFirePoint(missile, -99999, 99999), m2 = pos(missile);"
+                  "const beam = a.original(bank, 228), b0 = pos(beam);"
+                  "const origin = a.moveFirePoint(beam, 0, 0), b1 = pos(beam), fire = a.firePoint(beam);"
+                  "const nan = [a.moveFirePoint(beam, NaN, 0), a.moveFirePoint(beam, 0, Infinity)], b2 = pos(beam);"
+                  "const act = (x, y) => ({ scene: 56, x, y, z: 0, h4: 0, h5: 255, h6: 0, behavior: 118 });"
+                  "const two = { camera: 1, hit: 6, action: 113, defender: 125, sounds: [], actors: [act(10, 0), act(20, 0)] };"
+                  "const second = a.moveFirePoint(two, -20, 0), t1 = pos(two);"
+                  "console.log(JSON.stringify({ m0, far, m1, back, m2, b0, origin, b1, fire, nan, b2, second, t1,"
+                  " moving: [a.original(bank, 228).actors.filter(a.movesWithFirePoint).length, beam.actors.filter(a.movesWithFirePoint).length] }));")
+        moving = [i for i, (x, y) in enumerate(got["m0"]) if (x, y) != (0, 0)]
+        self.assertGreater(len(moving), 1)
+        self.assertTrue(got["far"])
+        offsets = lambda ps: [(ps[i][0] - ps[moving[0]][0], ps[i][1] - ps[moving[0]][1]) for i in moving]
+        for ps in (got["m1"], got["m2"]):
+            self.assertEqual(offsets(ps), offsets(got["m0"]))       # kept their places to each other
+            self.assertTrue(all(-32768 <= v <= 32767 for i in moving for v in ps[i]))
+        self.assertTrue(any(v in (-32768, 32767) for i in moving for v in got["m1"][i]))   # went as far as it could
+        self.assertTrue(got["origin"])
+        self.assertNotEqual(got["fire"], {"x": 0, "y": 0})
+        self.assertEqual(abs(got["fire"]["x"]) + abs(got["fire"]["y"]), 1)   # one step past 0, 0
+        self.assertEqual(got["moving"][0], got["moving"][1])                  # none dropped out
+        self.assertEqual(got["nan"], [False, False])
+        self.assertEqual(got["b2"], got["b1"])
+        self.assertTrue(got["second"])
+        self.assertNotIn([0, 0], got["t1"])
+        self.assertEqual(got["t1"][1][0] - got["t1"][0][0], 10)
+
+    def test_recolour_editing(self):
+        # What the colour panel does (lib/weapon-animation.ts applyRecolor, pruneRecolors): a copy's
+        # record recoloured keeps its scene once it is the weapon's own; actors recoloured apart
+        # get scenes apart; a long slug still makes a name the game takes.
+        module = (ROOT / "web/src/lib/weapon-animation.ts").as_uri()
+        got = run(f"import * as a from {json.dumps(module)};"
+                  "const act = (scene) => ({ scene, x: -40, y: 20, z: 0, h4: 0, h5: 255, h6: 0, behavior: 118 });"
+                  "const rec = (...actors) => ({ camera: 1, hit: 6, action: 113, defender: 125, sounds: [-2, 1, 5, 8], actors });"
+                  # A copy's record: recoloured, then made the weapon's own; the weapon still a copy when it is applied.
+                  "const s1 = {}, preview = rec(act(56)), weapon = { animation: { copy: 228 } };"
+                  "a.applyRecolor(s1, preview.actors, preview.actors, { '2': '#20e060' }, 'w');"
+                  "weapon.animation = preview; a.pruneRecolors(s1, [weapon.animation]);"
+                  "const copy = { scenes: s1, scene: preview.actors[0].scene };"
+                  # Two actors of one row, recoloured one at a time, then one of a shared pair alone.
+                  "const s2 = {}, r2 = rec(act(56), act(56));"
+                  "a.applyRecolor(s2, r2.actors, [r2.actors[0]], { '2': '#ff0000' }, 'w');"
+                  "a.applyRecolor(s2, r2.actors, [r2.actors[1]], { '2': '#0000ff' }, 'w');"
+                  "const apart = { scenes: JSON.parse(JSON.stringify(s2)), names: r2.actors.map((x) => x.scene) };"
+                  "const s3 = {}, r3 = rec(act(56), act(56));"
+                  "a.applyRecolor(s3, r3.actors, r3.actors, { '2': '#ff0000' }, 'w');"
+                  "const shared = r3.actors.map((x) => x.scene);"
+                  "a.applyRecolor(s3, r3.actors, [r3.actors[0]], { '2': '#00ff00' }, 'w');"
+                  "const split = { scenes: JSON.parse(JSON.stringify(s3)), names: r3.actors.map((x) => x.scene) };"
+                  "a.applyRecolor(s3, r3.actors, [r3.actors[0]], {}, 'w'); a.pruneRecolors(s3, [r3]);"
+                  "const reset = { scenes: s3, names: r3.actors.map((x) => x.scene) };"
+                  # The longest slug, the last row, its name taken.
+                  "const slug = 'a'.repeat(40), n1 = a.recolorName(slug, 1052, () => false), n2 = a.recolorName(slug, 1052, (n) => n === n1);"
+                  "const same = [a.sameColor('#f8f8f8', '#ffffff'), a.sameColor('#000000', '#080000'), a.sameColor('#000000', 'black')];"
+                  "console.log(JSON.stringify({ copy, apart, shared, split, reset, n1, n2, same }));")
+        name = got["copy"]["scene"][1:]
+        self.assertEqual(got["copy"]["scenes"], {name: {"recolor": 56, "colors": {"2": "#20e060"}}})
+        doc = {"schema": "srw64.new-units.v2", "scenes": got["copy"]["scenes"],
+               "weapons": {"w": {"copy": 228, "animation": {"camera": 1, "hit": 6, "action": 113, "defender": 125, "sounds": [-2, 1, 5, 8],
+                                                           "actors": [{"scene": got["copy"]["scene"], "x": -40, "y": 20, "h5": 255, "behavior": 118}]}}},
+               "units": {"u": {"copy": 55, "weapons": ["@w"]}}}
+        self.assertEqual(validate.new_units_problem(doc), "")
+        a0, a1 = got["apart"]["names"]
+        self.assertNotEqual(a0, a1)
+        self.assertEqual(got["apart"]["scenes"][a0[1:]]["colors"], {"2": "#ff0000"})
+        self.assertEqual(got["apart"]["scenes"][a1[1:]]["colors"], {"2": "#0000ff"})
+        self.assertEqual(got["shared"][0], got["shared"][1])
+        s0, s1 = got["split"]["names"]
+        self.assertNotEqual(s0, s1)
+        self.assertEqual(got["split"]["scenes"][s0[1:]]["colors"], {"2": "#00ff00"})
+        self.assertEqual(got["split"]["scenes"][s1[1:]]["colors"], {"2": "#ff0000"})   # the one left out kept its colours
+        self.assertEqual(got["reset"]["names"][0], 56)
+        self.assertEqual(list(got["reset"]["scenes"]), [s1[1:]])                     # the unnamed scene went
+        for n in (got["n1"], got["n2"]):
+            self.assertLessEqual(len(n), 40)
+            self.assertTrue(validate.NAME.fullmatch(n), n)
+        self.assertNotEqual(got["n1"], got["n2"])
+        self.assertEqual(got["same"], [True, False, False])
+
 
 @unittest.skipUnless(NODE, "node is not installed")
 class PixelsTests(unittest.TestCase):

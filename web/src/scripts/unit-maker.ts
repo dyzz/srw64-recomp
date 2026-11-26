@@ -921,7 +921,7 @@ export function initUnitMaker() {
     return anim.isRecolor(v) ? v : null;
   };
   // The original row an actor draws, recoloured or not; none for a picture of the package.
-  const actorRow = (actor: anim.Actor): number | undefined => typeof actor.scene === 'number' ? actor.scene : recolorOf(actor.scene)?.recolor;
+  const actorRow = (actor: anim.Actor): number | undefined => anim.recolorRow(model.scenes ?? {}, actor);
   // An actor's canvas: the original scene's (drawn from the ROM when there is one), or the package picture's.
   function actorCanvas(a: anim.Actor): { canvas: number[]; image?: string } | undefined {
     const row = actorRow(a);
@@ -1022,9 +1022,13 @@ export function initUnitMaker() {
   function fireRow(a: anim.Animation, commit: () => void): Node {
     const at = anim.firePoint(a);
     if (!at) return el('p', { class: 'hint' }, T('fireNone'));
-    const cell = (v: number, set: (v: number) => void) => {
+    const cell = (v: number, set: (v: number) => boolean) => {
       const i = el('input', { value: String(v), class: 'num-cell', spellcheck: 'false' }) as HTMLInputElement;
-      i.addEventListener('change', () => { const n = Number(i.value.trim()); if (Number.isFinite(n)) { set(n); commit(); } });
+      // An empty or unreadable cell is no move (Number('') would be 0); the cell shows the point again.
+      i.addEventListener('change', () => {
+        const t = i.value.trim(), n = t ? Number(t) : NaN;
+        if (Number.isFinite(n) && set(n)) commit(); else i.value = String(v);
+      });
       return i;
     };
     return el('div', {}, el('div', { class: 'sub' }, T('fireTitle')), el('p', { class: 'hint' }, T('fireHint')),
@@ -1064,17 +1068,20 @@ export function initUnitMaker() {
       const colors: Record<string, string> = { ...(recolor?.colors ?? {}) };
       const preview = el('img', { class: 'color-preview', src: romPicture(row, colors) ?? '', alt: '' }) as HTMLImageElement;
       // Which actors this change goes to: this one, and those sharing its palette when together.
-      const targets = () => colorTogether ? rows.filter((x) => paletteOf(x.row!) === paletteOf(row)) : [pick];
+      // (A palette that cannot be read shares with none.)
+      const targets = () => {
+        const p = paletteOf(row);
+        return colorTogether && p >= 0 ? rows.filter((x) => paletteOf(x.row!) === p) : [pick];
+      };
+      // `commit` drops the scenes no record names: here the record shown may be a copy's,
+      // not the weapon's own until commit makes it so.
       const apply = () => {
-        for (const { actor, row: r } of targets()) {
-          const was = recolorOf(actor.scene);
-          if (!Object.keys(colors).length) { actor.scene = r!; continue; }
-          const name = was && typeof actor.scene === 'string' ? actor.scene.slice(1) : `${w.slug}-color-${r}`;
-          model.scenes ??= {};
-          model.scenes[name] = { recolor: r!, colors: { ...colors } };
-          actor.scene = `@${name}`;
-        }
-        pruneRecolors();
+        model.scenes ??= {};
+        const everyone = [...a.actors, ...model.weapons.flatMap((x) => {
+          const f = x.animation as anim.AnimationField | undefined;
+          return f && !anim.isCopy(f) && f !== a ? f.actors : [];
+        })];
+        anim.applyRecolor(model.scenes, everyone, targets().map((x) => x.actor), colors, w.slug);
         commit();
       };
       const entries = [...used.keys()].filter((k) => k < palette.length && romArt.opaque(palette[k])).sort((x, y) => x - y);
@@ -1086,14 +1093,14 @@ export function initUnitMaker() {
           preview.src = romPicture(row, c) ?? '';
         });
         input.addEventListener('change', () => {
-          if (input.value.toLowerCase() === romArt.toHex(palette[k])) delete colors[k];
+          if (anim.sameColor(input.value, romArt.toHex(palette[k]))) delete colors[k];
           else colors[k] = input.value.toLowerCase();
           apply();
         });
         return el('label', { class: `swatch${k in colors ? ' changed' : ''}`, title: T('colorEntry', { k, texels: used.get(k) ?? 0 }) }, input, el('span', {}, String(k)));
       });
       const together = el('input', { type: 'checkbox', checked: colorTogether }) as HTMLInputElement;
-      together.addEventListener('change', () => { colorTogether = together.checked; });
+      together.addEventListener('change', () => { colorTogether = together.checked; render(); });
       // A quick hue turn of every entry shown, the way most recolours start.
       const hue = el('input', { type: 'range', min: -180, max: 180, value: 0, step: 5, class: 'hue' }) as HTMLInputElement;
       const turned = () => {
@@ -1104,7 +1111,7 @@ export function initUnitMaker() {
       hue.addEventListener('input', () => { preview.src = romPicture(row, turned()) ?? ''; });
       hue.addEventListener('change', () => {
         const c = turned();
-        for (const k of entries) { if (c[k] === romArt.toHex(palette[k])) delete colors[k]; else colors[k] = c[k]; }
+        for (const k of entries) { if (anim.sameColor(c[k], romArt.toHex(palette[k]))) delete colors[k]; else colors[k] = c[k]; }
         apply();
       });
       parts.push(el('div', { class: 'color-box' },
@@ -1131,14 +1138,7 @@ export function initUnitMaker() {
     return `#${[r1, g1, b1].map((v) => Math.round((v + m) * 255).toString(16).padStart(2, '0')).join('')}`;
   }
   // Recolour scenes no actor names any more go (each takes a scene row and a palette in the game).
-  function pruneRecolors() {
-    const named = new Set<string>();
-    for (const w of model.weapons) {
-      const a = w.animation as anim.AnimationField | undefined;
-      if (a && !anim.isCopy(a)) for (const actor of a.actors) if (typeof actor.scene === 'string') named.add(actor.scene.slice(1));
-    }
-    for (const [k, v] of Object.entries(model.scenes ?? {})) if (anim.isRecolor(v) && !named.has(k)) delete model.scenes![k];
-  }
+  const pruneRecolors = () => { if (model.scenes) anim.pruneRecolors(model.scenes, model.weapons.map((x) => x.animation)); };
   const numberCell = (value: number, set: (v: number) => void, hex = false) => {
     const i = el('input', { value: hex ? `0x${value.toString(16).toUpperCase()}` : String(value), class: 'num-cell', spellcheck: 'false' }) as HTMLInputElement;
     i.addEventListener('change', () => { const v = Number(i.value.trim()); if (Number.isFinite(v)) set(Math.round(v)); changed(); });
