@@ -4,6 +4,7 @@ import android.app.ActivityManager;
 import android.app.ApplicationExitInfo;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.system.ErrnoException;
@@ -19,7 +20,10 @@ import java.util.List;
 // new build to start. The game writes a marker before it starts and the render thread
 // deletes it after 300 display lists (src/host/stall_watchdog.cpp); a marker still there
 // at the next start, after a crash where Android keeps the reason (11 and later), turns
-// the sync off for this version of the game. A new version tries again.
+// the sync off for this install of the game. An update tries again, also one that keeps
+// the version code (0.5.4.1 kept 0.5.4's 504, so its players kept 0.5.4's choice): the key
+// is the version code, the version name and the time of the install, as for the resources
+// (SetupActivity.unpackResources).
 final class GraphicsGuard {
     private static final String PREFS = "graphics_guard";
     private static final int STARTED_FRAMES = 300;
@@ -31,14 +35,17 @@ final class GraphicsGuard {
     static void prepare(Context context) throws ErrnoException {
         File marker = new File(context.getFilesDir(), "render-start");
         SharedPreferences prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
-        long version = version(context);
-        if (prefs.getLong("sync_off_version", -1) != version && marker.exists() && crashed(context, marker)) {
-            prefs.edit().putLong("sync_off_version", version).apply();
+        String install = install(context);
+        // Through 0.5.4.1 the key was the version code alone, under "sync_off_version".
+        if (prefs.contains("sync_off_version")) prefs.edit().remove("sync_off_version").apply();
+        boolean off = install.equals(prefs.getString("sync_off_install", null));
+        if (!off && marker.exists() && crashed(context, marker)) {
+            prefs.edit().putString("sync_off_install", install).apply();
+            off = true;
             Log.w("SRW64", "SRW64_GRAPHICS_GUARD the last start crashed before drawing " + STARTED_FRAMES
-                    + " display lists: framebuffer sync off for this version");
+                    + " display lists: framebuffer sync off for this install (" + install + ")");
         }
-        if (prefs.getLong("sync_off_version", -1) == version)
-            HostEnvironment.set("SRW64_FRAMEBUFFER_SYNC", "0");
+        if (off) HostEnvironment.set("SRW64_FRAMEBUFFER_SYNC", "0");
         try {
             if (!marker.createNewFile()) marker.setLastModified(System.currentTimeMillis());
             HostEnvironment.set("SRW64_START_MARKER", marker.getPath());
@@ -68,11 +75,12 @@ final class GraphicsGuard {
         return crash;
     }
 
-    private static long version(Context context) {
+    private static String install(Context context) {
         try {
-            return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).getLongVersionCode();
+            PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            return info.getLongVersionCode() + ":" + info.versionName + ":" + info.lastUpdateTime;
         } catch (PackageManager.NameNotFoundException error) {
-            return 0;
+            return "unknown";
         }
     }
 }

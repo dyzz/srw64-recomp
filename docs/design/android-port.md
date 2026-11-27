@@ -282,7 +282,7 @@ APK 的 `libmain.so` 必须链接两份由 ROM 生成的代码：`build/recomp/c
 - **通用着色器编译失败：** 642L（Galaxy A73，驱动 0x80212000，与 S21 Ultra 同一版）`RasterPSDynamic` 返回 VK_ERROR_UNKNOWN，和 660 一样，套用 660 的统一贴图槽采样变体。能玩，但很多特化着色器编不过，退回通用着色器，只有 14–22 FPS。
 - **编译器自身崩溃：** 安卓 9／10 的老驱动（S10 0x80163000、Tab S6 0x80191000、Pixel 3a 0x80180000、Pixel 3 0x8019f000）在第一帧之前编译 `RasterPSDynamic` 时，驱动的编译器 `libllvm-glnext.so`（`updateUAVTexSamUsage`）把自己的栈写坏；统一贴图槽变体也一样崩。通用着色器是所有画面的退路，编不过就什么都画不了。用户决定不修：驱动版本低于 0x801a0000 的 Adreno 6xx 在 RT64 初始化时、编译任何着色器之前就停下，按玩家选的语言提示「显卡驱动太旧，请把系统升级到安卓 11 或更高版本」。这时不销毁显卡设备，因为 Pixel 3 的驱动在 `vkDestroyDevice` 里也会崩。安卓 11 的驱动（0x801ea000，Pixel 4/4a/5）能正常编译。
 
-**自动兜底（GraphicsGuard.java）：** 遇到没测过的显卡，不必等新版本把它的名字加进去。游戏启动前写 `files/render-start`，渲染线程画满 300 个显示列表后删除（`stall_watchdog.cpp`）。下次启动时如果标记还在，并且标记之后有崩溃退出记录（安卓 11 起看 `ApplicationExitInfo`，更老的系统只看标记），就对当前版本设置 `SRW64_FRAMEBUFFER_SYNC=0`；换新版本后会重新尝试。注意原生运行时会清空 `SRW64_*` 环境变量（`clear_runtime_environment`），安卓传进来的变量要加白名单。
+**自动兜底（GraphicsGuard.java）：** 遇到没测过的显卡，不必等新版本把它的名字加进去。游戏启动前写 `files/render-start`，渲染线程画满 300 个显示列表后删除（`stall_watchdog.cpp`）。下次启动时如果标记还在，并且标记之后有崩溃退出记录（安卓 11 起看 `ApplicationExitInfo`，更老的系统只看标记），就对当前安装设置 `SRW64_FRAMEBUFFER_SYNC=0`；更新后会重新尝试。键是版本号＋版本名＋安装时间（`lastUpdateTime`），不只看版本号：0.5.4.1 沿用了 0.5.4 的 504，只看版本号时 0.5.4 记下的降级一直不重置。注意原生运行时会清空 `SRW64_*` 环境变量（`clear_runtime_environment`），安卓传进来的变量要加白名单。
 
 **管线日志：** plume 对前 120 个管线在驱动编译前后各记一行（`SRW64_PIPELINE n begin/done`，带线程号和每个阶段的 SPIR-V 大小与 FNV-1a 哈希）。崩溃线程最后一个只有 begin、没有 done 的管线，就是让驱动崩溃的着色器，哈希可以对照 `build/android/game/src/shaders/*.spv`。
 
