@@ -49,8 +49,8 @@ fs::path default_user_dir();
 fs::path desktop_user_dir(const fs::path& game_dir, Platform platform, const EnvironmentLookup& lookup);
 // The first launch's language, before the player picks one: the first of the system's
 // preferred languages (BCP 47 or POSIX names, most preferred first) that is Chinese
-// (zh-Hant for the Traditional script or Taiwan, Hong Kong and Macau, else zh-Hans),
-// Japanese or English; English when none is.
+// (zh-Hant-HK for Hong Kong and Macau unless the script is Simplified, zh-Hant for the
+// Traditional script or Taiwan, else zh-Hans), Japanese, English or Korean; English when none is.
 // SRW64_SYSTEM_LANGUAGE, when set, stands for the system's list (tests).
 std::string first_language(const std::vector<std::string>& preferred);
 std::vector<std::string> preferred_languages();

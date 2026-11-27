@@ -4,6 +4,7 @@
  "title": {
   "zh-Hans": "夏比罗，转生！",
   "zh-Hant": "夏比羅，轉生！",
+  "zh-Hant-HK": "扎比，轉生！",
   "ja": "シャピロ、転生!",
   "en": "Shapiro, Reborn!",
   "ko": "샤피로, 전생!"
@@ -34,6 +35,7 @@
      "text": {
       "zh-Hans": "用翔说服陶德（德雷克 HP 33% 以下前）",
       "zh-Hant": "用翔說服陶德（德雷克 HP 33% 以下前）",
+      "zh-Hant-HK": "用翔説服陶德（德雷克 HP 33% 以下前）",
       "ja": "ショウでトッドを説得（ドレイクHP33%以下になる前に）",
       "en": "Persuade Tod with Show before Drake drops to 33% HP",
       "ko": "드레이크의 HP가 33% 이하가 되기 전에 쇼우로 토드를 설득"
@@ -64,6 +66,7 @@
      "title": {
       "zh-Hans": "牛剑鬼复仇（乔巴姆装甲）",
       "zh-Hant": "牛劍鬼復仇（複合裝甲）",
+      "zh-Hant-HK": "牛劍鬼復仇（喬巴姆裝甲）",
       "ja": "牛剣鬼の復讐（チョバムアーマー）",
       "en": "Gyukenki's revenge (Chobham Armor)",
       "ko": "우검귀의 복수(초밤 아머)"

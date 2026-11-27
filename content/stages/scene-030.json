@@ -69,6 +69,7 @@
      "from": {
       "zh-Hans": "迪斯盖亚",
       "zh-Hant": "迪斯海亞",
+      "zh-Hant-HK": "迪斯蓋亞",
       "ja": "デスガイヤー",
       "en": "Death Gaia",
       "ko": "데스가이어"
@@ -79,6 +80,7 @@
      "part": {
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
+      "zh-Hant-HK": "遠地點引擎",
       "ja": "アポジモーター",
       "en": "Apogee Motor",
       "ko": "아포지 모터"

@@ -25,7 +25,7 @@ from srw64_native.catalog import source_catalog  # noqa: E402
 HERE = Path(__file__).resolve().parent
 GFX = ROOT / 'build/recomp/gfx-build'
 OUT = ROOT / 'build/recomp/ui-audit'
-LOCALES = ('zh-Hans', 'zh-Hant', 'en', 'ja', 'ko')
+LOCALES = ('zh-Hans', 'zh-Hant', 'zh-Hant-HK', 'en', 'ja', 'ko')
 # name: window points and interface size (Steam Deck: 1280 x 800 at Largest).
 SIZES = {'deck': (1280, 800, 'largest'), 'deck-standard': (1280, 800, 'standard'),
          'wide': (1920, 1080, 'standard'), 'smallest': (960, 720, 'standard'),
@@ -78,7 +78,7 @@ class Text:
         clean = lambda s: re.sub(r'<END>$', '', s).replace('<BR>', '\n')
         self.ja = {k: clean(v) for k, v in sources.items() if k.startswith('base:t00_')}
         self.by = {'ja': self.ja}
-        for locale in ('zh-Hans', 'zh-Hant', 'en', 'ko'):
+        for locale in ('zh-Hans', 'zh-Hant', 'zh-Hant-HK', 'en', 'ko'):
             document = json.loads((ROOT / f'content/locales/{locale}.json').read_text())
             # Korean stands on English (docs/design/korean.md).
             below = self.by[document['fallback']] if 'fallback' in document else self.ja
@@ -92,6 +92,7 @@ class Text:
         fonts = ROOT / 'build/fonts'
         sc = ImageFont.truetype(str(fonts / 'HarmonyOS_Sans_SC.ttf'), 100)
         self.fonts = {'zh-Hans': sc, 'ja': sc, 'zh-Hant': ImageFont.truetype(str(fonts / 'HarmonyOS_Sans_TC.ttf'), 100),
+                      'zh-Hant-HK': ImageFont.truetype(str(fonts / 'HarmonyOS_Sans_TC.ttf'), 100),
                       'en': ImageFont.truetype(str(fonts / 'HarmonyOS_Sans_Condensed.ttf'), 100),
                       'ko': ImageFont.truetype(str(fonts / 'DroidSansFallback.ttf'), 100)}
 
@@ -368,7 +369,7 @@ def add_viewer(add, text, loc, units, pilots, menus):
     if exported.exists():
         # The whole list as the game shows it: every unit, named for this language (the
         # export has no Traditional Chinese unit names: Simplified, or this file's own).
-        key = {'zh-Hans': 'zh', 'zh-Hant': 'zh'}.get(loc, loc)
+        key = {'zh-Hans': 'zh', 'zh-Hant': 'zh', 'zh-Hant-HK': 'zh'}.get(loc, loc)
         own = [(e['id'], LIBRARY_NAMES['units'].get(str(e['id']), {}).get(loc) or e['name'][key], e.get('model'))
                for e in json.loads(exported.read_text())['units']]
     else:

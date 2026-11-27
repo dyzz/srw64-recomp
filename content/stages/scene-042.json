@@ -4,6 +4,7 @@
  "title": {
   "zh-Hans": "玛尔斯与玛古",
   "zh-Hant": "瑪爾斯與馬可",
+  "zh-Hant-HK": "瑪爾斯與馬克",
   "ja": "マーズとマーグ",
   "en": "Mars and Marg",
   "ko": "마즈와 마그"
@@ -34,6 +35,7 @@
      "text": {
       "zh-Hans": "真实系且蕾拉支线成立→「那双眼中映不出未来」，否则→「登场！超电磁机器人」",
       "zh-Hant": "真實系且蕾拉支線成立→「那雙眼中映不出未來」，否則→「登場！超電磁機器人」",
+      "zh-Hant-HK": "真實系且蕾拉支線成立→「那雙眼中映不出未來」，否則→「登場！超電磁機械人」",
       "ja": "リアル系でレラルート成立→「その瞳に未来は映ることなく」、それ以外→「登場!超電磁ロボ」",
       "en": "Real with Lera branch → “Those Eyes Reflect No Future”; else “Enter! Super Electromagnetic Robo”",
       "ko": "리얼계에서 레라 분기 성립 → “그 눈동자에 미래는 비치지 않고”; 그 외 “등장! 초전자 로보”"
@@ -61,6 +63,7 @@
      "title": {
       "zh-Hans": "高达Mk-Ⅲ＋梅塔斯改",
       "zh-Hant": "鋼彈Mk-Ⅲ＋梅塔斯改",
+      "zh-Hant-HK": "高達Mk-Ⅲ＋密達斯改",
       "ja": "ガンダムmkⅢ＋メタス改",
       "en": "Gundam Mk-III + Methuss Kai",
       "ko": "건담 Mk-III + 메타스 개"
@@ -68,6 +71,7 @@
      "text": {
       "zh-Hans": "无需操作：通关得到高达Mk-Ⅲ，梅塔斯换为梅塔斯改",
       "zh-Hant": "無需操作：通關得到鋼彈Mk-Ⅲ，梅塔斯換為梅塔斯改",
+      "zh-Hant-HK": "無需操作：通關得到高達Mk-Ⅲ，密達斯換為密達斯改",
       "ja": "操作不要：クリアでガンダムmkⅢを入手、メタスがメタス改に",
       "en": "No action needed: clear for the Gundam Mk-III; Methuss → Methuss Kai",
       "ko": "할 일 없음: 클리어하면 건담 Mk-III 입수; 메타스 → 메타스 개"
@@ -86,6 +90,7 @@
      "from": {
       "zh-Hans": "布兰",
       "zh-Hant": "布朗",
+      "zh-Hant-HK": "保蘭",
       "ja": "ブラン",
       "en": "Buran",
       "ko": "브란"
@@ -114,6 +119,7 @@
      "from": {
       "zh-Hans": "玛古",
       "zh-Hant": "馬可",
+      "zh-Hant-HK": "馬克",
       "ja": "マーグ",
       "en": "Marg",
       "ko": "마그"

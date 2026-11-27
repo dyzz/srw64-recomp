@@ -17,6 +17,7 @@
    "lane": {
     "zh-Hans": "OZ路线／随特列斯",
     "zh-Hant": "OZ路線／隨特列斯",
+    "zh-Hant-HK": "OZ路線／隨杜魯斯",
     "ja": "OZルート／トレーズにつく",
     "en": "OZ route / with Treize",
     "ko": "OZ 루트 / 트레즈와 함께"
@@ -27,6 +28,7 @@
      "title": {
       "zh-Hans": "卡多＋GP02A酸浆果",
       "zh-Hant": "卡多＋GP02A賽薩里斯",
+      "zh-Hant-HK": "賈圖＋GP02A賽薩里斯",
       "ja": "ガトー＋GP02Aサイサリス",
       "en": "Gato + GP02A Physalis",
       "ko": "가토 + GP02A 사이살리스"
@@ -34,6 +36,7 @@
      "text": {
       "zh-Hans": "已招到卡多时选「应该与哈曼合作」可多留他一关",
       "zh-Hant": "已招到卡多時選「應該與哈曼合作」可多留他一關",
+      "zh-Hant-HK": "已招到賈圖時選「應該與哈曼合作」可多留他一關",
       "ja": "「ハマーンと協力するべきだ」でガトーの離脱が1ステージ遅れる",
       "en": "To keep Gato a stage longer, pick “We should cooperate with Haman”",
       "ko": "가토를 한 스테이지 더 남기려면 “하만과 협력해야 한다”를 고름"
@@ -44,6 +47,7 @@
      "title": {
       "zh-Hans": "千鹤手术支线（孔巴特拉V 能否出击）",
       "zh-Hant": "千鶴手術支線（孔巴德拉V 能否出擊）",
+      "zh-Hant-HK": "飛鶴手術支線（超力電磁俠 能否出擊）",
       "ja": "ちずる手術分岐（コン・バトラーV の出撃可否）",
       "en": "Chizuru surgery branch (whether Combattler V can deploy)",
       "ko": "치즈루 수술 분기(컴배틀러 V 출격 가능 여부)"
@@ -51,6 +55,7 @@
      "text": {
       "zh-Hans": "豹马击坠数 ≥ 15 或下一关让他出击 → 千鹤手术支线",
       "zh-Hant": "豹馬擊墜數 ≥ 15 或下一關讓他出擊 → 千鶴手術支線",
+      "zh-Hant-HK": "天豹擊墜數 ≥ 15 或下一關讓他出擊 → 飛鶴手術支線",
       "ja": "豹馬の撃墜数15以上か次で出撃 → ちずるの手術イベント",
       "en": "Hyoma ≥ 15 kills here or deployed next stage → Chizuru surgery",
       "ko": "여기서 효마 격추 수 15 이상 또는 다음 스테이지에 출격 → 치즈루 수술"
@@ -62,6 +67,7 @@
      "part": {
       "zh-Hans": "精神感应框架",
       "zh-Hant": "精神感應框體",
+      "zh-Hant-HK": "精神感應框架",
       "ja": "サイコフレーム",
       "en": "Psycoframe",
       "ko": "사이코 프레임"
@@ -76,6 +82,7 @@
      "note": {
       "zh-Hans": "祖鲁皇帝最终被击坠后撤退",
       "zh-Hant": "祖魯皇帝最終被擊墜後撤退",
+      "zh-Hant-HK": "獨龍皇帝最終被擊墜後撤退",
       "ja": "ズール皇帝が最終的に撃墜されると撤退",
       "en": "Retreats once Emperor Zuul is finally shot down",
       "ko": "즈루 황제를 최종적으로 격추하면 퇴각"
@@ -86,6 +93,7 @@
      "part": {
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
+      "zh-Hant-HK": "遠地點引擎",
       "ja": "アポジモーター",
       "en": "Apogee Motor",
       "ko": "아포지 모터"
@@ -100,6 +108,7 @@
      "note": {
       "zh-Hans": "祖鲁皇帝最终被击坠后撤退",
       "zh-Hant": "祖魯皇帝最終被擊墜後撤退",
+      "zh-Hant-HK": "獨龍皇帝最終被擊墜後撤退",
       "ja": "ズール皇帝が最終的に撃墜されると撤退",
       "en": "Retreats once Emperor Zuul is finally shot down",
       "ko": "즈루 황제를 최종적으로 격추하면 퇴각"
@@ -117,6 +126,7 @@
      "from": {
       "zh-Hans": "祖鲁皇帝",
       "zh-Hant": "祖魯皇帝",
+      "zh-Hant-HK": "獨龍皇帝",
       "ja": "ズール皇帝",
       "en": "Emperor Zuul",
       "ko": "즈루 황제"
@@ -176,6 +186,7 @@
      "note": {
       "zh-Hans": "祖鲁皇帝最终被击坠后撤退",
       "zh-Hant": "祖魯皇帝最終被擊墜後撤退",
+      "zh-Hant-HK": "獨龍皇帝最終被擊墜後撤退",
       "ja": "ズール皇帝が最終的に撃墜されると撤退",
       "en": "Retreat once Emperor Zuul is finally shot down",
       "ko": "즈루 황제를 최종적으로 격추하면 퇴각"

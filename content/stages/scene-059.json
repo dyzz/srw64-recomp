@@ -4,6 +4,7 @@
  "title": {
   "zh-Hans": "来自阿克西斯的使者",
   "zh-Hant": "來自阿克西斯的使者",
+  "zh-Hant-HK": "來自阿古捷斯的使者",
   "ja": "アクシズからの使者",
   "en": "Envoy from Axis",
   "ko": "액시즈에서 온 사자"
@@ -44,6 +45,7 @@
      "title": {
       "zh-Hans": "罗塞＋泽隆",
       "zh-Hant": "蘿潔＋澤隆",
+      "zh-Hant-HK": "露絲＋澤隆",
       "ja": "ロゼ＋ゼーロン",
       "en": "Roze + Zeron",
       "ko": "로제 + 제론"
@@ -51,6 +53,7 @@
      "text": {
       "zh-Hans": "用武说服玛古（只影响对白，可省略）",
       "zh-Hant": "用武說服馬可（只影響對白，可省略）",
+      "zh-Hant-HK": "用武説服馬克（隻影響對白，可省略）",
       "ja": "タケルでマーグを説得（会話にしか影響せず、省略可）",
       "en": "Persuade Marg with Takeru (affects dialogue only, optional)",
       "ko": "타케루로 마그 설득(대사에만 영향, 선택 사항)"
@@ -61,6 +64,7 @@
      "title": {
       "zh-Hans": "希尔妲＋陶拉斯",
       "zh-Hant": "希爾妲＋陶拉斯",
+      "zh-Hant-HK": "希爾妲＋特拉士",
       "ja": "ヒルデ＋トーラス",
       "en": "Hilde + Taurus",
       "ko": "힐데 + 토라스"
@@ -120,6 +124,7 @@
      "from": {
       "zh-Hans": "玛古",
       "zh-Hant": "馬可",
+      "zh-Hant-HK": "馬克",
       "ja": "マーグ",
       "en": "Marg",
       "ko": "마그"
@@ -130,6 +135,7 @@
      "part": {
       "zh-Hans": "精神感应框架",
       "zh-Hant": "精神感應框體",
+      "zh-Hant-HK": "精神感應框架",
       "ja": "サイコフレーム",
       "en": "Psycoframe",
       "ko": "사이코 프레임"
@@ -137,6 +143,7 @@
      "from": {
       "zh-Hans": "西罗克",
       "zh-Hant": "西羅克",
+      "zh-Hant-HK": "斯洛哥",
       "ja": "シロッコ",
       "en": "Scirocco",
       "ko": "시로코"
@@ -144,6 +151,7 @@
      "note": {
       "zh-Hans": "敌剩 8 台以下或登场 4 回合后撤退",
       "zh-Hant": "敵剩 8 臺以下或登場 4 回合後撤退",
+      "zh-Hant-HK": "敵剩 8 台以下或登場 4 回合後撤退",
       "ja": "敵残り8機以下か登場4ターン後に撤退",
       "en": "Retreats at 8 or fewer enemies or 4 turns after arriving",
       "ko": "적 8기 이하 또는 등장 4턴 후 퇴각"
@@ -161,6 +169,7 @@
      "from": {
       "zh-Hans": "亚赞",
       "zh-Hant": "亞贊",
+      "zh-Hant-HK": "日札",
       "ja": "ヤザン",
       "en": "Yazan",
       "ko": "야잔"
@@ -168,6 +177,7 @@
      "note": {
       "zh-Hans": "随西罗克撤退（关卡结束）",
       "zh-Hant": "隨西羅克撤退（關卡結束）",
+      "zh-Hant-HK": "隨斯洛哥撤退（關卡結束）",
       "ja": "シロッコと一緒に撤退（ステージ終了）",
       "en": "Retreats with Scirocco (stage ends)",
       "ko": "시로코와 함께 퇴각(스테이지 종료)"
@@ -179,6 +189,7 @@
      "from": {
       "zh-Hans": "拉姆萨斯、邓克尔、玛雅",
       "zh-Hant": "拉姆薩斯、鄧肯、瑪雅",
+      "zh-Hant-HK": "拉武沙殊、丹基路、瑪雅",
       "ja": "ラムサス、ダンケル、マウアー",
       "en": "Ramsus, Dunkel, Mouar",
       "ko": "람사스, 단켈, 마우아"
@@ -186,6 +197,7 @@
      "note": {
       "zh-Hans": "随西罗克撤退（关卡结束）",
       "zh-Hant": "隨西羅克撤退（關卡結束）",
+      "zh-Hant-HK": "隨斯洛哥撤退（關卡結束）",
       "ja": "シロッコと一緒に撤退（ステージ終了）",
       "en": "Retreat with Scirocco (the stage ends)",
       "ko": "시로코와 함께 퇴각(스테이지 종료)"

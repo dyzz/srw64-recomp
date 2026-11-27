@@ -374,18 +374,29 @@ void number_repeats(json& list) {
 // A record named in content/locales/library-names.json for this language takes that name
 // instead (site suggestions: the pilot who flies it, the name the series uses). A text
 // update's copy of that file (text_update.hpp) replaces the one built in.
+// A locale standing on another takes that one's row where it has none (Hong Kong Taiwan's);
+// Korean, on English, keeps the game's numbering.
 void rename_records(json& list,bool pilots) {
-    const std::string& locale=localization::catalog().locale;
+    const std::string& current=localization::catalog().locale;
+    std::vector<std::string> chain{current};
+    if(const auto style=localization::style(current);style!=current && current!="ko")chain.push_back(style);
     if(const auto update=text_update::layer();update && update->library_names) {
         const auto& names=update->library_names->value(pilots?"pilots":"units",json::object());
         for(auto& e:list) {
             const auto found=names.find(std::to_string(e.at(pilots?"actor":"id").get<unsigned>()));
-            if(found!=names.end() && found->is_object() && found->contains(locale) && (*found)[locale].is_string())e["name"]=(*found)[locale];
+            if(found==names.end() || !found->is_object())continue;
+            for(const auto& l:chain)if(found->contains(l) && (*found)[l].is_string()){e["name"]=(*found)[l];break;}
         }
         return;
     }
-    for(auto& e:list)for(const auto& n:library_names::kNames)
-        if(n.pilot==pilots && locale==n.locale && e.at(pilots?"actor":"id").get<unsigned>()==n.id)e["name"]=n.name;
+    for(auto& e:list) {
+        const unsigned id=e.at(pilots?"actor":"id").get<unsigned>();
+        for(const auto& l:chain) {
+            const auto* n=std::find_if(std::begin(library_names::kNames),std::end(library_names::kNames),
+                [&](const auto& n){return n.pilot==pilots && n.id==id && l==n.locale;});
+            if(n!=std::end(library_names::kNames)){e["name"]=n->name;break;}
+        }
+    }
 }
 json build() {
     rom=recomp::get_rom();

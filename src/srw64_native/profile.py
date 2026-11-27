@@ -15,7 +15,7 @@ UI_KEYS = {"settings_error", "manual", "auto", "fast", "skip", "font_size", "con
 # The 选项 menu and settings window label one item per optional rule, so those keys follow the catalog.
 UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_note", "rules_defaults",
             "rules_group_corrections", "rules_group_difficulty", "settings_open", "settings_title",
-            "settings_language", "settings_language_note",
+            "settings_language", "settings_language_note", "settings_region", "settings_region_note", "region_tw", "region_hk",
             "settings_images", "settings_images_original", "settings_images_hd", "settings_images_note",
             "settings_map_unit_icons", "settings_map_unit_icons_original", "settings_map_unit_icons_hd", "settings_map_unit_icons_note",
             "settings_msaa", "settings_msaa_on", "settings_msaa_off", "settings_msaa_note", "settings_msaa_restart",
@@ -254,7 +254,8 @@ def prepare_profile(root: Path, profile: dict, rom: Path, output: Path) -> dict:
         if set(labels) != UI_KEYS or any(not isinstance(value, str) or not value for value in labels.values()):
             raise ValueError("Missing or invalid native UI strings")
         locale_catalogs[locale] = {"config": {"font": document["font"], "locale": locale,
-            "font_size": p["font_size"], "mode": "replace", **({"fallback": document["fallback"]} if "fallback" in document else {})},
+            "font_size": p["font_size"], "mode": "replace", **({"fallback": document["fallback"]} if "fallback" in document else {}),
+            **({"region": document["region"]} if "region" in document else {})},
             "entries": compiled, "ui": labels, "catalog_sha256": sha(inside(root, profile["locales"][locale]).read_bytes())}
         coverage[locale] = locale_coverage(document, sources, compiled, UI_KEYS)
         locale_options.append({"locale": locale, "label": document.get("display_name", locale),

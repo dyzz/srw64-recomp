@@ -27,6 +27,7 @@
      "title": {
       "zh-Hans": "罗塞＋泽隆",
       "zh-Hant": "蘿潔＋澤隆",
+      "zh-Hant-HK": "露絲＋澤隆",
       "ja": "ロゼ＋ゼーロン",
       "en": "Roze + Zeron",
       "ko": "로제 + 제론"
@@ -34,6 +35,7 @@
      "text": {
       "zh-Hans": "用武说服罗塞（此前已击坠玛古并说服罗塞）",
       "zh-Hant": "用武說服蘿潔（此前已擊墜馬可並說服蘿潔）",
+      "zh-Hant-HK": "用武説服露絲（此前已擊墜馬克並説服露絲）",
       "ja": "タケルでロゼを説得（前段階でマーグ撃墜とロゼ説得済み）",
       "en": "Persuade Roze with Takeru (needs the earlier Marg kill + persuasion)",
       "ko": "타케루로 로제 설득(앞서 마그 격추 + 설득 필요)"
@@ -86,6 +88,7 @@
      "from": {
       "zh-Hans": "罗塞",
       "zh-Hant": "蘿潔",
+      "zh-Hant-HK": "露絲",
       "ja": "ロゼ",
       "en": "Roze",
       "ko": "로제"
@@ -93,6 +96,7 @@
      "note": {
       "zh-Hans": "可被武说服（说服后不掉落）",
       "zh-Hant": "可被武說服（說服後不掉落）",
+      "zh-Hant-HK": "可被武説服（説服後不掉落）",
       "ja": "タケルで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Takeru (no drop if persuaded)",
       "ko": "타케루로 설득 가능(설득하면 드롭 없음)"

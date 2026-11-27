@@ -1,0 +1,11 @@
+# 自動產生：tools/translation/make_zh_hant.py 由 content/dialogue/zh-Hans 轉換，只有香港寫法與台灣不同的條目，其餘照 content/dialogue/zh-Hant。重新產生時會整體覆蓋；要修改請把條目複製到使用者目錄（見 docs/guide/dialogue-text.md）。
+
+@6158 五飛 · 五飛
+# 觸發：攻擊（通用，12/23）
+> 「力のないものが、ウロウロするなあっ!!」
+「沒力量的傢伙，別在這裏亂晃！！」
+
+@6168 五飛 · 五飛
+# 觸發：攻擊（通用，22/23）
+> 「ここで仕留めてやる!!」
+「就在這裏解決你！！」

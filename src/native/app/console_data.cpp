@@ -40,7 +40,12 @@ size_t merge_dialogue_text(json& data, const fs::path& text) {
     json pages = json::object();
     size_t problems = 0;
     for (const auto& [locale, catalog] : localization::registered()) {
-        auto result = localization::dialogue_text::load({text / locale}, *catalog);
+        // A locale standing on another (Korean on English, Hong Kong on Taiwan) has that one's
+        // files under its own, as the host's load_text lays them.
+        std::vector<fs::path> roots;
+        if (const auto style = localization::style(locale); style != locale) roots.push_back(text / style);
+        roots.push_back(text / locale);
+        auto result = localization::dialogue_text::load(roots, *catalog);
         for (const auto& problem : result.problems)
             std::fprintf(stderr, "%s/%s:%u %s %s\n", locale.c_str(), problem.path.c_str(), unsigned(problem.line),
                          problem.key.c_str(), problem.message.c_str());

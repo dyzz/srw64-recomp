@@ -4,6 +4,7 @@
  "title": {
   "zh-Hans": "库斯科绝对防卫线（上）",
   "zh-Hant": "庫斯科絕對防衛線（上）",
+  "zh-Hant-HK": "庫斯科絕對防衞線（上）",
   "ja": "クスコ絶対防衛線 （前）",
   "en": "Cusco Absolute Defense Line (Part 1)",
   "ko": "쿠스코 절대 방위선 전편"
@@ -17,6 +18,7 @@
    "lane": {
     "zh-Hans": "OZ路线／随特列斯",
     "zh-Hant": "OZ路線／隨特列斯",
+    "zh-Hant-HK": "OZ路線／隨杜魯斯",
     "ja": "OZルート／トレーズにつく",
     "en": "OZ route / with Treize",
     "ko": "OZ 루트 / 트레즈와 함께"
@@ -34,6 +36,7 @@
      "text": {
       "zh-Hans": "无需操作：英二不能出击；已招到盖尔时他也不能",
       "zh-Hant": "無需操作：英二不能出擊；已招到蓋爾時他也不能",
+      "zh-Hant-HK": "無需操作：英司不能出擊；已招到蓋爾時他也不能",
       "ja": "操作不要：エイジ出撃不可、ゲイル加入済みなら彼も不可",
       "en": "No action: Eiji can't deploy; Gale can't either, if recruited",
       "ko": "할 일 없음: 에이지 출격 불가; 영입했다면 게일도 출격 불가"
@@ -51,6 +54,7 @@
      "text": {
       "zh-Hans": "无需操作：开场解锁孔巴特拉V的双刃对枪等武器",
       "zh-Hant": "無需操作：開場解鎖孔巴德拉V的雙刃對槍等武器",
+      "zh-Hant-HK": "無需操作：開場解鎖超力電磁俠的雙刃對槍等武器",
       "ja": "操作不要：開始時にコン・バトラーVのツインランサー等が解禁",
       "en": "No action: Combattler V's Twin Lancer and more unlock at start",
       "ko": "할 일 없음: 시작 시 컴배틀러 V의 트윈 랜서 등 해금"

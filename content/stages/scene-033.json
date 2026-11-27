@@ -34,6 +34,7 @@
      "text": {
       "zh-Hans": "用翔说服陶德（需「夏比罗，转生！」已说服）",
       "zh-Hant": "用翔說服陶德（需「夏比羅，轉生！」已說服）",
+      "zh-Hant-HK": "用翔説服陶德（需「扎比，轉生！」已説服）",
       "ja": "ショウでトッドを説得（「シャピロ、転生!」で説得済み）",
       "en": "Persuade Tod with Show (needs the persuade in “Shapiro, Reborn!”)",
       "ko": "쇼우로 토드를 설득(“샤피로, 전생!”의 설득이 필요)"
@@ -61,6 +62,7 @@
      "title": {
       "zh-Hans": "只影响对白的分支",
       "zh-Hant": "只影響對白的分支",
+      "zh-Hant-HK": "隻影響對白的分支",
       "ja": "台詞のみの分岐",
       "en": "Dialogue-only branches",
       "ko": "대사만 바뀌는 분기"
@@ -68,6 +70,7 @@
      "text": {
       "zh-Hans": "无需操作：战舰命名二选只改变台词",
       "zh-Hant": "無需操作：戰艦命名二選只改變臺詞",
+      "zh-Hant-HK": "無需操作：戰艦命名二選只改變台詞",
       "ja": "操作不要：艦名の二択はセリフが変わるだけ",
       "en": "No action needed: the ship-naming choice only changes dialogue",
       "ko": "할 일 없음: 함 이름 선택은 대사만 바뀜"
@@ -86,6 +89,7 @@
      "from": {
       "zh-Hans": "迪斯盖亚",
       "zh-Hant": "迪斯海亞",
+      "zh-Hant-HK": "迪斯蓋亞",
       "ja": "デスガイヤー",
       "en": "Death Gaia",
       "ko": "데스가이어"
@@ -103,6 +107,7 @@
      "part": {
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
+      "zh-Hant-HK": "遠地點引擎",
       "ja": "アポジモーター",
       "en": "Apogee Motor",
       "ko": "아포지 모터"
@@ -110,6 +115,7 @@
      "from": {
       "zh-Hans": "夏比罗",
       "zh-Hant": "夏比羅",
+      "zh-Hant-HK": "扎比",
       "ja": "シャピロ",
       "en": "Shapiro",
       "ko": "샤피로"

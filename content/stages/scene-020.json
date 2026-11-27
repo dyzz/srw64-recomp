@@ -68,6 +68,7 @@
      "text": {
       "zh-Hans": "用卡缪说服凤（第 2 步，说服后本关结束）",
       "zh-Hant": "用卡密兒說服鳳（第 2 步，說服後本關結束）",
+      "zh-Hant-HK": "用嘉美尤説服鳳（第 2 步，説服後本關結束）",
       "ja": "カミーユでフォウを説得（第2段階、説得でステージ終了）",
       "en": "Persuade Four with Kamille (step 2; ends the stage)",
       "ko": "카미유로 포우를 설득(2단계, 스테이지 종료)"
@@ -127,6 +128,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"
@@ -141,6 +143,7 @@
      "note": {
       "zh-Hans": "可被卡缪说服（说服后不掉落）",
       "zh-Hant": "可被卡密兒說服（說服後不掉落）",
+      "zh-Hant-HK": "可被嘉美尤説服（説服後不掉落）",
       "ja": "カミーユで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Kamille (no drop if persuaded)",
       "ko": "카미유로 설득 가능(설득하면 파츠 드롭 없음)"

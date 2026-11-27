@@ -4,6 +4,7 @@
  "title": {
   "zh-Hans": "恐怖！恶魔阿克西斯启动！（下）",
   "zh-Hant": "恐怖！惡魔阿克西斯啟動！（下）",
+  "zh-Hant-HK": "恐怖！魔鬼阿古捷斯啓動！（下）",
   "ja": "恐怖!デビルアクシズ始動! （後）",
   "en": "Terror! Devil Axis Activates! (Part 2)",
   "ko": "공포! 데빌 액시즈 시동! 후편"
@@ -34,6 +35,7 @@
      "text": {
       "zh-Hans": "无需操作：石破Love Love天惊拳与洗牌同盟拳满足条件即可用",
       "zh-Hant": "無需操作：石破Love Love天驚拳與洗牌同盟拳滿足條件即可用",
+      "zh-Hant-HK": "無需操作：石破Love Love天驚拳與撲克同盟拳滿足條件即可用",
       "ja": "操作不要：石破ラブラブ天驚拳・シャッフル同盟拳は条件だけで使える",
       "en": "No action: neither combo attack is unlocked by the story",
       "ko": "할 일 없음: 두 합체 공격 모두 스토리 해금 없음"
@@ -52,6 +54,7 @@
      "from": {
       "zh-Hans": "大尊者高达",
       "zh-Hant": "巨型宗師鋼彈",
+      "zh-Hant-HK": "大盟主高達",
       "ja": "グランドマスターガンダム",
       "en": "Grand Master Gundam",
       "ko": "그랜드 마스터 건담"

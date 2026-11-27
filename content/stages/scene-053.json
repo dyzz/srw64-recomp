@@ -34,6 +34,7 @@
      "text": {
       "zh-Hans": "已在「少女所见的流星」用英二说服盖尔，关末加入",
       "zh-Hant": "已在「少女所見的流星」用英二說服蓋爾，關末加入",
+      "zh-Hant-HK": "已在「少女所見的流星」用英司説服蓋爾，關末加入",
       "ja": "「少女が見た流星」でエイジが説得済みならクリア時に加入",
       "en": "Joins at end if Eiji persuaded Gale in “The Shooting Star the Girl Saw”",
       "ko": "“소녀가 본 유성”에서 에이지로 게일을 설득했다면 종료 시 가입"
@@ -56,6 +57,7 @@
      "from": {
       "zh-Hans": "卡多",
       "zh-Hant": "卡多",
+      "zh-Hant-HK": "賈圖",
       "ja": "ガトー",
       "en": "Gato",
       "ko": "가토"
@@ -109,6 +111,7 @@
      "from": {
       "zh-Hans": "亚赞、拉姆萨斯、邓克尔、盖茨、罗莎米娅",
       "zh-Hant": "亞贊、拉姆薩斯、鄧肯、蓋茲、羅莎米亞",
+      "zh-Hant-HK": "日札、拉武沙殊、丹基路、蓋茲、羅莎米亞",
       "ja": "ヤザン、ラムサス、ダンケル、ゲーツ、ロザミア",
       "en": "Yazan, Ramsus, Dunkel, Gates, Rosamia",
       "ko": "야잔, 람사스, 단켈, 게이츠, 로자미아"

@@ -34,6 +34,7 @@
      "text": {
       "zh-Hans": "用翔说服陶德（需「夏比罗，转生！」已说服）",
       "zh-Hant": "用翔說服陶德（需「夏比羅，轉生！」已說服）",
+      "zh-Hant-HK": "用翔説服陶德（需「扎比，轉生！」已説服）",
       "ja": "ショウでトッドを説得（「シャピロ、転生!」で説得済み）",
       "en": "Persuade Tod with Show (needs the persuade in “Shapiro, Reborn!”)",
       "ko": "쇼우로 토드를 설득(“샤피로, 전생!”의 설득이 필요)"
@@ -59,6 +60,7 @@
      "note": {
       "zh-Hans": "敌方剩 15 台以下时撤退",
       "zh-Hant": "敵方剩 15 臺以下時撤退",
+      "zh-Hant-HK": "敵方剩 15 台以下時撤退",
       "ja": "敵残り15機以下で撤退",
       "en": "Retreats when 15 or fewer enemies remain",
       "ko": "적이 15기 이하로 남으면 퇴각"
@@ -69,6 +71,7 @@
      "part": {
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
+      "zh-Hant-HK": "遠地點引擎",
       "ja": "アポジモーター",
       "en": "Apogee Motor",
       "ko": "아포지 모터"
@@ -83,6 +86,7 @@
      "note": {
       "zh-Hans": "敌方剩 15 台以下时撤退",
       "zh-Hant": "敵方剩 15 臺以下時撤退",
+      "zh-Hant-HK": "敵方剩 15 台以下時撤退",
       "ja": "敵残り15機以下で撤退",
       "en": "Retreats when 15 or fewer enemies remain",
       "ko": "적이 15기 이하로 남으면 퇴각"
@@ -107,6 +111,7 @@
      "note": {
       "zh-Hans": "敌方剩 15 台以下时撤退",
       "zh-Hant": "敵方剩 15 臺以下時撤退",
+      "zh-Hant-HK": "敵方剩 15 台以下時撤退",
       "ja": "敵残り15機以下で撤退",
       "en": "Retreats when 15 or fewer enemies remain",
       "ko": "적이 15기 이하로 남으면 퇴각"
@@ -166,6 +171,7 @@
      "note": {
       "zh-Hans": "敌方剩 15 台以下时撤退",
       "zh-Hant": "敵方剩 15 臺以下時撤退",
+      "zh-Hant-HK": "敵方剩 15 台以下時撤退",
       "ja": "敵残り15機以下で撤退",
       "en": "Retreats when 15 or fewer enemies remain",
       "ko": "적이 15기 이하로 남으면 퇴각"

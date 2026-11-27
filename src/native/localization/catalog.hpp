@@ -51,12 +51,26 @@ Snapshot find(const std::string& locale);
 std::map<std::string,Snapshot> registered();
 // Swap in new catalogs for the same locales; the active one stays until activate().
 void replace(std::map<std::string,Snapshot> value);
-// Cycles in the profile's locale_options order, independent of map sorting.
+// Cycles in the profile's locale_options order, independent of map sorting, one language
+// at a time: a language with regions is entered at its chosen region (chosen_region).
 std::string next_locale(const std::string& current);
 std::string display_name(const std::string& locale);
 // Every locale in that order, with its display name (each in its own language).
 std::vector<std::pair<std::string,std::string>> locale_options();
 std::string language_choices();
+// Regions (docs/design/zh-hant-hk.md): a locale whose config names a "region" (Hong Kong,
+// "HK") and stands on another with one (Taiwan, "TW") is that language's other region. The
+// menus show the language once, under its first region's name (繁體中文), and the settings
+// its regions, each labelled by the UI's "region_<code>" (region_tw 台灣, region_hk 香港).
+std::string family(const std::string& locale);              // zh-Hant for zh-Hant-HK; else itself
+std::string region(const std::string& locale);              // "TW", "HK", or empty
+std::vector<std::string> regions(const std::string& locale);  // its language's, when it has two or more
+// The region last activated (or set_chosen_regions) for each language with regions, else its first.
+std::string chosen_region(const std::string& locale);
+std::map<std::string,std::string> chosen_regions();         // language -> region locale
+void set_chosen_regions(const std::map<std::string,std::string>& value);
+// One row per language, in the cycle's order: (the locale it switches to, its name).
+std::vector<std::pair<std::string,std::string>> language_options();
 // With `tables` (prepared data, string_tables.hpp), the original records and the
 // translations come from them instead of the JSON.
 void initialize(const nlohmann::json& data,const string_tables::Tables* tables=nullptr);

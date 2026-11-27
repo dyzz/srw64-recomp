@@ -44,6 +44,7 @@
      "title": {
       "zh-Hans": "诺耶·吉尔",
       "zh-Hant": "諾耶·吉爾",
+      "zh-Hant-HK": "露維·捷露",
       "ja": "ノイエ・ジール",
       "en": "Neue Ziel",
       "ko": "노이에 질"
@@ -51,6 +52,7 @@
      "text": {
       "zh-Hans": "留在独立军路线，「夏亚的叛乱」关末得到",
       "zh-Hant": "留在獨立軍路線，「夏亞的叛亂」關末得到",
+      "zh-Hant-HK": "留在獨立軍路線，「馬沙的叛亂」關末得到",
       "ja": "独立軍ルートに残れば「シャアの反乱」終了時に入手",
       "en": "Stay on the Independence Army route; get it after “Char's Rebellion”",
       "ko": "독립군 루트에 남아 “샤아의 반란” 후 획득"
@@ -68,6 +70,7 @@
      "text": {
       "zh-Hans": "走完全和平路线则拿不到，克瓦特罗乘百式回归",
       "zh-Hant": "走完全和平路線則拿不到，克瓦特羅乘百式迴歸",
+      "zh-Hant-HK": "走完全和平路線則拿不到，古華多羅乘百式迴歸",
       "ja": "完全平和ルートでは入手不可（クワトロは百式で復帰）",
       "en": "Lost on Complete Pacifism: Quattro returns in the Hyaku-Shiki",
       "ko": "완전평화에서는 잃음: 크와트로가 백식을 타고 복귀"
@@ -78,6 +81,7 @@
      "title": {
       "zh-Hans": "银铃＋银铃机器人TYPE1",
       "zh-Hant": "銀鈴＋銀鈴機器人TYPE1",
+      "zh-Hant-HK": "銀鈴＋銀鈴機械人TYPE1",
       "ja": "銀鈴＋銀鈴ロボTYPE1",
       "en": "Ginrei + Ginrei Robo TYPE1",
       "ko": "긴레이 + 긴레이 로보 TYPE1"
@@ -102,6 +106,7 @@
      "text": {
       "zh-Hans": "已在「少女所见的流星」用英二说服盖尔，关末加入",
       "zh-Hant": "已在「少女所見的流星」用英二說服蓋爾，關末加入",
+      "zh-Hant-HK": "已在「少女所見的流星」用英司説服蓋爾，關末加入",
       "ja": "「少女が見た流星」でエイジが説得済みならクリア時に加入",
       "en": "Joins at end if Eiji persuaded Gale in “The Shooting Star the Girl Saw”",
       "ko": "“소녀가 본 유성”에서 에이지로 게일을 설득했다면 종료 시 가입"
@@ -117,6 +122,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"

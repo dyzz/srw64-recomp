@@ -307,7 +307,7 @@ def contents_of(entries: list[Entry]) -> list[str]:
 
 
 NAMES_SCHEMA = "srw64.mod-names.v1"
-NAME_LOCALES = ("en", "ja", "zh-Hans", "zh-Hant", "ko")
+NAME_LOCALES = ("en", "ja", "zh-Hans", "zh-Hant", "zh-Hant-HK", "ko")
 # The ones a package's language may stand on: Korean stands on English itself (docs/design/korean.md).
 FALLBACKS = ("en", "ja", "zh-Hans", "zh-Hant")
 NAME_ROUTES = ("real-male", "real-female", "super-male", "super-female")

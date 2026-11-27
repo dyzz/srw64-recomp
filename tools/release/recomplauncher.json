@@ -40,7 +40,8 @@
       "help": "The game's text and menus. Unset, it follows your system.",
       "choices": [
         { "label": "简体中文", "set": { "locale": "zh-Hans" } },
-        { "label": "繁體中文", "set": { "locale": "zh-Hant" } },
+        { "label": "繁體中文（台灣）", "set": { "locale": "zh-Hant" } },
+        { "label": "繁體中文（香港）", "set": { "locale": "zh-Hant-HK" } },
         { "label": "English", "set": { "locale": "en" } },
         { "label": "日本語", "set": { "locale": "ja" } },
         { "label": "한국어", "set": { "locale": "ko" } }

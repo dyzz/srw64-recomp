@@ -64,6 +64,7 @@
      "title": {
       "zh-Hans": "只影响对白的分支",
       "zh-Hant": "只影響對白的分支",
+      "zh-Hant-HK": "隻影響對白的分支",
       "ja": "台詞のみの分岐",
       "en": "Dialogue-only branches",
       "ko": "대사만 바뀌는 분기"
@@ -71,6 +72,7 @@
      "text": {
       "zh-Hans": "开场给战舰命名与对利修的选项只改变台词",
       "zh-Hant": "開場給戰艦命名與對利修的選項只改變臺詞",
+      "zh-Hant-HK": "開場給戰艦命名與對利修的選項只改變台詞",
       "ja": "艦名の二択とリッシュへの三択はセリフが変わるだけ",
       "en": "The ship-naming and Rish choices only change dialogue",
       "ko": "함 이름 선택과 릿슈에 대한 선택은 대사만 바뀜"
@@ -133,6 +135,7 @@
      "part": {
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
+      "zh-Hant-HK": "遠地點引擎",
       "ja": "アポジモーター",
       "en": "Apogee Motor",
       "ko": "아포지 모터"

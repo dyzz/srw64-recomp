@@ -4224,12 +4224,24 @@ void settings_sync() {
     if(page=="general") {
         // Each language writes its own name, in its own letters: their faces come first, or a
         // language whose face is not the current one's (한국어) shows as boxes until it is chosen.
+        // A language with regions shows once (繁體中文), at the region chosen last; its regions
+        // get a row of their own under it while it is read (docs/design/zh-hant-hk.md).
+        const auto& current=localization::catalog().locale;
         std::string locales;
-        for(const auto& [locale,catalog]:localization::registered()) {
+        for(const auto& [locale,name]:localization::language_options()) {
             load_locale_fonts(locale);
-            locales+=button("locale:"+locale,escape(localization::display_name(locale)),locale==localization::catalog().locale,settings::owns_input());
+            locales+=button("locale:"+locale,escape(name),localization::family(locale)==localization::family(current),settings::owns_input());
         }
         body+=settings_row("settings_language",locales);
+        if(const auto regions=localization::regions(current);!regions.empty()) {
+            std::string choices;
+            for(const auto& locale:regions) {
+                auto code=localization::region(locale);
+                std::transform(code.begin(),code.end(),code.begin(),[](unsigned char c){return char(std::tolower(c));});
+                choices+=button("locale:"+locale,label("region_"+code),locale==current,settings::owns_input());
+            }
+            body+=settings_row("settings_region",choices);
+        }
         // The MOD manager, for a controller, which cannot reach the title's button.
         if(mod_entry_shown())body+=settings_row("mod_row",button("mod-open",label("mod_open")));
         body+=settings_row("library_row",button("library-open",label("library_open")));
@@ -7393,9 +7405,19 @@ std::vector<app_menu::Menu> menu_bar(const auto& language){
     };
     // Each language by its own name, the current one checked, under a globe that reads the
     // same in every language before the title.
+    // A language with regions (繁體中文) has them in a submenu, each by the UI's region_<code>.
     std::vector<Item> languages;
-    for(const auto& [locale,name]:localization::locale_options())
-        languages.push_back({"locale:"+locale,name,"","",0,locale==language->locale});
+    for(const auto& [locale,name]:localization::language_options()) {
+        const bool current=localization::family(locale)==localization::family(language->locale);
+        Item item{"locale:"+locale,name,"","",0,current};
+        for(const auto& region:localization::regions(locale)) {
+            auto code=localization::region(region);
+            std::transform(code.begin(),code.end(),code.begin(),[](unsigned char c){return char(std::tolower(c));});
+            item.items.push_back({"locale:"+region,language->ui("region_"+code),"","",0,region==language->locale});
+        }
+        if(!item.items.empty())item.checked=false;  // the region in it is checked instead
+        languages.push_back(std::move(item));
+    }
     // The About page's links; Windows also has About and Check for Updates here, where a Mac
     // has them in the application menu.
     std::vector<Item> help{

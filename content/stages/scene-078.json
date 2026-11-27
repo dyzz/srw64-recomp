@@ -27,6 +27,7 @@
      "title": {
       "zh-Hans": "基里卡",
       "zh-Hant": "基裡卡",
+      "zh-Hant-HK": "基裏卡",
       "ja": "キリカ",
       "en": "Kirika",
       "ko": "키리카"
@@ -34,6 +35,7 @@
      "text": {
       "zh-Hans": "基里卡第 3 回合登场，先用杜克、再用玛丽亚说服",
       "zh-Hant": "基裡卡第 3 回合登場，先用狄克、再用瑪莉亞說服",
+      "zh-Hant-HK": "基裏卡第 3 回合登場，先用狄克、再用瑪莉亞説服",
       "ja": "第3ターン登場のキリカをデューク→マリアの順で説得",
       "en": "Persuade Kirika (turn 3) with Duke, then Maria, in that order",
       "ko": "듀크, 마리아 순으로 키리카(3턴째) 설득"
@@ -51,6 +53,7 @@
      "text": {
       "zh-Hans": "关末三选一（本队／多蒙他们／豹马他们）决定支线",
       "zh-Hant": "關末三選一（本隊／多門他們／豹馬他們）決定支線",
+      "zh-Hant-HK": "關末三選一（本隊／杜門他們／天豹他們）決定支線",
       "ja": "クリア時の三択（本隊／ドモンたち／豹馬たち）で分岐",
       "en": "End-of-stage pick: main force, Domon's or Hyoma's group → branch",
       "ko": "종료 시 선택: 본대, 도몬 일행, 효마 일행 → 분기"
@@ -154,6 +157,7 @@
      "from": {
       "zh-Hans": "基里卡",
       "zh-Hant": "基裡卡",
+      "zh-Hant-HK": "基裏卡",
       "ja": "キリカ",
       "en": "Kirika",
       "ko": "키리카"
@@ -161,6 +165,7 @@
      "note": {
       "zh-Hans": "第 3 回合我方阶段登场，说服后不掉落",
       "zh-Hant": "第 3 回合我方階段登場，說服後不掉落",
+      "zh-Hant-HK": "第 3 回合我方階段登場，説服後不掉落",
       "ja": "第3ターン味方フェイズ登場、説得時はドロップなし",
       "en": "Appears on turn 3 player phase; no drop if persuaded",
       "ko": "3턴째 아군 페이즈에 등장; 설득하면 드롭 없음"

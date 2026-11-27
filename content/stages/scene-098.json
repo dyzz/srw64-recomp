@@ -17,6 +17,7 @@
    "lane": {
     "zh-Hans": "OZ路线／随特列斯",
     "zh-Hant": "OZ路線／隨特列斯",
+    "zh-Hant-HK": "OZ路線／隨杜魯斯",
     "ja": "OZルート／トレーズにつく",
     "en": "OZ route / with Treize",
     "ko": "OZ 루트 / 트레즈와 함께"
@@ -27,6 +28,7 @@
      "title": {
       "zh-Hans": "普露＋卡碧尼Mk-Ⅱ",
       "zh-Hant": "普露＋丘貝雷Mk-Ⅱ",
+      "zh-Hant-HK": "波蕾＋卡碧尼Mk-Ⅱ",
       "ja": "プル＋キュベレイmkⅡ",
       "en": "Ple + Qubeley Mk-II",
       "ko": "플 + 큐베레이 Mk-II"
@@ -34,6 +36,7 @@
      "text": {
       "zh-Hans": "先击坠格雷米（撤离不算），再用捷度说服普露",
       "zh-Hant": "先擊墜克雷米（撤離不算），再用傑特說服普露",
+      "zh-Hant-HK": "先擊墜古利明（撤離不算），再用捷度説服波蕾",
       "ja": "グレミーを撃墜（撤退は不可）してからジュドーでプルを説得",
       "en": "Shoot down Glemy first (not retreat), then persuade Ple with Judau",
       "ko": "먼저 글레미를 격추(퇴각은 불가)한 뒤 쥬도로 플 설득"
@@ -51,6 +54,7 @@
      "text": {
       "zh-Hans": "无需操作：克瓦特罗与卡缪中途增援回来（不能出击）",
       "zh-Hant": "無需操作：克瓦特羅與卡密兒中途增援回來（不能出擊）",
+      "zh-Hant-HK": "無需操作：古華多羅與嘉美尤中途增援回來（不能出擊）",
       "ja": "操作不要：クワトロとカミーユが途中で増援として復帰",
       "en": "No action: Quattro and Kamille return mid-battle",
       "ko": "할 일 없음: 크와트로와 카미유가 전투 도중 복귀"
@@ -68,6 +72,7 @@
      "text": {
       "zh-Hans": "无需操作：是否招到过卡多决定他驾驶 GP02A 或诺耶·吉尔",
       "zh-Hant": "無需操作：是否招到過卡多決定他駕駛 GP02A 或諾耶·吉爾",
+      "zh-Hant-HK": "無需操作：是否招到過賈圖決定他駕駛 GP02A 或露維·捷露",
       "ja": "操作不要：ガトー加入歴の有無で乗機がGP02Aかノイエ・ジールに",
       "en": "No action: whether you recruited Gato sets GP02A or Neue Ziel",
       "ko": "할 일 없음: 가토 영입 여부에 따라 GP02A 또는 노이에 질"
@@ -79,6 +84,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"
@@ -86,6 +92,7 @@
      "from": {
       "zh-Hans": "卡多",
       "zh-Hant": "卡多",
+      "zh-Hant-HK": "賈圖",
       "ja": "ガトー",
       "en": "Gato",
       "ko": "가토"
@@ -97,6 +104,7 @@
      "part": {
       "zh-Hans": "精神感应框架",
       "zh-Hant": "精神感應框體",
+      "zh-Hant-HK": "精神感應框架",
       "ja": "サイコフレーム",
       "en": "Psycoframe",
       "ko": "사이코 프레임"
@@ -104,6 +112,7 @@
      "from": {
       "zh-Hans": "西罗克",
       "zh-Hant": "西羅克",
+      "zh-Hant-HK": "斯洛哥",
       "ja": "シロッコ",
       "en": "Scirocco",
       "ko": "시로코"
@@ -146,6 +155,7 @@
      "from": {
       "zh-Hans": "格雷米",
       "zh-Hant": "克雷米",
+      "zh-Hant-HK": "古利明",
       "ja": "グレミー",
       "en": "Glemy",
       "ko": "글레미"
@@ -164,6 +174,7 @@
      "from": {
       "zh-Hans": "普露",
       "zh-Hant": "普露",
+      "zh-Hant-HK": "波蕾",
       "ja": "プル",
       "en": "Ple",
       "ko": "플"
@@ -171,6 +182,7 @@
      "note": {
       "zh-Hans": "可被捷度说服（说服后不掉落）",
       "zh-Hant": "可被傑特說服（說服後不掉落）",
+      "zh-Hant-HK": "可被捷度説服（説服後不掉落）",
       "ja": "ジュドーで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Judau (no drop if persuaded)",
       "ko": "쥬도로 설득 가능(설득하면 드롭 없음)"

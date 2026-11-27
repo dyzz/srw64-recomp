@@ -4,6 +4,7 @@
  "title": {
   "zh-Hans": "甘泉防卫战",
   "zh-Hant": "甘泉防衛戰",
+  "zh-Hant-HK": "甘泉防衞戰",
   "ja": "スウィートウォーター防衛戦",
   "en": "Defense of Sweetwater",
   "ko": "스위트워터 방위전"
@@ -34,6 +35,7 @@
      "text": {
       "zh-Hans": "第 5 回合卡缪在场，击坠盖茨而非罗莎米娅",
       "zh-Hant": "第 5 回合卡密兒在場，擊墜蓋茲而非羅莎米亞",
+      "zh-Hant-HK": "第 5 回合嘉美尤在場，擊墜蓋茲而非羅莎米亞",
       "ja": "第5ターンにカミーユを出撃させ、ロザミアでなくゲーツを撃墜",
       "en": "Have Kamille on map at turn 5; shoot down Gates, not Rosamia",
       "ko": "5턴에 카미유를 맵에 두고, 로자미아가 아닌 게이츠를 격추"
@@ -45,6 +47,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"
@@ -52,6 +55,7 @@
      "from": {
       "zh-Hans": "巴斯克",
       "zh-Hant": "巴斯克",
+      "zh-Hant-HK": "貝斯克",
       "ja": "バスク",
       "en": "Bask",
       "ko": "바스크"
@@ -69,6 +73,7 @@
      "from": {
       "zh-Hans": "亚赞",
       "zh-Hant": "亞贊",
+      "zh-Hant-HK": "日札",
       "ja": "ヤザン",
       "en": "Yazan",
       "ko": "야잔"
@@ -110,6 +115,7 @@
      "note": {
       "zh-Hans": "第 5 回合我方阶段登场，卡缪不在场即离开",
       "zh-Hant": "第 5 回合我方階段登場，卡密兒不在場即離開",
+      "zh-Hant-HK": "第 5 回合我方階段登場，嘉美尤不在場即離開",
       "ja": "第5ターン味方フェイズに登場、カミーユ不在ですぐ去る",
       "en": "Appears turn 5 player phase; leaves at once without Kamille",
       "ko": "5턴 아군 페이즈에 등장, 카미유가 없으면 바로 이탈"

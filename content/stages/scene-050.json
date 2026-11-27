@@ -74,6 +74,7 @@
      "text": {
       "zh-Hans": "「特列斯抹杀指令」敌方剩 13 台以下时让阿克在场",
       "zh-Hant": "「特列斯抹殺指令」敵方剩 13 臺以下時讓阿克在場",
+      "zh-Hant-HK": "「杜魯斯抹殺指令」敵方剩 13 台以下時讓阿克在場",
       "ja": "「トレーズ抹殺指令」で敵残り13機以下の時アークを出撃させる",
       "en": "Have Ark on map at ≤13 enemies in “Order to Eliminate Treize”",
       "ko": "“트레즈 암살 지령”에서 적 13기 이하일 때 아크를 맵에 두기"
@@ -88,6 +89,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"
@@ -95,6 +97,7 @@
      "from": {
       "zh-Hans": "巴斯克",
       "zh-Hant": "巴斯克",
+      "zh-Hant-HK": "貝斯克",
       "ja": "バスク",
       "en": "Bask",
       "ko": "바스크"
@@ -137,6 +140,7 @@
      "note": {
       "zh-Hans": "亚赞被击坠后登场",
       "zh-Hant": "亞贊被擊墜後登場",
+      "zh-Hant-HK": "日札被擊墜後登場",
       "ja": "ヤザンの撃墜後に登場",
       "en": "Appears after Yazan is shot down",
       "ko": "야잔이 격추된 뒤 등장"
@@ -158,6 +162,7 @@
      "from": {
       "zh-Hans": "西罗克",
       "zh-Hant": "西羅克",
+      "zh-Hant-HK": "斯洛哥",
       "ja": "シロッコ",
       "en": "Scirocco",
       "ko": "시로코"
@@ -183,6 +188,7 @@
      "from": {
       "zh-Hans": "夏比罗",
       "zh-Hant": "夏比羅",
+      "zh-Hant-HK": "扎比",
       "ja": "シャピロ",
       "en": "Shapiro",
       "ko": "샤피로"

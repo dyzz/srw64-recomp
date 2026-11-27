@@ -44,6 +44,7 @@
      "title": {
       "zh-Hans": "卡多＋GP02A酸浆果",
       "zh-Hant": "卡多＋GP02A賽薩里斯",
+      "zh-Hant-HK": "賈圖＋GP02A賽薩里斯",
       "ja": "ガトー＋GP02Aサイサリス",
       "en": "Gato + GP02A Physalis",
       "ko": "가토 + GP02A 사이살리스"
@@ -51,6 +52,7 @@
      "text": {
       "zh-Hans": "守住基地 → 关末卡多＋GP02A酸浆果加入",
       "zh-Hant": "守住基地 → 關末卡多＋GP02A賽薩里斯加入",
+      "zh-Hant-HK": "守住基地 → 關末賈圖＋GP02A賽薩里斯加入",
       "ja": "基地を守る→クリア時にガトー＋GP02Aサイサリス加入",
       "en": "Defend the base → Gato + GP02A Physalis join at stage end",
       "ko": "기지를 지키기 → 스테이지 종료 시 가토 + GP02A 사이살리스 가입"
@@ -68,6 +70,7 @@
      "text": {
       "zh-Hans": "艾夏登场时玛娜米在场，选「拜托，听我说」或「等等，艾夏」",
       "zh-Hant": "艾夏登場時瑪娜米在場，選「拜託，聽我說」或「等等，艾夏」",
+      "zh-Hant-HK": "艾夏登場時瑪娜米在場，選「拜託，聽我説」或「等等，艾夏」",
       "ja": "マナミ出撃中に「お願い、話を聞いて」か「待ってアイシャ」を選ぶ",
       "en": "Have Manami present; pick “Please, hear me out” or “Wait, Aisha”",
       "ko": "마나미를 출격시켜 두고 “부탁이야, 이야기 좀 들어 줘” 또는 “기다려 아이샤”를 선택"
@@ -88,6 +91,7 @@
      "text": {
       "zh-Hans": "用阿克说服埃尔利希（第 3 回合或敌方剩 5 台以下登场）",
       "zh-Hant": "用阿克說服埃爾利希（第 3 回合或敵方剩 5 臺以下登場）",
+      "zh-Hant-HK": "用阿克説服埃爾利希（第 3 回合或敵方剩 5 台以下登場）",
       "ja": "アークでエルリッヒを説得（第3ターンか敵残り5機以下で登場）",
       "en": "Persuade Ehrlich with Ark (appears turn 3 or at ≤5 enemies)",
       "ko": "아크로 엘리히를 설득(3턴 또는 적 5기 이하에서 등장)"
@@ -122,6 +126,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"
@@ -129,6 +134,7 @@
      "from": {
       "zh-Hans": "巴斯克",
       "zh-Hant": "巴斯克",
+      "zh-Hant-HK": "貝斯克",
       "ja": "バスク",
       "en": "Bask",
       "ko": "바스크"
@@ -192,6 +198,7 @@
      "note": {
       "zh-Hans": "可被阿克说服（说服后不掉落）",
       "zh-Hant": "可被阿克說服（說服後不掉落）",
+      "zh-Hant-HK": "可被阿克説服（説服後不掉落）",
       "ja": "アークで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Ark (no drop if persuaded)",
       "ko": "아크로 설득 가능(설득하면 파츠 드롭 없음)"
@@ -234,6 +241,7 @@
      "from": {
       "zh-Hans": "西罗克",
       "zh-Hant": "西羅克",
+      "zh-Hant-HK": "斯洛哥",
       "ja": "シロッコ",
       "en": "Scirocco",
       "ko": "시로코"
@@ -259,6 +267,7 @@
      "from": {
       "zh-Hans": "夏比罗",
       "zh-Hant": "夏比羅",
+      "zh-Hant-HK": "扎比",
       "ja": "シャピロ",
       "en": "Shapiro",
       "ko": "샤피로"

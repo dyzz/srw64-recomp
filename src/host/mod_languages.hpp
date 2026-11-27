@@ -27,8 +27,9 @@ using json=nlohmann::json;
 
 inline constexpr const char* language_schema="srw64.language.v1";
 inline constexpr const char* terms_schema="srw64.language-terms.v1";
-inline constexpr const char* built_in[]={"ja","zh-Hans","zh-Hant","en","ko"};
-// The ones a package's language may stand on: Korean stands on English itself (docs/design/korean.md).
+inline constexpr const char* built_in[]={"ja","zh-Hans","zh-Hant","zh-Hant-HK","en","ko"};
+// The ones a package's language may stand on: Korean stands on English itself (docs/design/korean.md),
+// Hong Kong on Taiwan (docs/design/zh-hant-hk.md).
 inline constexpr const char* fallbacks[]={"ja","zh-Hans","zh-Hant","en"};
 inline constexpr size_t most_languages=16, longest_name=24;
 inline constexpr uintmax_t largest_font=uintmax_t(32)<<20, largest_terms=uintmax_t(16)<<20;

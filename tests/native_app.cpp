@@ -103,7 +103,9 @@ void parser_and_paths() {
     check(first_language(Names{"zh-Hans-US"})=="zh-Hans" && first_language(Names{"zh-Hans-TW"})=="zh-Hans" &&
           first_language(Names{"zh_CN.UTF-8"})=="zh-Hans" && first_language(Names{"zh"})=="zh-Hans","Chinese first language");
     check(first_language(Names{"zh-Hant-US"})=="zh-Hant" && first_language(Names{"zh-TW"})=="zh-Hant" &&
-          first_language(Names{"zh_HK.UTF-8"})=="zh-Hant" && first_language(Names{"zh-MO"})=="zh-Hant","Traditional Chinese first language");
+          first_language(Names{"zh-Hant-TW"})=="zh-Hant","Traditional Chinese first language");
+    check(first_language(Names{"zh_HK.UTF-8"})=="zh-Hant-HK" && first_language(Names{"zh-MO"})=="zh-Hant-HK" &&
+          first_language(Names{"zh-Hant-HK"})=="zh-Hant-HK" && first_language(Names{"zh-Hans-HK"})=="zh-Hans","Hong Kong's Traditional Chinese first language");
     check(first_language(Names{"ja-JP"})=="ja" && first_language(Names{"en-US","zh-Hans-US"})=="en","first language order");
     check(first_language(Names{"fr-FR","ja"})=="ja" && first_language(Names{"de_DE.UTF-8"})=="en" &&
           first_language(Names{"C"})=="en" && first_language({})=="en","other first languages");

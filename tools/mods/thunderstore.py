@@ -43,7 +43,7 @@ NAME_LIMIT = 128
 VIRTUAL = {"srw64.hd"}
 NAME_RE = re.compile(r"^[A-Za-z0-9_]+$")
 DEPENDENCY_RE = re.compile(r"^[A-Za-z0-9_]+-[A-Za-z0-9_]+-\d+\.\d+\.\d+$")
-LANGUAGE_NAMES = {"en": "English", "ja": "日本語", "zh-Hans": "简体中文", "zh-Hant": "繁體中文", "ko": "한국어"}
+LANGUAGE_NAMES = {"en": "English", "ja": "日本語", "zh-Hans": "简体中文", "zh-Hant": "繁體中文", "zh-Hant-HK": "繁體中文（香港）", "ko": "한국어"}
 
 
 def default_name(mod_id: str) -> str:

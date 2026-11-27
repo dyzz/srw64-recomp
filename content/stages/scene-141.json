@@ -27,6 +27,7 @@
      "title": {
       "zh-Hans": "普露兹",
       "zh-Hant": "普露茲",
+      "zh-Hant-HK": "波蕾二世",
       "ja": "プルツー",
       "en": "Ple-Two",
       "ko": "플 투"
@@ -34,6 +35,7 @@
      "text": {
       "zh-Hans": "用捷度说服普露兹（需普露已入队）",
       "zh-Hant": "用傑特說服普露茲（需普露已入隊）",
+      "zh-Hant-HK": "用捷度説服波蕾二世（需波蕾已入隊）",
       "ja": "ジュドーでプルツーを説得（プル加入済みが条件）",
       "en": "Persuade Ple-Two with Judau (needs Ple on the team)",
       "ko": "쥬도로 플 투 설득(플이 아군에 있어야 함)"
@@ -45,6 +47,7 @@
      "part": {
       "zh-Hans": "精神感应框架",
       "zh-Hant": "精神感應框體",
+      "zh-Hant-HK": "精神感應框架",
       "ja": "サイコフレーム",
       "en": "Psycoframe",
       "ko": "사이코 프레임"
@@ -69,6 +72,7 @@
      "part": {
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
+      "zh-Hant-HK": "遠地點引擎",
       "ja": "アポジモーター",
       "en": "Apogee Motor",
       "ko": "아포지 모터"
@@ -76,6 +80,7 @@
      "from": {
       "zh-Hans": "卡多",
       "zh-Hant": "卡多",
+      "zh-Hant-HK": "賈圖",
       "ja": "ガトー",
       "en": "Gato",
       "ko": "가토"
@@ -100,6 +105,7 @@
      "from": {
       "zh-Hans": "拉坎",
       "zh-Hant": "拉坎",
+      "zh-Hant-HK": "拉卡",
       "ja": "ラカン",
       "en": "Rakan",
       "ko": "라칸"
@@ -124,6 +130,7 @@
      "from": {
       "zh-Hans": "普露兹",
       "zh-Hant": "普露茲",
+      "zh-Hant-HK": "波蕾二世",
       "ja": "プルツー",
       "en": "Ple-Two",
       "ko": "플 투"

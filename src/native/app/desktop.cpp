@@ -55,7 +55,7 @@ std::string saved_locale(const fs::path& user_dir) {
         std::smatch found;
         if (std::regex_search(text, found, std::regex(R"re("locale"\s*:\s*"([^"]+)")re"))) {
             const std::string locale = found[1];
-            return locale == "ja" || locale == "zh-Hans" || locale == "zh-Hant" || locale == "en" || locale == "ko" ? locale : "en";
+            return locale == "ja" || locale == "zh-Hans" || locale == "zh-Hant" || locale == "zh-Hant-HK" || locale == "en" || locale == "ko" ? locale : "en";
         }
     } catch (const std::exception&) {}
     return {};
@@ -152,7 +152,7 @@ std::string play_lock_message(const std::string& locale) {
     constexpr const char* monitor_tw="系統監視器";
     constexpr const char* monitor_ko="시스템 모니터";
 #endif
-    if (locale == "zh-Hant")
+    if (locale.starts_with("zh-Hant"))
         return std::string("無法啟動 Marchwind64。\n"
                            "Marchwind64 已經在執行，或者剛關閉的遊戲還沒有完全結束。\n"
                            "請切換到已開啟的遊戲視窗；如果找不到視窗，請在") +
@@ -195,7 +195,7 @@ PlayLockQuestion play_lock_question(const std::string& locale) {
                 "다른 Marchwind64가 같은 세이브와 설정을 사용하고 있습니다(백그라운드에 있거나 응답하지 않을 수 있습니다).\n"
                 "그 프로그램을 종료하고 실행하시겠습니까? 저장하지 않은 진행 상황은 사라지며, 저장된 세이브는 그대로 유지됩니다.",
                 "종료 후 실행", "취소"};
-    if (locale == "zh-Hant")
+    if (locale.starts_with("zh-Hant"))
         return {"無法啟動 Marchwind64。\n"
                 "另一個 Marchwind64 正在使用同一份存檔和設定（可能在背景執行，或者已經沒有回應）。\n"
                 "要結束它並啟動嗎？它尚未儲存的進度會遺失，已儲存的存檔不受影響。",

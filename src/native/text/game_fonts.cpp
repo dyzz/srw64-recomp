@@ -98,6 +98,7 @@ std::vector<FontSource> game_font_sources(const std::string& locale,int weight) 
         return sources;
     }
     if(locale=="ko")return game_font_sources("en",weight);  // the system-font path: the CJK face has Hangul
+    if(locale=="zh-Hant-HK")return game_font_sources("zh-Hant",weight);  // Hong Kong reads in Taiwan's faces
     if(locale!="zh-Hans" && locale!="zh-Hant" && locale!="ja" && locale!="en")
         throw std::runtime_error("Game text supports zh-Hans, zh-Hant, ja, en and ko only");
     const char* dir=std::getenv("SRW64_FONT_DIR");
@@ -116,6 +117,7 @@ std::vector<FontSource> title_font_sources(const std::string& locale,int weight)
         for(auto& source:title_font_sources(fonts->fallback,weight))sources.push_back(std::move(source));
         return sources;
     }
+    if(locale=="zh-Hant-HK")return title_font_sources("zh-Hant",weight);
     auto sources=game_font_sources(locale,weight);
     const char* dir=std::getenv("SRW64_FONT_DIR");
     if(std::getenv("SRW64_TEXT_FONT") || !dir || !*dir)return sources;

@@ -34,6 +34,7 @@
      "from": {
       "zh-Hans": "祖鲁皇帝",
       "zh-Hant": "祖魯皇帝",
+      "zh-Hant-HK": "獨龍皇帝",
       "ja": "ズール皇帝",
       "en": "Emperor Zuul",
       "ko": "즈루 황제"
@@ -51,6 +52,7 @@
      "part": {
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
+      "zh-Hant-HK": "遠地點引擎",
       "ja": "アポジモーター",
       "en": "Apogee Motor",
       "ko": "아포지 모터"
@@ -76,6 +78,7 @@
      "note": {
       "zh-Hans": "祖鲁皇帝被击坠时撤退",
       "zh-Hant": "祖魯皇帝被擊墜時撤退",
+      "zh-Hant-HK": "獨龍皇帝被擊墜時撤退",
       "ja": "ズール皇帝が撃墜されると撤退",
       "en": "Retreats when Emperor Zuul is shot down",
       "ko": "즈루 황제를 격추하면 퇴각"

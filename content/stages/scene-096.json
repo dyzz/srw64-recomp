@@ -17,6 +17,7 @@
    "lane": {
     "zh-Hans": "OZ路线／随特列斯",
     "zh-Hant": "OZ路線／隨特列斯",
+    "zh-Hant-HK": "OZ路線／隨杜魯斯",
     "ja": "OZルート／トレーズにつく",
     "en": "OZ route / with Treize",
     "ko": "OZ 루트 / 트레즈와 함께"
@@ -85,6 +86,7 @@
      "from": {
       "zh-Hans": "祖鲁皇帝",
       "zh-Hant": "祖魯皇帝",
+      "zh-Hant-HK": "獨龍皇帝",
       "ja": "ズール皇帝",
       "en": "Emperor Zuul",
       "ko": "즈루 황제"

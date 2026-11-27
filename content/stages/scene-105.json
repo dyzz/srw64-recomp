@@ -27,6 +27,7 @@
      "title": {
       "zh-Hans": "葵丝＋亚克托·德卡",
       "zh-Hant": "葵絲＋亞克托·德卡",
+      "zh-Hant-HK": "姬絲＋乍德·德卡",
       "ja": "クェス＋ヤクト・ドーガ",
       "en": "Quess + Jagd Doga",
       "ko": "퀘스 + 야크트 도가"
@@ -34,6 +35,7 @@
      "text": {
       "zh-Hans": "保住葵丝，用阿姆罗击坠夏亚（拉·凯拉姆入区后第 2 个我方阶段前）",
       "zh-Hant": "保住葵絲，用阿姆羅擊墜夏亞（拉·凱拉姆入區後第 2 個我方階段前）",
+      "zh-Hant-HK": "保住姬絲，用阿寶擊墜馬沙（拉·凱拉姆入區後第 2 個我方階段前）",
       "ja": "クェスを残しアムロでシャア撃墜（アクシズ進入後2回目の味方フェイズ前）",
       "en": "Spare Quess; Amuro downs Char before Ra Cailum's 2nd phase at Axis",
       "ko": "퀘스는 남겨 두고, 라 카이람이 액시즈에서 두 번째 페이즈를 맞기 전에 아무로로 샤아 격추"
@@ -52,6 +54,7 @@
      "from": {
       "zh-Hans": "夏亚",
       "zh-Hant": "夏亞",
+      "zh-Hant-HK": "馬沙",
       "ja": "シャア",
       "en": "Char",
       "ko": "샤아"
@@ -69,6 +72,7 @@
      "from": {
       "zh-Hans": "葵丝",
       "zh-Hant": "葵絲",
+      "zh-Hant-HK": "姬絲",
       "ja": "クェス",
       "en": "Quess",
       "ko": "퀘스"
@@ -76,6 +80,7 @@
      "note": {
       "zh-Hans": "要在夏亚之前击坠（会失去葵丝）",
       "zh-Hant": "要在夏亞之前擊墜（會失去葵絲）",
+      "zh-Hant-HK": "要在馬沙之前擊墜（會失去姬絲）",
       "ja": "シャアより先に撃墜（クェスは入手不可に）",
       "en": "Shoot her down before Char (you lose Quess)",
       "ko": "샤아보다 먼저 격추(퀘스를 잃음)"
@@ -93,6 +98,7 @@
      "from": {
       "zh-Hans": "邱尼",
       "zh-Hant": "裘尼",
+      "zh-Hant-HK": "基尼",
       "ja": "ギュネイ",
       "en": "Gyunei",
       "ko": "규네이"
@@ -110,6 +116,7 @@
      "from": {
       "zh-Hans": "蕾森",
       "zh-Hant": "蕾森",
+      "zh-Hant-HK": "莉芝",
       "ja": "レズン",
       "en": "Rezin",
       "ko": "레즌"
@@ -147,6 +154,7 @@
      "from": {
       "zh-Hans": "卡多",
       "zh-Hant": "卡多",
+      "zh-Hant-HK": "賈圖",
       "ja": "ガトー",
       "en": "Gato",
       "ko": "가토"

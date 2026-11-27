@@ -34,6 +34,7 @@
      "text": {
       "zh-Hans": "用卡缪说服凤（卡缪等级须 ≥ 杰利德等级）",
       "zh-Hant": "用卡密兒說服鳳（卡密兒等級須 ≥ 傑利特等級）",
+      "zh-Hant-HK": "用嘉美尤説服鳳（嘉美尤等級須 ≥ 尊尼特等級）",
       "ja": "カミーユでフォウを説得（カミーユのレベル ≥ ジェリドのレベル）",
       "en": "Persuade Four with Kamille; Kamille's level must be ≥ Jerid's",
       "ko": "카미유로 포우를 설득. 카미유의 레벨이 제리드 이상이어야 함"
@@ -55,6 +56,7 @@
      "text": {
       "zh-Hans": "凤线时卡缪开场不能出击，第 3 回合或敌剩 8 台以下时赶到",
       "zh-Hant": "鳳線時卡密兒開場不能出擊，第 3 回合或敵剩 8 臺以下時趕到",
+      "zh-Hant-HK": "鳳線時嘉美尤開場不能出擊，第 3 回合或敵剩 8 台以下時趕到",
       "ja": "フォウの分岐ではカミーユは第3ターンか敵残り8機以下で駆けつける",
       "en": "On Four's line, Kamille arrives on turn 3 or at 8 or fewer enemies",
       "ko": "포우 루트에서는 카미유가 3턴 또는 적 8기 이하에서 등장"
@@ -65,6 +67,7 @@
      "title": {
       "zh-Hans": "阿莲比＋诺贝尔高达",
       "zh-Hant": "阿蓮比＋諾貝爾鋼彈",
+      "zh-Hant-HK": "阿蓮比＋美少女高達",
       "ja": "アレンビー＋ノーベルガンダム",
       "en": "Allenby + Noble Gundam",
       "ko": "아렌비 + 노벨 건담"
@@ -72,6 +75,7 @@
      "text": {
       "zh-Hans": "用多蒙说服阿莲比（要求第 1 步已完成）",
       "zh-Hant": "用多門說服阿蓮比（要求第 1 步已完成）",
+      "zh-Hant-HK": "用杜門説服阿蓮比（要求第 1 步已完成）",
       "ja": "ドモンでアレンビーを説得（第1段階済みが条件）",
       "en": "Persuade Allenby with Domon (requires step 1)",
       "ko": "도몬으로 아렌비를 설득(1단계 필요)"
@@ -90,6 +94,7 @@
      "from": {
       "zh-Hans": "杰利德",
       "zh-Hant": "傑利特",
+      "zh-Hant-HK": "尊尼特",
       "ja": "ジェリド",
       "en": "Jerid",
       "ko": "제리드"
@@ -114,6 +119,7 @@
      "note": {
       "zh-Hans": "可被多蒙说服（说服后不掉落）",
       "zh-Hant": "可被多門說服（說服後不掉落）",
+      "zh-Hant-HK": "可被杜門説服（説服後不掉落）",
       "ja": "ドモンで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Domon (no drop if persuaded)",
       "ko": "도몬으로 설득 가능(설득하면 파츠 드롭 없음)"

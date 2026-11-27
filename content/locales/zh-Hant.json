@@ -90,6 +90,10 @@
     "settings_title": "選項",
     "settings_language": "語言",
     "settings_language_note": "立即切換介面與劇情語言，並記住到下次啟動",
+    "settings_region": "地區",
+    "settings_region_note": "繁體中文分台灣、香港兩種寫法：用字、用語和作品譯名各按當地習慣。立即切換，並記住到下次啟動",
+    "region_tw": "台灣",
+    "region_hk": "香港",
     "settings_images": "畫面",
     "settings_images_original": "Original（原版美術）",
     "settings_images_hd": "HD（高畫質素材）",
@@ -33778,5 +33782,6 @@
       "origin": "terms"
     }
   ],
-  "display_name": "繁體中文"
+  "display_name": "繁體中文",
+  "region": "TW"
 }

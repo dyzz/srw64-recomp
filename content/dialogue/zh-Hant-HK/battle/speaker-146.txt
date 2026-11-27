@@ -1,0 +1,6 @@
+# 自動產生：tools/translation/make_zh_hant.py 由 content/dialogue/zh-Hans 轉換，只有香港寫法與台灣不同的條目，其餘照 content/dialogue/zh-Hant。重新產生時會整體覆蓋；要修改請把條目複製到使用者目錄（見 docs/guide/dialogue-text.md）。
+
+@16796 大作 · 大作
+# 觸發：使用〈アンカーナックル〉（低優先，可能被通用台詞頂掉）
+> 「アンカーナックル!!」
+「錨鈎鐵拳！！」

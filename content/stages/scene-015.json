@@ -34,6 +34,7 @@
      "from": {
       "zh-Hans": "巴斯克",
       "zh-Hant": "巴斯克",
+      "zh-Hant-HK": "貝斯克",
       "ja": "バスク",
       "en": "Bask",
       "ko": "바스크"
@@ -51,6 +52,7 @@
      "from": {
       "zh-Hans": "杰克斯",
       "zh-Hant": "傑克斯",
+      "zh-Hant-HK": "積古斯",
       "ja": "ゼクス",
       "en": "Zechs",
       "ko": "젝스"
@@ -61,6 +63,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"

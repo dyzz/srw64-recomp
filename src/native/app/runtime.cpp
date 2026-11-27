@@ -243,7 +243,8 @@ std::string first_language(const std::vector<std::string>& preferred) {
         }
         if(language=="zh") {
             // The script when it is named (zh-Hans-TW, zh-Hant-US), else Traditional for
-            // Taiwan, Hong Kong and Macau (zh-TW, zh_HK.UTF-8, zh-MO).
+            // Taiwan, Hong Kong and Macau (zh-TW, zh_HK.UTF-8, zh-MO); Hong Kong and Macau
+            // read Traditional's Hong Kong region (zh-Hant-HK, zh-Hant-MO too).
             std::vector<std::string> subtags(1);
             for(const char c:name.substr(2)) {
                 if(c=='.' || c=='@')break;
@@ -252,7 +253,8 @@ std::string first_language(const std::vector<std::string>& preferred) {
             }
             const auto has=[&](const char* tag){return std::find(subtags.begin(),subtags.end(),tag)!=subtags.end();};
             if(has("hans"))return "zh-Hans";
-            if(has("hant") || has("tw") || has("hk") || has("mo"))return "zh-Hant";
+            if(has("hk") || has("mo"))return "zh-Hant-HK";
+            if(has("hant") || has("tw"))return "zh-Hant";
             return "zh-Hans";
         }
         if(language=="ja" || language=="en" || language=="ko")return language;

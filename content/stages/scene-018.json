@@ -27,6 +27,7 @@
      "title": {
       "zh-Hans": "阿莲比＋诺贝尔高达",
       "zh-Hant": "阿蓮比＋諾貝爾鋼彈",
+      "zh-Hant-HK": "阿蓮比＋美少女高達",
       "ja": "アレンビー＋ノーベルガンダム",
       "en": "Allenby + Noble Gundam",
       "ko": "아렌비 + 노벨 건담"
@@ -34,6 +35,7 @@
      "text": {
       "zh-Hans": "用多蒙说服阿莲比（第 1 步，无门槛）",
       "zh-Hant": "用多門說服阿蓮比（第 1 步，無門檻）",
+      "zh-Hant-HK": "用杜門説服阿蓮比（第 1 步，無門檻）",
       "ja": "ドモンでアレンビーを説得（第1段階、条件なし）",
       "en": "Persuade Allenby with Domon (step 1, no prerequisite)",
       "ko": "도몬으로 아렌비를 설득(1단계, 사전 조건 없음)"
@@ -51,6 +53,7 @@
      "text": {
       "zh-Hans": "用卡缪说服凤两次（第 1 步）",
       "zh-Hant": "用卡密兒說服鳳兩次（第 1 步）",
+      "zh-Hant-HK": "用嘉美尤説服鳳兩次（第 1 步）",
       "ja": "カミーユでフォウを2回説得（第1段階）",
       "en": "Persuade Four with Kamille twice (step 1)",
       "ko": "카미유로 포우를 두 번 설득(1단계)"
@@ -68,6 +71,7 @@
      "text": {
       "zh-Hans": "卡缪、沙罗、雅人、亮开局不能出击",
       "zh-Hant": "卡密兒、沙羅、雅人、亮開局不能出擊",
+      "zh-Hant-HK": "嘉美尤、沙羅、雅人、亮開局不能出擊",
       "ja": "カミーユ・沙羅・雅人・亮は開始時に出撃不可",
       "en": "Kamille, Sara, Masato and Ryo can't deploy at the start",
       "ko": "카미유, 사라, 마사토, 료는 시작 시 출격 불가"
@@ -93,6 +97,7 @@
      "note": {
       "zh-Hans": "可被卡缪说服（说服后不掉落）",
       "zh-Hant": "可被卡密兒說服（說服後不掉落）",
+      "zh-Hant-HK": "可被嘉美尤説服（説服後不掉落）",
       "ja": "カミーユで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Kamille (no drop if persuaded)",
       "ko": "카미유로 설득 가능(설득하면 파츠 드롭 없음)"

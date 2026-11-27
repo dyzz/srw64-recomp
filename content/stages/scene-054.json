@@ -34,6 +34,7 @@
      "text": {
       "zh-Hans": "无需操作：卡多是否加入会改变捷度等人的加入方式",
       "zh-Hant": "無需操作：卡多是否加入會改變傑特等人的加入方式",
+      "zh-Hant-HK": "無需操作：賈圖是否加入會改變捷度等人的加入方式",
       "ja": "操作不要：ガトーの加入有無でジュドーたちの加入のしかたが変わる",
       "en": "No action needed: recruiting Gato changes how Judau and the others join",
       "ko": "할 일 없음: 가토 가입 여부에 따라 쥬도 일행의 가입 방식이 달라짐"
@@ -63,6 +64,7 @@
      "from": {
       "zh-Hans": "玛古",
       "zh-Hant": "馬可",
+      "zh-Hant-HK": "馬克",
       "ja": "マーグ",
       "en": "Marg",
       "ko": "마그"

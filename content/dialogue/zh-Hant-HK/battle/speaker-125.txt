@@ -1,0 +1,8 @@
+# 自動產生：tools/translation/make_zh_hant.py 由 content/dialogue/zh-Hans 轉換，只有香港寫法與台灣不同的條目，其餘照 content/dialogue/zh-Hant。重新產生時會整體覆蓋；要修改請把條目複製到使用者目錄（見 docs/guide/dialogue-text.md）。
+
+@10156 格拉博士 · グラー博士
+# 觸發：射程外，無法反擊（通用，1/1）
+# 審校：射程外無法反擊，説的是自己
+> 「なすすべもなく、指をくわえて見て
+>  おるのか!」
+「難道只能束手無策，乾瞪眼嗎！」

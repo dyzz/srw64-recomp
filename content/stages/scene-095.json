@@ -17,6 +17,7 @@
    "lane": {
     "zh-Hans": "OZ路线／随特列斯",
     "zh-Hant": "OZ路線／隨特列斯",
+    "zh-Hant-HK": "OZ路線／隨杜魯斯",
     "ja": "OZルート／トレーズにつく",
     "en": "OZ route / with Treize",
     "ko": "OZ 루트 / 트레즈와 함께"
@@ -34,6 +35,7 @@
      "text": {
       "zh-Hans": "无需操作：神高达在关末习得石破天惊拳",
       "zh-Hant": "無需操作：神威鋼彈在關末習得石破天驚拳",
+      "zh-Hant-HK": "無需操作：神高達在關末習得石破天驚拳",
       "ja": "操作不要：クリア時にゴッドガンダムが石破天驚拳を習得",
       "en": "No action: God Gundam learns Sekiha Tenkyoken at stage end",
       "ko": "할 일 없음: 스테이지 종료 시 갓 건담이 석파천경권 습득"

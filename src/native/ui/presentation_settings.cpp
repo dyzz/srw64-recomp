@@ -94,6 +94,9 @@ void persist(const std::filesystem::path& path,const std::string& locale) {
         {"mod_voice",mod_voice_on.load()},{"mod_voice_volume",mod_voice_percent.load()},{"mod_voice_speed",voice_speed_names[voice_speed_choice.load()]},{"mod_voice_wait",mod_voice_wait_on.load()},
         {"touch_opacity",touch_alpha.load()},{"dialogue_font_size",dialogue_size.load()}});
     if(size_choice>=0)saved["ui_size"]=ui_size_name(UiSize(size_choice.load()));
+    // The region chosen last for a language with regions ({"zh-Hant": "zh-Hant-HK"}), which
+    // the language list and F7 enter it at while another language is read.
+    if(const auto regions=localization::chosen_regions();!regions.empty())saved["regions"]=regions;
     auto cheat_ids=nlohmann::json::array();
     for(const auto& entry:srw64::cheats::catalog)if(srw64::cheats::active()&entry.bit)cheat_ids.push_back(entry.id);
     if(!cheat_ids.empty())saved["cheats"]=cheat_ids;
@@ -444,6 +447,13 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         if(saved.is_object() && saved.contains("debug_interface") && saved["debug_interface"].is_boolean())debug_on=saved["debug_interface"].get<bool>();
         if(saved.is_object() && saved.contains("web_link") && saved["web_link"].is_boolean())web_link_on=saved["web_link"].get<bool>();
         if(saved.is_object())hints_always=saved.value("dialogue_hints","auto")=="always";
+        if(saved.is_object() && saved.contains("regions") && saved["regions"].is_object()) {
+            std::map<std::string,std::string> regions;
+            for(const auto& [language,locale]:saved["regions"].items())if(locale.is_string())regions[language]=locale.get<std::string>();
+            // The locale being read keeps its own region (activate chose it).
+            regions.erase(localization::family(localization::catalog().locale));
+            localization::set_chosen_regions(regions);
+        }
         if(saved.is_object() && saved.contains("mod_music") && saved["mod_music"].is_boolean())mod_music_on=saved["mod_music"].get<bool>();
         if(saved.is_object() && saved.contains("mod_music_volume") && saved["mod_music_volume"].is_number_unsigned())
             mod_music_percent=std::min(saved["mod_music_volume"].get<unsigned>(),100u);

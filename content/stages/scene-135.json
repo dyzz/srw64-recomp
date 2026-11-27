@@ -27,6 +27,7 @@
      "title": {
       "zh-Hans": "量产型大魔神",
       "zh-Hant": "量產型大魔神",
+      "zh-Hant-HK": "量產型鐵甲萬能俠2號",
       "ja": "量産型グレート",
       "en": "MP Great Mazinger",
       "ko": "양산형 그레이트"
@@ -34,6 +35,7 @@
      "text": {
       "zh-Hans": "无需操作：通关得到量产型大魔神（无机师）",
       "zh-Hant": "無需操作：通關得到量產型大魔神（無機師）",
+      "zh-Hant-HK": "無需操作：通關得到量產型鐵甲萬能俠2號（無機師）",
       "ja": "操作不要：クリアで量産型グレートを入手（パイロットなし）",
       "en": "No action needed: clear to get the MP Great Mazinger (no pilot)",
       "ko": "할 일 없음: 클리어하면 양산형 그레이트(파일럿 없음) 획득"
@@ -62,6 +64,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"

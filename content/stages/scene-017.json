@@ -27,6 +27,7 @@
      "title": {
       "zh-Hans": "爱玛＋高达Mk-Ⅱ",
       "zh-Hant": "艾瑪＋鋼彈Mk-Ⅱ",
+      "zh-Hant-HK": "愛瑪＋高達Mk-Ⅱ",
       "ja": "エマ＋ガンダムmkⅡ",
       "en": "Emma + Gundam Mk-II",
       "ko": "에마 + 건담 Mk-II"
@@ -34,6 +35,7 @@
      "text": {
       "zh-Hans": "无需操作：爱玛开场驾驶杰刚加入",
       "zh-Hant": "無需操作：艾瑪開場駕駛傑鋼加入",
+      "zh-Hant-HK": "無需操作：愛瑪開場駕駛積根加入",
       "ja": "操作不要：エマが開始時にジェガンで加入",
       "en": "Nothing to do: Emma joins at the start in the Jegan",
       "ko": "할 일 없음: 에마가 시작 시 제간을 타고 합류"
@@ -87,6 +89,7 @@
      "note": {
       "zh-Hans": "敌方剩 8 台以下时，若古拉博士已不在场则撤退",
       "zh-Hant": "敵方剩 8 臺以下時，若古拉博士已不在場則撤退",
+      "zh-Hant-HK": "敵方剩 8 台以下時，若古拉博士已不在場則撤退",
       "ja": "敵残り8機以下になったとき、グラー博士がもういなければ撤退",
       "en": "Retreats when 8 or fewer enemies remain, if Dr. Gura is no longer on the map",
       "ko": "구라 박사가 맵에 없으면 적이 8기 이하로 남았을 때 퇴각"

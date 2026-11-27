@@ -44,6 +44,7 @@
      "title": {
       "zh-Hans": "牛剑鬼复仇（乔巴姆装甲）",
       "zh-Hant": "牛劍鬼復仇（複合裝甲）",
+      "zh-Hant-HK": "牛劍鬼復仇（喬巴姆裝甲）",
       "ja": "牛剣鬼の復讐（チョバムアーマー）",
       "en": "Gyukenki's revenge (Chobham Armor)",
       "ko": "우검귀의 복수(초밤 아머)"
@@ -121,6 +122,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"

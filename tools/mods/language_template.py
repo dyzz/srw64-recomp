@@ -20,7 +20,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-BUILT_IN = ("ja", "zh-Hans", "zh-Hant", "en", "ko")
+BUILT_IN = ("ja", "zh-Hans", "zh-Hant", "zh-Hant-HK", "en", "ko")
 FALLBACKS = ("ja", "zh-Hans", "zh-Hant", "en")
 LOCALE_TAG = re.compile(r"[a-z]{2,3}(-[A-Za-z0-9]{2,8})*")
 

@@ -34,6 +34,7 @@
      "text": {
       "zh-Hans": "无需操作：从「特列斯抹杀指令」或两条支线来到本关",
       "zh-Hant": "無需操作：從「特列斯抹殺指令」或兩條支線來到本關",
+      "zh-Hant-HK": "無需操作：從「杜魯斯抹殺指令」或兩條支線來到本關",
       "ja": "操作不要：「トレーズ抹殺指令」か分岐ステージから本ステージへ",
       "en": "No action needed: reached from “Order to Eliminate Treize” or a side branch",
       "ko": "할 일 없음: “트레즈 암살 지령” 또는 분기에서 진입"
@@ -44,6 +45,7 @@
      "title": {
       "zh-Hans": "杰克斯＋艾比安高达",
       "zh-Hant": "傑克斯＋次代鋼彈",
+      "zh-Hant-HK": "積古斯＋高達艾比安",
       "ja": "ゼクス＋ガンダムエピオン",
       "en": "Zechs + Gundam Epyon",
       "ko": "젝스 + 건담 에피온"
@@ -51,6 +53,7 @@
      "text": {
       "zh-Hans": "无需操作：杰克斯关末成为艾比安高达机师，希罗离队",
       "zh-Hant": "無需操作：傑克斯關末成為次代鋼彈機師，希洛離隊",
+      "zh-Hant-HK": "無需操作：積古斯關末成為高達艾比安機師，希羅離隊",
       "ja": "操作不要：ゼクスがガンダムエピオンのパイロットに、ヒイロは離脱",
       "en": "No action needed: Zechs pilots the Gundam Epyon; Heero leaves",
       "ko": "할 일 없음: 젝스가 건담 에피온에 탑승; 히이로 이탈"
@@ -68,6 +71,7 @@
      "text": {
       "zh-Hans": "用卡缪说服凤（前两步已完成，无等级条件）",
       "zh-Hant": "用卡密兒說服鳳（前兩步已完成，無等級條件）",
+      "zh-Hant-HK": "用嘉美尤説服鳳（前兩步已完成，無等級條件）",
       "ja": "カミーユでフォウを説得（前2段階済み、レベル条件なし）",
       "en": "Persuade Four with Kamille (steps 1–2 done, no level check)",
       "ko": "카미유로 포우 설득(1~2단계 달성, 레벨 판정 없음)"
@@ -82,6 +86,7 @@
      "title": {
       "zh-Hans": "阿莲比＋诺贝尔高达",
       "zh-Hant": "阿蓮比＋諾貝爾鋼彈",
+      "zh-Hant-HK": "阿蓮比＋美少女高達",
       "ja": "アレンビー＋ノーベルガンダム",
       "en": "Allenby + Noble Gundam",
       "ko": "아렌비 + 노벨 건담"
@@ -89,6 +94,7 @@
      "text": {
       "zh-Hans": "用多蒙说服阿莲比（要求第 1 步已完成）",
       "zh-Hant": "用多門說服阿蓮比（要求第 1 步已完成）",
+      "zh-Hant-HK": "用杜門説服阿蓮比（要求第 1 步已完成）",
       "ja": "ドモンでアレンビーを説得（第1段階済みが条件）",
       "en": "Persuade Allenby with Domon (requires step 1)",
       "ko": "도몬으로 아렌비 설득(1단계 필요)"
@@ -126,6 +132,7 @@
      "text": {
       "zh-Hans": "凤线时卡缪开场不能出击；艾夏线时玛娜米不能出击",
       "zh-Hant": "鳳線時卡密兒開場不能出擊；艾夏線時瑪娜米不能出擊",
+      "zh-Hant-HK": "鳳線時嘉美尤開場不能出擊；艾夏線時瑪娜米不能出擊",
       "ja": "フォウの分岐：カミーユ開始時出撃不可／アイシャの分岐：マナミ出撃不可",
       "en": "Four's line: no Kamille at start; Aisha's line: no Manami",
       "ko": "포우 라인: 시작 시 카미유 없음; 아이샤 라인: 마나미 없음"
@@ -185,6 +192,7 @@
      "note": {
       "zh-Hans": "可被卡缪说服（说服后不掉落）",
       "zh-Hant": "可被卡密兒說服（說服後不掉落）",
+      "zh-Hant-HK": "可被嘉美尤説服（説服後不掉落）",
       "ja": "カミーユで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Kamille (no drop if persuaded)",
       "ko": "카미유로 설득 가능(설득하면 드롭 없음)"
@@ -209,6 +217,7 @@
      "note": {
       "zh-Hans": "可被多蒙说服（说服后不掉落）",
       "zh-Hant": "可被多門說服（說服後不掉落）",
+      "zh-Hant-HK": "可被杜門説服（説服後不掉落）",
       "ja": "ドモンで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Domon (no drop if persuaded)",
       "ko": "도몬으로 설득 가능(설득하면 드롭 없음)"
@@ -227,6 +236,7 @@
      "note": {
       "zh-Hans": "敌方剩 10 台以下时撤退",
       "zh-Hant": "敵方剩 10 臺以下時撤退",
+      "zh-Hant-HK": "敵方剩 10 台以下時撤退",
       "ja": "敵残り10機以下で撤退",
       "en": "Retreats when 10 or fewer enemies remain",
       "ko": "적이 10기 이하가 되면 퇴각"

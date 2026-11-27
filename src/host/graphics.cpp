@@ -194,8 +194,10 @@ namespace {
         const auto saved = nlohmann::json::parse(file, nullptr, false);
         if (saved.is_object() && saved.contains("locale") && saved["locale"].is_string()) locale = saved["locale"].get<std::string>();
         // A language package's locale: its fallback, once the packages are read; English before.
-        // Korean, built in though it stands on English, has its own message.
+        // Korean, built in though it stands on English, has its own message; Hong Kong reads
+        // Taiwan's (it stands on zh-Hant).
         if (const auto style = srw64::localization::style(locale); style != locale && locale != "ko") locale = style;
+        if (locale == "zh-Hant-HK") locale = "zh-Hant";
         else if (locale != "ja" && locale != "zh-Hans" && locale != "zh-Hant" && locale != "en" && locale != "ko") locale = "en";
     }
     std::string log;

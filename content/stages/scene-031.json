@@ -134,6 +134,7 @@
      "part": {
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
+      "zh-Hant-HK": "遠地點引擎",
       "ja": "アポジモーター",
       "en": "Apogee Motor",
       "ko": "아포지 모터"
@@ -170,6 +171,7 @@
      "from": {
       "zh-Hans": "诺茵、亚历克斯、穆勒",
       "zh-Hant": "諾茵、亞歷克斯、穆勒",
+      "zh-Hant-HK": "奈、亞歷克斯、穆勒",
       "ja": "ノイン、アレックス、ミューラー",
       "en": "Noin, Alex, Mueller",
       "ko": "노인, 알렉스, 뮐러"
@@ -177,6 +179,7 @@
      "note": {
       "zh-Hans": "杰克斯被击坠时撤退",
       "zh-Hant": "傑克斯被擊墜時撤退",
+      "zh-Hant-HK": "積古斯被擊墜時撤退",
       "ja": "ゼクスが撃墜されると撤退",
       "en": "Retreat when Zechs is shot down",
       "ko": "젝스가 격추되면 퇴각"

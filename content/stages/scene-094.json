@@ -4,6 +4,7 @@
  "title": {
   "zh-Hans": "库斯科绝对防卫线（下）",
   "zh-Hant": "庫斯科絕對防衛線（下）",
+  "zh-Hant-HK": "庫斯科絕對防衞線（下）",
   "ja": "クスコ絶対防衛線 （後）",
   "en": "Cusco Absolute Defense Line (Part 2)",
   "ko": "쿠스코 절대 방위선 후편"
@@ -17,6 +18,7 @@
    "lane": {
     "zh-Hans": "OZ路线／随特列斯",
     "zh-Hant": "OZ路線／隨特列斯",
+    "zh-Hant-HK": "OZ路線／隨杜魯斯",
     "ja": "OZルート／トレーズにつく",
     "en": "OZ route / with Treize",
     "ko": "OZ 루트 / 트레즈와 함께"

@@ -85,7 +85,7 @@ class RecompLauncherFileTest(unittest.TestCase):
 
     def test_setting_values_are_the_games(self):
         settings = source("src/native/ui/presentation_settings.cpp")
-        catalogs = {"zh-Hans", "zh-Hant", "ja", "en", "ko"}
+        catalogs = {"zh-Hans", "zh-Hant", "zh-Hant-HK", "ja", "en", "ko"}
         by_id = {setting["id"]: setting for setting in self.data["settings"]}
         self.assertEqual(set(by_id), {"language", "ui_size", "refresh_rate", "map_unit_icons"})
         locales = {choice["set"]["locale"] for choice in by_id["language"]["choices"]}

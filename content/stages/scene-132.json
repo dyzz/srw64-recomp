@@ -4,6 +4,7 @@
  "title": {
   "zh-Hans": "阿克西斯攻防战（中）",
   "zh-Hant": "阿克西斯攻防戰（中）",
+  "zh-Hant-HK": "阿古捷斯攻防戰（中）",
   "ja": "アクシズの攻防 （中）",
   "en": "The Battle for Axis (Part 2)",
   "ko": "액시즈 공방전 중편"
@@ -27,6 +28,7 @@
      "title": {
       "zh-Hans": "普露兹",
       "zh-Hant": "普露茲",
+      "zh-Hant-HK": "波蕾二世",
       "ja": "プルツー",
       "en": "Ple-Two",
       "ko": "플 투"
@@ -34,6 +36,7 @@
      "text": {
       "zh-Hans": "格雷米还在场时用捷度说服普露兹，当场入队",
       "zh-Hant": "克雷米還在場時用傑特說服普露茲，當場入隊",
+      "zh-Hant-HK": "古利明還在場時用捷度説服波蕾二世，當場入隊",
       "ja": "グレミーがマップにいるうちにジュドーでプルツーを説得",
       "en": "Persuade Ple-Two with Judau while Glemy is still on the map",
       "ko": "글레미가 맵에 있을 때 쥬도로 플 투 설득"
@@ -52,6 +55,7 @@
      "from": {
       "zh-Hans": "格雷米",
       "zh-Hant": "克雷米",
+      "zh-Hant-HK": "古利明",
       "ja": "グレミー",
       "en": "Glemy",
       "ko": "글레미"
@@ -62,6 +66,7 @@
      "part": {
       "zh-Hans": "精神感应框架",
       "zh-Hant": "精神感應框體",
+      "zh-Hant-HK": "精神感應框架",
       "ja": "サイコフレーム",
       "en": "Psycoframe",
       "ko": "사이코 프레임"
@@ -69,6 +74,7 @@
      "from": {
       "zh-Hans": "普露兹",
       "zh-Hant": "普露茲",
+      "zh-Hant-HK": "波蕾二世",
       "ja": "プルツー",
       "en": "Ple-Two",
       "ko": "플 투"
@@ -76,6 +82,7 @@
      "note": {
       "zh-Hans": "可被捷度说服（说服后不掉落）",
       "zh-Hant": "可被傑特說服（說服後不掉落）",
+      "zh-Hant-HK": "可被捷度説服（説服後不掉落）",
       "ja": "ジュドーで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Judau (no drop if persuaded)",
       "ko": "쥬도로 설득 가능(설득하면 드롭 없음)"

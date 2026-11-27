@@ -27,6 +27,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"
@@ -51,6 +52,7 @@
      "from": {
       "zh-Hans": "盖亚",
       "zh-Hant": "海亞",
+      "zh-Hant-HK": "基恩",
       "ja": "ガイヤー",
       "en": "Gaia",
       "ko": "가이아"
@@ -125,6 +127,7 @@
      "from": {
       "zh-Hans": "亚赞",
       "zh-Hant": "亞贊",
+      "zh-Hant-HK": "日札",
       "ja": "ヤザン",
       "en": "Yazan",
       "ko": "야잔"

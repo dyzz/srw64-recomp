@@ -17,6 +17,7 @@
    "lane": {
     "zh-Hans": "OZ路线／随特列斯",
     "zh-Hant": "OZ路線／隨特列斯",
+    "zh-Hant-HK": "OZ路線／隨杜魯斯",
     "ja": "OZルート／トレーズにつく",
     "en": "OZ route / with Treize",
     "ko": "OZ 루트 / 트레즈와 함께"
@@ -27,6 +28,7 @@
      "title": {
       "zh-Hans": "卡多＋GP02A酸浆果",
       "zh-Hant": "卡多＋GP02A賽薩里斯",
+      "zh-Hant-HK": "賈圖＋GP02A賽薩里斯",
       "ja": "ガトー＋GP02Aサイサリス",
       "en": "Gato + GP02A Physalis",
       "ko": "가토 + GP02A 사이살리스"
@@ -34,6 +36,7 @@
      "text": {
       "zh-Hans": "上一关选「应该与哈曼合作」时卡多关末离队",
       "zh-Hant": "上一關選「應該與哈曼合作」時卡多關末離隊",
+      "zh-Hant-HK": "上一關選「應該與哈曼合作」時賈圖關末離隊",
       "ja": "「ハマーンと協力するべきだ」を選んだ場合、クリア時にガトー離脱",
       "en": "Gato leaves at the end if you chose “We should cooperate with Haman”",
       "ko": "“하만과 협력해야 한다”를 골랐다면 종료 시 가토 이탈"
@@ -44,6 +47,7 @@
      "title": {
       "zh-Hans": "千鹤手术支线（孔巴特拉V 能否出击）",
       "zh-Hant": "千鶴手術支線（孔巴德拉V 能否出擊）",
+      "zh-Hant-HK": "飛鶴手術支線（超力電磁俠 能否出擊）",
       "ja": "ちずる手術分岐（コン・バトラーV の出撃可否）",
       "en": "Chizuru surgery branch (whether Combattler V can deploy)",
       "ko": "치즈루 수술 분기(컴배틀러 V 출격 가능 여부)"
@@ -51,6 +55,7 @@
      "text": {
       "zh-Hans": "豹马不出击可避开千鹤手术（上一关击坠数不足 15）",
       "zh-Hant": "豹馬不出擊可避開千鶴手術（上一關擊墜數不足 15）",
+      "zh-Hant-HK": "天豹不出擊可避開飛鶴手術（上一關擊墜數不足 15）",
       "ja": "豹馬を出撃させずちずるの手術を回避（前ステージ撃墜15未満）",
       "en": "Don't deploy Hyoma to avoid the Chizuru surgery (<15 kills last stage)",
       "ko": "효마를 출격시키지 않아 치즈루 수술 회피(이전 스테이지 격추 수 15 미만)"
@@ -69,6 +74,7 @@
      "from": {
       "zh-Hans": "亚赞",
       "zh-Hant": "亞贊",
+      "zh-Hant-HK": "日札",
       "ja": "ヤザン",
       "en": "Yazan",
       "ko": "야잔"
@@ -76,6 +82,7 @@
      "note": {
       "zh-Hans": "敌剩 10 台以下后第 2 回合我方阶段随西罗克撤退",
       "zh-Hant": "敵剩 10 臺以下後第 2 回合我方階段隨西羅克撤退",
+      "zh-Hant-HK": "敵剩 10 台以下後第 2 回合我方階段隨斯洛哥撤退",
       "ja": "敵残り10機以下の2ターン後、シロッコと撤退",
       "en": "Retreats with Scirocco 2 turns after ≤10 enemies remain",
       "ko": "적 10기 이하 2턴 후 시로코와 함께 퇴각"
@@ -110,6 +117,7 @@
      "from": {
       "zh-Hans": "杰利德",
       "zh-Hant": "傑利特",
+      "zh-Hant-HK": "尊尼特",
       "ja": "ジェリド",
       "en": "Jerid",
       "ko": "제리드"
@@ -134,6 +142,7 @@
      "from": {
       "zh-Hans": "西罗克",
       "zh-Hant": "西羅克",
+      "zh-Hant-HK": "斯洛哥",
       "ja": "シロッコ",
       "en": "Scirocco",
       "ko": "시로코"
@@ -141,6 +150,7 @@
      "note": {
       "zh-Hans": "敌剩 10 台以下后第 2 回合我方阶段撤退",
       "zh-Hant": "敵剩 10 臺以下後第 2 回合我方階段撤退",
+      "zh-Hant-HK": "敵剩 10 台以下後第 2 回合我方階段撤退",
       "ja": "敵残り10機以下の2ターン後の味方フェイズに撤退",
       "en": "Retreats player phase 2 turns after ≤10 enemies remain",
       "ko": "적 10기 이하 2턴 후 아군 페이즈에 퇴각"
@@ -152,6 +162,7 @@
      "from": {
       "zh-Hans": "拉姆萨斯、邓克尔",
       "zh-Hant": "拉姆薩斯、鄧肯",
+      "zh-Hant-HK": "拉武沙殊、丹基路",
       "ja": "ラムサス、ダンケル",
       "en": "Ramsus, Dunkel",
       "ko": "람사스, 단켈"
@@ -159,6 +170,7 @@
      "note": {
       "zh-Hans": "随西罗克撤退",
       "zh-Hant": "隨西羅克撤退",
+      "zh-Hant-HK": "隨斯洛哥撤退",
       "ja": "シロッコと一緒に撤退",
       "en": "Retreat with Scirocco",
       "ko": "시로코와 함께 퇴각"

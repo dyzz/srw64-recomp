@@ -1,0 +1,7 @@
+# 自動產生：tools/translation/make_zh_hant.py 由 content/dialogue/zh-Hans 轉換，只有香港寫法與台灣不同的條目，其餘照 content/dialogue/zh-Hant。重新產生時會整體覆蓋；要修改請把條目複製到使用者目錄（見 docs/guide/dialogue-text.md）。
+
+@14700 羅伯特 · ロベルト
+# 觸發：使用〈ハイメガキャノン〉（低優先，可能被通用台詞頂掉）
+> 「エネルギー充填……
+>  いけっ! ハイメガキャノン!!」
+「能量填充……發射！高能米加加農炮！！」

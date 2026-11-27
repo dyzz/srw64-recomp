@@ -34,6 +34,7 @@
      "text": {
       "zh-Hans": "用英二说服盖尔（无门槛，日后入队）",
       "zh-Hant": "用英二說服蓋爾（無門檻，日後入隊）",
+      "zh-Hant-HK": "用英司説服蓋爾（無門檻，日後入隊）",
       "ja": "エイジでゲイルを説得（条件なし、後に加入）",
       "en": "Persuade Gale with Eiji (no prerequisite; joins later)",
       "ko": "에이지로 게일을 설득(사전 조건 없음, 합류는 나중)"
@@ -52,6 +53,7 @@
      "from": {
       "zh-Hans": "杰克斯",
       "zh-Hant": "傑克斯",
+      "zh-Hant-HK": "積古斯",
       "ja": "ゼクス",
       "en": "Zechs",
       "ko": "젝스"
@@ -83,6 +85,7 @@
      "note": {
       "zh-Hans": "可被英二说服（说服后不掉落）",
       "zh-Hant": "可被英二說服（說服後不掉落）",
+      "zh-Hant-HK": "可被英司説服（説服後不掉落）",
       "ja": "エイジで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Eiji (no drop if persuaded)",
       "ko": "에이지로 설득 가능(설득하면 파츠 드롭 없음)"
@@ -93,6 +96,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"
@@ -113,6 +117,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"

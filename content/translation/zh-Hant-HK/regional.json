@@ -1,0 +1,552 @@
+{
+ "schema": "srw64.zh-hant-hk-regional.v1",
+ "about": "Hong Kong words and characters for zh-Hant-HK (src/srw64_native/zh_hant_hk.py), from Super Robot Wars Z (tools/translation/import_srwz_hk.py). terms: a mainland word (sc) becomes hk where the record's Japanese has one of jp and none of jp_not; tw is Taiwan's, for reference. Group srw64 rules are ours, kept on import. characters: Taiwan form -> Hong Kong form.",
+ "source": {
+  "repository": "Super-Robot-Wars-Z/srwz-zh",
+  "commit": "5f23323b40f9da154f2306449abd6303a765f70b",
+  "date": "2026-11-27",
+  "files": {
+   "config/zh-hant/regional-terms.json": "ac95df331e93bc305eec54b00012561612244753dd5a9f25c267ce65ac1637a0",
+   "config/zh-hant/hk-characters.json": "d455dd2b6995db48e627ef1d44ce323ef06c32739e15ded361743c3a0f5ca7a2",
+   "config/zh-hant/regional-names.json": "1e0f571dcf06e11f784a73037a6e76438d103f41eb8534b1492fc549e6b77d46"
+  }
+ },
+ "sources": {
+  "franchise": "zh.wikipedia.org zh-tw / zh-hk variants, read 2026-11-18: 魔神Z (無敵鐵金剛 / 鐵甲萬能俠), 蓋特機器人 / 三一萬能俠 (Getter-1 三一1號), 金剛戰神 / 巨靈神, 創聖機械天使 / 創聖大天使, 機動戰士鋼彈 / 機動戰士高達. Zambot 3, Daitarn 3 and Eureka Seven showed no regional difference and stay as they are."
+ },
+ "terms": [
+  {
+   "group": "franchise",
+   "sc": "高达",
+   "tw": "鋼彈",
+   "hk": "高達",
+   "note": "ガンダム; translators also write 命运高达 for デスティニー, so not bound to the Japanese. No 高达 = 'reaching' in the corpus."
+  },
+  {
+   "group": "franchise",
+   "sc": "魔神Z",
+   "tw": "無敵鐵金剛",
+   "hk": "鐵甲萬能俠",
+   "note": "マジンガーZ (robot and series). 大魔神 (グレートマジンガー) not covered."
+  },
+  {
+   "group": "franchise",
+   "sc": "古连泰沙",
+   "tw": "金剛戰神",
+   "hk": "巨靈神",
+   "note": "グレンダイザー"
+  },
+  {
+   "group": "franchise",
+   "sc": "盖塔机器人",
+   "tw": "蓋特機器人",
+   "hk": "三一萬能俠",
+   "note": "ゲッターロボ"
+  },
+  {
+   "group": "franchise",
+   "sc": "盖塔",
+   "tw": "蓋特",
+   "hk": "三一",
+   "note": "ゲッター (Getter-1 = 蓋特1號 / 三一1號); pilots keep their names"
+  },
+  {
+   "group": "franchise",
+   "sc": "创圣的大天使",
+   "tw": "創聖機械天使",
+   "hk": "創聖大天使",
+   "note": "series title"
+  },
+  {
+   "group": "franchise",
+   "sc": "机器人",
+   "tw": "機器人",
+   "hk": "機械人",
+   "note": "ロボット, includes 超級機器人大戰"
+  },
+  {
+   "group": "term",
+   "sc": "导弹",
+   "tw": "飛彈",
+   "hk": "導彈"
+  },
+  {
+   "group": "term",
+   "sc": "激光",
+   "tw": "雷射",
+   "hk": "激光"
+  },
+  {
+   "group": "term",
+   "sc": "等离子",
+   "tw": "電漿",
+   "hk": "等離子"
+  },
+  {
+   "group": "term",
+   "sc": "纳米",
+   "tw": "奈米",
+   "hk": "納米"
+  },
+  {
+   "group": "term",
+   "sc": "数据",
+   "tw": "資料",
+   "hk": "數據",
+   "note": "the Traditional bootstrap already writes 資料"
+  },
+  {
+   "group": "term",
+   "sc": "信息",
+   "tw": "資訊",
+   "hk": "資訊",
+   "jp": [
+    "情報"
+   ],
+   "jp_not": [
+    "メッセージ"
+   ],
+   "note": "information"
+  },
+  {
+   "group": "term",
+   "sc": "信息",
+   "tw": "訊息",
+   "hk": "信息",
+   "note": "message (default)"
+  },
+  {
+   "group": "term",
+   "sc": "程序",
+   "tw": "程式",
+   "hk": "程式",
+   "jp": [
+    "プログラム"
+   ],
+   "note": "程序 = procedure stays"
+  },
+  {
+   "group": "term",
+   "sc": "网络",
+   "tw": "網路",
+   "hk": "網絡"
+  },
+  {
+   "group": "term",
+   "sc": "软件",
+   "tw": "軟體",
+   "hk": "軟件"
+  },
+  {
+   "group": "term",
+   "sc": "硬件",
+   "tw": "硬體",
+   "hk": "硬件"
+  },
+  {
+   "group": "term",
+   "sc": "视频",
+   "tw": "影片",
+   "hk": "影片"
+  },
+  {
+   "group": "term",
+   "sc": "菜单",
+   "tw": "選單",
+   "hk": "選單"
+  },
+  {
+   "group": "term",
+   "sc": "光标",
+   "tw": "游標",
+   "hk": "游標"
+  },
+  {
+   "group": "term",
+   "sc": "默认",
+   "tw": "預設",
+   "hk": "預設"
+  },
+  {
+   "group": "term",
+   "sc": "存储卡",
+   "tw": "記憶卡",
+   "hk": "記憶卡"
+  },
+  {
+   "group": "term",
+   "sc": "文件",
+   "tw": "檔案",
+   "hk": "檔案",
+   "jp": [
+    "ファイル"
+   ],
+   "note": "文件 = document stays"
+  },
+  {
+   "group": "term",
+   "sc": "接口",
+   "tw": "介面",
+   "hk": "介面"
+  },
+  {
+   "group": "term",
+   "sc": "概率",
+   "tw": "機率",
+   "hk": "機率"
+  },
+  {
+   "group": "term",
+   "sc": "屏幕",
+   "tw": "螢幕",
+   "hk": "屏幕",
+   "note": "the Traditional bootstrap already writes 螢幕"
+  },
+  {
+   "group": "term",
+   "sc": "壁纸",
+   "tw": "桌布",
+   "hk": "牆紙"
+  },
+  {
+   "group": "term",
+   "sc": "传感器",
+   "tw": "感測器",
+   "hk": "感應器",
+   "note": "bootstrap already writes 感測器"
+  },
+  {
+   "group": "term",
+   "sc": "信号",
+   "tw": "訊號",
+   "hk": "信號",
+   "note": "bootstrap already writes 訊號"
+  },
+  {
+   "group": "term",
+   "sc": "智能",
+   "tw": "智慧",
+   "hk": "智能"
+  },
+  {
+   "group": "term",
+   "sc": "搜索",
+   "tw": "搜尋",
+   "hk": "搜尋",
+   "jp": [
+    "検索"
+   ],
+   "note": "data search only; 捜索 (searching for someone) stays"
+  },
+  {
+   "group": "term",
+   "sc": "芯片",
+   "tw": "晶片",
+   "hk": "晶片"
+  },
+  {
+   "group": "term",
+   "sc": "数字",
+   "tw": "數位",
+   "hk": "數碼",
+   "jp": [
+    "デジタル"
+   ],
+   "note": "digital only; 数字 = numeral stays"
+  },
+  {
+   "group": "term",
+   "sc": "摩托车",
+   "tw": "機車",
+   "hk": "電單車"
+  },
+  {
+   "group": "term",
+   "sc": "摩托",
+   "tw": "機車",
+   "hk": "電單車"
+  },
+  {
+   "group": "term",
+   "sc": "出租车",
+   "tw": "計程車",
+   "hk": "的士"
+  },
+  {
+   "group": "term",
+   "sc": "坦克",
+   "tw": "戰車",
+   "hk": "坦克"
+  },
+  {
+   "group": "term",
+   "sc": "航母",
+   "tw": "航艦",
+   "hk": "航母"
+  },
+  {
+   "group": "term",
+   "sc": "计划",
+   "tw": "計畫",
+   "hk": "計劃"
+  },
+  {
+   "group": "term",
+   "sc": "设置",
+   "tw": "設定",
+   "hk": "設定",
+   "jp": [
+    "設定"
+   ],
+   "jp_not": [
+    "設置"
+   ],
+   "note": "settings only; 設置 (install) stays"
+  },
+  {
+   "group": "term",
+   "sc": "保存",
+   "tw": "儲存",
+   "hk": "儲存",
+   "jp": [
+    "セーブ"
+   ],
+   "note": "save data only"
+  },
+  {
+   "group": "term",
+   "sc": "支持",
+   "tw": "支援",
+   "hk": "支援",
+   "jp": [
+    "サポート"
+   ],
+   "note": "support (assist) only"
+  },
+  {
+   "group": "term",
+   "sc": "项目",
+   "tw": "計畫",
+   "hk": "計劃",
+   "jp": [
+    "プロジェクト"
+   ],
+   "note": "project only; menu 項目 stays"
+  },
+  {
+   "group": "franchise",
+   "sc": "新人类",
+   "tw": "新人類",
+   "hk": "新類型人",
+   "jp": [
+    "ニュータイプ"
+   ],
+   "jp_not": [
+    "コーディネイター"
+   ],
+   "note": "Newtype in Gundam. SEED Coordinator and other series’ ordinary uses of 新人類 are distinct."
+  },
+  {
+   "group": "srw64",
+   "sc": "文件夹",
+   "tw": null,
+   "hk": "資料夾",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "文件管理器",
+   "tw": null,
+   "hk": "檔案管理器",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "设备",
+   "tw": null,
+   "hk": "裝置",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "导出",
+   "tw": null,
+   "hk": "匯出",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "导入",
+   "tw": null,
+   "hk": "匯入",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "不支持",
+   "tw": null,
+   "hk": "不支援",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "本程序",
+   "tw": null,
+   "hk": "本程式",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "窗口",
+   "tw": null,
+   "hk": "視窗",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "界面",
+   "tw": null,
+   "hk": "介面",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "图标",
+   "tw": null,
+   "hk": "圖示",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "剪贴板",
+   "tw": null,
+   "hk": "剪貼簿",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "卸载",
+   "tw": null,
+   "hk": "解除安裝",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "远程",
+   "tw": null,
+   "hk": "遙距",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "源代码",
+   "tw": null,
+   "hk": "原始碼",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "航天飞机",
+   "tw": null,
+   "hk": "穿梭機",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "奶酪",
+   "tw": null,
+   "hk": "芝士",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "交互",
+   "tw": null,
+   "hk": "互動",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "鼠标",
+   "tw": null,
+   "hk": "滑鼠",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "手柄",
+   "tw": null,
+   "hk": "手掣",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "分辨率",
+   "tw": null,
+   "hk": "解像度",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "链接",
+   "tw": null,
+   "hk": "連結",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "账号",
+   "tw": null,
+   "hk": "帳戶",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  },
+  {
+   "group": "srw64",
+   "sc": "博客",
+   "tw": null,
+   "hk": "網誌",
+   "note": "SRW64 的补充（界面、电脑用语等机战 Z 表里没有的词），2026-11-27 Claude 按香港常用写法起草，待用户审核"
+  }
+ ],
+ "characters": {
+  "說": "説",
+  "裡": "裏",
+  "著": "着",
+  "臺": "台",
+  "衛": "衞",
+  "脫": "脱",
+  "溫": "温",
+  "啟": "啓",
+  "銳": "鋭",
+  "汙": "污",
+  "洩": "泄",
+  "麵": "麪",
+  "鉤": "鈎",
+  "戶": "户",
+  "悅": "悦",
+  "閱": "閲",
+  "溼": "濕",
+  "稅": "税",
+  "兌": "兑",
+  "叄": "叁",
+  "蘊": "藴",
+  "醞": "醖",
+  "臥": "卧",
+  "痺": "痹",
+  "蔥": "葱",
+  "韁": "繮",
+  "顎": "齶"
+ },
+ "left_out": {
+  "群→羣": "Hong Kong writes 群 in practice",
+  "參→蔘": "only ginseng; OpenCC maps every 參",
+  "梁→樑": "梁 is also a surname and a proper-name character",
+  "峰→峯": "proper names; both forms current in Hong Kong",
+  "床→牀": "牀 reads archaic to most readers",
+  "檯→枱": "context-dependent",
+  "柺→枴": "context-dependent",
+  "鯰→鮎": "different fish",
+  "么→幺": "different words",
+  "菸→煙": "context-dependent"
+ }
+}

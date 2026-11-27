@@ -4,6 +4,7 @@
  "title": {
   "zh-Hans": "在纷争不止的世界里（上）",
   "zh-Hant": "在紛爭不止的世界裡（上）",
+  "zh-Hant-HK": "在紛爭不止的世界裏（上）",
   "ja": "争い絶えない世界で （前）",
   "en": "In a World of Endless Strife (Part 1)",
   "ko": "다툼이 끊이지 않는 세계에서 전편"
@@ -34,6 +35,7 @@
      "from": {
       "zh-Hans": "多萝西",
       "zh-Hant": "桃樂斯",
+      "zh-Hant-HK": "多麗絲",
       "ja": "ドロシー",
       "en": "Dorothy",
       "ko": "도로시"
@@ -44,6 +46,7 @@
      "part": {
       "zh-Hans": "精神感应框架",
       "zh-Hant": "精神感應框體",
+      "zh-Hant-HK": "精神感應框架",
       "ja": "サイコフレーム",
       "en": "Psycoframe",
       "ko": "사이코 프레임"

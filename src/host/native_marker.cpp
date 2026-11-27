@@ -145,7 +145,7 @@ std::array<std::string, kPlateSlots> plateSlotLocales;   // a package's locale p
 std::array<uint32_t, kPlateSlots> plateSlotFallback{};    // the built-in slot it falls back to
 
 uint32_t built_in_plate(std::string locale) {
-    if (locale == "zh-Hant") locale = "zh-Hans";
+    if (locale == "zh-Hant" || locale == "zh-Hant-HK") locale = "zh-Hans";
     for (size_t i = 0; i < kPlateLocales.size(); ++i)
         if (locale == kPlateLocales[i]) return uint32_t(i);
     return 0;

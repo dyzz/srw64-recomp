@@ -27,6 +27,7 @@
      "title": {
       "zh-Hans": "重返战场：随特列斯或独自作战",
       "zh-Hant": "重返戰場：隨特列斯或獨自作戰",
+      "zh-Hant-HK": "重返戰場：隨杜魯斯或獨自作戰",
       "ja": "戦場に帰る：トレーズにつくか、自分たちだけで戦うか",
       "en": "Return to the Battlefield: with Treize or going it alone",
       "ko": "전장으로 돌아가다: 트레즈 편 또는 단독 항전"
@@ -45,6 +46,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"
@@ -69,6 +71,7 @@
      "from": {
       "zh-Hans": "罗塞",
       "zh-Hant": "蘿潔",
+      "zh-Hant-HK": "露絲",
       "ja": "ロゼ",
       "en": "Roze",
       "ko": "로제"
@@ -87,6 +90,7 @@
      "from": {
       "zh-Hans": "玛古",
       "zh-Hant": "馬可",
+      "zh-Hant-HK": "馬克",
       "ja": "マーグ",
       "en": "Marg",
       "ko": "마그"

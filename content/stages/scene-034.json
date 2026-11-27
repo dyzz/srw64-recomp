@@ -34,6 +34,7 @@
      "text": {
       "zh-Hans": "用玛娜米说服艾夏（第 1 步，无门槛）",
       "zh-Hant": "用瑪娜米說服艾夏（第 1 步，無門檻）",
+      "zh-Hant-HK": "用瑪娜米説服艾夏（第 1 步，無門檻）",
       "ja": "マナミでアイシャを説得（第1段階、条件なし）",
       "en": "Persuade Aisha with Manami (step 1, no prerequisite)",
       "ko": "마나미로 아이샤를 설득(1단계, 사전 조건 없음)"
@@ -85,6 +86,7 @@
      "part": {
       "zh-Hans": "远地点发动机",
       "zh-Hant": "遠地點發動機",
+      "zh-Hant-HK": "遠地點引擎",
       "ja": "アポジモーター",
       "en": "Apogee Motor",
       "ko": "아포지 모터"
@@ -92,6 +94,7 @@
      "from": {
       "zh-Hans": "巴斯克",
       "zh-Hant": "巴斯克",
+      "zh-Hant-HK": "貝斯克",
       "ja": "バスク",
       "en": "Bask",
       "ko": "바스크"
@@ -110,6 +113,7 @@
      "from": {
       "zh-Hans": "莱拉",
       "zh-Hant": "萊拉",
+      "zh-Hant-HK": "拉娜",
       "ja": "ライラ",
       "en": "Lila",
       "ko": "라일라"
@@ -128,6 +132,7 @@
      "from": {
       "zh-Hans": "亚赞",
       "zh-Hant": "亞贊",
+      "zh-Hant-HK": "日札",
       "ja": "ヤザン",
       "en": "Yazan",
       "ko": "야잔"
@@ -139,6 +144,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"
@@ -160,6 +166,7 @@
      "part": {
       "zh-Hans": "乔巴姆装甲",
       "zh-Hant": "複合裝甲",
+      "zh-Hant-HK": "喬巴姆裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor",
       "ko": "초밤 아머"

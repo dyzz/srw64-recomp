@@ -4,6 +4,7 @@
  "title": {
   "zh-Hans": "夏亚的叛乱",
   "zh-Hant": "夏亞的叛亂",
+  "zh-Hant-HK": "馬沙的叛亂",
   "ja": "シャアの反乱",
   "en": "Char's Rebellion",
   "ko": "샤아의 반란"
@@ -44,6 +45,7 @@
      "title": {
       "zh-Hans": "马修玛＋扎古Ⅲ改／姬拉＋盖马克",
       "zh-Hant": "馬修曼＋薩克Ⅲ改／凱拉＋蓋馬克",
+      "zh-Hant-HK": "馬士文＋渣古Ⅲ改／姬娜＋京麥古",
       "ja": "マシュマー＋ザクⅢ改／キャラ＋ゲーマルク",
       "en": "Mashymre + Zaku III Custom / Chara + Geymalk",
       "ko": "마슈마 + 자쿠 III 개 / 캐라 + 게마르크"
@@ -51,6 +53,7 @@
      "text": {
       "zh-Hans": "撑到第 8 回合我方阶段，说服过的马修玛或姬拉增援加入",
       "zh-Hant": "撐到第 8 回合我方階段，說服過的馬修曼或凱拉增援加入",
+      "zh-Hant-HK": "撐到第 8 回合我方階段，説服過的馬士文或姬娜增援加入",
       "ja": "第8ターン味方フェイズまでクリアしない（マシュマー／キャラ加入）",
       "en": "Don't clear before turn 8; persuaded Mashymre or Chara joins then",
       "ko": "8턴째 전에 클리어하지 말 것; 그때 설득한 마슈마 또는 캐라가 합류"
@@ -61,6 +64,7 @@
      "title": {
       "zh-Hans": "诺耶·吉尔",
       "zh-Hant": "諾耶·吉爾",
+      "zh-Hant-HK": "露維·捷露",
       "ja": "ノイエ・ジール",
       "en": "Neue Ziel",
       "ko": "노이에 질"
@@ -68,6 +72,7 @@
      "text": {
       "zh-Hans": "无需操作：关末获得诺耶·吉尔（需没走过完全和平路线）",
       "zh-Hant": "無需操作：關末獲得諾耶·吉爾（需沒走過完全和平路線）",
+      "zh-Hant-HK": "無需操作：關末獲得露維·捷露（需沒走過完全和平路線）",
       "ja": "操作不要：クリア時ノイエ・ジール入手（完全平和ルート未経由）",
       "en": "No action: get the Neue Ziel at stage end (not via Complete Pacifism)",
       "ko": "할 일 없음: 스테이지 종료 시 노이에 질 입수(완전평화 루트 경유 시 제외)"
@@ -86,6 +91,7 @@
      "from": {
       "zh-Hans": "邱尼",
       "zh-Hant": "裘尼",
+      "zh-Hant-HK": "基尼",
       "ja": "ギュネイ",
       "en": "Gyunei",
       "ko": "규네이"
@@ -93,6 +99,7 @@
      "note": {
       "zh-Hans": "夏亚 HP 30% 以下或被击坠时离场",
       "zh-Hant": "夏亞 HP 30% 以下或被擊墜時離場",
+      "zh-Hant-HK": "馬沙 HP 30% 以下或被擊墜時離場",
       "ja": "シャアHP30%以下か撃墜で離脱",
       "en": "Leaves when Char drops to 30% HP or is shot down",
       "ko": "샤아가 HP 30% 이하가 되거나 격추되면 이탈"
@@ -103,6 +110,7 @@
      "part": {
       "zh-Hans": "精神感应框架",
       "zh-Hant": "精神感應框體",
+      "zh-Hant-HK": "精神感應框架",
       "ja": "サイコフレーム",
       "en": "Psycoframe",
       "ko": "사이코 프레임"
@@ -110,6 +118,7 @@
      "from": {
       "zh-Hans": "夏亚",
       "zh-Hant": "夏亞",
+      "zh-Hant-HK": "馬沙",
       "ja": "シャア",
       "en": "Char",
       "ko": "샤아"
@@ -141,6 +150,7 @@
      "note": {
       "zh-Hans": "夏亚 HP 30% 以下或被击坠时离场",
       "zh-Hant": "夏亞 HP 30% 以下或被擊墜時離場",
+      "zh-Hant-HK": "馬沙 HP 30% 以下或被擊墜時離場",
       "ja": "シャアHP30%以下か撃墜で離脱",
       "en": "Leaves when Char drops to 30% HP or is shot down",
       "ko": "샤아가 HP 30% 이하가 되거나 격추되면 이탈"
@@ -161,6 +171,7 @@
      "from": {
       "zh-Hans": "蕾森",
       "zh-Hant": "蕾森",
+      "zh-Hant-HK": "莉芝",
       "ja": "レズン",
       "en": "Rezin",
       "ko": "레즌"
@@ -185,6 +196,7 @@
      "from": {
       "zh-Hans": "卡多",
       "zh-Hant": "卡多",
+      "zh-Hant-HK": "賈圖",
       "ja": "ガトー",
       "en": "Gato",
       "ko": "가토"
@@ -192,6 +204,7 @@
      "note": {
       "zh-Hans": "夏亚 HP 30% 以下或被击坠时离场",
       "zh-Hant": "夏亞 HP 30% 以下或被擊墜時離場",
+      "zh-Hant-HK": "馬沙 HP 30% 以下或被擊墜時離場",
       "ja": "シャアHP30%以下か撃墜で離脱",
       "en": "Leaves when Char drops to 30% HP or is shot down",
       "ko": "샤아가 HP 30% 이하가 되거나 격추되면 이탈"

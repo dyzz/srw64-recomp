@@ -3311,6 +3311,7 @@
      "label": {
       "zh-Hans": "随特列斯",
       "zh-Hant": "隨特列斯",
+      "zh-Hant-HK": "隨杜魯斯",
       "en": "With Treize",
       "ja": "トレーズにつく",
       "ko": "트레즈를 따름"
@@ -3582,6 +3583,7 @@
      "label": {
       "zh-Hans": "跟多蒙他们走",
       "zh-Hant": "跟多門他們走",
+      "zh-Hant-HK": "跟杜門他們走",
       "en": "Went with Domon",
       "ja": "ドモンたちと行く",
       "ko": "도몬 일행과 함께"
@@ -3595,6 +3597,7 @@
      "label": {
       "zh-Hans": "跟豹马他们走",
       "zh-Hant": "跟豹馬他們走",
+      "zh-Hant-HK": "跟天豹他們走",
       "en": "Went with Hyoma",
       "ja": "豹馬たちと行く",
       "ko": "효마 일행과 함께"

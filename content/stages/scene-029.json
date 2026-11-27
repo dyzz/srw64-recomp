@@ -27,6 +27,7 @@
      "part": {
       "zh-Hans": "精神感应框架",
       "zh-Hant": "精神感應框體",
+      "zh-Hant-HK": "精神感應框架",
       "ja": "サイコフレーム",
       "en": "Psycoframe",
       "ko": "사이코 프레임"
@@ -58,6 +59,7 @@
      "from": {
       "zh-Hans": "京二",
       "zh-Hant": "恭志",
+      "zh-Hant-HK": "京治",
       "ja": "キョウジ",
       "en": "Kyoji",
       "ko": "쿄우지"

@@ -137,6 +137,36 @@ int main(int argc,char** argv) {
     localization::initialize(data);
     check(localization::style("ko")=="ko" && !localization::is_package("fr"),"initialize resets ours too");
 
+    // Hong Kong, ours standing on Taiwan as a region of Traditional Chinese (docs/design/zh-hant-hk.md):
+    // the language shows once, F7 skips the region not chosen, the chosen one is remembered.
+    auto regional=data;
+    regional["locale_catalogs"]["zh-Hant"]={{"config",{{"locale","zh-Hant"},{"font","x"},{"region","TW"}}},{"entries",json::object()},{"ui",{{"hello","你好"},{"press","按 {A}"}}}};
+    regional["locale_catalogs"]["zh-Hant-HK"]={{"config",{{"locale","zh-Hant-HK"},{"font","x"},{"fallback","zh-Hant"},{"region","HK"}}},
+        {"entries",json::object()},{"ui",{{"hello","你好"},{"press","按 {A}"}}}};
+    regional["locale_options"]={{{"locale","ja"},{"label","日本語"}},{{"locale","zh-Hant"},{"label","繁體中文"}},
+        {{"locale","zh-Hant-HK"},{"label","繁體中文（香港）"}},{{"locale","en"},{"label","English"}}};
+    localization::set_chosen_regions({});
+    localization::initialize(regional);
+    check(localization::family("zh-Hant-HK")=="zh-Hant" && localization::family("zh-Hant")=="zh-Hant" && localization::family("en")=="en","one language");
+    check(localization::region("zh-Hant-HK")=="HK" && localization::region("zh-Hant")=="TW" && localization::region("ja").empty(),"two regions");
+    check(localization::regions("zh-Hant-HK")==std::vector<std::string>{"zh-Hant","zh-Hant-HK"} && localization::regions("en").empty(),"its regions, in order");
+    check(localization::style("zh-Hant-HK")=="zh-Hant" && localization::fallbacks("zh-Hant-HK")==std::vector<std::string>{"zh-Hant-HK","zh-Hant","zh-Hans","ja"},
+          "typeset and chained as Taiwan");
+    check(localization::language_options().size()==3 && localization::language_options()[1]==std::pair<std::string,std::string>{"zh-Hant","繁體中文"},
+          "the language once, at Taiwan before a choice");
+    check(localization::next_locale("ja")=="zh-Hant" && localization::next_locale("zh-Hant")=="en" && localization::next_locale("zh-Hant-HK")=="en",
+          "F7 passes the language once");
+    localization::activate(localization::find("zh-Hant-HK"));
+    check(localization::chosen_region("zh-Hant")=="zh-Hant-HK" && localization::next_locale("ja")=="zh-Hant-HK" &&
+          localization::language_options()[1].first=="zh-Hant-HK","entered at the region chosen last");
+    localization::activate(localization::find("en"));
+    check(localization::chosen_regions()==std::map<std::string,std::string>{{"zh-Hant","zh-Hant-HK"}},"remembered while another is read");
+    localization::set_chosen_regions({{"zh-Hant","zh-Hant"}});
+    check(localization::next_locale("ja")=="zh-Hant","as the settings say");
+    localization::set_chosen_regions({{"zh-Hant","en"}});
+    check(localization::chosen_region("zh-Hant")=="zh-Hant","not a region of that language");
+    localization::set_chosen_regions({{"zh-Hant","zh-Hant"}});
+
     if(failures){std::fprintf(stderr,"%d failure(s)\n",failures);return 1;}
     std::puts("mod languages: ok");
     return 0;

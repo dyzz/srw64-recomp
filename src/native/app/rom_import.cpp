@@ -89,6 +89,8 @@ json compile_text(Bytes rom,const json& spec) {
         // A locale standing on another (Korean on English, docs/design/korean.md): the spec
         // has its fallback's labels and records in it already; the host typesets it so.
         if(locale.contains("fallback"))catalogs[id]["config"]["fallback"]=locale.at("fallback").get<std::string>();
+        // Hong Kong, Taiwan: the regions of Traditional Chinese (docs/design/zh-hant-hk.md).
+        if(locale.contains("region"))catalogs[id]["config"]["region"]=locale.at("region").get<std::string>();
         options.push_back({{"locale",id},{"label",locale.value("display_name",id)},{"translated",entries.size()},
                            {"source",records.size()},{"reviewed",reviewed}});
     }

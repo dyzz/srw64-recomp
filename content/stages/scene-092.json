@@ -17,6 +17,7 @@
    "lane": {
     "zh-Hans": "OZ路线／随特列斯",
     "zh-Hant": "OZ路線／隨特列斯",
+    "zh-Hant-HK": "OZ路線／隨杜魯斯",
     "ja": "OZルート／トレーズにつく",
     "en": "OZ route / with Treize",
     "ko": "OZ 루트 / 트레즈와 함께"
@@ -44,6 +45,7 @@
      "title": {
       "zh-Hans": "基里卡",
       "zh-Hant": "基裡卡",
+      "zh-Hant-HK": "基裏卡",
       "ja": "キリカ",
       "en": "Kirika",
       "ko": "키리카"
@@ -51,6 +53,7 @@
      "text": {
       "zh-Hans": "基里卡登场后先用杜克、再用玛丽亚说服",
       "zh-Hant": "基裡卡登場後先用狄克、再用瑪莉亞說服",
+      "zh-Hant-HK": "基裏卡登場後先用狄克、再用瑪莉亞説服",
       "ja": "キリカをデューク→マリアの順で説得",
       "en": "Persuade Kirika with Duke, then Maria (in that order)",
       "ko": "듀크, 마리아 순으로 키리카 설득(순서 고정)"
@@ -137,6 +140,7 @@
      "from": {
       "zh-Hans": "基里卡",
       "zh-Hant": "基裡卡",
+      "zh-Hant-HK": "基裏卡",
       "ja": "キリカ",
       "en": "Kirika",
       "ko": "키리카"
@@ -144,6 +148,7 @@
      "note": {
       "zh-Hans": "敌方剩 15 台以下时登场，说服后不掉落",
       "zh-Hant": "敵方剩 15 臺以下時登場，說服後不掉落",
+      "zh-Hant-HK": "敵方剩 15 台以下時登場，説服後不掉落",
       "ja": "敵残り15機以下で登場、説得時はドロップなし",
       "en": "Appears at 15 or fewer enemies; no drop if persuaded",
       "ko": "적 15기 이하에서 등장; 설득하면 드롭 없음"

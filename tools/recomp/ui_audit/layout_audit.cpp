@@ -361,10 +361,11 @@ int main(int argc,char** argv){try{
     // The catalogs as the host registers them; the pages only read their UI labels.
     json data={{"schema","srw64.native-dialogue-data.v2"},{"config",{{"locale","zh-Hans"},{"font","-"}}},{"entries",json::object()},
         {"source_entries",json::object()},{"ui",json::object()},{"locale_catalogs",json::object()},{"locale_options",json::array()}};
-    for(const auto* locale:{"ja","zh-Hans","zh-Hant","en","ko"}) {
+    for(const auto* locale:{"ja","zh-Hans","zh-Hant","zh-Hant-HK","en","ko"}) {
         const auto doc=load(locales/(std::string(locale)+".json"));
         json config={{"locale",locale},{"font","-"}},ui=doc.at("ui");
-        // Korean stands on English (docs/design/korean.md): its labels over English's.
+        if(doc.contains("region"))config["region"]=doc.at("region");
+        // Korean stands on English (docs/design/korean.md), Hong Kong on Taiwan: its labels over those.
         if(doc.contains("fallback")) {
             const auto fallback=doc.at("fallback").get<std::string>();
             config["fallback"]=fallback;

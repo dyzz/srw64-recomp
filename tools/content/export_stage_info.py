@@ -23,7 +23,8 @@ listed below, so a reworded translation fails here instead of showing twice.
 The result is one metadata file per stage, content/stages/scene-NNN.json
 (srw64.stage-meta.v1): its title and, per route that plays it (two for the side-branch
 stages 123 and 124), the episode, the lane, the hidden elements and the enemies, each
-text an object by language (zh-Hant converted from zh-Hans, src/srw64_native/zh_hant.py).
+text an object by language (zh-Hant converted from zh-Hans, src/srw64_native/zh_hant.py, and
+zh-Hant-HK where it reads differently, src/srw64_native/zh_hant_hk.py).
 A custom campaign's stages carry the same format
 (docs/design/custom-campaign.md). content/stages/status.json carries the status rules
 (guide/data/status-rules.json) with the scene graph they are judged on
@@ -46,6 +47,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 import stage_status  # noqa: E402
 from srw64_native.zh_hant import Converter  # noqa: E402
+from srw64_native.zh_hant_hk import HongKong  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 GUIDE = ROOT / "guide" / "data"
@@ -220,10 +222,10 @@ def stage_meta() -> dict[int, dict]:
 
 
 def outputs() -> dict[Path, str]:
-    hant = Converter(ROOT)
-    files = {OUTPUT / f"scene-{scene:03d}.json": json.dumps(hant.add_to(doc), ensure_ascii=False, indent=1) + "\n"
+    hant, hk = Converter(ROOT), HongKong(ROOT)
+    files = {OUTPUT / f"scene-{scene:03d}.json": json.dumps(hk.add_to(hant.add_to(doc)), ensure_ascii=False, indent=1) + "\n"
              for scene, doc in stage_meta().items()}
-    files[OUTPUT / "status.json"] = json.dumps(hant.add_to(status()), ensure_ascii=False, indent=1) + "\n"
+    files[OUTPUT / "status.json"] = json.dumps(hk.add_to(hant.add_to(status())), ensure_ascii=False, indent=1) + "\n"
     return files
 
 

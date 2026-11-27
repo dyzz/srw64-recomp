@@ -20,7 +20,7 @@ inline std::string old_android_driver(const std::string& locale) {
     if (locale == "ko")
         return "Marchwind64를 실행할 수 없습니다. 이 기기의 그래픽 드라이버가 너무 오래되어 게임 화면의 셰이더를 만드는 도중 강제 종료됩니다.\n"
                "Android 11 이상으로 업데이트한 뒤 다시 실행해 주세요. 같은 기종도 업데이트 후에는 정상적으로 작동합니다.";
-    if (locale == "zh-Hant")
+    if (locale.starts_with("zh-Hant"))
         return "無法啟動 Marchwind64：這台手機的顯示卡驅動程式太舊，在產生遊戲畫面所需的著色器時會當機。\n"
                "請把系統更新到 Android 11 或更新版本，然後重新啟動。同款手機更新系統後可以正常執行。";
     return "无法启动 Marchwind64：这台手机的显卡驱动太旧，在生成游戏画面所需的着色器时会崩溃。\n"
@@ -68,7 +68,7 @@ inline std::string message(const std::string& locale, const std::vector<std::str
         if (!log.empty()) text += "\n\n문제를 신고할 때는 이 파일을 첨부해 주세요:\n" + log;
         return text;
     }
-    if (locale == "zh-Hant") {
+    if (locale.starts_with("zh-Hant")) {
         text = "無法啟動 Marchwind64：這台電腦的顯示卡驅動程式無法繪製遊戲畫面。\n"
                "Marchwind64 需要 DirectX 12 或 Vulkan。請到顯示卡廠商（Intel、AMD 或 NVIDIA）官網下載並安裝最新驅動程式，"
                "然後重新啟動。Windows Update 或電腦廠商提供的驅動程式有時缺少這些部分。\n";

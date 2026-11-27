@@ -27,6 +27,7 @@
      "title": {
       "zh-Hans": "阿莲比＋诺贝尔高达",
       "zh-Hant": "阿蓮比＋諾貝爾鋼彈",
+      "zh-Hant-HK": "阿蓮比＋美少女高達",
       "ja": "アレンビー＋ノーベルガンダム",
       "en": "Allenby + Noble Gundam",
       "ko": "아렌비 + 노벨 건담"
@@ -34,6 +35,7 @@
      "text": {
       "zh-Hans": "第 5 回合敌方阶段前先用多蒙、再用玲说服阿莲比",
       "zh-Hant": "第 5 回合敵方階段前先用多門、再用玲說服阿蓮比",
+      "zh-Hant-HK": "第 5 回合敵方階段前先用杜門、再用玲説服阿蓮比",
       "ja": "第5ターン敵フェイズまでにドモン→レインでアレンビーを説得",
       "en": "Persuade Allenby with Domon, then Rain, before turn 5 enemy phase",
       "ko": "5턴째 적 페이즈 전에 도몬, 레인 순으로 아렌비 설득"
@@ -61,6 +63,7 @@
      "title": {
       "zh-Hans": "只影响对白的分支",
       "zh-Hant": "只影響對白的分支",
+      "zh-Hant-HK": "隻影響對白的分支",
       "ja": "台詞のみの分岐",
       "en": "Dialogue-only branches",
       "ko": "대사만 바뀌는 분기"
@@ -68,6 +71,7 @@
      "text": {
       "zh-Hans": "无需操作：多蒙击败东方不败的台词随是否交战过而变",
       "zh-Hant": "無需操作：多蒙擊敗東方不敗的臺詞隨是否交戰過而變",
+      "zh-Hant-HK": "無需操作：多蒙擊敗東方不敗的台詞隨是否交戰過而變",
       "ja": "操作不要：マスターアジア撃破時の台詞は過去の交戦で変わる",
       "en": "No action: Domon's win lines vs Master Asia depend on past fights",
       "ko": "할 일 없음: 도몬이 마스터 아시아를 쓰러뜨렸을 때의 대사는 이전 전투 여부에 따라 다름"
@@ -144,6 +148,7 @@
      "from": {
       "zh-Hans": "京二",
       "zh-Hant": "恭志",
+      "zh-Hant-HK": "京治",
       "ja": "キョウジ",
       "en": "Kyoji",
       "ko": "쿄우지"
@@ -151,6 +156,7 @@
      "note": {
       "zh-Hans": "多蒙与他交战前由别人击坠",
       "zh-Hant": "多門與他交戰前由別人擊墜",
+      "zh-Hant-HK": "杜門與他交戰前由別人擊墜",
       "ja": "ドモンと交戦する前に他のユニットで撃墜",
       "en": "Have someone else down him before Domon fights him",
       "ko": "도몬과 싸우기 전에 다른 유닛으로 격추"

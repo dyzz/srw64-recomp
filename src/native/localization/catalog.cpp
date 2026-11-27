@@ -87,7 +87,19 @@ std::mutex registry;
 std::map<std::string,Snapshot> catalogs;
 std::vector<std::string> locale_order;
 std::map<std::string,std::string> locale_names;
+std::map<std::string,std::string> locale_regions;   // locale -> "TW", "HK" (config "region")
+std::map<std::string,std::string> locale_family;    // a region's locale -> its language's first locale
+std::map<std::string,std::string> chosen;           // language -> the region chosen last
 Snapshot active=std::make_shared<const Catalog>();
+// Under `registry`.
+std::string family_of(const std::string& locale) {
+    const auto found=locale_family.find(locale);return found==locale_family.end()?locale:found->second;
+}
+std::string chosen_of(const std::string& language) {
+    // Checked when read: the settings may name it before the catalogs are registered.
+    const auto found=chosen.find(language);
+    return found!=chosen.end() && catalogs.contains(found->second) && family_of(found->second)==language?found->second:language;
+}
 thread_local Snapshot scoped;
 }
 Snapshot snapshot(){return scoped?scoped:std::atomic_load(&active);}
@@ -107,9 +119,46 @@ void replace(std::map<std::string,Snapshot> value) {
 }
 std::string next_locale(const std::string& current) {
     std::lock_guard lock(registry);
-    auto it=std::find(locale_order.begin(),locale_order.end(),current);
-    if(it==locale_order.end())throw std::runtime_error("Current locale is unavailable");
-    return ++it==locale_order.end()?locale_order.front():*it;
+    if(std::find(locale_order.begin(),locale_order.end(),current)==locale_order.end())throw std::runtime_error("Current locale is unavailable");
+    // The next language after the current one's, at its chosen region.
+    const auto language=family_of(current);
+    auto it=std::find(locale_order.begin(),locale_order.end(),language);
+    do {if(++it==locale_order.end())it=locale_order.begin();} while(family_of(*it)!=*it);
+    return chosen_of(*it);
+}
+std::string family(const std::string& locale){std::lock_guard lock(registry);return family_of(locale);}
+std::string region(const std::string& locale) {
+    std::lock_guard lock(registry);
+    const auto found=locale_regions.find(locale);return found==locale_regions.end()?std::string():found->second;
+}
+std::vector<std::string> regions(const std::string& locale) {
+    std::lock_guard lock(registry);
+    const auto language=family_of(locale);
+    std::vector<std::string> result;
+    for(const auto& l:locale_order)if(family_of(l)==language && locale_regions.contains(l))result.push_back(l);
+    if(result.size()<2)result.clear();
+    return result;
+}
+std::string chosen_region(const std::string& locale){std::lock_guard lock(registry);return chosen_of(family_of(locale));}
+std::map<std::string,std::string> chosen_regions() {
+    std::lock_guard lock(registry);
+    std::map<std::string,std::string> result;
+    for(const auto& [language,locale]:chosen)if(chosen_of(language)==locale)result[language]=locale;
+    return result;
+}
+void set_chosen_regions(const std::map<std::string,std::string>& value) {
+    std::lock_guard lock(registry);
+    for(const auto& [language,locale]:value)chosen[language]=locale;
+}
+std::vector<std::pair<std::string,std::string>> language_options() {
+    std::vector<std::pair<std::string,std::string>> result;
+    std::lock_guard lock(registry);
+    for(const auto& locale:locale_order) {
+        if(family_of(locale)!=locale)continue;
+        const auto name=locale_names.find(locale);
+        result.emplace_back(chosen_of(locale),name==locale_names.end()?locale:name->second);
+    }
+    return result;
 }
 std::string display_name(const std::string& locale) {
     std::lock_guard lock(registry);
@@ -126,7 +175,7 @@ std::vector<std::pair<std::string,std::string>> locale_options() {
 }
 std::string language_choices() {
     std::string result;
-    for(const auto& [locale,name]:locale_options()){if(!result.empty())result+=" / ";result+=name;}
+    for(const auto& [locale,name]:language_options()){if(!result.empty())result+=" / ";result+=name;}
     return result;
 }
 void add_locale(Snapshot value,const std::string& label,const std::string& fallback) {
@@ -141,7 +190,14 @@ void add_locale(Snapshot value,const std::string& label,const std::string& fallb
     std::lock_guard packages_lock(packages.mutex);
     packages.fallback[locale]=fallback;
 }
-void activate(Snapshot value){if(!value)throw std::runtime_error("Unknown locale");std::atomic_store(&active,std::move(value));}
+void activate(Snapshot value) {
+    if(!value)throw std::runtime_error("Unknown locale");
+    {
+        std::lock_guard lock(registry);
+        if(locale_regions.contains(value->locale))chosen[family_of(value->locale)]=value->locale;
+    }
+    std::atomic_store(&active,std::move(value));
+}
 void initialize(const nlohmann::json& data,const string_tables::Tables* tables) {
     std::map<std::string,Snapshot> next;
     const auto table=[&](const std::string& name)->std::shared_ptr<const Catalog::Table> {
@@ -180,6 +236,18 @@ void initialize(const nlohmann::json& data,const string_tables::Tables* tables) 
     {
         std::lock_guard lock(registry);
         catalogs=std::move(next);locale_order=std::move(order);locale_names=std::move(names);
+        // Regions: a locale with one that stands on another with one is that one's region.
+        locale_regions.clear();locale_family.clear();
+        if(data.contains("locale_catalogs"))
+            for(const auto& [locale,row]:data.at("locale_catalogs").items())
+                if(const auto& config=row.at("config");config.contains("region"))locale_regions[locale]=config.at("region").get<std::string>();
+        if(data.contains("locale_catalogs"))
+            for(const auto& [locale,row]:data.at("locale_catalogs").items())
+                if(const auto& config=row.at("config");config.contains("region") && config.contains("fallback")) {
+                    const auto fallback=config.at("fallback").get<std::string>();
+                    if(!locale_regions.contains(fallback))throw std::runtime_error("A region's fallback has no region: "+locale);
+                    locale_family[locale]=fallback;
+                }
         auto& packages=package_locales();
         std::lock_guard packages_lock(packages.mutex);
         packages.fallback.clear();packages.built_in.clear();

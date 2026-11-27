@@ -12,6 +12,7 @@
     "ja": "content/locales/ja.json",
     "zh-Hans": "content/locales/zh-Hans.json",
     "zh-Hant": "content/locales/zh-Hant.json",
+    "zh-Hant-HK": "content/locales/zh-Hant-HK.json",
     "en": "content/locales/en.json",
     "ko": "content/locales/ko.json"
   },

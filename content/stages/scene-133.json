@@ -4,6 +4,7 @@
  "title": {
   "zh-Hans": "阿克西斯攻防战（下）",
   "zh-Hant": "阿克西斯攻防戰（下）",
+  "zh-Hant-HK": "阿古捷斯攻防戰（下）",
   "ja": "アクシズの攻防 （後）",
   "en": "The Battle for Axis (Part 3)",
   "ko": "액시즈 공방전 후편"
@@ -51,6 +52,7 @@
      "from": {
       "zh-Hans": "卡多",
       "zh-Hant": "卡多",
+      "zh-Hant-HK": "賈圖",
       "ja": "ガトー",
       "en": "Gato",
       "ko": "가토"

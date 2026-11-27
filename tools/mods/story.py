@@ -31,7 +31,7 @@ TEXT = 0xFFFE                  # a line's place in the words until the host numb
 NUMBER = 0xFFFD                # a new unit's or weapon's place, numbered by the host (mod_ids.hpp)
 CHECK = 0xFFFC                 # a step's condition the host decides, 0 or 1
 FLAG = re.compile(r"[a-z0-9_-]{1,32}")
-LOCALES = ("ja", "zh-Hans", "zh-Hant", "en", "ko")   # story.ts LOCALES
+LOCALES = ("ja", "zh-Hans", "zh-Hant", "zh-Hant-HK", "en", "ko")   # story.ts LOCALES
 
 
 class StoryError(ValueError):

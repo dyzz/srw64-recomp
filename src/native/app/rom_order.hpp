@@ -80,7 +80,7 @@ inline std::string rom_refused_message(RomProblem problem, const std::filesystem
             : "지원하는 ROM이 아닙니다. 수정하지 않은 슈퍼로봇대전64(일본판 Rev 0)가 필요합니다(번역 패치판, 수정판, 다른 게임은 사용할 수 없습니다).";
         return std::string("Marchwind64를 실행할 수 없습니다.\n") + why + "\n\n파일: " + file;
     }
-    if (locale == "zh-Hant") {
+    if (locale.starts_with("zh-Hant")) {
         const char* why = problem == RomProblem::missing
             ? "找不到 ROM 檔案，或者無法讀取它。請確認檔案沒有被移動或刪除。"
             : problem == RomProblem::not_n64
@@ -130,7 +130,7 @@ inline std::string rom_needed_message(const std::string& locale, const std::file
     if (locale == "ko")
         return "Marchwind64를 실행할 수 없습니다.\nROM을 찾을 수 없고, 파일 선택 창도 열 수 없습니다. 슈퍼로봇대전64(일본판 Rev 0) "
                "ROM을 아래 이름으로 이 위치에 복사한 뒤 다시 실행해 주세요:\n" + file;
-    if (locale == "zh-Hant")
+    if (locale.starts_with("zh-Hant"))
         return "無法啟動 Marchwind64。\n找不到 ROM，也無法開啟選擇檔案的視窗。請把超級機器人大戰 64（日版 Rev 0）的 ROM "
                "以下面的檔名複製到這裡，然後重新啟動：\n" + file;
     return "无法启动 Marchwind64。\n找不到 ROM，也无法打开选择文件的窗口。请把超级机器人大战 64（日版 Rev 0）的 ROM "
@@ -143,7 +143,7 @@ inline std::string rom_choose_again(const std::string& locale, bool remembered =
     if (locale == "ja")
         return remembered ? "ROM をもう一度選んでください。セーブデータは変更されていません。" : "別のファイルを選ぶか、キャンセルしてください。";
     if (locale == "en") return remembered ? "Select the ROM again; saves are unchanged." : "Select another file or Cancel.";
-    if (locale == "zh-Hant") return remembered ? "請重新選擇 ROM，存檔不受影響。" : "請選擇其他檔案，或者取消。";
+    if (locale.starts_with("zh-Hant")) return remembered ? "請重新選擇 ROM，存檔不受影響。" : "請選擇其他檔案，或者取消。";
     if (locale == "ko") return remembered ? "ROM을 다시 선택해 주세요. 세이브는 변경되지 않았습니다." : "다른 파일을 선택하거나 취소해 주세요.";
     return remembered ? "请重新选择 ROM，存档不受影响。" : "请选择其他文件，或者取消。";
 }

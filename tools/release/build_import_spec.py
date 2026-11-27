@@ -55,7 +55,8 @@ def build_spec(root: Path) -> dict:
         locales.append({"schema": "srw64.locale.v1", "source_locale": "ja", "locale": locale,
                         "display_name": document.get("display_name", locale), "font": document["font"],
                         "catalog_sha256": digest, "entries": entries, "ui": ui,
-                        **({"fallback": document["fallback"]} if "fallback" in document else {})})
+                        **({"fallback": document["fallback"]} if "fallback" in document else {}),
+                        **({"region": document["region"]} if "region" in document else {})})
     p = profile["presentation"]
     return {"schema": "srw64.native-import-spec.v1", "baseline": "srw64-jp-rev0",
             "rom_sha256": baseline.rom["sha256"], "rom_size": baseline.rom["size"],

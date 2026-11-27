@@ -4,6 +4,7 @@
  "title": {
   "zh-Hans": "阿克西斯攻防战（上）",
   "zh-Hant": "阿克西斯攻防戰（上）",
+  "zh-Hant-HK": "阿古捷斯攻防戰（上）",
   "ja": "アクシズの攻防 （前）",
   "en": "The Battle for Axis (Part 1)",
   "ko": "액시즈 공방전 전편"
@@ -27,6 +28,7 @@
      "title": {
       "zh-Hans": "马修玛＋扎古Ⅲ改／姬拉＋盖马克",
       "zh-Hant": "馬修曼＋薩克Ⅲ改／凱拉＋蓋馬克",
+      "zh-Hant-HK": "馬士文＋渣古Ⅲ改／姬娜＋京麥古",
       "ja": "マシュマー＋ザクⅢ改／キャラ＋ゲーマルク",
       "en": "Mashymre + Zaku III Custom / Chara + Geymalk",
       "ko": "마슈마 + 자쿠 III 개 / 캐라 + 게마르크"
@@ -34,6 +36,7 @@
      "text": {
       "zh-Hans": "用捷度说服马修玛或姬拉之一，之后选「留在地球圈」",
       "zh-Hant": "用傑特說服馬修曼或凱拉之一，之後選「留在地球圈」",
+      "zh-Hant-HK": "用捷度説服馬士文或姬娜之一，之後選「留在地球圈」",
       "ja": "ジュドーでマシュマーかキャラを説得（後に「地球圏に残留する」）",
       "en": "Persuade Mashymre or Chara with Judau; later pick “Stay on Earth”",
       "ko": "쥬도로 마슈마 또는 캐라 설득; 이후 “지구권에 잔류한다”를 고름"
@@ -52,6 +55,7 @@
      "from": {
       "zh-Hans": "拉坎",
       "zh-Hant": "拉坎",
+      "zh-Hant-HK": "拉卡",
       "ja": "ラカン",
       "en": "Rakan",
       "ko": "라칸"
