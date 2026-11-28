@@ -37,7 +37,7 @@
 
 源目录和以前一样是 `mod.json`、`campaign.json`、`stages/`，由 `tools/mods/pack.py` 打包；也可以单独 `python tools/mods/stage.py compile <源目录> -o <输出目录>` 看每关占了多少。示例在 `config/recomp/campaigns/sample`。
 
-`campaign.json`（`srw64.campaign.v2`）：`id`、`name`、`description`、`author`、`version`、`start`（开局关卡名）、`route`（主角路线 0 布拉德／1 真奈美／2 阿克／3 赛莲，必写）、`stages`（关卡名的数组，顺序就是分配场景号的顺序）、可选 `status`（本关情报页的状态规则文件）。
+`campaign.json`（`srw64.campaign.v2`）：`id`、`name`、`description`、`author`、`version`、`start`（开局关卡名）、`route`（主角路线 0 布拉德／1 玛娜米／2 阿克／3 塞蕾茵，必写）、`stages`（关卡名的数组，顺序就是分配场景号的顺序）、可选 `status`（本关情报页的状态规则文件）。
 
 `stages/<关卡名>.json`（`srw64.stage.v1`）：
 
@@ -313,7 +313,7 @@
 
 - 测试：`tests.test_web_compiler`（含 `WebConditionTests`）、`test_stage`、`test_map_tool`、`test_mod_pack`、`test_story_mod`、`test_mini_stage` 共 45 项；`make recomp-story-mod-test`（新加：图像校验、到达区域、事件里离场不算击破、组全灭、被指定的人击破／被别人击破、我方剩几台、`any`／`not`、动作条件在启动时与一步之后改写）、`make recomp-map-mod-test` 都过。
 - **Windows 实机**（2026-11-20，本分支整机编译，测试关 `t.cond`：我方 28 号、敌方队长 287 号开局 1% HP）：
-  - 开场事件块里的「如果主角路线是真奈美」：显示了「路线一」那句（`0xC804`），另一句没显示；
+  - 开场事件块里的「如果主角路线是玛娜米」：显示了「路线一」那句（`0xC804`），另一句没显示；
   - 「到达区域」：把我方移到 (21,6)、选待机后事件启动；它的条件「队长在场且第 3 回合内」成立；动作里的宿主条件「28 号在 (21,6)」选了 then 那句；
   - 结束回合，队长来打、被反击击破：依次启动「敌方被击破至少 1 台」（日志 `down` 记为阵营 1、组 0、人物 287）、「第 0 组全灭」（条件：前一个已发生）、「287 被 28 击破」过关，结束台词、「终」画面、回到标题。「终」画面这次连按 A 约 100 秒没走，按 START 后回到标题，原因没查。
 - **回归**（2026-11-20，本分支整机编译，命令行改用 TypeScript 编译器之后）：主线剧情 MOD `check_story_mod.py`（大师亚洲说服，附着版）13/13；示例战役 `check_campaign.py`（附着版）12/12，示例战役经 TypeScript 编出的镜像与之前 Python 编的逐字节相同。`check_campaign_retry.py`、`check_mod.py` 没跑。

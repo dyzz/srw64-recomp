@@ -155,7 +155,7 @@ export function compileCampaign(source: CampaignSource): { campaign: Obj; story:
   }
   const scenes = assignScenes(stages);
   const route = document.route ?? null;
-  if (route !== null && !(isInt(route) && route >= 0 && route <= 3)) throw new CompileError('campaign.json：route 是 0（布拉德）、1（真奈美）、2（阿克）或 3（赛莲）');
+  if (route !== null && !(isInt(route) && route >= 0 && route <= 3)) throw new CompileError('campaign.json：route 是 0（布拉德）、1（玛娜米）、2（阿克）或 3（塞蕾茵）');
   for (const [key, stage] of Object.entries(stages)) {
     if (!isObj(stage.setup ?? {})) throw new CompileError(`关卡 ${key}：setup 要是对象`);
     if (!('route' in (stage.setup ?? {}))) {
