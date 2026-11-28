@@ -27113,7 +27113,7 @@
     {
       "key": "base:t00_04141",
       "source_sha256": "e3cb595d99c502bd80a0e8680b5220e4fb68cf156f511d1b262503b73ac222c6",
-      "target": "要联动吗？<END>",
+      "target": "：要联动这位机师吗？<END>",
       "review_status": "draft",
       "origin": "terms"
     },

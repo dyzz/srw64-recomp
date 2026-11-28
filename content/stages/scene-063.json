@@ -113,8 +113,7 @@
      },
      "note": {
       "zh-Hans": "敌方剩 6 台以下时登场",
-      "zh-Hant": "敵方剩 6 臺以下時登場",
-      "zh-Hant-HK": "敵方剩 6 台以下時登場",
+      "zh-Hant": "敵方剩 6 台以下時登場",
       "ja": "敵残り6機以下で登場",
       "en": "Appears when 6 or fewer enemies remain",
       "ko": "적이 6기 이하로 남으면 등장"

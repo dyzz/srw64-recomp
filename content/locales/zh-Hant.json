@@ -108,7 +108,7 @@
     "settings_msaa_note": "遊戲畫面的 4 倍多重取樣抗鋸齒。 關掉能減輕顯示卡負擔。 重啟遊戲後生效。",
     "settings_msaa_restart": "重啟遊戲後生效。",
     "settings_picture_scale": "畫面精細度",
-    "settings_picture_scale_note": "相容渲染模式下游戲畫面的內部解析度。自動會按這臺電腦選：沒有顯示卡驅動時 1×，其他 2×。調高更清晰，也更吃性能。重啟遊戲後生效。",
+    "settings_picture_scale_note": "相容渲染模式下游戲畫面的內部解析度。自動會按這台電腦選：沒有顯示卡驅動時 1×，其他 2×。調高更清晰，也更吃性能。重啟遊戲後生效。",
     "settings_picture_scale_0": "自動",
     "settings_picture_scale_1": "1×",
     "settings_picture_scale_2": "2×",
@@ -139,7 +139,7 @@
     "settings_filter_loading": "正在編譯濾鏡……",
     "settings_filter_error": "濾鏡載入失敗：",
     "settings_filter_unavailable": "這裡不能用濾鏡：缺少 librashader，或這個平臺（安卓）還不支援。",
-    "settings_renderer_unsupported": "當前渲染方式不支援此項（這臺裝置沒有使用 RT64）。",
+    "settings_renderer_unsupported": "當前渲染方式不支援此項（這台裝置沒有使用 RT64）。",
     "settings_window": "顯示方式",
     "settings_window_windowed": "視窗",
     "settings_window_fullscreen": "全屏",
@@ -165,7 +165,7 @@
     "settings_weapon_upgrade": "武器改造",
     "settings_weapon_upgrade_unified": "統一",
     "settings_weapon_upgrade_single": "逐件（原版）",
-    "settings_weapon_upgrade_note": "統一： 一臺機體（含所有形態）的武器一起改到同一段數， 只付缺的段數， 費用與逐件改造相同； 之後加入的武器自動免費補到同一段數。 場間畫面用原版時為逐件。",
+    "settings_weapon_upgrade_note": "統一： 一台機體（含所有形態）的武器一起改到同一段數， 只付缺的段數， 費用與逐件改造相同； 之後加入的武器自動免費補到同一段數。 場間畫面用原版時為逐件。",
     "settings_name_entry_ui": "主角選擇",
     "settings_name_entry_ui_native": "新版",
     "settings_name_entry_ui_original": "原版",
@@ -434,7 +434,7 @@
     "settings_web_link": "網頁工具連線",
     "settings_web_link_on": "開",
     "settings_web_link_off": "關",
-    "settings_web_link_note": "讓官網的「機體與人物」製作頁把正在做的 MOD 裝進遊戲試玩，並在戰鬥鑑賞裡播放。只接受這臺電腦上官網頁面的連線，第一次要在遊戲裡確認。試玩的包不進 MOD 列表，關掉遊戲就沒了。",
+    "settings_web_link_note": "讓官網的「機體與人物」製作頁把正在做的 MOD 裝進遊戲試玩，並在戰鬥鑑賞裡播放。只接受這台電腦上官網頁面的連線，第一次要在遊戲裡確認。試玩的包不進 MOD 列表，關掉遊戲就沒了。",
     "settings_web_link_status": "正在 {address} 等待網頁連線",
     "settings_web_link_failed": "無法監聽連線：{why}",
     "web_link_ask_title": "網頁工具連線",
@@ -447,8 +447,8 @@
     "settings_debug": "AI 除錯介面（MCP）",
     "settings_debug_on": "開",
     "settings_debug_off": "關",
-    "settings_debug_note": "讓 Claude Code 等支援 MCP 的 AI 工具讀取和操作正在執行的遊戲，用於自動測試、錄影和排查問題。 只接受這臺電腦上的連線，而且要用執行目錄裡的令牌。 用法見官網的「技術文件」。",
-    "settings_debug_note_android": "讓 Claude Code 等支援 MCP 的 AI 工具讀取和操作正在執行的遊戲，用於自動測試、錄影和排查問題。 只有用 USB 除錯（adb）連著這臺手機的電腦能連上，不經過網路。 用法見官網的「技術文件」。",
+    "settings_debug_note": "讓 Claude Code 等支援 MCP 的 AI 工具讀取和操作正在執行的遊戲，用於自動測試、錄影和排查問題。 只接受這台電腦上的連線，而且要用執行目錄裡的令牌。 用法見官網的「技術文件」。",
+    "settings_debug_note_android": "讓 Claude Code 等支援 MCP 的 AI 工具讀取和操作正在執行的遊戲，用於自動測試、錄影和排查問題。 只有用 USB 除錯（adb）連著這台手機的電腦能連上，不經過網路。 用法見官網的「技術文件」。",
     "settings_debug_forced": "已由啟動參數 --debug 開啟，本次執行不能在這裡關閉。",
     "settings_debug_status": "正在監聽 {address}",
     "settings_debug_run": "執行目錄：{run}",
@@ -595,8 +595,8 @@
     "parts_equipped_count": "裝備中 {n} / 持有 {m}",
     "ability_list_hint": "{KeyUp}{KeyDown} 選擇   ·   {KeyLeft}{KeyRight} 翻頁   ·   {Enter} / {A} 檢視能力   ·   {Esc} / {B} 返回",
     "ability_list_hint_pad": "{DUpDown} 選擇   ·   {DLeftRight} 翻頁   ·   {A} 檢視能力   ·   {B} 返回",
-    "ability_unit_hint": "{L} / {R} 上一臺／下一臺   ·   {Enter} / {A} 武器一覽   ·   {Esc} / {B} 返回",
-    "ability_unit_hint_pad": "{L} / {R} 上一臺／下一臺   ·   {A} 武器一覽   ·   {B} 返回",
+    "ability_unit_hint": "{L} / {R} 上一台／下一台   ·   {Enter} / {A} 武器一覽   ·   {Esc} / {B} 返回",
+    "ability_unit_hint_pad": "{L} / {R} 上一台／下一台   ·   {A} 武器一覽   ·   {B} 返回",
     "ability_weapons_hint": "{KeyUp}{KeyDown} 選擇武器   ·   {KeyLeft}{KeyRight} 翻頁   ·   {Esc} / {B} 返回",
     "ability_weapons_hint_pad": "{DUpDown} 選擇武器   ·   {DLeftRight} 翻頁   ·   {B} 返回",
     "ability_pilot_hint": "{L} / {R} 上一位／下一位   ·   {Esc} / {B} 返回",
@@ -925,7 +925,7 @@
     "viewer_cat_ground": "地上",
     "viewer_cat_air": "空中",
     "viewer_cat_space": "宇宙",
-    "viewer_help_unit_default": "機師換成這臺機體的預設機師「%1」，之後可在「機師」裡換成其他能開它的人",
+    "viewer_help_unit_default": "機師換成這台機體的預設機師「%1」，之後可在「機師」裡換成其他能開它的人",
     "viewer_help_pilot": "只列能開「%1」的機師：關卡裡開過它的、同類可換乘的；要換機體請先選機體",
     "viewer_help_weapon": "武器決定播放哪段戰鬥動畫",
     "viewer_help_weapon_parry": "可被切落：對方有劍和切落技能時，可以選「未命中 > 切落」",
@@ -980,8 +980,8 @@
     "touch_auto": "自動",
     "touch_select": "選擇",
     "touch_info": "機體資訊",
-    "touch_prev_unit": "上一臺",
-    "touch_next_unit": "下一臺",
+    "touch_prev_unit": "上一台",
+    "touch_next_unit": "下一台",
     "touch_prev_enemy": "上個敵人",
     "touch_next_enemy": "下個敵人",
     "touch_move_here": "移到這裡",
@@ -2277,7 +2277,7 @@
     {
       "key": "base:t00_00338",
       "source_sha256": "353b03007a807b2c8749ee82ba680a3408be7b8aa52c231b633c86b4a2f6697e",
-      "target": "乞力馬扎羅的風暴<END>",
+      "target": "吉力馬札羅的風暴<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -6484,7 +6484,7 @@
     {
       "key": "base:t00_00944",
       "source_sha256": "bdd9e3285e095f5db18cad458a0b866eac39ef180d24a72013f041a3820fa7b9",
-      "target": "還剩  臺<END>",
+      "target": "還剩  台<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -6890,7 +6890,7 @@
     {
       "key": "base:t00_01002",
       "source_sha256": "63d3b7651e81f05b7c28a3729495d87256ea47a68e65f5b7da70d49224af552f",
-      "target": "還有  臺機體尚未結束行動<END>",
+      "target": "還有  台機體尚未結束行動<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27113,7 +27113,7 @@
     {
       "key": "base:t00_04141",
       "source_sha256": "e3cb595d99c502bd80a0e8680b5220e4fb68cf156f511d1b262503b73ac222c6",
-      "target": "要聯動嗎？<END>",
+      "target": "：要聯動這位機師嗎？<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32076,7 +32076,7 @@
     {
       "key": "base:t00_05176",
       "source_sha256": "2c3900a43f28b20d68eee9bf4723a3a3ad0882fa627182825faf7fa0880912f6",
-      "target": "使1臺已行動的指定機體可以再次行動。<END>",
+      "target": "使1台已行動的指定機體可以再次行動。<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32090,7 +32090,7 @@
     {
       "key": "base:t00_05179",
       "source_sha256": "387ba189526bffb3b73ce1f14bd9866d7d648c8d88a2bb6e01cf6fc55045bf66",
-      "target": "復活1臺被擊毀的機體，可以自選對象。<END>",
+      "target": "復活1台被擊毀的機體，可以自選對象。<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -33280,7 +33280,7 @@
     {
       "key": "base:t00_05572",
       "source_sha256": "76131f0361c82047845de61f2d47ba9c49ab39da8d4208e887b1af9b10e91844",
-      "target": "3臺以上機體進入綠色區域<END>",
+      "target": "3台以上機體進入綠色區域<END>",
       "review_status": "draft",
       "origin": "terms"
     },

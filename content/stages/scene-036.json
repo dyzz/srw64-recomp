@@ -52,8 +52,7 @@
      },
      "note": {
       "zh-Hans": "敌方剩 8 台以下时撤退",
-      "zh-Hant": "敵方剩 8 臺以下時撤退",
-      "zh-Hant-HK": "敵方剩 8 台以下時撤退",
+      "zh-Hant": "敵方剩 8 台以下時撤退",
       "ja": "敵残り8機以下で撤退",
       "en": "Retreats when 8 or fewer enemies remain",
       "ko": "적이 8기 이하로 남으면 퇴각"

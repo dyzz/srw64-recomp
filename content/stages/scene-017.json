@@ -88,8 +88,7 @@
      },
      "note": {
       "zh-Hans": "敌方剩 8 台以下时，若古拉博士已不在场则撤退",
-      "zh-Hant": "敵方剩 8 臺以下時，若古拉博士已不在場則撤退",
-      "zh-Hant-HK": "敵方剩 8 台以下時，若古拉博士已不在場則撤退",
+      "zh-Hant": "敵方剩 8 台以下時，若古拉博士已不在場則撤退",
       "ja": "敵残り8機以下になったとき、グラー博士がもういなければ撤退",
       "en": "Retreats when 8 or fewer enemies remain, if Dr. Gura is no longer on the map",
       "ko": "구라 박사가 맵에 없으면 적이 8기 이하로 남았을 때 퇴각"

@@ -38,13 +38,11 @@
     "settings_browse_open": "打開此資料夾",
     "settings_browse_empty": "這裏沒有可用的檔案。",
     "settings_filter_unavailable": "這裏不能用濾鏡：缺少 librashader，或這個平台（安卓）還不支援。",
-    "settings_renderer_unsupported": "當前渲染方式不支援此項（這台裝置沒有使用 RT64）。",
     "screenshot_saved": "截圖已保存：{path}",
     "screenshot_failed": "截圖保存失敗：{path}",
     "settings_window_size_note": "原版畫面的整數倍， 寬度隨畫面比例。 放不下屏幕的倍數不可選。",
     "settings_battle_ui_hd": "高清原版",
     "settings_intermission_ui_note": "下一次打開畫面時生效。 適用於主選單與存檔、 改造、 能力、 換乘、 強化零件各畫面。 聯動的作品選擇頁原版沒有， 兩種模式都會出現。",
-    "settings_weapon_upgrade_note": "統一： 一台機體（含所有形態）的武器一起改到同一段數， 只付缺的段數， 費用與逐件改造相同； 之後加入的武器自動免費補到同一段數。 場間畫面用原版時為逐件。",
     "settings_battle_ui_note": "下一次戰前確認時生效。高清原版：照原版佈局重畫；原版：遊戲原畫面，文字照譯，圖片用原圖。三種都可用 {Anim} 切換戰鬥動畫。",
     "battle_defense_note": "切／盾防／分身為各自判定時的幾率，依次判定，不相加。",
     "battle_skill_newtype": "新類型人",
@@ -112,8 +110,6 @@
     "parts_slots_hint_pad": "{DUpDown} 選擇槽位   ·   {A} 打開零件列表   ·   {B} 返回",
     "ability_list_hint": "{KeyUp}{KeyDown} 選擇   ·   {KeyLeft}{KeyRight} 翻頁   ·   {Enter} / {A} 查看能力   ·   {Esc} / {B} 返回",
     "ability_list_hint_pad": "{DUpDown} 選擇   ·   {DLeftRight} 翻頁   ·   {A} 查看能力   ·   {B} 返回",
-    "ability_unit_hint": "{L} / {R} 上一台／下一台   ·   {Enter} / {A} 武器一覽   ·   {Esc} / {B} 返回",
-    "ability_unit_hint_pad": "{L} / {R} 上一台／下一台   ·   {A} 武器一覽   ·   {B} 返回",
     "funds_edit_hint_pad": "用屏幕鍵盤輸入新的資金數字   ·   {A} 寫入   ·   {B} 取消",
     "dialogue_text_status": "台詞文本：已載入 {n} 條，{k} 處錯誤（詳見 dialogue-report.txt）",
     "dialogue_reload": "重新載入台詞",
@@ -165,8 +161,6 @@
     "viewer_help_unit_default": "機師換成這台機體的預設機師「%1」，之後可在「機師」裏換成其他能開它的人",
     "viewer_help_pilot": "只列能開「%1」的機師：關卡裏開過它的、同類可換乘的；要換機體請先選機體",
     "viewer_help_song": "按作品排列，曲名保持日文；攻方曲按原版規則跟着攻方變",
-    "touch_prev_unit": "上一台",
-    "touch_next_unit": "下一台",
     "touch_move_here": "移到這裏",
     "quick_load_unavailable": "這裏不能讀取中途存檔",
     "title_return_unavailable": "這裏不能返回標題",
@@ -210,7 +204,7 @@
     {
       "key": "base:t00_00047",
       "source_sha256": "604dcad02f41794717d3971eea81bd9c7edcfa14b77308a8218bcac60c4ff8e4",
-      "target": "航天飛機<END>",
+      "target": "穿梭機<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1645,7 +1639,7 @@
     {
       "key": "base:t00_00721",
       "source_sha256": "6eeca930641deafb37aa6be1e7b2c02fdf8d31daffd97e9db8c3a83052b82a71",
-      "target": "瑪古司令船<END>",
+      "target": "馬克司令船<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2014,13 +2008,6 @@
       "origin": "terms"
     },
     {
-      "key": "base:t00_00944",
-      "source_sha256": "bdd9e3285e095f5db18cad458a0b866eac39ef180d24a72013f041a3820fa7b9",
-      "target": "還剩  台<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
       "key": "base:t00_00951",
       "source_sha256": "25fdac63ea2863d4832f9d6d47cbe02a9145940284eff5cc18d9b406aef1af65",
       "target": "查看地圖<END>",
@@ -2031,13 +2018,6 @@
       "key": "base:t00_00982",
       "source_sha256": "5a4d5da281e3bb946fb1f9de3d2098fea18ef686d10993ad17dc01de2c8afacd",
       "target": "大根性<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_01002",
-      "source_sha256": "63d3b7651e81f05b7c28a3729495d87256ea47a68e65f5b7da70d49224af552f",
-      "target": "還有  台機體尚未結束行動<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11954,20 +11934,6 @@
       "origin": "terms"
     },
     {
-      "key": "base:t00_05176",
-      "source_sha256": "2c3900a43f28b20d68eee9bf4723a3a3ad0882fa627182825faf7fa0880912f6",
-      "target": "使1台已行動的指定機體可以再次行動。<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_05179",
-      "source_sha256": "387ba189526bffb3b73ce1f14bd9866d7d648c8d88a2bb6e01cf6fc55045bf66",
-      "target": "復活1台被擊毀的機體，可以自選對象。<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
       "key": "base:t00_05203",
       "source_sha256": "d5e7fac4361724dad1600c1b5a3d92951dcaf0d9fbfd64ef11e5b001f574eca8",
       "target": "超級機械人<END>",
@@ -12475,13 +12441,6 @@
       "key": "base:t00_05571",
       "source_sha256": "630999be8c0b0f80d184873cd57ac4e482096d23cba320752d570d90dd0d0c84",
       "target": "英司機進入刻印區域<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_05572",
-      "source_sha256": "76131f0361c82047845de61f2d47ba9c49ab39da8d4208e887b1af9b10e91844",
-      "target": "3台以上機體進入綠色區域<END>",
       "review_status": "draft",
       "origin": "terms"
     },
