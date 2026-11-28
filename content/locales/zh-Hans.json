@@ -1640,7 +1640,7 @@
     {
       "key": "base:t00_00083",
       "source_sha256": "ab1c1c27e2b363147f84ad9a5b4ee551bf772fc06cc36109dde3c14640ecb3ea",
-      "target": "六神合体雷霆王<END>",
+      "target": "六神合体 雷霆王<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2158,7 +2158,7 @@
     {
       "key": "base:t00_00321",
       "source_sha256": "f170546d9c978b94dd834311380c7a35b282eb74d9db858df64b4ec2f6897941",
-      "target": "其名为次代<END>",
+      "target": "其名为艾比安<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2438,7 +2438,7 @@
     {
       "key": "base:t00_00361",
       "source_sha256": "dbd8b37921d7cab26b89bfc1e03693c6305f89f56edc82763731a5b833238a35",
-      "target": "女帝加涅拉的人类狩猎<END>",
+      "target": "女帝加涅拉猎杀人类<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -2473,7 +2473,7 @@
     {
       "key": "base:t00_00366",
       "source_sha256": "1e17c0c1683d22498f33e34a6dbea16a201fcd51be732aa09cac5a0310b04e62",
-      "target": "压制地球圈<END>",
+      "target": "征服地球圈<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3061,7 +3061,7 @@
     {
       "key": "base:t00_00450",
       "source_sha256": "aee9920015392b42c4dbbefb237529591f59dec51de4ae16e983db20ff361a8e",
-      "target": "未连接到控制器<END>",
+      "target": "未连接到手柄<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3523,7 +3523,7 @@
     {
       "key": "base:t00_00517",
       "source_sha256": "00da9c7811af90c0856a7b2becd0ffad7b8f38a1b1f6aeba473266ed7e539705",
-      "target": "部件<END>",
+      "target": "零件<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4412,7 +4412,7 @@
     {
       "key": "base:t00_00645",
       "source_sha256": "8253289b023bddb4cbb390b07dada31b92ae40c90f3c27d606dcb5d91b0a84eb",
-      "target": "飞翼高达(鸟形态)<END>",
+      "target": "飞翼高达（鸟形态）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4426,7 +4426,7 @@
     {
       "key": "base:t00_00647",
       "source_sha256": "efac91e9c586051791ab24f13f26d30e31f892dba169d86b64fad1101cdef4be",
-      "target": "飞翼零式(鸟形态)<END>",
+      "target": "飞翼零式（鸟形态）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5700,7 +5700,7 @@
     {
       "key": "base:t00_00829",
       "source_sha256": "fccf7ea2c3820f2d5cc78e290595f99d50b44bb22c7df10cfe5a3750fb3e2bf8",
-      "target": "多尔(飞行)<END>",
+      "target": "多尔（飞行）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5966,7 +5966,7 @@
     {
       "key": "base:t00_00867",
       "source_sha256": "fccf7ea2c3820f2d5cc78e290595f99d50b44bb22c7df10cfe5a3750fb3e2bf8",
-      "target": "多尔(飞行)<END>",
+      "target": "多尔（飞行）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -6589,7 +6589,7 @@
     {
       "key": "base:t00_00959",
       "source_sha256": "b09d59cd7988109f7f7dc7cf8d2f89519bc305d514d4e432cceb2215e16066b0",
-      "target": "全员指令统一变更<END>",
+      "target": "统一更改全员指令<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26567,7 +26567,7 @@
     {
       "key": "base:t00_04044",
       "source_sha256": "1037566d4be91a4e998e1f0a0e0f076f2ef035243ffd0f8342b894cb3583785e",
-      "target": "幕间<END>",
+      "target": "场间<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27008,7 +27008,7 @@
     {
       "key": "base:t00_04117",
       "source_sha256": "82f9d58d05ec2bf17260bf57664c9baff5b7a39fa659154c8db9cff120a34bfe",
-      "target": "已装备的部件<END>",
+      "target": "已装备的零件<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27260,7 +27260,7 @@
     {
       "key": "base:t00_04285",
       "source_sha256": "efe2bee24cc65034a580d38dcf25a4d43d7c6f09f36c8065ae487708adb8bd1c",
-      "target": "气力的基础值+5<END>",
+      "target": "基础气力+5<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30781,7 +30781,7 @@
     {
       "key": "base:t00_04909",
       "source_sha256": "2cc8c17e86cc9ac29153c9124e3a7476e3645d47d7fa7dcd05ca9ee4ffa0542b",
-      "target": "阿兰·伊戈尔<END>",
+      "target": "阿兰·伊格尔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32090,7 +32090,7 @@
     {
       "key": "base:t00_05179",
       "source_sha256": "387ba189526bffb3b73ce1f14bd9866d7d648c8d88a2bb6e01cf6fc55045bf66",
-      "target": "复活1台被击毁的机体。可以选择。<END>",
+      "target": "复活1台被击毁的机体，可以自选对象。<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32104,7 +32104,7 @@
     {
       "key": "base:t00_05181",
       "source_sha256": "6ab8e1607de4083650df23b408631d0e1d0319993033750f316aa7937b7a0428",
-      "target": "使用也不会有效果。<END>",
+      "target": "使用了也没有效果。<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32328,7 +32328,7 @@
     {
       "key": "base:t00_05213",
       "source_sha256": "e73185bb181aa6fec477af30f0fbdca8c51ade67b37338cbb2f2ea4cf8a5b05f",
-      "target": "确认选择吗？<END>",
+      "target": "，确定吗？<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32909,7 +32909,7 @@
     {
       "key": "base:t00_05519",
       "source_sha256": "2cc8c17e86cc9ac29153c9124e3a7476e3645d47d7fa7dcd05ca9ee4ffa0542b",
-      "target": "阿兰·伊戈尔<END>",
+      "target": "阿兰·伊格尔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
