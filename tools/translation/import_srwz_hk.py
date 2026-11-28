@@ -27,7 +27,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from srw64_native.zh_hant import HELD, HOLD, NAME_SECTIONS, SYSTEM_SECTIONS, TERMS, characters
+from srw64_native.zh_hant import HELD, HOLD, NAME_SECTIONS, SYSTEM_SECTIONS, TERMS, Converter, characters
 from srw64_native.zh_hant_hk import NAMES, REGIONAL
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -68,8 +68,13 @@ def names(srwz: Path, source: dict, table: dict, previous: dict) -> dict:
             hans_of.setdefault(ja.strip(), hans.strip())
     by_ja = {ja: row for row in json.loads((srwz / FILES[2]).read_text())["names"] for ja in row["ja"]}
     hk_map = str.maketrans(table["characters"])
-    hk_chars = lambda text: characters(text).translate(hk_map)
-    tw_of = {row["ja"]: row["zh_hant"] or characters(hans_of.get(row["ja"], "")) for row in taiwan["entries"]}
+    # A Taiwan name is Traditional already: only its characters change for Hong Kong. Running
+    # s2tw over it again would read a transliteration's 里 as the simplified 裡 (奇里 奇裏).
+    hk_chars = lambda text: text.translate(hk_map)
+    # A name without a Taiwan name is the one Taiwan's converter writes (phrases.json included).
+    converter = Converter(ROOT)
+    tw_of = {row["ja"]: row["zh_hant"] or converter.names.get(row["ja"]) or characters(hans_of.get(row["ja"], ""))
+             for row in taiwan["entries"]}
     found = {ja: by_ja[ja]["hk"]["to"] for ja in tw_of if ja in by_ja}
     # Rows researched or decided since stand as they are, and name the rows built on them too.
     found.update({ja: row["zh_hant_hk"] for ja, row in previous.items() if row.get("basis") not in OURS and ja in tw_of})

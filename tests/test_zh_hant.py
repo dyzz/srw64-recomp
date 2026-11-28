@@ -54,6 +54,19 @@ class ConverterTests(unittest.TestCase):
     def test_words_everywhere(self):
         self.assertEqual(self.hant.convert("扎古出击"), "薩克出擊")
 
+    def test_phrases_fix_the_characters_opencc_picks(self):
+        hant = Converter(ROOT)
+        self.assertEqual(hant.convert("总是只能等。你干得很好，组织里的资料里根本没有。"),
+                         "總是只能等。你幹得很好，組織裡的資料裡根本沒有。")
+        self.assertEqual(hant.convert("乳臭未干的小鬼，干脆点"), "乳臭未乾的小鬼，乾脆點")
+
+    def test_dialogue_keeps_narration_words(self):
+        hant = Converter(ROOT)
+        # 集中 is the spirit command 專注 only as a game term, not in a battle cry.
+        self.assertEqual(hant.convert("集中攻击！", "集中攻撃!", dialogue=True), "集中攻擊！")
+        self.assertEqual(hant.term("spirits", "集中", "集中"), "專注")
+        self.assertEqual(hant.convert("把炸弹设置在这里", dialogue=True), "把炸彈設置在這裡")
+
     def test_add_to_puts_zh_hant_after_zh_hans(self):
         value = {"title": {"zh-Hans": "阿姆罗出击", "ja": "アムロ出撃", "en": "Amuro"}, "n": 1}
         out = self.hant.add_to(value)

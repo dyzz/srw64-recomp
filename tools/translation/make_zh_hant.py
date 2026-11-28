@@ -126,7 +126,7 @@ def dialogue_blocks(converter, text: str) -> tuple[bool, list[list[str]]]:
                 # The note is "中文名 · 日本語名（…）": its Japanese is in it.
                 out.append(record + (" " + converter.convert(note, note) if note else ""))
             else:
-                out.append(converter.convert(line, source))
+                out.append(converter.convert(line, source, dialogue=True))
         block.clear()
 
     for line in lines[1 if generated else 0:]:

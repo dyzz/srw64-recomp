@@ -22,7 +22,8 @@ import json
 import re
 from pathlib import Path
 
-from .zh_hant import HELD, HOLD, NAME_SECTIONS, QUOTES, ROOT, SYSTEM_SECTIONS, TERMS, characters as taiwan_characters, japanese_of
+from .zh_hant import (HELD, HOLD, NAME_SECTIONS, QUOTES, ROOT, SYSTEM_SECTIONS, TERMS, characters as taiwan_characters,
+                      japanese_of, longest_first, phrases)
 
 LOCALE = "zh-Hant-HK"
 NAMES = "content/translation/zh-Hant-HK/names.json"
@@ -45,6 +46,12 @@ class HongKong:
         # Robot Wars Z's derivation does): a table's name may carry a Taiwan form (殖民衛星).
         hong_kong = {row["ja"]: row["zh_hant_hk"].translate(self.map) for row in document["entries"] if row.get("zh_hant_hk")}
         self.rules = [{**rule, "hk": rule["hk"].translate(self.map)} for rule in self.rules]
+        # Taiwan's phrases.json: the characters OpenCC picks wrong (只能, 干得, 组织里), in Hong Kong form.
+        table = phrases(root)
+        hk_form = lambda rows: longest_first((sc, tw.translate(self.map)) for sc, tw in rows.items())
+        self.phrases = hk_form(table["phrases"])
+        self.guard = hk_form(table["guard"])
+        self.dialogue_guard = hk_form({**table["dialogue_guard"], **table["guard"]})
         sections = json.loads((root / TERMS).read_text())["sections"]
         terms = [(section in NAME_SECTIONS, ja.strip(), hans.strip()) for section in NAME_SECTIONS + SYSTEM_SECTIONS
                  for ja, hans in sections.get(section, {}).items() if hans.strip()]
@@ -77,9 +84,10 @@ class HongKong:
         core = hans.strip()
         return hans[:len(hans) - len(hans.lstrip())] + self.names[ja.strip()] + hans[len(hans.rstrip()):] if core else hans
 
-    def convert(self, hans: str, ja: str | None = None, *, proper: bool = False) -> str:
+    def convert(self, hans: str, ja: str | None = None, *, proper: bool = False, dialogue: bool = False) -> str:
         """zh-Hans text in zh-Hant-HK; names are replaced where JA (its Japanese) has them.
-        PROPER: a name without a Hong Kong name, whose words are not words (characters only)."""
+        PROPER: a name without a Hong Kong name, whose words are not words (characters only).
+        DIALOGUE: a line of a dialogue file, whose narration keeps a few words (phrases.json)."""
         if not hans:
             return hans
         held: list[str] = []
@@ -89,6 +97,9 @@ class HongKong:
             return chr(HOLD + len(held) - 1)
 
         text = hans
+        for word, hk in self.dialogue_guard if dialogue else getattr(self, "guard", []):
+            if word in text:
+                text = text.replace(word, hold(hk))
         source = japanese_of(ja) if ja else None
         if source and hasattr(self, "pairs"):
             for name_ja, name_hans, hk in self.pairs:
@@ -98,6 +109,13 @@ class HongKong:
         for rule in self.rules:
             if (not proper or rule.get("group") == "franchise") and rule["sc"] in text and self._fires(rule, source):
                 text = text.replace(rule["sc"], hold(rule["hk"]))
+        for word, hk in getattr(self, "phrases", []):
+            if word in text:
+                text = text.replace(word, hold(hk))
+        # Simplified 著 is always zhù (显著, 著作): s2tw writes 着 as 著 too, and the Hong Kong
+        # form of that 著 is 着, so the Simplified one is kept apart.
+        if "著" in text:
+            text = text.replace("著", hold("著"))
         text = self.characters(text).translate(QUOTES)
         return HELD.sub(lambda match: held[ord(match.group()) - HOLD], text)
 

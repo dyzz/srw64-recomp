@@ -26,16 +26,15 @@
      "ref": "secret-kirika",
      "title": {
       "zh-Hans": "基里卡",
-      "zh-Hant": "基裡卡",
-      "zh-Hant-HK": "基裏卡",
+      "zh-Hant": "基里卡",
       "ja": "キリカ",
       "en": "Kirika",
       "ko": "키리카"
      },
      "text": {
       "zh-Hans": "基里卡第 3 回合登场，先用杜克、再用玛丽亚说服",
-      "zh-Hant": "基裡卡第 3 回合登場，先用狄克、再用瑪莉亞說服",
-      "zh-Hant-HK": "基裏卡第 3 回合登場，先用狄克、再用瑪莉亞説服",
+      "zh-Hant": "基里卡第 3 回合登場，先用狄克、再用瑪莉亞說服",
+      "zh-Hant-HK": "基里卡第 3 回合登場，先用狄克、再用瑪莉亞説服",
       "ja": "第3ターン登場のキリカをデューク→マリアの順で説得",
       "en": "Persuade Kirika (turn 3) with Duke, then Maria, in that order",
       "ko": "듀크, 마리아 순으로 키리카(3턴째) 설득"
@@ -156,8 +155,7 @@
      },
      "from": {
       "zh-Hans": "基里卡",
-      "zh-Hant": "基裡卡",
-      "zh-Hant-HK": "基裏卡",
+      "zh-Hant": "基里卡",
       "ja": "キリカ",
       "en": "Kirika",
       "ko": "키리카"

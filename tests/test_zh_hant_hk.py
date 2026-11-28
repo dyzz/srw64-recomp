@@ -57,6 +57,12 @@ class HongKongTests(unittest.TestCase):
         # Characters only, and the works' names in them; never the words.
         self.assertEqual(self.hk.term("pilots", "カミーユ", "卡缪"), "卡繆")
 
+    def test_taiwan_phrases_in_hong_kong_characters(self):
+        hk = HongKong(ROOT)
+        self.assertEqual(hk.convert("总是只能等，组织里的人干得很好"), "總是只能等，組織裏的人幹得很好")
+        # The Simplified 著 is zhù and stays; 着 is Hong Kong's 着.
+        self.assertEqual(hk.convert("效果显著，看着他"), "效果顯著，看着他")
+
     def test_add_to_only_where_it_differs(self):
         value = {"t": {"zh-Hans": "阿姆罗", "zh-Hant": "阿姆羅", "ja": "アムロ"}, "u": {"zh-Hans": "出击", "zh-Hant": "出擊", "ja": "出撃"}}
         out = self.hk.add_to(value)

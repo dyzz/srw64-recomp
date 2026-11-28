@@ -44,16 +44,15 @@
      "ref": "secret-kirika",
      "title": {
       "zh-Hans": "基里卡",
-      "zh-Hant": "基裡卡",
-      "zh-Hant-HK": "基裏卡",
+      "zh-Hant": "基里卡",
       "ja": "キリカ",
       "en": "Kirika",
       "ko": "키리카"
      },
      "text": {
       "zh-Hans": "基里卡登场后先用杜克、再用玛丽亚说服",
-      "zh-Hant": "基裡卡登場後先用狄克、再用瑪莉亞說服",
-      "zh-Hant-HK": "基裏卡登場後先用狄克、再用瑪莉亞説服",
+      "zh-Hant": "基里卡登場後先用狄克、再用瑪莉亞說服",
+      "zh-Hant-HK": "基里卡登場後先用狄克、再用瑪莉亞説服",
       "ja": "キリカをデューク→マリアの順で説得",
       "en": "Persuade Kirika with Duke, then Maria (in that order)",
       "ko": "듀크, 마리아 순으로 키리카 설득(순서 고정)"
@@ -139,8 +138,7 @@
      },
      "from": {
       "zh-Hans": "基里卡",
-      "zh-Hant": "基裡卡",
-      "zh-Hant-HK": "基裏卡",
+      "zh-Hant": "基里卡",
       "ja": "キリカ",
       "en": "Kirika",
       "ko": "키리카"

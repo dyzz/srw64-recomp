@@ -537,10 +537,10 @@
   },
   {
    "ja": "ゲーツ・キャパ",
-   "zh_hant": "蓋茨·卡帕",
+   "zh_hant": "蓋茲·卡帕",
    "group": "A_uc1",
    "checked": "2026-11-27",
-   "zh_hant_hk": "蓋茨·卡帕",
+   "zh_hant_hk": "蓋茲·卡帕",
    "basis": "tw"
   },
   {
@@ -755,11 +755,11 @@
   },
   {
    "ja": "インコム",
-   "zh_hant": "有線感應炮",
+   "zh_hant": "有線感應砲",
    "group": "A_uc1",
    "checked": "2026-11-27",
    "zh_hant_hk": "有線感應炮",
-   "basis": "tw"
+   "basis": "derived"
   },
   {
    "ja": "クローミサイル",
@@ -5914,7 +5914,7 @@
    "zh_hant": "岩漿獸達克隆",
    "group": "D_mazinger_getter",
    "checked": "2026-11-27",
-   "zh_hant_hk": "巖漿獸達克隆",
+   "zh_hant_hk": "岩漿獸達克隆",
    "basis": "tw"
   },
   {
@@ -5944,11 +5944,12 @@
   },
   {
    "ja": "マーグ司令船",
-   "zh_hant": "瑪古司令船",
+   "zh_hant": "馬可司令船",
    "group": "D_mazinger_getter",
    "checked": "2026-11-27",
    "zh_hant_hk": "瑪古司令船",
-   "basis": "tw"
+   "basis": "tw",
+   "note": "2026-11-28：导入脚本改为沿用台版转换结果后会变成「馬可司令船」（台版名），港版人名マーグ是「馬克」，先保留原值，待定。"
   },
   {
    "ja": "ミケロス",
@@ -6214,10 +6215,10 @@
   },
   {
    "ja": "キリカ",
-   "zh_hant": "基裡卡",
+   "zh_hant": "基里卡",
    "group": "D_mazinger_getter",
    "checked": "2026-11-27",
-   "zh_hant_hk": "基裏卡",
+   "zh_hant_hk": "基里卡",
    "basis": "tw"
   },
   {
@@ -8142,7 +8143,7 @@
    "zh_hant": "奇里",
    "group": "E_classic",
    "checked": "2026-11-27",
-   "zh_hant_hk": "奇裏",
+   "zh_hant_hk": "奇里",
    "basis": "tw"
   },
   {
@@ -8539,7 +8540,7 @@
    "zh_hant": "奇里·蓋格雷",
    "group": "E_classic",
    "checked": "2026-11-27",
-   "zh_hant_hk": "奇裏·蓋格雷",
+   "zh_hant_hk": "奇里·蓋格雷",
    "basis": "tw"
   },
   {
@@ -8788,11 +8789,11 @@
   },
   {
    "ja": "380mm戦車砲",
-   "zh_hant": "380mm坦克炮",
+   "zh_hant": "380mm坦克砲",
    "group": "E_classic",
    "checked": "2026-11-27",
    "zh_hant_hk": "380mm坦克炮",
-   "basis": "tw"
+   "basis": "derived"
   },
   {
    "ja": "Vレーザー",
@@ -8932,11 +8933,11 @@
   },
   {
    "ja": "クラフトミサイル",
-   "zh_hant": "裝甲車導彈",
+   "zh_hant": "裝甲車飛彈",
    "group": "E_classic",
    "checked": "2026-11-27",
    "zh_hant_hk": "裝甲車導彈",
-   "basis": "tw"
+   "basis": "derived"
   },
   {
    "ja": "グランダッシャー",
@@ -9172,10 +9173,10 @@
   },
   {
    "ja": "ドスブレッシャー",
-   "zh_hant": "多斯佈雷沙",
+   "zh_hant": "多斯布雷沙",
    "group": "E_classic",
    "checked": "2026-11-27",
-   "zh_hant_hk": "多斯佈雷沙",
+   "zh_hant_hk": "多斯布雷沙",
    "basis": "tw"
   },
   {
@@ -9260,11 +9261,11 @@
   },
   {
    "ja": "ビッグキャノン",
-   "zh_hant": "巨型加農炮",
+   "zh_hant": "巨型加農砲",
    "group": "E_classic",
    "checked": "2026-11-27",
    "zh_hant_hk": "巨型加農炮",
-   "basis": "tw"
+   "basis": "derived"
   },
   {
    "ja": "ビッグブラスト",
@@ -9284,43 +9285,43 @@
   },
   {
    "ja": "ビッグミサイル",
-   "zh_hant": "巨型導彈",
+   "zh_hant": "巨型飛彈",
    "group": "E_classic",
    "checked": "2026-11-27",
    "zh_hant_hk": "巨型導彈",
-   "basis": "tw"
+   "basis": "derived"
   },
   {
    "ja": "フレイボム",
-   "zh_hant": "火焰炮",
+   "zh_hant": "火焰砲",
    "group": "E_classic",
    "checked": "2026-11-27",
    "zh_hant_hk": "火焰炮",
-   "basis": "tw"
+   "basis": "derived"
   },
   {
    "ja": "ブルミサイル",
-   "zh_hant": "公牛導彈",
+   "zh_hant": "公牛飛彈",
    "group": "E_classic",
    "checked": "2026-11-27",
    "zh_hant_hk": "公牛導彈",
-   "basis": "tw"
+   "basis": "derived"
   },
   {
    "ja": "ベースミサイル",
-   "zh_hant": "基地導彈",
+   "zh_hant": "基地飛彈",
    "group": "E_classic",
    "checked": "2026-11-27",
    "zh_hant_hk": "基地導彈",
-   "basis": "tw"
+   "basis": "derived"
   },
   {
    "ja": "ベースレーザー",
-   "zh_hant": "基地激光",
+   "zh_hant": "基地雷射",
    "group": "E_classic",
    "checked": "2026-11-27",
    "zh_hant_hk": "基地激光",
-   "basis": "tw"
+   "basis": "derived"
   },
   {
    "ja": "ホルスタービーム",
@@ -9340,11 +9341,11 @@
   },
   {
    "ja": "マグネレーザー",
-   "zh_hant": "磁力激光",
+   "zh_hant": "磁力雷射",
    "group": "E_classic",
    "checked": "2026-11-27",
    "zh_hant_hk": "磁力激光",
-   "basis": "tw"
+   "basis": "derived"
   },
   {
    "ja": "ムーンアタック",
@@ -9364,7 +9365,7 @@
   },
   {
    "ja": "ロケット砲",
-   "zh_hant": "火箭炮",
+   "zh_hant": "火箭砲",
    "group": "E_classic",
    "zh_hant_hk": "火箭炮",
    "basis": "srwz",
@@ -9847,10 +9848,10 @@
   },
   {
    "ja": "ブレイバー",
-   "zh_hant": "佈雷巴",
+   "zh_hant": "布雷巴",
    "group": "F_dancouga_layzner",
    "checked": "2026-11-27",
-   "zh_hant_hk": "佈雷巴",
+   "zh_hant_hk": "布雷巴",
    "basis": "tw"
   },
   {
@@ -10658,11 +10659,11 @@
   },
   {
    "ja": "4連対空パルスレーザー",
-   "zh_hant": "4連對空脈衝激光",
+   "zh_hant": "4連對空脈衝雷射",
    "group": "F_dancouga_layzner",
    "checked": "2026-11-27",
    "zh_hant_hk": "4連對空脈衝激光",
-   "basis": "tw"
+   "basis": "derived"
   },
   {
    "ja": "5連ミサイルランチャー",
@@ -10746,11 +10747,11 @@
   },
   {
    "ja": "コスモレーザー",
-   "zh_hant": "宇宙激光",
+   "zh_hant": "宇宙雷射",
    "group": "F_dancouga_layzner",
    "checked": "2026-11-27",
    "zh_hant_hk": "宇宙激光",
-   "basis": "tw"
+   "basis": "derived"
   },
   {
    "ja": "ゴッドファイヤー",
@@ -10827,11 +10828,11 @@
   },
   {
    "ja": "パルスレーザー",
-   "zh_hant": "脈衝激光",
+   "zh_hant": "脈衝雷射",
    "group": "F_dancouga_layzner",
    "checked": "2026-11-27",
    "zh_hant_hk": "脈衝激光",
-   "basis": "tw"
+   "basis": "derived"
   },
   {
    "ja": "パワーナックル",
@@ -10902,11 +10903,11 @@
   },
   {
    "ja": "レーザーバズソー",
-   "zh_hant": "激光圓鋸",
+   "zh_hant": "雷射圓鋸",
    "group": "F_dancouga_layzner",
    "checked": "2026-11-27",
    "zh_hant_hk": "激光圓鋸",
-   "basis": "tw"
+   "basis": "derived"
   },
   {
    "ja": "ロケットバズーカ",
@@ -11531,7 +11532,7 @@
    "ja": "ゲリラ",
    "zh_hant": "游擊隊員",
    "group": "G_original",
-   "zh_hant_hk": "遊擊隊員",
+   "zh_hant_hk": "游擊隊員",
    "basis": "tw"
   },
   {
@@ -12874,10 +12875,11 @@
   },
   {
    "ja": "シャトル",
-   "zh_hant": "航天飛機",
+   "zh_hant": "太空梭",
    "group": "H_system",
    "zh_hant_hk": "航天飛機",
-   "basis": "tw"
+   "basis": "tw",
+   "note": "2026-11-28：导入脚本改为沿用台版转换结果后会变成「太空梭」（台湾用语），先保留原值，待定。"
   },
   {
    "ja": "タンク",

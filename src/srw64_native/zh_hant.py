@@ -20,6 +20,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 NAMES = "content/translation/zh-Hant/names.json"
+# Words OpenCC writes in the wrong Traditional character, shared with Hong Kong (zh_hant_hk.py).
+PHRASES = "content/translation/zh-Hant/phrases.json"
 TERMS = "content/locales/terms/zh-Hans.json"
 # Term sections whose strings are names: names.json, else the mainland name in Taiwan characters.
 NAME_SECTIONS = ("series", "units", "pilots", "pilot_full_names", "character_list", "weapons", "default_names")
@@ -48,6 +50,19 @@ def characters(text: str) -> str:
     return _opencc("s2tw").convert(text)
 
 
+def phrases(root: Path = ROOT) -> dict:
+    """content/translation/zh-Hant/phrases.json: guard, dialogue_guard, phrases, dialogue_words."""
+    path = root / PHRASES
+    document = json.loads(path.read_text()) if path.exists() else {"schema": "srw64.zh-hant-phrases.v1"}
+    if document.get("schema") != "srw64.zh-hant-phrases.v1":
+        raise ValueError("Unsupported zh-Hant phrases schema")
+    return {key: document.get(key, {}) for key in ("guard", "dialogue_guard", "phrases", "dialogue_words")}
+
+
+def longest_first(rows) -> list[tuple[str, str]]:
+    return sorted(rows, key=lambda row: (-len(row[0]), row[0]))
+
+
 def japanese_of(text: str) -> str:
     """Japanese to look names up in: the lines joined, without line breaks or indents."""
     return "".join(line.strip(" 　") for line in text.replace("<BR>", "\n").splitlines())
@@ -62,10 +77,16 @@ class Converter:
         sections = json.loads((root / TERMS).read_text())["sections"]
         # Words that are not terms but name the same things (高达 in narration), and words
         # s2twp gets wrong here, kept to their characters (的士兵 is not a taxi's soldiers).
-        words = dict(document.get("words", {}))
+        # phrases.json: the characters OpenCC picks wrong here (只能, 干得, 组织里), and for dialogue
+        # lines the narration's words that are game terms or UI words elsewhere.
+        table = phrases(root)
+        words = {**table["phrases"], **document.get("words", {})}
         for word in document.get("keep", []):
             words.setdefault(word, characters(word))
-        self.words = sorted(words.items(), key=lambda row: (-len(row[0]), row[0]))
+        self.words = longest_first(words.items())
+        self.dialogue_words = longest_first({**table["dialogue_words"], **words}.items())
+        self.guard = longest_first(table["guard"].items())
+        self.dialogue_guard = longest_first({**table["dialogue_guard"], **table["guard"]}.items())
         terms = [(section in NAME_SECTIONS, ja.strip(), hans.strip()) for section in NAME_SECTIONS + SYSTEM_SECTIONS
                  for ja, hans in sections.get(section, {}).items() if hans.strip()]
         # A game term is wording in a sentence unless Taiwan names it differently.
@@ -95,8 +116,9 @@ class Converter:
         core = hans.strip()
         return hans[:len(hans) - len(hans.lstrip())] + self.names[ja.strip()] + hans[len(hans.rstrip()):] if core else hans
 
-    def convert(self, hans: str, ja: str | None = None, rest=wording) -> str:
-        """zh-Hans text in zh-Hant; names are replaced where JA (its Japanese) has them."""
+    def convert(self, hans: str, ja: str | None = None, rest=wording, dialogue: bool = False) -> str:
+        """zh-Hans text in zh-Hant; names are replaced where JA (its Japanese) has them.
+        DIALOGUE: a line of a dialogue file, whose narration keeps a few words (phrases.json)."""
         if not hans:
             return hans
         held: list[str] = []
@@ -106,12 +128,15 @@ class Converter:
             return chr(HOLD + len(held) - 1)
 
         text = hans
+        for word_hans, hant in self.dialogue_guard if dialogue else getattr(self, "guard", []):
+            if word_hans in text:
+                text = text.replace(word_hans, hold(hant))
         if ja:
             source = japanese_of(ja)
             for name_ja, name_hans, hant in self.pairs:
                 if name_hans in text and name_ja in source:
                     text = text.replace(name_hans, hold(hant))
-        for word_hans, hant in self.words:
+        for word_hans, hant in self.dialogue_words if dialogue else self.words:
             if word_hans in text:
                 text = text.replace(word_hans, hold(hant))
         text = rest(text)

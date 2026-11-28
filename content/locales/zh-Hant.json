@@ -25,7 +25,7 @@
     "name_start": "開始故事  →",
     "name_step_select": "選角",
     "select_title": "選擇主角",
-    "select_hint": "選擇主角與搭乘型別，每位主角都有固定的搭檔。",
+    "select_hint": "選擇主角與搭乘類型，每位主角都有固定的搭檔。",
     "select_super": "超級系",
     "select_real": "真實系",
     "select_male": "男",
@@ -926,7 +926,7 @@
     "viewer_cat_air": "空中",
     "viewer_cat_space": "宇宙",
     "viewer_help_unit_default": "機師換成這臺機體的預設機師「%1」，之後可在「機師」裡換成其他能開它的人",
-    "viewer_help_pilot": "只列能開「%1」的機師：關卡里開過它的、同類可換乘的；要換機體請先選機體",
+    "viewer_help_pilot": "只列能開「%1」的機師：關卡裡開過它的、同類可換乘的；要換機體請先選機體",
     "viewer_help_weapon": "武器決定播放哪段戰鬥動畫",
     "viewer_help_weapon_parry": "可被切落：對方有劍和切落技能時，可以選「未命中 > 切落」",
     "viewer_help_song": "按作品排列，曲名保持日文；攻方曲按原版規則跟著攻方變",
@@ -2277,7 +2277,7 @@
     {
       "key": "base:t00_00338",
       "source_sha256": "353b03007a807b2c8749ee82ba680a3408be7b8aa52c231b633c86b4a2f6697e",
-      "target": "乞力馬紮羅的風暴<END>",
+      "target": "乞力馬扎羅的風暴<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5588,7 +5588,7 @@
     {
       "key": "base:t00_00813",
       "source_sha256": "50156f1fea563457710cd5b6a34d2fd9d9df28bb3c634f1a6a457426985edb53",
-      "target": "佈雷巴<END>",
+      "target": "布雷巴<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -6141,7 +6141,7 @@
     {
       "key": "base:t00_00892",
       "source_sha256": "a4ea8b3664e77b7241076507b40f1f4191613b4bd998434a6e08b305d32ed9b7",
-      "target": "回覆<END>",
+      "target": "回復<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -6267,7 +6267,7 @@
     {
       "key": "base:t00_00913",
       "source_sha256": "539095f155acade9342f35a45bd29d7ed936437bc43e3a6e62536ebbd6724b19",
-      "target": "型別<END>",
+      "target": "類型<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -13526,7 +13526,7 @@
     {
       "key": "base:t00_02157",
       "source_sha256": "09d9fb12fb23eba72b306c7b34f74d41c5f654f396caf574974cbc2cf87c7615",
-      "target": "多斯佈雷沙<END>",
+      "target": "多斯布雷沙<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -22787,7 +22787,7 @@
     {
       "key": "base:t00_03486",
       "source_sha256": "6b4bd98f2698c1a2f18f7363d38281fb95b1f676f731086b8c38b2e5761effc3",
-      "target": "格多斯佈雷沙P<END>",
+      "target": "格多斯布雷沙P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -26910,7 +26910,7 @@
     {
       "key": "base:t00_04102",
       "source_sha256": "539095f155acade9342f35a45bd29d7ed936437bc43e3a6e62536ebbd6724b19",
-      "target": "型別<END>",
+      "target": "類型<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27274,7 +27274,7 @@
     {
       "key": "base:t00_04287",
       "source_sha256": "f32f417776007e6c947c5a3fba9096b34a35f104c086f1a34bbbd75500c12d8a",
-      "target": "EN回覆200<END>",
+      "target": "EN回復200<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27358,7 +27358,7 @@
     {
       "key": "base:t00_04303",
       "source_sha256": "3ca4e42a43c0b16e727536b4e7e0d53c682c14fff18dcec3fb6ec0a732eb6d85",
-      "target": "HP回覆2000<END>",
+      "target": "HP回復2000<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28170,7 +28170,7 @@
     {
       "key": "base:t00_04497",
       "source_sha256": "265d4ce777c20697bccdc790dbfcb4953dfeb2f49483455d21c6bbb02025667f",
-      "target": "基裡卡<END>",
+      "target": "基里卡<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28590,7 +28590,7 @@
     {
       "key": "base:t00_04557",
       "source_sha256": "19f24ff15ab49f680dfd22666ad749abac1f2bb324d89a590fedfd622d7b9e00",
-      "target": "迪斯海亞<END>",
+      "target": "迪斯蓋亞<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30424,7 +30424,7 @@
     {
       "key": "base:t00_04858",
       "source_sha256": "265d4ce777c20697bccdc790dbfcb4953dfeb2f49483455d21c6bbb02025667f",
-      "target": "基裡卡<END>",
+      "target": "基里卡<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30844,7 +30844,7 @@
     {
       "key": "base:t00_04918",
       "source_sha256": "dd8c4f40f844eb09a8297f010984c0f31959dda36bf86c1fc8f1868ad25a794a",
-      "target": "迪斯海亞將軍<END>",
+      "target": "迪斯蓋亞將軍<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31936,7 +31936,7 @@
     {
       "key": "base:t00_05156",
       "source_sha256": "7e9b9590dc5cc2b71b86a0e26a42935807c234fcc3baca7f0fda3e4fc7ec32ea",
-      "target": "回覆自身最大HP的30%。<END>",
+      "target": "回復自身最大HP的30%。<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31950,7 +31950,7 @@
     {
       "key": "base:t00_05158",
       "source_sha256": "0f236e23d78e97650f7a535ebb9a739438fecb13a4c6ab61a2fd666808042694",
-      "target": "為指定機體回覆最大HP的30%。<END>",
+      "target": "為指定機體回復最大HP的30%。<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31985,7 +31985,7 @@
     {
       "key": "base:t00_05163",
       "source_sha256": "6a750e2adb1142742aaadce177af3abc9e4ca8d20428beacf865a076b6708408",
-      "target": "將自身HP完全回覆。<END>",
+      "target": "將自身HP完全回復。<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32062,14 +32062,14 @@
     {
       "key": "base:t00_05174",
       "source_sha256": "aabfc991d85ccbe2b5edc019d17aa02f255255b8e8422b475ac347abcbc262e7",
-      "target": "為所有我方機體回覆<BR>最大HP的50%。<END>",
+      "target": "為所有我方機體回復<BR>最大HP的50%。<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_05175",
       "source_sha256": "c4556375c3e89e8688bb04f48bce90c6c4b90e339a7757a318c51a1b0d8c70b3",
-      "target": "為所有我方機體回覆100%的HP。<END>",
+      "target": "為所有我方機體回復100%的HP。<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32083,7 +32083,7 @@
     {
       "key": "base:t00_05178",
       "source_sha256": "1d18949c2b605b9d00cf3769781d68e161ef5f1add0667adf3638e02d484a387",
-      "target": "為指定機體回覆<BR>50點精神點數。<END>",
+      "target": "為指定機體回復<BR>50點精神點數。<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32167,7 +32167,7 @@
     {
       "key": "base:t00_05190",
       "source_sha256": "b13d4fc93cc88c6105dc24028b689dc8a783939dfa890fee10ff8729502958d3",
-      "target": "EN回覆200<BR>補充彈藥，一次性<END>",
+      "target": "EN回復200<BR>補充彈藥，一次性<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32216,7 +32216,7 @@
     {
       "key": "base:t00_05197",
       "source_sha256": "c6e9414a6a36190fff522cd5c84d70fbab4123edffb0d0eb849394c82228f05b",
-      "target": "HP回覆2000，一次性<END>",
+      "target": "HP回復2000，一次性<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -32251,7 +32251,7 @@
     {
       "key": "base:t00_05202",
       "source_sha256": "2bb3455cf3daddc409b5c33ac1cc491871d8de4512ff5d747d7413226302bb80",
-      "target": "機體型別<END>",
+      "target": "機體類型<END>",
       "review_status": "draft",
       "origin": "terms"
     },

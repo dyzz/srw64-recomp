@@ -8,7 +8,6 @@
   "display_name": "繁體中文（香港）",
   "scope": "Hong Kong labels and records over zh-Hant (Taiwan), generated from zh-Hans by tools/translation/make_zh_hant.py: what this leaves out reads as content/locales/zh-Hant.json. Dialogue text lives in content/dialogue/zh-Hant-HK, over content/dialogue/zh-Hant.",
   "ui": {
-    "select_hint": "選擇主角與搭乘類型，每位主角都有固定的搭檔。",
     "select_keyboard_hint": "{KeyLeft}{KeyRight} 切換   ·   {Enter} / {A} 確定   ·   也可以點擊卡片",
     "settings_error": "語言切換或設定保存失敗",
     "rules_all": "全部開啓",
@@ -19,7 +18,6 @@
     "link_series_f91": "機動戰士高達F91",
     "link_units_f91": "F91、維娜·基娜",
     "link_crew_f91": "茜茜莉",
-    "link_crew_goshogun": "奇裏、蕾蜜",
     "link_keyboard_hint": "{KeyUp}{KeyDown} 切換   ·   {Space} / {A} 勾選   ·   {Enter} 確定   ·   {Esc} / {B} 返回   ·   也可以點擊卡片",
     "rules_defaults": "恢復預設（修正開啓、難度關閉）",
     "rules_group_corrections": "修正 — 預設開啓",
@@ -165,6 +163,7 @@
     "menu_info_copied": "平台資訊已複製到剪貼簿",
     "font_credit": "字體：HarmonyOS Sans",
     "viewer_help_unit_default": "機師換成這台機體的預設機師「%1」，之後可在「機師」裏換成其他能開它的人",
+    "viewer_help_pilot": "只列能開「%1」的機師：關卡裏開過它的、同類可換乘的；要換機體請先選機體",
     "viewer_help_song": "按作品排列，曲名保持日文；攻方曲按原版規則跟着攻方變",
     "touch_prev_unit": "上一台",
     "touch_next_unit": "下一台",
@@ -1833,13 +1832,6 @@
       "origin": "terms"
     },
     {
-      "key": "base:t00_00826",
-      "source_sha256": "fd402e909d991022a2384fa57bcd7cd3e62f847593a7cd6c4ebfcc4425aeb04f",
-      "target": "巖漿獸達克隆<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
       "key": "base:t00_00830",
       "source_sha256": "c15bede81b6bde1df15855f75c15bcf60fdbefc2ad22e4905e130423698177e5",
       "target": "魔鬼高達<END>",
@@ -2018,13 +2010,6 @@
       "key": "base:t00_00889",
       "source_sha256": "3ad1524b6cded5faa0f3bd3e47494cd57111d0d8d3d28143187fb8c43766bf97",
       "target": "索羅茲<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_00913",
-      "source_sha256": "539095f155acade9342f35a45bd29d7ed936437bc43e3a6e62536ebbd6724b19",
-      "target": "類型<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -10261,13 +10246,6 @@
       "origin": "terms"
     },
     {
-      "key": "base:t00_04102",
-      "source_sha256": "539095f155acade9342f35a45bd29d7ed936437bc43e3a6e62536ebbd6724b19",
-      "target": "類型<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
       "key": "base:t00_04385",
       "source_sha256": "3ad1524b6cded5faa0f3bd3e47494cd57111d0d8d3d28143187fb8c43766bf97",
       "target": "索羅茲<END>",
@@ -10660,20 +10638,6 @@
       "origin": "terms"
     },
     {
-      "key": "base:t00_04497",
-      "source_sha256": "265d4ce777c20697bccdc790dbfcb4953dfeb2f49483455d21c6bbb02025667f",
-      "target": "基裏卡<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_04513",
-      "source_sha256": "0ed50bf553b563cb08bead6fcbc50ce473df32a347cda5c02e51248307a2806f",
-      "target": "奇裏<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
       "key": "base:t00_04516",
       "source_sha256": "fccd2d059f89984452d9df4d85780d1be0a8005eb91a009dca2d1eeac591008e",
       "target": "德仁<END>",
@@ -10761,13 +10725,6 @@
       "key": "base:t00_04556",
       "source_sha256": "9c087af536bab67aa72e304b24340f3b457dd2bf62bc6916ad49ad79497cfe9f",
       "target": "扎比<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_04557",
-      "source_sha256": "19f24ff15ab49f680dfd22666ad749abac1f2bb324d89a590fedfd622d7b9e00",
-      "target": "迪斯蓋亞<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11059,41 +11016,6 @@
       "origin": "terms"
     },
     {
-      "key": "base:t00_04682",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_04683",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_04684",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_04685",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_04686",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
       "key": "base:t00_04691",
       "source_sha256": "8d853b8dd2366da0dfb714ebe2f2371ff3fc43ae15928030309578f1c41ff75e",
       "target": "阿古捷斯兵<END>",
@@ -11111,34 +11033,6 @@
       "key": "base:t00_04696",
       "source_sha256": "365a48db7165f7e3cc8ec439932c54f274e3c7073434cb21f5b77d84767b1afd",
       "target": "波蕾克隆<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_04697",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_04728",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_04729",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_04730",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -11423,13 +11317,6 @@
       "origin": "terms"
     },
     {
-      "key": "base:t00_04811",
-      "source_sha256": "52da881631a6e0c67e451f16df0b567b21948cee009204989e870cefcea08d21",
-      "target": "蓋茨·卡帕<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
       "key": "base:t00_04812",
       "source_sha256": "aa7bc1452bef247ed151e3ad40c62a20c3dedfb4eaad09c093d7173038171979",
       "target": "尊尼特·密沙<END>",
@@ -11626,20 +11513,6 @@
       "origin": "terms"
     },
     {
-      "key": "base:t00_04858",
-      "source_sha256": "265d4ce777c20697bccdc790dbfcb4953dfeb2f49483455d21c6bbb02025667f",
-      "target": "基裏卡<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_04874",
-      "source_sha256": "053a58bf7d950102fea237cdd336d8adeb9b069dbd3da38476cbc956bd447203",
-      "target": "奇裏·蓋格雷<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
       "key": "base:t00_04877",
       "source_sha256": "31bb5125edfc49a3f64429b96629b78c867062f57e1027b928f76fa32e8d8590",
       "target": "德仁<END>",
@@ -11734,13 +11607,6 @@
       "key": "base:t00_04917",
       "source_sha256": "db063e4a75f414db86fd01c58bef22baffa494186d64401040c2e434ac9cc1e7",
       "target": "扎比·基斯<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_04918",
-      "source_sha256": "dd8c4f40f844eb09a8297f010984c0f31959dda36bf86c1fc8f1868ad25a794a",
-      "target": "迪斯蓋亞將軍<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12053,41 +11919,6 @@
       "origin": "terms"
     },
     {
-      "key": "base:t00_05043",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_05044",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_05045",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_05046",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_05047",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
       "key": "base:t00_05052",
       "source_sha256": "8d853b8dd2366da0dfb714ebe2f2371ff3fc43ae15928030309578f1c41ff75e",
       "target": "阿古捷斯兵<END>",
@@ -12105,34 +11936,6 @@
       "key": "base:t00_05057",
       "source_sha256": "365a48db7165f7e3cc8ec439932c54f274e3c7073434cb21f5b77d84767b1afd",
       "target": "波蕾克隆<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_05058",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_05089",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_05090",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_05091",
-      "source_sha256": "c8c520271ec0459720f2f7c263c1e1d72ecc920d771a45407c3983e35085b785",
-      "target": "遊擊隊員<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12161,13 +11964,6 @@
       "key": "base:t00_05179",
       "source_sha256": "387ba189526bffb3b73ce1f14bd9866d7d648c8d88a2bb6e01cf6fc55045bf66",
       "target": "復活1台被擊毀的機體，可以自選對象。<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_05202",
-      "source_sha256": "2bb3455cf3daddc409b5c33ac1cc491871d8de4512ff5d747d7413226302bb80",
-      "target": "機體類型<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -12588,13 +12384,6 @@
       "key": "base:t00_05517",
       "source_sha256": "59001a3436e69613e42c5133c099c4e369e3be1d91110e0d917dfe82a1aa7e82",
       "target": "瑪莉亞·弗蕾特<END>",
-      "review_status": "draft",
-      "origin": "terms"
-    },
-    {
-      "key": "base:t00_05518",
-      "source_sha256": "053a58bf7d950102fea237cdd336d8adeb9b069dbd3da38476cbc956bd447203",
-      "target": "奇裏·蓋格雷<END>",
       "review_status": "draft",
       "origin": "terms"
     },
