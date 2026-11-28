@@ -33,6 +33,7 @@
 #include "quick_load.hpp"
 #include "stage_info.hpp"
 #include "text_update.hpp"
+#include "autosave.hpp"
 #include "mod_library.hpp"
 #include "map_movie.hpp"
 #include "web_link.hpp"
@@ -231,6 +232,7 @@ bool srw64_screenshot_armed(){return false;}
 std::string srw64_pad_name(){return "Steam Deck Controller";}
 json srw64_window_status(){return json::object();}
 json srw64_graphics_info(){return json::object();}
+namespace srw64::autosave { std::optional<Offer> offer(){return std::nullopt;} void answer(bool){} }
 namespace srw64::bug_report { Result write(const std::filesystem::path&,const std::filesystem::path&,json){return {};} std::string summary(const json&){return {};} }
 uint64_t srw64_current_vi(){return 1000;}
 
